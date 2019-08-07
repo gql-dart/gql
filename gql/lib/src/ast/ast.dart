@@ -36,7 +36,7 @@ class DocumentNode extends Node {
 
   DocumentNode({
     this.definitions = const [],
-    span,
+    FileSpan span,
   })  : assert(definitions != null),
         super(span);
 
@@ -50,11 +50,11 @@ class DocumentNode extends Node {
 }
 
 abstract class DefinitionNode extends Node {
-  DefinitionNode(span) : super(span);
+  DefinitionNode(FileSpan span) : super(span);
 }
 
 abstract class ExecutableDefinitionNode extends DefinitionNode {
-  ExecutableDefinitionNode(span) : super(span);
+  ExecutableDefinitionNode(FileSpan span) : super(span);
 }
 
 /// Enumeration of all known GraphQL operation types.
@@ -103,7 +103,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
     this.variableDefinitions = const [],
     this.directives = const [],
     @required this.selectionSet,
-    span,
+    FileSpan span,
   })  : assert(variableDefinitions != null),
         assert(directives != null),
         assert(selectionSet != null),
@@ -126,7 +126,7 @@ class SelectionSetNode extends Node {
 
   SelectionSetNode({
     this.selections = const [],
-    span,
+    FileSpan span,
   }) : super(span);
 
   @override
@@ -139,7 +139,7 @@ class SelectionSetNode extends Node {
 }
 
 abstract class SelectionNode extends Node {
-  SelectionNode(span) : super(span);
+  SelectionNode(FileSpan span) : super(span);
 }
 
 class FieldNode extends SelectionNode {
@@ -159,7 +159,7 @@ class FieldNode extends SelectionNode {
     this.arguments = const [],
     this.directives = const [],
     this.selectionSet,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(arguments != null),
         assert(directives != null),
@@ -185,7 +185,7 @@ class ArgumentNode extends Node {
   ArgumentNode({
     @required this.name,
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(value != null),
         super(span);
@@ -208,7 +208,7 @@ class FragmentSpreadNode extends SelectionNode {
   FragmentSpreadNode({
     @required this.name,
     this.directives = const [],
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
         super(span);
@@ -234,7 +234,7 @@ class InlineFragmentNode extends SelectionNode {
     this.typeCondition,
     this.directives = const [],
     @required this.selectionSet,
-    span,
+    FileSpan span,
   })  : assert(directives != null),
         assert(selectionSet != null),
         super(span);
@@ -264,7 +264,7 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
     @required this.typeCondition,
     this.directives = const [],
     @required this.selectionSet,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(typeCondition != null),
         assert(directives != null),
@@ -288,7 +288,7 @@ class TypeConditionNode extends Node {
 
   TypeConditionNode({
     @required this.on,
-    span,
+    FileSpan span,
   })  : assert(on != null),
         super(span);
 
@@ -302,7 +302,7 @@ class TypeConditionNode extends Node {
 }
 
 abstract class ValueNode extends Node {
-  ValueNode(span) : super(span);
+  ValueNode(FileSpan span) : super(span);
 }
 
 class VariableNode extends ValueNode {
@@ -310,7 +310,7 @@ class VariableNode extends ValueNode {
 
   VariableNode({
     @required this.name,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         super(span);
 
@@ -328,7 +328,7 @@ class IntValueNode extends ValueNode {
 
   IntValueNode({
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(value != null),
         super(span);
 
@@ -344,7 +344,7 @@ class FloatValueNode extends ValueNode {
 
   FloatValueNode({
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(value != null),
         super(span);
 
@@ -363,7 +363,7 @@ class StringValueNode extends ValueNode {
   StringValueNode({
     @required this.value,
     @required this.isBlock,
-    span,
+    FileSpan span,
   })  : assert(value != null),
         assert(isBlock != null),
         super(span);
@@ -380,7 +380,7 @@ class BooleanValueNode extends ValueNode {
 
   BooleanValueNode({
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(value != null),
         super(span);
 
@@ -393,7 +393,7 @@ class BooleanValueNode extends ValueNode {
 
 class NullValueNode extends ValueNode {
   NullValueNode({
-    span,
+    FileSpan span,
   }) : super(span);
 
   @override
@@ -408,7 +408,7 @@ class EnumValueNode extends ValueNode {
 
   EnumValueNode({
     @required this.name,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         super(span);
 
@@ -424,7 +424,7 @@ class ListValueNode extends ValueNode {
 
   ListValueNode({
     this.values = const [],
-    span,
+    FileSpan span,
   }) : super(span);
 
   @override
@@ -441,7 +441,7 @@ class ObjectValueNode extends ValueNode {
 
   ObjectValueNode({
     this.fields = const [],
-    span,
+    FileSpan span,
   }) : super(span);
 
   @override
@@ -461,7 +461,7 @@ class ObjectFieldNode extends Node {
   ObjectFieldNode({
     @required this.name,
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(value != null),
         super(span);
@@ -490,7 +490,7 @@ class VariableDefinitionNode extends Node {
     @required this.type,
     this.defaultValue,
     this.directives = const [],
-    span,
+    FileSpan span,
   })  : assert(variable != null),
         assert(type != null),
         assert(directives != null),
@@ -513,7 +513,7 @@ class DefaultValueNode extends Node {
 
   DefaultValueNode({
     @required this.value,
-    span,
+    FileSpan span,
   }) : super(span);
 
   @override
@@ -528,7 +528,7 @@ class DefaultValueNode extends Node {
 abstract class TypeNode extends Node {
   bool isNonNull;
 
-  TypeNode(this.isNonNull, span)
+  TypeNode(this.isNonNull, FileSpan span)
       : assert(isNonNull != null),
         super(span);
 }
@@ -538,8 +538,8 @@ class NamedTypeNode extends TypeNode {
 
   NamedTypeNode({
     @required this.name,
-    isNonNull = false,
-    span,
+    bool isNonNull = false,
+    FileSpan span,
   })  : assert(name != null),
         assert(isNonNull != null),
         super(isNonNull, span);
@@ -558,8 +558,8 @@ class ListTypeNode extends TypeNode {
 
   ListTypeNode({
     @required this.type,
-    @required isNonNull,
-    span,
+    @required bool isNonNull,
+    FileSpan span,
   })  : assert(type != null),
         assert(isNonNull != null),
         super(isNonNull, span);
@@ -581,7 +581,7 @@ class DirectiveNode extends Node {
   DirectiveNode({
     @required this.name,
     this.arguments = const [],
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(arguments != null),
         super(span);
@@ -601,7 +601,7 @@ class NameNode extends Node {
 
   NameNode({
     @required this.value,
-    span,
+    FileSpan span,
   })  : assert(value != null),
         super(span);
 
@@ -613,7 +613,7 @@ class NameNode extends Node {
 }
 
 abstract class TypeSystemDefinitionNode extends DefinitionNode {
-  TypeSystemDefinitionNode(span) : super(span);
+  TypeSystemDefinitionNode(FileSpan span) : super(span);
 }
 
 abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
@@ -625,14 +625,14 @@ abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
     this.description,
     @required this.name,
     this.directives = const [],
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
         super(span);
 }
 
 abstract class TypeSystemExtensionNode extends TypeSystemDefinitionNode {
-  TypeSystemExtensionNode(span) : super(span);
+  TypeSystemExtensionNode(FileSpan span) : super(span);
 }
 
 abstract class TypeExtensionNode extends TypeSystemExtensionNode {
@@ -640,7 +640,7 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
   Iterable<DirectiveNode> directives;
 
   TypeExtensionNode({
-    span,
+    FileSpan span,
     @required this.name,
     this.directives = const [],
   })  : assert(name != null),
@@ -655,7 +655,7 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
   SchemaDefinitionNode({
     this.directives = const [],
     this.operationTypes = const [],
-    span,
+    FileSpan span,
   })  : assert(directives != null),
         assert(operationTypes != null),
         super(span);
@@ -677,7 +677,7 @@ class OperationTypeDefinitionNode extends Node {
   OperationTypeDefinitionNode({
     @required this.operation,
     @required this.type,
-    span,
+    FileSpan span,
   })  : assert(operation != null),
         assert(type != null),
         super(span);
@@ -693,10 +693,10 @@ class OperationTypeDefinitionNode extends Node {
 
 class ScalarTypeDefinitionNode extends TypeDefinitionNode {
   ScalarTypeDefinitionNode({
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
         super(
@@ -724,10 +724,10 @@ class ObjectTypeDefinitionNode extends TypeDefinitionNode {
   ObjectTypeDefinitionNode({
     this.interfaces = const [],
     this.fields = const [],
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(interfaces != null),
         assert(fields != null),
         assert(name != null),
@@ -765,7 +765,7 @@ class FieldDefinitionNode extends Node {
     @required this.type,
     this.args = const [],
     this.directives = const [],
-    span,
+    FileSpan span,
   })  : assert(type != null),
         assert(args != null),
         assert(name != null),
@@ -798,7 +798,7 @@ class InputValueDefinitionNode extends Node {
     @required this.type,
     this.defaultValue,
     this.directives = const [],
-    span,
+    FileSpan span,
   })  : assert(type != null),
         assert(name != null),
         assert(type != null),
@@ -823,10 +823,10 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
 
   InterfaceTypeDefinitionNode({
     this.fields = const [],
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(fields != null),
         assert(name != null),
         assert(directives != null),
@@ -854,10 +854,10 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
 
   UnionTypeDefinitionNode({
     this.types = const [],
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(types != null),
         assert(name != null),
         assert(directives != null),
@@ -885,10 +885,10 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
 
   EnumTypeDefinitionNode({
     this.values = const [],
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(values != null),
         assert(name != null),
         assert(directives != null),
@@ -913,10 +913,10 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
 
 class EnumValueDefinitionNode extends TypeDefinitionNode {
   EnumValueDefinitionNode({
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
         super(
@@ -942,10 +942,10 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
 
   InputObjectTypeDefinitionNode({
     this.fields = const [],
-    description,
-    @required name,
-    directives = const [],
-    span,
+    StringValueNode description,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(fields != null),
         assert(name != null),
         assert(directives != null),
@@ -981,7 +981,7 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
     this.args = const [],
     this.locations = const [],
     this.repeatable = false,
-    span,
+    FileSpan span,
   })  : assert(name != null),
         assert(args != null),
         assert(locations != null),
@@ -1006,7 +1006,7 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
   SchemaExtensionNode({
     this.directives = const [],
     this.operationTypes = const [],
-    span,
+    FileSpan span,
   })  : assert(directives != null),
         assert(operationTypes != null),
         super(span);
@@ -1023,9 +1023,9 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
 
 class ScalarTypeExtensionNode extends TypeExtensionNode {
   ScalarTypeExtensionNode({
-    span,
-    @required name,
-    directives = const [],
+    FileSpan span,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(directives != null),
         super(
@@ -1049,11 +1049,11 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
   Iterable<FieldDefinitionNode> fields;
 
   ObjectTypeExtensionNode({
-    @required name,
+    @required NameNode name,
     this.interfaces = const [],
     this.fields = const [],
-    span,
-    directives = const [],
+    FileSpan span,
+    Iterable<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(interfaces != null),
         assert(fields != null),
@@ -1081,9 +1081,9 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
 
   InterfaceTypeExtensionNode({
     this.fields = const [],
-    @required name,
-    span,
-    directives = const [],
+    @required NameNode name,
+    FileSpan span,
+    Iterable<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(fields != null),
         assert(directives != null),
@@ -1109,9 +1109,9 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
 
   UnionTypeExtensionNode({
     this.types = const [],
-    @required name,
-    directives = const [],
-    span,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
+    FileSpan span,
   })  : assert(name != null),
         assert(types != null),
         assert(directives != null),
@@ -1137,9 +1137,9 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
 
   EnumTypeExtensionNode({
     this.values = const [],
-    span,
-    @required name,
-    directives = const [],
+    FileSpan span,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(values != null),
         assert(directives != null),
@@ -1165,9 +1165,9 @@ class InputObjectTypeExtensionNode extends TypeExtensionNode {
 
   InputObjectTypeExtensionNode({
     this.fields = const [],
-    span,
-    @required name,
-    directives = const [],
+    FileSpan span,
+    @required NameNode name,
+    Iterable<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(fields != null),
         assert(directives != null),

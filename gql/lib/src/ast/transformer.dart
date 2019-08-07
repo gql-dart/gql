@@ -5,13 +5,13 @@ import "package:gql/src/ast/visitor.dart";
 ///
 /// - [node] can be any [Node] in the tree.
 /// - [visitors] must define transformations as described in [TransformingVisitor]
-Node transform(
-  Node node,
+N transform<N extends Node>(
+  N node,
   Iterable<TransformingVisitor> visitors,
 ) =>
     node.accept(
       _Transformer(visitors: visitors),
-    );
+    ) as N;
 
 /// A [Visitor] returning the node it is visiting.
 ///
@@ -324,7 +324,7 @@ class _Transformer extends Visitor<Node> {
       definitions: _visitAll(node.definitions),
     );
 
-    return visitors.fold(
+    return visitors.fold<DocumentNode>(
       updatedNode,
       (prev, visitor) => visitor.visitDocumentNode(prev),
     );

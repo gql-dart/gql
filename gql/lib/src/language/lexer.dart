@@ -106,7 +106,7 @@ class Lexer {
     final scanner = _Scanner(src);
     final tokens = <Token>[];
 
-    var token;
+    Token token;
     do {
       token = scanner.scanToken();
       if (skipComments && token.kind != TokenKind.comment) {
@@ -221,7 +221,7 @@ class _Scanner {
   Token scanComment() {
     ++position;
     var length = 0;
-    var code;
+    int code;
 
     do {
       code = peek(offset: ++length);
@@ -284,7 +284,7 @@ class _Scanner {
     );
   }
 
-  int _scanDigits(offset) {
+  int _scanDigits(int offset) {
     var code = peek(offset: offset);
 
     if (code >= 48 && code <= 57) {
@@ -478,7 +478,7 @@ class _Scanner {
   }
 }
 
-bool isHex(a) =>
+bool isHex(int a) =>
     (a >= 0x30 && a <= 0x39) ||
     (a >= 0x41 && a <= 0x46) ||
     (a >= 0x61 && a <= 0x66);
@@ -486,7 +486,7 @@ bool isHex(a) =>
 int uniCharCode(int a, int b, int c, int d) =>
     char2Hex(a) << 12 | char2Hex(b) << 8 | char2Hex(c) << 4 | char2Hex(d);
 
-char2Hex(int a) {
+int char2Hex(int a) {
   if (a >= 48 && a <= 57) {
     return a - 48;
   }
@@ -505,7 +505,7 @@ char2Hex(int a) {
 String dedentBlockStringValue(String value) {
   var lines = value.split(RegExp(r"\r\n|[\n\r]"));
 
-  var commonIndent;
+  int commonIndent;
   for (var i = 1; i < lines.length; i++) {
     final line = lines[i];
     final indent = leadingWhitespace(line);

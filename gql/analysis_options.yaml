@@ -23,6 +23,8 @@ linter:
     
 
 analyzer:
+  strong-mode:
+    implicit-casts: false
   errors:
     prefer_double_quotes: error
     annotate_overrides: error

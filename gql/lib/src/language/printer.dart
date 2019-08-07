@@ -12,7 +12,7 @@ String printNode(Node node) {
 class _PrintVisitor extends Visitor<String> {
   int _tabs = 0;
 
-  String _indent(tabs) => List.filled(tabs, "  ").join();
+  String _indent(int tabs) => List.filled(tabs, "  ").join();
 
   @override
   String visitDocumentNode(DocumentNode doc) => doc.definitions

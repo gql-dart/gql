@@ -15,7 +15,7 @@ main() async {
       .forEach(cover);
 }
 
-cover(sourceFile) {
+cover(SourceFile sourceFile) {
   final DocumentNode document = parse(sourceFile);
 
   final DocumentNode transformedDocument = transform(

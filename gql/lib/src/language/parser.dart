@@ -3,6 +3,8 @@ import "package:source_span/source_span.dart";
 import "package:gql/src/ast/ast.dart";
 import "package:gql/src/language/lexer.dart";
 
+typedef _ParseFunction<N> = N Function();
+
 /// Parses [source] and returns [DocumentNode].
 ///
 /// Supports both GraphQL SDL and executable definitions.
@@ -86,14 +88,21 @@ class _Parser {
     return _tokens[_position + offset];
   }
 
-  SourceSpanException _unexpected([message = "Parse error", offset = 0]) =>
+  SourceSpanException _unexpected([
+    String message = "Parse error",
+    int offset = 0,
+  ]) =>
       SourceSpanException(
         message,
         _next(offset: offset).span,
       );
 
-  Iterable<N> _parseMany<N>(TokenKind open, parse, TokenKind close,
-      [String errorMessage]) {
+  Iterable<N> _parseMany<N>(
+    TokenKind open,
+    _ParseFunction<N> parse,
+    TokenKind close, [
+    String errorMessage,
+  ]) {
     _expectToken(open, errorMessage);
 
     final nodes = <N>[];
@@ -105,8 +114,12 @@ class _Parser {
     return nodes;
   }
 
-  Iterable<N> _maybeParseMany<N>(TokenKind open, parse, TokenKind close,
-      [String errorMessage]) {
+  Iterable<N> _maybeParseMany<N>(
+    TokenKind open,
+    _ParseFunction<N> parse,
+    TokenKind close, [
+    String errorMessage,
+  ]) {
     if (_peek(open)) {
       return _parseMany<N>(
         open,
@@ -119,8 +132,12 @@ class _Parser {
     return <N>[];
   }
 
-  Iterable<N> _parseAny<N>(TokenKind open, parse, TokenKind close,
-      [String errorMessage]) {
+  Iterable<N> _parseAny<N>(
+    TokenKind open,
+    _ParseFunction<N> parse,
+    TokenKind close, [
+    String errorMessage,
+  ]) {
     _expectToken(open, errorMessage);
 
     final nodes = <N>[];
@@ -212,7 +229,7 @@ class _Parser {
     }
 
     final operationType = _parseOperationType();
-    var name;
+    NameNode name;
     if (_peek(TokenKind.name)) name = _parseName();
 
     return OperationDefinitionNode(
@@ -238,7 +255,7 @@ class _Parser {
 
     final type = _parseType();
 
-    var defaultValue;
+    ValueNode defaultValue;
     if (_expectOptionalToken(TokenKind.equals) != null) {
       defaultValue = _parseValue(isConst: true);
     }
@@ -481,8 +498,8 @@ class _Parser {
   FieldNode _parseField() {
     final nameOrAlias = _parseName("Expected a field or field alias name");
 
-    var name;
-    var alias;
+    NameNode name;
+    NameNode alias;
 
     if (_expectOptionalToken(TokenKind.colon) != null) {
       alias = nameOrAlias;
@@ -494,7 +511,7 @@ class _Parser {
     final arguments = _parseArguments(isConst: false);
     final directives = _parseDirectives(isConst: false);
 
-    var selectionSet;
+    SelectionSetNode selectionSet;
     if (_peek(TokenKind.braceL)) {
       selectionSet = _parseSelectionSet();
     }
@@ -680,7 +697,7 @@ class _Parser {
     final name = _parseName("Expected an input value name");
     _expectToken(TokenKind.colon, "Expected ':' followed by input value type");
     final type = _parseType();
-    var defaultValue;
+    ValueNode defaultValue;
     if (_expectOptionalToken(TokenKind.equals) != null) {
       defaultValue = _parseConstValue();
     }
@@ -947,6 +964,7 @@ class _Parser {
 
   UnionTypeExtensionNode _parseUnionTypeExtension() {
     _expectKeyword("union");
+
     final name = _parseName("Expected a union name");
     final directives = _parseDirectives(isConst: true);
     final types = _parseUnionMemberTypes();
@@ -965,6 +983,7 @@ class _Parser {
 
   EnumTypeExtensionNode _parseEnumTypeExtension() {
     _expectKeyword("enum");
+
     final name = _parseName("Expected an enum name");
     final directives = _parseDirectives(isConst: true);
     final values = _parseEnumValuesDefinition();
@@ -983,6 +1002,7 @@ class _Parser {
 
   InputObjectTypeExtensionNode _parseInputObjectTypeExtension() {
     _expectKeyword("input");
+
     final name = _parseName("Expected an input object type name");
     final directives = _parseDirectives(isConst: true);
     final fields = _parseInputFieldsDefinition();
