@@ -3,6 +3,9 @@ import "package:source_span/source_span.dart";
 import "package:gql/src/ast/ast.dart";
 import "package:gql/src/language/lexer.dart";
 
+/// Parses [source] and returns [DocumentNode].
+///
+/// Supports both GraphQL SDL and executable definitions.
 DocumentNode parse(SourceFile source) {
   final lexer = Lexer();
   final tokens = lexer.tokenize(source);

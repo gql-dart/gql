@@ -17,13 +17,17 @@ void _visitAll<R>(
       (node) => _visitOne(node, v),
     );
 
+/// The base class for any GraphQL AST [Node].
 abstract class Node {
+  /// [FileSpan] representing the location of the node in the the [SourceFile]
   FileSpan span;
 
   Node(this.span);
 
+  /// Lets [Visitor] [v] visit children nodes of this node.
   void visitChildren<R>(Visitor<R> v);
 
+  /// Accepts a [Visitor] [v].
   R accept<R>(Visitor<R> v);
 }
 
@@ -53,12 +57,14 @@ abstract class ExecutableDefinitionNode extends DefinitionNode {
   ExecutableDefinitionNode(span) : super(span);
 }
 
+/// Enumeration of all known GraphQL operation types.
 enum OperationType {
   query,
   mutation,
   subscription,
 }
 
+/// Enumeration of all known directive locations.
 enum DirectiveLocation {
   query,
   mutation,

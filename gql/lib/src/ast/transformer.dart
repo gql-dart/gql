@@ -1,181 +1,10 @@
 import "package:gql/src/ast/ast.dart";
 import "package:gql/src/ast/visitor.dart";
 
-abstract class TransformingVisitor extends Visitor<Node> {
-  @override
-  DocumentNode visitDocumentNode(DocumentNode node) => node;
-
-  @override
-  NameNode visitNameNode(NameNode node) => node;
-
-  @override
-  DirectiveNode visitDirectiveNode(DirectiveNode node) => node;
-
-  @override
-  ListTypeNode visitListTypeNode(ListTypeNode node) => node;
-
-  @override
-  NamedTypeNode visitNamedTypeNode(NamedTypeNode node) => node;
-
-  @override
-  DefaultValueNode visitDefaultValueNode(DefaultValueNode node) => node;
-
-  @override
-  VariableDefinitionNode visitVariableDefinitionNode(
-          VariableDefinitionNode node) =>
-      node;
-
-  @override
-  ObjectFieldNode visitObjectFieldNode(ObjectFieldNode node) => node;
-
-  @override
-  ObjectValueNode visitObjectValueNode(ObjectValueNode node) => node;
-
-  @override
-  ListValueNode visitListValueNode(ListValueNode node) => node;
-
-  @override
-  EnumValueNode visitEnumValueNode(EnumValueNode node) => node;
-
-  @override
-  NullValueNode visitNullValueNode(NullValueNode node) => node;
-
-  @override
-  BooleanValueNode visitBooleanValueNode(BooleanValueNode node) => node;
-
-  @override
-  StringValueNode visitStringValueNode(StringValueNode node) => node;
-
-  @override
-  FloatValueNode visitFloatValueNode(FloatValueNode node) => node;
-
-  @override
-  IntValueNode visitIntValueNode(IntValueNode node) => node;
-
-  @override
-  VariableNode visitVariableNode(VariableNode node) => node;
-
-  @override
-  TypeConditionNode visitTypeConditionNode(TypeConditionNode node) => node;
-
-  @override
-  FragmentDefinitionNode visitFragmentDefinitionNode(
-          FragmentDefinitionNode node) =>
-      node;
-
-  @override
-  InlineFragmentNode visitInlineFragmentNode(InlineFragmentNode node) => node;
-
-  @override
-  FragmentSpreadNode visitFragmentSpreadNode(FragmentSpreadNode node) => node;
-
-  @override
-  ArgumentNode visitArgumentNode(ArgumentNode node) => node;
-
-  @override
-  FieldNode visitFieldNode(FieldNode node) => node;
-
-  @override
-  SelectionSetNode visitSelectionSetNode(SelectionSetNode node) => node;
-
-  @override
-  OperationDefinitionNode visitOperationDefinitionNode(
-          OperationDefinitionNode node) =>
-      node;
-
-  @override
-  SchemaDefinitionNode visitSchemaDefinitionNode(SchemaDefinitionNode node) =>
-      node;
-
-  @override
-  OperationTypeDefinitionNode visitOperationTypeDefinitionNode(
-          OperationTypeDefinitionNode node) =>
-      node;
-
-  @override
-  ScalarTypeDefinitionNode visitScalarTypeDefinitionNode(
-          ScalarTypeDefinitionNode node) =>
-      node;
-
-  @override
-  ObjectTypeDefinitionNode visitObjectTypeDefinitionNode(
-          ObjectTypeDefinitionNode node) =>
-      node;
-
-  @override
-  FieldDefinitionNode visitFieldDefinitionNode(FieldDefinitionNode node) =>
-      node;
-
-  @override
-  InputValueDefinitionNode visitInputValueDefinitionNode(
-          InputValueDefinitionNode node) =>
-      node;
-
-  @override
-  InterfaceTypeDefinitionNode visitInterfaceTypeDefinitionNode(
-          InterfaceTypeDefinitionNode node) =>
-      node;
-
-  @override
-  UnionTypeDefinitionNode visitUnionTypeDefinitionNode(
-          UnionTypeDefinitionNode node) =>
-      node;
-
-  @override
-  EnumTypeDefinitionNode visitEnumTypeDefinitionNode(
-          EnumTypeDefinitionNode node) =>
-      node;
-
-  @override
-  EnumValueDefinitionNode visitEnumValueDefinitionNode(
-          EnumValueDefinitionNode node) =>
-      node;
-
-  @override
-  InputObjectTypeDefinitionNode visitInputObjectTypeDefinitionNode(
-          InputObjectTypeDefinitionNode node) =>
-      node;
-
-  @override
-  DirectiveDefinitionNode visitDirectiveDefinitionNode(
-          DirectiveDefinitionNode node) =>
-      node;
-
-  @override
-  SchemaExtensionNode visitSchemaExtensionNode(SchemaExtensionNode node) =>
-      node;
-
-  @override
-  ScalarTypeExtensionNode visitScalarTypeExtensionNode(
-          ScalarTypeExtensionNode node) =>
-      node;
-
-  @override
-  ObjectTypeExtensionNode visitObjectTypeExtensionNode(
-          ObjectTypeExtensionNode node) =>
-      node;
-
-  @override
-  InterfaceTypeExtensionNode visitInterfaceTypeExtensionNode(
-          InterfaceTypeExtensionNode node) =>
-      node;
-
-  @override
-  UnionTypeExtensionNode visitUnionTypeExtensionNode(
-          UnionTypeExtensionNode node) =>
-      node;
-
-  @override
-  EnumTypeExtensionNode visitEnumTypeExtensionNode(
-          EnumTypeExtensionNode node) =>
-      node;
-
-  @override
-  InputObjectTypeExtensionNode visitInputObjectTypeExtensionNode(
-          InputObjectTypeExtensionNode node) =>
-      node;
-}
-
+/// Transforms an AST [node] using a list of [visitors].
+///
+/// - [node] can be any [Node] in the tree.
+/// - [visitors] must define transformations as described in [TransformingVisitor]
 Node transform(
   Node node,
   Iterable<TransformingVisitor> visitors,
@@ -184,6 +13,279 @@ Node transform(
       _Transformer(visitors: visitors),
     );
 
+/// A [Visitor] returning the node it is visiting.
+///
+/// Used to implement AST transformers.
+///
+/// When used together with [transform] you only need to override
+/// the visit methods relevant to your transformation.
+/// [transform] will make sure to walk the AST recursively.
+abstract class TransformingVisitor extends Visitor<Node> {
+  @override
+  DocumentNode visitDocumentNode(
+    DocumentNode node,
+  ) =>
+      node;
+
+  @override
+  NameNode visitNameNode(
+    NameNode node,
+  ) =>
+      node;
+
+  @override
+  DirectiveNode visitDirectiveNode(
+    DirectiveNode node,
+  ) =>
+      node;
+
+  @override
+  ListTypeNode visitListTypeNode(
+    ListTypeNode node,
+  ) =>
+      node;
+
+  @override
+  NamedTypeNode visitNamedTypeNode(
+    NamedTypeNode node,
+  ) =>
+      node;
+
+  @override
+  DefaultValueNode visitDefaultValueNode(
+    DefaultValueNode node,
+  ) =>
+      node;
+
+  @override
+  VariableDefinitionNode visitVariableDefinitionNode(
+    VariableDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  ObjectFieldNode visitObjectFieldNode(
+    ObjectFieldNode node,
+  ) =>
+      node;
+
+  @override
+  ObjectValueNode visitObjectValueNode(
+    ObjectValueNode node,
+  ) =>
+      node;
+
+  @override
+  ListValueNode visitListValueNode(
+    ListValueNode node,
+  ) =>
+      node;
+
+  @override
+  EnumValueNode visitEnumValueNode(
+    EnumValueNode node,
+  ) =>
+      node;
+
+  @override
+  NullValueNode visitNullValueNode(
+    NullValueNode node,
+  ) =>
+      node;
+
+  @override
+  BooleanValueNode visitBooleanValueNode(
+    BooleanValueNode node,
+  ) =>
+      node;
+
+  @override
+  StringValueNode visitStringValueNode(
+    StringValueNode node,
+  ) =>
+      node;
+
+  @override
+  FloatValueNode visitFloatValueNode(
+    FloatValueNode node,
+  ) =>
+      node;
+
+  @override
+  IntValueNode visitIntValueNode(
+    IntValueNode node,
+  ) =>
+      node;
+
+  @override
+  VariableNode visitVariableNode(
+    VariableNode node,
+  ) =>
+      node;
+
+  @override
+  TypeConditionNode visitTypeConditionNode(
+    TypeConditionNode node,
+  ) =>
+      node;
+
+  @override
+  FragmentDefinitionNode visitFragmentDefinitionNode(
+    FragmentDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  InlineFragmentNode visitInlineFragmentNode(
+    InlineFragmentNode node,
+  ) =>
+      node;
+
+  @override
+  FragmentSpreadNode visitFragmentSpreadNode(
+    FragmentSpreadNode node,
+  ) =>
+      node;
+
+  @override
+  ArgumentNode visitArgumentNode(
+    ArgumentNode node,
+  ) =>
+      node;
+
+  @override
+  FieldNode visitFieldNode(
+    FieldNode node,
+  ) =>
+      node;
+
+  @override
+  SelectionSetNode visitSelectionSetNode(
+    SelectionSetNode node,
+  ) =>
+      node;
+
+  @override
+  OperationDefinitionNode visitOperationDefinitionNode(
+    OperationDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  SchemaDefinitionNode visitSchemaDefinitionNode(
+    SchemaDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  OperationTypeDefinitionNode visitOperationTypeDefinitionNode(
+    OperationTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  ScalarTypeDefinitionNode visitScalarTypeDefinitionNode(
+    ScalarTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  ObjectTypeDefinitionNode visitObjectTypeDefinitionNode(
+    ObjectTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  FieldDefinitionNode visitFieldDefinitionNode(
+    FieldDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  InputValueDefinitionNode visitInputValueDefinitionNode(
+    InputValueDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  InterfaceTypeDefinitionNode visitInterfaceTypeDefinitionNode(
+    InterfaceTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  UnionTypeDefinitionNode visitUnionTypeDefinitionNode(
+    UnionTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  EnumTypeDefinitionNode visitEnumTypeDefinitionNode(
+    EnumTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  EnumValueDefinitionNode visitEnumValueDefinitionNode(
+    EnumValueDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  InputObjectTypeDefinitionNode visitInputObjectTypeDefinitionNode(
+    InputObjectTypeDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  DirectiveDefinitionNode visitDirectiveDefinitionNode(
+    DirectiveDefinitionNode node,
+  ) =>
+      node;
+
+  @override
+  SchemaExtensionNode visitSchemaExtensionNode(
+    SchemaExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  ScalarTypeExtensionNode visitScalarTypeExtensionNode(
+    ScalarTypeExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  ObjectTypeExtensionNode visitObjectTypeExtensionNode(
+    ObjectTypeExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  InterfaceTypeExtensionNode visitInterfaceTypeExtensionNode(
+    InterfaceTypeExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  UnionTypeExtensionNode visitUnionTypeExtensionNode(
+    UnionTypeExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  EnumTypeExtensionNode visitEnumTypeExtensionNode(
+    EnumTypeExtensionNode node,
+  ) =>
+      node;
+
+  @override
+  InputObjectTypeExtensionNode visitInputObjectTypeExtensionNode(
+    InputObjectTypeExtensionNode node,
+  ) =>
+      node;
+}
+
 class _Transformer extends Visitor<Node> {
   Iterable<TransformingVisitor> visitors;
 
@@ -191,24 +293,33 @@ class _Transformer extends Visitor<Node> {
     this.visitors = const [],
   });
 
-  N _visitOne<N extends Node>(N node) {
+  N _visitOne<N extends Node>(
+    N node,
+  ) {
     if (node == null) return node;
 
     return node.accept(this) as N;
   }
 
-  Iterable<N> _visitAll<N extends Node>(Iterable<N> nodes) {
+  Iterable<N> _visitAll<N extends Node>(
+    Iterable<N> nodes,
+  ) {
     if (nodes == null) return nodes;
 
     return nodes
         .map(
-          (node) => node.accept(this),
+          (
+            node,
+          ) =>
+              node.accept(this),
         )
         .cast<N>();
   }
 
   @override
-  visitDocumentNode(DocumentNode node) {
+  visitDocumentNode(
+    DocumentNode node,
+  ) {
     final updatedNode = DocumentNode(
       definitions: _visitAll(node.definitions),
     );
@@ -220,7 +331,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  ArgumentNode visitArgumentNode(ArgumentNode node) {
+  ArgumentNode visitArgumentNode(
+    ArgumentNode node,
+  ) {
     final updatedNode = ArgumentNode(
       name: _visitOne(node.name),
       value: _visitOne(node.value),
@@ -233,7 +346,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  BooleanValueNode visitBooleanValueNode(BooleanValueNode node) {
+  BooleanValueNode visitBooleanValueNode(
+    BooleanValueNode node,
+  ) {
     final updatedNode = BooleanValueNode(
       value: node.value,
     );
@@ -245,7 +360,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  DefaultValueNode visitDefaultValueNode(DefaultValueNode node) {
+  DefaultValueNode visitDefaultValueNode(
+    DefaultValueNode node,
+  ) {
     final updatedNode = DefaultValueNode(
       value: _visitOne(node.value),
     );
@@ -258,7 +375,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   DirectiveDefinitionNode visitDirectiveDefinitionNode(
-      DirectiveDefinitionNode node) {
+    DirectiveDefinitionNode node,
+  ) {
     final updatedNode = DirectiveDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -274,7 +392,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  DirectiveNode visitDirectiveNode(DirectiveNode node) {
+  DirectiveNode visitDirectiveNode(
+    DirectiveNode node,
+  ) {
     final updatedNode = DirectiveNode(
       arguments: _visitAll(node.arguments),
       name: _visitOne(node.name),
@@ -288,7 +408,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   EnumTypeDefinitionNode visitEnumTypeDefinitionNode(
-      EnumTypeDefinitionNode node) {
+    EnumTypeDefinitionNode node,
+  ) {
     final updatedNode = EnumTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -303,7 +424,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  EnumTypeExtensionNode visitEnumTypeExtensionNode(EnumTypeExtensionNode node) {
+  EnumTypeExtensionNode visitEnumTypeExtensionNode(
+    EnumTypeExtensionNode node,
+  ) {
     final updatedNode = EnumTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -318,7 +441,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   EnumValueDefinitionNode visitEnumValueDefinitionNode(
-      EnumValueDefinitionNode node) {
+    EnumValueDefinitionNode node,
+  ) {
     final updatedNode = EnumValueDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -332,7 +456,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  EnumValueNode visitEnumValueNode(EnumValueNode node) {
+  EnumValueNode visitEnumValueNode(
+    EnumValueNode node,
+  ) {
     final updatedNode = EnumValueNode(
       name: _visitOne(node.name),
     );
@@ -344,7 +470,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  FieldDefinitionNode visitFieldDefinitionNode(FieldDefinitionNode node) {
+  FieldDefinitionNode visitFieldDefinitionNode(
+    FieldDefinitionNode node,
+  ) {
     final updatedNode = FieldDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -360,7 +488,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  FieldNode visitFieldNode(FieldNode node) {
+  FieldNode visitFieldNode(
+    FieldNode node,
+  ) {
     final updatedNode = FieldNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -376,7 +506,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  FloatValueNode visitFloatValueNode(FloatValueNode node) {
+  FloatValueNode visitFloatValueNode(
+    FloatValueNode node,
+  ) {
     final updatedNode = FloatValueNode(
       value: node.value,
     );
@@ -389,7 +521,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   FragmentDefinitionNode visitFragmentDefinitionNode(
-      FragmentDefinitionNode node) {
+    FragmentDefinitionNode node,
+  ) {
     final updatedNode = FragmentDefinitionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -404,7 +537,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  FragmentSpreadNode visitFragmentSpreadNode(FragmentSpreadNode node) {
+  FragmentSpreadNode visitFragmentSpreadNode(
+    FragmentSpreadNode node,
+  ) {
     final updatedNode = FragmentSpreadNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -417,7 +552,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  InlineFragmentNode visitInlineFragmentNode(InlineFragmentNode node) {
+  InlineFragmentNode visitInlineFragmentNode(
+    InlineFragmentNode node,
+  ) {
     final updatedNode = InlineFragmentNode(
       directives: _visitAll(node.directives),
       selectionSet: _visitOne(node.selectionSet),
@@ -432,7 +569,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   InputObjectTypeDefinitionNode visitInputObjectTypeDefinitionNode(
-      InputObjectTypeDefinitionNode node) {
+    InputObjectTypeDefinitionNode node,
+  ) {
     final updatedNode = InputObjectTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -448,7 +586,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   InputObjectTypeExtensionNode visitInputObjectTypeExtensionNode(
-      InputObjectTypeExtensionNode node) {
+    InputObjectTypeExtensionNode node,
+  ) {
     final updatedNode = InputObjectTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -463,7 +602,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   InputValueDefinitionNode visitInputValueDefinitionNode(
-      InputValueDefinitionNode node) {
+    InputValueDefinitionNode node,
+  ) {
     final updatedNode = InputValueDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -479,7 +619,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  IntValueNode visitIntValueNode(IntValueNode node) {
+  IntValueNode visitIntValueNode(
+    IntValueNode node,
+  ) {
     final updatedNode = IntValueNode(
       value: node.value,
     );
@@ -492,7 +634,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   InterfaceTypeDefinitionNode visitInterfaceTypeDefinitionNode(
-      InterfaceTypeDefinitionNode node) {
+    InterfaceTypeDefinitionNode node,
+  ) {
     final updatedNode = InterfaceTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -508,7 +651,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   InterfaceTypeExtensionNode visitInterfaceTypeExtensionNode(
-      InterfaceTypeExtensionNode node) {
+    InterfaceTypeExtensionNode node,
+  ) {
     final updatedNode = InterfaceTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -522,7 +666,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  ListTypeNode visitListTypeNode(ListTypeNode node) {
+  ListTypeNode visitListTypeNode(
+    ListTypeNode node,
+  ) {
     final updatedNode = ListTypeNode(
       type: _visitOne(node.type),
       isNonNull: node.isNonNull,
@@ -535,7 +681,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  ListValueNode visitListValueNode(ListValueNode node) {
+  ListValueNode visitListValueNode(
+    ListValueNode node,
+  ) {
     final updatedNode = ListValueNode(
       values: _visitAll(node.values),
     );
@@ -547,7 +695,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  NameNode visitNameNode(NameNode node) {
+  NameNode visitNameNode(
+    NameNode node,
+  ) {
     final updatedNode = NameNode(span: node.span, value: node.value);
 
     return visitors.fold(
@@ -557,7 +707,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  NamedTypeNode visitNamedTypeNode(NamedTypeNode node) {
+  NamedTypeNode visitNamedTypeNode(
+    NamedTypeNode node,
+  ) {
     final updatedNode = NamedTypeNode(
       isNonNull: node.isNonNull,
       name: _visitOne(node.name),
@@ -570,7 +722,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  NullValueNode visitNullValueNode(NullValueNode node) {
+  NullValueNode visitNullValueNode(
+    NullValueNode node,
+  ) {
     final updatedNode = NullValueNode();
 
     return visitors.fold(
@@ -580,7 +734,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  ObjectFieldNode visitObjectFieldNode(ObjectFieldNode node) {
+  ObjectFieldNode visitObjectFieldNode(
+    ObjectFieldNode node,
+  ) {
     final updatedNode = ObjectFieldNode(
       name: _visitOne(node.name),
       value: _visitOne(node.value),
@@ -594,7 +750,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   ObjectTypeDefinitionNode visitObjectTypeDefinitionNode(
-      ObjectTypeDefinitionNode node) {
+    ObjectTypeDefinitionNode node,
+  ) {
     final updatedNode = ObjectTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -611,7 +768,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   ObjectTypeExtensionNode visitObjectTypeExtensionNode(
-      ObjectTypeExtensionNode node) {
+    ObjectTypeExtensionNode node,
+  ) {
     final updatedNode = ObjectTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -626,7 +784,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  ObjectValueNode visitObjectValueNode(ObjectValueNode node) {
+  ObjectValueNode visitObjectValueNode(
+    ObjectValueNode node,
+  ) {
     final updatedNode = ObjectValueNode(
       fields: _visitAll(node.fields),
     );
@@ -639,7 +799,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   OperationDefinitionNode visitOperationDefinitionNode(
-      OperationDefinitionNode node) {
+    OperationDefinitionNode node,
+  ) {
     final updatedNode = OperationDefinitionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -656,7 +817,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   OperationTypeDefinitionNode visitOperationTypeDefinitionNode(
-      OperationTypeDefinitionNode node) {
+    OperationTypeDefinitionNode node,
+  ) {
     final updatedNode = OperationTypeDefinitionNode(
       operation: node.operation,
       type: _visitOne(node.type),
@@ -670,7 +832,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   ScalarTypeDefinitionNode visitScalarTypeDefinitionNode(
-      ScalarTypeDefinitionNode node) {
+    ScalarTypeDefinitionNode node,
+  ) {
     final updatedNode = ScalarTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -685,7 +848,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   ScalarTypeExtensionNode visitScalarTypeExtensionNode(
-      ScalarTypeExtensionNode node) {
+    ScalarTypeExtensionNode node,
+  ) {
     final updatedNode = ScalarTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -698,7 +862,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  SchemaDefinitionNode visitSchemaDefinitionNode(SchemaDefinitionNode node) {
+  SchemaDefinitionNode visitSchemaDefinitionNode(
+    SchemaDefinitionNode node,
+  ) {
     final updatedNode = SchemaDefinitionNode(
       directives: _visitAll(node.directives),
       operationTypes: _visitAll(node.operationTypes),
@@ -711,7 +877,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  SchemaExtensionNode visitSchemaExtensionNode(SchemaExtensionNode node) {
+  SchemaExtensionNode visitSchemaExtensionNode(
+    SchemaExtensionNode node,
+  ) {
     final updatedNode = SchemaExtensionNode(
       directives: _visitAll(node.directives),
       operationTypes: _visitAll(node.operationTypes),
@@ -724,7 +892,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  SelectionSetNode visitSelectionSetNode(SelectionSetNode node) {
+  SelectionSetNode visitSelectionSetNode(
+    SelectionSetNode node,
+  ) {
     final updatedNode = SelectionSetNode(
       selections: _visitAll(node.selections),
     );
@@ -736,7 +906,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  StringValueNode visitStringValueNode(StringValueNode node) {
+  StringValueNode visitStringValueNode(
+    StringValueNode node,
+  ) {
     final updatedNode = StringValueNode(
       isBlock: node.isBlock,
       value: node.value,
@@ -749,7 +921,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  TypeConditionNode visitTypeConditionNode(TypeConditionNode node) {
+  TypeConditionNode visitTypeConditionNode(
+    TypeConditionNode node,
+  ) {
     final updatedNode = TypeConditionNode(
       on: _visitOne(node.on),
     );
@@ -762,7 +936,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   UnionTypeDefinitionNode visitUnionTypeDefinitionNode(
-      UnionTypeDefinitionNode node) {
+    UnionTypeDefinitionNode node,
+  ) {
     final updatedNode = UnionTypeDefinitionNode(
       name: _visitOne(node.name),
       description: _visitOne(node.description),
@@ -778,7 +953,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   UnionTypeExtensionNode visitUnionTypeExtensionNode(
-      UnionTypeExtensionNode node) {
+    UnionTypeExtensionNode node,
+  ) {
     final updatedNode = UnionTypeExtensionNode(
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
@@ -793,7 +969,8 @@ class _Transformer extends Visitor<Node> {
 
   @override
   VariableDefinitionNode visitVariableDefinitionNode(
-      VariableDefinitionNode node) {
+    VariableDefinitionNode node,
+  ) {
     final updatedNode = VariableDefinitionNode(
       directives: _visitAll(node.directives),
       defaultValue: _visitOne(node.defaultValue),
@@ -808,7 +985,9 @@ class _Transformer extends Visitor<Node> {
   }
 
   @override
-  VariableNode visitVariableNode(VariableNode node) {
+  VariableNode visitVariableNode(
+    VariableNode node,
+  ) {
     final updatedNode = VariableNode(
       name: _visitOne(node.name),
     );
