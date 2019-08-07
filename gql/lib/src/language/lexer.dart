@@ -31,6 +31,10 @@ abstract class Token {
   TokenKind get kind;
 
   String get value;
+
+  @override
+  bool operator ==(Object other) =>
+      other is Token && other.kind == kind && other.span == span;
 }
 
 class _Token implements Token {
@@ -93,9 +97,6 @@ class _Token implements Token {
 
   @override
   String get value => _getValue();
-
-  @override
-  bool operator ==(other) => other.kind == kind && other.span == span;
 
   @override
   String toString() => "<${kind} in $span \"${value}\">";

@@ -8,10 +8,10 @@ class IdentityTransformer extends ast.TransformingVisitor {}
 
 class RecursiveVisitor extends ast.RecursiveVisitor {}
 
-class MyDriver extends CatDriver {
+class MyDriver extends CatDriver<ast.DocumentNode> {
   @override
   parse({
-    String source,
+    source,
   }) {
     final parsed = lang.parse(
       SourceFile.fromString(source),
@@ -36,12 +36,12 @@ class MyDriver extends CatDriver {
   }
 
   @override
-  execute({
+  void execute({
     schema,
-    testData,
+    dynamic testData,
     query,
     String operation,
-    Map<String, dynamic> variables,
+    variables,
   }) =>
       null;
 
@@ -79,7 +79,7 @@ class MyDriver extends CatDriver {
   //}
 }
 
-main() {
+void main() {
   CatRunner(
     driver: MyDriver(),
   ).runSuite("./test/scenarios");

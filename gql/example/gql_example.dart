@@ -4,7 +4,7 @@ import "package:gql/ast.dart";
 import "package:gql/language.dart";
 import "package:source_span/source_span.dart";
 
-main() async {
+void main() async {
   [
     await File("./example/fixtures/schema-kitchen-sink.graphql").readAsString(),
     await File("./example/fixtures/kitchen-sink.graphql").readAsString(),
@@ -15,7 +15,7 @@ main() async {
       .forEach(cover);
 }
 
-cover(SourceFile sourceFile) {
+void cover(SourceFile sourceFile) {
   final DocumentNode document = parse(sourceFile);
 
   final DocumentNode transformedDocument = transform(
