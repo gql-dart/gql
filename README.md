@@ -1,5 +1,7 @@
 A library for working with GraphQL documents.
 
+⚠️ This library is under development ⚠️
+
 ## Usage
 
 Simply use  `parse`,  `transform` and/or  `printNode`.
