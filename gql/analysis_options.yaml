@@ -1,0 +1,44 @@
+include: package:pedantic/analysis_options.yaml
+
+# For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
+linter:
+  rules:
+    - prefer_double_quotes
+    - annotate_overrides
+    - unnecessary_statements
+    - directives_ordering
+    - file_names
+    - prefer_expression_function_bodies
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_generic_function_type_aliases
+    - prefer_null_aware_operators
+    - prefer_spread_collections
+    - unnecessary_overrides
+    - unnecessary_parenthesis
+    - unnecessary_this
+    - package_names
+    - sort_pub_dependencies
+    
+
+analyzer:
+  errors:
+    prefer_double_quotes: error
+    annotate_overrides: error
+    unnecessary_statements: error
+    directives_ordering: error
+    file_names: error
+    prefer_expression_function_bodies: error
+    prefer_final_fields: error
+    prefer_final_in_for_each: error
+    prefer_final_locals: error
+    prefer_generic_function_type_aliases: error
+    prefer_null_aware_operators: error
+    prefer_spread_collections: error
+    unnecessary_overrides: error
+    unnecessary_parenthesis: error
+    unnecessary_this: error
+    package_names: error
+    sort_pub_dependencies: error
+    missing_required_param: error

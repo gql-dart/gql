@@ -1,0 +1,253 @@
+scenario: Parse Exceptions
+tests:
+  - name: Variable in a const context
+    given:
+      query: |
+        scalar Scalar @a(b: $c)
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Unexpected token when parsing a value
+    given:
+      query: |
+        type Scalar @a(a: @)
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Unknown definition type
+    given:
+      query: |
+        foobar {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid fragment name
+    given:
+      query: |
+        fragment on {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Unknown directive location
+    given:
+      query: |
+        directive @dir on FOO_BAR
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Incomplete schema type extension
+    given:
+      query: |
+        extend schema
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Incomplete input type extension
+    given:
+      query: |
+        extend input
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Incomplete enum type extension
+    given:
+      query: |
+        extend enum
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Incomplete union type extension
+    given:
+      query: |
+        extend union
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Incomplete interface type extension
+    given:
+      query: |
+        extend interface
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing colon before variable type
+    given:
+      query: |
+        query($foo) {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing variable type
+    given:
+      query: |
+        query($foo:) {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing $ in variable name
+    given:
+      query: |
+        query(foo) {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Unclosed list type
+    given:
+      query: |
+        query(\$foo: [Foo) {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing colon before field type
+    given:
+      query: |
+        type Foo { bar }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing field type
+    given:
+      query: |
+        type Foo { bar: }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing @ in directive name
+    given:
+      query: |
+        directive dir on FIELD
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing directive name after @
+    given:
+      query: |
+        directive dir on FIELD
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing selection set
+    given:
+      query: |
+        query
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing operation types
+    given:
+      query: |
+        schema
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing operation type name
+    given:
+      query: |
+        schema {
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing object field name
+    given:
+      query: |
+        query { foo(a: {}) }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing colon before object field value
+    given:
+      query: |
+        query { foo(a: {b}) }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing object field value
+    given:
+      query: |
+        query { foo(a: {b:}) }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing colon before argument value
+    given:
+      query: |
+        query { foo(a) }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing argument value
+    given:
+      query: |
+        query { foo(a:) }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing colon before operation type
+    given:
+      query: |
+        schema { query }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Missing operation type
+    given:
+      query: |
+        schema { query: }
+    when:
+      parse: true
+    then:
+      syntax-error: true
