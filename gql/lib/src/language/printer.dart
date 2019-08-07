@@ -728,6 +728,9 @@ String _opType(OperationType t) {
     case OperationType.subscription:
       return "subscription";
   }
+
+  // dead code to satisfy lint
+  return null;
 }
 
 String _directiveLocation(DirectiveLocation location) {
@@ -769,4 +772,7 @@ String _directiveLocation(DirectiveLocation location) {
     case DirectiveLocation.inputFieldDefinition:
       return "INPUT_FIELD_DEFINITION";
   }
+
+  // dead code to satisfy lint
+  return null;
 }
