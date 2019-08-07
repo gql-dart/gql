@@ -1,4 +1,4 @@
-import "package:gql/src/language/ast.dart";
+import "package:gql/src/ast/ast.dart";
 
 abstract class Visitor<R> {
   R visitDocumentNode(DocumentNode node);

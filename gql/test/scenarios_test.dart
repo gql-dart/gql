@@ -1,11 +1,12 @@
+import "package:gql/ast.dart" as ast;
 import "package:gql/language.dart" as lang;
 import "package:source_span/source_span.dart";
 
 import "package:cats/cats.dart";
 
-class IdentityTransformer extends lang.TransformingVisitor {}
+class IdentityTransformer extends ast.TransformingVisitor {}
 
-class RecursiveVisitor extends lang.RecursiveVisitor {}
+class RecursiveVisitor extends ast.RecursiveVisitor {}
 
 class MyDriver extends CatDriver {
   @override
@@ -16,7 +17,7 @@ class MyDriver extends CatDriver {
       SourceFile.fromString(source),
     );
 
-    final transformed = lang.transform(
+    final transformed = ast.transform(
       parsed,
       [
         IdentityTransformer(),

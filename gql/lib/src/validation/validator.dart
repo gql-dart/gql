@@ -1,4 +1,4 @@
-import "package:gql/src/language/ast.dart";
+import "package:gql/src/ast/ast.dart";
 import "package:gql/src/validation/rules/executable_definitions.dart";
 import "package:gql/src/validation/validating_visitor.dart";
 

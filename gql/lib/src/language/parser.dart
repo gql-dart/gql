@@ -1,6 +1,6 @@
 import "package:source_span/source_span.dart";
 
-import "package:gql/src/language/ast.dart";
+import "package:gql/src/ast/ast.dart";
 import "package:gql/src/language/lexer.dart";
 
 DocumentNode parse(SourceFile source) {

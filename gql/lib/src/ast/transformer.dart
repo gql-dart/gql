@@ -1,5 +1,5 @@
-import "package:gql/src/language/ast.dart";
-import "package:gql/src/language/visitor.dart";
+import "package:gql/src/ast/ast.dart";
+import "package:gql/src/ast/visitor.dart";
 
 abstract class TransformingVisitor extends Visitor<Node> {
   @override

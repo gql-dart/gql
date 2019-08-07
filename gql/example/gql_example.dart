@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:gql/ast.dart";
 import "package:gql/language.dart";
 import "package:source_span/source_span.dart";
 

@@ -1,5 +1,4 @@
-import "package:gql/src/language/ast.dart";
-import "package:gql/src/language/visitor.dart";
+import "package:gql/ast.dart";
 
 String printNode(Node node) {
   final _printVisitor = _PrintVisitor();
