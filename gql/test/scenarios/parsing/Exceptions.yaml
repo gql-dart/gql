@@ -36,6 +36,15 @@ tests:
     then:
       syntax-error: true
 
+  - name: fragment without on
+    given:
+      query: |
+        fragment frag {}
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
   - name: Unknown directive location
     given:
       query: |
@@ -247,6 +256,81 @@ tests:
     given:
       query: |
         schema { query: }
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid scalar extension
+    given:
+      query: |
+        extend scalar Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid type extension
+    given:
+      query: |
+        extend type Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid interface extension
+    given:
+      query: |
+        extend interface Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid union extension
+    given:
+      query: |
+        extend union Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid enum extension
+    given:
+      query: |
+        extend enum Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid input extension
+    given:
+      query: |
+        extend input Foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Invalid extension
+    given:
+      query: |
+        extend foo
+    when:
+      parse: true
+    then:
+      syntax-error: true
+
+  - name: Type system documentation
+    given:
+      query: |
+        """
+        Type documentation
+        """
+        unrecognized
     when:
       parse: true
     then:

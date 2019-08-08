@@ -1,0 +1,119 @@
+scenario: Query Parser
+tests:
+  - name: Shorthand
+    given:
+      query: |
+        {
+          name
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Fragment definition
+    given:
+      query: |
+        fragment foo on Bar {
+          baz
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Variable definition
+    given:
+      query: |
+        query getFoo($foo: Foo) {
+          baz
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Object fields
+    given:
+      query: |
+        query getFoo($foo: Foo = { a: 123 }) {
+          baz
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Object fields
+    given:
+      query: |
+        {
+          baz(a: [1.23, "faz", true, false, null, ENABLED, $bac])
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Directive
+    given:
+      query: |
+        {
+          foo @skip
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Mutation
+    given:
+      query: |
+        mutation {
+          baz
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Subscription
+    given:
+      query: |
+        subscription {
+          bar
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Fragments
+    given:
+      query: |
+        {
+          bar {
+            ...frag
+            ... on Baz {
+              baz
+            }
+            ... {
+              baz
+            }
+          }
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Field alias
+    given:
+      query: |
+        {
+          bar: baa
+        }
+    when:
+      parse: true
+    then:
+      passes: true

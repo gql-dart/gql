@@ -144,6 +144,14 @@ tests:
     then:
       passes: true
 
+  - name: Scalar extension
+    given:
+      query: extend scalar Hello @withDirective
+    when:
+      parse: true
+    then:
+      passes: true
+
   - name: Simple input object
     given:
       query: |
@@ -165,3 +173,88 @@ tests:
       parse: true
     then:
       syntax-error: true
+
+  - name: Type system documentation
+    given:
+      query: |
+        """
+        Type documentation
+        """
+        input Hello {
+          world: String
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Schema definition
+    given:
+      query: |
+        schema {
+          query: Query
+          mutation: Mutation
+          subscription: Subscription
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Schema extenstion
+    given:
+      query: |
+        extend schema {
+          query: Query
+          mutation: Mutation
+          subscription: Subscription
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Directive definition
+    given:
+      query: |
+        directive @dir on QUERY
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Input extension
+    given:
+      query: |
+        extend input Foo @extended
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Enum extension
+    given:
+      query: |
+        extend enum Foo @extended
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Union extension
+    given:
+      query: |
+        extend union Foo @extended
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Interface extension
+    given:
+      query: |
+        extend interface Foo @extended
+    when:
+      parse: true
+    then:
+      passes: true

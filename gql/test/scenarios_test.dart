@@ -82,5 +82,10 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
 void main() {
   CatRunner(
     driver: MyDriver(),
+    whitelist: <String>[
+      "./test/scenarios/parsing/Exceptions.yaml",
+      "./test/scenarios/parsing/SchemaParser.yaml",
+      "./test/scenarios/parsing/QueryParser.yaml",
+    ],
   ).runSuite("./test/scenarios");
 }

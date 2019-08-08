@@ -25,9 +25,11 @@ abstract class CatDriver<Doc> {
 class CatRunner<Doc> {
   CatBuilder _builder = CatBuilder();
   CatDriver<Doc> driver;
+  List whitelist;
 
   CatRunner({
     this.driver,
+    this.whitelist,
   });
 
   void runSuite(String suitePath) {
@@ -37,6 +39,7 @@ class CatRunner<Doc> {
   }
 
   void _runScenario(Scenario scenario) {
+    if (whitelist != null && !whitelist.contains(scenario.file)) return;
     group(scenario.name, () {
       scenario.tests.forEach(
         (test) => _runTest(test, scenario),
