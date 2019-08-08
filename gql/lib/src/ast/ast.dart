@@ -18,11 +18,12 @@ void _visitAll<R>(
     );
 
 /// The base class for any GraphQL AST [Node].
+@immutable
 abstract class Node {
   /// [FileSpan] representing the location of the node in the the [SourceFile]
-  FileSpan span;
+  final FileSpan span;
 
-  Node(this.span);
+  const Node(this.span);
 
   /// Lets [Visitor] [v] visit children nodes of this node.
   void visitChildren<R>(Visitor<R> v);
@@ -32,9 +33,9 @@ abstract class Node {
 }
 
 class DocumentNode extends Node {
-  Iterable<DefinitionNode> definitions;
+  final Iterable<DefinitionNode> definitions;
 
-  DocumentNode({
+  const DocumentNode({
     this.definitions = const [],
     FileSpan span,
   })  : assert(definitions != null),
@@ -50,11 +51,11 @@ class DocumentNode extends Node {
 }
 
 abstract class DefinitionNode extends Node {
-  DefinitionNode(FileSpan span) : super(span);
+  const DefinitionNode(FileSpan span) : super(span);
 }
 
 abstract class ExecutableDefinitionNode extends DefinitionNode {
-  ExecutableDefinitionNode(FileSpan span) : super(span);
+  const ExecutableDefinitionNode(FileSpan span) : super(span);
 }
 
 /// Enumeration of all known GraphQL operation types.
@@ -87,17 +88,17 @@ enum DirectiveLocation {
 }
 
 class OperationDefinitionNode extends ExecutableDefinitionNode {
-  OperationType type;
+  final OperationType type;
 
-  NameNode name;
+  final NameNode name;
 
-  Iterable<VariableDefinitionNode> variableDefinitions;
+  final Iterable<VariableDefinitionNode> variableDefinitions;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  SelectionSetNode selectionSet;
+  final SelectionSetNode selectionSet;
 
-  OperationDefinitionNode({
+  const OperationDefinitionNode({
     @required this.type,
     this.name,
     this.variableDefinitions = const [],
@@ -122,9 +123,9 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
 }
 
 class SelectionSetNode extends Node {
-  Iterable<SelectionNode> selections;
+  final Iterable<SelectionNode> selections;
 
-  SelectionSetNode({
+  const SelectionSetNode({
     this.selections = const [],
     FileSpan span,
   }) : super(span);
@@ -139,21 +140,21 @@ class SelectionSetNode extends Node {
 }
 
 abstract class SelectionNode extends Node {
-  SelectionNode(FileSpan span) : super(span);
+  const SelectionNode(FileSpan span) : super(span);
 }
 
 class FieldNode extends SelectionNode {
-  NameNode alias;
+  final NameNode alias;
 
-  NameNode name;
+  final NameNode name;
 
-  Iterable<ArgumentNode> arguments;
+  final Iterable<ArgumentNode> arguments;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  SelectionSetNode selectionSet;
+  final SelectionSetNode selectionSet;
 
-  FieldNode({
+  const FieldNode({
     this.alias,
     @required this.name,
     this.arguments = const [],
@@ -178,11 +179,11 @@ class FieldNode extends SelectionNode {
 }
 
 class ArgumentNode extends Node {
-  NameNode name;
+  final NameNode name;
 
-  ValueNode value;
+  final ValueNode value;
 
-  ArgumentNode({
+  const ArgumentNode({
     @required this.name,
     @required this.value,
     FileSpan span,
@@ -201,11 +202,11 @@ class ArgumentNode extends Node {
 }
 
 class FragmentSpreadNode extends SelectionNode {
-  NameNode name;
+  final NameNode name;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  FragmentSpreadNode({
+  const FragmentSpreadNode({
     @required this.name,
     this.directives = const [],
     FileSpan span,
@@ -224,13 +225,13 @@ class FragmentSpreadNode extends SelectionNode {
 }
 
 class InlineFragmentNode extends SelectionNode {
-  TypeConditionNode typeCondition;
+  final TypeConditionNode typeCondition;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  SelectionSetNode selectionSet;
+  final SelectionSetNode selectionSet;
 
-  InlineFragmentNode({
+  const InlineFragmentNode({
     this.typeCondition,
     this.directives = const [],
     @required this.selectionSet,
@@ -251,15 +252,15 @@ class InlineFragmentNode extends SelectionNode {
 }
 
 class FragmentDefinitionNode extends ExecutableDefinitionNode {
-  NameNode name;
+  final NameNode name;
 
-  TypeConditionNode typeCondition;
+  final TypeConditionNode typeCondition;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  SelectionSetNode selectionSet;
+  final SelectionSetNode selectionSet;
 
-  FragmentDefinitionNode({
+  const FragmentDefinitionNode({
     @required this.name,
     @required this.typeCondition,
     this.directives = const [],
@@ -284,9 +285,9 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
 }
 
 class TypeConditionNode extends Node {
-  NamedTypeNode on;
+  final NamedTypeNode on;
 
-  TypeConditionNode({
+  const TypeConditionNode({
     @required this.on,
     FileSpan span,
   })  : assert(on != null),
@@ -302,13 +303,13 @@ class TypeConditionNode extends Node {
 }
 
 abstract class ValueNode extends Node {
-  ValueNode(FileSpan span) : super(span);
+  const ValueNode(FileSpan span) : super(span);
 }
 
 class VariableNode extends ValueNode {
-  NameNode name;
+  final NameNode name;
 
-  VariableNode({
+  const VariableNode({
     @required this.name,
     FileSpan span,
   })  : assert(name != null),
@@ -324,9 +325,9 @@ class VariableNode extends ValueNode {
 }
 
 class IntValueNode extends ValueNode {
-  String value;
+  final String value;
 
-  IntValueNode({
+  const IntValueNode({
     @required this.value,
     FileSpan span,
   })  : assert(value != null),
@@ -340,9 +341,9 @@ class IntValueNode extends ValueNode {
 }
 
 class FloatValueNode extends ValueNode {
-  String value;
+  final String value;
 
-  FloatValueNode({
+  const FloatValueNode({
     @required this.value,
     FileSpan span,
   })  : assert(value != null),
@@ -356,11 +357,11 @@ class FloatValueNode extends ValueNode {
 }
 
 class StringValueNode extends ValueNode {
-  String value;
+  final String value;
 
-  bool isBlock;
+  final bool isBlock;
 
-  StringValueNode({
+  const StringValueNode({
     @required this.value,
     @required this.isBlock,
     FileSpan span,
@@ -376,9 +377,9 @@ class StringValueNode extends ValueNode {
 }
 
 class BooleanValueNode extends ValueNode {
-  bool value;
+  final bool value;
 
-  BooleanValueNode({
+  const BooleanValueNode({
     @required this.value,
     FileSpan span,
   })  : assert(value != null),
@@ -392,7 +393,7 @@ class BooleanValueNode extends ValueNode {
 }
 
 class NullValueNode extends ValueNode {
-  NullValueNode({
+  const NullValueNode({
     FileSpan span,
   }) : super(span);
 
@@ -404,9 +405,9 @@ class NullValueNode extends ValueNode {
 }
 
 class EnumValueNode extends ValueNode {
-  NameNode name;
+  final NameNode name;
 
-  EnumValueNode({
+  const EnumValueNode({
     @required this.name,
     FileSpan span,
   })  : assert(name != null),
@@ -420,9 +421,9 @@ class EnumValueNode extends ValueNode {
 }
 
 class ListValueNode extends ValueNode {
-  Iterable<ValueNode> values;
+  final Iterable<ValueNode> values;
 
-  ListValueNode({
+  const ListValueNode({
     this.values = const [],
     FileSpan span,
   }) : super(span);
@@ -437,9 +438,9 @@ class ListValueNode extends ValueNode {
 }
 
 class ObjectValueNode extends ValueNode {
-  Iterable<ObjectFieldNode> fields;
+  final Iterable<ObjectFieldNode> fields;
 
-  ObjectValueNode({
+  const ObjectValueNode({
     this.fields = const [],
     FileSpan span,
   }) : super(span);
@@ -454,11 +455,11 @@ class ObjectValueNode extends ValueNode {
 }
 
 class ObjectFieldNode extends Node {
-  NameNode name;
+  final NameNode name;
 
-  ValueNode value;
+  final ValueNode value;
 
-  ObjectFieldNode({
+  const ObjectFieldNode({
     @required this.name,
     @required this.value,
     FileSpan span,
@@ -477,15 +478,15 @@ class ObjectFieldNode extends Node {
 }
 
 class VariableDefinitionNode extends Node {
-  VariableNode variable;
+  final VariableNode variable;
 
-  TypeNode type;
+  final TypeNode type;
 
-  DefaultValueNode defaultValue;
+  final DefaultValueNode defaultValue;
 
-  Iterable<DirectiveNode> directives;
+  final Iterable<DirectiveNode> directives;
 
-  VariableDefinitionNode({
+  const VariableDefinitionNode({
     @required this.variable,
     @required this.type,
     this.defaultValue,
@@ -509,9 +510,9 @@ class VariableDefinitionNode extends Node {
 }
 
 class DefaultValueNode extends Node {
-  ValueNode value;
+  final ValueNode value;
 
-  DefaultValueNode({
+  const DefaultValueNode({
     @required this.value,
     FileSpan span,
   }) : super(span);
@@ -526,17 +527,17 @@ class DefaultValueNode extends Node {
 }
 
 abstract class TypeNode extends Node {
-  bool isNonNull;
+  final bool isNonNull;
 
-  TypeNode(this.isNonNull, FileSpan span)
+  const TypeNode(this.isNonNull, FileSpan span)
       : assert(isNonNull != null),
         super(span);
 }
 
 class NamedTypeNode extends TypeNode {
-  NameNode name;
+  final NameNode name;
 
-  NamedTypeNode({
+  const NamedTypeNode({
     @required this.name,
     bool isNonNull = false,
     FileSpan span,
@@ -554,9 +555,9 @@ class NamedTypeNode extends TypeNode {
 }
 
 class ListTypeNode extends TypeNode {
-  TypeNode type;
+  final TypeNode type;
 
-  ListTypeNode({
+  const ListTypeNode({
     @required this.type,
     @required bool isNonNull,
     FileSpan span,
@@ -574,11 +575,11 @@ class ListTypeNode extends TypeNode {
 }
 
 class DirectiveNode extends Node {
-  NameNode name;
+  final NameNode name;
 
-  Iterable<ArgumentNode> arguments;
+  final Iterable<ArgumentNode> arguments;
 
-  DirectiveNode({
+  const DirectiveNode({
     @required this.name,
     this.arguments = const [],
     FileSpan span,
@@ -597,9 +598,9 @@ class DirectiveNode extends Node {
 }
 
 class NameNode extends Node {
-  String value;
+  final String value;
 
-  NameNode({
+  const NameNode({
     @required this.value,
     FileSpan span,
   })  : assert(value != null),
@@ -613,15 +614,15 @@ class NameNode extends Node {
 }
 
 abstract class TypeSystemDefinitionNode extends DefinitionNode {
-  TypeSystemDefinitionNode(FileSpan span) : super(span);
+  const TypeSystemDefinitionNode(FileSpan span) : super(span);
 }
 
 abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
-  StringValueNode description;
-  NameNode name;
-  Iterable<DirectiveNode> directives;
+  final StringValueNode description;
+  final NameNode name;
+  final Iterable<DirectiveNode> directives;
 
-  TypeDefinitionNode({
+  const TypeDefinitionNode({
     this.description,
     @required this.name,
     this.directives = const [],
@@ -632,14 +633,14 @@ abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
 }
 
 abstract class TypeSystemExtensionNode extends TypeSystemDefinitionNode {
-  TypeSystemExtensionNode(FileSpan span) : super(span);
+  const TypeSystemExtensionNode(FileSpan span) : super(span);
 }
 
 abstract class TypeExtensionNode extends TypeSystemExtensionNode {
-  NameNode name;
-  Iterable<DirectiveNode> directives;
+  final NameNode name;
+  final Iterable<DirectiveNode> directives;
 
-  TypeExtensionNode({
+  const TypeExtensionNode({
     FileSpan span,
     @required this.name,
     this.directives = const [],
@@ -649,10 +650,10 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
 }
 
 class SchemaDefinitionNode extends TypeSystemDefinitionNode {
-  Iterable<DirectiveNode> directives;
-  Iterable<OperationTypeDefinitionNode> operationTypes;
+  final Iterable<DirectiveNode> directives;
+  final Iterable<OperationTypeDefinitionNode> operationTypes;
 
-  SchemaDefinitionNode({
+  const SchemaDefinitionNode({
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan span,
@@ -671,10 +672,10 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
 }
 
 class OperationTypeDefinitionNode extends Node {
-  OperationType operation;
-  NamedTypeNode type;
+  final OperationType operation;
+  final NamedTypeNode type;
 
-  OperationTypeDefinitionNode({
+  const OperationTypeDefinitionNode({
     @required this.operation,
     @required this.type,
     FileSpan span,
@@ -692,7 +693,7 @@ class OperationTypeDefinitionNode extends Node {
 }
 
 class ScalarTypeDefinitionNode extends TypeDefinitionNode {
-  ScalarTypeDefinitionNode({
+  const ScalarTypeDefinitionNode({
     StringValueNode description,
     @required NameNode name,
     Iterable<DirectiveNode> directives = const [],
@@ -718,10 +719,10 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class ObjectTypeDefinitionNode extends TypeDefinitionNode {
-  Iterable<NamedTypeNode> interfaces;
-  Iterable<FieldDefinitionNode> fields;
+  final Iterable<NamedTypeNode> interfaces;
+  final Iterable<FieldDefinitionNode> fields;
 
-  ObjectTypeDefinitionNode({
+  const ObjectTypeDefinitionNode({
     this.interfaces = const [],
     this.fields = const [],
     StringValueNode description,
@@ -753,13 +754,13 @@ class ObjectTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class FieldDefinitionNode extends Node {
-  StringValueNode description;
-  NameNode name;
-  TypeNode type;
-  Iterable<DirectiveNode> directives;
-  Iterable<InputValueDefinitionNode> args;
+  final StringValueNode description;
+  final NameNode name;
+  final TypeNode type;
+  final Iterable<DirectiveNode> directives;
+  final Iterable<InputValueDefinitionNode> args;
 
-  FieldDefinitionNode({
+  const FieldDefinitionNode({
     this.description,
     @required this.name,
     @required this.type,
@@ -786,13 +787,13 @@ class FieldDefinitionNode extends Node {
 }
 
 class InputValueDefinitionNode extends Node {
-  StringValueNode description;
-  NameNode name;
-  TypeNode type;
-  ValueNode defaultValue;
-  Iterable<DirectiveNode> directives;
+  final StringValueNode description;
+  final NameNode name;
+  final TypeNode type;
+  final ValueNode defaultValue;
+  final Iterable<DirectiveNode> directives;
 
-  InputValueDefinitionNode({
+  const InputValueDefinitionNode({
     this.description,
     @required this.name,
     @required this.type,
@@ -819,9 +820,9 @@ class InputValueDefinitionNode extends Node {
 }
 
 class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
-  Iterable<FieldDefinitionNode> fields;
+  final Iterable<FieldDefinitionNode> fields;
 
-  InterfaceTypeDefinitionNode({
+  const InterfaceTypeDefinitionNode({
     this.fields = const [],
     StringValueNode description,
     @required NameNode name,
@@ -850,9 +851,9 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class UnionTypeDefinitionNode extends TypeDefinitionNode {
-  Iterable<NamedTypeNode> types;
+  final Iterable<NamedTypeNode> types;
 
-  UnionTypeDefinitionNode({
+  const UnionTypeDefinitionNode({
     this.types = const [],
     StringValueNode description,
     @required NameNode name,
@@ -881,9 +882,9 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class EnumTypeDefinitionNode extends TypeDefinitionNode {
-  Iterable<EnumValueDefinitionNode> values;
+  final Iterable<EnumValueDefinitionNode> values;
 
-  EnumTypeDefinitionNode({
+  const EnumTypeDefinitionNode({
     this.values = const [],
     StringValueNode description,
     @required NameNode name,
@@ -912,7 +913,7 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class EnumValueDefinitionNode extends TypeDefinitionNode {
-  EnumValueDefinitionNode({
+  const EnumValueDefinitionNode({
     StringValueNode description,
     @required NameNode name,
     Iterable<DirectiveNode> directives = const [],
@@ -938,9 +939,9 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
 }
 
 class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
-  Iterable<InputValueDefinitionNode> fields;
+  final Iterable<InputValueDefinitionNode> fields;
 
-  InputObjectTypeDefinitionNode({
+  const InputObjectTypeDefinitionNode({
     this.fields = const [],
     StringValueNode description,
     @required NameNode name,
@@ -969,13 +970,13 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
-  StringValueNode description;
-  NameNode name;
-  Iterable<InputValueDefinitionNode> args;
-  Iterable<DirectiveLocation> locations;
-  bool repeatable;
+  final StringValueNode description;
+  final NameNode name;
+  final Iterable<InputValueDefinitionNode> args;
+  final Iterable<DirectiveLocation> locations;
+  final bool repeatable;
 
-  DirectiveDefinitionNode({
+  const DirectiveDefinitionNode({
     this.description,
     @required this.name,
     this.args = const [],
@@ -1000,10 +1001,10 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
 }
 
 class SchemaExtensionNode extends TypeSystemExtensionNode {
-  Iterable<DirectiveNode> directives;
-  Iterable<OperationTypeDefinitionNode> operationTypes;
+  final Iterable<DirectiveNode> directives;
+  final Iterable<OperationTypeDefinitionNode> operationTypes;
 
-  SchemaExtensionNode({
+  const SchemaExtensionNode({
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan span,
@@ -1022,7 +1023,7 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
 }
 
 class ScalarTypeExtensionNode extends TypeExtensionNode {
-  ScalarTypeExtensionNode({
+  const ScalarTypeExtensionNode({
     FileSpan span,
     @required NameNode name,
     Iterable<DirectiveNode> directives = const [],
@@ -1045,10 +1046,10 @@ class ScalarTypeExtensionNode extends TypeExtensionNode {
 }
 
 class ObjectTypeExtensionNode extends TypeExtensionNode {
-  Iterable<NamedTypeNode> interfaces;
-  Iterable<FieldDefinitionNode> fields;
+  final Iterable<NamedTypeNode> interfaces;
+  final Iterable<FieldDefinitionNode> fields;
 
-  ObjectTypeExtensionNode({
+  const ObjectTypeExtensionNode({
     @required NameNode name,
     this.interfaces = const [],
     this.fields = const [],
@@ -1077,9 +1078,9 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
 }
 
 class InterfaceTypeExtensionNode extends TypeExtensionNode {
-  Iterable<FieldDefinitionNode> fields;
+  final Iterable<FieldDefinitionNode> fields;
 
-  InterfaceTypeExtensionNode({
+  const InterfaceTypeExtensionNode({
     this.fields = const [],
     @required NameNode name,
     FileSpan span,
@@ -1105,9 +1106,9 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
 }
 
 class UnionTypeExtensionNode extends TypeExtensionNode {
-  Iterable<NamedTypeNode> types;
+  final Iterable<NamedTypeNode> types;
 
-  UnionTypeExtensionNode({
+  const UnionTypeExtensionNode({
     this.types = const [],
     @required NameNode name,
     Iterable<DirectiveNode> directives = const [],
@@ -1133,9 +1134,9 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
 }
 
 class EnumTypeExtensionNode extends TypeExtensionNode {
-  Iterable<EnumValueDefinitionNode> values;
+  final Iterable<EnumValueDefinitionNode> values;
 
-  EnumTypeExtensionNode({
+  const EnumTypeExtensionNode({
     this.values = const [],
     FileSpan span,
     @required NameNode name,
@@ -1161,9 +1162,9 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
 }
 
 class InputObjectTypeExtensionNode extends TypeExtensionNode {
-  Iterable<InputValueDefinitionNode> fields;
+  final Iterable<InputValueDefinitionNode> fields;
 
-  InputObjectTypeExtensionNode({
+  const InputObjectTypeExtensionNode({
     this.fields = const [],
     FileSpan span,
     @required NameNode name,

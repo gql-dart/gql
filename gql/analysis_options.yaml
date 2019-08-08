@@ -45,3 +45,4 @@ analyzer:
     package_names: error
     sort_pub_dependencies: error
     missing_required_param: error
+    must_be_immutable: error
