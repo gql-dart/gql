@@ -12,28 +12,10 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
   @override
   parse({
     source,
-  }) {
-    final parsed = lang.parse(
-      SourceFile.fromString(source),
-    );
-
-    final transformed = ast.transform(
-      parsed,
-      [
-        IdentityTransformer(),
-      ],
-    );
-
-    transformed.accept(
-      RecursiveVisitor(),
-    );
-
-    return lang.parse(
-      SourceFile.fromString(
-        lang.printNode(transformed),
-      ),
-    );
-  }
+  }) =>
+      lang.parse(
+        SourceFile.fromString(source),
+      );
 
   @override
   void execute({
@@ -52,31 +34,6 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
     validationRules,
   }) =>
       null;
-  //{
-  // final rules = validationRules.map(
-  //   (rule) {
-  //     switch (rule) {
-  //       case "ExecutableDefinitions":
-  //         return ValidationRule.executableDefinitions;
-  //       default:
-  //         return null;
-  //     }
-  //   },
-  // );
-  // final validator = Validator(
-  //   rules: Set.from(rules),
-  // );
-
-  // return validator
-  //     .validate(
-  //       query: query,
-  //     )
-  //     .map(
-  //       (error) => DriverError(
-  //         message: error.message,
-  //       ),
-  //     );
-  //}
 }
 
 void main() {
