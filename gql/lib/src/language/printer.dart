@@ -3,11 +3,9 @@ import "package:gql/ast.dart";
 /// Prints any AST [node] as [String].
 ///
 /// Accepts any kind of [Node].
-String printNode(Node node) {
-  final _printVisitor = _PrintVisitor();
-
-  return node.accept(_printVisitor);
-}
+String printNode(Node node) => node.accept(
+      _PrintVisitor(),
+    );
 
 class _PrintVisitor extends Visitor<String> {
   int _tabs = 0;

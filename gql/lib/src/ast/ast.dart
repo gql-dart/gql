@@ -13,14 +13,14 @@ void _visitAll<R>(
   Iterable<Node> nodes,
   Visitor<R> v,
 ) =>
-    nodes.forEach(
+    nodes?.forEach(
       (node) => _visitOne(node, v),
     );
 
 /// The base class for any GraphQL AST [Node].
 @immutable
 abstract class Node {
-  /// [FileSpan] representing the location of the node in the the [SourceFile]
+  /// [FileSpan] representing the location of the node in the [SourceFile]
   final FileSpan span;
 
   const Node(this.span);

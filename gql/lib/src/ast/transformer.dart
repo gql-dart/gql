@@ -315,16 +315,16 @@ class _Transformer extends Visitor<Node> {
         )
         .cast<N>();
   }
-
+  
   @override
-  visitDocumentNode(
+  DocumentNode visitDocumentNode(
     DocumentNode node,
   ) {
     final updatedNode = DocumentNode(
       definitions: _visitAll(node.definitions),
     );
 
-    return visitors.fold<DocumentNode>(
+    return visitors.fold(
       updatedNode,
       (prev, visitor) => visitor.visitDocumentNode(prev),
     );
