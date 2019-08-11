@@ -15,8 +15,8 @@ class TypeVisitor extends ast.RecursiveVisitor {
 }
 
 void main() {
-  final doc = lang.parse(
-    SourceFile(
+  final ast.DocumentNode doc = lang.parse(
+    SourceFile.fromString(
       """
         type A { id: ID! }
         type B { id: ID! }
@@ -27,11 +27,15 @@ void main() {
     ),
   );
 
-  final v = TypeVisitor();
+  final TypeVisitor v = TypeVisitor();
 
   doc.accept(v);
 
   print(
-    v.types.map((t) => t.name.value).join("\n"),
+    v.types
+        .map(
+          (t) => t.name.value,
+        )
+        .join("\n"),
   );
 }

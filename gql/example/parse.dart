@@ -3,8 +3,8 @@ import "package:gql/ast.dart" as ast;
 import "package:source_span/source_span.dart";
 
 void main() {
-  final doc = lang.parse(
-    SourceFile(
+  final ast.DocumentNode doc = lang.parse(
+    SourceFile.fromString(
       """
         query UserInfo(\$id: ID!) {
           user(id: \$id) {

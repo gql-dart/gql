@@ -2,7 +2,6 @@ import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
 import "package:source_span/source_span.dart";
 
-
 class AddTypenames extends ast.TransformingVisitor {
   @override
   visitFieldNode(ast.FieldNode node) {
@@ -27,8 +26,8 @@ class AddTypenames extends ast.TransformingVisitor {
 }
 
 void main() {
-  final doc = lang.parse(
-    SourceFile(
+  final ast.DocumentNode doc = lang.parse(
+    SourceFile.fromString(
       """
         query UserInfo(\$id: ID!, \$articleId: ID!) {
           user(id: \$id) {
@@ -45,7 +44,7 @@ void main() {
     ),
   );
 
-  final withTypenames = ast.transform(
+  final ast.DocumentNode withTypenames = ast.transform(
     doc,
     [
       AddTypenames(),
