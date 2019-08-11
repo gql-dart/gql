@@ -56,7 +56,7 @@ class MyTransformer extends TransformingVisitor {
               name: NameNode(value: "MyExtraFieldType"),
             ),
           )
-        ]).toList(),
+        ]),
       );
 }
 
@@ -76,6 +76,6 @@ class MyOtherTransformer extends TransformingVisitor {
               name: NameNode(value: "MyOtherExtraFieldType"),
             ),
           )
-        ]).toList(),
+        ]),
       );
 }
