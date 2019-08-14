@@ -759,3 +759,676 @@ abstract class RecursiveVisitor implements Visitor<void> {
   ) =>
       node.visitChildren(this);
 }
+
+class AccumulatingVisitor<A> extends RecursiveVisitor {
+  Iterable<SimpleVisitor<Iterable<A>>> visitors;
+  Iterable<A> accumulator = [];
+
+  AccumulatingVisitor({
+    this.visitors = const [],
+  });
+
+  @override
+  visitArgumentNode(
+    ArgumentNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitArgumentNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitArgumentNode(node);
+  }
+
+  @override
+  visitBooleanValueNode(
+    BooleanValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitBooleanValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitBooleanValueNode(node);
+  }
+
+  @override
+  visitDefaultValueNode(
+    DefaultValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitDefaultValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitDefaultValueNode(node);
+  }
+
+  @override
+  visitDirectiveDefinitionNode(
+    DirectiveDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitDirectiveDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitDirectiveDefinitionNode(node);
+  }
+
+  @override
+  visitDirectiveNode(
+    DirectiveNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitDirectiveNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitDirectiveNode(node);
+  }
+
+  @override
+  visitDocumentNode(
+    DocumentNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitDocumentNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitDocumentNode(node);
+  }
+
+  @override
+  visitEnumTypeDefinitionNode(
+    EnumTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitEnumTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitEnumTypeDefinitionNode(node);
+  }
+
+  @override
+  visitEnumTypeExtensionNode(
+    EnumTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitEnumTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitEnumTypeExtensionNode(node);
+  }
+
+  @override
+  visitEnumValueDefinitionNode(
+    EnumValueDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitEnumValueDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitEnumValueDefinitionNode(node);
+  }
+
+  @override
+  visitEnumValueNode(
+    EnumValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitEnumValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitEnumValueNode(node);
+  }
+
+  @override
+  visitFieldDefinitionNode(
+    FieldDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitFieldDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitFieldDefinitionNode(node);
+  }
+
+  @override
+  visitFieldNode(
+    FieldNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitFieldNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitFieldNode(node);
+  }
+
+  @override
+  visitFloatValueNode(
+    FloatValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitFloatValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitFloatValueNode(node);
+  }
+
+  @override
+  visitFragmentDefinitionNode(
+    FragmentDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitFragmentDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitFragmentDefinitionNode(node);
+  }
+
+  @override
+  visitFragmentSpreadNode(
+    FragmentSpreadNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitFragmentSpreadNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitFragmentSpreadNode(node);
+  }
+
+  @override
+  visitInlineFragmentNode(
+    InlineFragmentNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitInlineFragmentNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInlineFragmentNode(node);
+  }
+
+  @override
+  visitInputObjectTypeDefinitionNode(
+    InputObjectTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) =>
+                visitor.visitInputObjectTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInputObjectTypeDefinitionNode(node);
+  }
+
+  @override
+  visitInputObjectTypeExtensionNode(
+    InputObjectTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) =>
+                visitor.visitInputObjectTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInputObjectTypeExtensionNode(node);
+  }
+
+  @override
+  visitInputValueDefinitionNode(
+    InputValueDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitInputValueDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInputValueDefinitionNode(node);
+  }
+
+  @override
+  visitIntValueNode(
+    IntValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitIntValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitIntValueNode(node);
+  }
+
+  @override
+  visitInterfaceTypeDefinitionNode(
+    InterfaceTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) =>
+                visitor.visitInterfaceTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInterfaceTypeDefinitionNode(node);
+  }
+
+  @override
+  visitInterfaceTypeExtensionNode(
+    InterfaceTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitInterfaceTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitInterfaceTypeExtensionNode(node);
+  }
+
+  @override
+  visitListTypeNode(
+    ListTypeNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitListTypeNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitListTypeNode(node);
+  }
+
+  @override
+  visitListValueNode(
+    ListValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitListValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitListValueNode(node);
+  }
+
+  @override
+  visitNameNode(
+    NameNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitNameNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitNameNode(node);
+  }
+
+  @override
+  visitNamedTypeNode(
+    NamedTypeNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitNamedTypeNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitNamedTypeNode(node);
+  }
+
+  @override
+  visitNullValueNode(
+    NullValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitNullValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitNullValueNode(node);
+  }
+
+  @override
+  visitObjectFieldNode(
+    ObjectFieldNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitObjectFieldNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitObjectFieldNode(node);
+  }
+
+  @override
+  visitObjectTypeDefinitionNode(
+    ObjectTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitObjectTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitObjectTypeDefinitionNode(node);
+  }
+
+  @override
+  visitObjectTypeExtensionNode(
+    ObjectTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitObjectTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitObjectTypeExtensionNode(node);
+  }
+
+  @override
+  visitObjectValueNode(
+    ObjectValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitObjectValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitObjectValueNode(node);
+  }
+
+  @override
+  visitOperationDefinitionNode(
+    OperationDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitOperationDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitOperationDefinitionNode(node);
+  }
+
+  @override
+  visitOperationTypeDefinitionNode(
+    OperationTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) =>
+                visitor.visitOperationTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitOperationTypeDefinitionNode(node);
+  }
+
+  @override
+  visitScalarTypeDefinitionNode(
+    ScalarTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitScalarTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitScalarTypeDefinitionNode(node);
+  }
+
+  @override
+  visitScalarTypeExtensionNode(
+    ScalarTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitScalarTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitScalarTypeExtensionNode(node);
+  }
+
+  @override
+  visitSchemaDefinitionNode(
+    SchemaDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitSchemaDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitSchemaDefinitionNode(node);
+  }
+
+  @override
+  visitSchemaExtensionNode(
+    SchemaExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitSchemaExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitSchemaExtensionNode(node);
+  }
+
+  @override
+  visitSelectionSetNode(
+    SelectionSetNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitSelectionSetNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitSelectionSetNode(node);
+  }
+
+  @override
+  visitStringValueNode(
+    StringValueNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitStringValueNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitStringValueNode(node);
+  }
+
+  @override
+  visitTypeConditionNode(
+    TypeConditionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitTypeConditionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitTypeConditionNode(node);
+  }
+
+  @override
+  visitUnionTypeDefinitionNode(
+    UnionTypeDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitUnionTypeDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitUnionTypeDefinitionNode(node);
+  }
+
+  @override
+  visitUnionTypeExtensionNode(
+    UnionTypeExtensionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitUnionTypeExtensionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitUnionTypeExtensionNode(node);
+  }
+
+  @override
+  visitVariableDefinitionNode(
+    VariableDefinitionNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitVariableDefinitionNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitVariableDefinitionNode(node);
+  }
+
+  @override
+  visitVariableNode(
+    VariableNode node,
+  ) {
+    accumulator = accumulator.followedBy(
+      visitors
+          .expand(
+            (visitor) => visitor.visitVariableNode(node) ?? <A>[],
+          )
+          .toList(),
+    );
+
+    super.visitVariableNode(node);
+  }
+}

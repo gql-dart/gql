@@ -1,12 +1,64 @@
-import "package:gql/src/ast/ast.dart";
+import "package:gql/ast.dart" as ast;
 import "package:gql/src/validation/rules/executable_definitions.dart";
+import "package:gql/src/validation/rules/unique_directive_names.dart";
+import "package:gql/src/validation/rules/unique_field_definition_names.dart";
 import "package:gql/src/validation/validating_visitor.dart";
+import "package:meta/meta.dart";
 
+Iterable<ValidationError> validateSchema(
+  ast.Node schema,
+) {
+  final validator = _Validator(
+    rules: {},
+  );
+
+  return validator.validate(
+    node: schema,
+  );
+}
+
+Iterable<ValidationError> validateOperation(
+  ast.Node operation,
+) {
+  final validator = _Validator(
+    rules: {},
+  );
+
+  return validator.validate(
+    node: operation,
+  );
+}
+
+Iterable<ValidationError> validate(
+  ast.Node node,
+  Set<ValidationRule> rules,
+) {
+  final validator = _Validator(
+    rules: rules,
+  );
+
+  return validator.validate(
+    node: node,
+  );
+}
+
+//Iterable<ValidationError> validateRequest(
+//  ast.DocumentNode schema,
+//  ast.DocumentNode operation,
+//) {
+//  final validator = _Validator(
+//    rules: {},
+//  );
+//
+//  return validator.validate(document: s);
+//}
+
+@immutable
 class ValidationError {
-  String message;
-  Node node;
+  final String message;
+  final ast.Node node;
 
-  ValidationError({
+  const ValidationError({
     this.message,
     this.node,
   });
@@ -14,29 +66,39 @@ class ValidationError {
 
 enum ValidationRule {
   executableDefinitions,
+  uniqueDirectiveNames,
+  uniqueFieldDefinitionNames,
 }
 
 ValidatingVisitor _mapRule(ValidationRule rule) {
   switch (rule) {
     case ValidationRule.executableDefinitions:
       return ExecutableDefinitions();
+    case ValidationRule.uniqueDirectiveNames:
+      return UniqueDirectiveNames();
+    case ValidationRule.uniqueFieldDefinitionNames:
+      return UniqueFieldDefinitionNames();
+    default:
+      return null;
   }
 }
 
-class Validator {
+class _Validator {
   Set<ValidationRule> rules;
 
-  Validator({
+  _Validator({
     this.rules,
   });
 
-  List<ValidationError> validate({
-    DocumentNode query,
+  Iterable<ValidationError> validate({
+    ast.Node node,
   }) {
-    final visitor = ParallelVisitor(visitors: rules.map(_mapRule));
+    final visitor = ast.AccumulatingVisitor<ValidationError>(
+      visitors: rules.map(_mapRule).toList(),
+    );
 
-    visitor.visitDocumentNode(query);
+    node.accept(visitor);
 
-    return visitor.errors;
+    return visitor.accumulator;
   }
 }

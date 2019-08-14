@@ -315,7 +315,7 @@ class _Transformer extends Visitor<Node> {
         )
         .cast<N>();
   }
-  
+
   @override
   DocumentNode visitDocumentNode(
     DocumentNode node,

@@ -16,6 +16,13 @@ DocumentNode parse(SourceFile source) {
   return parser.parse();
 }
 
+/// Parses [source] string and returns [DocumentNode].
+///
+/// Supports both GraphQL SDL and executable definitions.
+DocumentNode parseString(String source) => parse(
+      SourceFile.fromString(source),
+    );
+
 class _Parser {
   final List<Token> _tokens;
   final int _length;
