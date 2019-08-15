@@ -3,6 +3,7 @@ import "package:gql/src/validation/rules/executable_definitions.dart";
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_field_definition_names.dart";
+import "package:gql/src/validation/rules/unique_operation_types.dart";
 import "package:gql/src/validation/validating_visitor.dart";
 import "package:meta/meta.dart";
 
@@ -70,6 +71,7 @@ enum ValidationRule {
   uniqueDirectiveNames,
   uniqueFieldDefinitionNames,
   loneSchemaDefinition,
+  uniqueOperationTypes,
 }
 
 ValidatingVisitor _mapRule(ValidationRule rule) {
@@ -82,6 +84,8 @@ ValidatingVisitor _mapRule(ValidationRule rule) {
       return UniqueFieldDefinitionNames();
     case ValidationRule.loneSchemaDefinition:
       return LoneSchemaDefinition();
+    case ValidationRule.uniqueOperationTypes:
+      return UniqueOperationTypes();
     default:
       return null;
   }

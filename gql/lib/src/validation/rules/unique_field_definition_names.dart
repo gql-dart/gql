@@ -13,8 +13,8 @@ class DuplicateFieldDefinitionNameError extends ValidationError {
 }
 
 class _Accumulator {
-  Iterable<ValidationError> errors;
-  Iterable<String> fieldNames;
+  List<ValidationError> errors;
+  List<String> fieldNames;
 
   _Accumulator({
     this.errors = const [],
@@ -33,19 +33,21 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
           if (fold.fieldNames.contains(node.value)) {
             return _Accumulator(
               fieldNames: fold.fieldNames,
-              errors: fold.errors.followedBy([
+              errors: [
+                ...fold.errors,
                 DuplicateFieldDefinitionNameError(
                   typeNode: typeNode,
                   nameNode: node,
-                )
-              ]),
+                ),
+              ],
             );
           }
 
           return _Accumulator(
-            fieldNames: fold.fieldNames.followedBy([
+            fieldNames: [
+              ...fold.fieldNames,
               node.value,
-            ]),
+            ],
             errors: fold.errors,
           );
         },
