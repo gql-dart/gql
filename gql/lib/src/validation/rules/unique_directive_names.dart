@@ -12,7 +12,7 @@ class DuplicateDirectiveNameError extends ValidationError {
 }
 
 class UniqueDirectiveNames extends ValidatingVisitor {
-  Iterable<String> directiveNames = [];
+  List<String> directiveNames = [];
 
   @override
   visitDirectiveDefinitionNode(DirectiveDefinitionNode node) {
@@ -22,7 +22,7 @@ class UniqueDirectiveNames extends ValidatingVisitor {
       ];
     }
 
-    directiveNames = directiveNames.followedBy([node.name.value]);
+    directiveNames.add(node.name.value);
 
     return [];
   }
