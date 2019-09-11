@@ -1,7 +1,6 @@
+import "package:gql/src/ast/visitor.dart";
 import "package:meta/meta.dart";
 import "package:source_span/source_span.dart";
-
-import "package:gql/src/ast/visitor.dart";
 
 void _visitOne<R>(
   Node node,
