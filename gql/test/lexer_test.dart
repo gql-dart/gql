@@ -518,6 +518,17 @@ void main() {
       );
 
       expect(
+        tokenize("&"),
+        contains(token(
+          kind: TokenKind.amp,
+          start: 0,
+          end: 1,
+          line: 1,
+          column: 1,
+        )),
+      );
+
+      expect(
         tokenize("("),
         contains(token(
           kind: TokenKind.parenL,

@@ -127,7 +127,9 @@ class _Scanner {
 
   _Scanner(this.src);
 
-  int peek({int offset = 0}) {
+  int peek({
+    int offset = 0,
+  }) {
     if (position + offset >= src.length) {
       return null;
     }
@@ -137,7 +139,11 @@ class _Scanner {
     return src.getText(start, start + 1).codeUnitAt(0);
   }
 
-  Token createToken(TokenKind kind, {int length = 1, bool value = false}) {
+  Token createToken(
+    TokenKind kind, {
+    int length = 1,
+    bool value = false,
+  }) {
     final token = _Token(
       kind: kind,
       span: src.span(position, position + length),
@@ -190,7 +196,10 @@ class _Scanner {
         return createToken(TokenKind.parenR);
       case 46: // .
         if (peek(offset: 1) == 46 && peek(offset: 2) == 46) {
-          return createToken(TokenKind.spread, length: 3);
+          return createToken(
+            TokenKind.spread,
+            length: 3,
+          );
         }
         break;
       case 58:
@@ -213,8 +222,10 @@ class _Scanner {
         if (peek(offset: 1) == 34 && peek(offset: 2) == 34) {
           return scanBlockString();
         }
+
         return scanString();
     }
+
     throw SourceSpanException(
       "Syntax Error",
       src.span(position, position),
@@ -297,8 +308,9 @@ class _Scanner {
 
       return offset;
     }
+
     throw SourceSpanException(
-      "Syntax Error",
+      "Expected a digit",
       src.span(position, position),
     );
   }
@@ -342,8 +354,11 @@ class _Scanner {
 
       if (code == null || (code < 0x0020 && code != 0x0009)) {
         throw SourceSpanException(
-          "Syntax Error",
-          src.span(position, position),
+          "Unexpected character in a string literal",
+          src.span(
+            position,
+            position,
+          ),
         );
       }
 
@@ -363,15 +378,18 @@ class _Scanner {
           case 116: // \t
             break;
           case 117: // \u
-            final isUni = isHex(peek(offset: 1)) &&
+            final isUnicode = isHex(peek(offset: 1)) &&
                 isHex(peek(offset: 2)) &&
                 isHex(peek(offset: 3)) &&
                 isHex(peek(offset: 4));
 
-            if (!isUni) {
+            if (!isUnicode) {
               throw SourceSpanException(
-                "Syntax Error",
-                src.span(position, position),
+                "Expected hexadecimal number",
+                src.span(
+                  position + 1,
+                  position + 4,
+                ),
               );
             }
 
@@ -379,7 +397,7 @@ class _Scanner {
             break;
           default:
             throw SourceSpanException(
-              "Syntax Error",
+              "Unknown escape character",
               src.span(position, position),
             );
         }
@@ -391,7 +409,7 @@ class _Scanner {
     }
 
     throw SourceSpanException(
-      "Syntax Error",
+      "Unexpected character in a string literal",
       src.span(position, position),
     );
   }
@@ -417,7 +435,7 @@ class _Scanner {
               code != 0x000a &&
               code != 0x000d)) {
         throw SourceSpanException(
-          "Syntax Error",
+          "Unexpected character in a string literal",
           src.span(position, position),
         );
       }
@@ -448,7 +466,7 @@ class _Scanner {
     }
 
     throw SourceSpanException(
-      "Syntax Error",
+      "Unexpected character in a string literal",
       src.span(position, position),
     );
   }
