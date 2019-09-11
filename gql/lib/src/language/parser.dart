@@ -1,7 +1,6 @@
-import "package:source_span/source_span.dart";
-
 import "package:gql/src/ast/ast.dart";
 import "package:gql/src/language/lexer.dart";
+import "package:source_span/source_span.dart";
 
 typedef _ParseFunction<N> = N Function();
 
@@ -74,7 +73,7 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      errorMessage ?? "Expected keyword $value",
+      errorMessage ?? "Expected keyword '$value'",
       _next().span,
     );
   }
@@ -94,15 +93,6 @@ class _Parser {
 
     return _tokens[_position + offset];
   }
-
-  SourceSpanException _unexpected([
-    String message = "Parse error",
-    int offset = 0,
-  ]) =>
-      SourceSpanException(
-        message,
-        _next(offset: offset).span,
-      );
 
   Iterable<N> _parseMany<N>(
     TokenKind open,
@@ -190,7 +180,10 @@ class _Parser {
       return _parseTypeSystemDefinition();
     }
 
-    throw _unexpected("Unknown definition type '${_next().value}'");
+    throw SourceSpanException(
+      "Unknown definition type '${_next().value}'",
+      _next().span,
+    );
   }
 
   ExecutableDefinitionNode _parseExecutableDefinition() {
@@ -207,7 +200,10 @@ class _Parser {
       return _parseOperationDefinition();
     }
 
-    throw _unexpected("Unknown executable definition '${_next().value}'");
+    throw SourceSpanException(
+      "Unknown executable definition '${_next().value}'",
+      _next().span,
+    );
   }
 
   FragmentDefinitionNode _parseFragmentDefinition() {
@@ -371,9 +367,15 @@ class _Parser {
           return _parseVariable();
         }
 
-        throw _unexpected("Cannot use variable in a constant context");
+        throw SourceSpanException(
+          "Cannot use variable in a constant context",
+          token.span,
+        );
       default:
-        throw _unexpected("Unexpected token found when parsing a value");
+        throw SourceSpanException(
+          "Unexpected token found when parsing a value",
+          token.span,
+        );
     }
   }
 
@@ -454,7 +456,10 @@ class _Parser {
         return OperationType.subscription;
     }
 
-    throw _unexpected("Unknown operation '${token.value}'", -1);
+    throw SourceSpanException(
+      "Unknown operation '${token.value}'",
+      token.span,
+    );
   }
 
   SelectionSetNode _parseSelectionSet() => SelectionSetNode(
@@ -495,8 +500,12 @@ class _Parser {
   }
 
   NameNode _parseFragmentName() {
-    if (_next().value == "on") {
-      throw _unexpected("Invalid fragment name 'on'");
+    final token = _next();
+    if (token.value == "on") {
+      throw SourceSpanException(
+        "Invalid fragment name 'on'",
+        token.span,
+      );
     }
 
     return _parseName("Expected a fragment name");
@@ -532,17 +541,26 @@ class _Parser {
     );
   }
 
-  NameNode _parseName([String errorMessage]) => NameNode(
-        value: _expectToken(TokenKind.name, errorMessage ?? "Expected a name")
-            .value,
-      );
+  NameNode _parseName([String errorMessage]) {
+    final token = _expectToken(
+      TokenKind.name,
+      errorMessage ?? "Expected a name",
+    );
+
+    return NameNode(
+      value: token.value,
+      span: token.span,
+    );
+  }
 
   TypeSystemDefinitionNode _parseTypeSystemDefinition() {
     final keywordOffset =
         (_peek(TokenKind.string) || _peek(TokenKind.blockString)) ? 1 : 0;
 
+    final token = _next(offset: keywordOffset);
+
     if (_peek(TokenKind.name, offset: keywordOffset)) {
-      switch (_next(offset: keywordOffset).value) {
+      switch (token.value) {
         case "schema":
           return _parseSchemaDefinition();
         case "scalar":
@@ -562,15 +580,19 @@ class _Parser {
       }
     }
 
-    throw _unexpected(
-        "Unknown type system definition type '${_next(offset: keywordOffset).value}'");
+    throw SourceSpanException(
+      "Unknown type system definition type '${token.value}'",
+      token.span,
+    );
   }
 
   TypeSystemExtensionNode _parseTypeSystemExtension() {
     _expectKeyword("extend");
 
+    final token = _next();
+
     if (_peek(TokenKind.name) != null) {
-      switch (_next().value) {
+      switch (token.value) {
         case "schema":
           return _parseSchemaExtension();
         case "scalar":
@@ -588,7 +610,10 @@ class _Parser {
       }
     }
 
-    throw _unexpected("Unknown type system extension type '${_next().value}'");
+    throw SourceSpanException(
+      "Unknown type system extension type '${token.value}'",
+      token.span,
+    );
   }
 
   SchemaDefinitionNode _parseSchemaDefinition() {
@@ -821,7 +846,7 @@ class _Parser {
   DirectiveDefinitionNode _parseDirectiveDefinition() {
     final description = _parseDescription();
     _expectKeyword("directive");
-    _expectToken(TokenKind.at, "Directive name must be start with '\$'");
+    _expectToken(TokenKind.at, "Directive name must be start with '@'");
     final name = _parseName("Expected a directive name");
     final args = _parseArgumentDefinitions();
     final repeatable = _expectOptionalKeyword("repeatable") != null;
@@ -889,10 +914,15 @@ class _Parser {
         return DirectiveLocation.inputFieldDefinition;
     }
 
-    throw _unexpected("Unknown directive location '${name.value}'");
+    throw SourceSpanException(
+      "Unknown directive location '${name.value}'",
+      name.span,
+    );
   }
 
   SchemaExtensionNode _parseSchemaExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("schema");
 
     final directives = _parseDirectives(isConst: true);
@@ -903,8 +933,10 @@ class _Parser {
     );
 
     if (directives.isEmpty && operationTypes.isEmpty) {
-      throw _unexpected(
-          "Schema extension must have either directives or operation types defined");
+      throw SourceSpanException(
+        "Schema extension must have either directives or operation types defined",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return SchemaExtensionNode(
@@ -914,13 +946,18 @@ class _Parser {
   }
 
   ScalarTypeExtensionNode _parseScalarTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("scalar");
 
     final name = _parseName("Expected a scalar name");
     final directives = _parseDirectives(isConst: true);
 
     if (directives.isEmpty) {
-      throw _unexpected("Scalar extension must have either directives defined");
+      throw SourceSpanException(
+        "Scalar extension must have either directives defined",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return ScalarTypeExtensionNode(
@@ -930,6 +967,8 @@ class _Parser {
   }
 
   ObjectTypeExtensionNode _parseObjectTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("type");
 
     final name = _parseName("Expected an object type name");
@@ -938,8 +977,10 @@ class _Parser {
     final fields = _parseFieldsDefinition();
 
     if (interfaces.isEmpty && directives.isEmpty && fields.isEmpty) {
-      throw _unexpected(
-          "Object type extension must define at least one directive or field, or implement at lease one interface");
+      throw SourceSpanException(
+        "Object type extension must define at least one directive or field, or implement at lease one interface",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return ObjectTypeExtensionNode(
@@ -951,6 +992,8 @@ class _Parser {
   }
 
   InterfaceTypeExtensionNode _parseInterfaceTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("interface");
 
     final name = _parseName("Expected an interface name");
@@ -958,8 +1001,10 @@ class _Parser {
     final fields = _parseFieldsDefinition();
 
     if (directives.isEmpty && fields.isEmpty) {
-      throw _unexpected(
-          "Interface type extension must define at least one directive or field");
+      throw SourceSpanException(
+        "Interface type extension must define at least one directive or field",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return InterfaceTypeExtensionNode(
@@ -970,6 +1015,8 @@ class _Parser {
   }
 
   UnionTypeExtensionNode _parseUnionTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("union");
 
     final name = _parseName("Expected a union name");
@@ -977,8 +1024,10 @@ class _Parser {
     final types = _parseUnionMemberTypes();
 
     if (directives.isEmpty && types.isEmpty) {
-      throw _unexpected(
-          "Union type extension must define at least one directive or type");
+      throw SourceSpanException(
+        "Union type extension must define at least one directive or type",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return UnionTypeExtensionNode(
@@ -989,6 +1038,8 @@ class _Parser {
   }
 
   EnumTypeExtensionNode _parseEnumTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("enum");
 
     final name = _parseName("Expected an enum name");
@@ -996,8 +1047,10 @@ class _Parser {
     final values = _parseEnumValuesDefinition();
 
     if (directives.isEmpty && values.isEmpty) {
-      throw _unexpected(
-          "Enum type extension must define at least one directive or value");
+      throw SourceSpanException(
+        "Enum type extension must define at least one directive or value",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return EnumTypeExtensionNode(
@@ -1008,6 +1061,8 @@ class _Parser {
   }
 
   InputObjectTypeExtensionNode _parseInputObjectTypeExtension() {
+    final errorToken = _next(offset: -1);
+
     _expectKeyword("input");
 
     final name = _parseName("Expected an input object type name");
@@ -1015,8 +1070,10 @@ class _Parser {
     final fields = _parseInputFieldsDefinition();
 
     if (directives.isEmpty && fields.isEmpty) {
-      throw _unexpected(
-          "Input type extension must define at least one directive or field, or implement at lease one interface");
+      throw SourceSpanException(
+        "Input type extension must define at least one directive or field, or implement at lease one interface",
+        errorToken.span.expand(_next().span),
+      );
     }
 
     return InputObjectTypeExtensionNode(

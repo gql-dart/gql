@@ -151,6 +151,7 @@ class _Scanner {
       ++position;
       return _Token(
         kind: TokenKind.sof,
+        span: src.span(0, 0),
       );
     }
     consumeWhitespace();
@@ -158,6 +159,7 @@ class _Scanner {
     if (position >= src.length) {
       return _Token(
         kind: TokenKind.eof,
+        span: src.span(src.length),
       );
     }
 
