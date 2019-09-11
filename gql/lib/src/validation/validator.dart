@@ -1,5 +1,4 @@
 import "package:gql/ast.dart" as ast;
-import "package:gql/src/validation/rules/executable_definitions.dart";
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
@@ -8,11 +7,18 @@ import "package:gql/src/validation/rules/unique_operation_types.dart";
 import "package:gql/src/validation/validating_visitor.dart";
 import "package:meta/meta.dart";
 
+/// Validates a [schema]
 Iterable<ValidationError> validateSchema(
   ast.Node schema,
 ) {
   final validator = _Validator(
-    rules: {},
+    rules: {
+      ValidationRule.uniqueDirectiveNames,
+      ValidationRule.uniqueFieldDefinitionNames,
+      ValidationRule.uniqueEnumValueNames,
+      ValidationRule.loneSchemaDefinition,
+      ValidationRule.uniqueOperationTypes,
+    },
   );
 
   return validator.validate(
@@ -20,6 +26,8 @@ Iterable<ValidationError> validateSchema(
   );
 }
 
+/// Validates an [operation] without knowing anything
+/// about the schema
 Iterable<ValidationError> validateOperation(
   ast.Node operation,
 ) {
@@ -32,6 +40,7 @@ Iterable<ValidationError> validateOperation(
   );
 }
 
+/// Validates a [node] given a [Set] of [ValidationRule]s
 Iterable<ValidationError> validate(
   ast.Node node,
   Set<ValidationRule> rules,
@@ -45,19 +54,25 @@ Iterable<ValidationError> validate(
   );
 }
 
-//Iterable<ValidationError> validateRequest(
-//  ast.DocumentNode schema,
-//  ast.DocumentNode operation,
-//) {
-//  final validator = _Validator(
-//    rules: {},
-//  );
-//
-//  return validator.validate(document: s);
-//}
+/// Validates an [operation] in the context of [schema]
+///
+/// Assumes valid [schema]
+Iterable<ValidationError> validateRequest(
+  ast.DocumentNode schema,
+  ast.DocumentNode operation,
+) {
+  final validator = _Validator(
+    rules: {},
+  );
 
+  return validator.validate(
+    node: operation,
+  );
+}
+
+/// A base class for validation errors
 @immutable
-class ValidationError {
+abstract class ValidationError {
   final String message;
   final ast.Node node;
 
@@ -67,8 +82,8 @@ class ValidationError {
   });
 }
 
+/// Available validation rules
 enum ValidationRule {
-  executableDefinitions,
   uniqueDirectiveNames,
   uniqueFieldDefinitionNames,
   uniqueEnumValueNames,
@@ -78,8 +93,6 @@ enum ValidationRule {
 
 ValidatingVisitor _mapRule(ValidationRule rule) {
   switch (rule) {
-    case ValidationRule.executableDefinitions:
-      return ExecutableDefinitions();
     case ValidationRule.uniqueDirectiveNames:
       return UniqueDirectiveNames();
     case ValidationRule.uniqueEnumValueNames:

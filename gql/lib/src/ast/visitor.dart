@@ -760,6 +760,11 @@ abstract class RecursiveVisitor implements Visitor<void> {
       node.visitChildren(this);
 }
 
+/// A [Visitor] to accumulate values of type [A].
+///
+/// This [Visitor] let's you use multiple [SimpleVisitor]s
+/// traversing the AST only once and collecting the return
+/// values in the `accumulator`.
 class AccumulatingVisitor<A> extends RecursiveVisitor {
   Iterable<SimpleVisitor<Iterable<A>>> visitors;
   Iterable<A> accumulator = [];
