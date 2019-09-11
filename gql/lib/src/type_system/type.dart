@@ -1,7 +1,9 @@
+import "package:meta/meta.dart";
+
 class Schema {
-  Type queryType;
-  Type mutationType;
-  Type subscriptionType;
+  Object queryType;
+  Object mutationType;
+  Object subscriptionType;
 
   Iterable<Type> types;
   Iterable<Directive> directives;
@@ -38,90 +40,75 @@ enum DirectiveLocation {
   inputFieldDefinition,
 }
 
-class InputValue {
+abstract class Base {
   String name;
   String description;
-  Type type;
-  String defaultValue;
+
   Iterable<AppliedDirective> appliedDirectives;
 
+  Base({
+    @required this.name,
+    @required this.description,
+    @required this.appliedDirectives,
+  });
+}
+
+class InputValue extends Base {
+  Type type;
+  String defaultValue;
+
   InputValue({
-    this.name,
-    this.description,
+    String name,
+    String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.type,
     this.defaultValue,
   });
 }
 
-class EnumValue {
-  String name;
-  String description;
-  bool isDeprecated;
-  String deprecationReason;
-  Iterable<AppliedDirective> appliedDirectives;
-
-  EnumValue({
-    this.name,
-    this.description,
-    this.isDeprecated,
-    this.deprecationReason,
-  });
-}
-
-class Field {
-  String name;
-  String description;
-  bool isDeprecated;
-  String deprecationReason;
-  Iterable<AppliedDirective> appliedDirectives;
+class Field extends Base {
   Iterable<InputValue> args;
   Type type;
 
   Field({
-    this.name,
-    this.description,
-    this.isDeprecated,
-    this.deprecationReason,
-    this.args,
-    this.type,
-  });
-}
-
-class Directive {
-  String name;
-  String description;
-  Iterable<DirectiveLocation> locations;
-  Iterable<InputValue> args;
-  Iterable<AppliedDirective> appliedDirectives;
-
-  Directive({
-    this.name,
-    this.description,
-    this.locations,
-    this.args,
-  });
-}
-
-abstract class WrappingType {
-  String name;
-  String description;
-
-  WrappingType({
-    this.name,
-    this.description,
-  });
-}
-
-abstract class Type extends WrappingType {
-  Iterable<AppliedDirective> appliedDirectives;
-
-  Type({
     String name,
     String description,
-    this.appliedDirectives,
+    Iterable<AppliedDirective> appliedDirectives,
+    this.args,
+    this.type,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
+        );
+}
+
+class Directive extends Base {
+  Iterable<DirectiveLocation> locations;
+  Iterable<InputValue> args;
+
+  Directive({
+    String name,
+    String description,
+    Iterable<AppliedDirective> appliedDirectives,
+    this.locations,
+    this.args,
+  }) : super(
+          name: name,
+          description: description,
+          appliedDirectives: appliedDirectives,
+        );
+}
+
+abstract class Type extends Base {
+  Type({
+    @required String name,
+    @required String description,
+    @required Iterable<AppliedDirective> appliedDirectives,
+  }) : super(
+          name: name,
+          description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
@@ -132,11 +119,13 @@ class Object extends Type {
   Object({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.fields,
     this.interfaces,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
@@ -147,11 +136,13 @@ class Interface extends Type {
   Interface({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.fields,
     this.possibleTypes,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
@@ -161,10 +152,12 @@ class Union extends Type {
   Union({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.possibleTypes,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
@@ -174,10 +167,24 @@ class Enum extends Type {
   Enum({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.enumValues,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
+        );
+}
+
+class EnumValue extends Base {
+  EnumValue({
+    String name,
+    String description,
+    Iterable<AppliedDirective> appliedDirectives,
+  }) : super(
+          name: name,
+          description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
@@ -187,36 +194,55 @@ class InputObject extends Type {
   InputObject({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
     this.inputValues,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
-class NonNull<T extends Type> extends Type {
+abstract class WrappedType<T extends Type> extends Type {
   T ofType;
 
+  WrappedType({
+    @required String name,
+    @required String description,
+    @required Iterable<AppliedDirective> appliedDirectives,
+    @required T ofType,
+  }) : super(
+          name: name,
+          description: description,
+          appliedDirectives: appliedDirectives,
+        );
+}
+
+class NonNull<T extends Type> extends WrappedType<T> {
   NonNull({
     String name,
     String description,
-    this.ofType,
+    Iterable<AppliedDirective> appliedDirectives,
+    T ofType,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
+          ofType: ofType,
         );
 }
 
-class List<T extends Type> extends Type {
-  T ofType;
-
+class List<T extends Type> extends WrappedType<T> {
   List({
     String name,
     String description,
-    this.ofType,
+    Iterable<AppliedDirective> appliedDirectives,
+    T ofType,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
+          ofType: ofType,
         );
 }
 
@@ -224,9 +250,11 @@ class Scalar extends Type {
   Scalar({
     String name,
     String description,
+    Iterable<AppliedDirective> appliedDirectives,
   }) : super(
           name: name,
           description: description,
+          appliedDirectives: appliedDirectives,
         );
 }
 
