@@ -1,5 +1,5 @@
-import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
+import "package:gql/language.dart" as lang;
 import "package:source_span/source_span.dart";
 
 void main() {

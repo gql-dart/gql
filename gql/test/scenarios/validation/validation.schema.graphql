@@ -1,5 +1,5 @@
 interface Being {
- name: String
+  name: String
 }
 
 interface Pet {

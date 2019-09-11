@@ -4,25 +4,25 @@ background:
     interface Named {
       name: String
     }
-    
+
     type Dog implements Named {
       name: String
       barks: Boolean
     }
-    
+
     type Cat implements Named {
       name: String
       meows: Boolean
     }
-    
+
     union Pet = Dog | Cat
-    
+
     type Person implements Named {
       name: String
       pets: [Pet]
       friends: [Named]
     }
-    
+
     schema {
       query: Person
     }
@@ -71,7 +71,7 @@ tests:
     when:
       execute: true
     then:
-      data: 
+      data:
         Named:
           kind: "INTERFACE"
           name: "Named"
@@ -94,7 +94,7 @@ tests:
             - name: "Cat"
           enumValues: null
           inputFields: null
-  
+
   - name: executes using union types
     given:
       query: |
@@ -113,7 +113,7 @@ tests:
         validate-query: false
         test-value: bob
     then:
-      data: 
+      data:
         __typename: "Person"
         name: "Bob"
         pets:
@@ -123,7 +123,7 @@ tests:
           - __typename: "Dog"
             name: "Odie"
             barks: true
-              
+
   - name: executes union types with inline fragments
     given:
       query: |
@@ -146,7 +146,7 @@ tests:
       execute:
         test-value: bob
     then:
-      data: 
+      data:
         __typename: "Person"
         name: "Bob"
         pets:
@@ -209,7 +209,7 @@ tests:
       data:
         __typename: "Person"
         name: "Bob"
-        friends: 
+        friends:
           - __typename: "Person"
             name: "Liz"
           - __typename: "Dog"

@@ -1,5 +1,5 @@
-import "package:gql/src/validation/validator.dart";
 import "package:gql/src/validation/rules/unique_operation_types.dart";
+import "package:gql/src/validation/validator.dart";
 import "package:test/test.dart";
 
 import "./common.dart";

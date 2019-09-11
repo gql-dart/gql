@@ -1,5 +1,5 @@
-import "package:gql/language.dart" as lang;
 import "package:gql/document.dart" as doc;
+import "package:gql/language.dart" as lang;
 
 void main() {
   final errors = doc.validate(

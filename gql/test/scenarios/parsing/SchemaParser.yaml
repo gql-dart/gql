@@ -43,7 +43,7 @@ tests:
 
   - name: Simple type inheriting multiple interfaces
     given:
-      query: type Hello implements Wo & rld 
+      query: type Hello implements Wo & rld
     when:
       parse: true
     then:

@@ -1,5 +1,5 @@
-import "package:gql/src/validation/validator.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
+import "package:gql/src/validation/validator.dart";
 import "package:test/test.dart";
 
 import "./common.dart";
