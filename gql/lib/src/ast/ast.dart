@@ -50,11 +50,22 @@ class DocumentNode extends Node {
 }
 
 abstract class DefinitionNode extends Node {
-  const DefinitionNode(FileSpan span) : super(span);
+  final NameNode name;
+
+  const DefinitionNode({
+    @required this.name,
+    FileSpan span,
+  }) : super(span);
 }
 
 abstract class ExecutableDefinitionNode extends DefinitionNode {
-  const ExecutableDefinitionNode(FileSpan span) : super(span);
+  const ExecutableDefinitionNode({
+    @required NameNode name,
+    FileSpan span,
+  }) : super(
+          name: name,
+          span: span,
+        );
 }
 
 /// Enumeration of all known GraphQL operation types.
@@ -89,8 +100,6 @@ enum DirectiveLocation {
 class OperationDefinitionNode extends ExecutableDefinitionNode {
   final OperationType type;
 
-  final NameNode name;
-
   final Iterable<VariableDefinitionNode> variableDefinitions;
 
   final Iterable<DirectiveNode> directives;
@@ -99,7 +108,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
 
   const OperationDefinitionNode({
     @required this.type,
-    this.name,
+    NameNode name,
     this.variableDefinitions = const [],
     this.directives = const [],
     @required this.selectionSet,
@@ -107,7 +116,10 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
   })  : assert(variableDefinitions != null),
         assert(directives != null),
         assert(selectionSet != null),
-        super(span);
+        super(
+          name: name,
+          span: span,
+        );
 
   @override
   void visitChildren<R>(Visitor<R> v) {
@@ -251,8 +263,6 @@ class InlineFragmentNode extends SelectionNode {
 }
 
 class FragmentDefinitionNode extends ExecutableDefinitionNode {
-  final NameNode name;
-
   final TypeConditionNode typeCondition;
 
   final Iterable<DirectiveNode> directives;
@@ -260,7 +270,7 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
   final SelectionSetNode selectionSet;
 
   const FragmentDefinitionNode({
-    @required this.name,
+    @required NameNode name,
     @required this.typeCondition,
     this.directives = const [],
     @required this.selectionSet,
@@ -269,7 +279,10 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
         assert(typeCondition != null),
         assert(directives != null),
         assert(selectionSet != null),
-        super(span);
+        super(
+          name: name,
+          span: span,
+        );
 
   @override
   void visitChildren<R>(Visitor<R> v) {
@@ -613,39 +626,55 @@ class NameNode extends Node {
 }
 
 abstract class TypeSystemDefinitionNode extends DefinitionNode {
-  const TypeSystemDefinitionNode(FileSpan span) : super(span);
+  const TypeSystemDefinitionNode({
+    @required NameNode name,
+    FileSpan span,
+  }) : super(
+          name: name,
+          span: span,
+        );
 }
 
 abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
   final StringValueNode description;
-  final NameNode name;
   final Iterable<DirectiveNode> directives;
 
   const TypeDefinitionNode({
     this.description,
-    @required this.name,
+    @required NameNode name,
     this.directives = const [],
     FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
-        super(span);
+        super(
+          name: name,
+          span: span,
+        );
 }
 
 abstract class TypeSystemExtensionNode extends TypeSystemDefinitionNode {
-  const TypeSystemExtensionNode(FileSpan span) : super(span);
+  const TypeSystemExtensionNode({
+    @required NameNode name,
+    FileSpan span,
+  }) : super(
+          name: name,
+          span: span,
+        );
 }
 
 abstract class TypeExtensionNode extends TypeSystemExtensionNode {
-  final NameNode name;
   final Iterable<DirectiveNode> directives;
 
   const TypeExtensionNode({
     FileSpan span,
-    @required this.name,
+    @required NameNode name,
     this.directives = const [],
   })  : assert(name != null),
         assert(directives != null),
-        super(span);
+        super(
+          name: name,
+          span: span,
+        );
 }
 
 class SchemaDefinitionNode extends TypeSystemDefinitionNode {
@@ -658,7 +687,10 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
     FileSpan span,
   })  : assert(directives != null),
         assert(operationTypes != null),
-        super(span);
+        super(
+          name: null,
+          span: span,
+        );
 
   @override
   void visitChildren<R>(Visitor<R> v) {
@@ -970,14 +1002,13 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
 
 class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
   final StringValueNode description;
-  final NameNode name;
   final Iterable<InputValueDefinitionNode> args;
   final Iterable<DirectiveLocation> locations;
   final bool repeatable;
 
   const DirectiveDefinitionNode({
     this.description,
-    @required this.name,
+    @required NameNode name,
     this.args = const [],
     this.locations = const [],
     this.repeatable = false,
@@ -986,7 +1017,10 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
         assert(args != null),
         assert(locations != null),
         assert(repeatable != null),
-        super(span);
+        super(
+          name: name,
+          span: span,
+        );
 
   @override
   void visitChildren<R>(Visitor<R> v) {
@@ -1009,7 +1043,10 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
     FileSpan span,
   })  : assert(directives != null),
         assert(operationTypes != null),
-        super(span);
+        super(
+          name: null,
+          span: span,
+        );
 
   @override
   void visitChildren<R>(Visitor<R> v) {
