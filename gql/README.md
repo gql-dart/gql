@@ -2,14 +2,12 @@ A package for working with GraphQL documents.
 
 ⚠️ This package is under development ⚠️
 
-## Usage
+This package exports several libraries:
+- `package:gql/language.dart` for working with GraphQL source;
+- `package:gql/ast.dart` for working with GraphQL AST nodes;
+- `package:gql/dart.dart` for generating Dart code from GraphQL AST nodes.
 
-This package exports two libraries: `language.dart` for working with GraphQL source and `ast.dart` for working with GraphQL AST nodes.
-
-```dart
-import "package:gql/language.dart" as lang;
-import "package:gql/ast.dart" as ast;
-```
+## `package:gql/language.dart`
 
 ### Parsing GraphQL documents
 
@@ -62,6 +60,8 @@ void main() {
   );
 }
 ```
+
+## `package:gql/ast.dart`
 
 ### Visiting GraphQL AST nodes
 
@@ -167,6 +167,52 @@ void main() {
   print(
     lang.printNode(withTypenames),
   );
+}
+```
+
+## `package:gql/dart.dart`
+
+### Generating Dart code from GraphQL AST nodes
+
+```dart
+import "package:code_builder/code_builder.dart";
+import "package:dart_style/dart_style.dart";
+import "package:gql/ast.dart" as ast;
+import "package:gql/dart.dart" as dart;
+import "package:gql/language.dart" as lang;
+import "package:source_span/source_span.dart";
+
+void main() {
+  final ast.DocumentNode docNode = lang.parse(
+    SourceFile.fromString(
+      """
+        query UserInfo(\$id: ID!) {
+          user(id: \$id) {
+            id
+            name
+          }
+        }
+      """,
+    ),
+  );
+
+  final Expression docExpression = dart.fromNode(
+    docNode,
+  );
+
+  final library = Library(
+    (b) => b.body.add(
+      docExpression.assignFinal("document").statement,
+    ),
+  );
+
+  final formatted = DartFormatter().format(
+    "${library.accept(
+      DartEmitter.scoped(),
+    )}",
+  );
+
+  print(formatted);
 }
 ```
 
