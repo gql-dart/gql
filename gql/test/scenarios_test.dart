@@ -1,7 +1,6 @@
 import "package:cats/cats.dart";
 import "package:gql/ast.dart" as ast;
 import "package:gql/language.dart" as lang;
-import "package:source_span/source_span.dart";
 
 class IdentityTransformer extends ast.TransformingVisitor {}
 
@@ -12,9 +11,7 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
   parse({
     source,
   }) =>
-      lang.parse(
-        SourceFile.fromString(source),
-      );
+      lang.parseString(source);
 
   @override
   void execute({

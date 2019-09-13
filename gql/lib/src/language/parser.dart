@@ -7,7 +7,9 @@ typedef _ParseFunction<N> = N Function();
 /// Parses [source] and returns [DocumentNode].
 ///
 /// Supports both GraphQL SDL and executable definitions.
-DocumentNode parse(SourceFile source) {
+DocumentNode parse(
+  SourceFile source,
+) {
   final lexer = Lexer();
   final tokens = lexer.tokenize(source);
   final parser = _Parser(tokens);
@@ -18,8 +20,15 @@ DocumentNode parse(SourceFile source) {
 /// Parses [source] string and returns [DocumentNode].
 ///
 /// Supports both GraphQL SDL and executable definitions.
-DocumentNode parseString(String source) => parse(
-      SourceFile.fromString(source),
+DocumentNode parseString(
+  String source, {
+  dynamic url,
+}) =>
+    parse(
+      SourceFile.fromString(
+        source,
+        url: url,
+      ),
     );
 
 class _Parser {

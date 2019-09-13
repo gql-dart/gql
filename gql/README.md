@@ -14,20 +14,17 @@ This package exports several libraries:
 ```dart
 import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
-import "package:source_span/source_span.dart";
 
 void main() {
-  final ast.DocumentNode doc = lang.parse(
-    SourceFile.fromString(
-      """
-        query UserInfo(\$id: ID!) {
-          user(id: \$id) {
-            id
-            name
-          }
-        }
-      """,
-    ),
+  final ast.DocumentNode doc = lang.parseString(
+    """
+    query UserInfo(\$id: ID!) {
+      user(id: \$id) {
+        id
+        name
+      }
+    }
+    """,
   );
 
   print(
@@ -68,7 +65,6 @@ void main() {
 ```dart
 import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
-import "package:source_span/source_span.dart";
 
 class TypeVisitor extends ast.RecursiveVisitor {
   Iterable<ast.ObjectTypeDefinitionNode> types = [];
@@ -83,16 +79,14 @@ class TypeVisitor extends ast.RecursiveVisitor {
 }
 
 void main() {
-  final ast.DocumentNode doc = lang.parse(
-    SourceFile.fromString(
-      """
-        type A { id: ID! }
-        type B { id: ID! }
-        type C { id: ID! }
-        type D { id: ID! }
-        type E { id: ID! }
-      """,
-    ),
+  final ast.DocumentNode doc = lang.parseString(
+    """
+    type A { id: ID! }
+    type B { id: ID! }
+    type C { id: ID! }
+    type D { id: ID! }
+    type E { id: ID! }
+    """,
   );
 
   final TypeVisitor v = TypeVisitor();
@@ -113,7 +107,6 @@ void main() {
 ```dart
 import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
-import "package:source_span/source_span.dart";
 
 class AddTypenames extends ast.TransformingVisitor {
   @override
@@ -139,22 +132,20 @@ class AddTypenames extends ast.TransformingVisitor {
 }
 
 void main() {
-  final ast.DocumentNode doc = lang.parse(
-    SourceFile.fromString(
-      """
-        query UserInfo(\$id: ID!, \$articleId: ID!) {
-          user(id: \$id) {
-            id
-            name
-          }
-          post(id: \$articleId) {
-            id
-            title
-            description
-          }
-        }
-      """,
-    ),
+  final ast.DocumentNode doc = lang.parseString(
+    """
+    query UserInfo(\$id: ID!, \$articleId: ID!) {
+      user(id: \$id) {
+        id
+        name
+      }
+      post(id: \$articleId) {
+        id
+        title
+        description
+      }
+    }
+    """,
   );
 
   final ast.DocumentNode withTypenames = ast.transform(
@@ -180,20 +171,17 @@ import "package:dart_style/dart_style.dart";
 import "package:gql/ast.dart" as ast;
 import "package:gql/dart.dart" as dart;
 import "package:gql/language.dart" as lang;
-import "package:source_span/source_span.dart";
 
 void main() {
-  final ast.DocumentNode docNode = lang.parse(
-    SourceFile.fromString(
-      """
-        query UserInfo(\$id: ID!) {
-          user(id: \$id) {
-            id
-            name
-          }
-        }
-      """,
-    ),
+  final ast.DocumentNode docNode = lang.parseString(
+    """
+    query UserInfo(\$id: ID!) {
+      user(id: \$id) {
+        id
+        name
+      }
+    }
+    """,
   );
 
   final Expression docExpression = dart.fromNode(
