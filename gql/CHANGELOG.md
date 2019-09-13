@@ -1,3 +1,8 @@
+## 0.4.0
+
+- Define `name` on `DefinitionNode` to simplify `name` access for `DocumentNode.definitions`
+- Rework `Node.visitChildren` and implement `Node.==` and `Node.hashCode`
+
 ## 0.3.0
 
 - Dart code generation via `fromNode` from `package:gql/dart.dart` using `code_gen`
