@@ -3,17 +3,20 @@ import "package:dart_style/dart_style.dart";
 import "package:gql/ast.dart" as ast;
 import "package:gql/dart.dart" as dart;
 import "package:gql/language.dart" as lang;
+import "package:source_span/source_span.dart";
 
 void main() {
-  final ast.DocumentNode docNode = lang.parseString(
-    """
-      query UserInfo(\$id: ID!) {
-        user(id: \$id) {
-          id
-          name
+  final ast.DocumentNode docNode = lang.parse(
+    SourceFile.fromString(
+      """
+        query UserInfo(\$id: ID!) {
+          user(id: \$id) {
+            id
+            name
+          }
         }
-      }
-    """,
+      """,
+    ),
   );
 
   final Expression docExpression = dart.fromNode(
