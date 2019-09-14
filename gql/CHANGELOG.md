@@ -2,6 +2,7 @@
 
 - Define `name` on `DefinitionNode` to simplify `name` access for `DocumentNode.definitions`
 - Rework `Node.visitChildren` and implement `Node.==` and `Node.hashCode`
+- Lower SDK requirement to `>=2.2.2`
 
 ## 0.3.0
 
