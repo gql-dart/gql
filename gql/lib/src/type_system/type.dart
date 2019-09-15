@@ -63,7 +63,11 @@ class InputValue extends Base {
     Iterable<AppliedDirective> appliedDirectives,
     this.type,
     this.defaultValue,
-  });
+  }) : super(
+          name: name,
+          description: description,
+          appliedDirectives: appliedDirectives,
+        );
 }
 
 class Field extends Base {
@@ -210,7 +214,7 @@ abstract class WrappedType<T extends Type> extends Type {
     @required String name,
     @required String description,
     @required Iterable<AppliedDirective> appliedDirectives,
-    @required T ofType,
+    @required this.ofType,
   }) : super(
           name: name,
           description: description,

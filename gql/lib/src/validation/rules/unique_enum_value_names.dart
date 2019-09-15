@@ -3,8 +3,10 @@ import "package:gql/src/validation/validating_visitor.dart";
 import "package:gql/src/validation/validator.dart";
 
 class DuplicateEnumValueNameError extends ValidationError {
+  final EnumValueDefinitionNode valueNode;
+
   const DuplicateEnumValueNameError({
-    EnumValueDefinitionNode valueNode,
+    this.valueNode,
     NameNode nameNode,
   }) : super(
           node: nameNode,

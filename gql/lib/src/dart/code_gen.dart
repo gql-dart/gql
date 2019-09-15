@@ -93,9 +93,7 @@ class _PrintVisitor extends Visitor<Expression> {
           "name": _acceptOne(node.name),
           "args": _list(node.args),
           "locations": literalList(
-            node.locations.map(
-              (loc) => _directiveLocation(loc),
-            ),
+            node.locations.map(_directiveLocation),
           ),
           "repeatable": literalBool(node.repeatable),
         },

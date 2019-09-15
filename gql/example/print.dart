@@ -4,7 +4,7 @@ import "package:gql/language.dart" as lang;
 void main() {
   print(
     lang.printNode(
-      ast.SchemaDefinitionNode(
+      const ast.SchemaDefinitionNode(
         operationTypes: [
           ast.OperationTypeDefinitionNode(
             operation: ast.OperationType.query,

@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Stricter lint rules
+
 ## 0.4.0
 
 - Define `name` on `DefinitionNode` to simplify `name` access for `DocumentNode.definitions`
