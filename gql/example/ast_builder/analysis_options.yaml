@@ -43,6 +43,8 @@ linter:
     - use_function_type_syntax_for_parameters
 
 analyzer:
+  exclude:
+    - bin/**/*.ast.g.dart
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false

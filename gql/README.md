@@ -5,7 +5,8 @@ A package for working with GraphQL documents.
 This package exports several libraries:
 - `package:gql/language.dart` for working with GraphQL source;
 - `package:gql/ast.dart` for working with GraphQL AST nodes;
-- `package:gql/dart.dart` for generating Dart code from GraphQL AST nodes.
+- `package:gql/dart.dart` for generating Dart code from GraphQL AST nodes;
+- `package:gql/ast_builder.dart` for pre-parsing GraphQL into Dart source files.
 
 ## `package:gql/language.dart`
 

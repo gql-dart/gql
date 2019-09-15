@@ -1,5 +1,6 @@
-## 0.4.1
+## 0.5.0
 
+- Implement `package:gql/ast_builder` to parse `*.graphql` documents at build-time
 - Stricter lint rules
 
 ## 0.4.0
