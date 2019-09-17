@@ -28,7 +28,7 @@ class ErrorLocation {
     @required this.line,
     @required this.column,
   })  : assert(line != null),
-      assert(column != null);
+        assert(column != null);
 }
 
 @immutable
