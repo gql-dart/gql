@@ -1,3 +1,8 @@
+## 0.6.0
+
+- Experimental `package:gql/execution` to define request/response types
+- Experimental `package:gql/link` to implement `Link` based on `DocumentNode` queries
+
 ## 0.5.0
 
 - Implement `package:gql/ast_builder` to parse `*.graphql` documents at build-time
