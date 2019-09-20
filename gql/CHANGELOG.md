@@ -1,3 +1,8 @@
+## 0.7.0
+
+- Breaking: use `List` instead of `Iterbale`
+- Add documentation to experimental `package:gql/execution` and `package:gql/link`
+
 ## 0.6.0
 
 - Experimental `package:gql/execution` to define request/response types
