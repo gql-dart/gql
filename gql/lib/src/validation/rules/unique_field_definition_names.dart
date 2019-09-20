@@ -24,8 +24,8 @@ class _Accumulator {
 }
 
 class UniqueFieldDefinitionNames extends ValidatingVisitor {
-  Iterable<ValidationError> _validateFields(
-    Iterable<NameNode> nodes,
+  List<ValidationError> _validateFields(
+    List<NameNode> nodes,
     TypeDefinitionNode typeNode,
   ) =>
       nodes.fold<_Accumulator>(
@@ -59,9 +59,11 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
     InputObjectTypeDefinitionNode node,
   ) =>
       _validateFields(
-        node.fields.map(
-          (field) => field.name,
-        ),
+        node.fields
+            .map(
+              (field) => field.name,
+            )
+            .toList(growable: false),
         node,
       );
 
@@ -70,9 +72,11 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
     InterfaceTypeDefinitionNode node,
   ) =>
       _validateFields(
-        node.fields.map(
-          (field) => field.name,
-        ),
+        node.fields
+            .map(
+              (field) => field.name,
+            )
+            .toList(growable: false),
         node,
       );
 
@@ -81,9 +85,11 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
     ObjectTypeDefinitionNode node,
   ) =>
       _validateFields(
-        node.fields.map(
-          (field) => field.name,
-        ),
+        node.fields
+            .map(
+              (field) => field.name,
+            )
+            .toList(growable: false),
         node,
       );
 }

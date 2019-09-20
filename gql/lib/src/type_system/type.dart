@@ -1,3 +1,4 @@
+import "dart:core" as core;
 import "package:meta/meta.dart";
 
 class Schema {
@@ -5,10 +6,10 @@ class Schema {
   Object mutationType;
   Object subscriptionType;
 
-  Iterable<Type> types;
-  Iterable<Directive> directives;
+  core.List<Type> types;
+  core.List<Directive> directives;
 
-  Iterable<AppliedDirective> appliedDirectives;
+  core.List<AppliedDirective> appliedDirectives;
 
   Schema({
     this.types,
@@ -41,10 +42,10 @@ enum DirectiveLocation {
 }
 
 abstract class Base {
-  String name;
-  String description;
+  core.String name;
+  core.String description;
 
-  Iterable<AppliedDirective> appliedDirectives;
+  core.List<AppliedDirective> appliedDirectives;
 
   Base({
     @required this.name,
@@ -55,12 +56,12 @@ abstract class Base {
 
 class InputValue extends Base {
   Type type;
-  String defaultValue;
+  core.String defaultValue;
 
   InputValue({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.type,
     this.defaultValue,
   }) : super(
@@ -71,13 +72,13 @@ class InputValue extends Base {
 }
 
 class Field extends Base {
-  Iterable<InputValue> args;
+  core.List<InputValue> args;
   Type type;
 
   Field({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.args,
     this.type,
   }) : super(
@@ -88,13 +89,13 @@ class Field extends Base {
 }
 
 class Directive extends Base {
-  Iterable<DirectiveLocation> locations;
-  Iterable<InputValue> args;
+  core.List<DirectiveLocation> locations;
+  core.List<InputValue> args;
 
   Directive({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.locations,
     this.args,
   }) : super(
@@ -106,9 +107,9 @@ class Directive extends Base {
 
 abstract class Type extends Base {
   Type({
-    @required String name,
-    @required String description,
-    @required Iterable<AppliedDirective> appliedDirectives,
+    @required core.String name,
+    @required core.String description,
+    core.List<AppliedDirective> appliedDirectives,
   }) : super(
           name: name,
           description: description,
@@ -117,13 +118,13 @@ abstract class Type extends Base {
 }
 
 class Object extends Type {
-  Iterable<Field> fields;
-  Iterable<Interface> interfaces;
+  core.List<Field> fields;
+  core.List<Interface> interfaces;
 
   Object({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.fields,
     this.interfaces,
   }) : super(
@@ -134,13 +135,13 @@ class Object extends Type {
 }
 
 class Interface extends Type {
-  Iterable<Field> fields;
-  Iterable<Type> possibleTypes;
+  core.List<Field> fields;
+  core.List<Type> possibleTypes;
 
   Interface({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.fields,
     this.possibleTypes,
   }) : super(
@@ -151,12 +152,12 @@ class Interface extends Type {
 }
 
 class Union extends Type {
-  Iterable<Type> possibleTypes;
+  core.List<Type> possibleTypes;
 
   Union({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.possibleTypes,
   }) : super(
           name: name,
@@ -166,12 +167,12 @@ class Union extends Type {
 }
 
 class Enum extends Type {
-  Iterable<EnumValue> enumValues;
+  core.List<EnumValue> enumValues;
 
   Enum({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.enumValues,
   }) : super(
           name: name,
@@ -182,9 +183,9 @@ class Enum extends Type {
 
 class EnumValue extends Base {
   EnumValue({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
   }) : super(
           name: name,
           description: description,
@@ -193,12 +194,12 @@ class EnumValue extends Base {
 }
 
 class InputObject extends Type {
-  Iterable<InputValue> inputValues;
+  core.List<InputValue> inputValues;
 
   InputObject({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     this.inputValues,
   }) : super(
           name: name,
@@ -211,9 +212,9 @@ abstract class WrappedType<T extends Type> extends Type {
   T ofType;
 
   WrappedType({
-    @required String name,
-    @required String description,
-    @required Iterable<AppliedDirective> appliedDirectives,
+    @required core.String name,
+    @required core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     @required this.ofType,
   }) : super(
           name: name,
@@ -224,9 +225,9 @@ abstract class WrappedType<T extends Type> extends Type {
 
 class NonNull<T extends Type> extends WrappedType<T> {
   NonNull({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     T ofType,
   }) : super(
           name: name,
@@ -238,9 +239,9 @@ class NonNull<T extends Type> extends WrappedType<T> {
 
 class List<T extends Type> extends WrappedType<T> {
   List({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
     T ofType,
   }) : super(
           name: name,
@@ -252,9 +253,9 @@ class List<T extends Type> extends WrappedType<T> {
 
 class Scalar extends Type {
   Scalar({
-    String name,
-    String description,
-    Iterable<AppliedDirective> appliedDirectives,
+    core.String name,
+    core.String description,
+    core.List<AppliedDirective> appliedDirectives,
   }) : super(
           name: name,
           description: description,
@@ -264,7 +265,7 @@ class Scalar extends Type {
 
 class AppliedDirective {
   Directive directive;
-  Iterable<AppliedDirectiveArgument> args;
+  core.List<AppliedDirectiveArgument> args;
 
   AppliedDirective({
     this.directive,
@@ -273,8 +274,8 @@ class AppliedDirective {
 }
 
 class AppliedDirectiveArgument {
-  String name;
-  String value;
+  core.String name;
+  core.String value;
 
   AppliedDirectiveArgument({
     this.name,

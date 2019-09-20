@@ -7,7 +7,7 @@ import "package:gql/src/ast/visitor.dart";
 /// - [visitors] must define transformations as described in [TransformingVisitor]
 N transform<N extends Node>(
   N node,
-  Iterable<TransformingVisitor> visitors,
+  List<TransformingVisitor> visitors,
 ) =>
     node.accept(
       _Transformer(visitors: visitors),
@@ -287,7 +287,7 @@ abstract class TransformingVisitor extends Visitor<Node> {
 }
 
 class _Transformer extends Visitor<Node> {
-  Iterable<TransformingVisitor> visitors;
+  List<TransformingVisitor> visitors;
 
   _Transformer({
     this.visitors = const [],
@@ -301,8 +301,8 @@ class _Transformer extends Visitor<Node> {
     return node.accept(this) as N;
   }
 
-  Iterable<N> _visitAll<N extends Node>(
-    Iterable<N> nodes,
+  List<N> _visitAll<N extends Node>(
+    List<N> nodes,
   ) {
     if (nodes == null) return nodes;
 
@@ -313,7 +313,7 @@ class _Transformer extends Visitor<Node> {
           ) =>
               node.accept(this),
         )
-        .cast<N>();
+        .cast<N>().toList(growable: false);
   }
 
   @override

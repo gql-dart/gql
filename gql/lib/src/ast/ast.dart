@@ -1,7 +1,6 @@
+import "package:collection/collection.dart";
 import "package:gql/src/ast/visitor.dart";
 import "package:meta/meta.dart";
-import "package:quiver/collection.dart";
-import "package:quiver/core.dart";
 import "package:source_span/source_span.dart";
 
 void _visitOne<R>(
@@ -11,7 +10,7 @@ void _visitOne<R>(
     node?.accept(v);
 
 void _visitAll<R>(
-  Iterable<Node> nodes,
+  List<Node> nodes,
   Visitor<R> v,
 ) =>
     nodes?.forEach(
@@ -26,12 +25,12 @@ abstract class Node {
 
   const Node(this.span);
 
-  List<Object> _getChildren();
+  List<Object> get _children;
 
   /// Lets [Visitor] [v] visit children nodes of this node.
-  void visitChildren<R>(Visitor<R> v) => _getChildren().forEach(
+  void visitChildren<R>(Visitor<R> v) => _children.forEach(
         (child) {
-          if (child is Iterable<Node>) {
+          if (child is List<Node>) {
             _visitAll(child, v);
           } else if (child is Node) {
             _visitOne(child, v);
@@ -44,44 +43,18 @@ abstract class Node {
     if (o is Node) {
       if (o.runtimeType != runtimeType) return false;
 
-      final oChildren = o._getChildren();
-      final children = _getChildren();
-
-      for (var i = 0; i < oChildren.length; i++) {
-        final dynamic oElement = oChildren[i];
-        final dynamic element = children[i];
-
-        if (oElement == element) continue;
-
-        if (oElement is Iterable && element is Iterable) {
-          if (listsEqual(
-            oElement.toList(),
-            element.toList(),
-          )) {
-            continue;
-          }
-        }
-
-        return false;
-      }
-
-      return true;
+      const DeepCollectionEquality().equals(
+        o._children,
+        _children,
+      );
     }
 
     return false;
   }
 
   @override
-  int get hashCode => hashObjects(
-        _getChildren().map<Object>(
-          (child) {
-            if (child is Iterable) {
-              return hashObjects(child);
-            }
-
-            return child;
-          },
-        ),
+  int get hashCode => const DeepCollectionEquality().hash(
+        _children,
       );
 
   /// Accepts a [Visitor] [v].
@@ -89,7 +62,7 @@ abstract class Node {
 }
 
 class DocumentNode extends Node {
-  final Iterable<DefinitionNode> definitions;
+  final List<DefinitionNode> definitions;
 
   const DocumentNode({
     this.definitions = const [],
@@ -101,7 +74,7 @@ class DocumentNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDocumentNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         definitions,
       ];
 }
@@ -157,9 +130,9 @@ enum DirectiveLocation {
 class OperationDefinitionNode extends ExecutableDefinitionNode {
   final OperationType type;
 
-  final Iterable<VariableDefinitionNode> variableDefinitions;
+  final List<VariableDefinitionNode> variableDefinitions;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   final SelectionSetNode selectionSet;
 
@@ -182,7 +155,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitOperationDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         type,
         selectionSet,
@@ -192,7 +165,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
 }
 
 class SelectionSetNode extends Node {
-  final Iterable<SelectionNode> selections;
+  final List<SelectionNode> selections;
 
   const SelectionSetNode({
     this.selections = const [],
@@ -203,7 +176,7 @@ class SelectionSetNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitSelectionSetNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         selections,
       ];
 }
@@ -217,9 +190,9 @@ class FieldNode extends SelectionNode {
 
   final NameNode name;
 
-  final Iterable<ArgumentNode> arguments;
+  final List<ArgumentNode> arguments;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   final SelectionSetNode selectionSet;
 
@@ -239,7 +212,7 @@ class FieldNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitFieldNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         alias,
         name,
         selectionSet,
@@ -265,7 +238,7 @@ class ArgumentNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitArgumentNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         value,
       ];
@@ -274,7 +247,7 @@ class ArgumentNode extends Node {
 class FragmentSpreadNode extends SelectionNode {
   final NameNode name;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   const FragmentSpreadNode({
     @required this.name,
@@ -288,7 +261,7 @@ class FragmentSpreadNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitFragmentSpreadNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
       ];
@@ -297,7 +270,7 @@ class FragmentSpreadNode extends SelectionNode {
 class InlineFragmentNode extends SelectionNode {
   final TypeConditionNode typeCondition;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   final SelectionSetNode selectionSet;
 
@@ -314,7 +287,7 @@ class InlineFragmentNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitInlineFragmentNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         typeCondition,
         selectionSet,
         directives,
@@ -324,7 +297,7 @@ class InlineFragmentNode extends SelectionNode {
 class FragmentDefinitionNode extends ExecutableDefinitionNode {
   final TypeConditionNode typeCondition;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   final SelectionSetNode selectionSet;
 
@@ -347,7 +320,7 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitFragmentDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         typeCondition,
         selectionSet,
@@ -368,7 +341,7 @@ class TypeConditionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitTypeConditionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         on,
       ];
 }
@@ -390,7 +363,7 @@ class VariableNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitVariableNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
       ];
 }
@@ -408,7 +381,7 @@ class IntValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitIntValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
       ];
 }
@@ -426,7 +399,7 @@ class FloatValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitFloatValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
       ];
 }
@@ -448,7 +421,7 @@ class StringValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitStringValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
         isBlock,
       ];
@@ -467,7 +440,7 @@ class BooleanValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitBooleanValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
       ];
 }
@@ -481,7 +454,7 @@ class NullValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitNullValueNode(this);
 
   @override
-  _getChildren() => <Object>[];
+  get _children => <Object>[];
 }
 
 class EnumValueNode extends ValueNode {
@@ -497,13 +470,13 @@ class EnumValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitEnumValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
       ];
 }
 
 class ListValueNode extends ValueNode {
-  final Iterable<ValueNode> values;
+  final List<ValueNode> values;
 
   const ListValueNode({
     this.values = const [],
@@ -514,13 +487,13 @@ class ListValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitListValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         values,
       ];
 }
 
 class ObjectValueNode extends ValueNode {
-  final Iterable<ObjectFieldNode> fields;
+  final List<ObjectFieldNode> fields;
 
   const ObjectValueNode({
     this.fields = const [],
@@ -531,7 +504,7 @@ class ObjectValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitObjectValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         fields,
       ];
 }
@@ -553,7 +526,7 @@ class ObjectFieldNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitObjectFieldNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         value,
       ];
@@ -566,7 +539,7 @@ class VariableDefinitionNode extends Node {
 
   final DefaultValueNode defaultValue;
 
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   const VariableDefinitionNode({
     @required this.variable,
@@ -583,7 +556,7 @@ class VariableDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitVariableDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         variable,
         type,
         defaultValue,
@@ -603,7 +576,7 @@ class DefaultValueNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDefaultValueNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
       ];
 }
@@ -631,7 +604,7 @@ class NamedTypeNode extends TypeNode {
   R accept<R>(Visitor<R> v) => v.visitNamedTypeNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         isNonNull,
         name,
       ];
@@ -652,7 +625,7 @@ class ListTypeNode extends TypeNode {
   R accept<R>(Visitor<R> v) => v.visitListTypeNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         isNonNull,
         type,
       ];
@@ -661,7 +634,7 @@ class ListTypeNode extends TypeNode {
 class DirectiveNode extends Node {
   final NameNode name;
 
-  final Iterable<ArgumentNode> arguments;
+  final List<ArgumentNode> arguments;
 
   const DirectiveNode({
     @required this.name,
@@ -675,7 +648,7 @@ class DirectiveNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDirectiveNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         arguments,
       ];
@@ -694,7 +667,7 @@ class NameNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitNameNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         value,
       ];
 }
@@ -711,7 +684,7 @@ abstract class TypeSystemDefinitionNode extends DefinitionNode {
 
 abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
   final StringValueNode description;
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   const TypeDefinitionNode({
     this.description,
@@ -737,7 +710,7 @@ abstract class TypeSystemExtensionNode extends TypeSystemDefinitionNode {
 }
 
 abstract class TypeExtensionNode extends TypeSystemExtensionNode {
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   const TypeExtensionNode({
     FileSpan span,
@@ -752,8 +725,8 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
 }
 
 class SchemaDefinitionNode extends TypeSystemDefinitionNode {
-  final Iterable<DirectiveNode> directives;
-  final Iterable<OperationTypeDefinitionNode> operationTypes;
+  final List<DirectiveNode> directives;
+  final List<OperationTypeDefinitionNode> operationTypes;
 
   const SchemaDefinitionNode({
     this.directives = const [],
@@ -770,7 +743,7 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         directives,
         operationTypes,
       ];
@@ -792,7 +765,7 @@ class OperationTypeDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitOperationTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         operation,
         type,
       ];
@@ -802,7 +775,7 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
   const ScalarTypeDefinitionNode({
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
@@ -817,7 +790,7 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitScalarTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -825,15 +798,15 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class ObjectTypeDefinitionNode extends TypeDefinitionNode {
-  final Iterable<NamedTypeNode> interfaces;
-  final Iterable<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
+  final List<FieldDefinitionNode> fields;
 
   const ObjectTypeDefinitionNode({
     this.interfaces = const [],
     this.fields = const [],
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(interfaces != null),
         assert(fields != null),
@@ -850,7 +823,7 @@ class ObjectTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitObjectTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -863,8 +836,8 @@ class FieldDefinitionNode extends Node {
   final StringValueNode description;
   final NameNode name;
   final TypeNode type;
-  final Iterable<DirectiveNode> directives;
-  final Iterable<InputValueDefinitionNode> args;
+  final List<DirectiveNode> directives;
+  final List<InputValueDefinitionNode> args;
 
   const FieldDefinitionNode({
     this.description,
@@ -883,7 +856,7 @@ class FieldDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitFieldDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -897,7 +870,7 @@ class InputValueDefinitionNode extends Node {
   final NameNode name;
   final TypeNode type;
   final ValueNode defaultValue;
-  final Iterable<DirectiveNode> directives;
+  final List<DirectiveNode> directives;
 
   const InputValueDefinitionNode({
     this.description,
@@ -916,7 +889,7 @@ class InputValueDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitInputValueDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -926,13 +899,13 @@ class InputValueDefinitionNode extends Node {
 }
 
 class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
-  final Iterable<FieldDefinitionNode> fields;
+  final List<FieldDefinitionNode> fields;
 
   const InterfaceTypeDefinitionNode({
     this.fields = const [],
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(fields != null),
         assert(name != null),
@@ -948,7 +921,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitInterfaceTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -957,13 +930,13 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class UnionTypeDefinitionNode extends TypeDefinitionNode {
-  final Iterable<NamedTypeNode> types;
+  final List<NamedTypeNode> types;
 
   const UnionTypeDefinitionNode({
     this.types = const [],
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(types != null),
         assert(name != null),
@@ -979,7 +952,7 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitUnionTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -988,13 +961,13 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class EnumTypeDefinitionNode extends TypeDefinitionNode {
-  final Iterable<EnumValueDefinitionNode> values;
+  final List<EnumValueDefinitionNode> values;
 
   const EnumTypeDefinitionNode({
     this.values = const [],
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(values != null),
         assert(name != null),
@@ -1010,7 +983,7 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -1022,7 +995,7 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
   const EnumValueDefinitionNode({
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(name != null),
         assert(directives != null),
@@ -1037,7 +1010,7 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumValueDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -1045,13 +1018,13 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
 }
 
 class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
-  final Iterable<InputValueDefinitionNode> fields;
+  final List<InputValueDefinitionNode> fields;
 
   const InputObjectTypeDefinitionNode({
     this.fields = const [],
     StringValueNode description,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(fields != null),
         assert(name != null),
@@ -1067,7 +1040,7 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitInputObjectTypeDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         directives,
@@ -1077,8 +1050,8 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
 
 class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
   final StringValueNode description;
-  final Iterable<InputValueDefinitionNode> args;
-  final Iterable<DirectiveLocation> locations;
+  final List<InputValueDefinitionNode> args;
+  final List<DirectiveLocation> locations;
   final bool repeatable;
 
   const DirectiveDefinitionNode({
@@ -1101,7 +1074,7 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitDirectiveDefinitionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         description,
         locations,
@@ -1111,8 +1084,8 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
 }
 
 class SchemaExtensionNode extends TypeSystemExtensionNode {
-  final Iterable<DirectiveNode> directives;
-  final Iterable<OperationTypeDefinitionNode> operationTypes;
+  final List<DirectiveNode> directives;
+  final List<OperationTypeDefinitionNode> operationTypes;
 
   const SchemaExtensionNode({
     this.directives = const [],
@@ -1129,7 +1102,7 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         operationTypes,
@@ -1140,7 +1113,7 @@ class ScalarTypeExtensionNode extends TypeExtensionNode {
   const ScalarTypeExtensionNode({
     FileSpan span,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(directives != null),
         super(
@@ -1153,22 +1126,22 @@ class ScalarTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitScalarTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
       ];
 }
 
 class ObjectTypeExtensionNode extends TypeExtensionNode {
-  final Iterable<NamedTypeNode> interfaces;
-  final Iterable<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
+  final List<FieldDefinitionNode> fields;
 
   const ObjectTypeExtensionNode({
     @required NameNode name,
     this.interfaces = const [],
     this.fields = const [],
     FileSpan span,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(interfaces != null),
         assert(fields != null),
@@ -1183,7 +1156,7 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitObjectTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         interfaces,
@@ -1192,13 +1165,13 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
 }
 
 class InterfaceTypeExtensionNode extends TypeExtensionNode {
-  final Iterable<FieldDefinitionNode> fields;
+  final List<FieldDefinitionNode> fields;
 
   const InterfaceTypeExtensionNode({
     this.fields = const [],
     @required NameNode name,
     FileSpan span,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(fields != null),
         assert(directives != null),
@@ -1212,7 +1185,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitInterfaceTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         fields,
@@ -1220,12 +1193,12 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
 }
 
 class UnionTypeExtensionNode extends TypeExtensionNode {
-  final Iterable<NamedTypeNode> types;
+  final List<NamedTypeNode> types;
 
   const UnionTypeExtensionNode({
     this.types = const [],
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
     FileSpan span,
   })  : assert(name != null),
         assert(types != null),
@@ -1240,7 +1213,7 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitUnionTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         types,
@@ -1248,13 +1221,13 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
 }
 
 class EnumTypeExtensionNode extends TypeExtensionNode {
-  final Iterable<EnumValueDefinitionNode> values;
+  final List<EnumValueDefinitionNode> values;
 
   const EnumTypeExtensionNode({
     this.values = const [],
     FileSpan span,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(values != null),
         assert(directives != null),
@@ -1268,7 +1241,7 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         values,
@@ -1276,13 +1249,13 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
 }
 
 class InputObjectTypeExtensionNode extends TypeExtensionNode {
-  final Iterable<InputValueDefinitionNode> fields;
+  final List<InputValueDefinitionNode> fields;
 
   const InputObjectTypeExtensionNode({
     this.fields = const [],
     FileSpan span,
     @required NameNode name,
-    Iterable<DirectiveNode> directives = const [],
+    List<DirectiveNode> directives = const [],
   })  : assert(name != null),
         assert(fields != null),
         assert(directives != null),
@@ -1296,7 +1269,7 @@ class InputObjectTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitInputObjectTypeExtensionNode(this);
 
   @override
-  _getChildren() => <Object>[
+  get _children => <Object>[
         name,
         directives,
         fields,

@@ -34,13 +34,15 @@ class _PrintVisitor extends Visitor<Expression> {
   ) =>
       node != null ? node.accept(this) : literalNull;
 
-  Iterable<Expression> _acceptMany(
-    Iterable<Node> nodes,
+  List<Expression> _acceptMany(
+    List<Node> nodes,
   ) =>
-      nodes.map(_acceptOne);
+      nodes.map(_acceptOne).toList(
+            growable: false,
+          );
 
   Expression _list(
-    Iterable<Node> nodes,
+    List<Node> nodes,
   ) =>
       nodes != null
           ? literalList(

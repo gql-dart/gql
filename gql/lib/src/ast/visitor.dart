@@ -766,8 +766,8 @@ abstract class RecursiveVisitor implements Visitor<void> {
 /// traversing the AST only once and collecting the return
 /// values in the `accumulator`.
 class AccumulatingVisitor<A> extends RecursiveVisitor {
-  Iterable<SimpleVisitor<Iterable<A>>> visitors;
-  Iterable<A> accumulator = [];
+  List<SimpleVisitor<List<A>>> visitors;
+  List<A> accumulator = [];
 
   AccumulatingVisitor({
     this.visitors = const [],
@@ -777,13 +777,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitArgumentNode(
     ArgumentNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitArgumentNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitArgumentNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitArgumentNode(node);
   }
@@ -792,13 +791,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitBooleanValueNode(
     BooleanValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitBooleanValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitBooleanValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitBooleanValueNode(node);
   }
@@ -807,13 +805,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitDefaultValueNode(
     DefaultValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitDefaultValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitDefaultValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitDefaultValueNode(node);
   }
@@ -822,13 +819,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitDirectiveDefinitionNode(
     DirectiveDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitDirectiveDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitDirectiveDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitDirectiveDefinitionNode(node);
   }
@@ -837,13 +833,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitDirectiveNode(
     DirectiveNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitDirectiveNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitDirectiveNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitDirectiveNode(node);
   }
@@ -852,13 +847,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitDocumentNode(
     DocumentNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitDocumentNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitDocumentNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitDocumentNode(node);
   }
@@ -867,13 +861,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitEnumTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitEnumTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitEnumTypeDefinitionNode(node);
   }
@@ -882,13 +875,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitEnumTypeExtensionNode(
     EnumTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitEnumTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitEnumTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitEnumTypeExtensionNode(node);
   }
@@ -897,13 +889,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitEnumValueDefinitionNode(
     EnumValueDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitEnumValueDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitEnumValueDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitEnumValueDefinitionNode(node);
   }
@@ -912,13 +903,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitEnumValueNode(
     EnumValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitEnumValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitEnumValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitEnumValueNode(node);
   }
@@ -927,13 +917,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitFieldDefinitionNode(
     FieldDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitFieldDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitFieldDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitFieldDefinitionNode(node);
   }
@@ -942,13 +931,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitFieldNode(
     FieldNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitFieldNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitFieldNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitFieldNode(node);
   }
@@ -957,13 +945,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitFloatValueNode(
     FloatValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitFloatValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitFloatValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitFloatValueNode(node);
   }
@@ -972,13 +959,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitFragmentDefinitionNode(
     FragmentDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitFragmentDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitFragmentDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitFragmentDefinitionNode(node);
   }
@@ -987,13 +973,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitFragmentSpreadNode(
     FragmentSpreadNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitFragmentSpreadNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitFragmentSpreadNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitFragmentSpreadNode(node);
   }
@@ -1002,13 +987,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInlineFragmentNode(
     InlineFragmentNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitInlineFragmentNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInlineFragmentNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInlineFragmentNode(node);
   }
@@ -1017,14 +1001,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) =>
-                visitor.visitInputObjectTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInputObjectTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInputObjectTypeDefinitionNode(node);
   }
@@ -1033,14 +1015,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInputObjectTypeExtensionNode(
     InputObjectTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) =>
-                visitor.visitInputObjectTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInputObjectTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInputObjectTypeExtensionNode(node);
   }
@@ -1049,13 +1029,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInputValueDefinitionNode(
     InputValueDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitInputValueDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInputValueDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInputValueDefinitionNode(node);
   }
@@ -1064,13 +1043,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitIntValueNode(
     IntValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitIntValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitIntValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitIntValueNode(node);
   }
@@ -1079,14 +1057,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInterfaceTypeDefinitionNode(
     InterfaceTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) =>
-                visitor.visitInterfaceTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInterfaceTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInterfaceTypeDefinitionNode(node);
   }
@@ -1095,13 +1071,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitInterfaceTypeExtensionNode(
     InterfaceTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitInterfaceTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitInterfaceTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitInterfaceTypeExtensionNode(node);
   }
@@ -1110,13 +1085,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitListTypeNode(
     ListTypeNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitListTypeNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitListTypeNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitListTypeNode(node);
   }
@@ -1125,13 +1099,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitListValueNode(
     ListValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitListValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitListValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitListValueNode(node);
   }
@@ -1140,13 +1113,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitNameNode(
     NameNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitNameNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitNameNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitNameNode(node);
   }
@@ -1155,13 +1127,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitNamedTypeNode(
     NamedTypeNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitNamedTypeNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitNamedTypeNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitNamedTypeNode(node);
   }
@@ -1170,13 +1141,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitNullValueNode(
     NullValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitNullValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitNullValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitNullValueNode(node);
   }
@@ -1185,13 +1155,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitObjectFieldNode(
     ObjectFieldNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitObjectFieldNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitObjectFieldNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitObjectFieldNode(node);
   }
@@ -1200,13 +1169,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitObjectTypeDefinitionNode(
     ObjectTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitObjectTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitObjectTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitObjectTypeDefinitionNode(node);
   }
@@ -1215,13 +1183,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitObjectTypeExtensionNode(
     ObjectTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitObjectTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitObjectTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitObjectTypeExtensionNode(node);
   }
@@ -1230,13 +1197,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitObjectValueNode(
     ObjectValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitObjectValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitObjectValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitObjectValueNode(node);
   }
@@ -1245,13 +1211,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitOperationDefinitionNode(
     OperationDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitOperationDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitOperationDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitOperationDefinitionNode(node);
   }
@@ -1260,14 +1225,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitOperationTypeDefinitionNode(
     OperationTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) =>
-                visitor.visitOperationTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitOperationTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitOperationTypeDefinitionNode(node);
   }
@@ -1276,13 +1239,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitScalarTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitScalarTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitScalarTypeDefinitionNode(node);
   }
@@ -1291,13 +1253,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitScalarTypeExtensionNode(
     ScalarTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitScalarTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitScalarTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitScalarTypeExtensionNode(node);
   }
@@ -1306,13 +1267,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitSchemaDefinitionNode(
     SchemaDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitSchemaDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitSchemaDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitSchemaDefinitionNode(node);
   }
@@ -1321,13 +1281,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitSchemaExtensionNode(
     SchemaExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitSchemaExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitSchemaExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitSchemaExtensionNode(node);
   }
@@ -1336,13 +1295,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitSelectionSetNode(
     SelectionSetNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitSelectionSetNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitSelectionSetNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitSelectionSetNode(node);
   }
@@ -1351,13 +1309,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitStringValueNode(
     StringValueNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitStringValueNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitStringValueNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitStringValueNode(node);
   }
@@ -1366,13 +1323,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitTypeConditionNode(
     TypeConditionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitTypeConditionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitTypeConditionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitTypeConditionNode(node);
   }
@@ -1381,13 +1337,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitUnionTypeDefinitionNode(
     UnionTypeDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitUnionTypeDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitUnionTypeDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitUnionTypeDefinitionNode(node);
   }
@@ -1396,13 +1351,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitUnionTypeExtensionNode(
     UnionTypeExtensionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitUnionTypeExtensionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitUnionTypeExtensionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitUnionTypeExtensionNode(node);
   }
@@ -1411,13 +1365,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitVariableDefinitionNode(
     VariableDefinitionNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitVariableDefinitionNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitVariableDefinitionNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitVariableDefinitionNode(node);
   }
@@ -1426,13 +1379,12 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   visitVariableNode(
     VariableNode node,
   ) {
-    accumulator = accumulator.followedBy(
-      visitors
-          .expand(
-            (visitor) => visitor.visitVariableNode(node) ?? <A>[],
-          )
-          .toList(),
-    );
+    accumulator = [
+      ...accumulator,
+      ...visitors.expand(
+        (visitor) => visitor.visitVariableNode(node) ?? <A>[],
+      )
+    ];
 
     super.visitVariableNode(node);
   }

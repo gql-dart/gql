@@ -8,7 +8,7 @@ import "package:gql/src/validation/validating_visitor.dart";
 import "package:meta/meta.dart";
 
 /// Validates a [schema]
-Iterable<ValidationError> validateSchema(
+List<ValidationError> validateSchema(
   ast.Node schema,
 ) {
   final validator = _Validator(
@@ -28,7 +28,7 @@ Iterable<ValidationError> validateSchema(
 
 /// Validates an [operation] without knowing anything
 /// about the schema
-Iterable<ValidationError> validateOperation(
+List<ValidationError> validateOperation(
   ast.Node operation,
 ) {
   final validator = _Validator(
@@ -41,7 +41,7 @@ Iterable<ValidationError> validateOperation(
 }
 
 /// Validates a [node] given a [Set] of [ValidationRule]s
-Iterable<ValidationError> validate(
+List<ValidationError> validate(
   ast.Node node,
   Set<ValidationRule> rules,
 ) {
@@ -57,7 +57,7 @@ Iterable<ValidationError> validate(
 /// Validates an [operation] in the context of [schema]
 ///
 /// Assumes valid [schema]
-Iterable<ValidationError> validateRequest(
+List<ValidationError> validateRequest(
   ast.DocumentNode schema,
   ast.DocumentNode operation,
 ) {
@@ -115,7 +115,7 @@ class _Validator {
     this.rules,
   });
 
-  Iterable<ValidationError> validate({
+  List<ValidationError> validate({
     ast.Node node,
   }) {
     final visitor = ast.AccumulatingVisitor<ValidationError>(

@@ -103,7 +103,7 @@ class _Parser {
     return _tokens[_position + offset];
   }
 
-  Iterable<N> _parseMany<N>(
+  List<N> _parseMany<N>(
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
@@ -120,7 +120,7 @@ class _Parser {
     return nodes;
   }
 
-  Iterable<N> _maybeParseMany<N>(
+  List<N> _maybeParseMany<N>(
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
@@ -138,7 +138,7 @@ class _Parser {
     return <N>[];
   }
 
-  Iterable<N> _parseAny<N>(
+  List<N> _parseAny<N>(
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
@@ -253,7 +253,7 @@ class _Parser {
     );
   }
 
-  Iterable<VariableDefinitionNode> _parseVariableDefinitions() =>
+  List<VariableDefinitionNode> _parseVariableDefinitions() =>
       _maybeParseMany(
         TokenKind.parenL,
         _parseVariableDefinition,
@@ -414,7 +414,7 @@ class _Parser {
         ),
       );
 
-  Iterable<DirectiveNode> _parseDirectives({bool isConst = false}) {
+  List<DirectiveNode> _parseDirectives({bool isConst = false}) {
     final directives = <DirectiveNode>[];
     while (_peek(TokenKind.at)) {
       directives.add(_parseDirective(isConst: isConst));
@@ -432,7 +432,7 @@ class _Parser {
     );
   }
 
-  Iterable<ArgumentNode> _parseArguments({bool isConst}) => _maybeParseMany(
+  List<ArgumentNode> _parseArguments({bool isConst}) => _maybeParseMany(
         TokenKind.parenL,
         isConst ? _parseConstArgument : _parseNonConstArgument,
         TokenKind.parenR,
@@ -673,7 +673,7 @@ class _Parser {
     return null;
   }
 
-  Iterable<NamedTypeNode> _parseImplementsInterfaces() {
+  List<NamedTypeNode> _parseImplementsInterfaces() {
     final types = <NamedTypeNode>[];
 
     if (_expectOptionalKeyword("implements") != null) {
@@ -703,7 +703,7 @@ class _Parser {
     );
   }
 
-  Iterable<FieldDefinitionNode> _parseFieldsDefinition() => _maybeParseMany(
+  List<FieldDefinitionNode> _parseFieldsDefinition() => _maybeParseMany(
         TokenKind.braceL,
         _parseFieldDefinition,
         TokenKind.braceR,
@@ -726,7 +726,7 @@ class _Parser {
     );
   }
 
-  Iterable<InputValueDefinitionNode> _parseArgumentDefinitions() =>
+  List<InputValueDefinitionNode> _parseArgumentDefinitions() =>
       _maybeParseMany<InputValueDefinitionNode>(
         TokenKind.parenL,
         _parseInputValueDefinition,
@@ -783,7 +783,7 @@ class _Parser {
     );
   }
 
-  Iterable<NamedTypeNode> _parseUnionMemberTypes() {
+  List<NamedTypeNode> _parseUnionMemberTypes() {
     final types = <NamedTypeNode>[];
 
     if (_expectOptionalToken(TokenKind.equals) != null) {
@@ -811,7 +811,7 @@ class _Parser {
     );
   }
 
-  Iterable<EnumValueDefinitionNode> _parseEnumValuesDefinition() =>
+  List<EnumValueDefinitionNode> _parseEnumValuesDefinition() =>
       _maybeParseMany(
         TokenKind.braceL,
         _parseEnumValueDefinition,
@@ -845,7 +845,7 @@ class _Parser {
     );
   }
 
-  Iterable<InputValueDefinitionNode> _parseInputFieldsDefinition() =>
+  List<InputValueDefinitionNode> _parseInputFieldsDefinition() =>
       _maybeParseMany(
         TokenKind.braceL,
         _parseInputValueDefinition,
@@ -871,7 +871,7 @@ class _Parser {
     );
   }
 
-  Iterable<DirectiveLocation> _parseDirectiveLocations() {
+  List<DirectiveLocation> _parseDirectiveLocations() {
     _expectOptionalToken(TokenKind.pipe);
     final locations = <DirectiveLocation>[];
     do {
