@@ -5,7 +5,7 @@ import "package:gql/execution.dart";
 import "package:meta/meta.dart";
 
 typedef NextLink = Stream<Response> Function(
-  Request operation,
+  Request request,
 );
 
 abstract class Link {
@@ -15,7 +15,7 @@ abstract class Link {
       _LinkChain(links);
 
   Stream<Response> request(
-    Request operation, [
+    Request request, [
     NextLink forward,
   ]);
 }
@@ -27,11 +27,11 @@ class _LinkChain implements Link {
 
   @override
   Stream<Response> request(
-    Request operation, [
+    Request request, [
     NextLink forward,
   ]) =>
       links.toList(growable: false).reversed.fold<NextLink>(
             forward,
             (fw, link) => (op) => link.request(op, fw),
-          )(operation);
+          )(request);
 }
