@@ -19,7 +19,6 @@ dependencies:
 dev_dependencies:
   test: ^1.0.0
   build_test: ^0.10.7
-  gql_pedantic:
-    path: ../gql_pedantic
+  gql_pedantic: ^1.0.0
   cats:
     path: ../cats
