@@ -1,7 +1,7 @@
 name: gql_pedantic
 description: Even more opinionated lint rules.
-# version: 0.0.0
-homepage: https://github.com/gql-dart/gql/tree/master/gql-pedantic
+version: 1.0.0
+homepage: https://github.com/gql-dart/gql/tree/master/gql_pedantic
 author: Klāvs Priedītis <klavs@prieditis.lv>
 
 environment:
