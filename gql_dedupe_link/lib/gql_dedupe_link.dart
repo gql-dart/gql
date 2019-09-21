@@ -29,9 +29,9 @@ class DedupeLink implements Link {
     };
 
     splitter.split().first.then(
-      (e) => closeSplitter(),
-      onError: (dynamic e) => closeSplitter(),
-    );
+          (e) => closeSplitter(),
+          onError: (dynamic e) => closeSplitter(),
+        );
 
     return splitter.split();
   }

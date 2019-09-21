@@ -23,7 +23,6 @@ void main() {
         ),
       );
 
-
       final result1 = Response(
         data: const <String, dynamic>{"a": 1},
       );
@@ -33,7 +32,7 @@ void main() {
       when(
         mockLink.request(req1, null),
       ).thenAnswer(
-          (_) => Stream.fromIterable([result1]),
+        (_) => Stream.fromIterable([result1]),
       );
 
       final link = Link.from([
@@ -85,13 +84,13 @@ void main() {
       when(
         mockLink.request(req1, null),
       ).thenAnswer(
-          (_) => Stream.fromIterable([result1]),
+        (_) => Stream.fromIterable([result1]),
       );
 
       when(
         mockLink.request(req2, null),
       ).thenAnswer(
-          (_) => Stream.fromIterable([result2]),
+        (_) => Stream.fromIterable([result2]),
       );
 
       final link = Link.from([
