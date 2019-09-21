@@ -1,3 +1,8 @@
+## 0.7.1
+
+- Fix AST equality
+- Extract lint rules
+
 ## 0.7.0
 
 - Breaking: use `List` instead of `Iterbale`
