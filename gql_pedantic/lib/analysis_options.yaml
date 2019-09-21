@@ -1,0 +1,89 @@
+include: package:pedantic/analysis_options.yaml
+
+# For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
+linter:
+  rules:
+    - prefer_double_quotes
+    - annotate_overrides
+    - unnecessary_statements
+    - directives_ordering
+    - file_names
+    - prefer_expression_function_bodies
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_generic_function_type_aliases
+    - prefer_null_aware_operators
+    - prefer_spread_collections
+    - unnecessary_overrides
+    - unnecessary_parenthesis
+    - unnecessary_this
+    - package_names
+    - sort_pub_dependencies
+    - always_require_non_null_named_parameters
+    - avoid_null_checks_in_equality_operators
+    - avoid_unused_constructor_parameters
+    - constant_identifier_names
+    - curly_braces_in_flow_control_structures
+    - library_names
+    - library_prefixes
+    - parameter_assignments
+    - prefer_asserts_in_initializer_lists
+    - prefer_collection_literals
+    - prefer_conditional_assignment
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_constructors_over_static_methods
+    - prefer_if_null_operators
+    - prefer_initializing_formals
+    - prefer_inlined_adds
+    - prefer_typing_uninitialized_variables
+    - unnecessary_lambdas
+    - use_function_type_syntax_for_parameters
+
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    prefer_double_quotes: error
+    annotate_overrides: error
+    unnecessary_statements: error
+    directives_ordering: error
+    file_names: error
+    prefer_expression_function_bodies: error
+    prefer_final_fields: error
+    prefer_final_in_for_each: error
+    prefer_final_locals: error
+    prefer_generic_function_type_aliases: error
+    prefer_null_aware_operators: error
+    prefer_spread_collections: error
+    unnecessary_overrides: error
+    unnecessary_parenthesis: error
+    unnecessary_this: error
+    package_names: error
+    sort_pub_dependencies: error
+    missing_required_param: error
+    must_be_immutable: error
+    always_require_non_null_named_parameters: error
+    avoid_null_checks_in_equality_operators: error
+    avoid_unused_constructor_parameters: error
+    constant_identifier_names: error
+    curly_braces_in_flow_control_structures: error
+    library_names: error
+    library_prefixes: error
+    parameter_assignments: error
+    prefer_asserts_in_initializer_lists: error
+    prefer_collection_literals: error
+    prefer_conditional_assignment: error
+    prefer_const_constructors_in_immutables: error
+    prefer_const_declarations: error
+    prefer_const_literals_to_create_immutables: error
+    prefer_constructors_over_static_methods: error
+    prefer_if_null_operators: error
+    prefer_initializing_formals: error
+    prefer_inlined_adds: error
+    prefer_typing_uninitialized_variables: error
+    unnecessary_lambdas: error
+    use_function_type_syntax_for_parameters: error

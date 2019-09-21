@@ -11,10 +11,13 @@ import "package:meta/meta.dart";
 class GraphQLError {
   /// Error message
   final String message;
+
   /// Locations of the nodes in document which caused the error
   final List<ErrorLocation> locations;
+
   /// Path of the error node in the query
   final List<dynamic /* String | int */ > path;
+
   /// Implementation-specific extensions to this error
   final Map<String, dynamic> extensions;
 
@@ -44,6 +47,7 @@ class ErrorLocation {
 class Response {
   /// Error returned executing the [Request]
   final List<GraphQLError> errors;
+
   /// Data returned executing the [Request]
   ///
   /// Follows the shape of requested document.
@@ -62,10 +66,12 @@ class Response {
 class Operation {
   /// Document containing at least one [OperationDefinitionNode]
   final DocumentNode document;
+
   /// Name of the executable definition
   ///
   /// Must be specified if [document] contains more than one [OperationDefinitionNode]
   final String operationName;
+
   /// Variables for the operation
   final Map<String, dynamic> variables;
 
