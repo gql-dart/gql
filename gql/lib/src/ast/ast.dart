@@ -43,7 +43,7 @@ abstract class Node {
     if (o is Node) {
       if (o.runtimeType != runtimeType) return false;
 
-      const DeepCollectionEquality().equals(
+      return const DeepCollectionEquality().equals(
         o._children,
         _children,
       );
