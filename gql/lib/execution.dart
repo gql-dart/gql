@@ -68,7 +68,7 @@ class ErrorLocation {
 
   @override
   bool operator ==(Object o) =>
-      o is GraphQLError &&
+      o is ErrorLocation &&
       const DeepCollectionEquality().equals(
         o._getChildren(),
         _getChildren(),
