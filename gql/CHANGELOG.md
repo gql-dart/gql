@@ -1,3 +1,7 @@
+## 0.8.0
+
+- `package:gql/execution`: add `Context` to `Request`
+
 ## 0.7.4
 
 - Implement `GraphQLError.toString`
