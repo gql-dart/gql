@@ -1,6 +1,7 @@
 ## 0.7.4
 
 - Implement `GraphQLError.toString`
+- Use `package:gql_http_link` in `ast_builder` example
 
 ## 0.7.3
 

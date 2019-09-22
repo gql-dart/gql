@@ -1,8 +1,10 @@
 import "dart:io" show stdout, stderr, exit;
 
 import "package:args/args.dart";
-import "package:gql/language.dart";
-import "package:graphql/client.dart";
+import "package:gql/execution.dart";
+import "package:gql/link.dart";
+import "package:gql_http_link/gql_http_link.dart";
+import "package:http/http.dart" as http;
 
 import "./gql/add_star.ast.g.dart" as add_star;
 import "./gql/read_repos.ast.g.dart" as read_repos;
@@ -11,41 +13,40 @@ import "./local.dart";
 
 ArgResults argResults;
 
-// client - create a graphql client
-GraphQLClient client() {
-  final HttpLink _httpLink = HttpLink(
-    uri: "https://api.github.com/graphql",
-  );
+class AuthClient extends http.BaseClient {
+  final _client = http.Client();
 
-  final AuthLink _authLink = AuthLink(
-    // ignore: undefined_identifier
-    getToken: () async => "Bearer $token",
-  );
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) {
+    request.headers["Authorization"] = "Bearer $token";
 
-  final Link _link = _authLink.concat(_httpLink);
-
-  return GraphQLClient(
-    cache: InMemoryCache(),
-    link: _link,
-  );
+    return _client.send(request);
+  }
 }
 
 // query example - fetch all your github repositories
 void query() async {
-  final GraphQLClient _client = client();
+  final Link link = HttpLink(
+    "https://api.github.com/graphql",
+    httpClient: AuthClient(),
+  );
 
   const int nRepositories = 50;
 
-  final QueryOptions options = QueryOptions(
-    document: printNode(read_repos.document),
-    variables: <String, dynamic>{
-      "nRepositories": nRepositories,
-    },
+  final responseStream = link.request(
+    const Request(
+      operation: Operation(
+        document: read_repos.document,
+        variables: <String, dynamic>{
+          "nRepositories": nRepositories,
+        },
+      ),
+    ),
   );
 
-  final QueryResult result = await _client.query(options);
+  final result = await responseStream.first;
 
-  if (result.hasErrors) {
+  if (result.errors != null) {
     stderr.writeln(result.errors);
     exit(2);
   }
@@ -67,26 +68,33 @@ void starRepository(String repositoryID) async {
     exit(2);
   }
 
-  final GraphQLClient _client = client();
-
-  final MutationOptions options = MutationOptions(
-    document: printNode(add_star.document),
-    variables: <String, dynamic>{
-      "starrableId": repositoryID,
-    },
+  final Link link = HttpLink(
+    "https://api.github.com/graphql",
+    httpClient: AuthClient(),
   );
 
-  final QueryResult result = await _client.mutate(options);
+  final responseStream = link.request(
+    Request(
+      operation: Operation(
+        document: add_star.document,
+        variables: <String, dynamic>{
+          "starrableId": repositoryID,
+        },
+      ),
+    ),
+  );
 
-  if (result.hasErrors) {
+  final result = await responseStream.first;
+
+  if (result.errors != null) {
     stderr.writeln(result.errors);
     exit(2);
   }
 
-  final bool isStarrred =
+  final bool isStarred =
       result.data["action"]["starrable"]["viewerHasStarred"] as bool;
 
-  if (isStarrred) {
+  if (isStarred) {
     stdout.writeln("Thanks for your star!");
   }
 
@@ -100,26 +108,33 @@ void removeStarFromRepository(String repositoryID) async {
     exit(2);
   }
 
-  final GraphQLClient _client = client();
-
-  final MutationOptions options = MutationOptions(
-    document: printNode(remove_star.document),
-    variables: <String, dynamic>{
-      "starrableId": repositoryID,
-    },
+  final Link link = HttpLink(
+    "https://api.github.com/graphql",
+    httpClient: AuthClient(),
   );
 
-  final QueryResult result = await _client.mutate(options);
+  final responseStream = link.request(
+    Request(
+      operation: Operation(
+        document: remove_star.document,
+        variables: <String, dynamic>{
+          "starrableId": repositoryID,
+        },
+      ),
+    ),
+  );
 
-  if (result.hasErrors) {
+  final result = await responseStream.first;
+
+  if (result.errors != null) {
     stderr.writeln(result.errors);
     exit(2);
   }
 
-  final bool isStarrred =
+  final bool isStarred =
       result.data["action"]["starrable"]["viewerHasStarred"] as bool;
 
-  if (!isStarrred) {
+  if (!isStarred) {
     stdout.writeln("Sorry you changed your mind!");
   }
 
