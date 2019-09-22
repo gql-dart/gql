@@ -1,3 +1,7 @@
+## 0.7.2
+
+- Implement equality checks for all package:gql/execution` classes.
+
 ## 0.7.1
 
 - Fix AST equality

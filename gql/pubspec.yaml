@@ -1,6 +1,6 @@
 name: gql
 description: GraphQL tools for parsing, transforming and printing GraphQL documents.
-version: 0.7.1
+version: 0.7.2
 homepage: https://github.com/gql-dart/gql/tree/master/gql
 author: Klāvs Priedītis <klavs@prieditis.lv>
 

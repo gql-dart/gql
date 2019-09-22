@@ -27,6 +27,26 @@ class GraphQLError {
     this.path,
     this.extensions,
   }) : assert(message != null);
+
+  List<Object> _getChildren() => [
+        message,
+        locations,
+        path,
+        extensions,
+      ];
+
+  @override
+  bool operator ==(Object o) =>
+      o is GraphQLError &&
+      const DeepCollectionEquality().equals(
+        o._getChildren(),
+        _getChildren(),
+      );
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(
+        _getChildren(),
+      );
 }
 
 /// Location of a GraphQL error in the request document
@@ -40,6 +60,24 @@ class ErrorLocation {
     @required this.column,
   })  : assert(line != null),
         assert(column != null);
+
+  List<Object> _getChildren() => [
+        line,
+        column,
+      ];
+
+  @override
+  bool operator ==(Object o) =>
+      o is GraphQLError &&
+      const DeepCollectionEquality().equals(
+        o._getChildren(),
+        _getChildren(),
+      );
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(
+        _getChildren(),
+      );
 }
 
 /// Execution response
@@ -57,6 +95,24 @@ class Response {
     this.errors,
     this.data,
   });
+
+  List<Object> _getChildren() => [
+        errors,
+        data,
+      ];
+
+  @override
+  bool operator ==(Object o) =>
+      o is Response &&
+      const DeepCollectionEquality().equals(
+        o._getChildren(),
+        _getChildren(),
+      );
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(
+        _getChildren(),
+      );
 }
 
 /// Container of a [document] and it's [variables]
