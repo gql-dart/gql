@@ -36,6 +36,9 @@ class GraphQLError {
       ];
 
   @override
+  String toString() => message;
+
+  @override
   bool operator ==(Object o) =>
       o is GraphQLError &&
       const DeepCollectionEquality().equals(

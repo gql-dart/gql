@@ -1,10 +1,14 @@
+## 0.7.4
+
+- Implement `GraphQLError.toString`
+
 ## 0.7.3
 
-- Fix equality for `package:gql/execution` `ErrorLocation`.
+- Fix equality for `package:gql/execution` `ErrorLocation`
 
 ## 0.7.2
 
-- Implement equality checks for all `package:gql/execution` classes.
+- Implement equality checks for all `package:gql/execution` classes
 
 ## 0.7.1
 
