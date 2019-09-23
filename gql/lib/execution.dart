@@ -94,10 +94,14 @@ class Response {
   /// Follows the shape of requested document.
   final Map<String, dynamic> data;
 
+  /// A [Context] to be returned along with a [Response]
+  final Context context;
+
   const Response({
     this.errors,
     this.data,
-  });
+    this.context = const Context(),
+  }) : assert(context != null);
 
   List<Object> _getChildren() => [
         errors,
@@ -172,7 +176,8 @@ class Request {
   const Request({
     @required this.operation,
     this.context = const Context(),
-  }) : assert(operation != null);
+  })  : assert(operation != null),
+        assert(context != null);
 
   List<Object> _getChildren() => [
         operation,

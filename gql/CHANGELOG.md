@@ -1,3 +1,7 @@
+## 0.8.1
+
+- `package:gql/execution`: add `Context` to `Resqponse`
+
 ## 0.8.0
 
 - `package:gql/execution`: add `Context` to `Request`
