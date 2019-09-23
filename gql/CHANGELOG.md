@@ -1,6 +1,7 @@
 ## 0.8.1
 
 - `package:gql/execution`: add `Context` to `Response`
+- make `Link` extendable
 
 ## 0.8.0
 
