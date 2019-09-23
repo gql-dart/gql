@@ -106,6 +106,7 @@ class Response {
   List<Object> _getChildren() => [
         errors,
         data,
+        context,
       ];
 
   @override
