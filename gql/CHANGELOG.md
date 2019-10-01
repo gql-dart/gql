@@ -2,6 +2,7 @@
 
 - `package:gql/execution`: add `Context` to `Response`
 - make `Link` extendable
+- `package:gql/link`: implement `ResponseParser` and `RequestSerializer`
 
 ## 0.8.0
 
