@@ -53,6 +53,8 @@ class _LinkChain extends Link {
 
 /// JSON [Response] parser
 class ResponseParser {
+  const ResponseParser();
+
   /// Parses the response body
   ///
   /// Extend this to add non-standard behavior
@@ -90,6 +92,8 @@ class ResponseParser {
 
 /// JSON [Request] serializer.
 class RequestSerializer {
+  const RequestSerializer();
+
   /// Serializes the request
   ///
   /// Extend this to add non-standard behavior

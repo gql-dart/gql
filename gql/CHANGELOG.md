@@ -1,3 +1,7 @@
+## 0.8.2
+
+- `package:gql/link`: add `const` constructor to `ResponseParser` and `RequestSerializer`
+
 ## 0.8.1
 
 - `package:gql/execution`: add `Context` to `Response`
