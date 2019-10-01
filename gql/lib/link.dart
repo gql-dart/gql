@@ -13,6 +13,9 @@ typedef NextLink = Stream<Response> Function(
 
 /// [DocumentNode]-based GraphQL execution interface
 abstract class Link {
+  /// Create a `Link`
+  Link();
+
   /// Create `Link` by chaining multiple [links]
   factory Link.from(
     List<Link> links,
@@ -32,7 +35,7 @@ abstract class Link {
   ]);
 }
 
-class _LinkChain implements Link {
+class _LinkChain extends Link {
   final List<Link> links;
 
   _LinkChain(this.links);
