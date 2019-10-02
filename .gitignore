@@ -12,3 +12,5 @@ doc/api/
 
 
 .idea/
+
+**/*.iml
