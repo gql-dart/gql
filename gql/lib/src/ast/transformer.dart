@@ -313,7 +313,8 @@ class _Transformer extends Visitor<Node> {
           ) =>
               node.accept(this),
         )
-        .cast<N>().toList(growable: false);
+        .cast<N>()
+        .toList(growable: false);
   }
 
   @override

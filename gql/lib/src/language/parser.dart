@@ -253,8 +253,7 @@ class _Parser {
     );
   }
 
-  List<VariableDefinitionNode> _parseVariableDefinitions() =>
-      _maybeParseMany(
+  List<VariableDefinitionNode> _parseVariableDefinitions() => _maybeParseMany(
         TokenKind.parenL,
         _parseVariableDefinition,
         TokenKind.parenR,
@@ -811,8 +810,7 @@ class _Parser {
     );
   }
 
-  List<EnumValueDefinitionNode> _parseEnumValuesDefinition() =>
-      _maybeParseMany(
+  List<EnumValueDefinitionNode> _parseEnumValuesDefinition() => _maybeParseMany(
         TokenKind.braceL,
         _parseEnumValueDefinition,
         TokenKind.braceR,
