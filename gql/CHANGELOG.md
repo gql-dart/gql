@@ -1,3 +1,7 @@
+## 0.8.3
+
+- downgrade some dependencies for Flutter compatibility
+
 ## 0.8.2
 
 - `package:gql/link`: add `const` constructor to `ResponseParser` and `RequestSerializer`
