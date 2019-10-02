@@ -11,9 +11,9 @@ dependencies:
   source_span: ^1.5.5
   code_builder: ^3.2.0
   meta: ^1.1.7
-  collection: ^1.14.12
+  collection: ^1.14.11
   build: ^1.0.0
-  dart_style: ^1.2.10
+  dart_style: ^1.2.9
   pedantic: ^1.0.0
 
 dev_dependencies:
