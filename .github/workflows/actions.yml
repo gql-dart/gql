@@ -1,0 +1,15 @@
+on: pull_request
+
+name: test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: comigor/actions/dart-test@master
+      env:
+        DTA_DISABLE_ANALYZER: disable_analyzer
+        DTA_EXCLUDE_REGEX: example
