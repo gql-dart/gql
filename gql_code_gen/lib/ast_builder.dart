@@ -6,8 +6,8 @@ import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
 import "package:gql/ast.dart";
-import "package:gql/dart.dart";
 import "package:gql/language.dart";
+import "package:gql_code_gen/gql_code_gen.dart";
 import "package:pedantic/pedantic.dart";
 
 const astExtension = ".ast.g.dart";

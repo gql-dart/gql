@@ -1,3 +1,7 @@
+## 1.0.3
+
+- upgrade `package:gql` to v0.9.0
+
 ## 1.0.2
 
 - upgrade `package:gql` to v0.8.3 which downgrades some dependencies for Flutter compatibility

@@ -1,3 +1,7 @@
+## 0.9.0
+
+- split off code generation to `package:gql_code_gen`
+
 ## 0.8.3
 
 - downgrade some dependencies for Flutter compatibility

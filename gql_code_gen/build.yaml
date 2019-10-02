@@ -1,6 +1,6 @@
 builders:
   ast_builder:
-    import: "package:gql/ast_builder.dart"
+    import: "package:gql_code_gen/ast_builder.dart"
     builder_factories: ["astBuilder"]
     build_extensions: {".graphql": [".ast.g.dart"]}
     auto_apply: dependents

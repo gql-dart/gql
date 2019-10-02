@@ -6,10 +6,10 @@ import "package:gql/link.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:http/http.dart" as http;
 
-import "./gql/add_star.ast.g.dart" as add_star;
-import "./gql/read_repos.ast.g.dart" as read_repos;
-import "./gql/remove_star.ast.g.dart" as remove_star;
-import "./local.dart";
+import "gql/add_star.ast.g.dart" as add_star;
+import "gql/read_repos.ast.g.dart" as read_repos;
+import "gql/remove_star.ast.g.dart" as remove_star;
+import "local.dart";
 
 ArgResults argResults;
 

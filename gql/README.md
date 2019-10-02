@@ -5,8 +5,6 @@ A package for working with GraphQL documents.
 This package exports several libraries:
 - `package:gql/language.dart` for working with GraphQL source;
 - `package:gql/ast.dart` for working with GraphQL AST nodes;
-- `package:gql/dart.dart` for generating Dart code from GraphQL AST nodes;
-- `package:gql/ast_builder.dart` for pre-parsing GraphQL into Dart source files.
 
 ## `package:gql/language.dart`
 
@@ -159,49 +157,6 @@ void main() {
   print(
     lang.printNode(withTypenames),
   );
-}
-```
-
-## `package:gql/dart.dart`
-
-### Generating Dart code from GraphQL AST nodes
-
-```dart
-import "package:code_builder/code_builder.dart";
-import "package:dart_style/dart_style.dart";
-import "package:gql/ast.dart" as ast;
-import "package:gql/dart.dart" as dart;
-import "package:gql/language.dart" as lang;
-
-void main() {
-  final ast.DocumentNode docNode = lang.parseString(
-    """
-    query UserInfo(\$id: ID!) {
-      user(id: \$id) {
-        id
-        name
-      }
-    }
-    """,
-  );
-
-  final Expression docExpression = dart.fromNode(
-    docNode,
-  );
-
-  final library = Library(
-    (b) => b.body.add(
-      docExpression.assignFinal("document").statement,
-    ),
-  );
-
-  final formatted = DartFormatter().format(
-    "${library.accept(
-      DartEmitter.scoped(),
-    )}",
-  );
-
-  print(formatted);
 }
 ```
 
