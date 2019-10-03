@@ -40,6 +40,7 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 [package:gql_code_gen]: ./gql_code_gen/README.md
 [package:gql_dedupe_link]: ./gql_dedupe_link/README.md
 [package:gql_pedantic]: ./gql_pedantic/README.md
+
 ## Users
 
 | Project | Description |
@@ -47,6 +48,7 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 | [artemis][artemis] | Build dart types from GraphQL schemas and queries (using Introspection Query). | 
 | [graphql fork][graphql_flutter] | A stand-alone GraphQL client for Dart, bringing all the features from a modern GraphQL client to one easy to use package. |
 | [graphql_flutter fork][graphql_flutter] | A GraphQL client for Flutter, bringing all the features from a modern GraphQL client to one easy to use package. |
+| Your project? | Open a PR to add it to this readme! |
 
 [artemis]: https://github.com/comigor/artemis
 [graphql_flutter]: https://github.com/zino-app/graphql-flutter/pull/414
