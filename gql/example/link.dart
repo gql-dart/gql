@@ -2,10 +2,13 @@ import "package:gql/execution.dart";
 import "package:gql/language.dart";
 import "package:gql/link.dart";
 
-class MyLinkContext {
+class MyLinkContext extends ContextEntry {
   final int value;
 
-  MyLinkContext(this.value);
+  const MyLinkContext(this.value);
+
+  @override
+  List<Object> get fieldsForEquality => null;
 }
 
 class MyLink implements Link {
@@ -32,7 +35,7 @@ void main() async {
               document: parseString(""),
             ),
             context: Context.fromMap(
-              <Type, Object>{
+              <Type, ContextEntry>{
                 MyLinkContext: MyLinkContext(i),
               },
             ),

@@ -5,10 +5,45 @@ import "dart:async";
 import "dart:convert";
 
 import "package:gql/execution.dart";
-import "package:gql/language.dart";
 import "package:gql/link.dart";
 import "package:http/http.dart" as http;
 import "package:meta/meta.dart";
+
+import "./exceptions.dart";
+
+/// HTTP link headers
+@immutable
+class HttpLinkHeaders extends ContextEntry {
+  /// Headers to be added to the request.
+  ///
+  /// May overrides Apollo Client awareness headers.
+  final Map<String, String> headers;
+
+  const HttpLinkHeaders({
+    this.headers = const {},
+  }) : assert(headers != null);
+
+  @override
+  List<Object> get fieldsForEquality => [
+        headers,
+      ];
+}
+
+/// HTTP link Response Context
+@immutable
+class HttpLinkResponseContext extends ContextEntry {
+  /// HTTP status code of the response
+  final int statusCode;
+
+  const HttpLinkResponseContext({
+    @required this.statusCode,
+  }) : assert(statusCode != null);
+
+  @override
+  List<Object> get fieldsForEquality => [
+        statusCode,
+      ];
+}
 
 /// A simple HttpLink implementation.
 ///
@@ -20,7 +55,16 @@ import "package:meta/meta.dart";
 /// [http.Client] to the constructor.
 class HttpLink implements Link {
   /// Endpoint of the GraphQL service
-  final String graphQLEndpoint;
+  final String uri;
+
+  /// Default HTTP headers
+  final Map<String, String> defaultHeaders;
+
+  /// Serializer used to serialize request
+  final RequestSerializer serializer;
+
+  /// Parser used to parse response
+  final ResponseParser parser;
 
   http.Client _httpClient;
 
@@ -28,86 +72,84 @@ class HttpLink implements Link {
   ///
   /// You can pass a [httpClient] to extend to customize the network request.
   HttpLink(
-    this.graphQLEndpoint, {
+    this.uri, {
+    this.defaultHeaders = const {},
     http.Client httpClient,
+    this.serializer = const RequestSerializer(),
+    this.parser = const ResponseParser(),
   }) {
     _httpClient = httpClient ?? http.Client();
-  }
-
-  /// Serializes the request
-  ///
-  /// Extend this to add non-standard behavior
-  @visibleForOverriding
-  Map<String, dynamic> serializeRequest(Request request) => <String, dynamic>{
-        "operationName": request.operation.operationName,
-        "variables": request.operation.variables,
-        "query": printNode(request.operation.document),
-      };
-
-  /// Parses the response body
-  ///
-  /// Extend this to add non-standard behavior
-  @visibleForOverriding
-  Response parseResponse(Map<String, dynamic> body) => Response(
-        errors: (body["errors"] as List)
-            ?.map(
-              (dynamic error) => parseError(error as Map<String, dynamic>),
-            )
-            ?.toList(),
-        data: body["data"] as Map<String, dynamic>,
-      );
-
-  /// Parses a response error
-  ///
-  /// Extend this to add non-standard behavior
-  @visibleForOverriding
-  GraphQLError parseError(Map<String, dynamic> error) => GraphQLError(
-        message: error["message"] as String,
-        path: error["path"] as List,
-        locations: (error["locations"] as List)
-            ?.map(
-              (dynamic error) => parseLocation(error as Map<String, dynamic>),
-            )
-            ?.toList(),
-        extensions: error["extensions"] as Map<String, dynamic>,
-      );
-
-  /// Parses a response error location
-  ///
-  /// Extend this to add non-standard behavior
-  @visibleForOverriding
-  ErrorLocation parseLocation(Map<String, dynamic> location) => ErrorLocation(
-        line: location["line"] as int,
-        column: location["column"] as int,
-      );
-
-  Future<Response> _post(Request request) async {
-    final response = await _httpClient.post(
-      graphQLEndpoint,
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json",
-      },
-      body: json.encode(
-        serializeRequest(request),
-      ),
-    );
-
-    final dynamic body = json.decode(
-      utf8.decode(
-        response.bodyBytes,
-      ),
-    );
-
-    return parseResponse(body as Map<String, dynamic>);
   }
 
   @override
   Stream<Response> request(
     Request request, [
     NextLink forward,
-  ]) =>
-      Stream.fromFuture(
-        _post(request),
+  ]) async* {
+    dynamic body;
+
+    try {
+      body = json.encode(
+        serializer.serializeRequest(request),
       );
+    } on Exception catch (e) {
+      throw SerializerException(
+        originalException: e,
+      );
+    }
+
+    final httpResponse = await _httpClient.post(
+      uri,
+      headers: {
+        "Content-type": "application/json",
+        "Accept": "*/*",
+        ...defaultHeaders,
+        ..._getHttpLinkHeaders(request),
+      },
+      body: body,
+    );
+
+    Response response;
+
+    try {
+      final dynamic responseBody = json.decode(
+        utf8.decode(
+          httpResponse.bodyBytes,
+        ),
+      );
+
+      response = parser.parseResponse(responseBody as Map<String, dynamic>);
+    } on Exception catch (e) {
+      throw ParserException(
+        originalException: e,
+        response: httpResponse,
+      );
+    }
+
+    if (httpResponse.statusCode >= 300 ||
+        (response.data == null && response.errors == null)) {
+      throw ServerException(
+        response: httpResponse,
+        parsedResponse: response,
+      );
+    }
+
+    yield Response(
+      data: response.data,
+      errors: response.errors,
+      context: response.context.withEntry(
+        HttpLinkResponseContext(
+          statusCode: httpResponse.statusCode,
+        ),
+      ),
+    );
+  }
+}
+
+Map<String, String> _getHttpLinkHeaders(Request request) {
+  final HttpLinkHeaders linkHeaders = request.context.entry();
+
+  return {
+    if (linkHeaders != null) ...linkHeaders.headers,
+  };
 }
