@@ -1,3 +1,7 @@
+## 0.10.0
+
+- rework `Context` to consist of `ContextEntry` map with equality checks
+
 ## 0.9.0
 
 - split off code generation to `package:gql_code_gen`
