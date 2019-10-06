@@ -18,7 +18,7 @@ targets:
 The generated source depends on `package:gql/ast.dart` so you'll need to add it to your `pubspec.yaml`
 ```yaml
 dependencies:
-  gql: ^0.9.0
+  gql: ^0.10.0
 ```
 
 ## Features and bugs
