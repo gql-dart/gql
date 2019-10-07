@@ -24,7 +24,7 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
-| [![version][package:gql:version]][package:gql] | [`package:gql`][package:gql:source] | `link.dart` | Base for modular GraphQL execution interface |
+| [![version][package:gql_link:version]][package:gql_link] | [`package:gql_link`][package:gql_link:source] | `link.dart` | Base for modular GraphQL execution interface |
 | [![version][package:gql_http_link:version]][package:gql_http_link] | [`package:gql_http_link`][package:gql_http_link:source] | `gql_http_link.dart` | Link to execute GraphQL requests via HTTP |
 | [![version][package:gql_dedupe_link:version]][package:gql_dedupe_link] | [`package:gql_dedupe_link`][package:gql_dedupe_link:source] | `gql_dedupe_link.dart` | De-duplicating Link to avoid execution of identical requests |
 
@@ -38,6 +38,9 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 [package:gql:source]: ./gql/README.md
 [package:gql]: https://pub.dartlang.org/packages/gql
 [package:gql:version]: https://img.shields.io/pub/v/gql.svg?style=flat-square 
+[package:gql_link:source]: ./gql_link/README.md
+[package:gql_link]: https://pub.dartlang.org/packages/gql_link
+[package:gql_link:version]: https://img.shields.io/pub/v/gql_link.svg?style=flat-square 
 [package:gql_http_link:source]: ./gql_http_link/README.md
 [package:gql_http_link]: https://pub.dartlang.org/packages/gql_http_link
 [package:gql_http_link:version]: https://img.shields.io/pub/v/gql_http_link.svg?style=flat-square 
