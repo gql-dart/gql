@@ -1,3 +1,7 @@
+## 0.2.2
+
+- `package:gql` version fix
+
 ## 0.2.1
 
 - re-use `package:gql_link` exceptions
