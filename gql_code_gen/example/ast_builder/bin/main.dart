@@ -2,8 +2,8 @@ import "dart:io" show stdout, stderr, exit;
 
 import "package:args/args.dart";
 import "package:gql/execution.dart";
-import "package:gql/link.dart";
 import "package:gql_http_link/gql_http_link.dart";
+import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
 
 import "gql/add_star.ast.g.dart" as add_star;

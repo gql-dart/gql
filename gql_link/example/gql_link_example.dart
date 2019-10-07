@@ -1,6 +1,6 @@
 import "package:gql/execution.dart";
 import "package:gql/language.dart";
-import "package:gql/link.dart";
+import "package:gql_link/gql_link.dart";
 
 class MyLinkContext extends ContextEntry {
   final int value;

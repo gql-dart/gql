@@ -5,7 +5,7 @@ A GQL Link to deduplicate in-flight requests.
 A simple usage example:
 
 ```dart
-import "package:gql/link.dart";
+import "package:gql_link/gql_link.dart";
 import "package:gql_dedupe_link/gql_dedupe_link.dart";
 
 void main () {

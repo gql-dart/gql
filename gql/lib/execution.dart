@@ -6,6 +6,8 @@ import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:meta/meta.dart";
 
+typedef ContextUpdater<T> = T Function(T entry);
+
 /// GraphQL Error returned if execution fails
 @immutable
 class GraphQLError {
@@ -103,6 +105,23 @@ class Response {
     this.context = const Context(),
   }) : assert(context != null);
 
+  /// Clone this response adding an [entry] to [context]
+  Response withContextEntry<T extends ContextEntry>(T entry) => Response(
+        errors: errors,
+        data: data,
+        context: context.withEntry<T>(entry),
+      );
+
+  /// Clone this response updating an [entry] to [context]
+  Response updateContextEntry<T extends ContextEntry>(
+    ContextUpdater<T> update,
+  ) =>
+      Response(
+        errors: errors,
+        data: data,
+        context: context.updateEntry<T>(update),
+      );
+
   List<Object> _getChildren() => [
         errors,
         data,
@@ -179,6 +198,21 @@ class Request {
     this.context = const Context(),
   })  : assert(operation != null),
         assert(context != null);
+
+  /// Clone this request adding an [entry] to [context]
+  Request withContextEntry<T extends ContextEntry>(T entry) => Request(
+        operation: operation,
+        context: context.withEntry<T>(entry),
+      );
+
+  /// Clone this request updating an [entry] in the [context]
+  Request updateContextEntry<T extends ContextEntry>(
+    ContextUpdater<T> update,
+  ) =>
+      Request(
+        operation: operation,
+        context: context.updateEntry<T>(update),
+      );
 
   List<Object> _getChildren() => [
         operation,
@@ -322,6 +356,16 @@ class Context {
       },
     );
   }
+
+  /// Create a [Context] by updating entry of type [T]
+  Context updateEntry<T extends ContextEntry>(
+    ContextUpdater<T> update,
+  ) =>
+      withEntry<T>(
+        update(
+          entry<T>(),
+        ),
+      );
 
   /// Retrieves an entry from [Context] by type [T].
   ///

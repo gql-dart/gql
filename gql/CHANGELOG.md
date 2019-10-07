@@ -1,3 +1,9 @@
+## 0.11.0
+
+- expose `Request` and `Response` extensions via `Context` 
+- add convenience methods to work with `Context`
+- split off code generation to `package:gql_code_gen`
+
 ## 0.10.0
 
 - rework `Context` to consist of `ContextEntry` map with equality checks

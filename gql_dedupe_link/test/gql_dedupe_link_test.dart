@@ -2,8 +2,8 @@ import "dart:async";
 
 import "package:gql/execution.dart";
 import "package:gql/language.dart";
-import "package:gql/link.dart";
 import "package:gql_dedupe_link/gql_dedupe_link.dart";
+import "package:gql_link/gql_link.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 

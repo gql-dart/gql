@@ -1,3 +1,8 @@
+## 0.2.1
+
+- re-use `package:gql_link` exceptions
+- add support for extensions via `Context` by using the latest `package:gql`
+
 ## 0.2.0
 
 - ability to configure headers on link

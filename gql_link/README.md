@@ -1,4 +1,4 @@
-GQL Terminating Link to execute requests via HTTP using JSON.
+A simple and modular AST-based GraphQL request execution interface.
 
 ## Usage
 
@@ -6,11 +6,15 @@ A simple usage example:
 
 ```dart
 import "package:gql_link/gql_link.dart";
+import "package:gql_dedupe_link/gql_dedupe_link.dart";
 import "package:gql_http_link/gql_http_link.dart";
+
+import "./my_custom_link.dart";
 
 void main () {
   final link = Link.from([
-    // SomeLink(),
+    MyCustomLink(),
+    DedupeLink()
     HttpLink("/graphql"),
   ]);
 }

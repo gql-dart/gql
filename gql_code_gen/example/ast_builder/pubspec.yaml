@@ -6,8 +6,9 @@ environment:
 dependencies:
   args:
   http: ^0.12.0+2
-  gql: ^0.10.0
-  gql_http_link: ^0.1.1
+  gql: ^0.11.0
+  gql_link: ^0.10.0
+  gql_http_link: ^0.2.1
 
 dev_dependencies:
   build_runner: ^1.0.0
@@ -17,6 +18,8 @@ dev_dependencies:
 dependency_overrides:
   gql:
     path: ../../../gql
+  gql_link:
+    path: ../../../gql_link
   gql_http_link:
     path: ../../../gql_http_link
   gql_code_gen:

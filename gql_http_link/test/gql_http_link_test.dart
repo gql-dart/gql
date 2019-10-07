@@ -3,9 +3,8 @@ import "dart:convert";
 
 import "package:gql/execution.dart";
 import "package:gql/language.dart";
-import "package:gql/link.dart";
-import "package:gql_http_link/exceptions.dart";
 import "package:gql_http_link/gql_http_link.dart";
+import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
@@ -68,8 +67,13 @@ void main() {
           Response(
             data: const <String, dynamic>{},
             errors: null,
-            context:
-                Context().withEntry(HttpLinkResponseContext(statusCode: 200)),
+            context: Context()
+                .withEntry(
+                  ResponseExtensions(null),
+                )
+                .withEntry(
+                  HttpLinkResponseContext(statusCode: 200),
+                ),
           ),
           emitsDone,
         ]),
@@ -376,15 +380,20 @@ void main() {
                 ],
               ),
             ],
-            context:
-                Context().withEntry(HttpLinkResponseContext(statusCode: 200)),
+            context: Context()
+                .withEntry(
+                  ResponseExtensions(null),
+                )
+                .withEntry(
+                  HttpLinkResponseContext(statusCode: 200),
+                ),
           ),
           emitsDone,
         ]),
       );
     });
 
-    test("throws ServerException when status code >= 300", () async {
+    test("throws HttpLinkServerException when status code >= 300", () async {
       final http.Response response = http.Response(
         json.encode(<String, dynamic>{
           "data": <String, dynamic>{},
@@ -405,17 +414,17 @@ void main() {
         ),
       );
 
-      ServerException exception;
+      HttpLinkServerException exception;
 
       try {
         await execute().first;
       } catch (e) {
-        exception = e as ServerException;
+        exception = e as HttpLinkServerException;
       }
 
       expect(
         exception,
-        TypeMatcher<ServerException>(),
+        TypeMatcher<HttpLinkServerException>(),
       );
       expect(
         exception.response,
@@ -427,12 +436,15 @@ void main() {
           Response(
             data: const <String, dynamic>{},
             errors: null,
+            context: Context().withEntry(
+              ResponseExtensions(null),
+            ),
           ),
         ),
       );
     });
 
-    test("throws ServerException when no data and errors", () async {
+    test("throws HttpLinkServerException when no data and errors", () async {
       final http.Response response = http.Response(
         json.encode(<String, dynamic>{}),
         200,
@@ -451,17 +463,17 @@ void main() {
         ),
       );
 
-      ServerException exception;
+      HttpLinkServerException exception;
 
       try {
         await execute().first;
       } catch (e) {
-        exception = e as ServerException;
+        exception = e as HttpLinkServerException;
       }
 
       expect(
         exception,
-        TypeMatcher<ServerException>(),
+        TypeMatcher<HttpLinkServerException>(),
       );
       expect(
         exception.response,
@@ -471,9 +483,11 @@ void main() {
         exception.parsedResponse,
         equals(
           Response(
-            data: null,
-            errors: null,
-          ),
+              data: null,
+              errors: null,
+              context: Context().withEntry(
+                ResponseExtensions(null),
+              )),
         ),
       );
     });

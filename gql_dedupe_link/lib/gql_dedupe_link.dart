@@ -3,7 +3,7 @@ library gql_dedupe_link;
 
 import "package:async/async.dart";
 import "package:gql/execution.dart";
-import "package:gql/link.dart";
+import "package:gql_link/gql_link.dart";
 
 /// A [Link] to deduplicate [Request]s
 class DedupeLink implements Link {
