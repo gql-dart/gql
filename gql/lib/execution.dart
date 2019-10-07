@@ -227,6 +227,40 @@ abstract class ContextEntry {
       );
 }
 
+typedef GetRequestExtensions = dynamic Function(Request request);
+
+/// Exposes [Request] extensions
+@immutable
+class RequestExtensionsThunk extends ContextEntry {
+  /// Gets extensions of the [Request]
+  final GetRequestExtensions getRequestExtensions;
+
+  const RequestExtensionsThunk(
+    this.getRequestExtensions,
+  );
+
+  @override
+  List<Object> get fieldsForEquality => [
+        getRequestExtensions,
+      ];
+}
+
+/// Extensions returned with the response
+@immutable
+class ResponseExtensions extends ContextEntry {
+  /// [Response] extensions
+  final dynamic extensions;
+
+  const ResponseExtensions(
+    this.extensions,
+  );
+
+  @override
+  List<Object> get fieldsForEquality => [
+        extensions,
+      ];
+}
+
 /// A [Context] to be passed along with a [Request].
 ///
 /// This implementation relies on [Object.runtimeType].
