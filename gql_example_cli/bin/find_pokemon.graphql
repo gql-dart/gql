@@ -1,0 +1,16 @@
+query FindPokemon(
+  $name: String!
+) {
+  pokemon(name: $name) {
+    id
+    name
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+  }
+}

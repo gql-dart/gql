@@ -1,0 +1,8 @@
+query ListPokemon(
+  $count: Int!
+) {
+  pokemons(first: $count) {
+    id
+    name
+  }
+}
