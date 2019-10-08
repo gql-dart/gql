@@ -27,6 +27,7 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 | [![version][package:gql_link:version]][package:gql_link] | [`package:gql_link`][package:gql_link:source] | `link.dart` | Base for modular GraphQL execution interface |
 | [![version][package:gql_http_link:version]][package:gql_http_link] | [`package:gql_http_link`][package:gql_http_link:source] | `gql_http_link.dart` | Link to execute GraphQL requests via HTTP |
 | [![version][package:gql_dedupe_link:version]][package:gql_dedupe_link] | [`package:gql_dedupe_link`][package:gql_dedupe_link:source] | `gql_dedupe_link.dart` | De-duplicating Link to avoid execution of identical requests |
+| [![version][package:gql_transform_link:version]][package:gql_transform_link] | [`package:gql_transform_link`][package:gql_transform_link:source] | `gql_transform_link.dart` | GQL Link to transform Requests and Responses. May be used to update context, document, variables, data, errors, etc. |
 
 #### Other
 
@@ -49,6 +50,9 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 [package:gql_code_gen:version]: https://img.shields.io/pub/v/gql_code_gen.svg?style=flat-square 
 [package:gql_dedupe_link:source]: ./gql_dedupe_link/README.md
 [package:gql_dedupe_link]: https://pub.dartlang.org/packages/gql_dedupe_link
+[package:gql_transform_link:version]: https://img.shields.io/pub/v/gql_transform_link.svg?style=flat-square 
+[package:gql_transform_link:source]: ./gql_transform_link/README.md
+[package:gql_transform_link]: https://pub.dartlang.org/packages/gql_transform_link
 [package:gql_dedupe_link:version]: https://img.shields.io/pub/v/gql_dedupe_link.svg?style=flat-square 
 [package:gql_pedantic:source]: ./gql_pedantic/README.md
 [package:gql_pedantic]: https://pub.dartlang.org/packages/gql_pedantic
