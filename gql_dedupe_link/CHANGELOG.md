@@ -1,3 +1,7 @@
+## 1.0.6
+
+- upgrade `package:gql_link` to v0.2.0
+
 ## 1.0.5
 
 - Upgrade `package:gql` to v0.11.0

@@ -6,7 +6,7 @@ import "package:gql/execution.dart";
 import "package:gql_link/gql_link.dart";
 
 /// A [Link] to deduplicate [Request]s
-class DedupeLink implements Link {
+class DedupeLink extends Link {
   final Map<Request, StreamSplitter<Response>> _inFlight = {};
 
   @override

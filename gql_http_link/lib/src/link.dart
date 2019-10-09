@@ -50,7 +50,7 @@ class HttpLinkResponseContext extends ContextEntry {
 ///
 /// To customize the request headers you can pass a custom
 /// [http.Client] to the constructor.
-class HttpLink implements Link {
+class HttpLink extends Link {
   /// Endpoint of the GraphQL service
   final String uri;
 
@@ -89,9 +89,10 @@ class HttpLink implements Link {
       body = json.encode(
         serializer.serializeRequest(request),
       );
-    } on Exception catch (e) {
-      throw SerializerException(
+    } catch (e) {
+      throw RequestFormatException(
         originalException: e,
+        request: request,
       );
     }
 
@@ -116,7 +117,7 @@ class HttpLink implements Link {
       );
 
       response = parser.parseResponse(responseBody as Map<String, dynamic>);
-    } on Exception catch (e) {
+    } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
         response: httpResponse,

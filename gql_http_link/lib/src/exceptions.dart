@@ -5,12 +5,12 @@ import "package:meta/meta.dart";
 
 /// Exception occurring when parsing fails.
 @immutable
-class HttpLinkParserException extends ParserException {
+class HttpLinkParserException extends ResponseFormatException {
   /// Response which caused the exception
   final http.Response response;
 
   const HttpLinkParserException({
-    @required Exception originalException,
+    @required dynamic originalException,
     @required this.response,
   }) : super(
           originalException: originalException,

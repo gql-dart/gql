@@ -1,3 +1,7 @@
+## 0.2.3
+
+- upgrade `package:gql_link` to v0.2.0
+
 ## 0.2.2
 
 - `package:gql` version fix

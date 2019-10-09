@@ -528,7 +528,7 @@ void main() {
         ),
       ).thenThrow(originalException);
 
-      SerializerException exception;
+      RequestFormatException exception;
 
       try {
         await link
@@ -542,12 +542,12 @@ void main() {
             )
             .first;
       } catch (e) {
-        exception = e as SerializerException;
+        exception = e as RequestFormatException;
       }
 
       expect(
         exception,
-        TypeMatcher<SerializerException>(),
+        TypeMatcher<RequestFormatException>(),
       );
       expect(
         exception.originalException,
@@ -572,7 +572,7 @@ void main() {
         ),
       );
 
-      ParserException exception;
+      ResponseFormatException exception;
 
       try {
         await link
@@ -586,12 +586,12 @@ void main() {
             )
             .first;
       } catch (e) {
-        exception = e as ParserException;
+        exception = e as ResponseFormatException;
       }
 
       expect(
         exception,
-        TypeMatcher<ParserException>(),
+        TypeMatcher<ResponseFormatException>(),
       );
       expect(
         exception.originalException,
