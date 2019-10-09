@@ -1,36 +1,48 @@
 import "package:gql/execution.dart";
 import "package:meta/meta.dart";
 
-/// Exception occurring when serialization fails.
+/// A base class for exceptions thrown by links
 @immutable
-class SerializerException implements Exception {
+abstract class LinkException implements Exception {
   /// The original exception causing this exception
-  final Exception originalException;
+  final dynamic originalException;
 
-  const SerializerException({
-    @required this.originalException,
-  });
+  const LinkException(
+    this.originalException,
+  );
 }
 
-/// Exception occurring when parsing fails.
+/// Exception occurring when a terminating link
+/// tries to serialize the request
 @immutable
-class ParserException implements Exception {
-  /// The original exception causing this exception
-  final Exception originalException;
+class RequestFormatException extends LinkException {
+  /// The request being serialized when the error occurred
+  final Request request;
 
-  const ParserException({
-    @required this.originalException,
-  });
+  const RequestFormatException({
+    @required this.request,
+    dynamic originalException,
+  }) : super(originalException);
+}
+
+/// Exception occurring when a terminating link
+/// tries to parse the response
+@immutable
+class ResponseFormatException extends LinkException {
+  const ResponseFormatException({
+    dynamic originalException,
+  }) : super(originalException);
 }
 
 /// Exception occurring when network fails
-/// or parsed response is missing both `data` and `errors`.
+/// or parsed response is missing both `data` and `errors`
 @immutable
-class ServerException implements Exception {
+class ServerException extends LinkException {
   /// The parsed response
   final Response parsedResponse;
 
   const ServerException({
     @required this.parsedResponse,
-  });
+    dynamic originalException,
+  }) : super(originalException);
 }

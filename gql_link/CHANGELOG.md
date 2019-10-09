@@ -1,3 +1,8 @@
+## 0.2.0
+
+- rename `Exception` classes and extend from a new `LinkException`
+- add various `Link` utils: `Link.function`, `Link.concat`, `Link.route` and `Link.split` 
+
 ## 0.1.0
 
 - split off of `package:gql`

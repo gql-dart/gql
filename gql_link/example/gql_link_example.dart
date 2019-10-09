@@ -11,7 +11,7 @@ class MyLinkContext extends ContextEntry {
   List<Object> get fieldsForEquality => null;
 }
 
-class MyLink implements Link {
+class MyLink extends Link {
   @override
   Stream<Response> request(Request request, [forward]) => Stream.fromIterable(
         [
