@@ -1,1 +1,3 @@
-local.dart
+*.g.dart
+*.gql.dart
+

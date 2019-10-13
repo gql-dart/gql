@@ -2,8 +2,8 @@ import "package:args/args.dart";
 import "package:gql/execution.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
-import "find_pokemon.ast.g.dart" as find_pokemon;
-import "list_pokemon.ast.g.dart" as list_pokemon;
+import "find_pokemon.gql.dart" as find_pokemon;
+import "list_pokemon.gql.dart" as list_pokemon;
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()

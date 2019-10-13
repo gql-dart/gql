@@ -10,7 +10,7 @@ import "package:gql/language.dart";
 import "package:gql_code_gen/gql_code_gen.dart";
 import "package:pedantic/pedantic.dart";
 
-const astExtension = ".ast.g.dart";
+const astExtension = ".gql.dart";
 
 /// Builder factory for AST Builder
 Builder astBuilder(
