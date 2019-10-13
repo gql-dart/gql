@@ -138,23 +138,6 @@ class _Parser {
     return <N>[];
   }
 
-  List<N> _parseAny<N>(
-    TokenKind open,
-    _ParseFunction<N> parse,
-    TokenKind close, [
-    String errorMessage,
-  ]) {
-    _expectToken(open, errorMessage);
-
-    final nodes = <N>[];
-
-    do {
-      nodes.add(parse());
-    } while (_expectOptionalToken(close) == null);
-
-    return nodes;
-  }
-
   DocumentNode _parseDocument() => DocumentNode(
         definitions: _parseMany(
           TokenKind.sof,
@@ -398,7 +381,7 @@ class _Parser {
   }
 
   ListValueNode _parseList({bool isConst}) => ListValueNode(
-        values: _parseAny(
+        values: _parseMany(
           TokenKind.bracketL,
           isConst ? _parseConstValue : _parseNonConstValue,
           TokenKind.bracketR,
@@ -406,7 +389,7 @@ class _Parser {
       );
 
   ObjectValueNode _parseObject({bool isConst}) => ObjectValueNode(
-        fields: _parseAny(
+        fields: _parseMany(
           TokenKind.braceL,
           isConst ? _parseConstObjectField : _parseNonConstObjectField,
           TokenKind.braceR,

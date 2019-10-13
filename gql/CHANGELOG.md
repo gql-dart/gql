@@ -1,8 +1,12 @@
+## 0.11.1
+
+- fix for parsing empty list and object literals
+
 ## 0.11.0
 
 - expose `Request` and `Response` extensions via `Context` 
 - add convenience methods to work with `Context`
-- split off code generation to `package:gql_code_gen`
+- split off `Link` to `package:gql_link`
 
 ## 0.10.0
 
