@@ -1,46 +1,9 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_gen/src/common.dart";
 import "package:meta/meta.dart";
 import "package:recase/recase.dart";
-
-const reserved = <String>[
-  "else",
-  "assert",
-  "enum",
-  "in",
-  "super",
-  "switch",
-  "extends",
-  "is",
-  "break",
-  "this",
-  "case",
-  "throw",
-  "catch",
-  "false",
-  "new",
-  "true",
-  "class",
-  "final",
-  "null",
-  "try",
-  "const",
-  "finally",
-  "continue",
-  "for",
-  "var",
-  "void",
-  "default",
-  "rethrow",
-  "while",
-  "return",
-  "with",
-  "do",
-  "if",
-];
-
-String identifier(String raw) => reserved.contains(raw) ? "$raw\$" : raw;
 
 /// Build input types, enums and scalars from schema
 Spec buildSchema(
@@ -51,13 +14,6 @@ Spec buildSchema(
       _SchemaBuilderVisitor(options),
     );
 
-const _defaultTypeMap = <String, Reference>{
-  "Int": Reference("int"),
-  "Float": Reference("double"),
-  "ID": Reference("String"),
-  "Boolean": Reference("bool"),
-};
-
 @immutable
 class BuildOptions {
   final Map<String, Reference> typeMap;
@@ -67,49 +23,22 @@ class BuildOptions {
   });
 }
 
-Expression _jsonAnnotation(
-  String symbol, [
-  Iterable<Expression> positionalArguments = const [],
-  Map<String, Expression> namedArguments = const {},
-  List<Reference> typeArguments = const [],
-]) =>
-    TypeReference(
-      (b) => b
-        ..symbol = symbol
-        ..url = "package:json_annotation/json_annotation.dart",
-    ).call(
-      positionalArguments,
-      namedArguments,
-      typeArguments,
-    );
-
-// factory Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);
-Constructor _fromJson(String className) => Constructor(
-      (b) => b
-        ..factory = true
-        ..name = "fromJson"
-        ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-          Parameter(
-            (b) => b
-              ..name = "json"
-              ..type = refer("Map<String, dynamic>"),
-          ),
-        ])
-        ..lambda = true
-        ..body = Code("_\$${className}FromJson(json)"),
-    );
-
 class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   final Map<String, Reference> _typeMap;
 
   _SchemaBuilderVisitor(BuildOptions options)
       : _typeMap = {
-          ..._defaultTypeMap,
+          ...defaultTypeMap,
           if (options != null) ...options.typeMap,
         };
 
-  Reference _getTypeRef(String type) =>
-      _typeMap.containsKey(type) ? _typeMap[type] : Reference(type);
+  Reference _getTypeRef(
+    String type,
+  ) =>
+      getTypeRef(
+        type,
+        _typeMap,
+      );
 
   Spec _acceptOne(
     Node node,
@@ -165,20 +94,14 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
             _acceptMany(node.fields),
           )
           ..methods = ListBuilder<Method>(<Method>[
-            Method(
-              (b) => b
-                ..name = "toJson"
-                ..returns = refer("Map<String, dynamic>")
-                ..lambda = true
-                ..body = Code("_\$${node.name.value}ToJson(this)"),
-            ),
+            toJson(node.name.value),
           ])
           ..constructors = ListBuilder<Constructor>(<Constructor>[
             _buildConstructor(node),
-            _fromJson(node.name.value),
+            fromJson(node.name.value),
           ])
           ..annotations = ListBuilder<Expression>(<Expression>[
-            _jsonAnnotation("JsonSerializable"),
+            jsonAnnotation("JsonSerializable"),
           ]),
       );
 
@@ -200,10 +123,11 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
                 )
           ..modifier = FieldModifier.final$
           ..annotations = ListBuilder<Expression>(<Expression>[
-            _jsonAnnotation(
+            jsonAnnotation(
               "JsonKey",
               [],
               {
+                "disallowNullValue": literalBool(node.type.isNonNull),
                 "required": literalBool(node.type.isNonNull),
                 "nullable": literalBool(!node.type.isNonNull),
                 "includeIfNull": literalBool(false),
@@ -259,7 +183,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
             ),
           ])
           ..annotations = ListBuilder<Expression>(<Expression>[
-            _jsonAnnotation("JsonSerializable"),
+            jsonAnnotation("JsonSerializable"),
           ]),
       );
 
@@ -282,7 +206,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   ) =>
       Block.of(<Code>[
         Code("@"),
-        _jsonAnnotation("JsonValue", [
+        jsonAnnotation("JsonValue", [
           literalString(node.name.value),
         ]).code,
         Code("${identifier(ReCase(node.name.value).camelCase)},"),
