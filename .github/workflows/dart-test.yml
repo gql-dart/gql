@@ -1,0 +1,90 @@
+on: pull_request
+
+jobs:
+  gql:
+    runs-on: ubuntu-latest
+    name: Test gql
+    env:
+      PACKAGE: gql
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_code_gen:
+    runs-on: ubuntu-latest
+    name: Test gql_code_gen
+    env:
+      PACKAGE: gql_code_gen
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_dedupe_link:
+    runs-on: ubuntu-latest
+    name: Test gql_dedupe_link
+    env:
+      PACKAGE: gql_dedupe_link
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_example_cli:
+    runs-on: ubuntu-latest
+    name: Test gql_example_cli
+    env:
+      PACKAGE: gql_example_cli
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_http_link:
+    runs-on: ubuntu-latest
+    name: Test gql_http_link
+    env:
+      PACKAGE: gql_http_link
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_link:
+    runs-on: ubuntu-latest
+    name: Test gql_link
+    env:
+      PACKAGE: gql_link
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_pedantic:
+    runs-on: ubuntu-latest
+    name: Test gql_pedantic
+    env:
+      PACKAGE: gql_pedantic
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
+
+  gql_transform_link:
+    runs-on: ubuntu-latest
+    name: Test gql_transform_link
+    env:
+      PACKAGE: gql_transform_link
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: .github/actions/dart-test
