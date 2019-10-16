@@ -6,6 +6,10 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 
 #### Core
 
+The core of this project is the GraphQL parser which parses GraphQL strings into an AST. The parsed AST can then be transformed, visited and printed back to GraphQL string.
+
+Another core part of the project is the types definitions used to execute GraphQL operations. They include AST-based operation, request with per operation context, and response. These types are used by the Links (see below).
+
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
 | [![version][package:gql:version]][package:gql] | [`package:gql`][package:gql:source] | `ast.dart` | GraphQL AST implementation with Visitor pattern and AST transformer |
@@ -15,12 +19,27 @@ It consists of multiple packages and libraries centered around GraphQL AST.
 
 #### Code generation
 
+Current code generator is capable of building a Dart representation of GraphQL documents. It can be used to pre-build AST of `*.graphql` documents.
+
+Ideas for future work:
+- Dart types from a GraphQL schema
+- Dart types per GraphQL operation and it's variables (see [Artemis project][artemis])
+- typed resolvers for field resolution on the client or server
+
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
 | [![version][package:gql_code_gen:version]][package:gql_code_gen] | [`package:gql_code_gen`][package:gql_code_gen:source] | `gql_code_gen.dart` | Code generator to print AST into Dart representation of the same AST |
 | [![version][package:gql_code_gen:version]][package:gql_code_gen] | [`package:gql_code_gen`][package:gql_code_gen:source] | `ast_builder.dart` | Source builder to parse `*.graphql` documents into AST at build-time |
 
 #### Client
+
+Link is the current client implementation. Link is GraphQL AST-aware request/response middleware. They can be used to build a pipeline to deduplicate requests, conditionally transforming requests and responses (including the context), and eventually sending the requests to the server.
+
+Ideas for future work:
+- websocket link for subscriptions
+- batched request HTTP link
+- retry link to handle network issues transparently
+- link for client-side request resolution 
 
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
