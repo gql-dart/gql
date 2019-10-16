@@ -1,24 +1,31 @@
-@package/gql:
+package/gql:
   - gql/*
   - gql/**/*
-@package/gql_code_gen:
+
+package/gql_code_gen:
   - gql_code_gen/*
   - gql_code_gen/**/*
-@package/gql_dedupe_link:
+
+package/gql_dedupe_link:
   - gql_dedupe_link/*
   - gql_dedupe_link/**/*
-@package/gql_example_cli:
+
+package/gql_example_cli:
   - gql_example_cli/*
   - gql_example_cli/**/*
-@package/gql_http_link:
+
+package/gql_http_link:
   - gql_http_link/*
   - gql_http_link/**/*
-@package/gql_link:
+
+package/gql_link:
   - gql_link/*
   - gql_link/**/*
-@package/gql_pedantic:
+
+package/gql_pedantic:
   - gql_pedantic/*
   - gql_pedantic/**/*
-@package/gql_transform_link:
+
+package/gql_transform_link:
   - gql_transform_link/*
   - gql_transform_link/**/*
