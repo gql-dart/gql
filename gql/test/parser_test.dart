@@ -286,17 +286,6 @@ void main() {
       );
     });
 
-    test("Missing object field name", () {
-      expect(
-        () => parseString("query { foo(a: {}) }"),
-        throwsSourceSpanException(
-          "Expected an object field name",
-          1,
-          17,
-        ),
-      );
-    });
-
     test("Missing colon before object field value", () {
       expect(
         () => parseString("query { foo(a: {b}) }"),

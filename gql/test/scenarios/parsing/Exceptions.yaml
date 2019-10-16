@@ -198,15 +198,6 @@ tests:
     then:
       syntax-error: true
 
-  - name: Missing object field name
-    given:
-      query: |
-        query { foo(a: {}) }
-    when:
-      parse: true
-    then:
-      syntax-error: true
-
   - name: Missing colon before object field value
     given:
       query: |
