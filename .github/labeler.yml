@@ -29,3 +29,7 @@ package/gql_pedantic:
 package/gql_transform_link:
   - gql_transform_link/*
   - gql_transform_link/**/*
+
+package/multipack:
+  - multipack/*
+  - multipack/**/*
