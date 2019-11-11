@@ -5,16 +5,20 @@ import 'package:normalize/normalize.dart';
 import '../shared_data.dart';
 
 void main() {
-  group("Alias", () {
+  group("Inline Fragment", () {
     final query = parseString("""
     query TestQuery {
       posts {
         id
         __typename
-        olle: author {
-          id
-          __typename
-          name
+        ... on Post {
+          author {
+            ... on Author {
+              id
+              __typename
+              name
+            }
+          }
         }
         title
         comments {
@@ -30,31 +34,14 @@ void main() {
     }
   """);
 
-    final data = {
-      "posts": [
-        {
-          "id": "123",
-          "__typename": "Post",
-          "olle": {"id": "1", "__typename": "Author", "name": "Paul"},
-          "title": "My awesome blog post",
-          "comments": [
-            {
-              "id": "324",
-              "__typename": "Comment",
-              "commenter": {"id": "2", "__typename": "Author", "name": "Nicole"}
-            }
-          ]
-        }
-      ]
-    };
-
     test("Produces correct normalized object", () {
-      expect(normalize(query: query, data: data), equals(sharedNormalizedMap));
+      expect(normalize(query: query, data: sharedResponse),
+          equals(sharedNormalizedMap));
     });
 
     test("Produces correct nested data object", () {
       expect(denormalize(query: query, normalizedMap: sharedNormalizedMap),
-          equals(data));
+          equals(sharedResponse));
     }, skip: true);
   });
 }
