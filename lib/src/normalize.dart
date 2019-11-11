@@ -127,7 +127,8 @@ Map<String, Object> normalize(
         for (var selection in subNodes)
           selection.name.value: normalizeNode(
               node: selection,
-              dataForNode: dataForNode[selection.name.value],
+              dataForNode:
+                  dataForNode[selection.alias?.value ?? selection.name.value],
               normalizedMap: normalizedMap)
       };
 
