@@ -7,7 +7,7 @@
 
 ## About
 
-This project allows for the normalization and denormalization of GraphQL Documents. It is based loosely on the [graphql-norm](https://github.com/dividab/graphql-norm) package.
+This project allows for the normalization and denormalization of GraphQL Documents.
 
 The `normalize` function creates a flat map of normalized documents and can be used to cache results of GraphQL queries. It traverses the [GraphQL AST](https://github.com/gql-dart/gql/blob/master/gql/README.md) and only includes the fields specified in the GraphQL Document in the normalized results.
 
@@ -15,11 +15,16 @@ The `normalize` function only normalizes entities that include a `__typename` fi
 
 ## Features
 
-| Feature                 | Progress |
-| :---------------------- | :------: |
-| Fragments               |    ✅    |
-| Variables               |    ✅    |
-| Interface & Union types |    ✅    |
+| Fragments | ✅ |
+| Variables | ✅ |
+| Interface & Union types | ✅ |
+| Aliases | ✅ |
+
+## Gratitude
+
+Inspiration (and many of the tests) for this library came from the [graphql-norm](https://github.com/dividab/graphql-norm) package.
+
+This library depends heavily on the [gql](https://github.com/gql-dart/gql) library.
 
 [license-badge]: https://img.shields.io/github/license/smkhalsa/normalize.svg?style=flat-square
 [license-link]: https://github.com/smkhalsa/normalize/blob/master/LICENSE
