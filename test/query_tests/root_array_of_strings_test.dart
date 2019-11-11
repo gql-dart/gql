@@ -4,37 +4,20 @@ import 'package:gql/language.dart';
 import 'package:normalize/normalize.dart';
 
 void main() {
-  group("Array of Strings", () {
+  group("Root Array of Strings", () {
     final query = parseString("""
     query TestQuery {
-      posts {
-        id
-        __typename
-        tags
-      }
+      tags
     }
   """);
 
     final data = {
-      "posts": [
-        {
-          "id": "123",
-          "__typename": "Post",
-          "tags": ["olle", "kalle"]
-        }
-      ]
+      "tags": ["tag1", "tag2", "tag3"]
     };
 
     final normalizedMap = {
       "Query": {
-        "posts": [
-          {"\$ref": "Post:123"}
-        ]
-      },
-      "Post:123": {
-        "id": "123",
-        "__typename": "Post",
-        "tags": ["olle", "kalle"]
+        "tags": ["tag1", "tag2", "tag3"]
       }
     };
 

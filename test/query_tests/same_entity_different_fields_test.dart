@@ -4,7 +4,7 @@ import 'package:gql/language.dart';
 import 'package:normalize/normalize.dart';
 
 void main() {
-  group("Same Entity Different Fields query", () {
+  group("Same Entity Different Fields", () {
     final query = parseString("""
     query TestQuery {
       posts {

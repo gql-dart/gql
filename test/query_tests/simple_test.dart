@@ -4,7 +4,7 @@ import 'package:gql/language.dart';
 import 'package:normalize/normalize.dart';
 
 void main() {
-  group("Simply query", () {
+  group("Simple", () {
     final query = parseString("""
     query TestQuery {
       posts {
