@@ -2,7 +2,9 @@ import 'package:gql/ast.dart';
 import 'package:meta/meta.dart';
 
 import './shared/typedefs.dart';
-import './shared/functions.dart';
+import './shared/field_name_with_arguments.dart';
+import './shared/default_resolvers.dart';
+import './shared/expand_fragments.dart';
 
 /// Normalizes data for a given query
 Map<String, Object> normalize(
