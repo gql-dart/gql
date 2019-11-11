@@ -93,8 +93,8 @@ Map<String, Object> normalize(
               normalizedMap: normalizedMap)
       };
 
-      final bool shouldNormalize =
-          dataForNode['__typename'] != null && dataForNode['id'] != null;
+      final bool shouldNormalize = dataForNode['__typename'] != null &&
+          dataIdFromObject(dataForNode) != null;
 
       if (node is OperationDefinitionNode) {
         final rootQueryName = dataForNode['__typename'] ?? operationTypeName;
