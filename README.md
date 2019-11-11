@@ -18,3 +18,12 @@ The `normalize` function creates a flat map of normalized documents and can be u
 | Fragments               |    ✅    |
 | Variables               |    ✅    |
 | Interface & Union types |    ✅    |
+
+[license-badge]: https://img.shields.io/github/license/zino-app/graphql-flutter.svg?style=flat-square
+[license-link]: https://github.com/zino-app/graphql-flutter/blob/master/LICENSE
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs-link]: http://makeapullrequest.com
+[github-watch-badge]: https://img.shields.io/github/watchers/zino-app/graphql-flutter.svg?style=flat-square&logo=github&logoColor=ffffff
+[github-watch-link]: https://github.com/zino-app/graphql-flutter/watchers
+[github-star-badge]: https://img.shields.io/github/stars/zino-app/graphql-flutter.svg?style=flat-square&logo=github&logoColor=ffffff
+[github-star-link]: https://github.com/zino-app/graphql-flutter/stargazers
