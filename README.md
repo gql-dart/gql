@@ -11,7 +11,7 @@ This project allows for the normalization and denormalization of GraphQL Documen
 
 The `normalize` function creates a flat map of normalized documents and can be used to cache results of GraphQL queries. It traverses the [GraphQL AST](https://github.com/gql-dart/gql/blob/master/gql/README.md) and only includes the fields specified in the GraphQL Document in the normalized results.
 
-The `normalize` function only normalizes entities that include a `__typename` field and for which the `DataIdResolver` function returns a non-null value. The default `DataIdResolver` automatically checks for `id` and `_id` fields, respectively.
+The `normalize` function only normalizes entities that include a `__typename` field and for which the `DataIdResolver` function returns a non-null value. Otherwise, the entity will be stored with its parent. The default `DataIdResolver` automatically checks for `id` and `_id` fields, respectively.
 
 ## Features
 
