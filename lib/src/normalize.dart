@@ -8,8 +8,13 @@ import './shared/expand_fragments.dart';
 
 /// Normalizes data for a given query
 ///
-/// The [referenceKey] is used to reference normalized objects. It should start
-/// with '$' since a graphl response object key cannot begin with that symbol
+/// The [dataIdFromObject] argument accepts a custom [DataIdResolver] which
+/// returns a custom ID to reference the normalized object. If none is
+/// provided, the [defaultDataIdResolver] will be used.
+///
+/// The [referenceKey] is used to reference the ID of a normalized object. It
+/// should begin with '$' since a graphl response object key cannot begin with
+/// that symbol.
 Map<String, Object> normalize(
     {@required DocumentNode query,
     @required Map<String, Object> data,
