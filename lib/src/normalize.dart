@@ -3,25 +3,22 @@ import 'package:meta/meta.dart';
 
 import './shared/typedefs.dart';
 import './shared/field_name_with_arguments.dart';
-import './shared/default_resolvers.dart';
+import './shared/defaults.dart';
 import './shared/expand_fragments.dart';
 
 /// Normalizes data for a given query
+///
+/// The [referenceKey] is used to reference normalized objects. It should start
+/// with '$' since a graphl response object key cannot begin with that symbol
 Map<String, Object> normalize(
     {@required DocumentNode query,
     @required Map<String, Object> data,
     Map<String, Object> variables,
     DataIdResolver dataIdFromObject,
-    TypeResolver resolveType}) {
-  // Set default resolvers if none are defined
+    String referenceKey}) {
+  // Set defaults if none are defined
   dataIdFromObject ??= defaultDataIdResolver;
-  resolveType ??= defaultTypeResolver;
-
-  /// The key used to store a reference to a normalized object.
-  ///
-  /// Starts with '$' since a graphl response object key cannot begin with that
-  /// symbol
-  final referenceKey = '\$ref';
+  referenceKey ??= defaultReferenceKey;
 
   /// The AST Node of the GraphQL Operation
   ///
@@ -80,7 +77,6 @@ Map<String, Object> normalize(
     if (selectionSet == null) return dataForNode;
 
     final subNodes = expandFragments(
-        resolveType: resolveType,
         data: dataForNode,
         selectionSet: selectionSet,
         fragmentMap: fragmentMap);
