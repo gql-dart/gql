@@ -2,46 +2,7 @@ import 'package:gql/ast.dart';
 import 'package:meta/meta.dart';
 
 import './shared/typedefs.dart';
-import './shared/defaultResolvers.dart';
-
-/// Adds fragment fields to selections if type of data matches fragment type
-List<FieldNode> _expandFragments(
-    {@required TypeResolver resolveType,
-    @required Map<String, Object> data,
-    @required SelectionSetNode selectionSet,
-    @required Map<String, FragmentDefinitionNode> fragmentMap}) {
-  final List<FieldNode> fieldNodes = [];
-
-  for (var selectionNode in selectionSet.selections) {
-    if (selectionNode is FieldNode) {
-      fieldNodes.add(selectionNode);
-    } else if (selectionNode is InlineFragmentNode) {
-      final typeName = resolveType(data);
-      // Only include this fragment if the type name matches
-      if (selectionNode.typeCondition.on.name.value == typeName) {
-        fieldNodes.addAll(_expandFragments(
-            resolveType: resolveType,
-            data: data,
-            selectionSet: selectionNode.selectionSet,
-            fragmentMap: fragmentMap));
-      }
-    } else if (selectionNode is FragmentSpreadNode) {
-      final fragment = fragmentMap[selectionNode.name.value];
-      final typeName = resolveType(data);
-      // Only include this fragment if the type name matches
-      if (fragment.typeCondition.on.name.value == typeName) {
-        fieldNodes.addAll(_expandFragments(
-            resolveType: resolveType,
-            data: data,
-            selectionSet: fragment.selectionSet,
-            fragmentMap: fragmentMap));
-      }
-    } else {
-      throw (FormatException("Unknown selection node type"));
-    }
-  }
-  return fieldNodes;
-}
+import './shared/functions.dart';
 
 /// Normalizes data for a given query
 Map<String, Object> normalize(
@@ -116,7 +77,7 @@ Map<String, Object> normalize(
     // If this is a leaf node, return the data
     if (selectionSet == null) return dataForNode;
 
-    final subNodes = _expandFragments(
+    final subNodes = expandFragments(
         resolveType: resolveType,
         data: dataForNode,
         selectionSet: selectionSet,
@@ -125,7 +86,7 @@ Map<String, Object> normalize(
     if (dataForNode is Map) {
       final dataToMerge = {
         for (var selection in subNodes)
-          selection.name.value: normalizeNode(
+          fieldNameWithArguments(selection, variables): normalizeNode(
               node: selection,
               dataForNode:
                   dataForNode[selection.alias?.value ?? selection.name.value],
