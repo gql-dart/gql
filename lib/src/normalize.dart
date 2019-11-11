@@ -132,19 +132,20 @@ Map<String, Object> normalize(
               normalizedMap: normalizedMap)
       };
 
-      final String typeName = dataForNode['__typename'];
+      final bool shouldNormalize =
+          dataForNode['__typename'] != null && dataForNode['id'] != null;
 
       if (node is OperationDefinitionNode) {
-        final rootQueryName = typeName ?? operationTypeName;
+        final rootQueryName = dataForNode['__typename'] ?? operationTypeName;
         (normalizedMap[rootQueryName] ??= {}).addAll(dataToMerge);
         return normalizedMap;
-      } else if (typeName == null) {
-        return dataToMerge;
-      } else {
+      } else if (shouldNormalize) {
         final dataId = dataIdFromObject(dataForNode);
         // TODO: should this be a deep merge?
         (normalizedMap[dataId] ??= {}).addAll(dataToMerge);
         return {referenceKey: dataId};
+      } else {
+        return dataToMerge;
       }
     }
 
