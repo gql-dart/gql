@@ -6,18 +6,19 @@ String resolveRootTypename(OperationDefinitionNode operationDefinition,
   switch (operationDefinition.type) {
     case OperationType.query:
       return typePolicies?.entries
-          ?.firstWhere((entry) => entry.value.queryType,
-              orElse: () => MapEntry('Query', null))
-          ?.key;
+              ?.firstWhere((entry) => entry.value.queryType, orElse: () {})
+              ?.key ??
+          'Query';
     case OperationType.mutation:
       return typePolicies?.entries
-          ?.firstWhere((entry) => entry.value.mutationType,
-              orElse: () => MapEntry('Mutation', null))
-          ?.key;
+              ?.firstWhere((entry) => entry.value.mutationType, orElse: () {})
+              ?.key ??
+          'Mutation';
     case OperationType.subscription:
       return typePolicies?.entries
-          ?.firstWhere((entry) => entry.value.subscriptionType,
-              orElse: () => MapEntry('Subscription', null))
-          ?.key;
+              ?.firstWhere((entry) => entry.value.subscriptionType,
+                  orElse: () {})
+              ?.key ??
+          'Subscription';
   }
 }

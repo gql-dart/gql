@@ -21,9 +21,9 @@ typedef FieldMergeFunction<TExisting> = TExisting Function(
     TExisting existing, Object incoming, FieldFunctionOptions options);
 
 class FieldPolicy<TValue> {
-  /// Tells the cache which arguments passed to the field are "important" in
-  /// the sense that their values (together with the enclosing entity object)
-  /// determine the field's value.
+  /// Defines which arguments passed to the field are "important" in the sense
+  /// that their values (together with the enclosing entity object) determine
+  /// the field's value.
   ///
   /// By default, it is assumed that all field arguments might be important.
   ///

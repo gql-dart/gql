@@ -15,12 +15,17 @@ The `normalize` function only normalizes entities that include a `__typename` fi
 
 ## Features
 
-| Feature                 | Progress |
-| :---------------------- | :------: |
-| Fragments               |    ✅    |
-| Variables               |    ✅    |
-| Interface & Union types |    ✅    |
-| Aliases                 |    ✅    |
+| Feature                                                                                                                           | Progress |
+| :-------------------------------------------------------------------------------------------------------------------------------- | :------: |
+| Fragments                                                                                                                         |    ✅    |
+| Variables                                                                                                                         |    ✅    |
+| Interface & Union types                                                                                                           |    ✅    |
+| Aliases                                                                                                                           |    ✅    |
+| `TypePolicy`s (see [Apollo](https://www.apollographql.com/docs/react/v3.0-beta/caching/cache-configuration/#the-typepolicy-type)) |    ✅    |
+
+## Limitations
+
+`TypePolicy` keyFields and `FieldPolicy` keyArgs currently only accept a flat list of `String`s. Nested lists of strings and callbacks are not yet supported.
 
 ## Gratitude
 

@@ -10,9 +10,11 @@ import './shared/resolve_root_typename.dart';
 
 /// Normalizes data for a given query
 ///
-/// The [dataIdFromObject] argument accepts a custom [DataIdResolver] which
-/// returns a custom ID to reference the normalized object. If none is
-/// provided, the [defaultDataIdResolver] will be used.
+/// IDs are generated for each entity based on the following:
+/// 1. If no __typename field exists, the entity will not be normalized.
+/// 2. If a [TypePolicy] is provided for the given type, it's [TypePolicy.keyFields] are used.
+/// 3. If a [dataIdFromObject] funciton is provided, the result is used.
+/// 4. The 'id' or '_id' field (respectively) are used.
 ///
 /// The [referenceKey] is used to reference the ID of a normalized object. It
 /// should begin with '$' since a graphl response object key cannot begin with
@@ -24,13 +26,13 @@ Map<String, Object> normalize(
     Map<String, TypePolicy> typePolicies,
     DataIdResolver dataIdFromObject,
     String referenceKey}) {
-  // Set defaults if none are defined
+  // Set default if none is defined
   referenceKey ??= defaultReferenceKey;
 
   /// The AST Node of the GraphQL Operation
   ///
   /// Only the first operation in a document will be considered. See
-  /// https://github.com/graphql/graphql-spec/issues/29
+  /// https://github.com/graphql/graphql-spec/issues/29.
   final operationDefinition =
       query.definitions.whereType<OperationDefinitionNode>().first;
 
@@ -42,9 +44,10 @@ Map<String, Object> normalize(
       fragmentDefinition.name.value: fragmentDefinition
   };
 
-  /// Returns a normalized object for a given node
+  /// Returns a normalized object for a given node.
   ///
-  /// Accepts either the root [OperationDefinitionNode] or a [FieldNode]
+  /// This is called recursively as the AST is traversed. Accepts either the
+  /// root [OperationDefinitionNode] or a [FieldNode].
   Object normalizeNode({
     @required Node node,
     @required Object dataForNode,
@@ -58,7 +61,6 @@ Map<String, Object> normalize(
     else
       throw (Exception("Unexpected node type"));
 
-    // If there is no data for this node, return null
     if (dataForNode == null) return null;
 
     if (dataForNode is List) {

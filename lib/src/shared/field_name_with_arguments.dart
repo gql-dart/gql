@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:gql/ast.dart';
 
+import '../classes/type_policy.dart';
+
 Object _resolveValueNode(ValueNode valueNode, Map<String, Object> variables) {
   if (valueNode is VariableNode)
     return variables[valueNode.name.value];
