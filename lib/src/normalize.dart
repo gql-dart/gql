@@ -79,13 +79,17 @@ Map<String, Object> normalize(
         fragmentMap: fragmentMap);
 
     if (dataForNode is Map) {
+      final typename = dataForNode['__typename'];
+      final typePolicy = (typePolicies ?? const {})[typename];
+
       final dataToMerge = {
         for (var selection in subNodes)
-          fieldNameWithArguments(selection, variables): normalizeNode(
-              node: selection,
-              dataForNode:
-                  dataForNode[selection.alias?.value ?? selection.name.value],
-              normalizedMap: normalizedMap)
+          fieldNameWithArguments(selection, variables, typePolicy):
+              normalizeNode(
+                  node: selection,
+                  dataForNode: dataForNode[
+                      selection.alias?.value ?? selection.name.value],
+                  normalizedMap: normalizedMap)
       };
 
       final dataId = resolveDataId(

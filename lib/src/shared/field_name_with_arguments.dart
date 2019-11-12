@@ -30,10 +30,15 @@ Object _resolveValueNode(ValueNode valueNode, Map<String, Object> variables) {
 }
 
 String fieldNameWithArguments(
-    FieldNode fieldNode, Map<String, Object> variables) {
+    FieldNode fieldNode, Map<String, Object> variables, TypePolicy typePolicy) {
   if (fieldNode.arguments.isEmpty) return fieldNode.name.value;
+  final fieldPolicy = (typePolicy?.fields ?? const {})[fieldNode.name.value];
+  final pertinentArguments = fieldPolicy == null
+      ? fieldNode.arguments
+      : fieldNode.arguments.where(
+          (argument) => fieldPolicy.keyArgs.contains(argument.name.value));
   final Map<String, Object> argumentsObject = {
-    for (var argumentNode in fieldNode.arguments)
+    for (var argumentNode in pertinentArguments)
       argumentNode.name.value: _resolveValueNode(argumentNode.value, variables)
   };
   final hashedArgs = json.encode(argumentsObject);

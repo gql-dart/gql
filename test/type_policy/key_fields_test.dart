@@ -5,7 +5,7 @@ import 'package:normalize/normalize.dart';
 import '../shared_data.dart';
 
 void main() {
-  group("Custom Root", () {
+  group("Key Fields", () {
     final query = parseString("""
     query TestQuery {
       posts {

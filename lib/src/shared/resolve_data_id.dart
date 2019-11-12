@@ -19,7 +19,7 @@ String resolveDataId(
   if (typename == null) return null;
 
   final typePolicy = (typePolicies ?? const {})[typename];
-  if (typePolicy != null) {
+  if (typePolicy?.keyFields != null) {
     if (typePolicy.keyFields.isEmpty) return null;
     return [typename, ...typePolicy.keyFields.map((field) => data[field])]
         .join(':');
