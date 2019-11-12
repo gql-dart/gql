@@ -1,8 +1,6 @@
 import 'package:gql/ast.dart';
 import 'package:meta/meta.dart';
 
-import './typedefs.dart';
-
 /// Adds fragment fields to selections if type of data matches fragment type
 List<FieldNode> expandFragments(
     {@required Map<String, Object> data,

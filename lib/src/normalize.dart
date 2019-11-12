@@ -1,10 +1,12 @@
 import 'package:gql/ast.dart';
 import 'package:meta/meta.dart';
 
-import './shared/typedefs.dart';
+import './shared/resolve_data_id.dart';
 import './shared/field_name_with_arguments.dart';
 import './shared/defaults.dart';
 import './shared/expand_fragments.dart';
+import './classes/type_policy.dart';
+import './shared/resolve_root_typename.dart';
 
 /// Normalizes data for a given query
 ///
@@ -19,10 +21,10 @@ Map<String, Object> normalize(
     {@required DocumentNode query,
     @required Map<String, Object> data,
     Map<String, Object> variables,
+    Map<String, TypePolicy> typePolicies,
     DataIdResolver dataIdFromObject,
     String referenceKey}) {
   // Set defaults if none are defined
-  dataIdFromObject ??= defaultDataIdResolver;
   referenceKey ??= defaultReferenceKey;
 
   /// The AST Node of the GraphQL Operation
@@ -32,18 +34,7 @@ Map<String, Object> normalize(
   final operationDefinition =
       query.definitions.whereType<OperationDefinitionNode>().first;
 
-  String operationTypeName;
-  switch (operationDefinition.type) {
-    case OperationType.query:
-      operationTypeName = 'Query';
-      break;
-    case OperationType.mutation:
-      operationTypeName = 'Mutation';
-      break;
-    case OperationType.subscription:
-      operationTypeName = 'Subscription';
-      break;
-  }
+  final rootTypename = resolveRootTypename(operationDefinition, typePolicies);
 
   final Map<String, FragmentDefinitionNode> fragmentMap = {
     for (var fragmentDefinition
@@ -60,7 +51,6 @@ Map<String, Object> normalize(
     @required Map<String, Map<String, Object>> normalizedMap,
   }) {
     SelectionSetNode selectionSet;
-
     if (node is OperationDefinitionNode)
       selectionSet = node.selectionSet;
     else if (node is FieldNode)
@@ -96,16 +86,15 @@ Map<String, Object> normalize(
               normalizedMap: normalizedMap)
       };
 
-      final bool shouldNormalize = dataForNode['__typename'] != null &&
-          dataIdFromObject(dataForNode) != null;
+      final dataId = resolveDataId(
+          data: dataForNode,
+          typePolicies: typePolicies,
+          dataIdFromObject: dataIdFromObject);
 
       if (node is OperationDefinitionNode) {
-        final rootQueryName = dataForNode['__typename'] ?? operationTypeName;
-        (normalizedMap[rootQueryName] ??= {}).addAll(dataToMerge);
+        (normalizedMap[rootTypename] ??= {}).addAll(dataToMerge);
         return normalizedMap;
-      } else if (shouldNormalize) {
-        final dataId = dataIdFromObject(dataForNode);
-        // TODO: should this be a deep merge?
+      } else if (dataId != null) {
         (normalizedMap[dataId] ??= {}).addAll(dataToMerge);
         return {referenceKey: dataId};
       } else {
