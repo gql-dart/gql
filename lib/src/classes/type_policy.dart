@@ -22,8 +22,8 @@ class TypePolicy {
 
   TypePolicy(
       {this.keyFields,
-      this.queryType,
-      this.mutationType,
-      this.subscriptionType,
+      this.queryType = false,
+      this.mutationType = false,
+      this.subscriptionType = false,
       this.fields});
 }

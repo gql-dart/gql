@@ -5,7 +5,7 @@ import 'package:normalize/normalize.dart';
 import '../shared_data.dart';
 
 void main() {
-  group("Custom Query Root", () {
+  group("Custom Root", () {
     final query = parseString("""
     query TestQuery {
       posts {
@@ -31,12 +31,12 @@ void main() {
   """);
 
     final normalizedMap = {
-      "CustomQueryRoot": {
+      "Query": {
         "posts": [
-          {"\$ref": "Post:123"}
+          {"\$ref": "Post:123:My awesome blog post"}
         ]
       },
-      "Post:123": {
+      "Post:123:My awesome blog post": {
         "id": "123",
         "__typename": "Post",
         "author": {"\$ref": "Author:1"},
@@ -54,12 +54,14 @@ void main() {
       "Author:2": {"id": "2", "__typename": "Author", "name": "Nicole"}
     };
 
+    final typePolicies = {
+      "Post": TypePolicy(keyFields: ['id', 'title'])
+    };
+
     test("Produces correct normalized object", () {
       expect(
           normalize(
-              query: query,
-              data: sharedResponse,
-              typePolicies: {"CustomQueryRoot": TypePolicy(queryType: true)}),
+              query: query, data: sharedResponse, typePolicies: typePolicies),
           equals(normalizedMap));
     });
 
@@ -68,7 +70,7 @@ void main() {
           denormalize(
               query: query,
               normalizedMap: normalizedMap,
-              typePolicies: {"CustomQueryRoot": TypePolicy(queryType: true)}),
+              typePolicies: typePolicies),
           equals(sharedResponse));
     }, skip: true);
   });

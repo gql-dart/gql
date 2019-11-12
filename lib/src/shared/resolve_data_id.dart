@@ -21,7 +21,8 @@ String resolveDataId(
   final typePolicy = (typePolicies ?? const {})[typename];
   if (typePolicy != null) {
     if (typePolicy.keyFields.isEmpty) return null;
-    return [typename, ...typePolicy.keyFields].join(':');
+    return [typename, ...typePolicy.keyFields.map((field) => data[field])]
+        .join(':');
   }
 
   if (dataIdFromObject != null) return dataIdFromObject(data);
