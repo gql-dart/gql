@@ -18,8 +18,8 @@ String resolveDataId(
   final typename = data['__typename'];
   if (typename == null) return null;
 
-  if (typePolicies != null) {
-    final typePolicy = typePolicies[typename];
+  final typePolicy = (typePolicies ?? const {})[typename];
+  if (typePolicy != null) {
     if (typePolicy.keyFields.isEmpty) return null;
     return [typename, ...typePolicy.keyFields].join(':');
   }

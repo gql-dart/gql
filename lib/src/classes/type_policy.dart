@@ -19,4 +19,11 @@ class TypePolicy {
 
   /// Allows defining [FieldPolicy]s for this type.
   Map<String, FieldPolicy> fields;
+
+  TypePolicy(
+      {this.keyFields,
+      this.queryType,
+      this.mutationType,
+      this.subscriptionType,
+      this.fields});
 }
