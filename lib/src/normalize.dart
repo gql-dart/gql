@@ -1,12 +1,11 @@
 import 'package:gql/ast.dart';
 import 'package:meta/meta.dart';
 
-import './shared/resolve_data_id.dart';
-import './shared/field_name_with_arguments.dart';
-import './shared/defaults.dart';
-import './shared/expand_fragments.dart';
+import './helpers/resolve_data_id.dart';
+import './helpers/field_name_with_arguments.dart';
+import './helpers/expand_fragments.dart';
 import './classes/type_policy.dart';
-import './shared/resolve_root_typename.dart';
+import './helpers/resolve_root_typename.dart';
 
 /// Normalizes data for a given query
 ///
@@ -27,7 +26,7 @@ Map<String, Object> normalize(
     DataIdResolver dataIdFromObject,
     String referenceKey}) {
   // Set default if none is defined
-  referenceKey ??= defaultReferenceKey;
+  referenceKey ??= '\$ref';
 
   /// The AST Node of the GraphQL Operation
   ///
@@ -73,14 +72,14 @@ Map<String, Object> normalize(
     // If this is a leaf node, return the data
     if (selectionSet == null) return dataForNode;
 
-    final subNodes = expandFragments(
-        data: dataForNode,
-        selectionSet: selectionSet,
-        fragmentMap: fragmentMap);
-
     if (dataForNode is Map) {
       final typename = dataForNode['__typename'];
       final typePolicy = (typePolicies ?? const {})[typename];
+
+      final subNodes = expandFragments(
+          data: dataForNode,
+          selectionSet: selectionSet,
+          fragmentMap: fragmentMap);
 
       final dataToMerge = {
         for (var selection in subNodes)

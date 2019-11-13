@@ -50,6 +50,6 @@ void main() {
           denormalize(
               query: query, normalizedMap: normalizedMap, variables: variables),
           equals(data));
-    }, skip: true);
+    });
   });
 }

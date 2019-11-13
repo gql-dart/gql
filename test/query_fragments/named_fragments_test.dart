@@ -42,6 +42,6 @@ void main() {
     test("Produces correct nested data object", () {
       expect(denormalize(query: query, normalizedMap: sharedNormalizedMap),
           equals(sharedResponse));
-    }, skip: true);
+    });
   });
 }

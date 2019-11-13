@@ -67,6 +67,6 @@ void main() {
           denormalize(
               query: query, normalizedMap: normalizedMap, variables: variables),
           equals(sharedResponse));
-    }, skip: true);
+    });
   });
 }
