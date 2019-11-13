@@ -15,9 +15,9 @@ The `normalize` function only normalizes entities that include a `__typename` fi
 
 IDs are determined by the following:
 
-2. If a [TypePolicy] is provided for the given type, it's [TypePolicy.keyFields] are used.
-3. If a [dataIdFromObject] funciton is provided, the result is used.
-4. The 'id' or '\_id' field (respectively) are used.
+2. If a `TypePolicy` is provided for the given type, it's `TypePolicy.keyFields` are used.
+3. If a `dataIdFromObject` funciton is provided, the result is used.
+4. The `id` or `_id` field (respectively) are used.
 
 ## Features
 
