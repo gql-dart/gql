@@ -41,6 +41,10 @@ Map<String, Object> denormalize(
       fragmentDefinition.name.value: fragmentDefinition
   };
 
+  /// Returns a denormalized object for a given node.
+  ///
+  /// This is called recursively as the AST is traversed. Accepts either the
+  /// root [OperationDefinitionNode] or a [FieldNode].
   Object denormalizeNode({
     @required Node node,
     @required Object dataForNode,
