@@ -17,7 +17,7 @@ import './helpers/resolve_root_typename.dart';
 ///
 /// The [referenceKey] is used to reference the ID of a normalized object. It
 /// should begin with '$' since a graphl response object key cannot begin with
-/// that symbol.
+/// that symbol. If none is provided, we will use '$ref' by default.
 Map<String, Object> normalize(
     {@required DocumentNode query,
     @required Map<String, Object> data,
