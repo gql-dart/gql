@@ -27,9 +27,7 @@ The `normalize` function only normalizes entities that include a `__typename` fi
 
 `TypePolicy.keyFields` and `FieldPolicy.keyArgs` currently only accept a flat list of `String`s. Functions and nested lists of strings and are not yet supported.
 
-## Gratitude
-
-Inspiration (and many of the tests) for this library came from the [graphql-norm](https://github.com/dividab/graphql-norm) package.
+## Dependencies
 
 This library depends on the [gql](https://github.com/gql-dart/gql) library.
 
