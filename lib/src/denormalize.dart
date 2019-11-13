@@ -9,7 +9,7 @@ import './helpers/resolve_root_typename.dart';
 /// Denormalizes data for a given query
 ///
 /// If any [TypePolicy]s were used to normalize the data, they must be provided
-/// to ensure that the appropriate normalized record can be found.
+/// to ensure that the appropriate normalized entity can be found.
 ///
 /// Likewise, if a custom [referenceKey] was used to normalize the data, it
 /// must be provided. Otherwise, the default '$ref' key will be used.

@@ -11,7 +11,13 @@ This project allows for the normalization and denormalization of GraphQL Documen
 
 The `normalize` function creates a flat map of normalized documents and can be used to cache results of GraphQL queries. It traverses the [GraphQL AST](https://github.com/gql-dart/gql/blob/master/gql/README.md) and only includes the fields specified in the GraphQL Document in the normalized results.
 
-The `normalize` function only normalizes entities that include a `__typename` field and for which the `DataIdResolver` function returns a non-null value. Otherwise, the entity will be stored with its parent. The default `DataIdResolver` automatically checks for `id` and `_id` fields, respectively.
+The `normalize` function only normalizes entities that include a `__typename` field and a valid ID.
+
+IDs are determined by the following:
+
+2. If a [TypePolicy] is provided for the given type, it's [TypePolicy.keyFields] are used.
+3. If a [dataIdFromObject] funciton is provided, the result is used.
+4. The 'id' or '\_id' field (respectively) are used.
 
 ## Features
 
@@ -57,7 +63,7 @@ final DocumentNode query = parseString("""
   """)
 ```
 
-... and executing that query produces the following response data
+... and executing that query produces the following response data:
 
 ```dart
 final Map<String, Object> data = {
@@ -86,35 +92,35 @@ final Map<String, Object> normalizedMap = normalize(query: query, data: data);
 print(normalized);
 ```
 
-Which will produce the following result:
+Which will produce the following normalized result:
 
 ```dart
 {
   "Query": {
     "posts": [
-      {"\$ref": "Post:123"}
+      {"$ref": "Post:123"}
     ]
   },
   "Post:123": {
     "id": "123",
     "__typename": "Post",
-    "author": {"\$ref": "Author:1"},
+    "author": {"$ref": "Author:1"},
     "title": "My awesome blog post",
     "comments": [
-      {"\$ref": "Comment:324"}
+      {"$ref": "Comment:324"}
     ]
   },
   "Author:1": {"id": "1", "__typename": "Author", "name": "Paul"},
   "Comment:324": {
     "id": "324",
     "__typename": "Comment",
-    "commenter": {"\$ref": "Author:2"}
+    "commenter": {"$ref": "Author:2"}
   },
   "Author:2": {"id": "2", "__typename": "Author", "name": "Nicole"}
 }
 ```
 
-If we want to denormalize data for a specific query, we can call `denormalize` on the normalizedMap from above. This will give us back the original data response object.
+If we later want to denormalize this data (for example, when reading from a cache), we can call `denormalize` on the normalizedMap from above. This will give us back the original data response object.
 
 ```dart
 denormalize(query: query, normalizedMap: normalizedMap)
