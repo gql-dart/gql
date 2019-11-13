@@ -25,7 +25,7 @@ The `normalize` function only normalizes entities that include a `__typename` fi
 
 ## Limitations
 
-`TypePolicy.keyFields` and `FieldPolicy.keyArgs` currently only accept a flat list of `String`s. Nested lists of strings and callbacks are not yet supported.
+`TypePolicy.keyFields` and `FieldPolicy.keyArgs` currently only accept a flat list of `String`s. Functions and nested lists of strings and are not yet supported.
 
 ## Gratitude
 
