@@ -34,9 +34,9 @@ IDs are determined by the following:
 Assuming we have the following query...
 
 ```dart
-import 'package:gql/language.dart';
-import 'package:gql/ast.dart';
-import 'package:normalize/normalize.dart';
+import "package:gql/language.dart";
+import "package:gql/ast.dart";
+import "package:normalize/normalize.dart";
 
 final DocumentNode query = parseString("""
     query TestQuery {

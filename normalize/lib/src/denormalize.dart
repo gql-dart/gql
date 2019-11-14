@@ -1,10 +1,10 @@
-import 'package:gql/ast.dart';
-import 'package:meta/meta.dart';
+import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
-import './helpers/field_name_with_arguments.dart';
-import './helpers/expand_fragments.dart';
-import './classes/type_policy.dart';
-import './helpers/resolve_root_typename.dart';
+import "./classes/type_policy.dart";
+import "./helpers/expand_fragments.dart";
+import "./helpers/field_name_with_arguments.dart";
+import "./helpers/resolve_root_typename.dart";
 
 /// Denormalizes data for a given query
 ///
@@ -20,7 +20,7 @@ Map<String, Object> denormalize(
     Map<String, TypePolicy> typePolicies,
     String referenceKey}) {
   // Set defaults if none are defined
-  referenceKey ??= '\$ref';
+  referenceKey ??= "\$ref";
 
   /// The AST Node of the GraphQL Operation
   ///
@@ -47,18 +47,19 @@ Map<String, Object> denormalize(
     @required Map<String, Map<String, Object>> normalizedMap,
   }) {
     SelectionSetNode selectionSet;
-    if (node is OperationDefinitionNode)
+    if (node is OperationDefinitionNode) {
       selectionSet = node.selectionSet;
-    else if (node is FieldNode)
+    } else if (node is FieldNode) {
       selectionSet = node.selectionSet;
-    else
-      throw (Exception("Unexpected node type"));
+    } else {
+      throw Exception("Unexpected node type");
+    }
 
     if (dataForNode == null) return null;
 
     if (dataForNode is List) {
       return dataForNode
-          .map((data) => denormalizeNode(
+          .map((Object data) => denormalizeNode(
               node: node, dataForNode: data, normalizedMap: normalizedMap))
           .toList();
     }
@@ -70,11 +71,11 @@ Map<String, Object> denormalize(
       final denormalizedData = dataForNode.containsKey(referenceKey)
           ? normalizedMap[dataForNode[referenceKey]]
           : dataForNode;
-      final typename = denormalizedData['__typename'];
+      final typename = denormalizedData["__typename"] as String;
       final typePolicy = (typePolicies ?? const {})[typename];
 
       final subNodes = expandFragments(
-          data: denormalizedData,
+          data: denormalizedData as Map<String, Object>,
           selectionSet: selectionSet,
           fragmentMap: fragmentMap);
 
@@ -88,12 +89,12 @@ Map<String, Object> denormalize(
       };
     }
 
-    throw (Exception(
-        "There are sub-selections on this node, but the data is not null, an Array, or a Map"));
+    throw Exception(
+        "There are sub-selections on this node, but the data is not null, an Array, or a Map");
   }
 
   return denormalizeNode(
       node: operationDefinition,
       dataForNode: normalizedMap[rootTypename],
-      normalizedMap: normalizedMap);
+      normalizedMap: normalizedMap) as Map<String, Object>;
 }

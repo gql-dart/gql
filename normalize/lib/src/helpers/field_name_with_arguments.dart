@@ -1,32 +1,34 @@
-import 'dart:convert';
-import 'package:gql/ast.dart';
+import "dart:convert";
 
-import '../classes/type_policy.dart';
+import "package:gql/ast.dart";
+
+import "../classes/type_policy.dart";
 
 Object _resolveValueNode(ValueNode valueNode, Map<String, Object> variables) {
-  if (valueNode is VariableNode)
+  if (valueNode is VariableNode) {
     return variables[valueNode.name.value];
-  else if (valueNode is ListValueNode)
+  } else if (valueNode is ListValueNode) {
     return valueNode.values
         .map((node) => _resolveValueNode(node, variables))
         .toList();
-  else if (valueNode is ObjectValueNode) {
+  } else if (valueNode is ObjectValueNode) {
     return {
       for (var field in valueNode.fields)
         field.name.value: _resolveValueNode(field.value, variables)
     };
-  } else if (valueNode is IntValueNode)
+  } else if (valueNode is IntValueNode) {
     return valueNode.value;
-  else if (valueNode is FloatValueNode)
+  } else if (valueNode is FloatValueNode) {
     return valueNode.value;
-  else if (valueNode is StringValueNode)
+  } else if (valueNode is StringValueNode) {
     return valueNode.value;
-  else if (valueNode is BooleanValueNode)
+  } else if (valueNode is BooleanValueNode) {
     return valueNode.value;
-  else if (valueNode is EnumValueNode)
+  } else if (valueNode is EnumValueNode) {
     return valueNode.name.value;
-  else
+  } else {
     return null;
+  }
 }
 
 String fieldNameWithArguments(
@@ -42,5 +44,5 @@ String fieldNameWithArguments(
       argumentNode.name.value: _resolveValueNode(argumentNode.value, variables)
   };
   final hashedArgs = json.encode(argumentsObject);
-  return '${fieldNode.name.value}($hashedArgs)';
+  return "${fieldNode.name.value}($hashedArgs)";
 }

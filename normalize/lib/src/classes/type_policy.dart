@@ -1,4 +1,4 @@
-import './field_policy.dart';
+import "./field_policy.dart";
 
 class TypePolicy {
   /// Allows defining the primary key fields for this type.

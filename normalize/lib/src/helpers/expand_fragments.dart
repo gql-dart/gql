@@ -1,5 +1,5 @@
-import 'package:gql/ast.dart';
-import 'package:meta/meta.dart';
+import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
 /// Adds fragment fields to selections if type of data matches fragment type
 List<FieldNode> expandFragments(
@@ -8,7 +8,7 @@ List<FieldNode> expandFragments(
     @required Map<String, FragmentDefinitionNode> fragmentMap}) {
   final List<FieldNode> fieldNodes = [];
 
-  for (var selectionNode in selectionSet.selections) {
+  for (final selectionNode in selectionSet.selections) {
     if (selectionNode is FieldNode) {
       fieldNodes.add(selectionNode);
     } else if (selectionNode is InlineFragmentNode) {
@@ -29,7 +29,7 @@ List<FieldNode> expandFragments(
             fragmentMap: fragmentMap));
       }
     } else {
-      throw (FormatException("Unknown selection node type"));
+      throw FormatException("Unknown selection node type");
     }
   }
   return fieldNodes;

@@ -1,5 +1,5 @@
-import 'package:gql/ast.dart';
-import 'package:meta/meta.dart';
+import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
 class FieldFunctionOptions {
   Map<String, Object> args;

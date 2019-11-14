@@ -1,8 +1,8 @@
+import "package:gql/language.dart";
+import "package:normalize/normalize.dart";
 import "package:test/test.dart";
-import 'package:gql/language.dart';
 
-import 'package:normalize/normalize.dart';
-import '../shared_data.dart';
+import "../shared_data.dart";
 
 void main() {
   group("Key Fields", () {
@@ -55,7 +55,7 @@ void main() {
     };
 
     final typePolicies = {
-      "Post": TypePolicy(keyFields: ['id', 'title'])
+      "Post": TypePolicy(keyFields: ["id", "title"])
     };
 
     test("Produces correct normalized object", () {

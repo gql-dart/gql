@@ -13,3 +13,4 @@ dependencies:
 
 dev_dependencies:
   test: ^1.9.4
+  gql_pedantic: ^1.0.0

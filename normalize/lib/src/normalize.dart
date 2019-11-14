@@ -1,11 +1,11 @@
-import 'package:gql/ast.dart';
-import 'package:meta/meta.dart';
+import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
-import './helpers/resolve_data_id.dart';
-import './helpers/field_name_with_arguments.dart';
-import './helpers/expand_fragments.dart';
-import './classes/type_policy.dart';
-import './helpers/resolve_root_typename.dart';
+import "./classes/type_policy.dart";
+import "./helpers/expand_fragments.dart";
+import "./helpers/field_name_with_arguments.dart";
+import "./helpers/resolve_data_id.dart";
+import "./helpers/resolve_root_typename.dart";
 
 /// Normalizes data for a given query
 ///
@@ -26,7 +26,7 @@ Map<String, Object> normalize(
     DataIdResolver dataIdFromObject,
     String referenceKey}) {
   // Set default if none is defined
-  referenceKey ??= '\$ref';
+  referenceKey ??= "\$ref";
 
   /// The AST Node of the GraphQL Operation
   ///
@@ -53,18 +53,18 @@ Map<String, Object> normalize(
     @required Map<String, Map<String, Object>> normalizedMap,
   }) {
     SelectionSetNode selectionSet;
-    if (node is OperationDefinitionNode)
+    if (node is OperationDefinitionNode) {
       selectionSet = node.selectionSet;
-    else if (node is FieldNode)
+    } else if (node is FieldNode) {
       selectionSet = node.selectionSet;
-    else
-      throw (Exception("Unexpected node type"));
-
+    } else {
+      throw Exception("Unexpected node type");
+    }
     if (dataForNode == null) return null;
 
     if (dataForNode is List) {
       return dataForNode
-          .map((data) => normalizeNode(
+          .map((Object data) => normalizeNode(
               node: node, dataForNode: data, normalizedMap: normalizedMap))
           .toList();
     }
@@ -73,11 +73,11 @@ Map<String, Object> normalize(
     if (selectionSet == null) return dataForNode;
 
     if (dataForNode is Map) {
-      final typename = dataForNode['__typename'];
+      final typename = dataForNode["__typename"] as String;
       final typePolicy = (typePolicies ?? const {})[typename];
 
       final subNodes = expandFragments(
-          data: dataForNode,
+          data: dataForNode as Map<String, Object>,
           selectionSet: selectionSet,
           fragmentMap: fragmentMap);
 
@@ -92,7 +92,7 @@ Map<String, Object> normalize(
       };
 
       final dataId = resolveDataId(
-          data: dataForNode,
+          data: dataForNode as Map<String, Object>,
           typePolicies: typePolicies,
           dataIdFromObject: dataIdFromObject);
 
@@ -107,10 +107,12 @@ Map<String, Object> normalize(
       }
     }
 
-    throw (Exception(
-        "There are sub-selections on this node, but the data is not null, an Array, or a Map"));
+    throw Exception(
+        "There are sub-selections on this node, but the data is not null, an Array, or a Map");
   }
 
   return normalizeNode(
-      node: operationDefinition, dataForNode: data, normalizedMap: {});
+      node: operationDefinition,
+      dataForNode: data,
+      normalizedMap: {}) as Map<String, Object>;
 }

@@ -1,8 +1,8 @@
+import "package:gql/language.dart";
+import "package:normalize/normalize.dart";
 import "package:test/test.dart";
-import 'package:gql/language.dart';
 
-import 'package:normalize/normalize.dart';
-import '../shared_data.dart';
+import "../shared_data.dart";
 
 void main() {
   group("Key Args", () {
@@ -56,7 +56,7 @@ void main() {
 
     final typePolicies = {
       "Post": TypePolicy(fields: {
-        "comments": FieldPolicy(keyArgs: ['b'])
+        "comments": FieldPolicy<dynamic>(keyArgs: ["b"])
       })
     };
 

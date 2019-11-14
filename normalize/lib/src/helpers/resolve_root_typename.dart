@@ -1,24 +1,35 @@
-import 'package:gql/ast.dart';
-import '../classes/type_policy.dart';
+import "package:gql/ast.dart";
+
+import "../classes/type_policy.dart";
 
 String resolveRootTypename(OperationDefinitionNode operationDefinition,
     Map<String, TypePolicy> typePolicies) {
   switch (operationDefinition.type) {
     case OperationType.query:
       return typePolicies?.entries
-              ?.firstWhere((entry) => entry.value.queryType, orElse: () {})
+              ?.firstWhere(
+                (entry) => entry.value.queryType,
+                orElse: () => null,
+              )
               ?.key ??
-          'Query';
+          "Query";
     case OperationType.mutation:
       return typePolicies?.entries
-              ?.firstWhere((entry) => entry.value.mutationType, orElse: () {})
+              ?.firstWhere(
+                (entry) => entry.value.mutationType,
+                orElse: () => null,
+              )
               ?.key ??
-          'Mutation';
+          "Mutation";
     case OperationType.subscription:
       return typePolicies?.entries
-              ?.firstWhere((entry) => entry.value.subscriptionType,
-                  orElse: () {})
+              ?.firstWhere(
+                (entry) => entry.value.subscriptionType,
+                orElse: () => null,
+              )
               ?.key ??
-          'Subscription';
+          "Subscription";
+    default:
+      return null;
   }
 }

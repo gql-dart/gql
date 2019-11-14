@@ -1,7 +1,6 @@
+import "package:gql/language.dart";
+import "package:normalize/normalize.dart";
 import "package:test/test.dart";
-import 'package:gql/language.dart';
-
-import 'package:normalize/normalize.dart';
 
 void main() {
   group("Missing ID", () {
