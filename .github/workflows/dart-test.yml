@@ -62,7 +62,18 @@ jobs:
     env:
       PACKAGE: gql_transform_link
     steps:
-    - name: Clone repository
-      uses: actions/checkout@master
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@master
+      - name: Run tests
+        uses: ./.github/actions/dart-test
+
+  normalize:
+    runs-on: ubuntu-latest
+    name: Test normalize
+    env:
+      PACKAGE: normalize
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@master
+      - name: Run tests
+        uses: ./.github/actions/dart-test
