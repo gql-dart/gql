@@ -128,7 +128,7 @@ denormalize(query: query, normalizedMap: normalizedMap)
 
 ## Limitations
 
-`TypePolicy.keyFields` and `FieldPolicy.keyArgs` currently only accept a flat list of `String`s. Functions and nested lists of strings and are not yet supported.
+`TypePolicy.keyFields` and `FieldPolicy.keyArgs` currently only accept a flat list of `String`s. Functions and nested lists of strings and are not yet supported. `FieldPolicy.merge` and `FieldPolicy.read` are also not yet supported.
 
 ## Dependencies
 
