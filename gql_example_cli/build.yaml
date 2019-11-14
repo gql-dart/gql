@@ -1,12 +1,7 @@
 targets:
   $default:
     builders:
-      gql_code_gen|ast_builder:
+      gql_code_gen|builder:
         enabled: true
-        generate_for:
-          exclude:
-            - lib/schema.graphql
-      gql_code_gen|schema_builder:
-        enabled: true
-        generate_for:
-          - lib/schema.graphql
+        options:
+          schema: gql_example_cli|lib/schema.graphql

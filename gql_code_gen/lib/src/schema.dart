@@ -2,6 +2,8 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
+import "package:gql_code_gen/src/schema/input.dart";
+import "package:gql_code_gen/src/schema/scalar.dart";
 import "package:meta/meta.dart";
 import "package:recase/recase.dart";
 
@@ -62,130 +64,17 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
         ),
       );
 
-  Constructor _buildConstructor(
-    InputObjectTypeDefinitionNode node,
-  ) =>
-      Constructor(
-        (b) => b
-          ..optionalParameters = ListBuilder<Parameter>(
-            node.fields.map<Parameter>(_buildParameter),
-          )
-          ..constant = true,
-      );
-
-  Parameter _buildParameter(
-    InputValueDefinitionNode node,
-  ) =>
-      Parameter(
-        (b) => b
-          ..name = node.name.value
-          ..toThis = true
-          ..named = true,
-      );
-
   @override
   Spec visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) =>
-      Class(
-        (b) => b
-          ..name = node.name.value
-          ..fields = ListBuilder<Field>(
-            _acceptMany(node.fields),
-          )
-          ..methods = ListBuilder<Method>(<Method>[
-            toJson(node.name.value),
-          ])
-          ..constructors = ListBuilder<Constructor>(<Constructor>[
-            _buildConstructor(node),
-            fromJson(node.name.value),
-          ])
-          ..annotations = ListBuilder<Expression>(<Expression>[
-            jsonAnnotation("JsonSerializable"),
-          ]),
-      );
-
-  @override
-  Spec visitInputValueDefinitionNode(
-    InputValueDefinitionNode node,
-  ) =>
-      Field(
-        (b) => b
-          ..name = node.name.value
-          ..type = node.type.isNonNull
-              ? _acceptOne(node.type) as Reference
-              : TypeReference(
-                  (b) => b
-                    ..symbol = "Optional"
-                    ..types = ListBuilder<Reference>(<Reference>[
-                      _acceptOne(node.type) as Reference,
-                    ]),
-                )
-          ..modifier = FieldModifier.final$
-          ..annotations = ListBuilder<Expression>(<Expression>[
-            jsonAnnotation(
-              "JsonKey",
-              [],
-              {
-                "disallowNullValue": literalBool(node.type.isNonNull),
-                "required": literalBool(node.type.isNonNull),
-                "nullable": literalBool(!node.type.isNonNull),
-                "includeIfNull": literalBool(false),
-              },
-            ),
-          ]),
-      );
-
-  @override
-  Spec visitListTypeNode(
-    ListTypeNode node,
-  ) =>
-      TypeReference(
-        (b) => b
-          ..symbol = "List"
-          ..types = ListBuilder<Reference>(<Reference>[
-            _acceptOne(node.type) as Reference,
-          ]),
-      );
-
-  @override
-  Spec visitNamedTypeNode(
-    NamedTypeNode node,
-  ) =>
-      _getTypeRef(node.name.value);
+      buildInputClass(node);
 
   @override
   Spec visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
-      Class(
-        (b) => b
-          ..name = node.name.value
-          ..fields = ListBuilder<Field>(<Field>[
-            Field(
-              (b) => b
-                ..name = "value"
-                ..type = refer("String")
-                ..modifier = FieldModifier.final$,
-            ),
-          ])
-          ..constructors = ListBuilder<Constructor>(<Constructor>[
-            Constructor(
-              (b) => b
-                ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-                  Parameter(
-                    (b) => b
-                      ..name = "value"
-                      ..toThis = true,
-                  )
-                ])
-                ..constant = true,
-            ),
-          ])
-          ..annotations = ListBuilder<Expression>(<Expression>[
-            jsonAnnotation("JsonSerializable"),
-          ]),
-      );
+      buildScalarClass(node);
 
   @override
   Spec visitEnumTypeDefinitionNode(
@@ -205,10 +94,6 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
     EnumValueDefinitionNode node,
   ) =>
       Block.of(<Code>[
-        Code("@"),
-        jsonAnnotation("JsonValue", [
-          literalString(node.name.value),
-        ]).code,
         Code("${identifier(ReCase(node.name.value).camelCase)},"),
       ]);
 }

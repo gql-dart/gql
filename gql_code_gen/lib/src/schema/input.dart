@@ -3,29 +3,29 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
 
-Class buildOperationArgsClass(
-  OperationDefinitionNode node,
+Class buildInputClass(
+  InputObjectTypeDefinitionNode node,
 ) =>
     Class(
       (b) => b
-        ..name = "${node.name.value}Args"
+        ..name = "${node.name.value}"
         ..extend = Reference("ArgumentBuilder", "package:gql/execution")
-        ..methods = _buildSetters(node.variableDefinitions),
+        ..methods = _buildSetters(node.fields),
     );
 
 ListBuilder<Method> _buildSetters(
-  List<VariableDefinitionNode> nodes,
+  List<InputValueDefinitionNode> nodes,
 ) =>
     ListBuilder<Method>(
       nodes.map<Method>(_buildSetter),
     );
 
 Method _buildSetter(
-  VariableDefinitionNode node,
+  InputValueDefinitionNode node,
 ) =>
     Method(
       (b) => b
-        ..name = node.variable.name.value
+        ..name = node.name.value
         ..type = MethodType.setter
         ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
           Parameter(
@@ -35,5 +35,5 @@ Method _buildSetter(
           )
         ])
         ..lambda = true
-        ..body = Code("set(\"${node.variable.name.value}\", value)"),
+        ..body = Code("set(\"${node.name.value}\", value)"),
     );

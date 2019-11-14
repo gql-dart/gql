@@ -40,32 +40,4 @@ void main() {
   );
 
   print(formatted);
-
-  final undefined = Vars(
-    name: null,
-  );
-
-  final nulled = Vars(
-    name: Value(null),
-  );
-
-  final valued = Vars(
-    name: Value("John Doe"),
-  );
-}
-
-class Vars {
-  final Optional<String> name;
-
-  const Vars({this.name});
-}
-
-abstract class Optional<T> {
-  final T value;
-
-  const Optional(this.value);
-}
-
-class Value<T> extends Optional<T> {
-  const Value(T value) : super(value);
 }

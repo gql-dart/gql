@@ -13,7 +13,7 @@ class RequestSerializer {
 
     return <String, dynamic>{
       "operationName": request.operation.operationName,
-      "variables": request.operation.variables,
+      "variables": request.variables,
       "query": printNode(request.operation.document),
       if (thunk != null) "extensions": thunk.getRequestExtensions(request),
     };

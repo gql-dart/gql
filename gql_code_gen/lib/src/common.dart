@@ -118,14 +118,13 @@ Reference _listOrNot(
 Reference typeRef(
   TypeNode type, [
   Map<String, Reference> typeMap = defaultTypeMap,
-]) {
-  final t = _listOrNot(type, typeMap);
+]) =>
+    _listOrNot(type, typeMap);
 
-  if (type.isNonNull) return t;
+//  if (type.isNonNull) return t;
 
-  return TypeReference(
-    (b) => b
-      ..symbol = "Optional"
-      ..types = ListBuilder<Reference>(<Reference>[t]),
-  );
-}
+//  return TypeReference(
+//    (b) => b
+//      ..symbol = "Optional"
+//      ..types = ListBuilder<Reference>(<Reference>[t]),
+//  );

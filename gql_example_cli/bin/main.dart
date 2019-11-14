@@ -2,6 +2,7 @@ import "package:args/args.dart";
 import "package:gql/execution.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
+import "find_pokemon.dart";
 import "find_pokemon.gql.dart" as find_pokemon;
 import "list_pokemon.gql.dart" as list_pokemon;
 
@@ -25,15 +26,17 @@ Future<Null> main(List<String> arguments) async {
           Request(
             operation: Operation(
               document: find_pokemon.document,
-              variables: <String, String>{
-                "name": find,
-              },
             ),
+            variables: <String, String>{
+              "name": find,
+            },
           ),
         )
         .first;
 
-    final pokemon = result.data["pokemon"] as Map<String, dynamic>;
+    final data = result.data as $FindPokemon;
+
+    final pokemon = data.pokemon;
 
     if (pokemon == null) {
       print("${find} was not found. Does it even exist?");
@@ -41,13 +44,16 @@ Future<Null> main(List<String> arguments) async {
       return;
     }
 
-    print("Found ${pokemon["name"]}");
-    print("ID: ${pokemon["id"]}");
+    final weight = data.pokemon.weight;
+    final height = data.pokemon.height;
+
+    print("Found ${pokemon.name}");
+    print("ID: ${pokemon.id}");
     print(
-      "Weight: ${pokemon["weight"]["minimum"]} – ${pokemon["weight"]["maximum"]}",
+      "Weight: ${weight.minimum} – ${weight.maximum}",
     );
     print(
-      "Height: ${pokemon["height"]["minimum"]} – ${pokemon["height"]["maximum"]}",
+      "Height: ${height.minimum} – ${height.maximum}",
     );
 
     return;
@@ -61,10 +67,10 @@ Future<Null> main(List<String> arguments) async {
         Request(
           operation: Operation(
             document: list_pokemon.document,
-            variables: <String, String>{
-              "count": count,
-            },
           ),
+          variables: <String, String>{
+            "count": count,
+          },
         ),
       )
       .first;
