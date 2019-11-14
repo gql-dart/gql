@@ -1,9 +1,9 @@
 name: normalize
 author: Sat Mandir Khalsa
 version: 0.0.1
-homepage: https://github.com/smkhalsa/normalize
+homepage: https://github.com/gql-dart/gql/tree/master/normalize
 description: Normalization and denormalization of GraphQL responses in Dart
-repository: https://github.com/smkhalsa/normalize
+repository: https://github.com/gql-dart/gql/tree/master/normalize
 environment: 
   sdk: '>=2.2.2 <3.0.0'
 dependencies: 
