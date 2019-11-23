@@ -1,3 +1,7 @@
+## 0.12.0
+
+- extracted `package:gql/execution.dart` to `package:gql_exec/gql_exec.dart`
+
 ## 0.11.1
 
 - fix for parsing empty list and object literals

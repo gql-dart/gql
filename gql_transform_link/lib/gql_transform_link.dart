@@ -2,7 +2,7 @@
 ///  May be used to update context, document, variables, data, errors, etc.
 library gql_transform_link;
 
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
 typedef RequestTransformer = Request Function(Request request);
