@@ -1,3 +1,11 @@
+## 0.2.5
+
+- upgrade `package:gql_exec` to v0.2.0
+
+## 0.2.4
+
+- use `package:gql_exec`
+
 ## 0.2.3
 
 - upgrade `package:gql_link` to v0.2.0

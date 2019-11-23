@@ -1,0 +1,14 @@
+name: gql_exec
+author: Klāvs Priedītis <klavs@prieditis.lv>
+version: 0.2.0
+homepage: https://github.com/gql-dart/gql/tree/master/gql_exec
+description: Basis for GraphQL execution layer to support Link and Client.
+environment: 
+  sdk: '>=2.2.2 <3.0.0'
+dependencies: 
+  gql: ^0.12.0
+  meta: ^1.1.7
+  collection: ^1.14.11
+dev_dependencies: 
+  test: ^1.0.0
+  gql_pedantic: ^1.0.0

@@ -1,3 +1,11 @@
+## 0.2.2
+
+- upgrade `package:gql_exec` to v0.2.0
+
+## 0.2.1
+
+-  use `package:gql_exec`
+
 ## 0.2.0
 
 - rename `Exception` classes and extend from a new `LinkException`

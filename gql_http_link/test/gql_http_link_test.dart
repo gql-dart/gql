@@ -1,7 +1,7 @@
 import "dart:async";
 import "dart:convert";
 
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:gql_link/gql_link.dart";
@@ -33,8 +33,8 @@ void main() {
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
       link = HttpLink(
         "/graphql-test",
@@ -168,8 +168,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString("query MyQuery {}"),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
           context: Context.fromList(
             const [
               HttpLinkHeaders(
@@ -229,8 +229,8 @@ void main() {
             Request(
               operation: Operation(
                 document: parseString("query MyQuery {}"),
-                variables: const <String, dynamic>{"i": 12},
               ),
+              variables: const <String, dynamic>{"i": 12},
             ),
           )
           .first;
@@ -272,8 +272,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString("query MyQuery {}"),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
           context: Context.fromList(
             const [
               HttpLinkHeaders(
@@ -536,8 +536,8 @@ void main() {
               Request(
                 operation: Operation(
                   document: parseString("query MyQuery {}"),
-                  variables: const <String, dynamic>{"i": 12},
                 ),
+                variables: const <String, dynamic>{"i": 12},
               ),
             )
             .first;
@@ -580,8 +580,8 @@ void main() {
               Request(
                 operation: Operation(
                   document: parseString("query MyQuery {}"),
-                  variables: const <String, dynamic>{"i": 12},
                 ),
+                variables: const <String, dynamic>{"i": 12},
               ),
             )
             .first;

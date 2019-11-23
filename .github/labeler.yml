@@ -22,6 +22,10 @@ package/gql_link:
   - gql_link/*
   - gql_link/**/*
 
+package/gql_exec:
+  - gql_exec/*
+  - gql_exec/**/*
+
 package/gql_pedantic:
   - gql_pedantic/*
   - gql_pedantic/**/*

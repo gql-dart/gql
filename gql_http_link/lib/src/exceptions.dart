@@ -1,4 +1,4 @@
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
 import "package:meta/meta.dart";

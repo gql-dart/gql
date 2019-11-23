@@ -1,4 +1,4 @@
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 
 /// Type of the `forward` function
 typedef NextLink = Stream<Response> Function(
