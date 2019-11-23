@@ -2,9 +2,7 @@ import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:meta/meta.dart";
 
-/// Container of a [document] and it's [variables]
-///
-/// Optionally defines the [operationName]
+/// An operation in a [document] , optionally defined by [operationName]
 @immutable
 class Operation {
   /// Document containing at least one [OperationDefinitionNode]
@@ -15,19 +13,14 @@ class Operation {
   /// Must be specified if [document] contains more than one [OperationDefinitionNode]
   final String operationName;
 
-  /// Variables for the operation
-  final Map<String, dynamic> variables;
-
   const Operation({
     @required this.document,
     this.operationName,
-    this.variables = const <String, dynamic>{},
   }) : assert(document != null);
 
   List<Object> _getChildren() => [
         document,
         operationName,
-        variables,
       ];
 
   @override

@@ -1,7 +1,7 @@
 import "dart:async";
 
-import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:gql_transform_link/gql_transform_link.dart";
 import "package:mockito/mockito.dart";
@@ -15,7 +15,7 @@ void main() {
       final mockLink = MockLink();
 
       final extensionGetter = RequestExtensionsThunk(
-        (req) => req.operation.variables,
+        (req) => req.variables,
       );
 
       when(
@@ -39,8 +39,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString(""""""),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
         ),
       );
 
@@ -49,8 +49,8 @@ void main() {
           Request(
             operation: Operation(
               document: parseString(""""""),
-              variables: const <String, dynamic>{"i": 12},
             ),
+            variables: const <String, dynamic>{"i": 12},
           ).withContextEntry(extensionGetter),
           null,
         ),
@@ -85,8 +85,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString(""""""),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
         ),
       );
 

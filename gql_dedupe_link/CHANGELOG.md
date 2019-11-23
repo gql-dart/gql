@@ -1,3 +1,7 @@
+## 1.0.8
+
+- upgrade `package:gql_exec` to v0.2.0
+
 ## 1.0.7
 
 - use `package:gql_exec`

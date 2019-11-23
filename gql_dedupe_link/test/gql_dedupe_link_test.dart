@@ -1,8 +1,8 @@
 import "dart:async";
 
-import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
 import "package:gql_dedupe_link/gql_dedupe_link.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
@@ -19,8 +19,8 @@ void main() {
       final req1 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final result1 = Response(
@@ -60,15 +60,15 @@ void main() {
       final req1 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final req2 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 42},
         ),
+        variables: const <String, dynamic>{"i": 42},
       );
 
       final result1 = Response(
@@ -123,15 +123,15 @@ void main() {
       final req1 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final req2 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final result1 = Response(
@@ -179,8 +179,8 @@ void main() {
       final req1 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final result1 = Response(
@@ -225,8 +225,8 @@ void main() {
       final req1 = Request(
         operation: Operation(
           document: document,
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
 
       final result1 = Response(

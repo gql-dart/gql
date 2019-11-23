@@ -33,8 +33,8 @@ void main() {
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
-          variables: const <String, dynamic>{"i": 12},
         ),
+        variables: const <String, dynamic>{"i": 12},
       );
       link = HttpLink(
         "/graphql-test",
@@ -168,8 +168,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString("query MyQuery {}"),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
           context: Context.fromList(
             const [
               HttpLinkHeaders(
@@ -229,8 +229,8 @@ void main() {
             Request(
               operation: Operation(
                 document: parseString("query MyQuery {}"),
-                variables: const <String, dynamic>{"i": 12},
               ),
+              variables: const <String, dynamic>{"i": 12},
             ),
           )
           .first;
@@ -272,8 +272,8 @@ void main() {
         Request(
           operation: Operation(
             document: parseString("query MyQuery {}"),
-            variables: const <String, dynamic>{"i": 12},
           ),
+          variables: const <String, dynamic>{"i": 12},
           context: Context.fromList(
             const [
               HttpLinkHeaders(
@@ -536,8 +536,8 @@ void main() {
               Request(
                 operation: Operation(
                   document: parseString("query MyQuery {}"),
-                  variables: const <String, dynamic>{"i": 12},
                 ),
+                variables: const <String, dynamic>{"i": 12},
               ),
             )
             .first;
@@ -580,8 +580,8 @@ void main() {
               Request(
                 operation: Operation(
                   document: parseString("query MyQuery {}"),
-                  variables: const <String, dynamic>{"i": 12},
                 ),
+                variables: const <String, dynamic>{"i": 12},
               ),
             )
             .first;
