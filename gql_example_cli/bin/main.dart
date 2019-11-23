@@ -1,10 +1,9 @@
 import "package:args/args.dart";
-import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
-import "find_pokemon.dart";
-import "find_pokemon.gql.dart" as find_pokemon;
-import "list_pokemon.gql.dart" as list_pokemon;
+//import "find_pokemon.gql.dart";
+//import "list_pokemon.gql.dart";
+import "temp.dart";
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -23,18 +22,11 @@ Future<Null> main(List<String> arguments) async {
     print("Looking for ${find}...");
     final result = await link
         .request(
-          Request(
-            operation: Operation(
-              document: find_pokemon.document,
-            ),
-            variables: <String, String>{
-              "name": find,
-            },
-          ),
+          FindPokemon()..name = find,
         )
         .first;
 
-    final data = result.data as $FindPokemon;
+    final data = FindPokemonData(result.data);
 
     final pokemon = data.pokemon;
 
@@ -44,8 +36,8 @@ Future<Null> main(List<String> arguments) async {
       return;
     }
 
-    final weight = data.pokemon.weight;
-    final height = data.pokemon.height;
+    final weight = pokemon.weight;
+    final height = pokemon.height;
 
     print("Found ${pokemon.name}");
     print("ID: ${pokemon.id}");
@@ -64,24 +56,19 @@ Future<Null> main(List<String> arguments) async {
   print("Looking for some pokemon...");
   final result = await link
       .request(
-        Request(
-          operation: Operation(
-            document: list_pokemon.document,
-          ),
-          variables: <String, String>{
-            "count": count,
-          },
-        ),
+        ListPokemon()..count = count as int,
       )
       .first;
 
-  final pokemons = result.data["pokemons"] as List<dynamic>;
+  final data = ListPokemonData(result.data);
+
+  final pokemons = data.pokemons;
 
   print("Found ${pokemons.length} pokemon");
 
-  pokemons.cast<Map<String, dynamic>>().forEach(
+  pokemons.forEach(
     (pokemon) {
-      print("${pokemon["id"]} | ${pokemon["name"]}");
+      print("${pokemon.id} | ${pokemon.name}");
     },
   );
 
