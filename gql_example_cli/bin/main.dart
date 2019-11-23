@@ -25,10 +25,10 @@ Future<Null> main(List<String> arguments) async {
           Request(
             operation: Operation(
               document: find_pokemon.document,
-              variables: <String, String>{
-                "name": find,
-              },
             ),
+            variables: <String, String>{
+              "name": find,
+            },
           ),
         )
         .first;
@@ -61,10 +61,10 @@ Future<Null> main(List<String> arguments) async {
         Request(
           operation: Operation(
             document: list_pokemon.document,
-            variables: <String, String>{
-              "count": count,
-            },
           ),
+          variables: <String, String>{
+            "count": count,
+          },
         ),
       )
       .first;

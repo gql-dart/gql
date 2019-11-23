@@ -3,17 +3,21 @@ import "package:gql_exec/exec/context.dart";
 import "package:gql_exec/exec/operation.dart";
 import "package:meta/meta.dart";
 
-/// Execution request
+/// Execution request of an [operation] with [variables].
 @immutable
 class Request {
   /// [Operation] to be executed
   final Operation operation;
+
+  /// Variables of the operation for this request
+  final Map<String, dynamic> variables;
 
   /// A [Context] to be passed along with a [Request]
   final Context context;
 
   const Request({
     @required this.operation,
+    this.variables = const <String, dynamic>{},
     this.context = const Context(),
   })  : assert(operation != null),
         assert(context != null);
@@ -35,6 +39,7 @@ class Request {
 
   List<Object> _getChildren() => [
         operation,
+        variables,
         context,
       ];
 

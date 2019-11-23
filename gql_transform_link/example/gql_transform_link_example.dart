@@ -9,7 +9,7 @@ void main() {
     TransformLink(
       requestTransformer: (req) => req.withContextEntry(
         RequestExtensionsThunk(
-          (req2) => req2.operation.variables,
+          (req2) => req2.variables,
         ),
       ),
       responseTransformer: (resp) => resp.withContextEntry(
