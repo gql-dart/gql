@@ -9,4 +9,6 @@ pub get
 
 dartfmt -n . --set-exit-if-changed
 
-pub run test
+if [ ! $SKIP_TEST ]; then
+  pub run test
+fi

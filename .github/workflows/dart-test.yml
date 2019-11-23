@@ -44,28 +44,30 @@ jobs:
       uses: actions/checkout@master
     - name: Run tests
       uses: ./.github/actions/dart-test
-#
-#  gql_link:
-#    runs-on: ubuntu-latest
-#    name: Test gql_link
-#    env:
-#      PACKAGE: gql_link
-#    steps:
-#    - name: Clone repository
-#      uses: actions/checkout@master
-#    - name: Run tests
-#      uses: ./.github/actions/dart-test
-#
-#  gql_exec:
-#    runs-on: ubuntu-latest
-#    name: Test gql_exec
-#    env:
-#      PACKAGE: gql_exec
-#    steps:
-#    - name: Clone repository
-#      uses: actions/checkout@master
-#    - name: Run tests
-#      uses: ./.github/actions/dart-test
+
+  gql_link:
+    runs-on: ubuntu-latest
+    name: Test gql_link
+    env:
+      PACKAGE: gql_link
+      SKIP_TEST: true
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: ./.github/actions/dart-test
+
+  gql_exec:
+    runs-on: ubuntu-latest
+    name: Test gql_exec
+    env:
+      PACKAGE: gql_exec
+      SKIP_TEST: true
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@master
+    - name: Run tests
+      uses: ./.github/actions/dart-test
 
   gql_transform_link:
     runs-on: ubuntu-latest
