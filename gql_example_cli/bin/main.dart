@@ -1,5 +1,5 @@
 import "package:args/args.dart";
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
 import "find_pokemon.ast.g.dart" as find_pokemon;

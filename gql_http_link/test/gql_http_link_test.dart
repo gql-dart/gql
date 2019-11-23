@@ -1,7 +1,7 @@
 import "dart:async";
 import "dart:convert";
 
-import "package:gql/execution.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:gql_link/gql_link.dart";
