@@ -1,11 +1,10 @@
-import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
 import "package:gql_code_gen/src/schema/input.dart";
 import "package:gql_code_gen/src/schema/scalar.dart";
+import "package:gql_code_gen/src/schema/enum.dart";
 import "package:meta/meta.dart";
-import "package:recase/recase.dart";
 
 /// Build input types, enums and scalars from schema
 Spec buildSchema(
@@ -80,20 +79,5 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   Spec visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,
   ) =>
-      Block(
-        (b) => b
-          ..statements = ListBuilder<Code>(<Code>[
-            Code("enum ${node.name.value} {"),
-            ..._acceptMany(node.values).cast<Code>(),
-            Code("}"),
-          ]),
-      );
-
-  @override
-  Spec visitEnumValueDefinitionNode(
-    EnumValueDefinitionNode node,
-  ) =>
-      Block.of(<Code>[
-        Code("${identifier(ReCase(node.name.value).camelCase)},"),
-      ]);
+    buildEnumClass(node);
 }

@@ -3,8 +3,23 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
 
-Class buildOperationArgsClass(
+List<Class> buildOperationArgsClasses(
+  DocumentNode doc, [
+  String schemaUrl = "schema.dart",
+]) =>
+    doc.definitions
+        .whereType<OperationDefinitionNode>()
+        .map(
+          (op) => _buildOperationArgsClass(
+            op,
+            schemaUrl,
+          ),
+        )
+        .toList();
+
+Class _buildOperationArgsClass(
   OperationDefinitionNode node,
+  String schemaUrl,
 ) =>
     Class(
       (b) => b

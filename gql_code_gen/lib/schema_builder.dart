@@ -3,11 +3,10 @@ library ast_builder;
 import "dart:async";
 
 import "package:build/build.dart";
-import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
 import "package:gql/language.dart";
-import "package:gql_code_gen/gql_code_gen.dart";
+import "package:gql_code_gen/src/builders/schema.dart";
 
 const schemaExtension = ".gql.dart";
 
@@ -31,19 +30,12 @@ class _SchemaBuilder implements Builder {
 
     final doc = parseString(src, url: buildStep.inputId.path);
 
-    final library = buildSchema(doc) as Library;
-
-    final libraryWithPart = library.rebuild(
-      (b) => b
-        ..body = ListBuilder<Spec>(<Spec>[
-          Code(
-            "part '${buildStep.inputId.changeExtension(".gql.g.dart").pathSegments.last}';",
-          ),
-          ...library.body,
-        ]),
+    final library = buildSchemaLibrary(
+      doc,
+      buildStep.inputId.changeExtension(".gql.g.dart").pathSegments.last,
     );
 
-    final genSrc = _dartfmt.format("${libraryWithPart.accept(
+    final genSrc = _dartfmt.format("${library.accept(
       DartEmitter.scoped(),
     )}");
 

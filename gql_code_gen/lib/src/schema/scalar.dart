@@ -8,7 +8,7 @@ Class buildScalarClass(
     Class(
       (b) => b
         ..name = "${node.name.value}"
-        ..extend = Reference("Scalar", "package:gql/execution")
+        ..extend = Reference("Scalar", "package:gql/execution.dart")
         ..constructors = ListBuilder<Constructor>(<Constructor>[
           Constructor(
             (b) => b

@@ -9,7 +9,7 @@ Class buildInputClass(
     Class(
       (b) => b
         ..name = "${node.name.value}"
-        ..extend = Reference("ArgumentBuilder", "package:gql/execution")
+        ..extend = Reference("ArgumentBuilder", "package:gql/execution.dart")
         ..methods = _buildSetters(node.fields),
     );
 
