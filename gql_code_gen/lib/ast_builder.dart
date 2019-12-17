@@ -22,8 +22,8 @@ Set<String> allRelativeImports(String doc) {
     RegExp(r'^#\s*import\s+"([^"]+)"'),
     RegExp(r"^#\s*import\s+'([^']+)'")
   ]) {
-    pattern.allMatches(doc).forEach((m) {
-      final path = m.group(1);
+    pattern.allMatches(doc)?.forEach((m) {
+      final path = m?.group(1);
       if (path != null) {
         imports.add(
             path.endsWith(graphqlExtension) ? path : "$path$graphqlExtension");
@@ -65,27 +65,31 @@ class _AstBuilder implements Builder {
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final src = await buildStep.readAsString(buildStep.inputId);
-    final Set<AssetId> seen = {buildStep.inputId};
 
-    final segments = buildStep.inputId.pathSegments;
-    segments.removeLast();
+    final segments = buildStep.inputId.pathSegments
+      //..removeAt(0) // strip lib
+      ..removeLast();
 
-    final imports = allRelativeImports(src);
+    final imports = allRelativeImports(src)
+        .map((i) => p.normalize(p.joinAll([...segments, i])))
+        .toSet();
+
+    final assetIds = await Stream.fromIterable(imports)
+        .asyncExpand(
+          (relativeImport) => buildStep.findAssets(Glob(relativeImport)),
+        )
+        .toSet()
+      ..forEach((id) => imports.remove(id.path));
+
     // there should be 1 per import
     final resolvedStatements = LinkedHashSet<String>.from(
-      await Stream.fromIterable(imports)
-          .asyncExpand(
-            (relativeImport) => buildStep.findAssets(
-              Glob(p.joinAll([...segments, relativeImport])),
-            ),
-          )
-          .where(seen.add)
-          .asyncMap((id) => buildStep.readAsString(id))
-          .toSet(),
-    );
+            await Future.wait<String>(assetIds.map(buildStep.readAsString)))
+        .toSet();
+
     resolvedStatements.add(src);
-    log.info("wtf");
-    log.info(imports);
+
+    imports.forEach(
+        (missing) => log.warning("Could not import missing file $missing."));
 
     final doc = parseString(resolvedStatements.join("\n\n\n"),
         url: buildStep.inputId.path);
