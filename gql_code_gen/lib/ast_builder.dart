@@ -17,7 +17,7 @@ const graphqlExtension = ".graphql";
 const astExtension = ".ast.g.dart";
 
 Set<String> allRelativeImports(String doc) {
-  Set<String> imports;
+  final imports = <String>{};
   for (final pattern in [
     RegExp(r'^#\s*import\s+"([^"]+)"'),
     RegExp(r"^#\s*import\s+'([^']+)'")
