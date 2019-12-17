@@ -1,6 +1,9 @@
 library ast_builder;
 
 import "dart:async";
+import 'dart:collection';
+import "package:path/path.dart" as p;
+import "package:glob/glob.dart";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
@@ -10,7 +13,26 @@ import "package:gql/language.dart";
 import "package:gql_code_gen/gql_code_gen.dart";
 import "package:pedantic/pedantic.dart";
 
+const graphqlExtension = ".graphql";
 const astExtension = ".ast.g.dart";
+
+Set<String> allRelativeImports(String doc) {
+  Set<String> imports;
+  for (final pattern in [
+    RegExp(r'^#\s*import\s+"([^"]+)"'),
+    RegExp(r"^#\s*import\s+'([^']+)'")
+  ]) {
+    pattern.allMatches(doc).forEach((m) {
+      final path = m.group(1);
+      if (path != null) {
+        imports.add(
+            path.endsWith(graphqlExtension) ? path : '$path$graphqlExtension');
+      }
+    });
+  }
+
+  return imports;
+}
 
 /// Builder factory for AST Builder
 Builder astBuilder(
@@ -37,14 +59,35 @@ class _AstBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        ".graphql": [astExtension],
+        graphqlExtension: [astExtension],
       };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final src = await buildStep.readAsString(buildStep.inputId);
+    Set<AssetId> seen = {buildStep.inputId};
 
-    final doc = parseString(src, url: buildStep.inputId.path);
+    List<String> segments = buildStep.inputId.pathSegments;
+    segments.removeLast();
+
+    final imports = allRelativeImports(src);
+    // there should be 1 per import
+    LinkedHashSet<String> resolvedStatements =
+        await Stream.fromIterable(imports)
+            .asyncExpand(
+              (relativeImport) => buildStep.findAssets(
+                Glob(p.joinAll([...segments, relativeImport])),
+              ),
+            )
+            .where((id) => seen.add(id))
+            .asyncMap((id) => buildStep.readAsString(id))
+            .toSet();
+    resolvedStatements.add(src);
+    log.info('wtf');
+    log.info(imports);
+
+    final doc = parseString(resolvedStatements.join("\n\n\n"),
+        url: buildStep.inputId.path);
 
     final definitions = doc.definitions.map(
       (def) => fromNode(def).assignConst(_getName(def)).statement,
