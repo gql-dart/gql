@@ -26,7 +26,8 @@ Set<String> allRelativeImports(String doc) {
       final path = m?.group(1);
       if (path != null) {
         imports.add(
-            path.endsWith(graphqlExtension) ? path : "$path$graphqlExtension");
+            path.endsWith(graphqlExtension) ? path : "$path$graphqlExtension",
+        );
       }
     });
   }
