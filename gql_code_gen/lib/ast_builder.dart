@@ -1,7 +1,6 @@
 library ast_builder;
 
 import "dart:async";
-import "dart:collection";
 import "package:path/path.dart" as p;
 import "package:glob/glob.dart";
 
@@ -19,8 +18,8 @@ const astExtension = ".ast.g.dart";
 Set<String> allRelativeImports(String doc) {
   final imports = <String>{};
   for (final pattern in [
-    RegExp(r'^#\s*import\s+"([^"]+)"'),
-    RegExp(r"^#\s*import\s+'([^']+)'")
+    RegExp(r'^#\s*import\s+"([^"]+)"', multiLine: true),
+    RegExp(r"^#\s*import\s+'([^']+)'", multiLine: true)
   ]) {
     pattern.allMatches(doc)?.forEach((m) {
       final path = m?.group(1);
