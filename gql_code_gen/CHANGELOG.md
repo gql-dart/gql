@@ -1,3 +1,7 @@
+## 0.1.5
+
+- Support non-standard imports
+
 ## 0.1.4
 
 - Upgrade `package:gql` to v0.12.0

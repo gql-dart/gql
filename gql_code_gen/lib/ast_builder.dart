@@ -25,7 +25,7 @@ Set<String> allRelativeImports(String doc) {
       final path = m?.group(1);
       if (path != null) {
         imports.add(
-            path.endsWith(graphqlExtension) ? path : "$path$graphqlExtension",
+          path.endsWith(graphqlExtension) ? path : "$path$graphqlExtension",
         );
       }
     });
@@ -54,6 +54,7 @@ Future<String> inlineImportsRecursively(BuildStep buildStep) async {
           (relativeImport) => buildStep.findAssets(Glob(relativeImport)),
         )
         .toSet();
+
     for (final assetId in assetIds) {
       await collectContentRecursivelyFrom(assetId);
     }
