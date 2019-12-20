@@ -40,9 +40,7 @@ Future<String> inlineImportsRecursively(BuildStep buildStep) async {
 
   void collectContentRecursivelyFrom(AssetId id) async {
     importMap[id.path] = await buildStep.readAsString(id);
-    final segments = id.pathSegments
-      //..removeAt(0) // strip lib
-      ..removeLast();
+    final segments = id.pathSegments..removeLast();
 
     final imports = allRelativeImports(importMap[id.path])
         .map((i) => p.normalize(p.joinAll([...segments, i])))
@@ -63,8 +61,13 @@ Future<String> inlineImportsRecursively(BuildStep buildStep) async {
 
   await collectContentRecursivelyFrom(buildStep.inputId);
 
-  seenImports.where((i) => !importMap.containsKey(i)).forEach(
-      (missing) => log.warning("Could not import missing file $missing."));
+  seenImports
+      .where(
+        (i) => !importMap.containsKey(i),
+      )
+      .forEach(
+        (missing) => log.warning("Could not import missing file $missing."),
+      );
 
   return importMap.values.join("\n\n\n");
 }
