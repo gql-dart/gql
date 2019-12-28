@@ -1,6 +1,6 @@
 name: gql_code_gen
 author: Klāvs Priedītis <klavs@prieditis.lv>
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/gql-dart/gql/tree/master/gql_code_gen
 description: GraphQL code generator and file builder for Dart taking *.graphql files as an input.
 environment: 
@@ -17,7 +17,9 @@ dependencies:
   dart_style: ^1.2.9
   pedantic: ^1.0.0
   recase: ^2.0.1
-dev_dependencies: 
+  path: ^1.6.4
+  glob: ^1.2.0
+dev_dependencies:
   test: ^1.0.0
   build_test: ^0.10.7
   gql_pedantic: ^1.0.0
