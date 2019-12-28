@@ -19,7 +19,7 @@ dependencies:
   recase: ^2.0.1
   path: ^1.6.4
   glob: ^1.2.0
-dev_dependencies:
+dev_dependencies: 
   test: ^1.0.0
   build_test: ^0.10.7
   gql_pedantic: ^1.0.0
