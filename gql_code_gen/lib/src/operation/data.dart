@@ -4,9 +4,9 @@ import "package:gql/ast.dart";
 
 List<Class> buildDataClasses(
   DocumentNode doc,
-  DocumentNode schema, [
-  String schemaUrl = "schema.dart",
-]) =>
+  DocumentNode schema,
+  String schemaUrl,
+) =>
     doc.definitions
         .whereType<OperationDefinitionNode>()
         .expand(

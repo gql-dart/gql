@@ -4,3 +4,4 @@ const genExtension = ".gql.dart";
 
 const astExtension = ".ast.gql.dart";
 const opExtension = ".op.gql.dart";
+const dataExtension = ".data.gql.dart";
