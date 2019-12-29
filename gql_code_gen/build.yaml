@@ -17,6 +17,12 @@ builders:
     build_extensions: {".graphql": [".data.gql.dart"]}
     auto_apply: none
     build_to: source
+  req_builder:
+    import: "package:gql_code_gen/req_builder.dart"
+    builder_factories: ["reqBuilder"]
+    build_extensions: {".graphql": [".req.gql.dart"]}
+    auto_apply: none
+    build_to: source
   schema_builder:
     import: "package:gql_code_gen/schema_builder.dart"
     builder_factories: ["schemaBuilder"]

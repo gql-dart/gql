@@ -4,14 +4,17 @@ import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
 
 List<Class> buildOperationArgsClasses(
-  DocumentNode doc, [
-  String schemaUrl = "schema.dart",
-]) =>
+  DocumentNode doc,
+  DocumentNode schema,
+  String opDocUrl,
+  String schemaUrl,
+) =>
     doc.definitions
         .whereType<OperationDefinitionNode>()
         .map(
           (op) => _buildOperationArgsClass(
             op,
+            opDocUrl,
             schemaUrl,
           ),
         )
@@ -19,12 +22,16 @@ List<Class> buildOperationArgsClasses(
 
 Class _buildOperationArgsClass(
   OperationDefinitionNode node,
+  String opDocUrl,
   String schemaUrl,
 ) =>
     Class(
       (b) => b
-        ..name = "${node.name.value}Args"
-        ..extend = Reference("ArgumentBuilder", "package:gql/execution")
+        ..name = node.name.value
+        ..extend = Reference(
+          "Request",
+          "package:gql_exec/gql_exec.dart",
+        )
         ..methods = _buildSetters(node.variableDefinitions),
     );
 
@@ -50,5 +57,5 @@ Method _buildSetter(
           )
         ])
         ..lambda = true
-        ..body = Code("set(\"${node.variable.name.value}\", value)"),
+        ..body = Code("variables[\"${node.variable.name.value}\"] = value"),
     );

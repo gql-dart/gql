@@ -11,6 +11,8 @@ Future<void> writeDocument(
   BuildStep buildStep,
   String extension,
 ) {
+  if (library.body.isEmpty) return null;
+
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter.scoped(),
   )}");
