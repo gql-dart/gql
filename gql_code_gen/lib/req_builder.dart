@@ -7,7 +7,7 @@ import "package:gql_code_gen/src/builders/req.dart";
 import "package:gql_code_gen/src/reader/reader.dart";
 import "package:gql_code_gen/src/writer/writer.dart";
 
-/// Builder factory for Operation Builder
+/// Builder factory for Request Builder
 Builder reqBuilder(
   BuilderOptions options,
 ) =>

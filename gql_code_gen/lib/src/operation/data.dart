@@ -44,20 +44,35 @@ List<Class> _buildSelectionSetDataClasses(
       Class(
         (b) => b
           ..name = name
-          ..fields = ListBuilder<Field>(selSet.selections.map<Field>(
-            (SelectionNode sel) {
-              if (sel is FieldNode) {
-                return Field(
-                  (b) => b
-                    ..name = sel.alias?.value ?? sel.name.value
-                    ..type =
-                        refer("${name}\$${sel.alias?.value ?? sel.name.value}"),
-                );
-              }
-
-              throw UnsupportedError("fragments are not yet supported");
-            },
-          )),
+          ..constructors = ListBuilder<Constructor>(<Constructor>[
+            Constructor(
+              (b) => b
+                ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
+                  Parameter(
+                    (b) => b
+                      ..name = "data"
+                      ..toThis = true,
+                  )
+                ])
+                ..constant = true,
+            ),
+          ])
+          ..fields = ListBuilder<Field>(
+            <Field>[
+              Field(
+                (b) => b
+                  ..name = "data"
+                  ..type = refer(
+                    "Map<String, dynamic>",
+                  )
+                  ..modifier = FieldModifier.final$,
+              ),
+            ],
+          )
+          ..methods = _buildGetters(
+            selSet.selections,
+            name,
+          ),
       ),
       ...selSet.selections
           .whereType<FieldNode>()
@@ -74,3 +89,49 @@ List<Class> _buildSelectionSetDataClasses(
             ),
           ),
     ];
+
+ListBuilder<Method> _buildGetters(
+  List<SelectionNode> nodes,
+  String prefix,
+) =>
+    ListBuilder<Method>(
+      nodes.map<Method>(
+        (node) => _buildSetter(
+          node,
+          prefix,
+        ),
+      ),
+    );
+
+Method _buildSetter(
+  SelectionNode node,
+  String prefix,
+) {
+  if (node is FieldNode) {
+    final name = node.alias?.value ?? node.name.value;
+    final returns = "$prefix\$$name";
+
+    return Method(
+      (b) => b
+        ..returns = node.selectionSet == null
+            ? refer(
+                "String",
+              )
+            : refer(
+                returns,
+              )
+        ..name = name
+        ..type = MethodType.getter
+        ..lambda = true
+        ..body = node.selectionSet == null
+            ? Code(
+                'data["$name"] as String',
+              )
+            : Code(
+                '$returns(data["$name"] as Map<String, dynamic>)',
+              ),
+    );
+  }
+
+  throw UnsupportedError("fragments are not yet supported");
+}

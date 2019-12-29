@@ -32,6 +32,29 @@ Class _buildOperationArgsClass(
           "Request",
           "package:gql_exec/gql_exec.dart",
         )
+        ..constructors = ListBuilder<Constructor>(<Constructor>[
+          Constructor(
+            (b) => b
+              ..initializers = ListBuilder<Code>(<Code>[
+                refer(
+                  "super",
+                ).call(
+                  [],
+                  {
+                    "operation": refer(
+                      node.name.value,
+                      opDocUrl,
+                    ),
+                    "variables": literalMap(
+                      {},
+                      refer("String"),
+                      refer("dynamic"),
+                    )
+                  },
+                ).code,
+              ]),
+          ),
+        ])
         ..methods = _buildSetters(node.variableDefinitions),
     );
 

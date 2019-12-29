@@ -23,19 +23,3 @@ builders:
     build_extensions: {".graphql": [".req.gql.dart"]}
     auto_apply: none
     build_to: source
-  schema_builder:
-    import: "package:gql_code_gen/schema_builder.dart"
-    builder_factories: ["schemaBuilder"]
-    build_extensions: {".graphql": [".gql.dart"]}
-    auto_apply: none
-    build_to: source
-    applies_builders: ['json_serializable']
-    runs_before: ['json_serializable']
-  builder:
-    import: "package:gql_code_gen/builder.dart"
-    builder_factories: ["builder"]
-    build_extensions: {".graphql": [".gql.dart"]}
-    auto_apply: none
-    build_to: source
-    applies_builders: ['json_serializable']
-    runs_before: ['json_serializable']
