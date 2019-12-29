@@ -16,7 +16,7 @@ Builder astBuilder(
 class _AstBuilder implements Builder {
   @override
   Map<String, List<String>> get buildExtensions => {
-        sourceExtension: [genExtension],
+        sourceExtension: [astExtension],
       };
 
   @override
@@ -28,7 +28,7 @@ class _AstBuilder implements Builder {
     return writeDocument(
       library,
       buildStep,
-      genExtension,
+      astExtension,
     );
   }
 }

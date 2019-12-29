@@ -2,7 +2,13 @@ builders:
   ast_builder:
     import: "package:gql_code_gen/ast_builder.dart"
     builder_factories: ["astBuilder"]
-    build_extensions: {".graphql": [".gql.dart"]}
+    build_extensions: {".graphql": [".ast.gql.dart"]}
+    auto_apply: none
+    build_to: source
+  op_builder:
+    import: "package:gql_code_gen/op_builder.dart"
+    builder_factories: ["opBuilder"]
+    build_extensions: {".graphql": [".op.gql.dart"]}
     auto_apply: none
     build_to: source
   schema_builder:
