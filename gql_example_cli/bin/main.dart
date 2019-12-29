@@ -1,9 +1,10 @@
 import "package:args/args.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
-//import "find_pokemon.gql.dart";
-//import "list_pokemon.gql.dart";
-import "temp.dart";
+import "find_pokemon.data.gql.dart";
+import "find_pokemon.req.gql.dart";
+//import "list_pokemon.data.gql.dart";
+//import "list_pokemon.req.gql.dart";
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -26,7 +27,7 @@ Future<Null> main(List<String> arguments) async {
         )
         .first;
 
-    final data = FindPokemonData(result.data);
+    final data = $FindPokemon(result.data);
 
     final pokemon = data.pokemon;
 
@@ -50,27 +51,27 @@ Future<Null> main(List<String> arguments) async {
 
     return;
   }
-
-  final count = argResults["count"] as String;
-
-  print("Looking for some pokemon...");
-  final result = await link
-      .request(
-        ListPokemon()..count = count as int,
-      )
-      .first;
-
-  final data = ListPokemonData(result.data);
-
-  final pokemons = data.pokemons;
-
-  print("Found ${pokemons.length} pokemon");
-
-  pokemons.forEach(
-    (pokemon) {
-      print("${pokemon.id} | ${pokemon.name}");
-    },
-  );
-
-  return;
+//
+//  final count = argResults["count"] as String;
+//
+//  print("Looking for some pokemon...");
+//  final result = await link
+//      .request(
+//        ListPokemon()..count = count as int,
+//      )
+//      .first;
+//
+//  final data = $ListPokemon(result.data);
+//
+//  final pokemons = data.pokemons;
+//
+//  print("Found ${pokemons.length} pokemon");
+//
+//  pokemons.forEach(
+//    (pokemon) {
+//      print("${pokemon.id} | ${pokemon.name}");
+//    },
+//  );
+//
+//  return;
 }
