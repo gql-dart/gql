@@ -3,35 +3,34 @@ import "dart:async";
 import "package:build/build.dart";
 
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/builders/schema.dart";
+import "package:gql_code_gen/src/builders/enum.dart";
 import "package:gql_code_gen/src/reader/reader.dart";
 import "package:gql_code_gen/src/writer/writer.dart";
 
 /// Builder factory for Schema Builder
-Builder schemaBuilder(
+Builder enumBuilder(
   BuilderOptions options,
 ) =>
-    _SchemaBuilder();
+    _EnumBuilder();
 
-class _SchemaBuilder implements Builder {
+class _EnumBuilder implements Builder {
   @override
   Map<String, List<String>> get buildExtensions => {
-        sourceExtension: [genExtension],
+        sourceExtension: [enumExtension],
       };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final doc = await readDocument(buildStep);
 
-    final library = buildSchemaLibrary(
+    final library = buildEnumLibrary(
       doc,
-      buildStep.inputId.changeExtension(".gql.g.dart").pathSegments.last,
     );
 
     return writeDocument(
       library,
       buildStep,
-      genExtension,
+      enumExtension,
     );
   }
 }

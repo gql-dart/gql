@@ -23,3 +23,9 @@ builders:
     build_extensions: {".graphql": [".req.gql.dart"]}
     auto_apply: none
     build_to: source
+  enum_builder:
+    import: "package:gql_code_gen/enum_builder.dart"
+    builder_factories: ["enumBuilder"]
+    build_extensions: {".graphql": [".enum.gql.dart"]}
+    auto_apply: none
+    build_to: source
