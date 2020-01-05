@@ -35,3 +35,9 @@ builders:
     build_extensions: {".graphql": [".scalar.gql.dart"]}
     auto_apply: none
     build_to: source
+  input_builder:
+    import: "package:gql_code_gen/input_builder.dart"
+    builder_factories: ["inputBuilder"]
+    build_extensions: {".graphql": [".input.gql.dart"]}
+    auto_apply: none
+    build_to: source

@@ -3,13 +3,37 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_gen/src/common.dart";
 
+List<Class> buildInputClasses(
+  DocumentNode doc,
+) =>
+    doc.definitions
+        .whereType<InputObjectTypeDefinitionNode>()
+        .map(buildInputClass)
+        .toList();
+
 Class buildInputClass(
   InputObjectTypeDefinitionNode node,
 ) =>
     Class(
       (b) => b
         ..name = "${node.name.value}"
-        ..extend = Reference("ArgumentBuilder", "package:gql/execution.dart")
+        ..fields = ListBuilder<Field>(
+          <Field>[
+            Field(
+              (b) => b
+                ..modifier = FieldModifier.final$
+                ..type = refer(
+                  "Map<String, dynamic>",
+                )
+                ..name = "input"
+                ..assignment = literalMap(
+                  {},
+                  refer("String"),
+                  refer("dynamic"),
+                ).code,
+            ),
+          ],
+        )
         ..methods = _buildSetters(node.fields),
     );
 
@@ -27,13 +51,22 @@ Method _buildSetter(
       (b) => b
         ..name = node.name.value
         ..type = MethodType.setter
-        ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-          Parameter(
-            (b) => b
-              ..type = typeRef(node.type)
-              ..name = "value",
-          )
-        ])
+        ..requiredParameters = ListBuilder<Parameter>(
+          <Parameter>[
+            Parameter(
+              (b) => b
+                ..type = typeRef(node.type)
+                ..name = "value",
+            )
+          ],
+        )
         ..lambda = true
-        ..body = Code("set(\"${node.name.value}\", value)"),
+        ..body = refer("input")
+            .index(
+              literalString(node.name.value),
+            )
+            .assign(
+              refer("value"),
+            )
+            .code,
     );

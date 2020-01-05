@@ -8,3 +8,4 @@ const dataExtension = ".data.gql.dart";
 const reqExtension = ".req.gql.dart";
 const enumExtension = ".enum.gql.dart";
 const scalarExtension = ".scalar.gql.dart";
+const inputExtension = ".input.gql.dart";

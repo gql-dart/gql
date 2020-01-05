@@ -47,46 +47,6 @@ const defaultTypeMap = <String, Reference>{
   "Boolean": Reference("bool"),
 };
 
-Expression jsonAnnotation(
-  String symbol, [
-  Iterable<Expression> positionalArguments = const [],
-  Map<String, Expression> namedArguments = const {},
-  List<Reference> typeArguments = const [],
-]) =>
-    TypeReference(
-      (b) => b
-        ..symbol = symbol
-        ..url = "package:json_annotation/json_annotation.dart",
-    ).call(
-      positionalArguments,
-      namedArguments,
-      typeArguments,
-    );
-
-// factory Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);
-Constructor fromJson(String className) => Constructor(
-      (b) => b
-        ..factory = true
-        ..name = "fromJson"
-        ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-          Parameter(
-            (b) => b
-              ..name = "json"
-              ..type = refer("Map<String, dynamic>"),
-          ),
-        ])
-        ..lambda = true
-        ..body = Code("_\$${className}FromJson(json)"),
-    );
-
-Method toJson(String className) => Method(
-      (b) => b
-        ..name = "toJson"
-        ..returns = refer("Map<String, dynamic>")
-        ..lambda = true
-        ..body = Code("_\$${className}ToJson(this)"),
-    );
-
 Reference getTypeRef(
   String type,
   Map<String, Reference> typeMap,
@@ -106,9 +66,11 @@ Reference _listOrNot(
     return TypeReference(
       (b) => b
         ..symbol = "List"
-        ..types = ListBuilder<Reference>(<Reference>[
-          typeRef(type.type, typeMap),
-        ]),
+        ..types = ListBuilder<Reference>(
+          <Reference>[
+            typeRef(type.type, typeMap),
+          ],
+        ),
     );
   }
 
@@ -120,11 +82,3 @@ Reference typeRef(
   Map<String, Reference> typeMap = defaultTypeMap,
 ]) =>
     _listOrNot(type, typeMap);
-
-//  if (type.isNonNull) return t;
-
-//  return TypeReference(
-//    (b) => b
-//      ..symbol = "Optional"
-//      ..types = ListBuilder<Reference>(<Reference>[t]),
-//  );
