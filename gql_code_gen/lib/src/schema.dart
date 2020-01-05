@@ -1,39 +1,20 @@
-import "package:meta/meta.dart";
 import "package:code_builder/code_builder.dart";
-
 import "package:gql/ast.dart";
-
 import "package:gql_code_gen/src/common.dart";
+import "package:gql_code_gen/src/schema/enum.dart";
 import "package:gql_code_gen/src/schema/input.dart";
 import "package:gql_code_gen/src/schema/scalar.dart";
-import "package:gql_code_gen/src/schema/enum.dart";
 
 /// Build input types, enums and scalars from schema
 Spec buildSchema(
-  Node node, [
-  BuildOptions options,
-]) =>
+  Node node,
+) =>
     node.accept(
-      _SchemaBuilderVisitor(options),
+      _SchemaBuilderVisitor(),
     );
 
-@immutable
-class BuildOptions {
-  final Map<String, Reference> typeMap;
-
-  const BuildOptions({
-    this.typeMap = const {},
-  });
-}
-
 class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
-  final Map<String, Reference> _typeMap;
-
-  _SchemaBuilderVisitor(BuildOptions options)
-      : _typeMap = {
-          ...defaultTypeMap,
-          if (options != null) ...options.typeMap,
-        };
+  final Map<String, Reference> _typeMap = defaultTypeMap;
 
   Reference _getTypeRef(
     String type,
