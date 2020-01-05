@@ -38,10 +38,10 @@ ListBuilder<Constructor> _buildConstructors(
                   (b) => b
                     ..name = "value"
                     ..toThis = true,
-                )
+                ),
               ],
             ),
-        )
+        ),
       ],
     );
 

@@ -91,7 +91,7 @@ class _PrintVisitor extends Visitor<Expression> {
       _node(
         "DirectiveDefinitionNode",
         {
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "name": _acceptOne(node.name),
           "args": _list(node.args),
           "locations": literalList(
@@ -132,7 +132,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "EnumTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "values": _list(node.values),
         },
@@ -159,7 +159,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "EnumValueDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
         },
       );
@@ -183,7 +183,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "FieldDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "args": _list(node.args),
           "type": _acceptOne(node.type),
@@ -263,7 +263,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "InputObjectTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "fields": _list(node.fields),
         },
@@ -290,7 +290,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "InputValueDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "type": _acceptOne(node.type),
           "defaultValue": _acceptOne(node.defaultValue),
@@ -316,7 +316,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "InterfaceTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "fields": _list(node.fields),
         },
@@ -409,7 +409,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "ObjectTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "interfaces": _list(node.interfaces),
           "fields": _list(node.fields),
@@ -476,7 +476,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "ScalarTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
         },
       );
@@ -559,7 +559,7 @@ class _PrintVisitor extends Visitor<Expression> {
         "UnionTypeDefinitionNode",
         {
           "name": _acceptOne(node.name),
-          "description": _acceptOne(node.description),
+//          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
           "types": _list(node.types),
         },
