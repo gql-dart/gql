@@ -1,9 +1,8 @@
 import "dart:async";
 
 import "package:build/build.dart";
-
-import "package:gql_code_gen/src/config.dart";
 import "package:gql_code_gen/src/builders/data.dart";
+import "package:gql_code_gen/src/config.dart";
 import "package:gql_code_gen/src/reader/reader.dart";
 import "package:gql_code_gen/src/writer/writer.dart";
 
@@ -37,7 +36,7 @@ class _DataBuilder implements Builder {
     final library = buildDataLibrary(
       doc,
       schema,
-      schemaId.changeExtension(astExtension).pathSegments.last,
+      schemaId.changeExtension(schemaExtension).pathSegments.last,
     );
 
     return writeDocument(

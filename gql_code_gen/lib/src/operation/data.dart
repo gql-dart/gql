@@ -31,6 +31,7 @@ List<Class> _buildOperationDataClasses(
       doc,
       schema,
       schemaUrl,
+      "Query",
     );
 
 List<Class> _buildSelectionSetDataClasses(
@@ -39,39 +40,20 @@ List<Class> _buildSelectionSetDataClasses(
   DocumentNode doc,
   DocumentNode schema,
   String schemaUrl,
+  String type,
 ) =>
     [
       Class(
         (b) => b
           ..name = name
-          ..constructors = ListBuilder<Constructor>(<Constructor>[
-            Constructor(
-              (b) => b
-                ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-                  Parameter(
-                    (b) => b
-                      ..name = "data"
-                      ..toThis = true,
-                  )
-                ])
-                ..constant = true,
-            ),
-          ])
-          ..fields = ListBuilder<Field>(
-            <Field>[
-              Field(
-                (b) => b
-                  ..name = "data"
-                  ..type = refer(
-                    "Map<String, dynamic>",
-                  )
-                  ..modifier = FieldModifier.final$,
-              ),
-            ],
-          )
+          ..constructors = _buildConstructors()
+          ..fields = _buildFields()
           ..methods = _buildGetters(
+            schema,
+            schemaUrl,
             selSet.selections,
             name,
+            type,
           ),
       ),
       ...selSet.selections
@@ -86,52 +68,147 @@ List<Class> _buildSelectionSetDataClasses(
               doc,
               schema,
               schemaUrl,
+              _getTypeName(
+                _getFieldTypeNode(
+                  _getObjectTypeDefinitionNode(
+                    schema,
+                    type,
+                  ),
+                  field.name.value,
+                ),
+              ),
             ),
           ),
     ];
 
+ListBuilder<Field> _buildFields() => ListBuilder<Field>(
+      <Field>[
+        Field(
+          (b) => b
+            ..name = "data"
+            ..type = refer(
+              "Map<String, dynamic>",
+            )
+            ..modifier = FieldModifier.final$,
+        ),
+      ],
+    );
+
+ListBuilder<Constructor> _buildConstructors() => ListBuilder<Constructor>(
+      <Constructor>[
+        Constructor(
+          (b) => b
+            ..requiredParameters = ListBuilder<Parameter>(
+              <Parameter>[
+                Parameter(
+                  (b) => b
+                    ..name = "data"
+                    ..toThis = true,
+                ),
+              ],
+            )
+            ..constant = true,
+        ),
+      ],
+    );
+
 ListBuilder<Method> _buildGetters(
+  DocumentNode schema,
+  String schemaUrl,
   List<SelectionNode> nodes,
   String prefix,
+  String type,
 ) =>
     ListBuilder<Method>(
       nodes.map<Method>(
-        (node) => _buildSetter(
+        (node) => _buildGetter(
+          schema,
+          schemaUrl,
           node,
           prefix,
+          type,
         ),
       ),
     );
 
-Method _buildSetter(
+Method _buildGetter(
+  DocumentNode schema,
+  String schemaUrl,
   SelectionNode node,
   String prefix,
+  String type,
 ) {
   if (node is FieldNode) {
     final name = node.alias?.value ?? node.name.value;
-    final returns = "$prefix\$$name";
+    final object = _getObjectTypeDefinitionNode(
+      schema,
+      type,
+    );
+    final typeNode = _getFieldTypeNode(
+      object,
+      node.name.value,
+    );
+
+    final fieldType = node.selectionSet == null ? "String" : "$prefix\$$name";
+
+    final returns =
+        typeNode is ListTypeNode ? refer("List<$fieldType>") : refer(fieldType);
 
     return Method(
       (b) => b
-        ..returns = node.selectionSet == null
-            ? refer(
-                "String",
-              )
-            : refer(
-                returns,
-              )
+        ..returns = returns
         ..name = name
         ..type = MethodType.getter
         ..lambda = true
-        ..body = node.selectionSet == null
-            ? Code(
-                'data["$name"] as String',
-              )
-            : Code(
-                '$returns(data["$name"] as Map<String, dynamic>)',
-              ),
+        ..body = typeNode is ListTypeNode
+            ? node.selectionSet == null
+                ? Code(
+                    '(data["$name"] as List).map((dynamic e) => e as String).toList()',
+                  )
+                : Code(
+                    '(data["$name"] as List).map((dynamic e) => $fieldType(e as Map<String, dynamic>)).toList()',
+                  )
+            : node.selectionSet == null
+                ? Code(
+                    'data["$name"] as String',
+                  )
+                : Code(
+                    '$fieldType(data["$name"] as Map<String, dynamic>)',
+                  ),
     );
   }
 
   throw UnsupportedError("fragments are not yet supported");
+}
+
+ObjectTypeDefinitionNode _getObjectTypeDefinitionNode(
+  DocumentNode schema,
+  String name,
+) =>
+    schema.definitions.whereType<ObjectTypeDefinitionNode>().firstWhere(
+          (node) => node.name.value == name,
+        );
+
+TypeNode _getFieldTypeNode(
+  ObjectTypeDefinitionNode node,
+  String field,
+) =>
+    node.fields
+        .firstWhere(
+          (fieldNode) => fieldNode.name.value == field,
+        )
+        .type;
+
+String _getTypeName(
+  TypeNode node,
+) {
+  if (node is NamedTypeNode) {
+    return node.name.value;
+  }
+
+  if (node is ListTypeNode) {
+    return _getTypeName(node.type);
+  }
+
+  return null;
 }
