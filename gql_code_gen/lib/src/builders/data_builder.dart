@@ -1,25 +1,16 @@
 import "dart:async";
 
 import "package:build/build.dart";
-import "package:gql_code_gen/src/builders/data.dart";
+
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/reader/reader.dart";
-import "package:gql_code_gen/src/writer/writer.dart";
+import "package:gql_code_gen/src/code_builders/data.dart";
+import "package:gql_code_gen/src/builders/utils/reader.dart";
+import "package:gql_code_gen/src/builders/utils/writer.dart";
 
-/// Builder factory for Data Builder
-Builder dataBuilder(
-  BuilderOptions options,
-) =>
-    _DataBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
-
-class _DataBuilder implements Builder {
+class DataBuilder implements Builder {
   final AssetId schemaId;
 
-  _DataBuilder(
+  DataBuilder(
     this.schemaId,
   );
 

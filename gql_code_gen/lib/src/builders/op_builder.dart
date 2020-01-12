@@ -3,24 +3,14 @@ import "dart:async";
 import "package:build/build.dart";
 
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/builders/op.dart";
-import "package:gql_code_gen/src/reader/reader.dart";
-import "package:gql_code_gen/src/writer/writer.dart";
+import "package:gql_code_gen/src/code_builders/op.dart";
+import "package:gql_code_gen/src/builders/utils/reader.dart";
+import "package:gql_code_gen/src/builders/utils/writer.dart";
 
-/// Builder factory for Operation Builder
-Builder opBuilder(
-  BuilderOptions options,
-) =>
-    _OpBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
-
-class _OpBuilder implements Builder {
+class OpBuilder implements Builder {
   final AssetId schemaId;
 
-  _OpBuilder(
+  OpBuilder(
     this.schemaId,
   );
 
@@ -38,7 +28,7 @@ class _OpBuilder implements Builder {
       doc,
       schema,
       buildStep.inputId.changeExtension(astExtension).pathSegments.last,
-      schemaId.changeExtension(astExtension).pathSegments.last,
+      schemaId.changeExtension(schemaExtension).pathSegments.last,
     );
 
     return writeDocument(

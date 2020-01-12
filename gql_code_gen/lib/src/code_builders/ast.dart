@@ -3,9 +3,8 @@ import "package:gql/ast.dart";
 import "package:gql_code_gen/gql_code_gen.dart";
 
 Library buildAstLibrary(
-  DocumentNode doc, [
-  DocumentNode schema,
-]) {
+  DocumentNode doc,
+) {
   final definitions = doc.definitions.map(
     (def) => fromNode(def).assignConst(_getName(def)).statement,
   );

@@ -3,17 +3,11 @@ import "dart:async";
 import "package:build/build.dart";
 
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/builders/enum.dart";
-import "package:gql_code_gen/src/reader/reader.dart";
-import "package:gql_code_gen/src/writer/writer.dart";
+import "package:gql_code_gen/src/code_builders/enum.dart";
+import "package:gql_code_gen/src/builders/utils/reader.dart";
+import "package:gql_code_gen/src/builders/utils/writer.dart";
 
-/// Builder factory for Schema Builder
-Builder enumBuilder(
-  BuilderOptions options,
-) =>
-    _EnumBuilder();
-
-class _EnumBuilder implements Builder {
+class EnumBuilder implements Builder {
   @override
   Map<String, List<String>> get buildExtensions => {
         sourceExtension: [enumExtension],

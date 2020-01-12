@@ -1,48 +1,48 @@
 builders:
   ast_builder:
-    import: "package:gql_code_gen/ast_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["astBuilder"]
     build_extensions: {".graphql": [".ast.gql.dart"]}
     auto_apply: none
     build_to: source
   op_builder:
-    import: "package:gql_code_gen/op_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["opBuilder"]
     build_extensions: {".graphql": [".op.gql.dart"]}
     auto_apply: none
     build_to: source
   data_builder:
-    import: "package:gql_code_gen/data_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["dataBuilder"]
     build_extensions: {".graphql": [".data.gql.dart"]}
     auto_apply: none
     build_to: source
   req_builder:
-    import: "package:gql_code_gen/req_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["reqBuilder"]
     build_extensions: {".graphql": [".req.gql.dart"]}
     auto_apply: none
     build_to: source
   enum_builder:
-    import: "package:gql_code_gen/enum_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["enumBuilder"]
     build_extensions: {".graphql": [".enum.gql.dart"]}
     auto_apply: none
     build_to: source
   scalar_builder:
-    import: "package:gql_code_gen/scalar_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["scalarBuilder"]
     build_extensions: {".graphql": [".scalar.gql.dart"]}
     auto_apply: none
     build_to: source
   input_builder:
-    import: "package:gql_code_gen/input_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["inputBuilder"]
     build_extensions: {".graphql": [".input.gql.dart"]}
     auto_apply: none
     build_to: source
   schema_builder:
-    import: "package:gql_code_gen/schema_builder.dart"
+    import: "package:gql_code_gen/builders.dart"
     builder_factories: ["schemaBuilder"]
     build_extensions: {".graphql": [".schema.gql.dart"]}
     auto_apply: none

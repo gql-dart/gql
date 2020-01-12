@@ -3,24 +3,14 @@ import "dart:async";
 import "package:build/build.dart";
 
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/builders/req.dart";
-import "package:gql_code_gen/src/reader/reader.dart";
-import "package:gql_code_gen/src/writer/writer.dart";
+import "package:gql_code_gen/src/code_builders/req.dart";
+import "package:gql_code_gen/src/builders/utils/reader.dart";
+import "package:gql_code_gen/src/builders/utils/writer.dart";
 
-/// Builder factory for Request Builder
-Builder reqBuilder(
-  BuilderOptions options,
-) =>
-    _ReqBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
-
-class _ReqBuilder implements Builder {
+class ReqBuilder implements Builder {
   final AssetId schemaId;
 
-  _ReqBuilder(
+  ReqBuilder(
     this.schemaId,
   );
 
@@ -38,7 +28,7 @@ class _ReqBuilder implements Builder {
       doc,
       schema,
       buildStep.inputId.changeExtension(opExtension).pathSegments.last,
-      schemaId.changeExtension(opExtension).pathSegments.last,
+      schemaId.changeExtension(schemaExtension).pathSegments.last,
     );
 
     return writeDocument(

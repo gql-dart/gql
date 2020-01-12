@@ -1,18 +1,13 @@
 import "dart:async";
 
 import "package:build/build.dart";
-import "package:gql_code_gen/src/builders/schema.dart";
+
 import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/reader/reader.dart";
-import "package:gql_code_gen/src/writer/writer.dart";
+import "package:gql_code_gen/src/code_builders/schema.dart";
+import "package:gql_code_gen/src/builders/utils/reader.dart";
+import "package:gql_code_gen/src/builders/utils/writer.dart";
 
-/// Builder factory for Schema Builder
-Builder schemaBuilder(
-  BuilderOptions options,
-) =>
-    _SchemaBuilder();
-
-class _SchemaBuilder implements Builder {
+class SchemaBuilder implements Builder {
   @override
   Map<String, List<String>> get buildExtensions => {
         sourceExtension: [schemaExtension],
