@@ -1,11 +1,10 @@
 import "dart:async";
 
 import "package:build/build.dart";
-
-import "package:gql_code_gen/src/config.dart";
-import "package:gql_code_gen/src/code_builders/op.dart";
 import "package:gql_code_gen/src/builders/utils/reader.dart";
 import "package:gql_code_gen/src/builders/utils/writer.dart";
+import "package:gql_code_gen/src/code_builders/op.dart";
+import "package:gql_code_gen/src/config.dart";
 
 class OpBuilder implements Builder {
   final AssetId schemaId;
@@ -27,8 +26,8 @@ class OpBuilder implements Builder {
     final library = buildOpLibrary(
       doc,
       schema,
-      buildStep.inputId.changeExtension(astExtension).pathSegments.last,
-      schemaId.changeExtension(schemaExtension).pathSegments.last,
+      buildStep.inputId.changeExtension(astExtension).uri.toString(),
+      schemaId.changeExtension(schemaExtension).uri.toString(),
     );
 
     return writeDocument(

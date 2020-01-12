@@ -1,6 +1,5 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_gen/src/common.dart";
 import "package:gql_code_gen/src/schema/enum.dart";
 import "package:gql_code_gen/src/schema/input.dart";
 import "package:gql_code_gen/src/schema/scalar.dart";
@@ -14,16 +13,6 @@ Spec buildSchema(
     );
 
 class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
-  final Map<String, Reference> _typeMap = defaultTypeMap;
-
-  Reference _getTypeRef(
-    String type,
-  ) =>
-      getTypeRef(
-        type,
-        _typeMap,
-      );
-
   Spec _acceptOne(
     Node node,
   ) =>
