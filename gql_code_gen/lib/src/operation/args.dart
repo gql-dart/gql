@@ -28,7 +28,7 @@ Class _buildOperationArgsClass(
     Class(
       (b) => b
         ..name = node.name.value
-        ..extend = Reference(
+        ..extend = refer(
           "Request",
           "package:gql_exec/gql_exec.dart",
         )
@@ -72,13 +72,18 @@ Method _buildSetter(
       (b) => b
         ..name = node.variable.name.value
         ..type = MethodType.setter
-        ..requiredParameters = ListBuilder<Parameter>(<Parameter>[
-          Parameter(
-            (b) => b
-              ..type = typeRef(node.type)
-              ..name = "value",
-          )
-        ])
+        ..requiredParameters = ListBuilder<Parameter>(
+          <Parameter>[
+            Parameter(
+              (b) => b
+                ..type = typeRef(node.type)
+                ..name = "value",
+            )
+          ],
+        )
         ..lambda = true
-        ..body = Code("variables[\"${node.variable.name.value}\"] = value"),
+        ..body = refer("variables")
+            .index(literalString(node.variable.name.value))
+            .assign(refer("value"))
+            .code,
     );

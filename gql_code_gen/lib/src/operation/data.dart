@@ -1,6 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_gen/src/common.dart";
 
 List<Class> buildDataClasses(
   DocumentNode doc,
@@ -148,11 +149,26 @@ Method _buildGetter(
       object,
       node.name.value,
     );
+    final typeName = _getTypeName(typeNode);
+    final fieldTypeDef = _getTypeDefinitionNode(
+      schema,
+      typeName,
+    );
 
-    final fieldType = node.selectionSet == null ? "String" : "$prefix\$$name";
+    final returns = typeRef(
+      typeNode,
+      {
+        ...defaultTypeMap,
+        if (node.selectionSet != null)
+          typeName: refer("$prefix\$$name")
+        else if (fieldTypeDef != null)
+          typeName: refer(typeName, schemaUrl)
+      },
+    );
 
-    final returns =
-        typeNode is ListTypeNode ? refer("List<$fieldType>") : refer(fieldType);
+    final dataField = refer("data").index(
+      literalString(name),
+    );
 
     return Method(
       (b) => b
@@ -161,25 +177,59 @@ Method _buildGetter(
         ..type = MethodType.getter
         ..lambda = true
         ..body = typeNode is ListTypeNode
-            ? node.selectionSet == null
-                ? Code(
-                    '(data["$name"] as List).map((dynamic e) => e as String).toList()',
-                  )
-                : Code(
-                    '(data["$name"] as List).map((dynamic e) => $fieldType(e as Map<String, dynamic>)).toList()',
-                  )
+            ? dataField
+                .asA(refer("List"))
+                .property("map")
+                .call(
+                  [
+                    Method(
+                      (b) => b
+                        ..requiredParameters = ListBuilder<Parameter>(
+                          <Parameter>[
+                            Parameter(
+                              (b) => b
+                                ..type = refer("dynamic")
+                                ..name = "e",
+                            ),
+                          ],
+                        )
+                        ..lambda = true
+                        ..body = node.selectionSet == null
+                            ? dataField.asA(returns).code
+                            : returns.call(
+                                [
+                                  dataField.asA(refer("Map<String, dynamic>")),
+                                ],
+                              ).code,
+                    ).closure,
+                  ],
+                )
+                .property("toList")
+                .call([])
+                .code
             : node.selectionSet == null
-                ? Code(
-                    'data["$name"] as String',
-                  )
-                : Code(
-                    '$fieldType(data["$name"] as Map<String, dynamic>)',
-                  ),
+                ? fieldTypeDef == null
+                    ? dataField.asA(returns).code
+                    : returns.call([
+                        dataField.asA(refer("String")),
+                      ]).code
+                : returns.call([
+                    dataField.asA(refer("Map<String, dynamic>")),
+                  ]).code,
     );
   }
 
   throw UnsupportedError("fragments are not yet supported");
 }
+
+TypeDefinitionNode _getTypeDefinitionNode(
+  DocumentNode schema,
+  String name,
+) =>
+    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
+          (node) => node.name.value == name,
+          orElse: () => null,
+        );
 
 ObjectTypeDefinitionNode _getObjectTypeDefinitionNode(
   DocumentNode schema,

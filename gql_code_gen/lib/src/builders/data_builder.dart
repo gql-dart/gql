@@ -27,7 +27,7 @@ class DataBuilder implements Builder {
     final library = buildDataLibrary(
       doc,
       schema,
-      schemaId.changeExtension(schemaExtension).pathSegments.last,
+      schemaId.changeExtension(schemaExtension).uri.toString(),
     );
 
     return writeDocument(
