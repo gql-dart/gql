@@ -149,21 +149,27 @@ Method _buildGetter(
       object,
       node.name.value,
     );
-    final typeName = _getTypeName(typeNode);
+    final unwrappedTypeNode = _unwrapTypeNode(typeNode);
+    final typeName = unwrappedTypeNode.name.value;
     final fieldTypeDef = _getTypeDefinitionNode(
       schema,
       typeName,
     );
+    final typeMap = {
+      ...defaultTypeMap,
+      if (node.selectionSet != null)
+        typeName: refer("$prefix\$$name")
+      else if (fieldTypeDef != null)
+        typeName: refer(typeName, schemaUrl)
+    };
 
     final returns = typeRef(
       typeNode,
-      {
-        ...defaultTypeMap,
-        if (node.selectionSet != null)
-          typeName: refer("$prefix\$$name")
-        else if (fieldTypeDef != null)
-          typeName: refer(typeName, schemaUrl)
-      },
+      typeMap,
+    );
+    final unwrappedReturns = typeRef(
+      unwrappedTypeNode,
+      typeMap,
     );
 
     final dataField = refer("data").index(
@@ -195,10 +201,14 @@ Method _buildGetter(
                         )
                         ..lambda = true
                         ..body = node.selectionSet == null
-                            ? dataField.asA(returns).code
-                            : returns.call(
+                            ? fieldTypeDef == null
+                                ? refer("e").asA(unwrappedReturns).code
+                                : unwrappedReturns.call([
+                                    refer("e").asA(refer("String")),
+                                  ]).code
+                            : unwrappedReturns.call(
                                 [
-                                  dataField.asA(refer("Map<String, dynamic>")),
+                                  refer("e").asA(refer("Map<String, dynamic>")),
                                 ],
                               ).code,
                     ).closure,
@@ -249,16 +259,21 @@ TypeNode _getFieldTypeNode(
         )
         .type;
 
-String _getTypeName(
+NamedTypeNode _unwrapTypeNode(
   TypeNode node,
 ) {
   if (node is NamedTypeNode) {
-    return node.name.value;
+    return node;
   }
 
   if (node is ListTypeNode) {
-    return _getTypeName(node.type);
+    return _unwrapTypeNode(node.type);
   }
 
   return null;
 }
+
+String _getTypeName(
+  TypeNode node,
+) =>
+    _unwrapTypeNode(node).name.value;
