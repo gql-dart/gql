@@ -8,11 +8,17 @@ List<Class> buildInputClasses(
 ) =>
     doc.definitions
         .whereType<InputObjectTypeDefinitionNode>()
-        .map(buildInputClass)
+        .map(
+          (InputObjectTypeDefinitionNode node) => buildInputClass(
+            node,
+            doc,
+          ),
+        )
         .toList();
 
 Class buildInputClass(
   InputObjectTypeDefinitionNode node,
+  DocumentNode doc,
 ) =>
     Class(
       (b) => b
@@ -34,39 +40,132 @@ Class buildInputClass(
             ),
           ],
         )
-        ..methods = _buildSetters(node.fields),
+        ..methods = _buildSetters(
+          node.fields,
+          doc,
+        ),
     );
 
 ListBuilder<Method> _buildSetters(
   List<InputValueDefinitionNode> nodes,
+  DocumentNode doc,
 ) =>
     ListBuilder<Method>(
-      nodes.map<Method>(_buildSetter),
+      nodes.map<Method>(
+        (InputValueDefinitionNode node) => _buildSetter(
+          node,
+          doc,
+        ),
+      ),
     );
 
 Method _buildSetter(
   InputValueDefinitionNode node,
+  DocumentNode doc,
+) {
+  final unwrappedTypeNode = _unwrapTypeNode(node.type);
+  final typeName = unwrappedTypeNode.name.value;
+  final argTypeDef = _getTypeDefinitionNode(
+    doc,
+    typeName,
+  );
+
+  final typeMap = {
+    ...defaultTypeMap,
+    if (argTypeDef != null) typeName: refer(typeName),
+  };
+
+  final argType = typeRef(
+    node.type,
+    typeMap,
+  );
+  final unwrappedArgType = typeRef(
+    unwrappedTypeNode,
+    typeMap,
+  );
+
+  return Method(
+    (b) => b
+      ..name = node.name.value
+      ..type = MethodType.setter
+      ..requiredParameters = ListBuilder<Parameter>(
+        <Parameter>[
+          Parameter(
+            (b) => b
+              ..type = argType
+              ..name = "value",
+          ),
+        ],
+      )
+      ..lambda = true
+      ..body = refer("input")
+          .index(
+            literalString(node.name.value),
+          )
+          .assign(
+            (node.type is ListTypeNode &&
+                    (argTypeDef is InputObjectTypeDefinitionNode ||
+                        argTypeDef is ScalarTypeDefinitionNode ||
+                        argTypeDef is EnumTypeDefinitionNode))
+                ? refer("value")
+                    .property("map")
+                    .call(
+                      [
+                        Method(
+                          (b) => b
+                            ..requiredParameters = ListBuilder<Parameter>(
+                              <Parameter>[
+                                Parameter(
+                                  (b) => b
+                                    ..type = unwrappedArgType
+                                    ..name = "e",
+                                ),
+                              ],
+                            )
+                            ..lambda = true
+                            ..body = (argTypeDef
+                                        is InputObjectTypeDefinitionNode
+                                    ? refer("e").property("input")
+                                    : argTypeDef is ScalarTypeDefinitionNode ||
+                                            argTypeDef is EnumTypeDefinitionNode
+                                        ? refer("e").property("value")
+                                        : refer("e"))
+                                .code,
+                        ).closure,
+                      ],
+                    )
+                    .property("toList")
+                    .call([])
+                : argTypeDef is InputObjectTypeDefinitionNode
+                    ? refer("value").property("input")
+                    : argTypeDef is ScalarTypeDefinitionNode ||
+                            argTypeDef is EnumTypeDefinitionNode
+                        ? refer("value").property("value")
+                        : refer("value"),
+          )
+          .code,
+  );
+}
+
+TypeDefinitionNode _getTypeDefinitionNode(
+  DocumentNode schema,
+  String name,
 ) =>
-    Method(
-      (b) => b
-        ..name = node.name.value
-        ..type = MethodType.setter
-        ..requiredParameters = ListBuilder<Parameter>(
-          <Parameter>[
-            Parameter(
-              (b) => b
-                ..type = typeRef(node.type)
-                ..name = "value",
-            )
-          ],
-        )
-        ..lambda = true
-        ..body = refer("input")
-            .index(
-              literalString(node.name.value),
-            )
-            .assign(
-              refer("value"),
-            )
-            .code,
-    );
+    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
+          (node) => node.name.value == name,
+          orElse: () => null,
+        );
+
+NamedTypeNode _unwrapTypeNode(
+  TypeNode node,
+) {
+  if (node is NamedTypeNode) {
+    return node;
+  }
+
+  if (node is ListTypeNode) {
+    return _unwrapTypeNode(node.type);
+  }
+
+  return null;
+}
