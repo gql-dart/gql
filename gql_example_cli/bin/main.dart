@@ -1,10 +1,9 @@
 import "package:args/args.dart";
+import "package:gql_example_cli/find_pokemon.data.gql.dart";
+import "package:gql_example_cli/find_pokemon.req.gql.dart";
+import "package:gql_example_cli/list_pokemon.data.gql.dart";
+import "package:gql_example_cli/list_pokemon.req.gql.dart";
 import "package:gql_http_link/gql_http_link.dart";
-
-import "find_pokemon.data.gql.dart";
-import "find_pokemon.req.gql.dart";
-import "list_pokemon.data.gql.dart";
-import "list_pokemon.req.gql.dart";
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()
