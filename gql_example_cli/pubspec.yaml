@@ -1,14 +1,13 @@
 name: gql_example_cli
-environment: 
+environment:
   sdk: '>=2.2.0 <3.0.0'
-dependencies: 
+dependencies:
   args: any
   gql: ^0.12.0
   gql_link: ^0.2.1
   gql_exec: ^0.2.0
   gql_http_link: ^0.2.2
-  json_annotation: ^3.0.0
-dev_dependencies: 
+dev_dependencies:
   build_runner: ^1.0.0
   gql_pedantic: ^1.0.0
   gql_code_gen: ^0.1.0

@@ -2,5 +2,4 @@ include: package:gql_pedantic/analysis_options.yaml
 
 analyzer:
   exclude:
-    - "**/*.g.dart"
     - "**/*.gql.dart"
