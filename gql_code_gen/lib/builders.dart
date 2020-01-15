@@ -9,11 +9,13 @@ import "package:gql_code_gen/src/builders/req_builder.dart";
 import "package:gql_code_gen/src/builders/scalar_builder.dart";
 import "package:gql_code_gen/src/builders/schema_builder.dart";
 
+// Builds AST of a GraphQL document
 Builder astBuilder(
   BuilderOptions options,
 ) =>
     AstBuilder();
 
+// Builds type-safe data viewer
 Builder dataBuilder(
   BuilderOptions options,
 ) =>
@@ -23,16 +25,19 @@ Builder dataBuilder(
       ),
     );
 
+// Builds enums from GraphQL schema
 Builder enumBuilder(
   BuilderOptions options,
 ) =>
     EnumBuilder();
 
+// Builds inputs from GraphQL schema
 Builder inputBuilder(
   BuilderOptions options,
 ) =>
     InputBuilder();
 
+// Builds operation containing AST and operation name
 Builder opBuilder(
   BuilderOptions options,
 ) =>
@@ -42,6 +47,7 @@ Builder opBuilder(
       ),
     );
 
+// Builds GraphQL type-safe request builder
 Builder reqBuilder(
   BuilderOptions options,
 ) =>
@@ -51,11 +57,13 @@ Builder reqBuilder(
       ),
     );
 
+// Builds scalars from GraphQL schema
 Builder scalarBuilder(
   BuilderOptions options,
 ) =>
     ScalarBuilder();
 
+// Builds GraphQL schema types
 Builder schemaBuilder(
   BuilderOptions options,
 ) =>
