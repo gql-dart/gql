@@ -121,15 +121,19 @@ ListBuilder<Method> _buildGetters(
   String type,
 ) =>
     ListBuilder<Method>(
-      nodes.map<Method>(
-        (node) => _buildGetter(
-          schema,
-          schemaUrl,
-          node,
-          prefix,
-          type,
-        ),
-      ),
+      nodes
+          .map<Method>(
+            (node) => _buildGetter(
+              schema,
+              schemaUrl,
+              node,
+              prefix,
+              type,
+            ),
+          )
+          .where(
+            (getter) => getter != null,
+          ),
     );
 
 Method _buildGetter(
@@ -228,8 +232,6 @@ Method _buildGetter(
                   ]).code,
     );
   }
-
-  throw UnsupportedError("fragments are not yet supported");
 }
 
 TypeDefinitionNode _getTypeDefinitionNode(
