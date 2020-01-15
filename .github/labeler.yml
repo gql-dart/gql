@@ -2,9 +2,13 @@ package/gql:
   - gql/*
   - gql/**/*
 
-package/gql_code_gen:
-  - gql_code_gen/*
-  - gql_code_gen/**/*
+package/gql_code_builder:
+  - gql_code_builder/*
+  - gql_code_builder/**/*
+
+package/gql_build:
+  - gql_build/*
+  - gql_build/**/*
 
 package/gql_dedupe_link:
   - gql_dedupe_link/*
