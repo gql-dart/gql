@@ -1,5 +1,9 @@
-Add `gql_code_gen` tou your `pubspec.yaml`
+Add `gql_code_gen` to your `pubspec.yaml`
 ```yaml
+dependencies:
+  gql: ^0.12.0
+  gql_exec: ^0.2.0
+  
 dev_dependencies:
   gql_code_gen: ^0.2.0
 ```
