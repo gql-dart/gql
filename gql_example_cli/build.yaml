@@ -9,11 +9,11 @@ targets:
         enabled: true
         options:
           schema: gql_example_cli|lib/schema.graphql
-      gql_code_gen|fragment_builder:
+      gql_build|fragment_builder:
         enabled: true
         options:
           schema: gql_example_cli|lib/schema.graphql
-      gql_code_gen|data_builder:
+      gql_build|data_builder:
         enabled: true
         options:
           schema: gql_example_cli|lib/schema.graphql

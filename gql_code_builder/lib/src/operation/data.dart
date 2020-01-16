@@ -164,13 +164,9 @@ ListBuilder<Method> _buildGetters(
               type,
             ),
           )
-<<<<<<< HEAD:gql_code_builder/lib/src/operation/data.dart
           .where(
             (getter) => getter != null,
           ),
-=======
-          .where((getter) => getter != null),
->>>>>>> make data classes implement fragment class interfaces:gql_code_gen/lib/src/operation/data.dart
     );
 
 Method _buildGetter(
