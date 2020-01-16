@@ -35,18 +35,18 @@ class FragmentBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final fragmentDefinitions = <FragmentDefinitionNode>[];
+    final fragmentDefinitions = <String, FragmentDefinitionNode>{};
 
     await for (final input in buildStep.findAssets(_graphqlFiles)) {
       final doc = await readDocument(buildStep, input);
-      fragmentDefinitions
-          .addAll(doc.definitions.whereType<FragmentDefinitionNode>());
+      doc.definitions.whereType<FragmentDefinitionNode>().forEach(
+          (def) => fragmentDefinitions.putIfAbsent(def.name.value, () => def));
     }
 
     final schema = await readDocument(buildStep, schemaId);
 
     final library = buildFragmentLibrary(
-      fragmentDefinitions,
+      fragmentDefinitions.values.toList(),
       FragmentBuilder.fragmentsFileOutput(buildStep).uri.toString(),
       schema,
       schemaId.changeExtension(schemaExtension).uri.toString(),
