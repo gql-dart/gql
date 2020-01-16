@@ -5,6 +5,7 @@ import "package:gql_code_builder/src/operation/data.dart";
 
 Library buildFragmentLibrary(
   List<FragmentDefinitionNode> fragmentDefinitions,
+  String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
 ) =>
@@ -12,8 +13,9 @@ Library buildFragmentLibrary(
       (b) => b.body
         ..addAll(
           fragmentDefinitions.expand((def) => buildSelectionSetDataClasses(
-              "\$${def.name.value}Fragment",
+              "\$${def.name.value}",
               def.selectionSet,
+              fragmentsDocUrl,
               schema,
               schemaUrl,
               def.typeCondition.on.name.value)),

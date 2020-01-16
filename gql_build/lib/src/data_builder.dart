@@ -6,6 +6,7 @@ import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/data.dart";
+import "package:gql_build/src/fragment_builder.dart";
 
 class DataBuilder implements Builder {
   final AssetId schemaId;
@@ -26,6 +27,7 @@ class DataBuilder implements Builder {
 
     final library = buildDataLibrary(
       doc,
+      FragmentBuilder.fragmentsFileOutput(buildStep).uri.toString(),
       schema,
       schemaId.changeExtension(schemaExtension).uri.toString(),
     );

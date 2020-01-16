@@ -23,7 +23,7 @@ class FragmentBuilder implements Builder {
 
   static final _graphqlFiles = new Glob("lib/**.graphql");
 
-  static AssetId _fragmentsFileOutput(BuildStep buildStep) => AssetId(
+  static AssetId fragmentsFileOutput(BuildStep buildStep) => AssetId(
         buildStep.inputId.package,
         p.join("lib", fragmentsFilename),
       );
@@ -47,6 +47,7 @@ class FragmentBuilder implements Builder {
 
     final library = buildFragmentLibrary(
       fragmentDefinitions,
+      FragmentBuilder.fragmentsFileOutput(buildStep).uri.toString(),
       schema,
       schemaId.changeExtension(schemaExtension).uri.toString(),
     );
@@ -58,7 +59,7 @@ class FragmentBuilder implements Builder {
     )}");
 
     return buildStep.writeAsString(
-      FragmentBuilder._fragmentsFileOutput(buildStep),
+      FragmentBuilder.fragmentsFileOutput(buildStep),
       genSrc,
     );
   }
