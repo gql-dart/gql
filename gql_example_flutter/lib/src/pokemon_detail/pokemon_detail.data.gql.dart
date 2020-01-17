@@ -1,3 +1,5 @@
+import 'package:gql_example_flutter/fragments.gql.dart' as _i1;
+
 class $PokemonDetail {
   const $PokemonDetail(this.data);
 
@@ -7,7 +9,7 @@ class $PokemonDetail {
       $PokemonDetail$pokemon((data['pokemon'] as Map<String, dynamic>));
 }
 
-class $PokemonDetail$pokemon {
+class $PokemonDetail$pokemon implements _i1.$PokemonCard {
   const $PokemonDetail$pokemon(this.data);
 
   final Map<String, dynamic> data;

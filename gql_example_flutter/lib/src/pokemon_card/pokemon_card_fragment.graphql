@@ -1,0 +1,6 @@
+fragment PokemonCard on Pokemon {
+  id
+  name
+  maxHP
+  image
+}
