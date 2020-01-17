@@ -17,7 +17,9 @@ class PokemonDetailScreen extends StatelessWidget {
       stream: link.request(PokemonDetail()..id = id),
       builder: (BuildContext context, AsyncSnapshot<Response> snapshot) {
         if (snapshot.data?.data == null)
-          return Center(child: CircularProgressIndicator());
+          return Scaffold(
+              appBar: AppBar(),
+              body: Center(child: CircularProgressIndicator()));
 
         final data = $PokemonDetail(snapshot.data.data);
 

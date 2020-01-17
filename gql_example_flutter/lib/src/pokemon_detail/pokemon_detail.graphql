@@ -3,10 +3,6 @@
 query PokemonDetail($id: String, $name: String) {
   pokemon(id: $id, name: $name) {
     ...PokemonCard
-    id
-    name
-    maxHP
-    image
     weight {
       minimum
       maximum

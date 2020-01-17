@@ -3,9 +3,5 @@
 query AllPokemon($first: Int!) {
   pokemons(first: $first) {
     ...PokemonCard
-    id
-    name
-    maxHP
-    image
   }
 }
