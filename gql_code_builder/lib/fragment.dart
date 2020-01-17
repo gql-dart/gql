@@ -4,7 +4,7 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/operation/data.dart";
 
 Library buildFragmentLibrary(
-  List<FragmentDefinitionNode> fragmentDefinitions,
+  Map<String, FragmentDefinitionNode> fragmentMap,
   String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
@@ -12,9 +12,11 @@ Library buildFragmentLibrary(
     Library(
       (b) => b.body
         ..addAll(
-          fragmentDefinitions.expand((def) => buildSelectionSetDataClasses(
+          fragmentMap.values.expand((def) => buildSelectionSetDataClasses(
               "\$${def.name.value}",
               def.selectionSet,
+              fragmentMap,
+              {},
               fragmentsDocUrl,
               schema,
               schemaUrl,

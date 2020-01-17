@@ -32,6 +32,11 @@ List<Class> _buildOperationDataClasses(
     buildSelectionSetDataClasses(
       "\$${op.name.value}",
       op.selectionSet,
+      {
+        for (var def in doc.definitions.whereType<FragmentDefinitionNode>())
+          def.name.value: def
+      },
+      {},
       fragmentsDocUrl,
       schema,
       schemaUrl,
@@ -61,59 +66,78 @@ String _operationType(
 List<Class> _buildSelectionSetDataClasses(
   String name,
   SelectionSetNode selSet,
+  Map<String, FragmentDefinitionNode> fragmentMap,
+  Map<String, SelectionSetNode> fragmentSelSets,
   String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
   String type,
-) =>
-    [
-      Class(
-        (b) => b
-          ..name = name
-          ..implements = _buildImplementedFragments(selSet, fragmentsDocUrl)
-          ..constructors = _buildConstructors()
-          ..fields = _buildFields()
-          ..methods = _buildGetters(
+) {
+  final fragmentSpreads = selSet.selections.whereType<FragmentSpreadNode>();
+
+  final updatedFragmentSelSets = {
+    ...fragmentSelSets,
+    for (var fragmentSpread in fragmentSpreads)
+      if (fragmentMap.containsKey(fragmentSpread.name.value))
+        "\$${fragmentSpread.name.value}":
+            fragmentMap[fragmentSpread.name.value].selectionSet
+  };
+
+  return [
+    Class(
+      (b) => b
+        ..name = name
+        ..implements = ListBuilder(updatedFragmentSelSets.keys
+            .map<Reference>((className) => refer(className, fragmentsDocUrl)))
+        ..constructors = _buildConstructors()
+        ..fields = _buildFields()
+        ..methods = _buildGetters(
+          schema,
+          schemaUrl,
+          selSet.selections,
+          name,
+          type,
+        ),
+    ),
+    ...selSet.selections
+        .whereType<FieldNode>()
+        .where(
+          (field) => field.selectionSet != null,
+        )
+        .expand(
+          (field) => buildSelectionSetDataClasses(
+            "${name}\$${field.alias?.value ?? field.name.value}",
+            field.selectionSet,
+            fragmentMap,
+            fragmentSelSetsForField(updatedFragmentSelSets, field, name),
+            fragmentsDocUrl,
             schema,
             schemaUrl,
-            selSet.selections,
-            name,
-            type,
-          ),
-      ),
-      ...selSet.selections
-          .whereType<FieldNode>()
-          .where(
-            (field) => field.selectionSet != null,
-          )
-          .expand(
-            (field) => buildSelectionSetDataClasses(
-              "${name}\$${field.alias?.value ?? field.name.value}",
-              field.selectionSet,
-              fragmentsDocUrl,
-              schema,
-              schemaUrl,
-              _getTypeName(
-                _getFieldTypeNode(
-                  _getObjectTypeDefinitionNode(
-                    schema,
-                    type,
-                  ),
-                  field.name.value,
+            _getTypeName(
+              _getFieldTypeNode(
+                _getObjectTypeDefinitionNode(
+                  schema,
+                  type,
                 ),
+                field.name.value,
               ),
             ),
           ),
-    ];
+        ),
+  ];
+}
 
-ListBuilder<Reference> _buildImplementedFragments(
-  SelectionSetNode selSet,
-  String fragmentsDocUrl,
-) =>
-    ListBuilder<Reference>(selSet.selections
-        .whereType<FragmentSpreadNode>()
-        .map<Reference>(
-            (fragNode) => refer("\$${fragNode.name.value}", fragmentsDocUrl)));
+Map<String, SelectionSetNode> fragmentSelSetsForField(
+        Map<String, SelectionSetNode> fragmentSelSets,
+        FieldNode field,
+        String name) =>
+    {
+      for (var selSetEntry in fragmentSelSets.entries)
+        if (selSetEntry.value.selections.any((selection) =>
+            selection is FieldNode && selection.name.value == field.name.value))
+          "${selSetEntry.key}\$${field.alias?.value ?? field.name.value}":
+              selSetEntry.value
+    };
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
       <Field>[
