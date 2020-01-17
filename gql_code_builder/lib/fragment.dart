@@ -14,7 +14,7 @@ Library buildFragmentLibrary(
         ..addAll(
           fragmentMap.values.expand((def) => buildSelectionSetDataClasses(
               "\$${def.name.value}",
-              def.selectionSet,
+              def.selectionSet.selections,
               fragmentMap,
               {},
               fragmentsDocUrl,

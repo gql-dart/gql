@@ -31,7 +31,7 @@ List<Class> _buildOperationDataClasses(
 ) =>
     buildSelectionSetDataClasses(
       "\$${op.name.value}",
-      op.selectionSet,
+      op.selectionSet.selections,
       {
         for (var def in doc.definitions.whereType<FragmentDefinitionNode>())
           def.name.value: def
@@ -63,53 +63,53 @@ String _operationType(
       .value;
 }
 
-List<Class> _buildSelectionSetDataClasses(
+List<Class> buildSelectionSetDataClasses(
   String name,
-  SelectionSetNode selSet,
+  List<SelectionNode> selections,
   Map<String, FragmentDefinitionNode> fragmentMap,
-  Map<String, SelectionSetNode> fragmentSelSets,
+  Map<String, List<FieldNode>> fragmentSelections,
   String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
   String type,
 ) {
-  final fragmentSpreads = selSet.selections.whereType<FragmentSpreadNode>();
+  for (final selection in selections.whereType<FragmentSpreadNode>()) {
+    if (!fragmentMap.containsKey(selection.name.value)) {
+      throw Exception(
+          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+    }
+    fragmentSelections["\$${selection.name.value}"] = _flattenSelections(
+        fragmentMap[selection.name.value].selectionSet.selections, fragmentMap);
+  }
 
-  final updatedFragmentSelSets = {
-    ...fragmentSelSets,
-    for (var fragmentSpread in fragmentSpreads)
-      if (fragmentMap.containsKey(fragmentSpread.name.value))
-        "\$${fragmentSpread.name.value}":
-            fragmentMap[fragmentSpread.name.value].selectionSet
-  };
+  final fields = _flattenSelections(selections, fragmentMap);
 
   return [
     Class(
       (b) => b
         ..name = name
-        ..implements = ListBuilder(updatedFragmentSelSets.keys
+        ..implements = ListBuilder(fragmentSelections.keys
             .map<Reference>((className) => refer(className, fragmentsDocUrl)))
         ..constructors = _buildConstructors()
         ..fields = _buildFields()
         ..methods = _buildGetters(
           schema,
           schemaUrl,
-          selSet.selections,
+          fields,
           name,
           type,
         ),
     ),
-    ...selSet.selections
-        .whereType<FieldNode>()
+    ...fields
         .where(
           (field) => field.selectionSet != null,
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
             "${name}\$${field.alias?.value ?? field.name.value}",
-            field.selectionSet,
+            field.selectionSet.selections,
             fragmentMap,
-            fragmentSelSetsForField(updatedFragmentSelSets, field, name),
+            _fragmentSelecitonsForField(fragmentSelections, field),
             fragmentsDocUrl,
             schema,
             schemaUrl,
@@ -127,16 +127,57 @@ List<Class> _buildSelectionSetDataClasses(
   ];
 }
 
-Map<String, SelectionSetNode> fragmentSelSetsForField(
-        Map<String, SelectionSetNode> fragmentSelSets,
-        FieldNode field,
-        String name) =>
+List<FieldNode> _flattenSelections(List<SelectionNode> selections,
+        Map<String, FragmentDefinitionNode> fragmentMap) =>
+    _expandSelections(selections, fragmentMap)
+        .fold<Map<String, FieldNode>>(
+            {},
+            (fieldMap, field) => fieldMap
+              ..update(
+                  field.alias?.value ?? field.name.value,
+                  (existingField) => field.selectionSet == null
+                      ? field
+                      : FieldNode(
+                          name: field.name,
+                          alias: field.alias,
+                          selectionSet: SelectionSetNode(
+                              selections: _flattenSelections([
+                            ...existingField.selectionSet.selections,
+                            ...field.selectionSet.selections
+                          ], fragmentMap))),
+                  ifAbsent: () => field))
+        .values
+        .toList();
+
+List<FieldNode> _expandSelections(List<SelectionNode> selections,
+        Map<String, FragmentDefinitionNode> fragmentMap) =>
+    selections.fold([], (selections, selection) {
+      if (selection is FieldNode) {
+        return selections..add(selection);
+      } else if (selection is InlineFragmentNode) {
+        return selections
+          ..addAll(_expandSelections(
+              selection.selectionSet.selections, fragmentMap));
+      } else if (selection is FragmentSpreadNode) {
+        if (!fragmentMap.containsKey(selection.name.value)) {
+          throw Exception(
+              "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+        }
+        return selections
+          ..addAll(_expandSelections(
+              fragmentMap[selection.name.value].selectionSet.selections,
+              fragmentMap));
+      }
+    });
+
+Map<String, List<FieldNode>> _fragmentSelecitonsForField(
+        Map<String, List<FieldNode>> fragmentSelections, FieldNode field) =>
     {
-      for (var selSetEntry in fragmentSelSets.entries)
-        if (selSetEntry.value.selections.any((selection) =>
-            selection is FieldNode && selection.name.value == field.name.value))
-          "${selSetEntry.key}\$${field.alias?.value ?? field.name.value}":
-              selSetEntry.value
+      for (var selectionEntry in fragmentSelections.entries)
+        if (selectionEntry.value
+            .any((selection) => selection.name.value == field.name.value))
+          "${selectionEntry.key}\$${field.alias?.value ?? field.name.value}":
+              selectionEntry.value
     };
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
