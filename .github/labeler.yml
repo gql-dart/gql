@@ -18,6 +18,10 @@ package/gql_example_cli:
   - gql_example_cli/*
   - gql_example_cli/**/*
 
+package/gql_example_flutter:
+  - gql_example_flutter/*
+  - gql_example_flutter/**/*
+
 package/gql_http_link:
   - gql_http_link/*
   - gql_http_link/**/*
