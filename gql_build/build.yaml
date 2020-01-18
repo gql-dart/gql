@@ -12,11 +12,7 @@ builders:
     auto_apply: none
     build_to: source
   fragment_builder:
-<<<<<<< HEAD
     import: "package:gql_build/gql_build.dart"
-=======
-    import: "package:gql_build/builders.dart"
->>>>>>> update build files
     builder_factories: ["fragmentBuilder"]
     build_extensions: { "$lib$": ["fragments.gql.dart"] }
     auto_apply: none
