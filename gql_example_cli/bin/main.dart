@@ -1,9 +1,9 @@
 import "package:args/args.dart";
-import "package:gql_exec/gql_exec.dart";
+import "package:gql_example_cli/find_pokemon.data.gql.dart";
+import "package:gql_example_cli/find_pokemon.req.gql.dart";
+import "package:gql_example_cli/list_pokemon.data.gql.dart";
+import "package:gql_example_cli/list_pokemon.req.gql.dart";
 import "package:gql_http_link/gql_http_link.dart";
-
-import "find_pokemon.ast.g.dart" as find_pokemon;
-import "list_pokemon.ast.g.dart" as list_pokemon;
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -22,18 +22,13 @@ Future<Null> main(List<String> arguments) async {
     print("Looking for ${find}...");
     final result = await link
         .request(
-          Request(
-            operation: Operation(
-              document: find_pokemon.document,
-            ),
-            variables: <String, String>{
-              "name": find,
-            },
-          ),
+          FindPokemon()..name = find,
         )
         .first;
 
-    final pokemon = result.data["pokemon"] as Map<String, dynamic>;
+    final data = $FindPokemon(result.data);
+
+    final pokemon = data.pokemon;
 
     if (pokemon == null) {
       print("${find} was not found. Does it even exist?");
@@ -41,13 +36,16 @@ Future<Null> main(List<String> arguments) async {
       return;
     }
 
-    print("Found ${pokemon["name"]}");
-    print("ID: ${pokemon["id"]}");
+    final weight = pokemon.weight;
+    final height = pokemon.height;
+
+    print("Found ${pokemon.name}");
+    print("ID: ${pokemon.id}");
     print(
-      "Weight: ${pokemon["weight"]["minimum"]} – ${pokemon["weight"]["maximum"]}",
+      "Weight: ${weight.minimum} – ${weight.maximum}",
     );
     print(
-      "Height: ${pokemon["height"]["minimum"]} – ${pokemon["height"]["maximum"]}",
+      "Height: ${height.minimum} – ${height.maximum}",
     );
 
     return;
@@ -58,24 +56,19 @@ Future<Null> main(List<String> arguments) async {
   print("Looking for some pokemon...");
   final result = await link
       .request(
-        Request(
-          operation: Operation(
-            document: list_pokemon.document,
-          ),
-          variables: <String, String>{
-            "count": count,
-          },
-        ),
+        ListPokemon()..count = int.parse(count),
       )
       .first;
 
-  final pokemons = result.data["pokemons"] as List<dynamic>;
+  final data = $ListPokemon(result.data);
+
+  final pokemons = data.pokemons;
 
   print("Found ${pokemons.length} pokemon");
 
-  pokemons.cast<Map<String, dynamic>>().forEach(
+  pokemons.forEach(
     (pokemon) {
-      print("${pokemon["id"]} | ${pokemon["name"]}");
+      print("${pokemon.id} | ${pokemon.name}");
     },
   );
 

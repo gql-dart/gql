@@ -12,16 +12,16 @@ jobs:
     - name: Run tests
       uses: ./.github/actions/dart-test
 
-  gql_code_gen:
-    runs-on: ubuntu-latest
-    name: Test gql_code_gen
-    env:
-      PACKAGE: gql_code_gen
-    steps:
-    - name: Clone repository
-      uses: actions/checkout@master
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+#  gql_code_gen:
+#    runs-on: ubuntu-latest
+#    name: Test gql_code_gen
+#    env:
+#      PACKAGE: gql_code_gen
+#    steps:
+#    - name: Clone repository
+#      uses: actions/checkout@master
+#    - name: Run tests
+#      uses: ./.github/actions/dart-test
 
   gql_dedupe_link:
     runs-on: ubuntu-latest
