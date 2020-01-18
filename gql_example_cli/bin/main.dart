@@ -22,7 +22,9 @@ Future<Null> main(List<String> arguments) async {
     print("Looking for ${find}...");
     final result = await link
         .request(
-          FindPokemon()..name = find,
+          FindPokemon(
+            (b) => b..name = find,
+          ),
         )
         .first;
 
@@ -56,7 +58,9 @@ Future<Null> main(List<String> arguments) async {
   print("Looking for some pokemon...");
   final result = await link
       .request(
-        ListPokemon()..count = int.parse(count),
+        ListPokemon(
+          (b) => b..count = int.parse(count),
+        ),
       )
       .first;
 
