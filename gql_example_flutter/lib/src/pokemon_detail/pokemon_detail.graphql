@@ -1,0 +1,16 @@
+query PokemonDetail($id: String, $name: String) {
+  pokemon(id: $id, name: $name) {
+    id
+    name
+    maxHP
+    image
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+  }
+}
