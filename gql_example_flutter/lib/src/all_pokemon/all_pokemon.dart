@@ -5,6 +5,7 @@ import './all_pokemon.data.gql.dart';
 import './all_pokemon.req.gql.dart';
 import '../config.dart';
 import '../pokemon_card/pokemon_card.dart';
+import '../pokemon_card/pokemon.dart';
 
 class AllPokemonScreen extends StatelessWidget {
   @override
@@ -24,7 +25,7 @@ class AllPokemonScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: data.pokemons.length,
             itemBuilder: (context, index) => PokemonCard(
-              pokemon: data.pokemons[index],
+              pokemon: Pokemon.fromJson(data.pokemons[index].data),
             ),
           );
         },

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:gql_example_flutter/fragments.gql.dart';
+import './pokemon.dart';
 
 class PokemonCard extends StatelessWidget {
-  final $PokemonCard pokemon;
+  final Pokemon pokemon;
 
   const PokemonCard({this.pokemon});
 
