@@ -232,6 +232,8 @@ Method _buildGetter(
                   ]).code,
     );
   }
+
+  return null;
 }
 
 TypeDefinitionNode _getTypeDefinitionNode(

@@ -3,7 +3,7 @@ import "package:gql/language.dart" as lang;
 
 class AddTypenames extends ast.TransformingVisitor {
   @override
-  visitFieldNode(ast.FieldNode node) {
+  ast.FieldNode visitFieldNode(ast.FieldNode node) {
     if (node.selectionSet == null) {
       return node;
     }

@@ -5,7 +5,7 @@ class TypeVisitor extends ast.RecursiveVisitor {
   Iterable<ast.ObjectTypeDefinitionNode> types = [];
 
   @override
-  visitObjectTypeDefinitionNode(
+  void visitObjectTypeDefinitionNode(
     ast.ObjectTypeDefinitionNode node,
   ) {
     types = types.followedBy([node]);

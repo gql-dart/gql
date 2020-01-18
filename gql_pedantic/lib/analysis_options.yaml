@@ -87,3 +87,9 @@ analyzer:
     prefer_typing_uninitialized_variables: error
     unnecessary_lambdas: error
     use_function_type_syntax_for_parameters: error
+    camel_case_extensions: error
+    prefer_adjacent_string_concatenation: error
+    prefer_for_elements_to_map_fromIterable: error
+    always_declare_return_types: error
+    omit_local_variable_types: ignore
+    prefer_single_quotes: ignore
