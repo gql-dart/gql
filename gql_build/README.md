@@ -133,4 +133,4 @@ Combines `enum_builder`, `input_builder` and `scalar_builder`.
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/gql-dart/gql/issues

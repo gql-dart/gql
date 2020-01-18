@@ -35,3 +35,5 @@ Build using `build_runner`
 ```bash
 pub run build_runner build
 ```
+
+See [gql_example_cli](https://github.com/gql-dart/gql/tree/master/gql_example_cli) for a usage of the generated classes.
