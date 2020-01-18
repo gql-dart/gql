@@ -281,7 +281,7 @@ Method _buildGetter(
     return Method(
       (b) => b
         ..returns = returns
-        ..name = name.startsWith("_") ? "\$$name" : name
+        ..name = identifier(name)
         ..type = MethodType.getter
         ..lambda = true
         ..body = typeNode is ListTypeNode
