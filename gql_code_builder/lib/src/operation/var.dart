@@ -3,64 +3,50 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
 
-List<Class> buildOperationArgsClasses(
+List<Class> buildOperationVarClasses(
   DocumentNode doc,
   DocumentNode schema,
-  String opDocUrl,
   String schemaUrl,
 ) =>
     doc.definitions
         .whereType<OperationDefinitionNode>()
         .map(
-          (op) => _buildOperationArgsClass(
+          (op) => _buildOperationVarClass(
             op,
             schema,
-            opDocUrl,
             schemaUrl,
           ),
         )
         .toList();
 
-Class _buildOperationArgsClass(
+Class _buildOperationVarClass(
   OperationDefinitionNode node,
   DocumentNode schema,
-  String opDocUrl,
   String schemaUrl,
 ) =>
     Class(
       (b) => b
-        ..name = node.name.value
-        ..extend = refer(
-          "Request",
-          "package:gql_exec/gql_exec.dart",
-        )
-        ..constructors = ListBuilder<Constructor>(<Constructor>[
-          Constructor(
-            (b) => b
-              ..initializers = ListBuilder<Code>(<Code>[
-                refer(
-                  "super",
-                ).call(
-                  [],
-                  {
-                    "operation": refer(
-                      node.name.value,
-                      opDocUrl,
-                    ),
-                    "variables": literalMap(
-                      {},
-                      refer("String"),
-                      refer("dynamic"),
-                    )
-                  },
+        ..name = "${node.name.value}VarBuilder"
+        ..fields = ListBuilder<Field>(
+          <Field>[
+            Field(
+              (b) => b
+                ..modifier = FieldModifier.final$
+                ..type = refer(
+                  "Map<String, dynamic>",
+                )
+                ..name = "variables"
+                ..assignment = literalMap(
+                  {},
+                  refer("String"),
+                  refer("dynamic"),
                 ).code,
-              ]),
-          ),
-        ])
+            ),
+          ],
+        )
         ..methods = _buildSetters(
           node.variableDefinitions,
           schema,
-          opDocUrl,
           schemaUrl,
         ),
     );
@@ -68,7 +54,6 @@ Class _buildOperationArgsClass(
 ListBuilder<Method> _buildSetters(
   List<VariableDefinitionNode> nodes,
   DocumentNode schema,
-  String opDocUrl,
   String schemaUrl,
 ) =>
     ListBuilder<Method>(
@@ -76,7 +61,6 @@ ListBuilder<Method> _buildSetters(
         (VariableDefinitionNode node) => _buildSetter(
           node,
           schema,
-          opDocUrl,
           schemaUrl,
         ),
       ),
@@ -85,7 +69,6 @@ ListBuilder<Method> _buildSetters(
 Method _buildSetter(
   VariableDefinitionNode node,
   DocumentNode schema,
-  String opDocUrl,
   String schemaUrl,
 ) {
   final unwrappedTypeNode = _unwrapTypeNode(node.type);

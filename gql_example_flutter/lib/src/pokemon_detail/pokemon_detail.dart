@@ -4,8 +4,8 @@ import 'package:gql_exec/gql_exec.dart';
 import './pokemon_detail.data.gql.dart';
 import './pokemon_detail.req.gql.dart';
 import '../config.dart';
-import '../pokemon_card/pokemon_card.dart';
 import '../pokemon_card/pokemon.dart';
+import '../pokemon_card/pokemon_card.dart';
 
 class PokemonDetailScreen extends StatelessWidget {
   final String id;
@@ -15,7 +15,11 @@ class PokemonDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: link.request(PokemonDetail()..id = id),
+      stream: link.request(
+        PokemonDetail(
+          (vars) => vars..id = id,
+        ),
+      ),
       builder: (BuildContext context, AsyncSnapshot<Response> snapshot) {
         if (snapshot.data?.data == null)
           return Scaffold(

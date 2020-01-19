@@ -1,21 +1,19 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/src/operation/req.dart";
+import "package:gql_code_builder/src/operation/var.dart";
 
-Library buildReqLibrary(
+Library buildVarLibrary(
   DocumentNode doc,
   DocumentNode schema,
-  String opDocUrl,
-  String varDocUrl,
+  String schemaUrl,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
-          buildOperationReqClasses(
+          buildOperationVarClasses(
             doc,
             schema,
-            opDocUrl,
-            varDocUrl,
+            schemaUrl,
           ),
         ),
     );
