@@ -1,3 +1,5 @@
+import 'package:gql_example_flutter/fragments.gql.dart' as _i1;
+
 class $AllPokemon {
   const $AllPokemon(this.data);
 
@@ -8,7 +10,7 @@ class $AllPokemon {
       .toList();
 }
 
-class $AllPokemon$pokemons {
+class $AllPokemon$pokemons implements _i1.$PokemonCard {
   const $AllPokemon$pokemons(this.data);
 
   final Map<String, dynamic> data;

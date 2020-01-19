@@ -74,8 +74,8 @@ const PokemonDetail = _i1.OperationDefinitionNode(
                 ]))
           ]))
     ]));
-const SubFragment = _i1.FragmentDefinitionNode(
-    name: _i1.NameNode(value: 'SubFragment'),
+const NestedFragment = _i1.FragmentDefinitionNode(
+    name: _i1.NameNode(value: 'NestedFragment'),
     typeCondition: _i1.TypeConditionNode(
         on: _i1.NamedTypeNode(
             name: _i1.NameNode(value: 'Pokemon'), isNonNull: false)),
@@ -102,13 +102,7 @@ const PokemonCard = _i1.FragmentDefinitionNode(
     directives: [],
     selectionSet: _i1.SelectionSetNode(selections: [
       _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'SubFragment'), directives: []),
-      _i1.FieldNode(
-          name: _i1.NameNode(value: 'id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null),
+          name: _i1.NameNode(value: 'NestedFragment'), directives: []),
       _i1.FieldNode(
           name: _i1.NameNode(value: 'maxHP'),
           alias: null,
@@ -123,4 +117,4 @@ const PokemonCard = _i1.FragmentDefinitionNode(
           selectionSet: null)
     ]));
 const document =
-    _i1.DocumentNode(definitions: [PokemonDetail, SubFragment, PokemonCard]);
+    _i1.DocumentNode(definitions: [PokemonDetail, NestedFragment, PokemonCard]);
