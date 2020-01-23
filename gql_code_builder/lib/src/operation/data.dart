@@ -130,22 +130,21 @@ List<Class> buildSelectionSetDataClasses(
 List<FieldNode> _flattenSelections(List<SelectionNode> selections,
         Map<String, FragmentDefinitionNode> fragmentMap) =>
     _expandSelections(selections, fragmentMap)
-        .fold<Map<String, FieldNode>>(
-            {},
-            (fieldMap, field) => fieldMap
-              ..update(
-                  field.alias?.value ?? field.name.value,
-                  (existingField) => field.selectionSet == null
-                      ? field
-                      : FieldNode(
-                          name: field.name,
-                          alias: field.alias,
-                          selectionSet: SelectionSetNode(
-                              selections: _flattenSelections([
-                            ...existingField.selectionSet.selections,
-                            ...field.selectionSet.selections
-                          ], fragmentMap))),
-                  ifAbsent: () => field))
+        .fold<Map<String, FieldNode>>({}, (fieldMap, field) {
+          final key = field.alias?.value ?? field.name.value;
+          fieldMap[key] = field.selectionSet == null
+              ? field
+              : FieldNode(
+                  name: field.name,
+                  alias: field.alias,
+                  selectionSet: SelectionSetNode(
+                      selections: _flattenSelections([
+                    if (fieldMap[key] != null)
+                      ...fieldMap[key].selectionSet.selections,
+                    ...field.selectionSet.selections
+                  ], fragmentMap)));
+          return fieldMap;
+        })
         .values
         .toList();
 
