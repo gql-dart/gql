@@ -78,11 +78,15 @@ List<Class> buildSelectionSetDataClasses(
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    fragmentSelections["\$${selection.name.value}"] = _flattenSelections(
-        fragmentMap[selection.name.value].selectionSet.selections, fragmentMap);
+    fragmentSelections["\$${selection.name.value}"] = _mergeSelections(
+            fragmentMap[selection.name.value].selectionSet.selections,
+            fragmentMap)
+        .whereType<FieldNode>()
+        .toList();
   }
 
-  final fields = _flattenSelections(selections, fragmentMap);
+  final fields =
+      _mergeSelections(selections, fragmentMap).whereType<FieldNode>().toList();
 
   return [
     Class(
@@ -127,56 +131,76 @@ List<Class> buildSelectionSetDataClasses(
   ];
 }
 
-List<FieldNode> _flattenSelections(List<SelectionNode> selections,
+/// Deeply merges field nodes
+List<SelectionNode> _mergeSelections(List<SelectionNode> selections,
         Map<String, FragmentDefinitionNode> fragmentMap) =>
     _expandSelections(selections, fragmentMap)
-        .fold<Map<String, FieldNode>>({}, (fieldMap, field) {
-          final key = field.alias?.value ?? field.name.value;
-          fieldMap[key] = field.selectionSet == null
-              ? field
-              : FieldNode(
-                  name: field.name,
-                  alias: field.alias,
+        .fold<Map<String, SelectionNode>>({}, (selectionMap, selection) {
+          if (selection is FragmentSpreadNode) {
+            selectionMap[selection.name.value] = selection;
+          } else if (selection is FieldNode) {
+            final key = selection.alias?.value ?? selection.name.value;
+            if (selection.selectionSet == null) {
+              selectionMap[key] = selection;
+            } else {
+              final existingNode = selectionMap[key];
+              final existingSelections =
+                  existingNode is FieldNode && existingNode.selectionSet != null
+                      ? existingNode.selectionSet.selections
+                      : [];
+              selectionMap[key] = FieldNode(
+                  name: selection.name,
+                  alias: selection.alias,
                   selectionSet: SelectionSetNode(
-                      selections: _flattenSelections([
-                    if (fieldMap[key] != null)
-                      ...fieldMap[key].selectionSet.selections,
-                    ...field.selectionSet.selections
+                      selections: _mergeSelections([
+                    ...existingSelections,
+                    ...selection.selectionSet.selections
                   ], fragmentMap)));
-          return fieldMap;
+            }
+          }
+          return selectionMap;
         })
         .values
         .toList();
 
-List<FieldNode> _expandSelections(List<SelectionNode> selections,
-        Map<String, FragmentDefinitionNode> fragmentMap) =>
-    selections.fold([], (selections, selection) {
+List<SelectionNode> _expandSelections(List<SelectionNode> selections,
+        Map<String, FragmentDefinitionNode> fragmentMap,
+        [bool retainFragmentSpreads = true]) =>
+    selections.expand((selection) {
       if (selection is FieldNode) {
-        return selections..add(selection);
+        return [selection];
       } else if (selection is InlineFragmentNode) {
-        return selections
-          ..addAll(_expandSelections(
-              selection.selectionSet.selections, fragmentMap));
+        return _expandSelections(
+            selection.selectionSet.selections, fragmentMap);
       } else if (selection is FragmentSpreadNode) {
         if (!fragmentMap.containsKey(selection.name.value)) {
           throw Exception(
               "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
         }
-        return selections
-          ..addAll(_expandSelections(
+        return [
+          if (retainFragmentSpreads) selection,
+          ..._expandSelections(
               fragmentMap[selection.name.value].selectionSet.selections,
-              fragmentMap));
+              fragmentMap,
+              false)
+        ];
       }
-    });
+    }).toList();
 
 Map<String, List<FieldNode>> _fragmentSelecitonsForField(
         Map<String, List<FieldNode>> fragmentSelections, FieldNode field) =>
     {
       for (var selectionEntry in fragmentSelections.entries)
-        if (selectionEntry.value
-            .any((selection) => selection.name.value == field.name.value))
-          "${selectionEntry.key}\$${field.alias?.value ?? field.name.value}":
-              selectionEntry.value
+        for (var selection in selectionEntry.value.where((selection) {
+          final selectionKey = selection.alias?.value ?? selection.name.value;
+          final fieldKey = field.alias?.value ?? field.name.value;
+          return selectionKey == fieldKey;
+        }))
+          if (selection.selectionSet != null)
+            "${selectionEntry.key}\$${field.alias?.value ?? field.name.value}":
+                selection.selectionSet.selections
+                    .whereType<FieldNode>()
+                    .toList()
     };
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
