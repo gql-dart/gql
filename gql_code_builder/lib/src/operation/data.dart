@@ -223,7 +223,9 @@ Method _buildGetter(
                 .code
             : node.selectionSet == null
                 ? fieldTypeDef == null
-                    ? dataField.asA(returns).code
+                    ? returns.symbol == "double"
+                        ? dataField.nullSafeProperty("toDouble").call([]).code
+                        : dataField.asA(returns).code
                     : returns.call([
                         dataField.asA(refer("String")),
                       ]).code
