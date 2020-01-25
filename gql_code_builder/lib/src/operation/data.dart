@@ -309,38 +309,44 @@ Method _buildGetter(
         ..lambda = true
         ..body = typeNode is ListTypeNode
             ? dataField
-                .asA(refer("List"))
-                .property("map")
-                .call(
-                  [
-                    Method(
-                      (b) => b
-                        ..requiredParameters = ListBuilder<Parameter>(
-                          <Parameter>[
-                            Parameter(
-                              (b) => b
-                                ..type = refer("dynamic")
-                                ..name = "e",
-                            ),
-                          ],
-                        )
-                        ..lambda = true
-                        ..body = node.selectionSet == null
-                            ? fieldTypeDef == null
-                                ? refer("e").asA(unwrappedReturns).code
-                                : unwrappedReturns.call([
-                                    refer("e").asA(refer("String")),
-                                  ]).code
-                            : unwrappedReturns.call(
-                                [
-                                  refer("e").asA(refer("Map<String, dynamic>")),
+                .equalTo(refer("null"))
+                .conditional(
+                  refer("null"),
+                  dataField
+                      .asA(refer("List"))
+                      .property("map")
+                      .call(
+                        [
+                          Method(
+                            (b) => b
+                              ..requiredParameters = ListBuilder<Parameter>(
+                                <Parameter>[
+                                  Parameter(
+                                    (b) => b
+                                      ..type = refer("dynamic")
+                                      ..name = "e",
+                                  ),
                                 ],
-                              ).code,
-                    ).closure,
-                  ],
+                              )
+                              ..lambda = true
+                              ..body = node.selectionSet == null
+                                  ? fieldTypeDef == null
+                                      ? refer("e").asA(unwrappedReturns).code
+                                      : unwrappedReturns.call([
+                                          refer("e").asA(refer("String")),
+                                        ]).code
+                                  : unwrappedReturns.call(
+                                      [
+                                        refer("e")
+                                            .asA(refer("Map<String, dynamic>")),
+                                      ],
+                                    ).code,
+                          ).closure,
+                        ],
+                      )
+                      .property("toList")
+                      .call([]),
                 )
-                .property("toList")
-                .call([])
                 .code
             : node.selectionSet == null
                 ? fieldTypeDef == null
@@ -350,9 +356,15 @@ Method _buildGetter(
                     : returns.call([
                         dataField.asA(refer("String")),
                       ]).code
-                : returns.call([
-                    dataField.asA(refer("Map<String, dynamic>")),
-                  ]).code,
+                : dataField
+                    .equalTo(refer("null"))
+                    .conditional(
+                      refer("null"),
+                      returns.call([
+                        dataField.asA(refer("Map<String, dynamic>")),
+                      ]),
+                    )
+                    .code,
     );
   }
 }
