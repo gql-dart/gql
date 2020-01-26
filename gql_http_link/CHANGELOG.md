@@ -1,3 +1,7 @@
+## 0.2.6
+
+- add `dispose()` function to close the `http.Client`
+
 ## 0.2.5
 
 - upgrade `package:gql_exec` to v0.2.0

@@ -142,6 +142,11 @@ class HttpLink extends Link {
       ),
     );
   }
+
+  /// Closes the underlining [http.Client]
+  void dispose() {
+    _httpClient?.close();
+  }
 }
 
 Map<String, String> _getHttpLinkHeaders(Request request) {

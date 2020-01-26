@@ -598,5 +598,13 @@ void main() {
         TypeMatcher<FormatException>(),
       );
     });
+
+    test("closes the underlining http client", () {
+      link.dispose();
+
+      verify(
+        client.close(),
+      ).called(1);
+    });
   });
 }
