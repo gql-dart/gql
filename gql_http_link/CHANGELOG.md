@@ -1,6 +1,6 @@
-## 0.3.0
+## 0.2.6
 
-- add `dispose()` function
+- add `dispose()` function to close the `http.Client`
 
 ## 0.2.5
 
