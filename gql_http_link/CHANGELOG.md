@@ -1,3 +1,7 @@
+## 0.3.0
+
+- add `dispose()` function
+
 ## 0.2.5
 
 - upgrade `package:gql_exec` to v0.2.0
