@@ -218,6 +218,7 @@ Map<String, List<FieldNode>> _fragmentSelecitonsForField(
           (selection) {
             final selectionKey = selection.alias?.value ?? selection.name.value;
             final fieldKey = field.alias?.value ?? field.name.value;
+
             return selectionKey == fieldKey;
           },
         ))
