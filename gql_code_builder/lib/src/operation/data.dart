@@ -114,7 +114,7 @@ List<Class> buildSelectionSetDataClasses(
             "${name}\$${field.alias?.value ?? field.name.value}",
             field.selectionSet.selections,
             fragmentMap,
-            _fragmentSelecitonsForField(
+            _fragmentSelectionsForField(
               fragmentSelections,
               field,
             ),
@@ -208,7 +208,7 @@ List<SelectionNode> _expandSelections(
       },
     ).toList();
 
-Map<String, List<FieldNode>> _fragmentSelecitonsForField(
+Map<String, List<FieldNode>> _fragmentSelectionsForField(
   Map<String, List<FieldNode>> fragmentSelections,
   FieldNode field,
 ) =>
