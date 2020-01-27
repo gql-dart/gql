@@ -32,8 +32,22 @@ List<Class> _buildOperationDataClasses(
       doc,
       schema,
       schemaUrl,
-      "Query",
+      _operationType(
+        schema,
+        op,
+      ),
     );
+
+String _operationType(
+  DocumentNode schema,
+  OperationDefinitionNode op, [
+  Map<OperationType, String> rootTypes = defaultRootTypes,
+]) =>
+    schema.definitions
+        .whereType<ObjectTypeDefinitionNode>()
+        .firstWhere((objTypeDef) => objTypeDef.name.value == rootTypes[op.type])
+        .name
+        .value;
 
 List<Class> _buildSelectionSetDataClasses(
   String name,

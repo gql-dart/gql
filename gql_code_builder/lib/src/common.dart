@@ -82,3 +82,9 @@ Reference typeRef(
   Map<String, Reference> typeMap = defaultTypeMap,
 ]) =>
     _listOrNot(type, typeMap);
+
+const defaultRootTypes = {
+  OperationType.query: "Query",
+  OperationType.mutation: "Mutation",
+  OperationType.subscription: "Subscription"
+};
