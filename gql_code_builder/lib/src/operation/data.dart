@@ -184,12 +184,14 @@ List<SelectionNode> _expandSelections(
       (selection) {
         if (selection is FieldNode) {
           return [selection];
-        } else if (selection is InlineFragmentNode) {
+        }
+        if (selection is InlineFragmentNode) {
           return _expandSelections(
             selection.selectionSet.selections,
             fragmentMap,
           );
-        } else if (selection is FragmentSpreadNode) {
+        }
+        if (selection is FragmentSpreadNode) {
           if (!fragmentMap.containsKey(selection.name.value)) {
             throw Exception(
                 "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
