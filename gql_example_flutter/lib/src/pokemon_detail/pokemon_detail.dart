@@ -14,7 +14,11 @@ class PokemonDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: link.request(PokemonDetail((vars) => vars..id = id)),
+      stream: link.request(
+        PokemonDetail(
+          (vars) => vars..id = id,
+        ),
+      ),
       builder: (BuildContext context, AsyncSnapshot<Response> snapshot) {
         if (snapshot.data?.data == null)
           return Scaffold(

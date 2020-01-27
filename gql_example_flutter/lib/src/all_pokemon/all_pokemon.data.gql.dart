@@ -5,9 +5,11 @@ class $AllPokemon {
 
   final Map<String, dynamic> data;
 
-  List<$AllPokemon$pokemons> get pokemons => (data['pokemons'] as List)
-      .map((dynamic e) => $AllPokemon$pokemons((e as Map<String, dynamic>)))
-      .toList();
+  List<$AllPokemon$pokemons> get pokemons => data['pokemons'] == null
+      ? null
+      : (data['pokemons'] as List)
+          .map((dynamic e) => $AllPokemon$pokemons((e as Map<String, dynamic>)))
+          .toList();
 }
 
 class $AllPokemon$pokemons implements _i1.$PokemonCard {

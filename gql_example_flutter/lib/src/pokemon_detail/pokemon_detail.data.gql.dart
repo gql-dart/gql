@@ -5,8 +5,9 @@ class $PokemonDetail {
 
   final Map<String, dynamic> data;
 
-  $PokemonDetail$pokemon get pokemon =>
-      $PokemonDetail$pokemon((data['pokemon'] as Map<String, dynamic>));
+  $PokemonDetail$pokemon get pokemon => data['pokemon'] == null
+      ? null
+      : $PokemonDetail$pokemon((data['pokemon'] as Map<String, dynamic>));
 }
 
 class $PokemonDetail$pokemon implements _i1.$PokemonCard {
@@ -18,10 +19,12 @@ class $PokemonDetail$pokemon implements _i1.$PokemonCard {
   String get name => (data['name'] as String);
   int get maxHP => (data['maxHP'] as int);
   String get image => (data['image'] as String);
-  $PokemonDetail$pokemon$weight get weight =>
-      $PokemonDetail$pokemon$weight((data['weight'] as Map<String, dynamic>));
-  $PokemonDetail$pokemon$height get height =>
-      $PokemonDetail$pokemon$height((data['height'] as Map<String, dynamic>));
+  $PokemonDetail$pokemon$weight get weight => data['weight'] == null
+      ? null
+      : $PokemonDetail$pokemon$weight((data['weight'] as Map<String, dynamic>));
+  $PokemonDetail$pokemon$height get height => data['height'] == null
+      ? null
+      : $PokemonDetail$pokemon$height((data['height'] as Map<String, dynamic>));
 }
 
 class $PokemonDetail$pokemon$weight {
