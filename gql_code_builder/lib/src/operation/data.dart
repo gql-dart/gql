@@ -72,6 +72,30 @@ List<Class> buildSelectionSetDataClasses(
   DocumentNode schema,
   String schemaUrl,
   String type,
+) =>
+    _buildSelectionSetDataClasses(
+      name,
+      _mergeSelections(
+        selections,
+        fragmentMap,
+      ),
+      fragmentMap,
+      fragmentSelections,
+      fragmentsDocUrl,
+      schema,
+      schemaUrl,
+      type,
+    );
+
+List<Class> _buildSelectionSetDataClasses(
+  String name,
+  List<SelectionNode> selections,
+  Map<String, FragmentDefinitionNode> fragmentMap,
+  Map<String, List<FieldNode>> fragmentSelections,
+  String fragmentsDocUrl,
+  DocumentNode schema,
+  String schemaUrl,
+  String type,
 ) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -84,11 +108,6 @@ List<Class> buildSelectionSetDataClasses(
     ).whereType<FieldNode>().toList();
   }
 
-  final fields = _mergeSelections(
-    selections,
-    fragmentMap,
-  ).whereType<FieldNode>().toList();
-
   return [
     Class(
       (b) => b
@@ -100,17 +119,18 @@ List<Class> buildSelectionSetDataClasses(
         ..methods = _buildGetters(
           schema,
           schemaUrl,
-          fields,
+          selections,
           name,
           type,
         ),
     ),
-    ...fields
+    ...selections
+        .whereType<FieldNode>()
         .where(
           (field) => field.selectionSet != null,
         )
         .expand(
-          (field) => buildSelectionSetDataClasses(
+          (field) => _buildSelectionSetDataClasses(
             "${name}\$${field.alias?.value ?? field.name.value}",
             field.selectionSet.selections,
             fragmentMap,
