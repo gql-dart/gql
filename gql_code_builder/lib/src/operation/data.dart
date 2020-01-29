@@ -95,8 +95,9 @@ List<Class> _buildSelectionSetDataClasses(
   String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
-  String type,
-) {
+  String type, [
+  String parentName,
+]) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
@@ -115,9 +116,7 @@ List<Class> _buildSelectionSetDataClasses(
         ..implements = ListBuilder(
             superclassSelections.keys.map<Reference>((superName) => refer(
                   superName,
-                  fragmentMap.keys.any((key) => "\$$key" == superName)
-                      ? fragmentsDocUrl
-                      : null,
+                  superName == parentName ? null : fragmentsDocUrl,
                 )))
         ..constructors = _buildConstructors(
           name,
@@ -178,6 +177,7 @@ List<Class> _buildSelectionSetDataClasses(
               schema,
               schemaUrl,
               inlineFragment.typeCondition.on.name.value,
+              name,
             ))
   ];
 }
