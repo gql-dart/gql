@@ -214,7 +214,7 @@ List<SelectionNode> _mergeSelections(
                     )));
               }
             } else {
-              selectionMap[selection.toString()] = selection;
+              selectionMap[selection.hashCode.toString()] = selection;
             }
             return selectionMap;
           },
