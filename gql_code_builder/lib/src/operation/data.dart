@@ -143,7 +143,7 @@ List<Class> _buildSelectionSetDataClasses(
             schemaUrl,
             _getTypeName(
               _getFieldTypeNode(
-                _getObjectTypeDefinitionNode(
+                _getTypeDefinitionNode(
                   schema,
                   type,
                 ),
@@ -312,12 +312,12 @@ Method _buildGetter(
 ) {
   if (node is FieldNode) {
     final name = node.alias?.value ?? node.name.value;
-    final object = _getObjectTypeDefinitionNode(
+    final typeDef = _getTypeDefinitionNode(
       schema,
       type,
     );
     final typeNode = _getFieldTypeNode(
-      object,
+      typeDef,
       node.name.value,
     );
     final unwrappedTypeNode = _unwrapTypeNode(typeNode);
@@ -424,23 +424,25 @@ TypeDefinitionNode _getTypeDefinitionNode(
           orElse: () => null,
         );
 
-ObjectTypeDefinitionNode _getObjectTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions.whereType<ObjectTypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-        );
-
 TypeNode _getFieldTypeNode(
-  ObjectTypeDefinitionNode node,
+  TypeDefinitionNode node,
   String field,
-) =>
-    node.fields
-        .firstWhere(
-          (fieldNode) => fieldNode.name.value == field,
-        )
-        .type;
+) {
+  List<FieldDefinitionNode> fields;
+  if (node is ObjectTypeDefinitionNode) {
+    fields = node.fields;
+  } else if (node is InterfaceTypeDefinitionNode) {
+    fields = node.fields;
+  } else {
+    throw Exception(
+        "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
+  }
+  return fields
+      .firstWhere(
+        (fieldNode) => fieldNode.name.value == field,
+      )
+      .type;
+}
 
 NamedTypeNode _unwrapTypeNode(
   TypeNode node,
