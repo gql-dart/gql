@@ -67,7 +67,7 @@ List<Class> buildSelectionSetDataClasses(
   String name,
   List<SelectionNode> selections,
   Map<String, FragmentDefinitionNode> fragmentMap,
-  Map<String, List<FieldNode>> fragmentSelections,
+  Map<String, List<FieldNode>> superclassSelections,
   String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
@@ -102,7 +102,7 @@ List<Class> _buildSelectionSetDataClasses(
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    fragmentSelections["\$${selection.name.value}"] = _mergeSelections(
+    superclassSelections["\$${selection.name.value}"] = _mergeSelections(
       fragmentMap[selection.name.value].selectionSet.selections,
       fragmentMap,
     ).whereType<FieldNode>().toList();
@@ -112,9 +112,17 @@ List<Class> _buildSelectionSetDataClasses(
     Class(
       (b) => b
         ..name = name
-        ..implements = ListBuilder(fragmentSelections.keys
-            .map<Reference>((className) => refer(className, fragmentsDocUrl)))
-        ..constructors = _buildConstructors()
+        ..implements = ListBuilder(
+            superclassSelections.keys.map<Reference>((superName) => refer(
+                  superName,
+                  fragmentMap.keys.any((key) => "\$$key" == superName)
+                      ? fragmentsDocUrl
+                      : null,
+                )))
+        ..constructors = _buildConstructors(
+          name,
+          selections.whereType<InlineFragmentNode>().toList(),
+        )
         ..fields = _buildFields()
         ..methods = _buildGetters(
           schema,
@@ -135,7 +143,7 @@ List<Class> _buildSelectionSetDataClasses(
             field.selectionSet.selections,
             fragmentMap,
             _fragmentSelectionsForField(
-              fragmentSelections,
+              superclassSelections,
               field,
             ),
             fragmentsDocUrl,
@@ -152,6 +160,25 @@ List<Class> _buildSelectionSetDataClasses(
             ),
           ),
         ),
+    ...selections
+        .whereType<InlineFragmentNode>()
+        .expand((inlineFragment) => _buildSelectionSetDataClasses(
+              "$name\$as${inlineFragment.typeCondition.on.name.value}",
+              _mergeSelections(
+                [
+                  ...selections.whereType<FieldNode>(),
+                  ...selections.whereType<FragmentSpreadNode>(),
+                  ...inlineFragment.selectionSet.selections,
+                ],
+                fragmentMap,
+              ),
+              fragmentMap,
+              {name: selections.whereType<FieldNode>().toList()},
+              fragmentsDocUrl,
+              schema,
+              schemaUrl,
+              inlineFragment.typeCondition.on.name.value,
+            ))
   ];
 }
 
@@ -160,13 +187,11 @@ List<SelectionNode> _mergeSelections(
   List<SelectionNode> selections,
   Map<String, FragmentDefinitionNode> fragmentMap,
 ) =>
-    _expandSelections(selections, fragmentMap)
+    _expandFragmentSpreads(selections, fragmentMap)
         .fold<Map<String, SelectionNode>>(
           {},
           (selectionMap, selection) {
-            if (selection is FragmentSpreadNode) {
-              selectionMap[selection.name.value] = selection;
-            } else if (selection is FieldNode) {
+            if (selection is FieldNode) {
               final key = selection.alias?.value ?? selection.name.value;
               if (selection.selectionSet == null) {
                 selectionMap[key] = selection;
@@ -188,6 +213,8 @@ List<SelectionNode> _mergeSelections(
                       fragmentMap,
                     )));
               }
+            } else {
+              selectionMap[selection.toString()] = selection;
             }
             return selectionMap;
           },
@@ -195,22 +222,13 @@ List<SelectionNode> _mergeSelections(
         .values
         .toList();
 
-List<SelectionNode> _expandSelections(
+List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, FragmentDefinitionNode> fragmentMap, [
   bool retainFragmentSpreads = true,
 ]) =>
     selections.expand(
       (selection) {
-        if (selection is FieldNode) {
-          return [selection];
-        }
-        if (selection is InlineFragmentNode) {
-          return _expandSelections(
-            selection.selectionSet.selections,
-            fragmentMap,
-          );
-        }
         if (selection is FragmentSpreadNode) {
           if (!fragmentMap.containsKey(selection.name.value)) {
             throw Exception(
@@ -218,13 +236,14 @@ List<SelectionNode> _expandSelections(
           }
           return [
             if (retainFragmentSpreads) selection,
-            ..._expandSelections(
+            ..._expandFragmentSpreads(
               fragmentMap[selection.name.value].selectionSet.selections,
               fragmentMap,
               false,
             )
           ];
         }
+        return [selection];
       },
     ).toList();
 
@@ -262,21 +281,36 @@ ListBuilder<Field> _buildFields() => ListBuilder<Field>(
       ],
     );
 
-ListBuilder<Constructor> _buildConstructors() => ListBuilder<Constructor>(
+ListBuilder<Constructor> _buildConstructors(
+  String name,
+  List<InlineFragmentNode> inlineFragments,
+) =>
+    ListBuilder<Constructor>(
       <Constructor>[
         Constructor(
           (b) => b
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..name = "data"
-                    ..toThis = true,
-                ),
-              ],
-            )
+            ..name = inlineFragments.isEmpty ? null : "fromData"
+            ..requiredParameters.add(Parameter(
+              (b) => b
+                ..name = "data"
+                ..toThis = true,
+            ))
             ..constant = true,
         ),
+        if (inlineFragments.isNotEmpty)
+          Constructor(
+            (b) => b
+              ..factory = true
+              ..requiredParameters.add(Parameter((b) => b..name = "data"))
+              ..body = Code([
+                "switch (data['__typename']) {",
+                ...inlineFragments.map((inlineFragment) => """
+                  case "${inlineFragment.typeCondition.on.name.value}":
+                    return ${'$name\$as${inlineFragment.typeCondition.on.name.value}'}(data);
+                """),
+                "default: return $name.fromData(data); }"
+              ].join()),
+          )
       ],
     );
 
