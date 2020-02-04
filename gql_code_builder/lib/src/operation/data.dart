@@ -40,14 +40,16 @@ List<Class> _buildOperationDataClasses(
 
 String _operationType(
   DocumentNode schema,
-  OperationDefinitionNode op, [
-  Map<OperationType, String> rootTypes = defaultRootTypes,
-]) =>
-    schema.definitions
-        .whereType<ObjectTypeDefinitionNode>()
-        .firstWhere((objTypeDef) => objTypeDef.name.value == rootTypes[op.type])
-        .name
-        .value;
+  OperationDefinitionNode op,
+) {
+  final schemaDef = schema.definitions.whereType<SchemaDefinitionNode>().first;
+  if (schemaDef == null) return defaultRootTypes[op.type];
+  return schemaDef.operationTypes
+      .firstWhere((opType) => opType.operation == op.type)
+      .type
+      .name
+      .value;
+}
 
 List<Class> _buildSelectionSetDataClasses(
   String name,
