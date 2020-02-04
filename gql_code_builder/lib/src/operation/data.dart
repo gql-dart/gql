@@ -42,9 +42,9 @@ String _operationType(
   DocumentNode schema,
   OperationDefinitionNode op,
 ) {
-  final schemaDef = schema.definitions.whereType<SchemaDefinitionNode>().first;
-  if (schemaDef == null) return defaultRootTypes[op.type];
-  return schemaDef.operationTypes
+  final schemaDefs = schema.definitions.whereType<SchemaDefinitionNode>();
+  if (schemaDefs.isEmpty) return defaultRootTypes[op.type];
+  return schemaDefs.first.operationTypes
       .firstWhere((opType) => opType.operation == op.type)
       .type
       .name
