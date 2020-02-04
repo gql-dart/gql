@@ -43,7 +43,9 @@ String _operationType(
   OperationDefinitionNode op,
 ) {
   final schemaDefs = schema.definitions.whereType<SchemaDefinitionNode>();
+
   if (schemaDefs.isEmpty) return defaultRootTypes[op.type];
+
   return schemaDefs.first.operationTypes
       .firstWhere((opType) => opType.operation == op.type)
       .type
