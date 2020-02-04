@@ -47,7 +47,9 @@ String _operationType(
   if (schemaDefs.isEmpty) return defaultRootTypes[op.type];
 
   return schemaDefs.first.operationTypes
-      .firstWhere((opType) => opType.operation == op.type)
+      .firstWhere(
+        (opType) => opType.operation == op.type,
+      )
       .type
       .name
       .value;
