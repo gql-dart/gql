@@ -25,6 +25,7 @@ class Request {
   /// Clone this request adding an [entry] to [context]
   Request withContextEntry<T extends ContextEntry>(T entry) => Request(
         operation: operation,
+        variables: variables,
         context: context.withEntry<T>(entry),
       );
 
@@ -34,6 +35,7 @@ class Request {
   ) =>
       Request(
         operation: operation,
+        variables: variables,
         context: context.updateEntry<T>(update),
       );
 
