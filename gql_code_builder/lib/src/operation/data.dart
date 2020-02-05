@@ -1,3 +1,4 @@
+import "package:meta/meta.dart";
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
@@ -30,17 +31,16 @@ List<Class> _buildOperationDataClasses(
   String schemaUrl,
 ) =>
     buildSelectionSetDataClasses(
-      "\$${op.name.value}",
-      op.selectionSet.selections,
-      {
+      name: "\$${op.name.value}",
+      selections: op.selectionSet.selections,
+      fragmentMap: {
         for (var def in doc.definitions.whereType<FragmentDefinitionNode>())
           def.name.value: def
       },
-      {},
-      fragmentsDocUrl,
-      schema,
-      schemaUrl,
-      _operationType(
+      fragmentsDocUrl: fragmentsDocUrl,
+      schema: schema,
+      schemaUrl: schemaUrl,
+      type: _operationType(
         schema,
         op,
       ),
@@ -63,41 +63,40 @@ String _operationType(
       .value;
 }
 
-List<Class> buildSelectionSetDataClasses(
-  String name,
-  List<SelectionNode> selections,
-  Map<String, FragmentDefinitionNode> fragmentMap,
-  Map<String, List<FieldNode>> superclassSelections,
-  String fragmentsDocUrl,
-  DocumentNode schema,
-  String schemaUrl,
-  String type,
-) =>
+List<Class> buildSelectionSetDataClasses({
+  @required String name,
+  @required List<SelectionNode> selections,
+  @required Map<String, FragmentDefinitionNode> fragmentMap,
+  @required String fragmentsDocUrl,
+  @required DocumentNode schema,
+  @required String schemaUrl,
+  @required String type,
+}) =>
     _buildSelectionSetDataClasses(
-      name,
-      _mergeSelections(
+      name: name,
+      selections: _mergeSelections(
         selections,
         fragmentMap,
       ),
-      fragmentMap,
-      superclassSelections,
-      fragmentsDocUrl,
-      schema,
-      schemaUrl,
-      type,
+      fragmentMap: fragmentMap,
+      fragmentsDocUrl: fragmentsDocUrl,
+      schema: schema,
+      schemaUrl: schemaUrl,
+      type: type,
+      superclassSelections: {},
     );
 
-List<Class> _buildSelectionSetDataClasses(
-  String name,
-  List<SelectionNode> selections,
-  Map<String, FragmentDefinitionNode> fragmentMap,
-  Map<String, List<FieldNode>> superclassSelections,
-  String fragmentsDocUrl,
-  DocumentNode schema,
-  String schemaUrl,
-  String type, [
+List<Class> _buildSelectionSetDataClasses({
+  @required String name,
+  @required List<SelectionNode> selections,
+  @required Map<String, FragmentDefinitionNode> fragmentMap,
+  @required String fragmentsDocUrl,
+  @required DocumentNode schema,
+  @required String schemaUrl,
+  @required String type,
+  @required Map<String, List<FieldNode>> superclassSelections,
   String parentName,
-]) {
+}) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
@@ -138,17 +137,13 @@ List<Class> _buildSelectionSetDataClasses(
         )
         .expand(
           (field) => _buildSelectionSetDataClasses(
-            "${name}\$${field.alias?.value ?? field.name.value}",
-            field.selectionSet.selections,
-            fragmentMap,
-            _fragmentSelectionsForField(
-              superclassSelections,
-              field,
-            ),
-            fragmentsDocUrl,
-            schema,
-            schemaUrl,
-            _getTypeName(
+            name: "${name}\$${field.alias?.value ?? field.name.value}",
+            selections: field.selectionSet.selections,
+            fragmentMap: fragmentMap,
+            fragmentsDocUrl: fragmentsDocUrl,
+            schema: schema,
+            schemaUrl: schemaUrl,
+            type: _getTypeName(
               _getFieldTypeNode(
                 _getTypeDefinitionNode(
                   schema,
@@ -157,13 +152,17 @@ List<Class> _buildSelectionSetDataClasses(
                 field.name.value,
               ),
             ),
+            superclassSelections: _fragmentSelectionsForField(
+              superclassSelections,
+              field,
+            ),
           ),
         ),
     ...selections
         .whereType<InlineFragmentNode>()
         .expand((inlineFragment) => _buildSelectionSetDataClasses(
-              "$name\$as${inlineFragment.typeCondition.on.name.value}",
-              _mergeSelections(
+              name: "$name\$as${inlineFragment.typeCondition.on.name.value}",
+              selections: _mergeSelections(
                 [
                   ...selections.whereType<FieldNode>(),
                   ...selections.whereType<FragmentSpreadNode>(),
@@ -171,13 +170,15 @@ List<Class> _buildSelectionSetDataClasses(
                 ],
                 fragmentMap,
               ),
-              fragmentMap,
-              {name: selections.whereType<FieldNode>().toList()},
-              fragmentsDocUrl,
-              schema,
-              schemaUrl,
-              inlineFragment.typeCondition.on.name.value,
-              name,
+              fragmentMap: fragmentMap,
+              fragmentsDocUrl: fragmentsDocUrl,
+              schema: schema,
+              schemaUrl: schemaUrl,
+              type: inlineFragment.typeCondition.on.name.value,
+              superclassSelections: {
+                name: selections.whereType<FieldNode>().toList()
+              },
+              parentName: name,
             ))
   ];
 }

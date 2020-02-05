@@ -12,14 +12,16 @@ Library buildFragmentLibrary(
     Library(
       (b) => b.body
         ..addAll(
-          fragmentMap.values.expand((def) => buildSelectionSetDataClasses(
-              "\$${def.name.value}",
-              def.selectionSet.selections,
-              fragmentMap,
-              {},
-              fragmentsDocUrl,
-              schema,
-              schemaUrl,
-              def.typeCondition.on.name.value)),
+          fragmentMap.values.expand(
+            (def) => buildSelectionSetDataClasses(
+              name: "\$${def.name.value}",
+              selections: def.selectionSet.selections,
+              fragmentMap: fragmentMap,
+              fragmentsDocUrl: fragmentsDocUrl,
+              schema: schema,
+              schemaUrl: schemaUrl,
+              type: def.typeCondition.on.name.value,
+            ),
+          ),
         ),
     );
