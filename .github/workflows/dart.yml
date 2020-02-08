@@ -43,12 +43,12 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
-        uses: axel-op/dart-package-analyzer@stable
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          relativePath: cats/
-          minAnnotationLevel: warning
+#      - name: Package Analysis
+#        uses: axel-op/dart-package-analyzer@stable
+#        with:
+#          githubToken: ${{ secrets.GITHUB_TOKEN }}
+#          relativePath: cats/
+#          minAnnotationLevel: warning
       - name: Run tests
         uses: ./.github/actions/dart-test
 
@@ -243,11 +243,11 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
-        uses: axel-op/dart-package-analyzer@stable
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          relativePath: mutlipack/
-          minAnnotationLevel: warning
+#      - name: Package Analysis
+#        uses: axel-op/dart-package-analyzer@stable
+#        with:
+#          githubToken: ${{ secrets.GITHUB_TOKEN }}
+#          relativePath: mutlipack/
+#          minAnnotationLevel: warning
       - name: Run tests
         uses: ./.github/actions/dart-test
