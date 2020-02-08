@@ -1,3 +1,4 @@
+import "package:meta/meta.dart";
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
@@ -5,6 +6,7 @@ import "package:gql_code_builder/src/common.dart";
 
 List<Class> buildDataClasses(
   DocumentNode doc,
+  String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
 ) =>
@@ -14,6 +16,7 @@ List<Class> buildDataClasses(
           (op) => _buildOperationDataClasses(
             op,
             doc,
+            fragmentsDocUrl,
             schema,
             schemaUrl,
           ),
@@ -23,16 +26,21 @@ List<Class> buildDataClasses(
 List<Class> _buildOperationDataClasses(
   OperationDefinitionNode op,
   DocumentNode doc,
+  String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
 ) =>
-    _buildSelectionSetDataClasses(
-      "\$${op.name.value}",
-      op.selectionSet,
-      doc,
-      schema,
-      schemaUrl,
-      _operationType(
+    buildSelectionSetDataClasses(
+      name: "\$${op.name.value}",
+      selections: op.selectionSet.selections,
+      fragmentMap: {
+        for (var def in doc.definitions.whereType<FragmentDefinitionNode>())
+          def.name.value: def
+      },
+      fragmentsDocUrl: fragmentsDocUrl,
+      schema: schema,
+      schemaUrl: schemaUrl,
+      type: _operationType(
         schema,
         op,
       ),
@@ -55,52 +63,211 @@ String _operationType(
       .value;
 }
 
-List<Class> _buildSelectionSetDataClasses(
-  String name,
-  SelectionSetNode selSet,
-  DocumentNode doc,
-  DocumentNode schema,
-  String schemaUrl,
-  String type,
-) =>
-    [
-      Class(
-        (b) => b
-          ..name = name
-          ..constructors = _buildConstructors()
-          ..fields = _buildFields()
-          ..methods = _buildGetters(
-            schema,
-            schemaUrl,
-            selSet.selections,
-            name,
-            type,
-          ),
+List<Class> buildSelectionSetDataClasses({
+  @required String name,
+  @required List<SelectionNode> selections,
+  @required Map<String, FragmentDefinitionNode> fragmentMap,
+  @required String fragmentsDocUrl,
+  @required DocumentNode schema,
+  @required String schemaUrl,
+  @required String type,
+}) =>
+    _buildSelectionSetDataClasses(
+      name: name,
+      selections: _mergeSelections(
+        selections,
+        fragmentMap,
       ),
-      ...selSet.selections
-          .whereType<FieldNode>()
-          .where(
-            (field) => field.selectionSet != null,
-          )
-          .expand(
-            (field) => _buildSelectionSetDataClasses(
-              "${name}\$${field.alias?.value ?? field.name.value}",
-              field.selectionSet,
-              doc,
-              schema,
-              schemaUrl,
-              _getTypeName(
-                _getFieldTypeNode(
-                  _getObjectTypeDefinitionNode(
-                    schema,
-                    type,
-                  ),
-                  field.name.value,
+      fragmentMap: fragmentMap,
+      fragmentsDocUrl: fragmentsDocUrl,
+      schema: schema,
+      schemaUrl: schemaUrl,
+      type: type,
+      superclassSelections: {},
+    );
+
+List<Class> _buildSelectionSetDataClasses({
+  @required String name,
+  @required List<SelectionNode> selections,
+  @required Map<String, FragmentDefinitionNode> fragmentMap,
+  @required String fragmentsDocUrl,
+  @required DocumentNode schema,
+  @required String schemaUrl,
+  @required String type,
+  @required Map<String, List<FieldNode>> superclassSelections,
+  String parentName,
+}) {
+  for (final selection in selections.whereType<FragmentSpreadNode>()) {
+    if (!fragmentMap.containsKey(selection.name.value)) {
+      throw Exception(
+          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+    }
+    superclassSelections["\$${selection.name.value}"] = _mergeSelections(
+      fragmentMap[selection.name.value].selectionSet.selections,
+      fragmentMap,
+    ).whereType<FieldNode>().toList();
+  }
+
+  return [
+    Class(
+      (b) => b
+        ..name = name
+        ..implements = ListBuilder(
+            superclassSelections.keys.map<Reference>((superName) => refer(
+                  superName,
+                  superName == parentName ? null : fragmentsDocUrl,
+                )))
+        ..constructors = _buildConstructors(
+          name,
+          selections.whereType<InlineFragmentNode>().toList(),
+        )
+        ..fields = _buildFields()
+        ..methods = _buildGetters(
+          schema,
+          schemaUrl,
+          selections,
+          name,
+          type,
+        ),
+    ),
+    ...selections
+        .whereType<FieldNode>()
+        .where(
+          (field) => field.selectionSet != null,
+        )
+        .expand(
+          (field) => _buildSelectionSetDataClasses(
+            name: "${name}\$${field.alias?.value ?? field.name.value}",
+            selections: field.selectionSet.selections,
+            fragmentMap: fragmentMap,
+            fragmentsDocUrl: fragmentsDocUrl,
+            schema: schema,
+            schemaUrl: schemaUrl,
+            type: _getTypeName(
+              _getFieldTypeNode(
+                _getTypeDefinitionNode(
+                  schema,
+                  type,
                 ),
+                field.name.value,
               ),
             ),
+            superclassSelections: _fragmentSelectionsForField(
+              superclassSelections,
+              field,
+            ),
           ),
-    ];
+        ),
+    ...selections
+        .whereType<InlineFragmentNode>()
+        .expand((inlineFragment) => _buildSelectionSetDataClasses(
+              name: "$name\$as${inlineFragment.typeCondition.on.name.value}",
+              selections: _mergeSelections(
+                [
+                  ...selections.whereType<FieldNode>(),
+                  ...selections.whereType<FragmentSpreadNode>(),
+                  ...inlineFragment.selectionSet.selections,
+                ],
+                fragmentMap,
+              ),
+              fragmentMap: fragmentMap,
+              fragmentsDocUrl: fragmentsDocUrl,
+              schema: schema,
+              schemaUrl: schemaUrl,
+              type: inlineFragment.typeCondition.on.name.value,
+              superclassSelections: {
+                name: selections.whereType<FieldNode>().toList()
+              },
+              parentName: name,
+            ))
+  ];
+}
+
+/// Deeply merges field nodes
+List<SelectionNode> _mergeSelections(
+  List<SelectionNode> selections,
+  Map<String, FragmentDefinitionNode> fragmentMap,
+) =>
+    _expandFragmentSpreads(selections, fragmentMap)
+        .fold<Map<String, SelectionNode>>(
+          {},
+          (selectionMap, selection) {
+            if (selection is FieldNode) {
+              final key = selection.alias?.value ?? selection.name.value;
+              if (selection.selectionSet == null) {
+                selectionMap[key] = selection;
+              } else {
+                final existingNode = selectionMap[key];
+                final existingSelections = existingNode is FieldNode &&
+                        existingNode.selectionSet != null
+                    ? existingNode.selectionSet.selections
+                    : [];
+                selectionMap[key] = FieldNode(
+                    name: selection.name,
+                    alias: selection.alias,
+                    selectionSet: SelectionSetNode(
+                        selections: _mergeSelections(
+                      [
+                        ...existingSelections,
+                        ...selection.selectionSet.selections
+                      ],
+                      fragmentMap,
+                    )));
+              }
+            } else {
+              selectionMap[selection.hashCode.toString()] = selection;
+            }
+            return selectionMap;
+          },
+        )
+        .values
+        .toList();
+
+List<SelectionNode> _expandFragmentSpreads(
+  List<SelectionNode> selections,
+  Map<String, FragmentDefinitionNode> fragmentMap, [
+  bool retainFragmentSpreads = true,
+]) =>
+    selections.expand(
+      (selection) {
+        if (selection is FragmentSpreadNode) {
+          if (!fragmentMap.containsKey(selection.name.value)) {
+            throw Exception(
+                "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+          }
+          return [
+            if (retainFragmentSpreads) selection,
+            ..._expandFragmentSpreads(
+              fragmentMap[selection.name.value].selectionSet.selections,
+              fragmentMap,
+              false,
+            )
+          ];
+        }
+        return [selection];
+      },
+    ).toList();
+
+Map<String, List<FieldNode>> _fragmentSelectionsForField(
+  Map<String, List<FieldNode>> fragmentSelections,
+  FieldNode field,
+) =>
+    {
+      for (var selectionEntry in fragmentSelections.entries)
+        for (var selection in selectionEntry.value.where(
+          (selection) {
+            final selectionKey = selection.alias?.value ?? selection.name.value;
+            final fieldKey = field.alias?.value ?? field.name.value;
+
+            return selectionKey == fieldKey;
+          },
+        ))
+          if (selection.selectionSet != null)
+            "${selectionEntry.key}\$${field.alias?.value ?? field.name.value}":
+                selection.selectionSet.selections
+                    .whereType<FieldNode>()
+                    .toList()
+    };
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
       <Field>[
@@ -115,21 +282,36 @@ ListBuilder<Field> _buildFields() => ListBuilder<Field>(
       ],
     );
 
-ListBuilder<Constructor> _buildConstructors() => ListBuilder<Constructor>(
+ListBuilder<Constructor> _buildConstructors(
+  String name,
+  List<InlineFragmentNode> inlineFragments,
+) =>
+    ListBuilder<Constructor>(
       <Constructor>[
         Constructor(
           (b) => b
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..name = "data"
-                    ..toThis = true,
-                ),
-              ],
-            )
+            ..name = inlineFragments.isEmpty ? null : "fromData"
+            ..requiredParameters.add(Parameter(
+              (b) => b
+                ..name = "data"
+                ..toThis = true,
+            ))
             ..constant = true,
         ),
+        if (inlineFragments.isNotEmpty)
+          Constructor(
+            (b) => b
+              ..factory = true
+              ..requiredParameters.add(Parameter((b) => b..name = "data"))
+              ..body = Code([
+                "switch (data['__typename']) {",
+                ...inlineFragments.map((inlineFragment) => """
+                  case "${inlineFragment.typeCondition.on.name.value}":
+                    return ${'$name\$as${inlineFragment.typeCondition.on.name.value}'}(data);
+                """),
+                "default: return $name.fromData(data); }"
+              ].join()),
+          )
       ],
     );
 
@@ -165,12 +347,12 @@ Method _buildGetter(
 ) {
   if (node is FieldNode) {
     final name = node.alias?.value ?? node.name.value;
-    final object = _getObjectTypeDefinitionNode(
+    final typeDef = _getTypeDefinitionNode(
       schema,
       type,
     );
     final typeNode = _getFieldTypeNode(
-      object,
+      typeDef,
       node.name.value,
     );
     final unwrappedTypeNode = _unwrapTypeNode(typeNode);
@@ -203,43 +385,49 @@ Method _buildGetter(
     return Method(
       (b) => b
         ..returns = returns
-        ..name = name
+        ..name = identifier(name)
         ..type = MethodType.getter
         ..lambda = true
         ..body = typeNode is ListTypeNode
             ? dataField
-                .asA(refer("List"))
-                .property("map")
-                .call(
-                  [
-                    Method(
-                      (b) => b
-                        ..requiredParameters = ListBuilder<Parameter>(
-                          <Parameter>[
-                            Parameter(
-                              (b) => b
-                                ..type = refer("dynamic")
-                                ..name = "e",
-                            ),
-                          ],
-                        )
-                        ..lambda = true
-                        ..body = node.selectionSet == null
-                            ? fieldTypeDef == null
-                                ? refer("e").asA(unwrappedReturns).code
-                                : unwrappedReturns.call([
-                                    refer("e").asA(refer("String")),
-                                  ]).code
-                            : unwrappedReturns.call(
-                                [
-                                  refer("e").asA(refer("Map<String, dynamic>")),
+                .equalTo(refer("null"))
+                .conditional(
+                  refer("null"),
+                  dataField
+                      .asA(refer("List"))
+                      .property("map")
+                      .call(
+                        [
+                          Method(
+                            (b) => b
+                              ..requiredParameters = ListBuilder<Parameter>(
+                                <Parameter>[
+                                  Parameter(
+                                    (b) => b
+                                      ..type = refer("dynamic")
+                                      ..name = "e",
+                                  ),
                                 ],
-                              ).code,
-                    ).closure,
-                  ],
+                              )
+                              ..lambda = true
+                              ..body = node.selectionSet == null
+                                  ? fieldTypeDef == null
+                                      ? refer("e").asA(unwrappedReturns).code
+                                      : unwrappedReturns.call([
+                                          refer("e").asA(refer("String")),
+                                        ]).code
+                                  : unwrappedReturns.call(
+                                      [
+                                        refer("e")
+                                            .asA(refer("Map<String, dynamic>")),
+                                      ],
+                                    ).code,
+                          ).closure,
+                        ],
+                      )
+                      .property("toList")
+                      .call([]),
                 )
-                .property("toList")
-                .call([])
                 .code
             : node.selectionSet == null
                 ? fieldTypeDef == null
@@ -249,9 +437,15 @@ Method _buildGetter(
                     : returns.call([
                         dataField.asA(refer("String")),
                       ]).code
-                : returns.call([
-                    dataField.asA(refer("Map<String, dynamic>")),
-                  ]).code,
+                : dataField
+                    .equalTo(refer("null"))
+                    .conditional(
+                      refer("null"),
+                      returns.call([
+                        dataField.asA(refer("Map<String, dynamic>")),
+                      ]),
+                    )
+                    .code,
     );
   }
 }
@@ -265,23 +459,25 @@ TypeDefinitionNode _getTypeDefinitionNode(
           orElse: () => null,
         );
 
-ObjectTypeDefinitionNode _getObjectTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions.whereType<ObjectTypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-        );
-
 TypeNode _getFieldTypeNode(
-  ObjectTypeDefinitionNode node,
+  TypeDefinitionNode node,
   String field,
-) =>
-    node.fields
-        .firstWhere(
-          (fieldNode) => fieldNode.name.value == field,
-        )
-        .type;
+) {
+  List<FieldDefinitionNode> fields;
+  if (node is ObjectTypeDefinitionNode) {
+    fields = node.fields;
+  } else if (node is InterfaceTypeDefinitionNode) {
+    fields = node.fields;
+  } else {
+    throw Exception(
+        "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
+  }
+  return fields
+      .firstWhere(
+        (fieldNode) => fieldNode.name.value == field,
+      )
+      .type;
+}
 
 NamedTypeNode _unwrapTypeNode(
   TypeNode node,

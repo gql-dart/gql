@@ -4,6 +4,7 @@ import "package:gql_code_builder/src/operation/data.dart";
 
 Library buildDataLibrary(
   DocumentNode doc,
+  String fragmentsDocUrl,
   DocumentNode schema,
   String schemaUrl,
 ) =>
@@ -12,6 +13,7 @@ Library buildDataLibrary(
         ..addAll(
           buildDataClasses(
             doc,
+            fragmentsDocUrl,
             schema,
             schemaUrl,
           ),

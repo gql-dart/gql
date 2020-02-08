@@ -1,9 +1,8 @@
+# import '../pokemon_card/pokemon_card_fragment.graphql'
+
 query PokemonDetail($id: String, $name: String) {
   pokemon(id: $id, name: $name) {
-    id
-    name
-    maxHP
-    image
+    ...PokemonCard
     weight {
       minimum
       maximum

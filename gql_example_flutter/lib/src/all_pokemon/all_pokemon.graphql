@@ -1,8 +1,7 @@
+# import '../pokemon_card/pokemon_card_fragment.graphql'
+
 query AllPokemon($first: Int!) {
   pokemons(first: $first) {
-    id
-    name
-    maxHP
-    image
+    ...PokemonCard
   }
 }

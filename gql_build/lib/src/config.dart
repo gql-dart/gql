@@ -1,3 +1,6 @@
+const libSyntheticExtension = r"$lib$";
+const fragmentsFilename = "fragments.gql.dart";
+
 const sourceExtension = ".graphql";
 
 const genExtension = ".gql.dart";

@@ -4,7 +4,6 @@ import 'package:gql_exec/gql_exec.dart';
 import './pokemon_detail.data.gql.dart';
 import './pokemon_detail.req.gql.dart';
 import '../config.dart';
-import '../pokemon_card/pokemon.dart';
 import '../pokemon_card/pokemon_card.dart';
 
 class PokemonDetailScreen extends StatelessWidget {
@@ -37,7 +36,7 @@ class PokemonDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               PokemonCard(
-                pokemon: Pokemon.fromJson(data.pokemon.data),
+                pokemon: data.pokemon,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
