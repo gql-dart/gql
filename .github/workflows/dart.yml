@@ -227,13 +227,13 @@ jobs:
       - name: Run tests
         uses: ./.github/actions/dart-test
 
-  mutlipack:
+  multipack:
     runs-on: ubuntu-latest
     container:
       image: google/dart:latest
-    name: Check mutlipack
+    name: Check multipack
     env:
-      PACKAGE: mutlipack
+      PACKAGE: multipack
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
@@ -247,7 +247,7 @@ jobs:
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
 #          githubToken: ${{ secrets.GITHUB_TOKEN }}
-#          relativePath: mutlipack/
+#          relativePath: multipack/
 #          minAnnotationLevel: warning
       - name: Run tests
         uses: ./.github/actions/dart-test
