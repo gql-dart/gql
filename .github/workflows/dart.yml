@@ -60,22 +60,22 @@ jobs:
     env:
       PACKAGE: gql_build
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_build/
-        minAnnotationLevel: warning
-    - name: Run tests
-            uses: ./.github/actions/dart-test      uses: ./.github/actions/dart-test      uses: ./.github/actions/dart-testuses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_build/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_code_builder:
     runs-on: ubuntu-latest
@@ -85,22 +85,22 @@ jobs:
     env:
       PACKAGE: gql_code_builder
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_code_builder/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_code_builder/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_dedupe_link:
     runs-on: ubuntu-latest
@@ -110,22 +110,22 @@ jobs:
     env:
       PACKAGE: gql_dedupe_link
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_dedupe_link/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_dedupe_link/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_http_link:
     runs-on: ubuntu-latest
@@ -135,22 +135,22 @@ jobs:
     env:
       PACKAGE: gql_http_link
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_http_link/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_http_link/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_link:
     runs-on: ubuntu-latest
@@ -160,22 +160,22 @@ jobs:
     env:
       PACKAGE: gql_link
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_link/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_link/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_exec:
     runs-on: ubuntu-latest
@@ -185,22 +185,22 @@ jobs:
     env:
       PACKAGE: gql_exec
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_exec/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_exec/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   gql_transform_link:
     runs-on: ubuntu-latest
@@ -210,22 +210,22 @@ jobs:
     env:
       PACKAGE: gql_transform_link
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Override Pubspec
-      run: |
-        cd ./multipack
-        pub get
-        cd ../
-        dart ./multipack/bin/main.dart pubspec hard_override
-    - name: Package Analysis
-      uses: axel-op/dart-package-analyzer@stable
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        relativePath: gql_transform_link/
-        minAnnotationLevel: warning
-    - name: Run tests
-      uses: ./.github/actions/dart-test
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override Pubspec
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Package Analysis
+        uses: axel-op/dart-package-analyzer@stable
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: gql_transform_link/
+          minAnnotationLevel: warning
+      - name: Run tests
+        uses: ./.github/actions/dart-test
 
   mutlipack:
     runs-on: ubuntu-latest
