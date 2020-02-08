@@ -3,6 +3,7 @@ import "dart:io";
 import "package:args/command_runner.dart";
 import "package:multipack/commands/pubspec/common.dart";
 import "package:pubspec/pubspec.dart";
+import "package:path/path.dart" as path;
 
 class OverrideCommand extends Command<void> {
   @override
@@ -13,7 +14,7 @@ class OverrideCommand extends Command<void> {
 
   @override
   void run() async {
-    final List<Package> packages = await findPackages(
+    final packages = await findPackages(
       Directory.current,
     ).toList();
 
@@ -21,30 +22,28 @@ class OverrideCommand extends Command<void> {
       (package) {
         print("updating ${package.name}...");
 
-        final dependencyOverrides = Map.fromEntries(
-          package.pubspec.allDependencies.entries
-              .map(
-                (e) => MapEntry(
-                  e.key,
-                  packages.firstWhere(
-                    (pack) => pack.name == e.key,
-                    orElse: () => null,
-                  ),
-                ),
-              )
-              .where(
-                (e) => e.value != null,
-              )
-              .map(
-                (e) => MapEntry(
-                  e.key,
-                  PathReference(e.value.directory.uri.path),
-                ),
-              ),
-        );
-
         package.pubspec
-            .copy(dependencyOverrides: dependencyOverrides)
+            .copy(
+              dependencyOverrides: Map.fromEntries(
+                packages
+                    .where(
+                      (dependency) =>
+                          dependency.name != package.name &&
+                          (package.isFlutter || !dependency.isFlutter),
+                    )
+                    .map(
+                      (dependency) => MapEntry(
+                        dependency.name,
+                        PathReference(
+                          path.relative(
+                            dependency.directory.path,
+                            from: package.directory.path,
+                          ),
+                        ),
+                      ),
+                    ),
+              ),
+            )
             .save(package.directory);
       },
     );

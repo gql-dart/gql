@@ -4,5 +4,6 @@ environment:
 dependencies: 
   args: 1.5.0
   pubspec: ^0.1.2
+  path: ^1.6.4
 dev_dependencies: 
   gql_pedantic: ^1.0.0
