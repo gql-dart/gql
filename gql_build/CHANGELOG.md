@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Build a tree of SourceNodes
+
 ## 0.0.3
 
 - Support for fragment builder

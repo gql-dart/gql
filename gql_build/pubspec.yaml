@@ -7,8 +7,6 @@ environment:
   sdk: '>=2.2.2 <3.0.0'
 dependencies: 
   gql: ^0.12.0
-  path: ^1.6.4
-  glob: ^1.2.0
   build: ^1.0.0
   gql_code_builder: ^0.0.2
   code_builder: ^3.2.0

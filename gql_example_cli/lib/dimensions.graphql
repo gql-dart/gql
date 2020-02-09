@@ -1,0 +1,4 @@
+fragment Dimensions on PokemonDimension {
+  minimum
+  maximum
+}

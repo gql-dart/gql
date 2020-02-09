@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Use SourceNode as the input for builders to enable smarter non-duplicating builders
+
 ## 0.0.3
 
 - Support for fragment builder

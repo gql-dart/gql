@@ -1,8 +1,8 @@
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:gql_code_builder/src/schema.dart";
+import "package:gql_code_builder/src/source.dart";
 
 Library buildSchemaLibrary(
-  DocumentNode schema,
+  SourceNode schemaSource,
 ) =>
-    buildSchema(schema) as Library;
+    buildSchema(schemaSource.flatDocument) as Library;

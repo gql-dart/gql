@@ -1,80 +1,81 @@
 import "dart:async";
 
-import "package:path/path.dart" as p;
-import "package:glob/glob.dart";
 import "package:build/build.dart";
 
-import "package:gql/ast.dart";
+import "package:gql_code_builder/src/source.dart";
 import "package:gql/language.dart";
 
 import "package:gql_build/src/config.dart";
 
-Set<String> allRelativeImports(String doc) {
+Set<AssetId> _getImports(
+  String source, {
+  AssetId from,
+}) {
   final imports = <String>{};
-  for (final pattern in [
+
+  final patterns = [
     RegExp(r'^#\s*import\s+"([^"]+)"', multiLine: true),
-    RegExp(r"^#\s*import\s+'([^']+)'", multiLine: true)
-  ]) {
-    pattern.allMatches(doc)?.forEach((m) {
-      final path = m?.group(1);
-      if (path != null) {
-        imports.add(
-          path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
-        );
-      }
-    });
-  }
+    RegExp(r"^#\s*import\s+'([^']+)'", multiLine: true),
+  ];
 
-  return imports;
-}
-
-Future<DocumentNode> readDocument(
-  BuildStep buildStep, [
-  AssetId rootId,
-]) async =>
-    parseString(
-      await readCombinedSource(buildStep, rootId),
-      url: (rootId ?? buildStep.inputId).path,
+  for (final pattern in patterns) {
+    pattern.allMatches(source)?.forEach(
+      (match) {
+        final path = match?.group(1);
+        if (path != null) {
+          imports.add(
+            path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
+          );
+        }
+      },
     );
-
-Future<String> readCombinedSource(
-  BuildStep buildStep, [
-  AssetId rootId,
-]) async {
-  final Map<String, String> importMap = {};
-  final Set<String> seenImports = {};
-
-  void collectContentRecursivelyFrom(AssetId id) async {
-    importMap[id.path] = await buildStep.readAsString(id);
-    final segments = id.pathSegments..removeLast();
-
-    final imports = allRelativeImports(importMap[id.path])
-        .map((i) => p.normalize(p.joinAll([...segments, i])))
-        .where((i) => !importMap.containsKey(i)) // avoid duplicates/cycles
-        .toSet();
-
-    seenImports.addAll(imports);
-
-    final assetIds = await Stream.fromIterable(imports)
-        .asyncExpand(
-          (relativeImport) => buildStep.findAssets(Glob(relativeImport)),
-        )
-        .toSet();
-
-    for (final assetId in assetIds) {
-      await collectContentRecursivelyFrom(assetId);
-    }
   }
 
-  await collectContentRecursivelyFrom(rootId ?? buildStep.inputId);
-
-  seenImports
-      .where(
-        (i) => !importMap.containsKey(i),
+  return imports
+      .map(
+        (import) => AssetId.resolve(
+          import,
+          from: from,
+        ),
       )
-      .forEach(
-        (missing) => log.warning("Could not import missing file $missing."),
-      );
-
-  return importMap.values.join("\n\n\n");
+      .toSet();
 }
+
+Future<SourceNode> _assetToSourceNode(
+  BuildStep buildStep,
+  AssetId assetId,
+) async {
+  final sourceString = await buildStep.readAsString(assetId);
+
+  final imports = _getImports(
+    sourceString,
+    from: assetId,
+  );
+
+  final url = assetId.path;
+
+  return SourceNode(
+    url: url,
+    document: parseString(
+      sourceString,
+      url: url,
+    ),
+    imports: await Stream.fromIterable(imports)
+        .asyncMap(
+          (importedAssetId) => _assetToSourceNode(
+            buildStep,
+            importedAssetId,
+          ),
+        )
+        .toSet(),
+  );
+}
+
+Future<SourceNode> readDocument(
+  BuildStep buildStep, [
+  AssetId rootId,
+]) =>
+    _assetToSourceNode(
+      buildStep,
+      rootId ?? buildStep.inputId,
+    );

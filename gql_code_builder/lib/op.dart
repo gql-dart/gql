@@ -1,12 +1,16 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/source.dart";
 
 Library buildOpLibrary(
-  DocumentNode doc,
-  DocumentNode schema,
+  SourceNode docSource,
+  SourceNode schemaSource,
   String astDocUrl,
   String schemaUrl,
 ) {
+  final doc = docSource.flatDocument;
+  final schema = schemaSource.flatDocument;
+
   final operations = doc.definitions.whereType<OperationDefinitionNode>().map(
         (def) => refer(
           "Operation",

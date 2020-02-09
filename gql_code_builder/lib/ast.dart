@@ -1,10 +1,13 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/ast.dart";
+import "package:gql_code_builder/src/source.dart";
 
 Library buildAstLibrary(
-  DocumentNode doc,
+  SourceNode source,
 ) {
+  final doc = source.flatDocument;
+
   final definitions = doc.definitions.map(
     (def) => fromNode(def).assignConst(_getName(def)).statement,
   );
