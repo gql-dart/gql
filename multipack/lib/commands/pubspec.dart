@@ -1,6 +1,7 @@
 import "package:args/command_runner.dart";
 import "package:multipack/commands/pubspec/clean.dart";
 import "package:multipack/commands/pubspec/override.dart";
+import "package:multipack/commands/pubspec/hard_override.dart";
 
 class PubspecCommand extends Command<void> {
   @override
@@ -11,6 +12,7 @@ class PubspecCommand extends Command<void> {
 
   PubspecCommand() {
     addSubcommand(OverrideCommand());
+    addSubcommand(HardOverrideCommand());
     addSubcommand(CleanCommand());
   }
 }
