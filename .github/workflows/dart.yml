@@ -20,8 +20,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -49,8 +50,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
 #      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
@@ -78,8 +80,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -107,8 +110,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -136,8 +140,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -165,8 +170,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -194,8 +200,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -223,8 +230,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -252,8 +260,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -281,8 +290,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
+          cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings $PACKAGE
+          dartanalyzer --fatal-warnings .
 #      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
