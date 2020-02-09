@@ -1,6 +1,6 @@
 name: gql_code_builder
 author: Klāvs Priedītis <klavs@prieditis.lv>
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/gql-dart/gql/tree/master/gql_code_builder
 description: Dart code builders taking *.graphql documents and SDL to build useful classes.
 environment: 
