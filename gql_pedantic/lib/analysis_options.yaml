@@ -32,6 +32,7 @@ linter:
     - valid_regexps
     # custom
     - prefer_double_quotes
+    - prefer_single_quotes
     - annotate_overrides
     - unnecessary_statements
     - directives_ordering
@@ -73,6 +74,7 @@ analyzer:
     implicit-dynamic: false
   errors:
     prefer_double_quotes: error
+    prefer_single_quotes: error
     annotate_overrides: error
     unnecessary_statements: error
     directives_ordering: error
