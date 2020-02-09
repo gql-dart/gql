@@ -52,7 +52,7 @@ Future<SourceNode> _assetToSourceNode(
     from: assetId,
   );
 
-  final url = assetId.path;
+  final url = assetId.uri.toString();
 
   return SourceNode(
     url: url,
