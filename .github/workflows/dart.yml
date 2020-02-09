@@ -20,9 +20,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -54,9 +54,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -88,9 +88,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -122,9 +122,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -156,9 +156,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -190,9 +190,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -224,9 +224,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -258,9 +258,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -292,9 +292,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
@@ -326,9 +326,9 @@ jobs:
           dart ./multipack/bin/main.dart pubspec hard_override
       - name: Dart analyzer
         run: |
-          cd gql_pedentic
+          cd ./gql_pedentic
           pub get
-          cd ..
+          cd ../
           cd $PACKAGE
           pub get
           dartanalyzer --version
