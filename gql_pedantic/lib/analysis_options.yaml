@@ -30,87 +30,120 @@ linter:
     - unrelated_type_equality_checks
     - use_rethrow_when_possible
     - valid_regexps
+    # pedantic 1.9.0
+    - always_declare_return_types
+    - always_require_non_null_named_parameters
+    - annotate_overrides
+    - avoid_null_checks_in_equality_operators
+    - camel_case_extensions
+    - prefer_adjacent_string_concatenation
+    - prefer_collection_literals
+    - prefer_conditional_assignment
+    - prefer_final_fields
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_generic_function_type_aliases
+    - prefer_if_null_operators
+    - prefer_spread_collections
+    - unnecessary_this
+    - use_function_type_syntax_for_parameters
     # custom
     - prefer_double_quotes
-    - prefer_single_quotes
-    - annotate_overrides
     - unnecessary_statements
     - directives_ordering
     - file_names
     - prefer_expression_function_bodies
-    - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
-    - prefer_generic_function_type_aliases
     - prefer_null_aware_operators
-    - prefer_spread_collections
     - unnecessary_overrides
     - unnecessary_parenthesis
-    - unnecessary_this
     - package_names
     - sort_pub_dependencies
-    - always_require_non_null_named_parameters
-    - avoid_null_checks_in_equality_operators
     - avoid_unused_constructor_parameters
     - constant_identifier_names
     - parameter_assignments
     - prefer_asserts_in_initializer_lists
-    - prefer_collection_literals
-    - prefer_conditional_assignment
     - prefer_const_constructors_in_immutables
     - prefer_const_declarations
     - prefer_const_literals_to_create_immutables
     - prefer_constructors_over_static_methods
-    - prefer_if_null_operators
     - prefer_initializing_formals
     - prefer_inlined_adds
     - prefer_typing_uninitialized_variables
     - unnecessary_lambdas
-    - use_function_type_syntax_for_parameters
 
 analyzer:
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
   errors:
-    prefer_double_quotes: error
-    prefer_single_quotes: error
+    # pedantic 1.8.0
+    avoid_empty_else: error
+    avoid_init_to_null: error
+    avoid_relative_lib_imports: error
+    avoid_return_types_on_setters: error
+    avoid_shadowing_type_parameters: error
+    avoid_types_as_parameter_names: error
+    curly_braces_in_flow_control_structures: error
+    empty_catches: error
+    empty_constructor_bodies: error
+    library_names: error
+    library_prefixes: error
+    no_duplicate_case_values: error
+    null_closures: error
+    prefer_contains: error
+    prefer_equal_for_default_values: error
+    prefer_is_empty: error
+    prefer_is_not_empty: error
+    prefer_iterable_whereType: error
+    recursive_getters: error
+    slash_for_doc_comments: error
+    type_init_formals: error
+    unawaited_futures: error
+    unnecessary_const: error
+    unnecessary_new: error
+    unnecessary_null_in_if_null_operators: error
+    unrelated_type_equality_checks: error
+    use_rethrow_when_possible: error
+    valid_regexps: error
+    # pedantic 1.9.0
+    always_declare_return_types: error
+    always_require_non_null_named_parameters: error
     annotate_overrides: error
+    avoid_null_checks_in_equality_operators: error
+    camel_case_extensions: error
+    prefer_adjacent_string_concatenation: error
+    prefer_collection_literals: error
+    prefer_conditional_assignment: error
+    prefer_final_fields: error
+    prefer_for_elements_to_map_fromIterable: error
+    prefer_generic_function_type_aliases: error
+    prefer_if_null_operators: error
+    prefer_spread_collections: error
+    unnecessary_this: error
+    use_function_type_syntax_for_parameters: error
+    # custom
+    prefer_double_quotes: error
     unnecessary_statements: error
     directives_ordering: error
     file_names: error
     prefer_expression_function_bodies: error
-    prefer_final_fields: error
     prefer_final_in_for_each: error
     prefer_final_locals: error
-    prefer_generic_function_type_aliases: error
     prefer_null_aware_operators: error
-    prefer_spread_collections: error
     unnecessary_overrides: error
     unnecessary_parenthesis: error
-    unnecessary_this: error
     package_names: error
     sort_pub_dependencies: error
-    missing_required_param: error
-    must_be_immutable: error
-    always_require_non_null_named_parameters: error
-    avoid_null_checks_in_equality_operators: error
     avoid_unused_constructor_parameters: error
     constant_identifier_names: error
-    curly_braces_in_flow_control_structures: error
-    library_names: error
-    library_prefixes: error
     parameter_assignments: error
     prefer_asserts_in_initializer_lists: error
-    prefer_collection_literals: error
-    prefer_conditional_assignment: error
     prefer_const_constructors_in_immutables: error
     prefer_const_declarations: error
     prefer_const_literals_to_create_immutables: error
     prefer_constructors_over_static_methods: error
-    prefer_if_null_operators: error
     prefer_initializing_formals: error
     prefer_inlined_adds: error
     prefer_typing_uninitialized_variables: error
     unnecessary_lambdas: error
-    use_function_type_syntax_for_parameters: error
