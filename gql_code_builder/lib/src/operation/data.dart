@@ -201,7 +201,7 @@ List<SelectionNode> _mergeSelections(
                 final existingSelections = existingNode is FieldNode &&
                         existingNode.selectionSet != null
                     ? existingNode.selectionSet.selections
-                    : [];
+                    : <SelectionNode>[];
                 selectionMap[key] = FieldNode(
                     name: selection.name,
                     alias: selection.alias,
