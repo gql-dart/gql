@@ -22,7 +22,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -52,7 +52,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
 #      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
@@ -82,7 +82,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -112,7 +112,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -142,7 +142,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -172,7 +172,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -202,7 +202,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -232,7 +232,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -262,7 +262,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
       - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
@@ -292,7 +292,7 @@ jobs:
         run: |
           cd $PACKAGE
           pub get
-          dartanalyzer --fatal-warnings .
+          dartanalyzer --fatal-warnings --no-hints .
 #      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
