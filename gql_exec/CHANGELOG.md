@@ -1,3 +1,7 @@
+## 0.2.1
+
+- include variables when updating context
+
 ## 0.2.0
 
 - move `variables` from `Operation` to `Request`
