@@ -21,8 +21,6 @@ GraphQL language enables code generation to speed up development and move docume
 We provide code builders to generate Dart source code and file builders which easily plug into standard Dart code generation pipeline.
 
 Ideas for future work:
-- Dart types from a GraphQL schema
-- Dart types per GraphQL operation and it's variables (see [Artemis project][artemis])
 - Typed resolvers for field resolution on the client or server
 
 | Pub | Package | Library | Description |
@@ -113,6 +111,7 @@ Ideas for future work:
 | [normalize][normalize] | Normalization and denormalization of GraphQL responses in Dart |
 | [gql_client][gql_client] | GraphQL Client for Dart |
 | [graphql-to-dart][graphql-to-dart]| generate dart classes and respective JsonSerializable transcoders |
+| [graphql_server][graphql_server]| Base package for implementing GraphQL servers. |
 | Your project? | Open a PR to add it to this readme! |
 
 [artemis]: https://github.com/comigor/artemis
@@ -120,6 +119,7 @@ Ideas for future work:
 [normalize]: https://github.com/smkhalsa/normalize
 [gql_client]: https://github.com/smkhalsa/gql_client
 [graphql-to-dart]: https://github.com/micimize/graphql-to-dart
+[graphql_server]: https://pub.dev/packages/graphql_server/versions/2.0.0-beta
 
 ## Contributing
 
