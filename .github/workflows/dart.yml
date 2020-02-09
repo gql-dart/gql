@@ -18,7 +18,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -43,7 +46,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-#      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+#      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
 #          githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -68,7 +74,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -93,7 +102,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -118,7 +130,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -143,7 +158,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -168,7 +186,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -193,7 +214,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -218,7 +242,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+      - name: Pana analysis
         uses: axel-op/dart-package-analyzer@stable
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -243,7 +270,10 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-#      - name: Package Analysis
+      - name: Dart analyzer
+        run: |
+          dartanalyzer --fatal-warnings $PACKAGE
+#      - name: Pana analysis
 #        uses: axel-op/dart-package-analyzer@stable
 #        with:
 #          githubToken: ${{ secrets.GITHUB_TOKEN }}
