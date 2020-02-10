@@ -74,7 +74,7 @@ class DocumentNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDocumentNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         definitions,
       ];
 }
@@ -155,7 +155,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitOperationDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         type,
         selectionSet,
@@ -176,7 +176,7 @@ class SelectionSetNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitSelectionSetNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         selections,
       ];
 }
@@ -212,7 +212,7 @@ class FieldNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitFieldNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         alias,
         name,
         selectionSet,
@@ -238,7 +238,7 @@ class ArgumentNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitArgumentNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         value,
       ];
@@ -261,7 +261,7 @@ class FragmentSpreadNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitFragmentSpreadNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
       ];
@@ -287,7 +287,7 @@ class InlineFragmentNode extends SelectionNode {
   R accept<R>(Visitor<R> v) => v.visitInlineFragmentNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         typeCondition,
         selectionSet,
         directives,
@@ -320,7 +320,7 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitFragmentDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         typeCondition,
         selectionSet,
@@ -341,7 +341,7 @@ class TypeConditionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitTypeConditionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         on,
       ];
 }
@@ -363,7 +363,7 @@ class VariableNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitVariableNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
       ];
 }
@@ -381,7 +381,7 @@ class IntValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitIntValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
       ];
 }
@@ -399,7 +399,7 @@ class FloatValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitFloatValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
       ];
 }
@@ -421,7 +421,7 @@ class StringValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitStringValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
         isBlock,
       ];
@@ -440,7 +440,7 @@ class BooleanValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitBooleanValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
       ];
 }
@@ -454,7 +454,7 @@ class NullValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitNullValueNode(this);
 
   @override
-  get _children => <Object>[];
+  List<Object> get _children => <Object>[];
 }
 
 class EnumValueNode extends ValueNode {
@@ -470,7 +470,7 @@ class EnumValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitEnumValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
       ];
 }
@@ -487,7 +487,7 @@ class ListValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitListValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         values,
       ];
 }
@@ -504,7 +504,7 @@ class ObjectValueNode extends ValueNode {
   R accept<R>(Visitor<R> v) => v.visitObjectValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         fields,
       ];
 }
@@ -526,7 +526,7 @@ class ObjectFieldNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitObjectFieldNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         value,
       ];
@@ -556,7 +556,7 @@ class VariableDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitVariableDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         variable,
         type,
         defaultValue,
@@ -576,7 +576,7 @@ class DefaultValueNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDefaultValueNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
       ];
 }
@@ -604,7 +604,7 @@ class NamedTypeNode extends TypeNode {
   R accept<R>(Visitor<R> v) => v.visitNamedTypeNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         isNonNull,
         name,
       ];
@@ -625,7 +625,7 @@ class ListTypeNode extends TypeNode {
   R accept<R>(Visitor<R> v) => v.visitListTypeNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         isNonNull,
         type,
       ];
@@ -648,7 +648,7 @@ class DirectiveNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitDirectiveNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         arguments,
       ];
@@ -667,7 +667,7 @@ class NameNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitNameNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         value,
       ];
 }
@@ -743,7 +743,7 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         directives,
         operationTypes,
       ];
@@ -765,7 +765,7 @@ class OperationTypeDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitOperationTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         operation,
         type,
       ];
@@ -790,7 +790,7 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitScalarTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -823,7 +823,7 @@ class ObjectTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitObjectTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -856,7 +856,7 @@ class FieldDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitFieldDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -889,7 +889,7 @@ class InputValueDefinitionNode extends Node {
   R accept<R>(Visitor<R> v) => v.visitInputValueDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -921,7 +921,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitInterfaceTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -952,7 +952,7 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitUnionTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -983,7 +983,7 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -1010,7 +1010,7 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumValueDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -1040,7 +1040,7 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitInputObjectTypeDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         directives,
@@ -1074,7 +1074,7 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitDirectiveDefinitionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         description,
         locations,
@@ -1102,7 +1102,7 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         operationTypes,
@@ -1126,7 +1126,7 @@ class ScalarTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitScalarTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
       ];
@@ -1156,7 +1156,7 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitObjectTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         interfaces,
@@ -1185,7 +1185,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitInterfaceTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         fields,
@@ -1213,7 +1213,7 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitUnionTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         types,
@@ -1241,7 +1241,7 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitEnumTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         values,
@@ -1269,7 +1269,7 @@ class InputObjectTypeExtensionNode extends TypeExtensionNode {
   R accept<R>(Visitor<R> v) => v.visitInputObjectTypeExtensionNode(this);
 
   @override
-  get _children => <Object>[
+  List<Object> get _children => <Object>[
         name,
         directives,
         fields,

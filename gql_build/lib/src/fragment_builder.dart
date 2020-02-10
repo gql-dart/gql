@@ -5,7 +5,6 @@ import "package:glob/glob.dart";
 import "package:path/path.dart" as p;
 import "package:gql/ast.dart";
 import "package:code_builder/code_builder.dart";
-import "package:build/build.dart";
 import "package:dart_style/dart_style.dart";
 
 import "package:gql_build/src/utils/reader.dart";
@@ -21,7 +20,7 @@ class FragmentBuilder implements Builder {
     this.schemaId,
   );
 
-  static final _graphqlFiles = new Glob("lib/**.graphql");
+  static final _graphqlFiles = Glob("lib/**.graphql");
 
   static AssetId fragmentsFileOutput(BuildStep buildStep) => AssetId(
         buildStep.inputId.package,
