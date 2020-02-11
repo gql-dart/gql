@@ -245,7 +245,6 @@ void main() {
         mockLink.request(req1, null),
       ).thenAnswer((_) => controller1.stream);
       controller1.addError("Error");
-      await controller1.close();
 
       try {
         await link.request(req1).first;
@@ -258,7 +257,6 @@ void main() {
         mockLink.request(req1, null),
       ).thenAnswer((_) => controller2.stream);
       controller2.add(result1);
-      await controller2.close();
 
       expect(
         await link.request(req1).first,
