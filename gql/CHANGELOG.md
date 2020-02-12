@@ -1,3 +1,8 @@
+## 0.12.2
+
+- improve readme
+- remove type_system API
+
 ## 0.12.1
 
 - upgrade `package:gql_pedantic`

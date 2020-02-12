@@ -5,7 +5,7 @@ class TypeVisitor extends ast.RecursiveVisitor {
   Iterable<ast.ObjectTypeDefinitionNode> types = [];
 
   @override
-  void visitObjectTypeDefinitionNode(
+  visitObjectTypeDefinitionNode(
     ast.ObjectTypeDefinitionNode node,
   ) {
     types = types.followedBy([node]);
@@ -16,11 +16,11 @@ class TypeVisitor extends ast.RecursiveVisitor {
 void main() {
   final ast.DocumentNode doc = lang.parseString(
     """
-      type A { id: ID! }
-      type B { id: ID! }
-      type C { id: ID! }
-      type D { id: ID! }
-      type E { id: ID! }
+    type A { id: ID! }
+    type B { id: ID! }
+    type C { id: ID! }
+    type D { id: ID! }
+    type E { id: ID! }
     """,
   );
 

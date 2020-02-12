@@ -27,13 +27,13 @@ class AddTypenames extends ast.TransformingVisitor {
 
 void main() {
   final ast.DocumentNode doc = lang.parseString(
-    """
-      query UserInfo(\$id: ID!, \$articleId: ID!) {
-        user(id: \$id) {
+    r"""
+      query UserInfo($id: ID!, $articleId: ID!) {
+        user(id: $id) {
           id
           name
         }
-        post(id: \$articleId) {
+        post(id: $articleId) {
           id
           title
           description
