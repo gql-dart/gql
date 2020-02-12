@@ -8,7 +8,7 @@ class RecursiveVisitor extends ast.RecursiveVisitor {}
 
 class MyDriver extends CatDriver<ast.DocumentNode> {
   @override
-  parse({
+  ast.DocumentNode parse({
     source,
   }) =>
       lang.parseString(source);
@@ -24,7 +24,7 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
       null;
 
   @override
-  validate({
+  Iterable<DriverError> validate({
     schema,
     query,
     validationRules,

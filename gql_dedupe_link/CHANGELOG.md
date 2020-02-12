@@ -1,3 +1,7 @@
+## 1.0.9
+
+- upgrade `package:gql_pedantic`
+
 ## 1.0.8
 
 - upgrade `package:gql_exec` to v0.2.0

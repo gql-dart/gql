@@ -14,7 +14,7 @@ class LoneSchemaDefinition extends ValidatingVisitor {
   bool hasSchemaDef = false;
 
   @override
-  visitSchemaDefinitionNode(SchemaDefinitionNode node) {
+  List<ValidationError> visitSchemaDefinitionNode(SchemaDefinitionNode node) {
     if (hasSchemaDef) {
       return [
         MultipleSchemaDefinitionsError(node: node),

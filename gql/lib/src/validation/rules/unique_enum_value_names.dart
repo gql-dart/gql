@@ -25,7 +25,7 @@ class _Accumulator {
 
 class UniqueEnumValueNames extends ValidatingVisitor {
   @override
-  visitEnumTypeDefinitionNode(
+  List<ValidationError> visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,
   ) =>
       node.values.fold<_Accumulator>(

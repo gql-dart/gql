@@ -1,6 +1,10 @@
-## 0.0.4
+## 0.0.5
 
 - Use SourceNode as the input for builders to enable smarter non-duplicating builders
+
+## 0.0.4
+
+- upgrade `package:gql_pedantic`
 
 ## 0.0.3
 

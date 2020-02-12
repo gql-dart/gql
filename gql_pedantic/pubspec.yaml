@@ -1,9 +1,7 @@
 name: gql_pedantic
 author: Klāvs Priedītis <klavs@prieditis.lv>
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/gql-dart/gql/tree/master/gql_pedantic
 description: Even more opinionated lint rules.
 environment: 
   sdk: '>=2.2.0 <3.0.0'
-dev_dependencies: 
-  pedantic: ^1.0.0

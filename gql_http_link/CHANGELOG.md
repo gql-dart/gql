@@ -1,3 +1,7 @@
+## 0.2.7
+
+- upgrade `package:gql_pedantic`
+
 ## 0.2.6
 
 - add `dispose()` function to close the `http.Client`

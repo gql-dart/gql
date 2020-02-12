@@ -14,7 +14,8 @@ class UniqueDirectiveNames extends ValidatingVisitor {
   List<String> directiveNames = [];
 
   @override
-  visitDirectiveDefinitionNode(DirectiveDefinitionNode node) {
+  List<ValidationError> visitDirectiveDefinitionNode(
+      DirectiveDefinitionNode node) {
     if (directiveNames.contains(node.name.value)) {
       return [
         DuplicateDirectiveNameError(node: node),
