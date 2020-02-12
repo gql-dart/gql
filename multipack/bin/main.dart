@@ -3,11 +3,12 @@ import "package:multipack/commands/pub.dart";
 import "package:multipack/commands/pubspec.dart";
 
 void main(List<String> arguments) async {
-  CommandRunner<void>(
+  final runner = CommandRunner<void>(
     "multipack",
     "Manages monorepo packages.",
   )
     ..addCommand(PubCommand())
-    ..addCommand(PubspecCommand())
-    ..run(arguments);
+    ..addCommand(PubspecCommand());
+
+  await runner.run(arguments);
 }

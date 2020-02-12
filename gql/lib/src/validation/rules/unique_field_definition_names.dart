@@ -55,7 +55,7 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
       ).errors;
 
   @override
-  visitInputObjectTypeDefinitionNode(
+  List<ValidationError> visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) =>
       _validateFields(
@@ -68,7 +68,7 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
       );
 
   @override
-  visitInterfaceTypeDefinitionNode(
+  List<ValidationError> visitInterfaceTypeDefinitionNode(
     InterfaceTypeDefinitionNode node,
   ) =>
       _validateFields(
@@ -81,7 +81,7 @@ class UniqueFieldDefinitionNames extends ValidatingVisitor {
       );
 
   @override
-  visitObjectTypeDefinitionNode(
+  List<ValidationError> visitObjectTypeDefinitionNode(
     ObjectTypeDefinitionNode node,
   ) =>
       _validateFields(

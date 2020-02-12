@@ -774,7 +774,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   });
 
   @override
-  visitArgumentNode(
+  void visitArgumentNode(
     ArgumentNode node,
   ) {
     accumulator = [
@@ -788,7 +788,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitBooleanValueNode(
+  void visitBooleanValueNode(
     BooleanValueNode node,
   ) {
     accumulator = [
@@ -802,7 +802,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitDefaultValueNode(
+  void visitDefaultValueNode(
     DefaultValueNode node,
   ) {
     accumulator = [
@@ -816,7 +816,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitDirectiveDefinitionNode(
+  void visitDirectiveDefinitionNode(
     DirectiveDefinitionNode node,
   ) {
     accumulator = [
@@ -830,7 +830,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitDirectiveNode(
+  void visitDirectiveNode(
     DirectiveNode node,
   ) {
     accumulator = [
@@ -844,7 +844,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitDocumentNode(
+  void visitDocumentNode(
     DocumentNode node,
   ) {
     accumulator = [
@@ -858,7 +858,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitEnumTypeDefinitionNode(
+  void visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -872,7 +872,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitEnumTypeExtensionNode(
+  void visitEnumTypeExtensionNode(
     EnumTypeExtensionNode node,
   ) {
     accumulator = [
@@ -886,7 +886,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitEnumValueDefinitionNode(
+  void visitEnumValueDefinitionNode(
     EnumValueDefinitionNode node,
   ) {
     accumulator = [
@@ -900,7 +900,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitEnumValueNode(
+  void visitEnumValueNode(
     EnumValueNode node,
   ) {
     accumulator = [
@@ -914,7 +914,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitFieldDefinitionNode(
+  void visitFieldDefinitionNode(
     FieldDefinitionNode node,
   ) {
     accumulator = [
@@ -928,7 +928,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitFieldNode(
+  void visitFieldNode(
     FieldNode node,
   ) {
     accumulator = [
@@ -942,7 +942,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitFloatValueNode(
+  void visitFloatValueNode(
     FloatValueNode node,
   ) {
     accumulator = [
@@ -956,7 +956,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitFragmentDefinitionNode(
+  void visitFragmentDefinitionNode(
     FragmentDefinitionNode node,
   ) {
     accumulator = [
@@ -970,7 +970,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitFragmentSpreadNode(
+  void visitFragmentSpreadNode(
     FragmentSpreadNode node,
   ) {
     accumulator = [
@@ -984,7 +984,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInlineFragmentNode(
+  void visitInlineFragmentNode(
     InlineFragmentNode node,
   ) {
     accumulator = [
@@ -998,7 +998,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInputObjectTypeDefinitionNode(
+  void visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1012,7 +1012,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInputObjectTypeExtensionNode(
+  void visitInputObjectTypeExtensionNode(
     InputObjectTypeExtensionNode node,
   ) {
     accumulator = [
@@ -1026,7 +1026,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInputValueDefinitionNode(
+  void visitInputValueDefinitionNode(
     InputValueDefinitionNode node,
   ) {
     accumulator = [
@@ -1040,7 +1040,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitIntValueNode(
+  void visitIntValueNode(
     IntValueNode node,
   ) {
     accumulator = [
@@ -1054,7 +1054,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInterfaceTypeDefinitionNode(
+  void visitInterfaceTypeDefinitionNode(
     InterfaceTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1068,7 +1068,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitInterfaceTypeExtensionNode(
+  void visitInterfaceTypeExtensionNode(
     InterfaceTypeExtensionNode node,
   ) {
     accumulator = [
@@ -1082,7 +1082,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitListTypeNode(
+  void visitListTypeNode(
     ListTypeNode node,
   ) {
     accumulator = [
@@ -1096,7 +1096,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitListValueNode(
+  void visitListValueNode(
     ListValueNode node,
   ) {
     accumulator = [
@@ -1110,7 +1110,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitNameNode(
+  void visitNameNode(
     NameNode node,
   ) {
     accumulator = [
@@ -1124,7 +1124,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitNamedTypeNode(
+  void visitNamedTypeNode(
     NamedTypeNode node,
   ) {
     accumulator = [
@@ -1138,7 +1138,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitNullValueNode(
+  void visitNullValueNode(
     NullValueNode node,
   ) {
     accumulator = [
@@ -1152,7 +1152,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitObjectFieldNode(
+  void visitObjectFieldNode(
     ObjectFieldNode node,
   ) {
     accumulator = [
@@ -1166,7 +1166,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitObjectTypeDefinitionNode(
+  void visitObjectTypeDefinitionNode(
     ObjectTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1180,7 +1180,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitObjectTypeExtensionNode(
+  void visitObjectTypeExtensionNode(
     ObjectTypeExtensionNode node,
   ) {
     accumulator = [
@@ -1194,7 +1194,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitObjectValueNode(
+  void visitObjectValueNode(
     ObjectValueNode node,
   ) {
     accumulator = [
@@ -1208,7 +1208,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitOperationDefinitionNode(
+  void visitOperationDefinitionNode(
     OperationDefinitionNode node,
   ) {
     accumulator = [
@@ -1222,7 +1222,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitOperationTypeDefinitionNode(
+  void visitOperationTypeDefinitionNode(
     OperationTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1236,7 +1236,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitScalarTypeDefinitionNode(
+  void visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1250,7 +1250,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitScalarTypeExtensionNode(
+  void visitScalarTypeExtensionNode(
     ScalarTypeExtensionNode node,
   ) {
     accumulator = [
@@ -1264,7 +1264,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitSchemaDefinitionNode(
+  void visitSchemaDefinitionNode(
     SchemaDefinitionNode node,
   ) {
     accumulator = [
@@ -1278,7 +1278,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitSchemaExtensionNode(
+  void visitSchemaExtensionNode(
     SchemaExtensionNode node,
   ) {
     accumulator = [
@@ -1292,7 +1292,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitSelectionSetNode(
+  void visitSelectionSetNode(
     SelectionSetNode node,
   ) {
     accumulator = [
@@ -1306,7 +1306,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitStringValueNode(
+  void visitStringValueNode(
     StringValueNode node,
   ) {
     accumulator = [
@@ -1320,7 +1320,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitTypeConditionNode(
+  void visitTypeConditionNode(
     TypeConditionNode node,
   ) {
     accumulator = [
@@ -1334,7 +1334,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitUnionTypeDefinitionNode(
+  void visitUnionTypeDefinitionNode(
     UnionTypeDefinitionNode node,
   ) {
     accumulator = [
@@ -1348,7 +1348,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitUnionTypeExtensionNode(
+  void visitUnionTypeExtensionNode(
     UnionTypeExtensionNode node,
   ) {
     accumulator = [
@@ -1362,7 +1362,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitVariableDefinitionNode(
+  void visitVariableDefinitionNode(
     VariableDefinitionNode node,
   ) {
     accumulator = [
@@ -1376,7 +1376,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
   }
 
   @override
-  visitVariableNode(
+  void visitVariableNode(
     VariableNode node,
   ) {
     accumulator = [

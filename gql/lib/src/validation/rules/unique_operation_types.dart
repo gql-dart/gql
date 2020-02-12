@@ -22,7 +22,7 @@ class _Accumulator {
 
 class UniqueOperationTypes extends ValidatingVisitor {
   @override
-  visitSchemaDefinitionNode(
+  List<ValidationError> visitSchemaDefinitionNode(
     SchemaDefinitionNode node,
   ) =>
       node.operationTypes.fold<_Accumulator>(
