@@ -1,3 +1,7 @@
+## 0.2.2
+
+- upgrade `package:gql_pedantic`
+
 ## 0.2.1
 
 - include variables when updating context

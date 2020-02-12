@@ -1,3 +1,7 @@
+## 0.12.1
+
+- upgrade `package:gql_pedantic`
+
 ## 0.12.0
 
 - extracted `package:gql/execution.dart` to `package:gql_exec/gql_exec.dart`

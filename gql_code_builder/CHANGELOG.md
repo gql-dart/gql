@@ -1,3 +1,7 @@
+## 0.0.4
+
+- upgrade `package:gql_pedantic`
+
 ## 0.0.3
 
 - Support for fragment builder

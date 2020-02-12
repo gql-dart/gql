@@ -1,3 +1,7 @@
+## 0.0.4
+
+- upgrade `package:gql_code_gen`
+
 ## 0.0.3
 
 - Support for fragment builder
