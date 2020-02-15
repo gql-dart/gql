@@ -1,4 +1,5 @@
 import 'package:gql/ast.dart' as _i1;
+import 'package:gql_example_cli/dimensions.ast.gql.dart' as _i2;
 
 const FindPokemon = _i1.OperationDefinitionNode(
     type: _i1.OperationType.query,
@@ -55,24 +56,4 @@ const FindPokemon = _i1.OperationDefinitionNode(
                 ]))
           ]))
     ]));
-const Dimensions = _i1.FragmentDefinitionNode(
-    name: _i1.NameNode(value: 'Dimensions'),
-    typeCondition: _i1.TypeConditionNode(
-        on: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'PokemonDimension'), isNonNull: false)),
-    directives: [],
-    selectionSet: _i1.SelectionSetNode(selections: [
-      _i1.FieldNode(
-          name: _i1.NameNode(value: 'minimum'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      _i1.FieldNode(
-          name: _i1.NameNode(value: 'maximum'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null)
-    ]));
-const document = _i1.DocumentNode(definitions: [FindPokemon, Dimensions]);
+const document = _i1.DocumentNode(definitions: [FindPokemon, _i2.Dimensions]);

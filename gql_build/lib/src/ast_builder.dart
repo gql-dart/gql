@@ -15,7 +15,7 @@ class AstBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final doc = (await readDocument(buildStep)).flatDocument;
+    final doc = await readDocument(buildStep);
 
     final library = buildAstLibrary(
       doc,
