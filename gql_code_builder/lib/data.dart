@@ -1,20 +1,20 @@
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:gql_code_builder/src/operation/data.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildDataLibrary(
-  DocumentNode doc,
+  SourceNode docSource,
   String fragmentsDocUrl,
-  DocumentNode schema,
+  SourceNode schemaSource,
   String schemaUrl,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
           buildDataClasses(
-            doc,
+            docSource.flatDocument,
             fragmentsDocUrl,
-            schema,
+            schemaSource.flatDocument,
             schemaUrl,
           ),
         ),

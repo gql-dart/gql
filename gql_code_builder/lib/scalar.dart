@@ -1,15 +1,15 @@
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:gql_code_builder/src/schema/scalar.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildScalarLibrary(
-  DocumentNode doc,
+  SourceNode source,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
           buildScalarClasses(
-            doc,
+            source.flatDocument,
           ),
         ),
     );
