@@ -3,9 +3,9 @@ import "package:gql/language.dart" as lang;
 
 void main() {
   final ast.DocumentNode doc = lang.parseString(
-    """
-      query UserInfo(\$id: ID!) {
-        user(id: \$id) {
+    r"""
+      query UserInfo($id: ID!) {
+        user(id: $id) {
           id
           name
         }

@@ -1,10 +1,14 @@
 A package for working with GraphQL documents.
 
-⚠️ This package is under development ⚠️
-
 This package exports several libraries:
-- `package:gql/language.dart` for working with GraphQL source;
-- `package:gql/ast.dart` for working with GraphQL AST nodes;
+- `package:gql/language.dart` provides ability to parse GraphQL string into AST and print AST as a string;
+- `package:gql/ast.dart` defines the AST and provides visitors and transformers;
+
+## ⚠ Call for contributions ⚠
+`package:gql/document.dart` implements some of the validation rules defined in GraphQL spec.
+
+PRs are welcome to finish the validation support. Rules which are concerned with Schema validation should take preference over rules concerned with Document validation.
+
 
 ## `package:gql/language.dart`
 
@@ -16,32 +20,32 @@ import "package:gql/ast.dart" as ast;
 
 void main() {
   final ast.DocumentNode doc = lang.parseString(
-    """
-    query UserInfo(\$id: ID!) {
-      user(id: \$id) {
-        id
-        name
+    r"""
+      query UserInfo($id: ID!) {
+        user(id: $id) {
+          id
+          name
+        }
       }
-    }
     """,
   );
 
   print(
     (doc.definitions.first as ast.OperationDefinitionNode).name.value,
-  );
+  ); // prints "UserInfo"
 }
 ```
 
 ### Printing GraphQL AST to string
 
 ```dart
-import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
+import "package:gql/language.dart" as lang;
 
 void main() {
   print(
     lang.printNode(
-      ast.SchemaDefinitionNode(
+      const ast.SchemaDefinitionNode(
         operationTypes: [
           ast.OperationTypeDefinitionNode(
             operation: ast.OperationType.query,
@@ -54,6 +58,10 @@ void main() {
       ),
     ),
   );
+  // prints
+  // "schema {
+  //   query: MyQuery
+  // }"
 }
 ```
 
@@ -62,8 +70,8 @@ void main() {
 ### Visiting GraphQL AST nodes
 
 ```dart
-import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
+import "package:gql/language.dart" as lang;
 
 class TypeVisitor extends ast.RecursiveVisitor {
   Iterable<ast.ObjectTypeDefinitionNode> types = [];
@@ -99,17 +107,23 @@ void main() {
         )
         .join("\n"),
   );
+  // prints
+  // "A
+  // B
+  // C
+  // D
+  // E"
 }
 ```
 
 ### Transforming GraphQL documents
 ```dart
-import "package:gql/language.dart" as lang;
 import "package:gql/ast.dart" as ast;
+import "package:gql/language.dart" as lang;
 
 class AddTypenames extends ast.TransformingVisitor {
   @override
-  visitFieldNode(ast.FieldNode node) {
+  ast.FieldNode visitFieldNode(ast.FieldNode node) {
     if (node.selectionSet == null) {
       return node;
     }
@@ -124,7 +138,8 @@ class AddTypenames extends ast.TransformingVisitor {
           ast.FieldNode(
             name: ast.NameNode(value: "__typename"),
           ),
-        ].followedBy(node.selectionSet.selections),
+          ...node.selectionSet.selections
+        ],
       ),
     );
   }
@@ -132,18 +147,18 @@ class AddTypenames extends ast.TransformingVisitor {
 
 void main() {
   final ast.DocumentNode doc = lang.parseString(
-    """
-    query UserInfo(\$id: ID!, \$articleId: ID!) {
-      user(id: \$id) {
-        id
-        name
+    r"""
+      query UserInfo($id: ID!, $articleId: ID!) {
+        user(id: $id) {
+          id
+          name
+        }
+        post(id: $articleId) {
+          id
+          title
+          description
+        }
       }
-      post(id: \$articleId) {
-        id
-        title
-        description
-      }
-    }
     """,
   );
 
@@ -157,6 +172,20 @@ void main() {
   print(
     lang.printNode(withTypenames),
   );
+  // prints
+  // "query UserInfo($id: ID!, $articleId: ID!) {
+  //   user(id: $id) {
+  //     __typename
+  //     id
+  //     name
+  //   }
+  //   post(id: $articleId) {
+  //     __typename
+  //     id
+  //     title
+  //     description
+  //   }
+  // }"
 }
 ```
 
