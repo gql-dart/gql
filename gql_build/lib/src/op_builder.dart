@@ -21,8 +21,8 @@ class OpBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final doc = await readDocument(buildStep);
-    final schema = await readDocument(buildStep, schemaId);
+    final doc = (await readDocument(buildStep)).flatDocument;
+    final schema = (await readDocument(buildStep, schemaId)).flatDocument;
 
     final library = buildOpLibrary(
       doc,

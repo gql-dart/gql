@@ -37,13 +37,14 @@ class FragmentBuilder implements Builder {
     final fragmentMap = <String, FragmentDefinitionNode>{};
 
     await for (final input in buildStep.findAssets(_graphqlFiles)) {
-      final doc = await readDocument(buildStep, input);
+      final source = await readDocument(buildStep, input);
+      final doc = source.flatDocument;
       doc.definitions
           .whereType<FragmentDefinitionNode>()
           .forEach((def) => fragmentMap.putIfAbsent(def.name.value, () => def));
     }
 
-    final schema = await readDocument(buildStep, schemaId);
+    final schema = (await readDocument(buildStep, schemaId)).flatDocument;
 
     final library = buildFragmentLibrary(
       fragmentMap,
