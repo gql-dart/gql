@@ -1,3 +1,5 @@
+# import "./dimensions.graphql"
+
 query FindPokemon(
   $name: String!
 ) {
@@ -5,12 +7,10 @@ query FindPokemon(
     id
     name
     weight {
-      minimum
-      maximum
+      ...Dimensions
     }
     height {
-      minimum
-      maximum
+      ...Dimensions
     }
   }
 }
