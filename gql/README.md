@@ -4,7 +4,7 @@ This package exports several libraries:
 - `package:gql/language.dart` provides ability to parse GraphQL string into AST and print AST as a string;
 - `package:gql/ast.dart` defines the AST and provides visitors and transformers;
 
-## ⚠️ Call for contributions ⚠️
+## ⚠ Call for contributions ⚠
 `package:gql/document.dart` implements some of the validation rules defined in GraphQL spec.
 
 PRs are welcome to finish the validation support. Rules which are concerned with Schema validation should take preference over rules concerned with Document validation.
