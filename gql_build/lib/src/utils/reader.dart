@@ -49,7 +49,9 @@ Future<String> readCombinedSource(
     final segments = id.pathSegments..removeLast();
 
     final imports = allRelativeImports(importMap[id.path])
-        .map((i) => p.normalize(p.joinAll([...segments, i])))
+        .map(
+          (i) => p.toUri(p.normalize(p.joinAll([...segments, i]))).toString(),
+        )
         .where((i) => !importMap.containsKey(i)) // avoid duplicates/cycles
         .toSet();
 
