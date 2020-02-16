@@ -4,6 +4,7 @@ import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
 import "package:gql/src/validation/rules/unique_field_definition_names.dart";
 import "package:gql/src/validation/rules/unique_operation_types.dart";
+import "package:gql/src/validation/rules/unique_type_names.dart";
 import "package:gql/src/validation/validating_visitor.dart";
 import "package:meta/meta.dart";
 
@@ -18,6 +19,7 @@ List<ValidationError> validateSchema(
       ValidationRule.uniqueEnumValueNames,
       ValidationRule.loneSchemaDefinition,
       ValidationRule.uniqueOperationTypes,
+      ValidationRule.uniqueTypeNames
     },
   );
 
@@ -89,6 +91,7 @@ enum ValidationRule {
   uniqueEnumValueNames,
   loneSchemaDefinition,
   uniqueOperationTypes,
+  uniqueTypeNames
 }
 
 ValidatingVisitor _mapRule(ValidationRule rule) {
@@ -103,6 +106,8 @@ ValidatingVisitor _mapRule(ValidationRule rule) {
       return LoneSchemaDefinition();
     case ValidationRule.uniqueOperationTypes:
       return UniqueOperationTypes();
+    case ValidationRule.uniqueTypeNames:
+      return UniqueTypeNames();
     default:
       return null;
   }
