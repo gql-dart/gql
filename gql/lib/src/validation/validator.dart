@@ -107,7 +107,7 @@ ValidatingVisitor _mapRule(ValidationRule rule) {
     case ValidationRule.uniqueOperationTypes:
       return UniqueOperationTypes();
     case ValidationRule.uniqueTypeNames:
-    return UniqueTypeNames();
+      return UniqueTypeNames();
     default:
       return null;
   }
