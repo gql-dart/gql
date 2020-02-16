@@ -5,11 +5,11 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/source.dart";
 
-class SourceSelections {
+class _SourceSelections {
   final String url;
   final List<SelectionNode> selections;
 
-  const SourceSelections({
+  const _SourceSelections({
     this.url,
     this.selections,
   });
@@ -100,10 +100,10 @@ String _operationType(
       .value;
 }
 
-Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
+Map<String, _SourceSelections> _fragmentMap(SourceNode source) => {
       for (var def
           in source.document.definitions.whereType<FragmentDefinitionNode>())
-        def.name.value: SourceSelections(
+        def.name.value: _SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
         ),
@@ -115,15 +115,15 @@ List<Class> _buildSelectionSetDataClasses({
   @required List<SelectionNode> selections,
   @required SourceNode schemaSource,
   @required String type,
-  @required Map<String, SourceSelections> fragmentMap,
-  @required Map<String, SourceSelections> superclassSelections,
+  @required Map<String, _SourceSelections> fragmentMap,
+  @required Map<String, _SourceSelections> superclassSelections,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    superclassSelections["\$${selection.name.value}"] = SourceSelections(
+    superclassSelections["\$${selection.name.value}"] = _SourceSelections(
       url: fragmentMap[selection.name.value].url,
       selections: _mergeSelections(
         fragmentMap[selection.name.value].selections,
@@ -141,6 +141,7 @@ List<Class> _buildSelectionSetDataClasses({
                   superName,
                   superclassSelections[superName]
                       .url
+                      // TODO: remove the hard-coded string
                       ?.replaceAll(RegExp(r".graphql$"), ".data.gql.dart"),
                 )))
         ..constructors = _buildConstructors(
@@ -197,7 +198,7 @@ List<Class> _buildSelectionSetDataClasses({
               schemaSource: schemaSource,
               type: inlineFragment.typeCondition.on.name.value,
               superclassSelections: {
-                name: SourceSelections(url: null, selections: selections)
+                name: _SourceSelections(url: null, selections: selections)
               },
             ))
   ];
@@ -206,7 +207,7 @@ List<Class> _buildSelectionSetDataClasses({
 /// Deeply merges field nodes
 List<SelectionNode> _mergeSelections(
   List<SelectionNode> selections,
-  Map<String, SourceSelections> fragmentMap,
+  Map<String, _SourceSelections> fragmentMap,
 ) =>
     _expandFragmentSpreads(selections, fragmentMap)
         .fold<Map<String, SelectionNode>>(
@@ -245,7 +246,7 @@ List<SelectionNode> _mergeSelections(
 
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
-  Map<String, SourceSelections> fragmentMap, [
+  Map<String, _SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
 ]) =>
     selections.expand(
@@ -268,8 +269,8 @@ List<SelectionNode> _expandFragmentSpreads(
       },
     ).toList();
 
-Map<String, SourceSelections> _fragmentSelectionsForField(
-  Map<String, SourceSelections> fragmentMap,
+Map<String, _SourceSelections> _fragmentSelectionsForField(
+  Map<String, _SourceSelections> fragmentMap,
   FieldNode field,
 ) =>
     {
@@ -285,7 +286,7 @@ Map<String, SourceSelections> _fragmentSelectionsForField(
         ))
           if (selection.selectionSet != null)
             "${entry.key}\$${field.alias?.value ?? field.name.value}":
-                SourceSelections(
+                _SourceSelections(
                     url: entry.value.url,
                     selections: selection.selectionSet.selections
                         .whereType<FieldNode>()
@@ -388,6 +389,7 @@ Method _buildGetter(
       else if (fieldTypeDef != null)
         typeName: refer(
           typeName,
+          // TODO: remove the hard-coded string
           schemaSource.url.replaceAll(RegExp(r".graphql$"), ".schema.gql.dart"),
         )
     };
