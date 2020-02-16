@@ -1,6 +1,8 @@
 import 'package:gql/ast.dart' as _i1;
 import 'package:gql_example_flutter/src/pokemon_card/pokemon_card_fragment.ast.gql.dart'
     as _i2;
+import 'package:gql_example_flutter/src/pokemon_card/nested_fragment.ast.gql.dart'
+    as _i3;
 
 const PokemonDetail = _i1.OperationDefinitionNode(
     type: _i1.OperationType.query,
@@ -77,4 +79,4 @@ const PokemonDetail = _i1.OperationDefinitionNode(
           ]))
     ]));
 const document = _i1.DocumentNode(
-    definitions: [PokemonDetail, _i2.NestedFragment, _i2.PokemonCard]);
+    definitions: [PokemonDetail, _i2.PokemonCard, _i3.NestedFragment]);

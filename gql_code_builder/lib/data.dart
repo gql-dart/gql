@@ -4,18 +4,14 @@ import "package:gql_code_builder/source.dart";
 
 Library buildDataLibrary(
   SourceNode docSource,
-  String fragmentsDocUrl,
   SourceNode schemaSource,
-  String schemaUrl,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
           buildDataClasses(
-            docSource.flatDocument,
-            fragmentsDocUrl,
-            schemaSource.flatDocument,
-            schemaUrl,
+            docSource,
+            schemaSource,
           ),
         ),
     );

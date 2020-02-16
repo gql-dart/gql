@@ -1,7 +1,4 @@
-fragment NestedFragment on Pokemon {
-  id
-  name
-}
+# import './nested_fragment.graphql'
 
 fragment PokemonCard on Pokemon {
   ...NestedFragment
