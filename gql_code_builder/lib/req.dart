@@ -1,10 +1,10 @@
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:gql_code_builder/src/operation/req.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildReqLibrary(
-  DocumentNode doc,
-  DocumentNode schema,
+  SourceNode docSource,
+  SourceNode schemaSource,
   String opDocUrl,
   String varDocUrl,
 ) =>
@@ -12,8 +12,8 @@ Library buildReqLibrary(
       (b) => b.body
         ..addAll(
           buildOperationReqClasses(
-            doc,
-            schema,
+            docSource.flatDocument,
+            schemaSource.flatDocument,
             opDocUrl,
             varDocUrl,
           ),

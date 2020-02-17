@@ -44,7 +44,7 @@ class FragmentBuilder implements Builder {
           .forEach((def) => fragmentMap.putIfAbsent(def.name.value, () => def));
     }
 
-    final schema = (await readDocument(buildStep, schemaId)).flatDocument;
+    final schema = await readDocument(buildStep, schemaId);
 
     final library = buildFragmentLibrary(
       fragmentMap,

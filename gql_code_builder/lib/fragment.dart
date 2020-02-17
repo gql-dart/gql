@@ -2,11 +2,12 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 
 import "package:gql_code_builder/src/operation/data.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildFragmentLibrary(
   Map<String, FragmentDefinitionNode> fragmentMap,
   String fragmentsDocUrl,
-  DocumentNode schema,
+  SourceNode schemaSource,
   String schemaUrl,
 ) =>
     Library(
@@ -18,7 +19,7 @@ Library buildFragmentLibrary(
               selections: def.selectionSet.selections,
               fragmentMap: fragmentMap,
               fragmentsDocUrl: fragmentsDocUrl,
-              schema: schema,
+              schema: schemaSource.flatDocument,
               schemaUrl: schemaUrl,
               type: def.typeCondition.on.name.value,
             ),
