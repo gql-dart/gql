@@ -1,7 +1,6 @@
 import "package:build/build.dart";
 import "package:gql_build/src/ast_builder.dart";
 import "package:gql_build/src/data_builder.dart";
-import "package:gql_build/src/fragment_builder.dart";
 import "package:gql_build/src/enum_builder.dart";
 import "package:gql_build/src/input_builder.dart";
 import "package:gql_build/src/op_builder.dart";
@@ -15,16 +14,6 @@ Builder astBuilder(
   BuilderOptions options,
 ) =>
     AstBuilder();
-
-// Builds a single file with dart classes for any fragments
-Builder fragmentBuilder(
-  BuilderOptions options,
-) =>
-    FragmentBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
 
 // Builds type-safe data viewer
 Builder dataBuilder(

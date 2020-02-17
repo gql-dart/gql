@@ -1,0 +1,4 @@
+fragment NestedFragment on Pokemon {
+  id
+  name
+}

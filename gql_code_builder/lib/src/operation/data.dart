@@ -3,48 +3,85 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
+import "package:gql_code_builder/source.dart";
+
+class _SourceSelections {
+  final String url;
+  final List<SelectionNode> selections;
+
+  const _SourceSelections({
+    this.url,
+    this.selections,
+  });
+}
 
 List<Class> buildDataClasses(
-  DocumentNode doc,
-  String fragmentsDocUrl,
-  DocumentNode schema,
-  String schemaUrl,
+  SourceNode docSource,
+  SourceNode schemaSource,
 ) =>
-    doc.definitions
-        .whereType<OperationDefinitionNode>()
-        .expand(
-          (op) => _buildOperationDataClasses(
-            op,
-            doc,
-            fragmentsDocUrl,
-            schema,
-            schemaUrl,
-          ),
-        )
-        .toList();
+    [
+      ...docSource.document.definitions
+          .whereType<OperationDefinitionNode>()
+          .expand(
+            (op) => _buildOperationDataClasses(
+              op,
+              docSource,
+              schemaSource,
+            ),
+          )
+          .toList(),
+      ...docSource.document.definitions
+          .whereType<FragmentDefinitionNode>()
+          .expand(
+            (frag) => _buildFragmentDataClasses(
+              frag,
+              docSource,
+              schemaSource,
+            ),
+          )
+          .toList(),
+    ];
 
 List<Class> _buildOperationDataClasses(
   OperationDefinitionNode op,
-  DocumentNode doc,
-  String fragmentsDocUrl,
-  DocumentNode schema,
-  String schemaUrl,
-) =>
-    buildSelectionSetDataClasses(
-      name: "\$${op.name.value}",
-      selections: op.selectionSet.selections,
-      fragmentMap: {
-        for (var def in doc.definitions.whereType<FragmentDefinitionNode>())
-          def.name.value: def
-      },
-      fragmentsDocUrl: fragmentsDocUrl,
-      schema: schema,
-      schemaUrl: schemaUrl,
-      type: _operationType(
-        schema,
-        op,
-      ),
-    );
+  SourceNode docSource,
+  SourceNode schemaSource,
+) {
+  final fragmentMap = _fragmentMap(docSource);
+  return _buildSelectionSetDataClasses(
+    name: "\$${op.name.value}",
+    selections: _mergeSelections(
+      op.selectionSet.selections,
+      fragmentMap,
+    ),
+    schemaSource: schemaSource,
+    type: _operationType(
+      schemaSource.document,
+      op,
+    ),
+    fragmentMap: fragmentMap,
+    superclassSelections: {},
+  );
+}
+
+List<Class> _buildFragmentDataClasses(
+  FragmentDefinitionNode frag,
+  SourceNode docSource,
+  SourceNode schemaSource,
+) {
+  final fragmentMap = _fragmentMap(docSource);
+  return _buildSelectionSetDataClasses(
+    name: "\$${frag.name.value}",
+    selections: _mergeSelections(
+      frag.selectionSet.selections,
+      fragmentMap,
+    ),
+    schemaSource: schemaSource,
+    type: frag.typeCondition.on.name.value,
+    fragmentMap: fragmentMap,
+    superclassSelections: {},
+  );
+}
 
 String _operationType(
   DocumentNode schema,
@@ -63,49 +100,36 @@ String _operationType(
       .value;
 }
 
-List<Class> buildSelectionSetDataClasses({
-  @required String name,
-  @required List<SelectionNode> selections,
-  @required Map<String, FragmentDefinitionNode> fragmentMap,
-  @required String fragmentsDocUrl,
-  @required DocumentNode schema,
-  @required String schemaUrl,
-  @required String type,
-}) =>
-    _buildSelectionSetDataClasses(
-      name: name,
-      selections: _mergeSelections(
-        selections,
-        fragmentMap,
-      ),
-      fragmentMap: fragmentMap,
-      fragmentsDocUrl: fragmentsDocUrl,
-      schema: schema,
-      schemaUrl: schemaUrl,
-      type: type,
-      superclassSelections: {},
-    );
+Map<String, _SourceSelections> _fragmentMap(SourceNode source) => {
+      for (var def
+          in source.document.definitions.whereType<FragmentDefinitionNode>())
+        def.name.value: _SourceSelections(
+          url: source.url,
+          selections: def.selectionSet.selections,
+        ),
+      for (var import in source.imports) ..._fragmentMap(import)
+    };
 
 List<Class> _buildSelectionSetDataClasses({
   @required String name,
   @required List<SelectionNode> selections,
-  @required Map<String, FragmentDefinitionNode> fragmentMap,
-  @required String fragmentsDocUrl,
-  @required DocumentNode schema,
-  @required String schemaUrl,
+  @required SourceNode schemaSource,
   @required String type,
-  @required Map<String, List<FieldNode>> superclassSelections,
-  String parentName,
+  @required Map<String, _SourceSelections> fragmentMap,
+  @required Map<String, _SourceSelections> superclassSelections,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    superclassSelections["\$${selection.name.value}"] = _mergeSelections(
-      fragmentMap[selection.name.value].selectionSet.selections,
-      fragmentMap,
-    ).whereType<FieldNode>().toList();
+    superclassSelections["\$${selection.name.value}"] = _SourceSelections(
+      url: fragmentMap[selection.name.value].url,
+      selections: _mergeSelections(
+        fragmentMap[selection.name.value].selections,
+        fragmentMap,
+      ).whereType<FieldNode>().toList(),
+    );
   }
 
   return [
@@ -115,7 +139,10 @@ List<Class> _buildSelectionSetDataClasses({
         ..implements = ListBuilder(
             superclassSelections.keys.map<Reference>((superName) => refer(
                   superName,
-                  superName == parentName ? null : fragmentsDocUrl,
+                  superclassSelections[superName]
+                      .url
+                      // TODO: remove the hard-coded string
+                      ?.replaceAll(RegExp(r".graphql$"), ".data.gql.dart"),
                 )))
         ..constructors = _buildConstructors(
           name,
@@ -123,8 +150,7 @@ List<Class> _buildSelectionSetDataClasses({
         )
         ..fields = _buildFields()
         ..methods = _buildGetters(
-          schema,
-          schemaUrl,
+          schemaSource,
           selections,
           name,
           type,
@@ -140,13 +166,11 @@ List<Class> _buildSelectionSetDataClasses({
             name: "${name}\$${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet.selections,
             fragmentMap: fragmentMap,
-            fragmentsDocUrl: fragmentsDocUrl,
-            schema: schema,
-            schemaUrl: schemaUrl,
+            schemaSource: schemaSource,
             type: _getTypeName(
               _getFieldTypeNode(
                 _getTypeDefinitionNode(
-                  schema,
+                  schemaSource.document,
                   type,
                 ),
                 field.name.value,
@@ -171,14 +195,11 @@ List<Class> _buildSelectionSetDataClasses({
                 fragmentMap,
               ),
               fragmentMap: fragmentMap,
-              fragmentsDocUrl: fragmentsDocUrl,
-              schema: schema,
-              schemaUrl: schemaUrl,
+              schemaSource: schemaSource,
               type: inlineFragment.typeCondition.on.name.value,
               superclassSelections: {
-                name: selections.whereType<FieldNode>().toList()
+                name: _SourceSelections(url: null, selections: selections)
               },
-              parentName: name,
             ))
   ];
 }
@@ -186,7 +207,7 @@ List<Class> _buildSelectionSetDataClasses({
 /// Deeply merges field nodes
 List<SelectionNode> _mergeSelections(
   List<SelectionNode> selections,
-  Map<String, FragmentDefinitionNode> fragmentMap,
+  Map<String, _SourceSelections> fragmentMap,
 ) =>
     _expandFragmentSpreads(selections, fragmentMap)
         .fold<Map<String, SelectionNode>>(
@@ -225,7 +246,7 @@ List<SelectionNode> _mergeSelections(
 
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
-  Map<String, FragmentDefinitionNode> fragmentMap, [
+  Map<String, _SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
 ]) =>
     selections.expand(
@@ -238,7 +259,7 @@ List<SelectionNode> _expandFragmentSpreads(
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value].selectionSet.selections,
+              fragmentMap[selection.name.value].selections,
               fragmentMap,
               false,
             )
@@ -248,13 +269,14 @@ List<SelectionNode> _expandFragmentSpreads(
       },
     ).toList();
 
-Map<String, List<FieldNode>> _fragmentSelectionsForField(
-  Map<String, List<FieldNode>> fragmentSelections,
+Map<String, _SourceSelections> _fragmentSelectionsForField(
+  Map<String, _SourceSelections> fragmentMap,
   FieldNode field,
 ) =>
     {
-      for (var selectionEntry in fragmentSelections.entries)
-        for (var selection in selectionEntry.value.where(
+      for (var entry in fragmentMap.entries)
+        for (var selection
+            in entry.value.selections.whereType<FieldNode>().where(
           (selection) {
             final selectionKey = selection.alias?.value ?? selection.name.value;
             final fieldKey = field.alias?.value ?? field.name.value;
@@ -263,10 +285,12 @@ Map<String, List<FieldNode>> _fragmentSelectionsForField(
           },
         ))
           if (selection.selectionSet != null)
-            "${selectionEntry.key}\$${field.alias?.value ?? field.name.value}":
-                selection.selectionSet.selections
-                    .whereType<FieldNode>()
-                    .toList()
+            "${entry.key}\$${field.alias?.value ?? field.name.value}":
+                _SourceSelections(
+                    url: entry.value.url,
+                    selections: selection.selectionSet.selections
+                        .whereType<FieldNode>()
+                        .toList())
     };
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
@@ -316,8 +340,7 @@ ListBuilder<Constructor> _buildConstructors(
     );
 
 ListBuilder<Method> _buildGetters(
-  DocumentNode schema,
-  String schemaUrl,
+  SourceNode schemaSource,
   List<SelectionNode> nodes,
   String prefix,
   String type,
@@ -326,8 +349,7 @@ ListBuilder<Method> _buildGetters(
       nodes
           .map<Method>(
             (node) => _buildGetter(
-              schema,
-              schemaUrl,
+              schemaSource,
               node,
               prefix,
               type,
@@ -339,8 +361,7 @@ ListBuilder<Method> _buildGetters(
     );
 
 Method _buildGetter(
-  DocumentNode schema,
-  String schemaUrl,
+  SourceNode schemaSource,
   SelectionNode node,
   String prefix,
   String type,
@@ -348,7 +369,7 @@ Method _buildGetter(
   if (node is FieldNode) {
     final name = node.alias?.value ?? node.name.value;
     final typeDef = _getTypeDefinitionNode(
-      schema,
+      schemaSource.document,
       type,
     );
     final typeNode = _getFieldTypeNode(
@@ -358,7 +379,7 @@ Method _buildGetter(
     final unwrappedTypeNode = _unwrapTypeNode(typeNode);
     final typeName = unwrappedTypeNode.name.value;
     final fieldTypeDef = _getTypeDefinitionNode(
-      schema,
+      schemaSource.document,
       typeName,
     );
     final typeMap = {
@@ -366,7 +387,11 @@ Method _buildGetter(
       if (node.selectionSet != null)
         typeName: refer("$prefix\$$name")
       else if (fieldTypeDef != null)
-        typeName: refer(typeName, schemaUrl)
+        typeName: refer(
+          typeName,
+          // TODO: remove the hard-coded string
+          schemaSource.url.replaceAll(RegExp(r".graphql$"), ".schema.gql.dart"),
+        )
     };
 
     final returns = typeRef(
