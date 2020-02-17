@@ -3,6 +3,7 @@ import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
 import "package:gql/src/validation/rules/unique_field_definition_names.dart";
+import "package:gql/src/validation/rules/unique_input_field_names.dart";
 import "package:gql/src/validation/rules/unique_operation_types.dart";
 import "package:gql/src/validation/rules/unique_type_names.dart";
 import "package:gql/src/validation/validating_visitor.dart";
@@ -91,7 +92,8 @@ enum ValidationRule {
   uniqueEnumValueNames,
   loneSchemaDefinition,
   uniqueOperationTypes,
-  uniqueTypeNames
+  uniqueTypeNames,
+  uniqueInputFieldNames
 }
 
 ValidatingVisitor _mapRule(ValidationRule rule) {
@@ -108,6 +110,8 @@ ValidatingVisitor _mapRule(ValidationRule rule) {
       return UniqueOperationTypes();
     case ValidationRule.uniqueTypeNames:
       return UniqueTypeNames();
+    case ValidationRule.uniqueInputFieldNames:
+      return UniqueInputFieldNames();
     default:
       return null;
   }
