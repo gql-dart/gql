@@ -12,15 +12,12 @@ class DuplicateInputFieldNameError extends ValidationError {
 
 class UniqueInputFieldNames extends ValidatingVisitor {
   Map<String, NameNode> knownNames = {};
-  List<Map<String, NameNode>> knownNameStack = [];
 
   @override
   List<ValidationError> visitObjectValueNode(ObjectValueNode node) {
-    knownNameStack.add(knownNames);
-    knownNames = {};
+    knownNames.clear();
     final List<ValidationError> errors = [];
     node.fields.forEach((field) => errors.addAll(_visitObjectFieldNode(field)));
-    knownNames = knownNameStack.removeLast();
     return errors;
   }
 
