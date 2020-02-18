@@ -16,10 +16,8 @@ class UniqueArgumentNames extends ValidatingVisitor {
   @override
   List<ValidationError> visitArgumentNode(ArgumentNode node) {
     final argName = node.name.value;
-    if(_knownArgNames.containsKey(argName)) {
-      return [
-        DuplicateArgumentNameError(node: node)
-      ];
+    if (_knownArgNames.containsKey(argName)) {
+      return [DuplicateArgumentNameError(node: node)];
     } else {
       _knownArgNames[argName] = node.name;
     }
