@@ -22,7 +22,6 @@ Builder dataBuilder(
       ),
     );
 
-
 /// Builds operation containing AST and operation name
 Builder opBuilder(
   BuilderOptions options,
