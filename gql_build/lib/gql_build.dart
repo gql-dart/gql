@@ -1,11 +1,8 @@
 import "package:build/build.dart";
 import "package:gql_build/src/ast_builder.dart";
 import "package:gql_build/src/data_builder.dart";
-import "package:gql_build/src/enum_builder.dart";
-import "package:gql_build/src/input_builder.dart";
 import "package:gql_build/src/op_builder.dart";
 import "package:gql_build/src/req_builder.dart";
-import "package:gql_build/src/scalar_builder.dart";
 import "package:gql_build/src/schema_builder.dart";
 import "package:gql_build/src/var_builder.dart";
 
@@ -15,7 +12,7 @@ Builder astBuilder(
 ) =>
     AstBuilder();
 
-// Builds type-safe data viewer
+/// Builds type-safe data viewer
 Builder dataBuilder(
   BuilderOptions options,
 ) =>
@@ -25,17 +22,6 @@ Builder dataBuilder(
       ),
     );
 
-/// Builds enums from GraphQL schema
-Builder enumBuilder(
-  BuilderOptions options,
-) =>
-    EnumBuilder();
-
-/// Builds inputs from GraphQL schema
-Builder inputBuilder(
-  BuilderOptions options,
-) =>
-    InputBuilder();
 
 /// Builds operation containing AST and operation name
 Builder opBuilder(
@@ -66,12 +52,6 @@ Builder varBuilder(
         options.config["schema"] as String,
       ),
     );
-
-/// Builds scalars from GraphQL schema
-Builder scalarBuilder(
-  BuilderOptions options,
-) =>
-    ScalarBuilder();
 
 /// Builds GraphQL schema types
 Builder schemaBuilder(

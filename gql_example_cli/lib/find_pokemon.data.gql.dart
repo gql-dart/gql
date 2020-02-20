@@ -1,4 +1,4 @@
-import 'package:gql_example_cli/fragments.gql.dart' as _i1;
+import 'package:gql_example_cli/dimensions.data.gql.dart' as _i1;
 
 class $FindPokemon {
   const $FindPokemon(this.data);

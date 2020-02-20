@@ -29,24 +29,6 @@ builders:
     build_extensions: { ".graphql": [".var.gql.dart"] }
     auto_apply: none
     build_to: source
-  enum_builder:
-    import: "package:gql_build/gql_build.dart"
-    builder_factories: ["enumBuilder"]
-    build_extensions: { ".graphql": [".enum.gql.dart"] }
-    auto_apply: none
-    build_to: source
-  scalar_builder:
-    import: "package:gql_build/gql_build.dart"
-    builder_factories: ["scalarBuilder"]
-    build_extensions: { ".graphql": [".scalar.gql.dart"] }
-    auto_apply: none
-    build_to: source
-  input_builder:
-    import: "package:gql_build/gql_build.dart"
-    builder_factories: ["inputBuilder"]
-    build_extensions: { ".graphql": [".input.gql.dart"] }
-    auto_apply: none
-    build_to: source
   schema_builder:
     import: "package:gql_build/gql_build.dart"
     builder_factories: ["schemaBuilder"]
