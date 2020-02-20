@@ -11,10 +11,9 @@ jobs:
           - gql_code_builder
           - gql_exec
           - gql_link
-          - gql_dedup_link
+          - gql_dedupe_link
           - gql_http_link
           - gql_link
-          - gql_pedantic
           - gql_transform_link
           - multipack
           - cats
@@ -33,7 +32,7 @@ jobs:
           pub get
           cd ../
           dart ./multipack/bin/main.dart pubspec hard_override
-      - name: Get ${{ matrix.package }} dependencies
+      - name: Get dependencies
         run: |
           cd $PACKAGE
           pub get
