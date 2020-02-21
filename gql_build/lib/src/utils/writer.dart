@@ -19,8 +19,8 @@ Future<void> writeDocument(
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter(
       _GqlAllocator(
+        buildStep.inputId.uri.toString(),
         generatedAsset.uri.toString(),
-        extension,
       ),
     ),
   )}");
@@ -34,14 +34,15 @@ Future<void> writeDocument(
 class _GqlAllocator implements Allocator {
   static const _doNotPrefix = ["dart:core"];
 
-  final _imports = <String, int>{};
-  final String extension;
+  final String sourceUrl;
   final String currentUrl;
+
+  final _imports = <String, int>{};
   var _keys = 1;
 
   _GqlAllocator(
+    this.sourceUrl,
     this.currentUrl,
-    this.extension,
   );
 
   @override
@@ -52,9 +53,31 @@ class _GqlAllocator implements Allocator {
       return symbol;
     }
 
-    if (reference.url.endsWith(sourceExtension)) {
-      final replacedUrl =
-          reference.url.replaceAll(RegExp(r".graphql$"), extension);
+    final uri = Uri.parse(reference.url);
+
+    if (uri.path.endsWith(sourceExtension)) {
+      final replacedUrl = uri
+          .replace(
+            path: uri.path.replaceAll(
+              RegExp(r".graphql$"),
+              ".${uri.fragment}.gql.dart",
+            ),
+          )
+          .removeFragment()
+          .toString();
+
+      if (replacedUrl == currentUrl) {
+        return symbol;
+      }
+
+      return "_i${_imports.putIfAbsent(replacedUrl, _nextKey)}.$symbol";
+    }
+
+    if (uri.path.isEmpty && uri.fragment.isNotEmpty) {
+      final replacedUrl = sourceUrl.replaceAll(
+        RegExp(r".graphql$"),
+        ".${uri.fragment}.gql.dart",
+      );
 
       if (replacedUrl == currentUrl) {
         return symbol;

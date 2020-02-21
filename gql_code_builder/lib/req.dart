@@ -5,8 +5,6 @@ import "package:gql_code_builder/source.dart";
 Library buildReqLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
-  String opDocUrl,
-  String varDocUrl,
 ) =>
     Library(
       (b) => b.body
@@ -14,8 +12,6 @@ Library buildReqLibrary(
           buildOperationReqClasses(
             docSource.flatDocument,
             schemaSource.flatDocument,
-            opDocUrl,
-            varDocUrl,
           ),
         ),
     );

@@ -19,7 +19,12 @@ Library buildAstLibrary(
         [],
         {
           "definitions": literalList(
-            source.getRefs(),
+            source.getRefs().map(
+                  (ref) => Reference(
+                    ref.symbol,
+                    ref.url + "#ast",
+                  ),
+                ),
           ),
         },
       )

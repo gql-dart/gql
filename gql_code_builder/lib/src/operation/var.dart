@@ -6,7 +6,6 @@ import "package:gql_code_builder/src/common.dart";
 List<Class> buildOperationVarClasses(
   DocumentNode doc,
   DocumentNode schema,
-  String schemaUrl,
 ) =>
     doc.definitions
         .whereType<OperationDefinitionNode>()
@@ -14,7 +13,6 @@ List<Class> buildOperationVarClasses(
           (op) => _buildOperationVarClass(
             op,
             schema,
-            schemaUrl,
           ),
         )
         .toList();
@@ -22,7 +20,6 @@ List<Class> buildOperationVarClasses(
 Class _buildOperationVarClass(
   OperationDefinitionNode node,
   DocumentNode schema,
-  String schemaUrl,
 ) =>
     Class(
       (b) => b
@@ -47,21 +44,18 @@ Class _buildOperationVarClass(
         ..methods = _buildSetters(
           node.variableDefinitions,
           schema,
-          schemaUrl,
         ),
     );
 
 ListBuilder<Method> _buildSetters(
   List<VariableDefinitionNode> nodes,
   DocumentNode schema,
-  String schemaUrl,
 ) =>
     ListBuilder<Method>(
       nodes.map<Method>(
         (VariableDefinitionNode node) => _buildSetter(
           node,
           schema,
-          schemaUrl,
         ),
       ),
     );
@@ -69,7 +63,6 @@ ListBuilder<Method> _buildSetters(
 Method _buildSetter(
   VariableDefinitionNode node,
   DocumentNode schema,
-  String schemaUrl,
 ) {
   final unwrappedTypeNode = _unwrapTypeNode(node.type);
   final typeName = unwrappedTypeNode.name.value;
@@ -80,7 +73,7 @@ Method _buildSetter(
 
   final typeMap = {
     ...defaultTypeMap,
-    if (argTypeDef != null) typeName: refer(typeName, schemaUrl),
+    if (argTypeDef != null) typeName: refer(typeName, "#schema"),
   };
 
   final argType = typeRef(

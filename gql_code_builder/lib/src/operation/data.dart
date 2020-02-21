@@ -137,13 +137,13 @@ List<Class> _buildSelectionSetDataClasses({
       (b) => b
         ..name = name
         ..implements = ListBuilder(
-            superclassSelections.keys.map<Reference>((superName) => refer(
-                  superName,
-                  superclassSelections[superName]
-                      .url
-                      // TODO: remove the hard-coded string
-                      ?.replaceAll(RegExp(r".graphql$"), ".data.gql.dart"),
-                )))
+          superclassSelections.keys.map<Reference>(
+            (superName) => refer(
+              superName,
+              superclassSelections[superName].url + "#data",
+            ),
+          ),
+        )
         ..constructors = _buildConstructors(
           name,
           selections.whereType<InlineFragmentNode>().toList(),
@@ -182,25 +182,25 @@ List<Class> _buildSelectionSetDataClasses({
             ),
           ),
         ),
-    ...selections
-        .whereType<InlineFragmentNode>()
-        .expand((inlineFragment) => _buildSelectionSetDataClasses(
-              name: "$name\$as${inlineFragment.typeCondition.on.name.value}",
-              selections: _mergeSelections(
-                [
-                  ...selections.whereType<FieldNode>(),
-                  ...selections.whereType<FragmentSpreadNode>(),
-                  ...inlineFragment.selectionSet.selections,
-                ],
-                fragmentMap,
-              ),
-              fragmentMap: fragmentMap,
-              schemaSource: schemaSource,
-              type: inlineFragment.typeCondition.on.name.value,
-              superclassSelections: {
-                name: _SourceSelections(url: null, selections: selections)
-              },
-            ))
+    ...selections.whereType<InlineFragmentNode>().expand(
+          (inlineFragment) => _buildSelectionSetDataClasses(
+            name: "$name\$as${inlineFragment.typeCondition.on.name.value}",
+            selections: _mergeSelections(
+              [
+                ...selections.whereType<FieldNode>(),
+                ...selections.whereType<FragmentSpreadNode>(),
+                ...inlineFragment.selectionSet.selections,
+              ],
+              fragmentMap,
+            ),
+            fragmentMap: fragmentMap,
+            schemaSource: schemaSource,
+            type: inlineFragment.typeCondition.on.name.value,
+            superclassSelections: {
+              name: _SourceSelections(url: null, selections: selections)
+            },
+          ),
+        ),
   ];
 }
 
@@ -273,25 +273,30 @@ Map<String, _SourceSelections> _fragmentSelectionsForField(
   Map<String, _SourceSelections> fragmentMap,
   FieldNode field,
 ) =>
-    {
-      for (var entry in fragmentMap.entries)
-        for (var selection
-            in entry.value.selections.whereType<FieldNode>().where(
+    Map.fromEntries(
+      fragmentMap.entries.expand(
+        (entry) => entry.value.selections.whereType<FieldNode>().where(
           (selection) {
+            if (selection.selectionSet == null) return false;
+
             final selectionKey = selection.alias?.value ?? selection.name.value;
             final fieldKey = field.alias?.value ?? field.name.value;
 
             return selectionKey == fieldKey;
           },
-        ))
-          if (selection.selectionSet != null)
-            "${entry.key}\$${field.alias?.value ?? field.name.value}":
-                _SourceSelections(
-                    url: entry.value.url,
-                    selections: selection.selectionSet.selections
-                        .whereType<FieldNode>()
-                        .toList())
-    };
+        ).map(
+          (selection) => MapEntry(
+            "${entry.key}\$${field.alias?.value ?? field.name.value}",
+            _SourceSelections(
+              url: entry.value.url,
+              selections: selection.selectionSet.selections
+                  .whereType<FieldNode>()
+                  .toList(),
+            ),
+          ),
+        ),
+      ),
+    );
 
 ListBuilder<Field> _buildFields() => ListBuilder<Field>(
       <Field>[
@@ -315,27 +320,35 @@ ListBuilder<Constructor> _buildConstructors(
         Constructor(
           (b) => b
             ..name = inlineFragments.isEmpty ? null : "fromData"
-            ..requiredParameters.add(Parameter(
-              (b) => b
-                ..name = "data"
-                ..toThis = true,
-            ))
+            ..requiredParameters.add(
+              Parameter(
+                (b) => b
+                  ..name = "data"
+                  ..toThis = true,
+              ),
+            )
             ..constant = true,
         ),
         if (inlineFragments.isNotEmpty)
           Constructor(
             (b) => b
               ..factory = true
-              ..requiredParameters.add(Parameter((b) => b..name = "data"))
-              ..body = Code([
-                "switch (data['__typename']) {",
-                ...inlineFragments.map((inlineFragment) => """
+              ..requiredParameters.add(
+                Parameter(
+                  (b) => b..name = "data",
+                ),
+              )
+              ..body = Code(
+                [
+                  "switch (data['__typename']) {",
+                  ...inlineFragments.map((inlineFragment) => """
                   case "${inlineFragment.typeCondition.on.name.value}":
                     return ${'$name\$as${inlineFragment.typeCondition.on.name.value}'}(data);
                 """),
-                "default: return $name.fromData(data); }"
-              ].join()),
-          )
+                  "default: return $name.fromData(data); }"
+                ].join(),
+              ),
+          ),
       ],
     );
 
@@ -389,8 +402,7 @@ Method _buildGetter(
       else if (fieldTypeDef != null)
         typeName: refer(
           typeName,
-          // TODO: remove the hard-coded string
-          schemaSource.url.replaceAll(RegExp(r".graphql$"), ".schema.gql.dart"),
+          schemaSource.url + "#schema",
         )
     };
 

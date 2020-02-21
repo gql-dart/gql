@@ -26,7 +26,6 @@ class VarBuilder implements Builder {
     final library = buildVarLibrary(
       doc,
       schema,
-      schemaId.changeExtension(schemaExtension).uri.toString(),
     );
 
     return writeDocument(

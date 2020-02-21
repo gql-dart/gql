@@ -26,11 +26,7 @@ Builder dataBuilder(
 Builder opBuilder(
   BuilderOptions options,
 ) =>
-    OpBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
+    OpBuilder();
 
 /// Builds GraphQL type-safe request builder
 Builder reqBuilder(

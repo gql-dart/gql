@@ -5,7 +5,6 @@ import "package:gql_code_builder/source.dart";
 Library buildVarLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
-  String schemaUrl,
 ) =>
     Library(
       (b) => b.body
@@ -13,7 +12,6 @@ Library buildVarLibrary(
           buildOperationVarClasses(
             docSource.flatDocument,
             schemaSource.flatDocument,
-            schemaUrl,
           ),
         ),
     );
