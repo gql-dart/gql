@@ -1,5 +1,0 @@
-name: 'Dart test'
-description: 'Lints and tests dart package'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
