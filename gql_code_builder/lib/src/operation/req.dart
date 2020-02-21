@@ -5,8 +5,6 @@ import "package:gql/ast.dart";
 List<Class> buildOperationReqClasses(
   DocumentNode doc,
   DocumentNode schema,
-  String opDocUrl,
-  String varDocUrl,
 ) =>
     doc.definitions
         .whereType<OperationDefinitionNode>()
@@ -14,8 +12,6 @@ List<Class> buildOperationReqClasses(
           (op) => _buildOperationReqClass(
             op,
             schema,
-            opDocUrl,
-            varDocUrl,
           ),
         )
         .toList();
@@ -23,11 +19,9 @@ List<Class> buildOperationReqClasses(
 Class _buildOperationReqClass(
   OperationDefinitionNode node,
   DocumentNode schema,
-  String opDocUrl,
-  String varDocUrl,
 ) {
   final name = node.name.value;
-  final varBuilderRef = refer("${name}VarBuilder", varDocUrl);
+  final varBuilderRef = refer("${name}VarBuilder", "#var");
 
   return Class(
     (b) => b
@@ -64,10 +58,7 @@ Class _buildOperationReqClass(
                   ).call(
                     [],
                     {
-                      "operation": refer(
-                        name,
-                        opDocUrl,
-                      ),
+                      "operation": refer(name, "#op"),
                       "variables": refer("buildVars").call(
                         <Expression>[
                           varBuilderRef.call([]),

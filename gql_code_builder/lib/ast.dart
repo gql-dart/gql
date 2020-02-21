@@ -1,11 +1,13 @@
+import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/ast.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildAstLibrary(
-  DocumentNode doc,
+  SourceNode source,
 ) {
-  final definitions = doc.definitions.map(
+  final definitions = source.document.definitions.map(
     (def) => fromNode(def).assignConst(_getName(def)).statement,
   );
 
@@ -17,11 +19,12 @@ Library buildAstLibrary(
         [],
         {
           "definitions": literalList(
-            doc.definitions.map(
-              (def) => refer(
-                _getName(def),
-              ),
-            ),
+            source.getRefs().map(
+                  (ref) => Reference(
+                    ref.symbol,
+                    ref.url + "#ast",
+                  ),
+                ),
           ),
         },
       )
@@ -29,9 +32,13 @@ Library buildAstLibrary(
       .statement;
 
   return Library(
-    (b) => b.body
-      ..addAll(definitions)
-      ..add(document),
+    (b) => b
+      ..body = ListBuilder<Spec>(
+        <Spec>[
+          ...definitions,
+          document,
+        ],
+      ),
   );
 }
 

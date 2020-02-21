@@ -1,19 +1,17 @@
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:gql_code_builder/src/operation/var.dart";
+import "package:gql_code_builder/source.dart";
 
 Library buildVarLibrary(
-  DocumentNode doc,
-  DocumentNode schema,
-  String schemaUrl,
+  SourceNode docSource,
+  SourceNode schemaSource,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
           buildOperationVarClasses(
-            doc,
-            schema,
-            schemaUrl,
+            docSource.flatDocument,
+            schemaSource.flatDocument,
           ),
         ),
     );
