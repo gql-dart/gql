@@ -1,3 +1,11 @@
+## 0.0.5
+
+- rework builders to be based on `SourceNode` to handle imports
+- combine data and fragment builder
+- no more global fragments file
+- combine schema builders
+- refer to other generated files by using URI fragments
+
 ## 0.0.4
 
 - upgrade `package:gql_pedantic`

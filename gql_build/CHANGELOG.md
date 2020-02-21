@@ -1,3 +1,9 @@
+## 0.0.5
+
+- upgrade `package:gql_code_builder`
+- read source as a tree of `SourceNode`s
+- use allocator to resolve references to other generated files
+
 ## 0.0.4
 
 - upgrade `package:gql_code_gen`
