@@ -1,3 +1,7 @@
+## 0.0.6
+
+- fix nullable url bug
+
 ## 0.0.5
 
 - rework builders to be based on `SourceNode` to handle imports

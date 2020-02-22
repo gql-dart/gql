@@ -1,3 +1,7 @@
+## 0.0.6
+
+- fix nullable url bug
+
 ## 0.0.5
 
 - upgrade `package:gql_code_builder`

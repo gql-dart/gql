@@ -140,7 +140,7 @@ List<Class> _buildSelectionSetDataClasses({
           superclassSelections.keys.map<Reference>(
             (superName) => refer(
               superName,
-              superclassSelections[superName].url + "#data",
+              (superclassSelections[superName].url ?? "") + "#data",
             ),
           ),
         )
