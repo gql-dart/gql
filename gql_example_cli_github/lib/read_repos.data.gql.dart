@@ -1,3 +1,5 @@
+import 'package:gql_example_cli_github/schema.schema.gql.dart' as _i1;
+
 class $ReadRepositories {
   const $ReadRepositories(this.data);
 
@@ -42,4 +44,5 @@ class $ReadRepositories$viewer$repositories$nodes {
   String get id => (data['id'] as String);
   String get name => (data['name'] as String);
   bool get viewerHasStarred => (data['viewerHasStarred'] as bool);
+  _i1.DateTime get createdAt => _i1.DateTime((data['createdAt'] as String));
 }

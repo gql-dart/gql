@@ -5,6 +5,7 @@ query ReadRepositories($nRepositories: Int!) {
         id
         name
         viewerHasStarred
+        createdAt
       }
     }
   }

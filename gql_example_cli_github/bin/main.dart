@@ -45,7 +45,7 @@ void query(
 
   repositories.forEach(
     (repo) {
-      stdout.writeln("Id: ${repo.id} Name: ${repo.name}");
+      stdout.writeln("Id: ${repo.id} Name: ${repo.name} Created at: ${repo.createdAt.value}");
     },
   );
 
