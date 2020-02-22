@@ -2,7 +2,7 @@ name: Dart
 on: pull_request
 
 jobs:
-  ci:
+  packages:
     strategy:
       matrix:
         package:
@@ -40,7 +40,11 @@ jobs:
       - name: Check formatting
         run: |
           cd $PACKAGE
+          echo ""
+          echo "A list of incorrectly formatted files may follow:"
+          echo ""
           dartfmt -n . --set-exit-if-changed
+          echo ""
           cd ..
       - name: Analyze package
         run: |
@@ -53,4 +57,56 @@ jobs:
           cd $PACKAGE
           [ ! -d ./test ] && exit 0
           pub run test
+          cd ..
+  examples:
+    strategy:
+      matrix:
+        package:
+          - gql_example_cli
+          - gql_example_cli_github
+          - gql_example_build
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    name: Check ${{ matrix.package }}
+    env:
+      PACKAGE: ${{ matrix.package }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Override local dependencies
+        run: |
+          cd ./multipack
+          pub get
+          cd ../
+          dart ./multipack/bin/main.dart pubspec hard_override
+      - name: Get dependencies
+        run: |
+          cd $PACKAGE
+          pub get
+          cd ..
+      - name: Run builders
+        run: |
+          cd $PACKAGE
+          pub run build_runner build --delete-conflicting-outputs
+          cd ..
+      - name: Check build diff
+        run: |
+          cd $PACKAGE
+          git diff --exit-code **/*.gql.dart
+          cd ..
+      - name: Check formatting
+        run: |
+          cd $PACKAGE
+          echo ""
+          echo "A list of incorrectly formatted files may follow:"
+          echo ""
+          dartfmt -n . --set-exit-if-changed
+          echo ""
+          cd ..
+      - name: Analyze package
+        run: |
+          cd $PACKAGE
+          dartanalyzer --version
+          dartanalyzer --fatal-warnings --no-hints .
           cd ..
