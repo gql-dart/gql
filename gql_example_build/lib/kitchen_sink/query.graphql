@@ -1,0 +1,43 @@
+query QueryOperation(
+  $id: ID
+  $bool: Boolean
+  $int: Int
+  $float: Float
+  $string: String
+  $scalar: Scalar
+  $enum: Enum
+  $input: Input
+
+  $idRequired: ID!
+  $boolRequired: Boolean!
+  $intRequired: Int!
+  $floatRequired: Float!
+  $stringRequired: String!
+  $scalarRequired: Scalar!
+  $enumRequired: Enum!
+  $inputRequired: Input!
+) {
+  field {
+    id
+    bool
+    int
+    float
+    string
+    scalar
+    enum
+    field {
+      id
+    }
+
+    idRequired
+    boolRequired
+    intRequired
+    floatRequired
+    stringRequired
+    scalarRequired
+    enumRequired
+    fieldRequired {
+      id
+    }
+  }
+}
