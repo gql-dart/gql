@@ -1,0 +1,72 @@
+schema {
+  query: Query
+}
+
+scalar Scalar
+
+enum Enum {
+  ON
+  OFF
+}
+
+input Input {
+  id: ID
+  bool: Boolean
+  int: Int
+  float: Float
+  string: String
+  scalar: Scalar
+  enum: Enum
+  input: Input
+
+  idRequired: ID!
+  boolRequired: Boolean!
+  intRequired: Int!
+  floatRequired: Float!
+  stringRequired: String!
+  scalarRequired: Scalar!
+  enumRequired: Enum!
+  inputRequired: Input!
+}
+
+type Field {
+  id: ID
+  bool: Boolean
+  int: Int
+  float: Float
+  string: String
+  scalar: Scalar
+  enum: Enum
+  field: Field
+
+  idRequired: ID!
+  boolRequired: Boolean!
+  intRequired: Int!
+  floatRequired: Float!
+  stringRequired: String!
+  scalarRequired: Scalar!
+  enumRequired: Enum!
+  fieldRequired: Field!
+}
+
+type Query {
+  field(
+    id: ID
+    bool: Boolean
+    int: Int
+    float: Float
+    string: String
+    scalar: Scalar
+    enum: Enum
+    input: Input
+
+    idRequired: ID!
+    boolRequired: Boolean!
+    intRequired: Int!
+    floatRequired: Float!
+    stringRequired: String!
+    scalarRequired: Scalar!
+    enumRequired: Enum!
+    inputRequired: Input!
+  ): Field
+}
