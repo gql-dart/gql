@@ -73,7 +73,7 @@ Method _buildSetter(
 
   final typeMap = {
     ...defaultTypeMap,
-    if (argTypeDef != null) typeName: refer(typeName, "#schema"),
+    if (argTypeDef != null) typeName: refer(identifier(typeName), "#schema"),
   };
 
   final argType = typeRef(
@@ -87,7 +87,7 @@ Method _buildSetter(
 
   return Method(
     (b) => b
-      ..name = node.variable.name.value
+      ..name = identifier(node.variable.name.value)
       ..type = MethodType.setter
       ..requiredParameters = ListBuilder<Parameter>(
         <Parameter>[
