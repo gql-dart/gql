@@ -662,7 +662,7 @@ class _Parser {
       _expectOptionalToken(TokenKind.amp);
       do {
         types.add(_parseNamedType());
-      } while (_expectOptionalToken(TokenKind.amp) != null);
+      } while (!_peek(TokenKind.braceL));
     }
 
     return types;
