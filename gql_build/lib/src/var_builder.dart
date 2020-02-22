@@ -32,6 +32,7 @@ class VarBuilder implements Builder {
       library,
       buildStep,
       varExtension,
+      schemaId.changeExtension(schemaExtension).uri.toString(),
     );
   }
 }

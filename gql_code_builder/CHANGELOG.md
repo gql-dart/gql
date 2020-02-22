@@ -1,3 +1,7 @@
+## 0.0.7
+
+- fix schema url bug
+
 ## 0.0.6
 
 - fix nullable url bug

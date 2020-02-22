@@ -33,6 +33,7 @@ class DataBuilder implements Builder {
       library,
       buildStep,
       dataExtension,
+      schemaId.changeExtension(schemaExtension).uri.toString(),
     );
   }
 }
