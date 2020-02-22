@@ -10,8 +10,9 @@ final DartFormatter _dartfmt = DartFormatter();
 Future<void> writeDocument(
   Library library,
   BuildStep buildStep,
-  String extension,
-) {
+  String extension, [
+  String schemaUrl,
+]) {
   if (library.body.isEmpty) return null;
 
   final generatedAsset = buildStep.inputId.changeExtension(extension);
@@ -21,6 +22,7 @@ Future<void> writeDocument(
       _GqlAllocator(
         buildStep.inputId.uri.toString(),
         generatedAsset.uri.toString(),
+        schemaUrl,
       ),
     ),
   )}");
@@ -36,6 +38,7 @@ class _GqlAllocator implements Allocator {
 
   final String sourceUrl;
   final String currentUrl;
+  final String schemaUrl;
 
   final _imports = <String, int>{};
   var _keys = 1;
@@ -43,6 +46,7 @@ class _GqlAllocator implements Allocator {
   _GqlAllocator(
     this.sourceUrl,
     this.currentUrl,
+    this.schemaUrl,
   );
 
   @override
@@ -74,10 +78,12 @@ class _GqlAllocator implements Allocator {
     }
 
     if (uri.path.isEmpty && uri.fragment.isNotEmpty) {
-      final replacedUrl = sourceUrl.replaceAll(
-        RegExp(r".graphql$"),
-        ".${uri.fragment}.gql.dart",
-      );
+      final replacedUrl = uri.fragment == "schema"
+          ? schemaUrl
+          : sourceUrl.replaceAll(
+              RegExp(r".graphql$"),
+              ".${uri.fragment}.gql.dart",
+            );
 
       if (replacedUrl == currentUrl) {
         return symbol;

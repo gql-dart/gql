@@ -32,11 +32,7 @@ Builder opBuilder(
 Builder reqBuilder(
   BuilderOptions options,
 ) =>
-    ReqBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-    );
+    ReqBuilder();
 
 /// Builds GraphQL type-safe variables builder
 Builder varBuilder(

@@ -8,12 +8,6 @@ import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/req.dart";
 
 class ReqBuilder implements Builder {
-  final AssetId schemaId;
-
-  ReqBuilder(
-    this.schemaId,
-  );
-
   @override
   Map<String, List<String>> get buildExtensions => {
         sourceExtension: [reqExtension],
@@ -22,11 +16,9 @@ class ReqBuilder implements Builder {
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final doc = await readDocument(buildStep);
-    final schema = await readDocument(buildStep, schemaId);
 
     final library = buildReqLibrary(
       doc,
-      schema,
     );
 
     return writeDocument(

@@ -4,14 +4,12 @@ import "package:gql_code_builder/source.dart";
 
 Library buildReqLibrary(
   SourceNode docSource,
-  SourceNode schemaSource,
 ) =>
     Library(
       (b) => b.body
         ..addAll(
           buildOperationReqClasses(
             docSource.flatDocument,
-            schemaSource.flatDocument,
           ),
         ),
     );
