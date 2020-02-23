@@ -1,6 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/common.dart";
 
 List<Class> buildScalarClasses(
   DocumentNode doc,
@@ -15,12 +16,12 @@ Class buildScalarClass(
 ) =>
     Class(
       (b) => b
-        ..name = "${node.name.value}"
-        ..constructors = _buildConstructors(node.name.value)
+        ..name = identifier(node.name.value)
+        ..constructors = _buildConstructors(identifier(node.name.value))
         ..fields = _buildFields(
-          node.name.value,
+          identifier(node.name.value),
         )
-        ..methods = _buildMethods(node.name.value),
+        ..methods = _buildMethods(identifier(node.name.value)),
     );
 
 ListBuilder<Constructor> _buildConstructors(

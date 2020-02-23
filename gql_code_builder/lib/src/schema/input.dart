@@ -22,7 +22,7 @@ Class buildInputClass(
 ) =>
     Class(
       (b) => b
-        ..name = "${node.name.value}"
+        ..name = identifier(node.name.value)
         ..fields = ListBuilder<Field>(
           <Field>[
             Field(
@@ -72,7 +72,7 @@ Method _buildSetter(
 
   final typeMap = {
     ...defaultTypeMap,
-    if (argTypeDef != null) typeName: refer(typeName),
+    if (argTypeDef != null) typeName: refer(identifier(typeName)),
   };
 
   final argType = typeRef(
@@ -86,7 +86,7 @@ Method _buildSetter(
 
   return Method(
     (b) => b
-      ..name = node.name.value
+      ..name = identifier(node.name.value)
       ..type = MethodType.setter
       ..requiredParameters = ListBuilder<Parameter>(
         <Parameter>[

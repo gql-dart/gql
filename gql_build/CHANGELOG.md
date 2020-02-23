@@ -1,3 +1,7 @@
+## 0.0.8
+
+- escape reserved and private names
+
 ## 0.0.7
 
 - fix schema url bug

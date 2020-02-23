@@ -1,6 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/common.dart";
 
 List<Class> buildEnumClasses(
   DocumentNode doc,
@@ -15,13 +16,13 @@ Class buildEnumClass(
 ) =>
     Class(
       (b) => b
-        ..name = "${node.name.value}"
-        ..constructors = _buildConstructors(node.name.value)
+        ..name = identifier(node.name.value)
+        ..constructors = _buildConstructors(identifier(node.name.value))
         ..fields = _buildFields(
           node.values,
-          node.name.value,
+          identifier(node.name.value),
         )
-        ..methods = _buildMethods(node.name.value),
+        ..methods = _buildMethods(identifier(node.name.value)),
     );
 
 ListBuilder<Constructor> _buildConstructors(
@@ -122,7 +123,7 @@ Field _buildConst(
         ..static = true
         ..modifier = FieldModifier.constant
         ..type = refer(enumName)
-        ..name = node.name.value
+        ..name = identifier(node.name.value)
         ..assignment = refer(enumName).call([
           literalString(node.name.value),
         ]).code,
