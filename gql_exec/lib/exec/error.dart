@@ -3,7 +3,7 @@ import "package:meta/meta.dart";
 
 /// GraphQL Error returned if execution fails
 @immutable
-class GraphQLError {
+class GraphQLError implements Exception {
   /// Error message
   final String message;
 
