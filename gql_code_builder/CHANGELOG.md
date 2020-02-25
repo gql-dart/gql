@@ -1,3 +1,7 @@
+## 0.0.9
+
+- remove duplicate ast imports
+
 ## 0.0.8
 
 - escape reserved and private names
