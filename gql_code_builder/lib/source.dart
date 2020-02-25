@@ -24,7 +24,7 @@ class SourceNode {
         ],
       );
 
-  List<Reference> getRefs() => [
+  Set<Reference> getRefs() => {
         ...document.definitions.map(
           (definition) => Reference(
             _getName(definition),
@@ -34,7 +34,7 @@ class SourceNode {
         ...imports.expand(
           (import) => import.getRefs(),
         ),
-      ];
+      };
 }
 
 String _getName(DefinitionNode def) {
