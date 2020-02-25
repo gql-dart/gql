@@ -1,3 +1,7 @@
+## 0.0.9
+
+- add `__typename` field to interface and object types
+
 ## 0.0.8
 
 - escape reserved and private names
