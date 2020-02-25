@@ -1,0 +1,13 @@
+query Shape {
+  shape {
+    __typename
+    area
+    ... on Square {
+      sideLength
+    }
+    ... on Rectangle {
+      sideLengthA
+      sideLengthB
+    }
+  }
+}
