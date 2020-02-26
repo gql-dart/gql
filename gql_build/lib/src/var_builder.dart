@@ -2,6 +2,7 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:gql_build/src/config.dart";
+import "package:gql_build/src/utils/add_introspection.dart";
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/var.dart";
@@ -25,7 +26,7 @@ class VarBuilder implements Builder {
 
     final library = buildVarLibrary(
       doc,
-      schema,
+      addTypenames(schema),
     );
 
     return writeDocument(
