@@ -1,3 +1,7 @@
+## 0.0.10
+
+- remove duplicate ast imports
+
 ## 0.0.9
 
 - add `__typename` field to interface and object types
