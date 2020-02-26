@@ -220,6 +220,63 @@ const Field = _i1.ObjectTypeDefinitionNode(
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Field'), isNonNull: true))
     ]);
+const Shape = _i1.InterfaceTypeDefinitionNode(
+    name: _i1.NameNode(value: 'Shape'),
+    directives: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'area'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false))
+    ]);
+const Square = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'Square'),
+    directives: [],
+    interfaces: [
+      _i1.NamedTypeNode(name: _i1.NameNode(value: 'Shape'), isNonNull: false)
+    ],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'area'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'sideLength'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false))
+    ]);
+const Rectangle = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'Rectangle'),
+    directives: [],
+    interfaces: [
+      _i1.NamedTypeNode(name: _i1.NameNode(value: 'Shape'), isNonNull: false)
+    ],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'area'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'sideLengthA'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'sideLengthB'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false))
+    ]);
 const Query = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'Query'),
     directives: [],
@@ -327,7 +384,22 @@ const Query = _i1.ObjectTypeDefinitionNode(
                 defaultValue: null)
           ],
           type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'Field'), isNonNull: false))
+              name: _i1.NameNode(value: 'Field'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'shape'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Shape'), isNonNull: false))
     ]);
-const document =
-    _i1.DocumentNode(definitions: [schema, Scalar, Enum, Input, Field, Query]);
+const document = _i1.DocumentNode(definitions: [
+  schema,
+  Scalar,
+  Enum,
+  Input,
+  Field,
+  Shape,
+  Square,
+  Rectangle,
+  Query
+]);
