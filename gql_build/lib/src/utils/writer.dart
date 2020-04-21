@@ -29,7 +29,7 @@ Future<void> writeDocument(
 
   return buildStep.writeAsString(
     generatedAsset,
-    genSrc,
+    "// GENERATED CODE - DO NOT MODIFY BY HAND\n\n" + genSrc,
   );
 }
 
