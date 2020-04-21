@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:gql_example_cli/dimensions.data.gql.dart' as _i1;
 
 class $FindPokemon {
