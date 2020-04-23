@@ -1,12 +1,15 @@
-// import "package:built_collection/built_collection.dart";
+import "dart:collection";
+
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 
-import "./defaults.dart";
+import "package:gql/src/schema/defaults.dart";
 
-import "./definitions.dart";
-export "./definitions.dart";
+import "package:gql/src/schema/definitions.dart";
 
+/// Adds a level of relational knowledge and helpers to a predefined AST GraphQL schema
+///
+/// https://spec.graphql.org/draft/#sec-Schema
 @immutable
 class GraphQLSchema extends TypeSystemDefinition {
   const GraphQLSchema(
@@ -23,6 +26,7 @@ class GraphQLSchema extends TypeSystemDefinition {
 
   final List<DirectiveDefinition> directives;
 
+  /// Definition for the given directive [name], if any exists
   DirectiveDefinition getDirective(String name) => directives.firstWhere(
         (d) => d.name == name,
         orElse: () => null,
@@ -32,8 +36,8 @@ class GraphQLSchema extends TypeSystemDefinition {
       astNode.operationTypes.map(OperationTypeDefinition.fromNode).toList();
 
   /// Map of name => [TypeDefinition]
-  /// TODO saturating types with awareness before they make it to the end user is important
-  final BuiltMap<String, TypeDefinition> typeMap;
+  // TODO saturating types with awareness before they make it to the end user is important
+  final Map<String, TypeDefinition> typeMap;
 
   /// Adds a type resolver to top-level
   TypeDefinition _withAwareness(TypeDefinition definition) =>
@@ -45,11 +49,11 @@ class GraphQLSchema extends TypeSystemDefinition {
       _withAwareness(typeMap[name]) as ObjectTypeDefinition;
 
   Iterable<TypeDefinition> get _allTypeDefinitions =>
-      BuiltSet<TypeDefinition>(typeMap.values).map(_withAwareness);
+      LinkedHashSet<TypeDefinition>.from(typeMap.values).map(_withAwareness);
 
-  ObjectTypeDefinition get query => _getObjectType('query');
-  ObjectTypeDefinition get mutation => _getObjectType('mutation');
-  ObjectTypeDefinition get subscription => _getObjectType('subscription');
+  ObjectTypeDefinition get query => _getObjectType("query");
+  ObjectTypeDefinition get mutation => _getObjectType("mutation");
+  ObjectTypeDefinition get subscription => _getObjectType("subscription");
 
   List<InterfaceTypeDefinition> get interaces =>
       _getAll<InterfaceTypeDefinition>();
@@ -76,7 +80,7 @@ class GraphQLSchema extends TypeSystemDefinition {
     if (abstractType is InterfaceTypeDefinition) {
       return objectTypes.where(abstractType.isImplementedBy).toList();
     }
-    throw ArgumentError('$abstractType is unsupported');
+    throw ArgumentError("$abstractType is unsupported");
   }
 
   final isPossibleType = AbstractType.isPossibleType;
@@ -142,7 +146,7 @@ GraphQLSchema buildSchema(
     typeMap: {
       ...typeMap,
       ..._operationTypeMap(typeMap, schemaDef),
-    }.build(),
+    },
     directives: directives,
   );
 }
@@ -167,9 +171,9 @@ Map<OperationType, String> _getOperationTypeNames(
     [SchemaDefinitionNode schema]) {
   if (schema == null) {
     return {
-      OperationType.query: 'Query',
-      OperationType.mutation: 'Mutation',
-      OperationType.subscription: 'Subscription',
+      OperationType.query: "Query",
+      OperationType.mutation: "Mutation",
+      OperationType.subscription: "Subscription",
     };
   }
 

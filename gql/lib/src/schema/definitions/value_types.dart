@@ -13,6 +13,7 @@
 // * DefaultValue
 part of "definitions.dart";
 
+/// A literal value type
 @immutable
 abstract class Value extends GraphQLEntity {
   const Value();
