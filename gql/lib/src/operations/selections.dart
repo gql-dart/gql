@@ -1,4 +1,4 @@
-part of 'definitions.dart';
+part of "definitions.dart";
 
 @immutable
 class SelectionSet extends ExecutableWithResolver {

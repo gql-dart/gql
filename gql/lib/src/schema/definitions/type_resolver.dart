@@ -1,4 +1,4 @@
-part of 'definitions.dart';
+part of "definitions.dart";
 
 /// Callback to dereference a type name into it's material version
 typedef ResolveType = TypeDefinition Function(String name);
@@ -27,5 +27,6 @@ abstract class TypeResolver {
   }
 
   static TypeDefinition withoutContext(String name) => throw StateError(
-      'Cannot resolve type $name in a context without a type resolver!');
+        "Cannot resolve type $name in a context without a type resolver!",
+      );
 }

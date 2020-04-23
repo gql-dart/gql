@@ -9,26 +9,26 @@
 // * InterfaceTypeDefinition
 // * ObjectTypeDefinition
 // * UnionTypeDefinition
-import 'package:major_graphql_generator/src/schema/defaults.dart';
-import 'package:meta/meta.dart';
-import 'package:gql/ast.dart';
-import 'package:gql/language.dart';
+import "package:gql/src/schema/defaults.dart";
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
+import "package:gql/language.dart";
 
-part 'base_types.dart';
-part 'value_types.dart';
-part 'type_resolver.dart';
+part "base_types.dart";
+part "value_types.dart";
+part "type_resolver.dart";
 
 extension WithTypeName on OperationType {
   String get name {
     switch (this) {
       case OperationType.query:
-        return 'query';
+        return "query";
       case OperationType.mutation:
-        return 'mutation';
+        return "mutation";
       case OperationType.subscription:
-        return 'subscription';
+        return "subscription";
     }
-    throw StateError('Impossible OperationType $this');
+    throw StateError("Impossible OperationType $this");
   }
 }
 

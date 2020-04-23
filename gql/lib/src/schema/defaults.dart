@@ -1,8 +1,8 @@
 // TODO this module is not really written for actual server usage atm, so these are broken
-import 'package:meta/meta.dart';
-import 'package:gql/ast.dart';
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
 
-import './definitions/definitions.dart';
+import "./definitions/definitions.dart";
 
 @immutable
 class _BuiltInFieldDefinition extends FieldDefinition {

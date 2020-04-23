@@ -1,4 +1,4 @@
-part of 'definitions.dart';
+part of "definitions.dart";
 
 /// Callback to dereference a type name into it's material version
 typedef ResolveFragment = FragmentDefinition Function(String name);
@@ -20,7 +20,8 @@ class GetExecutableType {
 
   static FragmentDefinition _fragmentWithoutContext(String name) =>
       throw StateError(
-          'Cannot resolve fragment $name in a context without a fragment resolver!');
+        "Cannot resolve fragment $name in a context without a fragment resolver!",
+      );
 }
 
 abstract class ExecutableTypeResolver {

@@ -1,11 +1,11 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:meta/meta.dart';
-import 'package:gql/ast.dart';
-import 'package:major_graphql_generator/src/schema/definitions/definitions.dart';
+//import "package:built_collection/built_collection.dart";
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
+import "package:gql/src/schema/definitions/definitions.dart";
 
-import './definitions.dart';
+import "./definitions.dart";
 
-export './definitions.dart';
+export "./definitions.dart";
 
 @immutable
 class ExecutableDocument extends ExecutableWithResolver {

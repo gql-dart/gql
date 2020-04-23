@@ -7,7 +7,7 @@
 // * Directive
 // * TypeSystemDefinition
 // * TypeDefinition
-part of 'definitions.dart';
+part of "definitions.dart";
 
 @immutable
 abstract class GraphQLEntity {
@@ -31,7 +31,7 @@ mixin AbstractType on TypeDefinition {
       return objectType.interfaceNames.contains(abstractType.name);
     }
 
-    throw ArgumentError('$abstractType is unsupported');
+    throw ArgumentError("$abstractType is unsupported");
   }
 }
 
@@ -56,7 +56,7 @@ abstract class GraphQLType extends GraphQLEntity {
     if (astNode is ListTypeNode) {
       return ListType(astNode, getType);
     }
-    throw ArgumentError('$astNode is unsupported');
+    throw ArgumentError("$astNode is unsupported");
   }
 }
 
@@ -178,27 +178,27 @@ abstract class TypeDefinition extends TypeSystemDefinition {
 
   static TypeDefinition fromNode(TypeDefinitionNode node) {
     if (node is ScalarTypeDefinitionNode) {
-      return ScalarTypeDefinition.fromNode(node);
+      return ScalarTypeDefinition(node);
     }
 
     if (node is InterfaceTypeDefinitionNode) {
-      return InterfaceTypeDefinition.fromNode(node);
+      return InterfaceTypeDefinition(node);
     }
 
     if (node is ObjectTypeDefinitionNode) {
-      return ObjectTypeDefinition.fromNode(node);
+      return ObjectTypeDefinition(node);
     }
 
     if (node is UnionTypeDefinitionNode) {
-      return UnionTypeDefinition.fromNode(node);
+      return UnionTypeDefinition(node);
     }
 
     if (node is EnumTypeDefinitionNode) {
-      return EnumTypeDefinition.fromNode(node);
+      return EnumTypeDefinition(node);
     }
 
     if (node is InputObjectTypeDefinitionNode) {
-      return InputObjectTypeDefinition.fromNode(node);
+      return InputObjectTypeDefinition(node);
     }
 
     /* 
@@ -209,6 +209,6 @@ abstract class TypeDefinition extends TypeSystemDefinition {
     }
     */
 
-    throw ArgumentError('$node is unsupported');
+    throw ArgumentError("$node is unsupported");
   }
 }

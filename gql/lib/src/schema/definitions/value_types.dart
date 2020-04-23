@@ -10,7 +10,7 @@
 // * ObjectField<Value>
 // * ObjectValue
 // * DefaultValue
-part of 'definitions.dart';
+part of "definitions.dart";
 
 @immutable
 abstract class Value extends GraphQLEntity {
@@ -21,32 +21,32 @@ abstract class Value extends GraphQLEntity {
 
   static Value fromNode(ValueNode node) {
     if (node is IntValueNode) {
-      return IntValue.fromNode(node);
+      return IntValue(node);
     }
 
     if (node is FloatValueNode) {
-      return FloatValue.fromNode(node);
+      return FloatValue(node);
     }
     if (node is StringValueNode) {
-      return StringValue.fromNode(node);
+      return StringValue(node);
     }
     if (node is BooleanValueNode) {
-      return BooleanValue.fromNode(node);
+      return BooleanValue(node);
     }
     if (node is NullValueNode) {
-      return NullValue.fromNode(node);
+      return NullValue(node);
     }
     if (node is EnumValueNode) {
-      return EnumValue.fromNode(node);
+      return EnumValue(node);
     }
     if (node is ListValueNode) {
-      return ListValue.fromNode(node);
+      return ListValue(node);
     }
     if (node is ObjectValueNode) {
-      return ObjectValue.fromNode(node);
+      return ObjectValue(node);
     }
 
-    throw ArgumentError('$node is unsupported');
+    throw ArgumentError("$node is unsupported");
   }
 }
 

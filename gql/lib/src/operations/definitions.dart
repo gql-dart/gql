@@ -1,9 +1,9 @@
-import 'package:meta/meta.dart';
-import 'package:gql/ast.dart';
-import 'package:major_graphql_generator/src/schema/definitions/definitions.dart';
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
+import "package:gql/src/schema/definitions/definitions.dart";
 
-part 'selections.dart';
-part 'type_resolver.dart';
+part "selections.dart";
+part "type_resolver.dart";
 
 @immutable
 abstract class ExecutableGraphQLEntity extends GraphQLEntity {
@@ -42,7 +42,7 @@ abstract class ExecutableDefinition extends ExecutableWithResolver {
       return FragmentDefinition.fromNode(astNode, getType);
     }
 
-    throw ArgumentError('$astNode is unsupported');
+    throw ArgumentError("$astNode is unsupported");
   }
 }
 
