@@ -31,10 +31,10 @@ class _BuiltInFieldDefinition extends FieldDefinition {
 }
 
 const typeNameField = _BuiltInFieldDefinition(
-  name: '__typename',
+  name: "__typename",
   type: NamedType(
     NamedTypeNode(
-      name: NameNode(value: 'String'),
+      name: NameNode(value: "String"),
       isNonNull: true,
     ),
   ),
@@ -94,14 +94,14 @@ class _BuiltInDirective extends DirectiveDefinition {
 
 /// Used to conditionally include fields or fragments.
 final graphQLIncludeDirective = _BuiltInDirective(
-  name: 'include',
+  name: "include",
   description:
-      'Directs the executor to include this field or fragment only when the `if` argument is true.',
+      "Directs the executor to include this field or fragment only when the `if` argument is true.",
   locations: DirectiveLocation.values,
-  args: [
+  args: const [
     _BuiltInArgument(
-      name: 'if',
-      description: 'Included when true.',
+      name: "if",
+      description: "Included when true.",
       // type: GraphQLNonNull(BooleanValue),
     )
   ],
@@ -109,34 +109,37 @@ final graphQLIncludeDirective = _BuiltInDirective(
 
 /// Used to conditionally skip (exclude) fields or fragments.
 final graphQLSkipDirective = _BuiltInDirective(
-  name: 'skip',
+  name: "skip",
   description:
-      'Directs the executor to skip this field or fragment when the `if` argument is true.',
+      "Directs the executor to skip this field or fragment when the `if` argument is true.",
   locations: DirectiveLocation.values,
-  args: [
+  args: const [
     _BuiltInArgument(
-      name: 'if',
-      description: 'Skipped when true.',
+      name: "if",
+      description: "Skipped when true.",
       // type: GraphQLNonNull(BooleanValue),
     )
   ],
 );
 
 /// Constant string used for default reason for a deprecation.
-final defaultDeprecationReason = 'No longer supported';
+const defaultDeprecationReason = "No longer supported";
 
 /// Used to declare element of a GraphQL schema as deprecated.
 final graphQLDeprecatedDirective = _BuiltInDirective(
-  name: 'deprecated',
-  description: 'Marks an element of a GraphQL schema as no longer supported.',
-  locations: [DirectiveLocation.fieldDefinition, DirectiveLocation.enumValue],
-  args: [
+  name: "deprecated",
+  description: "Marks an element of a GraphQL schema as no longer supported.",
+  locations: const [
+    DirectiveLocation.fieldDefinition,
+    DirectiveLocation.enumValue
+  ],
+  args: const [
     _BuiltInArgument(
-      name: 'reason',
+      name: "reason",
       defaultValue: _BuiltInStringValue(defaultDeprecationReason),
-      description:
-          ('Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. '
-              'Formatted using the Markdown syntax (as specified by [CommonMark](https://commonmark.org/).'),
+      description: "Explains why this element was deprecated, "
+          "usually also including a suggestion for how to access supported similar data. "
+          "Formatted using the Markdown syntax (as specified by [CommonMark](https://commonmark.org/).",
       // type: GraphQLNonNull(BooleanValue),
     )
   ],
@@ -149,15 +152,15 @@ Iterable<_BuiltInDirective> missingBuiltinDirectives(
   bool includes(String name) =>
       directives.where((directive) => directive.name == name).isNotEmpty;
 
-  if (!includes('skip')) {
+  if (!includes("skip")) {
     yield graphQLSkipDirective;
   }
 
-  if (!includes('include')) {
+  if (!includes("include")) {
     yield graphQLIncludeDirective;
   }
 
-  if (!includes('deprecated')) {
+  if (!includes("deprecated")) {
     yield graphQLDeprecatedDirective;
   }
 }

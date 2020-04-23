@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_constructors_over_static_methods
+// ignore_for_file: prefer_constructors_over_static_methods
 part of "definitions.dart";
 
 @immutable
@@ -72,7 +74,7 @@ abstract class Selection extends ExecutableWithResolver {
       return InlineFragment(astNode, onType, getType);
     }
 
-    throw ArgumentError('$astNode is unsupported');
+    throw ArgumentError("$astNode is unsupported");
   }
 }
 
@@ -135,7 +137,7 @@ class FragmentSpread extends Selection {
     final frag = getType.fromFragments(name);
     if (frag == null) {
       throw StateError(
-        'Could not resolve fragment $name referenced by fragment spread ${this}',
+        "Could not resolve fragment $name referenced by fragment spread ${this}",
       );
     }
     return frag;
@@ -168,7 +170,7 @@ class InlineFragment extends Selection {
   String get onTypeName => typeCondition.on.name;
 
   @override
-  String get alias => 'on$onTypeName';
+  String get alias => "on$onTypeName";
 
   @override
   final TypeDefinition schemaType;

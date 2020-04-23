@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_constructors_over_static_methods
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 import "package:gql/src/schema/definitions/definitions.dart";

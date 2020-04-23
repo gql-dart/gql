@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_constructors_over_static_methods
 // Contents:
 // * FieldDefinition
 // * ScalarTypeDefinition
@@ -100,9 +101,12 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
       astNode.fields.map((field) => FieldDefinition(field, getType)).toList();
 
   @override
-  FieldDefinition getField(String fieldName) =>
-      _fields.firstWhere((field) => field.name == fieldName,
-          orElse: () => throw StateError('No such field $fieldName on $this'));
+  FieldDefinition getField(String fieldName) => _fields.firstWhere(
+        (field) => field.name == fieldName,
+        orElse: () => throw StateError(
+          "No such field $fieldName on $this",
+        ),
+      );
 
   @override
   final InterfaceTypeDefinitionNode astNode;
@@ -138,9 +142,12 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
   }
 
   @override
-  FieldDefinition getField(String fieldName) =>
-      _fields.firstWhere((field) => field.name == fieldName,
-          orElse: () => throw StateError('No such field $fieldName on $this'));
+  FieldDefinition getField(String fieldName) => _fields.firstWhere(
+        (field) => field.name == fieldName,
+        orElse: () => throw StateError(
+          "No such field $fieldName on $this",
+        ),
+      );
 
   List<NamedType> get interfaceNames => astNode.interfaces
       .map((name) => NamedType.fromNode(name, getType))
@@ -150,13 +157,12 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
       .map((i) => getType(i.name) as InterfaceTypeDefinition)
       .toList();
 
-  Set<String> get _inheritedFieldNames {
-    var inherited = <String>{};
-    for (final face in interfaces) {
-      inherited.addAll(face._fields.map((f) => f.name));
-    }
-    return inherited;
-  }
+  /// Extract all inherited interface names recursively
+  Set<String> get _inheritedFieldNames => interfaces
+      .expand(
+        (face) => face._fields.map((f) => f.name),
+      )
+      .toSet();
 
   static ObjectTypeDefinition fromNode(
     ObjectTypeDefinitionNode astNode, [

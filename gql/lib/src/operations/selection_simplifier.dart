@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_constructors_over_static_methods
 /// Simplifies operation selection set structures into more easily/logically traversable forms.
 ///
 /// GraphQL Selection Sets can get fairly complicated, and resolve into structures that don't coorespond to the declaration graph.
