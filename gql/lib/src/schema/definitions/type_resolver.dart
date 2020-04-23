@@ -3,10 +3,15 @@ part of "definitions.dart";
 /// Callback to dereference a type name into it's material version
 typedef ResolveType = TypeDefinition Function(String name);
 
+/// Enables "type resolution" for implementing classes,
+/// allowing for type-dereferencing, such as is done by `GraphQLSchema`
+///
+/// This schema-aware use-cases such as code generation much simpler
 abstract class TypeResolver {
   @protected
   ResolveType get getType;
 
+  /// Saturates the [definition] with a [getType] if it extends from [TypeResolver]
   static TypeDefinition addedTo(
     TypeDefinition definition,
     ResolveType getType,
@@ -26,6 +31,7 @@ abstract class TypeResolver {
     return null;
   }
 
+  /// throw a [StateError] when resolution is attempted without a context passed down
   static TypeDefinition withoutContext(String name) => throw StateError(
         "Cannot resolve type $name in a context without a type resolver!",
       );

@@ -85,7 +85,15 @@ class NamedType extends GraphQLType implements TypeResolver {
   @override
   final ResolveType getType;
 
+  /// Resolve the referenced type with [getType]
+  ///
+  /// Will throw a [StateError] if [this] was defined in a context without type resolution
+  /// (verifiable via [hasResolver])
+  ///
+  /// See [TypeResolver] for mor details on type resolution
   TypeDefinition get type => getType(name);
+
+  /// Whether it is safe to resolve the referenced type via [type]
   bool get hasResolver => getType != TypeResolver.withoutContext;
 
   @override

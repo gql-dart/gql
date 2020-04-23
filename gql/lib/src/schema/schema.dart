@@ -68,8 +68,6 @@ class GraphQLSchema extends TypeSystemDefinition {
       _getAll<InputObjectTypeDefinition>();
 
   /// Collect all definitions of a given subtype.
-  ///
-  /// We use `BuiltSet` for uniqueness and ordering properties
   List<T> _getAll<T extends TypeDefinition>() =>
       _allTypeDefinitions.whereType<T>().toList();
 
