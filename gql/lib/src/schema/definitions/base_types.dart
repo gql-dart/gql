@@ -25,6 +25,7 @@ abstract class GraphQLEntity {
 ///
 /// See [TypeDefinition] for details on all GraphQL Type Definitions
 mixin AbstractType on TypeDefinition {
+  /// Determine whether [objectType] is a acceptable as the given [abstractType]
   static bool isPossibleType(
     AbstractType abstractType,
     ObjectTypeDefinition objectType,

@@ -7,17 +7,23 @@ import "package:gql/src/schema/defaults.dart";
 
 import "package:gql/src/schema/definitions.dart";
 
-/// Adds a level of relational knowledge and helpers to a predefined AST GraphQL schema
+//// A GraphQL Schema definition without resolution capacities.
 ///
-/// https://spec.graphql.org/draft/#sec-Schema
+/// A [schema]https://spec.graphql.org/draft/#sec-Schema)
+/// represents a GraphQL service’s collective type system capabilities.
+///
+/// A schema is defined in terms of the types and directives it supports
+/// as well as the root operation types for each kind of operation ([OperationTypeDefinition]):
+/// `query`, `mutation`, and `subscription`;
+/// this determines the place in the type system where those operations begin.
 @immutable
 class GraphQLSchema extends TypeSystemDefinition {
   const GraphQLSchema(
     this.astNode, {
     this.fullDocumentAst,
-    this.typeMap,
+    Map<String, TypeDefinition> typeMap,
     this.directives,
-  });
+  }) : _typeMap = typeMap;
 
   @override
   final SchemaDefinitionNode astNode;
@@ -35,21 +41,30 @@ class GraphQLSchema extends TypeSystemDefinition {
   List<OperationTypeDefinition> get operationTypes =>
       astNode.operationTypes.map(OperationTypeDefinition.fromNode).toList();
 
-  /// Map of name => [TypeDefinition]
-  // TODO saturating types with awareness before they make it to the end user is important
-  final Map<String, TypeDefinition> typeMap;
+  /// Map of all type names to their respective [TypeDefinition]s
+  final Map<String, TypeDefinition> _typeMap;
+
+  /// Map of all type names to their respective [TypeDefinition]s,
+  /// with type resolution enabled (if applicable)
+  Map<String, TypeDefinition> get typeMap => _typeMap.map(
+        (name, definition) => MapEntry(
+          name,
+          _withAwareness(definition),
+        ),
+      );
 
   /// Adds a type resolver to top-level
   TypeDefinition _withAwareness(TypeDefinition definition) =>
       TypeResolver.addedTo(definition, getType) ?? definition;
 
-  TypeDefinition getType(String name) => _withAwareness(typeMap[name]);
+  /// Resolve the given [name] into a [TypeDefinition] defined within the schema
+  TypeDefinition getType(String name) => _withAwareness(_typeMap[name]);
 
   ObjectTypeDefinition _getObjectType(String name) =>
-      _withAwareness(typeMap[name]) as ObjectTypeDefinition;
+      _withAwareness(_typeMap[name]) as ObjectTypeDefinition;
 
   Iterable<TypeDefinition> get _allTypeDefinitions =>
-      LinkedHashSet<TypeDefinition>.from(typeMap.values).map(_withAwareness);
+      LinkedHashSet<TypeDefinition>.from(_typeMap.values).map(_withAwareness);
 
   ObjectTypeDefinition get query => _getObjectType("query");
   ObjectTypeDefinition get mutation => _getObjectType("mutation");
@@ -71,6 +86,7 @@ class GraphQLSchema extends TypeSystemDefinition {
   List<T> _getAll<T extends TypeDefinition>() =>
       _allTypeDefinitions.whereType<T>().toList();
 
+  /// Get the possible [ObjectTypeDefinition]s that the given [abstractType] could be resolved into
   List<ObjectTypeDefinition> getPossibleTypes(AbstractType abstractType) {
     if (abstractType is UnionTypeDefinition) {
       return abstractType.types;
@@ -81,33 +97,25 @@ class GraphQLSchema extends TypeSystemDefinition {
     throw ArgumentError("$abstractType is unsupported");
   }
 
-  final isPossibleType = AbstractType.isPossibleType;
+  /// Determine whether [objectType] is a acceptable as the given [abstractType]
+  static bool isPossibleType(
+    AbstractType abstractType,
+    ObjectTypeDefinition objectType,
+  ) =>
+      AbstractType.isPossibleType(abstractType, objectType);
 
+  /// Build a schema from [documentNode]
   static GraphQLSchema fromNode(DocumentNode documentNode) =>
       buildSchema(documentNode);
 }
 
-/*
- * https://github.com/graphql/graphql-js/blob/49d86bbc810d1203aa3f7d93252e51f257d9460f/src/utilities/buildASTSchema.js#L114
- * 
- * This takes the ast of a schema document produced by the parse function in
- * src/language/parser.js.
- *
- * If no schema definition is provided, then it will look for types named Query
- * and Mutation.
- *
- * Given that AST it constructs a GraphQLSchema. The resulting schema
- * has no resolve methods, so execution will use default resolvers.
- *
- * Accepts options as a second argument:
- *
- *    - commentDescriptions:
- *        Provide true to use preceding comments as the description.
- *
- */
+/// Build a [GraphQLSchema] from [documentNode]
+/// The resulting schema has no `resolve` methods
+///
+// TODO this is based off of the buildASTSchema.js implementation here: https://github.com/graphql/graphql-js/blob/49d86bbc810d1203aa3f7d93252e51f257d9460f/src/utilities/buildASTSchema.js#L114
+//      but is missing a number of options, such as validation and commentDescriptions
 GraphQLSchema buildSchema(
   DocumentNode documentAST,
-  //options?: BuildSchemaOptions,
 ) {
   /*
   if (!options || !(options.assumeValid || options.assumeValidSDL)) {
