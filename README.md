@@ -109,7 +109,7 @@ Ideas for future work:
 | [graphql][graphql_flutter] | A stand-alone GraphQL client for Dart, bringing all the features from a modern GraphQL client to one easy to use package. |
 | [graphql_flutter][graphql_flutter] | A GraphQL client for Flutter, bringing all the features from a modern GraphQL client to one easy to use package. |
 | [normalize][normalize] | Normalization and denormalization of GraphQL responses in Dart |
-| [gql_client][gql_client] | GraphQL Client for Dart |
+| [ferry][ferry] | GraphQL Client for Dart |
 | [graphql-to-dart][graphql-to-dart]| generate dart classes and respective JsonSerializable transcoders |
 | [graphql_server][graphql_server]| Base package for implementing GraphQL servers. |
 | Your project? | Open a PR to add it to this readme! |
@@ -117,7 +117,7 @@ Ideas for future work:
 [artemis]: https://github.com/comigor/artemis
 [graphql_flutter]: https://github.com/zino-app/graphql-flutter
 [normalize]: https://github.com/smkhalsa/normalize
-[gql_client]: https://github.com/smkhalsa/gql_client
+[ferry]: https://github.com/gql-dart/ferry
 [graphql-to-dart]: https://github.com/micimize/graphql-to-dart
 [graphql_server]: https://pub.dev/packages/graphql_server/versions/2.0.0-beta
 
