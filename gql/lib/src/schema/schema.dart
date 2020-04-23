@@ -7,7 +7,7 @@ import "package:gql/src/schema/defaults.dart";
 
 import "package:gql/src/schema/definitions.dart";
 
-//// A GraphQL Schema definition without resolution capacities.
+//// A GraphQL Schema definition __without__ field resolution capacities.
 ///
 /// A [schema]https://spec.graphql.org/draft/#sec-Schema)
 /// represents a GraphQL service’s collective type system capabilities.
