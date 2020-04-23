@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 class AcceptEnterpriseAdministratorInvitationInput {
   final Map<String, dynamic> input = <String, dynamic>{};
 

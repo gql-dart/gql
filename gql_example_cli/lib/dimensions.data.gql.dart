@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 class $Dimensions {
   const $Dimensions(this.data);
 

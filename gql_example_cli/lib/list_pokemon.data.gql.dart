@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 class $ListPokemon {
   const $ListPokemon(this.data);
 

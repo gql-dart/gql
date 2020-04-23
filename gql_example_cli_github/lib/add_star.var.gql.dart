@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 class AddStarVarBuilder {
   final Map<String, dynamic> variables = <String, dynamic>{};
 
