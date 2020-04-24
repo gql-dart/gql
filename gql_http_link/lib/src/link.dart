@@ -96,20 +96,21 @@ class HttpLink extends Link {
       );
     }
 
-    final httpResponse = await _httpClient.post(
-      uri,
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "*/*",
-        ...defaultHeaders,
-        ..._getHttpLinkHeaders(request),
-      },
-      body: body,
-    );
-
     Response response;
+    http.Response httpResponse;
 
     try {
+      httpResponse = await _httpClient.post(
+        uri,
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "*/*",
+          ...defaultHeaders,
+          ..._getHttpLinkHeaders(request),
+        },
+        body: body,
+      );
+
       final dynamic responseBody = json.decode(
         utf8.decode(
           httpResponse.bodyBytes,
