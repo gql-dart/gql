@@ -35,7 +35,7 @@ When your link is set up, your GraphQL operation must be wrapped in a `Request` 
 ## Implementing a custom link
 
 Links are designed to be composable. If you need to add a custom behavior, you can implement your own `Link`
-by extending `Link` class. If you prefer functions over classes, you can use `LinkFunction` together with `Link.function`.
+by extending the `Link` class. If you prefer functions over classes, you can use `LinkFunction` together with `Link.function`.
 If you have to route a request to some other links based on some set of conditions, `Link.route(LinkRouter route)`
 might be what you need.
 
