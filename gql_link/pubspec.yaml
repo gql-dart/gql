@@ -1,6 +1,6 @@
 name: gql_link
 author: Klāvs Priedītis <klavs@prieditis.lv>
-version: 0.2.3
+version: 0.2.4
 homepage: https://github.com/gql-dart/gql/tree/master/gql_link
 description: A simple and modular AST-based GraphQL request execution interface.
 environment: 

@@ -1,3 +1,7 @@
+## 0.2.4
+
+- improve docs
+
 ## 0.2.3
 
 - upgrade `package:gql_pedantic`
