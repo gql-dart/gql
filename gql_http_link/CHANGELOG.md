@@ -1,3 +1,7 @@
+## 0.2.8
+
+- catch more possible exceptions
+
 ## 0.2.7
 
 - upgrade `package:gql_pedantic`

@@ -1,6 +1,7 @@
 ## 0.2.4
 
 - improve docs
+- add `ContextReadException` and `ContextWriteException`
 
 ## 0.2.3
 
