@@ -135,7 +135,11 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
   final InterfaceTypeDefinitionNode astNode;
 
   bool isImplementedBy(ObjectTypeDefinition objectType) =>
-      objectType.interfaceNames.contains(name);
+      objectType.interfaceNames
+          .map(
+            (name) => name.name,
+          )
+          .contains(name);
 }
 
 /// [Definition for a GraphQL Object](https://spec.graphql.org/June2018/#ObjectTypeDefinition),
