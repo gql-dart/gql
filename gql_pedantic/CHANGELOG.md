@@ -1,3 +1,7 @@
+## 1.0.2
+
+- remove `author` field from `pubspec.yaml`
+
 ## 1.0.1
 
 - Drop pedantic

@@ -1,3 +1,8 @@
+## 0.12.3
+
+- remove `author` field from `pubspec.yaml`
+- some more experimental validation rules thanks to [@jonas-jonas](https://github.com/jonas-jonas)
+
 ## 0.12.2
 
 - improve readme

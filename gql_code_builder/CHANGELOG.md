@@ -1,3 +1,7 @@
+## 0.0.10
+
+- remove `author` field from `pubspec.yaml`
+
 ## 0.0.9
 
 - remove duplicate ast imports

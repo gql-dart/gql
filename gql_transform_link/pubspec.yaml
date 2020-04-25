@@ -1,12 +1,12 @@
 name: gql_transform_link
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/gql-dart/gql/tree/master/gql_transform_link
 description: GQL Link to transform Requests and Responses. May be used to update context, document, variables, data, errors, etc.
 environment: 
-  sdk: '>=2.2.2 <3.0.0'
+  sdk: '>=2.7.2 <3.0.0'
 dependencies: 
   gql_exec: ^0.2.2
-  gql_link: ^0.2.3
+  gql_link: ^0.3.0
 dev_dependencies: 
   test: ^1.0.0
   mockito: ^4.1.1
