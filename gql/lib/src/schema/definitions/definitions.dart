@@ -363,7 +363,7 @@ class DirectiveDefinition extends TypeSystemDefinition {
   bool get repeatable => astNode.repeatable;
 }
 
-/// A [Root Operation](https://spec.graphql.org/June2018/#sec-Root-Operation-Types)
+/// A [Root Operation](https://spec.graphql.org/June2018/#sec-Root-Operation-Types).
 ///
 /// A schema defines the initial root operation type for each kind of operation it supports
 ///  query, mutation, and subscription; this determines the place in the type system where those operations begin.
