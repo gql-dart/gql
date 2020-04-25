@@ -368,7 +368,7 @@ class DirectiveDefinition extends TypeSystemDefinition {
 /// A schema defines the initial root operation type for each kind of operation it supports
 ///  query, mutation, and subscription; this determines the place in the type system where those operations begin.
 ///
-/// The `query` root operation type must be provided and must be an [ObjectTypeDefinition]
+/// The `query` root operation type must be provided and must be an [ObjectTypeDefinition].
 ///
 /// The `mutation` root operation type is optional;
 /// if it is not provided, the service does not support mutations.
