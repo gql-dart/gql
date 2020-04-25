@@ -140,7 +140,7 @@ GraphQLSchema buildSchema(
     }
   }
 
-  final typeMap = Map.fromEntries(
+  final _typeMap = Map.fromEntries(
     _typeDefs
         .map(TypeDefinition.fromNode)
         .map((type) => MapEntry(type.name, type)),
@@ -151,12 +151,14 @@ GraphQLSchema buildSchema(
   // If specified directives were not explicitly declared, add them.
   directives.addAll(missingBuiltinDirectives(directives));
 
+  final typeMap = {
+    ..._typeMap,
+    ..._operationTypeMap(_typeMap, schemaDef),
+  };
+
   return GraphQLSchema(
     schemaDef,
-    typeMap: {
-      ...typeMap,
-      ..._operationTypeMap(typeMap, schemaDef),
-    },
+    typeMap: typeMap,
     directives: directives,
   );
 }
