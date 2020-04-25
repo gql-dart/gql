@@ -191,12 +191,12 @@ void main() {
 }
 ```
 
-## `package:gql/schema.dart` and `package:gql/operation.dart` (experimental)
+## `package:gql/schema.dart` (experimental)
 
-Higher-level schema and operation type definitions derived from the `gql/ast.dart` asts.
+Higher-level schema type definitions derived from the `gql/ast.dart` asts.
 Adds convenience attributes and type dereferencing facilities.
 
-**NOTE**: `gql/schema.dart` does not currently have field resolution.
+**NOTE**: does not currently have field resolution.
 
 ```dart
 import "package:gql/language.dart" as lang;
@@ -216,6 +216,36 @@ void main() {
   final document = gqlOperation.ExecutableDocument(
     lang.parseString(myQueryString),
     schema.getType,
+    myImportedFragmentStrings.map(lang.parseString)
+  );
+
+  final importedFragment = document.getFragment("MyImportedFragment");
+
+  final spreads = document.operations.first.selectionSet.fragmentSpreads;
+
+  print(
+    // dereference fragment spread into fragment definition
+    spreads.first.fragment == importedFragment,
+  );
+
+}
+```
+
+## `package:gql/operation.dart` (experimental)
+
+Higher-level "executable document" (i.e. operation) type definitions derived from the `gql/ast.dart` asts.
+Adds convenience attributes as well as fragment and type dereferencing facilities.
+
+Sibling subpackage of `gql/schema.dart`
+
+```dart
+import "package:gql/language.dart" as lang;
+import "package:gql/operation.dart" as gqlOperation;
+
+void main() {
+  final document = gqlOperation.ExecutableDocument(
+    lang.parseString(myQueryString),
+    myGqlSchema.getType, // necessary for dereferencing schema definitions
     myImportedFragmentStrings.map(lang.parseString)
   );
 
