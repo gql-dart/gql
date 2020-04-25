@@ -11,13 +11,16 @@
 part of "definitions.dart";
 
 @immutable
-abstract class GraphQLEntity {
+abstract class GraphQLEntity extends Equatable {
   const GraphQLEntity();
 
   @override
   String toString() => printNode(astNode);
 
   Node get astNode;
+
+  @override
+  List<Object> get props => [astNode];
 }
 
 /// GraphQL supports two abstract types:
@@ -105,13 +108,10 @@ class NamedType extends GraphQLType implements TypeResolver {
   @override
   String get baseTypeName => name;
 
-  static NamedType fromNode(
-    NamedTypeNode astNode, [
-    ResolveType getType,
-  ]) =>
-      NamedType(astNode, getType);
-
   static String nameFromNode(NamedTypeNode astNode) => astNode.name.value;
+
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /// A [List Type](https://spec.graphql.org/June2018/#ListType)
@@ -139,11 +139,8 @@ class ListType extends GraphQLType implements TypeResolver {
   @override
   String get baseTypeName => type.baseTypeName;
 
-  static ListType fromNode(
-    ListTypeNode astNode, [
-    ResolveType getType,
-  ]) =>
-      ListType(astNode, getType);
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /// [Arguments](https://spec.graphql.org/June2018/#sec-Language.Arguments) to Fields which accept them.
@@ -160,8 +157,6 @@ class Argument extends GraphQLEntity {
 
   String get name => astNode.name.value;
   Value get value => Value.fromNode(astNode.value);
-
-  static Argument fromNode(ArgumentNode astNode) => Argument(astNode);
 }
 
 /// [Directives](https://spec.graphql.org/June2018/#sec-Language.Directives)
@@ -176,9 +171,7 @@ class Directive extends GraphQLEntity {
   String get name => astNode.name.value;
 
   List<Argument> get arguments =>
-      astNode.arguments.map(Argument.fromNode).toList();
-
-  static Directive fromNode(DirectiveNode astNode) => Directive(astNode);
+      astNode.arguments.map((a) => Argument(a)).toList();
 }
 
 /// Base class of all type system definitions
@@ -231,7 +224,7 @@ abstract class TypeDefinition extends TypeSystemDefinition {
   String get description => astNode.description?.value;
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
   static TypeDefinition fromNode(TypeDefinitionNode node) {
     if (node is ScalarTypeDefinitionNode) {

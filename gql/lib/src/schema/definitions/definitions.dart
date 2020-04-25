@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
 // Contents:
 // * FieldDefinition
 // * ScalarTypeDefinition
@@ -10,6 +9,7 @@
 // * InterfaceTypeDefinition
 // * ObjectTypeDefinition
 // * UnionTypeDefinition
+import "package:equatable/equatable.dart";
 import "package:gql/src/schema/defaults.dart";
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
@@ -70,7 +70,7 @@ class FieldDefinition extends GraphQLEntity implements TypeResolver {
   GraphQLType get type => GraphQLType.fromNode(astNode.type, getType);
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
   List<InputValueDefinition> get args => astNode.args
       .map(
@@ -78,9 +78,8 @@ class FieldDefinition extends GraphQLEntity implements TypeResolver {
       )
       .toList();
 
-  static FieldDefinition fromNode(FieldDefinitionNode astNode,
-          [ResolveType getType]) =>
-      FieldDefinition(astNode, getType);
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /// [InterfaceTypeDefinition] and [ObjectTypeDefinition] both have field sets
@@ -100,6 +99,9 @@ abstract class TypeDefinitionWithFieldSet extends TypeDefinition
   List<FieldDefinition> get _fields => [typeNameField, ...fields];
 
   FieldDefinition getField(String fieldName);
+
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /// [Interfaces](https://spec.graphql.org/June2018/#InterfaceTypeDefinition)
@@ -134,10 +136,6 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
 
   bool isImplementedBy(ObjectTypeDefinition objectType) =>
       objectType.interfaceNames.contains(name);
-
-  static InterfaceTypeDefinition fromNode(InterfaceTypeDefinitionNode astNode,
-          [ResolveType getType]) =>
-      InterfaceTypeDefinition(astNode, getType);
 }
 
 /// [Definition for a GraphQL Object](https://spec.graphql.org/June2018/#ObjectTypeDefinition),
@@ -184,7 +182,9 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
       );
 
   List<NamedType> get interfaceNames => astNode.interfaces
-      .map((name) => NamedType.fromNode(name, getType))
+      .map(
+        (name) => NamedType(name, getType),
+      )
       .toList();
 
   List<InterfaceTypeDefinition> get interfaces => interfaceNames
@@ -197,12 +197,6 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
         (face) => face._fields.map((f) => f.name),
       )
       .toSet();
-
-  static ObjectTypeDefinition fromNode(
-    ObjectTypeDefinitionNode astNode, [
-    ResolveType getType,
-  ]) =>
-      ObjectTypeDefinition(astNode, getType);
 }
 
 /// [Unions](https://spec.graphql.org/June2018/#UnionTypeDefinition)
@@ -228,8 +222,11 @@ class UnionTypeDefinition extends TypeDefinition
   @override
   final UnionTypeDefinitionNode astNode;
 
-  List<NamedType> get typeNames =>
-      astNode.types.map((name) => NamedType.fromNode(name, getType)).toList();
+  List<NamedType> get typeNames => astNode.types
+      .map(
+        (name) => NamedType(name, getType),
+      )
+      .toList();
 
   Iterable<String> get _typeNames => typeNames.map((t) => t.name);
 
@@ -240,11 +237,8 @@ class UnionTypeDefinition extends TypeDefinition
   List<ObjectTypeDefinition> get types =>
       _typeNames.map(getType).cast<ObjectTypeDefinition>().toList();
 
-  static UnionTypeDefinition fromNode(
-    UnionTypeDefinitionNode astNode, [
-    ResolveType getType,
-  ]) =>
-      UnionTypeDefinition(astNode, getType);
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /*
@@ -264,9 +258,6 @@ class ScalarTypeDefinition extends TypeDefinition {
 
   @override
   final ScalarTypeDefinitionNode astNode;
-
-  static ScalarTypeDefinition fromNode(ScalarTypeDefinitionNode astNode) =>
-      ScalarTypeDefinition(astNode);
 }
 
 /// Field and directive arguments accept [input values](https://spec.graphql.org/June2018/#sec-Input-Values)
@@ -293,10 +284,10 @@ class InputValueDefinition extends GraphQLEntity implements TypeResolver {
   Value get defaultValue => Value.fromNode(astNode.defaultValue);
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
-  static InputValueDefinition fromNode(InputValueDefinitionNode astNode) =>
-      InputValueDefinition(astNode);
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 /// [Enum types](https://spec.graphql.org/June2018/#EnumTypeDefinition) describe the set of possible values.
@@ -315,10 +306,7 @@ class EnumTypeDefinition extends TypeDefinition {
   final EnumTypeDefinitionNode astNode;
 
   List<EnumValueDefinition> get values =>
-      astNode.values.map(EnumValueDefinition.fromNode).toList();
-
-  static EnumTypeDefinition fromNode(EnumTypeDefinitionNode astNode) =>
-      EnumTypeDefinition(astNode);
+      astNode.values.map((e) => EnumValueDefinition(e)).toList();
 }
 
 /// The literal value of an [EnumTypeDefinition]
@@ -328,9 +316,6 @@ class EnumValueDefinition extends TypeDefinition {
 
   @override
   final EnumValueDefinitionNode astNode;
-
-  static EnumValueDefinition fromNode(EnumValueDefinitionNode astNode) =>
-      EnumValueDefinition(astNode);
 }
 
 /// An [Input Object Type Definition](https://spec.graphql.org/June2018/#InputObjectTypeDefinition)
@@ -347,12 +332,9 @@ class InputObjectTypeDefinition extends TypeDefinition {
   @override
   final InputObjectTypeDefinitionNode astNode;
 
-  List<InputValueDefinition> get fields =>
-      astNode.fields.map(InputValueDefinition.fromNode).toList();
-
-  static InputObjectTypeDefinition fromNode(
-          InputObjectTypeDefinitionNode astNode) =>
-      InputObjectTypeDefinition(astNode);
+  List<InputValueDefinition> get fields => astNode.fields
+      .map((inputValue) => InputValueDefinition(inputValue))
+      .toList();
 }
 
 /// [Directives](https://spec.graphql.org/June2018/#sec-Type-System.Directives)
@@ -368,15 +350,13 @@ class DirectiveDefinition extends TypeSystemDefinition {
 
   String get description => astNode.description?.value;
 
-  List<InputValueDefinition> get args =>
-      astNode.args.map(InputValueDefinition.fromNode).toList();
+  List<InputValueDefinition> get args => astNode.args
+      .map((inputValue) => InputValueDefinition(inputValue))
+      .toList();
 
   List<DirectiveLocation> get locations => astNode.locations;
 
   bool get repeatable => astNode.repeatable;
-
-  static DirectiveDefinition fromNode(DirectiveDefinitionNode astNode) =>
-      DirectiveDefinition(astNode);
 }
 
 /// A [Root Operation](https://spec.graphql.org/June2018/#sec-Root-Operation-Types)
@@ -415,9 +395,5 @@ class OperationTypeDefinition extends GraphQLEntity {
 
   OperationType get operation => astNode.operation;
 
-  NamedType get type => NamedType.fromNode(astNode.type);
-
-  static OperationTypeDefinition fromNode(
-          OperationTypeDefinitionNode astNode) =>
-      OperationTypeDefinition(astNode);
+  NamedType get type => NamedType(astNode.type);
 }

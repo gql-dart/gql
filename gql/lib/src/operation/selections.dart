@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
-// ignore_for_file: prefer_constructors_over_static_methods
 part of "definitions.dart";
 
 /// [Selection Sets](https://spec.graphql.org/June2018/#sec-Selection-Sets)
@@ -36,13 +34,6 @@ class SelectionSet extends ExecutableWithResolver {
 
   List<InlineFragment> get inlineFragments =>
       selections.whereType<InlineFragment>().toList();
-
-  static SelectionSet fromNode(
-    SelectionSetNode astNode, [
-    TypeDefinitionWithFieldSet schemaType,
-    GetExecutableType getType,
-  ]) =>
-      SelectionSet(astNode, schemaType, getType);
 }
 
 /// [SelectionSet]s consist of [selections](https://spec.graphql.org/June2018/#Selection)
@@ -122,10 +113,10 @@ class Field extends Selection {
   GraphQLType get type => schemaType.type;
 
   List<Argument> get arguments =>
-      astNode.arguments.map(Argument.fromNode).toList();
+      astNode.arguments.map((a) => Argument(a)).toList();
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
   SelectionSet get selectionSet => astNode.selectionSet != null
       ? SelectionSet(
@@ -134,8 +125,6 @@ class Field extends Selection {
           getType,
         )
       : null;
-
-  static Field fromNode(FieldNode astNode) => Field(astNode);
 }
 
 /// [FragmentDefinition]s are consumed by using the
@@ -173,10 +162,7 @@ class FragmentSpread extends Selection {
   }
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
-
-  static FragmentSpread fromNode(FragmentSpreadNode astNode) =>
-      FragmentSpread(astNode);
+      astNode.directives.map((d) => Directive(d)).toList();
 }
 
 /// [Inline Fragments](https://spec.graphql.org/June2018/#sec-Inline-Fragments)
@@ -194,8 +180,7 @@ class InlineFragment extends Selection {
   @override
   final InlineFragmentNode astNode;
 
-  TypeCondition get typeCondition =>
-      TypeCondition.fromNode(astNode.typeCondition);
+  TypeCondition get typeCondition => TypeCondition(astNode.typeCondition);
 
   TypeDefinitionWithFieldSet get onType =>
       getType.fromSchema(onTypeName) as TypeDefinitionWithFieldSet;
@@ -209,11 +194,8 @@ class InlineFragment extends Selection {
   final TypeDefinition schemaType;
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
   SelectionSet get selectionSet =>
-      SelectionSet.fromNode(astNode.selectionSet, onType, getType);
-
-  static InlineFragment fromNode(InlineFragmentNode astNode) =>
-      InlineFragment(astNode);
+      SelectionSet(astNode.selectionSet, onType, getType);
 }

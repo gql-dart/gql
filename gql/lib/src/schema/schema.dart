@@ -38,8 +38,11 @@ class GraphQLSchema extends TypeSystemDefinition {
         orElse: () => null,
       );
 
-  List<OperationTypeDefinition> get operationTypes =>
-      astNode.operationTypes.map(OperationTypeDefinition.fromNode).toList();
+  List<OperationTypeDefinition> get operationTypes => astNode.operationTypes
+      .map(
+        (o) => OperationTypeDefinition(o),
+      )
+      .toList();
 
   /// Map of all type names to their respective [TypeDefinition]s
   final Map<String, TypeDefinition> _typeMap;
@@ -143,7 +146,7 @@ GraphQLSchema buildSchema(
         .map((type) => MapEntry(type.name, type)),
   );
 
-  final directives = _directiveDefs.map(DirectiveDefinition.fromNode).toList();
+  final directives = _directiveDefs.map((d) => DirectiveDefinition(d)).toList();
 
   // If specified directives were not explicitly declared, add them.
   directives.addAll(missingBuiltinDirectives(directives));

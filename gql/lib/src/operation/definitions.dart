@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 import "package:gql/src/schema/definitions/definitions.dart";
@@ -23,6 +22,9 @@ class ExecutableWithResolver extends ExecutableGraphQLEntity
 
   @override
   Node get astNode => throw UnimplementedError();
+
+  @override
+  List<Object> get props => [astNode, getType];
 }
 
 @immutable
@@ -37,10 +39,10 @@ abstract class ExecutableDefinition extends ExecutableWithResolver {
   static ExecutableDefinition fromNode(ExecutableDefinitionNode astNode,
       [GetExecutableType getType]) {
     if (astNode is OperationDefinitionNode) {
-      return OperationDefinition.fromNode(astNode, getType);
+      return OperationDefinition(astNode, getType);
     }
     if (astNode is FragmentDefinitionNode) {
-      return FragmentDefinition.fromNode(astNode, getType);
+      return FragmentDefinition(astNode, getType);
     }
 
     throw ArgumentError("$astNode is unsupported");
@@ -70,19 +72,13 @@ class OperationDefinition extends ExecutableDefinition {
       getType.fromSchema(type.name) as ObjectTypeDefinition;
 
   List<VariableDefinition> get variables =>
-      astNode.variableDefinitions.map(VariableDefinition.fromNode).toList();
+      astNode.variableDefinitions.map((v) => VariableDefinition(v)).toList();
 
   SelectionSet get selectionSet => SelectionSet(
         astNode.selectionSet,
         getType.fromSchema(type.name) as ObjectTypeDefinition,
         getType,
       );
-
-  static OperationDefinition fromNode(
-    OperationDefinitionNode astNode, [
-    GetExecutableType getType,
-  ]) =>
-      OperationDefinition(astNode, getType);
 }
 
 /// [Fragments](https://spec.graphql.org/June2018/#sec-Language.Fragments)
@@ -102,22 +98,15 @@ class FragmentDefinition extends ExecutableDefinition {
   @override
   final FragmentDefinitionNode astNode;
 
-  TypeCondition get _typeCondition =>
-      TypeCondition.fromNode(astNode.typeCondition);
+  TypeCondition get _typeCondition => TypeCondition(astNode.typeCondition);
 
   TypeDefinition get onType => getType.fromSchema(_typeCondition.on.name);
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
+      astNode.directives.map((d) => Directive(d)).toList();
 
   SelectionSet get selectionSet =>
       SelectionSet(astNode.selectionSet, onType, getType);
-
-  static FragmentDefinition fromNode(
-    FragmentDefinitionNode astNode, [
-    GetExecutableType getType,
-  ]) =>
-      FragmentDefinition(astNode, getType);
 }
 
 /// [FragmentDefinition]s must specify the type they apply to through
@@ -137,10 +126,7 @@ class TypeCondition extends ExecutableGraphQLEntity {
   @override
   final TypeConditionNode astNode;
 
-  NamedType get on => NamedType.fromNode(astNode.on);
-
-  static TypeCondition fromNode(TypeConditionNode astNode) =>
-      TypeCondition(astNode);
+  NamedType get on => NamedType(astNode.on);
 }
 
 /// [Variables](https://spec.graphql.org/June2018/#sec-Language.Variables)
@@ -162,16 +148,15 @@ class VariableDefinition extends ExecutableWithResolver {
 
   String get name => astNode.variable.name.value;
 
-  Variable get variable => Variable.fromNode(astNode.variable);
+  Variable get variable => Variable(astNode.variable);
 
-  GraphQLType get schemaType =>
-      GraphQLType.fromNode(astNode.type, getType.fromSchema);
+  GraphQLType get schemaType => GraphQLType.fromNode(
+        astNode.type,
+        getType.fromSchema,
+      );
 
-  DefaultValue get defaultValue => DefaultValue.fromNode(astNode.defaultValue);
+  DefaultValue get defaultValue => DefaultValue(astNode.defaultValue);
 
   List<Directive> get directives =>
-      astNode.directives.map(Directive.fromNode).toList();
-
-  static VariableDefinition fromNode(VariableDefinitionNode astNode) =>
-      VariableDefinition(astNode);
+      astNode.directives.map((d) => Directive(d)).toList();
 }

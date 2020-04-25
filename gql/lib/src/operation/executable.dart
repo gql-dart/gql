@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
-//import "package:built_collection/built_collection.dart";
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 import "package:gql/src/schema/definitions/definitions.dart";
