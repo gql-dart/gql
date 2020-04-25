@@ -26,7 +26,7 @@ abstract class GraphQLEntity extends Equatable {
 /// GraphQL supports two abstract types:
 /// interfaces ([InterfaceTypeDefinition]) and unions ([UnionTypeDefinition]).
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 mixin AbstractType on TypeDefinition {
   /// Determine whether [objectType] is a acceptable as the given [abstractType]
   static bool isPossibleType(
@@ -44,7 +44,7 @@ mixin AbstractType on TypeDefinition {
   }
 }
 
-/// A [Type Reference](https://spec.graphql.org/June2018/#sec-Type-References) to a concrete [TypeDefinition]
+/// A [Type Reference](https://spec.graphql.org/June2018/#sec-Type-References) to a concrete [TypeDefinition].
 ///
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
@@ -74,7 +74,7 @@ abstract class GraphQLType extends GraphQLEntity {
   }
 }
 
-/// An unqualified [Named Type](https://spec.graphql.org/June2018/#NamedType) Reference
+/// An unqualified [Named Type](https://spec.graphql.org/June2018/#NamedType) Reference.
 ///
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
@@ -89,12 +89,12 @@ class NamedType extends GraphQLType implements TypeResolver {
   @override
   final ResolveType getType;
 
-  /// Resolve the referenced type with [getType]
+  /// Resolve the referenced type with [getType].
   ///
   /// Will throw a [StateError] if [this] was defined in a context without type resolution
-  /// (verifiable via [hasResolver])
+  /// (verifiable via [hasResolver]).
   ///
-  /// See [TypeResolver] for mor details on type resolution
+  /// See [TypeResolver] for mor details on type resolution.
   TypeDefinition get type => getType(name);
 
   /// Whether it is safe to resolve the referenced type via [type]
@@ -115,7 +115,7 @@ class NamedType extends GraphQLType implements TypeResolver {
 }
 
 /// A [List Type](https://spec.graphql.org/June2018/#ListType)
-/// wrapping another [GraphQLType]
+/// wrapping another [GraphQLType].
 ///
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
@@ -186,7 +186,7 @@ abstract class TypeSystemDefinition extends GraphQLEntity {
   String get name => astNode.name.value;
 }
 
-/// The fundamental unit of any GraphQL Schema ([spec](https://spec.graphql.org/June2018/#TypeDefinition))
+/// The fundamental unit of any GraphQL Schema ([spec](https://spec.graphql.org/June2018/#TypeDefinition)).
 ///
 /// There are six kinds of named type definitions in GraphQL, and two wrapping types.
 ///

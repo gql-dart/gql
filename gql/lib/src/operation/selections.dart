@@ -57,7 +57,7 @@ abstract class Selection extends ExecutableWithResolver {
     GetExecutableType getType,
   ]) {
     if (astNode is FieldNode) {
-      // fields can only be seleted on Interface and Object types
+      // fields can only be selected on Interface and Object types
       final fieldType = (schemaType != null)
           ? (schemaType as TypeDefinitionWithFieldSet)
               .getField(astNode.name.value)
@@ -72,7 +72,7 @@ abstract class Selection extends ExecutableWithResolver {
       return FragmentSpread(astNode, schemaType, getType);
     }
     if (astNode is InlineFragmentNode) {
-      // inline fragments must always specify a type condition,
+      // inline fragments must always specify a type condition
       final onType = getType.fromSchema(astNode.typeCondition.on.name.value);
       return InlineFragment(astNode, onType, getType);
     }
@@ -128,7 +128,7 @@ class Field extends Selection {
 }
 
 /// [FragmentDefinition]s are consumed by using the
-/// [spread](https://spec.graphql.org/June2018/#FragmentSpread) operator (`...`)
+/// [spread](https://spec.graphql.org/June2018/#FragmentSpread) operator (`...`).
 ///
 /// All fields selected by the fragment will be added to the query field selection
 /// at the same level as the fragment invocation.

@@ -4,12 +4,12 @@ part of "definitions.dart";
 typedef ResolveType = TypeDefinition Function(String name);
 
 /// Enables "type resolution" for implementing classes,
-/// allowing for type-dereferencing, such as is done by `GraphQLSchema`
+/// allowing for type-dereferencing, such as is done by `GraphQLSchema`.
 ///
-/// This makes schema-aware use-cases such as code generation much simpler
+/// This makes schema-aware use-cases such as code generation much simpler.
 abstract class TypeResolver {
   /// Resolve the given `name` into a [TypeDefinition],
-  /// usually defined within the given context such as a `GraphQLSchema`
+  /// usually defined within the given context such as a `GraphQLSchema`.
   @protected
   ResolveType get getType;
 

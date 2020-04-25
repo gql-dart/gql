@@ -156,7 +156,7 @@ final graphQLDeprecatedDirective = _BuiltInDirective(
   ],
 );
 
-/// enumerates the built in default directives missing from [directives]
+/// Enumerates the built in default directives missing from [directives].
 Iterable<_BuiltInDirective> missingBuiltinDirectives(
   Iterable<DirectiveDefinition> directives,
 ) sync* {

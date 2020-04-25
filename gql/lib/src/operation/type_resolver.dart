@@ -5,9 +5,9 @@ typedef ResolveFragment = FragmentDefinition Function(String name);
 
 /// Container for the [fromSchema] and [fromFragments]
 /// dereferencing callbacks necessary for full type information while
-/// working with an `ExecutableDocument`
+/// working with an `ExecutableDocument`.
 ///
-/// This makes fragment and schema-aware use-cases such as code generation much simpler
+/// This makes fragment and schema-aware use-cases such as code generation much simpler.
 @immutable
 class GetExecutableType {
   const GetExecutableType(
@@ -16,9 +16,9 @@ class GetExecutableType {
   );
 
   /// Resolve the given `name` into a [TypeDefinition],
-  /// usually defined within the given context such as a `GraphQLSchema`
+  /// usually defined within the given context such as a `GraphQLSchema`.
   ///
-  /// See `gql/schema.dart`'s [TypeResolver]
+  /// See `gql/schema.dart`'s [TypeResolver].
   final ResolveType fromSchema;
   final ResolveFragment fromFragments;
 
@@ -36,9 +36,9 @@ class GetExecutableType {
 }
 
 /// Enables "type resolution" for implementing classes,
-/// allowing for type-dereferencing, such as is done by `ExecutableDocument`
+/// allowing for type-dereferencing, such as is done by `ExecutableDocument`.
 ///
-/// This makes fragment and schema-aware use-cases such as code generation much simpler
+/// This makes fragment and schema-aware use-cases such as code generation much simpler.
 abstract class ExecutableTypeResolver {
   GetExecutableType get getType;
 
