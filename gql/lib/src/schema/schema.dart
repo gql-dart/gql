@@ -112,7 +112,8 @@ class GraphQLSchema extends TypeSystemDefinition {
 /// Build a [GraphQLSchema] from [documentNode]
 /// The resulting schema has no `resolve` methods
 ///
-// TODO this is based off of the buildASTSchema.js implementation here: https://github.com/graphql/graphql-js/blob/49d86bbc810d1203aa3f7d93252e51f257d9460f/src/utilities/buildASTSchema.js#L114
+// TODO this is based off of the buildASTSchema.js implementation here:
+//      https://github.com/graphql/graphql-js/blob/49d86bbc810d1203aa3f7d93252e51f257d9460f/src/utilities/buildASTSchema.js#L114
 //      but is missing a number of options, such as validation and commentDescriptions
 GraphQLSchema buildSchema(
   DocumentNode documentAST,

@@ -72,8 +72,11 @@ class FieldDefinition extends GraphQLEntity implements TypeResolver {
   List<Directive> get directives =>
       astNode.directives.map(Directive.fromNode).toList();
 
-  List<InputValueDefinition> get args =>
-      astNode.args.map(InputValueDefinition.fromNode).toList();
+  List<InputValueDefinition> get args => astNode.args
+      .map(
+        (arg) => InputValueDefinition(arg, getType),
+      )
+      .toList();
 
   static FieldDefinition fromNode(FieldDefinitionNode astNode,
           [ResolveType getType]) =>
@@ -269,8 +272,14 @@ class ScalarTypeDefinition extends TypeDefinition {
 /// Field and directive arguments accept [input values](https://spec.graphql.org/June2018/#sec-Input-Values)
 /// of various literal primitives; input values can be scalars, enumeration values, lists, or input objects.
 @immutable
-class InputValueDefinition extends GraphQLEntity {
-  const InputValueDefinition(this.astNode);
+class InputValueDefinition extends GraphQLEntity implements TypeResolver {
+  const InputValueDefinition(
+    this.astNode, [
+    ResolveType getType,
+  ]) : getType = getType ?? TypeResolver.withoutContext;
+
+  @override
+  final ResolveType getType;
 
   @override
   final InputValueDefinitionNode astNode;
@@ -279,7 +288,7 @@ class InputValueDefinition extends GraphQLEntity {
 
   String get description => astNode.description?.value;
 
-  GraphQLType get type => GraphQLType.fromNode(astNode.type);
+  GraphQLType get type => GraphQLType.fromNode(astNode.type, getType);
 
   Value get defaultValue => Value.fromNode(astNode.defaultValue);
 

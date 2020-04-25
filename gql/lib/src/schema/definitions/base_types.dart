@@ -71,7 +71,7 @@ abstract class GraphQLType extends GraphQLEntity {
   }
 }
 
-/// An unqualified [`NamedType`](https://spec.graphql.org/June2018/#NamedType) Reference
+/// An unqualified [Named Type](https://spec.graphql.org/June2018/#NamedType) Reference
 ///
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
@@ -114,7 +114,8 @@ class NamedType extends GraphQLType implements TypeResolver {
   static String nameFromNode(NamedTypeNode astNode) => astNode.name.value;
 }
 
-/// A [`ListType`](https://spec.graphql.org/June2018/#ListType) Reference
+/// A [List Type](https://spec.graphql.org/June2018/#ListType)
+/// wrapping another [GraphQLType]
 ///
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
