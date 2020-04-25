@@ -1,5 +1,4 @@
 name: cats
-author: Klāvs Priedītis <klavs@prieditis.lv>
 homepage: https://github.com/gql-dart/gql/cats
 description: A starting point for Dart libraries or applications.
 environment: 

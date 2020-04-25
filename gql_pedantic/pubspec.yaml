@@ -1,5 +1,4 @@
 name: gql_pedantic
-author: Klāvs Priedītis <klavs@prieditis.lv>
 version: 1.0.1
 homepage: https://github.com/gql-dart/gql/tree/master/gql_pedantic
 description: Even more opinionated lint rules.
