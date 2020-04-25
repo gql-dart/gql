@@ -2,6 +2,16 @@
 // ignore_for_file: prefer_constructors_over_static_methods
 part of "definitions.dart";
 
+/// [Selection Sets](https://spec.graphql.org/June2018/#sec-Selection-Sets)
+/// specify the [Field]s to select from their cooresponding schema type,
+/// either directly, or indirectly through [FragmentSpread]s and [InlineFragment]s.
+///
+/// [OperationDefinition]s only consist of an optional operation name
+/// and a [SelectionSet] into one of the root [OperationTypeDefinition]s.
+///
+/// An operation selects the set of information it needs,
+/// and will receive exactly that information and nothing more,
+/// avoiding over‐fetching and under‐fetching data.
 @immutable
 class SelectionSet extends ExecutableWithResolver {
   const SelectionSet(
@@ -35,6 +45,8 @@ class SelectionSet extends ExecutableWithResolver {
       SelectionSet(astNode, schemaType, getType);
 }
 
+/// [SelectionSet]s consist of [selections](https://spec.graphql.org/June2018/#Selection)
+/// ([Field]s, [FragmentSpread]s, or [InlineFragment]s)s
 @immutable
 abstract class Selection extends ExecutableWithResolver {
   const Selection([GetExecutableType getType]) : super(getType);
@@ -78,6 +90,16 @@ abstract class Selection extends ExecutableWithResolver {
   }
 }
 
+/// A [SelectionSet] is primarily composed of [fields](https://spec.graphql.org/June2018/#sec-Language.Fields).
+///
+/// A field describes one discrete piece of information available to request within a selection set.
+///
+/// Some fields describe complex data or relationships to other data.
+/// In order to further explore this data, a field may itself contain a selection set,
+/// allowing for deeply nested requests.
+///
+/// All GraphQL operations must specify their selections down to fields
+/// which return scalar values to ensure an unambiguously shaped response.
 @immutable
 class Field extends Selection {
   const Field(
@@ -116,6 +138,13 @@ class Field extends Selection {
   static Field fromNode(FieldNode astNode) => Field(astNode);
 }
 
+/// [FragmentDefinition]s are consumed by using the
+/// [spread](https://spec.graphql.org/June2018/#FragmentSpread) operator (`...`)
+///
+/// All fields selected by the fragment will be added to the query field selection
+/// at the same level as the fragment invocation.
+///
+/// This happens through multiple levels of fragment spreads.
 @immutable
 class FragmentSpread extends Selection {
   const FragmentSpread(this.astNode,
@@ -150,6 +179,10 @@ class FragmentSpread extends Selection {
       FragmentSpread(astNode);
 }
 
+/// [Inline Fragments](https://spec.graphql.org/June2018/#sec-Inline-Fragments)
+/// are [FragmentDefinition]s defined inline within a [SelectionSet].
+///
+/// This is done to conditionally include fields based on their runtime type via [TypeCondition]s.
 @immutable
 class InlineFragment extends Selection {
   const InlineFragment(

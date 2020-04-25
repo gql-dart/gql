@@ -370,10 +370,33 @@ class DirectiveDefinition extends TypeSystemDefinition {
       DirectiveDefinition(astNode);
 }
 
-/// There are three types of [operations]((https://spec.graphql.org/June2018/#sec-Language.Operations)):
-/// * `query` – a read‐only fetch.
-/// * `mutation` – a write followed by a fetch.
-/// * `subscription` – a long‐lived request that fetches data in response to source events.
+/// A [Root Operation](https://spec.graphql.org/June2018/#sec-Root-Operation-Types)
+///
+/// A schema defines the initial root operation type for each kind of operation it supports
+///  query, mutation, and subscription; this determines the place in the type system where those operations begin.
+///
+/// The `query` root operation type must be provided and must be an [ObjectTypeDefinition]
+///
+/// The `mutation` root operation type is optional;
+/// if it is not provided, the service does not support mutations.
+/// If it is provided, it must be an [ObjectTypeDefinition].
+///
+/// Similarly, the `subscription` root operation type is also optional;
+/// if it is not provided, the service does not support subscriptions.
+/// If it is provided, it must be an [ObjectTypeDefinition].
+///
+/// The fields on the `query` root operation type indicate what fields are available
+/// at the top level of a GraphQL query.
+///
+/// ### Default Root Operation Type Names
+///
+/// While any type can be the root operation type for a GraphQL operation,
+/// the type system definition language can omit the schema definition
+/// when the `query`, `mutation`, and `subscription` root types
+/// are named `Query`, `Mutation`, and `Subscription` respectively.
+///
+/// Likewise, when representing a GraphQL schema using the type system definition language,
+/// a schema definition should be omitted if it only uses the default root operation type names.
 @immutable
 class OperationTypeDefinition extends GraphQLEntity {
   const OperationTypeDefinition(this.astNode);

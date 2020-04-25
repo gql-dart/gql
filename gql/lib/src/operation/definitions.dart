@@ -47,6 +47,13 @@ abstract class ExecutableDefinition extends ExecutableWithResolver {
   }
 }
 
+/// An [Operation](https://spec.graphql.org/June2018/#sec-Language.Operations) consists of
+/// an optional operation name and a [SelectionSet] into one of the root [OperationTypeDefinition]s.
+///
+/// There are three types of [operations]((https://spec.graphql.org/June2018/#sec-Language.Operations)):
+/// * `query` – a read‐only fetch.
+/// * `mutation` – a write followed by a fetch.
+/// * `subscription` – a long‐lived request that fetches data in response to source events.
 @immutable
 class OperationDefinition extends ExecutableDefinition {
   const OperationDefinition(
@@ -78,6 +85,15 @@ class OperationDefinition extends ExecutableDefinition {
       OperationDefinition(astNode, getType);
 }
 
+/// [Fragments](https://spec.graphql.org/June2018/#sec-Language.Fragments)
+/// are the primary unit of composition in GraphQL.
+///
+/// Fragments allow for the reuse of common repeated [Selection]s of fields,
+/// reducing duplicated text in the document.
+///
+/// [InlineFragment]s can be used directly within a [Selection] to
+/// condition upon a [TypeCondition]
+/// when querying against an [InterfaceTypeDefinition] or [UnionTypeDefinition].
 @immutable
 class FragmentDefinition extends ExecutableDefinition {
   const FragmentDefinition(this.astNode, [GetExecutableType getType])
@@ -104,6 +120,16 @@ class FragmentDefinition extends ExecutableDefinition {
       FragmentDefinition(astNode, getType);
 }
 
+/// [FragmentDefinition]s must specify the type they apply to through
+/// [type condition](https://spec.graphql.org/June2018/#sec-Type-Conditions)s
+///
+/// Fragments cannot be specified on any input value
+/// ([ScalarTypeDefinition], [EnumTypeDefinition], or [InputObjectTypeDefinition]).
+///
+/// Fragments can be specified on [ObjectTypeDefinition]s, [InterfaceTypeDefinition]s, and [UnionTypeDefinition]s.
+///
+/// [Selection]s within fragments only return values when the concrete type of
+/// the object it is operating on matches the type of the fragment.
 @immutable
 class TypeCondition extends ExecutableGraphQLEntity {
   const TypeCondition(this.astNode);
@@ -117,6 +143,15 @@ class TypeCondition extends ExecutableGraphQLEntity {
       TypeCondition(astNode);
 }
 
+/// [Variables](https://spec.graphql.org/June2018/#sec-Language.Variables)
+/// can be used to parameterize [OperationDefinition]s,
+/// maximizing query reuse, and avoiding costly string building in clients at runtime.
+///
+/// If not defined as constant (for example, in [DefaultValue]),
+/// a Variable can be supplied for an [InputValueDefinition].
+///
+/// Variables must be defined at the top of an operation and are in scope throughout
+/// the execution of that operation.
 @immutable
 class VariableDefinition extends ExecutableWithResolver {
   const VariableDefinition(this.astNode, [GetExecutableType getType])

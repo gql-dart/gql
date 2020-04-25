@@ -1,6 +1,6 @@
 part of "definitions.dart";
 
-/// Callback to dereference a type name into it's material version
+/// Callback to dereference a full type definition by name
 typedef ResolveType = TypeDefinition Function(String name);
 
 /// Enables "type resolution" for implementing classes,

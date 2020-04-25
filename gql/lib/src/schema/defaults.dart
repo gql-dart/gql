@@ -1,4 +1,15 @@
 // TODO this module is not really written for actual server usage atm, so these are broken
+// NOTE: These defaults were transposed from those in
+//       https://github.com/graphql/graphql-js/tree/4150d1f51360a7981181cfec42a135394c7340f1/src/type
+//
+// NOTE: The implementation of GraphQLSchema as a "view" of an AST makes
+//       adding default definitions feel awkward and un-integrated
+
+/// This module defines some (but not all) of the schema definitions
+/// that are provided by default for all schemas:
+/// * the `__typename` field ([typeNameField])
+/// * the `@include` and `@skip` directives ([graphQLIncludeDirective], [graphQLSkipDirective])
+/// * the `@deprecated` directive ([graphQLDeprecatedDirective])
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 

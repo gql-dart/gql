@@ -8,6 +8,19 @@ import "./definitions.dart";
 
 export "./definitions.dart";
 
+/// An executable [document](https://spec.graphql.org/draft/#sec-Document)
+/// containing only [ExecutableDefinition]s.
+///
+/// If a Document contains only one operation, that operation may be unnamed or represented
+/// in the shorthand form, which omits both the query keyword and operation name.
+///
+/// Otherwise, if a GraphQL Document contains multiple operations, each operation must be named.
+/// When submitting a Document with multiple operations to a GraphQL service,
+/// the name of the desired operation to be executed must also be provided.
+///
+/// NOTE: the spec states that
+/// "Documents are only executable by a GraphQL service if they contain an [OperationDefinition]",
+/// however [FragmentDefinition]-only documents are currently treated as valid here.
 @immutable
 class ExecutableDocument extends ExecutableWithResolver {
   ExecutableDocument(
@@ -18,7 +31,7 @@ class ExecutableDocument extends ExecutableWithResolver {
         super();
 
   final ResolveType getSchemaType;
-  final BuiltMap<String, FragmentDefinitionNode> _fragmentNodeMap;
+  final Map<String, FragmentDefinitionNode> _fragmentNodeMap;
 
   @override
   GetExecutableType get getType =>
@@ -47,18 +60,17 @@ class ExecutableDocument extends ExecutableWithResolver {
       definitions.whereType<OperationDefinition>().toList();
 }
 
-BuiltMap<String, FragmentDefinitionNode> _collectImportedFragmentNodes(
-        Iterable<DocumentNode> documents) =>
-    BuiltMap.of(
-      Map.fromEntries(
-        documents
-            .expand((doc) => doc.definitions)
-            .whereType<FragmentDefinitionNode>()
-            .map(
-              (fragmentNode) => MapEntry(
-                fragmentNode.name.value,
-                fragmentNode,
-              ),
+Map<String, FragmentDefinitionNode> _collectImportedFragmentNodes(
+  Iterable<DocumentNode> documents,
+) =>
+    Map.fromEntries(
+      documents
+          .expand((doc) => doc.definitions)
+          .whereType<FragmentDefinitionNode>()
+          .map(
+            (fragmentNode) => MapEntry(
+              fragmentNode.name.value,
+              fragmentNode,
             ),
-      ),
+          ),
     );
