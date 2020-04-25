@@ -8,7 +8,7 @@
 /// a tearoff of [gql.schema.GraphQLSchema.getType()],
 /// and an optional list of imported ASTs.
 ///
-/// **NOTE**: This library is currently only for working with executable _definitions_,
+/// **NOTE**: This library is currently only for working with executable _definitions_.
 library operation;
 
 export "package:gql/src/operation/definitions.dart";
