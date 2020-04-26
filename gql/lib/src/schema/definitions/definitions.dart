@@ -98,10 +98,10 @@ abstract class TypeDefinitionWithFieldSet extends TypeDefinitionWithResolver {
 /// [Interfaces](https://spec.graphql.org/June2018/#InterfaceTypeDefinition)
 /// represent a list of named fields and their arguments.
 ///
-/// objects ([ObjectTypeDefinition]) can then implement these interfaces,
+/// Objects ([ObjectTypeDefinition]) can then implement these interfaces,
 /// which requires that the object type will define all fields defined by those interfaces.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
     with AbstractType {
@@ -145,7 +145,7 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
 /// are the keys and the result of evaluating the field is the value,
 /// ordered by the order in which they appear in the query.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
   const ObjectTypeDefinition(
@@ -201,7 +201,7 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
 /// They also differ from interfaces in that Object types declare what interfaces they implement,
 /// but are not aware of what unions contain them.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
   const UnionTypeDefinition(
@@ -235,13 +235,13 @@ class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
   Begin simple/dumb classes
 */
 
-/// [Scalaar types](https://spec.graphql.org/June2018/#ScalarTypeDefinition)
+/// [Scalar types](https://spec.graphql.org/June2018/#ScalarTypeDefinition)
 /// represent primitive leaf values in a GraphQL type system.
 ///
 /// GraphQL responses take the form of a hierarchical tree;
 /// the leaves on these trees are GraphQL scalars.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class ScalarTypeDefinition extends TypeDefinition {
   const ScalarTypeDefinition(this.astNode);
@@ -284,7 +284,7 @@ class InputValueDefinition extends EntityWithResolver {
 /// Enums are not references for a numeric value, but are unique values in their own right.
 /// They may serialize as a string: the name of the represented value.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class EnumTypeDefinition extends TypeDefinition {
   const EnumTypeDefinition(this.astNode);
@@ -305,13 +305,13 @@ class EnumValueDefinition extends TypeDefinition {
   final EnumValueDefinitionNode astNode;
 }
 
-/// An [Input Object Type Definition](https://spec.graphql.org/June2018/#InputObjectTypeDefinition)
+/// An [Input Object Type Definition](https://spec.graphql.org/June2018/#InputObjectTypeDefinition).
 ///
 /// A GraphQL Input Object defines a set of input fields;
 /// the input fields are either scalars, enums, or other input objects.
 /// This allows arguments to accept arbitrarily complex structs.
 ///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
 class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
   const InputObjectTypeDefinition(
