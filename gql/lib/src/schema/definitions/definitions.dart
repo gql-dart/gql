@@ -231,27 +231,35 @@ class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
       _typeNames.map(getType).cast<ObjectTypeDefinition>().toList();
 }
 
-/*
-  Begin simple/dumb classes
-*/
-
-/// [Scalar types](https://spec.graphql.org/June2018/#ScalarTypeDefinition)
-/// represent primitive leaf values in a GraphQL type system.
+/// An [Input Object Type Definition](https://spec.graphql.org/June2018/#InputObjectTypeDefinition)
 ///
-/// GraphQL responses take the form of a hierarchical tree;
-/// the leaves on these trees are GraphQL scalars.
+/// A GraphQL Input Object defines a set of input fields;
+/// the input fields are either scalars, enums, or other input objects.
+/// This allows arguments to accept arbitrarily complex structs.
 ///
 /// See [TypeDefinition] for details on all GraphQL Type Definitions.
 @immutable
-class ScalarTypeDefinition extends TypeDefinition {
-  const ScalarTypeDefinition(this.astNode);
+class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
+  const InputObjectTypeDefinition(
+    this.astNode, [
+    ResolveType getType,
+  ]) : getType = getType ?? TypeResolver.withoutContext;
 
   @override
-  final ScalarTypeDefinitionNode astNode;
+  final ResolveType getType;
+
+  @override
+  final InputObjectTypeDefinitionNode astNode;
+
+  List<InputValueDefinition> get fields => astNode.fields
+      .map((inputValue) => InputValueDefinition(inputValue, getType))
+      .toList();
 }
 
 /// Field and directive arguments accept [input values](https://spec.graphql.org/June2018/#sec-Input-Values)
-/// of various literal primitives; input values can be scalars, enumeration values, lists, or input objects.
+/// of various literal primitives.
+///
+/// Input values can be scalars, enumeration values, lists, or input objects.
 @immutable
 class InputValueDefinition extends EntityWithResolver {
   const InputValueDefinition(
@@ -275,6 +283,25 @@ class InputValueDefinition extends EntityWithResolver {
 
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();
+}
+
+/*
+  Begin simple/dumb classes
+*/
+
+/// [Scalar types](https://spec.graphql.org/June2018/#ScalarTypeDefinition)
+/// represent primitive leaf values in a GraphQL type system.
+///
+/// GraphQL responses take the form of a hierarchical tree;
+/// the leaves on these trees are GraphQL scalars.
+///
+/// See [TypeDefinition] for details on all GraphQL Type Definitions.
+@immutable
+class ScalarTypeDefinition extends TypeDefinition {
+  const ScalarTypeDefinition(this.astNode);
+
+  @override
+  final ScalarTypeDefinitionNode astNode;
 }
 
 /// [Enum types](https://spec.graphql.org/June2018/#EnumTypeDefinition) describe the set of possible values.
@@ -303,31 +330,6 @@ class EnumValueDefinition extends TypeDefinition {
 
   @override
   final EnumValueDefinitionNode astNode;
-}
-
-/// An [Input Object Type Definition](https://spec.graphql.org/June2018/#InputObjectTypeDefinition).
-///
-/// A GraphQL Input Object defines a set of input fields;
-/// the input fields are either scalars, enums, or other input objects.
-/// This allows arguments to accept arbitrarily complex structs.
-///
-/// See [TypeDefinition] for details on all GraphQL Type Definitions.
-@immutable
-class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
-  const InputObjectTypeDefinition(
-    this.astNode, [
-    ResolveType getType,
-  ]) : getType = getType ?? TypeResolver.withoutContext;
-
-  @override
-  final ResolveType getType;
-
-  @override
-  final InputObjectTypeDefinitionNode astNode;
-
-  List<InputValueDefinition> get fields => astNode.fields
-      .map((inputValue) => InputValueDefinition(inputValue, getType))
-      .toList();
 }
 
 /// [Directives](https://spec.graphql.org/June2018/#sec-Type-System.Directives)
