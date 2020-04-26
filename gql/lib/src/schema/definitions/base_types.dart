@@ -8,7 +8,14 @@
 /// * [Directive]
 /// * [TypeSystemDefinition]
 /// * [TypeDefinition]
-part of "definitions.dart";
+import "package:equatable/equatable.dart";
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
+import "package:gql/language.dart";
+
+import "./definitions.dart";
+import "./type_resolver.dart";
+import "./value_types.dart";
 
 @immutable
 abstract class GraphQLEntity extends Equatable {
@@ -34,7 +41,7 @@ mixin AbstractType on TypeDefinition {
     ObjectTypeDefinition objectType,
   ) {
     if (abstractType is UnionTypeDefinition) {
-      return abstractType._typeNames.contains(objectType.name);
+      return abstractType.typeNames.contains(objectType.name);
     }
     if (abstractType is InterfaceTypeDefinition) {
       return objectType.interfaceNames.contains(abstractType.name);

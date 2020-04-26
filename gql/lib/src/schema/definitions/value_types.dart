@@ -11,7 +11,10 @@
 // * ObjectField<Value>
 // * ObjectValue
 // * DefaultValue
-part of "definitions.dart";
+import "package:meta/meta.dart";
+import "package:gql/ast.dart";
+
+import "./base_types.dart";
 
 /// A literal value type
 @immutable

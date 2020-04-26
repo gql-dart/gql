@@ -13,7 +13,7 @@
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 
-import "./definitions/definitions.dart";
+import "./definitions.dart";
 
 @immutable
 class _BuiltInFieldDefinition extends FieldDefinition {

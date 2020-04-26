@@ -1,10 +1,8 @@
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
-import "package:gql/src/schema/definitions/definitions.dart";
+import "package:gql/src/schema/definitions.dart";
 
 import "./definitions.dart";
-
-export "./definitions.dart";
 
 /// An executable [document](https://spec.graphql.org/draft/#sec-Document)
 /// containing only [ExecutableDefinition]s.

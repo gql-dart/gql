@@ -9,15 +9,13 @@
 // * InterfaceTypeDefinition
 // * ObjectTypeDefinition
 // * UnionTypeDefinition
-import "package:equatable/equatable.dart";
 import "package:gql/src/schema/defaults.dart";
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
-import "package:gql/language.dart";
 
-part "base_types.dart";
-part "value_types.dart";
-part "type_resolver.dart";
+import "./base_types.dart";
+import "./type_resolver.dart";
+import "./value_types.dart";
 
 extension WithTypeName on OperationType {
   String get name {
