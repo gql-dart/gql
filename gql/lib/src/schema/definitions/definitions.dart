@@ -328,14 +328,20 @@ class EnumValueDefinition extends TypeDefinition {
 ///
 /// See [TypeDefinition] for details on all GraphQL Type Definitions
 @immutable
-class InputObjectTypeDefinition extends TypeDefinition {
-  const InputObjectTypeDefinition(this.astNode);
+class InputObjectTypeDefinition extends TypeDefinition implements TypeResolver {
+  const InputObjectTypeDefinition(
+    this.astNode, [
+    ResolveType getType,
+  ]) : getType = getType ?? TypeResolver.withoutContext;
+
+  @override
+  final ResolveType getType;
 
   @override
   final InputObjectTypeDefinitionNode astNode;
 
   List<InputValueDefinition> get fields => astNode.fields
-      .map((inputValue) => InputValueDefinition(inputValue))
+      .map((inputValue) => InputValueDefinition(inputValue, getType))
       .toList();
 }
 

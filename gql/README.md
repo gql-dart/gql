@@ -196,7 +196,8 @@ void main() {
 Higher-level schema type definitions derived from the `gql/ast.dart` asts.
 Adds convenience attributes and type dereferencing facilities.
 
-**NOTE**: does not currently have field resolution.
+**NOTE**: does not currently have runtime features, such as field resolution.
+It was initially developed as a more friendly way to work with schema asts.
 
 ```dart
 import "package:gql/language.dart" as lang;

@@ -1,9 +1,14 @@
-// TODO this module is not really written for actual server usage atm, so these are broken
-// NOTE: These defaults were transposed from those in
-//       https://github.com/graphql/graphql-js/tree/4150d1f51360a7981181cfec42a135394c7340f1/src/type
+// NOTES:
+// * this module is not really written for actual server usage atm,
+//   so these graphql definitions (like user-sourced definitions)
+//   don't have any kind of runtime functionality
+//   (such as serialization, parsing, or resolution)
 //
-// NOTE: The implementation of GraphQLSchema as a "view" of an AST makes
-//       adding default definitions feel awkward and un-integrated
+// * These defaults were transposed from those in
+//   https://github.com/graphql/graphql-js/tree/4150d1f51360a7981181cfec42a135394c7340f1/src/type
+//
+// * The implementation of GraphQLSchema as a "view" of an AST makes
+//   adding default definitions feel awkward and un-integrated
 
 /// This module defines some (but not all) of the schema definitions
 /// that are provided by default for all schemas:
@@ -14,6 +19,20 @@ import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 
 import "./definitions.dart";
+
+const _requiredString = NamedType(
+  NamedTypeNode(
+    name: NameNode(value: "String"),
+    isNonNull: true,
+  ),
+);
+
+const _requiredBool = NamedType(
+  NamedTypeNode(
+    name: NameNode(value: "Boolean"),
+    isNonNull: true,
+  ),
+);
 
 @immutable
 class _BuiltInFieldDefinition extends FieldDefinition {
@@ -43,12 +62,7 @@ class _BuiltInFieldDefinition extends FieldDefinition {
 
 const typeNameField = _BuiltInFieldDefinition(
   name: "__typename",
-  type: NamedType(
-    NamedTypeNode(
-      name: NameNode(value: "String"),
-      isNonNull: true,
-    ),
-  ),
+  type: _requiredString,
 );
 
 @immutable
@@ -113,7 +127,7 @@ final graphQLIncludeDirective = _BuiltInDirective(
     _BuiltInArgument(
       name: "if",
       description: "Included when true.",
-      // type: GraphQLNonNull(BooleanValue),
+      type: _requiredBool,
     )
   ],
 );
@@ -128,7 +142,7 @@ final graphQLSkipDirective = _BuiltInDirective(
     _BuiltInArgument(
       name: "if",
       description: "Skipped when true.",
-      // type: GraphQLNonNull(BooleanValue),
+      type: _requiredBool,
     )
   ],
 );
@@ -151,7 +165,7 @@ final graphQLDeprecatedDirective = _BuiltInDirective(
       description: "Explains why this element was deprecated, "
           "usually also including a suggestion for how to access supported similar data. "
           "Formatted using the Markdown syntax (as specified by [CommonMark](https://commonmark.org/).",
-      // type: GraphQLNonNull(BooleanValue),
+      type: _requiredBool,
     )
   ],
 );

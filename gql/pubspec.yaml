@@ -9,7 +9,6 @@ dependencies:
   source_span: ^1.5.5
   meta: ^1.1.7
   collection: ^1.14.11
-  equatable: 1.1.1
 dev_dependencies: 
   test: ^1.0.0
   gql_pedantic: ^1.0.1

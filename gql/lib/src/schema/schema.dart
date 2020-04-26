@@ -56,7 +56,10 @@ class GraphQLSchema extends TypeSystemDefinition {
         ),
       );
 
-  /// Adds a type resolver to top-level
+  /// Adds [getType] to the given [definition] if applicable.
+  ///
+  /// [EnumTypeDefinition] and [ScalarTypeDefinition] do not accept [getType]
+  /// because they cannot include references
   TypeDefinition _withAwareness(TypeDefinition definition) =>
       TypeResolver.addedTo(definition, getType) ?? definition;
 
@@ -113,7 +116,6 @@ class GraphQLSchema extends TypeSystemDefinition {
 }
 
 /// Build a [GraphQLSchema] from [documentNode].
-/// The resulting schema has no `resolve` methods
 ///
 // TODO this is based off of the buildASTSchema.js implementation here:
 //      https://github.com/graphql/graphql-js/blob/49d86bbc810d1203aa3f7d93252e51f257d9460f/src/utilities/buildASTSchema.js#L114

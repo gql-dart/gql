@@ -1,7 +1,11 @@
 import "package:meta/meta.dart";
 import "./base_types.dart" show TypeDefinition;
 import "./definitions.dart"
-    show InterfaceTypeDefinition, ObjectTypeDefinition, UnionTypeDefinition;
+    show
+        InterfaceTypeDefinition,
+        ObjectTypeDefinition,
+        UnionTypeDefinition,
+        InputObjectTypeDefinition;
 
 /// Callback to dereference a full type definition by name
 typedef ResolveType = TypeDefinition Function(String name);
@@ -33,6 +37,11 @@ abstract class TypeResolver {
     if (definition is UnionTypeDefinition) {
       return UnionTypeDefinition(definition.astNode, getType);
     }
+
+    if (definition is InputObjectTypeDefinition) {
+      return InputObjectTypeDefinition(definition.astNode, getType);
+    }
+
     return null;
   }
 
