@@ -38,6 +38,9 @@ void main() {
 
       expect(character.isImplementedBy(droid), equals(true));
       expect(character.isImplementedBy(review), equals(false));
+
+      expect(schema.isSubType(character, droid), equals(true));
+      expect(schema.isSubType(character, review), equals(false));
     });
 
     test("schema.getPossibleTypes results", () {

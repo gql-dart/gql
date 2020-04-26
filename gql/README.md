@@ -191,75 +191,101 @@ void main() {
 }
 ```
 
-## `package:gql/schema.dart` (experimental)
+## `gql/schema.dart` and `gql/operation.dart` <sub>(experimental)</sub>
 
-Higher-level schema type definitions derived from the `gql/ast.dart` asts.
-Adds convenience attributes and type dereferencing facilities.
+`gql/schema.dart` and `gql/operation.dart` provide higher-level
+type definitions derived from `gql/ast.dart` asts for
+GraphQL Schemas and Operations respectively.
 
 **NOTE**: does not currently have runtime features, such as field resolution.
-It was initially developed as a more friendly way to work with schema asts.
+It was initially developed as a more friendly way to work with schema ASTs.
 
 ```dart
 import "package:gql/language.dart" as lang;
-import "package:gql/schema.dart" as gqlSchema;
-import "package:gql/operation.dart" as gqlOperation;
+import "package:gql/schema.dart" as gql_schema;
+import "package:gql/operation.dart" as gql_operation;
 
-void main() {
-  final schema =  gqlSchema.GraphQLSchema(lang.parseString(mySchemaString));
+final schemaDefinition = lang.parseString(r"""
+schema {
+  query: StarWarsQuery
+}
 
-  final character = schema.getType("Character") as gqlSchema.InterfaceTypeDefinition;
-  final droid = schema.getType("Droid") as gqlSchema.ObjectTypeDefinition;
+interface Character {
+  id: String
+  name: String
+}
+
+type Droid implements Character {
+  id: String
+  name: String
+  primaryFunction: String
+}
+
+type StarWarsQuery {
+  droids: [Droid!]
+}
+""");
+
+void inspectSchema() {
+  final schema = gql_schema.GraphQLSchema.fromNode(schemaDefinition);
+
+  final character =
+      schema.getType("Character") as gql_schema.InterfaceTypeDefinition;
+  final droid = schema.getType("Droid") as gql_schema.ObjectTypeDefinition;
 
   print(character.isImplementedBy(droid));
+  // prints "true"
 
-  print(schema.isPossibleType(character, droid));
+  print(schema.query.getField("droids").type.toString());
+  // prints "[Droid!]"
+}
 
-  final document = gqlOperation.ExecutableDocument(
-    lang.parseString(myQueryString),
+final fragmentDefinitions = [
+  lang.parseString(r"""
+  fragment droidName on Droid {
+    name
+  }
+  """),
+];
+
+final queryDefinition = lang.parseString(r"""
+query AllDroids {
+  droids {
+    ...droidName
+    primaryFunction
+  }
+}
+""");
+
+void inspectQuery() {
+  final schema = gql_schema.GraphQLSchema.fromNode(schemaDefinition);
+
+  final document = gql_operation.ExecutableDocument(
+    queryDefinition,
     schema.getType,
-    myImportedFragmentStrings.map(lang.parseString)
+    // necessary for dereferencing schema definitions
+    fragmentDefinitions,
   );
 
-  final importedFragment = document.getFragment("MyImportedFragment");
+  final importedFragment = document.getFragment("droidName");
+  print(importedFragment);
+  // prints the fagment above
 
-  final spreads = document.operations.first.selectionSet.fragmentSpreads;
+  final query = document.operations.first;
+  final droids = query.selectionSet.fields.first;
+  final spreadDroidName = droids.selectionSet.fragmentSpreads.first;
 
   print(
     // dereference fragment spread into fragment definition
-    spreads.first.fragment == importedFragment,
+    spreadDroidName.fragment == importedFragment,
   );
-
 }
-```
-
-## `package:gql/operation.dart` (experimental)
-
-Higher-level "executable document" (i.e. operation) type definitions derived from the `gql/ast.dart` asts.
-Adds convenience attributes as well as fragment and type dereferencing facilities.
-
-Sibling subpackage of `gql/schema.dart`
-
-```dart
-import "package:gql/language.dart" as lang;
-import "package:gql/operation.dart" as gqlOperation;
 
 void main() {
-  final document = gqlOperation.ExecutableDocument(
-    lang.parseString(myQueryString),
-    myGqlSchema.getType, // necessary for dereferencing schema definitions
-    myImportedFragmentStrings.map(lang.parseString)
-  );
-
-  final importedFragment = document.getFragment("MyImportedFragment");
-
-  final spreads = document.operations.first.selectionSet.fragmentSpreads;
-
-  print(
-    // dereference fragment spread into fragment definition
-    spreads.first.fragment == importedFragment,
-  );
-
+  inspectSchema();
+  inspectQuery();
 }
+
 ```
 
 ## Features and bugs

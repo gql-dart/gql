@@ -45,7 +45,7 @@ extension WithTypeName on OperationType {
 /// All GraphQL operations must specify their selections down to fields which return scalar values
 /// to ensure an unambiguously shaped response.
 @immutable
-class FieldDefinition extends GraphQLEntity implements TypeResolver {
+class FieldDefinition extends EntityWithResolver {
   const FieldDefinition(
     this.astNode, [
     ResolveType getType,
@@ -75,15 +75,11 @@ class FieldDefinition extends GraphQLEntity implements TypeResolver {
         (arg) => InputValueDefinition(arg, getType),
       )
       .toList();
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /// [InterfaceTypeDefinition] and [ObjectTypeDefinition] both have field sets
 @immutable
-abstract class TypeDefinitionWithFieldSet extends TypeDefinition
-    implements TypeResolver {
+abstract class TypeDefinitionWithFieldSet extends TypeDefinitionWithResolver {
   const TypeDefinitionWithFieldSet([
     ResolveType getType,
   ])  : getType = getType ?? TypeResolver.withoutContext,
@@ -97,9 +93,6 @@ abstract class TypeDefinitionWithFieldSet extends TypeDefinition
   List<FieldDefinition> get _fields => [typeNameField, ...fields];
 
   FieldDefinition getField(String fieldName);
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /// [Interfaces](https://spec.graphql.org/June2018/#InterfaceTypeDefinition)
@@ -210,9 +203,7 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
 ///
 /// See [TypeDefinition] for details on all GraphQL Type Definitions
 @immutable
-class UnionTypeDefinition extends TypeDefinition
-    with AbstractType
-    implements TypeResolver {
+class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
   const UnionTypeDefinition(
     this.astNode, [
     ResolveType getType,
@@ -238,9 +229,6 @@ class UnionTypeDefinition extends TypeDefinition
   /// > Similarly, wrapping types must not be member types of a Union.
   List<ObjectTypeDefinition> get types =>
       _typeNames.map(getType).cast<ObjectTypeDefinition>().toList();
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /*
@@ -265,7 +253,7 @@ class ScalarTypeDefinition extends TypeDefinition {
 /// Field and directive arguments accept [input values](https://spec.graphql.org/June2018/#sec-Input-Values)
 /// of various literal primitives; input values can be scalars, enumeration values, lists, or input objects.
 @immutable
-class InputValueDefinition extends GraphQLEntity implements TypeResolver {
+class InputValueDefinition extends EntityWithResolver {
   const InputValueDefinition(
     this.astNode, [
     ResolveType getType,
@@ -287,9 +275,6 @@ class InputValueDefinition extends GraphQLEntity implements TypeResolver {
 
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /// [Enum types](https://spec.graphql.org/June2018/#EnumTypeDefinition) describe the set of possible values.
@@ -328,7 +313,7 @@ class EnumValueDefinition extends TypeDefinition {
 ///
 /// See [TypeDefinition] for details on all GraphQL Type Definitions
 @immutable
-class InputObjectTypeDefinition extends TypeDefinition implements TypeResolver {
+class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
   const InputObjectTypeDefinition(
     this.astNode, [
     ResolveType getType,

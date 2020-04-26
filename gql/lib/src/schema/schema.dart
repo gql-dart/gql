@@ -104,11 +104,11 @@ class GraphQLSchema extends TypeSystemDefinition {
   }
 
   /// Determine whether [objectType] is a acceptable as the given [abstractType]
-  static bool isPossibleType(
+  bool isSubType(
     AbstractType abstractType,
     ObjectTypeDefinition objectType,
   ) =>
-      AbstractType.isPossibleType(abstractType, objectType);
+      AbstractType.isSubType(abstractType, objectType);
 
   /// Build a schema from [documentNode]
   static GraphQLSchema fromNode(DocumentNode documentNode) =>

@@ -1,4 +1,5 @@
 import "package:meta/meta.dart";
+import "package:collection/collection.dart";
 import "package:gql/src/schema/definitions.dart";
 
 import "package:gql/src/operation/definitions/type_resolver.dart";
@@ -19,5 +20,19 @@ abstract class ExecutableWithResolver extends ExecutableGraphQLEntity
   final GetExecutableType getType;
 
   @override
-  List<Object> get props => [astNode, getType];
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    if (o.runtimeType == runtimeType) {
+      final _o = o as ExecutableWithResolver;
+      return astNode == _o.astNode && getType == _o.getType;
+    }
+
+    return false;
+  }
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash([astNode, getType]);
 }

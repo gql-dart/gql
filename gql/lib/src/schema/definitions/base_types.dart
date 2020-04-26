@@ -7,8 +7,8 @@
 /// * [Directive]
 /// * [TypeSystemDefinition]
 /// * [TypeDefinition]
-import "package:equatable/equatable.dart";
 import "package:meta/meta.dart";
+import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql/language.dart";
 
@@ -17,7 +17,7 @@ import "./type_resolver.dart";
 import "./value_types.dart";
 
 @immutable
-abstract class GraphQLEntity extends Equatable {
+abstract class GraphQLEntity {
   const GraphQLEntity();
 
   @override
@@ -26,7 +26,46 @@ abstract class GraphQLEntity extends Equatable {
   Node get astNode;
 
   @override
-  List<Object> get props => [astNode];
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    if (o.runtimeType == runtimeType) {
+      return astNode == (o as GraphQLEntity).astNode;
+    }
+
+    return false;
+  }
+
+  @override
+  int get hashCode => astNode.hashCode;
+}
+
+@immutable
+abstract class EntityWithResolver extends GraphQLEntity
+    implements TypeResolver {
+  const EntityWithResolver([ResolveType getType])
+      : getType = getType ?? TypeResolver.withoutContext,
+        super();
+
+  @override
+  final ResolveType getType;
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    if (o.runtimeType == runtimeType) {
+      final _o = o as EntityWithResolver;
+      return astNode == _o.astNode && getType == _o.getType;
+    }
+
+    return false;
+  }
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash([astNode, getType]);
 }
 
 /// GraphQL supports two abstract types:
@@ -35,7 +74,7 @@ abstract class GraphQLEntity extends Equatable {
 /// See [TypeDefinition] for details on all GraphQL Type Definitions.
 mixin AbstractType on TypeDefinition {
   /// Determine whether [objectType] is a acceptable as the given [abstractType]
-  static bool isPossibleType(
+  static bool isSubType(
     AbstractType abstractType,
     ObjectTypeDefinition objectType,
   ) {
@@ -43,7 +82,9 @@ mixin AbstractType on TypeDefinition {
       return abstractType.typeNames.contains(objectType.name);
     }
     if (abstractType is InterfaceTypeDefinition) {
-      return objectType.interfaceNames.contains(abstractType.name);
+      return objectType.interfaceNames
+          .map((n) => n.name)
+          .contains(abstractType.name);
     }
 
     throw ArgumentError("$abstractType is unsupported");
@@ -55,7 +96,7 @@ mixin AbstractType on TypeDefinition {
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
 @immutable
-abstract class GraphQLType extends GraphQLEntity {
+abstract class GraphQLType extends EntityWithResolver {
   const GraphQLType();
 
   @override
@@ -85,7 +126,7 @@ abstract class GraphQLType extends GraphQLEntity {
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
 @immutable
-class NamedType extends GraphQLType implements TypeResolver {
+class NamedType extends GraphQLType {
   const NamedType(
     this.astNode, [
     ResolveType getType,
@@ -115,9 +156,6 @@ class NamedType extends GraphQLType implements TypeResolver {
   String get baseTypeName => name;
 
   static String nameFromNode(NamedTypeNode astNode) => astNode.name.value;
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /// A [List Type](https://spec.graphql.org/June2018/#ListType)
@@ -126,7 +164,7 @@ class NamedType extends GraphQLType implements TypeResolver {
 /// GraphQL describes the types of data expected by query variables.
 /// Input types may be lists of another input type, or a non‐null variant of any other input type.
 @immutable
-class ListType extends GraphQLType implements TypeResolver {
+class ListType extends GraphQLType {
   const ListType(
     this.astNode, [
     ResolveType getType,
@@ -144,9 +182,6 @@ class ListType extends GraphQLType implements TypeResolver {
 
   @override
   String get baseTypeName => type.baseTypeName;
-
-  @override
-  List<Object> get props => [astNode, getType];
 }
 
 /// [Arguments](https://spec.graphql.org/June2018/#sec-Language.Arguments) to Fields which accept them.
@@ -267,4 +302,32 @@ abstract class TypeDefinition extends TypeSystemDefinition {
 
     throw ArgumentError("$node is unsupported");
   }
+}
+
+@immutable
+abstract class TypeDefinitionWithResolver extends TypeDefinition
+    implements TypeResolver {
+  const TypeDefinitionWithResolver([ResolveType getType])
+      : getType = getType ?? TypeResolver.withoutContext,
+        super();
+
+  @override
+  final ResolveType getType;
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    if (o.runtimeType == runtimeType) {
+      final _o = o as TypeDefinitionWithResolver;
+      return astNode == _o.astNode && getType == _o.getType;
+    }
+
+    return false;
+  }
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash([astNode, getType]);
 }

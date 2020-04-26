@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:meta/meta.dart";
 import "./base_types.dart" show TypeDefinition;
 import "./definitions.dart"

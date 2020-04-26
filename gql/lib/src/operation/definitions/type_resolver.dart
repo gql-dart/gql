@@ -1,6 +1,7 @@
 import "package:meta/meta.dart";
-import "package:gql/src/schema/definitions.dart";
+import "package:collection/collection.dart";
 
+import "package:gql/src/schema/definitions.dart";
 import "package:gql/src/operation/definitions.dart";
 
 /// Callback to dereference a full fragment definition by name
@@ -23,7 +24,25 @@ class GetExecutableType {
   ///
   /// See `gql/schema.dart`'s [TypeResolver].
   final ResolveType fromSchema;
+
   final ResolveFragment fromFragments;
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    if (o.runtimeType == runtimeType) {
+      final _o = o as GetExecutableType;
+      return fromFragments == _o.fromFragments && fromSchema == _o.fromSchema;
+    }
+
+    return false;
+  }
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash([fromFragments, fromSchema]);
 
   /// throw a [StateError] when resolution is attempted without a context passed down
   static const withoutContext = GetExecutableType(
