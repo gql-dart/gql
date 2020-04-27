@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
 // Contents:
 // * Value
 // * IntValue
