@@ -62,8 +62,6 @@ class IntValue extends Value {
   final IntValueNode astNode;
 
   int get value => int.parse(astNode.value);
-
-  static IntValue fromNode(IntValueNode astNode) => IntValue(astNode);
 }
 
 @immutable
@@ -74,8 +72,6 @@ class FloatValue extends Value {
   final FloatValueNode astNode;
 
   double get value => double.parse(astNode.value);
-
-  static FloatValue fromNode(FloatValueNode astNode) => FloatValue(astNode);
 }
 
 @immutable
@@ -86,8 +82,6 @@ class StringValue extends Value {
   final StringValueNode astNode;
 
   String get value => astNode.value;
-
-  static StringValue fromNode(StringValueNode astNode) => StringValue(astNode);
 }
 
 @immutable
@@ -98,9 +92,6 @@ class BooleanValue extends Value {
   final BooleanValueNode astNode;
 
   bool get value => astNode.value;
-
-  static BooleanValue fromNode(BooleanValueNode astNode) =>
-      BooleanValue(astNode);
 }
 
 @immutable
@@ -109,8 +100,6 @@ class NullValue extends Value {
 
   @override
   final NullValueNode astNode;
-
-  static NullValue fromNode(NullValueNode astNode) => NullValue(astNode);
 }
 
 @immutable
@@ -121,8 +110,6 @@ class EnumValue extends Value {
   final EnumValueNode astNode;
 
   String get name => astNode.name.value;
-
-  static EnumValue fromNode(EnumValueNode astNode) => EnumValue(astNode);
 }
 
 @immutable
@@ -133,8 +120,6 @@ class ListValue extends Value {
   final ListValueNode astNode;
 
   List<Value> get values => astNode.values.map(Value.fromNode).toList();
-
-  static ListValue fromNode(ListValueNode astNode) => ListValue(astNode);
 }
 
 @immutable
@@ -152,8 +137,6 @@ class ObjectField<V extends Value> extends GraphQLEntity {
     final field = ObjectField(astNode);
     return MapEntry(field.name, field);
   }
-
-  static ObjectField fromNode(ObjectFieldNode astNode) => ObjectField(astNode);
 }
 
 @immutable
@@ -165,8 +148,6 @@ class ObjectValue extends Value {
 
   Map<String, ObjectField> get fields =>
       Map.fromEntries(astNode.fields.map(ObjectField.asEntry));
-
-  static ObjectValue fromNode(ObjectValueNode astNode) => ObjectValue(astNode);
 }
 
 @immutable
@@ -177,9 +158,6 @@ class DefaultValue extends GraphQLEntity {
   final DefaultValueNode astNode;
 
   Value get value => Value.fromNode(astNode.value);
-
-  static DefaultValue fromNode(DefaultValueNode astNode) =>
-      DefaultValue(astNode);
 }
 
 // While I don't believe VariableValues are possible in the schema definition,
@@ -192,6 +170,4 @@ class Variable extends Value {
   final VariableNode astNode;
 
   String get name => astNode.name.value;
-
-  static Variable fromNode(VariableNode astNode) => Variable(astNode);
 }
