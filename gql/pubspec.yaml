@@ -1,5 +1,4 @@
 name: gql
-author: Klāvs Priedītis <klavs@prieditis.lv>
 version: 0.12.2
 homepage: https://github.com/gql-dart/gql/tree/master/gql
 description: GraphQL tools for parsing, transforming and printing GraphQL documents.

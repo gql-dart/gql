@@ -41,7 +41,7 @@ class Context {
 
   /// Create an empty context.
   ///
-  /// Entries may be added later using [set].
+  /// Entries may be added later using [withEntry].
   const Context() : _context = const <Type, ContextEntry>{};
 
   const Context._fromMap(Map<Type, ContextEntry> context)

@@ -34,6 +34,22 @@ class ResponseFormatException extends LinkException {
   }) : super(originalException);
 }
 
+/// Exception occurring when reading from the context
+@immutable
+class ContextReadException extends LinkException {
+  const ContextReadException({
+    dynamic originalException,
+  }) : super(originalException);
+}
+
+/// Exception occurring when writing to the context
+@immutable
+class ContextWriteException extends LinkException {
+  const ContextWriteException({
+    dynamic originalException,
+  }) : super(originalException);
+}
+
 /// Exception occurring when network fails
 /// or parsed response is missing both `data` and `errors`
 @immutable

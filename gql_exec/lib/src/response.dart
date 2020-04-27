@@ -1,6 +1,6 @@
 import "package:collection/collection.dart";
-import "package:gql_exec/exec/context.dart";
-import "package:gql_exec/exec/error.dart";
+import "package:gql_exec/src/context.dart";
+import "package:gql_exec/src/error.dart";
 import "package:meta/meta.dart";
 
 /// Execution response

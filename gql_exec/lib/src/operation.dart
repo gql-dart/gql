@@ -2,7 +2,7 @@ import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:meta/meta.dart";
 
-/// An operation in a [document] , optionally defined by [operationName]
+/// An operation in a [document], optionally defined by [operationName]
 @immutable
 class Operation {
   /// Document containing at least one [OperationDefinitionNode]

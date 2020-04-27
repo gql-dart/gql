@@ -1,6 +1,6 @@
 import "package:collection/collection.dart";
-import "package:gql_exec/exec/context.dart";
-import "package:gql_exec/exec/operation.dart";
+import "package:gql_exec/src/context.dart";
+import "package:gql_exec/src/operation.dart";
 import "package:meta/meta.dart";
 
 /// Execution request of an [operation] with [variables].

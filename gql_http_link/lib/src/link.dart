@@ -83,46 +83,12 @@ class HttpLink extends Link {
     Request request, [
     NextLink forward,
   ]) async* {
-    dynamic body;
-
-    try {
-      body = json.encode(
-        serializer.serializeRequest(request),
-      );
-    } catch (e) {
-      throw RequestFormatException(
-        originalException: e,
-        request: request,
-      );
-    }
-
-    final httpResponse = await _httpClient.post(
-      uri,
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "*/*",
-        ...defaultHeaders,
-        ..._getHttpLinkHeaders(request),
-      },
-      body: body,
+    final httpResponse = await _executeRequest(
+      _getHttpLinkHeaders(request),
+      _serializeRequest(request),
     );
 
-    Response response;
-
-    try {
-      final dynamic responseBody = json.decode(
-        utf8.decode(
-          httpResponse.bodyBytes,
-        ),
-      );
-
-      response = parser.parseResponse(responseBody as Map<String, dynamic>);
-    } catch (e) {
-      throw HttpLinkParserException(
-        originalException: e,
-        response: httpResponse,
-      );
-    }
+    final response = _parseHttpResponse(httpResponse);
 
     if (httpResponse.statusCode >= 300 ||
         (response.data == null && response.errors == null)) {
@@ -135,12 +101,78 @@ class HttpLink extends Link {
     yield Response(
       data: response.data,
       errors: response.errors,
-      context: response.context.withEntry(
+      context: _updateResponseContext(response, httpResponse),
+    );
+  }
+
+  Context _updateResponseContext(
+    Response response,
+    http.Response httpResponse,
+  ) {
+    try {
+      return response.context.withEntry(
         HttpLinkResponseContext(
           statusCode: httpResponse.statusCode,
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      throw ContextWriteException(
+        originalException: e,
+      );
+    }
+  }
+
+  Response _parseHttpResponse(http.Response httpResponse) {
+    try {
+      final dynamic responseBody = json.decode(
+        utf8.decode(
+          httpResponse.bodyBytes,
+        ),
+      );
+
+      return parser.parseResponse(responseBody as Map<String, dynamic>);
+    } catch (e) {
+      throw HttpLinkParserException(
+        originalException: e,
+        response: httpResponse,
+      );
+    }
+  }
+
+  Future<http.Response> _executeRequest(
+    Map<String, String> contextHeaders,
+    dynamic body,
+  ) async {
+    try {
+      return await _httpClient.post(
+        uri,
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "*/*",
+          ...defaultHeaders,
+          ...contextHeaders,
+        },
+        body: body,
+      );
+    } catch (e) {
+      throw ServerException(
+        originalException: e,
+        parsedResponse: null,
+      );
+    }
+  }
+
+  dynamic _serializeRequest(Request request) {
+    try {
+      return json.encode(
+        serializer.serializeRequest(request),
+      );
+    } catch (e) {
+      throw RequestFormatException(
+        originalException: e,
+        request: request,
+      );
+    }
   }
 
   /// Closes the underlining [http.Client]
@@ -150,9 +182,15 @@ class HttpLink extends Link {
 }
 
 Map<String, String> _getHttpLinkHeaders(Request request) {
-  final HttpLinkHeaders linkHeaders = request.context.entry();
+  try {
+    final HttpLinkHeaders linkHeaders = request.context.entry();
 
-  return {
-    if (linkHeaders != null) ...linkHeaders.headers,
-  };
+    return {
+      if (linkHeaders != null) ...linkHeaders.headers,
+    };
+  } catch (e) {
+    throw ContextReadException(
+      originalException: e,
+    );
+  }
 }
