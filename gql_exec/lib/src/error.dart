@@ -37,7 +37,7 @@ class GraphQLError {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is GraphQLError &&
-          const ListEquality(
+          const ListEquality<Object>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -45,7 +45,7 @@ class GraphQLError {
           ));
 
   @override
-  int get hashCode => const ListEquality(
+  int get hashCode => const ListEquality<Object>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),
@@ -73,7 +73,7 @@ class ErrorLocation {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is ErrorLocation &&
-          const ListEquality(
+          const ListEquality<Object>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -81,7 +81,7 @@ class ErrorLocation {
           ));
 
   @override
-  int get hashCode => const ListEquality(
+  int get hashCode => const ListEquality<Object>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),

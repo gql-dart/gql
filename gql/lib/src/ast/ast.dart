@@ -43,7 +43,7 @@ abstract class Node {
     if (identical(this, o)) return true;
     if (o.runtimeType != runtimeType) return false;
 
-    return const ListEquality(
+    return const ListEquality<Object>(
       DeepCollectionEquality(),
     ).equals(
       (o as Node)._children,
@@ -52,7 +52,7 @@ abstract class Node {
   }
 
   @override
-  int get hashCode => const ListEquality(
+  int get hashCode => const ListEquality<Object>(
         DeepCollectionEquality(),
       ).hash(
         _children,

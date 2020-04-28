@@ -49,7 +49,7 @@ class Request {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is Request &&
-          const ListEquality(
+          const ListEquality<Object>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -57,7 +57,7 @@ class Request {
           ));
 
   @override
-  int get hashCode => const ListEquality(
+  int get hashCode => const ListEquality<Object>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),
