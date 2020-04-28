@@ -9,7 +9,10 @@
 /// and an optional list of imported ASTs.
 ///
 /// **NOTE**: This library is currently only for working with executable _definitions_.
+@experimental
 library operation;
+
+import "package:meta/meta.dart";
 
 export "package:gql/src/operation/definitions.dart";
 export "package:gql/src/operation/executable.dart";
