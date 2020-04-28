@@ -25,14 +25,19 @@ class Operation {
 
   @override
   bool operator ==(Object o) =>
-      o is Operation &&
-      const DeepCollectionEquality().equals(
-        o._getChildren(),
-        _getChildren(),
-      );
+      identical(this, o) ||
+      (o is Operation &&
+          const ListEquality(
+            DeepCollectionEquality(),
+          ).equals(
+            o._getChildren(),
+            _getChildren(),
+          ));
 
   @override
-  int get hashCode => const DeepCollectionEquality().hash(
+  int get hashCode => const ListEquality(
+        DeepCollectionEquality(),
+      ).hash(
         _getChildren(),
       );
 }
