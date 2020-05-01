@@ -1,3 +1,8 @@
+## 0.0.11
+
+- remove `author` field from `pubspec.yaml`
+- "generated code" header by [@liyuqian](https://github.com/liyuqian)
+
 ## 0.0.10
 
 - remove duplicate ast imports

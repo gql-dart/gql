@@ -1,3 +1,7 @@
+## 1.0.10
+
+- remove `author` field from `pubspec.yaml`
+
 ## 1.0.9
 
 - upgrade `package:gql_pedantic`

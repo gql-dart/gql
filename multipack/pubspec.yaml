@@ -1,8 +1,8 @@
 name: multipack
 environment: 
-  sdk: '>=2.4.0 <3.0.0'
+  sdk: '>=2.7.2 <3.0.0'
 dependencies: 
-  args: 1.5.0
+  args: 1.5.2
   pubspec: ^0.1.2
   path: ^1.6.4
 dev_dependencies: 
