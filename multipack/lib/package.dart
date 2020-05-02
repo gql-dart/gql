@@ -13,6 +13,10 @@ final packPen = AnsiPen()
   ..xterm(241, bg: true)
   ..white(bold: true);
 
+final commandPen = AnsiPen()
+  ..xterm(166, bg: true)
+  ..white(bold: true);
+
 final successPen = AnsiPen()
   ..xterm(22, bg: true)
   ..white(bold: true);
@@ -44,8 +48,12 @@ class Package {
     );
 
     final cmd = [executable, ...arguments].join(" ");
+    final command = commandPen.write(
+      " ${cmd.padRight(nameWidth)} ",
+    );
 
-    print("${multipack}${packName} ${cmd}");
+    print("${multipack}${packName}");
+    print("${multipack}${command}");
 
     final process = await Process.start(
       executable,
