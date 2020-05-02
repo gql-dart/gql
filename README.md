@@ -153,6 +153,13 @@ Link all local packages by running
 multipack pubspec override
 ```
 
+While this package is not published, you have to do the following every time `./multipack/pubspec.yaml` is altered.
+```bash
+cd ./multipack
+pub get
+cd ..
+```
+
 Get all packages by running
 ```bash
 multipack pub get
@@ -160,7 +167,7 @@ multipack pub get
 
 Clean up the pubspec file before publishing
 ```bash
-multipack pub spec clean
+multipack pubspec clean
 ```
 
 See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).

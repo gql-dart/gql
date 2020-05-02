@@ -9,5 +9,5 @@ dependencies:
   path: ^1.6.4
 dev_dependencies: 
   gql_pedantic: ^1.0.1
-executables:
+executables: 
   multipack: null
