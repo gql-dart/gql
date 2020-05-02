@@ -7,7 +7,7 @@ class ExecCommand extends PassthroughCommand {
   ExecCommand(List<Package> packages)
       : super(
           "exec",
-          "execute any command",
+          "Execute any command.",
           packages,
         );
 
