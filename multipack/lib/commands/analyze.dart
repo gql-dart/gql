@@ -3,16 +3,16 @@ import "dart:async";
 import "package:multipack/commands/common.dart";
 import "package:multipack/package.dart";
 
-class PubCommand extends PassthroughCommand {
-  PubCommand(List<Package> packages)
+class AnalyzeCommand extends PassthroughCommand {
+  AnalyzeCommand(List<Package> packages)
       : super(
-          "pub",
-          "Run pub.",
+          "analyze",
+          "Run analyzer.",
           packages,
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) => package.pub(
+  FutureOr<void> runOnPackage(Package package) => package.analyze(
         argResults.arguments,
         nameWidth: nameWidth,
       );

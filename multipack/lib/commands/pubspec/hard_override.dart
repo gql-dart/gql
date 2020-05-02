@@ -1,55 +1,47 @@
-import "dart:io";
+import "dart:async";
 
-import "package:args/command_runner.dart";
-import "package:multipack/commands/pubspec/common.dart";
+import "package:multipack/commands/common.dart";
+import "package:multipack/package.dart";
 import "package:pubspec/pubspec.dart";
 import "package:path/path.dart" as path;
 
-class HardOverrideCommand extends Command<void> {
-  @override
-  final String name = "hard_override";
+class HardOverrideCommand extends MultipackCommand {
+  HardOverrideCommand(
+    List<Package> packages,
+  ) : super(
+          "hard_override",
+          "overrides dependencies for local packages",
+          packages,
+        );
 
   @override
-  final String description = "overrides dependencies for local packages";
+  FutureOr<void> runOnPackage(Package package) {
+    final map = (String key, DependencyReference ref) {
+      if (ref is! HostedReference) return MapEntry(key, ref);
 
-  @override
-  void run() async {
-    final packages = await findPackages(
-      Directory.current,
-    ).toList();
+      final localPackage = packages.firstWhere(
+        (package) => package.name == key,
+        orElse: () => null,
+      );
 
-    packages.forEach(
-      (package) {
-        print("updating ${package.name}...");
+      if (localPackage == null) return MapEntry(key, ref);
 
-        final map = (String key, DependencyReference ref) {
-          if (ref is! HostedReference) return MapEntry(key, ref);
+      return MapEntry(
+        key,
+        PathReference(
+          path.relative(
+            localPackage.directory.path,
+            from: package.directory.path,
+          ),
+        ),
+      );
+    };
 
-          final localPackage = packages.firstWhere(
-            (package) => package.name == key,
-            orElse: () => null,
-          );
-
-          if (localPackage == null) return MapEntry(key, ref);
-
-          return MapEntry(
-            key,
-            PathReference(
-              path.relative(
-                localPackage.directory.path,
-                from: package.directory.path,
-              ),
-            ),
-          );
-        };
-
-        package.pubspec
-            .copy(
-              dependencies: package.pubspec.dependencies.map(map),
-              devDependencies: package.pubspec.devDependencies.map(map),
-            )
-            .save(package.directory);
-      },
-    );
+    return package.pubspec
+        .copy(
+          dependencies: package.pubspec.dependencies.map(map),
+          devDependencies: package.pubspec.devDependencies.map(map),
+        )
+        .save(package.directory);
   }
 }

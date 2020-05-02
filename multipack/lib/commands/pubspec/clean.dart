@@ -1,28 +1,22 @@
-import "dart:io";
+import "dart:async";
 
-import "package:args/command_runner.dart";
-import "package:multipack/commands/pubspec/common.dart";
+import "package:multipack/commands/common.dart";
+import "package:multipack/package.dart";
 import "package:pubspec/pubspec.dart";
 
-class CleanCommand extends Command<void> {
-  @override
-  final String name = "clean";
+class CleanCommand extends MultipackCommand {
+  CleanCommand(
+    List<Package> packages,
+  ) : super(
+          "clean",
+          "cleans dependency overrides",
+          packages,
+        );
 
   @override
-  final String description = "cleans dependency overrides";
-
-  @override
-  void run() => findPackages(
-        Directory.current,
-      ).forEach(
-        (package) {
-          print("cleaning ${package.name}...");
-
-          package.pubspec.copy(
-            dependencyOverrides: <String, DependencyReference>{},
-          ).save(
-            package.directory,
-          );
-        },
+  FutureOr<void> runOnPackage(Package package) => package.pubspec.copy(
+        dependencyOverrides: <String, DependencyReference>{},
+      ).save(
+        package.directory,
       );
 }

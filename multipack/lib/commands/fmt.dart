@@ -3,16 +3,16 @@ import "dart:async";
 import "package:multipack/commands/common.dart";
 import "package:multipack/package.dart";
 
-class PubCommand extends PassthroughCommand {
-  PubCommand(List<Package> packages)
+class FmtCommand extends PassthroughCommand {
+  FmtCommand(List<Package> packages)
       : super(
-          "pub",
-          "Run pub.",
+          "fmt",
+          "Run formatter.",
           packages,
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) => package.pub(
+  FutureOr<void> runOnPackage(Package package) => package.fmt(
         argResults.arguments,
         nameWidth: nameWidth,
       );
