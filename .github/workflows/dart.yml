@@ -28,10 +28,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Activate multipack
         run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
           pub global activate --source path ./multipack
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
+          cd ./multipack
+          pub get
+          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -68,10 +72,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Activate multipack
         run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
           pub global activate --source path ./multipack
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
+          cd ./multipack
+          pub get
+          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
