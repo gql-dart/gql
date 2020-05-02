@@ -12,7 +12,7 @@ class AnalyzeCommand extends PassthroughCommand {
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) => package.analyze(
+  FutureOr<int> runOnPackage(Package package) => package.analyze(
         argResults.arguments,
         nameWidth: nameWidth,
       );

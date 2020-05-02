@@ -34,7 +34,7 @@ class Package {
     this.isFlutter,
   });
 
-  Future<void> run(
+  Future<int> run(
     String executable,
     List<String> arguments, {
     int nameWidth,
@@ -65,44 +65,46 @@ class Package {
     print("${multipack}${status}");
 
     print("");
+
+    return exitCode;
   }
 
-  Future<void> pub(
+  Future<int> pub(
     List<String> args, {
     int nameWidth,
-  }) async {
+  }) {
     final executable = isFlutter ? "flutter" : "pub";
     final arguments = isFlutter ? ["pub", ...args] : args;
 
-    await run(
+    return run(
       executable,
       arguments,
       nameWidth: nameWidth,
     );
   }
 
-  Future<void> fmt(
+  Future<int> fmt(
     List<String> args, {
     int nameWidth,
-  }) async {
+  }) {
     final executable = isFlutter ? "flutter" : "dartfmt";
     final arguments = isFlutter ? ["format", ...args] : args;
 
-    await run(
+    return run(
       executable,
       arguments,
       nameWidth: nameWidth,
     );
   }
 
-  Future<void> analyze(
+  Future<int> analyze(
     List<String> args, {
     int nameWidth,
-  }) async {
+  }) {
     const executable = "dartanalyzer";
     final arguments = args;
 
-    await run(
+    return run(
       executable,
       arguments,
       nameWidth: nameWidth,

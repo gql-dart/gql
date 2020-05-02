@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:io";
 import "dart:math";
 
 import "package:args/args.dart";
@@ -39,12 +40,19 @@ abstract class MultipackCommand extends Command<void> {
 
   @override
   Future<void> run() async {
+    final exitCodes = <int>[];
     for (final target in targets) {
-      await runOnPackage(target);
+      exitCodes.add(await runOnPackage(target));
+    }
+
+    final hasFailed = exitCodes.any((code) => code != 0);
+
+    if (hasFailed) {
+      exit(1);
     }
   }
 
-  FutureOr<void> runOnPackage(Package package);
+  FutureOr<int> runOnPackage(Package package);
 }
 
 abstract class PassthroughCommand extends MultipackCommand {

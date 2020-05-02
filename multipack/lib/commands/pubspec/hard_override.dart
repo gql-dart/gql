@@ -15,33 +15,39 @@ class HardOverrideCommand extends MultipackCommand {
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) {
-    final map = (String key, DependencyReference ref) {
-      if (ref is! HostedReference) return MapEntry(key, ref);
+  FutureOr<int> runOnPackage(Package package) async {
+    try {
+      final map = (String key, DependencyReference ref) {
+        if (ref is! HostedReference) return MapEntry(key, ref);
 
-      final localPackage = packages.firstWhere(
-        (package) => package.name == key,
-        orElse: () => null,
-      );
+        final localPackage = packages.firstWhere(
+          (package) => package.name == key,
+          orElse: () => null,
+        );
 
-      if (localPackage == null) return MapEntry(key, ref);
+        if (localPackage == null) return MapEntry(key, ref);
 
-      return MapEntry(
-        key,
-        PathReference(
-          path.relative(
-            localPackage.directory.path,
-            from: package.directory.path,
+        return MapEntry(
+          key,
+          PathReference(
+            path.relative(
+              localPackage.directory.path,
+              from: package.directory.path,
+            ),
           ),
-        ),
-      );
-    };
+        );
+      };
 
-    return package.pubspec
-        .copy(
-          dependencies: package.pubspec.dependencies.map(map),
-          devDependencies: package.pubspec.devDependencies.map(map),
-        )
-        .save(package.directory);
+      await package.pubspec
+          .copy(
+            dependencies: package.pubspec.dependencies.map(map),
+            devDependencies: package.pubspec.devDependencies.map(map),
+          )
+          .save(package.directory);
+
+      return 0;
+    } catch (e) {
+      return 1;
+    }
   }
 }

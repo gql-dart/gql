@@ -14,9 +14,17 @@ class CleanCommand extends MultipackCommand {
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) => package.pubspec.copy(
+  FutureOr<int> runOnPackage(Package package) async {
+    try {
+      await package.pubspec.copy(
         dependencyOverrides: <String, DependencyReference>{},
       ).save(
         package.directory,
       );
+
+      return 0;
+    } catch (e) {
+      return 1;
+    }
+  }
 }

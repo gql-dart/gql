@@ -15,27 +15,35 @@ class OverrideCommand extends MultipackCommand {
         );
 
   @override
-  FutureOr<void> runOnPackage(Package package) => package.pubspec
-      .copy(
-        dependencyOverrides: Map.fromEntries(
-          packages
-              .where(
-                (dependency) =>
-                    dependency.name != package.name &&
-                    (package.isFlutter || !dependency.isFlutter),
-              )
-              .map(
-                (dependency) => MapEntry(
-                  dependency.name,
-                  PathReference(
-                    path.relative(
-                      dependency.directory.path,
-                      from: package.directory.path,
+  FutureOr<int> runOnPackage(Package package) async {
+    try {
+      await package.pubspec
+          .copy(
+            dependencyOverrides: Map.fromEntries(
+              packages
+                  .where(
+                    (dependency) =>
+                        dependency.name != package.name &&
+                        (package.isFlutter || !dependency.isFlutter),
+                  )
+                  .map(
+                    (dependency) => MapEntry(
+                      dependency.name,
+                      PathReference(
+                        path.relative(
+                          dependency.directory.path,
+                          from: package.directory.path,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-        ),
-      )
-      .save(package.directory);
+            ),
+          )
+          .save(package.directory);
+
+      return 0;
+    } catch (e) {
+      return 1;
+    }
+  }
 }
