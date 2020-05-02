@@ -1,3 +1,8 @@
+## 0.2.9
+
+- remove `author` field from `pubspec.yaml`
+- handle more possible exceptions
+
 ## 0.2.8
 
 - catch more possible exceptions

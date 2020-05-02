@@ -1,19 +1,19 @@
 name: gql_example_flutter
 version: 1.0.0+1
 environment: 
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.7.2 <3.0.0'
 dependencies: 
-  gql: ^0.12.1
-  gql_link: ^0.2.3
-  gql_http_link: ^0.2.3
-  gql_exec: ^0.2.2
+  gql: ^0.12.3
+  gql_link: ^0.3.0
+  gql_http_link: ^0.2.9
+  gql_exec: ^0.2.4
   cupertino_icons: ^0.1.2
   flutter: 
     sdk: flutter
 dev_dependencies: 
   build_runner: ^1.0.0
-  gql_pedantic: ^1.0.1
-  gql_build: ^0.0.4
+  gql_pedantic: ^1.0.2
+  gql_build: ^0.0.11
   flutter_test: 
     sdk: flutter
 flutter: 

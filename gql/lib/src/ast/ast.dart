@@ -40,20 +40,21 @@ abstract class Node {
 
   @override
   bool operator ==(Object o) {
-    if (o is Node) {
-      if (o.runtimeType != runtimeType) return false;
+    if (identical(this, o)) return true;
+    if (o.runtimeType != runtimeType) return false;
 
-      return const DeepCollectionEquality().equals(
-        o._children,
-        _children,
-      );
-    }
-
-    return false;
+    return const ListEquality<Object>(
+      DeepCollectionEquality(),
+    ).equals(
+      (o as Node)._children,
+      _children,
+    );
   }
 
   @override
-  int get hashCode => const DeepCollectionEquality().hash(
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(
         _children,
       );
 

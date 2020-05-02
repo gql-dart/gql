@@ -18,15 +18,19 @@ abstract class ContextEntry {
 
   @override
   bool operator ==(Object o) =>
-      o is ContextEntry &&
-      o.runtimeType == runtimeType &&
-      const DeepCollectionEquality().equals(
-        o.fieldsForEquality,
-        fieldsForEquality,
-      );
+      identical(this, o) ||
+      (o.runtimeType == runtimeType &&
+          const ListEquality<Object>(
+            DeepCollectionEquality(),
+          ).equals(
+            (o as ContextEntry).fieldsForEquality,
+            fieldsForEquality,
+          ));
 
   @override
-  int get hashCode => const DeepCollectionEquality().hash(
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(
         fieldsForEquality,
       );
 }
@@ -126,14 +130,19 @@ class Context {
 
   @override
   bool operator ==(Object o) =>
-      o is Context &&
-      const DeepCollectionEquality().equals(
-        o._getChildren(),
-        _getChildren(),
-      );
+      identical(this, o) ||
+      (o is Context &&
+          const ListEquality<Object>(
+            DeepCollectionEquality(),
+          ).equals(
+            o._getChildren(),
+            _getChildren(),
+          ));
 
   @override
-  int get hashCode => const DeepCollectionEquality().hash(
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(
         _getChildren(),
       );
 }

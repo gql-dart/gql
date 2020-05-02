@@ -1,3 +1,7 @@
+## 0.2.4
+
+- remove `author` field from `pubspec.yaml`
+
 ## 0.2.3
 
 - improve docs
