@@ -26,38 +26,34 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+      - name: Activate multipack
+        run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
+          pub global activate --source path ./multipack
       - name: Override local dependencies
         run: |
+          multipack pubspec hard_override
           cd ./multipack
           pub get
-          cd ../
-          dart ./multipack/bin/main.dart pubspec hard_override
+          cd ..
       - name: Get dependencies
         run: |
-          cd $PACKAGE
-          pub get
-          cd ..
+          multipack --only $PACKAGE pub get
       - name: Check formatting
         run: |
-          cd $PACKAGE
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          dartfmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
           echo ""
-          cd ..
       - name: Analyze package
         run: |
-          cd $PACKAGE
-          dartanalyzer --version
-          dartanalyzer --fatal-warnings --no-hints .
-          cd ..
+          multipack --only $PACKAGE analyze --version
+          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
-          cd $PACKAGE
-          [ ! -d ./test ] && exit 0
-          pub run test
-          cd ..
+          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
+          multipack --only $PACKAGE pub run test
   examples:
     strategy:
       matrix:
@@ -74,39 +70,33 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+      - name: Activate multipack
+        run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
+          pub global activate --source path ./multipack
       - name: Override local dependencies
         run: |
+          multipack pubspec hard_override
           cd ./multipack
           pub get
-          cd ../
-          dart ./multipack/bin/main.dart pubspec hard_override
+          cd ..
       - name: Get dependencies
         run: |
-          cd $PACKAGE
-          pub get
-          cd ..
+          multipack --only $PACKAGE pub get
       - name: Run builders
         run: |
-          cd $PACKAGE
-          pub run build_runner build --delete-conflicting-outputs
-          cd ..
+          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
       - name: Check build diff
         run: |
-          cd $PACKAGE
-          git diff --exit-code **/*.gql.dart
-          cd ..
+          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
       - name: Check formatting
         run: |
-          cd $PACKAGE
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          dartfmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
           echo ""
-          cd ..
       - name: Analyze package
         run: |
-          cd $PACKAGE
-          dartanalyzer --version
-          dartanalyzer --fatal-warnings --no-hints .
-          cd ..
+          multipack --only $PACKAGE analyze --version
+          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .

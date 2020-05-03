@@ -127,11 +127,65 @@ Ideas for future work:
 ## Contributing
 
 The goal of this project is to expand Dart GraphQL ecosystem
-and building a community around this vendor-neutral implementation.
+and to build a community around this vendor-neutral implementation.
 
-That said, this project is in it's early days and the best
-way to contribute currently is to open issues with questions
-about current and future scope and features of this project.
+Community contributions are welcome.
+
+### `multipack`
+This repo comes with an unpublished tool called `multipack`. To activate it run the following command.
+```bash
+pub global activate --source path ./multipack
+```
+
+`multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
+to run commands in topological order.
+```text
+Global options:
+-o, --only    Whitelist packages, skipping those not included for this command.
+-s, --skip    Blacklist packages for this command.
+
+Available commands:
+  analyze   Run analyzer.
+  exec      Execute any command.
+  fmt       Run formatter.
+  pub       Run pub.
+  pubspec   Update pubspec.yaml
+``` 
+
+`pubspec` has 3 subcommands:
+```
+Available subcommands:
+  clean           cleans dependency overrides
+  hard_override   overrides dependencies for local packages
+  override        overrides dependencies for local packages
+```
+
+Link all local packages by running
+```bash
+multipack --skip multipack pubspec override
+```
+
+Get all packages by running
+```bash
+multipack pub get
+```
+
+Clean up the pubspec file before publishing
+```bash
+multipack --skip multipack pubspec clean
+```
+
+See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
+
+#### Why `--skip multipack`?
+While this package is not published, you have to do the following every time `./multipack/pubspec.yaml` is altered.
+```bash
+cd ./multipack
+pub get
+cd ..
+```
+
+To avoid that, you can just skip multipack package.
 
 ## Features and bugs
 
