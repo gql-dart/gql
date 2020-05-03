@@ -150,14 +150,7 @@ Available commands:
 
 Link all local packages by running
 ```bash
-multipack pubspec override
-```
-
-While this package is not published, you have to do the following every time `./multipack/pubspec.yaml` is altered.
-```bash
-cd ./multipack
-pub get
-cd ..
+multipack --skip multipack pubspec override
 ```
 
 Get all packages by running
@@ -167,10 +160,20 @@ multipack pub get
 
 Clean up the pubspec file before publishing
 ```bash
-multipack pubspec clean
+multipack --skip multipack pubspec clean
 ```
 
 See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
+
+#### Why `--skip multipack`?
+While this package is not published, you have to do the following every time `./multipack/pubspec.yaml` is altered.
+```bash
+cd ./multipack
+pub get
+cd ..
+```
+
+To avoid that, you can just skip multipack package.
 
 ## Features and bugs
 

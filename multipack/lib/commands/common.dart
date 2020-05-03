@@ -21,8 +21,16 @@ abstract class MultipackCommand extends Command<void> {
       )
       .toList();
 
-  List<String> get targetNames =>
-      (globalResults["only"] as Iterable<String>)?.toList() ?? packageNames;
+  List<String> get targetNames {
+    final whitelist = (globalResults["only"] as Iterable<String>).toList();
+    final blacklist = (globalResults["skip"] as Iterable<String>).toList();
+
+    return whitelist
+        .where(
+          (package) => !blacklist.contains(package),
+        )
+        .toList();
+  }
 
   List<Package> get targets => packages
       .where(

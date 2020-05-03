@@ -32,6 +32,14 @@ void main(List<String> arguments) async {
     allowed: packageNames,
   );
 
+  runner.argParser.addMultiOption(
+    "skip",
+    abbr: "s",
+    help: "Blacklist packages.",
+    defaultsTo: [],
+    allowed: packageNames,
+  );
+
   runner.addCommand(PubCommand(orderedPackages));
   runner.addCommand(FmtCommand(orderedPackages));
   runner.addCommand(AnalyzeCommand(orderedPackages));
