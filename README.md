@@ -140,6 +140,10 @@ pub global activate --source path ./multipack
 `multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
 to run commands in topological order.
 ```text
+Global options:
+-o, --only    Whitelist packages, skipping those not included for this command.
+-s, --skip    Blacklist packages for this command.
+
 Available commands:
   analyze   Run analyzer.
   exec      Execute any command.
@@ -147,6 +151,14 @@ Available commands:
   pub       Run pub.
   pubspec   Update pubspec.yaml
 ``` 
+
+`pubspec` has 3 subcommands:
+```
+Available subcommands:
+  clean           cleans dependency overrides
+  hard_override   overrides dependencies for local packages
+  override        overrides dependencies for local packages
+```
 
 Link all local packages by running
 ```bash

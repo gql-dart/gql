@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   runner.argParser.addMultiOption(
     "only",
     abbr: "o",
-    help: "Whitelist packages.",
+    help: "Whitelist packages, skipping those not included for this command.",
     defaultsTo: packageNames,
     allowed: packageNames,
   );
@@ -35,7 +35,7 @@ void main(List<String> arguments) async {
   runner.argParser.addMultiOption(
     "skip",
     abbr: "s",
-    help: "Blacklist packages.",
+    help: "Blacklist packages for this command.",
     defaultsTo: [],
     allowed: packageNames,
   );
