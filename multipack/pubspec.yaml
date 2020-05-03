@@ -6,6 +6,7 @@ dependencies:
   args: 1.6.0
   directed_graph: ^0.1.2
   pubspec: ^0.1.2
+  pub_semver: ^1.4.4
   path: ^1.6.4
 dev_dependencies: 
   gql_pedantic: ^1.0.1
