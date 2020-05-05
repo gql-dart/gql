@@ -22,20 +22,26 @@ void main() {
 
         request = Request(
           operation: Operation(
+            operationName: "sub",
             document: parseString("subscription MySubscription {}"),
           ),
           variables: {},
         );
 
         server = await HttpServer.bind('localhost', 0);
-        server.transform(WebSocketTransformer()).listen((webSocket) {
-          var channel = IOWebSocketChannel(webSocket);
-          channel.stream.listen((request) {
-            var map = json.decode(request);
-            expect(map['type'], 'connection_init');
-            link.dispose();
-          });
-        });
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            var channel = IOWebSocketChannel(webSocket);
+            channel.stream.map((s) => json.decode(s)).listen(
+                  expectAsync1(
+                    (request) {
+                      expect(request, InitOperation(null).toJson());
+                    },
+                    max: -1,
+                  ),
+                );
+          },
+        );
 
         webSocket = await WebSocket.connect('ws://localhost:${server.port}');
         channel = IOWebSocketChannel(webSocket);
