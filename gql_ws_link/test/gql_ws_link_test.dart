@@ -52,10 +52,6 @@ void main() {
       },
     );
 
-    test('use defined endpoint', () {
-      // TODO
-    });
-
     test(
       'send initialPayload',
       () async {
