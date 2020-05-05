@@ -46,10 +46,7 @@ void main() {
         webSocket = await WebSocket.connect('ws://localhost:${server.port}');
         channel = IOWebSocketChannel(webSocket);
 
-        link = WsLink(
-          "ws://localhost",
-          channel: channel,
-        );
+        link = WsLink(channel: channel);
         //
         link.request(request);
       },
@@ -59,9 +56,50 @@ void main() {
       // TODO
     });
 
-    test('send initialPayload', () {
-      // TODO
-    });
+    test(
+      'send initialPayload',
+      () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WsLink link;
+        Request request;
+        Map<String, String> initialPayload = {"data": "some data"};
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+          variables: {},
+        );
+
+        server = await HttpServer.bind('localhost', 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            var channel = IOWebSocketChannel(webSocket);
+            channel.stream.map((s) => json.decode(s)).listen(
+                  expectAsync1(
+                    (request) {
+                      expect(request, InitOperation(initialPayload).toJson());
+                    },
+                    max: -1,
+                  ),
+                );
+          },
+        );
+
+        webSocket = await WebSocket.connect('ws://localhost:${server.port}');
+        channel = IOWebSocketChannel(webSocket);
+
+        link = WsLink(
+          channel: channel,
+          initialPayload: initialPayload,
+        );
+        //
+        link.request(request);
+      },
+    );
 
     test('yield correct response', () {
       // TODO

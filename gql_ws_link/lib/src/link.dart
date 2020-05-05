@@ -21,7 +21,7 @@ class WsLink extends Link {
   final RequestSerializer serializer;
 
   IOWebSocketChannel _channel;
-  final String uri;
+  String _uri;
   final dynamic initialPayload;
 
   Stream<GraphQLSocketMessage> _messageStream;
@@ -31,13 +31,16 @@ class WsLink extends Link {
       BehaviorSubject<SocketConnectionState>();
 
   /// A simple websocket link.
-  /// TO send custom headers or protocols pass channel property.
-  WsLink(
-    this.uri, {
+  /// TO send custom headers or protocols pass [channel] property.
+  /// If channel is set, uri must be null.
+  /// [initialPayload] must be json encode-able.
+  WsLink({
+    String uri,
     IOWebSocketChannel channel,
     this.serializer = const RequestSerializer(),
     this.initialPayload,
-  }) {
+  }) : assert(_uri == null || channel == null) {
+    _uri = _uri ?? null;
     _channel = channel ?? null;
     this._connect();
   }
@@ -54,7 +57,7 @@ class WsLink extends Link {
     if (_channel == null) {
       try {
         this._channel = IOWebSocketChannel.connect(
-          this.uri,
+          this._uri,
           headers: {
             "Content-type": "application/json",
           },
@@ -175,7 +178,6 @@ class WsLink extends Link {
       _channel.sink.add(
         json.encode(
           message,
-          toEncodable: (dynamic m) => m.toJson(),
         ),
       );
     }
