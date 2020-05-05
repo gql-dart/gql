@@ -1,8 +1,8 @@
-import "dart:convert";
+import 'dart:convert';
 import 'dart:io';
 
-import "package:gql/language.dart";
-import "package:gql_exec/gql_exec.dart";
+import 'package:gql/language.dart';
+import 'package:gql_exec/gql_exec.dart';
 import 'package:gql_exec/exec/operation.dart';
 import 'package:gql_exec/exec/request.dart';
 import 'package:gql_ws_link/gql_ws_link.dart';
@@ -22,8 +22,8 @@ void main() {
 
         request = Request(
           operation: Operation(
-            operationName: "sub",
-            document: parseString("subscription MySubscription {}"),
+            operationName: 'sub',
+            document: parseString('subscription MySubscription {}'),
           ),
           variables: {},
         );
@@ -64,12 +64,12 @@ void main() {
         IOWebSocketChannel channel;
         WsLink link;
         Request request;
-        Map<String, String> initialPayload = {"data": "some data"};
+        Map<String, String> initialPayload = {'data': 'some data'};
 
         request = Request(
           operation: Operation(
-            operationName: "sub",
-            document: parseString("subscription MySubscription {}"),
+            operationName: 'sub',
+            document: parseString('subscription MySubscription {}'),
           ),
           variables: {},
         );
@@ -101,9 +101,78 @@ void main() {
       },
     );
 
-    test('yield correct response', () {
-      // TODO
-    });
+    test(
+      'yield correct response',
+      () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WsLink link;
+        Request request;
+        var responseData = {
+          'data': {
+            'pokemons': [
+              {'name': 'Bulbasaur'},
+              {'name': 'Ivysaur'},
+              {'name': 'Venusaur'}
+            ]
+          }
+        };
+
+        request = Request(
+          operation: Operation(
+            operationName: 'pokemonsSubscription',
+            document: parseString(
+                r'subscription MySubscription { pokemons(first: $first) { name } }'),
+          ),
+          variables: {
+            'first': 3,
+          },
+        );
+
+        server = await HttpServer.bind('localhost', 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            var channel = IOWebSocketChannel(webSocket);
+            channel.stream.map((s) => json.decode(s)).listen(
+              (request) {
+                if (request['type'] == 'connection_init') {
+                  channel.sink.add(
+                    json.encode(
+                      ConnectionAck(),
+                    ),
+                  );
+                } else if (request['type'] == 'start') {
+                  channel.sink.add(
+                    json.encode(
+                      {
+                        'type': 'data',
+                        'id': request['id'],
+                        'payload': {
+                          'data': responseData,
+                          'errors': null,
+                        },
+                      },
+                    ),
+                  );
+                }
+              },
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect('ws://localhost:${server.port}');
+        channel = IOWebSocketChannel(webSocket);
+
+        link = WsLink(channel: channel);
+        //
+        expect(
+            link.request(request),
+            emitsInOrder([
+              Response(data: responseData, errors: null),
+            ]));
+      },
+    );
 
     test('yield updated response', () {
       // TODO

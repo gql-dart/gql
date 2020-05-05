@@ -74,6 +74,7 @@ class WsLink extends Link {
     _messageStream = _channel.stream
         .map<GraphQLSocketMessage>(_parseSocketMessage)
         .asBroadcastStream();
+//    _messageStream.listen(print); // For testing
     _write(InitOperation(this.initialPayload));
     _messageSubscription = _messageStream.listen(
       (_) {},
