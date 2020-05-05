@@ -5,6 +5,6 @@ void main() {
   // ignore: unused_local_variable
   final link = Link.from([
     // SomeLink(),
-    WSLink("ws://loaclhost:5000/graphql"),
+    WSLink("ws://localhost:5000/graphql"),
   ]);
 }
