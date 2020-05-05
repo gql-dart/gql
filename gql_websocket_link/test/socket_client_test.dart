@@ -6,8 +6,8 @@
 import "dart:convert";
 import "dart:typed_data";
 
-import "package:gql_ws_link/src/socket_client.dart" show SocketClient, SocketConnectionState;
-import "package:gql_ws_link/src/messages.dart";
+import "package:gql_websocket_link/src/socket_client.dart" show SocketClient, SocketConnectionState;
+import "package:gql_websocket_link/src/messages.dart";
 import "package:test/test.dart";
 
 import "helpers.dart";

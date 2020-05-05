@@ -8,9 +8,9 @@ import "dart:convert";
 
 import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
-import "package:gql_ws_link/src/messages.dart";
-import "package:gql_ws_link/src/socket_client.dart";
-import "package:gql_ws_link/gql_ws_link.dart";
+import "package:gql_websocket_link/src/messages.dart";
+import "package:gql_websocket_link/src/socket_client.dart";
+import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:gql_link/gql_link.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";

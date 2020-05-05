@@ -2,9 +2,9 @@ import "dart:async";
 
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:gql_ws_link/src/get_from_ast.dart";
-import "package:gql_ws_link/src/socket_client.dart";
-import "package:gql_ws_link/src/messages.dart";
+import "package:gql_websocket_link/src/get_from_ast.dart";
+import "package:gql_websocket_link/src/socket_client.dart";
+import "package:gql_websocket_link/src/messages.dart";
 import "package:gql/language.dart";
 import "package:gql/ast.dart";
 

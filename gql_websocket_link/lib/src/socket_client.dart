@@ -13,7 +13,7 @@ import "package:websocket/websocket.dart" show WebSocket, WebSocketStatus;
 import "package:rxdart/rxdart.dart";
 import "package:uuid_enhanced/uuid.dart";
 
-import "package:gql_ws_link/src/messages.dart";
+import "package:gql_websocket_link/src/messages.dart";
 
 class SocketClientConfig {
   const SocketClientConfig({

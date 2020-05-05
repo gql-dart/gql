@@ -1,6 +1,6 @@
-name: gql_ws_link
+name: gql_websocket_link
 version: 0.1.0
-homepage: https://github.com/gql-dart/gql/tree/master/gql_ws_link
+homepage: https://github.com/gql-dart/gql/tree/master/gql_websocket_link
 description: GQL Websocket Link
 environment: 
   sdk: '>=2.7.2 <3.0.0'
