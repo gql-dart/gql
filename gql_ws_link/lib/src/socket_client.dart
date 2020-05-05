@@ -197,10 +197,10 @@ class SocketClient {
     print("Disposing socket client..");
     _reconnectTimer?.cancel();
     await Future.wait<dynamic>([
-      _socket?.close(),
-      _keepAliveSubscription?.cancel(),
-      _messageSubscription?.cancel(),
-      _connectionStateController?.close(),
+      Future<dynamic>.value(_socket?.close()),
+      Future<dynamic>.value(_keepAliveSubscription?.cancel()),
+      Future<dynamic>.value(_messageSubscription?.cancel()),
+      Future<dynamic>.value(_connectionStateController?.close()),
     ]);
   }
 

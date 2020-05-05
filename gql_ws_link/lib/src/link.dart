@@ -20,21 +20,15 @@ class WSLink extends Link {
 
   ResponseParser parser;
 
-  WSLink(this.url, {this.config, this.parser = const ResponseParser(), SocketClient socketClient}) {
-    if (socketClient != null) {
-      _client = socketClient;
-    } else {
-      _client = SocketClient(url, config: config);
-    }
-  }
+  WSLink(this.url, {this.config, this.parser = const ResponseParser()});
 
   @override
-  Stream<Response> request(Request request, [forward]) {
+  Stream<Response> request(Request request, [forward]) async* {
     if (_client == null) {
-      connectOrReconnect();
+      await connectOrReconnect();
     }
 
-    return _client
+    yield* _client
         .subscribe(
           QueryPayload(
               operationName: request.operation.operationName, query: printNode(request.operation.document), variables: request.variables),
@@ -51,8 +45,8 @@ class WSLink extends Link {
   }
 
   /// Connects or reconnects to the server with the specified headers.
-  void connectOrReconnect() {
-    _client?.dispose();
+  Future<void> connectOrReconnect() async {
+    await _client?.dispose();
     _client = SocketClient(url, config: config);
   }
 
