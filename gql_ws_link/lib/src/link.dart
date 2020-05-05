@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:gql_ws_link/src/messages.dart';
-
 import 'package:gql_link/gql_link.dart';
 import 'package:gql_exec/exec/context.dart';
 import 'package:gql_exec/exec/request.dart';
 import 'package:gql_exec/exec/response.dart';
+import 'package:gql_exec/exec/error.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/src/exception.dart';
@@ -200,7 +200,13 @@ class WsLink extends Link {
         return ConnectionKeepAlive();
       case MessageTypes.GQL_DATA:
         final dynamic data = payload['data'];
-        final dynamic errors = payload['errors'];
+        final dynamic errorsData = payload['errors'];
+        List<GraphQLError> errors = [];
+        if (errorsData != null) {
+          errorsData.forEach((e) {
+            errors.add(jsonToGraphQLError(e));
+          });
+        }
         return SubscriptionData(id, data, errors);
       case MessageTypes.GQL_ERROR:
         return SubscriptionError(id, payload);
@@ -210,4 +216,23 @@ class WsLink extends Link {
         return UnknownData(map);
     }
   }
+}
+
+// TODO move this to [ErrorLocation] class
+ErrorLocation jsonToErrorLocation(Map<String, dynamic> json) {
+  return ErrorLocation(line: json['line'], column: json['column']);
+}
+
+// TODO move this to [GraphQLError] class
+GraphQLError jsonToGraphQLError(Map<String, dynamic> json) {
+  List<ErrorLocation> locations = [];
+  json['locations'].forEach((i) {
+    locations.add(jsonToErrorLocation(i));
+  });
+  return GraphQLError(
+    message: json['message'],
+    locations: locations,
+    path: json['path'].map((i) => i.toString()).toList(),
+    extensions: json['extensions'],
+  );
 }
