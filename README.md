@@ -7,7 +7,7 @@ A simple usage example:
 ```dart
 import "package:dio/dio.dart";
 import "package:gql_link/gql_link.dart";
-import "package:gql_http_link/gql_http_link.dart";
+import "package:gql_dio_link/gql_dio_link.dart";
 
 void main () {
   final dio = Dio();
