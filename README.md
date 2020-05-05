@@ -1,4 +1,4 @@
-Similar to [``gql_http_link``](https://pub.dev/packages/gql_http_link), This is a GQL Terminating Link to execute requests via Dio using JSON.
+Similar to [`gql_http_link`](https://pub.dev/packages/gql_http_link), This is a GQL Terminating Link to execute requests via Dio using JSON.
 
 ## Usage
 
@@ -13,7 +13,7 @@ void main () {
   final dio = Dio();
   final link = Link.from([
     // SomeLink(),
-    HttpLink("/graphql", client: dio),
+    DioLink("/graphql", client: dio),
   ]);
 }
 
