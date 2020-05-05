@@ -113,6 +113,7 @@ Ideas for future work:
 | [graphql_server][graphql_server]| Base package for implementing GraphQL servers. |
 | [graphql-to-dart][graphql-to-dart]| generate dart classes and respective JsonSerializable transcoders ([npm package][graphql-to-dart-npm]) |
 | [major_graphql][major_graphql]| generate `built_value` classes and serializers with `pub build` (successor of [graphql-to-dart][graphql-to-dart]) |
+| [gql_dio_link] | Similar to gql_http_link, A GQL Terminating Link to execute requests via Dio using JSON | 
 | Your project? | Open a PR to add it to this readme! |
 
 [artemis]: https://github.com/comigor/artemis
@@ -123,6 +124,7 @@ Ideas for future work:
 [graphql-to-dart]: https://github.com/micimize/graphql-to-dart
 [graphql-to-dart-npm]: https://www.npmjs.com/package/graphql-to-dart
 [major_graphql]: https://github.com/micimize/major
+[gql_dio_link]: https://github.com/TarekkMA/gql_dio_link
 
 ## Contributing
 
