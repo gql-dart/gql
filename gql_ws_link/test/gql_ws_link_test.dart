@@ -174,9 +174,101 @@ void main() {
       },
     );
 
-    test('yield updated response', () {
-      // TODO
-    });
+    test(
+      'yield updated response',
+      () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WsLink link;
+        Request request;
+        var responseData1 = {
+          'data': {
+            'pokemons': [
+              {'name': 'Bulbasaur'},
+              {'name': 'Ivysaur'},
+              {'name': 'Venusaur'}
+            ]
+          }
+        };
+        var responseData2 = {
+          'data': {
+            'pokemons': [
+              {'name': 'Charmander'},
+              {'name': 'Charmeleon'},
+              {'name': 'Charizard'}
+            ]
+          }
+        };
+
+        request = Request(
+          operation: Operation(
+            operationName: 'pokemonsSubscription',
+            document: parseString(
+                r'subscription MySubscription { pokemons(first: $first) { name } }'),
+          ),
+          variables: {
+            'first': 3,
+          },
+        );
+
+        server = await HttpServer.bind('localhost', 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            var channel = IOWebSocketChannel(webSocket);
+            channel.stream.map((s) => json.decode(s)).listen(
+              (request) async {
+                if (request['type'] == 'connection_init') {
+                  channel.sink.add(
+                    json.encode(
+                      ConnectionAck(),
+                    ),
+                  );
+                } else if (request['type'] == 'start') {
+                  channel.sink.add(
+                    json.encode(
+                      {
+                        'type': 'data',
+                        'id': request['id'],
+                        'payload': {
+                          'data': responseData1,
+                          'errors': null,
+                        },
+                      },
+                    ),
+                  );
+                  await Future.delayed(Duration(seconds: 1));
+                  channel.sink.add(
+                    json.encode(
+                      {
+                        'type': 'data',
+                        'id': request['id'],
+                        'payload': {
+                          'data': responseData2,
+                          'errors': null,
+                        },
+                      },
+                    ),
+                  );
+                }
+              },
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect('ws://localhost:${server.port}');
+        channel = IOWebSocketChannel(webSocket);
+
+        link = WsLink(channel: channel);
+        //
+        expect(
+            link.request(request),
+            emitsInOrder([
+              Response(data: responseData1, errors: null),
+              Response(data: responseData2, errors: null),
+            ]));
+      },
+    );
 
     test('yield correct response with errors', () {
       // TODO
