@@ -39,20 +39,34 @@ class DioLinkResponseContext extends ContextEntry {
       ];
 }
 
+/// A simple HttpLink implementation using Dio.
+///
+/// To use non-standard [Request] and [Response] shapes
+/// you can override [serializeRequest], [parseResponse]
 class DioLink extends Link {
+
+  /// Endpoint of the GraphQL service
   final String endpoint;
-  final dio.Dio client;
-  final RequestSerializer serializer;
-  final ResponseParser parser;
+
+  /// Default HTTP headers
   final Map<String, String> defaultHeaders;
+
+  /// Serializer used to serialize request
+  final RequestSerializer serializer;
+
+  /// Parser used to parse response
+  final ResponseParser parser;
+
+  /// Dio client instance.
+  final dio.Dio client;
 
   DioLink(
     this.endpoint, {
-    dio.Dio client,
+    @required this.client,
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
-  }) : client = client ?? dio.Dio();
+  }) : assert(client != null);
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
