@@ -1,0 +1,18 @@
+name: gql_ws_link
+version: 0.1.0
+homepage: https://github.com/gql-dart/gql/tree/master/gql_ws_link
+description: GQL Websocket Link
+environment: 
+  sdk: '>=2.7.2 <3.0.0'
+dependencies: 
+  meta: ^1.1.8
+  gql_exec: ^0.2.4
+  gql_link: ^0.3.0
+  websocket: ^0.0.5
+  uuid_enhanced: ^3.0.2
+  rxdart: ^0.24.0
+  gql: ^0.12.3
+dev_dependencies:
+  test: ^1.14.3
+  mockito: ^4.1.1
+  gql_pedantic: ^1.0.2
