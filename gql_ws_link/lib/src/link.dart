@@ -39,7 +39,7 @@ class WsLink extends Link {
     IOWebSocketChannel channel,
     this.serializer = const RequestSerializer(),
     this.initialPayload,
-  }) : assert(_uri == null || channel == null) {
+  }) : assert(uri == null || channel == null) {
     _uri = _uri ?? null;
     _channel = channel ?? null;
     this._connect();
