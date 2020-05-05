@@ -58,7 +58,7 @@ class DioLink extends Link {
   Stream<Response> request(Request request, [forward]) async* {
     dio.Response<Map<String, dynamic>> dioResponse;
     try {
-      dioResponse = await client.post(
+      final res = await client.post<dynamic>(
         endpoint,
         data: _serializeRequest(request),
         options: dio.Options(
@@ -72,6 +72,14 @@ class DioLink extends Link {
           },
         ),
       );
+      if (res.data is Map<String, dynamic> == false) {
+        throw DioLinkParserException(
+            // ignore: prefer_adjacent_string_concatenation
+            originalException: "Expected response data to be of type " +
+                "'Map<String, dynamic>' but found ${res.data.runtimeType}",
+            response: res);
+      }
+      dioResponse = res as dio.Response<Map<String, dynamic>>;
     } on dio.DioError catch (e) {
       throw DioLinkServerException(
         response: e.response,
@@ -80,8 +88,9 @@ class DioLink extends Link {
       );
     }
 
-    if (dioResponse.data["data"] == null &&
-        dioResponse.data["errors"] == null) {
+    if (dioResponse.statusCode >= 300 ||
+        (dioResponse.data["data"] == null &&
+            dioResponse.data["errors"] == null)) {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
