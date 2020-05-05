@@ -3,10 +3,7 @@ import 'dart:async';
 
 import 'package:gql_ws_link/src/messages.dart';
 import 'package:gql_link/gql_link.dart';
-import 'package:gql_exec/exec/context.dart';
-import 'package:gql_exec/exec/request.dart';
-import 'package:gql_exec/exec/response.dart';
-import 'package:gql_exec/exec/error.dart';
+import 'package:gql_exec/gql_exec.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/src/exception.dart';
