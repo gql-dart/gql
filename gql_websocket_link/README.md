@@ -12,11 +12,13 @@ import "package:gql_websocket_link/gql_websocket_link.dart";
 void main () {
   final link = Link.from([
     // SomeLink(),
-    WSLink("/graphql"),
+    WSLink("ws://<GRAPHQL_SERVER_ENDPOINT>/graphql"),
   ]);
 }
 
 ```
+
+Make sure you have WebSocket transport supported on your GraphQL server.
 
 ## Features and bugs
 
