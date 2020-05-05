@@ -15,25 +15,25 @@ class MessageTypes {
   MessageTypes._();
 
   // client connections
-  static const String gqlConnectionInit = "connection_init";
-  static const String gqlConnectionTerminate = "connection_terminate";
+  static const String connectionInit = "connection_init";
+  static const String connectionTerminate = "connection_terminate";
 
   // server connections
-  static const String gqlConnectionAck = "connection_ack";
-  static const String gqlConnectionError = "connection_error";
-  static const String gqlConnectionKeepAlive = "ka";
+  static const String connectionAck = "connection_ack";
+  static const String connectionError = "connection_error";
+  static const String connectionKeepAlive = "ka";
 
   // client operations
-  static const String gqlStart = "start";
-  static const String gqlStop = "stop";
+  static const String start = "start";
+  static const String stop = "stop";
 
   // server operations
-  static const String gqlData = "data";
-  static const String gqlError = "error";
-  static const String gqlComplete = "complete";
+  static const String data = "data";
+  static const String error = "error";
+  static const String complete = "complete";
 
   // default tag for use in identifying issues
-  static const String gqlUnknown = "unknown";
+  static const String unknown = "unknown";
 }
 
 abstract class JsonSerializable {
@@ -54,7 +54,7 @@ abstract class GraphQLSocketMessage extends JsonSerializable {
 /// send this message to tell the server that it is ready to begin sending
 /// new subscription queries.
 class InitOperation extends GraphQLSocketMessage {
-  InitOperation(this.payload) : super(MessageTypes.gqlConnectionInit);
+  InitOperation(this.payload) : super(MessageTypes.connectionInit);
 
   final dynamic payload;
 
@@ -96,7 +96,7 @@ class QueryPayload extends JsonSerializable {
 /// instance. id values should be unique and not be re-used during the lifetime
 /// of the server.
 class StartOperation extends GraphQLSocketMessage {
-  StartOperation(this.id, this.payload) : super(MessageTypes.gqlStart);
+  StartOperation(this.id, this.payload) : super(MessageTypes.start);
 
   final String id;
   final QueryPayload payload;
@@ -112,7 +112,7 @@ class StartOperation extends GraphQLSocketMessage {
 /// Tell the server to stop sending subscription data for a particular
 /// subscription instance. See [StartOperation].
 class StopOperation extends GraphQLSocketMessage {
-  StopOperation(this.id) : super(MessageTypes.gqlStop);
+  StopOperation(this.id) : super(MessageTypes.stop);
 
   final String id;
 
@@ -126,7 +126,7 @@ class StopOperation extends GraphQLSocketMessage {
 /// The server will send this acknowledgment message after receiving the init
 /// command from the client if the init was successful.
 class ConnectionAck extends GraphQLSocketMessage {
-  ConnectionAck() : super(MessageTypes.gqlConnectionAck);
+  ConnectionAck() : super(MessageTypes.connectionAck);
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -137,7 +137,7 @@ class ConnectionAck extends GraphQLSocketMessage {
 /// The server will send this error message after receiving the init command
 /// from the client if the init was not successful.
 class ConnectionError extends GraphQLSocketMessage {
-  ConnectionError(this.payload) : super(MessageTypes.gqlConnectionError);
+  ConnectionError(this.payload) : super(MessageTypes.connectionError);
 
   final dynamic payload;
 
@@ -150,7 +150,7 @@ class ConnectionError extends GraphQLSocketMessage {
 
 /// The server will send this message to keep the connection alive
 class ConnectionKeepAlive extends GraphQLSocketMessage {
-  ConnectionKeepAlive() : super(MessageTypes.gqlConnectionKeepAlive);
+  ConnectionKeepAlive() : super(MessageTypes.connectionKeepAlive);
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -162,7 +162,7 @@ class ConnectionKeepAlive extends GraphQLSocketMessage {
 /// payload. The user should check the errors result before processing the
 /// data value. These error are from the query resolvers.
 class SubscriptionData extends GraphQLSocketMessage {
-  SubscriptionData(this.id, this.data, this.errors) : super(MessageTypes.gqlData);
+  SubscriptionData(this.id, this.data, this.errors) : super(MessageTypes.data);
 
   final String id;
   final dynamic data;
@@ -185,7 +185,7 @@ class SubscriptionData extends GraphQLSocketMessage {
 /// Errors sent from the server to the client if the subscription operation was
 /// not successful, usually due to GraphQL validation errors.
 class SubscriptionError extends GraphQLSocketMessage {
-  SubscriptionError(this.id, this.payload) : super(MessageTypes.gqlError);
+  SubscriptionError(this.id, this.payload) : super(MessageTypes.error);
 
   final String id;
   final dynamic payload;
@@ -201,7 +201,7 @@ class SubscriptionError extends GraphQLSocketMessage {
 /// Server message to the client to indicate that no more data will be sent
 /// for a particular subscription instance.
 class SubscriptionComplete extends GraphQLSocketMessage {
-  SubscriptionComplete(this.id) : super(MessageTypes.gqlComplete);
+  SubscriptionComplete(this.id) : super(MessageTypes.complete);
 
   final String id;
 
@@ -216,7 +216,7 @@ class SubscriptionComplete extends GraphQLSocketMessage {
 /// response, or that new unsupported types have been added to the subscription
 /// implementation.
 class UnknownData extends GraphQLSocketMessage {
-  UnknownData(this.payload) : super(MessageTypes.gqlUnknown);
+  UnknownData(this.payload) : super(MessageTypes.unknown);
 
   final dynamic payload;
 
