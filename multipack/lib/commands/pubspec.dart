@@ -4,6 +4,7 @@ import "package:multipack/commands/pubspec/clean.dart";
 import "package:multipack/commands/pubspec/override.dart";
 import "package:multipack/commands/pubspec/hard_override.dart";
 import "package:multipack/commands/pubspec/sync_versions.dart";
+import "package:multipack/commands/pubspec/bump_alpha.dart";
 import "package:multipack/package.dart";
 
 class PubspecCommand extends Command<void> {
@@ -16,6 +17,7 @@ class PubspecCommand extends Command<void> {
   PubspecCommand(List<Package> packages) : super() {
     addSubcommand(OverrideCommand(packages));
     addSubcommand(SyncVersionsCommand(packages));
+    addSubcommand(BumpAlphaCommand(packages));
     addSubcommand(HardOverrideCommand(packages));
     addSubcommand(CleanCommand(packages));
   }
