@@ -7,7 +7,6 @@ import 'package:gql_link/gql_link.dart';
 import 'package:gql_exec/exec/context.dart';
 import 'package:gql_exec/exec/request.dart';
 import 'package:gql_exec/exec/response.dart';
-import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/src/exception.dart';
@@ -41,11 +40,6 @@ class WsLink extends Link {
   }) {
     _channel = channel ?? null;
     this._connect();
-  }
-
-  @visibleForTesting
-  IOWebSocketChannel get channel {
-    return _channel;
   }
 
   /// Connects to the server.
