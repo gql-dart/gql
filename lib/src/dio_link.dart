@@ -39,6 +39,18 @@ class DioLinkResponseContext extends ContextEntry {
       ];
 }
 
+extension _CastDioResponse on dio.Response {
+  dio.Response<T> castData<T>() => dio.Response<T>(
+        data: data as T,
+        headers: headers,
+        request: request,
+        isRedirect: isRedirect,
+        statusCode: statusCode,
+        statusMessage: statusMessage,
+        redirects: redirects,
+      );
+}
+
 /// A simple HttpLink implementation using Dio.
 ///
 /// To use non-standard [Request] and [Response] shapes
@@ -135,7 +147,7 @@ class DioLink extends Link {
                 "'Map<String, dynamic>' but found ${res.data.runtimeType}",
             response: res);
       }
-      return res as dio.Response<Map<String, dynamic>>;
+      return res.castData<Map<String, dynamic>>();
     } on dio.DioError catch (e) {
       switch (e.type) {
         case dio.DioErrorType.CONNECT_TIMEOUT:
