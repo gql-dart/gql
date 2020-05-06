@@ -1,14 +1,15 @@
 A package for working with GraphQL documents.
 
 This package exports several libraries:
+
 - `package:gql/language.dart` provides ability to parse GraphQL string into AST and print AST as a string;
 - `package:gql/ast.dart` defines the AST and provides visitors and transformers;
 
 ## ⚠ Call for contributions ⚠
+
 `package:gql/document.dart` implements some of the validation rules defined in GraphQL spec.
 
 PRs are welcome to finish the validation support. Rules which are concerned with Schema validation should take preference over rules concerned with Document validation.
-
 
 ## `package:gql/language.dart`
 
@@ -117,6 +118,7 @@ void main() {
 ```
 
 ### Transforming GraphQL documents
+
 ```dart
 import "package:gql/ast.dart" as ast;
 import "package:gql/language.dart" as lang;
@@ -187,6 +189,103 @@ void main() {
   //   }
   // }"
 }
+```
+
+## `gql/schema.dart` and `gql/operation.dart` <sub>(experimental)</sub>
+
+`gql/schema.dart` and `gql/operation.dart` provide higher-level
+type definitions derived from `gql/ast.dart` asts for
+GraphQL Schemas and Operations respectively.
+
+**NOTE**: does not currently have runtime features, such as field resolution.
+It was initially developed as a more friendly way to work with schema ASTs.
+
+```dart
+import "package:gql/language.dart" as lang;
+import "package:gql/schema.dart" as gql_schema;
+import "package:gql/operation.dart" as gql_operation;
+
+final schemaDefinition = lang.parseString(r"""
+schema {
+  query: StarWarsQuery
+}
+
+interface Character {
+  id: String
+  name: String
+}
+
+type Droid implements Character {
+  id: String
+  name: String
+  primaryFunction: String
+}
+
+type StarWarsQuery {
+  droids: [Droid!]
+}
+""");
+
+void inspectSchema() {
+  final schema = gql_schema.GraphQLSchema.fromNode(schemaDefinition);
+
+  final character =
+      schema.getType("Character") as gql_schema.InterfaceTypeDefinition;
+  final droid = schema.getType("Droid") as gql_schema.ObjectTypeDefinition;
+
+  print(character.isImplementedBy(droid));
+  // prints "true"
+
+  print(schema.query.getField("droids").type.toString());
+  // prints "[Droid!]"
+}
+
+final fragmentDefinitions = [
+  lang.parseString(r"""
+  fragment droidName on Droid {
+    name
+  }
+  """),
+];
+
+final queryDefinition = lang.parseString(r"""
+query AllDroids {
+  droids {
+    ...droidName
+    primaryFunction
+  }
+}
+""");
+
+void inspectQuery() {
+  final schema = gql_schema.GraphQLSchema.fromNode(schemaDefinition);
+
+  final document = gql_operation.ExecutableDocument(
+    queryDefinition,
+    schema.getType,
+    // necessary for dereferencing schema definitions
+    fragmentDefinitions,
+  );
+
+  final importedFragment = document.getFragment("droidName");
+  print(importedFragment);
+  // prints the fagment above
+
+  final query = document.operations.first;
+  final droids = query.selectionSet.fields.first;
+  final spreadDroidName = droids.selectionSet.fragmentSpreads.first;
+
+  print(
+    // dereference fragment spread into fragment definition
+    spreadDroidName.fragment == importedFragment,
+  );
+}
+
+void main() {
+  inspectSchema();
+  inspectQuery();
+}
+
 ```
 
 ## Features and bugs

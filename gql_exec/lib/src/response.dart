@@ -48,14 +48,19 @@ class Response {
 
   @override
   bool operator ==(Object o) =>
-      o is Response &&
-      const DeepCollectionEquality().equals(
-        o._getChildren(),
-        _getChildren(),
-      );
+      identical(this, o) ||
+      (o is Response &&
+          const ListEquality<Object>(
+            DeepCollectionEquality(),
+          ).equals(
+            o._getChildren(),
+            _getChildren(),
+          ));
 
   @override
-  int get hashCode => const DeepCollectionEquality().hash(
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(
         _getChildren(),
       );
 }
