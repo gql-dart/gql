@@ -19,7 +19,7 @@ class BumpAlphaCommand extends MultipackCommand {
     try {
       final pubspec = package.pubspec;
 
-      final next = pubspec.version.nextBreaking;
+      final next = pubspec.version.nextPatch;
 
       final alpha = Version(
         next.major,
