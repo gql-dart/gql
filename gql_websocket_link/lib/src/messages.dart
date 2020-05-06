@@ -76,7 +76,8 @@ class InitOperation extends GraphQLSocketMessage {
 /// defined in the query provided. Additional variables can be provided
 /// and sent to the server for processing.
 class QueryPayload extends JsonSerializable {
-  QueryPayload({this.operationName, @required this.query, @required this.variables});
+  QueryPayload(
+      {this.operationName, @required this.query, @required this.variables});
 
   final String operationName;
   final String query;
@@ -179,7 +180,8 @@ class SubscriptionData extends GraphQLSocketMessage {
   int get hashCode => toJson().hashCode;
 
   @override
-  bool operator ==(dynamic other) => other is SubscriptionData && jsonEncode(other) == jsonEncode(this);
+  bool operator ==(dynamic other) =>
+      other is SubscriptionData && jsonEncode(other) == jsonEncode(this);
 }
 
 /// Errors sent from the server to the client if the subscription operation was

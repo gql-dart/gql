@@ -10,5 +10,7 @@ dynamic Function() overridePrint(Function(List<String> log) testFn) => () {
       final spec = ZoneSpecification(print: (_, __, ___, String msg) {
         log.add(msg);
       });
-      return Zone.current.fork(specification: spec).run<dynamic>(() => testFn(log));
+      return Zone.current
+          .fork(specification: spec)
+          .run<dynamic>(() => testFn(log));
     };

@@ -31,8 +31,11 @@ class WSLink extends Link {
     yield* _client
         .subscribe(
           QueryPayload(
-              operationName: request.operation.operationName, query: printNode(request.operation.document), variables: request.variables),
-          waitForConnection: true, // TODO: expose the option to not wait for connection
+              operationName: request.operation.operationName,
+              query: printNode(request.operation.document),
+              variables: request.variables),
+          waitForConnection:
+              true, // TODO: expose the option to not wait for connection
           isSubscription: isOfType(
             OperationType.subscription,
             request.operation.document,

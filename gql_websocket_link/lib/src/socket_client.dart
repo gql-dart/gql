@@ -78,7 +78,8 @@ class SocketClient {
   final String url;
   final SocketClientConfig config;
   final Iterable<String> protocols;
-  final BehaviorSubject<SocketConnectionState> _connectionStateController = BehaviorSubject<SocketConnectionState>();
+  final BehaviorSubject<SocketConnectionState> _connectionStateController =
+      BehaviorSubject<SocketConnectionState>();
 
   final HashMap<String, Function> _subscriptionInitializers = HashMap();
   bool _connectionWasLost = false;
@@ -112,7 +113,8 @@ class SocketClient {
 
       _write(config.initOperation);
 
-      _messageStream = _socket.stream.map<GraphQLSocketMessage>(_parseSocketMessage);
+      _messageStream =
+          _socket.stream.map<GraphQLSocketMessage>(_parseSocketMessage);
 
       if (config.inactivityTimeout != null) {
         _keepAliveSubscription = _messagesOfType<ConnectionKeepAlive>().timeout(
@@ -122,7 +124,8 @@ class SocketClient {
             // and therefore disconnecting...
             event.close();
             _socket.close(WebSocketStatus.goingAway);
-            _connectionStateController.value = SocketConnectionState.notConnected;
+            _connectionStateController.value =
+                SocketConnectionState.notConnected;
           },
         ).listen(null);
       }
@@ -156,7 +159,8 @@ class SocketClient {
 
     _connectionWasLost = true;
 
-    if (_connectionStateController.value != SocketConnectionState.notConnected) {
+    if (_connectionStateController.value !=
+        SocketConnectionState.notConnected) {
       _connectionStateController.value = SocketConnectionState.notConnected;
     }
 
@@ -190,7 +194,8 @@ class SocketClient {
   }
 
   static GraphQLSocketMessage _parseSocketMessage(dynamic message) {
-    final Map<String, dynamic> map = json.decode(message as String) as Map<String, dynamic>;
+    final Map<String, dynamic> map =
+        json.decode(message as String) as Map<String, dynamic>;
     final String type = (map["type"] ?? "unknown") as String;
     final dynamic payload = map["payload"] ?? <String, dynamic>{};
     final String id = (map["id"] ?? "none") as String;
@@ -235,17 +240,23 @@ class SocketClient {
   ///
   /// In case of socket disconnection, the returned stream will be closed.
   Stream<SubscriptionData> subscribe(final QueryPayload payload,
-      {@required final bool waitForConnection, @required final bool isSubscription}) {
+      {@required final bool waitForConnection,
+      @required final bool isSubscription}) {
     final String id = Uuid.randomUuid(random: randomBytesForUuid).toString();
-    final StreamController<SubscriptionData> response = StreamController<SubscriptionData>();
+    final StreamController<SubscriptionData> response =
+        StreamController<SubscriptionData>();
     StreamSubscription<SocketConnectionState> sub;
-    final bool addTimeout = !isSubscription && config.queryAndMutationTimeout != null;
+    final bool addTimeout =
+        !isSubscription && config.queryAndMutationTimeout != null;
 
     final onListen = () {
-      final Stream<SocketConnectionState> waitForConnectedStateWithoutTimeout = _connectionStateController
-          .startWith(waitForConnection ? null : SocketConnectionState.connected)
-          .where((SocketConnectionState state) => state == SocketConnectionState.connected)
-          .take(1);
+      final Stream<SocketConnectionState> waitForConnectedStateWithoutTimeout =
+          _connectionStateController
+              .startWith(
+                  waitForConnection ? null : SocketConnectionState.connected)
+              .where((SocketConnectionState state) =>
+                  state == SocketConnectionState.connected)
+              .take(1);
 
       final Stream<SocketConnectionState> waitForConnectedState = addTimeout
           ? waitForConnectedStateWithoutTimeout.timeout(
@@ -259,7 +270,8 @@ class SocketClient {
           : waitForConnectedStateWithoutTimeout;
 
       sub = waitForConnectedState.listen((_) {
-        final Stream<GraphQLSocketMessage> dataErrorComplete = _messageStream.where(
+        final Stream<GraphQLSocketMessage> dataErrorComplete =
+            _messageStream.where(
           (GraphQLSocketMessage message) {
             if (message is SubscriptionData) {
               return message.id == id;
@@ -278,7 +290,11 @@ class SocketClient {
         ).takeWhile((_) => !response.isClosed);
 
         final Stream<GraphQLSocketMessage> subscriptionComplete = addTimeout
-            ? dataErrorComplete.where((GraphQLSocketMessage message) => message is SubscriptionComplete).take(1).timeout(
+            ? dataErrorComplete
+                .where((GraphQLSocketMessage message) =>
+                    message is SubscriptionComplete)
+                .take(1)
+                .timeout(
                 config.queryAndMutationTimeout,
                 onTimeout: (EventSink<GraphQLSocketMessage> event) {
                   response.addError(TimeoutException("Request timed out."));
@@ -286,16 +302,23 @@ class SocketClient {
                   response.close();
                 },
               )
-            : dataErrorComplete.where((GraphQLSocketMessage message) => message is SubscriptionComplete).take(1);
+            : dataErrorComplete
+                .where((GraphQLSocketMessage message) =>
+                    message is SubscriptionComplete)
+                .take(1);
 
         subscriptionComplete.listen((_) => response.close());
 
         dataErrorComplete
-            .where((GraphQLSocketMessage message) => message is SubscriptionData)
+            .where(
+                (GraphQLSocketMessage message) => message is SubscriptionData)
             .cast<SubscriptionData>()
             .listen(response.add);
 
-        dataErrorComplete.where((GraphQLSocketMessage message) => message is SubscriptionError).listen(response.addError);
+        dataErrorComplete
+            .where(
+                (GraphQLSocketMessage message) => message is SubscriptionError)
+            .listen(response.addError);
 
         _write(StartOperation(id, payload));
       });
@@ -307,7 +330,8 @@ class SocketClient {
       _subscriptionInitializers.remove(id);
 
       sub?.cancel();
-      if (_connectionStateController.value == SocketConnectionState.connected && _socket != null) {
+      if (_connectionStateController.value == SocketConnectionState.connected &&
+          _socket != null) {
         _write(StopOperation(id));
       }
     };
@@ -320,7 +344,8 @@ class SocketClient {
   /// These streams will emit done events when the current socket is done.
 
   /// A stream that emits the last value of the connection state upon subscription.
-  Stream<SocketConnectionState> get connectionState => _connectionStateController.stream;
+  Stream<SocketConnectionState> get connectionState =>
+      _connectionStateController.stream;
 
   /// Filter `_messageStream` for messages of the given type of [GraphQLSocketMessage]
   ///
@@ -328,6 +353,7 @@ class SocketClient {
   /// `_messagesOfType<ConnectionAck>()` for init acknowledgments
   /// `_messagesOfType<ConnectionError>()` for errors
   /// `_messagesOfType<UnknownData>()` for unknown data messages
-  Stream<M> _messagesOfType<M extends GraphQLSocketMessage>() =>
-      _messageStream.where((GraphQLSocketMessage message) => message is M).cast<M>();
+  Stream<M> _messagesOfType<M extends GraphQLSocketMessage>() => _messageStream
+      .where((GraphQLSocketMessage message) => message is M)
+      .cast<M>();
 }

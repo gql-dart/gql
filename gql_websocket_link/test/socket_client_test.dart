@@ -6,7 +6,8 @@
 import "dart:convert";
 import "dart:typed_data";
 
-import "package:gql_websocket_link/src/socket_client.dart" show SocketClient, SocketConnectionState;
+import "package:gql_websocket_link/src/socket_client.dart"
+    show SocketClient, SocketConnectionState;
 import "package:gql_websocket_link/src/messages.dart";
 import "package:test/test.dart";
 
@@ -19,7 +20,8 @@ void main() {
       socketClient = SocketClient(
         "ws://echo.websocket.org",
         protocols: null,
-        randomBytesForUuid: Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]),
+        randomBytesForUuid: Uint8List.fromList(
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]),
       );
     }));
 
@@ -44,8 +46,11 @@ void main() {
         operationName: "subscription",
         variables: <String, dynamic>{},
       );
-      final subscriptionDataStream = socketClient.subscribe(payload, waitForConnection: true, isSubscription: true);
-      await socketClient.connectionState.where((state) => state == SocketConnectionState.connected).first;
+      final subscriptionDataStream = socketClient.subscribe(payload,
+          waitForConnection: true, isSubscription: true);
+      await socketClient.connectionState
+          .where((state) => state == SocketConnectionState.connected)
+          .first;
 
       // ignore: unawaited_futures
       socketClient.socket.stream
@@ -81,11 +86,14 @@ void main() {
         operationName: "subscription",
         variables: <String, dynamic>{},
       );
-      final subscriptionDataStream = socketClient.subscribe(payload, waitForConnection: true, isSubscription: true);
+      final subscriptionDataStream = socketClient.subscribe(payload,
+          waitForConnection: true, isSubscription: true);
 
       socketClient.onConnectionLost();
 
-      await socketClient.connectionState.where((state) => state == SocketConnectionState.connected).first;
+      await socketClient.connectionState
+          .where((state) => state == SocketConnectionState.connected)
+          .first;
 
       // ignore: unawaited_futures
       socketClient.socket.stream
