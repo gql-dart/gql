@@ -44,7 +44,6 @@ class DioLinkResponseContext extends ContextEntry {
 /// To use non-standard [Request] and [Response] shapes
 /// you can override [serializeRequest], [parseResponse]
 class DioLink extends Link {
-
   /// Endpoint of the GraphQL service
   final String endpoint;
 
@@ -70,37 +69,16 @@ class DioLink extends Link {
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
-    dio.Response<Map<String, dynamic>> dioResponse;
-    try {
-      final res = await client.post<dynamic>(
-        endpoint,
-        data: _serializeRequest(request),
-        options: dio.Options(
-          responseType: dio.ResponseType.json,
-          contentType: "application/json",
-          headers: <String, String>{
-            "Content-type": "application/json",
-            "Accept": "*/*",
-            ...defaultHeaders,
-            ..._getHttpLinkHeaders(request),
-          },
-        ),
-      );
-      if (res.data is Map<String, dynamic> == false) {
-        throw DioLinkParserException(
-            // ignore: prefer_adjacent_string_concatenation
-            originalException: "Expected response data to be of type " +
-                "'Map<String, dynamic>' but found ${res.data.runtimeType}",
-            response: res);
-      }
-      dioResponse = res as dio.Response<Map<String, dynamic>>;
-    } on dio.DioError catch (e) {
-      throw DioLinkServerException(
-        response: e.response,
-        parsedResponse:
-            _parseDioResponse(e.response as dio.Response<Map<String, dynamic>>),
-      );
-    }
+    final dio.Response<Map<String, dynamic>> dioResponse =
+        await _excuteDioRequest(
+      body: _serializeRequest(request),
+      headers: <String, String>{
+        "Content-type": "application/json",
+        "Accept": "*/*",
+        ...defaultHeaders,
+        ..._getHttpLinkHeaders(request),
+      },
+    );
 
     if (dioResponse.statusCode >= 300 ||
         (dioResponse.data["data"] == null &&
@@ -136,6 +114,57 @@ class DioLink extends Link {
     }
   }
 
+  Future<dio.Response<Map<String, dynamic>>> _excuteDioRequest({
+    @required Map<String, dynamic> body,
+    @required Map<String, String> headers,
+  }) async {
+    try {
+      final res = await client.post<dynamic>(
+        endpoint,
+        data: body,
+        options: dio.Options(
+          responseType: dio.ResponseType.json,
+          contentType: "application/json",
+          headers: headers,
+        ),
+      );
+      if (res.data is Map<String, dynamic> == false) {
+        throw DioLinkParserException(
+            // ignore: prefer_adjacent_string_concatenation
+            originalException: "Expected response data to be of type " +
+                "'Map<String, dynamic>' but found ${res.data.runtimeType}",
+            response: res);
+      }
+      return res as dio.Response<Map<String, dynamic>>;
+    } on dio.DioError catch (e) {
+      switch (e.type) {
+        case dio.DioErrorType.CONNECT_TIMEOUT:
+        case dio.DioErrorType.RECEIVE_TIMEOUT:
+        case dio.DioErrorType.SEND_TIMEOUT:
+          throw DioLinkTimeoutException(
+            type: e.type,
+            originalException: e,
+          );
+        case dio.DioErrorType.CANCEL:
+          throw DioLinkCanceledException(originalException: e);
+        case dio.DioErrorType.RESPONSE:
+          {
+            final res = e.response;
+            final parsedResponse = (res.data is Map<String, dynamic>)
+                ? parser.parseResponse(res.data as Map<String, dynamic>)
+                : null;
+            throw DioLinkServerException(
+                response: res, parsedResponse: parsedResponse);
+          }
+        case dio.DioErrorType.DEFAULT:
+        default:
+          throw DioLinkUnkownException(originalException: e);
+      }
+    } catch (e) {
+      throw DioLinkUnkownException(originalException: e);
+    }
+  }
+
   Response _parseDioResponse(dio.Response<Map<String, dynamic>> dioResponse) {
     try {
       return parser.parseResponse(dioResponse.data);
@@ -161,7 +190,6 @@ class DioLink extends Link {
   Map<String, String> _getHttpLinkHeaders(Request request) {
     try {
       final HttpLinkHeaders linkHeaders = request.context.entry();
-
       return {
         if (linkHeaders != null) ...linkHeaders.headers,
       };
