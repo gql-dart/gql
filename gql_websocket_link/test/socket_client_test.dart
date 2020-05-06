@@ -1,7 +1,5 @@
-/**
- * Originally from https://github.com/zino-app/graphql-flutter
- * Adapted to `gql` by @iscriptology
- */
+// Originally from https://github.com/zino-app/graphql-flutter
+// Adapted to `gql` by @iscriptology
 
 import "dart:convert";
 import "dart:typed_data";
