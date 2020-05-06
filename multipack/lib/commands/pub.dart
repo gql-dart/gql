@@ -1,14 +1,19 @@
-import "package:args/command_runner.dart";
-import "package:multipack/commands/pub/get.dart";
+import "dart:async";
 
-class PubCommand extends Command<void> {
+import "package:multipack/commands/common.dart";
+import "package:multipack/package.dart";
+
+class PubCommand extends PassthroughCommand {
+  PubCommand(List<Package> packages)
+      : super(
+          "pub",
+          "Run pub.",
+          packages,
+        );
+
   @override
-  final String name = "pub";
-
-  @override
-  final String description = "run pub in every package";
-
-  PubCommand() {
-    addSubcommand(GetCommand());
-  }
+  FutureOr<int> runOnPackage(Package package) => package.pub(
+        argResults.arguments,
+        nameWidth: nameWidth,
+      );
 }

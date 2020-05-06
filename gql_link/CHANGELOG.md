@@ -1,5 +1,6 @@
-## 0.2.4
+## 0.3.0
 
+- remove `author` field from `pubspec.yaml`
 - improve docs
 - add `ContextReadException` and `ContextWriteException`
 

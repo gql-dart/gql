@@ -1,3 +1,10 @@
+## 0.12.3
+
+- remove `author` field from `pubspec.yaml`
+- some more experimental validation rules thanks to [@jonas-jonas](https://github.com/jonas-jonas)
+- add experimental `package:gql/schema.dart`
+- add experimental `package:gql/operation.dart`
+
 ## 0.12.2
 
 - improve readme
