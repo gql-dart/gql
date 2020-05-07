@@ -89,6 +89,36 @@ void main() {
       );
 
       expect(
+        tokenize("#comment\n#\nfoo", skipComments: false),
+        allOf([
+          contains(token(
+            kind: TokenKind.comment,
+            start: 0,
+            end: 8,
+            line: 1,
+            column: 1,
+            value: "#comment",
+          )),
+          contains(token(
+            kind: TokenKind.comment,
+            start: 9,
+            end: 10,
+            line: 2,
+            column: 1,
+            value: "#",
+          )),
+          contains(token(
+            kind: TokenKind.name,
+            start: 11,
+            end: 14,
+            line: 3,
+            column: 1,
+            value: "foo",
+          )),
+        ]),
+      );
+
+      expect(
         tokenize(",,,foo,,,"),
         contains(token(
           kind: TokenKind.name,
