@@ -110,7 +110,7 @@ class Lexer {
     Token token;
     do {
       token = scanner.scanToken();
-      if (skipComments && token.kind != TokenKind.comment) {
+      if (!skipComments || token.kind != TokenKind.comment) {
         tokens.add(token);
       }
     } while (token.kind != TokenKind.eof);
