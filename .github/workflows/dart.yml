@@ -19,6 +19,7 @@ jobs:
           - gql_transform_link
           - multipack
           - cats
+          - gql_example_http_auth_link
     runs-on: ubuntu-latest
     container:
       image: google/dart:latest
