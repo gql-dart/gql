@@ -233,7 +233,6 @@ class _Scanner {
   }
 
   Token scanComment() {
-    ++position;
     var length = 0;
     int code;
 
