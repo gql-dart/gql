@@ -25,8 +25,11 @@ void main() {
   group("Lexer", () {
     Lexer lexer;
 
-    List<Token> tokenize(String text) =>
-        lexer.tokenize(SourceFile.fromString(text, url: "source"));
+    List<Token> tokenize(String text, {bool skipComments = true}) =>
+        lexer.tokenize(
+          SourceFile.fromString(text, url: "source"),
+          skipComments: skipComments,
+        );
 
     setUp(() {
       lexer = Lexer();
