@@ -2,6 +2,7 @@
 library gql_error_link;
 
 import "dart:async";
+import "package:async/async.dart";
 import "package:gql_link/gql_link.dart";
 import "package:gql_exec/gql_exec.dart";
 
@@ -34,35 +35,56 @@ class ErrorLink extends Link {
   });
 
   @override
-  Stream<Response> request(Request request, [forward]) async* {
-    try {
-      await for (final response in forward(request)) {
-        final errors = response.errors;
+  Stream<Response> request(
+    Request request, [
+    forward,
+  ]) =>
+      Result.releaseStream(
+        requestResults(
+          request,
+          forward,
+        ),
+      );
 
-        if (onError != null && errors != null && errors.isNotEmpty) {
-          yield* onError(
-            request,
-            forward,
-            response,
+  Stream<Result<Response>> requestResults(
+    Request request, [
+    NextLink forward,
+  ]) async* {
+    await for (final result in Result.captureStream(forward(request))) {
+      if (result.isError) {
+        final error = result.asError.error;
+
+        if (onException != null && error is LinkException) {
+          yield* Result.captureStream(
+            onException(
+              request,
+              forward,
+              error,
+            ),
           );
 
           return;
         }
-
-        yield response;
-      }
-    } catch (error) {
-      if (onException != null && error is LinkException) {
-        yield* onException(
-          request,
-          forward,
-          error,
-        );
-
-        return;
       }
 
-      rethrow;
+      if (result.isValue) {
+        final response = result.asValue.value;
+        final errors = response.errors;
+
+        if (onError != null && errors != null && errors.isNotEmpty) {
+          yield* Result.captureStream(
+            onError(
+              request,
+              forward,
+              response,
+            ),
+          );
+
+          return;
+        }
+      }
+
+      yield result;
     }
   }
 }
