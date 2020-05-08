@@ -20,7 +20,11 @@ class WSLink extends Link {
 
   ResponseParser parser;
 
-  WSLink(this.url, {this.config, this.parser = const ResponseParser()});
+  WSLink(
+    this.url, {
+    this.config = const SocketClientConfig(),
+    this.parser = const ResponseParser(),
+  });
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
