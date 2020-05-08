@@ -3,19 +3,8 @@ import "dart:async";
 import "package:gql_error_link/gql_error_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 import "package:async/async.dart";
-
-class MockLink extends Mock implements Link {
-  void returns(List<Result<Response>> results) {
-    when(
-      request(any, any),
-    ).thenAnswer(
-      (_) => Result.releaseStream(Stream.fromIterable(results)),
-    );
-  }
-}
 
 class TestException extends LinkException {
   final int id;
@@ -28,29 +17,21 @@ class TestException extends LinkException {
       o is TestException && o.id == id && o.handled == handled;
 
   @override
-  String toString() => id.toString();
+  String toString() => "TestException:${id}";
 }
 
 void main() {
   group("ErrorLink", () {
-    MockLink mockLink;
-    Link link;
-
-    setUp(() {
-      mockLink = MockLink();
-      link = Link.concat(
-        ErrorLink(),
-        mockLink,
-      );
-    });
-
     group("passthrough", () {
       test("response", () {
-        mockLink.returns([
-          Result.value(Response(data: const <String, dynamic>{"a": 1})),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Stream.fromIterable([
+            Response(data: const <String, dynamic>{"a": 1}),
+          ]),
+        );
 
         expect(
           responseStream,
@@ -62,18 +43,19 @@ void main() {
       });
 
       test("error", () {
-        mockLink.returns([
-          Result.value(
+        final link = ErrorLink();
+
+        final responseStream = link.request(
+          null,
+          (request) => Stream.fromIterable([
             Response(
               data: const <String, dynamic>{"a": 1},
               errors: const <GraphQLError>[
                 GraphQLError(message: "Something went wrong"),
               ],
             ),
-          ),
-        ]);
-
-        final responseStream = link.request(null);
+          ]),
+        );
 
         expect(
           responseStream,
@@ -90,11 +72,16 @@ void main() {
       });
 
       test("exception", () {
-        mockLink.returns([
-          Result.error(TestException(1)),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+            ]),
+          ),
+        );
 
         expect(
           responseStream,
@@ -106,12 +93,15 @@ void main() {
       });
 
       test("response, response", () {
-        mockLink.returns([
-          Result.value(Response(data: const <String, dynamic>{"a": 1})),
-          Result.value(Response(data: const <String, dynamic>{"a": 1})),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Stream.fromIterable([
+            Response(data: const <String, dynamic>{"a": 1}),
+            Response(data: const <String, dynamic>{"a": 1}),
+          ]),
+        );
 
         expect(
           responseStream,
@@ -124,12 +114,17 @@ void main() {
       });
 
       test("response, exception", () {
-        mockLink.returns([
-          Result.value(Response(data: const <String, dynamic>{"a": 1})),
-          Result.error(TestException(1)),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(Response(data: const <String, dynamic>{"a": 1})),
+              Result.error(TestException(1)),
+            ]),
+          ),
+        );
 
         expect(
           responseStream,
@@ -142,12 +137,17 @@ void main() {
       });
 
       test("exception, response", () {
-        mockLink.returns([
-          Result.error(TestException(1)),
-          Result.value(Response(data: const <String, dynamic>{"a": 1})),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.value(Response(data: const <String, dynamic>{"a": 1})),
+            ]),
+          ),
+        );
 
         expect(
           responseStream,
@@ -160,18 +160,401 @@ void main() {
       });
 
       test("exception, exception", () {
-        mockLink.returns([
-          Result.error(TestException(1)),
-          Result.error(TestException(1)),
-        ]);
+        final link = ErrorLink();
 
-        final responseStream = link.request(null);
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.error(TestException(1)),
+            ]),
+          ),
+        );
 
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
             emitsError(TestException(1)),
             emitsError(TestException(1)),
+            emitsDone,
+          ]),
+        );
+      });
+    });
+
+    group("exceptions", () {
+      test("non-LinkException", () {
+        final link = ErrorLink();
+
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error("exception"),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            emitsError("exception"),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("consume exception", () async {
+        final errorLink = ErrorLink(
+          onException: (
+            Request request,
+            NextLink forward,
+            LinkException exception,
+          ) async* {
+            if (exception is TestException && exception.id == 1) {
+              return;
+            }
+
+            yield Result.error(exception);
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.error(TestException(2)),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            emitsError(TestException(2)),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("yield exception", () async {
+        final errorLink = ErrorLink(
+          onException: (
+            Request request,
+            NextLink forward,
+            LinkException exception,
+          ) async* {
+            yield Result.error(exception);
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.error(TestException(2)),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            emitsError(TestException(1)),
+            emitsError(TestException(2)),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("yield value", () {
+        final errorLink = ErrorLink(
+          onException: (
+            Request request,
+            NextLink forward,
+            LinkException exception,
+          ) async* {
+            yield Result.value(
+              Response(
+                data: <String, dynamic>{
+                  "id": (exception as TestException).id,
+                },
+              ),
+            );
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.error(TestException(2)),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            Response(
+              data: const <String, dynamic>{"id": 1},
+            ),
+            Response(
+              data: const <String, dynamic>{"id": 2},
+            ),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("discard original stream", () async {
+        final errorLink = ErrorLink(
+          onException: (
+            Request request,
+            NextLink forward,
+            LinkException exception,
+          ) =>
+              null,
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.error(TestException(1)),
+              Result.error(TestException(2)),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            emitsDone,
+          ]),
+        );
+      });
+    });
+
+    group("errors", () {
+      test("no error", () {
+        final link = ErrorLink();
+
+        final responseStream = link.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(
+                Response(data: const <String, dynamic>{"a": 1}),
+              ),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            Response(data: const <String, dynamic>{"a": 1}),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("consume response", () async {
+        final errorLink = ErrorLink(
+          onError: (
+            Request request,
+            NextLink forward,
+            Response response,
+          ) async* {
+            if (response.errors.first.message == "consume") {
+              return;
+            }
+
+            yield Result.value(response);
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "consume"),
+                  ],
+                ),
+              ),
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "pass"),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            Response(
+              errors: const <GraphQLError>[
+                GraphQLError(message: "pass"),
+              ],
+            ),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("yield exception", () async {
+        final errorLink = ErrorLink(
+          onError: (
+            Request request,
+            NextLink forward,
+            Response response,
+          ) async* {
+            yield Result.error(response);
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "consume"),
+                  ],
+                ),
+              ),
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "pass"),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            emitsError(
+              Response(
+                errors: const <GraphQLError>[
+                  GraphQLError(message: "consume"),
+                ],
+              ),
+            ),
+            emitsError(
+              Response(
+                errors: const <GraphQLError>[
+                  GraphQLError(message: "pass"),
+                ],
+              ),
+            ),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("yield response", () {
+        final errorLink = ErrorLink(
+          onError: (
+            Request request,
+            NextLink forward,
+            Response response,
+          ) async* {
+            yield Result.value(response);
+          },
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "consume"),
+                  ],
+                ),
+              ),
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "pass"),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
+            Response(
+              errors: const <GraphQLError>[
+                GraphQLError(message: "consume"),
+              ],
+            ),
+            Response(
+              errors: const <GraphQLError>[
+                GraphQLError(message: "pass"),
+              ],
+            ),
+            emitsDone,
+          ]),
+        );
+      });
+
+      test("discard original stream", () async {
+        final errorLink = ErrorLink(
+          onError: (
+            Request request,
+            NextLink forward,
+            Response response,
+          ) =>
+              null,
+        );
+
+        final responseStream = errorLink.request(
+          null,
+          (request) => Result.releaseStream(
+            Stream.fromIterable([
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "consume"),
+                  ],
+                ),
+              ),
+              Result.value(
+                Response(
+                  errors: const <GraphQLError>[
+                    GraphQLError(message: "pass"),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        );
+
+        expect(
+          responseStream,
+          emitsInOrder(<dynamic>[
             emitsDone,
           ]),
         );

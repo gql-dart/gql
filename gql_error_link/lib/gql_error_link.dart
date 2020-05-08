@@ -7,14 +7,14 @@ import "package:gql_link/gql_link.dart";
 import "package:gql_exec/gql_exec.dart";
 
 /// A handler of GraphQL errors.
-typedef ErrorHandler = Stream<Response> Function(
+typedef ErrorHandler = Stream<Result<Response>> Function(
   Request request,
   NextLink forward,
   Response response,
 );
 
 /// A handler of Link Exceptions.
-typedef ExceptionHandler = Stream<Response> Function(
+typedef ExceptionHandler = Stream<Result<Response>> Function(
   Request request,
   NextLink forward,
   LinkException exception,
@@ -29,7 +29,7 @@ class ErrorLink extends Link {
   final ErrorHandler onError;
   final ExceptionHandler onException;
 
-  ErrorLink({
+  const ErrorLink({
     this.onError,
     this.onException,
   });
@@ -40,10 +40,7 @@ class ErrorLink extends Link {
     forward,
   ]) =>
       Result.releaseStream(
-        requestResults(
-          request,
-          forward,
-        ),
+        requestResults(request, forward),
       );
 
   Stream<Result<Response>> requestResults(
@@ -55,15 +52,15 @@ class ErrorLink extends Link {
         final error = result.asError.error;
 
         if (onException != null && error is LinkException) {
-          yield* Result.captureStream(
-            onException(
-              request,
-              forward,
-              error,
-            ),
-          );
+          final stream = onException(request, forward, error);
 
-          return;
+          if (stream == null) {
+            return;
+          }
+
+          yield* stream;
+
+          continue;
         }
       }
 
@@ -72,15 +69,15 @@ class ErrorLink extends Link {
         final errors = response.errors;
 
         if (onError != null && errors != null && errors.isNotEmpty) {
-          yield* Result.captureStream(
-            onError(
-              request,
-              forward,
-              response,
-            ),
-          );
+          final stream = onError(request, forward, response);
 
-          return;
+          if (stream == null) {
+            return;
+          }
+
+          yield* stream;
+
+          continue;
         }
       }
 
