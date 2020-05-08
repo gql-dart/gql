@@ -8,13 +8,11 @@ import "package:async/async.dart";
 
 class TestException extends LinkException {
   final int id;
-  final bool handled;
 
-  const TestException(this.id, {this.handled = false}) : super(null);
+  const TestException(this.id) : super(null);
 
   @override
-  bool operator ==(Object o) =>
-      o is TestException && o.id == id && o.handled == handled;
+  bool operator ==(Object o) => o is TestException && o.id == id;
 
   @override
   String toString() => "TestException:${id}";
