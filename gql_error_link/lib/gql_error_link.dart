@@ -46,13 +46,11 @@ class ErrorLink extends Link {
         if (onException != null && error is LinkException) {
           final stream = onException(request, forward, error);
 
-          if (stream == null) {
+          if (stream != null) {
+            yield* stream;
+
             return;
           }
-
-          yield* stream;
-
-          continue;
         }
 
         yield* Stream.error(error);
@@ -65,13 +63,11 @@ class ErrorLink extends Link {
         if (onError != null && errors != null && errors.isNotEmpty) {
           final stream = onError(request, forward, response);
 
-          if (stream == null) {
+          if (stream != null) {
+            yield* stream;
+
             return;
           }
-
-          yield* stream;
-
-          continue;
         }
 
         yield response;

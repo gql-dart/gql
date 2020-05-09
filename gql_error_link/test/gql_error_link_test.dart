@@ -203,40 +203,6 @@ void main() {
         );
       });
 
-      test("consume exception", () async {
-        final errorLink = ErrorLink(
-          onException: (
-            Request request,
-            NextLink forward,
-            LinkException exception,
-          ) async* {
-            if (exception is TestException && exception.id == 1) {
-              return;
-            }
-
-            throw exception;
-          },
-        );
-
-        final responseStream = errorLink.request(
-          null,
-          (request) => Result.releaseStream(
-            Stream.fromIterable([
-              Result.error(TestException(1)),
-              Result.error(TestException(2)),
-            ]),
-          ),
-        );
-
-        expect(
-          responseStream,
-          emitsInOrder(<dynamic>[
-            emitsError(TestException(2)),
-            emitsDone,
-          ]),
-        );
-      });
-
       test("yield exception", () async {
         final errorLink = ErrorLink(
           onException: (
@@ -262,7 +228,6 @@ void main() {
           responseStream,
           emitsInOrder(<dynamic>[
             emitsError(TestException(1)),
-            emitsError(TestException(2)),
             emitsDone,
           ]),
         );
@@ -299,15 +264,12 @@ void main() {
             Response(
               data: const <String, dynamic>{"id": 1},
             ),
-            Response(
-              data: const <String, dynamic>{"id": 2},
-            ),
             emitsDone,
           ]),
         );
       });
 
-      test("discard original stream", () async {
+      test("continue original stream", () async {
         final errorLink = ErrorLink(
           onException: (
             Request request,
@@ -330,6 +292,8 @@ void main() {
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
+            emitsError(TestException(1)),
+            emitsError(TestException(2)),
             emitsDone,
           ]),
         );
@@ -360,56 +324,6 @@ void main() {
         );
       });
 
-      test("consume response", () async {
-        final errorLink = ErrorLink(
-          onError: (
-            Request request,
-            NextLink forward,
-            Response response,
-          ) async* {
-            if (response.errors.first.message == "consume") {
-              return;
-            }
-
-            yield response;
-          },
-        );
-
-        final responseStream = errorLink.request(
-          null,
-          (request) => Result.releaseStream(
-            Stream.fromIterable([
-              Result.value(
-                Response(
-                  errors: const <GraphQLError>[
-                    GraphQLError(message: "consume"),
-                  ],
-                ),
-              ),
-              Result.value(
-                Response(
-                  errors: const <GraphQLError>[
-                    GraphQLError(message: "pass"),
-                  ],
-                ),
-              ),
-            ]),
-          ),
-        );
-
-        expect(
-          responseStream,
-          emitsInOrder(<dynamic>[
-            Response(
-              errors: const <GraphQLError>[
-                GraphQLError(message: "pass"),
-              ],
-            ),
-            emitsDone,
-          ]),
-        );
-      });
-
       test("yield exception", () async {
         final errorLink = ErrorLink(
           onError: (
@@ -428,14 +342,14 @@ void main() {
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "consume"),
+                    GraphQLError(message: "A"),
                   ],
                 ),
               ),
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "pass"),
+                    GraphQLError(message: "B"),
                   ],
                 ),
               ),
@@ -449,14 +363,7 @@ void main() {
             emitsError(
               Response(
                 errors: const <GraphQLError>[
-                  GraphQLError(message: "consume"),
-                ],
-              ),
-            ),
-            emitsError(
-              Response(
-                errors: const <GraphQLError>[
-                  GraphQLError(message: "pass"),
+                  GraphQLError(message: "A"),
                 ],
               ),
             ),
@@ -483,14 +390,14 @@ void main() {
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "consume"),
+                    GraphQLError(message: "A"),
                   ],
                 ),
               ),
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "pass"),
+                    GraphQLError(message: "B"),
                   ],
                 ),
               ),
@@ -503,12 +410,7 @@ void main() {
           emitsInOrder(<dynamic>[
             Response(
               errors: const <GraphQLError>[
-                GraphQLError(message: "consume"),
-              ],
-            ),
-            Response(
-              errors: const <GraphQLError>[
-                GraphQLError(message: "pass"),
+                GraphQLError(message: "A"),
               ],
             ),
             emitsDone,
@@ -516,7 +418,7 @@ void main() {
         );
       });
 
-      test("discard original stream", () async {
+      test("continue original stream", () async {
         final errorLink = ErrorLink(
           onError: (
             Request request,
@@ -533,14 +435,14 @@ void main() {
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "consume"),
+                    GraphQLError(message: "A"),
                   ],
                 ),
               ),
               Result.value(
                 Response(
                   errors: const <GraphQLError>[
-                    GraphQLError(message: "pass"),
+                    GraphQLError(message: "B"),
                   ],
                 ),
               ),
@@ -551,6 +453,16 @@ void main() {
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
+            Response(
+              errors: const <GraphQLError>[
+                GraphQLError(message: "A"),
+              ],
+            ),
+            Response(
+              errors: const <GraphQLError>[
+                GraphQLError(message: "B"),
+              ],
+            ),
             emitsDone,
           ]),
         );
