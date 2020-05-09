@@ -25,8 +25,11 @@ void main() {
   group("Lexer", () {
     Lexer lexer;
 
-    List<Token> tokenize(String text) =>
-        lexer.tokenize(SourceFile.fromString(text, url: "source"));
+    List<Token> tokenize(String text, {bool skipComments = true}) =>
+        lexer.tokenize(
+          SourceFile.fromString(text, url: "source"),
+          skipComments: skipComments,
+        );
 
     setUp(() {
       lexer = Lexer();
@@ -83,6 +86,36 @@ void main() {
           column: 3,
           value: "foo",
         )),
+      );
+
+      expect(
+        tokenize("#comment\n#\nfoo", skipComments: false),
+        allOf([
+          contains(token(
+            kind: TokenKind.comment,
+            start: 0,
+            end: 8,
+            line: 1,
+            column: 1,
+            value: "#comment",
+          )),
+          contains(token(
+            kind: TokenKind.comment,
+            start: 9,
+            end: 10,
+            line: 2,
+            column: 1,
+            value: "#",
+          )),
+          contains(token(
+            kind: TokenKind.name,
+            start: 11,
+            end: 14,
+            line: 3,
+            column: 1,
+            value: "foo",
+          )),
+        ]),
       );
 
       expect(
