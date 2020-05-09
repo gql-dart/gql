@@ -17,7 +17,7 @@ void main() {
           HttpServer server;
           WebSocket webSocket;
           IOWebSocketChannel channel;
-          WSLink link;
+          WebSocketLink link;
           Request request;
 
           request = Request(
@@ -46,7 +46,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WSLink(channel: channel);
+          link = WebSocketLink(null, channel: channel);
           //
           link.request(request).listen(print);
         },

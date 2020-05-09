@@ -1,20 +1,21 @@
 import "dart:async";
 import "dart:convert";
 
+import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:gql_websocket_link/src/messages.dart";
 import "package:rxdart/rxdart.dart";
 import "package:uuid_enhanced/uuid.dart";
-import "package:web_socket_channel/io.dart";
+import "package:web_socket_channel/web_socket_channel.dart";
+import "package:web_socket_channel/status.dart" as websocket_status;
 
 /// A Universal WebSocket [Link] implementation to support the WebSocket-GraphQL transport.
 /// It supports subscriptions, query and mutation operations as well.
 ///
-/// NOTE: the actual socket connection will only get established after a [Request] is handled by this [WSLink].
-class WSLink extends Link {
+/// NOTE: the actual socket connection will only get established after a [Request] is handled by this [WebSocketLink].
+class WebSocketLink extends Link {
   String _uri;
-  IOWebSocketChannel _channel;
+  WebSocketChannel _channel;
 
   /// Serializer used to serialize request
   final RequestSerializer serializer;
@@ -37,14 +38,16 @@ class WSLink extends Link {
   Stream<GraphQLSocketMessage> _messageStream;
   StreamSubscription<GraphQLSocketMessage> _messageSubscription;
 
-  /// Initialize the WSLink with a [uri].
+  /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channel],
   /// if [channel] is passed, [uri] must be null.
+  /// [channel] if of type [WebSocketChannel],
+  /// you may also use [IOWebSocketChannel] or [HtmlWebSocketChannel].
   /// You can also pass custom [RequestSerializer serializer] & [ResponseParser parser].
   /// Also [initialPayload] to be passed with the first request to the GraphQL server.
-  WSLink({
-    String uri,
-    IOWebSocketChannel channel,
+  WebSocketLink(
+    String uri, {
+    WebSocketChannel channel,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.initialPayload,
@@ -131,15 +134,8 @@ class WSLink extends Link {
   Future<void> _connect() async {
     _connectionStateController.value = connecting;
     try {
-      _channel ??= IOWebSocketChannel.connect(
-        _uri,
-        headers: <String, String>{
-          "Content-type": "application/json",
-        },
-        protocols: <String>[
-          "graphql-ws",
-        ],
-      );
+      _channel ??= WebSocketChannel.connect(Uri.parse(_uri));
+
       _connectionStateController.value = open;
 
       _messageStream = _channel.stream
@@ -196,11 +192,14 @@ class WSLink extends Link {
     }
   }
 
-  /// Disposes the underlying channel explicitly. Only use this, if you want to disconnect from
-  /// the current server in favour of another one. If that's the case, create a new [WSLink] instance.
+  /// Disposes the underlying channel explicitly.
+  /// Only use this, if you want to disconnect from the current server
+  /// in favour of another one. If that's the case,
+  /// create a new [WebSocketLink] instance.
   Future<void> dispose() async {
     _connectionStateController.value = closing;
     await _messageSubscription?.cancel();
+    await _channel?.sink?.close(websocket_status.goingAway);
     _channel = null;
     _connectionStateController.value = closed;
     await _connectionStateController?.close();
