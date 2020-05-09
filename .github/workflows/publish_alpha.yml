@@ -10,7 +10,7 @@ jobs:
       image: google/dart:latest
     if: github.ref == 'refs/heads/master'
     env:
-      PACKAGES: "gql,gql_build,gql_code_builder,gql_dedupe_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link"
+      PACKAGES: "gql,gql_build,gql_code_builder,gql_dedupe_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_websocket_link"
       PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
       PUB_REFRESH_TOKEN: ${{ secrets.PUB_REFRESH_TOKEN }}
     steps:
