@@ -98,7 +98,8 @@ class StartOperation extends GraphQLSocketMessage {
   StartOperation(this.id, this.payload) : super(MessageTypes.start);
 
   final String id;
-  final QueryPayload payload;
+//  final QueryPayload payload;
+  final Map<String, dynamic> payload;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
