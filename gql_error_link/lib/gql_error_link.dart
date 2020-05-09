@@ -23,8 +23,10 @@ typedef ExceptionHandler = Stream<Response> Function(
 /// [ErrorLink] allows interception of GraphQL errors (using [onError])
 /// and [LinkException]s (using [onException]).
 ///
-/// In both cases [ErrorLink] transfers control over to the handler which is
-/// then responsible for yielding [Response]s.
+/// In both cases [ErrorLink] transfers control over to the handler which may
+/// return a new stream to discard the original stream. If the handler returns
+/// `null`, the original stream is left intact and will be allowed to continue
+/// streaming new events.
 class ErrorLink extends Link {
   final ErrorHandler onError;
   final ExceptionHandler onException;
