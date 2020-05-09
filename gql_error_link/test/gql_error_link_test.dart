@@ -214,7 +214,7 @@ void main() {
               return;
             }
 
-            yield Result.error(exception);
+            throw exception;
           },
         );
 
@@ -244,7 +244,7 @@ void main() {
             NextLink forward,
             LinkException exception,
           ) async* {
-            yield Result.error(exception);
+            throw exception;
           },
         );
 
@@ -275,12 +275,10 @@ void main() {
             NextLink forward,
             LinkException exception,
           ) async* {
-            yield Result.value(
-              Response(
-                data: <String, dynamic>{
-                  "id": (exception as TestException).id,
-                },
-              ),
+            yield Response(
+              data: <String, dynamic>{
+                "id": (exception as TestException).id,
+              },
             );
           },
         );
@@ -373,7 +371,7 @@ void main() {
               return;
             }
 
-            yield Result.value(response);
+            yield response;
           },
         );
 
@@ -419,7 +417,7 @@ void main() {
             NextLink forward,
             Response response,
           ) async* {
-            yield Result.error(response);
+            throw response;
           },
         );
 
@@ -474,7 +472,7 @@ void main() {
             NextLink forward,
             Response response,
           ) async* {
-            yield Result.value(response);
+            yield response;
           },
         );
 

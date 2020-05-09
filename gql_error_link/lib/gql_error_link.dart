@@ -7,14 +7,14 @@ import "package:gql_link/gql_link.dart";
 import "package:gql_exec/gql_exec.dart";
 
 /// A handler of GraphQL errors.
-typedef ErrorHandler = Stream<Result<Response>> Function(
+typedef ErrorHandler = Stream<Response> Function(
   Request request,
   NextLink forward,
   Response response,
 );
 
 /// A handler of Link Exceptions.
-typedef ExceptionHandler = Stream<Result<Response>> Function(
+typedef ExceptionHandler = Stream<Response> Function(
   Request request,
   NextLink forward,
   LinkException exception,
@@ -38,14 +38,6 @@ class ErrorLink extends Link {
   Stream<Response> request(
     Request request, [
     forward,
-  ]) =>
-      Result.releaseStream(
-        requestResults(request, forward),
-      );
-
-  Stream<Result<Response>> requestResults(
-    Request request, [
-    NextLink forward,
   ]) async* {
     await for (final result in Result.captureStream(forward(request))) {
       if (result.isError) {
@@ -62,6 +54,8 @@ class ErrorLink extends Link {
 
           continue;
         }
+
+        yield* Stream.error(error);
       }
 
       if (result.isValue) {
@@ -79,9 +73,9 @@ class ErrorLink extends Link {
 
           continue;
         }
-      }
 
-      yield result;
+        yield response;
+      }
     }
   }
 }
