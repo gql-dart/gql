@@ -326,7 +326,7 @@ void main() {
 
       test("yield exception", () async {
         final errorLink = ErrorLink(
-          onError: (
+          onGraphQLError: (
             Request request,
             NextLink forward,
             Response response,
@@ -374,7 +374,7 @@ void main() {
 
       test("yield response", () {
         final errorLink = ErrorLink(
-          onError: (
+          onGraphQLError: (
             Request request,
             NextLink forward,
             Response response,
@@ -420,7 +420,7 @@ void main() {
 
       test("continue original stream", () async {
         final errorLink = ErrorLink(
-          onError: (
+          onGraphQLError: (
             Request request,
             NextLink forward,
             Response response,
