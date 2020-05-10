@@ -1,4 +1,4 @@
-## 0.2.0
+## 0.1.1
 
 The custom client has been removed.
 The library is now using WebSocketChannel as a base for the connection. 
