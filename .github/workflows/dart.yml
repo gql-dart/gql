@@ -72,13 +72,10 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
-          cd ./multipack
-          pub get
-          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
