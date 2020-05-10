@@ -12,12 +12,14 @@ jobs:
           - gql_exec
           - gql_link
           - gql_dedupe_link
+          - gql_error_link
           - gql_http_link
           - gql_websocket_link
           - gql_link
           - gql_transform_link
           - multipack
           - cats
+          - gql_example_http_auth_link
     runs-on: ubuntu-latest
     container:
       image: google/dart:latest
