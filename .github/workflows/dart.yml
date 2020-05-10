@@ -17,7 +17,6 @@ jobs:
           - gql_websocket_link
           - gql_link
           - gql_transform_link
-          - multipack
           - cats
           - gql_example_http_auth_link
     runs-on: ubuntu-latest
@@ -32,13 +31,10 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
-          cd ./multipack
-          pub get
-          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -76,13 +72,10 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
-          cd ./multipack
-          pub get
-          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
