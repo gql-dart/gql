@@ -1,3 +1,4 @@
 ## 0.1.0
 
-- Websocket link
+- port Websocket link from `graphq-flutter`
+- use `WebSocketChannel` as a base for the connection
