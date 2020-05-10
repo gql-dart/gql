@@ -39,4 +39,4 @@ Build using `build_runner`
 pub run build_runner build
 ```
 
-See [gql_example_cli](https://github.com/gql-dart/gql/tree/master/gql_example_cli) for a usage of the generated classes.
+See [gql_example_cli](https://github.com/gql-dart/gql/tree/master/examples/gql_example_cli) for a usage of the generated classes.
