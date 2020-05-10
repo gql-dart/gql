@@ -17,6 +17,8 @@ builders:
     build_extensions: { ".graphql": [".data.gql.dart"] }
     auto_apply: none
     build_to: source
+    applies_builders: ["built_value_generator|built_value"]
+    runs_before: ["built_value_generator|built_value"]
   req_builder:
     import: "package:gql_build/gql_build.dart"
     builder_factories: ["reqBuilder"]

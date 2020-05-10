@@ -12,6 +12,8 @@ dependencies:
   gql_code_builder: ^0.0.9
   code_builder: ^3.2.0
   dart_style: ^1.2.9
+  built_value: ^7.1.0
+  built_value_generator: ^7.1.0
 dev_dependencies: 
   test: ^1.0.0
   build_test: ^0.10.7

@@ -15,41 +15,14 @@ class _SourceSelections {
   });
 }
 
-List<Class> buildDataClasses(
-  SourceNode docSource,
-  SourceNode schemaSource,
-) =>
-    [
-      ...docSource.document.definitions
-          .whereType<OperationDefinitionNode>()
-          .expand(
-            (op) => _buildOperationDataClasses(
-              op,
-              docSource,
-              schemaSource,
-            ),
-          )
-          .toList(),
-      ...docSource.document.definitions
-          .whereType<FragmentDefinitionNode>()
-          .expand(
-            (frag) => _buildFragmentDataClasses(
-              frag,
-              docSource,
-              schemaSource,
-            ),
-          )
-          .toList(),
-    ];
-
-List<Class> _buildOperationDataClasses(
+List<Class> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   return _buildSelectionSetDataClasses(
-    name: "\$${op.name.value}",
+    name: "${op.name.value}",
     selections: _mergeSelections(
       op.selectionSet.selections,
       fragmentMap,
@@ -64,14 +37,14 @@ List<Class> _buildOperationDataClasses(
   );
 }
 
-List<Class> _buildFragmentDataClasses(
+List<Class> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   return _buildSelectionSetDataClasses(
-    name: "\$${frag.name.value}",
+    name: "${frag.name.value}",
     selections: _mergeSelections(
       frag.selectionSet.selections,
       fragmentMap,
@@ -80,6 +53,7 @@ List<Class> _buildFragmentDataClasses(
     type: frag.typeCondition.on.name.value,
     fragmentMap: fragmentMap,
     superclassSelections: {},
+    forFragment: true,
   );
 }
 
@@ -117,13 +91,14 @@ List<Class> _buildSelectionSetDataClasses({
   @required String type,
   @required Map<String, _SourceSelections> fragmentMap,
   @required Map<String, _SourceSelections> superclassSelections,
+  bool forFragment = false,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    superclassSelections["\$${selection.name.value}"] = _SourceSelections(
+    superclassSelections["${selection.name.value}"] = _SourceSelections(
       url: fragmentMap[selection.name.value].url,
       selections: _mergeSelections(
         fragmentMap[selection.name.value].selections,
@@ -135,25 +110,40 @@ List<Class> _buildSelectionSetDataClasses({
   return [
     Class(
       (b) => b
+        ..abstract = true
         ..name = name
-        ..implements = ListBuilder(
-          superclassSelections.keys.map<Reference>(
+        ..implements = ListBuilder(<Reference>[
+          ...superclassSelections.keys.map<Reference>(
             (superName) => refer(
               superName,
               (superclassSelections[superName].url ?? "") + "#data",
             ),
           ),
-        )
-        ..constructors = _buildConstructors(
-          name,
-          selections.whereType<InlineFragmentNode>().toList(),
-        )
-        ..fields = _buildFields()
+          if (!forFragment)
+            TypeReference(
+              (b) => b
+                ..url = "package:built_value/built_value.dart"
+                ..symbol = "Built"
+                ..types = ListBuilder(
+                  <Reference>[
+                    refer(name),
+                    refer("${name}Builder"),
+                  ],
+                ),
+            ),
+        ])
+        ..constructors = forFragment
+            ? null
+            : _buildConstructors(
+                name,
+                selections.whereType<InlineFragmentNode>().toList(),
+              )
         ..methods = _buildGetters(
           schemaSource,
           selections,
           name,
           type,
+          forFragment,
         ),
     ),
     ...selections
@@ -163,13 +153,13 @@ List<Class> _buildSelectionSetDataClasses({
         )
         .expand(
           (field) => _buildSelectionSetDataClasses(
-            name: "${name}\$${field.alias?.value ?? field.name.value}",
+            name: "${name}_${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet.selections,
             fragmentMap: fragmentMap,
             schemaSource: schemaSource,
             type: _getTypeName(
               _getFieldTypeNode(
-                _getTypeDefinitionNode(
+                getTypeDefinitionNode(
                   schemaSource.document,
                   type,
                 ),
@@ -180,11 +170,12 @@ List<Class> _buildSelectionSetDataClasses({
               superclassSelections,
               field,
             ),
+            forFragment: forFragment,
           ),
         ),
     ...selections.whereType<InlineFragmentNode>().expand(
           (inlineFragment) => _buildSelectionSetDataClasses(
-            name: "$name\$as${inlineFragment.typeCondition.on.name.value}",
+            name: "${name}_as${inlineFragment.typeCondition.on.name.value}",
             selections: _mergeSelections(
               [
                 ...selections.whereType<FieldNode>(),
@@ -199,6 +190,7 @@ List<Class> _buildSelectionSetDataClasses({
             superclassSelections: {
               name: _SourceSelections(url: null, selections: selections)
             },
+            forFragment: forFragment,
           ),
         ),
   ];
@@ -286,7 +278,7 @@ Map<String, _SourceSelections> _fragmentSelectionsForField(
           },
         ).map(
           (selection) => MapEntry(
-            "${entry.key}\$${field.alias?.value ?? field.name.value}",
+            "${entry.key}_${field.alias?.value ?? field.name.value}",
             _SourceSelections(
               url: entry.value.url,
               selections: selection.selectionSet.selections
@@ -298,57 +290,46 @@ Map<String, _SourceSelections> _fragmentSelectionsForField(
       ),
     );
 
-ListBuilder<Field> _buildFields() => ListBuilder<Field>(
-      <Field>[
-        Field(
-          (b) => b
-            ..name = "data"
-            ..type = refer(
-              "Map<String, dynamic>",
-            )
-            ..modifier = FieldModifier.final$,
-        ),
-      ],
-    );
-
 ListBuilder<Constructor> _buildConstructors(
   String name,
   List<InlineFragmentNode> inlineFragments,
 ) =>
     ListBuilder<Constructor>(
       <Constructor>[
+        Constructor((b) => b..name = "_"),
         Constructor(
           (b) => b
-            ..name = inlineFragments.isEmpty ? null : "fromData"
-            ..requiredParameters.add(
+            ..factory = true
+            ..optionalParameters.add(
               Parameter(
                 (b) => b
-                  ..name = "data"
-                  ..toThis = true,
+                  ..name = "updates"
+                  ..type = refer("Function(${name}Builder b)"),
               ),
             )
-            ..constant = true,
+            ..redirect = refer("_\$$name"),
         ),
-        if (inlineFragments.isNotEmpty)
-          Constructor(
-            (b) => b
-              ..factory = true
-              ..requiredParameters.add(
-                Parameter(
-                  (b) => b..name = "data",
-                ),
-              )
-              ..body = Code(
-                [
-                  "switch (data['__typename']) {",
-                  ...inlineFragments.map((inlineFragment) => """
-                  case "${inlineFragment.typeCondition.on.name.value}":
-                    return ${'$name\$as${inlineFragment.typeCondition.on.name.value}'}(data);
-                """),
-                  "default: return $name.fromData(data); }"
-                ].join(),
-              ),
-          ),
+        // TODO: add the below logic to serializer
+        // if (inlineFragments.isNotEmpty)
+        //   Constructor(
+        //     (b) => b
+        //       ..factory = true
+        //       ..requiredParameters.add(
+        //         Parameter(
+        //           (b) => b..name = "data",
+        //         ),
+        //       )
+        //       ..body = Code(
+        //         [
+        //           "switch (data['__typename']) {",
+        //           ...inlineFragments.map((inlineFragment) => """
+        //           case "${inlineFragment.typeCondition.on.name.value}":
+        //             return ${'${name}_as${inlineFragment.typeCondition.on.name.value}'}(data);
+        //         """),
+        //           "default: return $name.fromData(data); }"
+        //         ].join(),
+        //       ),
+        //   ),
       ],
     );
 
@@ -356,8 +337,9 @@ ListBuilder<Method> _buildGetters(
   SourceNode schemaSource,
   List<SelectionNode> nodes,
   String prefix,
-  String type,
-) =>
+  String type, [
+  bool forFragment = false,
+]) =>
     ListBuilder<Method>(
       nodes
           .map<Method>(
@@ -366,6 +348,7 @@ ListBuilder<Method> _buildGetters(
               node,
               prefix,
               type,
+              forFragment,
             ),
           )
           .where(
@@ -377,11 +360,12 @@ Method _buildGetter(
   SourceNode schemaSource,
   SelectionNode node,
   String prefix,
-  String type,
-) {
+  String type, [
+  bool forFragment = false,
+]) {
   if (node is FieldNode) {
     final name = node.alias?.value ?? node.name.value;
-    final typeDef = _getTypeDefinitionNode(
+    final typeDef = getTypeDefinitionNode(
       schemaSource.document,
       type,
     );
@@ -389,16 +373,17 @@ Method _buildGetter(
       typeDef,
       node.name.value,
     );
-    final unwrappedTypeNode = _unwrapTypeNode(typeNode);
+    final unwrappedTypeNode = unwrapTypeNode(typeNode);
     final typeName = unwrappedTypeNode.name.value;
-    final fieldTypeDef = _getTypeDefinitionNode(
+    final nullable = !unwrappedTypeNode.isNonNull;
+    final fieldTypeDef = getTypeDefinitionNode(
       schemaSource.document,
       typeName,
     );
     final typeMap = {
       ...defaultTypeMap,
       if (node.selectionSet != null)
-        typeName: refer("$prefix\$$name")
+        typeName: refer("${prefix}_$name")
       else if (fieldTypeDef != null)
         typeName: refer(
           typeName,
@@ -410,93 +395,20 @@ Method _buildGetter(
       typeNode,
       typeMap,
     );
-    final unwrappedReturns = typeRef(
-      unwrappedTypeNode,
-      typeMap,
-    );
 
-    final dataField = refer("data").index(
-      literalString(name),
-    );
-
-    return Method(
-      (b) => b
-        ..returns = returns
-        ..name = identifier(name)
-        ..type = MethodType.getter
-        ..lambda = true
-        ..body = typeNode is ListTypeNode
-            ? dataField
-                .equalTo(refer("null"))
-                .conditional(
-                  refer("null"),
-                  dataField
-                      .asA(refer("List"))
-                      .property("map")
-                      .call(
-                        [
-                          Method(
-                            (b) => b
-                              ..requiredParameters = ListBuilder<Parameter>(
-                                <Parameter>[
-                                  Parameter(
-                                    (b) => b
-                                      ..type = refer("dynamic")
-                                      ..name = "e",
-                                  ),
-                                ],
-                              )
-                              ..lambda = true
-                              ..body = node.selectionSet == null
-                                  ? fieldTypeDef == null
-                                      ? refer("e").asA(unwrappedReturns).code
-                                      : unwrappedReturns.call([
-                                          refer("e").asA(refer("String")),
-                                        ]).code
-                                  : unwrappedReturns.call(
-                                      [
-                                        refer("e")
-                                            .asA(refer("Map<String, dynamic>")),
-                                      ],
-                                    ).code,
-                          ).closure,
-                        ],
-                      )
-                      .property("toList")
-                      .call([]),
-                )
-                .code
-            : node.selectionSet == null
-                ? fieldTypeDef == null
-                    ? returns.symbol == "double"
-                        ? dataField.nullSafeProperty("toDouble").call([]).code
-                        : dataField.asA(returns).code
-                    : returns.call([
-                        dataField.asA(refer("String")),
-                      ]).code
-                : dataField
-                    .equalTo(refer("null"))
-                    .conditional(
-                      refer("null"),
-                      returns.call([
-                        dataField.asA(refer("Map<String, dynamic>")),
-                      ]),
-                    )
-                    .code,
-    );
+    return Method((b) => b
+      ..annotations = ListBuilder(
+        <Expression>[
+          if (nullable && !forFragment) CodeExpression(Code("nullable")),
+        ],
+      )
+      ..returns = returns
+      ..name = identifier(name)
+      ..type = MethodType.getter);
   }
 
   return null;
 }
-
-TypeDefinitionNode _getTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-          orElse: () => null,
-        );
 
 TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
@@ -518,21 +430,7 @@ TypeNode _getFieldTypeNode(
       .type;
 }
 
-NamedTypeNode _unwrapTypeNode(
-  TypeNode node,
-) {
-  if (node is NamedTypeNode) {
-    return node;
-  }
-
-  if (node is ListTypeNode) {
-    return _unwrapTypeNode(node.type);
-  }
-
-  return null;
-}
-
 String _getTypeName(
   TypeNode node,
 ) =>
-    _unwrapTypeNode(node).name.value;
+    unwrapTypeNode(node).name.value;

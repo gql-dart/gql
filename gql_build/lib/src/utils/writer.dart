@@ -24,6 +24,7 @@ Future<void> writeDocument(
         generatedAsset.uri.toString(),
         schemaUrl,
       ),
+      true,
     ),
   )}");
 
@@ -34,7 +35,13 @@ Future<void> writeDocument(
 }
 
 class _GqlAllocator implements Allocator {
-  static const _doNotPrefix = ["dart:core"];
+  static const _doNotImport = [
+    "dart:core",
+  ];
+
+  static const _doNotPrefix = [
+    "package:built_value/built_value.dart",
+  ];
 
   final String sourceUrl;
   final String currentUrl;
@@ -53,7 +60,12 @@ class _GqlAllocator implements Allocator {
   String allocate(Reference reference) {
     final symbol = reference.symbol;
 
-    if (reference.url == null || _doNotPrefix.contains(reference.url)) {
+    if (reference.url == null || _doNotImport.contains(reference.url)) {
+      return symbol;
+    }
+
+    if (_doNotPrefix.contains(reference.url)) {
+      _imports.putIfAbsent(reference.url, () => null);
       return symbol;
     }
 
@@ -99,6 +111,8 @@ class _GqlAllocator implements Allocator {
 
   @override
   Iterable<Directive> get imports => _imports.keys.map(
-        (u) => Directive.import(u, as: "_i${_imports[u]}"),
+        (u) => _imports[u] == null
+            ? Directive.import(u)
+            : Directive.import(u, as: "_i${_imports[u]}"),
       );
 }

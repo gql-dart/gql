@@ -21,52 +21,24 @@ Class _buildOperationVarClass(
   OperationDefinitionNode node,
   DocumentNode schema,
 ) =>
-    Class(
-      (b) => b
-        ..name = "${node.name.value}VarBuilder"
-        ..fields = ListBuilder<Field>(
-          <Field>[
-            Field(
-              (b) => b
-                ..modifier = FieldModifier.final$
-                ..type = refer(
-                  "Map<String, dynamic>",
-                )
-                ..name = "variables"
-                ..assignment = literalMap(
-                  {},
-                  refer("String"),
-                  refer("dynamic"),
-                ).code,
-            ),
-          ],
-        )
-        ..methods = _buildSetters(
-          node.variableDefinitions,
-          schema,
-        ),
-    );
-
-ListBuilder<Method> _buildSetters(
-  List<VariableDefinitionNode> nodes,
-  DocumentNode schema,
-) =>
-    ListBuilder<Method>(
-      nodes.map<Method>(
-        (VariableDefinitionNode node) => _buildSetter(
+    builtClass(
+      name: "${node.name.value}Vars",
+      getters: node.variableDefinitions.map<Method>(
+        (node) => _buildGetter(
           node,
           schema,
         ),
       ),
     );
 
-Method _buildSetter(
+Method _buildGetter(
   VariableDefinitionNode node,
   DocumentNode schema,
 ) {
-  final unwrappedTypeNode = _unwrapTypeNode(node.type);
+  final unwrappedTypeNode = unwrapTypeNode(node.type);
   final typeName = unwrappedTypeNode.name.value;
-  final argTypeDef = _getTypeDefinitionNode(
+  final nullable = !unwrappedTypeNode.isNonNull;
+  final argTypeDef = getTypeDefinitionNode(
     schema,
     typeName,
   );
@@ -87,18 +59,12 @@ Method _buildSetter(
 
   return Method(
     (b) => b
+      ..annotations = ListBuilder(<Expression>[
+        if (nullable) CodeExpression(Code("nullable")),
+      ])
+      ..returns = argType
+      ..type = MethodType.getter
       ..name = identifier(node.variable.name.value)
-      ..type = MethodType.setter
-      ..requiredParameters = ListBuilder<Parameter>(
-        <Parameter>[
-          Parameter(
-            (b) => b
-              ..type = argType
-              ..name = "value",
-          ),
-        ],
-      )
-      ..lambda = true
       ..body = refer("variables")
           .index(
             literalString(node.variable.name.value),
@@ -146,27 +112,4 @@ Method _buildSetter(
           )
           .code,
   );
-}
-
-TypeDefinitionNode _getTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-          orElse: () => null,
-        );
-
-NamedTypeNode _unwrapTypeNode(
-  TypeNode node,
-) {
-  if (node is NamedTypeNode) {
-    return node;
-  }
-
-  if (node is ListTypeNode) {
-    return _unwrapTypeNode(node.type);
-  }
-
-  return null;
 }
