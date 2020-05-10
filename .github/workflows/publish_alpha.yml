@@ -19,7 +19,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
       - name: Bump to alpha version
         run: |
           multipack --only $PACKAGES pubspec bump-alpha

@@ -13,7 +13,7 @@
 [github-watch-badge]: https://img.shields.io/github/watchers/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
 [github-watch-link]: https://github.com/gql-dart/gql/watchers
 [github-star-badge]: https://img.shields.io/github/stars/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
-[github-star-link]: https://github.com/zino-app/graphql-flutter/stargazers
+[github-star-link]: https://github.com/gql-dart/gql/stargazers
 [github-forks-badge]: https://img.shields.io/github/forks/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
 [github-forks-link]: https://github.com/gql-dart/gql/network/members
 

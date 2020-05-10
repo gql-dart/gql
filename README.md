@@ -15,7 +15,7 @@
 [github-watch-badge]: https://img.shields.io/github/watchers/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
 [github-watch-link]: https://github.com/gql-dart/gql/watchers
 [github-star-badge]: https://img.shields.io/github/stars/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
-[github-star-link]: https://github.com/zino-app/graphql-flutter/stargazers
+[github-star-link]: https://github.com/gql-dart/gql/stargazers
 [github-forks-badge]: https://img.shields.io/github/forks/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
 [github-forks-link]: https://github.com/gql-dart/gql/network/members
 
@@ -76,7 +76,6 @@ Ideas for future work:
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
 | [![version][package:gql_pedantic:version]][package:gql_pedantic] | [`package:gql_pedantic`][package:gql_pedantic:source] |  | Lint rules used by all `gql-dart/gql` packages |
-| [![version][package:multipack:version]][package:multipack] | [`package:multipack`][package:multipack:source] |  | Development tool to ease working in this monorepo setup |
 
 #### Examples
 
@@ -112,10 +111,7 @@ Ideas for future work:
 [package:gql_dedupe_link:version]: https://img.shields.io/pub/v/gql_dedupe_link.svg?style=flat-square 
 [package:gql_pedantic:source]: ./gql_pedantic/README.md
 [package:gql_pedantic]: https://pub.dartlang.org/packages/gql_pedantic
-[package:gql_pedantic:version]: https://img.shields.io/pub/v/gql_pedantic.svg?style=flat-square 
-[package:multipack:source]: ./multipack/README.md
-[package:multipack]: https://pub.dartlang.org/packages/multipack
-[package:multipack:version]: https://img.shields.io/pub/v/multipack.svg?style=flat-square 
+[package:gql_pedantic:version]: https://img.shields.io/pub/v/gql_pedantic.svg?style=flat-square
 [package:gql_example_cli:source]: ./gql_example_cli/README.md
 [package:gql_example_cli]: https://pub.dartlang.org/packages/gql_example_cli
 [package:gql_example_cli:version]: https://img.shields.io/pub/v/gql_example_cli.svg?style=flat-square 
@@ -157,37 +153,17 @@ and to build a community around this vendor-neutral implementation.
 Community contributions are welcome.
 
 ### `multipack`
-This repo comes with an unpublished tool called `multipack`. To activate it run the following command.
+This repo uses [`multipack`](https://github.com/gql-dart/multipack). To activate it run the following command.
 ```bash
-pub global activate --source path ./multipack
+pub global activate multipack
 ```
 
 `multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
 to run commands in topological order.
-```text
-Global options:
--o, --only    Whitelist packages, skipping those not included for this command.
--s, --skip    Blacklist packages for this command.
-
-Available commands:
-  analyze   Run analyzer.
-  exec      Execute any command.
-  fmt       Run formatter.
-  pub       Run pub.
-  pubspec   Update pubspec.yaml
-``` 
-
-`pubspec` has 3 subcommands:
-```
-Available subcommands:
-  clean           cleans dependency overrides
-  hard_override   overrides dependencies for local packages
-  override        overrides dependencies for local packages
-```
 
 Link all local packages by running
 ```bash
-multipack --skip multipack pubspec override
+multipack pubspec override
 ```
 
 Get all packages by running
@@ -197,20 +173,10 @@ multipack pub get
 
 Clean up the pubspec file before publishing
 ```bash
-multipack --skip multipack pubspec clean
+multipack pubspec clean
 ```
 
 See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
-
-#### Why `--skip multipack`?
-While this package is not published, you have to do the following every time `./multipack/pubspec.yaml` is altered.
-```bash
-cd ./multipack
-pub get
-cd ..
-```
-
-To avoid that, you can just skip multipack package.
 
 ## Features and bugs
 
