@@ -1,5 +1,5 @@
 name: cats
-homepage: https://github.com/gql-dart/gql/cats
+repository: https://github.com/gql-dart/gql
 description: A starting point for Dart libraries or applications.
 environment: 
   sdk: '>=2.7.2 <3.0.0'
