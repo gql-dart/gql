@@ -6,6 +6,7 @@ import "package:gql_build/src/utils/add_introspection.dart";
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/var.dart";
+import "package:path/path.dart";
 
 class VarBuilder implements Builder {
   final AssetId schemaId;
@@ -27,6 +28,7 @@ class VarBuilder implements Builder {
     final library = buildVarLibrary(
       doc,
       addTypenames(schema),
+      basename(buildStep.inputId.changeExtension(varPartExtension).uri.path),
     );
 
     return writeDocument(

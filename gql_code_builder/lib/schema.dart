@@ -5,4 +5,4 @@ import "package:gql_code_builder/source.dart";
 Library buildSchemaLibrary(
   SourceNode schemaSource,
 ) =>
-    buildSchema(schemaSource.flatDocument) as Library;
+    buildSchema(schemaSource) as Library;

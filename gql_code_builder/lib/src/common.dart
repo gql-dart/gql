@@ -3,6 +3,8 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:meta/meta.dart";
 
+import "../source.dart";
+
 const reserved = <String>[
   "else",
   "assert",
@@ -70,12 +72,9 @@ Reference _listOrNot(
   } else if (type is ListTypeNode) {
     return TypeReference(
       (b) => b
-        ..symbol = "List"
-        ..types = ListBuilder<Reference>(
-          <Reference>[
-            typeRef(type.type, typeMap),
-          ],
-        ),
+        ..url = "package:built_collection/built_collection.dart"
+        ..symbol = "BuiltList"
+        ..types.add(typeRef(type.type, typeMap)),
     );
   }
 
@@ -132,8 +131,8 @@ Class builtClass({
               ..symbol = "Built"
               ..types = ListBuilder(
                 <Reference>[
-                  refer(name),
-                  refer("${name}Builder"),
+                  refer(identifier(name)),
+                  refer("${identifier(name)}Builder"),
                 ],
               ),
           ),
@@ -148,12 +147,54 @@ Class builtClass({
                   Parameter(
                     (b) => b
                       ..name = "updates"
-                      ..type = refer("Function(${name}Builder b)"),
+                      ..type = refer("Function(${identifier(name)}Builder b)"),
                   ),
                 )
-                ..redirect = refer("_\$$name"),
+                ..redirect = refer("_\$${identifier(name)}"),
             ),
           ],
         )
         ..methods.addAll(getters),
     );
+
+Method buildGetter({
+  @required NameNode nameNode,
+  @required TypeNode typeNode,
+  @required SourceNode schemaSource,
+  String typeRefPrefix,
+  bool built = true,
+}) {
+  final unwrappedTypeNode = unwrapTypeNode(typeNode);
+  final typeName = unwrappedTypeNode.name.value;
+  final nullable = !unwrappedTypeNode.isNonNull;
+  final typeDef = getTypeDefinitionNode(
+    schemaSource.document,
+    typeName,
+  );
+
+  final typeMap = {
+    ...defaultTypeMap,
+    if (typeRefPrefix != null)
+      typeName: refer("${typeRefPrefix}_${nameNode.value}")
+    else if (typeDef != null)
+      typeName: refer(
+        identifier(typeName),
+        "${schemaSource.url}#schema",
+      ),
+  };
+
+  final returnType = typeRef(
+    typeNode,
+    typeMap,
+  );
+
+  return Method(
+    (b) => b
+      ..annotations = ListBuilder(<Expression>[
+        if (nullable && built) CodeExpression(Code("nullable")),
+      ])
+      ..returns = returnType
+      ..type = MethodType.getter
+      ..name = identifier(nameNode.value),
+  );
+}

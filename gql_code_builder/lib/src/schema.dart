@@ -4,22 +4,23 @@ import "package:gql_code_builder/src/schema/enum.dart";
 import "package:gql_code_builder/src/schema/input.dart";
 import "package:gql_code_builder/src/schema/scalar.dart";
 import "package:meta/meta.dart";
+import "package:gql_code_builder/source.dart";
 
 /// Build input types, enums and scalars from schema
 Spec buildSchema(
-  DocumentNode schema,
+  SourceNode schemaSource,
 ) =>
-    schema.accept(
+    schemaSource.document.accept(
       _SchemaBuilderVisitor(
-        schema: schema,
+        schemaSource: schemaSource,
       ),
     );
 
 class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
-  final DocumentNode schema;
+  final SourceNode schemaSource;
 
   _SchemaBuilderVisitor({
-    @required this.schema,
+    @required this.schemaSource,
   });
 
   Spec _acceptOne(
@@ -50,7 +51,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   ) =>
       buildInputClass(
         node,
-        schema,
+        schemaSource,
       );
 
   @override

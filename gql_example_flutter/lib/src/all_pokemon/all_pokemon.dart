@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gql_exec/gql_exec.dart';
 
-import './all_pokemon.data.gql.dart';
-import './all_pokemon.req.gql.dart';
+import './graphql/all_pokemon.data.gql.dart' as dataClass;
+import './graphql/all_pokemon.req.gql.dart' as reqClass;
 import '../config.dart';
 import '../pokemon_card/pokemon_card.dart';
 
@@ -15,7 +15,7 @@ class AllPokemonScreen extends StatelessWidget {
       ),
       body: StreamBuilder(
         stream: link.request(
-          AllPokemon(
+          reqClass.AllPokemon(
             (vars) => vars..first = 500,
           ),
         ),
@@ -23,7 +23,7 @@ class AllPokemonScreen extends StatelessWidget {
           if (snapshot.data?.data == null)
             return Center(child: CircularProgressIndicator());
 
-          final data = $AllPokemon(snapshot.data.data);
+          final data = dataClass.AllPokemon(snapshot.data.data);
 
           return ListView.builder(
             itemCount: data.pokemons.length,

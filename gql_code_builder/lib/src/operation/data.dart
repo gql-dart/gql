@@ -1,5 +1,4 @@
 import "package:meta/meta.dart";
-import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
@@ -53,7 +52,7 @@ List<Class> buildFragmentDataClasses(
     type: frag.typeCondition.on.name.value,
     fragmentMap: fragmentMap,
     superclassSelections: {},
-    forFragment: true,
+    built: false,
   );
 }
 
@@ -91,7 +90,7 @@ List<Class> _buildSelectionSetDataClasses({
   @required String type,
   @required Map<String, _SourceSelections> fragmentMap,
   @required Map<String, _SourceSelections> superclassSelections,
-  bool forFragment = false,
+  bool built = true,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -107,43 +106,49 @@ List<Class> _buildSelectionSetDataClasses({
     );
   }
 
+  final fieldGetters = selections.whereType<FieldNode>().map<Method>(
+    (node) {
+      final nameNode = node.alias ?? node.name;
+      final typeDef = getTypeDefinitionNode(
+        schemaSource.document,
+        type,
+      );
+      final typeNode = _getFieldTypeNode(
+        typeDef,
+        node.name.value,
+      );
+      return buildGetter(
+        nameNode: nameNode,
+        typeNode: typeNode,
+        schemaSource: schemaSource,
+        typeRefPrefix: node.selectionSet != null ? name : null,
+        built: built,
+      );
+    },
+  );
+
+  final baseClass = built
+      ? builtClass(
+          name: name,
+          getters: fieldGetters,
+        )
+      : Class(
+          (b) => b
+            ..abstract = true
+            ..name = identifier(name)
+            ..methods.addAll(fieldGetters),
+        );
+
   return [
-    Class(
+    baseClass.rebuild(
       (b) => b
-        ..abstract = true
-        ..name = name
-        ..implements = ListBuilder(<Reference>[
-          ...superclassSelections.keys.map<Reference>(
+        ..implements.addAll(
+          superclassSelections.keys.map<Reference>(
             (superName) => refer(
               superName,
               (superclassSelections[superName].url ?? "") + "#data",
             ),
           ),
-          if (!forFragment)
-            TypeReference(
-              (b) => b
-                ..url = "package:built_value/built_value.dart"
-                ..symbol = "Built"
-                ..types = ListBuilder(
-                  <Reference>[
-                    refer(name),
-                    refer("${name}Builder"),
-                  ],
-                ),
-            ),
-        ])
-        ..constructors = forFragment
-            ? null
-            : _buildConstructors(
-                name,
-                selections.whereType<InlineFragmentNode>().toList(),
-              )
-        ..methods = _buildGetters(
-          schemaSource,
-          selections,
-          name,
-          type,
-          forFragment,
         ),
     ),
     ...selections
@@ -157,7 +162,7 @@ List<Class> _buildSelectionSetDataClasses({
             selections: field.selectionSet.selections,
             fragmentMap: fragmentMap,
             schemaSource: schemaSource,
-            type: _getTypeName(
+            type: unwrapTypeNode(
               _getFieldTypeNode(
                 getTypeDefinitionNode(
                   schemaSource.document,
@@ -165,12 +170,12 @@ List<Class> _buildSelectionSetDataClasses({
                 ),
                 field.name.value,
               ),
-            ),
+            ).name.value,
             superclassSelections: _fragmentSelectionsForField(
               superclassSelections,
               field,
             ),
-            forFragment: forFragment,
+            built: built,
           ),
         ),
     ...selections.whereType<InlineFragmentNode>().expand(
@@ -190,7 +195,7 @@ List<Class> _buildSelectionSetDataClasses({
             superclassSelections: {
               name: _SourceSelections(url: null, selections: selections)
             },
-            forFragment: forFragment,
+            built: built,
           ),
         ),
   ];
@@ -290,126 +295,6 @@ Map<String, _SourceSelections> _fragmentSelectionsForField(
       ),
     );
 
-ListBuilder<Constructor> _buildConstructors(
-  String name,
-  List<InlineFragmentNode> inlineFragments,
-) =>
-    ListBuilder<Constructor>(
-      <Constructor>[
-        Constructor((b) => b..name = "_"),
-        Constructor(
-          (b) => b
-            ..factory = true
-            ..optionalParameters.add(
-              Parameter(
-                (b) => b
-                  ..name = "updates"
-                  ..type = refer("Function(${name}Builder b)"),
-              ),
-            )
-            ..redirect = refer("_\$$name"),
-        ),
-        // TODO: add the below logic to serializer
-        // if (inlineFragments.isNotEmpty)
-        //   Constructor(
-        //     (b) => b
-        //       ..factory = true
-        //       ..requiredParameters.add(
-        //         Parameter(
-        //           (b) => b..name = "data",
-        //         ),
-        //       )
-        //       ..body = Code(
-        //         [
-        //           "switch (data['__typename']) {",
-        //           ...inlineFragments.map((inlineFragment) => """
-        //           case "${inlineFragment.typeCondition.on.name.value}":
-        //             return ${'${name}_as${inlineFragment.typeCondition.on.name.value}'}(data);
-        //         """),
-        //           "default: return $name.fromData(data); }"
-        //         ].join(),
-        //       ),
-        //   ),
-      ],
-    );
-
-ListBuilder<Method> _buildGetters(
-  SourceNode schemaSource,
-  List<SelectionNode> nodes,
-  String prefix,
-  String type, [
-  bool forFragment = false,
-]) =>
-    ListBuilder<Method>(
-      nodes
-          .map<Method>(
-            (node) => _buildGetter(
-              schemaSource,
-              node,
-              prefix,
-              type,
-              forFragment,
-            ),
-          )
-          .where(
-            (getter) => getter != null,
-          ),
-    );
-
-Method _buildGetter(
-  SourceNode schemaSource,
-  SelectionNode node,
-  String prefix,
-  String type, [
-  bool forFragment = false,
-]) {
-  if (node is FieldNode) {
-    final name = node.alias?.value ?? node.name.value;
-    final typeDef = getTypeDefinitionNode(
-      schemaSource.document,
-      type,
-    );
-    final typeNode = _getFieldTypeNode(
-      typeDef,
-      node.name.value,
-    );
-    final unwrappedTypeNode = unwrapTypeNode(typeNode);
-    final typeName = unwrappedTypeNode.name.value;
-    final nullable = !unwrappedTypeNode.isNonNull;
-    final fieldTypeDef = getTypeDefinitionNode(
-      schemaSource.document,
-      typeName,
-    );
-    final typeMap = {
-      ...defaultTypeMap,
-      if (node.selectionSet != null)
-        typeName: refer("${prefix}_$name")
-      else if (fieldTypeDef != null)
-        typeName: refer(
-          typeName,
-          schemaSource.url + "#schema",
-        )
-    };
-
-    final returns = typeRef(
-      typeNode,
-      typeMap,
-    );
-
-    return Method((b) => b
-      ..annotations = ListBuilder(
-        <Expression>[
-          if (nullable && !forFragment) CodeExpression(Code("nullable")),
-        ],
-      )
-      ..returns = returns
-      ..name = identifier(name)
-      ..type = MethodType.getter);
-  }
-
-  return null;
-}
-
 TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
   String field,
@@ -429,8 +314,3 @@ TypeNode _getFieldTypeNode(
       )
       .type;
 }
-
-String _getTypeName(
-  TypeNode node,
-) =>
-    unwrapTypeNode(node).name.value;
