@@ -84,9 +84,14 @@ type PokemonEvolutionRequirement {
   name: String
 }
 
+input pokemonInput {
+  id: String
+  name: String
+}
+
 # Query any Pokémon by number or name
 type Query {
   query: Query
   pokemons(first: Int!): [Pokemon]
-  pokemon(id: String, name: String): Pokemon
+  pokemon(input: pokemonInput): Pokemon
 }

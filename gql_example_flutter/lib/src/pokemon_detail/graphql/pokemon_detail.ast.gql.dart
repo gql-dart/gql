@@ -11,15 +11,9 @@ const PokemonDetail = _i1.OperationDefinitionNode(
     name: _i1.NameNode(value: 'PokemonDetail'),
     variableDefinitions: [
       _i1.VariableDefinitionNode(
-          variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+          variable: _i1.VariableNode(name: _i1.NameNode(value: 'input')),
           type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'), isNonNull: true),
-          defaultValue: _i1.DefaultValueNode(value: null),
-          directives: []),
-      _i1.VariableDefinitionNode(
-          variable: _i1.VariableNode(name: _i1.NameNode(value: 'name')),
-          type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'), isNonNull: true),
+              name: _i1.NameNode(value: 'pokemonInput'), isNonNull: false),
           defaultValue: _i1.DefaultValueNode(value: null),
           directives: [])
     ],
@@ -30,11 +24,8 @@ const PokemonDetail = _i1.OperationDefinitionNode(
           alias: null,
           arguments: [
             _i1.ArgumentNode(
-                name: _i1.NameNode(value: 'id'),
-                value: _i1.VariableNode(name: _i1.NameNode(value: 'id'))),
-            _i1.ArgumentNode(
-                name: _i1.NameNode(value: 'name'),
-                value: _i1.VariableNode(name: _i1.NameNode(value: 'name')))
+                name: _i1.NameNode(value: 'input'),
+                value: _i1.VariableNode(name: _i1.NameNode(value: 'input')))
           ],
           directives: [],
           selectionSet: _i1.SelectionSetNode(selections: [

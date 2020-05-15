@@ -8,7 +8,7 @@ import "./src/operation/data.dart";
 Library buildDataLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
-  String generatedPartName,
+  String partUrl,
 ) {
   final operationDataClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
@@ -35,7 +35,7 @@ Library buildDataLibrary(
   return Library(
     (b) => b
       ..directives = ListBuilder(<Directive>[
-        if (operationDataClasses.isNotEmpty) Directive.part(generatedPartName),
+        if (operationDataClasses.isNotEmpty) Directive.part(partUrl),
       ])
       ..body = ListBuilder(<Spec>[
         ...operationDataClasses,

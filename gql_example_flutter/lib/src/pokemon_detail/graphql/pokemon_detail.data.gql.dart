@@ -7,28 +7,28 @@ import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragme
 
 part 'pokemon_detail.data.gql.g.dart';
 
-abstract class PokemonDetail_Data
-    implements Built<PokemonDetail_Data, PokemonDetail_DataBuilder> {
-  PokemonDetail_Data._();
+abstract class PokemonDetailData
+    implements Built<PokemonDetailData, PokemonDetailDataBuilder> {
+  PokemonDetailData._();
 
-  factory PokemonDetail_Data([Function(PokemonDetail_DataBuilder b) updates]) =
-      _$PokemonDetail_Data;
+  factory PokemonDetailData([Function(PokemonDetailDataBuilder b) updates]) =
+      _$PokemonDetailData;
 
   @nullable
-  PokemonDetail_Data_pokemon get pokemon;
-  static Serializer<PokemonDetail_Data> get serializer =>
+  PokemonDetailData_pokemon get pokemon;
+  static Serializer<PokemonDetailData> get serializer =>
       _$pokemonDetailDataSerializer;
 }
 
-abstract class PokemonDetail_Data_pokemon
+abstract class PokemonDetailData_pokemon
     implements
-        Built<PokemonDetail_Data_pokemon, PokemonDetail_Data_pokemonBuilder>,
+        Built<PokemonDetailData_pokemon, PokemonDetailData_pokemonBuilder>,
         _i1.PokemonCard {
-  PokemonDetail_Data_pokemon._();
+  PokemonDetailData_pokemon._();
 
-  factory PokemonDetail_Data_pokemon(
-          [Function(PokemonDetail_Data_pokemonBuilder b) updates]) =
-      _$PokemonDetail_Data_pokemon;
+  factory PokemonDetailData_pokemon(
+          [Function(PokemonDetailData_pokemonBuilder b) updates]) =
+      _$PokemonDetailData_pokemon;
 
   String get id;
   @nullable
@@ -38,45 +38,45 @@ abstract class PokemonDetail_Data_pokemon
   @nullable
   String get image;
   @nullable
-  PokemonDetail_Data_pokemon_weight get weight;
+  PokemonDetailData_pokemon_weight get weight;
   @nullable
-  PokemonDetail_Data_pokemon_height get height;
-  static Serializer<PokemonDetail_Data_pokemon> get serializer =>
+  PokemonDetailData_pokemon_height get height;
+  static Serializer<PokemonDetailData_pokemon> get serializer =>
       _$pokemonDetailDataPokemonSerializer;
 }
 
-abstract class PokemonDetail_Data_pokemon_weight
+abstract class PokemonDetailData_pokemon_weight
     implements
-        Built<PokemonDetail_Data_pokemon_weight,
-            PokemonDetail_Data_pokemon_weightBuilder> {
-  PokemonDetail_Data_pokemon_weight._();
+        Built<PokemonDetailData_pokemon_weight,
+            PokemonDetailData_pokemon_weightBuilder> {
+  PokemonDetailData_pokemon_weight._();
 
-  factory PokemonDetail_Data_pokemon_weight(
-          [Function(PokemonDetail_Data_pokemon_weightBuilder b) updates]) =
-      _$PokemonDetail_Data_pokemon_weight;
+  factory PokemonDetailData_pokemon_weight(
+          [Function(PokemonDetailData_pokemon_weightBuilder b) updates]) =
+      _$PokemonDetailData_pokemon_weight;
 
   @nullable
   String get minimum;
   @nullable
   String get maximum;
-  static Serializer<PokemonDetail_Data_pokemon_weight> get serializer =>
+  static Serializer<PokemonDetailData_pokemon_weight> get serializer =>
       _$pokemonDetailDataPokemonWeightSerializer;
 }
 
-abstract class PokemonDetail_Data_pokemon_height
+abstract class PokemonDetailData_pokemon_height
     implements
-        Built<PokemonDetail_Data_pokemon_height,
-            PokemonDetail_Data_pokemon_heightBuilder> {
-  PokemonDetail_Data_pokemon_height._();
+        Built<PokemonDetailData_pokemon_height,
+            PokemonDetailData_pokemon_heightBuilder> {
+  PokemonDetailData_pokemon_height._();
 
-  factory PokemonDetail_Data_pokemon_height(
-          [Function(PokemonDetail_Data_pokemon_heightBuilder b) updates]) =
-      _$PokemonDetail_Data_pokemon_height;
+  factory PokemonDetailData_pokemon_height(
+          [Function(PokemonDetailData_pokemon_heightBuilder b) updates]) =
+      _$PokemonDetailData_pokemon_height;
 
   @nullable
   String get minimum;
   @nullable
   String get maximum;
-  static Serializer<PokemonDetail_Data_pokemon_height> get serializer =>
+  static Serializer<PokemonDetailData_pokemon_height> get serializer =>
       _$pokemonDetailDataPokemonHeightSerializer;
 }

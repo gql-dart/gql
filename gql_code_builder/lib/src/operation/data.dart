@@ -21,7 +21,7 @@ List<Class> buildOperationDataClasses(
 ) {
   final fragmentMap = _fragmentMap(docSource);
   return _buildSelectionSetDataClasses(
-    name: "${op.name.value}_Data",
+    name: "${op.name.value}Data",
     selections: _mergeSelections(
       op.selectionSet.selections,
       fragmentMap,

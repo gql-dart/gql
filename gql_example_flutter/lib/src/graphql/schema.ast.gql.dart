@@ -195,6 +195,23 @@ const PokemonEvolutionRequirement = _i1.ObjectTypeDefinitionNode(
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'String'), isNonNull: false))
     ]);
+const pokemonInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'pokemonInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'name'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null)
+    ]);
 const Query = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'Query'),
     directives: [],
@@ -226,16 +243,11 @@ const Query = _i1.ObjectTypeDefinitionNode(
           directives: [],
           args: [
             _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'id'),
+                name: _i1.NameNode(value: 'input'),
                 directives: [],
                 type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: false),
-                defaultValue: null),
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'name'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                    name: _i1.NameNode(value: 'pokemonInput'),
+                    isNonNull: false),
                 defaultValue: null)
           ],
           type: _i1.NamedTypeNode(
@@ -247,5 +259,6 @@ const document = _i1.DocumentNode(definitions: [
   PokemonAttack,
   PokemonDimension,
   PokemonEvolutionRequirement,
+  pokemonInput,
   Query
 ]);

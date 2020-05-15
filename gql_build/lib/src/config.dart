@@ -6,9 +6,15 @@ const astExtension = ".ast.gql.dart";
 
 const opExtension = ".op.gql.dart";
 const dataExtension = ".data.gql.dart";
-const dataPartExtension = ".data.gql.g.dart";
 const reqExtension = ".req.gql.dart";
 const varExtension = ".var.gql.dart";
-const varPartExtension = ".var.gql.g.dart";
 
 const schemaExtension = ".schema.gql.dart";
+
+String generatedFileExtension(String sourceExtension) {
+  final parts = sourceExtension.split(".");
+  final dartExtension = parts.removeLast();
+  assert(dartExtension == "dart", "Unrecognized file type");
+  parts.add("g.dart");
+  return parts.join(".");
+}

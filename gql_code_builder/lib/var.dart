@@ -5,11 +5,11 @@ import "package:gql_code_builder/source.dart";
 Library buildVarLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
-  String generatedPartName,
+  String partUrl,
 ) =>
     Library(
       (b) => b
-        ..directives.add(Directive.part(generatedPartName))
+        ..directives.add(Directive.part(partUrl))
         ..body.addAll(
           buildOperationVarClasses(
             docSource,

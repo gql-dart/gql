@@ -2,6 +2,7 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:gql_example_flutter/src/graphql/schema.schema.gql.dart' as _i1;
 
 part 'pokemon_detail.var.gql.g.dart';
 
@@ -12,8 +13,8 @@ abstract class PokemonDetailVars
   factory PokemonDetailVars([Function(PokemonDetailVarsBuilder b) updates]) =
       _$PokemonDetailVars;
 
-  String get id;
-  String get name;
+  @nullable
+  _i1.pokemonInput get input;
   static Serializer<PokemonDetailVars> get serializer =>
       _$pokemonDetailVarsSerializer;
 }

@@ -8,28 +8,28 @@ import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragme
 
 part 'all_pokemon.data.gql.g.dart';
 
-abstract class AllPokemon_Data
-    implements Built<AllPokemon_Data, AllPokemon_DataBuilder> {
-  AllPokemon_Data._();
+abstract class AllPokemonData
+    implements Built<AllPokemonData, AllPokemonDataBuilder> {
+  AllPokemonData._();
 
-  factory AllPokemon_Data([Function(AllPokemon_DataBuilder b) updates]) =
-      _$AllPokemon_Data;
+  factory AllPokemonData([Function(AllPokemonDataBuilder b) updates]) =
+      _$AllPokemonData;
 
   @nullable
-  _i1.BuiltList<AllPokemon_Data_pokemons> get pokemons;
-  static Serializer<AllPokemon_Data> get serializer =>
+  _i1.BuiltList<AllPokemonData_pokemons> get pokemons;
+  static Serializer<AllPokemonData> get serializer =>
       _$allPokemonDataSerializer;
 }
 
-abstract class AllPokemon_Data_pokemons
+abstract class AllPokemonData_pokemons
     implements
-        Built<AllPokemon_Data_pokemons, AllPokemon_Data_pokemonsBuilder>,
+        Built<AllPokemonData_pokemons, AllPokemonData_pokemonsBuilder>,
         _i2.PokemonCard {
-  AllPokemon_Data_pokemons._();
+  AllPokemonData_pokemons._();
 
-  factory AllPokemon_Data_pokemons(
-          [Function(AllPokemon_Data_pokemonsBuilder b) updates]) =
-      _$AllPokemon_Data_pokemons;
+  factory AllPokemonData_pokemons(
+          [Function(AllPokemonData_pokemonsBuilder b) updates]) =
+      _$AllPokemonData_pokemons;
 
   String get id;
   @nullable
@@ -38,6 +38,6 @@ abstract class AllPokemon_Data_pokemons
   int get maxHP;
   @nullable
   String get image;
-  static Serializer<AllPokemon_Data_pokemons> get serializer =>
+  static Serializer<AllPokemonData_pokemons> get serializer =>
       _$allPokemonDataPokemonsSerializer;
 }
