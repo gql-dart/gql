@@ -116,6 +116,30 @@ TypeDefinitionNode getTypeDefinitionNode(
           orElse: () => null,
         );
 
+/*
+
+  static Serializer<AppInfo> get serializer => _$appInfoSerializer;
+  String toJson() {
+    return json.encode(serializers.serializeWith(AppInfo.serializer,this));
+  }
+
+  static AppInfo fromJson(String jsonString) {
+  return serializers.deserializeWith(
+      AppInfo.serializer, json.decode(jsonString));
+  }
+*/
+
+String serializerSymbol(String raw) {
+  if (raw.isEmpty) return raw;
+  final parts = raw.split("_");
+  final capitalized = parts
+      .map((part) => part.substring(0, 1).toUpperCase() + part.substring(1))
+      .join("");
+  final decapitalizedFirst =
+      capitalized.substring(0, 1).toLowerCase() + capitalized.substring(1);
+  return "_\$${decapitalizedFirst}Serializer";
+}
+
 Class builtClass({
   @required String name,
   Iterable<Method> getters,
@@ -154,7 +178,25 @@ Class builtClass({
             ),
           ],
         )
-        ..methods.addAll(getters),
+        ..methods = ListBuilder(<Method>[
+          ...getters,
+          Method(
+            (b) => b
+              ..static = true
+              ..returns = TypeReference(
+                (b) => b
+                  ..url = "package:built_value/serializer.dart"
+                  ..symbol = "Serializer"
+                  ..types.add(
+                    refer(identifier(name)),
+                  ),
+              )
+              ..type = MethodType.getter
+              ..name = "serializer"
+              ..lambda = true
+              ..body = Code(serializerSymbol(identifier(name))),
+          ),
+        ]),
     );
 
 Method buildGetter({

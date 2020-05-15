@@ -6,6 +6,270 @@ part of 'pokemon_detail.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<PokemonDetail> _$pokemonDetailSerializer =
+    new _$PokemonDetailSerializer();
+Serializer<PokemonDetail_pokemon> _$pokemonDetailPokemonSerializer =
+    new _$PokemonDetail_pokemonSerializer();
+Serializer<PokemonDetail_pokemon_weight>
+    _$pokemonDetailPokemonWeightSerializer =
+    new _$PokemonDetail_pokemon_weightSerializer();
+Serializer<PokemonDetail_pokemon_height>
+    _$pokemonDetailPokemonHeightSerializer =
+    new _$PokemonDetail_pokemon_heightSerializer();
+
+class _$PokemonDetailSerializer implements StructuredSerializer<PokemonDetail> {
+  @override
+  final Iterable<Type> types = const [PokemonDetail, _$PokemonDetail];
+  @override
+  final String wireName = 'PokemonDetail';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, PokemonDetail object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[];
+    if (object.pokemon != null) {
+      result
+        ..add('pokemon')
+        ..add(serializers.serialize(object.pokemon,
+            specifiedType: const FullType(PokemonDetail_pokemon)));
+    }
+    return result;
+  }
+
+  @override
+  PokemonDetail deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PokemonDetailBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'pokemon':
+          result.pokemon.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(PokemonDetail_pokemon))
+              as PokemonDetail_pokemon);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PokemonDetail_pokemonSerializer
+    implements StructuredSerializer<PokemonDetail_pokemon> {
+  @override
+  final Iterable<Type> types = const [
+    PokemonDetail_pokemon,
+    _$PokemonDetail_pokemon
+  ];
+  @override
+  final String wireName = 'PokemonDetail_pokemon';
+
+  @override
+  Iterable<Object> serialize(
+      Serializers serializers, PokemonDetail_pokemon object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+    if (object.name != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(object.name,
+            specifiedType: const FullType(String)));
+    }
+    if (object.maxHP != null) {
+      result
+        ..add('maxHP')
+        ..add(serializers.serialize(object.maxHP,
+            specifiedType: const FullType(int)));
+    }
+    if (object.image != null) {
+      result
+        ..add('image')
+        ..add(serializers.serialize(object.image,
+            specifiedType: const FullType(String)));
+    }
+    if (object.weight != null) {
+      result
+        ..add('weight')
+        ..add(serializers.serialize(object.weight,
+            specifiedType: const FullType(PokemonDetail_pokemon_weight)));
+    }
+    if (object.height != null) {
+      result
+        ..add('height')
+        ..add(serializers.serialize(object.height,
+            specifiedType: const FullType(PokemonDetail_pokemon_height)));
+    }
+    return result;
+  }
+
+  @override
+  PokemonDetail_pokemon deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PokemonDetail_pokemonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'maxHP':
+          result.maxHP = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'weight':
+          result.weight.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(PokemonDetail_pokemon_weight))
+              as PokemonDetail_pokemon_weight);
+          break;
+        case 'height':
+          result.height.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(PokemonDetail_pokemon_height))
+              as PokemonDetail_pokemon_height);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PokemonDetail_pokemon_weightSerializer
+    implements StructuredSerializer<PokemonDetail_pokemon_weight> {
+  @override
+  final Iterable<Type> types = const [
+    PokemonDetail_pokemon_weight,
+    _$PokemonDetail_pokemon_weight
+  ];
+  @override
+  final String wireName = 'PokemonDetail_pokemon_weight';
+
+  @override
+  Iterable<Object> serialize(
+      Serializers serializers, PokemonDetail_pokemon_weight object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[];
+    if (object.minimum != null) {
+      result
+        ..add('minimum')
+        ..add(serializers.serialize(object.minimum,
+            specifiedType: const FullType(String)));
+    }
+    if (object.maximum != null) {
+      result
+        ..add('maximum')
+        ..add(serializers.serialize(object.maximum,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  PokemonDetail_pokemon_weight deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PokemonDetail_pokemon_weightBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'minimum':
+          result.minimum = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'maximum':
+          result.maximum = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PokemonDetail_pokemon_heightSerializer
+    implements StructuredSerializer<PokemonDetail_pokemon_height> {
+  @override
+  final Iterable<Type> types = const [
+    PokemonDetail_pokemon_height,
+    _$PokemonDetail_pokemon_height
+  ];
+  @override
+  final String wireName = 'PokemonDetail_pokemon_height';
+
+  @override
+  Iterable<Object> serialize(
+      Serializers serializers, PokemonDetail_pokemon_height object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[];
+    if (object.minimum != null) {
+      result
+        ..add('minimum')
+        ..add(serializers.serialize(object.minimum,
+            specifiedType: const FullType(String)));
+    }
+    if (object.maximum != null) {
+      result
+        ..add('maximum')
+        ..add(serializers.serialize(object.maximum,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  PokemonDetail_pokemon_height deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PokemonDetail_pokemon_heightBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'minimum':
+          result.minimum = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'maximum':
+          result.maximum = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$PokemonDetail extends PokemonDetail {
   @override
   final PokemonDetail_pokemon pokemon;

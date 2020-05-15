@@ -2,6 +2,7 @@
 
 import 'package:built_collection/built_collection.dart' as _i1;
 import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.data.gql.dart'
     as _i2;
 
@@ -14,6 +15,7 @@ abstract class AllPokemon implements Built<AllPokemon, AllPokemonBuilder> {
 
   @nullable
   _i1.BuiltList<AllPokemon_pokemons> get pokemons;
+  static Serializer<AllPokemon> get serializer => _$allPokemonSerializer;
 }
 
 abstract class AllPokemon_pokemons
@@ -32,4 +34,6 @@ abstract class AllPokemon_pokemons
   int get maxHP;
   @nullable
   String get image;
+  static Serializer<AllPokemon_pokemons> get serializer =>
+      _$allPokemonPokemonsSerializer;
 }

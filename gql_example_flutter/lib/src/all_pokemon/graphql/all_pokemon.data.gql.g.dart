@@ -6,6 +6,128 @@ part of 'all_pokemon.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<AllPokemon> _$allPokemonSerializer = new _$AllPokemonSerializer();
+Serializer<AllPokemon_pokemons> _$allPokemonPokemonsSerializer =
+    new _$AllPokemon_pokemonsSerializer();
+
+class _$AllPokemonSerializer implements StructuredSerializer<AllPokemon> {
+  @override
+  final Iterable<Type> types = const [AllPokemon, _$AllPokemon];
+  @override
+  final String wireName = 'AllPokemon';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, AllPokemon object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[];
+    if (object.pokemons != null) {
+      result
+        ..add('pokemons')
+        ..add(serializers.serialize(object.pokemons,
+            specifiedType: const FullType(
+                _i1.BuiltList, const [const FullType(AllPokemon_pokemons)])));
+    }
+    return result;
+  }
+
+  @override
+  AllPokemon deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new AllPokemonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'pokemons':
+          result.pokemons.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i1.BuiltList, const [
+                const FullType(AllPokemon_pokemons)
+              ])) as _i1.BuiltList<AllPokemon_pokemons>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$AllPokemon_pokemonsSerializer
+    implements StructuredSerializer<AllPokemon_pokemons> {
+  @override
+  final Iterable<Type> types = const [
+    AllPokemon_pokemons,
+    _$AllPokemon_pokemons
+  ];
+  @override
+  final String wireName = 'AllPokemon_pokemons';
+
+  @override
+  Iterable<Object> serialize(
+      Serializers serializers, AllPokemon_pokemons object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+    if (object.name != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(object.name,
+            specifiedType: const FullType(String)));
+    }
+    if (object.maxHP != null) {
+      result
+        ..add('maxHP')
+        ..add(serializers.serialize(object.maxHP,
+            specifiedType: const FullType(int)));
+    }
+    if (object.image != null) {
+      result
+        ..add('image')
+        ..add(serializers.serialize(object.image,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  AllPokemon_pokemons deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new AllPokemon_pokemonsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'maxHP':
+          result.maxHP = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$AllPokemon extends AllPokemon {
   @override
   final _i1.BuiltList<AllPokemon_pokemons> pokemons;

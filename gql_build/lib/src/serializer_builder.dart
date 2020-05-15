@@ -9,7 +9,7 @@ import "package:source_gen/source_gen.dart";
 import "package:gql_code_builder/serializer.dart";
 import "package:analyzer/dart/element/element.dart";
 
-import "./allocators/prefixing_allocator.dart";
+import "./allocators/pick_allocator.dart";
 
 class SerializerBuilder implements Builder {
   final AssetId schemaId;
@@ -19,11 +19,12 @@ class SerializerBuilder implements Builder {
   );
 
   static final _emitter = DartEmitter(
-      PrefixingAllocator([
-        "package:built_value/built_value.dart",
-        "package:built_value/serializer.dart",
-      ]),
-      true);
+    PickAllocator(
+      doNotPick: ["package:built_value/serializer.dart"],
+      include: ["package:built_collection/built_collection.dart"],
+    ),
+    true,
+  );
   static final _formatter = DartFormatter();
   static final _generatedFiles = Glob("lib/**.gql.dart");
 

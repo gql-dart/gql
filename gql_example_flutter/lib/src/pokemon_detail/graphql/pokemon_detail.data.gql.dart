@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.data.gql.dart'
     as _i1;
 
@@ -15,6 +16,7 @@ abstract class PokemonDetail
 
   @nullable
   PokemonDetail_pokemon get pokemon;
+  static Serializer<PokemonDetail> get serializer => _$pokemonDetailSerializer;
 }
 
 abstract class PokemonDetail_pokemon
@@ -38,6 +40,8 @@ abstract class PokemonDetail_pokemon
   PokemonDetail_pokemon_weight get weight;
   @nullable
   PokemonDetail_pokemon_height get height;
+  static Serializer<PokemonDetail_pokemon> get serializer =>
+      _$pokemonDetailPokemonSerializer;
 }
 
 abstract class PokemonDetail_pokemon_weight
@@ -54,6 +58,8 @@ abstract class PokemonDetail_pokemon_weight
   String get minimum;
   @nullable
   String get maximum;
+  static Serializer<PokemonDetail_pokemon_weight> get serializer =>
+      _$pokemonDetailPokemonWeightSerializer;
 }
 
 abstract class PokemonDetail_pokemon_height
@@ -70,4 +76,6 @@ abstract class PokemonDetail_pokemon_height
   String get minimum;
   @nullable
   String get maximum;
+  static Serializer<PokemonDetail_pokemon_height> get serializer =>
+      _$pokemonDetailPokemonHeightSerializer;
 }
