@@ -40,20 +40,22 @@ class SerializerBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final List<ClassElement> classes = [];
+    final Set<ClassElement> classes = {};
     await for (final input in buildStep.findAssets(_generatedFiles)) {
-      final library = await buildStep.resolver.libraryFor(input);
-      LibraryReader(library)
-          .classes
-          .where(
-            (libClass) => libClass.interfaces.any(
-              (interface) =>
-                  // TODO: also ensure that the interface comes from the BuiltValue lib
-                  interface.element.name == "Built" ||
-                  interface.element.name == "EnumClass",
-            ),
-          )
-          .forEach(classes.add);
+      final Set<String> builtTypes = {"Built", "EnumClass"};
+      final builtClasses =
+          LibraryReader(await buildStep.resolver.libraryFor(input))
+              .classes
+              .where(
+                (libClass) => libClass.interfaces.any(
+                  (interface) =>
+                      interface.element.source.uri.toString() ==
+                          "package:built_value/built_value.dart" &&
+                      builtTypes.contains(interface.element.name),
+                ),
+              );
+
+      builtClasses.forEach(classes.add);
     }
 
     final output = AssetId(

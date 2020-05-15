@@ -2,7 +2,7 @@ import "package:code_builder/code_builder.dart";
 import "package:analyzer/dart/element/element.dart";
 
 Library buildSerializerLibrary(
-  List<ClassElement> classes,
+  Set<ClassElement> classes,
   String partDirectiveUrl,
 ) =>
     Library(
