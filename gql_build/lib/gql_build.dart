@@ -5,6 +5,7 @@ import "package:gql_build/src/op_builder.dart";
 import "package:gql_build/src/req_builder.dart";
 import "package:gql_build/src/schema_builder.dart";
 import "package:gql_build/src/var_builder.dart";
+import "package:gql_build/src/serializer_builder.dart";
 
 /// Builds AST of a GraphQL document
 Builder astBuilder(
@@ -49,3 +50,15 @@ Builder schemaBuilder(
   BuilderOptions options,
 ) =>
     SchemaBuilder();
+
+/// Builds an aggregate Serlializers object for [built_value]s
+///
+/// Builds to the same directory as the passed schema.
+Builder serializerBuilder(
+  BuilderOptions options,
+) =>
+    SerializerBuilder(
+      AssetId.parse(
+        options.config["schema"] as String,
+      ),
+    );
