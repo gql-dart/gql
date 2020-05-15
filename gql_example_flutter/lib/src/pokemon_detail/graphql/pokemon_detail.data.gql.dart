@@ -7,27 +7,28 @@ import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragme
 
 part 'pokemon_detail.data.gql.g.dart';
 
-abstract class PokemonDetail
-    implements Built<PokemonDetail, PokemonDetailBuilder> {
-  PokemonDetail._();
+abstract class PokemonDetail_Data
+    implements Built<PokemonDetail_Data, PokemonDetail_DataBuilder> {
+  PokemonDetail_Data._();
 
-  factory PokemonDetail([Function(PokemonDetailBuilder b) updates]) =
-      _$PokemonDetail;
+  factory PokemonDetail_Data([Function(PokemonDetail_DataBuilder b) updates]) =
+      _$PokemonDetail_Data;
 
   @nullable
-  PokemonDetail_pokemon get pokemon;
-  static Serializer<PokemonDetail> get serializer => _$pokemonDetailSerializer;
+  PokemonDetail_Data_pokemon get pokemon;
+  static Serializer<PokemonDetail_Data> get serializer =>
+      _$pokemonDetailDataSerializer;
 }
 
-abstract class PokemonDetail_pokemon
+abstract class PokemonDetail_Data_pokemon
     implements
-        Built<PokemonDetail_pokemon, PokemonDetail_pokemonBuilder>,
+        Built<PokemonDetail_Data_pokemon, PokemonDetail_Data_pokemonBuilder>,
         _i1.PokemonCard {
-  PokemonDetail_pokemon._();
+  PokemonDetail_Data_pokemon._();
 
-  factory PokemonDetail_pokemon(
-          [Function(PokemonDetail_pokemonBuilder b) updates]) =
-      _$PokemonDetail_pokemon;
+  factory PokemonDetail_Data_pokemon(
+          [Function(PokemonDetail_Data_pokemonBuilder b) updates]) =
+      _$PokemonDetail_Data_pokemon;
 
   String get id;
   @nullable
@@ -37,45 +38,45 @@ abstract class PokemonDetail_pokemon
   @nullable
   String get image;
   @nullable
-  PokemonDetail_pokemon_weight get weight;
+  PokemonDetail_Data_pokemon_weight get weight;
   @nullable
-  PokemonDetail_pokemon_height get height;
-  static Serializer<PokemonDetail_pokemon> get serializer =>
-      _$pokemonDetailPokemonSerializer;
+  PokemonDetail_Data_pokemon_height get height;
+  static Serializer<PokemonDetail_Data_pokemon> get serializer =>
+      _$pokemonDetailDataPokemonSerializer;
 }
 
-abstract class PokemonDetail_pokemon_weight
+abstract class PokemonDetail_Data_pokemon_weight
     implements
-        Built<PokemonDetail_pokemon_weight,
-            PokemonDetail_pokemon_weightBuilder> {
-  PokemonDetail_pokemon_weight._();
+        Built<PokemonDetail_Data_pokemon_weight,
+            PokemonDetail_Data_pokemon_weightBuilder> {
+  PokemonDetail_Data_pokemon_weight._();
 
-  factory PokemonDetail_pokemon_weight(
-          [Function(PokemonDetail_pokemon_weightBuilder b) updates]) =
-      _$PokemonDetail_pokemon_weight;
+  factory PokemonDetail_Data_pokemon_weight(
+          [Function(PokemonDetail_Data_pokemon_weightBuilder b) updates]) =
+      _$PokemonDetail_Data_pokemon_weight;
 
   @nullable
   String get minimum;
   @nullable
   String get maximum;
-  static Serializer<PokemonDetail_pokemon_weight> get serializer =>
-      _$pokemonDetailPokemonWeightSerializer;
+  static Serializer<PokemonDetail_Data_pokemon_weight> get serializer =>
+      _$pokemonDetailDataPokemonWeightSerializer;
 }
 
-abstract class PokemonDetail_pokemon_height
+abstract class PokemonDetail_Data_pokemon_height
     implements
-        Built<PokemonDetail_pokemon_height,
-            PokemonDetail_pokemon_heightBuilder> {
-  PokemonDetail_pokemon_height._();
+        Built<PokemonDetail_Data_pokemon_height,
+            PokemonDetail_Data_pokemon_heightBuilder> {
+  PokemonDetail_Data_pokemon_height._();
 
-  factory PokemonDetail_pokemon_height(
-          [Function(PokemonDetail_pokemon_heightBuilder b) updates]) =
-      _$PokemonDetail_pokemon_height;
+  factory PokemonDetail_Data_pokemon_height(
+          [Function(PokemonDetail_Data_pokemon_heightBuilder b) updates]) =
+      _$PokemonDetail_Data_pokemon_height;
 
   @nullable
   String get minimum;
   @nullable
   String get maximum;
-  static Serializer<PokemonDetail_pokemon_height> get serializer =>
-      _$pokemonDetailPokemonHeightSerializer;
+  static Serializer<PokemonDetail_Data_pokemon_height> get serializer =>
+      _$pokemonDetailDataPokemonHeightSerializer;
 }

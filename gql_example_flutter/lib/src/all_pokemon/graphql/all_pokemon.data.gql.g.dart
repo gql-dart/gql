@@ -6,34 +6,37 @@ part of 'all_pokemon.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<AllPokemon> _$allPokemonSerializer = new _$AllPokemonSerializer();
-Serializer<AllPokemon_pokemons> _$allPokemonPokemonsSerializer =
-    new _$AllPokemon_pokemonsSerializer();
+Serializer<AllPokemon_Data> _$allPokemonDataSerializer =
+    new _$AllPokemon_DataSerializer();
+Serializer<AllPokemon_Data_pokemons> _$allPokemonDataPokemonsSerializer =
+    new _$AllPokemon_Data_pokemonsSerializer();
 
-class _$AllPokemonSerializer implements StructuredSerializer<AllPokemon> {
+class _$AllPokemon_DataSerializer
+    implements StructuredSerializer<AllPokemon_Data> {
   @override
-  final Iterable<Type> types = const [AllPokemon, _$AllPokemon];
+  final Iterable<Type> types = const [AllPokemon_Data, _$AllPokemon_Data];
   @override
-  final String wireName = 'AllPokemon';
+  final String wireName = 'AllPokemon_Data';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AllPokemon object,
+  Iterable<Object> serialize(Serializers serializers, AllPokemon_Data object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.pokemons != null) {
       result
         ..add('pokemons')
         ..add(serializers.serialize(object.pokemons,
-            specifiedType: const FullType(
-                _i1.BuiltList, const [const FullType(AllPokemon_pokemons)])));
+            specifiedType: const FullType(_i1.BuiltList,
+                const [const FullType(AllPokemon_Data_pokemons)])));
     }
     return result;
   }
 
   @override
-  AllPokemon deserialize(Serializers serializers, Iterable<Object> serialized,
+  AllPokemon_Data deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AllPokemonBuilder();
+    final result = new AllPokemon_DataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -44,8 +47,8 @@ class _$AllPokemonSerializer implements StructuredSerializer<AllPokemon> {
         case 'pokemons':
           result.pokemons.replace(serializers.deserialize(value,
               specifiedType: const FullType(_i1.BuiltList, const [
-                const FullType(AllPokemon_pokemons)
-              ])) as _i1.BuiltList<AllPokemon_pokemons>);
+                const FullType(AllPokemon_Data_pokemons)
+              ])) as _i1.BuiltList<AllPokemon_Data_pokemons>);
           break;
       }
     }
@@ -54,19 +57,19 @@ class _$AllPokemonSerializer implements StructuredSerializer<AllPokemon> {
   }
 }
 
-class _$AllPokemon_pokemonsSerializer
-    implements StructuredSerializer<AllPokemon_pokemons> {
+class _$AllPokemon_Data_pokemonsSerializer
+    implements StructuredSerializer<AllPokemon_Data_pokemons> {
   @override
   final Iterable<Type> types = const [
-    AllPokemon_pokemons,
-    _$AllPokemon_pokemons
+    AllPokemon_Data_pokemons,
+    _$AllPokemon_Data_pokemons
   ];
   @override
-  final String wireName = 'AllPokemon_pokemons';
+  final String wireName = 'AllPokemon_Data_pokemons';
 
   @override
   Iterable<Object> serialize(
-      Serializers serializers, AllPokemon_pokemons object,
+      Serializers serializers, AllPokemon_Data_pokemons object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
@@ -94,10 +97,10 @@ class _$AllPokemon_pokemonsSerializer
   }
 
   @override
-  AllPokemon_pokemons deserialize(
+  AllPokemon_Data_pokemons deserialize(
       Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AllPokemon_pokemonsBuilder();
+    final result = new AllPokemon_Data_pokemonsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -128,26 +131,27 @@ class _$AllPokemon_pokemonsSerializer
   }
 }
 
-class _$AllPokemon extends AllPokemon {
+class _$AllPokemon_Data extends AllPokemon_Data {
   @override
-  final _i1.BuiltList<AllPokemon_pokemons> pokemons;
+  final _i1.BuiltList<AllPokemon_Data_pokemons> pokemons;
 
-  factory _$AllPokemon([void Function(AllPokemonBuilder) updates]) =>
-      (new AllPokemonBuilder()..update(updates)).build();
+  factory _$AllPokemon_Data([void Function(AllPokemon_DataBuilder) updates]) =>
+      (new AllPokemon_DataBuilder()..update(updates)).build();
 
-  _$AllPokemon._({this.pokemons}) : super._();
+  _$AllPokemon_Data._({this.pokemons}) : super._();
 
   @override
-  AllPokemon rebuild(void Function(AllPokemonBuilder) updates) =>
+  AllPokemon_Data rebuild(void Function(AllPokemon_DataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AllPokemonBuilder toBuilder() => new AllPokemonBuilder()..replace(this);
+  AllPokemon_DataBuilder toBuilder() =>
+      new AllPokemon_DataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AllPokemon && pokemons == other.pokemons;
+    return other is AllPokemon_Data && pokemons == other.pokemons;
   }
 
   @override
@@ -157,24 +161,25 @@ class _$AllPokemon extends AllPokemon {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AllPokemon')
+    return (newBuiltValueToStringHelper('AllPokemon_Data')
           ..add('pokemons', pokemons))
         .toString();
   }
 }
 
-class AllPokemonBuilder implements Builder<AllPokemon, AllPokemonBuilder> {
-  _$AllPokemon _$v;
+class AllPokemon_DataBuilder
+    implements Builder<AllPokemon_Data, AllPokemon_DataBuilder> {
+  _$AllPokemon_Data _$v;
 
-  _i1.ListBuilder<AllPokemon_pokemons> _pokemons;
-  _i1.ListBuilder<AllPokemon_pokemons> get pokemons =>
-      _$this._pokemons ??= new _i1.ListBuilder<AllPokemon_pokemons>();
-  set pokemons(_i1.ListBuilder<AllPokemon_pokemons> pokemons) =>
+  _i1.ListBuilder<AllPokemon_Data_pokemons> _pokemons;
+  _i1.ListBuilder<AllPokemon_Data_pokemons> get pokemons =>
+      _$this._pokemons ??= new _i1.ListBuilder<AllPokemon_Data_pokemons>();
+  set pokemons(_i1.ListBuilder<AllPokemon_Data_pokemons> pokemons) =>
       _$this._pokemons = pokemons;
 
-  AllPokemonBuilder();
+  AllPokemon_DataBuilder();
 
-  AllPokemonBuilder get _$this {
+  AllPokemon_DataBuilder get _$this {
     if (_$v != null) {
       _pokemons = _$v.pokemons?.toBuilder();
       _$v = null;
@@ -183,23 +188,23 @@ class AllPokemonBuilder implements Builder<AllPokemon, AllPokemonBuilder> {
   }
 
   @override
-  void replace(AllPokemon other) {
+  void replace(AllPokemon_Data other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$AllPokemon;
+    _$v = other as _$AllPokemon_Data;
   }
 
   @override
-  void update(void Function(AllPokemonBuilder) updates) {
+  void update(void Function(AllPokemon_DataBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$AllPokemon build() {
-    _$AllPokemon _$result;
+  _$AllPokemon_Data build() {
+    _$AllPokemon_Data _$result;
     try {
-      _$result = _$v ?? new _$AllPokemon._(pokemons: _pokemons?.build());
+      _$result = _$v ?? new _$AllPokemon_Data._(pokemons: _pokemons?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -207,7 +212,7 @@ class AllPokemonBuilder implements Builder<AllPokemon, AllPokemonBuilder> {
         _pokemons?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'AllPokemon', _$failedField, e.toString());
+            'AllPokemon_Data', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -216,7 +221,7 @@ class AllPokemonBuilder implements Builder<AllPokemon, AllPokemonBuilder> {
   }
 }
 
-class _$AllPokemon_pokemons extends AllPokemon_pokemons {
+class _$AllPokemon_Data_pokemons extends AllPokemon_Data_pokemons {
   @override
   final String id;
   @override
@@ -226,30 +231,30 @@ class _$AllPokemon_pokemons extends AllPokemon_pokemons {
   @override
   final String image;
 
-  factory _$AllPokemon_pokemons(
-          [void Function(AllPokemon_pokemonsBuilder) updates]) =>
-      (new AllPokemon_pokemonsBuilder()..update(updates)).build();
+  factory _$AllPokemon_Data_pokemons(
+          [void Function(AllPokemon_Data_pokemonsBuilder) updates]) =>
+      (new AllPokemon_Data_pokemonsBuilder()..update(updates)).build();
 
-  _$AllPokemon_pokemons._({this.id, this.name, this.maxHP, this.image})
+  _$AllPokemon_Data_pokemons._({this.id, this.name, this.maxHP, this.image})
       : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('AllPokemon_pokemons', 'id');
+      throw new BuiltValueNullFieldError('AllPokemon_Data_pokemons', 'id');
     }
   }
 
   @override
-  AllPokemon_pokemons rebuild(
-          void Function(AllPokemon_pokemonsBuilder) updates) =>
+  AllPokemon_Data_pokemons rebuild(
+          void Function(AllPokemon_Data_pokemonsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AllPokemon_pokemonsBuilder toBuilder() =>
-      new AllPokemon_pokemonsBuilder()..replace(this);
+  AllPokemon_Data_pokemonsBuilder toBuilder() =>
+      new AllPokemon_Data_pokemonsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AllPokemon_pokemons &&
+    return other is AllPokemon_Data_pokemons &&
         id == other.id &&
         name == other.name &&
         maxHP == other.maxHP &&
@@ -264,7 +269,7 @@ class _$AllPokemon_pokemons extends AllPokemon_pokemons {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AllPokemon_pokemons')
+    return (newBuiltValueToStringHelper('AllPokemon_Data_pokemons')
           ..add('id', id)
           ..add('name', name)
           ..add('maxHP', maxHP)
@@ -273,9 +278,10 @@ class _$AllPokemon_pokemons extends AllPokemon_pokemons {
   }
 }
 
-class AllPokemon_pokemonsBuilder
-    implements Builder<AllPokemon_pokemons, AllPokemon_pokemonsBuilder> {
-  _$AllPokemon_pokemons _$v;
+class AllPokemon_Data_pokemonsBuilder
+    implements
+        Builder<AllPokemon_Data_pokemons, AllPokemon_Data_pokemonsBuilder> {
+  _$AllPokemon_Data_pokemons _$v;
 
   String _id;
   String get id => _$this._id;
@@ -293,9 +299,9 @@ class AllPokemon_pokemonsBuilder
   String get image => _$this._image;
   set image(String image) => _$this._image = image;
 
-  AllPokemon_pokemonsBuilder();
+  AllPokemon_Data_pokemonsBuilder();
 
-  AllPokemon_pokemonsBuilder get _$this {
+  AllPokemon_Data_pokemonsBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _name = _$v.name;
@@ -307,22 +313,22 @@ class AllPokemon_pokemonsBuilder
   }
 
   @override
-  void replace(AllPokemon_pokemons other) {
+  void replace(AllPokemon_Data_pokemons other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$AllPokemon_pokemons;
+    _$v = other as _$AllPokemon_Data_pokemons;
   }
 
   @override
-  void update(void Function(AllPokemon_pokemonsBuilder) updates) {
+  void update(void Function(AllPokemon_Data_pokemonsBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$AllPokemon_pokemons build() {
+  _$AllPokemon_Data_pokemons build() {
     final _$result = _$v ??
-        new _$AllPokemon_pokemons._(
+        new _$AllPokemon_Data_pokemons._(
             id: id, name: name, maxHP: maxHP, image: image);
     replace(_$result);
     return _$result;
