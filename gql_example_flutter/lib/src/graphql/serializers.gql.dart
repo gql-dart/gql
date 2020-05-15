@@ -5,7 +5,7 @@ import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.data.gql
 import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.var.gql.dart'
     show AllPokemonVars;
 import 'package:gql_example_flutter/src/graphql/schema.schema.gql.dart'
-    show pokemonInput;
+    show PokemonInput;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.data.gql.dart'
     show
         PokemonDetailData,
@@ -24,7 +24,7 @@ part 'serializers.gql.g.dart';
   PokemonDetailData_pokemon_height,
   AllPokemonData,
   AllPokemonData_pokemons,
-  pokemonInput,
+  PokemonInput,
   PokemonDetailVars,
   AllPokemonVars
 ])

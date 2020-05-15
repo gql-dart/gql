@@ -1,9 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+import 'dart:convert' as _i1;
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:gql_example_flutter/src/graphql/serializers.gql.dart' as _i2;
 import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.data.gql.dart'
-    as _i1;
+    as _i3;
 
 part 'pokemon_detail.data.gql.g.dart';
 
@@ -18,12 +21,17 @@ abstract class PokemonDetailData
   PokemonDetailData_pokemon get pokemon;
   static Serializer<PokemonDetailData> get serializer =>
       _$pokemonDetailDataSerializer;
+  String toJson() => _i1.json.encode(
+      _i2.serializers.serializeWith(PokemonDetailData.serializer, this));
+  static PokemonDetailData fromJson(String jsonString) =>
+      _i2.serializers.deserializeWith(
+          PokemonDetailData.serializer, _i1.json.decode(jsonString));
 }
 
 abstract class PokemonDetailData_pokemon
     implements
         Built<PokemonDetailData_pokemon, PokemonDetailData_pokemonBuilder>,
-        _i1.PokemonCard {
+        _i3.PokemonCard {
   PokemonDetailData_pokemon._();
 
   factory PokemonDetailData_pokemon(
@@ -43,6 +51,11 @@ abstract class PokemonDetailData_pokemon
   PokemonDetailData_pokemon_height get height;
   static Serializer<PokemonDetailData_pokemon> get serializer =>
       _$pokemonDetailDataPokemonSerializer;
+  String toJson() => _i1.json.encode(_i2.serializers
+      .serializeWith(PokemonDetailData_pokemon.serializer, this));
+  static PokemonDetailData_pokemon fromJson(String jsonString) =>
+      _i2.serializers.deserializeWith(
+          PokemonDetailData_pokemon.serializer, _i1.json.decode(jsonString));
 }
 
 abstract class PokemonDetailData_pokemon_weight
@@ -61,6 +74,12 @@ abstract class PokemonDetailData_pokemon_weight
   String get maximum;
   static Serializer<PokemonDetailData_pokemon_weight> get serializer =>
       _$pokemonDetailDataPokemonWeightSerializer;
+  String toJson() => _i1.json.encode(_i2.serializers
+      .serializeWith(PokemonDetailData_pokemon_weight.serializer, this));
+  static PokemonDetailData_pokemon_weight fromJson(String jsonString) =>
+      _i2.serializers.deserializeWith(
+          PokemonDetailData_pokemon_weight.serializer,
+          _i1.json.decode(jsonString));
 }
 
 abstract class PokemonDetailData_pokemon_height
@@ -79,4 +98,10 @@ abstract class PokemonDetailData_pokemon_height
   String get maximum;
   static Serializer<PokemonDetailData_pokemon_height> get serializer =>
       _$pokemonDetailDataPokemonHeightSerializer;
+  String toJson() => _i1.json.encode(_i2.serializers
+      .serializeWith(PokemonDetailData_pokemon_height.serializer, this));
+  static PokemonDetailData_pokemon_height fromJson(String jsonString) =>
+      _i2.serializers.deserializeWith(
+          PokemonDetailData_pokemon_height.serializer,
+          _i1.json.decode(jsonString));
 }

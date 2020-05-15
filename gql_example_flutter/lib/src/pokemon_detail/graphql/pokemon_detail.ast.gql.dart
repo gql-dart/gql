@@ -13,7 +13,7 @@ const PokemonDetail = _i1.OperationDefinitionNode(
       _i1.VariableDefinitionNode(
           variable: _i1.VariableNode(name: _i1.NameNode(value: 'input')),
           type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'pokemonInput'), isNonNull: false),
+              name: _i1.NameNode(value: 'PokemonInput'), isNonNull: false),
           defaultValue: _i1.DefaultValueNode(value: null),
           directives: [])
     ],

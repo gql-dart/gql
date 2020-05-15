@@ -195,8 +195,8 @@ const PokemonEvolutionRequirement = _i1.ObjectTypeDefinitionNode(
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'String'), isNonNull: false))
     ]);
-const pokemonInput = _i1.InputObjectTypeDefinitionNode(
-    name: _i1.NameNode(value: 'pokemonInput'),
+const PokemonInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'PokemonInput'),
     directives: [],
     fields: [
       _i1.InputValueDefinitionNode(
@@ -259,6 +259,6 @@ const document = _i1.DocumentNode(definitions: [
   PokemonAttack,
   PokemonDimension,
   PokemonEvolutionRequirement,
-  pokemonInput,
+  PokemonInput,
   Query
 ]);

@@ -6,17 +6,17 @@ part of 'schema.schema.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<pokemonInput> _$pokemonInputSerializer =
-    new _$pokemonInputSerializer();
+Serializer<PokemonInput> _$pokemonInputSerializer =
+    new _$PokemonInputSerializer();
 
-class _$pokemonInputSerializer implements StructuredSerializer<pokemonInput> {
+class _$PokemonInputSerializer implements StructuredSerializer<PokemonInput> {
   @override
-  final Iterable<Type> types = const [pokemonInput, _$pokemonInput];
+  final Iterable<Type> types = const [PokemonInput, _$PokemonInput];
   @override
-  final String wireName = 'pokemonInput';
+  final String wireName = 'PokemonInput';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, pokemonInput object,
+  Iterable<Object> serialize(Serializers serializers, PokemonInput object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.id != null) {
@@ -35,9 +35,9 @@ class _$pokemonInputSerializer implements StructuredSerializer<pokemonInput> {
   }
 
   @override
-  pokemonInput deserialize(Serializers serializers, Iterable<Object> serialized,
+  PokemonInput deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new pokemonInputBuilder();
+    final result = new PokemonInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -60,28 +60,28 @@ class _$pokemonInputSerializer implements StructuredSerializer<pokemonInput> {
   }
 }
 
-class _$pokemonInput extends pokemonInput {
+class _$PokemonInput extends PokemonInput {
   @override
   final String id;
   @override
   final String name;
 
-  factory _$pokemonInput([void Function(pokemonInputBuilder) updates]) =>
-      (new pokemonInputBuilder()..update(updates)).build();
+  factory _$PokemonInput([void Function(PokemonInputBuilder) updates]) =>
+      (new PokemonInputBuilder()..update(updates)).build();
 
-  _$pokemonInput._({this.id, this.name}) : super._();
+  _$PokemonInput._({this.id, this.name}) : super._();
 
   @override
-  pokemonInput rebuild(void Function(pokemonInputBuilder) updates) =>
+  PokemonInput rebuild(void Function(PokemonInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  pokemonInputBuilder toBuilder() => new pokemonInputBuilder()..replace(this);
+  PokemonInputBuilder toBuilder() => new PokemonInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is pokemonInput && id == other.id && name == other.name;
+    return other is PokemonInput && id == other.id && name == other.name;
   }
 
   @override
@@ -91,16 +91,16 @@ class _$pokemonInput extends pokemonInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('pokemonInput')
+    return (newBuiltValueToStringHelper('PokemonInput')
           ..add('id', id)
           ..add('name', name))
         .toString();
   }
 }
 
-class pokemonInputBuilder
-    implements Builder<pokemonInput, pokemonInputBuilder> {
-  _$pokemonInput _$v;
+class PokemonInputBuilder
+    implements Builder<PokemonInput, PokemonInputBuilder> {
+  _$PokemonInput _$v;
 
   String _id;
   String get id => _$this._id;
@@ -110,9 +110,9 @@ class pokemonInputBuilder
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  pokemonInputBuilder();
+  PokemonInputBuilder();
 
-  pokemonInputBuilder get _$this {
+  PokemonInputBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _name = _$v.name;
@@ -122,21 +122,21 @@ class pokemonInputBuilder
   }
 
   @override
-  void replace(pokemonInput other) {
+  void replace(PokemonInput other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$pokemonInput;
+    _$v = other as _$PokemonInput;
   }
 
   @override
-  void update(void Function(pokemonInputBuilder) updates) {
+  void update(void Function(PokemonInputBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$pokemonInput build() {
-    final _$result = _$v ?? new _$pokemonInput._(id: id, name: name);
+  _$PokemonInput build() {
+    final _$result = _$v ?? new _$PokemonInput._(id: id, name: name);
     replace(_$result);
     return _$result;
   }

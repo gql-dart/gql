@@ -84,7 +84,7 @@ type PokemonEvolutionRequirement {
   name: String
 }
 
-input pokemonInput {
+input PokemonInput {
   id: String
   name: String
 }

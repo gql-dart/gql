@@ -15,7 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PokemonDetailData_pokemon_height.serializer)
       ..add(PokemonDetailData_pokemon_weight.serializer)
       ..add(PokemonDetailVars.serializer)
-      ..add(pokemonInput.serializer)
+      ..add(PokemonInput.serializer)
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(AllPokemonData_pokemons)]),

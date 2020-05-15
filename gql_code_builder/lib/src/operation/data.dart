@@ -3,6 +3,7 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/source.dart";
+import "package:path/path.dart" as p;
 
 class _SourceSelections {
   final String url;
@@ -131,6 +132,7 @@ List<Class> _buildSelectionSetDataClasses({
       ? builtClass(
           name: name,
           getters: fieldGetters,
+          serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
         )
       : Class(
           (b) => b

@@ -24,7 +24,7 @@ class _$PokemonDetailVarsSerializer
       result
         ..add('input')
         ..add(serializers.serialize(object.input,
-            specifiedType: const FullType(_i1.pokemonInput)));
+            specifiedType: const FullType(_i1.PokemonInput)));
     }
     return result;
   }
@@ -43,8 +43,8 @@ class _$PokemonDetailVarsSerializer
       switch (key) {
         case 'input':
           result.input.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.pokemonInput))
-              as _i1.pokemonInput);
+                  specifiedType: const FullType(_i1.PokemonInput))
+              as _i1.PokemonInput);
           break;
       }
     }
@@ -55,7 +55,7 @@ class _$PokemonDetailVarsSerializer
 
 class _$PokemonDetailVars extends PokemonDetailVars {
   @override
-  final _i1.pokemonInput input;
+  final _i1.PokemonInput input;
 
   factory _$PokemonDetailVars(
           [void Function(PokemonDetailVarsBuilder) updates]) =>
@@ -94,10 +94,10 @@ class PokemonDetailVarsBuilder
     implements Builder<PokemonDetailVars, PokemonDetailVarsBuilder> {
   _$PokemonDetailVars _$v;
 
-  _i1.pokemonInputBuilder _input;
-  _i1.pokemonInputBuilder get input =>
-      _$this._input ??= new _i1.pokemonInputBuilder();
-  set input(_i1.pokemonInputBuilder input) => _$this._input = input;
+  _i1.PokemonInputBuilder _input;
+  _i1.PokemonInputBuilder get input =>
+      _$this._input ??= new _i1.PokemonInputBuilder();
+  set input(_i1.PokemonInputBuilder input) => _$this._input = input;
 
   PokemonDetailVarsBuilder();
 

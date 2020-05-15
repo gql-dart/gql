@@ -1,6 +1,6 @@
 # import '../../pokemon_card/graphql/pokemon_card_fragment.graphql'
 
-query PokemonDetail($input: pokemonInput) {
+query PokemonDetail($input: PokemonInput) {
   pokemon(input: $input) {
     ...PokemonCard
     weight {
