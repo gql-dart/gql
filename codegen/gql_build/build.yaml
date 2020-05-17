@@ -17,6 +17,10 @@ builders:
     build_extensions: { ".graphql": [".data.gql.dart"] }
     auto_apply: none
     build_to: source
+    applies_builders:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
+    runs_before:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
   req_builder:
     import: "package:gql_build/gql_build.dart"
     builder_factories: ["reqBuilder"]
@@ -29,9 +33,25 @@ builders:
     build_extensions: { ".graphql": [".var.gql.dart"] }
     auto_apply: none
     build_to: source
+    applies_builders:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
+    runs_before:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
   schema_builder:
     import: "package:gql_build/gql_build.dart"
     builder_factories: ["schemaBuilder"]
     build_extensions: { ".graphql": [".schema.gql.dart"] }
     auto_apply: none
     build_to: source
+    applies_builders:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
+    runs_before:
+      ["gql_build|serializer_builder", "built_value_generator|built_value"]
+  serializer_builder:
+    import: "package:gql_build/gql_build.dart"
+    builder_factories: ["serializerBuilder"]
+    build_extensions: { ".gql.dart": [".serializer.gql.dart"] }
+    auto_apply: none
+    build_to: source
+    applies_builders: ["built_value_generator|built_value"]
+    runs_before: ["built_value_generator|built_value"]

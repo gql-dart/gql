@@ -1,172 +1,37 @@
-import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:path/path.dart" as p;
+
+import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/src/common.dart";
+import "package:gql_code_builder/source.dart";
 
 List<Class> buildOperationVarClasses(
-  DocumentNode doc,
-  DocumentNode schema,
+  SourceNode docSource,
+  SourceNode schemaSource,
 ) =>
-    doc.definitions
+    docSource.document.definitions
         .whereType<OperationDefinitionNode>()
         .map(
           (op) => _buildOperationVarClass(
             op,
-            schema,
+            schemaSource,
           ),
         )
         .toList();
 
 Class _buildOperationVarClass(
   OperationDefinitionNode node,
-  DocumentNode schema,
+  SourceNode schemaSource,
 ) =>
-    Class(
-      (b) => b
-        ..name = "${node.name.value}VarBuilder"
-        ..fields = ListBuilder<Field>(
-          <Field>[
-            Field(
-              (b) => b
-                ..modifier = FieldModifier.final$
-                ..type = refer(
-                  "Map<String, dynamic>",
-                )
-                ..name = "variables"
-                ..assignment = literalMap(
-                  {},
-                  refer("String"),
-                  refer("dynamic"),
-                ).code,
-            ),
-          ],
-        )
-        ..methods = _buildSetters(
-          node.variableDefinitions,
-          schema,
-        ),
-    );
-
-ListBuilder<Method> _buildSetters(
-  List<VariableDefinitionNode> nodes,
-  DocumentNode schema,
-) =>
-    ListBuilder<Method>(
-      nodes.map<Method>(
-        (VariableDefinitionNode node) => _buildSetter(
-          node,
-          schema,
+    builtClass(
+      name: "${node.name.value}Vars",
+      getters: node.variableDefinitions.map<Method>(
+        (node) => buildGetter(
+          nameNode: node.variable.name,
+          typeNode: node.type,
+          schemaSource: schemaSource,
         ),
       ),
+      serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
     );
-
-Method _buildSetter(
-  VariableDefinitionNode node,
-  DocumentNode schema,
-) {
-  final unwrappedTypeNode = _unwrapTypeNode(node.type);
-  final typeName = unwrappedTypeNode.name.value;
-  final argTypeDef = _getTypeDefinitionNode(
-    schema,
-    typeName,
-  );
-
-  final typeMap = {
-    ...defaultTypeMap,
-    if (argTypeDef != null) typeName: refer(identifier(typeName), "#schema"),
-  };
-
-  final argType = typeRef(
-    node.type,
-    typeMap,
-  );
-  final unwrappedArgType = typeRef(
-    unwrappedTypeNode,
-    typeMap,
-  );
-
-  return Method(
-    (b) => b
-      ..name = identifier(node.variable.name.value)
-      ..type = MethodType.setter
-      ..requiredParameters = ListBuilder<Parameter>(
-        <Parameter>[
-          Parameter(
-            (b) => b
-              ..type = argType
-              ..name = "value",
-          ),
-        ],
-      )
-      ..lambda = true
-      ..body = refer("variables")
-          .index(
-            literalString(node.variable.name.value),
-          )
-          .assign(
-            (node.type is ListTypeNode &&
-                    (argTypeDef is InputObjectTypeDefinitionNode ||
-                        argTypeDef is ScalarTypeDefinitionNode ||
-                        argTypeDef is EnumTypeDefinitionNode))
-                ? refer("value")
-                    .property("map")
-                    .call(
-                      [
-                        Method(
-                          (b) => b
-                            ..requiredParameters = ListBuilder<Parameter>(
-                              <Parameter>[
-                                Parameter(
-                                  (b) => b
-                                    ..type = unwrappedArgType
-                                    ..name = "e",
-                                ),
-                              ],
-                            )
-                            ..lambda = true
-                            ..body = (argTypeDef
-                                        is InputObjectTypeDefinitionNode
-                                    ? refer("e").property("input")
-                                    : argTypeDef is ScalarTypeDefinitionNode ||
-                                            argTypeDef is EnumTypeDefinitionNode
-                                        ? refer("e").property("value")
-                                        : refer("e"))
-                                .code,
-                        ).closure,
-                      ],
-                    )
-                    .property("toList")
-                    .call([])
-                : argTypeDef is InputObjectTypeDefinitionNode
-                    ? refer("value").property("input")
-                    : argTypeDef is ScalarTypeDefinitionNode ||
-                            argTypeDef is EnumTypeDefinitionNode
-                        ? refer("value").property("value")
-                        : refer("value"),
-          )
-          .code,
-  );
-}
-
-TypeDefinitionNode _getTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-          orElse: () => null,
-        );
-
-NamedTypeNode _unwrapTypeNode(
-  TypeNode node,
-) {
-  if (node is NamedTypeNode) {
-    return node;
-  }
-
-  if (node is ListTypeNode) {
-    return _unwrapTypeNode(node.type);
-  }
-
-  return null;
-}

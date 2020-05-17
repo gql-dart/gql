@@ -1,6 +1,8 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:recase/recase.dart";
+
 import "package:gql_code_builder/src/common.dart";
 
 List<Class> buildEnumClasses(
@@ -16,32 +18,30 @@ Class buildEnumClass(
 ) =>
     Class(
       (b) => b
-        ..name = identifier(node.name.value)
-        ..constructors = _buildConstructors(identifier(node.name.value))
+        ..name = builtClassName(node.name.value)
+        ..extend = refer("EnumClass", "package:built_value/built_value.dart")
+        ..constructors = _buildConstructors()
         ..fields = _buildFields(
           node.values,
-          identifier(node.name.value),
+          builtClassName(node.name.value),
         )
-        ..methods = _buildMethods(identifier(node.name.value)),
+        ..methods = _buildMethods(builtClassName(node.name.value)),
     );
 
-ListBuilder<Constructor> _buildConstructors(
-  String enumName,
-) =>
-    ListBuilder<Constructor>(
+ListBuilder<Constructor> _buildConstructors() => ListBuilder<Constructor>(
       <Constructor>[
         Constructor(
           (b) => b
             ..constant = true
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..name = "value"
-                    ..toThis = true,
-                ),
-              ],
-            ),
+            ..name = "_"
+            ..requiredParameters.add(
+              Parameter(
+                (b) => b
+                  ..name = "name"
+                  ..type = refer("String"),
+              ),
+            )
+            ..initializers.add(refer("super").call([refer("name")]).code),
         ),
       ],
     );
@@ -53,41 +53,52 @@ ListBuilder<Method> _buildMethods(
       <Method>[
         Method(
           (b) => b
-            ..annotations = ListBuilder<Expression>(
-              <Expression>[
-                refer("override"),
-              ],
+            ..static = true
+            ..returns = TypeReference(
+              (b) => b
+                ..url = "package:built_value/serializer.dart"
+                ..symbol = "Serializer"
+                ..types.add(
+                  refer(enumName),
+                ),
             )
-            ..returns = refer("int")
-            ..name = "hashCode"
-            ..lambda = true
             ..type = MethodType.getter
-            ..body = refer("value").property("hashCode").code,
+            ..name = "serializer"
+            ..lambda = true
+            ..body = Code("_\$${enumName.camelCase}Serializer"),
         ),
         Method(
           (b) => b
-            ..annotations = ListBuilder<Expression>(
-              <Expression>[
-                refer("override"),
-              ],
+            ..static = true
+            ..returns = TypeReference(
+              (b) => b
+                ..url = "package:built_collection/built_collection.dart"
+                ..symbol = "BuiltSet"
+                ..types.add(
+                  refer(enumName),
+                ),
             )
-            ..returns = refer("bool")
-            ..name = "operator =="
+            ..type = MethodType.getter
+            ..name = "values"
             ..lambda = true
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..type = refer("Object")
-                    ..name = "o",
-                )
-              ],
+            ..body = Code("_\$${enumName.camelCase}Values"),
+        ),
+        Method(
+          (b) => b
+            ..static = true
+            ..returns = refer(enumName)
+            ..name = "valueOf"
+            ..requiredParameters.add(
+              Parameter(
+                (b) => b
+                  ..name = "name"
+                  ..type = refer("String"),
+              ),
             )
-            ..body = refer("o")
-                .isA(refer(enumName))
-                .and(refer("o").property("value").equalTo(refer("value")))
-                .code,
-        )
+            ..lambda = true
+            ..body = refer("_\$${enumName.camelCase}ValueOf")
+                .call([refer("name")]).code,
+        ),
       ],
     );
 
@@ -96,22 +107,12 @@ ListBuilder<Field> _buildFields(
   String enumName,
 ) =>
     ListBuilder<Field>(
-      <Field>[
-        _buildValueField(),
-        ...nodes.map<Field>(
-          (node) => _buildConst(
-            node,
-            enumName,
-          ),
+      nodes.map<Field>(
+        (node) => _buildConst(
+          node,
+          enumName,
         ),
-      ],
-    );
-
-Field _buildValueField() => Field(
-      (b) => b
-        ..modifier = FieldModifier.final$
-        ..type = refer("String")
-        ..name = "value",
+      ),
     );
 
 Field _buildConst(
@@ -124,7 +125,6 @@ Field _buildConst(
         ..modifier = FieldModifier.constant
         ..type = refer(enumName)
         ..name = identifier(node.name.value)
-        ..assignment = refer(enumName).call([
-          literalString(node.name.value),
-        ]).code,
+        ..assignment =
+            Code("_\$${enumName.camelCase}${identifier(node.name.value)}"),
     );

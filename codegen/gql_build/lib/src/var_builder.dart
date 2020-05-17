@@ -1,6 +1,8 @@
 import "dart:async";
 
 import "package:build/build.dart";
+import "package:path/path.dart";
+
 import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/add_introspection.dart";
 import "package:gql_build/src/utils/reader.dart";
@@ -24,9 +26,15 @@ class VarBuilder implements Builder {
     final doc = await readDocument(buildStep);
     final schema = await readDocument(buildStep, schemaId);
 
+    final generatedPartUrl = buildStep.inputId
+        .changeExtension(generatedFileExtension(varExtension))
+        .uri
+        .path;
+
     final library = buildVarLibrary(
       doc,
       addTypenames(schema),
+      basename(generatedPartUrl),
     );
 
     return writeDocument(
