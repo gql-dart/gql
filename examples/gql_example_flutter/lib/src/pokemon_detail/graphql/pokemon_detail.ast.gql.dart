@@ -1,8 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:gql/ast.dart' as _i1;
-import 'package:gql_example_flutter/src/pokemon_card/pokemon_card_fragment.ast.gql.dart'
-    as _i2;
-import 'package:gql_example_flutter/src/pokemon_card/nested_fragment.ast.gql.dart'
+import 'package:gql_example_flutter/src/pokemon_card/graphql/nested_fragment.ast.gql.dart'
     as _i3;
+import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.ast.gql.dart'
+    as _i2;
 
 const PokemonDetail = _i1.OperationDefinitionNode(
     type: _i1.OperationType.query,
