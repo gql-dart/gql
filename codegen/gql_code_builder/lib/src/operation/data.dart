@@ -6,6 +6,7 @@ import "package:path/path.dart" as p;
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/source.dart";
+import "package:recase/recase.dart";
 
 class _SourceSelections {
   final String url;
@@ -55,7 +56,7 @@ List<Class> buildFragmentDataClasses(
     type: frag.typeCondition.on.name.value,
     fragmentMap: fragmentMap,
     superclassSelections: {},
-    built: false,
+    onFragment: true,
   );
 }
 
@@ -93,7 +94,7 @@ List<Class> _buildSelectionSetDataClasses({
   @required String type,
   @required Map<String, _SourceSelections> fragmentMap,
   @required Map<String, _SourceSelections> superclassSelections,
-  bool built = true,
+  bool onFragment = false,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -125,23 +126,49 @@ List<Class> _buildSelectionSetDataClasses({
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
-        built: built,
+        built: !onFragment,
       );
     },
   );
 
-  final baseClass = built
-      ? builtClass(
-          name: name,
-          getters: fieldGetters,
-          serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
-        )
-      : Class(
-          (b) => b
-            ..abstract = true
-            ..name = builtClassName(name)
-            ..methods.addAll(fieldGetters),
-        );
+  final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
+  final serializersUrl = "${p.dirname(schemaSource.url)}/serializers.gql.dart";
+
+  Class baseClass;
+
+  if (inlineFragments.isNotEmpty) {
+    // If selections include inline fragments, build an abstract root class
+    // which includes serialization methods to properly map data to the
+    // correct concrete type based on the `__typename` field.
+    baseClass = Class(
+      (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..methods.addAll(fieldGetters)
+        ..methods.addAll(_inlineFragmentRootSerializationMethods(
+          name: builtClassName(name),
+          inlineFragments: inlineFragments,
+          serializersUrl: serializersUrl,
+        )),
+    );
+  } else if (onFragment) {
+    // For selections on fragments or their descendants, generate an abstract
+    // class that will be implemented by operations that use the fragment.
+    baseClass = Class(
+      (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..methods.addAll(fieldGetters),
+    );
+  } else {
+    // Otherwise, the class should be instantiable and built as a `built_value`
+    // type.
+    baseClass = builtClass(
+      name: name,
+      getters: fieldGetters,
+      serializersUrl: serializersUrl,
+    );
+  }
 
   return [
     baseClass.rebuild(
@@ -179,31 +206,107 @@ List<Class> _buildSelectionSetDataClasses({
               superclassSelections,
               field,
             ),
-            built: built,
+            onFragment: onFragment,
           ),
         ),
-    ...selections.whereType<InlineFragmentNode>().expand(
-          (inlineFragment) => _buildSelectionSetDataClasses(
-            name: "${name}_as${inlineFragment.typeCondition.on.name.value}",
-            selections: _mergeSelections(
-              [
-                ...selections.whereType<FieldNode>(),
-                ...selections.whereType<FragmentSpreadNode>(),
-                ...inlineFragment.selectionSet.selections,
-              ],
-              fragmentMap,
+    if (inlineFragments.isNotEmpty) ...[
+      ..._buildSelectionSetDataClasses(
+        name: "${name}__base",
+        selections: _mergeSelections(
+          [
+            ...selections.whereType<FieldNode>(),
+            ...selections.whereType<FragmentSpreadNode>(),
+          ],
+          fragmentMap,
+        ),
+        fragmentMap: fragmentMap,
+        schemaSource: schemaSource,
+        type: type,
+        superclassSelections: {
+          name: _SourceSelections(url: null, selections: selections)
+        },
+        onFragment: onFragment,
+      ),
+      ...selections.whereType<InlineFragmentNode>().expand(
+            (inlineFragment) => _buildSelectionSetDataClasses(
+              name: "${name}__as${inlineFragment.typeCondition.on.name.value}",
+              selections: _mergeSelections(
+                [
+                  ...selections.whereType<FieldNode>(),
+                  ...selections.whereType<FragmentSpreadNode>(),
+                  ...inlineFragment.selectionSet.selections,
+                ],
+                fragmentMap,
+              ),
+              fragmentMap: fragmentMap,
+              schemaSource: schemaSource,
+              type: inlineFragment.typeCondition.on.name.value,
+              superclassSelections: {
+                name: _SourceSelections(url: null, selections: selections)
+              },
+              onFragment: onFragment,
             ),
-            fragmentMap: fragmentMap,
-            schemaSource: schemaSource,
-            type: inlineFragment.typeCondition.on.name.value,
-            superclassSelections: {
-              name: _SourceSelections(url: null, selections: selections)
-            },
-            built: built,
           ),
-        ),
+    ]
   ];
 }
+
+List<Method> _inlineFragmentRootSerializationMethods({
+  String name,
+  List<InlineFragmentNode> inlineFragments,
+  String serializersUrl,
+}) =>
+    [
+      Method(
+        (b) => b
+          ..static = true
+          ..returns = TypeReference(
+            (b) => b
+              ..url = "package:built_value/serializer.dart"
+              ..symbol = "Serializer"
+              ..types.add(
+                refer(name),
+              ),
+          )
+          ..type = MethodType.getter
+          ..name = "serializer"
+          ..lambda = true
+          // todo: implement serializer
+          ..body = Code("_\$${name.camelCase}Serializer"),
+      ),
+      Method(
+        (b) => b
+          ..returns = refer("String")
+          ..name = "toJson"
+          ..lambda = true
+          ..body = refer("json", "dart:convert").property("encode").call([
+            refer("serializers", serializersUrl)
+                .property("serializeWith")
+                .call([
+              refer(name).property("serializer"),
+              refer("this"),
+            ])
+          ]).code,
+      ),
+      Method(
+        (b) => b
+          ..static = true
+          ..returns = refer(name)
+          ..name = "fromJson"
+          ..requiredParameters.add(Parameter((b) => b
+            ..type = refer("String")
+            ..name = "jsonString"))
+          ..lambda = true
+          ..body = refer("serializers", serializersUrl)
+              .property("deserializeWith")
+              .call([
+            refer(name).property("serializer"),
+            refer("json", "dart:convert")
+                .property("decode")
+                .call([refer("jsonString")])
+          ]).code,
+      ),
+    ];
 
 /// Deeply merges field nodes
 List<SelectionNode> _mergeSelections(
