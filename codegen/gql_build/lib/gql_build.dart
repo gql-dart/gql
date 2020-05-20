@@ -21,6 +21,7 @@ Builder dataBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
+      (options.config["addTypenames"] ?? true) as bool,
     );
 
 /// Builds operation containing AST and operation name
