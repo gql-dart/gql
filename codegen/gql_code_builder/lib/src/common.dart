@@ -157,7 +157,11 @@ Method buildGetter({
   return Method(
     (b) => b
       ..annotations = ListBuilder(<Expression>[
-        if (nullable && built) CodeExpression(Code("nullable")),
+        if (built && nullable)
+          refer("nullable", "package:built_value/built_value.dart"),
+        if (built && identifier(nameNode.value) != nameNode.value)
+          refer("BuiltValueField", "package:built_value/built_value.dart")
+              .call([], {"wireName": literalString(nameNode.value)}),
       ])
       ..returns = returnType
       ..type = MethodType.getter

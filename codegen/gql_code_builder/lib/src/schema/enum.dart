@@ -121,6 +121,11 @@ Field _buildConst(
 ) =>
     Field(
       (b) => b
+        ..annotations = ListBuilder(<Expression>[
+          if (identifier(node.name.value) != node.name.value)
+            refer("BuiltValueEnumConst", "package:built_value/built_value.dart")
+                .call([], {"wireName": literalString(node.name.value)}),
+        ])
         ..static = true
         ..modifier = FieldModifier.constant
         ..type = refer(enumName)
