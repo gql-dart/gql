@@ -53,7 +53,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
     try {
       String typeName;
       try {
-        typeName = (object as dynamic).$__typename as String;
+        typeName = (object as dynamic).G__typename as String;
       } catch (e) {
         // TODO throw exception for missing typename
         typeName = "";

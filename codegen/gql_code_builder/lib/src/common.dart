@@ -52,7 +52,7 @@ String identifier(String raw) => _escapePrivate(_escapeReserved(raw));
 
 String _escapeReserved(String raw) => reserved.contains(raw) ? "$raw\$" : raw;
 
-String _escapePrivate(String raw) => raw.startsWith("_") ? "\$$raw" : raw;
+String _escapePrivate(String raw) => raw.startsWith("_") ? "G$raw" : raw;
 
 const defaultTypeMap = <String, Reference>{
   "Int": Reference("int"),
