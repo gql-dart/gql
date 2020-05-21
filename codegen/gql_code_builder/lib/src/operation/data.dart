@@ -86,6 +86,15 @@ Map<String, _SourceSelections> _fragmentMap(SourceNode source) => {
       for (var import in source.imports) ..._fragmentMap(import)
     };
 
+/// Builds one or more data classes, with properties based on [selections].
+///
+/// For each selection that is a field with nested selections, a descendent
+/// data class will also be created.
+///
+/// If this class is for a fragment definition or descendent (i.e [onFragment] == `true`),
+/// it will be built as an abstract class which will be implemented by any
+/// class that includes the fragment (or descendent) as a spread in its
+/// [selections].
 List<Class> _buildSelectionSetDataClasses({
   @required String name,
   @required List<SelectionNode> selections,
@@ -325,7 +334,6 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..type = MethodType.getter
           ..name = "serializer"
           ..lambda = true
-          // todo: implement serializer
           ..body = TypeReference((b) => b
             ..symbol = "InlineFragmentSerializer"
             ..url =
