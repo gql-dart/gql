@@ -6,7 +6,6 @@ import "package:path/path.dart" as p;
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/source.dart";
-import "package:recase/recase.dart";
 
 class _SourceSelections {
   final String url;
@@ -97,10 +96,10 @@ List<Class> _buildSelectionSetDataClasses({
   bool onFragment = false,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
-    if (!fragmentMap.containsKey(selection.name.value)) {
-      throw Exception(
-          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
-    }
+    assert(
+      fragmentMap.containsKey(selection.name.value),
+      "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
+    );
     superclassSelections["${selection.name.value}"] = _SourceSelections(
       url: fragmentMap[selection.name.value].url,
       selections: _mergeSelections(
@@ -129,59 +128,55 @@ List<Class> _buildSelectionSetDataClasses({
         built: !onFragment,
       );
     },
-  );
+  ).toList();
 
   final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
-  final serializersUrl = "${p.dirname(schemaSource.url)}/serializers.gql.dart";
-
-  Class baseClass;
-
-  if (inlineFragments.isNotEmpty) {
-    // If selections include inline fragments, build an abstract root class
-    // which includes serialization methods to properly map data to the
-    // correct concrete type based on the `__typename` field.
-    baseClass = Class(
-      (b) => b
-        ..abstract = true
-        ..name = builtClassName(name)
-        ..methods.addAll(fieldGetters)
-        ..methods.addAll(_inlineFragmentRootSerializationMethods(
-          name: builtClassName(name),
-          inlineFragments: inlineFragments,
-          serializersUrl: serializersUrl,
-        )),
-    );
-  } else if (onFragment) {
-    // For selections on fragments or their descendants, generate an abstract
-    // class that will be implemented by operations that use the fragment.
-    baseClass = Class(
-      (b) => b
-        ..abstract = true
-        ..name = builtClassName(name)
-        ..methods.addAll(fieldGetters),
-    );
-  } else {
-    // Otherwise, the class should be instantiable and built as a `built_value`
-    // type.
-    baseClass = builtClass(
-      name: name,
-      getters: fieldGetters,
-      serializersUrl: serializersUrl,
-    );
-  }
 
   return [
-    baseClass.rebuild(
-      (b) => b
-        ..implements.addAll(
-          superclassSelections.keys.map<Reference>(
-            (superName) => refer(
-              builtClassName(superName),
-              (superclassSelections[superName].url ?? "") + "#data",
+    if (inlineFragments.isNotEmpty)
+      ..._buildInlineFragmentClasses(
+        name: name,
+        fieldGetters: fieldGetters,
+        selections: selections,
+        schemaSource: schemaSource,
+        type: type,
+        fragmentMap: fragmentMap,
+        superclassSelections: superclassSelections,
+        inlineFragments: inlineFragments,
+        onFragment: onFragment,
+      )
+    else if (onFragment)
+      Class(
+        (b) => b
+          ..abstract = true
+          ..name = builtClassName(name)
+          ..implements.addAll(
+            superclassSelections.keys.map<Reference>(
+              (superName) => refer(
+                builtClassName(superName),
+                (superclassSelections[superName].url ?? "") + "#data",
+              ),
+            ),
+          )
+          ..methods.addAll(fieldGetters),
+      )
+    else
+      builtClass(
+        name: name,
+        getters: fieldGetters,
+        serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
+      ).rebuild(
+        (b) => b
+          ..implements.addAll(
+            superclassSelections.keys.map<Reference>(
+              (superName) => refer(
+                builtClassName(superName),
+                (superclassSelections[superName].url ?? "") + "#data",
+              ),
             ),
           ),
-        ),
-    ),
+      ),
+    // Build classes for each field that includes selections
     ...selections
         .whereType<FieldNode>()
         .where(
@@ -209,7 +204,58 @@ List<Class> _buildSelectionSetDataClasses({
             onFragment: onFragment,
           ),
         ),
-    if (inlineFragments.isNotEmpty) ...[
+  ];
+}
+
+/// Builds the following classes for inline fragments:
+///   1. An abstract root class that will be implemented by each instantiable
+///      class. This includes a `built_value` serializer that instantiates
+///      the appropriate concrete class based on the `__typename` field.
+///   2. A "base" instantiable class that includes the common fields.
+///   3. An instantiable class for each inline fragment that includes the
+///      common fields and the fragment fields.
+List<Class> _buildInlineFragmentClasses({
+  @required String name,
+  @required List<Method> fieldGetters,
+  @required List<SelectionNode> selections,
+  @required SourceNode schemaSource,
+  @required String type,
+  @required Map<String, _SourceSelections> fragmentMap,
+  @required Map<String, _SourceSelections> superclassSelections,
+  @required List<InlineFragmentNode> inlineFragments,
+  @required bool onFragment,
+}) =>
+    [
+      Class(
+        (b) => b
+          ..abstract = true
+          ..annotations.add(refer(
+            "BuiltValue",
+            "package:built_value/built_value.dart",
+          ).call([], {"instantiable": literalBool(false)}))
+          ..name = builtClassName(name)
+          // TODO: remove once this issue is resolved
+          // https://github.com/google/built_value.dart/issues/838
+          ..implements.add(refer("BuiltFaker",
+              "package:gql_code_builder/src/utils/built_faker.dart"))
+          ..implements.addAll(
+            superclassSelections.keys.map<Reference>(
+              (superName) => refer(
+                builtClassName(superName),
+                (superclassSelections[superName].url ?? "") + "#data",
+              ),
+            ),
+          )
+          ..methods.addAll(fieldGetters)
+          ..methods.addAll(
+            _inlineFragmentRootSerializationMethods(
+              name: builtClassName(name),
+              inlineFragments: inlineFragments,
+              serializersUrl:
+                  "${p.dirname(schemaSource.url)}/serializers.gql.dart",
+            ),
+          ),
+      ),
       ..._buildSelectionSetDataClasses(
         name: "${name}__base",
         selections: _mergeSelections(
@@ -227,29 +273,27 @@ List<Class> _buildSelectionSetDataClasses({
         },
         onFragment: onFragment,
       ),
-      ...selections.whereType<InlineFragmentNode>().expand(
-            (inlineFragment) => _buildSelectionSetDataClasses(
-              name: "${name}__as${inlineFragment.typeCondition.on.name.value}",
-              selections: _mergeSelections(
-                [
-                  ...selections.whereType<FieldNode>(),
-                  ...selections.whereType<FragmentSpreadNode>(),
-                  ...inlineFragment.selectionSet.selections,
-                ],
-                fragmentMap,
-              ),
-              fragmentMap: fragmentMap,
-              schemaSource: schemaSource,
-              type: inlineFragment.typeCondition.on.name.value,
-              superclassSelections: {
-                name: _SourceSelections(url: null, selections: selections)
-              },
-              onFragment: onFragment,
-            ),
+      ...inlineFragments.expand(
+        (inlineFragment) => _buildSelectionSetDataClasses(
+          name: "${name}__as${inlineFragment.typeCondition.on.name.value}",
+          selections: _mergeSelections(
+            [
+              ...selections.whereType<FieldNode>(),
+              ...selections.whereType<FragmentSpreadNode>(),
+              ...inlineFragment.selectionSet.selections,
+            ],
+            fragmentMap,
           ),
-    ]
-  ];
-}
+          fragmentMap: fragmentMap,
+          schemaSource: schemaSource,
+          type: inlineFragment.typeCondition.on.name.value,
+          superclassSelections: {
+            name: _SourceSelections(url: null, selections: selections)
+          },
+          onFragment: onFragment,
+        ),
+      ),
+    ];
 
 List<Method> _inlineFragmentRootSerializationMethods({
   String name,
@@ -259,6 +303,10 @@ List<Method> _inlineFragmentRootSerializationMethods({
     [
       Method(
         (b) => b
+          ..annotations.add(refer(
+            "BuiltValueSerializer",
+            "package:built_value/built_value.dart",
+          ).call([], {"custom": literalBool(true)}))
           ..static = true
           ..returns = TypeReference(
             (b) => b
@@ -272,7 +320,21 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..name = "serializer"
           ..lambda = true
           // todo: implement serializer
-          ..body = Code("_\$${name.camelCase}Serializer"),
+          ..body = TypeReference((b) => b
+            ..symbol = "InlineFragmentSerializer"
+            ..url =
+                "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
+            ..types.add(refer(name))).call([
+            literalString(name),
+            refer("${name}__base").call([]).property("runtimeType"),
+            literalList(
+              inlineFragments.map(
+                (inlineFragment) => refer(
+                  "${name}__as${inlineFragment.typeCondition.on.name.value}",
+                ).call([]).property("runtimeType"),
+              ),
+            ),
+          ]).code,
       ),
       Method(
         (b) => b
