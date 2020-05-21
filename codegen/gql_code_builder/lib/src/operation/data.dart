@@ -227,34 +227,40 @@ List<Class> _buildInlineFragmentClasses({
 }) =>
     [
       Class(
-        (b) => b
-          ..abstract = true
-          ..annotations.add(refer(
-            "BuiltValue",
-            "package:built_value/built_value.dart",
-          ).call([], {"instantiable": literalBool(false)}))
-          ..name = builtClassName(name)
-          // TODO: remove once this issue is resolved
-          // https://github.com/google/built_value.dart/issues/838
-          ..implements.add(refer("BuiltFaker",
-              "package:gql_code_builder/src/utils/built_faker.dart"))
-          ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName].url ?? "") + "#data",
+        (b) {
+          b = b
+            ..abstract = true
+            ..name = builtClassName(name)
+            ..implements.addAll(
+              superclassSelections.keys.map<Reference>(
+                (superName) => refer(
+                  builtClassName(superName),
+                  (superclassSelections[superName].url ?? "") + "#data",
+                ),
               ),
-            ),
-          )
-          ..methods.addAll(fieldGetters)
-          ..methods.addAll(
-            _inlineFragmentRootSerializationMethods(
-              name: builtClassName(name),
-              inlineFragments: inlineFragments,
-              serializersUrl:
-                  "${p.dirname(schemaSource.url)}/serializers.gql.dart",
-            ),
-          ),
+            )
+            ..methods.addAll(fieldGetters);
+          if (!onFragment) {
+            b = b
+              ..annotations.add(refer(
+                "BuiltValue",
+                "package:built_value/built_value.dart",
+              ).call([], {"instantiable": literalBool(false)}))
+              // TODO: remove once this issue is resolved
+              // https://github.com/google/built_value.dart/issues/838
+              ..implements.add(refer("BuiltFaker",
+                  "package:gql_code_builder/src/utils/built_faker.dart"))
+              ..methods.addAll(
+                _inlineFragmentRootSerializationMethods(
+                  name: builtClassName(name),
+                  inlineFragments: inlineFragments,
+                  serializersUrl:
+                      "${p.dirname(schemaSource.url)}/serializers.gql.dart",
+                ),
+              );
+          }
+          return b;
+        },
       ),
       ..._buildSelectionSetDataClasses(
         name: "${name}__base",
@@ -468,6 +474,13 @@ TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
   String field,
 ) {
+  if (node is UnionTypeDefinitionNode && field == "__typename") {
+    return NamedTypeNode(
+      isNonNull: true,
+      name: NameNode(value: "String"),
+    );
+  }
+
   List<FieldDefinitionNode> fields;
   if (node is ObjectTypeDefinitionNode) {
     fields = node.fields;
