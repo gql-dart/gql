@@ -10,7 +10,7 @@ dependencies:
   glob: ^1.2.0
   build: ^1.0.0
   gql_code_builder: ^0.0.9
-  code_builder: ^3.2.0
+  code_builder: ^3.3.0
   dart_style: ^1.2.9
   built_value: ^7.1.0
   built_value_generator: ^7.1.0
@@ -20,8 +20,3 @@ dev_dependencies:
   test: ^1.0.0
   build_test: ^0.10.7
   gql_pedantic: ^1.0.1
-dependency_overrides:
-  code_builder:
-    git:
-      url: https://github.com/dart-lang/code_builder.git
-      ref: a86c05e960f1e003e2158989c03117e1dd22858e
