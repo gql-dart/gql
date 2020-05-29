@@ -1,10 +1,10 @@
 name: gql_websocket_link
 version: 0.1.0
-repository: https://github.com/gql-dart/gql
 description: GQL Websocket Link
-environment:
+repository: https://github.com/gql-dart/gql
+environment: 
   sdk: '>=2.7.2 <3.0.0'
-dependencies:
+dependencies: 
   meta: ^1.1.8
   gql_exec: ^0.2.4
   gql_link: ^0.3.0
@@ -12,7 +12,7 @@ dependencies:
   rxdart: ^0.24.0
   gql: ^0.12.3
   web_socket_channel: ^1.1.0
-dev_dependencies:
+dev_dependencies: 
   test: ^1.14.3
   mockito: ^4.1.1
   gql_pedantic: ^1.0.2
