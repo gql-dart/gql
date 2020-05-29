@@ -45,6 +45,10 @@ jobs:
           echo ""
           multipack --only $PACKAGE fmt -n . --set-exit-if-changed
           echo ""
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.dart
       - name: Analyze package
         run: |
           multipack --only $PACKAGE analyze --version
@@ -92,6 +96,10 @@ jobs:
           echo ""
           multipack --only $PACKAGE fmt -n . --set-exit-if-changed
           echo ""
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.dart
       - name: Analyze package
         run: |
           multipack --only $PACKAGE analyze --version
