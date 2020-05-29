@@ -19,6 +19,6 @@ abstract class GHeroForEpisodeVars
       _$gHeroForEpisodeVarsSerializer;
   Map<String, dynamic> toJson() =>
       _i2.serializers.serializeWith(GHeroForEpisodeVars.serializer, this);
-  static GHeroForEpisodeVars fromJson(String json) =>
+  static GHeroForEpisodeVars fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GHeroForEpisodeVars.serializer, json);
 }

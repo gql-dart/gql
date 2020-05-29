@@ -48,7 +48,7 @@ abstract class GReviewInput
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
   Map<String, dynamic> toJson() =>
       _i1.serializers.serializeWith(GReviewInput.serializer, this);
-  static GReviewInput fromJson(String json) =>
+  static GReviewInput fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GReviewInput.serializer, json);
 }
 
@@ -63,6 +63,6 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   static Serializer<GColorInput> get serializer => _$gColorInputSerializer;
   Map<String, dynamic> toJson() =>
       _i1.serializers.serializeWith(GColorInput.serializer, this);
-  static GColorInput fromJson(String json) =>
+  static GColorInput fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GColorInput.serializer, json);
 }

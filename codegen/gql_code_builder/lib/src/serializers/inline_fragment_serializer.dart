@@ -51,13 +51,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
     FullType specifiedType = FullType.unspecified,
   }) {
     try {
-      String typeName;
-      try {
-        typeName = (object as dynamic).G__typename as String;
-      } catch (e) {
-        // TODO throw exception for missing typename
-        typeName = "";
-      }
+      final typeName = (object as dynamic).G__typename as String;
       final type = _typeForTypename(typeName);
       final serializer =
           serializers.serializerForType(type) as StructuredSerializer;

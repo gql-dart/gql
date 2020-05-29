@@ -22,7 +22,7 @@ abstract class GHeroForEpisodeData
       _$gHeroForEpisodeDataSerializer;
   Map<String, dynamic> toJson() =>
       _i1.serializers.serializeWith(GHeroForEpisodeData.serializer, this);
-  static GHeroForEpisodeData fromJson(String json) =>
+  static GHeroForEpisodeData fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GHeroForEpisodeData.serializer, json);
 }
 
@@ -62,15 +62,17 @@ abstract class GHeroForEpisodeData_hero__base
       _$gHeroForEpisodeDataHeroBaseSerializer;
   Map<String, dynamic> toJson() => _i1.serializers
       .serializeWith(GHeroForEpisodeData_hero__base.serializer, this);
-  static GHeroForEpisodeData_hero__base fromJson(String json) => _i1.serializers
-      .deserializeWith(GHeroForEpisodeData_hero__base.serializer, json);
+  static GHeroForEpisodeData_hero__base fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GHeroForEpisodeData_hero__base.serializer, json);
 }
 
 abstract class GHeroForEpisodeData_hero__asDroid
     implements
         Built<GHeroForEpisodeData_hero__asDroid,
             GHeroForEpisodeData_hero__asDroidBuilder>,
-        GHeroForEpisodeData_hero {
+        GHeroForEpisodeData_hero,
+        GDroidFragment {
   GHeroForEpisodeData_hero__asDroid._();
 
   factory GHeroForEpisodeData_hero__asDroid(
@@ -86,7 +88,13 @@ abstract class GHeroForEpisodeData_hero__asDroid
       _$gHeroForEpisodeDataHeroAsDroidSerializer;
   Map<String, dynamic> toJson() => _i1.serializers
       .serializeWith(GHeroForEpisodeData_hero__asDroid.serializer, this);
-  static GHeroForEpisodeData_hero__asDroid fromJson(String json) =>
+  static GHeroForEpisodeData_hero__asDroid fromJson(
+          Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GHeroForEpisodeData_hero__asDroid.serializer, json);
+}
+
+abstract class GDroidFragment {
+  String get G__typename;
+  String get primaryFunction;
 }

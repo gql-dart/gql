@@ -83,7 +83,7 @@ Class builtClass({
             ..returns = refer(className)
             ..name = "fromJson"
             ..requiredParameters.add(Parameter((b) => b
-              ..type = refer("String")
+              ..type = refer("Map<String, dynamic>")
               ..name = "json"))
             ..lambda = true
             ..body = refer("serializers", serializersUrl)

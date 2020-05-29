@@ -1,6 +1,13 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
+import 'package:end_to_end_test/aliases/aliased_hero.data.gql.dart'
+    show
+        GAliasedHeroData,
+        GAliasedHeroData_empireHero,
+        GAliasedHeroData_jediHero;
+import 'package:end_to_end_test/aliases/aliased_hero.var.gql.dart'
+    show GAliasedHeroVars;
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart'
     show GEpisode, GLengthUnit, GReviewInput, GColorInput;
 import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
@@ -20,6 +27,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GAliasedHeroData,
+  GAliasedHeroData_empireHero,
+  GAliasedHeroData_jediHero,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero,
   GHeroForEpisodeData_hero__base,
@@ -28,6 +38,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GLengthUnit,
   GReviewInput,
   GColorInput,
+  GAliasedHeroVars,
   GHeroForEpisodeVars
 ])
 final Serializers serializers = _serializersBuilder.build();
