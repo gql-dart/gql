@@ -48,7 +48,7 @@ jobs:
       - name: Check pubspec
         run: |
           multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.dart
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Analyze package
         run: |
           multipack --only $PACKAGE analyze --version
