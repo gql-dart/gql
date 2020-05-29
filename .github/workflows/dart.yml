@@ -32,6 +32,10 @@ jobs:
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
           pub global activate multipack
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
@@ -73,6 +77,10 @@ jobs:
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
           pub global activate multipack
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override

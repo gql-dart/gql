@@ -1,6 +1,6 @@
 name: cats
-repository: https://github.com/gql-dart/gql
 description: A starting point for Dart libraries or applications.
+repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.7.2 <3.0.0'
 dependencies: 
