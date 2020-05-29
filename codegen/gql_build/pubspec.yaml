@@ -2,9 +2,9 @@ name: gql_build
 version: 0.0.11
 description: Useful builders for your GraphQL SDL and documents. Based on package:gql_code_builder and package:build
 repository: https://github.com/gql-dart/gql
-environment:
+environment: 
   sdk: '>=2.7.2 <3.0.0'
-dependencies:
+dependencies: 
   gql: ^0.12.1
   path: ^1.6.4
   glob: ^1.2.0
@@ -16,7 +16,7 @@ dependencies:
   built_value_generator: ^7.1.0
   source_gen: ^0.9.5
   built_collection: ^4.3.2
-dev_dependencies:
+dev_dependencies: 
   test: ^1.0.0
   build_test: ^0.10.7
   gql_pedantic: ^1.0.1

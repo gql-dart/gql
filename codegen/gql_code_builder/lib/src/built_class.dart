@@ -67,16 +67,14 @@ Class builtClass({
         ),
         Method(
           (b) => b
-            ..returns = refer("String")
+            ..returns = refer("Map<String, dynamic>")
             ..name = "toJson"
             ..lambda = true
-            ..body = refer("json", "dart:convert").property("encode").call([
-              refer("serializers", serializersUrl)
-                  .property("serializeWith")
-                  .call([
-                refer(className).property("serializer"),
-                refer("this"),
-              ])
+            ..body = refer("serializers", serializersUrl)
+                .property("serializeWith")
+                .call([
+              refer(className).property("serializer"),
+              refer("this"),
             ]).code,
         ),
         Method(
@@ -86,15 +84,13 @@ Class builtClass({
             ..name = "fromJson"
             ..requiredParameters.add(Parameter((b) => b
               ..type = refer("String")
-              ..name = "jsonString"))
+              ..name = "json"))
             ..lambda = true
             ..body = refer("serializers", serializersUrl)
                 .property("deserializeWith")
                 .call([
               refer(className).property("serializer"),
-              refer("json", "dart:convert")
-                  .property("decode")
-                  .call([refer("jsonString")])
+              refer("json")
             ]).code,
         ),
       ]),

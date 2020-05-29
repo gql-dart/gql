@@ -340,28 +340,26 @@ List<Method> _inlineFragmentRootSerializationMethods({
                 "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
             ..types.add(refer(name))).call([
             literalString(name),
-            refer("${name}__base").call([]).property("runtimeType"),
+            refer("${name}__base"),
             literalList(
               inlineFragments.map(
                 (inlineFragment) => refer(
                   "${name}__as${inlineFragment.typeCondition.on.name.value}",
-                ).call([]).property("runtimeType"),
+                ),
               ),
             ),
           ]).code,
       ),
       Method(
         (b) => b
-          ..returns = refer("String")
+          ..returns = refer("Map<String, dynamic>")
           ..name = "toJson"
           ..lambda = true
-          ..body = refer("json", "dart:convert").property("encode").call([
-            refer("serializers", serializersUrl)
-                .property("serializeWith")
-                .call([
-              refer(name).property("serializer"),
-              refer("this"),
-            ])
+          ..body = refer("serializers", serializersUrl)
+              .property("serializeWith")
+              .call([
+            refer(name).property("serializer"),
+            refer("this"),
           ]).code,
       ),
       Method(
@@ -370,17 +368,12 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..returns = refer(name)
           ..name = "fromJson"
           ..requiredParameters.add(Parameter((b) => b
-            ..type = refer("String")
-            ..name = "jsonString"))
+            ..type = refer("Map<String, dynamic>")
+            ..name = "json"))
           ..lambda = true
           ..body = refer("serializers", serializersUrl)
               .property("deserializeWith")
-              .call([
-            refer(name).property("serializer"),
-            refer("json", "dart:convert")
-                .property("decode")
-                .call([refer("jsonString")])
-          ]).code,
+              .call([refer(name).property("serializer"), refer("json")]).code,
       ),
     ];
 

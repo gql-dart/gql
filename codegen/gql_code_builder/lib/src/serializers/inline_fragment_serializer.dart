@@ -70,7 +70,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
   }
 
   @override
-  Iterable<Type> get types => [baseClass, ...asTypeClasses];
+  Iterable<Type> get types => [T];
 
   @override
   String get wireName => rootName;
