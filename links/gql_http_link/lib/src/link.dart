@@ -155,6 +155,11 @@ class HttpLink extends Link {
   }
 
   http.BaseRequest _prepareRequest(Request request) {
+    final body = _encodeAttempter(
+      request,
+      serializer.serializeRequest,
+    )(request);
+
     final contextHeaders = _getHttpLinkHeaders(request);
     final headers = {
       "Content-type": "application/json",
@@ -162,7 +167,9 @@ class HttpLink extends Link {
       ...defaultHeaders,
       ...contextHeaders,
     };
-    final fileMap = request.fileVariables;
+
+    final fileMap = extractFlattenedFileMap(body);
+
     final method = (fileMap.isEmpty && useGETForQueries && request.isQuery)
         ? "GET"
         : "POST";
@@ -171,46 +178,49 @@ class HttpLink extends Link {
       return http.Request(
         "GET",
         uri.replace(
-          queryParameters:
-              _serializeRequest(request, asParams: true) as Map<String, String>,
+          queryParameters: _encodeAttempter(
+            request,
+            _encodeAsUriParams,
+          )(body),
         ),
       )..headers.addAll(headers);
     }
-    final body = _serializeRequest(request) as String;
+
+    final httpBody = _encodeAttempter(
+      request,
+      (Map body) => json.encode(
+        body,
+        toEncodable: (dynamic object) =>
+            (object is http.MultipartFile) ? null : object.toJson(),
+      ),
+    )(body);
 
     if (fileMap.isNotEmpty) {
       return http.MultipartRequest("POST", uri)
-        ..body = body
+        ..body = httpBody
         ..addAllFiles(fileMap)
         ..headers.addAll(headers);
     }
     return http.Request("POST", uri)
-      ..body = body
+      ..body = httpBody
       ..headers.addAll(headers);
   }
 
-  /// If [asParams] is `true`, the result of [serializer.serializeRequest]
-  /// will be encoded as `Map<String, String>` to be passed as [Uri.queryParameters]
-  dynamic _serializeRequest(Request request, {bool asParams = false}) {
-    try {
-      final serialized = serializer.serializeRequest(
-        request,
-      );
-      if (asParams && uri != null) {
-        return _encodeAsUriParams(serialized);
-      }
-      return json.encode(
-        serialized,
-        toEncodable: (dynamic object) =>
-            (object is http.MultipartFile) ? null : object.toJson(),
-      );
-    } catch (e) {
-      throw RequestFormatException(
-        originalException: e,
-        request: request,
-      );
-    }
-  }
+  /// wrap an encoding transform in exception handling
+  T Function(V) _encodeAttempter<T, V>(
+    Request request,
+    T Function(V) encoder,
+  ) =>
+      (V input) {
+        try {
+          return encoder(input);
+        } catch (e) {
+          throw RequestFormatException(
+            originalException: e,
+            request: request,
+          );
+        }
+      };
 
   /// Closes the underlining [http.Client]
   void dispose() {

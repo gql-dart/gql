@@ -1,7 +1,3 @@
-import "dart:async";
-import "dart:convert";
-import "package:meta/meta.dart";
-
 import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
 import "package:gql_http_link/gql_http_link.dart";
@@ -10,6 +6,8 @@ import "package:http/http.dart" as http;
 import "package:http_parser/http_parser.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
+
+import "./helpers.dart";
 
 class MockClient extends Mock implements http.Client {}
 
@@ -67,7 +65,6 @@ void main() {
         expectContinuationString(bodyBytes, boundary);
         expectContinuationString(bodyBytes,
             '\r\ncontent-disposition: form-data; name="operations"\r\n\r\n');
-        // operationName of unamed operations is "UNNAMED/" +  document.hashCode.toString()
         expectContinuationString(bodyBytes,
             r'{"operationName":null,"variables":{"files":[null,null]},"query":"mutation($files: [Upload!]!) {\n  multipleUpload(files: $files) {\n    id\n    filename\n    mimetype\n    path\n  }\n}"}');
         expectContinuationString(bodyBytes, "\r\n--");
@@ -95,7 +92,7 @@ void main() {
       http.ByteStream bodyBytes;
       when(mockHttpClient.send(any)).thenAnswer((Invocation a) async {
         bodyBytes = (a.positionalArguments[0] as http.BaseRequest).finalize();
-        return simpleResponse(body: r"""
+        return simpleResponse(r"""
 {
   "data": {
     "multipleUpload": [
@@ -140,7 +137,7 @@ void main() {
       );
       final response = await httpLink.request(gqlRequest).first;
 
-      expect(response.errors, isEmpty);
+      expect(response.errors, isNull);
       expect(response.data, isNotNull);
 
       final http.MultipartRequest request = verify(
@@ -149,8 +146,6 @@ void main() {
       expect(request.method, "POST");
       expect(request.url.toString(), "http://localhost:3001/graphql");
       expect(request.headers["accept"], "*/*");
-      expect(
-          request.headers["Authorization"], "Bearer my-special-bearer-token");
       final List<String> contentTypeStringSplit =
           request.headers["content-type"].split("; boundary=");
       expect(contentTypeStringSplit[0], "multipart/form-data");
@@ -193,14 +188,4 @@ void main() {
     //  const int statusCode = 400;
     //});
   });
-}
-
-http.StreamedResponse simpleResponse({@required String body, int status}) {
-  final List<int> bytes = utf8.encode(body);
-  final Stream<List<int>> stream =
-      Stream<List<int>>.fromIterable(<List<int>>[bytes]);
-
-  final http.StreamedResponse r = http.StreamedResponse(stream, status ?? 200);
-
-  return r;
 }

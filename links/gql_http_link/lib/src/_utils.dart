@@ -22,38 +22,30 @@ extension WithType on gql.Request {
   }
 
   bool get isQuery => type == OperationType.query;
-
-  /// Map of  [MultipartFile]s passed in [variables],
-  /// with paths as keys.
-  ///
-  /// example mapping:
-  /// ```dart
-  /// {
-  ///   "foo": [ { "bar": MultipartFile("blah.txt") } ]
-  ///  }
-  /// // =>
-  /// {
-  ///   "foo.0.bar": MultipartFile("blah.txt")
-  /// }
-  /// ```
-  Map<String, MultipartFile> get fileVariables =>
-      _extractFlattenedFileMap(variables);
 }
 
 /// Recursively extract [MultipartFile]s and return them as a normalized map of [path] => [file]
-/// From the given request variables
+/// From the given request body
 ///
-/// This is only used in
-Map<String, MultipartFile> _extractFlattenedFileMap(
-  dynamic variables, {
+/// ```dart
+/// {
+///   "foo": [ { "bar": MultipartFile("blah.txt") } ]
+///  }
+/// // =>
+/// {
+///   "foo.0.bar": MultipartFile("blah.txt")
+/// }
+/// ```
+Map<String, MultipartFile> extractFlattenedFileMap(
+  dynamic body, {
   Map<String, MultipartFile> currentMap,
   List<String> currentPath = const <String>[],
 }) {
   currentMap ??= <String, MultipartFile>{};
-  if (variables is Map<String, dynamic>) {
-    final Iterable<MapEntry<String, dynamic>> entries = variables.entries;
+  if (body is Map<String, dynamic>) {
+    final Iterable<MapEntry<String, dynamic>> entries = body.entries;
     for (final MapEntry<String, dynamic> element in entries) {
-      currentMap.addAll(_extractFlattenedFileMap(
+      currentMap.addAll(extractFlattenedFileMap(
         element.value,
         currentMap: currentMap,
         currentPath: List<String>.from(currentPath)..add(element.key),
@@ -61,10 +53,10 @@ Map<String, MultipartFile> _extractFlattenedFileMap(
     }
     return currentMap;
   }
-  if (variables is List<dynamic>) {
-    for (int i = 0; i < variables.length; i++) {
-      currentMap.addAll(_extractFlattenedFileMap(
-        variables[i],
+  if (body is List<dynamic>) {
+    for (int i = 0; i < body.length; i++) {
+      currentMap.addAll(extractFlattenedFileMap(
+        body[i],
         currentMap: currentMap,
         currentPath: List<String>.from(currentPath)..add(i.toString()),
       ));
@@ -72,18 +64,19 @@ Map<String, MultipartFile> _extractFlattenedFileMap(
     return currentMap;
   }
 
-  if (variables is MultipartFile) {
+  if (body is MultipartFile) {
     return currentMap
-      ..addAll(<String, MultipartFile>{currentPath.join("."): variables});
+      ..addAll(<String, MultipartFile>{currentPath.join("."): body});
   }
 
   assert(
-    variables is String || variables is num || variables == null,
-    "$variables of type ${variables.runtimeType} was found "
+    body is String || body is num || body == null,
+    "$body of type ${body.runtimeType} was found "
     "in in the request at path ${currentPath.join(".")}, "
     "but the only the types { Map, List, MultipartFile, String, num, null } "
     "are allowed",
   );
+
   return currentMap;
 }
 
