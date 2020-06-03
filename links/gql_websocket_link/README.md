@@ -20,4 +20,34 @@
 [discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
 [discord-link]: https://discord.gg/NryjpVa
 
-Lint rules used by `gql-dart`.
+GQL WebSocket link to execute subscriptions as well as mutations & queries against a GraphQL backend
+
+
+## Usage
+
+A simple usage example:
+
+```dart
+import "package:gql_link/gql_link.dart";
+import "package:gql_websocket_link/gql_websocket_link.dart";
+
+void main () {
+  final link = Link.from([
+    // SomeLink(),
+    WSLink("ws://<GRAPHQL_SERVER_ENDPOINT>/graphql"),
+  ]);
+}
+
+```
+
+Make sure you have WebSocket transport supported on your GraphQL server.
+
+## Features and bugs
+
+Please file feature requests and bugs at the [GitHub][tracker].
+
+[tracker]: https://github.com/gql-dart/gql/issues
+
+## Attribution
+
+This code was adapted with minor changed from the `graphql-flutter` repo

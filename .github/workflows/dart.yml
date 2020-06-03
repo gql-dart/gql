@@ -12,12 +12,13 @@ jobs:
           - gql_exec
           - gql_link
           - gql_dedupe_link
+          - gql_error_link
           - gql_http_link
           - gql_websocket_link
           - gql_link
           - gql_transform_link
-          - multipack
           - cats
+          - gql_example_http_auth_link
     runs-on: ubuntu-latest
     container:
       image: google/dart:latest
@@ -30,13 +31,14 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
-          cd ./multipack
-          pub get
-          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -74,13 +76,14 @@ jobs:
       - name: Activate multipack
         run: |
           echo "::add-path::$HOME/.pub-cache/bin"
-          pub global activate --source path ./multipack
+          pub global activate multipack
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
           multipack pubspec hard_override
-          cd ./multipack
-          pub get
-          cd ..
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get

@@ -1,15 +1,13 @@
-name: gql
-version: 0.12.3
-description: GraphQL tools for parsing, transforming and printing GraphQL documents.
+name: gql_exec
+version: 0.2.4
+description: Basis for GraphQL execution layer to support Link and Client.
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.7.2 <3.0.0'
 dependencies: 
-  source_span: ^1.5.5
+  gql: ^0.12.1
   meta: ^1.1.7
   collection: ^1.14.11
 dev_dependencies: 
   test: ^1.0.0
   gql_pedantic: ^1.0.1
-  cats: 
-    path: ../cats
