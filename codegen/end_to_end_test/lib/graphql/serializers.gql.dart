@@ -27,6 +27,14 @@ import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
         GHeroForEpisodeData_hero__asDroid;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
     show GHeroForEpisodeVars;
+import 'package:end_to_end_test/variables/create_review.data.gql.dart'
+    show GCreateReviewData, GCreateReviewData_createReview;
+import 'package:end_to_end_test/variables/create_review.var.gql.dart'
+    show GCreateReviewVars;
+import 'package:end_to_end_test/variables/human_with_args.data.gql.dart'
+    show GHumanWithArgsData, GHumanWithArgsData_human;
+import 'package:end_to_end_test/variables/human_with_args.var.gql.dart'
+    show GHumanWithArgsVars;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 
@@ -54,6 +62,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsData_hero_friendsConnection,
   GHeroWithFragmentsData_hero_friendsConnection_edges,
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
-  GHeroWithFragmentsVars
+  GHeroWithFragmentsVars,
+  GCreateReviewData,
+  GCreateReviewData_createReview,
+  GHumanWithArgsData,
+  GHumanWithArgsData_human,
+  GCreateReviewVars,
+  GHumanWithArgsVars
 ])
 final Serializers serializers = _serializersBuilder.build();
