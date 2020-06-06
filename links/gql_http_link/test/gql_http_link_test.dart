@@ -427,24 +427,12 @@ void main() {
         TypeMatcher<HttpLinkServerException>(),
       );
       expect(
-        exception.response,
+        exception.httpResponse,
         response,
-      );
-      expect(
-        exception.parsedResponse,
-        equals(
-          Response(
-            data: const <String, dynamic>{},
-            errors: null,
-            context: Context().withEntry(
-              ResponseExtensions(null),
-            ),
-          ),
-        ),
       );
     });
 
-    test("throws HttpLinkServerException when no data and errors", () async {
+    test("throws HttpLinkParserException when no data and no errors", () async {
       final http.Response response = http.Response(
         json.encode(<String, dynamic>{}),
         200,
@@ -463,20 +451,20 @@ void main() {
         ),
       );
 
-      HttpLinkServerException exception;
+      HttpLinkParserException exception;
 
       try {
         await execute().first;
       } catch (e) {
-        exception = e as HttpLinkServerException;
+        exception = e as HttpLinkParserException;
       }
 
       expect(
         exception,
-        TypeMatcher<HttpLinkServerException>(),
+        TypeMatcher<HttpLinkParserException>(),
       );
       expect(
-        exception.response,
+        exception.httpResponse,
         response,
       );
       expect(

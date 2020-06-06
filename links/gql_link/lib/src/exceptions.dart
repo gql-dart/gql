@@ -13,7 +13,7 @@ abstract class LinkException implements Exception {
 }
 
 /// Exception occurring when a terminating link
-/// tries to serialize the request
+/// fails to serialize the request.
 @immutable
 class RequestFormatException extends LinkException {
   /// The request being serialized when the error occurred
@@ -27,10 +27,15 @@ class RequestFormatException extends LinkException {
 
 /// Exception occurring when a terminating link
 /// tries to parse the response
+/// or parsed response is missing both `data` and `errors`
 @immutable
 class ResponseFormatException extends LinkException {
+  /// The parsed response
+  final Response parsedResponse;
+
   const ResponseFormatException({
     dynamic originalException,
+    this.parsedResponse,
   }) : super(originalException);
 }
 
@@ -50,15 +55,10 @@ class ContextWriteException extends LinkException {
   }) : super(originalException);
 }
 
-/// Exception occurring when network fails
-/// or parsed response is missing both `data` and `errors`
+/// Exception occurring when network fails.
 @immutable
 class ServerException extends LinkException {
-  /// The parsed response
-  final Response parsedResponse;
-
   const ServerException({
-    @required this.parsedResponse,
     dynamic originalException,
   }) : super(originalException);
 }

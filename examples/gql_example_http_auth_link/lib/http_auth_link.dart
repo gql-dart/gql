@@ -28,7 +28,7 @@ class HttpAuthLink extends Link {
     LinkException exception,
   ) async* {
     if (exception is HttpLinkServerException &&
-        exception.response.statusCode == 401) {
+        exception.httpResponse.statusCode == 401) {
       await updateToken();
 
       yield* forward(request);

@@ -90,10 +90,15 @@ class HttpLink extends Link {
 
     final response = _parseHttpResponse(httpResponse);
 
-    if (httpResponse.statusCode >= 300 ||
-        (response.data == null && response.errors == null)) {
+    if (httpResponse.statusCode >= 300) {
       throw HttpLinkServerException(
-        response: httpResponse,
+        originalException: null,
+        httpResponse: httpResponse,
+      );
+    } else if (response.data == null && response.errors == null) {
+      throw HttpLinkParserException(
+        originalException: null,
+        httpResponse: httpResponse,
         parsedResponse: response,
       );
     }
@@ -134,7 +139,8 @@ class HttpLink extends Link {
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
-        response: httpResponse,
+        httpResponse: httpResponse,
+        parsedResponse: null,
       );
     }
   }
@@ -157,7 +163,6 @@ class HttpLink extends Link {
     } catch (e) {
       throw ServerException(
         originalException: e,
-        parsedResponse: null,
       );
     }
   }
