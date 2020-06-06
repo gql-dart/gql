@@ -1,3 +1,6 @@
+import "dart:convert";
+import "dart:typed_data";
+
 import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
 import "package:gql_http_link/gql_http_link.dart";
@@ -18,9 +21,9 @@ class MockResponseParser extends Mock implements ResponseParser {}
 void main() {
   MockClient mockHttpClient;
   HttpLink httpLink;
+  Request gqlRequest;
 
-  group("upload", () {
-    const String uploadMutation = r"""
+  const String uploadMutation = r"""
     mutation($files: [Upload!]!) {
       multipleUpload(files: $files) {
         id
@@ -31,68 +34,7 @@ void main() {
     }
     """;
 
-    setUp(() {
-      mockHttpClient = MockClient();
-
-      httpLink = HttpLink(
-        "http://localhost:3001/graphql",
-        httpClient: mockHttpClient,
-      );
-    });
-
-    test("upload success", () async {
-      Future<void> expectUploadBody(
-          http.ByteStream bodyBytesStream, String boundary) async {
-        final List<Function> expectContinuationList = (() {
-          int i = 0;
-          return <Function>[
-            // ExpectString
-            (List<int> actual, String expected) => expect(
-                String.fromCharCodes(actual.sublist(i, i += expected.length)),
-                expected),
-            // ExpectBytes
-            (List<int> actual, List<int> expected) =>
-                expect(actual.sublist(i, i += expected.length), expected),
-            // Expect final length
-            (int expectedLength) => expect(i, expectedLength),
-          ];
-        })();
-        final Function expectContinuationString = expectContinuationList[0];
-        final Function expectContinuationBytes = expectContinuationList[1];
-        final Function expectContinuationLength = expectContinuationList[2];
-        final bodyBytes = await bodyBytesStream.toBytes();
-        expectContinuationString(bodyBytes, "--");
-        expectContinuationString(bodyBytes, boundary);
-        expectContinuationString(bodyBytes,
-            '\r\ncontent-disposition: form-data; name="operations"\r\n\r\n');
-        expectContinuationString(bodyBytes,
-            r'{"operationName":null,"variables":{"files":[null,null]},"query":"mutation($files: [Upload!]!) {\n  multipleUpload(files: $files) {\n    id\n    filename\n    mimetype\n    path\n  }\n}"}');
-        expectContinuationString(bodyBytes, "\r\n--");
-        expectContinuationString(bodyBytes, boundary);
-        expectContinuationString(bodyBytes,
-            '\r\ncontent-disposition: form-data; name="map"\r\n\r\n{"0":["variables.files.0"],"1":["variables.files.1"]}');
-        expectContinuationString(bodyBytes, "\r\n--");
-        expectContinuationString(bodyBytes, boundary);
-        expectContinuationString(
-          bodyBytes,
-          '\r\ncontent-type: image/jpeg\r\ncontent-disposition: form-data; name="0"; filename="sample_upload.jpg"\r\n\r\n',
-        );
-        expectContinuationBytes(bodyBytes, [0, 1, 254, 255]);
-        expectContinuationString(bodyBytes, "\r\n--");
-        expectContinuationString(bodyBytes, boundary);
-        expectContinuationString(bodyBytes,
-            '\r\ncontent-type: text/plain; charset=utf-8\r\ncontent-disposition: form-data; name="1"; filename="sample_upload.txt"\r\n\r\n');
-        expectContinuationString(bodyBytes, "just plain text");
-        expectContinuationString(bodyBytes, "\r\n--");
-        expectContinuationString(bodyBytes, boundary);
-        expectContinuationString(bodyBytes, "--\r\n");
-        expectContinuationLength(bodyBytes.lengthInBytes);
-      }
-
-      http.ByteStream bodyBytes;
-      when(mockHttpClient.send(any)).thenAnswer((Invocation a) async {
-        bodyBytes = (a.positionalArguments[0] as http.BaseRequest).finalize();
-        return simpleResponse(r"""
+  const expectedResponse = r"""
 {
   "data": {
     "multipleUpload": [
@@ -111,10 +53,18 @@ void main() {
     ]
   }
 }
-        """);
-      });
+        """;
 
-      final gqlRequest = Request(
+  group("upload", () {
+    setUp(() {
+      mockHttpClient = MockClient();
+
+      httpLink = HttpLink(
+        "http://localhost:3001/graphql",
+        httpClient: mockHttpClient,
+      );
+
+      gqlRequest = Request(
         operation: Operation(
           document: parseString(uploadMutation),
         ),
@@ -135,21 +85,82 @@ void main() {
           ],
         },
       );
-      final response = await httpLink.request(gqlRequest).first;
+    });
 
-      expect(response.errors, isNull);
-      expect(response.data, isNotNull);
+    test("request encoding", () async {
+      Uint8List bodyBytes;
+      when(
+        mockHttpClient.send(any),
+      ).thenAnswer((i) async {
+        bodyBytes = await (i.positionalArguments[0] as http.BaseRequest)
+            .finalize()
+            .toBytes();
+        return simpleResponse(expectedResponse);
+      });
+
+      await httpLink.request(gqlRequest).first;
 
       final http.MultipartRequest request = verify(
         mockHttpClient.send(captureAny),
       ).captured.first as http.MultipartRequest;
+
+      final List<String> contentTypeStringSplit =
+          request.headers["content-type"].split("; boundary=");
+
       expect(request.method, "POST");
       expect(request.url.toString(), "http://localhost:3001/graphql");
       expect(request.headers["accept"], "*/*");
-      final List<String> contentTypeStringSplit =
-          request.headers["content-type"].split("; boundary=");
+
       expect(contentTypeStringSplit[0], "multipart/form-data");
-      await expectUploadBody(bodyBytes, contentTypeStringSplit[1]);
+
+      final boundary = contentTypeStringSplit[1];
+      expect(
+        bodyBytes,
+        equals(
+          [
+            ...utf8.encode(
+              "--$boundary"
+              '\r\ncontent-disposition: form-data; name="operations"\r\n\r\n'
+              r"{"
+              r'"operationName":null,'
+              r'"variables":{"files":[null,null]},'
+              r'"query":"mutation($files: [Upload!]!) {\n'
+              r"  multipleUpload(files: $files) {\n    id\n    filename\n    mimetype\n    path\n  }\n"
+              r'}"'
+              r"}"
+              "\r\n--$boundary"
+              '\r\ncontent-disposition: form-data; name="map"\r\n\r\n'
+              '{"0":["variables.files.0"],"1":["variables.files.1"]}'
+              "\r\n--$boundary"
+              "\r\ncontent-type: image/jpeg"
+              "\r\ncontent-disposition: form-data;"
+              ' name="0"; filename="sample_upload.jpg"\r\n\r\n',
+            ),
+            0,
+            1,
+            254,
+            255,
+            ...utf8.encode(
+              "\r\n--$boundary"
+              "\r\ncontent-type: text/plain; charset=utf-8"
+              "\r\ncontent-disposition: form-data;"
+              ' name="1"; filename="sample_upload.txt"\r\n\r\n'
+              "just plain text"
+              "\r\n--$boundary--\r\n",
+            ),
+          ],
+        ),
+      );
+    });
+
+    test("response data", () async {
+      when(
+        mockHttpClient.send(any),
+      ).thenAnswer(
+        (i) async => simpleResponse(expectedResponse),
+      );
+
+      final response = await httpLink.request(gqlRequest).first;
 
       final multipleUpload = (response.data["multipleUpload"] as List<dynamic>)
           .cast<Map<String, dynamic>>();
