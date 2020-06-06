@@ -66,7 +66,9 @@ Map<String, MultipartFile> extractFlattenedFileMap(
 
   if (body is MultipartFile) {
     return currentMap
-      ..addAll(<String, MultipartFile>{currentPath.join("."): body});
+      ..addAll({
+        currentPath.join("."): body,
+      });
   }
 
   assert(

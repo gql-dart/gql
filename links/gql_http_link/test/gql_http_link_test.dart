@@ -93,7 +93,17 @@ void main() {
 
       await execute().first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.url,
+              "expected endpoint",
+              Uri.parse("/graphql-test"),
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("uses json mime types", () async {
@@ -112,7 +122,20 @@ void main() {
 
       await execute().first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "mime types",
+              allOf([
+                containsPair("Content-type", "application/json"),
+                containsPair("Accept", "*/*"),
+              ]),
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("adds headers from context", () async {
@@ -147,7 +170,17 @@ void main() {
         ),
       ).first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "context headers",
+              containsPair("foo", "bar"),
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("adds default headers", () async {
@@ -184,7 +217,17 @@ void main() {
           )
           .first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "default headers",
+              containsPair("foo", "bar"),
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("headers from context override defaults", () async {
@@ -219,7 +262,17 @@ void main() {
         ),
       ).first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "headers from context",
+              containsPair("Content-type", "application/jsonize"),
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("serializes the request", () async {
@@ -238,7 +291,17 @@ void main() {
 
       await execute().first;
 
-      verify(client.send(any)).called(1);
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.body,
+              "serialized body",
+              '{"operationName":null,"variables":{"i":12},"query":"query MyQuery {\\n  \\n}"}',
+            ),
+          ),
+        ),
+      ).called(1);
     });
 
     test("parses a successful response with errors", () async {
@@ -481,6 +544,92 @@ void main() {
 
       verify(
         client.close(),
+      ).called(1);
+    });
+  });
+
+  group("HttpLink useGETForQueries", () {
+    MockClient client;
+    HttpLink link;
+
+    setUp(() {
+      client = MockClient();
+      link = HttpLink(
+        "/graphql-test",
+        httpClient: client,
+        useGETForQueries: true,
+      );
+    });
+
+    test("uses GET for query", () async {
+      when(
+        client.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      final queryRequest = Request(
+        operation: Operation(
+          document: parseString("query MyQuery {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      await link.request(queryRequest).first;
+
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.method,
+              "method",
+              "GET",
+            ),
+          ),
+        ),
+      ).called(1);
+    });
+
+    test("uses POST for mutation", () async {
+      when(
+        client.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      final mutationRequest = Request(
+        operation: Operation(
+          document: parseString("mutation MyMutation {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      await link.request(mutationRequest).first;
+
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.method,
+              "method",
+              "POST",
+            ),
+          ),
+        ),
       ).called(1);
     });
   });
