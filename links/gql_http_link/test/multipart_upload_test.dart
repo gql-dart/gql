@@ -21,10 +21,21 @@ class MockResponseParser extends Mock implements ResponseParser {}
 void main() {
   MockClient mockHttpClient;
   HttpLink httpLink;
-  Request gqlRequest;
 
   const String uploadMutation = r"""
     mutation($files: [Upload!]!) {
+      multipleUpload(files: $files) {
+        id
+        filename
+        mimetype
+        path
+      }
+    }
+    """;
+
+  // in the real world this could be a "file-based" search
+  const String uploadQuery = r"""
+    query($files: [Upload!]!) {
       multipleUpload(files: $files) {
         id
         filename
@@ -55,7 +66,23 @@ void main() {
 }
         """;
 
+  List<http.MultipartFile> testFiles() => [
+        http.MultipartFile.fromBytes(
+          "",
+          [0, 1, 254, 255],
+          filename: "sample_upload.jpg",
+          contentType: MediaType("image", "jpeg"),
+        ),
+        http.MultipartFile.fromString(
+          "",
+          "just plain text",
+          filename: "sample_upload.txt",
+          contentType: MediaType("text", "plain"),
+        ),
+      ];
+
   group("upload", () {
+    Request gqlRequest;
     setUp(() {
       mockHttpClient = MockClient();
 
@@ -69,20 +96,7 @@ void main() {
           document: parseString(uploadMutation),
         ),
         variables: <String, dynamic>{
-          "files": [
-            http.MultipartFile.fromBytes(
-              "",
-              [0, 1, 254, 255],
-              filename: "sample_upload.jpg",
-              contentType: MediaType("image", "jpeg"),
-            ),
-            http.MultipartFile.fromString(
-              "",
-              "just plain text",
-              filename: "sample_upload.txt",
-              contentType: MediaType("text", "plain"),
-            ),
-          ],
+          "files": testFiles(),
         },
       );
     });
@@ -180,23 +194,130 @@ void main() {
         },
       ]);
     });
+  });
 
-    //test("upload fail error response", () {
-    //  const String responseBody = json.encode({
-    //    "errors":[
-    //      {
-    //        "message": r"Variable "$files" of required type "[Upload!]!" was not provided.",
-    //        "locations": [{ "line" :1, "column" :14 }],
-    //        "extensions": {
-    //          "code": "INTERNAL_SERVER_ERROR",
-    //          "exception": {
-    //             "stacktrace": [ r"GraphQLError: Variable "$files" of required type "[Upload!]!" was not provided.", ... ]
-    //          }
-    //        }
-    //      }
-    //    ]
-    //  });
-    //  const int statusCode = 400;
-    //});
+  group("file upload useGETForQueries behavior", () {
+    setUp(() {
+      mockHttpClient = MockClient();
+
+      httpLink = HttpLink(
+        "http://localhost:3001/graphql",
+        httpClient: mockHttpClient,
+        useGETForQueries: true,
+      );
+    });
+
+    test("query request encoding with files", () async {
+      Uint8List bodyBytes;
+      when(
+        mockHttpClient.send(any),
+      ).thenAnswer((i) async {
+        bodyBytes = await (i.positionalArguments[0] as http.BaseRequest)
+            .finalize()
+            .toBytes();
+        return simpleResponse(expectedResponse);
+      });
+
+      final gqlQueryWithFiles = Request(
+        operation: Operation(
+          document: parseString(uploadMutation),
+        ),
+        variables: <String, dynamic>{
+          "files": testFiles(),
+        },
+      );
+
+      await httpLink.request(gqlQueryWithFiles).first;
+
+      final http.MultipartRequest request = verify(
+        mockHttpClient.send(captureAny),
+      ).captured.first as http.MultipartRequest;
+
+      final List<String> contentTypeStringSplit =
+          request.headers["content-type"].split("; boundary=");
+
+      expect(request.method, "POST");
+      expect(request.url.toString(), "http://localhost:3001/graphql");
+      expect(request.headers["accept"], "*/*");
+
+      expect(contentTypeStringSplit[0], "multipart/form-data");
+
+      final boundary = contentTypeStringSplit[1];
+      expect(
+        bodyBytes,
+        equals(
+          [
+            ...utf8.encode(
+              "--$boundary"
+              '\r\ncontent-disposition: form-data; name="operations"\r\n\r\n'
+              r"{"
+              r'"operationName":null,'
+              r'"variables":{"files":[null,null]},'
+              r'"query":"mutation($files: [Upload!]!) {\n'
+              r"  multipleUpload(files: $files) {\n    id\n    filename\n    mimetype\n    path\n  }\n"
+              r'}"'
+              r"}"
+              "\r\n--$boundary"
+              '\r\ncontent-disposition: form-data; name="map"\r\n\r\n'
+              '{"0":["variables.files.0"],"1":["variables.files.1"]}'
+              "\r\n--$boundary"
+              "\r\ncontent-type: image/jpeg"
+              "\r\ncontent-disposition: form-data;"
+              ' name="0"; filename="sample_upload.jpg"\r\n\r\n',
+            ),
+            0,
+            1,
+            254,
+            255,
+            ...utf8.encode(
+              "\r\n--$boundary"
+              "\r\ncontent-type: text/plain; charset=utf-8"
+              "\r\ncontent-disposition: form-data;"
+              ' name="1"; filename="sample_upload.txt"\r\n\r\n'
+              "just plain text"
+              "\r\n--$boundary--\r\n",
+            ),
+          ],
+        ),
+      );
+    });
+
+    test("query request encoding without files", () async {
+      when(
+        mockHttpClient.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      final gqlQueryWithoutFiles = Request(
+        operation: Operation(
+          document: parseString(uploadQuery),
+        ),
+        variables: const <String, dynamic>{
+          "files": <http.MultipartFile>[],
+        },
+      );
+
+      await httpLink.request(gqlQueryWithoutFiles).first;
+
+      verify(
+        mockHttpClient.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.method,
+              "method",
+              "GET",
+            ),
+          ),
+        ),
+      ).called(1);
+    });
   });
 }

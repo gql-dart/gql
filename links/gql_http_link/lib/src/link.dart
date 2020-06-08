@@ -170,11 +170,10 @@ class HttpLink extends Link {
 
     final fileMap = extractFlattenedFileMap(body);
 
-    final method = (fileMap.isEmpty && useGETForQueries && request.isQuery)
-        ? "GET"
-        : "POST";
-    // TODO other ways to override method (via context)
-    if (method == "GET") {
+    final useGetForThisRequest =
+        fileMap.isEmpty && useGETForQueries && request.isQuery;
+
+    if (useGetForThisRequest) {
       return http.Request(
         "GET",
         uri.replace(
