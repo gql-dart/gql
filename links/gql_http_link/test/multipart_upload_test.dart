@@ -220,7 +220,7 @@ void main() {
 
       final gqlQueryWithFiles = Request(
         operation: Operation(
-          document: parseString(uploadMutation),
+          document: parseString(uploadQuery),
         ),
         variables: <String, dynamic>{
           "files": testFiles(),
@@ -253,7 +253,7 @@ void main() {
               r"{"
               r'"operationName":null,'
               r'"variables":{"files":[null,null]},'
-              r'"query":"mutation($files: [Upload!]!) {\n'
+              r'"query":"query($files: [Upload!]!) {\n'
               r"  multipleUpload(files: $files) {\n    id\n    filename\n    mimetype\n    path\n  }\n"
               r'}"'
               r"}"
@@ -280,44 +280,6 @@ void main() {
           ],
         ),
       );
-    });
-
-    test("query request encoding without files", () async {
-      when(
-        mockHttpClient.send(any),
-      ).thenAnswer(
-        (_) => Future.value(
-          simpleResponse(
-            json.encode(<String, dynamic>{
-              "data": <String, dynamic>{},
-            }),
-            200,
-          ),
-        ),
-      );
-
-      final gqlQueryWithoutFiles = Request(
-        operation: Operation(
-          document: parseString(uploadQuery),
-        ),
-        variables: const <String, dynamic>{
-          "files": <http.MultipartFile>[],
-        },
-      );
-
-      await httpLink.request(gqlQueryWithoutFiles).first;
-
-      verify(
-        mockHttpClient.send(
-          argThat(
-            isA<http.Request>().having(
-              (request) => request.method,
-              "method",
-              "GET",
-            ),
-          ),
-        ),
-      ).called(1);
     });
   });
 }

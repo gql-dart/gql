@@ -561,7 +561,7 @@ void main() {
       );
     });
 
-    test("uses GET for query", () async {
+    test("uses GET for query without files", () async {
       when(
         client.send(any),
       ).thenAnswer(
