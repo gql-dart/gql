@@ -64,7 +64,6 @@ void main() {
   group("Custom scalars in data types", () {
     final data = GReviewWithDateData(
       (b) => b
-        ..createReview.G__typename = "Review"
         ..createReview.stars = 1
         ..createReview
             .seenOn

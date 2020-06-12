@@ -36,6 +36,8 @@ abstract class GAliasedHeroData_empireHero
           [Function(GAliasedHeroData_empireHeroBuilder b) updates]) =
       _$GAliasedHeroData_empireHero;
 
+  static void _initializeBuilder(GAliasedHeroData_empireHeroBuilder b) =>
+      b..G__typename = 'Character';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
@@ -60,6 +62,8 @@ abstract class GAliasedHeroData_jediHero
           [Function(GAliasedHeroData_jediHeroBuilder b) updates]) =
       _$GAliasedHeroData_jediHero;
 
+  static void _initializeBuilder(GAliasedHeroData_jediHeroBuilder b) =>
+      b..G__typename = 'Character';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;

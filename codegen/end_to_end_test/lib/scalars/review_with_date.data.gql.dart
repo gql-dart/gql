@@ -35,6 +35,8 @@ abstract class GReviewWithDateData_createReview
           [Function(GReviewWithDateData_createReviewBuilder b) updates]) =
       _$GReviewWithDateData_createReview;
 
+  static void _initializeBuilder(GReviewWithDateData_createReviewBuilder b) =>
+      b..G__typename = 'Review';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @nullable

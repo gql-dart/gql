@@ -513,7 +513,9 @@ class GHeroWithFragmentsData_heroBuilder
               friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
 
-  GHeroWithFragmentsData_heroBuilder();
+  GHeroWithFragmentsData_heroBuilder() {
+    GHeroWithFragmentsData_hero._initializeBuilder(this);
+  }
 
   GHeroWithFragmentsData_heroBuilder get _$this {
     if (_$v != null) {
@@ -650,7 +652,9 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
               edges) =>
       _$this._edges = edges;
 
-  GHeroWithFragmentsData_hero_friendsConnectionBuilder();
+  GHeroWithFragmentsData_hero_friendsConnectionBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection._initializeBuilder(this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnectionBuilder get _$this {
     if (_$v != null) {
@@ -782,7 +786,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
               node) =>
       _$this._node = node;
 
-  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder();
+  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection_edges._initializeBuilder(
+        this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder get _$this {
     if (_$v != null) {
@@ -911,7 +918,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder();
+  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection_edges_node._initializeBuilder(
+        this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder get _$this {
     if (_$v != null) {

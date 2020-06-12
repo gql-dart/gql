@@ -404,7 +404,9 @@ class GAliasedHeroData_empireHeroBuilder
       _$this._from ??= new ListBuilder<_i2.GEpisode>();
   set from(ListBuilder<_i2.GEpisode> from) => _$this._from = from;
 
-  GAliasedHeroData_empireHeroBuilder();
+  GAliasedHeroData_empireHeroBuilder() {
+    GAliasedHeroData_empireHero._initializeBuilder(this);
+  }
 
   GAliasedHeroData_empireHeroBuilder get _$this {
     if (_$v != null) {
@@ -544,7 +546,9 @@ class GAliasedHeroData_jediHeroBuilder
       _$this._from ??= new ListBuilder<_i2.GEpisode>();
   set from(ListBuilder<_i2.GEpisode> from) => _$this._from = from;
 
-  GAliasedHeroData_jediHeroBuilder();
+  GAliasedHeroData_jediHeroBuilder() {
+    GAliasedHeroData_jediHero._initializeBuilder(this);
+  }
 
   GAliasedHeroData_jediHeroBuilder get _$this {
     if (_$v != null) {

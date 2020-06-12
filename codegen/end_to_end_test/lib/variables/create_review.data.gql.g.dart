@@ -306,7 +306,9 @@ class GCreateReviewData_createReviewBuilder
   String get commentary => _$this._commentary;
   set commentary(String commentary) => _$this._commentary = commentary;
 
-  GCreateReviewData_createReviewBuilder();
+  GCreateReviewData_createReviewBuilder() {
+    GCreateReviewData_createReview._initializeBuilder(this);
+  }
 
   GCreateReviewData_createReviewBuilder get _$this {
     if (_$v != null) {

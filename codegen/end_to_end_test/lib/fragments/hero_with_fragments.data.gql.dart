@@ -35,6 +35,8 @@ abstract class GHeroWithFragmentsData_hero
           [Function(GHeroWithFragmentsData_heroBuilder b) updates]) =
       _$GHeroWithFragmentsData_hero;
 
+  static void _initializeBuilder(GHeroWithFragmentsData_heroBuilder b) =>
+      b..G__typename = 'Character';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
@@ -60,6 +62,9 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
       [Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection;
 
+  static void _initializeBuilder(
+          GHeroWithFragmentsData_hero_friendsConnectionBuilder b) =>
+      b..G__typename = 'FriendsConnection';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @nullable
@@ -87,6 +92,9 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
       [Function(GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges;
 
+  static void _initializeBuilder(
+          GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b) =>
+      b..G__typename = 'FriendsEdge';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @nullable
@@ -115,6 +123,9 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
               GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges_node;
 
+  static void _initializeBuilder(
+          GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b) =>
+      b..G__typename = 'Character';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;

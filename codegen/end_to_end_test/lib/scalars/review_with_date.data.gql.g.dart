@@ -363,7 +363,9 @@ class GReviewWithDateData_createReviewBuilder
       _$this._seenOn ??= new ListBuilder<DateTime>();
   set seenOn(ListBuilder<DateTime> seenOn) => _$this._seenOn = seenOn;
 
-  GReviewWithDateData_createReviewBuilder();
+  GReviewWithDateData_createReviewBuilder() {
+    GReviewWithDateData_createReview._initializeBuilder(this);
+  }
 
   GReviewWithDateData_createReviewBuilder get _$this {
     if (_$v != null) {

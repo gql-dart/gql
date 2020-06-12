@@ -281,7 +281,9 @@ class GHumanWithArgsData_humanBuilder
   double get height => _$this._height;
   set height(double height) => _$this._height = height;
 
-  GHumanWithArgsData_humanBuilder();
+  GHumanWithArgsData_humanBuilder() {
+    GHumanWithArgsData_human._initializeBuilder(this);
+  }
 
   GHumanWithArgsData_humanBuilder get _$this {
     if (_$v != null) {

@@ -55,6 +55,8 @@ abstract class GHeroForEpisodeData_hero__base
           [Function(GHeroForEpisodeData_hero__baseBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__base;
 
+  static void _initializeBuilder(GHeroForEpisodeData_hero__baseBuilder b) =>
+      b..G__typename = 'Character';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
@@ -79,6 +81,8 @@ abstract class GHeroForEpisodeData_hero__asDroid
           [Function(GHeroForEpisodeData_hero__asDroidBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__asDroid;
 
+  static void _initializeBuilder(GHeroForEpisodeData_hero__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;

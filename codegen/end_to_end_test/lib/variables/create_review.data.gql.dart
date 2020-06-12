@@ -34,6 +34,8 @@ abstract class GCreateReviewData_createReview
           [Function(GCreateReviewData_createReviewBuilder b) updates]) =
       _$GCreateReviewData_createReview;
 
+  static void _initializeBuilder(GCreateReviewData_createReviewBuilder b) =>
+      b..G__typename = 'Review';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @nullable

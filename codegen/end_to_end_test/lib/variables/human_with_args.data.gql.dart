@@ -32,6 +32,8 @@ abstract class GHumanWithArgsData_human
           [Function(GHumanWithArgsData_humanBuilder b) updates]) =
       _$GHumanWithArgsData_human;
 
+  static void _initializeBuilder(GHumanWithArgsData_humanBuilder b) =>
+      b..G__typename = 'Human';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;

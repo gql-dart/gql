@@ -10,12 +10,10 @@ void main() {
           ..hero.G__typename = "Human"
           ..hero.id = "leia"
           ..hero.name = "Leia"
-          ..hero.friendsConnection.G__typename = "FriendsConnection"
           ..hero.friendsConnection.totalCount = 1
           ..hero.friendsConnection.edges.add(
                 GHeroWithFragmentsData_hero_friendsConnection_edges(
                   (b) => b
-                    ..G__typename = "FriendsEdge"
                     ..node.G__typename = "Human"
                     ..node.name = "Luke",
                 ),
@@ -29,12 +27,10 @@ void main() {
           ..hero.G__typename = "Human"
           ..hero.id = "leia"
           ..hero.name = "Leia"
-          ..hero.friendsConnection.G__typename = "FriendsConnection"
           ..hero.friendsConnection.totalCount = 1
           ..hero.friendsConnection.edges.add(
                 GHeroWithFragmentsData_hero_friendsConnection_edges(
                   (b) => b
-                    ..G__typename = "FriendsEdge"
                     ..node.G__typename = "Human"
                     ..node.name = "Luke",
                 ),

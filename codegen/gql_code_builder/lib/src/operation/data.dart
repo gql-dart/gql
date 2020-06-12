@@ -179,6 +179,10 @@ List<Class> _buildSelectionSetDataClasses({
       builtClass(
         name: name,
         getters: fieldGetters,
+        initializers: {
+          if (fieldGetters.any((getter) => getter.name == "G__typename"))
+            "G__typename": literalString(type),
+        },
       ).rebuild(
         (b) => b
           ..implements.addAll(

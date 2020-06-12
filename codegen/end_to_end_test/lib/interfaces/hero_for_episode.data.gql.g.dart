@@ -331,7 +331,9 @@ class GHeroForEpisodeData_hero__baseBuilder
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  GHeroForEpisodeData_hero__baseBuilder();
+  GHeroForEpisodeData_hero__baseBuilder() {
+    GHeroForEpisodeData_hero__base._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__baseBuilder get _$this {
     if (_$v != null) {
@@ -445,7 +447,9 @@ class GHeroForEpisodeData_hero__asDroidBuilder
   set primaryFunction(String primaryFunction) =>
       _$this._primaryFunction = primaryFunction;
 
-  GHeroForEpisodeData_hero__asDroidBuilder();
+  GHeroForEpisodeData_hero__asDroidBuilder() {
+    GHeroForEpisodeData_hero__asDroid._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__asDroidBuilder get _$this {
     if (_$v != null) {
