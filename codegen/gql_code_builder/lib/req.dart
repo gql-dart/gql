@@ -4,12 +4,14 @@ import "package:gql_code_builder/source.dart";
 
 Library buildReqLibrary(
   SourceNode docSource,
+  String partUrl,
 ) =>
     Library(
-      (b) => b.body
-        ..addAll(
+      (b) => b
+        ..directives.add(Directive.part(partUrl))
+        ..body.addAll(
           buildOperationReqClasses(
-            docSource.flatDocument,
+            docSource,
           ),
         ),
     );

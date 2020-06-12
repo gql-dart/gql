@@ -1,5 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql_build/src/config.dart";
+import "package:path/path.dart" as p;
 
 class GqlAllocator implements Allocator {
   static const _doNotImport = [
@@ -59,12 +60,17 @@ class GqlAllocator implements Allocator {
     }
 
     if (uri.path.isEmpty && uri.fragment.isNotEmpty) {
-      final replacedUrl = uri.fragment == "schema"
-          ? schemaUrl
-          : sourceUrl.replaceAll(
-              RegExp(r".graphql$"),
-              ".${uri.fragment}.gql.dart",
-            );
+      String replacedUrl;
+      if (uri.fragment == "schema") {
+        replacedUrl = schemaUrl;
+      } else if (uri.fragment == "serializer") {
+        replacedUrl = "${p.dirname(schemaUrl)}/serializers.gql.dart";
+      } else {
+        replacedUrl = sourceUrl.replaceAll(
+          RegExp(r".graphql$"),
+          ".${uri.fragment}.gql.dart",
+        );
+      }
 
       if (replacedUrl == currentUrl) {
         return symbol;

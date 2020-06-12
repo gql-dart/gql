@@ -6,6 +6,8 @@ import 'package:end_to_end_test/aliases/aliased_hero.data.gql.dart'
         GAliasedHeroData,
         GAliasedHeroData_empireHero,
         GAliasedHeroData_jediHero;
+import 'package:end_to_end_test/aliases/aliased_hero.req.gql.dart'
+    show GAliasedHero;
 import 'package:end_to_end_test/aliases/aliased_hero.var.gql.dart'
     show GAliasedHeroVars;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
@@ -16,6 +18,8 @@ import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart'
         GHeroWithFragmentsData_hero_friendsConnection,
         GHeroWithFragmentsData_hero_friendsConnection_edges,
         GHeroWithFragmentsData_hero_friendsConnection_edges_node;
+import 'package:end_to_end_test/fragments/hero_with_fragments.req.gql.dart'
+    show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars;
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart'
@@ -26,18 +30,26 @@ import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
         GHeroForEpisodeData_hero,
         GHeroForEpisodeData_hero__base,
         GHeroForEpisodeData_hero__asDroid;
+import 'package:end_to_end_test/interfaces/hero_for_episode.req.gql.dart'
+    show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
     show GHeroForEpisodeVars;
 import 'package:end_to_end_test/scalars/review_with_date.data.gql.dart'
     show GReviewWithDateData, GReviewWithDateData_createReview;
+import 'package:end_to_end_test/scalars/review_with_date.req.gql.dart'
+    show GReviewWithDate;
 import 'package:end_to_end_test/scalars/review_with_date.var.gql.dart'
     show GReviewWithDateVars;
 import 'package:end_to_end_test/variables/create_review.data.gql.dart'
     show GCreateReviewData, GCreateReviewData_createReview;
+import 'package:end_to_end_test/variables/create_review.req.gql.dart'
+    show GCreateReview;
 import 'package:end_to_end_test/variables/create_review.var.gql.dart'
     show GCreateReviewVars;
 import 'package:end_to_end_test/variables/human_with_args.data.gql.dart'
     show GHumanWithArgsData, GHumanWithArgsData_human;
+import 'package:end_to_end_test/variables/human_with_args.req.gql.dart'
+    show GHumanWithArgs;
 import 'package:end_to_end_test/variables/human_with_args.var.gql.dart'
     show GHumanWithArgsVars;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
@@ -68,6 +80,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeData_hero,
   GHeroForEpisodeData_hero__base,
   GHeroForEpisodeData_hero__asDroid,
+  GHeroWithFragments,
+  GReviewWithDate,
+  GCreateReview,
+  GHumanWithArgs,
+  GAliasedHero,
+  GHeroForEpisode,
   GEpisode,
   GLengthUnit,
   GReviewInput,

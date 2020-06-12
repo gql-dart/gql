@@ -1,7 +1,6 @@
 import "package:meta/meta.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:path/path.dart" as p;
 
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/src/built_class.dart";
@@ -180,7 +179,6 @@ List<Class> _buildSelectionSetDataClasses({
       builtClass(
         name: name,
         getters: fieldGetters,
-        serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
       ).rebuild(
         (b) => b
           ..implements.addAll(
@@ -272,8 +270,6 @@ List<Class> _buildInlineFragmentClasses({
                 _inlineFragmentRootSerializationMethods(
                   name: builtClassName(name),
                   inlineFragments: inlineFragments,
-                  serializersUrl:
-                      "${p.dirname(schemaSource.url)}/serializers.gql.dart",
                 ),
               );
           }
@@ -324,7 +320,6 @@ List<Class> _buildInlineFragmentClasses({
 List<Method> _inlineFragmentRootSerializationMethods({
   String name,
   List<InlineFragmentNode> inlineFragments,
-  String serializersUrl,
 }) =>
     [
       Method(
@@ -366,7 +361,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..returns = refer("Map<String, dynamic>")
           ..name = "toJson"
           ..lambda = true
-          ..body = refer("serializers", serializersUrl)
+          ..body = refer("serializers", "#serializer")
               .property("serializeWith")
               .call([
             refer(name).property("serializer"),
@@ -382,7 +377,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
             ..type = refer("Map<String, dynamic>")
             ..name = "json"))
           ..lambda = true
-          ..body = refer("serializers", serializersUrl)
+          ..body = refer("serializers", "#serializer")
               .property("deserializeWith")
               .call([refer(name).property("serializer"), refer("json")]).code,
       ),

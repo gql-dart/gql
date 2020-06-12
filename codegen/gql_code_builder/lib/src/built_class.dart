@@ -8,8 +8,8 @@ import "./common.dart";
 /// Generates a class that implements [Built], along with its serializers
 Class builtClass({
   @required String name,
-  @required String serializersUrl,
   Iterable<Method> getters,
+  Map<String, Expression> initializers,
 }) {
   final className = builtClassName(name);
   return Class(
@@ -47,6 +47,25 @@ Class builtClass({
         ],
       )
       ..methods = ListBuilder(<Method>[
+        if (initializers != null && initializers.isNotEmpty)
+          Method(
+            (b) => b
+              ..static = true
+              ..returns = refer("void")
+              ..name = "_initializeBuilder"
+              ..requiredParameters.add(
+                Parameter(
+                  (b) => b
+                    ..type = refer("${className}Builder")
+                    ..name = "b",
+                ),
+              )
+              ..lambda = true
+              ..body = _applyInitializers(
+                refer("b"),
+                initializers,
+              ).code,
+          ),
         ...getters,
         // Serlialization methods
         Method(
@@ -70,7 +89,7 @@ Class builtClass({
             ..returns = refer("Map<String, dynamic>")
             ..name = "toJson"
             ..lambda = true
-            ..body = refer("serializers", serializersUrl)
+            ..body = refer("serializers", "#serializer")
                 .property("serializeWith")
                 .call([
               refer(className).property("serializer"),
@@ -86,7 +105,7 @@ Class builtClass({
               ..type = refer("Map<String, dynamic>")
               ..name = "json"))
             ..lambda = true
-            ..body = refer("serializers", serializersUrl)
+            ..body = refer("serializers", "#serializer")
                 .property("deserializeWith")
                 .call([
               refer(className).property("serializer"),
@@ -96,3 +115,13 @@ Class builtClass({
       ]),
   );
 }
+
+Expression _applyInitializers(
+  Expression builderExpression,
+  Map<String, Expression> initializers,
+) =>
+    initializers.entries.fold(
+      builderExpression,
+      (exp, initializerEntry) =>
+          exp.cascade(initializerEntry.key).assign(initializerEntry.value),
+    );

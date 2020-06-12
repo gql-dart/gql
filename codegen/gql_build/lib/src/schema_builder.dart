@@ -38,6 +38,7 @@ class SchemaBuilder implements Builder {
       library,
       buildStep,
       schemaExtension,
+      buildStep.inputId.uri.toString(),
     );
   }
 }

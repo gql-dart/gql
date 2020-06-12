@@ -1,7 +1,6 @@
 import "package:build/build.dart";
 import "package:gql_build/src/ast_builder.dart";
 import "package:gql_build/src/data_builder.dart";
-import "package:gql_build/src/op_builder.dart";
 import "package:gql_build/src/req_builder.dart";
 import "package:gql_build/src/schema_builder.dart";
 import "package:gql_build/src/var_builder.dart";
@@ -26,17 +25,15 @@ Builder dataBuilder(
       typeOverrideMap(options?.config["type_overrides"]),
     );
 
-/// Builds operation containing AST and operation name
-Builder opBuilder(
-  BuilderOptions options,
-) =>
-    OpBuilder();
-
 /// Builds GraphQL type-safe request builder
 Builder reqBuilder(
   BuilderOptions options,
 ) =>
-    ReqBuilder();
+    ReqBuilder(
+      AssetId.parse(
+        options.config["schema"] as String,
+      ),
+    );
 
 /// Builds GraphQL type-safe variables builder
 Builder varBuilder(

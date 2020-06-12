@@ -1,6 +1,5 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:path/path.dart" as p;
 
 import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/src/common.dart";
@@ -36,5 +35,4 @@ Class buildInputClass(
           typeOverrides: typeOverrides,
         ),
       ),
-      serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",
     );

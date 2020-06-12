@@ -3,6 +3,10 @@ targets:
     builders:
       gql_build|ast_builder:
         enabled: true
+      gql_build|req_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
       gql_build|serializer_builder:
         enabled: true
         options:
@@ -10,8 +14,6 @@ targets:
           custom_serializers:
             - import: 'package:end_to_end_test/date_serializer.dart'
               name: DateSerializer
-            - import: 'package:gql_code_builder/src/serializers/operation_serializer.dart'
-              name: OperationSerializer
       gql_build|schema_builder:
         enabled: true
         options:
