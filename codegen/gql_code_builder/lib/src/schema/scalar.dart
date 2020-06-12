@@ -3,52 +3,61 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
 
-List<Class> buildScalarClasses(
-  DocumentNode doc,
-  Map<String, Reference> typeOverrides,
-) =>
-    doc.definitions
-        .whereType<ScalarTypeDefinitionNode>()
-        .map(
-          (def) => buildScalarClass(
-            def,
-            typeOverrides,
-          ),
-        )
-        .toList();
-
 Class buildScalarClass(
   ScalarTypeDefinitionNode node,
-  Map<String, Reference> typeOverrides,
 ) =>
     Class(
       (b) => b
-        ..name = identifier(node.name.value)
-        ..constructors = _buildConstructors(identifier(node.name.value))
-        ..fields = _buildFields(
-          identifier(node.name.value),
+        ..abstract = true
+        ..name = builtClassName(node.name.value)
+        ..implements.add(
+          TypeReference(
+            (b) => b
+              ..url = "package:built_value/built_value.dart"
+              ..symbol = "Built"
+              ..types = ListBuilder(
+                <Reference>[
+                  refer(builtClassName(node.name.value)),
+                  refer("${builtClassName(node.name.value)}Builder"),
+                ],
+              ),
+          ),
         )
-        ..methods = _buildMethods(identifier(node.name.value)),
+        ..constructors = _buildConstructors(builtClassName(node.name.value))
+        ..methods = _buildMethods(builtClassName(node.name.value)),
     );
 
 ListBuilder<Constructor> _buildConstructors(
   String scalarName,
 ) =>
-    ListBuilder<Constructor>(
+    ListBuilder(
       <Constructor>[
+        Constructor((b) => b..name = "_"),
         Constructor(
           (b) => b
-            ..constant = true
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..name = "value"
-                    ..toThis = true,
-                )
-              ],
-            ),
-        )
+            ..factory = true
+            ..optionalParameters.add(
+              Parameter(
+                (b) => b
+                  ..name = "value"
+                  ..type = refer("String"),
+              ),
+            )
+            ..body = refer("_\$${scalarName}").call([
+              Method(
+                (b) => b
+                  ..lambda = true
+                  ..requiredParameters.add(Parameter((b) => b..name = "b"))
+                  ..body = refer("value")
+                      .notEqualTo(refer("null"))
+                      .conditional(
+                        CodeExpression(Code("(b..value = value)")),
+                        refer("b"),
+                      )
+                      .code,
+              ).closure
+            ]).code,
+        ),
       ],
     );
 
@@ -59,56 +68,46 @@ ListBuilder<Method> _buildMethods(
       <Method>[
         Method(
           (b) => b
-            ..annotations = ListBuilder<Expression>(
-              <Expression>[
-                refer("override"),
-              ],
-            )
-            ..returns = refer("int")
-            ..name = "hashCode"
-            ..lambda = true
+            ..returns = refer("String")
             ..type = MethodType.getter
-            ..body = refer("value").property("hashCode").code,
+            ..name = "value",
         ),
         Method(
           (b) => b
-            ..annotations = ListBuilder<Expression>(
-              <Expression>[
-                refer("override"),
-              ],
+            ..annotations.add(refer(
+              "BuiltValueSerializer",
+              "package:built_value/built_value.dart",
+            ).call([], {"custom": literalBool(true)}))
+            ..static = true
+            ..returns = TypeReference(
+              (b) => b
+                ..url = "package:built_value/serializer.dart"
+                ..symbol = "Serializer"
+                ..types.add(
+                  refer(scalarName),
+                ),
             )
-            ..returns = refer("bool")
-            ..name = "operator =="
+            ..type = MethodType.getter
+            ..name = "serializer"
             ..lambda = true
-            ..requiredParameters = ListBuilder<Parameter>(
-              <Parameter>[
-                Parameter(
-                  (b) => b
-                    ..type = refer("Object")
-                    ..name = "o",
-                )
-              ],
-            )
-            ..body = refer("o")
-                .isA(refer(scalarName))
-                .and(refer("o").property("value").equalTo(refer("value")))
-                .code,
-        )
+            ..body = TypeReference((b) => b
+              ..symbol = "DefaultScalarSerializer"
+              ..url =
+                  "package:gql_code_builder/src/serializers/default_scalar_serializer.dart"
+              ..types.add(refer(scalarName))).call([
+              Method(
+                (b) => b
+                  ..requiredParameters.add(
+                    Parameter(
+                      (b) => b
+                        ..type = refer("Object")
+                        ..name = "serialized",
+                    ),
+                  )
+                  ..lambda = true
+                  ..body = refer(scalarName).call([refer("serialized")]).code,
+              ).closure
+            ]).code,
+        ),
       ],
-    );
-
-ListBuilder<Field> _buildFields(
-  String scalarName,
-) =>
-    ListBuilder<Field>(
-      <Field>[
-        _buildValueField(),
-      ],
-    );
-
-Field _buildValueField() => Field(
-      (b) => b
-        ..modifier = FieldModifier.final$
-        ..type = refer("String")
-        ..name = "value",
     );

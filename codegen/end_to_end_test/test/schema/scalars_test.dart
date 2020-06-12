@@ -1,10 +1,23 @@
 import "package:test/test.dart";
 
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart';
+import 'package:end_to_end_test/graphql/serializers.gql.dart';
 import 'package:end_to_end_test/scalars/review_with_date.data.gql.dart';
 import 'package:end_to_end_test/scalars/review_with_date.var.gql.dart';
 
 void main() {
+  group("Custom scalars without user overrides", () {
+    final isoString = "2020-06-12T13:23:59Z";
+    final scalar = GISODate(isoString);
+
+    test('correctly serializes and deserializes', () {
+      expect(serializers.deserializeWith(GISODate.serializer, isoString),
+          equals(scalar));
+      expect(serializers.serializeWith(GISODate.serializer, scalar),
+          equals(isoString));
+    });
+  });
+
   group("Custom scalars in input types", () {
     final input = GReviewInput(
       (b) => b
@@ -40,7 +53,6 @@ void main() {
       final json = {
         "review": {
           "stars": 4,
-          "seenOn": [],
         },
         "createdAt": 1591892597000,
       };

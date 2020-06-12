@@ -538,8 +538,8 @@ const ReviewInput = _i1.InputObjectTypeDefinitionNode(
           directives: [],
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
-                  name: _i1.NameNode(value: 'Date'), isNonNull: true),
-              isNonNull: true),
+                  name: _i1.NameNode(value: 'Date'), isNonNull: false),
+              isNonNull: false),
           defaultValue: null)
     ]);
 const ColorInput = _i1.InputObjectTypeDefinitionNode(

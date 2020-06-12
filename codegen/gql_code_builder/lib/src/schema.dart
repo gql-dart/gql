@@ -62,10 +62,9 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   Spec visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
-      buildScalarClass(
-        node,
-        typeOverrides,
-      );
+      typeOverrides.containsKey(node.name.value)
+          ? null
+          : buildScalarClass(node);
 
   @override
   Spec visitEnumTypeDefinitionNode(

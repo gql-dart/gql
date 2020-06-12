@@ -4,6 +4,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test/graphql/serializers.gql.dart' as _i1;
+import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
+    as _i2;
 
 part 'schema.schema.gql.g.dart';
 
@@ -45,6 +47,7 @@ abstract class GReviewInput
   String get commentary;
   @nullable
   GColorInput get favorite_color;
+  @nullable
   BuiltList<DateTime> get seenOn;
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
   Map<String, dynamic> toJson() =>
@@ -68,24 +71,15 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
       _i1.serializers.deserializeWith(GColorInput.serializer, json);
 }
 
-class Date {
-  const Date(this.value);
+abstract class GISODate implements Built<GISODate, GISODateBuilder> {
+  GISODate._();
 
-  final String value;
+  factory GISODate([String value]) =>
+      _$GISODate((b) => value != null ? (b..value = value) : b);
 
-  @override
-  int get hashCode => value.hashCode;
-  @override
-  bool operator ==(Object o) => o is Date && o.value == value;
-}
-
-class ISODate {
-  const ISODate(this.value);
-
-  final String value;
-
-  @override
-  int get hashCode => value.hashCode;
-  @override
-  bool operator ==(Object o) => o is ISODate && o.value == value;
+  String get value;
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GISODate> get serializer =>
+      _i2.DefaultScalarSerializer<GISODate>(
+          (Object serialized) => GISODate(serialized));
 }

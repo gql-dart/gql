@@ -102,10 +102,6 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
     final result = <Object>[
       'stars',
       serializers.serialize(object.stars, specifiedType: const FullType(int)),
-      'seenOn',
-      serializers.serialize(object.seenOn,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(DateTime)])),
     ];
     if (object.commentary != null) {
       result
@@ -118,6 +114,13 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
         ..add('favorite_color')
         ..add(serializers.serialize(object.favorite_color,
             specifiedType: const FullType(GColorInput)));
+    }
+    if (object.seenOn != null) {
+      result
+        ..add('seenOn')
+        ..add(serializers.serialize(object.seenOn,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(DateTime)])));
     }
     return result;
   }
@@ -228,9 +231,6 @@ class _$GReviewInput extends GReviewInput {
     if (stars == null) {
       throw new BuiltValueNullFieldError('GReviewInput', 'stars');
     }
-    if (seenOn == null) {
-      throw new BuiltValueNullFieldError('GReviewInput', 'seenOn');
-    }
   }
 
   @override
@@ -327,14 +327,14 @@ class GReviewInputBuilder
               stars: stars,
               commentary: commentary,
               favorite_color: _favorite_color?.build(),
-              seenOn: seenOn.build());
+              seenOn: _seenOn?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'favorite_color';
         _favorite_color?.build();
         _$failedField = 'seenOn';
-        seenOn.build();
+        _seenOn?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GReviewInput', _$failedField, e.toString());
@@ -444,6 +444,82 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
   _$GColorInput build() {
     final _$result =
         _$v ?? new _$GColorInput._(red: red, green: green, blue: blue);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GISODate extends GISODate {
+  @override
+  final String value;
+
+  factory _$GISODate([void Function(GISODateBuilder) updates]) =>
+      (new GISODateBuilder()..update(updates)).build();
+
+  _$GISODate._({this.value}) : super._() {
+    if (value == null) {
+      throw new BuiltValueNullFieldError('GISODate', 'value');
+    }
+  }
+
+  @override
+  GISODate rebuild(void Function(GISODateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GISODateBuilder toBuilder() => new GISODateBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GISODate && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, value.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GISODate')..add('value', value))
+        .toString();
+  }
+}
+
+class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
+  _$GISODate _$v;
+
+  String _value;
+  String get value => _$this._value;
+  set value(String value) => _$this._value = value;
+
+  GISODateBuilder();
+
+  GISODateBuilder get _$this {
+    if (_$v != null) {
+      _value = _$v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GISODate other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GISODate;
+  }
+
+  @override
+  void update(void Function(GISODateBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GISODate build() {
+    final _$result = _$v ?? new _$GISODate._(value: value);
     replace(_$result);
     return _$result;
   }

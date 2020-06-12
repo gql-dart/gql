@@ -149,7 +149,7 @@ input ReviewInput {
   # Favorite color, optional
   favorite_color: ColorInput
   # Date viewed
-  seenOn: [Date!]!
+  seenOn: [Date]
 }
 
 # The input object sent when passing in a color
