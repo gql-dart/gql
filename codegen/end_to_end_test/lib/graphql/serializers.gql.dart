@@ -34,6 +34,12 @@ import 'package:end_to_end_test/interfaces/hero_for_episode.req.gql.dart'
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
     show GHeroForEpisodeVars;
+import 'package:end_to_end_test/no_vars/hero_no_vars.data.gql.dart'
+    show GHeroNoVarsData, GHeroNoVarsData_hero;
+import 'package:end_to_end_test/no_vars/hero_no_vars.req.gql.dart'
+    show GHeroNoVars;
+import 'package:end_to_end_test/no_vars/hero_no_vars.var.gql.dart'
+    show GHeroNoVarsVars;
 import 'package:end_to_end_test/scalars/review_with_date.data.gql.dart'
     show GReviewWithDateData, GReviewWithDateData_createReview;
 import 'package:end_to_end_test/scalars/review_with_date.req.gql.dart'
@@ -96,6 +102,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateReviewVars,
   GHumanWithArgsVars,
   GAliasedHeroVars,
-  GHeroForEpisodeVars
+  GHeroForEpisodeVars,
+  GHeroNoVarsData,
+  GHeroNoVarsData_hero,
+  GHeroNoVars,
+  GHeroNoVarsVars
 ])
 final Serializers serializers = _serializersBuilder.build();
