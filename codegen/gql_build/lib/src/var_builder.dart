@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:build/build.dart";
+import "package:code_builder/code_builder.dart";
 import "package:path/path.dart";
 
 import "package:gql_build/src/config.dart";
@@ -11,9 +12,11 @@ import "package:gql_code_builder/var.dart";
 
 class VarBuilder implements Builder {
   final AssetId schemaId;
+  final Map<String, Reference> typeOverrides;
 
   VarBuilder(
     this.schemaId,
+    this.typeOverrides,
   );
 
   @override
@@ -35,6 +38,7 @@ class VarBuilder implements Builder {
       doc,
       addTypenames(schema),
       basename(generatedPartUrl),
+      typeOverrides,
     );
 
     return writeDocument(

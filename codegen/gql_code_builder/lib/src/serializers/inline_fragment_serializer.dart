@@ -39,7 +39,6 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
       return serializer.deserialize(serializers, serialized,
           specifiedType: specifiedType) as T;
     } catch (e) {
-      // TODO: handle exception
       rethrow;
     }
   }
@@ -58,7 +57,6 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
       return serializer.serialize(serializers, object,
           specifiedType: specifiedType);
     } catch (e) {
-      // TODO: handle exception
       rethrow;
     }
   }

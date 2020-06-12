@@ -32,6 +32,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHumanWithArgsVars.serializer)
       ..add(GLengthUnit.serializer)
       ..add(GReviewInput.serializer)
+      ..add(GReviewWithDateData.serializer)
+      ..add(GReviewWithDateData_createReview.serializer)
+      ..add(GReviewWithDateVars.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(DateTime)]),
+          () => new ListBuilder<DateTime>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(DateTime)]),
+          () => new ListBuilder<DateTime>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GEpisode)]),
           () => new ListBuilder<GEpisode>())

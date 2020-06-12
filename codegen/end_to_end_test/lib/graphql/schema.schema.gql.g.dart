@@ -102,6 +102,10 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
     final result = <Object>[
       'stars',
       serializers.serialize(object.stars, specifiedType: const FullType(int)),
+      'seenOn',
+      serializers.serialize(object.seenOn,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(DateTime)])),
     ];
     if (object.commentary != null) {
       result
@@ -140,6 +144,12 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
         case 'favorite_color':
           result.favorite_color.replace(serializers.deserialize(value,
               specifiedType: const FullType(GColorInput)) as GColorInput);
+          break;
+        case 'seenOn':
+          result.seenOn.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(DateTime)]))
+              as BuiltList<Object>);
           break;
       }
     }
@@ -206,14 +216,20 @@ class _$GReviewInput extends GReviewInput {
   final String commentary;
   @override
   final GColorInput favorite_color;
+  @override
+  final BuiltList<DateTime> seenOn;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder) updates]) =>
       (new GReviewInputBuilder()..update(updates)).build();
 
-  _$GReviewInput._({this.stars, this.commentary, this.favorite_color})
+  _$GReviewInput._(
+      {this.stars, this.commentary, this.favorite_color, this.seenOn})
       : super._() {
     if (stars == null) {
       throw new BuiltValueNullFieldError('GReviewInput', 'stars');
+    }
+    if (seenOn == null) {
+      throw new BuiltValueNullFieldError('GReviewInput', 'seenOn');
     }
   }
 
@@ -230,13 +246,16 @@ class _$GReviewInput extends GReviewInput {
     return other is GReviewInput &&
         stars == other.stars &&
         commentary == other.commentary &&
-        favorite_color == other.favorite_color;
+        favorite_color == other.favorite_color &&
+        seenOn == other.seenOn;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, stars.hashCode), commentary.hashCode),
-        favorite_color.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, stars.hashCode), commentary.hashCode),
+            favorite_color.hashCode),
+        seenOn.hashCode));
   }
 
   @override
@@ -244,7 +263,8 @@ class _$GReviewInput extends GReviewInput {
     return (newBuiltValueToStringHelper('GReviewInput')
           ..add('stars', stars)
           ..add('commentary', commentary)
-          ..add('favorite_color', favorite_color))
+          ..add('favorite_color', favorite_color)
+          ..add('seenOn', seenOn))
         .toString();
   }
 }
@@ -267,6 +287,11 @@ class GReviewInputBuilder
   set favorite_color(GColorInputBuilder favorite_color) =>
       _$this._favorite_color = favorite_color;
 
+  ListBuilder<DateTime> _seenOn;
+  ListBuilder<DateTime> get seenOn =>
+      _$this._seenOn ??= new ListBuilder<DateTime>();
+  set seenOn(ListBuilder<DateTime> seenOn) => _$this._seenOn = seenOn;
+
   GReviewInputBuilder();
 
   GReviewInputBuilder get _$this {
@@ -274,6 +299,7 @@ class GReviewInputBuilder
       _stars = _$v.stars;
       _commentary = _$v.commentary;
       _favorite_color = _$v.favorite_color?.toBuilder();
+      _seenOn = _$v.seenOn?.toBuilder();
       _$v = null;
     }
     return this;
@@ -300,12 +326,15 @@ class GReviewInputBuilder
           new _$GReviewInput._(
               stars: stars,
               commentary: commentary,
-              favorite_color: _favorite_color?.build());
+              favorite_color: _favorite_color?.build(),
+              seenOn: seenOn.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'favorite_color';
         _favorite_color?.build();
+        _$failedField = 'seenOn';
+        seenOn.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GReviewInput', _$failedField, e.toString());

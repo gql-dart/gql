@@ -8,6 +8,7 @@ import "package:gql_code_builder/source.dart";
 
 List<Class> buildInputClasses(
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) =>
     schemaSource.document.definitions
         .whereType<InputObjectTypeDefinitionNode>()
@@ -15,6 +16,7 @@ List<Class> buildInputClasses(
           (InputObjectTypeDefinitionNode node) => buildInputClass(
             node,
             schemaSource,
+            typeOverrides,
           ),
         )
         .toList();
@@ -22,6 +24,7 @@ List<Class> buildInputClasses(
 Class buildInputClass(
   InputObjectTypeDefinitionNode node,
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) =>
     builtClass(
       name: node.name.value,
@@ -30,6 +33,7 @@ Class buildInputClass(
           nameNode: node.name,
           typeNode: node.type,
           schemaSource: schemaSource,
+          typeOverrides: typeOverrides,
         ),
       ),
       serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",

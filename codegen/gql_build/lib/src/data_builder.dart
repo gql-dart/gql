@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:build/build.dart";
+import "package:code_builder/code_builder.dart";
 import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/add_introspection.dart" as introspection;
 import "package:gql_build/src/utils/reader.dart";
@@ -11,10 +12,12 @@ import "package:path/path.dart";
 class DataBuilder implements Builder {
   final AssetId schemaId;
   final bool addTypenames;
+  final Map<String, Reference> typeOverrides;
 
   DataBuilder(
     this.schemaId,
     this.addTypenames,
+    this.typeOverrides,
   );
 
   @override
@@ -36,6 +39,7 @@ class DataBuilder implements Builder {
       addTypenames ? introspection.addTypenames(doc) : doc,
       introspection.addTypenames(schema),
       basename(generatedPartUrl),
+      typeOverrides,
     );
 
     return writeDocument(

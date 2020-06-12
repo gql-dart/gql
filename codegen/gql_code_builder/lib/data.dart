@@ -9,6 +9,7 @@ Library buildDataLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
   String partUrl,
+  Map<String, Reference> typeOverrides,
 ) {
   final operationDataClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
@@ -17,6 +18,7 @@ Library buildDataLibrary(
           op,
           docSource,
           schemaSource,
+          typeOverrides,
         ),
       )
       .toList();
@@ -28,6 +30,7 @@ Library buildDataLibrary(
           frag,
           docSource,
           schemaSource,
+          typeOverrides,
         ),
       )
       .toList();

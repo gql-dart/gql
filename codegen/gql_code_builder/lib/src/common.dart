@@ -5,7 +5,7 @@ import "package:meta/meta.dart";
 
 import "../source.dart";
 
-const reserved = <String>[
+const _reserved = <String>[
   "else",
   "assert",
   "enum",
@@ -50,7 +50,7 @@ String builtClassName(String name) => "G" + name;
 
 String identifier(String raw) => _escapePrivate(_escapeReserved(raw));
 
-String _escapeReserved(String raw) => reserved.contains(raw) ? "$raw\$" : raw;
+String _escapeReserved(String raw) => _reserved.contains(raw) ? "$raw\$" : raw;
 
 String _escapePrivate(String raw) => raw.startsWith("_") ? "G$raw" : raw;
 
@@ -61,38 +61,23 @@ const defaultTypeMap = <String, Reference>{
   "Boolean": Reference("bool"),
 };
 
-Reference getTypeRef(
-  String type,
-  Map<String, Reference> typeMap,
-) =>
-    typeMap.containsKey(type) ? typeMap[type] : Reference(type);
-
-Reference _listOrNot(
+Reference _typeRef(
   TypeNode type,
   Map<String, Reference> typeMap,
 ) {
   if (type is NamedTypeNode) {
-    return getTypeRef(
-      type.name.value,
-      typeMap,
-    );
+    return typeMap[type.name.value] ?? Reference(type.name.value);
   } else if (type is ListTypeNode) {
     return TypeReference(
       (b) => b
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
-        ..types.add(typeRef(type.type, typeMap)),
+        ..types.add(_typeRef(type.type, typeMap)),
     );
   }
 
   return null;
 }
-
-Reference typeRef(
-  TypeNode type, [
-  Map<String, Reference> typeMap = defaultTypeMap,
-]) =>
-    _listOrNot(type, typeMap);
 
 const defaultRootTypes = {
   OperationType.query: "Query",
@@ -127,6 +112,7 @@ Method buildGetter({
   @required NameNode nameNode,
   @required TypeNode typeNode,
   @required SourceNode schemaSource,
+  Map<String, Reference> typeOverrides = const {},
   String typeRefPrefix,
   bool built = true,
 }) {
@@ -147,9 +133,10 @@ Method buildGetter({
         builtClassName(typeName),
         "${schemaSource.url}#schema",
       ),
+    ...typeOverrides,
   };
 
-  final returnType = typeRef(
+  final returnType = _typeRef(
     typeNode,
     typeMap,
   );

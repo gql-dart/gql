@@ -52,5 +52,5 @@ class OperationSerializer implements StructuredSerializer<Operation> {
   Iterable<Type> get types => [Operation];
 
   @override
-  String get wireName => "GQL_Operation";
+  String get wireName => "Operation";
 }

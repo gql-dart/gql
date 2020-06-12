@@ -1,27 +1,34 @@
 targets:
   $default:
     builders:
-      gql_build|schema_builder:
-        enabled: true
       gql_build|ast_builder:
         enabled: true
-      gql_build|data_builder:
-        enabled: true
-        options:
-          schema: end_to_end_test|lib/graphql/schema.graphql
-      gql_build|var_builder:
-        enabled: true
-        options:
-          schema: end_to_end_test|lib/graphql/schema.graphql
       gql_build|serializer_builder:
         enabled: true
         options:
           schema: end_to_end_test|lib/graphql/schema.graphql
-      # gql_build|req_builder:
-      #   enabled: true
-      #   options:
-      #     schema: end_to_end_test|lib/graphql/schema.graphql
-      # gql_build|op_builder:
-      #   enabled: true
-      #   options:
-      #     schema: end_to_end_test|lib/graphql/schema.graphql
+          custom_serializers:
+            - import: 'package:end_to_end_test/date_serializer.dart'
+              name: DateSerializer
+            - import: 'package:gql_code_builder/src/serializers/operation_serializer.dart'
+              name: OperationSerializer
+      gql_build|schema_builder:
+        enabled: true
+        options:
+          type_overrides:
+            Date:
+              name: DateTime
+      gql_build|data_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+          type_overrides:
+            Date:
+              name: DateTime
+      gql_build|var_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+          type_overrides:
+            Date:
+              name: DateTime

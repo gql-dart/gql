@@ -6,6 +6,7 @@ Library buildVarLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
   String partUrl,
+  Map<String, Reference> typeOverrides,
 ) =>
     Library(
       (b) => b
@@ -14,6 +15,7 @@ Library buildVarLibrary(
           buildOperationVarClasses(
             docSource,
             schemaSource,
+            typeOverrides,
           ),
         ),
     );

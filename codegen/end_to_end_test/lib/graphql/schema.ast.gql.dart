@@ -137,6 +137,12 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
                 directives: [],
                 type: _i1.NamedTypeNode(
                     name: _i1.NameNode(value: 'ReviewInput'), isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'createdAt'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'Date'), isNonNull: false),
                 defaultValue: null)
           ],
           type: _i1.NamedTypeNode(
@@ -321,7 +327,13 @@ const Human = _i1.ObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'Starship'), isNonNull: false),
-              isNonNull: false))
+              isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'birthday'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Date'), isNonNull: true))
     ]);
 const Droid = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'Droid'),
@@ -483,7 +495,21 @@ const Review = _i1.ObjectTypeDefinitionNode(
           directives: [],
           args: [],
           type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'), isNonNull: false))
+              name: _i1.NameNode(value: 'String'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Date'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'seenOn'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Date'), isNonNull: true),
+              isNonNull: true))
     ]);
 const ReviewInput = _i1.InputObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'ReviewInput'),
@@ -506,6 +532,14 @@ const ReviewInput = _i1.InputObjectTypeDefinitionNode(
           directives: [],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'ColorInput'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'seenOn'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Date'), isNonNull: true),
+              isNonNull: true),
           defaultValue: null)
     ]);
 const ColorInput = _i1.InputObjectTypeDefinitionNode(
@@ -581,6 +615,10 @@ const SearchResult = _i1.UnionTypeDefinitionNode(
       _i1.NamedTypeNode(name: _i1.NameNode(value: 'Droid'), isNonNull: false),
       _i1.NamedTypeNode(name: _i1.NameNode(value: 'Starship'), isNonNull: false)
     ]);
+const Date = _i1.ScalarTypeDefinitionNode(
+    name: _i1.NameNode(value: 'Date'), directives: []);
+const ISODate = _i1.ScalarTypeDefinitionNode(
+    name: _i1.NameNode(value: 'ISODate'), directives: []);
 const document = _i1.DocumentNode(definitions: [
   schema,
   Query,
@@ -598,5 +636,7 @@ const document = _i1.DocumentNode(definitions: [
   ReviewInput,
   ColorInput,
   Starship,
-  SearchResult
+  SearchResult,
+  Date,
+  ISODate
 ]);

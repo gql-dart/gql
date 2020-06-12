@@ -8,6 +8,7 @@ import 'package:end_to_end_test/aliases/aliased_hero.data.gql.dart'
         GAliasedHeroData_jediHero;
 import 'package:end_to_end_test/aliases/aliased_hero.var.gql.dart'
     show GAliasedHeroVars;
+import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
 import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
@@ -27,6 +28,10 @@ import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
         GHeroForEpisodeData_hero__asDroid;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
     show GHeroForEpisodeVars;
+import 'package:end_to_end_test/scalars/review_with_date.data.gql.dart'
+    show GReviewWithDateData, GReviewWithDateData_createReview;
+import 'package:end_to_end_test/scalars/review_with_date.var.gql.dart'
+    show GReviewWithDateVars;
 import 'package:end_to_end_test/variables/create_review.data.gql.dart'
     show GCreateReviewData, GCreateReviewData_createReview;
 import 'package:end_to_end_test/variables/create_review.var.gql.dart'
@@ -41,9 +46,21 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
 part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
+  ..add(DateSerializer())
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GHeroWithFragmentsData,
+  GHeroWithFragmentsData_hero,
+  GHeroWithFragmentsData_hero_friendsConnection,
+  GHeroWithFragmentsData_hero_friendsConnection_edges,
+  GHeroWithFragmentsData_hero_friendsConnection_edges_node,
+  GReviewWithDateData,
+  GReviewWithDateData_createReview,
+  GCreateReviewData,
+  GCreateReviewData_createReview,
+  GHumanWithArgsData,
+  GHumanWithArgsData_human,
   GAliasedHeroData,
   GAliasedHeroData_empireHero,
   GAliasedHeroData_jediHero,
@@ -55,19 +72,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GLengthUnit,
   GReviewInput,
   GColorInput,
-  GAliasedHeroVars,
-  GHeroForEpisodeVars,
-  GHeroWithFragmentsData,
-  GHeroWithFragmentsData_hero,
-  GHeroWithFragmentsData_hero_friendsConnection,
-  GHeroWithFragmentsData_hero_friendsConnection_edges,
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node,
   GHeroWithFragmentsVars,
-  GCreateReviewData,
-  GCreateReviewData_createReview,
-  GHumanWithArgsData,
-  GHumanWithArgsData_human,
+  GReviewWithDateVars,
   GCreateReviewVars,
-  GHumanWithArgsVars
+  GHumanWithArgsVars,
+  GAliasedHeroVars,
+  GHeroForEpisodeVars
 ])
 final Serializers serializers = _serializersBuilder.build();

@@ -45,6 +45,7 @@ abstract class GReviewInput
   String get commentary;
   @nullable
   GColorInput get favorite_color;
+  BuiltList<DateTime> get seenOn;
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
   Map<String, dynamic> toJson() =>
       _i1.serializers.serializeWith(GReviewInput.serializer, this);
@@ -65,4 +66,26 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
       _i1.serializers.serializeWith(GColorInput.serializer, this);
   static GColorInput fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GColorInput.serializer, json);
+}
+
+class Date {
+  const Date(this.value);
+
+  final String value;
+
+  @override
+  int get hashCode => value.hashCode;
+  @override
+  bool operator ==(Object o) => o is Date && o.value == value;
+}
+
+class ISODate {
+  const ISODate(this.value);
+
+  final String value;
+
+  @override
+  int get hashCode => value.hashCode;
+  @override
+  bool operator ==(Object o) => o is ISODate && o.value == value;
 }

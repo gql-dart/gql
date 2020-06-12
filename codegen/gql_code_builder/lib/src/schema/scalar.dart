@@ -5,14 +5,21 @@ import "package:gql_code_builder/src/common.dart";
 
 List<Class> buildScalarClasses(
   DocumentNode doc,
+  Map<String, Reference> typeOverrides,
 ) =>
     doc.definitions
         .whereType<ScalarTypeDefinitionNode>()
-        .map(buildScalarClass)
+        .map(
+          (def) => buildScalarClass(
+            def,
+            typeOverrides,
+          ),
+        )
         .toList();
 
 Class buildScalarClass(
   ScalarTypeDefinitionNode node,
+  Map<String, Reference> typeOverrides,
 ) =>
     Class(
       (b) => b

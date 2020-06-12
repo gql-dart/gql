@@ -9,6 +9,7 @@ import "package:gql_code_builder/source.dart";
 List<Class> buildOperationVarClasses(
   SourceNode docSource,
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) =>
     docSource.document.definitions
         .whereType<OperationDefinitionNode>()
@@ -16,6 +17,7 @@ List<Class> buildOperationVarClasses(
           (op) => _buildOperationVarClass(
             op,
             schemaSource,
+            typeOverrides,
           ),
         )
         .toList();
@@ -23,6 +25,7 @@ List<Class> buildOperationVarClasses(
 Class _buildOperationVarClass(
   OperationDefinitionNode node,
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) =>
     builtClass(
       name: "${node.name.value}Vars",
@@ -31,6 +34,7 @@ Class _buildOperationVarClass(
           nameNode: node.variable.name,
           typeNode: node.type,
           schemaSource: schemaSource,
+          typeOverrides: typeOverrides,
         ),
       ),
       serializersUrl: "${p.dirname(schemaSource.url)}/serializers.gql.dart",

@@ -5,8 +5,12 @@ import "package:gql_code_builder/source.dart";
 Library buildSchemaLibrary(
   SourceNode schemaSource,
   String partUrl,
+  Map<String, Reference> typeOverrides,
 ) {
-  final lib = buildSchema(schemaSource) as Library;
+  final lib = buildSchema(
+    schemaSource,
+    typeOverrides,
+  ) as Library;
 
   return lib.rebuild(
     (b) => b

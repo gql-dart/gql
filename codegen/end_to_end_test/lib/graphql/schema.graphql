@@ -19,7 +19,7 @@ type Query {
 
 # The mutation type, represents all updates we can make to our data
 type Mutation {
-  createReview(episode: Episode, review: ReviewInput!): Review
+  createReview(episode: Episode, review: ReviewInput!, createdAt: Date): Review
 }
 
 # The subscription type, represents all subscriptions we can make to our data
@@ -79,6 +79,8 @@ type Human implements Character {
   appearsIn: [Episode]!
   # A list of starships this person has piloted, or an empty list if none
   starships: [Starship]
+  # This person's birth date
+  birthday: Date!
 }
 
 # An autonomous mechanical character in the Star Wars universe
@@ -132,6 +134,10 @@ type Review {
   stars: Int!
   # Comment about the movie
   commentary: String
+  # Date review created
+  createdAt: Date
+  # Date episode seen
+  seenOn: [Date!]!
 }
 
 # The input object sent when someone is creating a new review
@@ -142,6 +148,8 @@ input ReviewInput {
   commentary: String
   # Favorite color, optional
   favorite_color: ColorInput
+  # Date viewed
+  seenOn: [Date!]!
 }
 
 # The input object sent when passing in a color
@@ -162,3 +170,6 @@ type Starship {
 }
 
 union SearchResult = Human | Droid | Starship
+
+scalar Date
+scalar ISODate

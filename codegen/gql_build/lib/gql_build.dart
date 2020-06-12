@@ -6,6 +6,7 @@ import "package:gql_build/src/req_builder.dart";
 import "package:gql_build/src/schema_builder.dart";
 import "package:gql_build/src/var_builder.dart";
 import "package:gql_build/src/serializer_builder.dart";
+import "package:gql_build/src/utils/config.dart";
 
 /// Builds AST of a GraphQL document
 Builder astBuilder(
@@ -21,7 +22,8 @@ Builder dataBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
-      (options.config["addTypenames"] ?? true) as bool,
+      (options.config["add_typenames"] ?? true) as bool,
+      typeOverrideMap(options?.config["type_overrides"]),
     );
 
 /// Builds operation containing AST and operation name
@@ -44,13 +46,16 @@ Builder varBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
+      typeOverrideMap(options?.config["type_overrides"]),
     );
 
 /// Builds GraphQL schema types
 Builder schemaBuilder(
   BuilderOptions options,
 ) =>
-    SchemaBuilder();
+    SchemaBuilder(
+      typeOverrideMap(options?.config["type_overrides"]),
+    );
 
 /// Builds an aggregate Serlializers object for [built_value]s
 ///
@@ -62,4 +67,5 @@ Builder serializerBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
+      customSerializers(options?.config["custom_serializers"]),
     );

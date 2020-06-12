@@ -21,6 +21,7 @@ List<Class> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   return _buildSelectionSetDataClasses(
@@ -34,6 +35,7 @@ List<Class> buildOperationDataClasses(
       schemaSource.document,
       op,
     ),
+    typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
     superclassSelections: {},
   );
@@ -43,6 +45,7 @@ List<Class> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   return _buildSelectionSetDataClasses(
@@ -53,6 +56,7 @@ List<Class> buildFragmentDataClasses(
     ),
     schemaSource: schemaSource,
     type: frag.typeCondition.on.name.value,
+    typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
     superclassSelections: {},
     onFragment: true,
@@ -100,6 +104,7 @@ List<Class> _buildSelectionSetDataClasses({
   @required List<SelectionNode> selections,
   @required SourceNode schemaSource,
   @required String type,
+  @required Map<String, Reference> typeOverrides,
   @required Map<String, _SourceSelections> fragmentMap,
   @required Map<String, _SourceSelections> superclassSelections,
   bool onFragment = false,
@@ -133,6 +138,7 @@ List<Class> _buildSelectionSetDataClasses({
         nameNode: nameNode,
         typeNode: typeNode,
         schemaSource: schemaSource,
+        typeOverrides: typeOverrides,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: !onFragment,
       );
@@ -149,6 +155,7 @@ List<Class> _buildSelectionSetDataClasses({
         selections: selections,
         schemaSource: schemaSource,
         type: type,
+        typeOverrides: typeOverrides,
         fragmentMap: fragmentMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
@@ -206,6 +213,7 @@ List<Class> _buildSelectionSetDataClasses({
                 field.name.value,
               ),
             ).name.value,
+            typeOverrides: typeOverrides,
             superclassSelections: _fragmentSelectionsForField(
               superclassSelections,
               field,
@@ -229,6 +237,7 @@ List<Class> _buildInlineFragmentClasses({
   @required List<SelectionNode> selections,
   @required SourceNode schemaSource,
   @required String type,
+  @required Map<String, Reference> typeOverrides,
   @required Map<String, _SourceSelections> fragmentMap,
   @required Map<String, _SourceSelections> superclassSelections,
   @required List<InlineFragmentNode> inlineFragments,
@@ -283,6 +292,7 @@ List<Class> _buildInlineFragmentClasses({
         fragmentMap: fragmentMap,
         schemaSource: schemaSource,
         type: type,
+        typeOverrides: typeOverrides,
         superclassSelections: {
           name: _SourceSelections(url: null, selections: selections)
         },
@@ -302,6 +312,7 @@ List<Class> _buildInlineFragmentClasses({
           fragmentMap: fragmentMap,
           schemaSource: schemaSource,
           type: inlineFragment.typeCondition.on.name.value,
+          typeOverrides: typeOverrides,
           superclassSelections: {
             name: _SourceSelections(url: null, selections: selections)
           },
