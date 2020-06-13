@@ -72,6 +72,9 @@ class _$GAllPokemonData_pokemonsSerializer
       Serializers serializers, GAllPokemonData_pokemons object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -108,6 +111,10 @@ class _$GAllPokemonData_pokemonsSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -223,6 +230,8 @@ class GAllPokemonDataBuilder
 
 class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
   @override
+  final String G__typename;
+  @override
   final String id;
   @override
   final String name;
@@ -235,8 +244,13 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
           [void Function(GAllPokemonData_pokemonsBuilder) updates]) =>
       (new GAllPokemonData_pokemonsBuilder()..update(updates)).build();
 
-  _$GAllPokemonData_pokemons._({this.id, this.name, this.maxHP, this.image})
+  _$GAllPokemonData_pokemons._(
+      {this.G__typename, this.id, this.name, this.maxHP, this.image})
       : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError(
+          'GAllPokemonData_pokemons', 'G__typename');
+    }
     if (id == null) {
       throw new BuiltValueNullFieldError('GAllPokemonData_pokemons', 'id');
     }
@@ -255,6 +269,7 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GAllPokemonData_pokemons &&
+        G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
         maxHP == other.maxHP &&
@@ -263,13 +278,16 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc($jc(0, id.hashCode), name.hashCode), maxHP.hashCode),
+    return $jf($jc(
+        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+            maxHP.hashCode),
         image.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GAllPokemonData_pokemons')
+          ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
           ..add('maxHP', maxHP)
@@ -282,6 +300,10 @@ class GAllPokemonData_pokemonsBuilder
     implements
         Builder<GAllPokemonData_pokemons, GAllPokemonData_pokemonsBuilder> {
   _$GAllPokemonData_pokemons _$v;
+
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
 
   String _id;
   String get id => _$this._id;
@@ -299,10 +321,13 @@ class GAllPokemonData_pokemonsBuilder
   String get image => _$this._image;
   set image(String image) => _$this._image = image;
 
-  GAllPokemonData_pokemonsBuilder();
+  GAllPokemonData_pokemonsBuilder() {
+    GAllPokemonData_pokemons._initializeBuilder(this);
+  }
 
   GAllPokemonData_pokemonsBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _id = _$v.id;
       _name = _$v.name;
       _maxHP = _$v.maxHP;
@@ -329,7 +354,11 @@ class GAllPokemonData_pokemonsBuilder
   _$GAllPokemonData_pokemons build() {
     final _$result = _$v ??
         new _$GAllPokemonData_pokemons._(
-            id: id, name: name, maxHP: maxHP, image: image);
+            G__typename: G__typename,
+            id: id,
+            name: name,
+            maxHP: maxHP,
+            image: image);
     replace(_$result);
     return _$result;
   }

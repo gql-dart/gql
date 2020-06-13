@@ -76,6 +76,9 @@ class _$GPokemonDetailData_pokemonSerializer
       Serializers serializers, GPokemonDetailData_pokemon object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -124,6 +127,10 @@ class _$GPokemonDetailData_pokemonSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -173,7 +180,11 @@ class _$GPokemonDetailData_pokemon_weightSerializer
   Iterable<Object> serialize(
       Serializers serializers, GPokemonDetailData_pokemon_weight object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.minimum != null) {
       result
         ..add('minimum')
@@ -201,6 +212,10 @@ class _$GPokemonDetailData_pokemon_weightSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -230,7 +245,11 @@ class _$GPokemonDetailData_pokemon_heightSerializer
   Iterable<Object> serialize(
       Serializers serializers, GPokemonDetailData_pokemon_height object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.minimum != null) {
       result
         ..add('minimum')
@@ -258,6 +277,10 @@ class _$GPokemonDetailData_pokemon_heightSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -367,6 +390,8 @@ class GPokemonDetailDataBuilder
 
 class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   @override
+  final String G__typename;
+  @override
   final String id;
   @override
   final String name;
@@ -384,8 +409,18 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
       (new GPokemonDetailData_pokemonBuilder()..update(updates)).build();
 
   _$GPokemonDetailData_pokemon._(
-      {this.id, this.name, this.maxHP, this.image, this.weight, this.height})
+      {this.G__typename,
+      this.id,
+      this.name,
+      this.maxHP,
+      this.image,
+      this.weight,
+      this.height})
       : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError(
+          'GPokemonDetailData_pokemon', 'G__typename');
+    }
     if (id == null) {
       throw new BuiltValueNullFieldError('GPokemonDetailData_pokemon', 'id');
     }
@@ -404,6 +439,7 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPokemonDetailData_pokemon &&
+        G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
         maxHP == other.maxHP &&
@@ -416,7 +452,11 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, id.hashCode), name.hashCode), maxHP.hashCode),
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
+                        name.hashCode),
+                    maxHP.hashCode),
                 image.hashCode),
             weight.hashCode),
         height.hashCode));
@@ -425,6 +465,7 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon')
+          ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
           ..add('maxHP', maxHP)
@@ -439,6 +480,10 @@ class GPokemonDetailData_pokemonBuilder
     implements
         Builder<GPokemonDetailData_pokemon, GPokemonDetailData_pokemonBuilder> {
   _$GPokemonDetailData_pokemon _$v;
+
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
 
   String _id;
   String get id => _$this._id;
@@ -468,10 +513,13 @@ class GPokemonDetailData_pokemonBuilder
   set height(GPokemonDetailData_pokemon_heightBuilder height) =>
       _$this._height = height;
 
-  GPokemonDetailData_pokemonBuilder();
+  GPokemonDetailData_pokemonBuilder() {
+    GPokemonDetailData_pokemon._initializeBuilder(this);
+  }
 
   GPokemonDetailData_pokemonBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _id = _$v.id;
       _name = _$v.name;
       _maxHP = _$v.maxHP;
@@ -502,6 +550,7 @@ class GPokemonDetailData_pokemonBuilder
     try {
       _$result = _$v ??
           new _$GPokemonDetailData_pokemon._(
+              G__typename: G__typename,
               id: id,
               name: name,
               maxHP: maxHP,
@@ -529,6 +578,8 @@ class GPokemonDetailData_pokemonBuilder
 class _$GPokemonDetailData_pokemon_weight
     extends GPokemonDetailData_pokemon_weight {
   @override
+  final String G__typename;
+  @override
   final String minimum;
   @override
   final String maximum;
@@ -537,8 +588,14 @@ class _$GPokemonDetailData_pokemon_weight
           [void Function(GPokemonDetailData_pokemon_weightBuilder) updates]) =>
       (new GPokemonDetailData_pokemon_weightBuilder()..update(updates)).build();
 
-  _$GPokemonDetailData_pokemon_weight._({this.minimum, this.maximum})
-      : super._();
+  _$GPokemonDetailData_pokemon_weight._(
+      {this.G__typename, this.minimum, this.maximum})
+      : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError(
+          'GPokemonDetailData_pokemon_weight', 'G__typename');
+    }
+  }
 
   @override
   GPokemonDetailData_pokemon_weight rebuild(
@@ -553,18 +610,21 @@ class _$GPokemonDetailData_pokemon_weight
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPokemonDetailData_pokemon_weight &&
+        G__typename == other.G__typename &&
         minimum == other.minimum &&
         maximum == other.maximum;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, minimum.hashCode), maximum.hashCode));
+    return $jf($jc(
+        $jc($jc(0, G__typename.hashCode), minimum.hashCode), maximum.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon_weight')
+          ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
         .toString();
@@ -577,6 +637,10 @@ class GPokemonDetailData_pokemon_weightBuilder
             GPokemonDetailData_pokemon_weightBuilder> {
   _$GPokemonDetailData_pokemon_weight _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   String _minimum;
   String get minimum => _$this._minimum;
   set minimum(String minimum) => _$this._minimum = minimum;
@@ -585,10 +649,13 @@ class GPokemonDetailData_pokemon_weightBuilder
   String get maximum => _$this._maximum;
   set maximum(String maximum) => _$this._maximum = maximum;
 
-  GPokemonDetailData_pokemon_weightBuilder();
+  GPokemonDetailData_pokemon_weightBuilder() {
+    GPokemonDetailData_pokemon_weight._initializeBuilder(this);
+  }
 
   GPokemonDetailData_pokemon_weightBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _minimum = _$v.minimum;
       _maximum = _$v.maximum;
       _$v = null;
@@ -613,7 +680,7 @@ class GPokemonDetailData_pokemon_weightBuilder
   _$GPokemonDetailData_pokemon_weight build() {
     final _$result = _$v ??
         new _$GPokemonDetailData_pokemon_weight._(
-            minimum: minimum, maximum: maximum);
+            G__typename: G__typename, minimum: minimum, maximum: maximum);
     replace(_$result);
     return _$result;
   }
@@ -621,6 +688,8 @@ class GPokemonDetailData_pokemon_weightBuilder
 
 class _$GPokemonDetailData_pokemon_height
     extends GPokemonDetailData_pokemon_height {
+  @override
+  final String G__typename;
   @override
   final String minimum;
   @override
@@ -630,8 +699,14 @@ class _$GPokemonDetailData_pokemon_height
           [void Function(GPokemonDetailData_pokemon_heightBuilder) updates]) =>
       (new GPokemonDetailData_pokemon_heightBuilder()..update(updates)).build();
 
-  _$GPokemonDetailData_pokemon_height._({this.minimum, this.maximum})
-      : super._();
+  _$GPokemonDetailData_pokemon_height._(
+      {this.G__typename, this.minimum, this.maximum})
+      : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError(
+          'GPokemonDetailData_pokemon_height', 'G__typename');
+    }
+  }
 
   @override
   GPokemonDetailData_pokemon_height rebuild(
@@ -646,18 +721,21 @@ class _$GPokemonDetailData_pokemon_height
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPokemonDetailData_pokemon_height &&
+        G__typename == other.G__typename &&
         minimum == other.minimum &&
         maximum == other.maximum;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, minimum.hashCode), maximum.hashCode));
+    return $jf($jc(
+        $jc($jc(0, G__typename.hashCode), minimum.hashCode), maximum.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon_height')
+          ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
         .toString();
@@ -670,6 +748,10 @@ class GPokemonDetailData_pokemon_heightBuilder
             GPokemonDetailData_pokemon_heightBuilder> {
   _$GPokemonDetailData_pokemon_height _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   String _minimum;
   String get minimum => _$this._minimum;
   set minimum(String minimum) => _$this._minimum = minimum;
@@ -678,10 +760,13 @@ class GPokemonDetailData_pokemon_heightBuilder
   String get maximum => _$this._maximum;
   set maximum(String maximum) => _$this._maximum = maximum;
 
-  GPokemonDetailData_pokemon_heightBuilder();
+  GPokemonDetailData_pokemon_heightBuilder() {
+    GPokemonDetailData_pokemon_height._initializeBuilder(this);
+  }
 
   GPokemonDetailData_pokemon_heightBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _minimum = _$v.minimum;
       _maximum = _$v.maximum;
       _$v = null;
@@ -706,7 +791,7 @@ class GPokemonDetailData_pokemon_heightBuilder
   _$GPokemonDetailData_pokemon_height build() {
     final _$result = _$v ??
         new _$GPokemonDetailData_pokemon_height._(
-            minimum: minimum, maximum: maximum);
+            G__typename: G__typename, minimum: minimum, maximum: maximum);
     replace(_$result);
     return _$result;
   }

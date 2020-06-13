@@ -4,6 +4,7 @@ import 'package:gql_example_flutter/src/pokemon_card/graphql/nested_fragment.dat
     as _i1;
 
 abstract class GPokemonCard implements _i1.GNestedFragment {
+  String get G__typename;
   String get id;
   String get name;
   int get maxHP;

@@ -1,10 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'dart:convert' as _i1;
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_flutter/graphql/serializers.gql.dart' as _i2;
+import 'package:gql_example_flutter/graphql/serializers.gql.dart' as _i1;
 
 part 'pokemon_detail.var.gql.g.dart';
 
@@ -21,9 +19,8 @@ abstract class GPokemonDetailVars
   String get name;
   static Serializer<GPokemonDetailVars> get serializer =>
       _$gPokemonDetailVarsSerializer;
-  String toJson() => _i1.json.encode(
-      _i2.serializers.serializeWith(GPokemonDetailVars.serializer, this));
-  static GPokemonDetailVars fromJson(String jsonString) =>
-      _i2.serializers.deserializeWith(
-          GPokemonDetailVars.serializer, _i1.json.decode(jsonString));
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GPokemonDetailVars.serializer, this);
+  static GPokemonDetailVars fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GPokemonDetailVars.serializer, json);
 }

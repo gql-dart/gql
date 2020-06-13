@@ -7,9 +7,11 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GAllPokemon.serializer)
       ..add(GAllPokemonData.serializer)
       ..add(GAllPokemonData_pokemons.serializer)
       ..add(GAllPokemonVars.serializer)
+      ..add(GPokemonDetail.serializer)
       ..add(GPokemonDetailData.serializer)
       ..add(GPokemonDetailData_pokemon.serializer)
       ..add(GPokemonDetailData_pokemon_height.serializer)

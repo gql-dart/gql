@@ -5,6 +5,8 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.data.gql.dart'
     show GAllPokemonData, GAllPokemonData_pokemons;
+import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.req.gql.dart'
+    show GAllPokemon;
 import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.var.gql.dart'
     show GAllPokemonVars;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.data.gql.dart'
@@ -13,6 +15,8 @@ import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.da
         GPokemonDetailData_pokemon,
         GPokemonDetailData_pokemon_weight,
         GPokemonDetailData_pokemon_height;
+import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.req.gql.dart'
+    show GPokemonDetail;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.var.gql.dart'
     show GPokemonDetailVars;
 
@@ -28,6 +32,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPokemonDetailData_pokemon_height,
   GAllPokemonData,
   GAllPokemonData_pokemons,
+  GPokemonDetail,
+  GAllPokemon,
   GPokemonDetailVars,
   GAllPokemonVars
 ])
