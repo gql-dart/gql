@@ -39,6 +39,14 @@ const _reserved = <String>[
   "with",
   "do",
   "if",
+  "bool",
+  "int",
+  "double",
+  "String",
+  "Function",
+  "Map",
+  "List",
+  "Set",
 ];
 
 /// Prefixes a string with "G"
