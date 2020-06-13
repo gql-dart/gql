@@ -1,59 +1,126 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'package:gql_example_build/schema.schema.gql.dart' as _i1;
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:gql_example_build/schema.schema.gql.dart' as _i2;
+import 'package:gql_example_build/serializers.gql.dart' as _i1;
 
-class $QueryOperation {
-  const $QueryOperation(this.data);
+part 'query.data.gql.g.dart';
 
-  final Map<String, dynamic> data;
+abstract class GQueryOperationData
+    implements Built<GQueryOperationData, GQueryOperationDataBuilder> {
+  GQueryOperationData._();
 
-  $QueryOperation$field get field => data['field'] == null
-      ? null
-      : $QueryOperation$field((data['field'] as Map<String, dynamic>));
+  factory GQueryOperationData(
+      [Function(GQueryOperationDataBuilder b) updates]) = _$GQueryOperationData;
+
+  @nullable
+  GQueryOperationData_field get field;
+  static Serializer<GQueryOperationData> get serializer =>
+      _$gQueryOperationDataSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GQueryOperationData.serializer, this);
+  static GQueryOperationData fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GQueryOperationData.serializer, json);
 }
 
-class $QueryOperation$field {
-  const $QueryOperation$field(this.data);
+abstract class GQueryOperationData_field
+    implements
+        Built<GQueryOperationData_field, GQueryOperationData_fieldBuilder> {
+  GQueryOperationData_field._();
 
-  final Map<String, dynamic> data;
+  factory GQueryOperationData_field(
+          [Function(GQueryOperationData_fieldBuilder b) updates]) =
+      _$GQueryOperationData_field;
 
-  String get id => (data['id'] as String);
-  bool get bool => (data['bool'] as bool);
-  int get int => (data['int'] as int);
-  double get float => data['float']?.toDouble();
-  String get string => (data['string'] as String);
-  _i1.Scalar get scalar => _i1.Scalar((data['scalar'] as String));
-  _i1.Enum get enum$ => _i1.Enum((data['enum'] as String));
-  $QueryOperation$field$field get field => data['field'] == null
-      ? null
-      : $QueryOperation$field$field((data['field'] as Map<String, dynamic>));
-  String get idRequired => (data['idRequired'] as String);
-  bool get boolRequired => (data['boolRequired'] as bool);
-  int get intRequired => (data['intRequired'] as int);
-  double get floatRequired => data['floatRequired']?.toDouble();
-  String get stringRequired => (data['stringRequired'] as String);
-  _i1.Scalar get scalarRequired =>
-      _i1.Scalar((data['scalarRequired'] as String));
-  _i1.Enum get enumRequired => _i1.Enum((data['enumRequired'] as String));
-  $QueryOperation$field$fieldRequired get fieldRequired =>
-      data['fieldRequired'] == null
-          ? null
-          : $QueryOperation$field$fieldRequired(
-              (data['fieldRequired'] as Map<String, dynamic>));
+  static void _initializeBuilder(GQueryOperationData_fieldBuilder b) =>
+      b..G__typename = 'Field';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  String get id;
+  @nullable
+  @BuiltValueField(wireName: 'bool')
+  bool get bool$;
+  @nullable
+  @BuiltValueField(wireName: 'int')
+  int get int$;
+  @nullable
+  double get float;
+  @nullable
+  String get string;
+  @nullable
+  _i2.GScalar get scalar;
+  @nullable
+  @BuiltValueField(wireName: 'enum')
+  _i2.GEnum get enum$;
+  @nullable
+  GQueryOperationData_field_field get field;
+  String get idRequired;
+  bool get boolRequired;
+  int get intRequired;
+  double get floatRequired;
+  String get stringRequired;
+  _i2.GScalar get scalarRequired;
+  _i2.GEnum get enumRequired;
+  GQueryOperationData_field_fieldRequired get fieldRequired;
+  static Serializer<GQueryOperationData_field> get serializer =>
+      _$gQueryOperationDataFieldSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GQueryOperationData_field.serializer, this);
+  static GQueryOperationData_field fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GQueryOperationData_field.serializer, json);
 }
 
-class $QueryOperation$field$field {
-  const $QueryOperation$field$field(this.data);
+abstract class GQueryOperationData_field_field
+    implements
+        Built<GQueryOperationData_field_field,
+            GQueryOperationData_field_fieldBuilder> {
+  GQueryOperationData_field_field._();
 
-  final Map<String, dynamic> data;
+  factory GQueryOperationData_field_field(
+          [Function(GQueryOperationData_field_fieldBuilder b) updates]) =
+      _$GQueryOperationData_field_field;
 
-  String get id => (data['id'] as String);
+  static void _initializeBuilder(GQueryOperationData_field_fieldBuilder b) =>
+      b..G__typename = 'Field';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  String get id;
+  static Serializer<GQueryOperationData_field_field> get serializer =>
+      _$gQueryOperationDataFieldFieldSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers
+      .serializeWith(GQueryOperationData_field_field.serializer, this);
+  static GQueryOperationData_field_field fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GQueryOperationData_field_field.serializer, json);
 }
 
-class $QueryOperation$field$fieldRequired {
-  const $QueryOperation$field$fieldRequired(this.data);
+abstract class GQueryOperationData_field_fieldRequired
+    implements
+        Built<GQueryOperationData_field_fieldRequired,
+            GQueryOperationData_field_fieldRequiredBuilder> {
+  GQueryOperationData_field_fieldRequired._();
 
-  final Map<String, dynamic> data;
+  factory GQueryOperationData_field_fieldRequired(
+      [Function(GQueryOperationData_field_fieldRequiredBuilder b)
+          updates]) = _$GQueryOperationData_field_fieldRequired;
 
-  String get id => (data['id'] as String);
+  static void _initializeBuilder(
+          GQueryOperationData_field_fieldRequiredBuilder b) =>
+      b..G__typename = 'Field';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  String get id;
+  static Serializer<GQueryOperationData_field_fieldRequired> get serializer =>
+      _$gQueryOperationDataFieldFieldRequiredSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers
+      .serializeWith(GQueryOperationData_field_fieldRequired.serializer, this);
+  static GQueryOperationData_field_fieldRequired fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+          GQueryOperationData_field_fieldRequired.serializer, json);
 }

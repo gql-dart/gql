@@ -1,16 +1,16 @@
 import "package:gql_example_build/fragments/shape.data.gql.dart";
 import "package:test/test.dart";
 
-String getShapeInfo($Shape data) {
+String getShapeInfo(GShapeData data) {
   final shape = data.shape;
-  final type = shape.$__typename;
+  final type = shape.G__typename;
   final area = shape.area;
 
-  if (shape is $Shape$shape$asSquare) {
+  if (shape is GShapeData_shape__asSquare) {
     return "$type(area: $area, sideLength: ${shape.sideLength})";
   }
 
-  if (shape is $Shape$shape$asRectangle) {
+  if (shape is GShapeData_shape__asRectangle) {
     return "$type(area: $area, sideLengthA: ${shape.sideLengthA}, sideLengthB: ${shape.sideLengthB})";
   }
 }
@@ -27,7 +27,7 @@ void main() {
       };
 
       expect(
-        getShapeInfo($Shape(shapeData)),
+        getShapeInfo(GShapeData.fromJson(shapeData)),
         "Square(area: 4.0, sideLength: 2.0)",
       );
     });
@@ -43,7 +43,7 @@ void main() {
       };
 
       expect(
-        getShapeInfo($Shape(shapeData)),
+        getShapeInfo(GShapeData.fromJson(shapeData)),
         "Rectangle(area: 3.0, sideLengthA: 3.0, sideLengthB: 1.0)",
       );
     });
