@@ -73,6 +73,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsData_hero_friendsConnection,
   GHeroWithFragmentsData_hero_friendsConnection_edges,
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
+  GHeroNoVarsData,
+  GHeroNoVarsData_hero,
   GReviewWithDateData,
   GReviewWithDateData_createReview,
   GCreateReviewData,
@@ -87,6 +89,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeData_hero__base,
   GHeroForEpisodeData_hero__asDroid,
   GHeroWithFragments,
+  GHeroNoVars,
   GReviewWithDate,
   GCreateReview,
   GHumanWithArgs,
@@ -98,14 +101,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GColorInput,
   GISODate,
   GHeroWithFragmentsVars,
+  GHeroNoVarsVars,
   GReviewWithDateVars,
   GCreateReviewVars,
   GHumanWithArgsVars,
   GAliasedHeroVars,
-  GHeroForEpisodeVars,
-  GHeroNoVarsData,
-  GHeroNoVarsData_hero,
-  GHeroNoVars,
-  GHeroNoVarsVars
+  GHeroForEpisodeVars
 ])
 final Serializers serializers = _serializersBuilder.build();
