@@ -14,7 +14,6 @@ dependencies:
   dart_style: ^1.2.9
   built_value: ^7.1.0
   built_value_generator: ^7.1.0
-  source_gen: ^0.9.5
   built_collection: ^4.3.2
   yaml: ^2.2.1
 dev_dependencies: 

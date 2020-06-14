@@ -5,7 +5,6 @@ import "package:path/path.dart" as p;
 import "package:glob/glob.dart";
 import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
-import "package:source_gen/source_gen.dart";
 import "package:gql_code_builder/serializer.dart";
 import "package:analyzer/dart/element/element.dart";
 
@@ -46,8 +45,9 @@ class SerializerBuilder implements Builder {
   FutureOr<void> build(BuildStep buildStep) async {
     final Set<ClassElement> classes = {};
     await for (final input in buildStep.findAssets(_generatedFiles)) {
-      LibraryReader(await buildStep.resolver.libraryFor(input))
-          .classes
+      final lib = await buildStep.resolver.libraryFor(input);
+      lib.units
+          .expand((cu) => cu.types)
           .where(
             (libClass) => libClass.fields.any((field) =>
                 field.isStatic &&
