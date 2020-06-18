@@ -9,10 +9,12 @@ import "package:uuid_enhanced/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
-/// A Universal WebSocket [Link] implementation to support the WebSocket-GraphQL transport.
+/// A Universal WebSocket [Link] implementation to support the
+/// WebSocket-GraphQL transport.
 /// It supports subscriptions, query and mutation operations as well.
 ///
-/// NOTE: the actual socket connection will only get established after a [Request] is handled by this [WebSocketLink].
+/// NOTE: the actual socket connection will only get established after
+/// a [Request] is handled by this [WebSocketLink].
 class WebSocketLink extends Link {
   String _uri;
   WebSocketChannel _channel;
@@ -73,7 +75,7 @@ class WebSocketLink extends Link {
 
       waitForConnectedState.listen(
         (_) {
-          // Filter own messages by id
+          // Filter own messages by `id`.
           final Stream<GraphQLSocketMessage> dataErrorComplete =
               _messageStream.where(
             (GraphQLSocketMessage message) {
@@ -89,7 +91,7 @@ class WebSocketLink extends Link {
             },
           ).takeWhile((_) => !response.isClosed);
 
-          // Close [response] when receiving SubscriptionComplete
+          // Close [response] when receiving `SubscriptionComplete`.
           final Stream<GraphQLSocketMessage> subscriptionComplete =
               dataErrorComplete
                   .where((GraphQLSocketMessage message) =>
@@ -97,26 +99,31 @@ class WebSocketLink extends Link {
                   .take(1);
           subscriptionComplete.listen((_) => response.close());
 
-          // Forward data messages to [response]
+          // Forward data messages to [response].
           dataErrorComplete
               .where(
                   (GraphQLSocketMessage message) => message is SubscriptionData)
               .cast<SubscriptionData>()
               .listen(
-                (SubscriptionData message) => response.add(
-                  parser.parseResponse(
-                    message.toJson(),
-                  ),
-                ),
-              );
+            (SubscriptionData message) {
+              final parsed = parser.parseResponse(message.toJson());
+              if (parsed.data == null && parsed.errors == null) {
+                throw WebSocketLinkParserException(
+                  message: message,
+                  originalException: null,
+                );
+              }
+              response.add(parsed);
+            },
+          );
 
-          // Forward errors messages to [response]
+          // Forward errors messages to [response].
           dataErrorComplete
               .where((GraphQLSocketMessage message) =>
                   message is SubscriptionError)
               .listen(response.addError);
 
-          // Send the request
+          // Send the request.
           _write(
             StartOperation(
               id,
@@ -130,7 +137,7 @@ class WebSocketLink extends Link {
     yield* response.stream;
   }
 
-  /// Connects to the server with the specified headers.
+  /// Connects to the server.
   Future<void> _connect() async {
     _connectionStateController.value = connecting;
     try {
@@ -153,16 +160,30 @@ class WebSocketLink extends Link {
       );
       _write(InitOperation(initialPayload));
     } catch (e) {
-      rethrow;
+      if (e is LinkException) {
+        rethrow;
+      } else {
+        throw WebSocketLinkServerException(
+          originalException: e,
+          parsedResponse: null,
+        );
+      }
     }
   }
 
   void _write(final GraphQLSocketMessage message) {
-    _channel?.sink?.add(
-      json.encode(
-        message,
-      ),
-    );
+    try {
+      _channel?.sink?.add(
+        json.encode(
+          message,
+        ),
+      );
+    } catch (e) {
+      throw WebSocketLinkServerException(
+        originalException: e,
+        parsedResponse: null,
+      );
+    }
   }
 
   static GraphQLSocketMessage _parseSocketMessage(dynamic message) {
