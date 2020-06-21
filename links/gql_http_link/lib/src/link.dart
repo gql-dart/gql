@@ -38,10 +38,8 @@ class HttpLinkResponseContext extends ContextEntry {
   const HttpLinkResponseContext({
     @required this.statusCode,
     @required this.headers,
-  }) : assert(
-          statusCode != null,
-          headers != null,
-        );
+  })  : assert(statusCode != null),
+        assert(headers != null);
 
   @override
   List<Object> get fieldsForEquality => [
