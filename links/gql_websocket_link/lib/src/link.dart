@@ -153,7 +153,7 @@ class WebSocketLink extends Link {
       );
 
       if (initialPayload is Function) {
-        dynamic payload = await initialPayload();
+        final dynamic payload = await initialPayload();
         _write(InitOperation(payload));
       } else {
         _write(InitOperation(initialPayload));
