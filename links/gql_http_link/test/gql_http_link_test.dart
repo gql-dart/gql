@@ -54,6 +54,7 @@ void main() {
               "data": <String, dynamic>{},
             }),
             200,
+            headers: {"header-1": "value-1"},
           ),
         ),
       );
@@ -69,7 +70,10 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  HttpLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                    statusCode: 200,
+                    headers: const {"header-1": "value-1"},
+                  ),
                 ),
           ),
           emitsDone,
@@ -329,6 +333,7 @@ void main() {
               },
             ),
             200,
+            headers: {"header-1": "value-1"},
           ),
         ),
       );
@@ -353,7 +358,10 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  HttpLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                    statusCode: 200,
+                    headers: const {"header-1": "value-1"},
+                  ),
                 ),
           ),
           emitsDone,
