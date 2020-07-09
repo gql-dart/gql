@@ -32,13 +32,19 @@ class HttpLinkResponseContext extends ContextEntry {
   /// HTTP status code of the response
   final int statusCode;
 
+  /// HTTP response headers
+  final Map<String, String> headers;
+
   const HttpLinkResponseContext({
     @required this.statusCode,
-  }) : assert(statusCode != null);
+    @required this.headers,
+  })  : assert(statusCode != null),
+        assert(headers != null);
 
   @override
   List<Object> get fieldsForEquality => [
         statusCode,
+        headers,
       ];
 }
 
@@ -113,6 +119,7 @@ class HttpLink extends Link {
       return response.context.withEntry(
         HttpLinkResponseContext(
           statusCode: httpResponse.statusCode,
+          headers: httpResponse.headers,
         ),
       );
     } catch (e) {
