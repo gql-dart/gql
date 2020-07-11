@@ -54,7 +54,7 @@ void main() {
               "data": <String, dynamic>{},
             }),
             200,
-            headers: {"header-1": "value-1"},
+            {"header-1": "value-1"},
           ),
         ),
       );
@@ -333,7 +333,7 @@ void main() {
               },
             ),
             200,
-            headers: {"header-1": "value-1"},
+            {"header-1": "value-1"},
           ),
         ),
       );
