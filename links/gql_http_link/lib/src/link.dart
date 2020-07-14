@@ -6,6 +6,7 @@ import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
 import "package:meta/meta.dart";
 
+import "./_utils.dart";
 import "./exceptions.dart";
 
 /// HTTP link headers
@@ -58,10 +59,13 @@ class HttpLinkResponseContext extends ContextEntry {
 /// [http.Client] to the constructor.
 class HttpLink extends Link {
   /// Endpoint of the GraphQL service
-  final String uri;
+  final Uri uri;
 
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
+
+  /// set to `true` to use the HTTP `GET` method for queries (but not for mutations)
+  final bool useGETForQueries;
 
   /// Serializer used to serialize request
   final RequestSerializer serializer;
@@ -75,12 +79,13 @@ class HttpLink extends Link {
   ///
   /// You can pass a [httpClient] to extend to customize the network request.
   HttpLink(
-    this.uri, {
+    String uri, {
     this.defaultHeaders = const {},
+    this.useGETForQueries = false,
     http.Client httpClient,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
-  }) {
+  }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
   }
 
@@ -89,10 +94,7 @@ class HttpLink extends Link {
     Request request, [
     NextLink forward,
   ]) async* {
-    final httpResponse = await _executeRequest(
-      _getHttpLinkHeaders(request),
-      _serializeRequest(request),
-    );
+    final httpResponse = await _executeRequest(request);
 
     final response = _parseHttpResponse(httpResponse);
 
@@ -146,21 +148,11 @@ class HttpLink extends Link {
     }
   }
 
-  Future<http.Response> _executeRequest(
-    Map<String, String> contextHeaders,
-    dynamic body,
-  ) async {
+  Future<http.Response> _executeRequest(Request request) async {
+    final httpRequest = _prepareRequest(request);
     try {
-      return await _httpClient.post(
-        uri,
-        headers: {
-          "Content-type": "application/json",
-          "Accept": "*/*",
-          ...defaultHeaders,
-          ...contextHeaders,
-        },
-        body: body,
-      );
+      final response = await _httpClient.send(httpRequest);
+      return http.Response.fromStream(response);
     } catch (e) {
       throw ServerException(
         originalException: e,
@@ -169,18 +161,72 @@ class HttpLink extends Link {
     }
   }
 
-  dynamic _serializeRequest(Request request) {
-    try {
-      return json.encode(
-        serializer.serializeRequest(request),
-      );
-    } catch (e) {
-      throw RequestFormatException(
-        originalException: e,
-        request: request,
-      );
+  http.BaseRequest _prepareRequest(Request request) {
+    final body = _encodeAttempter(
+      request,
+      serializer.serializeRequest,
+    )(request);
+
+    final contextHeaders = _getHttpLinkHeaders(request);
+    final headers = {
+      "Content-type": "application/json",
+      "Accept": "*/*",
+      ...defaultHeaders,
+      ...contextHeaders,
+    };
+
+    final fileMap = extractFlattenedFileMap(body);
+
+    final useGetForThisRequest =
+        fileMap.isEmpty && useGETForQueries && request.isQuery;
+
+    if (useGetForThisRequest) {
+      return http.Request(
+        "GET",
+        uri.replace(
+          queryParameters: _encodeAttempter(
+            request,
+            _encodeAsUriParams,
+          )(body),
+        ),
+      )..headers.addAll(headers);
     }
+
+    final httpBody = _encodeAttempter(
+      request,
+      (Map body) => json.encode(
+        body,
+        toEncodable: (dynamic object) =>
+            (object is http.MultipartFile) ? null : object.toJson(),
+      ),
+    )(body);
+
+    if (fileMap.isNotEmpty) {
+      return http.MultipartRequest("POST", uri)
+        ..body = httpBody
+        ..addAllFiles(fileMap)
+        ..headers.addAll(headers);
+    }
+    return http.Request("POST", uri)
+      ..body = httpBody
+      ..headers.addAll(headers);
   }
+
+  /// wrap an encoding transform in exception handling
+  T Function(V) _encodeAttempter<T, V>(
+    Request request,
+    T Function(V) encoder,
+  ) =>
+      (V input) {
+        try {
+          return encoder(input);
+        } catch (e) {
+          throw RequestFormatException(
+            originalException: e,
+            request: request,
+          );
+        }
+      };
 
   /// Closes the underlining [http.Client]
   void dispose() {
@@ -201,3 +247,8 @@ Map<String, String> _getHttpLinkHeaders(Request request) {
     );
   }
 }
+
+Map<String, String> _encodeAsUriParams(Map<String, dynamic> serialized) =>
+    serialized.map<String, String>(
+      (k, dynamic v) => MapEntry(k, v is String ? v : json.encode(v)),
+    );
