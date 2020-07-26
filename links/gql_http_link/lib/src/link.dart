@@ -27,6 +27,29 @@ class HttpLinkHeaders extends ContextEntry {
       ];
 }
 
+/// HTTP link request method
+///
+/// If no entry is present, defaults to `POST` unless the operation is a query and [HttpLink.useGETForQueries] is `true`.
+@immutable
+class HttpLinkMethod extends ContextEntry {
+  /// HTTP method to use for this request. Valid options are `POST`, `GET` and `null`
+  final String method;
+
+  const HttpLinkMethod([this.method])
+      : assert(
+          method == null || method == "POST" || method == "GET",
+          "method must be POST, GET, or null",
+        );
+
+  const HttpLinkMethod.post() : method = "POST";
+  const HttpLinkMethod.get() : method = "GET";
+
+  @override
+  List<Object> get fieldsForEquality => [
+        method,
+      ];
+}
+
 /// HTTP link Response Context
 @immutable
 class HttpLinkResponseContext extends ContextEntry {
@@ -168,6 +191,10 @@ class HttpLink extends Link {
     )(request);
 
     final contextHeaders = _getHttpLinkHeaders(request);
+    final HttpLinkMethod contextMethod = request.context.entry(
+      HttpLinkMethod(),
+    );
+
     final headers = {
       "Content-type": "application/json",
       "Accept": "*/*",
@@ -177,8 +204,8 @@ class HttpLink extends Link {
 
     final fileMap = extractFlattenedFileMap(body);
 
-    final useGetForThisRequest =
-        fileMap.isEmpty && useGETForQueries && request.isQuery;
+    final useGetForThisRequest = contextMethod.method == "GET" ||
+        (fileMap.isEmpty && useGETForQueries && request.isQuery);
 
     if (useGetForThisRequest) {
       return http.Request(
