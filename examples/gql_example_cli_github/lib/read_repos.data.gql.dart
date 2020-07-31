@@ -1,50 +1,107 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'package:gql_example_cli_github/schema.schema.gql.dart' as _i1;
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:gql_example_cli_github/schema.schema.gql.dart' as _i2;
+import 'package:gql_example_cli_github/serializers.gql.dart' as _i1;
 
-class $ReadRepositories {
-  const $ReadRepositories(this.data);
+part 'read_repos.data.gql.g.dart';
 
-  final Map<String, dynamic> data;
+abstract class GReadRepositoriesData
+    implements Built<GReadRepositoriesData, GReadRepositoriesDataBuilder> {
+  GReadRepositoriesData._();
 
-  $ReadRepositories$viewer get viewer => data['viewer'] == null
-      ? null
-      : $ReadRepositories$viewer((data['viewer'] as Map<String, dynamic>));
+  factory GReadRepositoriesData(
+          [Function(GReadRepositoriesDataBuilder b) updates]) =
+      _$GReadRepositoriesData;
+
+  GReadRepositoriesData_viewer get viewer;
+  static Serializer<GReadRepositoriesData> get serializer =>
+      _$gReadRepositoriesDataSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GReadRepositoriesData.serializer, this);
+  static GReadRepositoriesData fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GReadRepositoriesData.serializer, json);
 }
 
-class $ReadRepositories$viewer {
-  const $ReadRepositories$viewer(this.data);
+abstract class GReadRepositoriesData_viewer
+    implements
+        Built<GReadRepositoriesData_viewer,
+            GReadRepositoriesData_viewerBuilder> {
+  GReadRepositoriesData_viewer._();
 
-  final Map<String, dynamic> data;
+  factory GReadRepositoriesData_viewer(
+          [Function(GReadRepositoriesData_viewerBuilder b) updates]) =
+      _$GReadRepositoriesData_viewer;
 
-  $ReadRepositories$viewer$repositories get repositories =>
-      data['repositories'] == null
-          ? null
-          : $ReadRepositories$viewer$repositories(
-              (data['repositories'] as Map<String, dynamic>));
+  static void _initializeBuilder(GReadRepositoriesData_viewerBuilder b) =>
+      b..G__typename = 'User';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  GReadRepositoriesData_viewer_repositories get repositories;
+  static Serializer<GReadRepositoriesData_viewer> get serializer =>
+      _$gReadRepositoriesDataViewerSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers
+      .serializeWith(GReadRepositoriesData_viewer.serializer, this);
+  static GReadRepositoriesData_viewer fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GReadRepositoriesData_viewer.serializer, json);
 }
 
-class $ReadRepositories$viewer$repositories {
-  const $ReadRepositories$viewer$repositories(this.data);
+abstract class GReadRepositoriesData_viewer_repositories
+    implements
+        Built<GReadRepositoriesData_viewer_repositories,
+            GReadRepositoriesData_viewer_repositoriesBuilder> {
+  GReadRepositoriesData_viewer_repositories._();
 
-  final Map<String, dynamic> data;
+  factory GReadRepositoriesData_viewer_repositories(
+      [Function(GReadRepositoriesData_viewer_repositoriesBuilder b)
+          updates]) = _$GReadRepositoriesData_viewer_repositories;
 
-  List<$ReadRepositories$viewer$repositories$nodes> get nodes =>
-      data['nodes'] == null
-          ? null
-          : (data['nodes'] as List)
-              .map((dynamic e) => $ReadRepositories$viewer$repositories$nodes(
-                  (e as Map<String, dynamic>)))
-              .toList();
+  static void _initializeBuilder(
+          GReadRepositoriesData_viewer_repositoriesBuilder b) =>
+      b..G__typename = 'RepositoryConnection';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  BuiltList<GReadRepositoriesData_viewer_repositories_nodes> get nodes;
+  static Serializer<GReadRepositoriesData_viewer_repositories> get serializer =>
+      _$gReadRepositoriesDataViewerRepositoriesSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
+      GReadRepositoriesData_viewer_repositories.serializer, this);
+  static GReadRepositoriesData_viewer_repositories fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+          GReadRepositoriesData_viewer_repositories.serializer, json);
 }
 
-class $ReadRepositories$viewer$repositories$nodes {
-  const $ReadRepositories$viewer$repositories$nodes(this.data);
+abstract class GReadRepositoriesData_viewer_repositories_nodes
+    implements
+        Built<GReadRepositoriesData_viewer_repositories_nodes,
+            GReadRepositoriesData_viewer_repositories_nodesBuilder> {
+  GReadRepositoriesData_viewer_repositories_nodes._();
 
-  final Map<String, dynamic> data;
+  factory GReadRepositoriesData_viewer_repositories_nodes(
+      [Function(GReadRepositoriesData_viewer_repositories_nodesBuilder b)
+          updates]) = _$GReadRepositoriesData_viewer_repositories_nodes;
 
-  String get id => (data['id'] as String);
-  String get name => (data['name'] as String);
-  bool get viewerHasStarred => (data['viewerHasStarred'] as bool);
-  _i1.DateTime get createdAt => _i1.DateTime((data['createdAt'] as String));
+  static void _initializeBuilder(
+          GReadRepositoriesData_viewer_repositories_nodesBuilder b) =>
+      b..G__typename = 'Repository';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  String get name;
+  bool get viewerHasStarred;
+  _i2.GDateTime get createdAt;
+  static Serializer<GReadRepositoriesData_viewer_repositories_nodes>
+      get serializer =>
+          _$gReadRepositoriesDataViewerRepositoriesNodesSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
+      GReadRepositoriesData_viewer_repositories_nodes.serializer, this);
+  static GReadRepositoriesData_viewer_repositories_nodes fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+          GReadRepositoriesData_viewer_repositories_nodes.serializer, json);
 }

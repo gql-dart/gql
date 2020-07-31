@@ -1,26 +1,50 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:gql_example_build/schema.schema.gql.dart' as _i1;
+import 'package:gql_example_build/serializers.gql.dart' as _i2;
 
-class QueryOperationVarBuilder {
-  final Map<String, dynamic> variables = <String, dynamic>{};
+part 'query.var.gql.g.dart';
 
-  set id(String value) => variables['id'] = value;
-  set bool(bool value) => variables['bool'] = value;
-  set int(int value) => variables['int'] = value;
-  set float(double value) => variables['float'] = value;
-  set string(String value) => variables['string'] = value;
-  set scalar(_i1.Scalar value) => variables['scalar'] = value.value;
-  set enum$(_i1.Enum value) => variables['enum'] = value.value;
-  set input(_i1.Input value) => variables['input'] = value.input;
-  set idRequired(String value) => variables['idRequired'] = value;
-  set boolRequired(bool value) => variables['boolRequired'] = value;
-  set intRequired(int value) => variables['intRequired'] = value;
-  set floatRequired(double value) => variables['floatRequired'] = value;
-  set stringRequired(String value) => variables['stringRequired'] = value;
-  set scalarRequired(_i1.Scalar value) =>
-      variables['scalarRequired'] = value.value;
-  set enumRequired(_i1.Enum value) => variables['enumRequired'] = value.value;
-  set inputRequired(_i1.Input value) =>
-      variables['inputRequired'] = value.input;
+abstract class GQueryOperationVars
+    implements Built<GQueryOperationVars, GQueryOperationVarsBuilder> {
+  GQueryOperationVars._();
+
+  factory GQueryOperationVars(
+      [Function(GQueryOperationVarsBuilder b) updates]) = _$GQueryOperationVars;
+
+  @nullable
+  String get id;
+  @nullable
+  @BuiltValueField(wireName: 'bool')
+  bool get bool$;
+  @nullable
+  @BuiltValueField(wireName: 'int')
+  int get int$;
+  @nullable
+  double get float;
+  @nullable
+  String get string;
+  @nullable
+  _i1.GScalar get scalar;
+  @nullable
+  @BuiltValueField(wireName: 'enum')
+  _i1.GEnum get enum$;
+  @nullable
+  _i1.GInput get input;
+  String get idRequired;
+  bool get boolRequired;
+  int get intRequired;
+  double get floatRequired;
+  String get stringRequired;
+  _i1.GScalar get scalarRequired;
+  _i1.GEnum get enumRequired;
+  _i1.GInput get inputRequired;
+  static Serializer<GQueryOperationVars> get serializer =>
+      _$gQueryOperationVarsSerializer;
+  Map<String, dynamic> toJson() =>
+      _i2.serializers.serializeWith(GQueryOperationVars.serializer, this);
+  static GQueryOperationVars fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GQueryOperationVars.serializer, json);
 }

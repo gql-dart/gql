@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gql_exec/gql_exec.dart';
 
-import './pokemon_detail.data.gql.dart';
-import './pokemon_detail.req.gql.dart';
+import './graphql/pokemon_detail.data.gql.dart';
+import './graphql/pokemon_detail.req.gql.dart';
 import '../config.dart';
 import '../pokemon_card/pokemon_card.dart';
 
@@ -13,10 +13,14 @@ class PokemonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final req = GPokemonDetail(
+      (b) => b..vars.id = id,
+    );
     return StreamBuilder(
       stream: link.request(
-        PokemonDetail(
-          (vars) => vars..id = id,
+        Request(
+          operation: req.operation,
+          variables: req.vars.toJson(),
         ),
       ),
       builder: (BuildContext context, AsyncSnapshot<Response> snapshot) {
@@ -25,7 +29,7 @@ class PokemonDetailScreen extends StatelessWidget {
               appBar: AppBar(),
               body: Center(child: CircularProgressIndicator()));
 
-        final data = $PokemonDetail(snapshot.data.data);
+        final data = GPokemonDetailData.fromJson(snapshot.data.data);
 
         return Scaffold(
           appBar: AppBar(
