@@ -4,6 +4,7 @@ import "package:gql_example_cli/find_pokemon.req.gql.dart";
 import "package:gql_example_cli/list_pokemon.data.gql.dart";
 import "package:gql_example_cli/list_pokemon.req.gql.dart";
 import "package:gql_http_link/gql_http_link.dart";
+import "package:gql_exec/gql_exec.dart";
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -20,15 +21,20 @@ Future<Null> main(List<String> arguments) async {
 
   if (find != null) {
     print("Looking for ${find}...");
+    final req = GFindPokemon(
+      (b) => b..vars.name = find,
+    );
+
     final result = await link
         .request(
-          FindPokemon(
-            (b) => b..name = find,
+          Request(
+            operation: req.operation,
+            variables: req.vars.toJson(),
           ),
         )
         .first;
 
-    final data = $FindPokemon(result.data);
+    final data = GFindPokemonData.fromJson(result.data);
 
     final pokemon = data.pokemon;
 
@@ -56,15 +62,20 @@ Future<Null> main(List<String> arguments) async {
   final count = argResults["count"] as String;
 
   print("Looking for some pokemon...");
+  final req = GListPokemon(
+    (b) => b..vars.count = int.parse(count),
+  );
+
   final result = await link
       .request(
-        ListPokemon(
-          (b) => b..count = int.parse(count),
+        Request(
+          operation: req.operation,
+          variables: req.vars.toJson(),
         ),
       )
       .first;
 
-  final data = $ListPokemon(result.data);
+  final data = GListPokemonData.fromJson(result.data);
 
   final pokemons = data.pokemons;
 

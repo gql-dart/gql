@@ -1,3 +1,12 @@
+## 0.3.0
+
+- add multipart file support
+- add `useGETForQueries` option
+
+## 0.2.10
+
+- add `headers` to `HttpLinkResponseContext`
+
 ## 0.2.9
 
 - remove `author` field from `pubspec.yaml`

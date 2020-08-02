@@ -158,7 +158,13 @@ class WebSocketLink extends Link {
           throw e;
         },
       );
-      _write(InitOperation(initialPayload));
+
+      if (initialPayload is Function) {
+        final dynamic payload = await initialPayload();
+        _write(InitOperation(payload));
+      } else {
+        _write(InitOperation(initialPayload));
+      }
     } catch (e) {
       if (e is LinkException) {
         rethrow;

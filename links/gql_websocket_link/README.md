@@ -34,7 +34,7 @@ import "package:gql_websocket_link/gql_websocket_link.dart";
 void main () {
   final link = Link.from([
     // SomeLink(),
-    WSLink("ws://<GRAPHQL_SERVER_ENDPOINT>/graphql"),
+    WebSocketLink("ws://<GRAPHQL_SERVER_ENDPOINT>/graphql"),
   ]);
 }
 

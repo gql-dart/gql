@@ -100,6 +100,56 @@ void main() {
       );
 
       test(
+        "send async initialPayload",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+
+          final Map<String, String> baseInitialPayload = {"data": "some data"};
+
+          final initialPayload = () => Future.value(baseInitialPayload);
+
+          request = Request(
+            operation: Operation(
+              operationName: "sub",
+              document: parseString("subscription MySubscription {}"),
+            ),
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.take(1).listen(
+                expectAsync1<void, dynamic>(
+                  (dynamic message) {
+                    final map =
+                        json.decode(message as String) as Map<String, dynamic>;
+                    expect(map["type"], MessageTypes.connectionInit);
+                    expect(map["payload"], baseInitialPayload);
+                  },
+                ),
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(
+            null,
+            channel: channel,
+            initialPayload: initialPayload,
+          );
+          //
+          link.request(request).listen(print);
+        },
+      );
+
+      test(
         "yield correct response",
         () async {
           HttpServer server;

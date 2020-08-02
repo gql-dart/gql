@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gql_exec/gql_exec.dart';
 
-import './all_pokemon.data.gql.dart';
-import './all_pokemon.req.gql.dart';
+import './graphql/all_pokemon.data.gql.dart';
+import './graphql/all_pokemon.req.gql.dart';
 import '../config.dart';
 import '../pokemon_card/pokemon_card.dart';
 
 class AllPokemonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final req = GAllPokemon(
+      (b) => b..vars.first = 500,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text('All Pokemon'),
       ),
       body: StreamBuilder(
         stream: link.request(
-          AllPokemon(
-            (vars) => vars..first = 500,
+          Request(
+            operation: req.operation,
+            variables: req.vars.toJson(),
           ),
         ),
         builder: (BuildContext build, AsyncSnapshot<Response> snapshot) {
           if (snapshot.data?.data == null)
             return Center(child: CircularProgressIndicator());
 
-          final data = $AllPokemon(snapshot.data.data);
+          final data = GAllPokemonData.fromJson(snapshot.data.data);
 
           return ListView.builder(
             itemCount: data.pokemons.length,
