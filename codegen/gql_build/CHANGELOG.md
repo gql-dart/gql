@@ -1,3 +1,14 @@
+## 0.1.0
+
+- use `built_value` for generated classes
+- add `serializer_builder` to aggregate `built_value` serializers
+- remove `op` builder
+- add custom scalar support
+- add support for graphql type overrides (necessary for custom scalars)
+- add support for custom serializers (necessary for custom scalars)
+- add `JsonSerializer`
+- add and automatically apply `OperationSerializer`
+
 ## 0.0.11
 
 - remove `author` field from `pubspec.yaml`

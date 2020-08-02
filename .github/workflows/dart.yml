@@ -104,3 +104,52 @@ jobs:
         run: |
           multipack --only $PACKAGE analyze --version
           multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+  builder_tests:
+    strategy:
+      matrix:
+        package:
+          - end_to_end_test
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    name: Check ${{ matrix.package }}
+    env:
+      PACKAGE: ${{ matrix.package }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Activate multipack
+        run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
+          pub global activate multipack
+      - name: Check pubspec
+        run: |
+          multipack --only $PACKAGE pubspec clean
+          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
+      - name: Override local dependencies
+        run: |
+          multipack pubspec hard_override
+      - name: Get dependencies
+        run: |
+          multipack --only $PACKAGE pub get
+      - name: Run builders
+        run: |
+          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
+      - name: Check build diff
+        run: |
+          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+      - name: Check formatting
+        run: |
+          echo ""
+          echo "A list of incorrectly formatted files may follow:"
+          echo ""
+          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          echo ""
+      - name: Analyze package
+        run: |
+          multipack --only $PACKAGE analyze --version
+          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+      - name: Run tests
+        run: |
+          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
+          multipack --only $PACKAGE pub run test

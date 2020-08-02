@@ -44,6 +44,65 @@ class AddTypenameField extends TransformingVisitor {
         description: node.description,
         span: node.span,
       );
+
+  @override
+  FieldNode visitFieldNode(
+    FieldNode node,
+  ) {
+    if (node.selectionSet == null) {
+      return node;
+    }
+
+    final hasTypename = node.selectionSet.selections
+        .whereType<FieldNode>()
+        .any((node) => node.name.value == "__typename");
+
+    if (hasTypename) return node;
+
+    return FieldNode(
+      name: node.name,
+      alias: node.alias,
+      arguments: node.arguments,
+      directives: node.directives,
+      selectionSet: SelectionSetNode(
+        selections: <SelectionNode>[
+          FieldNode(
+            name: NameNode(value: "__typename"),
+          ),
+          ...node.selectionSet.selections,
+        ],
+      ),
+    );
+  }
+
+  @override
+  FragmentDefinitionNode visitFragmentDefinitionNode(
+    FragmentDefinitionNode node,
+  ) {
+    if (node.selectionSet == null) {
+      return node;
+    }
+
+    final hasTypename = node.selectionSet.selections
+        .whereType<FieldNode>()
+        .any((node) => node.name.value == "__typename");
+
+    if (hasTypename) return node;
+
+    return FragmentDefinitionNode(
+      name: node.name,
+      typeCondition: node.typeCondition,
+      directives: node.directives,
+      selectionSet: SelectionSetNode(
+        selections: <SelectionNode>[
+          FieldNode(
+            name: NameNode(value: "__typename"),
+          ),
+          ...node.selectionSet.selections,
+        ],
+      ),
+    );
+  }
 }
 
 DocumentNode _transform(DocumentNode doc) => transform(

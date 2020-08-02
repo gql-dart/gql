@@ -3,24 +3,28 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/schema/enum.dart";
 import "package:gql_code_builder/src/schema/input.dart";
 import "package:gql_code_builder/src/schema/scalar.dart";
-import "package:meta/meta.dart";
+import "package:gql_code_builder/source.dart";
 
 /// Build input types, enums and scalars from schema
 Spec buildSchema(
-  DocumentNode schema,
+  SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
 ) =>
-    schema.accept(
+    schemaSource.document.accept(
       _SchemaBuilderVisitor(
-        schema: schema,
+        schemaSource,
+        typeOverrides,
       ),
     );
 
 class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
-  final DocumentNode schema;
+  final SourceNode schemaSource;
+  final Map<String, Reference> typeOverrides;
 
-  _SchemaBuilderVisitor({
-    @required this.schema,
-  });
+  _SchemaBuilderVisitor(
+    this.schemaSource,
+    this.typeOverrides,
+  );
 
   Spec _acceptOne(
     Node node,
@@ -50,14 +54,17 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   ) =>
       buildInputClass(
         node,
-        schema,
+        schemaSource,
+        typeOverrides,
       );
 
   @override
   Spec visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
-      buildScalarClass(node);
+      typeOverrides.containsKey(node.name.value)
+          ? null
+          : buildScalarClass(node);
 
   @override
   Spec visitEnumTypeDefinitionNode(

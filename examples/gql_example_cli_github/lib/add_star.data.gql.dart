@@ -1,29 +1,68 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-class $AddStar {
-  const $AddStar(this.data);
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:gql_example_cli_github/serializers.gql.dart' as _i1;
 
-  final Map<String, dynamic> data;
+part 'add_star.data.gql.g.dart';
 
-  $AddStar$action get action => data['action'] == null
-      ? null
-      : $AddStar$action((data['action'] as Map<String, dynamic>));
+abstract class GAddStarData
+    implements Built<GAddStarData, GAddStarDataBuilder> {
+  GAddStarData._();
+
+  factory GAddStarData([Function(GAddStarDataBuilder b) updates]) =
+      _$GAddStarData;
+
+  @nullable
+  GAddStarData_action get action;
+  static Serializer<GAddStarData> get serializer => _$gAddStarDataSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GAddStarData.serializer, this);
+  static GAddStarData fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GAddStarData.serializer, json);
 }
 
-class $AddStar$action {
-  const $AddStar$action(this.data);
+abstract class GAddStarData_action
+    implements Built<GAddStarData_action, GAddStarData_actionBuilder> {
+  GAddStarData_action._();
 
-  final Map<String, dynamic> data;
+  factory GAddStarData_action(
+      [Function(GAddStarData_actionBuilder b) updates]) = _$GAddStarData_action;
 
-  $AddStar$action$starrable get starrable => data['starrable'] == null
-      ? null
-      : $AddStar$action$starrable((data['starrable'] as Map<String, dynamic>));
+  static void _initializeBuilder(GAddStarData_actionBuilder b) =>
+      b..G__typename = 'AddStarPayload';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  GAddStarData_action_starrable get starrable;
+  static Serializer<GAddStarData_action> get serializer =>
+      _$gAddStarDataActionSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GAddStarData_action.serializer, this);
+  static GAddStarData_action fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GAddStarData_action.serializer, json);
 }
 
-class $AddStar$action$starrable {
-  const $AddStar$action$starrable(this.data);
+abstract class GAddStarData_action_starrable
+    implements
+        Built<GAddStarData_action_starrable,
+            GAddStarData_action_starrableBuilder> {
+  GAddStarData_action_starrable._();
 
-  final Map<String, dynamic> data;
+  factory GAddStarData_action_starrable(
+          [Function(GAddStarData_action_starrableBuilder b) updates]) =
+      _$GAddStarData_action_starrable;
 
-  bool get viewerHasStarred => (data['viewerHasStarred'] as bool);
+  static void _initializeBuilder(GAddStarData_action_starrableBuilder b) =>
+      b..G__typename = 'Starrable';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  bool get viewerHasStarred;
+  static Serializer<GAddStarData_action_starrable> get serializer =>
+      _$gAddStarDataActionStarrableSerializer;
+  Map<String, dynamic> toJson() => _i1.serializers
+      .serializeWith(GAddStarData_action_starrable.serializer, this);
+  static GAddStarData_action_starrable fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GAddStarData_action_starrable.serializer, json);
 }

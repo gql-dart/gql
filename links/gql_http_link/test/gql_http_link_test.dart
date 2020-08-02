@@ -9,6 +9,8 @@ import "package:http/http.dart" as http;
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
+import "./helpers.dart";
+
 class MockClient extends Mock implements http.Client {}
 
 class MockRequestSerializer extends Mock implements RequestSerializer {}
@@ -44,19 +46,15 @@ void main() {
 
     test("parses a successful response", () {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
             200,
+            {"header-1": "value-1"},
           ),
         ),
       );
@@ -72,7 +70,10 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  HttpLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                    statusCode: 200,
+                    headers: const {"header-1": "value-1"},
+                  ),
                 ),
           ),
           emitsDone,
@@ -82,15 +83,10 @@ void main() {
 
     test("uses the defined endpoint", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -102,26 +98,24 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
-          "/graphql-test",
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.url,
+              "expected endpoint",
+              Uri.parse("/graphql-test"),
+            ),
+          ),
         ),
       ).called(1);
     });
 
     test("uses json mime types", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -133,29 +127,27 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: {
-            "Content-type": "application/json",
-            "Accept": "*/*",
-          },
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "mime types",
+              allOf([
+                containsPair("Content-type", "application/json"),
+                containsPair("Accept", "*/*"),
+              ]),
+            ),
+          ),
         ),
       ).called(1);
     });
 
     test("adds headers from context", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -183,15 +175,14 @@ void main() {
       ).first;
 
       verify(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: {
-            "Content-type": "application/json",
-            "Accept": "*/*",
-            "foo": "bar",
-          },
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "context headers",
+              containsPair("foo", "bar"),
+            ),
+          ),
         ),
       ).called(1);
     });
@@ -207,15 +198,10 @@ void main() {
       );
 
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -236,30 +222,24 @@ void main() {
           .first;
 
       verify(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: {
-            "Content-type": "application/json",
-            "Accept": "*/*",
-            "foo": "bar",
-          },
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "default headers",
+              containsPair("foo", "bar"),
+            ),
+          ),
         ),
       ).called(1);
     });
 
     test("headers from context override defaults", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -287,29 +267,24 @@ void main() {
       ).first;
 
       verify(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: {
-            "Content-type": "application/jsonize",
-            "Accept": "*/*",
-          },
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.headers,
+              "headers from context",
+              containsPair("Content-type", "application/jsonize"),
+            ),
+          ),
         ),
       ).called(1);
     });
 
     test("serializes the request", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -321,27 +296,24 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
-          any,
-          body:
-              """{"operationName":null,"variables":{"i":12},"query":"query MyQuery {\\n  \\n}"}""",
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.body,
+              "serialized body",
+              '{"operationName":null,"variables":{"i":12},"query":"query MyQuery {\\n  \\n}"}',
+            ),
+          ),
         ),
       ).called(1);
     });
 
     test("parses a successful response with errors", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(
               <String, dynamic>{
                 "errors": <Map<String, dynamic>>[
@@ -361,6 +333,7 @@ void main() {
               },
             ),
             200,
+            {"header-1": "value-1"},
           ),
         ),
       );
@@ -385,7 +358,10 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  HttpLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                    statusCode: 200,
+                    headers: const {"header-1": "value-1"},
+                  ),
                 ),
           ),
           emitsDone,
@@ -394,23 +370,15 @@ void main() {
     });
 
     test("throws HttpLinkServerException when status code >= 300", () async {
-      final http.Response response = http.Response(
-        json.encode(<String, dynamic>{
-          "data": <String, dynamic>{},
-        }),
-        300,
-      );
+      final data = json.encode(<String, dynamic>{
+        "data": <String, dynamic>{},
+      });
 
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          response,
+          simpleResponse(data, 300),
         ),
       );
 
@@ -426,10 +394,7 @@ void main() {
         exception,
         TypeMatcher<HttpLinkServerException>(),
       );
-      expect(
-        exception.response,
-        response,
-      );
+      expect(exception.response.body, data);
       expect(
         exception.parsedResponse,
         equals(
@@ -445,21 +410,14 @@ void main() {
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
-      final http.Response response = http.Response(
-        json.encode(<String, dynamic>{}),
-        200,
-      );
+      final data = json.encode(<String, dynamic>{});
+      final _response = simpleResponse(data, 200);
 
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          response,
+          _response,
         ),
       );
 
@@ -476,8 +434,8 @@ void main() {
         TypeMatcher<HttpLinkServerException>(),
       );
       expect(
-        exception.response,
-        response,
+        exception.response.body,
+        data,
       );
       expect(
         exception.parsedResponse,
@@ -505,15 +463,10 @@ void main() {
       final originalException = Exception("Foo bar");
 
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             json.encode(<String, dynamic>{
               "data": <String, dynamic>{},
             }),
@@ -557,15 +510,10 @@ void main() {
 
     test("throws ParserException when unable to serialize request", () async {
       when(
-        client.post(
-          any,
-          body: anyNamed("body"),
-          headers: anyNamed("headers"),
-          encoding: anyNamed("encoding"),
-        ),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          http.Response(
+          simpleResponse(
             "foobar",
             200,
           ),
@@ -604,6 +552,92 @@ void main() {
 
       verify(
         client.close(),
+      ).called(1);
+    });
+  });
+
+  group("HttpLink useGETForQueries", () {
+    MockClient client;
+    HttpLink link;
+
+    setUp(() {
+      client = MockClient();
+      link = HttpLink(
+        "/graphql-test",
+        httpClient: client,
+        useGETForQueries: true,
+      );
+    });
+
+    test("uses GET for query without files", () async {
+      when(
+        client.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      final queryRequest = Request(
+        operation: Operation(
+          document: parseString("query MyQuery {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      await link.request(queryRequest).first;
+
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.method,
+              "method",
+              "GET",
+            ),
+          ),
+        ),
+      ).called(1);
+    });
+
+    test("uses POST for mutation", () async {
+      when(
+        client.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      final mutationRequest = Request(
+        operation: Operation(
+          document: parseString("mutation MyMutation {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      await link.request(mutationRequest).first;
+
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.method,
+              "method",
+              "POST",
+            ),
+          ),
+        ),
       ).called(1);
     });
   });

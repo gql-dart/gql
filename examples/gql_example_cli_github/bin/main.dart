@@ -26,10 +26,15 @@ void query(
 ) async {
   const int nRepositories = 50;
 
+  final req = GReadRepositories(
+    (b) => b..vars.nRepositories = nRepositories,
+  );
+
   final result = await link
       .request(
-        ReadRepositories(
-          (b) => b..nRepositories = nRepositories,
+        Request(
+          operation: req.operation,
+          variables: req.vars.toJson(),
         ),
       )
       .first;
@@ -39,7 +44,7 @@ void query(
     exit(2);
   }
 
-  final data = $ReadRepositories(result.data);
+  final data = GReadRepositoriesData.fromJson(result.data);
 
   final repositories = data.viewer.repositories.nodes;
 
@@ -63,10 +68,15 @@ void starRepository(
     exit(2);
   }
 
+  final req = GAddStar(
+    (b) => b..vars.starrableId = repositoryId,
+  );
+
   final result = await link
       .request(
-        AddStar(
-          (b) => b..starrableId = repositoryId,
+        Request(
+          operation: req.operation,
+          variables: req.vars.toJson(),
         ),
       )
       .first;
@@ -76,7 +86,7 @@ void starRepository(
     exit(2);
   }
 
-  final data = $AddStar(result.data);
+  final data = GAddStarData.fromJson(result.data);
 
   final isStarred = data.action.starrable.viewerHasStarred;
 
@@ -96,10 +106,15 @@ void removeStarFromRepository(
     exit(2);
   }
 
+  final req = GRemoveStar(
+    (b) => b..vars.starrableId = repositoryId,
+  );
+
   final result = await link
       .request(
-        RemoveStar(
-          (b) => b..starrableId = repositoryId,
+        Request(
+          operation: req.operation,
+          variables: req.vars.toJson(),
         ),
       )
       .first;
@@ -109,7 +124,7 @@ void removeStarFromRepository(
     exit(2);
   }
 
-  final data = $RemoveStar(result.data);
+  final data = GRemoveStarData.fromJson(result.data);
 
   final isStarred = data.action.starrable.viewerHasStarred;
 
