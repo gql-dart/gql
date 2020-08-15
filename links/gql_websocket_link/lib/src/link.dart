@@ -106,11 +106,12 @@ class WebSocketLink extends Link {
               .cast<SubscriptionData>()
               .listen(
             (SubscriptionData message) {
-              final parsed = parser.parseResponse(message.toJson());
+              final parsed = _parseMessage(message);
               if (parsed.data == null && parsed.errors == null) {
-                throw WebSocketLinkParserException(
-                  message: message,
+                throw WebSocketLinkServerException(
                   originalException: null,
+                  parsedResponse: parsed,
+                  requestMessage: null,
                 );
               }
               response.add(parsed);
@@ -177,6 +178,17 @@ class WebSocketLink extends Link {
     }
   }
 
+  Response _parseMessage(SubscriptionData message) {
+    try {
+      return parser.parseResponse(message.toJson());
+    } catch (e) {
+      throw WebSocketLinkParserException(
+        originalException: e,
+        message: message,
+      );
+    }
+  }
+
   void _write(final GraphQLSocketMessage message) {
     try {
       _channel?.sink?.add(
@@ -188,6 +200,7 @@ class WebSocketLink extends Link {
       throw WebSocketLinkServerException(
         originalException: e,
         parsedResponse: null,
+        requestMessage: message,
       );
     }
   }
