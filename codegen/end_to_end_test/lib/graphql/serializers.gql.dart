@@ -21,7 +21,7 @@ import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart'
 import 'package:end_to_end_test/fragments/hero_with_fragments.req.gql.dart'
     show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/hero_with_fragments.var.gql.dart'
-    show GHeroWithFragmentsVars;
+    show GHeroWithFragmentsVars, GcomparisonFieldsVars;
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart'
     show GEpisode, GLengthUnit, GReviewInput, GColorInput, GISODate;
 import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
@@ -101,6 +101,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GColorInput,
   GISODate,
   GHeroWithFragmentsVars,
+  GcomparisonFieldsVars,
   GHeroNoVarsVars,
   GReviewWithDateVars,
   GCreateReviewVars,

@@ -145,6 +145,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
 abstract class GheroData {
   String get G__typename;
   String get name;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields implements GheroData {
@@ -152,21 +153,25 @@ abstract class GcomparisonFields implements GheroData {
   String get id;
   String get name;
   GcomparisonFields_friendsConnection get friendsConnection;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
   int get totalCount;
   BuiltList<GcomparisonFields_friendsConnection_edges> get edges;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
   GcomparisonFields_friendsConnection_edges_node get node;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges_node
     implements GheroData {
   String get G__typename;
   String get name;
+  Map<String, dynamic> toJson();
 }

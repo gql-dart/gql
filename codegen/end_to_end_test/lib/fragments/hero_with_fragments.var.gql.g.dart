@@ -8,6 +8,8 @@ part of 'hero_with_fragments.var.gql.dart';
 
 Serializer<GHeroWithFragmentsVars> _$gHeroWithFragmentsVarsSerializer =
     new _$GHeroWithFragmentsVarsSerializer();
+Serializer<GcomparisonFieldsVars> _$gcomparisonFieldsVarsSerializer =
+    new _$GcomparisonFieldsVarsSerializer();
 
 class _$GHeroWithFragmentsVarsSerializer
     implements StructuredSerializer<GHeroWithFragmentsVars> {
@@ -38,6 +40,53 @@ class _$GHeroWithFragmentsVarsSerializer
       Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHeroWithFragmentsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'first':
+          result.first = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GcomparisonFieldsVarsSerializer
+    implements StructuredSerializer<GcomparisonFieldsVars> {
+  @override
+  final Iterable<Type> types = const [
+    GcomparisonFieldsVars,
+    _$GcomparisonFieldsVars
+  ];
+  @override
+  final String wireName = 'GcomparisonFieldsVars';
+
+  @override
+  Iterable<Object> serialize(
+      Serializers serializers, GcomparisonFieldsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[];
+    if (object.first != null) {
+      result
+        ..add('first')
+        ..add(serializers.serialize(object.first,
+            specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GcomparisonFieldsVars deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GcomparisonFieldsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -128,6 +177,83 @@ class GHeroWithFragmentsVarsBuilder
   @override
   _$GHeroWithFragmentsVars build() {
     final _$result = _$v ?? new _$GHeroWithFragmentsVars._(first: first);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GcomparisonFieldsVars extends GcomparisonFieldsVars {
+  @override
+  final int first;
+
+  factory _$GcomparisonFieldsVars(
+          [void Function(GcomparisonFieldsVarsBuilder) updates]) =>
+      (new GcomparisonFieldsVarsBuilder()..update(updates)).build();
+
+  _$GcomparisonFieldsVars._({this.first}) : super._();
+
+  @override
+  GcomparisonFieldsVars rebuild(
+          void Function(GcomparisonFieldsVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GcomparisonFieldsVarsBuilder toBuilder() =>
+      new GcomparisonFieldsVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GcomparisonFieldsVars && first == other.first;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, first.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GcomparisonFieldsVars')
+          ..add('first', first))
+        .toString();
+  }
+}
+
+class GcomparisonFieldsVarsBuilder
+    implements Builder<GcomparisonFieldsVars, GcomparisonFieldsVarsBuilder> {
+  _$GcomparisonFieldsVars _$v;
+
+  int _first;
+  int get first => _$this._first;
+  set first(int first) => _$this._first = first;
+
+  GcomparisonFieldsVarsBuilder();
+
+  GcomparisonFieldsVarsBuilder get _$this {
+    if (_$v != null) {
+      _first = _$v.first;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GcomparisonFieldsVars other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GcomparisonFieldsVars;
+  }
+
+  @override
+  void update(void Function(GcomparisonFieldsVarsBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GcomparisonFieldsVars build() {
+    final _$result = _$v ?? new _$GcomparisonFieldsVars._(first: first);
     replace(_$result);
     return _$result;
   }

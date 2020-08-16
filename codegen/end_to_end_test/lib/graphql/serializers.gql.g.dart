@@ -46,6 +46,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GReviewWithDateData.serializer)
       ..add(GReviewWithDateData_createReview.serializer)
       ..add(GReviewWithDateVars.serializer)
+      ..add(GcomparisonFieldsVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(DateTime)]),
           () => new ListBuilder<DateTime>())

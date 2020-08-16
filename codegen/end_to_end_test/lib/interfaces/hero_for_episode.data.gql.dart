@@ -101,4 +101,5 @@ abstract class GHeroForEpisodeData_hero__asDroid
 abstract class GDroidFragment {
   String get G__typename;
   String get primaryFunction;
+  Map<String, dynamic> toJson();
 }
