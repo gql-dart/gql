@@ -37,9 +37,7 @@ Library buildDataLibrary(
 
   return Library(
     (b) => b
-      ..directives = ListBuilder(<Directive>[
-        if (operationDataClasses.isNotEmpty) Directive.part(partUrl),
-      ])
+      ..directives.add(Directive.part(partUrl))
       ..body = ListBuilder(<Spec>[
         ...operationDataClasses,
         ...fragmentDataClasses,

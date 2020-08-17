@@ -39,27 +39,23 @@ Library buildVarLibrary(
   final fragmentVarClasses = docSource.document.definitions
       .whereType<FragmentDefinitionNode>()
       .map((frag) {
-        final varTypes = fragmentVarTypes(
-          fragment: frag,
-          fragmentMap: _fragmentMap(docSource),
-          schema: schemaSource.document,
-        );
-        if (varTypes.isNotEmpty) {
-          return builtClass(
-            name: "${frag.name.value}Vars",
-            getters: varTypes.entries.map<Method>(
-              (entry) => buildGetter(
-                nameNode: entry.key,
-                typeNode: entry.value,
-                schemaSource: schemaSource,
-                typeOverrides: typeOverrides,
-              ),
-            ),
-          );
-        }
-      })
-      .whereType<Class>()
-      .toList();
+    final varTypes = fragmentVarTypes(
+      fragment: frag,
+      fragmentMap: _fragmentMap(docSource),
+      schema: schemaSource.document,
+    );
+    return builtClass(
+      name: "${frag.name.value}Vars",
+      getters: varTypes.entries.map<Method>(
+        (entry) => buildGetter(
+          nameNode: entry.key,
+          typeNode: entry.value,
+          schemaSource: schemaSource,
+          typeOverrides: typeOverrides,
+        ),
+      ),
+    );
+  }).toList();
 
   return Library(
     (b) => b

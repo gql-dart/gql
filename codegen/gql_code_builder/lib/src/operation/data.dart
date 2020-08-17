@@ -38,19 +38,38 @@ List<Class> buildFragmentDataClasses(
   Map<String, Reference> typeOverrides,
 ) {
   final fragmentMap = _fragmentMap(docSource);
-  return buildSelectionSetDataClasses(
-    name: "${frag.name.value}",
-    selections: mergeSelections(
-      frag.selectionSet.selections,
-      fragmentMap,
-    ),
-    schemaSource: schemaSource,
-    type: frag.typeCondition.on.name.value,
-    typeOverrides: typeOverrides,
-    fragmentMap: fragmentMap,
-    superclassSelections: {},
-    onFragment: true,
+  final selections = mergeSelections(
+    frag.selectionSet.selections,
+    fragmentMap,
   );
+  return [
+    // abstract class that will implemented by any class that uses the fragment
+    ...buildSelectionSetDataClasses(
+      name: frag.name.value,
+      selections: selections,
+      schemaSource: schemaSource,
+      type: frag.typeCondition.on.name.value,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      superclassSelections: {},
+      onFragment: true,
+    ),
+    // concrete built_value data class for fragment
+    ...buildSelectionSetDataClasses(
+      name: "${frag.name.value}Data",
+      selections: selections,
+      schemaSource: schemaSource,
+      type: frag.typeCondition.on.name.value,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      superclassSelections: {
+        frag.name.value: SourceSelections(
+          url: docSource.url,
+          selections: selections,
+        )
+      },
+    ),
+  ];
 }
 
 String _operationType(
