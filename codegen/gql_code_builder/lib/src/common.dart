@@ -68,7 +68,7 @@ String builtClassName(String name) => "G" + name;
 
 String identifier(String raw) => _escapePrivate(_escapeReserved(raw));
 
-String _escapeReserved(String raw) => _reserved.contains(raw) ? "$raw\$" : raw;
+String _escapeReserved(String raw) => _reserved.contains(raw) ? "G$raw" : raw;
 
 String _escapePrivate(String raw) => raw.startsWith("_") ? "G$raw" : raw;
 
