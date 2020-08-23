@@ -101,4 +101,28 @@ abstract class GHeroForEpisodeData_hero__asDroid
 abstract class GDroidFragment {
   String get G__typename;
   String get primaryFunction;
+  Map<String, dynamic> toJson();
+}
+
+abstract class GDroidFragmentData
+    implements
+        Built<GDroidFragmentData, GDroidFragmentDataBuilder>,
+        GDroidFragment {
+  GDroidFragmentData._();
+
+  factory GDroidFragmentData([Function(GDroidFragmentDataBuilder b) updates]) =
+      _$GDroidFragmentData;
+
+  static void _initializeBuilder(GDroidFragmentDataBuilder b) =>
+      b..G__typename = 'Droid';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @nullable
+  String get primaryFunction;
+  static Serializer<GDroidFragmentData> get serializer =>
+      _$gDroidFragmentDataSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GDroidFragmentData.serializer, this);
+  static GDroidFragmentData fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GDroidFragmentData.serializer, json);
 }

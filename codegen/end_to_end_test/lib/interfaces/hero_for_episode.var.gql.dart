@@ -22,3 +22,18 @@ abstract class GHeroForEpisodeVars
   static GHeroForEpisodeVars fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GHeroForEpisodeVars.serializer, json);
 }
+
+abstract class GDroidFragmentVars
+    implements Built<GDroidFragmentVars, GDroidFragmentVarsBuilder> {
+  GDroidFragmentVars._();
+
+  factory GDroidFragmentVars([Function(GDroidFragmentVarsBuilder b) updates]) =
+      _$GDroidFragmentVars;
+
+  static Serializer<GDroidFragmentVars> get serializer =>
+      _$gDroidFragmentVarsSerializer;
+  Map<String, dynamic> toJson() =>
+      _i2.serializers.serializeWith(GDroidFragmentVars.serializer, this);
+  static GDroidFragmentVars fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GDroidFragmentVars.serializer, json);
+}

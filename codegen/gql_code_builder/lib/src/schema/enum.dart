@@ -115,6 +115,16 @@ ListBuilder<Field> _buildFields(
       ),
     );
 
+const _enumConstReserved = <String>[
+  /// "name" can't be used as a const value since "name" is a member of the extended BuiltEnum class from BuiltValue
+  "name",
+];
+
+String _escapeConstName(String raw) =>
+    _enumConstReserved.contains(identifier(raw))
+        ? identifier("G$raw")
+        : identifier(raw);
+
 Field _buildConst(
   EnumValueDefinitionNode node,
   String enumName,
@@ -122,14 +132,14 @@ Field _buildConst(
     Field(
       (b) => b
         ..annotations = ListBuilder(<Expression>[
-          if (identifier(node.name.value) != node.name.value)
+          if (_escapeConstName(node.name.value) != node.name.value)
             refer("BuiltValueEnumConst", "package:built_value/built_value.dart")
                 .call([], {"wireName": literalString(node.name.value)}),
         ])
         ..static = true
         ..modifier = FieldModifier.constant
         ..type = refer(enumName)
-        ..name = identifier(node.name.value)
-        ..assignment =
-            Code("_\$${enumName.camelCase}${identifier(node.name.value)}"),
+        ..name = _escapeConstName(node.name.value)
+        ..assignment = Code(
+            "_\$${enumName.camelCase}${_escapeConstName(node.name.value)}"),
     );

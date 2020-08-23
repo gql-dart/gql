@@ -49,6 +49,16 @@ const _reserved = <String>[
   "Set",
 ];
 
+class SourceSelections {
+  final String url;
+  final List<SelectionNode> selections;
+
+  const SourceSelections({
+    this.url,
+    this.selections,
+  });
+}
+
 /// Prefixes a string with "G"
 ///
 /// This is used when generating classes and:
@@ -58,7 +68,7 @@ String builtClassName(String name) => "G" + name;
 
 String identifier(String raw) => _escapePrivate(_escapeReserved(raw));
 
-String _escapeReserved(String raw) => _reserved.contains(raw) ? "$raw\$" : raw;
+String _escapeReserved(String raw) => _reserved.contains(raw) ? "G$raw" : raw;
 
 String _escapePrivate(String raw) => raw.startsWith("_") ? "G$raw" : raw;
 
@@ -163,3 +173,53 @@ Method buildGetter({
       ..name = identifier(nameNode.value),
   );
 }
+
+Method buildSerializerGetter(String className) => Method(
+      (b) => b
+        ..static = true
+        ..returns = TypeReference(
+          (b) => b
+            ..url = "package:built_value/serializer.dart"
+            ..symbol = "Serializer"
+            ..types.add(
+              refer(className),
+            ),
+        )
+        ..type = MethodType.getter
+        ..name = "serializer"
+        ..lambda = true,
+    );
+
+Method buildToJsonGetter(
+  String className, {
+  bool implemented = true,
+}) =>
+    Method(
+      (b) => b
+        ..returns = refer("Map<String, dynamic>")
+        ..name = "toJson"
+        ..lambda = implemented
+        ..body = implemented
+            ? refer("serializers", "#serializer")
+                .property("serializeWith")
+                .call([
+                refer(className).property("serializer"),
+                refer("this"),
+              ]).code
+            : null,
+    );
+
+Method buildFromJsonGetter(String className) => Method(
+      (b) => b
+        ..static = true
+        ..returns = refer(className)
+        ..name = "fromJson"
+        ..requiredParameters.add(Parameter((b) => b
+          ..type = refer("Map<String, dynamic>")
+          ..name = "json"))
+        ..lambda = true
+        ..body = refer("serializers", "#serializer")
+            .property("deserializeWith")
+            .call(
+                [refer(className).property("serializer"), refer("json")]).code,
+    );

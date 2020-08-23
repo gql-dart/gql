@@ -43,10 +43,10 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   String get id;
   @nullable
   @BuiltValueField(wireName: 'bool')
-  bool get bool$;
+  bool get Gbool;
   @nullable
   @BuiltValueField(wireName: 'int')
-  int get int$;
+  int get Gint;
   @nullable
   double get float;
   @nullable
@@ -55,7 +55,7 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   GScalar get scalar;
   @nullable
   @BuiltValueField(wireName: 'enum')
-  GEnum get enum$;
+  GEnum get Genum;
   @nullable
   GInput get input;
   String get idRequired;
