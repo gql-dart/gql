@@ -10,7 +10,7 @@ dependencies:
   path: ^1.6.4
   glob: ^1.2.0
   build: ^1.0.0
-  gql_code_builder: ^0.0.9
+  gql_code_builder: ^0.1.1
   code_builder: ^3.3.0
   dart_style: ^1.2.9
   built_value: ^7.1.0
