@@ -3,6 +3,8 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
+import 'package:gql_example_cli/dimensions.data.gql.dart' show GDimensionsData;
+import 'package:gql_example_cli/dimensions.var.gql.dart' show GDimensionsVars;
 import 'package:gql_example_cli/find_pokemon.data.gql.dart'
     show
         GFindPokemonData,
@@ -26,6 +28,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
 @SerializersFor([
   GListPokemonData,
   GListPokemonData_pokemons,
+  GDimensionsData,
   GFindPokemonData,
   GFindPokemonData_pokemon,
   GFindPokemonData_pokemon_weight,
@@ -33,6 +36,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GListPokemon,
   GFindPokemon,
   GListPokemonVars,
+  GDimensionsVars,
   GFindPokemonVars
 ])
 final Serializers serializers = _serializersBuilder.build();

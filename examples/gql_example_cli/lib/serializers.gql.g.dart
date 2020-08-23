@@ -7,6 +7,8 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GDimensionsData.serializer)
+      ..add(GDimensionsVars.serializer)
       ..add(GFindPokemon.serializer)
       ..add(GFindPokemonData.serializer)
       ..add(GFindPokemonData_pokemon.serializer)

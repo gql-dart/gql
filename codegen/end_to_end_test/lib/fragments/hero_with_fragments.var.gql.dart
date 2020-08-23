@@ -24,6 +24,20 @@ abstract class GHeroWithFragmentsVars
       _i1.serializers.deserializeWith(GHeroWithFragmentsVars.serializer, json);
 }
 
+abstract class GheroDataVars
+    implements Built<GheroDataVars, GheroDataVarsBuilder> {
+  GheroDataVars._();
+
+  factory GheroDataVars([Function(GheroDataVarsBuilder b) updates]) =
+      _$GheroDataVars;
+
+  static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
+  Map<String, dynamic> toJson() =>
+      _i1.serializers.serializeWith(GheroDataVars.serializer, this);
+  static GheroDataVars fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GheroDataVars.serializer, json);
+}
+
 abstract class GcomparisonFieldsVars
     implements Built<GcomparisonFieldsVars, GcomparisonFieldsVarsBuilder> {
   GcomparisonFieldsVars._();

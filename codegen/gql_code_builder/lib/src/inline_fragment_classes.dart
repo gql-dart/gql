@@ -23,7 +23,7 @@ List<Class> buildInlineFragmentClasses({
   @required Map<String, SourceSelections> fragmentMap,
   @required Map<String, SourceSelections> superclassSelections,
   @required List<InlineFragmentNode> inlineFragments,
-  @required bool onFragment,
+  @required bool built,
 }) =>
     [
       Class(
@@ -40,7 +40,7 @@ List<Class> buildInlineFragmentClasses({
               ),
             )
             ..methods.addAll(fieldGetters);
-          if (!onFragment) {
+          if (built) {
             b = b
               ..annotations.add(refer(
                 "BuiltValue",
@@ -76,7 +76,7 @@ List<Class> buildInlineFragmentClasses({
         superclassSelections: {
           name: SourceSelections(url: null, selections: selections)
         },
-        onFragment: onFragment,
+        built: built,
       ),
       ...inlineFragments.expand(
         (inlineFragment) => buildSelectionSetDataClasses(
@@ -96,7 +96,7 @@ List<Class> buildInlineFragmentClasses({
           superclassSelections: {
             name: SourceSelections(url: null, selections: selections)
           },
-          onFragment: onFragment,
+          built: built,
         ),
       ),
     ];

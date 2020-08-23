@@ -52,7 +52,7 @@ List<Class> buildFragmentDataClasses(
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
       superclassSelections: {},
-      onFragment: true,
+      built: false,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -104,8 +104,8 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// For each selection that is a field with nested selections, a descendent
 /// data class will also be created.
 ///
-/// If this class is for a fragment definition or descendent (i.e [onFragment] == `true`),
-/// it will be built as an abstract class which will be implemented by any
+/// If this class is for a fragment definition or descendent, set [built] == `false`,
+/// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
 List<Class> buildSelectionSetDataClasses({
@@ -116,7 +116,7 @@ List<Class> buildSelectionSetDataClasses({
   @required Map<String, Reference> typeOverrides,
   @required Map<String, SourceSelections> fragmentMap,
   @required Map<String, SourceSelections> superclassSelections,
-  bool onFragment = false,
+  bool built = true,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     assert(
@@ -149,7 +149,7 @@ List<Class> buildSelectionSetDataClasses({
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
-        built: !onFragment,
+        built: built,
       );
     },
   ).toList();
@@ -168,9 +168,9 @@ List<Class> buildSelectionSetDataClasses({
         fragmentMap: fragmentMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
-        onFragment: onFragment,
+        built: built,
       )
-    else if (onFragment)
+    else if (!built)
       Class(
         (b) => b
           ..abstract = true
@@ -233,7 +233,7 @@ List<Class> buildSelectionSetDataClasses({
               superclassSelections,
               field,
             ),
-            onFragment: onFragment,
+            built: built,
           ),
         ),
   ];

@@ -14,6 +14,8 @@ Serializer<GHeroForEpisodeData_hero__base>
 Serializer<GHeroForEpisodeData_hero__asDroid>
     _$gHeroForEpisodeDataHeroAsDroidSerializer =
     new _$GHeroForEpisodeData_hero__asDroidSerializer();
+Serializer<GDroidFragmentData> _$gDroidFragmentDataSerializer =
+    new _$GDroidFragmentDataSerializer();
 
 class _$GHeroForEpisodeDataSerializer
     implements StructuredSerializer<GHeroForEpisodeData> {
@@ -163,6 +165,57 @@ class _$GHeroForEpisodeData_hero__asDroidSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'primaryFunction':
+          result.primaryFunction = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDroidFragmentDataSerializer
+    implements StructuredSerializer<GDroidFragmentData> {
+  @override
+  final Iterable<Type> types = const [GDroidFragmentData, _$GDroidFragmentData];
+  @override
+  final String wireName = 'GDroidFragmentData';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, GDroidFragmentData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+    if (object.primaryFunction != null) {
+      result
+        ..add('primaryFunction')
+        ..add(serializers.serialize(object.primaryFunction,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GDroidFragmentData deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDroidFragmentDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'primaryFunction':
@@ -481,6 +534,102 @@ class GHeroForEpisodeData_hero__asDroidBuilder
             G__typename: G__typename,
             name: name,
             primaryFunction: primaryFunction);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDroidFragmentData extends GDroidFragmentData {
+  @override
+  final String G__typename;
+  @override
+  final String primaryFunction;
+
+  factory _$GDroidFragmentData(
+          [void Function(GDroidFragmentDataBuilder) updates]) =>
+      (new GDroidFragmentDataBuilder()..update(updates)).build();
+
+  _$GDroidFragmentData._({this.G__typename, this.primaryFunction}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError('GDroidFragmentData', 'G__typename');
+    }
+  }
+
+  @override
+  GDroidFragmentData rebuild(
+          void Function(GDroidFragmentDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDroidFragmentDataBuilder toBuilder() =>
+      new GDroidFragmentDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDroidFragmentData &&
+        G__typename == other.G__typename &&
+        primaryFunction == other.primaryFunction;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), primaryFunction.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GDroidFragmentData')
+          ..add('G__typename', G__typename)
+          ..add('primaryFunction', primaryFunction))
+        .toString();
+  }
+}
+
+class GDroidFragmentDataBuilder
+    implements Builder<GDroidFragmentData, GDroidFragmentDataBuilder> {
+  _$GDroidFragmentData _$v;
+
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
+  String _primaryFunction;
+  String get primaryFunction => _$this._primaryFunction;
+  set primaryFunction(String primaryFunction) =>
+      _$this._primaryFunction = primaryFunction;
+
+  GDroidFragmentDataBuilder() {
+    GDroidFragmentData._initializeBuilder(this);
+  }
+
+  GDroidFragmentDataBuilder get _$this {
+    if (_$v != null) {
+      _G__typename = _$v.G__typename;
+      _primaryFunction = _$v.primaryFunction;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDroidFragmentData other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GDroidFragmentData;
+  }
+
+  @override
+  void update(void Function(GDroidFragmentDataBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GDroidFragmentData build() {
+    final _$result = _$v ??
+        new _$GDroidFragmentData._(
+            G__typename: G__typename, primaryFunction: primaryFunction);
     replace(_$result);
     return _$result;
   }

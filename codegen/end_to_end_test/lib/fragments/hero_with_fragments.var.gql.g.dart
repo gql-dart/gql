@@ -8,6 +8,8 @@ part of 'hero_with_fragments.var.gql.dart';
 
 Serializer<GHeroWithFragmentsVars> _$gHeroWithFragmentsVarsSerializer =
     new _$GHeroWithFragmentsVarsSerializer();
+Serializer<GheroDataVars> _$gheroDataVarsSerializer =
+    new _$GheroDataVarsSerializer();
 Serializer<GcomparisonFieldsVars> _$gcomparisonFieldsVarsSerializer =
     new _$GcomparisonFieldsVarsSerializer();
 
@@ -55,6 +57,26 @@ class _$GHeroWithFragmentsVarsSerializer
     }
 
     return result.build();
+  }
+}
+
+class _$GheroDataVarsSerializer implements StructuredSerializer<GheroDataVars> {
+  @override
+  final Iterable<Type> types = const [GheroDataVars, _$GheroDataVars];
+  @override
+  final String wireName = 'GheroDataVars';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, GheroDataVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object>[];
+  }
+
+  @override
+  GheroDataVars deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GheroDataVarsBuilder().build();
   }
 }
 
@@ -177,6 +199,63 @@ class GHeroWithFragmentsVarsBuilder
   @override
   _$GHeroWithFragmentsVars build() {
     final _$result = _$v ?? new _$GHeroWithFragmentsVars._(first: first);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GheroDataVars extends GheroDataVars {
+  factory _$GheroDataVars([void Function(GheroDataVarsBuilder) updates]) =>
+      (new GheroDataVarsBuilder()..update(updates)).build();
+
+  _$GheroDataVars._() : super._();
+
+  @override
+  GheroDataVars rebuild(void Function(GheroDataVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GheroDataVarsBuilder toBuilder() => new GheroDataVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GheroDataVars;
+  }
+
+  @override
+  int get hashCode {
+    return 172200517;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper('GheroDataVars').toString();
+  }
+}
+
+class GheroDataVarsBuilder
+    implements Builder<GheroDataVars, GheroDataVarsBuilder> {
+  _$GheroDataVars _$v;
+
+  GheroDataVarsBuilder();
+
+  @override
+  void replace(GheroDataVars other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GheroDataVars;
+  }
+
+  @override
+  void update(void Function(GheroDataVarsBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GheroDataVars build() {
+    final _$result = _$v ?? new _$GheroDataVars._();
     replace(_$result);
     return _$result;
   }
