@@ -10,6 +10,9 @@ abstract class LinkException implements Exception {
   const LinkException(
     this.originalException,
   );
+
+  @override
+  String toString() => "LinkException($originalException)";
 }
 
 /// Exception occurring when a terminating link
@@ -61,4 +64,8 @@ class ServerException extends LinkException {
     @required this.parsedResponse,
     dynamic originalException,
   }) : super(originalException);
+
+  @override
+  String toString() =>
+      "ServerException(originalException: $originalException, parsedResponse: $parsedResponse)";
 }
