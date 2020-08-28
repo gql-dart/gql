@@ -26,6 +26,10 @@ class RequestFormatException extends LinkException {
     @required this.request,
     dynamic originalException,
   }) : super(originalException);
+
+  @override
+  String toString() =>
+      "RequestFormatException(originalException: $originalException, request: $request)";
 }
 
 /// Exception occurring when a terminating link
@@ -35,6 +39,10 @@ class ResponseFormatException extends LinkException {
   const ResponseFormatException({
     dynamic originalException,
   }) : super(originalException);
+
+  @override
+  String toString() =>
+      "ResponseFormatException(originalException: $originalException)";
 }
 
 /// Exception occurring when reading from the context
@@ -43,6 +51,10 @@ class ContextReadException extends LinkException {
   const ContextReadException({
     dynamic originalException,
   }) : super(originalException);
+
+  @override
+  String toString() =>
+      "ContextReadException(originalException: $originalException)";
 }
 
 /// Exception occurring when writing to the context
@@ -51,6 +63,10 @@ class ContextWriteException extends LinkException {
   const ContextWriteException({
     dynamic originalException,
   }) : super(originalException);
+
+  @override
+  String toString() =>
+      "ContextWriteException(originalException: $originalException)";
 }
 
 /// Exception occurring when network fails
