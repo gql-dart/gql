@@ -145,4 +145,7 @@ class Context {
       ).hash(
         _getChildren(),
       );
+
+  @override
+  String toString() => "Context($_context)";
 }
