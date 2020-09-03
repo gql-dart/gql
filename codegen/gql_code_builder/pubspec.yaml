@@ -16,4 +16,4 @@ dependencies:
   gql_exec: ^0.2.4
 dev_dependencies: 
   gql_pedantic: ^1.0.1
-  build_runner: ^1.7.4
+  build_runner: ^1.10.1
