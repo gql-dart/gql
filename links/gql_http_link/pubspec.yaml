@@ -10,6 +10,7 @@ dependencies:
   gql_exec: ^0.2.2
   gql_link: ^0.3.0
   http: ^0.12.1
+  http_parser: ^3.1.4
 dev_dependencies: 
   test: ^1.0.0
   mockito: ^4.1.1
