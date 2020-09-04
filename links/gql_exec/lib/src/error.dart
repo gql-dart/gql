@@ -31,7 +31,8 @@ class GraphQLError {
       ];
 
   @override
-  String toString() => message;
+  String toString() =>
+      "GraphQLError(message: $message, locations: $locations, path: $path, extensions: $extensions)";
 
   @override
   bool operator ==(Object o) =>
@@ -86,4 +87,7 @@ class ErrorLocation {
       ).hash(
         _getChildren(),
       );
+
+  @override
+  String toString() => "ErrorLocation(line: $line, column: $column)";
 }

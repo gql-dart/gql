@@ -62,6 +62,10 @@ class Request {
       ).hash(
         _getChildren(),
       );
+
+  @override
+  String toString() =>
+      "Request(operation: $operation, variables: $variables, context: $context)";
 }
 
 typedef GetRequestExtensions = dynamic Function(Request request);

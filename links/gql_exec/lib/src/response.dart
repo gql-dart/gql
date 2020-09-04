@@ -63,6 +63,10 @@ class Response {
       ).hash(
         _getChildren(),
       );
+
+  @override
+  String toString() =>
+      "Response(data: $data, errors: $errors, context: $context)";
 }
 
 /// Extensions returned with the response

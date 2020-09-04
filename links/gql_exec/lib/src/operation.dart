@@ -40,4 +40,8 @@ class Operation {
       ).hash(
         _getChildren(),
       );
+
+  @override
+  String toString() =>
+      "Operation(document: $document, operationName: $operationName)";
 }
