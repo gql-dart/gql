@@ -9,6 +9,14 @@ import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.req.gql.
     show GAllPokemon;
 import 'package:gql_example_flutter/src/all_pokemon/graphql/all_pokemon.var.gql.dart'
     show GAllPokemonVars;
+import 'package:gql_example_flutter/src/pokemon_card/graphql/nested_fragment.data.gql.dart'
+    show GNestedFragmentData;
+import 'package:gql_example_flutter/src/pokemon_card/graphql/nested_fragment.var.gql.dart'
+    show GNestedFragmentVars;
+import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.data.gql.dart'
+    show GPokemonCardData;
+import 'package:gql_example_flutter/src/pokemon_card/graphql/pokemon_card_fragment.var.gql.dart'
+    show GPokemonCardVars;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.data.gql.dart'
     show
         GPokemonDetailData,
@@ -30,11 +38,15 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPokemonDetailData_pokemon,
   GPokemonDetailData_pokemon_weight,
   GPokemonDetailData_pokemon_height,
+  GNestedFragmentData,
+  GPokemonCardData,
   GAllPokemonData,
   GAllPokemonData_pokemons,
   GPokemonDetail,
   GAllPokemon,
   GPokemonDetailVars,
+  GNestedFragmentVars,
+  GPokemonCardVars,
   GAllPokemonVars
 ])
 final Serializers serializers = _serializersBuilder.build();

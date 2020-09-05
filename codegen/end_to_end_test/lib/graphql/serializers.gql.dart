@@ -17,23 +17,29 @@ import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart'
         GHeroWithFragmentsData_hero,
         GHeroWithFragmentsData_hero_friendsConnection,
         GHeroWithFragmentsData_hero_friendsConnection_edges,
-        GHeroWithFragmentsData_hero_friendsConnection_edges_node;
+        GHeroWithFragmentsData_hero_friendsConnection_edges_node,
+        GcomparisonFieldsData,
+        GcomparisonFieldsData_friendsConnection,
+        GcomparisonFieldsData_friendsConnection_edges,
+        GcomparisonFieldsData_friendsConnection_edges_node,
+        GheroDataData;
 import 'package:end_to_end_test/fragments/hero_with_fragments.req.gql.dart'
     show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/hero_with_fragments.var.gql.dart'
-    show GHeroWithFragmentsVars;
+    show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart'
-    show GEpisode, GLengthUnit, GReviewInput, GColorInput, GISODate;
+    show GColorInput, GEpisode, GISODate, GLengthUnit, GReviewInput;
 import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
     show
+        GDroidFragmentData,
         GHeroForEpisodeData,
         GHeroForEpisodeData_hero,
-        GHeroForEpisodeData_hero__base,
-        GHeroForEpisodeData_hero__asDroid;
+        GHeroForEpisodeData_hero__asDroid,
+        GHeroForEpisodeData_hero__base;
 import 'package:end_to_end_test/interfaces/hero_for_episode.req.gql.dart'
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
-    show GHeroForEpisodeVars;
+    show GDroidFragmentVars, GHeroForEpisodeVars;
 import 'package:end_to_end_test/no_vars/hero_no_vars.data.gql.dart'
     show GHeroNoVarsData, GHeroNoVarsData_hero;
 import 'package:end_to_end_test/no_vars/hero_no_vars.req.gql.dart'
@@ -68,44 +74,53 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GAliasedHero,
+  GAliasedHeroData,
+  GAliasedHeroData_empireHero,
+  GAliasedHeroData_jediHero,
+  GAliasedHeroVars,
+  GColorInput,
+  GCreateReview,
+  GCreateReviewData,
+  GCreateReviewData_createReview,
+  GCreateReviewVars,
+  GDroidFragmentData,
+  GDroidFragmentVars,
+  GEpisode,
+  GHeroForEpisode,
+  GHeroForEpisodeData,
+  GHeroForEpisodeData_hero,
+  GHeroForEpisodeData_hero__asDroid,
+  GHeroForEpisodeData_hero__base,
+  GHeroForEpisodeVars,
+  GHeroNoVars,
+  GHeroNoVarsData,
+  GHeroNoVarsData_hero,
+  GHeroNoVarsVars,
+  GHeroWithFragments,
   GHeroWithFragmentsData,
   GHeroWithFragmentsData_hero,
   GHeroWithFragmentsData_hero_friendsConnection,
   GHeroWithFragmentsData_hero_friendsConnection_edges,
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
-  GHeroNoVarsData,
-  GHeroNoVarsData_hero,
-  GReviewWithDateData,
-  GReviewWithDateData_createReview,
-  GCreateReviewData,
-  GCreateReviewData_createReview,
+  GHeroWithFragmentsVars,
+  GHumanWithArgs,
   GHumanWithArgsData,
   GHumanWithArgsData_human,
-  GAliasedHeroData,
-  GAliasedHeroData_empireHero,
-  GAliasedHeroData_jediHero,
-  GHeroForEpisodeData,
-  GHeroForEpisodeData_hero,
-  GHeroForEpisodeData_hero__base,
-  GHeroForEpisodeData_hero__asDroid,
-  GHeroWithFragments,
-  GHeroNoVars,
-  GReviewWithDate,
-  GCreateReview,
-  GHumanWithArgs,
-  GAliasedHero,
-  GHeroForEpisode,
-  GEpisode,
+  GHumanWithArgsVars,
+  GISODate,
   GLengthUnit,
   GReviewInput,
-  GColorInput,
-  GISODate,
-  GHeroWithFragmentsVars,
-  GHeroNoVarsVars,
+  GReviewWithDate,
+  GReviewWithDateData,
+  GReviewWithDateData_createReview,
   GReviewWithDateVars,
-  GCreateReviewVars,
-  GHumanWithArgsVars,
-  GAliasedHeroVars,
-  GHeroForEpisodeVars
+  GcomparisonFieldsData,
+  GcomparisonFieldsData_friendsConnection,
+  GcomparisonFieldsData_friendsConnection_edges,
+  GcomparisonFieldsData_friendsConnection_edges_node,
+  GcomparisonFieldsVars,
+  GheroDataData,
+  GheroDataVars
 ])
 final Serializers serializers = _serializersBuilder.build();

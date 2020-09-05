@@ -18,10 +18,10 @@ abstract class GQueryOperationVars
   String get id;
   @nullable
   @BuiltValueField(wireName: 'bool')
-  bool get bool$;
+  bool get Gbool;
   @nullable
   @BuiltValueField(wireName: 'int')
-  int get int$;
+  int get Gint;
   @nullable
   double get float;
   @nullable
@@ -30,7 +30,7 @@ abstract class GQueryOperationVars
   _i1.GScalar get scalar;
   @nullable
   @BuiltValueField(wireName: 'enum')
-  _i1.GEnum get enum$;
+  _i1.GEnum get Genum;
   @nullable
   _i1.GInput get input;
   String get idRequired;

@@ -47,9 +47,12 @@ Library buildSerializerLibrary(
               .statement,
           refer("@SerializersFor", "package:built_value/serializer.dart").call([
             literalList(
-              classes.map<Reference>(
-                (c) => refer(c.name, c.source.uri.toString()),
-              ),
+              classes
+                  .map<Reference>(
+                    (c) => refer(c.name, c.source.uri.toString()),
+                  )
+                  .toList()
+                    ..sort((a, b) => a.symbol.compareTo(b.symbol)),
             )
           ]),
           refer("_serializersBuilder")

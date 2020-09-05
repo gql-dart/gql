@@ -6,7 +6,7 @@ dependencies:
   gql_exec: ^0.2.0
 
 dev_dependencies:
-  gql_build: ^0.0.1
+  gql_build: ^0.1.1
 ```
 
 Enable the builders you want by setting `enabled: true`.
