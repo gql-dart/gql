@@ -3,18 +3,9 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 
 import "package:gql_code_builder/src/common.dart";
+import "package:gql_code_builder/src/inline_fragment_classes.dart";
 import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/source.dart";
-
-class _SourceSelections {
-  final String url;
-  final List<SelectionNode> selections;
-
-  const _SourceSelections({
-    this.url,
-    this.selections,
-  });
-}
 
 List<Class> buildOperationDataClasses(
   OperationDefinitionNode op,
@@ -23,9 +14,9 @@ List<Class> buildOperationDataClasses(
   Map<String, Reference> typeOverrides,
 ) {
   final fragmentMap = _fragmentMap(docSource);
-  return _buildSelectionSetDataClasses(
+  return buildSelectionSetDataClasses(
     name: "${op.name.value}Data",
-    selections: _mergeSelections(
+    selections: mergeSelections(
       op.selectionSet.selections,
       fragmentMap,
     ),
@@ -47,19 +38,38 @@ List<Class> buildFragmentDataClasses(
   Map<String, Reference> typeOverrides,
 ) {
   final fragmentMap = _fragmentMap(docSource);
-  return _buildSelectionSetDataClasses(
-    name: "${frag.name.value}",
-    selections: _mergeSelections(
-      frag.selectionSet.selections,
-      fragmentMap,
-    ),
-    schemaSource: schemaSource,
-    type: frag.typeCondition.on.name.value,
-    typeOverrides: typeOverrides,
-    fragmentMap: fragmentMap,
-    superclassSelections: {},
-    onFragment: true,
+  final selections = mergeSelections(
+    frag.selectionSet.selections,
+    fragmentMap,
   );
+  return [
+    // abstract class that will implemented by any class that uses the fragment
+    ...buildSelectionSetDataClasses(
+      name: frag.name.value,
+      selections: selections,
+      schemaSource: schemaSource,
+      type: frag.typeCondition.on.name.value,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      superclassSelections: {},
+      built: false,
+    ),
+    // concrete built_value data class for fragment
+    ...buildSelectionSetDataClasses(
+      name: "${frag.name.value}Data",
+      selections: selections,
+      schemaSource: schemaSource,
+      type: frag.typeCondition.on.name.value,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      superclassSelections: {
+        frag.name.value: SourceSelections(
+          url: docSource.url,
+          selections: selections,
+        )
+      },
+    ),
+  ];
 }
 
 String _operationType(
@@ -79,10 +89,10 @@ String _operationType(
       .value;
 }
 
-Map<String, _SourceSelections> _fragmentMap(SourceNode source) => {
+Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
       for (var def
           in source.document.definitions.whereType<FragmentDefinitionNode>())
-        def.name.value: _SourceSelections(
+        def.name.value: SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
         ),
@@ -94,28 +104,28 @@ Map<String, _SourceSelections> _fragmentMap(SourceNode source) => {
 /// For each selection that is a field with nested selections, a descendent
 /// data class will also be created.
 ///
-/// If this class is for a fragment definition or descendent (i.e [onFragment] == `true`),
-/// it will be built as an abstract class which will be implemented by any
+/// If this class is for a fragment definition or descendent, set [built] == `false`,
+/// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
-List<Class> _buildSelectionSetDataClasses({
+List<Class> buildSelectionSetDataClasses({
   @required String name,
   @required List<SelectionNode> selections,
   @required SourceNode schemaSource,
   @required String type,
   @required Map<String, Reference> typeOverrides,
-  @required Map<String, _SourceSelections> fragmentMap,
-  @required Map<String, _SourceSelections> superclassSelections,
-  bool onFragment = false,
+  @required Map<String, SourceSelections> fragmentMap,
+  @required Map<String, SourceSelections> superclassSelections,
+  bool built = true,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     assert(
       fragmentMap.containsKey(selection.name.value),
       "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
     );
-    superclassSelections["${selection.name.value}"] = _SourceSelections(
+    superclassSelections["${selection.name.value}"] = SourceSelections(
       url: fragmentMap[selection.name.value].url,
-      selections: _mergeSelections(
+      selections: mergeSelections(
         fragmentMap[selection.name.value].selections,
         fragmentMap,
       ).whereType<FieldNode>().toList(),
@@ -139,7 +149,7 @@ List<Class> _buildSelectionSetDataClasses({
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
-        built: !onFragment,
+        built: built,
       );
     },
   ).toList();
@@ -148,7 +158,7 @@ List<Class> _buildSelectionSetDataClasses({
 
   return [
     if (inlineFragments.isNotEmpty)
-      ..._buildInlineFragmentClasses(
+      ...buildInlineFragmentClasses(
         name: name,
         fieldGetters: fieldGetters,
         selections: selections,
@@ -158,9 +168,9 @@ List<Class> _buildSelectionSetDataClasses({
         fragmentMap: fragmentMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
-        onFragment: onFragment,
+        built: built,
       )
-    else if (onFragment)
+    else if (!built)
       Class(
         (b) => b
           ..abstract = true
@@ -173,7 +183,10 @@ List<Class> _buildSelectionSetDataClasses({
               ),
             ),
           )
-          ..methods.addAll(fieldGetters),
+          ..methods.addAll([
+            ...fieldGetters,
+            buildToJsonGetter(builtClassName(name), implemented: false),
+          ]),
       )
     else
       builtClass(
@@ -201,7 +214,7 @@ List<Class> _buildSelectionSetDataClasses({
           (field) => field.selectionSet != null,
         )
         .expand(
-          (field) => _buildSelectionSetDataClasses(
+          (field) => buildSelectionSetDataClasses(
             name: "${name}_${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet.selections,
             fragmentMap: fragmentMap,
@@ -220,177 +233,16 @@ List<Class> _buildSelectionSetDataClasses({
               superclassSelections,
               field,
             ),
-            onFragment: onFragment,
+            built: built,
           ),
         ),
   ];
 }
 
-/// Builds the following classes for inline fragments:
-///   1. An abstract root class that will be implemented by each instantiable
-///      class. This includes a `built_value` serializer that instantiates
-///      the appropriate concrete class based on the `__typename` field.
-///   2. A "base" instantiable class that includes the common fields.
-///   3. An instantiable class for each inline fragment that includes the
-///      common fields and the fragment fields.
-List<Class> _buildInlineFragmentClasses({
-  @required String name,
-  @required List<Method> fieldGetters,
-  @required List<SelectionNode> selections,
-  @required SourceNode schemaSource,
-  @required String type,
-  @required Map<String, Reference> typeOverrides,
-  @required Map<String, _SourceSelections> fragmentMap,
-  @required Map<String, _SourceSelections> superclassSelections,
-  @required List<InlineFragmentNode> inlineFragments,
-  @required bool onFragment,
-}) =>
-    [
-      Class(
-        (b) {
-          b = b
-            ..abstract = true
-            ..name = builtClassName(name)
-            ..implements.addAll(
-              superclassSelections.keys.map<Reference>(
-                (superName) => refer(
-                  builtClassName(superName),
-                  (superclassSelections[superName].url ?? "") + "#data",
-                ),
-              ),
-            )
-            ..methods.addAll(fieldGetters);
-          if (!onFragment) {
-            b = b
-              ..annotations.add(refer(
-                "BuiltValue",
-                "package:built_value/built_value.dart",
-              ).call([], {"instantiable": literalBool(false)}))
-              // TODO: remove once this issue is resolved
-              // https://github.com/google/built_value.dart/issues/838
-              ..implements.add(refer("BuiltFaker",
-                  "package:gql_code_builder/src/utils/built_faker.dart"))
-              ..methods.addAll(
-                _inlineFragmentRootSerializationMethods(
-                  name: builtClassName(name),
-                  inlineFragments: inlineFragments,
-                ),
-              );
-          }
-          return b;
-        },
-      ),
-      ..._buildSelectionSetDataClasses(
-        name: "${name}__base",
-        selections: _mergeSelections(
-          [
-            ...selections.whereType<FieldNode>(),
-            ...selections.whereType<FragmentSpreadNode>(),
-          ],
-          fragmentMap,
-        ),
-        fragmentMap: fragmentMap,
-        schemaSource: schemaSource,
-        type: type,
-        typeOverrides: typeOverrides,
-        superclassSelections: {
-          name: _SourceSelections(url: null, selections: selections)
-        },
-        onFragment: onFragment,
-      ),
-      ...inlineFragments.expand(
-        (inlineFragment) => _buildSelectionSetDataClasses(
-          name: "${name}__as${inlineFragment.typeCondition.on.name.value}",
-          selections: _mergeSelections(
-            [
-              ...selections.whereType<FieldNode>(),
-              ...selections.whereType<FragmentSpreadNode>(),
-              ...inlineFragment.selectionSet.selections,
-            ],
-            fragmentMap,
-          ),
-          fragmentMap: fragmentMap,
-          schemaSource: schemaSource,
-          type: inlineFragment.typeCondition.on.name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: {
-            name: _SourceSelections(url: null, selections: selections)
-          },
-          onFragment: onFragment,
-        ),
-      ),
-    ];
-
-List<Method> _inlineFragmentRootSerializationMethods({
-  String name,
-  List<InlineFragmentNode> inlineFragments,
-}) =>
-    [
-      Method(
-        (b) => b
-          ..annotations.add(refer(
-            "BuiltValueSerializer",
-            "package:built_value/built_value.dart",
-          ).call([], {"custom": literalBool(true)}))
-          ..static = true
-          ..returns = TypeReference(
-            (b) => b
-              ..url = "package:built_value/serializer.dart"
-              ..symbol = "Serializer"
-              ..types.add(
-                refer(name),
-              ),
-          )
-          ..type = MethodType.getter
-          ..name = "serializer"
-          ..lambda = true
-          ..body = TypeReference((b) => b
-            ..symbol = "InlineFragmentSerializer"
-            ..url =
-                "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
-            ..types.add(refer(name))).call([
-            literalString(name),
-            refer("${name}__base"),
-            literalList(
-              inlineFragments.map(
-                (inlineFragment) => refer(
-                  "${name}__as${inlineFragment.typeCondition.on.name.value}",
-                ),
-              ),
-            ),
-          ]).code,
-      ),
-      Method(
-        (b) => b
-          ..returns = refer("Map<String, dynamic>")
-          ..name = "toJson"
-          ..lambda = true
-          ..body = refer("serializers", "#serializer")
-              .property("serializeWith")
-              .call([
-            refer(name).property("serializer"),
-            refer("this"),
-          ]).code,
-      ),
-      Method(
-        (b) => b
-          ..static = true
-          ..returns = refer(name)
-          ..name = "fromJson"
-          ..requiredParameters.add(Parameter((b) => b
-            ..type = refer("Map<String, dynamic>")
-            ..name = "json"))
-          ..lambda = true
-          ..body = refer("serializers", "#serializer")
-              .property("deserializeWith")
-              .call([refer(name).property("serializer"), refer("json")]).code,
-      ),
-    ];
-
 /// Deeply merges field nodes
-List<SelectionNode> _mergeSelections(
+List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
-  Map<String, _SourceSelections> fragmentMap,
+  Map<String, SourceSelections> fragmentMap,
 ) =>
     _expandFragmentSpreads(selections, fragmentMap)
         .fold<Map<String, SelectionNode>>(
@@ -410,7 +262,7 @@ List<SelectionNode> _mergeSelections(
                     name: selection.name,
                     alias: selection.alias,
                     selectionSet: SelectionSetNode(
-                        selections: _mergeSelections(
+                        selections: mergeSelections(
                       [
                         ...existingSelections,
                         ...selection.selectionSet.selections
@@ -429,7 +281,7 @@ List<SelectionNode> _mergeSelections(
 
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
-  Map<String, _SourceSelections> fragmentMap, [
+  Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
 ]) =>
     selections.expand(
@@ -452,8 +304,8 @@ List<SelectionNode> _expandFragmentSpreads(
       },
     ).toList();
 
-Map<String, _SourceSelections> _fragmentSelectionsForField(
-  Map<String, _SourceSelections> fragmentMap,
+Map<String, SourceSelections> _fragmentSelectionsForField(
+  Map<String, SourceSelections> fragmentMap,
   FieldNode field,
 ) =>
     Map.fromEntries(
@@ -470,7 +322,7 @@ Map<String, _SourceSelections> _fragmentSelectionsForField(
         ).map(
           (selection) => MapEntry(
             "${entry.key}_${field.alias?.value ?? field.name.value}",
-            _SourceSelections(
+            SourceSelections(
               url: entry.value.url,
               selections: selection.selectionSet.selections
                   .whereType<FieldNode>()

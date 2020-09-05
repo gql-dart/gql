@@ -7,9 +7,9 @@ import 'package:gql_example_build/fragments/shape.data.gql.dart'
     show
         GShapeData,
         GShapeData_shape,
-        GShapeData_shape__base,
+        GShapeData_shape__asRectangle,
         GShapeData_shape__asSquare,
-        GShapeData_shape__asRectangle;
+        GShapeData_shape__base;
 import 'package:gql_example_build/fragments/shape.req.gql.dart' show GShape;
 import 'package:gql_example_build/fragments/shape.var.gql.dart' show GShapeVars;
 import 'package:gql_example_build/kitchen_sink/query.data.gql.dart'
@@ -23,7 +23,7 @@ import 'package:gql_example_build/kitchen_sink/query.req.gql.dart'
 import 'package:gql_example_build/kitchen_sink/query.var.gql.dart'
     show GQueryOperationVars;
 import 'package:gql_example_build/schema.schema.gql.dart'
-    show GScalar, GEnum, GInput;
+    show GEnum, GInput, GScalar;
 
 part 'serializers.gql.g.dart';
 
@@ -31,21 +31,21 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
-  GShapeData,
-  GShapeData_shape,
-  GShapeData_shape__base,
-  GShapeData_shape__asSquare,
-  GShapeData_shape__asRectangle,
+  GEnum,
+  GInput,
+  GQueryOperation,
   GQueryOperationData,
   GQueryOperationData_field,
   GQueryOperationData_field_field,
   GQueryOperationData_field_fieldRequired,
-  GShape,
-  GQueryOperation,
+  GQueryOperationVars,
   GScalar,
-  GEnum,
-  GInput,
-  GShapeVars,
-  GQueryOperationVars
+  GShape,
+  GShapeData,
+  GShapeData_shape,
+  GShapeData_shape__asRectangle,
+  GShapeData_shape__asSquare,
+  GShapeData_shape__base,
+  GShapeVars
 ])
 final Serializers serializers = _serializersBuilder.build();

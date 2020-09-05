@@ -1,3 +1,7 @@
+## 0.1.1
+- build var classes for fragments
+- build instantiable data classes for fragments
+
 ## 0.1.0
 
 - use `built_value` for generated classes

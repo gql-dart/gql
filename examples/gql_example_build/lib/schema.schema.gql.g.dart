@@ -86,16 +86,16 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
         ..add(serializers.serialize(object.id,
             specifiedType: const FullType(String)));
     }
-    if (object.bool$ != null) {
+    if (object.Gbool != null) {
       result
         ..add('bool')
-        ..add(serializers.serialize(object.bool$,
+        ..add(serializers.serialize(object.Gbool,
             specifiedType: const FullType(bool)));
     }
-    if (object.int$ != null) {
+    if (object.Gint != null) {
       result
         ..add('int')
-        ..add(serializers.serialize(object.int$,
+        ..add(serializers.serialize(object.Gint,
             specifiedType: const FullType(int)));
     }
     if (object.float != null) {
@@ -116,10 +116,10 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
         ..add(serializers.serialize(object.scalar,
             specifiedType: const FullType(GScalar)));
     }
-    if (object.enum$ != null) {
+    if (object.Genum != null) {
       result
         ..add('enum')
-        ..add(serializers.serialize(object.enum$,
+        ..add(serializers.serialize(object.Genum,
             specifiedType: const FullType(GEnum)));
     }
     if (object.input != null) {
@@ -147,11 +147,11 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'bool':
-          result.bool$ = serializers.deserialize(value,
+          result.Gbool = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'int':
-          result.int$ = serializers.deserialize(value,
+          result.Gint = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'float':
@@ -167,7 +167,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
               specifiedType: const FullType(GScalar)) as GScalar);
           break;
         case 'enum':
-          result.enum$ = serializers.deserialize(value,
+          result.Genum = serializers.deserialize(value,
               specifiedType: const FullType(GEnum)) as GEnum;
           break;
         case 'input':
@@ -293,9 +293,9 @@ class _$GInput extends GInput {
   @override
   final String id;
   @override
-  final bool bool$;
+  final bool Gbool;
   @override
-  final int int$;
+  final int Gint;
   @override
   final double float;
   @override
@@ -303,7 +303,7 @@ class _$GInput extends GInput {
   @override
   final GScalar scalar;
   @override
-  final GEnum enum$;
+  final GEnum Genum;
   @override
   final GInput input;
   @override
@@ -328,12 +328,12 @@ class _$GInput extends GInput {
 
   _$GInput._(
       {this.id,
-      this.bool$,
-      this.int$,
+      this.Gbool,
+      this.Gint,
       this.float,
       this.string,
       this.scalar,
-      this.enum$,
+      this.Genum,
       this.input,
       this.idRequired,
       this.boolRequired,
@@ -382,12 +382,12 @@ class _$GInput extends GInput {
     if (identical(other, this)) return true;
     return other is GInput &&
         id == other.id &&
-        bool$ == other.bool$ &&
-        int$ == other.int$ &&
+        Gbool == other.Gbool &&
+        Gint == other.Gint &&
         float == other.float &&
         string == other.string &&
         scalar == other.scalar &&
-        enum$ == other.enum$ &&
+        Genum == other.Genum &&
         input == other.input &&
         idRequired == other.idRequired &&
         boolRequired == other.boolRequired &&
@@ -418,12 +418,12 @@ class _$GInput extends GInput {
                                                             $jc(
                                                                 $jc(0,
                                                                     id.hashCode),
-                                                                bool$.hashCode),
-                                                            int$.hashCode),
+                                                                Gbool.hashCode),
+                                                            Gint.hashCode),
                                                         float.hashCode),
                                                     string.hashCode),
                                                 scalar.hashCode),
-                                            enum$.hashCode),
+                                            Genum.hashCode),
                                         input.hashCode),
                                     idRequired.hashCode),
                                 boolRequired.hashCode),
@@ -439,12 +439,12 @@ class _$GInput extends GInput {
   String toString() {
     return (newBuiltValueToStringHelper('GInput')
           ..add('id', id)
-          ..add('bool\$', bool$)
-          ..add('int\$', int$)
+          ..add('Gbool', Gbool)
+          ..add('Gint', Gint)
           ..add('float', float)
           ..add('string', string)
           ..add('scalar', scalar)
-          ..add('enum\$', enum$)
+          ..add('Genum', Genum)
           ..add('input', input)
           ..add('idRequired', idRequired)
           ..add('boolRequired', boolRequired)
@@ -465,13 +465,13 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
   String get id => _$this._id;
   set id(String id) => _$this._id = id;
 
-  bool _bool$;
-  bool get bool$ => _$this._bool$;
-  set bool$(bool bool$) => _$this._bool$ = bool$;
+  bool _Gbool;
+  bool get Gbool => _$this._Gbool;
+  set Gbool(bool Gbool) => _$this._Gbool = Gbool;
 
-  int _int$;
-  int get int$ => _$this._int$;
-  set int$(int int$) => _$this._int$ = int$;
+  int _Gint;
+  int get Gint => _$this._Gint;
+  set Gint(int Gint) => _$this._Gint = Gint;
 
   double _float;
   double get float => _$this._float;
@@ -485,9 +485,9 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
   GScalarBuilder get scalar => _$this._scalar ??= new GScalarBuilder();
   set scalar(GScalarBuilder scalar) => _$this._scalar = scalar;
 
-  GEnum _enum$;
-  GEnum get enum$ => _$this._enum$;
-  set enum$(GEnum enum$) => _$this._enum$ = enum$;
+  GEnum _Genum;
+  GEnum get Genum => _$this._Genum;
+  set Genum(GEnum Genum) => _$this._Genum = Genum;
 
   GInputBuilder _input;
   GInputBuilder get input => _$this._input ??= new GInputBuilder();
@@ -536,12 +536,12 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
   GInputBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _bool$ = _$v.bool$;
-      _int$ = _$v.int$;
+      _Gbool = _$v.Gbool;
+      _Gint = _$v.Gint;
       _float = _$v.float;
       _string = _$v.string;
       _scalar = _$v.scalar?.toBuilder();
-      _enum$ = _$v.enum$;
+      _Genum = _$v.Genum;
       _input = _$v.input?.toBuilder();
       _idRequired = _$v.idRequired;
       _boolRequired = _$v.boolRequired;
@@ -576,12 +576,12 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
       _$result = _$v ??
           new _$GInput._(
               id: id,
-              bool$: bool$,
-              int$: int$,
+              Gbool: Gbool,
+              Gint: Gint,
               float: float,
               string: string,
               scalar: _scalar?.build(),
-              enum$: enum$,
+              Genum: Genum,
               input: _input?.build(),
               idRequired: idRequired,
               boolRequired: boolRequired,

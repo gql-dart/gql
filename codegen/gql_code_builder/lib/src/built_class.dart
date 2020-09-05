@@ -68,50 +68,11 @@ Class builtClass({
           ),
         ...getters,
         // Serlialization methods
-        Method(
-          (b) => b
-            ..static = true
-            ..returns = TypeReference(
-              (b) => b
-                ..url = "package:built_value/serializer.dart"
-                ..symbol = "Serializer"
-                ..types.add(
-                  refer(className),
-                ),
-            )
-            ..type = MethodType.getter
-            ..name = "serializer"
-            ..lambda = true
-            ..body = Code("_\$${className.camelCase}Serializer"),
+        buildSerializerGetter(className).rebuild(
+          (b) => b..body = Code("_\$${className.camelCase}Serializer"),
         ),
-        Method(
-          (b) => b
-            ..returns = refer("Map<String, dynamic>")
-            ..name = "toJson"
-            ..lambda = true
-            ..body = refer("serializers", "#serializer")
-                .property("serializeWith")
-                .call([
-              refer(className).property("serializer"),
-              refer("this"),
-            ]).code,
-        ),
-        Method(
-          (b) => b
-            ..static = true
-            ..returns = refer(className)
-            ..name = "fromJson"
-            ..requiredParameters.add(Parameter((b) => b
-              ..type = refer("Map<String, dynamic>")
-              ..name = "json"))
-            ..lambda = true
-            ..body = refer("serializers", "#serializer")
-                .property("deserializeWith")
-                .call([
-              refer(className).property("serializer"),
-              refer("json")
-            ]).code,
-        ),
+        buildToJsonGetter(className),
+        buildFromJsonGetter(className),
       ]),
   );
 }
