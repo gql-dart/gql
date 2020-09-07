@@ -16,6 +16,10 @@ abstract class GReadRepositoriesData
           [Function(GReadRepositoriesDataBuilder b) updates]) =
       _$GReadRepositoriesData;
 
+  static void _initializeBuilder(GReadRepositoriesDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   GReadRepositoriesData_viewer get viewer;
   static Serializer<GReadRepositoriesData> get serializer =>
       _$gReadRepositoriesDataSerializer;

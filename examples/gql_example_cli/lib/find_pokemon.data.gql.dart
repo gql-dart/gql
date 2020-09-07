@@ -14,6 +14,10 @@ abstract class GFindPokemonData
   factory GFindPokemonData([Function(GFindPokemonDataBuilder b) updates]) =
       _$GFindPokemonData;
 
+  static void _initializeBuilder(GFindPokemonDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   GFindPokemonData_pokemon get pokemon;
   static Serializer<GFindPokemonData> get serializer =>

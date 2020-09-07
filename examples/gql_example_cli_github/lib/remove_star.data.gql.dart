@@ -13,6 +13,10 @@ abstract class GRemoveStarData
   factory GRemoveStarData([Function(GRemoveStarDataBuilder b) updates]) =
       _$GRemoveStarData;
 
+  static void _initializeBuilder(GRemoveStarDataBuilder b) =>
+      b..G__typename = 'Mutation';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   GRemoveStarData_action get action;
   static Serializer<GRemoveStarData> get serializer =>

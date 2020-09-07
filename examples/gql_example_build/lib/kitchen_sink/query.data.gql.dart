@@ -14,6 +14,10 @@ abstract class GQueryOperationData
   factory GQueryOperationData(
       [Function(GQueryOperationDataBuilder b) updates]) = _$GQueryOperationData;
 
+  static void _initializeBuilder(GQueryOperationDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   GQueryOperationData_field get field;
   static Serializer<GQueryOperationData> get serializer =>

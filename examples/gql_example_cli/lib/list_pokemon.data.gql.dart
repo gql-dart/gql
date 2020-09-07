@@ -14,6 +14,10 @@ abstract class GListPokemonData
   factory GListPokemonData([Function(GListPokemonDataBuilder b) updates]) =
       _$GListPokemonData;
 
+  static void _initializeBuilder(GListPokemonDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   BuiltList<GListPokemonData_pokemons> get pokemons;
   static Serializer<GListPokemonData> get serializer =>
