@@ -31,7 +31,11 @@ class _$GQueryOperationDataSerializer
   Iterable<Object> serialize(
       Serializers serializers, GQueryOperationData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.field != null) {
       result
         ..add('field')
@@ -53,6 +57,10 @@ class _$GQueryOperationDataSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'field':
           result.field.replace(serializers.deserialize(value,
                   specifiedType: const FullType(GQueryOperationData_field))
@@ -363,13 +371,19 @@ class _$GQueryOperationData_field_fieldRequiredSerializer
 
 class _$GQueryOperationData extends GQueryOperationData {
   @override
+  final String G__typename;
+  @override
   final GQueryOperationData_field field;
 
   factory _$GQueryOperationData(
           [void Function(GQueryOperationDataBuilder) updates]) =>
       (new GQueryOperationDataBuilder()..update(updates)).build();
 
-  _$GQueryOperationData._({this.field}) : super._();
+  _$GQueryOperationData._({this.G__typename, this.field}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError('GQueryOperationData', 'G__typename');
+    }
+  }
 
   @override
   GQueryOperationData rebuild(
@@ -383,17 +397,20 @@ class _$GQueryOperationData extends GQueryOperationData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GQueryOperationData && field == other.field;
+    return other is GQueryOperationData &&
+        G__typename == other.G__typename &&
+        field == other.field;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, field.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), field.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GQueryOperationData')
+          ..add('G__typename', G__typename)
           ..add('field', field))
         .toString();
   }
@@ -403,15 +420,22 @@ class GQueryOperationDataBuilder
     implements Builder<GQueryOperationData, GQueryOperationDataBuilder> {
   _$GQueryOperationData _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   GQueryOperationData_fieldBuilder _field;
   GQueryOperationData_fieldBuilder get field =>
       _$this._field ??= new GQueryOperationData_fieldBuilder();
   set field(GQueryOperationData_fieldBuilder field) => _$this._field = field;
 
-  GQueryOperationDataBuilder();
+  GQueryOperationDataBuilder() {
+    GQueryOperationData._initializeBuilder(this);
+  }
 
   GQueryOperationDataBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _field = _$v.field?.toBuilder();
       _$v = null;
     }
@@ -435,7 +459,9 @@ class GQueryOperationDataBuilder
   _$GQueryOperationData build() {
     _$GQueryOperationData _$result;
     try {
-      _$result = _$v ?? new _$GQueryOperationData._(field: _field?.build());
+      _$result = _$v ??
+          new _$GQueryOperationData._(
+              G__typename: G__typename, field: _field?.build());
     } catch (_) {
       String _$failedField;
       try {

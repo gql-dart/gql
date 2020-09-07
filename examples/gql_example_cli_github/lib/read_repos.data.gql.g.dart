@@ -33,6 +33,9 @@ class _$GReadRepositoriesDataSerializer
       Serializers serializers, GReadRepositoriesData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
       'viewer',
       serializers.serialize(object.viewer,
           specifiedType: const FullType(GReadRepositoriesData_viewer)),
@@ -53,6 +56,10 @@ class _$GReadRepositoriesDataSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'viewer':
           result.viewer.replace(serializers.deserialize(value,
                   specifiedType: const FullType(GReadRepositoriesData_viewer))
@@ -255,13 +262,19 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
 
 class _$GReadRepositoriesData extends GReadRepositoriesData {
   @override
+  final String G__typename;
+  @override
   final GReadRepositoriesData_viewer viewer;
 
   factory _$GReadRepositoriesData(
           [void Function(GReadRepositoriesDataBuilder) updates]) =>
       (new GReadRepositoriesDataBuilder()..update(updates)).build();
 
-  _$GReadRepositoriesData._({this.viewer}) : super._() {
+  _$GReadRepositoriesData._({this.G__typename, this.viewer}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError(
+          'GReadRepositoriesData', 'G__typename');
+    }
     if (viewer == null) {
       throw new BuiltValueNullFieldError('GReadRepositoriesData', 'viewer');
     }
@@ -279,17 +292,20 @@ class _$GReadRepositoriesData extends GReadRepositoriesData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GReadRepositoriesData && viewer == other.viewer;
+    return other is GReadRepositoriesData &&
+        G__typename == other.G__typename &&
+        viewer == other.viewer;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, viewer.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), viewer.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GReadRepositoriesData')
+          ..add('G__typename', G__typename)
           ..add('viewer', viewer))
         .toString();
   }
@@ -299,16 +315,23 @@ class GReadRepositoriesDataBuilder
     implements Builder<GReadRepositoriesData, GReadRepositoriesDataBuilder> {
   _$GReadRepositoriesData _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   GReadRepositoriesData_viewerBuilder _viewer;
   GReadRepositoriesData_viewerBuilder get viewer =>
       _$this._viewer ??= new GReadRepositoriesData_viewerBuilder();
   set viewer(GReadRepositoriesData_viewerBuilder viewer) =>
       _$this._viewer = viewer;
 
-  GReadRepositoriesDataBuilder();
+  GReadRepositoriesDataBuilder() {
+    GReadRepositoriesData._initializeBuilder(this);
+  }
 
   GReadRepositoriesDataBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _viewer = _$v.viewer?.toBuilder();
       _$v = null;
     }
@@ -332,7 +355,9 @@ class GReadRepositoriesDataBuilder
   _$GReadRepositoriesData build() {
     _$GReadRepositoriesData _$result;
     try {
-      _$result = _$v ?? new _$GReadRepositoriesData._(viewer: viewer.build());
+      _$result = _$v ??
+          new _$GReadRepositoriesData._(
+              G__typename: G__typename, viewer: viewer.build());
     } catch (_) {
       String _$failedField;
       try {

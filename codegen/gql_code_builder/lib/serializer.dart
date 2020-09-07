@@ -5,7 +5,7 @@ Expression withCustomSerializers(
   Expression serializersExpression,
   Set<Reference> customSerializers,
 ) =>
-    customSerializers.fold(
+    (customSerializers.toList()..sort((a, b) => a.url.compareTo(b.url))).fold(
       serializersExpression,
       (exp, ref) => exp.cascade("add").call([ref.call([])]),
     );

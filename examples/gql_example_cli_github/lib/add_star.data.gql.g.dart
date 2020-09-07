@@ -23,7 +23,11 @@ class _$GAddStarDataSerializer implements StructuredSerializer<GAddStarData> {
   @override
   Iterable<Object> serialize(Serializers serializers, GAddStarData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.action != null) {
       result
         ..add('action')
@@ -44,6 +48,10 @@ class _$GAddStarDataSerializer implements StructuredSerializer<GAddStarData> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'action':
           result.action.replace(serializers.deserialize(value,
                   specifiedType: const FullType(GAddStarData_action))
@@ -167,12 +175,18 @@ class _$GAddStarData_action_starrableSerializer
 
 class _$GAddStarData extends GAddStarData {
   @override
+  final String G__typename;
+  @override
   final GAddStarData_action action;
 
   factory _$GAddStarData([void Function(GAddStarDataBuilder) updates]) =>
       (new GAddStarDataBuilder()..update(updates)).build();
 
-  _$GAddStarData._({this.action}) : super._();
+  _$GAddStarData._({this.G__typename, this.action}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError('GAddStarData', 'G__typename');
+    }
+  }
 
   @override
   GAddStarData rebuild(void Function(GAddStarDataBuilder) updates) =>
@@ -184,17 +198,21 @@ class _$GAddStarData extends GAddStarData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAddStarData && action == other.action;
+    return other is GAddStarData &&
+        G__typename == other.G__typename &&
+        action == other.action;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, action.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), action.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarData')..add('action', action))
+    return (newBuiltValueToStringHelper('GAddStarData')
+          ..add('G__typename', G__typename)
+          ..add('action', action))
         .toString();
   }
 }
@@ -203,15 +221,22 @@ class GAddStarDataBuilder
     implements Builder<GAddStarData, GAddStarDataBuilder> {
   _$GAddStarData _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   GAddStarData_actionBuilder _action;
   GAddStarData_actionBuilder get action =>
       _$this._action ??= new GAddStarData_actionBuilder();
   set action(GAddStarData_actionBuilder action) => _$this._action = action;
 
-  GAddStarDataBuilder();
+  GAddStarDataBuilder() {
+    GAddStarData._initializeBuilder(this);
+  }
 
   GAddStarDataBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _action = _$v.action?.toBuilder();
       _$v = null;
     }
@@ -235,7 +260,9 @@ class GAddStarDataBuilder
   _$GAddStarData build() {
     _$GAddStarData _$result;
     try {
-      _$result = _$v ?? new _$GAddStarData._(action: _action?.build());
+      _$result = _$v ??
+          new _$GAddStarData._(
+              G__typename: G__typename, action: _action?.build());
     } catch (_) {
       String _$failedField;
       try {

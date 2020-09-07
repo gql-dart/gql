@@ -24,7 +24,11 @@ class _$GRemoveStarDataSerializer
   @override
   Iterable<Object> serialize(Serializers serializers, GRemoveStarData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.action != null) {
       result
         ..add('action')
@@ -46,6 +50,10 @@ class _$GRemoveStarDataSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'action':
           result.action.replace(serializers.deserialize(value,
                   specifiedType: const FullType(GRemoveStarData_action))
@@ -170,12 +178,18 @@ class _$GRemoveStarData_action_starrableSerializer
 
 class _$GRemoveStarData extends GRemoveStarData {
   @override
+  final String G__typename;
+  @override
   final GRemoveStarData_action action;
 
   factory _$GRemoveStarData([void Function(GRemoveStarDataBuilder) updates]) =>
       (new GRemoveStarDataBuilder()..update(updates)).build();
 
-  _$GRemoveStarData._({this.action}) : super._();
+  _$GRemoveStarData._({this.G__typename, this.action}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError('GRemoveStarData', 'G__typename');
+    }
+  }
 
   @override
   GRemoveStarData rebuild(void Function(GRemoveStarDataBuilder) updates) =>
@@ -188,17 +202,20 @@ class _$GRemoveStarData extends GRemoveStarData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GRemoveStarData && action == other.action;
+    return other is GRemoveStarData &&
+        G__typename == other.G__typename &&
+        action == other.action;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, action.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), action.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GRemoveStarData')
+          ..add('G__typename', G__typename)
           ..add('action', action))
         .toString();
   }
@@ -208,15 +225,22 @@ class GRemoveStarDataBuilder
     implements Builder<GRemoveStarData, GRemoveStarDataBuilder> {
   _$GRemoveStarData _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   GRemoveStarData_actionBuilder _action;
   GRemoveStarData_actionBuilder get action =>
       _$this._action ??= new GRemoveStarData_actionBuilder();
   set action(GRemoveStarData_actionBuilder action) => _$this._action = action;
 
-  GRemoveStarDataBuilder();
+  GRemoveStarDataBuilder() {
+    GRemoveStarData._initializeBuilder(this);
+  }
 
   GRemoveStarDataBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _action = _$v.action?.toBuilder();
       _$v = null;
     }
@@ -240,7 +264,9 @@ class GRemoveStarDataBuilder
   _$GRemoveStarData build() {
     _$GRemoveStarData _$result;
     try {
-      _$result = _$v ?? new _$GRemoveStarData._(action: _action?.build());
+      _$result = _$v ??
+          new _$GRemoveStarData._(
+              G__typename: G__typename, action: _action?.build());
     } catch (_) {
       String _$failedField;
       try {

@@ -1,3 +1,7 @@
+## 0.1.2
+- use latest `gql_code_builder`
+- add typenames to OperationDefinitionNode
+
 ## 0.1.1
 - build var classes for fragments
 - build instantiable data classes for fragments
