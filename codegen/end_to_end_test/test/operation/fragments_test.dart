@@ -38,6 +38,7 @@ void main() {
       );
 
       final json = {
+        "__typename": "Query",
         "hero": {
           "__typename": "Human",
           "id": "leia",

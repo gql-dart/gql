@@ -24,6 +24,7 @@ void main() {
           ..empireHero.from.add(GEpisode.NEWHOPE),
       );
       final json = {
+        "__typename": "Query",
         "empireHero": {
           "__typename": "Human",
           "id": "leia",
