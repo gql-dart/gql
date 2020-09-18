@@ -106,15 +106,19 @@ class WebSocketLink extends Link {
               .cast<SubscriptionData>()
               .listen(
             (SubscriptionData message) {
-              final parsed = _parseMessage(message);
-              if (parsed.data == null && parsed.errors == null) {
-                throw WebSocketLinkServerException(
-                  originalException: null,
-                  parsedResponse: parsed,
-                  requestMessage: null,
-                );
+              try {
+                final parsed = _parseMessage(message);
+                if (parsed.data == null && parsed.errors == null) {
+                  throw WebSocketLinkServerException(
+                    originalException: null,
+                    parsedResponse: parsed,
+                    requestMessage: null,
+                  );
+                }
+                response.add(parsed);
+              } catch (e) {
+                response.addError(e);
               }
-              response.add(parsed);
             },
           );
 
@@ -173,6 +177,7 @@ class WebSocketLink extends Link {
         throw WebSocketLinkServerException(
           originalException: e,
           parsedResponse: null,
+          requestMessage: null,
         );
       }
     }

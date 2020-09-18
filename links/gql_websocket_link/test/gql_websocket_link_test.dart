@@ -571,6 +571,63 @@ void main() {
               );
         },
       );
+
+      test("throw WebSocketLinkParserException when unable to parse response",
+          () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            channel.stream
+                .map<dynamic>((dynamic s) => json.decode(s as String))
+                .listen(
+              (dynamic message) {
+                if (message["type"] == "connection_init") {
+                  channel.sink.add(
+                    json.encode(
+                      ConnectionAck(),
+                    ),
+                  );
+                } else if (message["type"] == "start") {
+                  channel.sink.add(
+                    json.encode(
+                      <String, dynamic>{
+                        "type": "data",
+                        "id": message["id"],
+                        "payload": <String, dynamic>{
+                          "data": "foo",
+                          "errors": null,
+                        },
+                      },
+                    ),
+                  );
+                }
+              },
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        channel = IOWebSocketChannel(webSocket);
+        link = WebSocketLink(null, channel: channel);
+        expect(
+          link.request(request).first,
+          throwsA(isA<WebSocketLinkParserException>()),
+        );
+      });
     },
   );
 }

@@ -3,7 +3,7 @@ import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
 
-/// Exception occurring when parsing fails
+/// Exception occurring when response parsing fails
 @immutable
 class WebSocketLinkParserException extends ResponseFormatException {
   final SubscriptionData message;
