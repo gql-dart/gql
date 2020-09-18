@@ -14,6 +14,10 @@ abstract class GShapeData implements Built<GShapeData, GShapeDataBuilder> {
 
   factory GShapeData([Function(GShapeDataBuilder b) updates]) = _$GShapeData;
 
+  static void _initializeBuilder(GShapeDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   GShapeData_shape get shape;
   static Serializer<GShapeData> get serializer => _$gShapeDataSerializer;

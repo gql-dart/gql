@@ -79,6 +79,7 @@ void main() {
 
     test('can be serialized and deserialized with custom serializer', () {
       final json = {
+        "__typename": "Mutation",
         "createReview": {
           "__typename": "Review",
           "stars": 1,
