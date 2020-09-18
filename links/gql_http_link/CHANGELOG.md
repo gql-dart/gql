@@ -1,3 +1,7 @@
+## 0.3.1
+
+- `extractFlattenedFileMap` fix to support `bool` values
+
 ## 0.3.0
 
 - add multipart file support

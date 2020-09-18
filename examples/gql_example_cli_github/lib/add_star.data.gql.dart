@@ -13,6 +13,10 @@ abstract class GAddStarData
   factory GAddStarData([Function(GAddStarDataBuilder b) updates]) =
       _$GAddStarData;
 
+  static void _initializeBuilder(GAddStarDataBuilder b) =>
+      b..G__typename = 'Mutation';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @nullable
   GAddStarData_action get action;
   static Serializer<GAddStarData> get serializer => _$gAddStarDataSerializer;

@@ -24,7 +24,11 @@ class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
   @override
   Iterable<Object> serialize(Serializers serializers, GShapeData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
     if (object.shape != null) {
       result
         ..add('shape')
@@ -45,6 +49,10 @@ class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'shape':
           result.shape = serializers.deserialize(value,
                   specifiedType: const FullType(GShapeData_shape))
@@ -254,12 +262,18 @@ class _$GShapeData_shape__asRectangleSerializer
 
 class _$GShapeData extends GShapeData {
   @override
+  final String G__typename;
+  @override
   final GShapeData_shape shape;
 
   factory _$GShapeData([void Function(GShapeDataBuilder) updates]) =>
       (new GShapeDataBuilder()..update(updates)).build();
 
-  _$GShapeData._({this.shape}) : super._();
+  _$GShapeData._({this.G__typename, this.shape}) : super._() {
+    if (G__typename == null) {
+      throw new BuiltValueNullFieldError('GShapeData', 'G__typename');
+    }
+  }
 
   @override
   GShapeData rebuild(void Function(GShapeDataBuilder) updates) =>
@@ -271,17 +285,21 @@ class _$GShapeData extends GShapeData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GShapeData && shape == other.shape;
+    return other is GShapeData &&
+        G__typename == other.G__typename &&
+        shape == other.shape;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, shape.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), shape.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GShapeData')..add('shape', shape))
+    return (newBuiltValueToStringHelper('GShapeData')
+          ..add('G__typename', G__typename)
+          ..add('shape', shape))
         .toString();
   }
 }
@@ -289,14 +307,21 @@ class _$GShapeData extends GShapeData {
 class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
   _$GShapeData _$v;
 
+  String _G__typename;
+  String get G__typename => _$this._G__typename;
+  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+
   GShapeData_shape _shape;
   GShapeData_shape get shape => _$this._shape;
   set shape(GShapeData_shape shape) => _$this._shape = shape;
 
-  GShapeDataBuilder();
+  GShapeDataBuilder() {
+    GShapeData._initializeBuilder(this);
+  }
 
   GShapeDataBuilder get _$this {
     if (_$v != null) {
+      _G__typename = _$v.G__typename;
       _shape = _$v.shape;
       _$v = null;
     }
@@ -318,7 +343,8 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
 
   @override
   _$GShapeData build() {
-    final _$result = _$v ?? new _$GShapeData._(shape: shape);
+    final _$result =
+        _$v ?? new _$GShapeData._(G__typename: G__typename, shape: shape);
     replace(_$result);
     return _$result;
   }
