@@ -683,6 +683,34 @@ void main() {
           throwsA(isA<WebSocketLinkServerException>()),
         );
       });
+
+      test("throw WebSocketLinkServerException when network fails", () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer());
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        // Close the socket to cause network error.
+        await webSocket.close();
+        channel = IOWebSocketChannel(webSocket);
+        link = WebSocketLink(null, channel: channel);
+        expect(
+          link.request(request).first,
+          throwsA(isA<WebSocketLinkServerException>()),
+        );
+      });
     },
   );
 }
