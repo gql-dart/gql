@@ -195,19 +195,18 @@ class WebSocketLink extends Link {
   }
 
   void _write(final GraphQLSocketMessage message) {
-    try {
-      _channel?.sink?.add(
-        json.encode(
-          message,
-        ),
-      );
-    } catch (e) {
+    if (_channel.closeCode != null) {
       throw WebSocketLinkServerException(
-        originalException: e,
+        originalException: null,
         parsedResponse: null,
         requestMessage: message,
       );
     }
+    _channel.sink.add(
+      json.encode(
+        message,
+      ),
+    );
   }
 
   static GraphQLSocketMessage _parseSocketMessage(dynamic message) {
