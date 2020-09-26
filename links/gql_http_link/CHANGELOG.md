@@ -1,3 +1,7 @@
+## 0.3.2
+
+- discard assertion in `extractFlattenedFileMap` to allow for custom scalars, add test
+
 ## 0.3.1
 
 - `extractFlattenedFileMap` fix to support `bool` values
