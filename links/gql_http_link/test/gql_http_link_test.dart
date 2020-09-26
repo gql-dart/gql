@@ -17,6 +17,12 @@ class MockRequestSerializer extends Mock implements RequestSerializer {}
 
 class MockResponseParser extends Mock implements ResponseParser {}
 
+class CustomScalar {
+  const CustomScalar(this.value);
+  final int value;
+  String toJson() => "CustomScalar($value)";
+}
+
 void main() {
   group("HttpLink", () {
     MockClient client;
@@ -337,6 +343,7 @@ void main() {
             "bool": false
           },
           "array": [true, 123, "ID"],
+          "custom": CustomScalar(1),
         },
       )).first;
 
@@ -355,7 +362,8 @@ void main() {
                   r'"int":1234567,'
                   r'"null":null,'
                   r'"object":{"nested":["array"],"bool":false},'
-                  r'"array":[true,123,"ID"]'
+                  r'"array":[true,123,"ID"],'
+                  r'"custom":"CustomScalar(1)"'
                   r"},"
                   r'"query":"query MyQuery($richInput: RichInput) {\n  \n}"'
                   r"}",
