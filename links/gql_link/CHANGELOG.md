@@ -1,3 +1,7 @@
+## 0.3.1
+
+- override toString in Exceptions for legibility (@Britannio)
+
 ## 0.3.0
 
 - remove `author` field from `pubspec.yaml`

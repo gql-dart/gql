@@ -71,14 +71,6 @@ Map<String, MultipartFile> extractFlattenedFileMap(
       });
   }
 
-  assert(
-    body is bool || body is String || body is num || body == null,
-    "$body of type ${body.runtimeType} was found "
-    "in in the request at path ${currentPath.join(".")}, "
-    "but the only the types { Map, List, MultipartFile, bool, String, num, null } "
-    "are allowed",
-  );
-
   return currentMap;
 }
 

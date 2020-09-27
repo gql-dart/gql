@@ -17,6 +17,12 @@ class MockRequestSerializer extends Mock implements RequestSerializer {}
 
 class MockResponseParser extends Mock implements ResponseParser {}
 
+class CustomScalar {
+  const CustomScalar(this.value);
+  final int value;
+  String toJson() => "CustomScalar($value)";
+}
+
 void main() {
   group("HttpLink", () {
     MockClient client;
@@ -308,6 +314,64 @@ void main() {
       ).called(1);
     });
 
+    test("serializes all types", () async {
+      when(
+        client.send(any),
+      ).thenAnswer(
+        (_) => Future.value(
+          simpleResponse(
+            json.encode(<String, dynamic>{
+              "data": <String, dynamic>{},
+            }),
+            200,
+          ),
+        ),
+      );
+
+      await execute(Request(
+        operation: Operation(
+          document: parseString(r"query MyQuery($richInput: RichInput) {}"),
+        ),
+        variables: const <String, dynamic>{
+          "string": "string",
+          "bool": true,
+          "float": 123.4567,
+          "int": 1234567,
+          "null": null,
+          "object": {
+            "nested": ["array"],
+            "bool": false
+          },
+          "array": [true, 123, "ID"],
+          "custom": CustomScalar(1),
+        },
+      )).first;
+
+      verify(
+        client.send(
+          argThat(
+            isA<http.Request>().having(
+              (request) => request.body,
+              "serialized body",
+              r"{"
+                  r'"operationName":null,'
+                  r'"variables":{'
+                  r'"string":"string",'
+                  r'"bool":true,'
+                  r'"float":123.4567,'
+                  r'"int":1234567,'
+                  r'"null":null,'
+                  r'"object":{"nested":["array"],"bool":false},'
+                  r'"array":[true,123,"ID"],'
+                  r'"custom":"CustomScalar(1)"'
+                  r"},"
+                  r'"query":"query MyQuery($richInput: RichInput) {\n  \n}"'
+                  r"}",
+            ),
+          ),
+        ),
+      ).called(1);
+    });
     test("parses a successful response with errors", () async {
       when(
         client.send(any),
