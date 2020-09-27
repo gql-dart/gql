@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+- Send `stop` command to server once subscription canceled.
+
 ## 0.1.1
 
 - Handle exceptions.
