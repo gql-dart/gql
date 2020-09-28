@@ -138,6 +138,8 @@ type Review {
   createdAt: Date
   # Date episode seen
   seenOn: [Date!]!
+  # A custom field
+  custom: [CustomField!]!
 }
 
 # The input object sent when someone is creating a new review
@@ -173,3 +175,4 @@ union SearchResult = Human | Droid | Starship
 
 scalar Date
 scalar ISODate
+scalar CustomField

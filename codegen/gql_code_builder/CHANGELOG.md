@@ -1,7 +1,13 @@
+## 0.1.3
+
+- automatically include all custom type imports in `serializers.gql.dart`
+
 ## 0.1.2
+
 - sort custom serializers
 
 ## 0.1.1
+
 - build var classes for fragments
 - build instantiable data classes for fragments
 - consolidate serialization methods

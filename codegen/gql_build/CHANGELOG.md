@@ -1,8 +1,15 @@
+## 0.1.3
+
+- use latest `gql_code_builder`
+- add `type_overrides` config to serializer_builder
+
 ## 0.1.2
+
 - use latest `gql_code_builder`
 - add typenames to OperationDefinitionNode
 
 ## 0.1.1
+
 - build var classes for fragments
 - build instantiable data classes for fragments
 

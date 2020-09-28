@@ -93,6 +93,10 @@ class _$GReviewWithDateData_createReviewSerializer
       serializers.serialize(object.seenOn,
           specifiedType:
               const FullType(BuiltList, const [const FullType(DateTime)])),
+      'custom',
+      serializers.serialize(object.custom,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(_i3.CustomField)])),
     ];
     if (object.episode != null) {
       result
@@ -151,6 +155,12 @@ class _$GReviewWithDateData_createReviewSerializer
           result.seenOn.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(DateTime)]))
+              as BuiltList<Object>);
+          break;
+        case 'custom':
+          result.custom.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(_i3.CustomField)]))
               as BuiltList<Object>);
           break;
       }
@@ -284,6 +294,8 @@ class _$GReviewWithDateData_createReview
   final DateTime createdAt;
   @override
   final BuiltList<DateTime> seenOn;
+  @override
+  final BuiltList<_i3.CustomField> custom;
 
   factory _$GReviewWithDateData_createReview(
           [void Function(GReviewWithDateData_createReviewBuilder) updates]) =>
@@ -295,7 +307,8 @@ class _$GReviewWithDateData_createReview
       this.stars,
       this.commentary,
       this.createdAt,
-      this.seenOn})
+      this.seenOn,
+      this.custom})
       : super._() {
     if (G__typename == null) {
       throw new BuiltValueNullFieldError(
@@ -308,6 +321,10 @@ class _$GReviewWithDateData_createReview
     if (seenOn == null) {
       throw new BuiltValueNullFieldError(
           'GReviewWithDateData_createReview', 'seenOn');
+    }
+    if (custom == null) {
+      throw new BuiltValueNullFieldError(
+          'GReviewWithDateData_createReview', 'custom');
     }
   }
 
@@ -329,7 +346,8 @@ class _$GReviewWithDateData_createReview
         stars == other.stars &&
         commentary == other.commentary &&
         createdAt == other.createdAt &&
-        seenOn == other.seenOn;
+        seenOn == other.seenOn &&
+        custom == other.custom;
   }
 
   @override
@@ -337,11 +355,13 @@ class _$GReviewWithDateData_createReview
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, G__typename.hashCode), episode.hashCode),
-                    stars.hashCode),
-                commentary.hashCode),
-            createdAt.hashCode),
-        seenOn.hashCode));
+                $jc(
+                    $jc($jc($jc(0, G__typename.hashCode), episode.hashCode),
+                        stars.hashCode),
+                    commentary.hashCode),
+                createdAt.hashCode),
+            seenOn.hashCode),
+        custom.hashCode));
   }
 
   @override
@@ -352,7 +372,8 @@ class _$GReviewWithDateData_createReview
           ..add('stars', stars)
           ..add('commentary', commentary)
           ..add('createdAt', createdAt)
-          ..add('seenOn', seenOn))
+          ..add('seenOn', seenOn)
+          ..add('custom', custom))
         .toString();
   }
 }
@@ -388,6 +409,11 @@ class GReviewWithDateData_createReviewBuilder
       _$this._seenOn ??= new ListBuilder<DateTime>();
   set seenOn(ListBuilder<DateTime> seenOn) => _$this._seenOn = seenOn;
 
+  ListBuilder<_i3.CustomField> _custom;
+  ListBuilder<_i3.CustomField> get custom =>
+      _$this._custom ??= new ListBuilder<_i3.CustomField>();
+  set custom(ListBuilder<_i3.CustomField> custom) => _$this._custom = custom;
+
   GReviewWithDateData_createReviewBuilder() {
     GReviewWithDateData_createReview._initializeBuilder(this);
   }
@@ -400,6 +426,7 @@ class GReviewWithDateData_createReviewBuilder
       _commentary = _$v.commentary;
       _createdAt = _$v.createdAt;
       _seenOn = _$v.seenOn?.toBuilder();
+      _custom = _$v.custom?.toBuilder();
       _$v = null;
     }
     return this;
@@ -429,12 +456,15 @@ class GReviewWithDateData_createReviewBuilder
               stars: stars,
               commentary: commentary,
               createdAt: createdAt,
-              seenOn: seenOn.build());
+              seenOn: seenOn.build(),
+              custom: custom.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'seenOn';
         seenOn.build();
+        _$failedField = 'custom';
+        custom.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GReviewWithDateData_createReview', _$failedField, e.toString());
