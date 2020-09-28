@@ -10,6 +10,9 @@ import 'package:end_to_end_test/aliases/aliased_hero.req.gql.dart'
     show GAliasedHero;
 import 'package:end_to_end_test/aliases/aliased_hero.var.gql.dart'
     show GAliasedHeroVars;
+import 'package:end_to_end_test/custom_field.dart';
+import 'package:end_to_end_test/custom_field_serializer.dart'
+    show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
 import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart'
     show
@@ -70,6 +73,7 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
 part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
+  ..add(CustomFieldSerializer())
   ..add(DateSerializer())
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());

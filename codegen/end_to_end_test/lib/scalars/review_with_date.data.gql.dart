@@ -3,6 +3,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:end_to_end_test/custom_field.dart' as _i3;
 import 'package:end_to_end_test/graphql/schema.schema.gql.dart' as _i2;
 import 'package:end_to_end_test/graphql/serializers.gql.dart' as _i1;
 
@@ -51,6 +52,7 @@ abstract class GReviewWithDateData_createReview
   @nullable
   DateTime get createdAt;
   BuiltList<DateTime> get seenOn;
+  BuiltList<_i3.CustomField> get custom;
   static Serializer<GReviewWithDateData_createReview> get serializer =>
       _$gReviewWithDateDataCreateReviewSerializer;
   Map<String, dynamic> toJson() => _i1.serializers
