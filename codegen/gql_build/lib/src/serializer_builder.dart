@@ -14,19 +14,14 @@ import "./allocators/pick_allocator.dart";
 class SerializerBuilder implements Builder {
   final AssetId schemaId;
   final Set<Reference> customSerializers;
+  final Map<String, Reference> typeOverrides;
 
   SerializerBuilder(
     this.schemaId,
     this.customSerializers,
+    this.typeOverrides,
   );
 
-  static final _emitter = DartEmitter(
-    PickAllocator(
-      doNotPick: ["package:built_value/serializer.dart"],
-      include: ["package:built_collection/built_collection.dart"],
-    ),
-    true,
-  );
   static final _formatter = DartFormatter();
   static final _generatedFiles = Glob("lib/**.gql.dart");
 
@@ -68,6 +63,19 @@ class SerializerBuilder implements Builder {
       classes,
       "serializers.gql.g.dart",
       customSerializers,
+    );
+
+    final _emitter = DartEmitter(
+      PickAllocator(
+        doNotPick: ["package:built_value/serializer.dart"],
+        include: [
+          "package:built_collection/built_collection.dart",
+          ...typeOverrides.values
+              .map((ref) => ref.url)
+              .where((url) => url != null)
+        ],
+      ),
+      true,
     );
 
     return buildStep.writeAsString(
