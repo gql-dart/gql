@@ -436,7 +436,7 @@ void main() {
     test("throws DioLinkServerException when status code >= 300", () async {
       final dio.Response response = dio.Response<Map<String, dynamic>>(
         data: <String, dynamic>{
-          "data": <String, dynamic>{},
+          "data": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
       );
@@ -466,14 +466,20 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response,
-        response,
+        exception.response.data,
+        response.data,
+      );
+      expect(
+        exception.response.statusCode,
+        response.statusCode,
       );
       expect(
         exception.parsedResponse,
         equals(
           Response(
-            data: const <String, dynamic>{},
+            data: const <String, dynamic>{
+              "something": "random text 55656",
+            },
             errors: null,
             context: Context().withEntry(
               ResponseExtensions(null),
@@ -485,7 +491,9 @@ void main() {
 
     test("throws HttpLinkServerException when no data and errors", () async {
       final dio.Response response = dio.Response<Map<String, dynamic>>(
-        data: <String, dynamic>{},
+        data: <String, dynamic>{
+          "test": <String, dynamic>{"something": "random text 55656"},
+        },
         statusCode: 300,
       );
 
@@ -514,8 +522,12 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response,
-        response,
+        exception.response.data,
+        response.data,
+      );
+      expect(
+        exception.response.statusCode,
+        response.statusCode,
       );
       expect(
         exception.parsedResponse,
