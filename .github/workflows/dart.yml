@@ -12,6 +12,7 @@ jobs:
           - gql_exec
           - gql_link
           - gql_dedupe_link
+          - gql_dio_link
           - gql_error_link
           - gql_http_link
           - gql_websocket_link
@@ -159,7 +160,7 @@ jobs:
     container:
       image: google/dart:latest
     env:
-      PACKAGES: "gql,gql_build,gql_code_builder,gql_dedupe_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link"
+      PACKAGES: "gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link"
       PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
       PUB_REFRESH_TOKEN: ${{ secrets.PUB_REFRESH_TOKEN }}
     steps:
