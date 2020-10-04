@@ -197,6 +197,7 @@ jobs:
       - name: Generate SVG
         run: |
           multipack info | dot -Tsvg -o docs/gql.svg
+          cat docs/gql.svg
       - name: Check changes
         run: |
           git diff --exit-code docs/gql.svg
