@@ -1,7 +1,7 @@
 import "package:dio/dio.dart" as dio;
-import 'package:gql/language.dart' as gqlLang;
-import 'package:gql_dio_link/gql_dio_link.dart';
-import 'package:gql_exec/gql_exec.dart';
+import "package:gql/language.dart" as gql;
+import "package:gql_dio_link/gql_dio_link.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
 const query = """{
@@ -22,11 +22,11 @@ void main(List<String> arguments) async {
 
   final res = await link
       .request(Request(
-        operation: Operation(document: gqlLang.parseString(query)),
+        operation: Operation(document: gql.parseString(query)),
       ))
       .first;
 
-  final countryName = res.data["countries"][0]["name"];
+  final countryName = res.data["countries"][0]["name"] as String;
 
   print("The country that uses EGP as a form of curruncy is ${countryName}");
 }

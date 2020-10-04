@@ -68,7 +68,7 @@ void main() {
 
     test("parses a successful response", () {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -76,7 +76,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -105,7 +105,7 @@ void main() {
 
     test("uses the defined endpoint", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -113,7 +113,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -124,7 +124,7 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           "/graphql-test",
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -134,7 +134,7 @@ void main() {
 
     test("uses json mime types", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -142,7 +142,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -153,14 +153,14 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   contentType: "application/json",
-                  headers: {
+                  headers: <String, dynamic>{
                     "Content-type": "application/json",
                     "Accept": "*/*",
                   },
@@ -173,7 +173,7 @@ void main() {
 
     test("adds headers from context", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -181,7 +181,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -208,14 +208,14 @@ void main() {
       ).first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   contentType: "application/json",
-                  headers: {
+                  headers: <String, dynamic>{
                     "Content-type": "application/json",
                     "Accept": "*/*",
                     "foo": "bar",
@@ -238,7 +238,7 @@ void main() {
       );
 
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -246,7 +246,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -266,14 +266,14 @@ void main() {
           .first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
                     contentType: "application/json",
-                    headers: {
+                    headers: <String, dynamic>{
                       "Content-type": "application/json",
                       "Accept": "*/*",
                       "foo": "bar",
@@ -286,7 +286,7 @@ void main() {
 
     test("headers from context override defaults", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -294,7 +294,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -321,14 +321,14 @@ void main() {
       ).first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
                     contentType: "application/json",
-                    headers: {
+                    headers: <String, dynamic>{
                       "Content-type": "application/jsonize",
                       "Accept": "*/*",
                     }))),
@@ -340,7 +340,7 @@ void main() {
 
     test("serializes the request", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -348,7 +348,7 @@ void main() {
       ).thenAnswer(
         (_) => Future.value(
           dio.Response<Map<String, dynamic>>(
-            data: {
+            data: <String, dynamic>{
               "data": <String, dynamic>{},
             },
             statusCode: 200,
@@ -359,7 +359,7 @@ void main() {
       await execute().first;
 
       verify(
-        client.post(
+        client.post<dynamic>(
           any,
           data: argThat(
               equals({
@@ -376,7 +376,7 @@ void main() {
 
     test("parses a successful response with errors", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -442,7 +442,7 @@ void main() {
       );
 
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -490,7 +490,7 @@ void main() {
       );
 
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
@@ -543,7 +543,7 @@ void main() {
       final originalException = Exception("Foo bar");
 
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           options: anyNamed("options"),
         ),
@@ -589,7 +589,7 @@ void main() {
 
     test("throws ParserException when unable to serialize request", () async {
       when(
-        client.post(
+        client.post<dynamic>(
           any,
           data: anyNamed("data"),
           options: anyNamed("options"),
