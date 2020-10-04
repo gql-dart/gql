@@ -173,6 +173,7 @@ class DioLink extends Link {
           throw DioLinkUnkownException(originalException: e);
       }
     } catch (e) {
+      if (e is LinkException) rethrow;
       throw DioLinkUnkownException(originalException: e);
     }
   }
