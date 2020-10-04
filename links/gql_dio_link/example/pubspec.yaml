@@ -1,0 +1,13 @@
+name: example
+description: A simple example to show gql_dio_link
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  gql_dio_link:
+    path: ../
+  dio: ^3.0.9
+  gql: ^0.12.3
+  gql_link: ^0.3.0
+  gql_exec: ^0.2.4

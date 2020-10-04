@@ -1,0 +1,22 @@
+name: gql_dio_link
+description: Similar to gql_http_link, gql_dio_link is a GQL Terminating Link to execute requests via Dio using JSON
+version: 0.0.4
+homepage: https://github.com/TarekkMA/gql_dio_link
+repository: https://github.com/TarekkMA/gql_dio_link
+issue_tracker: https://github.com/TarekkMA/gql_dio_link/issues
+
+environment:
+  sdk: ">=2.7.2 <3.0.0"
+
+dependencies:
+  dio: ^3.0.9
+  gql_link: ^0.3.0
+  gql_exec: ^0.2.4
+  meta: ^1.1.8
+
+dev_dependencies:
+  test: ^1.0.0
+  mockito: ^4.1.1
+  gql: ^0.12.1
+  gql_pedantic: ^1.0.1
+  collection: ^1.14.12
