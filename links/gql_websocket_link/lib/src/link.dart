@@ -139,6 +139,10 @@ class WebSocketLink extends Link {
       );
     };
 
+    response.onCancel = () {
+      _write(StopOperation(id));
+    };
+
     yield* response.stream;
   }
 

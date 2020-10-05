@@ -1,3 +1,4 @@
+import "dart:async";
 import "dart:convert";
 import "dart:io";
 
@@ -710,6 +711,62 @@ void main() {
           link.request(request).first,
           throwsA(isA<WebSocketLinkServerException>()),
         );
+      });
+
+      test("send stop to server once subscription is canceled", () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+        Request request;
+        StreamSubscription<Response> responseSub;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            var subId = "";
+            var messageCount = 0;
+            channel.stream.listen(
+              expectAsyncUntil1<void, dynamic>(
+                (dynamic message) {
+                  // cancel the request
+                  responseSub.cancel();
+                  final map =
+                      json.decode(message as String) as Map<String, dynamic>;
+                  if (messageCount == 0) {
+                    expect(map["type"], MessageTypes.connectionInit);
+                  } else if (messageCount == 1) {
+                    expect(map["id"], isA<String>());
+                    expect(map["type"], MessageTypes.start);
+                    subId = map["id"] as String;
+                  } else if (messageCount == 2) {
+                    expect(map["id"], isA<String>());
+                    expect(map["id"], subId);
+                    expect(map["type"], MessageTypes.stop);
+                  } else {
+                    // fail.
+                    expect(1, 2);
+                  }
+                  messageCount++;
+                },
+                () => messageCount == 3,
+              ),
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        channel = IOWebSocketChannel(webSocket);
+        link = WebSocketLink(null, channel: channel);
+        responseSub = link.request(request).listen(print);
       });
     },
   );
