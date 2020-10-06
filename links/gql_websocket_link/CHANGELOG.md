@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Add `inactivityTimeout` parameter.
+
 ## 0.1.2
 
 - Send `stop` command to server once subscription canceled.
