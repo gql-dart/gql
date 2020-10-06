@@ -768,6 +768,114 @@ void main() {
         link = WebSocketLink(null, channel: channel);
         responseSub = link.request(request).listen(print);
       });
+
+      test(
+          "close the socket when no keep alive received from server withe inactivityTimeout",
+          () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+
+        final Request request = Request(
+          operation: Operation(
+            operationName: "pokemonsSubscription",
+            document: parseString(
+                r"subscription MySubscription { pokemons(first: $first) { name } }"),
+          ),
+          variables: const <String, dynamic>{
+            "first": 3,
+          },
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            channel.stream
+                .map<dynamic>((dynamic s) => json.decode(s as String))
+                .listen(
+              (dynamic message) {
+                // Do not send anything, let it timeout.
+              },
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        channel = IOWebSocketChannel(webSocket);
+
+        link = WebSocketLink(
+          null,
+          channel: channel,
+          inactivityTimeout: Duration(seconds: 5),
+        );
+        link.request(request).listen(null);
+        expect(
+          Stream<int>.periodic(
+            Duration(milliseconds: 500),
+            (_) => webSocket.readyState,
+          ),
+          emitsThrough(WebSocket.closed),
+        );
+      });
+
+      test(
+          "never close the socket as long as keep alive is send from the server",
+          () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+
+        final Request request = Request(
+          operation: Operation(
+            operationName: "pokemonsSubscription",
+            document: parseString(
+                r"subscription MySubscription { pokemons(first: $first) { name } }"),
+          ),
+          variables: const <String, dynamic>{
+            "first": 3,
+          },
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            channel.stream
+                .map<dynamic>((dynamic s) => json.decode(s as String))
+                .listen(
+              (dynamic message) {
+                Timer.periodic(Duration(seconds: 1), (_) {
+                  channel.sink.add(
+                    json.encode(
+                      ConnectionKeepAlive(),
+                    ),
+                  );
+                });
+              },
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        channel = IOWebSocketChannel(webSocket);
+
+        link = WebSocketLink(
+          null,
+          channel: channel,
+          inactivityTimeout: Duration(seconds: 2),
+        );
+        link.request(request).listen(null);
+        expect(
+          Stream<int>.periodic(
+            Duration(milliseconds: 500),
+            (_) => webSocket.readyState,
+          ).take(20),
+          neverEmits(WebSocket.closed),
+        );
+      });
     },
   );
 }
