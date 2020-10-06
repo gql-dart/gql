@@ -65,4 +65,5 @@ Builder serializerBuilder(
         options.config["schema"] as String,
       ),
       customSerializers(options?.config["custom_serializers"]),
+      typeOverrideMap(options?.config["type_overrides"]),
     );

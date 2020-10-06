@@ -509,6 +509,14 @@ const Review = _i1.ObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'Date'), isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'custom'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'CustomField'), isNonNull: true),
               isNonNull: true))
     ]);
 const ReviewInput = _i1.InputObjectTypeDefinitionNode(
@@ -619,6 +627,8 @@ const Date = _i1.ScalarTypeDefinitionNode(
     name: _i1.NameNode(value: 'Date'), directives: []);
 const ISODate = _i1.ScalarTypeDefinitionNode(
     name: _i1.NameNode(value: 'ISODate'), directives: []);
+const CustomField = _i1.ScalarTypeDefinitionNode(
+    name: _i1.NameNode(value: 'CustomField'), directives: []);
 const document = _i1.DocumentNode(definitions: [
   schema,
   Query,
@@ -638,5 +648,6 @@ const document = _i1.DocumentNode(definitions: [
   Starship,
   SearchResult,
   Date,
-  ISODate
+  ISODate,
+  CustomField
 ]);

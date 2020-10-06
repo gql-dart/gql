@@ -179,3 +179,25 @@ jobs:
         run: |
           echo "{\"accessToken\":\"$PUB_ACCESS_TOKEN\",\"refreshToken\":\"$PUB_REFRESH_TOKEN\",\"idToken\":null,\"tokenEndpoint\":\"https://accounts.google.com/o/oauth2/token\",\"scopes\":[\"openid\",\"https://www.googleapis.com/auth/userinfo.email\"],\"expiration\":1588334512218}" > $HOME/.pub-cache/credentials.json
           multipack --only $PACKAGES pub publish --dry-run
+  check_svg:
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Install GraphViz
+        run: |
+          apt update
+          apt install -y graphviz
+      - name: Activate multipack
+        run: |
+          echo "::add-path::$HOME/.pub-cache/bin"
+          pub global activate multipack
+      - name: Generate SVG
+        run: |
+          multipack info | dot -Tsvg -o docs/gql.svg
+          cat docs/gql.svg
+      - name: Check changes
+        run: |
+          git diff --exit-code docs/gql.svg

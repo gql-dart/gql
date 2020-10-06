@@ -1,3 +1,7 @@
+## 0.2.5
+
+- Mape `Operation.toString` more interpretable with `json.encode(printNode(document))`
+
 ## 0.2.4
 
 - remove `author` field from `pubspec.yaml`

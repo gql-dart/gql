@@ -1,6 +1,9 @@
-import "package:collection/collection.dart";
-import "package:gql/ast.dart";
+import "dart:convert";
 import "package:meta/meta.dart";
+import "package:collection/collection.dart";
+
+import "package:gql/ast.dart";
+import "package:gql/language.dart" show printNode;
 
 /// An operation in a [document], optionally defined by [operationName]
 @immutable
@@ -42,6 +45,8 @@ class Operation {
       );
 
   @override
-  String toString() =>
-      "Operation(document: $document, operationName: $operationName)";
+  String toString() {
+    final documentRepr = json.encode(printNode(document));
+    return "Operation(document: DocumentNode($documentRepr), operationName: $operationName)";
+  }
 }

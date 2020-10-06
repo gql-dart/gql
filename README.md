@@ -27,6 +27,8 @@ This is an effort to advance the Dart GraphQL ecosystem.
 
 It consists of multiple packages and libraries centered around GraphQL AST.
 
+![Packages](docs/gql.svg)
+
 #### Core
 
 The core of this project is the GraphQL parser which parses GraphQL strings into an AST. The parsed AST can then be transformed, visited and printed back to GraphQL string.
