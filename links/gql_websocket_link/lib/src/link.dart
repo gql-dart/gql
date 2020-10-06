@@ -29,6 +29,12 @@ class WebSocketLink extends Link {
   /// Must be able to `json.encode(initialPayload)`.
   final dynamic initialPayload;
 
+  /// The duration after which the connection is considered unstable,
+  /// because no keep alive message was received from the server in the given time-frame.
+  /// The connection to the server will be closed.
+  /// If the value is null this is ignored, By default this is null.
+  final Duration inactivityTimeout;
+
   // Possible states of the connection.
   static const int connecting = 0;
   static const int open = 1;
@@ -39,6 +45,7 @@ class WebSocketLink extends Link {
 
   Stream<GraphQLSocketMessage> _messageStream;
   StreamSubscription<GraphQLSocketMessage> _messageSubscription;
+  StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
 
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channel],
@@ -53,6 +60,7 @@ class WebSocketLink extends Link {
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.initialPayload,
+    this.inactivityTimeout,
   }) : assert(uri == null || channel == null) {
     _uri = uri;
     _channel = channel;
@@ -174,6 +182,19 @@ class WebSocketLink extends Link {
       } else {
         _write(InitOperation(initialPayload));
       }
+
+      // inactivityTimeout
+      if (inactivityTimeout != null) {
+        _keepAliveSubscription = _messageStream
+            .where(
+              (GraphQLSocketMessage message) => message is ConnectionKeepAlive,
+            )
+            .map<ConnectionKeepAlive>(
+                (message) => message as ConnectionKeepAlive)
+            .timeout(inactivityTimeout, onTimeout: (_) {
+          _close();
+        }).listen(null);
+      }
     } catch (e) {
       if (e is LinkException) {
         rethrow;
@@ -240,16 +261,22 @@ class WebSocketLink extends Link {
     }
   }
 
+  /// Close the WebSocket channel.
+  Future<void> _close() async {
+    await _keepAliveSubscription?.cancel();
+    _connectionStateController.value = closing;
+    await _messageSubscription?.cancel();
+    await _channel?.sink?.close(websocket_status.goingAway);
+    _connectionStateController.value = closed;
+    await _connectionStateController?.close();
+  }
+
   /// Disposes the underlying channel explicitly.
   /// Only use this, if you want to disconnect from the current server
   /// in favour of another one. If that's the case,
   /// create a new [WebSocketLink] instance.
   Future<void> dispose() async {
-    _connectionStateController.value = closing;
-    await _messageSubscription?.cancel();
-    await _channel?.sink?.close(websocket_status.goingAway);
+    await _close();
     _channel = null;
-    _connectionStateController.value = closed;
-    await _connectionStateController?.close();
   }
 }
