@@ -1,13 +1,13 @@
 import "package:gql_exec/gql_exec.dart";
+import "package:gql_http_link/src/client.dart";
 import "package:gql_link/gql_link.dart";
-import "package:http/http.dart" as http;
 import "package:meta/meta.dart";
 
 /// Exception occurring when parsing fails.
 @immutable
 class HttpLinkParserException extends ResponseFormatException {
   /// Response which caused the exception
-  final http.Response response;
+  final GqlClientResponse response;
 
   const HttpLinkParserException({
     @required dynamic originalException,
@@ -22,7 +22,7 @@ class HttpLinkParserException extends ResponseFormatException {
 @immutable
 class HttpLinkServerException extends ServerException {
   /// Response which caused the exception
-  final http.Response response;
+  final GqlClientResponse response;
 
   const HttpLinkServerException({
     @required this.response,

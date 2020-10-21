@@ -2,8 +2,10 @@ import "dart:async";
 import "dart:convert";
 
 import "package:gql_exec/gql_exec.dart";
+import "package:gql_http_link/src/client.dart";
 import "package:gql_link/gql_link.dart";
-import "package:http/http.dart" as http;
+import "package:http/http.dart" as httplib;
+//import "package:http/http.dart" as http;
 import "package:meta/meta.dart";
 
 import "./_utils.dart";
@@ -73,7 +75,7 @@ class HttpLink extends Link {
   /// Parser used to parse response
   final ResponseParser parser;
 
-  http.Client _httpClient;
+  final GqlClient _client;
 
   /// Construct the Link
   ///
@@ -82,26 +84,36 @@ class HttpLink extends Link {
     String uri, {
     this.defaultHeaders = const {},
     this.useGETForQueries = false,
-    http.Client httpClient,
+    httplib.Client httpClient,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
-  }) : uri = Uri.parse(uri) {
-    _httpClient = httpClient ?? http.Client();
-  }
+  })  : uri = Uri.parse(uri),
+        _client = HttpGqlClient(httpClient ?? httplib.Client());
+
+  HttpLink.customClient(
+    String uri, {
+    this.defaultHeaders = const {},
+    this.useGETForQueries = false,
+    @required GqlClient client,
+    this.serializer = const RequestSerializer(),
+    this.parser = const ResponseParser(),
+  })  : uri = Uri.parse(uri),
+        assert(client != null),
+        _client = client;
 
   @override
   Stream<Response> request(
     Request request, [
     NextLink forward,
   ]) async* {
-    final httpResponse = await _executeRequest(request);
+    final clientResponse = await _executeRequest(request);
 
-    final response = _parseHttpResponse(httpResponse);
+    final response = _parseHttpResponse(clientResponse);
 
-    if (httpResponse.statusCode >= 300 ||
+    if (clientResponse.statusCode >= 300 ||
         (response.data == null && response.errors == null)) {
       throw HttpLinkServerException(
-        response: httpResponse,
+        response: clientResponse,
         parsedResponse: response,
       );
     }
@@ -109,13 +121,13 @@ class HttpLink extends Link {
     yield Response(
       data: response.data,
       errors: response.errors,
-      context: _updateResponseContext(response, httpResponse),
+      context: _updateResponseContext(response, clientResponse),
     );
   }
 
   Context _updateResponseContext(
     Response response,
-    http.Response httpResponse,
+    GqlClientResponse httpResponse,
   ) {
     try {
       return response.context.withEntry(
@@ -131,37 +143,24 @@ class HttpLink extends Link {
     }
   }
 
-  Response _parseHttpResponse(http.Response httpResponse) {
+  Response _parseHttpResponse(GqlClientResponse clientResponse) {
     try {
-      final dynamic responseBody = json.decode(
-        utf8.decode(
-          httpResponse.bodyBytes,
-        ),
-      );
-
-      return parser.parseResponse(responseBody as Map<String, dynamic>);
+      return parser.parseResponse(clientResponse.body);
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
-        response: httpResponse,
+        response: clientResponse,
       );
     }
   }
 
-  Future<http.Response> _executeRequest(Request request) async {
-    final httpRequest = _prepareRequest(request);
-    try {
-      final response = await _httpClient.send(httpRequest);
-      return http.Response.fromStream(response);
-    } catch (e) {
-      throw ServerException(
-        originalException: e,
-        parsedResponse: null,
-      );
-    }
+  Future<GqlClientResponse> _executeRequest(Request request) async {
+    final clientRequest = _prepareRequest(request);
+    final response = await _client.send(clientRequest);
+    return response;
   }
 
-  http.BaseRequest _prepareRequest(Request request) {
+  GqlClientRequest _prepareRequest(Request request) {
     final body = _encodeAttempter(
       request,
       serializer.serializeRequest,
@@ -181,35 +180,42 @@ class HttpLink extends Link {
         fileMap.isEmpty && useGETForQueries && request.isQuery;
 
     if (useGetForThisRequest) {
-      return http.Request(
-        "GET",
-        uri.replace(
+      return GqlClientRequest(
+        method: "GET",
+        uri: uri.replace(
           queryParameters: _encodeAttempter(
             request,
             _encodeAsUriParams,
           )(body),
         ),
-      )..headers.addAll(headers);
+        headers: headers,
+      );
     }
 
-    final httpBody = _encodeAttempter(
-      request,
-      (Map body) => json.encode(
-        body,
-        toEncodable: (dynamic object) =>
-            (object is http.MultipartFile) ? null : object.toJson(),
-      ),
-    )(body);
+    // final httpBody = _encodeAttempter(
+    //   request,
+    //   (Map body) => json.encode(
+    //     body,
+    //     toEncodable: (dynamic object) =>
+    //         (object is http.MultipartFile) ? null : object.toJson(),
+    //   ),
+    // )(body);
 
     if (fileMap.isNotEmpty) {
-      return http.MultipartRequest("POST", uri)
-        ..body = httpBody
-        ..addAllFiles(fileMap)
-        ..headers.addAll(headers);
+      return GqlClientRequest(
+        method: "POST",
+        uri: uri,
+        body: body,
+        headers: headers,
+        fileMap: fileMap,
+      );
     }
-    return http.Request("POST", uri)
-      ..body = httpBody
-      ..headers.addAll(headers);
+    return GqlClientRequest(
+      method: "POST",
+      uri: uri,
+      body: body,
+      headers: headers,
+    );
   }
 
   /// wrap an encoding transform in exception handling
@@ -230,7 +236,7 @@ class HttpLink extends Link {
 
   /// Closes the underlining [http.Client]
   void dispose() {
-    _httpClient?.close();
+    _client?.close();
   }
 }
 
