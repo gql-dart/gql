@@ -159,9 +159,8 @@ void main() {
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
-                  contentType: "application/json",
                   headers: <String, dynamic>{
-                    "Content-type": "application/json",
+                    dio.Headers.contentTypeHeader: "application/json",
                     "Accept": "*/*",
                   },
                 ))),
@@ -214,9 +213,8 @@ void main() {
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
-                  contentType: "application/json",
                   headers: <String, dynamic>{
-                    "Content-type": "application/json",
+                    dio.Headers.contentTypeHeader: "application/json",
                     "Accept": "*/*",
                     "foo": "bar",
                   },
@@ -272,9 +270,8 @@ void main() {
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
-                    contentType: "application/json",
                     headers: <String, dynamic>{
-                      "Content-type": "application/json",
+                      dio.Headers.contentTypeHeader: "application/json",
                       "Accept": "*/*",
                       "foo": "bar",
                     }))),
@@ -312,7 +309,7 @@ void main() {
             const [
               HttpLinkHeaders(
                 headers: {
-                  "Content-type": "application/jsonize",
+                  dio.Headers.contentTypeHeader: "application/jsonize",
                 },
               ),
             ],
@@ -327,9 +324,8 @@ void main() {
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
-                    contentType: "application/json",
                     headers: <String, dynamic>{
-                      "Content-type": "application/jsonize",
+                      dio.Headers.contentTypeHeader: "application/jsonize",
                       "Accept": "*/*",
                     }))),
             named: "options",
