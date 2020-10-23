@@ -1,5 +1,5 @@
 import "package:gql_exec/gql_exec.dart";
-import "package:gql_http_link/src/client.dart";
+import "package:gql_http_link/src/gql_client.dart";
 import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
 
@@ -7,7 +7,8 @@ import "package:meta/meta.dart";
 @immutable
 class HttpLinkParserException extends ResponseFormatException {
   /// Response which caused the exception
-  final GqlClientResponse response;
+  /// type will depend on the client implementation
+  final dynamic response;
 
   const HttpLinkParserException({
     @required dynamic originalException,

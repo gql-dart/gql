@@ -2,7 +2,8 @@ import "dart:async";
 import "dart:convert";
 
 import "package:gql_exec/gql_exec.dart";
-import "package:gql_http_link/src/client.dart";
+import "package:gql_http_link/src/gql_client.dart";
+import "package:gql_http_link/src/http_gql_client.dart";
 import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as httplib;
 //import "package:http/http.dart" as http;
@@ -174,7 +175,7 @@ class HttpLink extends Link {
       ...contextHeaders,
     };
 
-    final fileMap = extractFlattenedFileMap(body);
+    final fileMap = extractFlattenedFileMap(body, _client.checkFileType);
 
     final useGetForThisRequest =
         fileMap.isEmpty && useGETForQueries && request.isQuery;
@@ -202,7 +203,7 @@ class HttpLink extends Link {
     // )(body);
 
     if (fileMap.isNotEmpty) {
-      return GqlClientRequest(
+      return GqlClientRequest.multipart(
         method: "POST",
         uri: uri,
         body: body,
