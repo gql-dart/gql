@@ -51,28 +51,27 @@ class GqlClientRequest {
 
   bool get isMultipartRequest => files != null && files.isNotEmpty;
 
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    final mapEquals = const DeepCollectionEquality().equals;
-
-    return o is GqlClientRequest &&
-        o.method == method &&
-        o.uri == uri &&
-        mapEquals(o.body, body) &&
-        mapEquals(o.headers, headers) &&
-        mapEquals(o.files, files) &&
-        mapEquals(o.fileMapping, fileMapping);
-  }
+  List<Object> get _props => [
+        method,
+        uri,
+        body,
+        headers,
+        fileMapping,
+        files,
+      ];
 
   @override
-  int get hashCode =>
-      method.hashCode ^
-      uri.hashCode ^
-      body.hashCode ^
-      headers.hashCode ^
-      files.hashCode ^
-      fileMapping.hashCode;
+  bool operator ==(Object o) =>
+      identical(this, o) ||
+      (o is GqlClientRequest &&
+          const ListEquality<Object>(
+            DeepCollectionEquality(),
+          ).equals(o._props, _props));
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(_props);
 }
 
 class GqlClientResponse {
@@ -86,19 +85,24 @@ class GqlClientResponse {
     this.body,
   });
 
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-    final mapEquals = const DeepCollectionEquality().equals;
-
-    return o is GqlClientResponse &&
-        o.statusCode == statusCode &&
-        mapEquals(o.headers, headers) &&
-        o.body == body;
-  }
+  List<Object> get _props => [
+        statusCode,
+        body,
+        headers,
+      ];
 
   @override
-  int get hashCode => statusCode.hashCode ^ headers.hashCode ^ body.hashCode;
+  bool operator ==(Object o) =>
+      identical(this, o) ||
+      (o is GqlClientResponse &&
+          const ListEquality<Object>(
+            DeepCollectionEquality(),
+          ).equals(o._props, _props));
+
+  @override
+  int get hashCode => const ListEquality<Object>(
+        DeepCollectionEquality(),
+      ).hash(_props);
 }
 
 abstract class GqlClient {
