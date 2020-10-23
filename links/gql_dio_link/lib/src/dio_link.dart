@@ -82,10 +82,9 @@ class DioLink extends Link {
   @override
   Stream<Response> request(Request request, [forward]) async* {
     final dio.Response<Map<String, dynamic>> dioResponse =
-        await _excuteDioRequest(
+        await _executeDioRequest(
       body: _serializeRequest(request),
       headers: <String, String>{
-        "Content-type": "application/json",
         "Accept": "*/*",
         ...defaultHeaders,
         ..._getHttpLinkHeaders(request),
@@ -126,7 +125,7 @@ class DioLink extends Link {
     }
   }
 
-  Future<dio.Response<Map<String, dynamic>>> _excuteDioRequest({
+  Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
     @required Map<String, dynamic> body,
     @required Map<String, String> headers,
   }) async {
@@ -136,7 +135,6 @@ class DioLink extends Link {
         data: body,
         options: dio.Options(
           responseType: dio.ResponseType.json,
-          contentType: "application/json",
           headers: headers,
         ),
       );
