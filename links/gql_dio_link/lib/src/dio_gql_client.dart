@@ -40,7 +40,8 @@ class DioGqlClient extends GqlClient {
         MapEntry("map", json.encode(request.fileMapping)),
       ]);
       data.files.addAll(
-        request.files.entries.cast<MapEntry<String, dio.MultipartFile>>(),
+        request.files.entries
+            .map((e) => MapEntry(e.key, e.value as dio.MultipartFile)),
       );
       return data;
     }
