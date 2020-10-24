@@ -10,7 +10,6 @@ dependencies:
   gql_exec: ^0.2.4
   gql_link: ^0.3.1
   http: ^0.12.1
-  http_parser: ^3.1.4
   meta: ^1.1.7
 dev_dependencies:
   gql_pedantic: ^1.0.1
