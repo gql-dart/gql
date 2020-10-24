@@ -665,4 +665,126 @@ void main() {
       ).called(1);
     });
   });
+
+  group("HttpLink useGETForQueries", () {
+    MockClient client;
+    Request request;
+    DioLink link;
+
+    Stream<Response> execute({
+      Request customRequest,
+    }) =>
+        link.request(customRequest ?? request);
+
+    setUp(() {
+      client = MockClient();
+      request = Request(
+        operation: Operation(
+          document: parseString("query MyQuery {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+      link = DioLink(
+        "/graphql-test",
+        client: client,
+        useGETForQueries: true,
+      );
+    });
+
+    test("uses GET for query without files", () async {
+      when(
+        client.requestUri<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+          ),
+        ),
+      );
+
+      await execute().first;
+
+      verify(
+        client.requestUri<dynamic>(
+          argThat(
+            isA<Uri>()
+                .having(
+                  (uri) => uri.path,
+                  "Uri.path",
+                  "/graphql-test",
+                )
+                .having(
+                  (uri) => uri.queryParameters,
+                  "Uri.queryParameters",
+                  anything,
+                ),
+          ),
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+                  method: "GET",
+                  responseType: dio.ResponseType.json,
+                  headers: <String, dynamic>{
+                    "Content-type": "application/json",
+                    "Accept": "*/*",
+                  },
+                ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+
+    test("uses POST for mutation", () async {
+      when(
+        client.requestUri<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+          ),
+        ),
+      );
+
+      await execute(
+          customRequest: Request(
+        operation: Operation(
+          document: parseString("mutation MyQuery {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      )).first;
+
+      verify(
+        client.requestUri<dynamic>(
+          Uri.parse("/graphql-test"),
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+                  method: "POST",
+                  responseType: dio.ResponseType.json,
+                  headers: <String, dynamic>{
+                    "Content-type": "application/json",
+                    "Accept": "*/*",
+                  },
+                ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+  });
 }
