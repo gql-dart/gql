@@ -434,15 +434,16 @@ void main() {
     });
 
     test("throws HttpLinkServerException when status code >= 300", () async {
-      final data = json.encode(<String, dynamic>{
+      final data = <String, dynamic>{
         "data": <String, dynamic>{},
-      });
+      };
+      final dataStr = json.encode(data);
 
       when(
         client.send(any),
       ).thenAnswer(
         (_) => Future.value(
-          simpleResponse(data, 300),
+          simpleResponse(dataStr, 300),
         ),
       );
 
@@ -474,8 +475,9 @@ void main() {
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
-      final data = json.encode(<String, dynamic>{});
-      final _response = simpleResponse(data, 200);
+      final data = <String, dynamic>{};
+      final dataStr = json.encode(data);
+      final _response = simpleResponse(dataStr, 200);
 
       when(
         client.send(any),
