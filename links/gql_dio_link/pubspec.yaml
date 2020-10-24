@@ -2,14 +2,16 @@ name: gql_dio_link
 version: 0.0.4
 description: Similar to gql_http_link, gql_dio_link is a GQL Terminating Link to execute requests via Dio using JSON
 repository: https://github.com/gql-dart/gql
-environment: 
-  sdk: '>=2.7.2 <3.0.0'
-dependencies: 
+environment:
+  sdk: ">=2.7.2 <3.0.0"
+dependencies:
   dio: ^3.0.9
   gql_link: ^0.3.0
+  gql_http_link:
+    path: ../gql_http_link
   gql_exec: ^0.2.4
   meta: ^1.1.8
-dev_dependencies: 
+dev_dependencies:
   test: ^1.0.0
   mockito: ^4.1.1
   gql: ^0.12.1
