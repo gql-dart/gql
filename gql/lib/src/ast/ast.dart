@@ -993,13 +993,17 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
 }
 
 class EnumValueDefinitionNode extends TypeDefinitionNode {
+  final bool fallback;
+
   const EnumValueDefinitionNode({
     StringValueNode description,
     @required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan span,
+    this.fallback = false,
   })  : assert(name != null),
         assert(directives != null),
+        assert(fallback != null),
         super(
           span: span,
           name: name,

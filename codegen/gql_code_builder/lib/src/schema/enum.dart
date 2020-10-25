@@ -1,20 +1,14 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/schema.dart";
 import "package:recase/recase.dart";
 
 import "package:gql_code_builder/src/common.dart";
 
-List<Class> buildEnumClasses(
-  DocumentNode doc,
-) =>
-    doc.definitions
-        .whereType<EnumTypeDefinitionNode>()
-        .map(buildEnumClass)
-        .toList();
-
 Class buildEnumClass(
   EnumTypeDefinitionNode node,
+  EnumFallbackConfig enumFallbackConfig,
 ) =>
     Class(
       (b) => b
@@ -22,11 +16,46 @@ Class buildEnumClass(
         ..extend = refer("EnumClass", "package:built_value/built_value.dart")
         ..constructors = _buildConstructors()
         ..fields = _buildFields(
-          node.values,
+          [
+            ...node.values.map((enumValue) {
+              if (enumFallbackConfig.fallbackValueMap[node.name.value] ==
+                  enumValue.name.value) {
+                return EnumValueDefinitionNode(
+                    name: enumValue.name,
+                    fallback: true,
+                    span: enumValue.span,
+                    directives: enumValue.directives,
+                    description: enumValue.description);
+              }
+              return enumValue;
+            }),
+            if (enumFallbackConfig.generateFallbackValuesGlobally &&
+                !enumFallbackConfig.fallbackValueMap
+                    .containsKey(node.name.value))
+              EnumValueDefinitionNode(
+                  name: NameNode(
+                      value: _ensureNoNameClashes(
+                          enumFallbackConfig.globalEnumFallbackName, node)),
+                  fallback: true)
+          ],
           builtClassName(node.name.value),
         )
         ..methods = _buildMethods(builtClassName(node.name.value)),
     );
+
+String _ensureNoNameClashes(
+    String globalEnumFallbackName, EnumTypeDefinitionNode node) {
+  String currentFallbackName = globalEnumFallbackName;
+
+  while (node.values
+      .map((e) => e.name.value)
+      .any((element) => currentFallbackName == element)) {
+    //TODO emit warning or throw error when this happens?
+    currentFallbackName = "g$currentFallbackName";
+  }
+
+  return currentFallbackName;
+}
 
 ListBuilder<Constructor> _buildConstructors() => ListBuilder<Constructor>(
       <Constructor>[
@@ -132,9 +161,13 @@ Field _buildConst(
     Field(
       (b) => b
         ..annotations = ListBuilder(<Expression>[
-          if (_escapeConstName(node.name.value) != node.name.value)
+          if (_escapeConstName(node.name.value) != node.name.value ||
+              node.fallback)
             refer("BuiltValueEnumConst", "package:built_value/built_value.dart")
-                .call([], {"wireName": literalString(node.name.value)}),
+                .call([], {
+              "wireName": literalString(node.name.value),
+              if (node.fallback) "fallback": literalBool(true)
+            }),
         ])
         ..static = true
         ..modifier = FieldModifier.constant

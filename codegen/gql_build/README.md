@@ -39,14 +39,37 @@ Generates a typed view of your data.
 ### var_builder
 Creates data classes for any GraphQL variables used in a query or fragment.
 
-### enum_builder
-Generates an enum-like class per GraphQL enum type. Defines known enum values to be used in your code, and allows unknown enum values to be used without causing runtime error when handling response data.
-
-### scalar_builder
-Generates a container for a scalar value to be used when viewing the response data and building request variables.
-
 ### schema_builder
-Combines `enum_builder`, `input_builder` and `scalar_builder`.
+Creates data classes from you specified graphql schema.
+
+#### Configuration
+
+`type_overrides`: [Map\] Specify how scalar types should be serialized
+
+Example: 
+
+```yaml
+type_overrides:
+    CustomStringScalar:
+      name: String
+     CustomField:
+       name: CustomField
+       import: 'package:mypackage/custom_field.dart'
+```
+
+`enum_fallbacks`: \[Map\] Specify fallback values to enum values in order to not break the serializer when 
+new enum values are added to the schema and the client has not updated to the new schema yet.
+
+`global_enum_fallbacks`: \[bool\] Add a generated fallback value for each enum value (except for ones that have a custom fallback value specified in the enum_fallbacks map).
+Defaults to false.
+
+Example:
+
+```yaml
+global_enum_fallbacks: true # add a generated fallback value to all enums
+enum_fallbacks:
+    MyEnumType: OTHER   # except for the type 'MyEnumType', use the value 'OTHER' as fallback there
+```
 
 ### serializer_builder
 Creates `built_value` serializers for each `built_value` class.

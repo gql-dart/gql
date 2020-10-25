@@ -40,7 +40,7 @@ GLengthUnit _$gLengthUnitValueOf(String name) {
     case 'FOOT':
       return _$gLengthUnitFOOT;
     default:
-      throw new ArgumentError(name);
+      return _$gLengthUnitMETER;
   }
 }
 
@@ -74,6 +74,13 @@ class _$GEpisodeSerializer implements PrimitiveSerializer<GEpisode> {
 }
 
 class _$GLengthUnitSerializer implements PrimitiveSerializer<GLengthUnit> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'METER': 'METER',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'METER': 'METER',
+  };
+
   @override
   final Iterable<Type> types = const <Type>[GLengthUnit];
   @override
@@ -82,12 +89,12 @@ class _$GLengthUnitSerializer implements PrimitiveSerializer<GLengthUnit> {
   @override
   Object serialize(Serializers serializers, GLengthUnit object,
           {FullType specifiedType = FullType.unspecified}) =>
-      object.name;
+      _toWire[object.name] ?? object.name;
 
   @override
   GLengthUnit deserialize(Serializers serializers, Object serialized,
           {FullType specifiedType = FullType.unspecified}) =>
-      GLengthUnit.valueOf(serialized as String);
+      GLengthUnit.valueOf(_fromWire[serialized] ?? serialized as String);
 }
 
 class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {

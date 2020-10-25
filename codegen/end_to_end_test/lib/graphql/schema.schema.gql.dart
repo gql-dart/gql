@@ -26,6 +26,7 @@ class GEpisode extends EnumClass {
 class GLengthUnit extends EnumClass {
   const GLengthUnit._(String name) : super(name);
 
+  @BuiltValueEnumConst(wireName: 'METER', fallback: true)
   static const GLengthUnit METER = _$gLengthUnitMETER;
 
   static const GLengthUnit FOOT = _$gLengthUnitFOOT;
