@@ -8,6 +8,9 @@ import "package:rxdart/rxdart.dart";
 import "package:uuid_enhanced/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
+import "package:logging/logging.dart";
+
+final _logger = Logger("WebSocketLink");
 
 typedef ChannelGenerator = WebSocketChannel Function();
 
@@ -20,6 +23,9 @@ typedef ChannelGenerator = WebSocketChannel Function();
 class WebSocketLink extends Link {
   String _uri;
   WebSocketChannel _channel;
+
+  bool disposing = false;
+  final Function onDisconnect;
 
   /// A function that returns a `WebSocketChannel`.
   /// This is useful if you have dynamic Auth token and want to regenerate it after the socket has disconnected.
@@ -66,6 +72,7 @@ class WebSocketLink extends Link {
     ChannelGenerator channelGenerator,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.onDisconnect,
     this.initialPayload,
     this.inactivityTimeout,
   }) : assert(uri == null || (channel == null && channelGenerator == null)) {
@@ -177,9 +184,14 @@ class WebSocketLink extends Link {
       _messageSubscription = _messageStream.listen(
         (_) {},
         onDone: () async {
+          _logger.severe("Listening stream to remote WebSocket channel done.");
+          if (!disposing && onDisconnect != null) {
+            onDisconnect();
+          }
           await dispose();
         },
         onError: (dynamic e) {
+          _logger.severe("Error received while listening to remote WebSocket channel: ${e}");
           throw e;
         },
       );
@@ -284,6 +296,8 @@ class WebSocketLink extends Link {
   /// in favour of another one. If that's the case,
   /// create a new [WebSocketLink] instance.
   Future<void> dispose() async {
+    // to prevent from onDisconnect to call when user initiated the dispose call.
+    disposing = true;
     await _close();
     _channel = null;
   }
