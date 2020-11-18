@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:collection";
 
 import "package:build/build.dart";
 import "package:path/path.dart" as p;
@@ -38,31 +39,63 @@ class SerializerBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final Set<ClassElement> classes = {};
+    /// BuiltValue classes with serializers. These will be added automatically
+    /// using `@SerializersFor`.
+    final builtClasses =
+        SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
+
+    /// Non BuiltValue classes with serializers (i.e. inline fragment classes).
+    /// These need to be added manually since `@SerializersFor` only recognizes
+    /// BuiltValue classes.
+    final nonBuiltClasses =
+        SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
+
+    final hasSerializer = (ClassElement c) => c.fields.any((field) =>
+        field.isStatic &&
+        field.name == "serializer" &&
+        field.type.element.name == "Serializer" &&
+        field.type.element.source.uri.toString() ==
+            "package:built_value/serializer.dart");
+
+    final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
+        (interface.element.name == "Built" ||
+            interface.element.name == "EnumClass") &&
+        interface.element.source.uri.toString() ==
+            "package:built_value/built_value.dart");
+
     await for (final input in buildStep.findAssets(_generatedFiles)) {
       final lib = await buildStep.resolver.libraryFor(input);
       lib.units
           .expand((cu) => cu.types)
+          .where((c) => hasSerializer(c) && isBuiltValue(c))
+          .forEach(builtClasses.add);
+
+      lib.units
+          .expand((cu) => cu.types)
           .where(
-            (libClass) => libClass.fields.any((field) =>
-                field.isStatic &&
-                field.name == "serializer" &&
-                field.type.element.name == "Serializer" &&
-                field.type.element.source.uri.toString() ==
-                    "package:built_value/serializer.dart"),
+            (c) => hasSerializer(c) && !isBuiltValue(c),
           )
-          .forEach(classes.add);
+          .forEach(nonBuiltClasses.add);
     }
 
-    final output = AssetId(
-      buildStep.inputId.package,
-      p.joinAll(pathSegments),
-    );
+    final Set<Expression> additionalSerializers = {
+      // GraphQL Operation serializer
+      refer(
+        "OperationSerializer",
+        "package:gql_code_builder/src/serializers/operation_serializer.dart",
+      ).call([]),
+      // User-defined custom serializers
+      ...customSerializers.map((ref) => ref.call([])),
+      // Serializers from data classes that aren't caught by `@SerializersFor`
+      ...nonBuiltClasses.map<Expression>(
+        (c) => refer(c.name, c.source.uri.toString()).property("serializer"),
+      ),
+    };
 
     final library = buildSerializerLibrary(
-      classes,
+      builtClasses,
       "serializers.gql.g.dart",
-      customSerializers,
+      additionalSerializers,
     );
 
     final _emitter = DartEmitter(
@@ -76,6 +109,11 @@ class SerializerBuilder implements Builder {
         ],
       ),
       true,
+    );
+
+    final output = AssetId(
+      buildStep.inputId.package,
+      p.joinAll(pathSegments),
     );
 
     return buildStep.writeAsString(

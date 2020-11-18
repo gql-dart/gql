@@ -22,9 +22,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GEpisode.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
-      ..add(GHeroForEpisodeData_hero.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
+      ..add(GHeroForEpisodeData_hero__asDroid_friends.serializer)
       ..add(GHeroForEpisodeData_hero__base.serializer)
+      ..add(GHeroForEpisodeData_hero__base_friends.serializer)
       ..add(GHeroForEpisodeVars.serializer)
       ..add(GHeroNoVars.serializer)
       ..add(GHeroNoVarsData.serializer)
@@ -70,6 +71,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GEpisode)]),
           () => new ListBuilder<GEpisode>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GHeroForEpisodeData_hero__asDroid_friends)
+          ]),
+          () => new ListBuilder<GHeroForEpisodeData_hero__asDroid_friends>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GHeroForEpisodeData_hero__base_friends)]),
+          () => new ListBuilder<GHeroForEpisodeData_hero__base_friends>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(GHeroWithFragmentsData_hero_friendsConnection_edges)
