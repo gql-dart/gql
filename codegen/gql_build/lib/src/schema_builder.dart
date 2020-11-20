@@ -11,8 +11,12 @@ import "package:gql_code_builder/schema.dart";
 
 class SchemaBuilder implements Builder {
   final Map<String, Reference> typeOverrides;
+  final EnumFallbackConfig enumFallbackConfig;
 
-  SchemaBuilder(this.typeOverrides);
+  SchemaBuilder(
+    this.typeOverrides,
+    this.enumFallbackConfig,
+  );
 
   @override
   Map<String, List<String>> get buildExtensions => {
@@ -32,6 +36,7 @@ class SchemaBuilder implements Builder {
       doc,
       basename(generatedPartUrl),
       typeOverrides,
+      enumFallbackConfig,
     );
 
     return writeDocument(

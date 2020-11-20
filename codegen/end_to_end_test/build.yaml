@@ -25,6 +25,8 @@ targets:
       gql_build|schema_builder:
         enabled: true
         options:
+          enum_fallbacks:
+            LengthUnit: METER
           type_overrides:
             Date:
               name: DateTime
