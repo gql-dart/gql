@@ -11,7 +11,7 @@ void main() {
     EnumValueDefinitionNode(name: NameNode(value: "val2"))
   ]);
 
-  test("does note generate fallback value when no fallback set in config", () {
+  test("does not generate fallback value when no fallback set in config", () {
     final clazz = buildEnumClass(
         simpleEnum,
         EnumFallbackConfig(

@@ -40,7 +40,7 @@ Generates a typed view of your data.
 Creates data classes for any GraphQL variables used in a query or fragment.
 
 ### schema_builder
-Creates data classes from you specified graphql schema.
+Creates data classes from your specified graphql schema.
 
 #### Configuration
 
