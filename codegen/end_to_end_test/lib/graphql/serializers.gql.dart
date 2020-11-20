@@ -34,11 +34,13 @@ import 'package:end_to_end_test/graphql/schema.schema.gql.dart'
     show GColorInput, GEpisode, GISODate, GLengthUnit, GReviewInput;
 import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart'
     show
+        GHeroForEpisodeData_hero,
         GDroidFragmentData,
         GHeroForEpisodeData,
-        GHeroForEpisodeData_hero,
         GHeroForEpisodeData_hero__asDroid,
-        GHeroForEpisodeData_hero__base;
+        GHeroForEpisodeData_hero__asDroid_friends,
+        GHeroForEpisodeData_hero__base,
+        GHeroForEpisodeData_hero__base_friends;
 import 'package:end_to_end_test/interfaces/hero_for_episode.req.gql.dart'
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/hero_for_episode.var.gql.dart'
@@ -73,9 +75,10 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
 part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
-  ..add(CustomFieldSerializer())
-  ..add(DateSerializer())
   ..add(OperationSerializer())
+  ..add(DateSerializer())
+  ..add(CustomFieldSerializer())
+  ..add(GHeroForEpisodeData_hero.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAliasedHero,
@@ -93,9 +96,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GEpisode,
   GHeroForEpisode,
   GHeroForEpisodeData,
-  GHeroForEpisodeData_hero,
   GHeroForEpisodeData_hero__asDroid,
+  GHeroForEpisodeData_hero__asDroid_friends,
   GHeroForEpisodeData_hero__base,
+  GHeroForEpisodeData_hero__base_friends,
   GHeroForEpisodeVars,
   GHeroNoVars,
   GHeroNoVarsData,

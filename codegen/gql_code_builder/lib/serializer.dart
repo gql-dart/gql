@@ -3,17 +3,17 @@ import "package:analyzer/dart/element/element.dart";
 
 Expression withCustomSerializers(
   Expression serializersExpression,
-  Set<Reference> customSerializers,
+  Set<Expression> customSerializers,
 ) =>
-    (customSerializers.toList()..sort((a, b) => a.url.compareTo(b.url))).fold(
+    customSerializers.fold(
       serializersExpression,
-      (exp, ref) => exp.cascade("add").call([ref.call([])]),
+      (exp, serializer) => exp.cascade("add").call([serializer]),
     );
 
 Library buildSerializerLibrary(
-  Set<ClassElement> classes,
+  Set<ClassElement> builtClasses,
   String partDirectiveUrl,
-  Set<Reference> customSerializers,
+  Set<Expression> additionalSerializers,
 ) =>
     Library(
       (b) => b
@@ -28,26 +28,16 @@ Library buildSerializerLibrary(
                 )
                 .property("toBuilder")
                 .call([]),
-            customSerializers,
-          )
-              .cascade("add")
-              .call([
-                refer(
-                  "OperationSerializer",
-                  "package:gql_code_builder/src/serializers/operation_serializer.dart",
-                ).call([])
-              ])
-              .cascade("addPlugin")
-              .call([
-                refer(
-                  "StandardJsonPlugin",
-                  "package:built_value/standard_json_plugin.dart",
-                ).call([])
-              ])
-              .statement,
+            additionalSerializers,
+          ).cascade("addPlugin").call([
+            refer(
+              "StandardJsonPlugin",
+              "package:built_value/standard_json_plugin.dart",
+            ).call([])
+          ]).statement,
           refer("@SerializersFor", "package:built_value/serializer.dart").call([
             literalList(
-              classes
+              builtClasses
                   .map<Reference>(
                     (c) => refer(c.name, c.source.uri.toString()),
                   )

@@ -233,7 +233,7 @@ List<Class> buildSelectionSetDataClasses({
               superclassSelections,
               field,
             ),
-            built: built,
+            built: inlineFragments.isNotEmpty ? false : built,
           ),
         ),
   ];
