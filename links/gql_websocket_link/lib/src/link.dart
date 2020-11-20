@@ -9,6 +9,8 @@ import "package:uuid_enhanced/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
+typedef ChannelGenerator = WebSocketChannel Function();
+
 /// A Universal WebSocket [Link] implementation to support the
 /// WebSocket-GraphQL transport.
 /// It supports subscriptions, query and mutation operations as well.
@@ -18,6 +20,10 @@ import "package:web_socket_channel/status.dart" as websocket_status;
 class WebSocketLink extends Link {
   String _uri;
   WebSocketChannel _channel;
+
+  /// A function that returns a `WebSocketChannel`.
+  /// This is useful if you have dynamic Auth token and want to regenerate it after the socket has disconnected.
+  ChannelGenerator _channelGenerator;
 
   /// Serializer used to serialize request
   final RequestSerializer serializer;
@@ -48,22 +54,24 @@ class WebSocketLink extends Link {
   StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
 
   /// Initialize the [WebSocketLink] with a [uri].
-  /// You can customize the headers & protocols by passing [channel],
-  /// if [channel] is passed, [uri] must be null.
-  /// [channel] if of type [WebSocketChannel],
-  /// you may also use [IOWebSocketChannel] or [HtmlWebSocketChannel].
+  /// You can customize the headers & protocols by passing [channelGenerator],
+  /// if [channelGenerator] is passed, [uri] must be null.
+  /// [channelGenerator] is a function that returns [WebSocketChannel] or [IOWebSocketChannel] or [HtmlWebSocketChannel].
   /// You can also pass custom [RequestSerializer serializer] & [ResponseParser parser].
   /// Also [initialPayload] to be passed with the first request to the GraphQL server.
   WebSocketLink(
     String uri, {
-    WebSocketChannel channel,
+    @Deprecated("Will be removed in favor of channelGenerator")
+        WebSocketChannel channel,
+    ChannelGenerator channelGenerator,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.initialPayload,
     this.inactivityTimeout,
-  }) : assert(uri == null || channel == null) {
+  }) : assert(uri == null || (channel == null && channelGenerator == null)) {
     _uri = uri;
-    _channel = channel;
+    _channelGenerator = channelGenerator;
+    _channel = channel ?? _channelGenerator();
     _connectionStateController.value = closed;
   }
 
