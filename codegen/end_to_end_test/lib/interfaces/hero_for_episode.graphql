@@ -5,6 +5,9 @@ fragment DroidFragment on Droid {
 query HeroForEpisode($ep: Episode!) {
   hero(episode: $ep) {
     name
+    friends {
+      name
+    }
     ... on Droid {
       ...DroidFragment
     }

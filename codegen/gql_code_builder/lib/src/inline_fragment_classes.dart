@@ -42,14 +42,6 @@ List<Class> buildInlineFragmentClasses({
             ..methods.addAll(fieldGetters);
           if (built) {
             b = b
-              ..annotations.add(refer(
-                "BuiltValue",
-                "package:built_value/built_value.dart",
-              ).call([], {"instantiable": literalBool(false)}))
-              // TODO: remove once this issue is resolved
-              // https://github.com/google/built_value.dart/issues/838
-              ..implements.add(refer("BuiltFaker",
-                  "package:gql_code_builder/src/utils/built_faker.dart"))
               ..methods.addAll(
                 _inlineFragmentRootSerializationMethods(
                   name: builtClassName(name),
@@ -108,10 +100,6 @@ List<Method> _inlineFragmentRootSerializationMethods({
     [
       buildSerializerGetter(name).rebuild(
         (b) => b
-          ..annotations.add(refer(
-            "BuiltValueSerializer",
-            "package:built_value/built_value.dart",
-          ).call([], {"custom": literalBool(true)}))
           ..body = TypeReference((b) => b
             ..symbol = "InlineFragmentSerializer"
             ..url =

@@ -11,6 +11,7 @@ class GqlAllocator implements Allocator {
     "package:built_value/built_value.dart",
     "package:built_value/serializer.dart",
     "package:built_collection/built_collection.dart",
+    "package:gql_code_builder/src/utils/non_built_serializer.dart",
   ];
 
   final String sourceUrl;
