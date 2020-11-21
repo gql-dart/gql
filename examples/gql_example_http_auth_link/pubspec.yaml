@@ -3,12 +3,12 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 dependencies: 
   gql: ^0.12.3
-  gql_link: ^0.3.0
-  gql_exec: ^0.2.4
+  gql_link: ^0.3.1
+  gql_exec: ^0.2.5
   gql_error_link: ^0.1.0
   gql_transform_link: ^0.1.5
-  gql_http_link: ^0.2.9
+  gql_http_link: ^0.3.2
   http: ^0.12.0+2
 dev_dependencies: 
   gql_pedantic: ^1.0.2
-  gql_build: ^0.1.1
+  gql_build: ^0.1.3

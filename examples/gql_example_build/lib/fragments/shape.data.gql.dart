@@ -3,8 +3,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:gql_code_builder/src/serializers/inline_fragment_serializer.dart'
-    as _i3;
-import 'package:gql_code_builder/src/utils/built_faker.dart' as _i2;
+    as _i2;
 import 'package:gql_example_build/serializers.gql.dart' as _i1;
 
 part 'shape.data.gql.g.dart';
@@ -27,15 +26,13 @@ abstract class GShapeData implements Built<GShapeData, GShapeDataBuilder> {
       _i1.serializers.deserializeWith(GShapeData.serializer, json);
 }
 
-@BuiltValue(instantiable: false)
-abstract class GShapeData_shape implements _i2.BuiltFaker {
+abstract class GShapeData_shape {
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @nullable
   double get area;
-  @BuiltValueSerializer(custom: true)
   static Serializer<GShapeData_shape> get serializer =>
-      _i3.InlineFragmentSerializer<GShapeData_shape>(
+      _i2.InlineFragmentSerializer<GShapeData_shape>(
           'GShapeData_shape',
           GShapeData_shape__base,
           [GShapeData_shape__asSquare, GShapeData_shape__asRectangle]);

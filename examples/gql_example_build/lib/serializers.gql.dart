@@ -5,8 +5,8 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 import 'package:gql_example_build/fragments/shape.data.gql.dart'
     show
-        GShapeData,
         GShapeData_shape,
+        GShapeData,
         GShapeData_shape__asRectangle,
         GShapeData_shape__asSquare,
         GShapeData_shape__base;
@@ -29,6 +29,7 @@ part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
+  ..add(GShapeData_shape.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GEnum,
@@ -42,7 +43,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GScalar,
   GShape,
   GShapeData,
-  GShapeData_shape,
   GShapeData_shape__asRectangle,
   GShapeData_shape__asSquare,
   GShapeData_shape__base,

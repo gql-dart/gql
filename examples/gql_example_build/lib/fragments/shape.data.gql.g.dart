@@ -350,16 +350,6 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
   }
 }
 
-abstract class GShapeData_shapeBuilder {
-  void replace(GShapeData_shape other);
-  void update(void Function(GShapeData_shapeBuilder) updates);
-  String get G__typename;
-  set G__typename(String G__typename);
-
-  double get area;
-  set area(double area);
-}
-
 class _$GShapeData_shape__base extends GShapeData_shape__base {
   @override
   final String G__typename;
@@ -409,9 +399,7 @@ class _$GShapeData_shape__base extends GShapeData_shape__base {
 }
 
 class GShapeData_shape__baseBuilder
-    implements
-        Builder<GShapeData_shape__base, GShapeData_shape__baseBuilder>,
-        GShapeData_shapeBuilder {
+    implements Builder<GShapeData_shape__base, GShapeData_shape__baseBuilder> {
   _$GShapeData_shape__base _$v;
 
   String _G__typename;
@@ -436,7 +424,7 @@ class GShapeData_shape__baseBuilder
   }
 
   @override
-  void replace(covariant GShapeData_shape__base other) {
+  void replace(GShapeData_shape__base other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
@@ -513,8 +501,7 @@ class _$GShapeData_shape__asSquare extends GShapeData_shape__asSquare {
 
 class GShapeData_shape__asSquareBuilder
     implements
-        Builder<GShapeData_shape__asSquare, GShapeData_shape__asSquareBuilder>,
-        GShapeData_shapeBuilder {
+        Builder<GShapeData_shape__asSquare, GShapeData_shape__asSquareBuilder> {
   _$GShapeData_shape__asSquare _$v;
 
   String _G__typename;
@@ -544,7 +531,7 @@ class GShapeData_shape__asSquareBuilder
   }
 
   @override
-  void replace(covariant GShapeData_shape__asSquare other) {
+  void replace(GShapeData_shape__asSquare other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
@@ -630,8 +617,7 @@ class _$GShapeData_shape__asRectangle extends GShapeData_shape__asRectangle {
 class GShapeData_shape__asRectangleBuilder
     implements
         Builder<GShapeData_shape__asRectangle,
-            GShapeData_shape__asRectangleBuilder>,
-        GShapeData_shapeBuilder {
+            GShapeData_shape__asRectangleBuilder> {
   _$GShapeData_shape__asRectangle _$v;
 
   String _G__typename;
@@ -666,7 +652,7 @@ class GShapeData_shape__asRectangleBuilder
   }
 
   @override
-  void replace(covariant GShapeData_shape__asRectangle other) {
+  void replace(GShapeData_shape__asRectangle other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }

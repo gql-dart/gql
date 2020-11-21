@@ -6,14 +6,15 @@ environment:
   sdk: '>=2.7.2 <3.0.0'
 dependencies: 
   analyzer: ^0.40.4
-  gql: ^0.12.1
+  gql: ^0.12.3
   code_builder: ^3.3.0
   meta: ^1.1.7
   built_collection: ^4.0.0
   built_value: ^7.0.9
   path: ^1.6.4
   recase: ^3.0.0
-  gql_exec: ^0.2.4
+  gql_exec: ^0.2.5
 dev_dependencies: 
-  gql_pedantic: ^1.0.1
+  gql_pedantic: ^1.0.2
   build_runner: ^1.7.4
+  test: ^1.0.0
