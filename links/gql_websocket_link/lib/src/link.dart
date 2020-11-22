@@ -4,12 +4,23 @@ import "dart:convert";
 import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
+import "package:meta/meta.dart";
 import "package:rxdart/rxdart.dart";
 import "package:uuid_enhanced/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
 typedef ChannelGenerator = WebSocketChannel Function();
+
+@immutable
+class RequestId extends ContextEntry {
+  final String id;
+
+  const RequestId(this.id) : assert(id != null);
+
+  @override
+  List<Object> get fieldsForEquality => [id];
+}
 
 /// A Universal WebSocket [Link] implementation to support the
 /// WebSocket-GraphQL transport.
@@ -21,6 +32,12 @@ class WebSocketLink extends Link {
   String _uri;
   WebSocketChannel _channel;
 
+  // Current active subscriptions
+  final _requests = <Request>[];
+
+  // subscriptions that need to be re-initialized after channel reconnect
+  final _reConnectRequests = <Request>[];
+
   /// A function that returns a `WebSocketChannel`.
   /// This is useful if you have dynamic Auth token and want to regenerate it after the socket has disconnected.
   ChannelGenerator _channelGenerator;
@@ -30,6 +47,10 @@ class WebSocketLink extends Link {
 
   /// Response parser
   ResponseParser parser;
+
+  /// Automatically recreate the channel when connection is lost,
+  /// and re send all active subscriptions. `true` by default.
+  bool autoReconnect;
 
   /// Payload to be sent with the connection_init request
   /// Must be able to `json.encode(initialPayload)`.
@@ -42,15 +63,13 @@ class WebSocketLink extends Link {
   final Duration inactivityTimeout;
 
   // Possible states of the connection.
-  static const int connecting = 0;
+  static const int closed = 0;
   static const int open = 1;
-  static const int closing = 2;
-  static const int closed = 3;
   final BehaviorSubject<int> _connectionStateController =
-      BehaviorSubject<int>();
+      BehaviorSubject<int>.seeded(closed);
 
-  Stream<GraphQLSocketMessage> _messageStream;
-  StreamSubscription<GraphQLSocketMessage> _messageSubscription;
+  final StreamController<GraphQLSocketMessage> _messagesController =
+      StreamController<GraphQLSocketMessage>.broadcast();
   StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
 
   /// Initialize the [WebSocketLink] with a [uri].
@@ -61,102 +80,74 @@ class WebSocketLink extends Link {
   /// Also [initialPayload] to be passed with the first request to the GraphQL server.
   WebSocketLink(
     String uri, {
-    @Deprecated("Will be removed in favor of channelGenerator")
-        WebSocketChannel channel,
     ChannelGenerator channelGenerator,
+    this.autoReconnect = false,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.initialPayload,
     this.inactivityTimeout,
-  }) : assert(uri == null || (channel == null && channelGenerator == null)) {
+  }) : assert(uri == null || (channelGenerator == null)) {
     _uri = uri;
-    _channelGenerator = channelGenerator;
-    _channel = channel ?? _channelGenerator();
-    _connectionStateController.value = closed;
+    _channelGenerator =
+        channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(_uri));
   }
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
+    final String id = Uuid.randomUuid().toString();
+    final requestWithContext = request.withContextEntry<RequestId>(
+      RequestId(id),
+    );
+    _requests.add(requestWithContext);
+
     if (_channel == null || _connectionStateController.value == closed) {
       await _connect();
     }
     final StreamController<Response> response = StreamController();
-    final String id = Uuid.randomUuid().toString();
+    StreamSubscription<GraphQLSocketMessage> messagesSubscription;
 
     response.onListen = () {
-      final Stream<int> waitForConnectedState = _connectionStateController
-          .startWith(open)
-          .where((state) => state == open)
-          .take(1);
-
-      waitForConnectedState.listen(
-        (_) {
-          // Filter own messages by `id`.
-          final Stream<GraphQLSocketMessage> dataErrorComplete =
-              _messageStream.where(
-            (GraphQLSocketMessage message) {
-              if (message is SubscriptionData) {
-                return message.id == id;
-              } else if (message is SubscriptionError) {
-                return message.id == id;
-              } else if (message is SubscriptionComplete) {
-                return message.id == id;
-              } else {
-                return false;
+      // Send the request.
+      _write(
+        StartOperation(
+          id,
+          serializer.serializeRequest(requestWithContext),
+        ),
+      );
+      // listen for response messages
+      messagesSubscription = _messagesController.stream
+          .where((message) =>
+              (message is SubscriptionData && message.id == id) ||
+              (message is SubscriptionError && message.id == id) ||
+              (message is SubscriptionComplete && message.id == id))
+          .takeWhile((_) => !response.isClosed)
+          .listen(
+        (message) {
+          if (message is SubscriptionData || message is SubscriptionError) {
+            try {
+              final parsed = _parseMessage(message);
+              if (parsed.data == null && parsed.errors == null) {
+                throw WebSocketLinkServerException(
+                  originalException: null,
+                  parsedResponse: parsed,
+                  requestMessage: null,
+                );
               }
-            },
-          ).takeWhile((_) => !response.isClosed);
-
-          // Close [response] when receiving `SubscriptionComplete`.
-          final Stream<GraphQLSocketMessage> subscriptionComplete =
-              dataErrorComplete
-                  .where((GraphQLSocketMessage message) =>
-                      message is SubscriptionComplete)
-                  .take(1);
-          subscriptionComplete.listen((_) => response.close());
-
-          // Forward data messages to [response].
-          dataErrorComplete
-              .where(
-                  (GraphQLSocketMessage message) => message is SubscriptionData)
-              .cast<SubscriptionData>()
-              .listen(
-            (SubscriptionData message) {
-              try {
-                final parsed = _parseMessage(message);
-                if (parsed.data == null && parsed.errors == null) {
-                  throw WebSocketLinkServerException(
-                    originalException: null,
-                    parsedResponse: parsed,
-                    requestMessage: null,
-                  );
-                }
-                response.add(parsed);
-              } catch (e) {
-                response.addError(e);
-              }
-            },
-          );
-
-          // Forward errors messages to [response].
-          dataErrorComplete
-              .where((GraphQLSocketMessage message) =>
-                  message is SubscriptionError)
-              .listen(response.addError);
-
-          // Send the request.
-          _write(
-            StartOperation(
-              id,
-              serializer.serializeRequest(request),
-            ),
-          );
+              response.add(parsed);
+            } catch (e) {
+              response.addError(e);
+            }
+          } else if (message is SubscriptionComplete) {
+            response.close();
+          }
         },
       );
     };
 
     response.onCancel = () {
+      messagesSubscription?.cancel();
       _write(StopOperation(id));
+      _requests.removeWhere((e) => e.context.entry<RequestId>().id == id);
     };
 
     yield* response.stream;
@@ -164,25 +155,37 @@ class WebSocketLink extends Link {
 
   /// Connects to the server.
   Future<void> _connect() async {
-    _connectionStateController.value = connecting;
     try {
-      _channel ??= WebSocketChannel.connect(Uri.parse(_uri));
+      _channel = _channelGenerator();
 
-      _connectionStateController.value = open;
+      _connectionStateController.add(open);
 
-      _messageStream = _channel.stream
-          .map(_parseSocketMessage)
-          .cast<GraphQLSocketMessage>()
-          .asBroadcastStream();
-      _messageSubscription = _messageStream.listen(
-        (_) {},
-        onDone: () async {
-          await dispose();
-        },
-        onError: (dynamic e) {
-          throw e;
-        },
-      );
+      _channel.stream.listen((dynamic message) {
+        final parsedMessage = _parseSocketMessage(message);
+        _messagesController.add(parsedMessage);
+        if (parsedMessage is ConnectionAck) {
+          _reConnectRequests.forEach((request) {
+            // Send the request.
+            _write(
+              StartOperation(
+                request.context.entry<RequestId>().id,
+                serializer.serializeRequest(request),
+              ),
+            );
+          });
+          _reConnectRequests.clear();
+        }
+      }, onDone: () {
+        _connectionStateController.add(closed);
+        if (autoReconnect) {
+          _reConnectRequests.clear();
+          _reConnectRequests.addAll(_requests);
+        } else {
+          _close();
+        }
+      }, onError: (dynamic error) {
+        _messagesController.addError(error);
+      });
 
       if (initialPayload is Function) {
         final dynamic payload = await initialPayload();
@@ -193,14 +196,14 @@ class WebSocketLink extends Link {
 
       // inactivityTimeout
       if (inactivityTimeout != null) {
-        _keepAliveSubscription = _messageStream
+        _keepAliveSubscription = _messagesController.stream
             .where(
               (GraphQLSocketMessage message) => message is ConnectionKeepAlive,
             )
             .map<ConnectionKeepAlive>(
                 (message) => message as ConnectionKeepAlive)
             .timeout(inactivityTimeout, onTimeout: (_) {
-          _close();
+          _channel.sink.close(websocket_status.goingAway);
         }).listen(null);
       }
     } catch (e) {
@@ -216,7 +219,7 @@ class WebSocketLink extends Link {
     }
   }
 
-  Response _parseMessage(SubscriptionData message) {
+  Response _parseMessage(GraphQLSocketMessage message) {
     try {
       return parser.parseResponse(message.toJson());
     } catch (e) {
@@ -228,7 +231,7 @@ class WebSocketLink extends Link {
   }
 
   void _write(final GraphQLSocketMessage message) {
-    if (_channel.closeCode != null) {
+    if (_connectionStateController.value == closed) {
       throw WebSocketLinkServerException(
         originalException: null,
         parsedResponse: null,
@@ -272,11 +275,10 @@ class WebSocketLink extends Link {
   /// Close the WebSocket channel.
   Future<void> _close() async {
     await _keepAliveSubscription?.cancel();
-    _connectionStateController.value = closing;
-    await _messageSubscription?.cancel();
     await _channel?.sink?.close(websocket_status.goingAway);
-    _connectionStateController.value = closed;
-    await _connectionStateController?.close();
+    _connectionStateController.add(closed);
+    await _connectionStateController.close();
+    await _messagesController.close();
   }
 
   /// Disposes the underlying channel explicitly.

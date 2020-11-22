@@ -47,7 +47,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           //
           link.request(request).listen(print);
         },
@@ -92,7 +92,7 @@ void main() {
 
           link = WebSocketLink(
             null,
-            channel: channel,
+            channelGenerator: () => channel,
             initialPayload: initialPayload,
           );
           //
@@ -142,7 +142,7 @@ void main() {
 
           link = WebSocketLink(
             null,
-            channel: channel,
+            channelGenerator: () => channel,
             initialPayload: initialPayload,
           );
           //
@@ -214,7 +214,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           link.request(request).listen(
             expectAsync1(
               (Response response) {
@@ -313,7 +313,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           // We expect responseData1, then responseData2 in order.
           int callCounter = 0;
           const maxCall = 2;
@@ -406,7 +406,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           link.request(request).listen(
             expectAsync1(
               (Response response) {
@@ -544,7 +544,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           // We expect responseData1, then responseData3 in order.
           int callCounter = 0;
           const maxCall = 2;
@@ -623,7 +623,7 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         expect(
           link.request(request).first,
           throwsA(isA<WebSocketLinkParserException>()),
@@ -678,7 +678,7 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         expect(
           link.request(request).first,
           throwsA(isA<WebSocketLinkServerException>()),
@@ -706,7 +706,7 @@ void main() {
         // Close the socket to cause network error.
         await webSocket.close();
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         expect(
           link.request(request).first,
           throwsA(isA<WebSocketLinkServerException>()),
@@ -765,7 +765,7 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         responseSub = link.request(request).listen(print);
       });
 
@@ -807,7 +807,7 @@ void main() {
 
         link = WebSocketLink(
           null,
-          channel: channel,
+          channelGenerator: () => channel,
           inactivityTimeout: Duration(seconds: 5),
         );
         link.request(request).listen(null);
@@ -864,7 +864,7 @@ void main() {
 
         link = WebSocketLink(
           null,
-          channel: channel,
+          channelGenerator: () => channel,
           inactivityTimeout: Duration(seconds: 2),
         );
         link.request(request).listen(null);
