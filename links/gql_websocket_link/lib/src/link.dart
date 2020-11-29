@@ -52,6 +52,11 @@ class WebSocketLink extends Link {
   /// and re send all active subscriptions. `true` by default.
   bool autoReconnect;
 
+  Timer _reconnectTimer;
+
+  /// The interval between reconnects, the default value is 10 seconds.
+  final Duration reconnectInterval;
+
   /// Payload to be sent with the connection_init request
   /// Must be able to `json.encode(initialPayload)`.
   final dynamic initialPayload;
@@ -82,11 +87,13 @@ class WebSocketLink extends Link {
     String uri, {
     ChannelGenerator channelGenerator,
     this.autoReconnect = false,
+    this.reconnectInterval = const Duration(seconds: 10),
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.initialPayload,
     this.inactivityTimeout,
-  }) : assert(uri == null || (channelGenerator == null)) {
+  })  : assert(uri == null || (channelGenerator == null)),
+        assert(reconnectInterval != null) {
     _uri = uri;
     _channelGenerator =
         channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(_uri));
@@ -158,6 +165,8 @@ class WebSocketLink extends Link {
     try {
       _channel = _channelGenerator();
 
+      _reconnectTimer?.cancel();
+
       _connectionStateController.add(open);
 
       _channel.stream.listen((dynamic message) {
@@ -180,6 +189,11 @@ class WebSocketLink extends Link {
         if (autoReconnect) {
           _reConnectRequests.clear();
           _reConnectRequests.addAll(_requests);
+          if (_reconnectTimer?.isActive == false) {
+            _reconnectTimer = Timer.periodic(reconnectInterval, (timer) {
+              _connect();
+            });
+          }
         } else {
           _close();
         }
@@ -279,6 +293,7 @@ class WebSocketLink extends Link {
     _connectionStateController.add(closed);
     await _connectionStateController.close();
     await _messagesController.close();
+    _reconnectTimer?.cancel();
   }
 
   /// Disposes the underlying channel explicitly.
