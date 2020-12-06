@@ -1,3 +1,7 @@
+## 0.12.4
+
+- add enum fallback
+
 ## 0.12.3
 
 - remove `author` field from `pubspec.yaml`

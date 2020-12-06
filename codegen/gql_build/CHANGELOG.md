@@ -1,3 +1,7 @@
+## 0.1.4+2
+
+- bump `gql` version
+
 ## 0.1.4+1
 
 - update `gql_code_builder` dependency
