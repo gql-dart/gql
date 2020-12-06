@@ -1,3 +1,7 @@
+## 0.1.4+1
+
+- update `gql_code_builder` dependency
+
 ## 0.1.4
 
 - fix inline fragment sub-selections (#166)
