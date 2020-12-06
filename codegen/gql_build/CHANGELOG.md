@@ -1,3 +1,8 @@
+## 0.1.4
+
+- fix inline fragment sub-selections (#166)
+- add enum fallback (#160)
+
 ## 0.1.3
 
 - use latest `gql_code_builder`
