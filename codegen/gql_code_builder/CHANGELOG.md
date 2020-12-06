@@ -1,3 +1,7 @@
+## 0.1.4+1
+
+- bump `gql` version
+
 ## 0.1.4
 
 - fix inline fragment sub-selections (#166)
