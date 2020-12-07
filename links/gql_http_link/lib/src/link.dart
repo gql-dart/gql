@@ -9,6 +9,9 @@ import "package:meta/meta.dart";
 import "./_utils.dart";
 import "./exceptions.dart";
 
+typedef HttpResponseDecoder = Future<Map<String, dynamic>> Function(
+    http.Response httpResponse);
+
 /// HTTP link headers
 @immutable
 class HttpLinkHeaders extends ContextEntry {
@@ -73,6 +76,22 @@ class HttpLink extends Link {
   /// Parser used to parse response
   final ResponseParser parser;
 
+  /// A function that decodes the incoming http response to `Map<String, dynamic>`,
+  /// the decoded map will be then passes to the `RequestSerializer`.
+  /// It is recommended for performance to decode the response using `compute` function.
+  /// ```
+  /// httpResponseDecoder = (http.Response httpResponse) async => await compute(jsonDecode, httpResponse.body);
+  /// ```
+  HttpResponseDecoder httpResponseDecoder;
+
+  static Future<Map<String, dynamic>> _defaultHttpResponseDecoder(
+          http.Response httpResponse) async =>
+      json.decode(
+        utf8.decode(
+          httpResponse.bodyBytes,
+        ),
+      ) as Map<String, dynamic>;
+
   http.Client _httpClient;
 
   /// Construct the Link
@@ -85,6 +104,7 @@ class HttpLink extends Link {
     http.Client httpClient,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.httpResponseDecoder = _defaultHttpResponseDecoder,
   }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
   }
@@ -96,7 +116,7 @@ class HttpLink extends Link {
   ]) async* {
     final httpResponse = await _executeRequest(request);
 
-    final response = _parseHttpResponse(httpResponse);
+    final response = await _parseHttpResponse(httpResponse);
 
     if (httpResponse.statusCode >= 300 ||
         (response.data == null && response.errors == null)) {
@@ -131,15 +151,10 @@ class HttpLink extends Link {
     }
   }
 
-  Response _parseHttpResponse(http.Response httpResponse) {
+  Future<Response> _parseHttpResponse(http.Response httpResponse) async {
     try {
-      final dynamic responseBody = json.decode(
-        utf8.decode(
-          httpResponse.bodyBytes,
-        ),
-      );
-
-      return parser.parseResponse(responseBody as Map<String, dynamic>);
+      final responseBody = await httpResponseDecoder(httpResponse);
+      return parser.parseResponse(responseBody);
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
