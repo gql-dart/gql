@@ -80,7 +80,7 @@ class HttpLink extends Link {
   /// the decoded map will be then passes to the `RequestSerializer`.
   /// It is recommended for performance to decode the response using `compute` function.
   /// ```
-  /// httpResponseDecoder = (http.Response httpResponse) async => await compute(jsonDecode, httpResponse.body);
+  /// httpResponseDecoder : (http.Response httpResponse) async => await compute(jsonDecode, httpResponse.body) as Map<String, dynamic>,
   /// ```
   HttpResponseDecoder httpResponseDecoder;
 
