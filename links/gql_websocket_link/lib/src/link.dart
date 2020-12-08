@@ -10,6 +10,8 @@ import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
 typedef ChannelGenerator = WebSocketChannel Function();
+typedef GraphQLSocketMessageDecoder = Future<Map<String, dynamic>> Function(
+    dynamic message);
 
 /// A Universal WebSocket [Link] implementation to support the
 /// WebSocket-GraphQL transport.
@@ -30,6 +32,13 @@ class WebSocketLink extends Link {
 
   /// Response parser
   ResponseParser parser;
+
+  // Decode incoming json message
+  final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
+
+  static Future<Map<String, dynamic>> _defaultGraphQLSocketMessageDecoder(
+          dynamic message) async =>
+      json.decode(message as String) as Map<String, dynamic>;
 
   /// Payload to be sent with the connection_init request
   /// Must be able to `json.encode(initialPayload)`.
@@ -66,6 +75,7 @@ class WebSocketLink extends Link {
     ChannelGenerator channelGenerator,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.graphQLSocketMessageDecoder = _defaultGraphQLSocketMessageDecoder,
     this.initialPayload,
     this.inactivityTimeout,
   }) : assert(uri == null || (channel == null && channelGenerator == null)) {
@@ -171,7 +181,7 @@ class WebSocketLink extends Link {
       _connectionStateController.value = open;
 
       _messageStream = _channel.stream
-          .map(_parseSocketMessage)
+          .map((dynamic message) async => await _parseSocketMessage(message))
           .cast<GraphQLSocketMessage>()
           .asBroadcastStream();
       _messageSubscription = _messageStream.listen(
@@ -242,9 +252,8 @@ class WebSocketLink extends Link {
     );
   }
 
-  static GraphQLSocketMessage _parseSocketMessage(dynamic message) {
-    final Map<String, dynamic> map =
-        json.decode(message as String) as Map<String, dynamic>;
+  Future<GraphQLSocketMessage> _parseSocketMessage(dynamic message) async {
+    final Map<String, dynamic> map = await graphQLSocketMessageDecoder(message);
     final String type = (map["type"] ?? "unknown") as String;
     final dynamic payload = map["payload"] ?? <String, dynamic>{};
     final String id = (map["id"] ?? "none") as String;
