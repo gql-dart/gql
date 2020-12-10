@@ -13,6 +13,9 @@ typedef ChannelGenerator = WebSocketChannel Function();
 typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>> Function(
     dynamic message);
 
+typedef GraphQLSocketMessageEncoder = FutureOr<String> Function(
+    Map<String, dynamic> message);
+
 /// A Universal WebSocket [Link] implementation to support the
 /// WebSocket-GraphQL transport.
 /// It supports subscriptions, query and mutation operations as well.
@@ -33,7 +36,19 @@ class WebSocketLink extends Link {
   /// Response parser
   ResponseParser parser;
 
-  // Decode incoming json message
+  /// A function that encodes the request message to json string before sending it over the network.
+  final GraphQLSocketMessageEncoder graphQLSocketMessageEncoder;
+
+  static String _defaultGraphQLSocketMessageEncoder(
+          Map<String, dynamic> message) =>
+      json.encode(message);
+
+  /// A function that decodes the incoming http response to `Map<String, dynamic>`,
+  /// the decoded map will be then passes to the `RequestSerializer`.
+  /// It is recommended for performance to decode the response using `compute` function.
+  /// ```
+  /// graphQLSocketMessageDecoder : (dynamic message) async => await compute(jsonDecode, message as String) as Map<String, dynamic>,
+  /// ```
   final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
 
   static Map<String, dynamic> _defaultGraphQLSocketMessageDecoder(
@@ -75,6 +90,7 @@ class WebSocketLink extends Link {
     ChannelGenerator channelGenerator,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.graphQLSocketMessageEncoder = _defaultGraphQLSocketMessageEncoder,
     this.graphQLSocketMessageDecoder = _defaultGraphQLSocketMessageDecoder,
     this.initialPayload,
     this.inactivityTimeout,
@@ -237,7 +253,7 @@ class WebSocketLink extends Link {
     }
   }
 
-  void _write(final GraphQLSocketMessage message) {
+  void _write(final GraphQLSocketMessage message) async {
     if (_channel.closeCode != null) {
       throw WebSocketLinkServerException(
         originalException: null,
@@ -245,11 +261,8 @@ class WebSocketLink extends Link {
         requestMessage: message,
       );
     }
-    _channel.sink.add(
-      json.encode(
-        message,
-      ),
-    );
+    final encodedMessage = await graphQLSocketMessageEncoder(message.toJson());
+    _channel.sink.add(encodedMessage);
   }
 
   Future<GraphQLSocketMessage> _parseSocketMessage(dynamic message) async {
