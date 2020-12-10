@@ -10,7 +10,7 @@ import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
 typedef ChannelGenerator = WebSocketChannel Function();
-typedef GraphQLSocketMessageDecoder = Future<Map<String, dynamic>> Function(
+typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>> Function(
     dynamic message);
 
 /// A Universal WebSocket [Link] implementation to support the
@@ -36,8 +36,8 @@ class WebSocketLink extends Link {
   // Decode incoming json message
   final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
 
-  static Future<Map<String, dynamic>> _defaultGraphQLSocketMessageDecoder(
-          dynamic message) async =>
+  static Map<String, dynamic> _defaultGraphQLSocketMessageDecoder(
+          dynamic message) =>
       json.decode(message as String) as Map<String, dynamic>;
 
   /// Payload to be sent with the connection_init request
