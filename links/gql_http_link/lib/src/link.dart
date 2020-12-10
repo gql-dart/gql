@@ -9,7 +9,7 @@ import "package:meta/meta.dart";
 import "./_utils.dart";
 import "./exceptions.dart";
 
-typedef HttpResponseDecoder = Future<Map<String, dynamic>> Function(
+typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>> Function(
     http.Response httpResponse);
 
 /// HTTP link headers
@@ -84,8 +84,8 @@ class HttpLink extends Link {
   /// ```
   HttpResponseDecoder httpResponseDecoder;
 
-  static Future<Map<String, dynamic>> _defaultHttpResponseDecoder(
-          http.Response httpResponse) async =>
+  static Map<String, dynamic> _defaultHttpResponseDecoder(
+          http.Response httpResponse) =>
       json.decode(
         utf8.decode(
           httpResponse.bodyBytes,
