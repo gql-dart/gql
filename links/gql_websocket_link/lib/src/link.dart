@@ -196,10 +196,8 @@ class WebSocketLink extends Link {
 
       _connectionStateController.value = open;
 
-      _messageStream = _channel.stream
-          .map((dynamic message) async => await _parseSocketMessage(message))
-          .cast<GraphQLSocketMessage>()
-          .asBroadcastStream();
+      _messageStream =
+          _channel.stream.asBroadcastStream().asyncMap(_parseSocketMessage);
       _messageSubscription = _messageStream.listen(
         (_) {},
         onDone: () async {
