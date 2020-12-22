@@ -51,22 +51,22 @@ class _Parser {
     ++_position;
   }
 
-  Token _expectToken(TokenKind kind, [String errorMessage]) {
+  Token _expectToken(TokenKind kind, [String? errorMessage]) {
     final next = _next();
-    if (next.kind == kind) {
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected $kind",
-      _next().span,
+      _next()?.span,
     );
   }
 
-  Token _expectOptionalToken(TokenKind kind) {
+  Token? _expectOptionalToken(TokenKind kind) {
     final next = _next();
-    if (next.kind == kind) {
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
@@ -74,22 +74,22 @@ class _Parser {
     return null;
   }
 
-  Token _expectKeyword(String value, [String errorMessage]) {
+  Token _expectKeyword(String value, [String? errorMessage]) {
     final next = _next();
-    if (next.kind == TokenKind.name && next.value == value) {
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected keyword '$value'",
-      _next().span,
+      _next()?.span,
     );
   }
 
-  Token _expectOptionalKeyword(String value) {
+  Token? _expectOptionalKeyword(String value) {
     final next = _next();
-    if (next.kind == TokenKind.name && next.value == value) {
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
@@ -97,7 +97,7 @@ class _Parser {
     return null;
   }
 
-  Token _next({int offset = 0}) {
+  Token? _next({int offset = 0}) {
     if (_position + offset >= _length) return null;
 
     return _tokens[_position + offset];
@@ -107,7 +107,7 @@ class _Parser {
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
-    String errorMessage,
+    String? errorMessage,
   ]) {
     _expectToken(open, errorMessage);
 
@@ -124,7 +124,7 @@ class _Parser {
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
-    String errorMessage,
+    String? errorMessage,
   ]) {
     if (_peek(open)) {
       return _parseMany<N>(
@@ -174,7 +174,7 @@ class _Parser {
 
     throw SourceSpanException(
       "Unknown definition type '${_next().value}'",
-      _next().span,
+      _next()?.span,
     );
   }
 
@@ -194,7 +194,7 @@ class _Parser {
 
     throw SourceSpanException(
       "Unknown executable definition '${_next().value}'",
-      _next().span,
+      _next()?.span,
     );
   }
 
@@ -532,7 +532,7 @@ class _Parser {
     );
   }
 
-  NameNode _parseName([String errorMessage]) {
+  NameNode _parseName([String? errorMessage]) {
     final token = _expectToken(
       TokenKind.name,
       errorMessage ?? "Expected a name",
