@@ -1,3 +1,7 @@
+## 0.1.5
+
+- Add `graphQLSocketMessageDecoder` & `graphQLSocketMessageEncoder` to the constructor.
+
 ## 0.1.4
 
 - Add `channelGenerator` to the constructor.
