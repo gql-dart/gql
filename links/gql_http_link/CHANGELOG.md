@@ -1,3 +1,7 @@
+## 0.3.3
+
+- Add `HttpResponseDecoder httpResponseDecoder` constructor parameter
+
 ## 0.3.2
 
 - discard assertion in `extractFlattenedFileMap` to allow for custom scalars, add test

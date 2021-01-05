@@ -1,3 +1,16 @@
+## 0.1.4+2
+
+- bump `gql` version
+
+## 0.1.4+1
+
+- update `gql_code_builder` dependency
+
+## 0.1.4
+
+- fix inline fragment sub-selections (#166)
+- add enum fallback (#160)
+
 ## 0.1.3
 
 - use latest `gql_code_builder`
