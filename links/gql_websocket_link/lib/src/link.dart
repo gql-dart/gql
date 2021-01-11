@@ -110,7 +110,7 @@ class WebSocketLink extends Link {
   WebSocketLink(
     String uri, {
     ChannelGenerator channelGenerator,
-    this.autoReconnect = false,
+    this.autoReconnect = true,
     this.reconnectInterval = const Duration(seconds: 10),
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
