@@ -810,6 +810,7 @@ void main() {
           null,
           channelGenerator: () => channel,
           inactivityTimeout: Duration(seconds: 5),
+          autoReconnect: false,
         );
         link.request(request).listen(null);
         expect(
