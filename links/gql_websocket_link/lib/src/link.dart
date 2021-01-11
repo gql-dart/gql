@@ -215,7 +215,7 @@ class WebSocketLink extends Link {
         if (autoReconnect) {
           _reConnectRequests.clear();
           _reConnectRequests.addAll(_requests);
-          if (_reconnectTimer?.isActive == false) {
+          if (_reconnectTimer?.isActive != true) {
             _reconnectTimer = Timer.periodic(reconnectInterval, (timer) {
               _connect();
             });
