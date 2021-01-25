@@ -923,6 +923,52 @@ void main() {
             channelGenerator: () => IOWebSocketChannel(webSocket));
         link.request(request).listen(null);
       });
+
+      test("Auto resubscribe", () async {
+        HttpServer server;
+        WebSocket webSocket;
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString(
+              r"subscription MySubscription { pokemons(first: $first) { name } }",
+            ),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            var subscribeCallCount = 0;
+            channel.stream.listen(
+              expectAsync1<void, dynamic>(
+                (dynamic message) {
+                  final map =
+                      json.decode(message as String) as Map<String, dynamic>;
+                  expect(map["type"], MessageTypes.start);
+                  subscribeCallCount++;
+                  // check `start` is called again
+                  if (subscribeCallCount == 2) {
+                    return;
+                  }
+                  // disconnect
+                  webSocket.close(websocket_status.goingAway);
+                },
+                count: -1,
+              ),
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        link = WebSocketLink(null,
+            channelGenerator: () => IOWebSocketChannel(webSocket));
+        link.request(request).listen(null);
+      });
     },
   );
 }
