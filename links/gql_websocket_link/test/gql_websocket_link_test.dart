@@ -7,6 +7,7 @@ import "package:gql_exec/gql_exec.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:web_socket_channel/io.dart";
 import "package:test/test.dart";
+import "package:web_socket_channel/status.dart" as websocket_status;
 
 void main() {
   group(
@@ -877,6 +878,50 @@ void main() {
           ).take(20),
           neverEmits(WebSocket.closed),
         );
+      });
+
+      test("Auto reconnect", () async {
+        HttpServer server;
+        WebSocket webSocket;
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer()).listen(
+          (webSocket) async {
+            final channel = IOWebSocketChannel(webSocket);
+            var initCallCount = 0;
+            channel.stream.listen(
+              expectAsync1<void, dynamic>(
+                (dynamic message) {
+                  final map =
+                      json.decode(message as String) as Map<String, dynamic>;
+                  expect(map["type"], MessageTypes.connectionInit);
+                  initCallCount++;
+                  // check `init` is called again
+                  if (initCallCount == 2) {
+                    return;
+                  }
+                  // disconnect
+                  webSocket.close(websocket_status.goingAway);
+                },
+                count: -1,
+              ),
+            );
+          },
+        );
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        link = WebSocketLink(null,
+            channelGenerator: () => IOWebSocketChannel(webSocket));
+        link.request(request).listen(null);
       });
     },
   );
