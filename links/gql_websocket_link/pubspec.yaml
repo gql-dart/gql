@@ -5,14 +5,14 @@ repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.7.2 <3.0.0'
 dependencies: 
-  meta: ^1.1.8
+  gql: ^0.12.3
   gql_exec: ^0.2.5
   gql_link: ^0.3.1
-  uuid_enhanced: ^3.0.2
+  meta: ^1.1.8
   rxdart: ^0.24.0
-  gql: ^0.12.3
+  uuid_enhanced: ^3.0.2
   web_socket_channel: ^1.1.0
 dev_dependencies: 
-  test: ^1.14.3
-  mockito: ^4.1.1
   gql_pedantic: ^1.0.2
+  mockito: ^4.1.1
+  test: ^1.14.3
