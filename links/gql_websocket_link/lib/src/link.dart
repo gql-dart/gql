@@ -76,6 +76,7 @@ class WebSocketLink extends Link {
   Stream<GraphQLSocketMessage> _messageStream;
   StreamSubscription<GraphQLSocketMessage> _messageSubscription;
   StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
+  Future<void> _connectFuture;
 
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
@@ -104,8 +105,10 @@ class WebSocketLink extends Link {
   @override
   Stream<Response> request(Request request, [forward]) async* {
     if (_channel == null || _connectionStateController.value == closed) {
-      await _connect();
+      _connectFuture = _connect();
     }
+    await _connectFuture;
+
     final StreamController<Response> response = StreamController();
     final String id = Uuid.randomUuid().toString();
 
