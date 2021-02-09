@@ -44,6 +44,506 @@
 <g id="node3" class="node">
 <title>gql</title>
 <polygon fill="none" stroke="#68217c" points="378,-488.5077 324,-488.5077 324,-452.5077 378,-452.5077 378,-488.5077"/>
+<text text-anchor="middle" x="351" y="-466.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql</text>
+</g>
+<!-- gql&#45;&gt;gql_pedantic -->
+<g id="edge1" class="edge">
+<title>gql&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M349.4144,-452.3862C344.7665,-399.2679 331.1488,-243.6367 325.5,-179.0793"/>
+<polygon fill="#89da51" stroke="#89da51" points="328.9614,-178.4839 324.6029,-168.827 321.988,-179.0941 328.9614,-178.4839"/>
+</g>
+<!-- gql&#45;&gt;cats -->
+<g id="edge2" class="edge">
+<title>gql&#45;&gt;cats</title>
+<path fill="none" stroke="#e2592e" stroke-dasharray="5,2" d="M343.7514,-452.3862C322.4163,-399.0484 259.7364,-242.3487 234.1104,-178.2837"/>
+<polygon fill="#e2592e" stroke="#e2592e" points="237.2914,-176.8119 230.3277,-168.827 230.792,-179.4117 237.2914,-176.8119"/>
+</g>
+<!-- gql_exec -->
+<g id="node4" class="node">
+<title>gql_exec</title>
+<polygon fill="none" stroke="#5b9240" points="1104,-488.5077 1024,-488.5077 1024,-452.5077 1104,-452.5077 1104,-488.5077"/>
+<text text-anchor="middle" x="1064" y="-466.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_exec</text>
+</g>
+<!-- gql_exec&#45;&gt;gql_pedantic -->
+<g id="edge4" class="edge">
+<title>gql_exec&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1025.5083,-452.4566C1019.6555,-449.7641 1013.6766,-447.043 1008,-444.5077 773.5359,-339.7897 491.0124,-220.7798 375.7858,-172.543"/>
+<polygon fill="#89da51" stroke="#89da51" points="377.0453,-169.276 366.4693,-168.6445 374.3432,-175.7335 377.0453,-169.276"/>
+</g>
+<!-- gql_exec&#45;&gt;gql -->
+<g id="edge3" class="edge">
+<title>gql_exec&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M1023.8138,-470.5077C811.9571,-470.5077 600.1004,-470.5077 388.2437,-470.5077"/>
+<polygon fill="#68217c" stroke="#68217c" points="388.1553,-467.0078 378.1553,-470.5077 388.1552,-474.0078 388.1553,-467.0078"/>
+</g>
+<!-- gql_link -->
+<g id="node5" class="node">
+<title>gql_link</title>
+<polygon fill="none" stroke="#7c0063" points="1129,-808.5077 1055,-808.5077 1055,-772.5077 1129,-772.5077 1129,-808.5077"/>
+<text text-anchor="middle" x="1092" y="-786.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_link</text>
+</g>
+<!-- gql_link&#45;&gt;gql_pedantic -->
+<g id="edge7" class="edge">
+<title>gql_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1088.6542,-772.2071C1077.5258,-716.1164 1036.8307,-544.3622 940,-444.5077 780.5153,-280.0426 510.6438,-196.4256 387.6054,-165.2551"/>
+<polygon fill="#89da51" stroke="#89da51" points="388.1328,-161.7793 377.5826,-162.7499 386.4354,-168.5704 388.1328,-161.7793"/>
+</g>
+<!-- gql_link&#45;&gt;gql -->
+<g id="edge5" class="edge">
+<title>gql_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M1054.6941,-777.7493C948.0064,-740.6635 633.6514,-627.1912 390,-496.5077 388.4716,-495.688 386.9275,-494.8245 385.3807,-493.9303"/>
+<polygon fill="#68217c" stroke="#68217c" points="386.9448,-490.7846 376.5855,-488.5629 383.2982,-496.7598 386.9448,-490.7846"/>
+</g>
+<!-- gql_link&#45;&gt;gql_exec -->
+<g id="edge6" class="edge">
+<title>gql_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M1090.4144,-772.3862C1085.7665,-719.2679 1072.1488,-563.6367 1066.5,-499.0793"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1069.9614,-498.4839 1065.6029,-488.827 1062.988,-499.0941 1069.9614,-498.4839"/>
+</g>
+<!-- gql_websocket_link -->
+<g id="node6" class="node">
+<title>gql_websocket_link</title>
+<polygon fill="none" stroke="#bb5677" points="866,-1127.5077 708,-1127.5077 708,-1091.5077 866,-1091.5077 866,-1127.5077"/>
+<text text-anchor="middle" x="787" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_websocket_link</text>
+</g>
+<!-- gql_websocket_link&#45;&gt;gql_pedantic -->
+<g id="edge11" class="edge">
+<title>gql_websocket_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M778.1453,-1091.2067C721.0678,-973.2384 405.2221,-320.4451 336.2893,-177.9741"/>
+<polygon fill="#89da51" stroke="#89da51" points="339.2658,-176.0898 331.7598,-168.6125 332.9646,-179.1386 339.2658,-176.0898"/>
+</g>
+<!-- gql_websocket_link&#45;&gt;gql -->
+<g id="edge8" class="edge">
+<title>gql_websocket_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M774.6537,-1091.413C713.3909,-1001.6265 442.0864,-604.0036 369.1209,-497.0656"/>
+<polygon fill="#68217c" stroke="#68217c" points="371.9738,-495.0369 363.4465,-488.7492 366.1916,-498.9823 371.9738,-495.0369"/>
+</g>
+<!-- gql_websocket_link&#45;&gt;gql_exec -->
+<g id="edge9" class="edge">
+<title>gql_websocket_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M801.8168,-1091.3834C837.886,-1046.3697 930.9576,-924.707 981,-808.5077 1028.0242,-699.3166 1051.7937,-558.311 1060.2771,-498.8934"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1063.7734,-499.1613 1061.6854,-488.7743 1056.8402,-498.1964 1063.7734,-499.1613"/>
+</g>
+<!-- gql_websocket_link&#45;&gt;gql_link -->
+<g id="edge10" class="edge">
+<title>gql_websocket_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M804.272,-1091.4429C855.6326,-1037.7247 1007.5476,-878.8366 1067.3824,-816.2553"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1070.1584,-818.4165 1074.5394,-808.7698 1065.0989,-813.579 1070.1584,-818.4165"/>
+</g>
+<!-- gql_transform_link -->
+<g id="node7" class="node">
+<title>gql_transform_link</title>
+<polygon fill="none" stroke="#21d185" points="690,-1127.5077 538,-1127.5077 538,-1091.5077 690,-1091.5077 690,-1127.5077"/>
+<text text-anchor="middle" x="614" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_transform_link</text>
+</g>
+<!-- gql_transform_link&#45;&gt;gql_pedantic -->
+<g id="edge15" class="edge">
+<title>gql_transform_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M608.4467,-1091.2067C572.6861,-973.3564 374.962,-321.7501 331.4646,-178.403"/>
+<polygon fill="#89da51" stroke="#89da51" points="334.7467,-177.1653 328.4937,-168.6125 328.0483,-179.1979 334.7467,-177.1653"/>
+</g>
+<!-- gql_transform_link&#45;&gt;gql -->
+<g id="edge14" class="edge">
+<title>gql_transform_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" stroke-dasharray="5,2" d="M606.5526,-1091.413C569.7095,-1001.897 406.929,-606.3961 362.3317,-498.0398"/>
+<polygon fill="#68217c" stroke="#68217c" points="365.5505,-496.6645 358.5079,-488.7492 359.0774,-499.3287 365.5505,-496.6645"/>
+</g>
+<!-- gql_transform_link&#45;&gt;gql_exec -->
+<g id="edge12" class="edge">
+<title>gql_transform_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M644.5823,-1091.492C712.0125,-1050.2015 874.338,-941.9345 961,-808.5077 978.3928,-781.7294 1035.6257,-574.9319 1056.3892,-498.6507"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1059.8251,-499.3534 1059.0691,-488.7856 1053.0699,-497.5183 1059.8251,-499.3534"/>
+</g>
+<!-- gql_transform_link&#45;&gt;gql_link -->
+<g id="edge13" class="edge">
+<title>gql_transform_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M641.0689,-1091.4429C722.4773,-1037.1138 965.0803,-875.2094 1056.5616,-814.158"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1058.5575,-817.0339 1064.9324,-808.5716 1054.6717,-811.2114 1058.5575,-817.0339"/>
+</g>
+<!-- gql_http_link -->
+<g id="node8" class="node">
+<title>gql_http_link</title>
+<polygon fill="none" stroke="#ab8a09" points="994.5,-1127.5077 883.5,-1127.5077 883.5,-1091.5077 994.5,-1091.5077 994.5,-1127.5077"/>
+<text text-anchor="middle" x="939" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_http_link</text>
+</g>
+<!-- gql_http_link&#45;&gt;gql_pedantic -->
+<g id="edge19" class="edge">
+<title>gql_http_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M927.2446,-1091.2067C851.3178,-973.0025 430.4782,-317.8318 340.0975,-177.1254"/>
+<polygon fill="#89da51" stroke="#89da51" points="342.9787,-175.1347 334.6293,-168.6125 337.089,-178.9178 342.9787,-175.1347"/>
+</g>
+<!-- gql_http_link&#45;&gt;gql -->
+<g id="edge16" class="edge">
+<title>gql_http_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M922.3495,-1091.413C839.5632,-1001.4462 472.3707,-602.4054 374.8487,-496.4249"/>
+<polygon fill="#68217c" stroke="#68217c" points="377.1325,-493.7379 367.7856,-488.7492 371.9814,-498.4778 377.1325,-493.7379"/>
+</g>
+<!-- gql_http_link&#45;&gt;gql_exec -->
+<g id="edge17" class="edge">
+<title>gql_http_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M942.8947,-1091.2083C952.8535,-1044.2885 979.9454,-915.8378 1001,-808.5077 1023.4997,-693.8109 1048.4385,-556.8251 1058.9214,-498.7522"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1062.3768,-499.3126 1060.7068,-488.8502 1055.4878,-498.0705 1062.3768,-499.3126"/>
+</g>
+<!-- gql_http_link&#45;&gt;gql_link -->
+<g id="edge18" class="edge">
+<title>gql_http_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M947.6643,-1091.4429C973.2189,-1038.1623 1048.397,-881.4185 1078.9081,-817.8038"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1082.0723,-819.3 1083.2411,-808.7698 1075.7607,-816.2727 1082.0723,-819.3"/>
+</g>
+<!-- gql_error_link -->
+<g id="node9" class="node">
+<title>gql_error_link</title>
+<polygon fill="none" stroke="#5f79bc" points="520,-1127.5077 402,-1127.5077 402,-1091.5077 520,-1091.5077 520,-1127.5077"/>
+<text text-anchor="middle" x="461" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_error_link</text>
+</g>
+<!-- gql_error_link&#45;&gt;gql_pedantic -->
+<g id="edge23" class="edge">
+<title>gql_error_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M459.6794,-1091.4282C453.8495,-1013.6053 428.837,-699.5641 387,-444.5077 370.823,-345.8861 343.0803,-230.4679 330.0941,-178.4407"/>
+<polygon fill="#89da51" stroke="#89da51" points="333.4576,-177.4639 327.6288,-168.6166 326.6681,-179.1678 333.4576,-177.4639"/>
+</g>
+<!-- gql_error_link&#45;&gt;gql -->
+<g id="edge22" class="edge">
+<title>gql_error_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" stroke-dasharray="5,2" d="M457.8851,-1091.413C442.5065,-1002.0773 374.6664,-607.988 355.8528,-498.698"/>
+<polygon fill="#68217c" stroke="#68217c" points="359.286,-498.0105 354.1402,-488.7492 352.3875,-499.1981 359.286,-498.0105"/>
+</g>
+<!-- gql_error_link&#45;&gt;gql_exec -->
+<g id="edge20" class="edge">
+<title>gql_error_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M478.0753,-1091.413C563.0585,-1001.3561 940.288,-601.6054 1039.8427,-496.1072"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1042.4685,-498.4244 1046.7862,-488.7492 1037.3774,-493.6201 1042.4685,-498.4244"/>
+</g>
+<!-- gql_error_link&#45;&gt;gql_link -->
+<g id="edge21" class="edge">
+<title>gql_error_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M496.7332,-1091.4429C604.7408,-1036.84 927.6891,-873.5745 1047.0292,-813.2425"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1048.9233,-816.2069 1056.2685,-808.5716 1045.765,-809.9598 1048.9233,-816.2069"/>
+</g>
+<!-- gql_code_builder -->
+<g id="node10" class="node">
+<title>gql_code_builder</title>
+<polygon fill="none" stroke="#1da059" points="155.5,-808.5077 16.5,-808.5077 16.5,-772.5077 155.5,-772.5077 155.5,-808.5077"/>
+<text text-anchor="middle" x="86" y="-786.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_code_builder</text>
+</g>
+<!-- gql_code_builder&#45;&gt;gql_pedantic -->
+<g id="edge26" class="edge">
+<title>gql_code_builder&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M92.7112,-772.3847C125.8785,-682.8189 272.3048,-287.4062 312.6668,-178.4116"/>
+<polygon fill="#89da51" stroke="#89da51" points="316.0438,-179.3709 316.2344,-168.7778 309.4795,-176.94 316.0438,-179.3709"/>
+</g>
+<!-- gql_code_builder&#45;&gt;gql -->
+<g id="edge24" class="edge">
+<title>gql_code_builder&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M101.0068,-772.3862C145.5408,-718.6094 277.086,-559.7623 329.2923,-496.7208"/>
+<polygon fill="#68217c" stroke="#68217c" points="332.1468,-498.7613 335.8293,-488.827 326.7554,-494.2966 332.1468,-498.7613"/>
+</g>
+<!-- gql_code_builder&#45;&gt;gql_exec -->
+<g id="edge25" class="edge">
+<title>gql_code_builder&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M141.0299,-772.502C314.3945,-715.7774 847.5593,-541.3267 1013.8976,-486.9011"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1015.4408,-490.0789 1023.8565,-483.6426 1013.2639,-483.4259 1015.4408,-490.0789"/>
+</g>
+<!-- gql_build -->
+<g id="node11" class="node">
+<title>gql_build</title>
+<polygon fill="none" stroke="#3380b0" points="155.5,-1127.5077 72.5,-1127.5077 72.5,-1091.5077 155.5,-1091.5077 155.5,-1127.5077"/>
+<text text-anchor="middle" x="114" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_build</text>
+</g>
+<!-- gql_build&#45;&gt;gql_pedantic -->
+<g id="edge29" class="edge">
+<title>gql_build&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M101.1365,-1091.4076C66.5538,-1040.5151 -23.7817,-891.5839 7,-764.5077 66.7733,-517.745 243.9153,-259.0502 303.3247,-177.0473"/>
+<polygon fill="#89da51" stroke="#89da51" points="306.2768,-178.9391 309.3385,-168.7963 300.6199,-174.816 306.2768,-178.9391"/>
+</g>
+<!-- gql_build&#45;&gt;gql -->
+<g id="edge27" class="edge">
+<title>gql_build&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M117.728,-1091.1731C128.5932,-1039.0547 162.3722,-885.9657 208,-764.5077 246.2541,-662.678 307.3753,-548.5432 335.6866,-497.5968"/>
+<polygon fill="#68217c" stroke="#68217c" points="338.9165,-498.9914 340.7367,-488.5541 332.805,-495.5782 338.9165,-498.9914"/>
+</g>
+<!-- gql_build&#45;&gt;gql_code_builder -->
+<g id="edge28" class="edge">
+<title>gql_build&#45;&gt;gql_code_builder</title>
+<path fill="none" stroke="#1da059" d="M112.4144,-1091.4429C107.7665,-1038.4905 94.1488,-883.3457 88.5,-818.99"/>
+<polygon fill="#1da059" stroke="#1da059" points="91.964,-818.4254 87.6029,-808.7698 84.9908,-819.0375 91.964,-818.4254"/>
+</g>
+<!-- gql_example_http_auth_link -->
+<g id="node12" class="node">
+<title>gql_example_http_auth_link</title>
+<polygon fill="none" stroke="#8a0733" points="828,-1496.5077 610,-1496.5077 610,-1460.5077 828,-1460.5077 828,-1496.5077"/>
+<text text-anchor="middle" x="719" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_http_auth_link</text>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_pedantic -->
+<g id="edge36" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M768.1837,-1460.4074C901.8882,-1410.1031 1266.3314,-1265.2967 1331,-1158.5077 1495.7966,-886.3748 1488.6735,-684.6527 1280,-444.5077 1159.2501,-305.5467 583.0573,-195.2521 387.8409,-161.3319"/>
+<polygon fill="#89da51" stroke="#89da51" points="388.1828,-157.8392 377.7328,-159.5847 386.9905,-164.7369 388.1828,-157.8392"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql -->
+<g id="edge30" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M663.0551,-1460.47C558.4201,-1423.3256 335.6,-1327.3036 246,-1158.5077 123.0544,-926.8925 284.0231,-593.5312 335.8891,-497.3897"/>
+<polygon fill="#68217c" stroke="#68217c" points="338.9749,-499.0415 340.693,-488.5869 332.8304,-495.6882 338.9749,-499.0415"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_exec -->
+<g id="edge32" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M801.8684,-1460.4856C933.9928,-1426.8387 1188.7935,-1340.7228 1300,-1158.5077 1391.2532,-1008.9867 1369.7964,-929.1529 1310,-764.5077 1266.6921,-645.2626 1151.4807,-540.5893 1095.4616,-494.9048"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1097.6228,-492.1513 1087.6416,-488.5978 1093.2282,-497.6001 1097.6228,-492.1513"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_link -->
+<g id="edge31" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M796.7102,-1460.475C923.8315,-1426.3128 1172.5313,-1338.8464 1277,-1158.5077 1349.6764,-1033.0504 1191.1796,-875.4768 1122.1085,-815.3599"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1124.0154,-812.3838 1114.1501,-808.5204 1119.453,-817.6927 1124.0154,-812.3838"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_transform_link -->
+<g id="edge34" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_transform_link</title>
+<path fill="none" stroke="#21d185" d="M713.8646,-1460.4603C696.8721,-1400.7441 642.3882,-1209.2718 621.8941,-1137.2499"/>
+<polygon fill="#21d185" stroke="#21d185" points="625.2289,-1136.1806 619.1256,-1127.5204 618.4962,-1138.0965 625.2289,-1136.1806"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_http_link -->
+<g id="edge35" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_http_link</title>
+<path fill="none" stroke="#ab8a09" d="M729.76,-1460.4603C765.509,-1400.4993 880.4571,-1207.7002 922.9843,-1136.3705"/>
+<polygon fill="#ab8a09" stroke="#ab8a09" points="926.1459,-1137.902 928.2607,-1127.5204 920.1334,-1134.3173 926.1459,-1137.902"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_error_link -->
+<g id="edge33" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_error_link</title>
+<path fill="none" stroke="#5f79bc" d="M706.3815,-1460.4603C664.372,-1400.377 529.1043,-1206.9127 479.4778,-1135.9353"/>
+<polygon fill="#5f79bc" stroke="#5f79bc" points="482.1928,-1133.7103 473.5942,-1127.5204 476.456,-1137.7214 482.1928,-1133.7103"/>
+</g>
+<!-- gql_example_http_auth_link&#45;&gt;gql_build -->
+<g id="edge37" class="edge">
+<title>gql_example_http_auth_link&#45;&gt;gql_build</title>
+<path fill="none" stroke="#3380b0" stroke-dasharray="5,2" d="M689.41,-1460.4603C589.3947,-1399.4592 263.9606,-1200.9712 152.1391,-1132.7694"/>
+<polygon fill="#3380b0" stroke="#3380b0" points="153.8929,-1129.7394 143.533,-1127.5204 150.2479,-1135.7156 153.8929,-1129.7394"/>
+</g>
+<!-- gql_example_flutter -->
+<g id="node13" class="node">
+<title>gql_example_flutter</title>
+<polygon fill="none" stroke="#671702" points="1359,-1496.5077 1199,-1496.5077 1199,-1460.5077 1359,-1460.5077 1359,-1496.5077"/>
+<text text-anchor="middle" x="1279" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_flutter</text>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql_pedantic -->
+<g id="edge42" class="edge">
+<title>gql_example_flutter&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1309.0994,-1460.4293C1376.5713,-1417.9017 1538.7168,-1304.0443 1599,-1158.5077 1725.4862,-853.1429 1655.3608,-642.9006 1391,-444.5077 1226.6903,-321.1994 592.8045,-198.9431 387.5423,-161.8627"/>
+<polygon fill="#89da51" stroke="#89da51" points="387.9795,-158.3853 377.5175,-160.058 386.7392,-165.2745 387.9795,-158.3853"/>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql -->
+<g id="edge38" class="edge">
+<title>gql_example_flutter&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M1221.341,-1460.438C1024.0553,-1398.3539 386.6979,-1195.5586 360,-1158.5077 282.7073,-1051.2423 332.3532,-615.0745 347.2041,-498.9985"/>
+<polygon fill="#68217c" stroke="#68217c" points="350.7132,-499.1532 348.5272,-488.7863 343.7712,-498.2537 350.7132,-499.1532"/>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql_exec -->
+<g id="edge41" class="edge">
+<title>gql_example_flutter&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M1305.1758,-1460.2682C1365.3053,-1416.5563 1512.2485,-1298.9446 1566,-1158.5077 1598.4024,-1073.8495 1716.8767,-1030.9228 1563,-764.5077 1463.492,-592.2242 1219.703,-510.6264 1114.1143,-482.4517"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1114.8975,-479.0388 1104.3369,-479.8906 1113.1237,-485.8104 1114.8975,-479.0388"/>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql_link -->
+<g id="edge39" class="edge">
+<title>gql_example_flutter&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M1294.0869,-1460.3551C1338.7596,-1404.287 1463.6742,-1229.3352 1405,-1091.5077 1348.8586,-959.6298 1203.4751,-857.6197 1132.3646,-813.8494"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1134.0234,-810.7618 1123.6609,-808.5551 1130.3855,-816.7423 1134.0234,-810.7618"/>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql_http_link -->
+<g id="edge40" class="edge">
+<title>gql_example_flutter&#45;&gt;gql_http_link</title>
+<path fill="none" stroke="#ab8a09" d="M1262.3709,-1460.4603C1206.7841,-1400.1322 1027.2956,-1205.3344 962.5571,-1135.074"/>
+<polygon fill="#ab8a09" stroke="#ab8a09" points="964.9472,-1132.5029 955.5971,-1127.5204 959.7993,-1137.2462 964.9472,-1132.5029"/>
+</g>
+<!-- gql_example_flutter&#45;&gt;gql_build -->
+<g id="edge43" class="edge">
+<title>gql_example_flutter&#45;&gt;gql_build</title>
+<path fill="none" stroke="#3380b0" stroke-dasharray="5,2" d="M1222.021,-1460.4603C1022.3054,-1397.2027 355.8115,-1186.0986 165.2775,-1125.7492"/>
+<polygon fill="#3380b0" stroke="#3380b0" points="166.1026,-1122.3393 155.5125,-1122.6563 163.9889,-1129.0125 166.1026,-1122.3393"/>
+</g>
+<!-- gql_dio_link -->
+<g id="node14" class="node">
+<title>gql_dio_link</title>
+<polygon fill="none" stroke="#45c9c3" points="1115.5,-1127.5077 1012.5,-1127.5077 1012.5,-1091.5077 1115.5,-1091.5077 1115.5,-1127.5077"/>
+<text text-anchor="middle" x="1064" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_dio_link</text>
+</g>
+<!-- gql_dio_link&#45;&gt;gql_pedantic -->
+<g id="edge47" class="edge">
+<title>gql_dio_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1049.8592,-1091.2067C958.434,-972.8845 451.2771,-316.5235 343.2426,-176.7057"/>
+<polygon fill="#89da51" stroke="#89da51" points="345.873,-174.3855 336.9892,-168.6125 340.3339,-178.6655 345.873,-174.3855"/>
+</g>
+<!-- gql_dio_link&#45;&gt;gql -->
+<g id="edge46" class="edge">
+<title>gql_dio_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" stroke-dasharray="5,2" d="M1043.8098,-1091.413C943.1226,-1001.1758 495.4923,-600.0036 378.861,-495.4771"/>
+<polygon fill="#68217c" stroke="#68217c" points="381.1369,-492.8169 371.354,-488.7492 376.465,-498.0297 381.1369,-492.8169"/>
+</g>
+<!-- gql_dio_link&#45;&gt;gql_exec -->
+<g id="edge45" class="edge">
+<title>gql_dio_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M1061.976,-1091.1925C1056.5214,-1039.7425 1042.1772,-889.5019 1046,-764.5077 1048.9845,-666.9221 1057.5288,-551.3718 1061.6802,-498.9284"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1065.1878,-498.9716 1062.4958,-488.7245 1058.2101,-498.4138 1065.1878,-498.9716"/>
+</g>
+<!-- gql_dio_link&#45;&gt;gql_link -->
+<g id="edge44" class="edge">
+<title>gql_dio_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M1065.5856,-1091.4429C1070.2335,-1038.4905 1083.8512,-883.3457 1089.5,-818.99"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1093.0092,-819.0375 1090.3971,-808.7698 1086.036,-818.4254 1093.0092,-819.0375"/>
+</g>
+<!-- gql_example_dio_link -->
+<g id="node15" class="node">
+<title>gql_example_dio_link</title>
+<polygon fill="none" stroke="#058cba" points="1715,-1496.5077 1545,-1496.5077 1545,-1460.5077 1715,-1460.5077 1715,-1496.5077"/>
+<text text-anchor="middle" x="1630" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_dio_link</text>
+</g>
+<!-- gql_example_dio_link&#45;&gt;gql -->
+<g id="edge48" class="edge">
+<title>gql_example_dio_link&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M1565.3186,-1460.4459C1555.5039,-1457.7549 1545.4894,-1455.037 1536,-1452.5077 1027.912,-1317.0793 723.9563,-1564.6695 390,-1158.5077 347.5905,-1106.9287 349.4901,-622.032 350.6696,-498.8545"/>
+<polygon fill="#68217c" stroke="#68217c" points="354.1708,-498.7472 350.7732,-488.7119 347.1711,-498.6756 354.1708,-498.7472"/>
+</g>
+<!-- gql_example_dio_link&#45;&gt;gql_exec -->
+<g id="edge50" class="edge">
+<title>gql_example_dio_link&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M1634.7495,-1460.3404C1656.1585,-1374.2431 1736.3648,-1001.6138 1588,-764.5077 1477.9795,-588.6808 1222.7534,-508.6238 1114.2567,-481.6378"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1114.7695,-478.1603 1104.2248,-479.1905 1113.1104,-484.9609 1114.7695,-478.1603"/>
+</g>
+<!-- gql_example_dio_link&#45;&gt;gql_link -->
+<g id="edge49" class="edge">
+<title>gql_example_dio_link&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M1623.0752,-1460.2267C1600.5972,-1402.311 1525.3425,-1219.1876 1426,-1091.5077 1333.5627,-972.7027 1190.8632,-862.0861 1126.0783,-814.7366"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1127.9822,-811.7936 1117.835,-808.7465 1123.8672,-817.4564 1127.9822,-811.7936"/>
+</g>
+<!-- gql_example_dio_link&#45;&gt;gql_dio_link -->
+<g id="edge51" class="edge">
+<title>gql_example_dio_link&#45;&gt;gql_dio_link</title>
+<path fill="none" stroke="#45c9c3" d="M1598.7602,-1460.3755C1518.3286,-1413.3391 1298.29,-1282.4228 1125,-1158.5077 1114.3821,-1150.9151 1103.1405,-1142.1184 1093.2395,-1134.0914"/>
+<polygon fill="#45c9c3" stroke="#45c9c3" points="1095.2351,-1131.2018 1085.2811,-1127.573 1090.7996,-1136.6172 1095.2351,-1131.2018"/>
+</g>
+<!-- gql_example_cli_github -->
+<g id="node16" class="node">
+<title>gql_example_cli_github</title>
+<polygon fill="none" stroke="#9b3b01" points="1031.5,-1496.5077 846.5,-1496.5077 846.5,-1460.5077 1031.5,-1460.5077 1031.5,-1496.5077"/>
+<text text-anchor="middle" x="939" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_cli_github</text>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_pedantic -->
+<g id="edge57" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M977.6022,-1460.388C1061.1279,-1419.1569 1259.3529,-1310.0295 1362,-1158.5077 1540.3983,-895.1662 1552.7601,-653.5288 1313,-444.5077 1169.6188,-319.509 583.7975,-199.7448 387.4714,-162.4111"/>
+<polygon fill="#89da51" stroke="#89da51" points="388.0652,-158.9614 377.5885,-160.5389 386.7623,-165.8391 388.0652,-158.9614"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql -->
+<g id="edge52" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M885.128,-1460.485C741.1436,-1411.1148 353.5871,-1269.9521 284,-1158.5077 191.2542,-1009.9744 264.4229,-938.521 284,-764.5077 295.1699,-665.2227 326.9232,-550.5718 342.3613,-498.6478"/>
+<polygon fill="#68217c" stroke="#68217c" points="345.7841,-499.4189 345.3077,-488.8348 339.0797,-497.4058 345.7841,-499.4189"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_exec -->
+<g id="edge54" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M982.834,-1460.3554C1104.4735,-1408.9976 1441.1492,-1259.8286 1500,-1158.5077 1587.9511,-1007.0861 1582.2201,-919.1161 1500,-764.5077 1416.8875,-608.2212 1209.5718,-520.0261 1113.8652,-486.4297"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1114.7287,-483.0251 1104.134,-483.0674 1112.4426,-489.6413 1114.7287,-483.0251"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_link -->
+<g id="edge53" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M982.4352,-1460.4932C1070.9519,-1421.0737 1270.3931,-1317.7646 1348,-1158.5077 1416.8064,-1017.3101 1218.0202,-870.0269 1130.7939,-814.0081"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1132.5354,-810.968 1122.217,-808.5633 1128.7837,-816.8777 1132.5354,-810.968"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_transform_link -->
+<g id="edge56" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_transform_link</title>
+<path fill="none" stroke="#21d185" d="M923.1046,-1460.4603C869.9701,-1400.1322 698.4002,-1205.3344 636.5178,-1135.074"/>
+<polygon fill="#21d185" stroke="#21d185" points="639.1009,-1132.7114 629.8648,-1127.5204 633.8478,-1137.3381 639.1009,-1132.7114"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_http_link -->
+<g id="edge55" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_http_link</title>
+<path fill="none" stroke="#ab8a09" d="M939,-1460.4603C939,-1400.8664 939,-1210.056 939,-1137.6942"/>
+<polygon fill="#ab8a09" stroke="#ab8a09" points="942.5001,-1137.5204 939,-1127.5204 935.5001,-1137.5204 942.5001,-1137.5204"/>
+</g>
+<!-- gql_example_cli_github&#45;&gt;gql_build -->
+<g id="edge58" class="edge">
+<title>gql_example_cli_github&#45;&gt;gql_build</title>
+<path fill="none" stroke="#3380b0" stroke-dasharray="5,2" d="M898.6501,-1460.4603C761.5816,-1399.1533 314.0329,-1198.9769 163.7358,-1131.7531"/>
+<polygon fill="#3380b0" stroke="#3380b0" points="164.8299,-1128.4084 154.2723,-1127.5204 161.9718,-1134.7984 164.8299,-1128.4084"/>
+</g>
+<!-- gql_example_cli -->
+<g id="node17" class="node">
+<title>gql_example_cli</title>
+<polygon fill="none" stroke="#18510b" points="1180.5,-1496.5077 1049.5,-1496.5077 1049.5,-1460.5077 1180.5,-1460.5077 1180.5,-1496.5077"/>
+<text text-anchor="middle" x="1115" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_cli</text>
+</g>
+<!-- gql_example_cli&#45;&gt;gql_pedantic -->
+<g id="edge63" class="edge">
+<title>gql_example_cli&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1135.7958,-1460.4914C1187.1037,-1414.9763 1320.9235,-1289.6227 1395,-1158.5077 1551.3779,-881.7196 1595.3517,-649.0698 1352,-444.5077 1200.5889,-317.2311 589.2077,-198.2922 387.7408,-161.8684"/>
+<polygon fill="#89da51" stroke="#89da51" points="388.0704,-158.3715 377.6084,-160.0437 386.8297,-165.2607 388.0704,-158.3715"/>
+</g>
+<!-- gql_example_cli&#45;&gt;gql -->
+<g id="edge59" class="edge">
+<title>gql_example_cli&#45;&gt;gql</title>
+<path fill="none" stroke="#68217c" d="M1066.0866,-1460.4906C896.737,-1397.8911 344.4868,-1191.8304 322,-1158.5077 247.9853,-1048.8268 323.6521,-614.4207 345.4851,-498.8658"/>
+<polygon fill="#68217c" stroke="#68217c" points="348.9884,-499.1786 347.423,-488.7 342.1122,-497.8676 348.9884,-499.1786"/>
+</g>
+<!-- gql_example_cli&#45;&gt;gql_exec -->
+<g id="edge61" class="edge">
+<title>gql_example_cli&#45;&gt;gql_exec</title>
+<path fill="none" stroke="#5b9240" d="M1160.9219,-1460.4947C1252.8903,-1421.5751 1457.7222,-1319.8992 1538,-1158.5077 1615.9871,-1001.7215 1623.1502,-917.5219 1538,-764.5077 1445.4924,-598.2722 1215.8179,-514.0359 1113.9841,-483.8442"/>
+<polygon fill="#5b9240" stroke="#5b9240" points="1114.826,-480.444 1104.2461,-481.0068 1112.8677,-487.1645 1114.826,-480.444"/>
+</g>
+<!-- gql_example_cli&#45;&gt;gql_link -->
+<g id="edge60" class="edge">
+<title>gql_example_cli&#45;&gt;gql_link</title>
+<path fill="none" stroke="#7c0063" d="M1145.2897,-1460.4058C1228.5888,-1408.1226 1450.7471,-1250.4591 1386,-1091.5077 1333.5181,-962.6669 1196.4089,-858.9378 1129.6341,-814.2641"/>
+<polygon fill="#7c0063" stroke="#7c0063" points="1131.3511,-811.2035 1121.0794,-808.607 1127.49,-817.0424 1131.3511,-811.2035"/>
+</g>
+<!-- gql_example_cli&#45;&gt;gql_http_link -->
+<g id="edge62" class="edge">
+<title>gql_example_cli&#45;&gt;gql_http_link</title>
+<path fill="none" stroke="#ab8a09" d="M1106.392,-1460.4603C1077.8511,-1400.6217 986.2094,-1208.4865 952.0216,-1136.8087"/>
+<polygon fill="#ab8a09" stroke="#ab8a09" points="955.0556,-1135.0395 947.5914,-1127.5204 948.7374,-1138.0531 955.0556,-1135.0395"/>
+</g>
+<!-- gql_example_cli&#45;&gt;gql_build -->
+<g id="edge64" class="edge">
+<title>gql_example_cli&#45;&gt;gql_build</title>
+<path fill="none" stroke="#3380b0" stroke-dasharray="5,2" d="M1066.0421,-1460.4603C896.9108,-1398.1132 338.173,-1192.1449 165.3797,-1128.4479"/>
+<polygon fill="#3380b0" stroke="#3380b0" points="166.352,-1125.0761 155.7586,-1124.9012 163.9308,-1131.6441 166.352,-1125.0761"/>
+</g>
+<!-- gql_example_build -->
+<g id="node18" class="node">
+<title>gql_example_build</title>
+<polygon fill="none" stroke="#628320" points="1527,-1496.5077 1377,-1496.5077 1377,-1460.5077 1527,-1460.5077 1527,-1496.5077"/>
+<text text-anchor="middle" x="1452" y="-1474.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_example_build</text>
+</g>
+<!-- gql_example_build&#45;&gt;gql_pedantic -->
+<g id="edge65" class="edge">
+<title>gql_example_build&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1465.3513,-1460.4791C1523.7657,-1379.3235 1750.0652,-1039.8727 1662,-764.5077 1608.8053,-598.1769 1577.6123,-543.8612 1434,-444.5077 1091.5624,-207.6033 569.0863,-161.5696 387.7003,-152.6463"/>
+<polygon fill="#89da51" stroke="#89da51" points="387.6797,-149.1415 377.5261,-152.1674 387.3505,-156.1338 387.6797,-149.1415"/>
+</g>
+<!-- gql_example_build&#45;&gt;gql_build -->
+<g id="edge66" class="edge">
+<title>gql_example_build&#45;&gt;gql_build</title>
+<path fill="none" stroke="#3380b0" stroke-dasharray="5,2" d="M1394.6906,-1460.4912C1385.7702,-1457.7673 1376.6472,-1455.0278 1368,-1452.5077 902.9818,-1316.9841 336.39,-1167.6428 165.295,-1122.8846"/>
+<polygon fill="#3380b0" stroke="#3380b0" points="166.1051,-1119.4788 155.5449,-1120.3353 164.3343,-1126.2512 166.1051,-1119.4788"/>
+</g>
+<!-- gql_dedupe_link -->
+<g id="node19" class="node">
+<title>gql_dedupe_link</title>
+<polygon fill="none" stroke="#cf6bf6" points="1268,-1127.5077 1134,-1127.5077 1134,-1091.5077 1268,-1091.5077 1268,-1127.5077"/>
+<text text-anchor="middle" x="1201" y="-1105.8077" font-family="Times,serif" font-size="14.00" fill="#000000">gql_dedupe_link</text>
+</g>
+<!-- gql_dedupe_link&#45;&gt;gql_pedantic -->
+<g id="edge70" class="edge">
+<title>gql_dedupe_link&#45;&gt;gql_pedantic</title>
+<path fill="none" stroke="#89da51" stroke-dasharray="5,2" d="M1184.2448,-1091.2067C1075.8084,-972.7665 473.7949,-315.2142 346.6037,-176.289"/>
+<polygon fill="#89da51" stroke="#89da51" points="348.9098,-173.6247 339.5756,-168.6125 343.7468,-178.3516 348.9098,-173.6247"/>
+</g>
 <!-- gql_dedupe_link&#45;&gt;gql -->
 <g id="edge69" class="edge">
 <title>gql_dedupe_link&#45;&gt;gql</title>
