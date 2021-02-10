@@ -48,8 +48,8 @@ extension WithTypeName on OperationType {
 class FieldDefinition extends EntityWithResolver {
   const FieldDefinition(
     this.astNode, [
-    ResolveType getType,
-    bool isOverride,
+    ResolveType? getType,
+    bool? isOverride,
   ])  : getType = getType ?? TypeResolver.withoutContext,
         isOverride = isOverride ?? false;
 
@@ -59,18 +59,18 @@ class FieldDefinition extends EntityWithResolver {
   final bool isOverride;
 
   @override
-  final FieldDefinitionNode astNode;
+  final FieldDefinitionNode? astNode;
 
-  String get name => astNode.name.value;
+  String? get name => astNode!.name.value;
 
-  String get description => astNode.description?.value;
+  String? get description => astNode!.description?.value;
 
-  GraphQLType get type => GraphQLType.fromNode(astNode.type, getType);
+  GraphQLType? get type => GraphQLType.fromNode(astNode!.type, getType);
 
-  List<Directive> get directives =>
-      astNode.directives.map((d) => Directive(d)).toList();
+  List<Directive>? get directives =>
+      astNode!.directives.map((d) => Directive(d)).toList();
 
-  List<InputValueDefinition> get args => astNode.args
+  List<InputValueDefinition>? get args => astNode!.args
       .map(
         (arg) => InputValueDefinition(arg, getType),
       )
@@ -81,7 +81,7 @@ class FieldDefinition extends EntityWithResolver {
 @immutable
 abstract class TypeDefinitionWithFieldSet extends TypeDefinitionWithResolver {
   const TypeDefinitionWithFieldSet([
-    ResolveType getType,
+    ResolveType? getType,
   ])  : getType = getType ?? TypeResolver.withoutContext,
         super();
 
@@ -107,7 +107,7 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
     with AbstractType {
   const InterfaceTypeDefinition(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) : super(getType);
 
   @override
@@ -117,9 +117,9 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
   @override
   FieldDefinition getField(String fieldName) => _fields.firstWhere(
         (field) => field.name == fieldName,
-        orElse: () => throw StateError(
+        orElse: (() => throw StateError(
           "No such field $fieldName on $this",
-        ),
+        )) as FieldDefinition Function()?,
       );
 
   @override
@@ -150,7 +150,7 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
 class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
   const ObjectTypeDefinition(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) : super(getType);
 
   @override
@@ -171,9 +171,9 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
   @override
   FieldDefinition getField(String fieldName) => _fields.firstWhere(
         (field) => field.name == fieldName,
-        orElse: () => throw StateError(
+        orElse: (() => throw StateError(
           "No such field $fieldName on $this",
-        ),
+        )) as FieldDefinition Function()?,
       );
 
   List<NamedType> get interfaceNames => astNode.interfaces
@@ -182,14 +182,14 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
       )
       .toList();
 
-  List<InterfaceTypeDefinition> get interfaces => interfaceNames
-      .map((i) => getType(i.name) as InterfaceTypeDefinition)
+  List<InterfaceTypeDefinition?> get interfaces => interfaceNames
+      .map((i) => getType(i.name) as InterfaceTypeDefinition?)
       .toList();
 
   /// Extract all inherited interface names recursively
-  Set<String> get _inheritedFieldNames => interfaces
+  Set<String?> get _inheritedFieldNames => interfaces
       .expand(
-        (face) => face._fields.map((f) => f.name),
+        (face) => face!._fields.map((f) => f.name),
       )
       .toSet();
 }
@@ -206,7 +206,7 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
 class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
   const UnionTypeDefinition(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) : getType = getType ?? TypeResolver.withoutContext;
 
   @override
@@ -242,7 +242,7 @@ class UnionTypeDefinition extends TypeDefinitionWithResolver with AbstractType {
 class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
   const InputObjectTypeDefinition(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) : getType = getType ?? TypeResolver.withoutContext;
 
   @override
@@ -264,25 +264,25 @@ class InputObjectTypeDefinition extends TypeDefinitionWithResolver {
 class InputValueDefinition extends EntityWithResolver {
   const InputValueDefinition(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) : getType = getType ?? TypeResolver.withoutContext;
 
   @override
   final ResolveType getType;
 
   @override
-  final InputValueDefinitionNode astNode;
+  final InputValueDefinitionNode? astNode;
 
-  String get name => astNode.name.value;
+  String? get name => astNode!.name.value;
 
-  String get description => astNode.description?.value;
+  String? get description => astNode!.description?.value;
 
-  GraphQLType get type => GraphQLType.fromNode(astNode.type, getType);
+  GraphQLType? get type => GraphQLType.fromNode(astNode!.type, getType);
 
-  Value get defaultValue => Value.fromNode(astNode.defaultValue);
+  Value? get defaultValue => Value.fromNode(astNode!.defaultValue);
 
-  List<Directive> get directives =>
-      astNode.directives.map((d) => Directive(d)).toList();
+  List<Directive>? get directives =>
+      astNode!.directives.map((d) => Directive(d)).toList();
 }
 
 /*
@@ -341,17 +341,17 @@ class DirectiveDefinition extends TypeSystemDefinition {
   const DirectiveDefinition(this.astNode);
 
   @override
-  final DirectiveDefinitionNode astNode;
+  final DirectiveDefinitionNode? astNode;
 
-  String get description => astNode.description?.value;
+  String? get description => astNode!.description?.value;
 
-  List<InputValueDefinition> get args => astNode.args
+  List<InputValueDefinition>? get args => astNode!.args
       .map((inputValue) => InputValueDefinition(inputValue))
       .toList();
 
-  List<DirectiveLocation> get locations => astNode.locations;
+  List<DirectiveLocation>? get locations => astNode!.locations;
 
-  bool get repeatable => astNode.repeatable;
+  bool get repeatable => astNode!.repeatable;
 }
 
 /// A [Root Operation](https://spec.graphql.org/June2018/#sec-Root-Operation-Types).

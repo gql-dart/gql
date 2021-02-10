@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class MultipleSchemaDefinitionsError extends ValidationError {
   const MultipleSchemaDefinitionsError({
-    SchemaDefinitionNode node,
+    SchemaDefinitionNode? node,
   }) : super(
           node: node,
         );

@@ -5,7 +5,7 @@ import "package:gql/src/schema/definitions.dart";
 import "package:gql/src/operation/definitions.dart";
 
 /// Callback to dereference a full fragment definition by name
-typedef ResolveFragment = FragmentDefinition Function(String name);
+typedef ResolveFragment = FragmentDefinition? Function(String name);
 
 /// Container for the [fromSchema] and [fromFragments]
 /// dereferencing callbacks necessary for full type information while
@@ -23,7 +23,7 @@ class GetExecutableType {
   /// usually defined within the given context such as a `GraphQLSchema`.
   ///
   /// See `gql/schema.dart`'s [TypeResolver].
-  final ResolveType fromSchema;
+  final ResolveType? fromSchema;
 
   final ResolveFragment fromFragments;
 
@@ -40,7 +40,7 @@ class GetExecutableType {
   }
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash([fromFragments, fromSchema]);
 

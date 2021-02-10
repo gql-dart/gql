@@ -14,6 +14,6 @@ void main() {
   );
 
   print(
-    (doc.definitions.first as ast.OperationDefinitionNode).name.value,
+    (doc.definitions.first as ast.OperationDefinitionNode).name!.value,
   );
 }

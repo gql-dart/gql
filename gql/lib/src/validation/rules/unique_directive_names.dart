@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class DuplicateDirectiveNameError extends ValidationError {
   const DuplicateDirectiveNameError({
-    DirectiveDefinitionNode node,
+    DirectiveDefinitionNode? node,
   }) : super(
           node: node,
         );
@@ -16,13 +16,13 @@ class UniqueDirectiveNames extends ValidatingVisitor {
   @override
   List<ValidationError> visitDirectiveDefinitionNode(
       DirectiveDefinitionNode node) {
-    if (directiveNames.contains(node.name.value)) {
+    if (directiveNames.contains(node.name!.value)) {
       return [
         DuplicateDirectiveNameError(node: node),
       ];
     }
 
-    directiveNames.add(node.name.value);
+    directiveNames.add(node.name!.value);
 
     return [];
   }

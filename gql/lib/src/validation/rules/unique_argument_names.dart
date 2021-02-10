@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class DuplicateArgumentNameError extends ValidationError {
   const DuplicateArgumentNameError({
-    ArgumentNode node,
+    ArgumentNode? node,
   }) : super(
           node: node,
         );
