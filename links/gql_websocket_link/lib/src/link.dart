@@ -111,9 +111,8 @@ class WebSocketLink extends Link {
     final String id = Uuid.randomUuid().toString();
 
     response.onListen = () {
-      final Stream<int> waitForConnectedState = _connectionStateController
-          .where((state) => state == open)
-          .take(1);
+      final Stream<int> waitForConnectedState =
+          _connectionStateController.where((state) => state == open).take(1);
 
       waitForConnectedState.listen(
         (_) {
