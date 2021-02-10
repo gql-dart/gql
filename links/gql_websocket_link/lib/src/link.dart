@@ -10,7 +10,7 @@ import "package:uuid_enhanced/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
-typedef ChannelGenerator = WebSocketChannel Function();
+typedef ChannelGenerator = FutureOr<WebSocketChannel> Function();
 typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>> Function(
     dynamic message);
 
@@ -189,7 +189,7 @@ class WebSocketLink extends Link {
   /// Connects to the server.
   Future<void> _connect() async {
     try {
-      _channel = _channelGenerator();
+      _channel = await _channelGenerator();
 
       _reconnectTimer?.cancel();
 
