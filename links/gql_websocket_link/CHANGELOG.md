@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Delay requests until connect is done
+
 ## 0.1.5
 
 - Add `graphQLSocketMessageDecoder` & `graphQLSocketMessageEncoder` to the constructor.
