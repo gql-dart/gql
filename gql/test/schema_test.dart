@@ -25,7 +25,7 @@ void main() {
     test("Can dereference an object interace", () {
       final droid = schema.getType("Droid") as ObjectTypeDefinition;
       expect(
-        droid.interfaces[0].name,
+        droid.interfaces[0]!.name,
         equals("Character"),
       );
     });
@@ -44,25 +44,25 @@ void main() {
     });
 
     test("schema.getPossibleTypes results", () {
-      final character = schema.getType("Character") as InterfaceTypeDefinition;
+      final character = schema.getType("Character") as InterfaceTypeDefinition?;
       final searchResult = schema.getType(
         "SearchResult",
-      ) as UnionTypeDefinition;
+      ) as UnionTypeDefinition?;
 
-      final human = schema.getType("Human") as ObjectTypeDefinition;
-      final droid = schema.getType("Droid") as ObjectTypeDefinition;
-      final starship = schema.getType("Starship") as ObjectTypeDefinition;
+      final human = schema.getType("Human") as ObjectTypeDefinition?;
+      final droid = schema.getType("Droid") as ObjectTypeDefinition?;
+      final starship = schema.getType("Starship") as ObjectTypeDefinition?;
 
       expect(
         schema.getPossibleTypes(searchResult),
         unorderedEquals(
-          <ObjectTypeDefinition>{droid, starship, human},
+          <ObjectTypeDefinition?>{droid, starship, human},
         ),
       );
 
       expect(
         schema.getPossibleTypes(character),
-        unorderedEquals(<ObjectTypeDefinition>{
+        unorderedEquals(<ObjectTypeDefinition?>{
           droid,
           human,
         }),
@@ -70,50 +70,50 @@ void main() {
     });
 
     test("Type dereferencing", () {
-      final starshipsType = schema.query.getField("starships").type as ListType;
+      final starshipsType = schema.query!.getField("starships").type as ListType;
 
       expect(starshipsType.baseTypeName, equals("Starship"));
 
-      final starship = (starshipsType.type as NamedType).type;
+      final starship = (starshipsType.type as NamedType).type!;
       expect(starship.runtimeType, equals(ObjectTypeDefinition));
       expect(starship.name, equals("Starship"));
     });
 
     test("mutation arguments", () {
-      final updateHuman = schema.mutation.getField("updateHuman");
+      final updateHuman = schema.mutation!.getField("updateHuman");
 
-      expect(updateHuman.args.first.name, equals("id"));
-      expect(updateHuman.args.first.type.isNonNull, equals(true));
+      expect(updateHuman.args!.first.name, equals("id"));
+      expect(updateHuman.args!.first.type!.isNonNull, equals(true));
 
-      final inputTypeRef = updateHuman.args.last.type as NamedType;
+      final inputTypeRef = updateHuman.args!.last.type as NamedType;
       expect(inputTypeRef.name, equals("HumanInput"));
       expect(inputTypeRef.isNonNull, equals(true));
       expect(inputTypeRef.hasResolver, equals(true));
 
-      final inputType = inputTypeRef.type;
+      final inputType = inputTypeRef.type!;
       expect(inputType.runtimeType, equals(InputObjectTypeDefinition));
       expect(inputType.name, equals("HumanInput"));
     });
 
     test("mutation arguments", () {
-      final updateHuman = schema.mutation.getField("updateHuman");
+      final updateHuman = schema.mutation!.getField("updateHuman");
 
-      expect(updateHuman.args.first.name, equals("id"));
-      expect(updateHuman.args.first.type.isNonNull, equals(true));
+      expect(updateHuman.args!.first.name, equals("id"));
+      expect(updateHuman.args!.first.type!.isNonNull, equals(true));
 
-      final inputTypeRef = updateHuman.args.last.type as NamedType;
+      final inputTypeRef = updateHuman.args!.last.type as NamedType;
       expect(inputTypeRef.name, equals("HumanInput"));
       expect(inputTypeRef.isNonNull, equals(true));
       expect(inputTypeRef.hasResolver, equals(true));
 
-      final inputType = inputTypeRef.type;
+      final inputType = inputTypeRef.type!;
       expect(inputType.runtimeType, equals(InputObjectTypeDefinition));
       expect(inputType.name, equals("HumanInput"));
     });
 
     test("Contains default directives", () {
       expect(
-        schema.directives.map((d) => d.name),
+        schema.directives!.map((d) => d.name),
         containsAll(<String>{"skip", "include", "deprecated"}),
       );
     });

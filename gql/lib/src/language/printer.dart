@@ -68,14 +68,14 @@ class _PrintVisitor extends Visitor<String> {
         def.variable.accept(this),
         ": ",
         def.type.accept(this),
-        def.defaultValue.accept(this)
+        def.defaultValue!.accept(this)
       ].join();
 
   @override
   String visitDefaultValueNode(DefaultValueNode defaultValueNode) {
     if (defaultValueNode.value == null) return "";
 
-    return " = ${defaultValueNode.value.accept(this)}";
+    return " = ${defaultValueNode.value!.accept(this)}";
   }
 
   @override
@@ -87,7 +87,7 @@ class _PrintVisitor extends Visitor<String> {
         _opType(op.type),
         if (op.name != null) ...[
           " ",
-          op.name.accept(this),
+          op.name!.accept(this),
         ],
         if (op.variableDefinitions != null && op.variableDefinitions.isNotEmpty)
           visitVariableDefinitionSetNode(op.variableDefinitions),
@@ -208,7 +208,7 @@ class _PrintVisitor extends Visitor<String> {
           FragmentDefinitionNode fragmentDefinitionNode) =>
       [
         "fragment ",
-        fragmentDefinitionNode.name.accept(this),
+        fragmentDefinitionNode.name!.accept(this),
         if (fragmentDefinitionNode.typeCondition != null) ...[
           " ",
           fragmentDefinitionNode.typeCondition.accept(this),
@@ -229,7 +229,7 @@ class _PrintVisitor extends Visitor<String> {
         "...",
         if (inlineFragmentNode.typeCondition != null) ...[
           " ",
-          inlineFragmentNode.typeCondition.accept(this),
+          inlineFragmentNode.typeCondition!.accept(this),
         ],
         if (inlineFragmentNode.directives != null &&
             inlineFragmentNode.directives.isNotEmpty) ...[
@@ -263,7 +263,7 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitFieldNode(FieldNode fieldNode) => [
         if (fieldNode.alias != null) ...[
-          fieldNode.alias.accept(this),
+          fieldNode.alias!.accept(this),
           ": ",
         ],
         fieldNode.name.accept(this),
@@ -276,7 +276,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         if (fieldNode.selectionSet != null) ...[
           " ",
-          visitSelectionSetNode(fieldNode.selectionSet),
+          visitSelectionSetNode(fieldNode.selectionSet!),
         ],
       ].join();
 
@@ -317,12 +317,12 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitScalarTypeDefinitionNode(ScalarTypeDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "scalar",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -332,12 +332,12 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitObjectTypeDefinitionNode(ObjectTypeDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "type",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         " ",
         visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
@@ -386,7 +386,7 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitFieldDefinitionNode(FieldDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
           _indent(_tabs),
         ],
@@ -420,7 +420,7 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitInputValueDefinitionNode(InputValueDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
           _indent(_tabs),
         ],
@@ -432,7 +432,7 @@ class _PrintVisitor extends Visitor<String> {
           " ",
           "=",
           " ",
-          node.defaultValue.accept(this),
+          node.defaultValue!.accept(this),
         ],
         if (node.directives != null && node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
@@ -441,12 +441,12 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitInterfaceTypeDefinitionNode(InterfaceTypeDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "interface",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
@@ -455,12 +455,12 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitUnionTypeDefinitionNode(UnionTypeDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "union",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -494,12 +494,12 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitEnumTypeDefinitionNode(EnumTypeDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "enum",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -533,11 +533,11 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitEnumValueDefinitionNode(EnumValueDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
           _indent(_tabs),
         ],
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
       ].join();
@@ -547,12 +547,12 @@ class _PrintVisitor extends Visitor<String> {
           InputObjectTypeDefinitionNode node) =>
       [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "input",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitInputValueDefinitionSetNode(node.fields),
@@ -583,13 +583,13 @@ class _PrintVisitor extends Visitor<String> {
   @override
   String visitDirectiveDefinitionNode(DirectiveDefinitionNode node) => [
         if (node.description != null) ...[
-          node.description.accept(this),
+          node.description!.accept(this),
           "\n",
         ],
         "directive",
         " ",
         "@",
-        node.name.accept(this),
+        node.name!.accept(this),
         visitArgumentDefinitionSetNode(node.args),
         if (node.repeatable) ...[
           " ",
@@ -643,7 +643,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "scalar",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -656,7 +656,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "type",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         " ",
         visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
@@ -669,7 +669,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "interface",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
@@ -681,7 +681,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "union",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -695,7 +695,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "enum",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -710,7 +710,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "input",
         " ",
-        node.name.accept(this),
+        node.name!.accept(this),
         if (node.directives != null && node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -719,7 +719,7 @@ class _PrintVisitor extends Visitor<String> {
       ].join();
 }
 
-String _opType(OperationType t) {
+String? _opType(OperationType t) {
   switch (t) {
     case OperationType.query:
       return "query";
@@ -733,7 +733,7 @@ String _opType(OperationType t) {
   return null;
 }
 
-String _directiveLocation(DirectiveLocation location) {
+String? _directiveLocation(DirectiveLocation location) {
   switch (location) {
     case DirectiveLocation.query:
       return "QUERY";

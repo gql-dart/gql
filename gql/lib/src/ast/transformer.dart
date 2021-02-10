@@ -293,7 +293,7 @@ class _Transformer extends Visitor<Node> {
     this.visitors = const [],
   });
 
-  N _visitOne<N extends Node>(
+  N _visitOne<N extends Node?>(
     N node,
   ) {
     if (node == null) return node;
@@ -379,7 +379,7 @@ class _Transformer extends Visitor<Node> {
     DirectiveDefinitionNode node,
   ) {
     final updatedNode = DirectiveDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       locations: node.locations,
       repeatable: node.repeatable,
@@ -412,7 +412,7 @@ class _Transformer extends Visitor<Node> {
     EnumTypeDefinitionNode node,
   ) {
     final updatedNode = EnumTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       values: _visitAll(node.values),
@@ -429,7 +429,7 @@ class _Transformer extends Visitor<Node> {
     EnumTypeExtensionNode node,
   ) {
     final updatedNode = EnumTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       values: _visitAll(node.values),
     );
@@ -445,7 +445,7 @@ class _Transformer extends Visitor<Node> {
     EnumValueDefinitionNode node,
   ) {
     final updatedNode = EnumValueDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
     );
@@ -525,7 +525,7 @@ class _Transformer extends Visitor<Node> {
     FragmentDefinitionNode node,
   ) {
     final updatedNode = FragmentDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       selectionSet: _visitOne(node.selectionSet),
       typeCondition: _visitOne(node.typeCondition),
@@ -573,7 +573,7 @@ class _Transformer extends Visitor<Node> {
     InputObjectTypeDefinitionNode node,
   ) {
     final updatedNode = InputObjectTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
@@ -590,7 +590,7 @@ class _Transformer extends Visitor<Node> {
     InputObjectTypeExtensionNode node,
   ) {
     final updatedNode = InputObjectTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
     );
@@ -638,7 +638,7 @@ class _Transformer extends Visitor<Node> {
     InterfaceTypeDefinitionNode node,
   ) {
     final updatedNode = InterfaceTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
@@ -655,7 +655,7 @@ class _Transformer extends Visitor<Node> {
     InterfaceTypeExtensionNode node,
   ) {
     final updatedNode = InterfaceTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
     );
@@ -754,7 +754,7 @@ class _Transformer extends Visitor<Node> {
     ObjectTypeDefinitionNode node,
   ) {
     final updatedNode = ObjectTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
@@ -772,7 +772,7 @@ class _Transformer extends Visitor<Node> {
     ObjectTypeExtensionNode node,
   ) {
     final updatedNode = ObjectTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
       interfaces: _visitAll(node.interfaces),
@@ -836,7 +836,7 @@ class _Transformer extends Visitor<Node> {
     ScalarTypeDefinitionNode node,
   ) {
     final updatedNode = ScalarTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
     );
@@ -852,7 +852,7 @@ class _Transformer extends Visitor<Node> {
     ScalarTypeExtensionNode node,
   ) {
     final updatedNode = ScalarTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
     );
 
@@ -940,7 +940,7 @@ class _Transformer extends Visitor<Node> {
     UnionTypeDefinitionNode node,
   ) {
     final updatedNode = UnionTypeDefinitionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       types: _visitAll(node.types),
@@ -957,7 +957,7 @@ class _Transformer extends Visitor<Node> {
     UnionTypeExtensionNode node,
   ) {
     final updatedNode = UnionTypeExtensionNode(
-      name: _visitOne(node.name),
+      name: _visitOne(node.name!),
       directives: _visitAll(node.directives),
       types: _visitAll(node.types),
     );

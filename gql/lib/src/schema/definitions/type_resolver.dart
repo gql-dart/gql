@@ -9,7 +9,7 @@ import "./definitions.dart"
         InputObjectTypeDefinition;
 
 /// Callback to dereference a full type definition by name
-typedef ResolveType = TypeDefinition Function(String name);
+typedef ResolveType = TypeDefinition? Function(String name);
 
 /// Enables "type resolution" for implementing classes,
 /// allowing for type-dereferencing, such as is done by `GraphQLSchema`.
@@ -22,8 +22,8 @@ abstract class TypeResolver {
   ResolveType get getType;
 
   /// Saturates the [definition] with a [getType] if it extends from [TypeResolver]
-  static TypeDefinition addedTo(
-    TypeDefinition definition,
+  static TypeDefinition? addedTo(
+    TypeDefinition? definition,
     ResolveType getType,
   ) {
     if (definition == null) {
