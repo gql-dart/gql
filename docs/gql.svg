@@ -113,19 +113,19 @@
 <polygon fill="#89da51" stroke="#89da51" points="339.2658,-176.0898 331.7598,-168.6125 332.9646,-179.1386 339.2658,-176.0898"/>
 </g>
 <!-- gql_websocket_link&#45;&gt;gql -->
-<g id="edge10" class="edge">
+<g id="edge8" class="edge">
 <title>gql_websocket_link&#45;&gt;gql</title>
 <path fill="none" stroke="#68217c" d="M774.6537,-1091.413C713.3909,-1001.6265 442.0864,-604.0036 369.1209,-497.0656"/>
 <polygon fill="#68217c" stroke="#68217c" points="371.9738,-495.0369 363.4465,-488.7492 366.1916,-498.9823 371.9738,-495.0369"/>
 </g>
 <!-- gql_websocket_link&#45;&gt;gql_exec -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>gql_websocket_link&#45;&gt;gql_exec</title>
 <path fill="none" stroke="#5b9240" d="M801.8168,-1091.3834C837.886,-1046.3697 930.9576,-924.707 981,-808.5077 1028.0242,-699.3166 1051.7937,-558.311 1060.2771,-498.8934"/>
 <polygon fill="#5b9240" stroke="#5b9240" points="1063.7734,-499.1613 1061.6854,-488.7743 1056.8402,-498.1964 1063.7734,-499.1613"/>
 </g>
 <!-- gql_websocket_link&#45;&gt;gql_link -->
-<g id="edge9" class="edge">
+<g id="edge10" class="edge">
 <title>gql_websocket_link&#45;&gt;gql_link</title>
 <path fill="none" stroke="#7c0063" d="M804.272,-1091.4429C855.6326,-1037.7247 1007.5476,-878.8366 1067.3824,-816.2553"/>
 <polygon fill="#7c0063" stroke="#7c0063" points="1070.1584,-818.4165 1074.5394,-808.7698 1065.0989,-813.579 1070.1584,-818.4165"/>
