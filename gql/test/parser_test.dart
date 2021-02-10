@@ -2,12 +2,12 @@ import "package:gql/src/language/parser.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
-final throwsSourceSpanException = (
+final Matcher Function(String, int, int, [int, int]) throwsSourceSpanException = (
   String message,
   int startLine,
   int startColumn, [
-  int endLine,
-  int endColumn,
+  int? endLine,
+  int? endColumn,
 ]) =>
     throwsA(
       allOf(
@@ -18,10 +18,10 @@ final throwsSourceSpanException = (
         ),
         predicate(
           (SourceSpanException e) =>
-              e.span.start.line == startLine - 1 &&
-              e.span.start.column == startColumn - 1 &&
-              e.span.end.line == (endLine ?? startLine) - 1 &&
-              e.span.end.column == (endColumn ?? startColumn + 1) - 1,
+              e.span!.start.line == startLine - 1 &&
+              e.span!.start.column == startColumn - 1 &&
+              e.span!.end.line == (endLine ?? startLine) - 1 &&
+              e.span!.end.column == (endColumn ?? startColumn + 1) - 1,
           "span matches",
         ),
       ),

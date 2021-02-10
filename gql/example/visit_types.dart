@@ -31,7 +31,7 @@ void main() {
   print(
     v.types
         .map(
-          (t) => t.name.value,
+          (t) => t.name!.value,
         )
         .join("\n"),
   );
