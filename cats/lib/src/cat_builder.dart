@@ -31,7 +31,7 @@ class CatBuilder {
   Scenario buildScenario(File file, Directory folder) {
     var doc = loadYaml(
       file.readAsStringSync(),
-      sourceUrl: file.path,
+      sourceUrl: Uri.parse(file.path),
     );
 
     var schema;
@@ -67,7 +67,7 @@ class CatBuilder {
     );
   }
 
-  Iterable<TestCase> buildTests(YamlNode node, Directory folder) {
+  Iterable<TestCase>? buildTests(YamlNode? node, Directory folder) {
     if (node is YamlList) {
       return node.map((n) => buildTest(n, folder));
     }
@@ -110,7 +110,7 @@ class CatBuilder {
     );
   }
 
-  Action buildAction(YamlMap node) {
+  Action? buildAction(YamlMap node) {
     if (node.containsKey('parse')) {
       return ParsingAction();
     }
@@ -135,7 +135,7 @@ class CatBuilder {
     return null;
   }
 
-  Iterable<Assertion> buildAssertions(YamlNode node) {
+  Iterable<Assertion?>? buildAssertions(YamlNode? node) {
     if (node is YamlList) {
       return node.map((n) => buildAssertion(n));
     }
@@ -147,17 +147,17 @@ class CatBuilder {
     return null;
   }
 
-  Assertion buildAssertion(YamlNode node) {
+  Assertion? buildAssertion(YamlNode? node) {
     if (node is YamlMap) {
       if (node.containsKey('passes')) {
         return PassesAssertion(
-          passes: node['passes'] as bool,
+          passes: node['passes'] as bool?,
         );
       }
 
       if (node.containsKey('syntax-error')) {
         return SyntaxErrorAssertion(
-          syntaxError: node['syntax-error'] as bool,
+          syntaxError: node['syntax-error'] as bool?,
         );
       }
 
