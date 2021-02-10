@@ -1,7 +1,10 @@
-## 0.1.6
+## 0.1.7
 
 - fix #188, Determine the boundary if `channelGenerator` is null and uri is not null
 - Update the dependent package rxdart to ^0.25.0
+
+## 0.1.6
+
 - Delay requests until connect is done
 
 ## 0.1.5
