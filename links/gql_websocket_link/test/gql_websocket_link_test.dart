@@ -12,6 +12,13 @@ void main() {
   group(
     "WebSocketLink",
     () {
+      test("WebSocketLink Construction with uri isn't null", () {
+        final wsLink = WebSocketLink(
+          "",
+          initialPayload: {"authorization": "Bearer 12345"},
+        );
+      });
+
       test(
         "send connection_init",
         () async {
