@@ -82,7 +82,7 @@ jobs:
           pub global activate uni
       - name: Check pubspec
         run: |
-          melos --scope $PACKAGE pubspec clean
+          melos clean
           melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
       - name: Bootstrap
         run: |
@@ -128,7 +128,7 @@ jobs:
           pub global activate uni
       - name: Check pubspec
         run: |
-          melos --scope $PACKAGE pubspec clean
+          melos clean
           melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
       - name: Bootstrap
         run: |
