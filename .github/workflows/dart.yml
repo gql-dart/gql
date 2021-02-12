@@ -95,7 +95,7 @@ jobs:
           melos --scope $PACKAGE exec -- uni pub run build_runner build --delete-conflicting-outputs
       - name: Check build diff
         run: |
-          melos --scope $PACKAGE exec git diff --exit-code **/*.gql.dart
+          melos --scope $PACKAGE exec -- git diff --exit-code **/*.gql.dart
       - name: Check formatting
         run: |
           echo ""
@@ -141,7 +141,7 @@ jobs:
           melos --scope $PACKAGE exec -- uni pub run build_runner build --delete-conflicting-outputs
       - name: Check build diff
         run: |
-          melos --scope $PACKAGE exec git diff --exit-code **/*.gql.dart
+          melos --scope $PACKAGE exec -- git diff --exit-code **/*.gql.dart
       - name: Check formatting
         run: |
           echo ""
