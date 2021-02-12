@@ -57,7 +57,7 @@ jobs:
           melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
-          melos --scope $PACKAGE exec -- [ ! -d ./test ] && exit 0
+          melos --scope $PACKAGE exec -- [ ! -d ./test ] || exit 0
           melos --scope $PACKAGE exec -- uni test
   examples:
     strategy:
@@ -155,7 +155,7 @@ jobs:
           melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
-          melos --scope $PACKAGE exec -- [ ! -d ./test ] && exit 0
+          melos --scope $PACKAGE exec -- [ ! -d ./test ] || exit 0
           melos --scope $PACKAGE exec -- uni test
 
   publish_dry_run:
