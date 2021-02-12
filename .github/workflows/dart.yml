@@ -54,7 +54,7 @@ jobs:
       - name: Analyze package
         run: |
           melos --scope $PACKAGE exec -- uni analyze --version
-          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
           melos --scope $PACKAGE exec -- [ ! -d ./test ] && exit 0
@@ -106,7 +106,7 @@ jobs:
       - name: Analyze package
         run: |
           melos --scope $PACKAGE exec -- uni analyze --version
-          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
   builder_tests:
     strategy:
       matrix:
@@ -152,7 +152,7 @@ jobs:
       - name: Analyze package
         run: |
           melos --scope $PACKAGE exec -- uni analyze --version
-          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
           melos --scope $PACKAGE exec -- [ ! -d ./test ] && exit 0
