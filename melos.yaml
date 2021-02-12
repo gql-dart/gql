@@ -1,0 +1,8 @@
+name: gql_monorepo
+packages:
+  - cats
+  - codegen/*
+  - examples/*
+  - gql
+  - gql_pedantic
+  - links/*
