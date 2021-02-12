@@ -43,7 +43,7 @@ jobs:
           melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          melos --scope $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Check formatting
         run: |
           echo ""
@@ -89,7 +89,7 @@ jobs:
           melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          melos --scope $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Run builders
         run: |
           melos --scope $PACKAGE pub run build_runner build --delete-conflicting-outputs
@@ -135,7 +135,7 @@ jobs:
           melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          melos --scope $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Run builders
         run: |
           melos --scope $PACKAGE pub run build_runner build --delete-conflicting-outputs
