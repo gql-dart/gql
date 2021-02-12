@@ -3,12 +3,12 @@ import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
 Matcher token({
-  TokenKind kind,
-  int start,
-  int end,
-  int line,
-  int column,
-  String value,
+  required TokenKind kind,
+  required int start,
+  required int end,
+  required int line,
+  required int column,
+  String? value,
 }) =>
     predicate(
       (Token token) =>
@@ -23,17 +23,11 @@ Matcher token({
 
 void main() {
   group("Lexer", () {
-    Lexer lexer;
-
     List<Token> tokenize(String text, {bool skipComments = true}) =>
-        lexer.tokenize(
+        Lexer().tokenize(
           SourceFile.fromString(text, url: "source"),
           skipComments: skipComments,
         );
-
-    setUp(() {
-      lexer = Lexer();
-    });
 
     test("accepts BOM header", () {
       expect(
