@@ -40,7 +40,7 @@ jobs:
           melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
       - name: Bootstrap
         run: |
-          melos bootstrap
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
           melos --scope $PACKAGE pub get
@@ -86,7 +86,7 @@ jobs:
           melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
       - name: Bootstrap
         run: |
-          melos bootstrap
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
           melos --scope $PACKAGE pub get
@@ -132,7 +132,7 @@ jobs:
           melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
       - name: Bootstrap
         run: |
-          melos bootstrap
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
           melos --scope $PACKAGE pub get
