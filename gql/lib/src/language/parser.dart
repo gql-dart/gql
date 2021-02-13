@@ -414,7 +414,8 @@ class _Parser {
     );
   }
 
-  List<ArgumentNode> _parseArguments({required bool isConst}) => _maybeParseMany(
+  List<ArgumentNode> _parseArguments({required bool isConst}) =>
+      _maybeParseMany(
         TokenKind.parenL,
         isConst ? _parseConstArgument : _parseNonConstArgument,
         TokenKind.parenR,
@@ -582,7 +583,7 @@ class _Parser {
 
     final token = _next();
 
-    if (_peek(TokenKind.name) != null) {
+    if (_peek(TokenKind.name)) {
       switch (token!.value) {
         case "schema":
           return _parseSchemaExtension();
