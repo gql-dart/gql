@@ -22,7 +22,7 @@ jobs:
           - gql_example_http_auth_link
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.12-beta
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -67,7 +67,7 @@ jobs:
           - gql_example_build
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.12-beta
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -112,7 +112,7 @@ jobs:
           - end_to_end_test
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.12-beta
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -158,7 +158,7 @@ jobs:
   publish_dry_run:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.12-beta
     env:
       PACKAGES: 'gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link'
       PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
@@ -183,7 +183,7 @@ jobs:
   check_svg:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.12-beta
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
