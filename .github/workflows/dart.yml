@@ -4,6 +4,7 @@ on: pull_request
 jobs:
   packages:
     strategy:
+      fail-fast: false
       matrix:
         package:
           - gql
