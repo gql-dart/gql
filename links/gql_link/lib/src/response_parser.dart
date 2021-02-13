@@ -8,11 +8,11 @@ class ResponseParser {
   ///
   /// Extend this to add non-standard behavior
   Response parseResponse(Map<String, dynamic> body) => Response(
-        errors: (body["errors"] as List)
+        errors: (body["errors"] as List?)
             ?.map(
               (dynamic error) => parseError(error as Map<String, dynamic>),
             )
-            ?.toList(),
+            .toList(),
         data: body["data"] as Map<String, dynamic>,
         context: Context().withEntry(
           ResponseExtensions(
@@ -27,11 +27,11 @@ class ResponseParser {
   GraphQLError parseError(Map<String, dynamic> error) => GraphQLError(
         message: error["message"] as String,
         path: error["path"] as List,
-        locations: (error["locations"] as List)
+        locations: (error["locations"] as List?)
             ?.map(
               (dynamic error) => parseLocation(error as Map<String, dynamic>),
             )
-            ?.toList(),
+            ?.toList()!,
         extensions: error["extensions"] as Map<String, dynamic>,
       );
 
