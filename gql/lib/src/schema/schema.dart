@@ -1,6 +1,6 @@
 import "dart:collection";
 
-import 'package:collection/collection.dart' show IterableExtension;
+import "package:collection/collection.dart" show IterableExtension;
 import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 
@@ -34,7 +34,8 @@ class GraphQLSchema extends TypeSystemDefinition {
   final List<DirectiveDefinition>? directives;
 
   /// Definition for the given directive [name], if any exists
-  DirectiveDefinition? getDirective(String name) => directives!.firstWhereOrNull(
+  DirectiveDefinition? getDirective(String name) =>
+      directives!.firstWhereOrNull(
         (d) => d.name == name,
       );
 

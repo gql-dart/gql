@@ -27,7 +27,6 @@ extension WithTypeName on OperationType {
       case OperationType.subscription:
         return "subscription";
     }
-    throw StateError("Impossible OperationType $this");
   }
 }
 
@@ -117,9 +116,9 @@ class InterfaceTypeDefinition extends TypeDefinitionWithFieldSet
   @override
   FieldDefinition getField(String fieldName) => _fields.firstWhere(
         (field) => field.name == fieldName,
-        orElse: (() => throw StateError(
+        orElse: () => throw StateError(
           "No such field $fieldName on $this",
-        )) as FieldDefinition Function()?,
+        ),
       );
 
   @override
@@ -171,9 +170,9 @@ class ObjectTypeDefinition extends TypeDefinitionWithFieldSet {
   @override
   FieldDefinition getField(String fieldName) => _fields.firstWhere(
         (field) => field.name == fieldName,
-        orElse: (() => throw StateError(
+        orElse: () => throw StateError(
           "No such field $fieldName on $this",
-        )) as FieldDefinition Function()?,
+        ),
       );
 
   List<NamedType> get interfaceNames => astNode.interfaces

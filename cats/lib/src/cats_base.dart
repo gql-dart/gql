@@ -4,7 +4,7 @@ import './cat_model.dart';
 
 abstract class CatDriver<Doc> {
   Doc parse({
-    String? source,
+    required String source,
   });
 
   Iterable<DriverError> validate({
