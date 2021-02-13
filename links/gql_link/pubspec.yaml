@@ -6,10 +6,8 @@ environment:
   sdk: '>=2.12.0-259.9.beta <3.0.0'
 dependencies: 
   meta: ^1.1.7
-  gql: #^0.12.3
-    path: ../../gql
-  gql_exec: #^0.2.5
-    path: ../gql_exec
+  gql: ^0.12.3
+  gql_exec: ^0.2.5
 dev_dependencies: 
   test: ^1.0.0
   mockito: ^4.1.1
