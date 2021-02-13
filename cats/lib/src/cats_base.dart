@@ -13,7 +13,7 @@ abstract class CatDriver<Doc> {
     Iterable<String?>? validationRules,
   });
 
-  execute({
+  dynamic execute({
     Doc? schema,
     dynamic testData,
     Doc? query,
@@ -23,7 +23,7 @@ abstract class CatDriver<Doc> {
 }
 
 class CatRunner<Doc> {
-  CatBuilder _builder = CatBuilder();
+  final _builder = CatBuilder();
   CatDriver<Doc>? driver;
   List? whitelist;
 

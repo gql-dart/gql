@@ -299,12 +299,12 @@ class _Scanner {
 
   int _scanDigits(int offset) {
     var digitOffset = offset;
-    var code = peek(offset: digitOffset)!;
+    var code = peek(offset: digitOffset);
 
-    if (code >= 48 && code <= 57) {
+    if (code != null && code >= 48 && code <= 57) {
       do {
-        code = peek(offset: ++digitOffset)!;
-      } while (code >= 48 && code <= 57);
+        code = peek(offset: ++digitOffset);
+      } while (code != null && code >= 48 && code <= 57);
 
       return digitOffset;
     }
