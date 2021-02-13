@@ -17,7 +17,7 @@ typedef LinkRouter = Link Function(
 /// Used by [Link.function]
 typedef LinkFunction = Stream<Response> Function(
   Request request, [
-  NextLink forward,
+  NextLink? forward,
 ]);
 
 /// [DocumentNode]-based GraphQL execution interface
@@ -93,7 +93,7 @@ abstract class Link {
     ///   the next [Link]
     ///
     /// Terminating [Link]s do not call this function.
-    NextLink forward,
+    NextLink? forward,
   ]);
 }
 
@@ -105,7 +105,7 @@ class _FunctionLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
       function(request, forward);
 }
@@ -118,12 +118,12 @@ class _LinkChain extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
-      links.reversed.fold<NextLink>(
+      links.reversed.fold<NextLink?>(
         forward,
         (fw, link) => (op) => link.request(op, fw),
-      )(request);
+      )!(request);
 }
 
 class _PassthroughLink extends Link {
@@ -132,9 +132,9 @@ class _PassthroughLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
-      forward(request);
+      forward!(request);
 }
 
 class _RouterLink extends Link {
@@ -147,7 +147,7 @@ class _RouterLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) async* {
     final link = routeFn(request);
 

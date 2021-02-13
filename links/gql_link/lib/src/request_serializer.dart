@@ -9,7 +9,7 @@ class RequestSerializer {
   ///
   /// Extend this to add non-standard behavior
   Map<String, dynamic> serializeRequest(Request request) {
-    final RequestExtensionsThunk thunk = request.context.entry();
+    final RequestExtensionsThunk? thunk = request.context.entry();
 
     return <String, dynamic>{
       "operationName": request.operation.operationName,

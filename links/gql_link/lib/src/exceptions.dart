@@ -23,7 +23,7 @@ class RequestFormatException extends LinkException {
   final Request request;
 
   const RequestFormatException({
-    @required this.request,
+    required this.request,
     dynamic originalException,
   }) : super(originalException);
 
@@ -77,7 +77,7 @@ class ServerException extends LinkException {
   final Response parsedResponse;
 
   const ServerException({
-    @required this.parsedResponse,
+    required this.parsedResponse,
     dynamic originalException,
   }) : super(originalException);
 
