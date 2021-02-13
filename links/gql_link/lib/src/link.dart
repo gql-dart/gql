@@ -142,7 +142,7 @@ class _RouterLink extends Link {
 
   const _RouterLink(
     this.routeFn,
-  ) : assert(routeFn != null);
+  );
 
   @override
   Stream<Response> request(

@@ -31,7 +31,7 @@ class ResponseParser {
             ?.map(
               (dynamic error) => parseLocation(error as Map<String, dynamic>),
             )
-            ?.toList()!,
+            .toList(),
         extensions: error["extensions"] as Map<String, dynamic>,
       );
 
