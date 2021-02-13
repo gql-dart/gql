@@ -7,13 +7,13 @@ void _visitOne<R>(
   Node node,
   Visitor<R> v,
 ) =>
-    node?.accept(v);
+    node.accept(v);
 
 void _visitAll<R>(
   List<Node> nodes,
   Visitor<R> v,
 ) =>
-    nodes?.forEach(
+    nodes.forEach(
       (node) => _visitOne(node, v),
     );
 
@@ -68,8 +68,7 @@ class DocumentNode extends Node {
   const DocumentNode({
     this.definitions = const [],
     FileSpan? span,
-  })  : assert(definitions != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitDocumentNode(this);
@@ -144,10 +143,7 @@ class OperationDefinitionNode extends ExecutableDefinitionNode {
     this.directives = const [],
     required this.selectionSet,
     FileSpan? span,
-  })  : assert(variableDefinitions != null),
-        assert(directives != null),
-        assert(selectionSet != null),
-        super(
+  }) : super(
           name: name,
           span: span,
         );
@@ -204,10 +200,7 @@ class FieldNode extends SelectionNode {
     this.directives = const [],
     this.selectionSet,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(arguments != null),
-        assert(directives != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitFieldNode(this);
@@ -231,9 +224,7 @@ class ArgumentNode extends Node {
     required this.name,
     required this.value,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitArgumentNode(this);
@@ -254,9 +245,7 @@ class FragmentSpreadNode extends SelectionNode {
     required this.name,
     this.directives = const [],
     FileSpan? span,
-  })  : assert(name != null),
-        assert(directives != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitFragmentSpreadNode(this);
@@ -280,9 +269,7 @@ class InlineFragmentNode extends SelectionNode {
     this.directives = const [],
     required this.selectionSet,
     FileSpan? span,
-  })  : assert(directives != null),
-        assert(selectionSet != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitInlineFragmentNode(this);
@@ -308,11 +295,7 @@ class FragmentDefinitionNode extends ExecutableDefinitionNode {
     this.directives = const [],
     required this.selectionSet,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(typeCondition != null),
-        assert(directives != null),
-        assert(selectionSet != null),
-        super(
+  }) : super(
           name: name,
           span: span,
         );
@@ -335,8 +318,7 @@ class TypeConditionNode extends Node {
   const TypeConditionNode({
     required this.on,
     FileSpan? span,
-  })  : assert(on != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitTypeConditionNode(this);
@@ -357,8 +339,7 @@ class VariableNode extends ValueNode {
   const VariableNode({
     required this.name,
     FileSpan? span,
-  })  : assert(name != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitVariableNode(this);
@@ -375,8 +356,7 @@ class IntValueNode extends ValueNode {
   const IntValueNode({
     required this.value,
     FileSpan? span,
-  })  : assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitIntValueNode(this);
@@ -393,8 +373,7 @@ class FloatValueNode extends ValueNode {
   const FloatValueNode({
     required this.value,
     FileSpan? span,
-  })  : assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitFloatValueNode(this);
@@ -414,9 +393,7 @@ class StringValueNode extends ValueNode {
     required this.value,
     required this.isBlock,
     FileSpan? span,
-  })  : assert(value != null),
-        assert(isBlock != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitStringValueNode(this);
@@ -434,8 +411,7 @@ class BooleanValueNode extends ValueNode {
   const BooleanValueNode({
     required this.value,
     FileSpan? span,
-  })  : assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitBooleanValueNode(this);
@@ -464,8 +440,7 @@ class EnumValueNode extends ValueNode {
   const EnumValueNode({
     required this.name,
     FileSpan? span,
-  })  : assert(name != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitEnumValueNode(this);
@@ -519,9 +494,7 @@ class ObjectFieldNode extends Node {
     required this.name,
     required this.value,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitObjectFieldNode(this);
@@ -548,10 +521,7 @@ class VariableDefinitionNode extends Node {
     this.defaultValue,
     this.directives = const [],
     FileSpan? span,
-  })  : assert(variable != null),
-        assert(type != null),
-        assert(directives != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitVariableDefinitionNode(this);
@@ -585,9 +555,7 @@ class DefaultValueNode extends Node {
 abstract class TypeNode extends Node {
   final bool isNonNull;
 
-  const TypeNode(this.isNonNull, FileSpan? span)
-      : assert(isNonNull != null),
-        super(span);
+  const TypeNode(this.isNonNull, FileSpan? span) : super(span);
 }
 
 class NamedTypeNode extends TypeNode {
@@ -597,9 +565,7 @@ class NamedTypeNode extends TypeNode {
     required this.name,
     bool isNonNull = false,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(isNonNull != null),
-        super(isNonNull, span);
+  }) : super(isNonNull, span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitNamedTypeNode(this);
@@ -618,9 +584,7 @@ class ListTypeNode extends TypeNode {
     required this.type,
     required bool isNonNull,
     FileSpan? span,
-  })  : assert(type != null),
-        assert(isNonNull != null),
-        super(isNonNull, span);
+  }) : super(isNonNull, span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitListTypeNode(this);
@@ -641,9 +605,7 @@ class DirectiveNode extends Node {
     required this.name,
     this.arguments = const [],
     FileSpan? span,
-  })  : assert(name != null),
-        assert(arguments != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitDirectiveNode(this);
@@ -661,8 +623,7 @@ class NameNode extends Node {
   const NameNode({
     required this.value,
     FileSpan? span,
-  })  : assert(value != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitNameNode(this);
@@ -692,9 +653,7 @@ abstract class TypeDefinitionNode extends TypeSystemDefinitionNode {
     required NameNode name,
     this.directives = const [],
     FileSpan? span,
-  })  : assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           name: name,
           span: span,
         );
@@ -717,9 +676,7 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
     FileSpan? span,
     required NameNode name,
     this.directives = const [],
-  })  : assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           name: name,
           span: span,
         );
@@ -733,9 +690,7 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan? span,
-  })  : assert(directives != null),
-        assert(operationTypes != null),
-        super(
+  }) : super(
           name: null,
           span: span,
         );
@@ -758,9 +713,7 @@ class OperationTypeDefinitionNode extends Node {
     required this.operation,
     required this.type,
     FileSpan? span,
-  })  : assert(operation != null),
-        assert(type != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitOperationTypeDefinitionNode(this);
@@ -778,9 +731,7 @@ class ScalarTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -809,11 +760,7 @@ class ObjectTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(interfaces != null),
-        assert(fields != null),
-        assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -847,11 +794,7 @@ class FieldDefinitionNode extends Node {
     this.args = const [],
     this.directives = const [],
     FileSpan? span,
-  })  : assert(type != null),
-        assert(args != null),
-        assert(name != null),
-        assert(directives != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitFieldDefinitionNode(this);
@@ -880,11 +823,7 @@ class InputValueDefinitionNode extends Node {
     this.defaultValue,
     this.directives = const [],
     FileSpan? span,
-  })  : assert(type != null),
-        assert(name != null),
-        assert(type != null),
-        assert(directives != null),
-        super(span);
+  }) : super(span);
 
   @override
   R accept<R>(Visitor<R> v) => v.visitInputValueDefinitionNode(this);
@@ -908,10 +847,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(fields != null),
-        assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -939,10 +875,7 @@ class UnionTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(types != null),
-        assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -970,10 +903,7 @@ class EnumTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(values != null),
-        assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -1001,10 +931,7 @@ class EnumValueDefinitionNode extends TypeDefinitionNode {
     List<DirectiveNode> directives = const [],
     FileSpan? span,
     this.fallback = false,
-  })  : assert(name != null),
-        assert(directives != null),
-        assert(fallback != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -1031,10 +958,7 @@ class InputObjectTypeDefinitionNode extends TypeDefinitionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(fields != null),
-        assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           description: description,
@@ -1066,11 +990,7 @@ class DirectiveDefinitionNode extends TypeSystemDefinitionNode {
     this.locations = const [],
     this.repeatable = false,
     FileSpan? span,
-  })  : assert(name != null),
-        assert(args != null),
-        assert(locations != null),
-        assert(repeatable != null),
-        super(
+  }) : super(
           name: name,
           span: span,
         );
@@ -1096,9 +1016,7 @@ class SchemaExtensionNode extends TypeSystemExtensionNode {
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan? span,
-  })  : assert(directives != null),
-        assert(operationTypes != null),
-        super(
+  }) : super(
           name: null,
           span: span,
         );
@@ -1119,9 +1037,7 @@ class ScalarTypeExtensionNode extends TypeExtensionNode {
     FileSpan? span,
     required NameNode name,
     List<DirectiveNode> directives = const [],
-  })  : assert(name != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
@@ -1147,11 +1063,7 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
     this.fields = const [],
     FileSpan? span,
     List<DirectiveNode> directives = const [],
-  })  : assert(name != null),
-        assert(interfaces != null),
-        assert(fields != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
@@ -1177,10 +1089,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
     required NameNode name,
     FileSpan? span,
     List<DirectiveNode> directives = const [],
-  })  : assert(name != null),
-        assert(fields != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
@@ -1205,10 +1114,7 @@ class UnionTypeExtensionNode extends TypeExtensionNode {
     required NameNode name,
     List<DirectiveNode> directives = const [],
     FileSpan? span,
-  })  : assert(name != null),
-        assert(types != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
@@ -1233,10 +1139,7 @@ class EnumTypeExtensionNode extends TypeExtensionNode {
     FileSpan? span,
     required NameNode name,
     List<DirectiveNode> directives = const [],
-  })  : assert(name != null),
-        assert(values != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
@@ -1261,10 +1164,7 @@ class InputObjectTypeExtensionNode extends TypeExtensionNode {
     FileSpan? span,
     required NameNode name,
     List<DirectiveNode> directives = const [],
-  })  : assert(name != null),
-        assert(fields != null),
-        assert(directives != null),
-        super(
+  }) : super(
           span: span,
           name: name,
           directives: directives,
