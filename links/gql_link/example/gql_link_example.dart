@@ -17,7 +17,7 @@ class MyLink extends Link {
         [
           Response(
             data: <String, dynamic>{
-              "context": request.context.entry<MyLinkContext>().value,
+              "context": request.context.entry<MyLinkContext>()?.value,
             },
           ),
         ],
