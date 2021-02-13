@@ -16,7 +16,7 @@ class Request {
   final Context context;
 
   const Request({
-    @required this.operation,
+    required this.operation,
     this.variables = const <String, dynamic>{},
     this.context = const Context(),
   })  : assert(operation != null),
@@ -31,7 +31,7 @@ class Request {
 
   /// Clone this request updating an [entry] in the [context]
   Request updateContextEntry<T extends ContextEntry>(
-    ContextUpdater<T> update,
+    ContextUpdater<T?> update,
   ) =>
       Request(
         operation: operation,
@@ -49,7 +49,7 @@ class Request {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is Request &&
-          const ListEquality<Object>(
+          const ListEquality<Object?>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -57,7 +57,7 @@ class Request {
           ));
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),
