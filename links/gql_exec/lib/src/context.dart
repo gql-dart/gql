@@ -20,7 +20,7 @@ abstract class ContextEntry {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o.runtimeType == runtimeType &&
-          const ListEquality<Object>(
+          const ListEquality<Object?>(
             DeepCollectionEquality(),
           ).equals(
             (o as ContextEntry).fieldsForEquality,
@@ -28,7 +28,7 @@ abstract class ContextEntry {
           ));
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash(
         fieldsForEquality,
@@ -41,21 +41,21 @@ abstract class ContextEntry {
 /// Context entries appear only once per type.
 @immutable
 class Context {
-  final Map<Type, ContextEntry> _context;
+  final Map<Type, ContextEntry?> _context;
 
   /// Create an empty context.
   ///
   /// Entries may be added later using [withEntry].
   const Context() : _context = const <Type, ContextEntry>{};
 
-  const Context._fromMap(Map<Type, ContextEntry> context)
+  const Context._fromMap(Map<Type, ContextEntry?> context)
       : _context = context,
         assert(context != null);
 
   /// Creates a context from initial values represented as a map
   ///
   /// Every values runtime [Type] must be exactly the [Type] defined by the key.
-  factory Context.fromMap(Map<Type, ContextEntry> context) {
+  factory Context.fromMap(Map<Type, ContextEntry?> context) {
     assert(
       context.entries.every(
         (entry) => entry.value == null || entry.value.runtimeType == entry.key,
@@ -70,8 +70,7 @@ class Context {
   ///
   /// If more then one entry per type is provided, the last one is used.
   Context.fromList(List<ContextEntry> entries)
-      : assert(entries != null),
-        _context = entries.fold(
+      : _context = entries.fold<Map<Type, ContextEntry>>(
           <Type, ContextEntry>{},
           (ctx, e) => <Type, ContextEntry>{
             ...ctx,
@@ -80,7 +79,7 @@ class Context {
         );
 
   /// Create a [Context] with [entry] added to the existing entries.
-  Context withEntry<T extends ContextEntry>(T entry) {
+  Context withEntry<T extends ContextEntry?>(T entry) {
     if (entry != null && T != entry.runtimeType) {
       throw ArgumentError.value(
         entry,
@@ -90,7 +89,7 @@ class Context {
     }
 
     return Context.fromMap(
-      <Type, ContextEntry>{
+      <Type, ContextEntry?>{
         ..._context,
         T: entry,
       },
@@ -99,9 +98,9 @@ class Context {
 
   /// Create a [Context] by updating entry of type [T]
   Context updateEntry<T extends ContextEntry>(
-    ContextUpdater<T> update,
+    ContextUpdater<T?> update,
   ) =>
-      withEntry<T>(
+      withEntry<T?>(
         update(
           entry<T>(),
         ),
@@ -113,7 +112,7 @@ class Context {
   /// the [defaultValue] is returned.
   ///
   /// If provided, [defaultValue] must exactly match the return type [T].
-  T entry<T extends ContextEntry>([T defaultValue]) {
+  T? entry<T extends ContextEntry?>([T? defaultValue]) {
     if (defaultValue != null && T != defaultValue.runtimeType) {
       throw ArgumentError.value(
         defaultValue,
@@ -121,7 +120,7 @@ class Context {
         "does not match the expected return type '${T}'",
       );
     }
-    return _context.containsKey(T) ? _context[T] as T : defaultValue;
+    return _context.containsKey(T) ? _context[T] as T? : defaultValue;
   }
 
   List<Object> _getChildren() => [
@@ -132,7 +131,7 @@ class Context {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is Context &&
-          const ListEquality<Object>(
+          const ListEquality<Object?>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -140,7 +139,7 @@ class Context {
           ));
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),
