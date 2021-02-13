@@ -70,7 +70,8 @@ void main() {
     });
 
     test("Type dereferencing", () {
-      final starshipsType = schema.query!.getField("starships").type as ListType;
+      final starshipsType =
+          schema.query!.getField("starships").type as ListType;
 
       expect(starshipsType.baseTypeName, equals("Starship"));
 
