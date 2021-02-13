@@ -89,9 +89,9 @@ class _PrintVisitor extends Visitor<String> {
           " ",
           op.name!.accept(this),
         ],
-        if (op.variableDefinitions != null && op.variableDefinitions.isNotEmpty)
+        if (op.variableDefinitions.isNotEmpty)
           visitVariableDefinitionSetNode(op.variableDefinitions),
-        if (op.directives != null && op.directives.isNotEmpty) ...[
+        if (op.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(op.directives),
         ],
@@ -106,8 +106,7 @@ class _PrintVisitor extends Visitor<String> {
   String visitDirectiveNode(DirectiveNode directiveNode) => [
         "@",
         directiveNode.name.accept(this),
-        if (directiveNode.arguments != null &&
-            directiveNode.arguments.isNotEmpty)
+        if (directiveNode.arguments.isNotEmpty)
           visitArgumentSetNode(directiveNode.arguments),
       ].join();
 
@@ -209,45 +208,34 @@ class _PrintVisitor extends Visitor<String> {
       [
         "fragment ",
         fragmentDefinitionNode.name!.accept(this),
-        if (fragmentDefinitionNode.typeCondition != null) ...[
-          " ",
-          fragmentDefinitionNode.typeCondition.accept(this),
-        ],
-        if (fragmentDefinitionNode.directives != null &&
-            fragmentDefinitionNode.directives.isNotEmpty) ...[
+        " ",
+        fragmentDefinitionNode.typeCondition.accept(this),
+        if (fragmentDefinitionNode.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(fragmentDefinitionNode.directives),
         ],
-        if (fragmentDefinitionNode.selectionSet != null) ...[
-          " ",
-          fragmentDefinitionNode.selectionSet.accept(this),
-        ],
+        " ",
+        fragmentDefinitionNode.selectionSet.accept(this),
       ].join();
 
   @override
   String visitInlineFragmentNode(InlineFragmentNode inlineFragmentNode) => [
         "...",
-        if (inlineFragmentNode.typeCondition != null) ...[
-          " ",
-          inlineFragmentNode.typeCondition!.accept(this),
-        ],
-        if (inlineFragmentNode.directives != null &&
-            inlineFragmentNode.directives.isNotEmpty) ...[
+        " ",
+        inlineFragmentNode.typeCondition!.accept(this),
+        if (inlineFragmentNode.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(inlineFragmentNode.directives),
         ],
-        if (inlineFragmentNode.selectionSet != null) ...[
-          " ",
-          inlineFragmentNode.selectionSet.accept(this),
-        ],
+        " ",
+        inlineFragmentNode.selectionSet.accept(this),
       ].join();
 
   @override
   String visitFragmentSpreadNode(FragmentSpreadNode fragmentSpreadNode) => [
         "...",
         fragmentSpreadNode.name.accept(this),
-        if (fragmentSpreadNode.directives != null &&
-            fragmentSpreadNode.directives.isNotEmpty) ...[
+        if (fragmentSpreadNode.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(fragmentSpreadNode.directives),
         ],
@@ -267,10 +255,9 @@ class _PrintVisitor extends Visitor<String> {
           ": ",
         ],
         fieldNode.name.accept(this),
-        if (fieldNode.arguments != null && fieldNode.arguments.isNotEmpty)
+        if (fieldNode.arguments.isNotEmpty)
           visitArgumentSetNode(fieldNode.arguments),
-        if (fieldNode.directives != null &&
-            fieldNode.directives.isNotEmpty) ...[
+        if (fieldNode.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(fieldNode.directives),
         ],
@@ -323,7 +310,7 @@ class _PrintVisitor extends Visitor<String> {
         "scalar",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -395,7 +382,7 @@ class _PrintVisitor extends Visitor<String> {
         ":",
         " ",
         node.type.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) " ",
+        if (node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
       ].join();
 
@@ -434,7 +421,7 @@ class _PrintVisitor extends Visitor<String> {
           " ",
           node.defaultValue!.accept(this),
         ],
-        if (node.directives != null && node.directives.isNotEmpty) " ",
+        if (node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
       ].join();
 
@@ -461,7 +448,7 @@ class _PrintVisitor extends Visitor<String> {
         "union",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -500,7 +487,7 @@ class _PrintVisitor extends Visitor<String> {
         "enum",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -538,7 +525,7 @@ class _PrintVisitor extends Visitor<String> {
           _indent(_tabs),
         ],
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) " ",
+        if (node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
       ].join();
 
@@ -627,11 +614,11 @@ class _PrintVisitor extends Visitor<String> {
         "extend",
         " ",
         "schema",
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
-        if (node.operationTypes != null && node.operationTypes.isNotEmpty) ...[
+        if (node.operationTypes.isNotEmpty) ...[
           " ",
           visitOperationTypeDefinitionSetNode(node.operationTypes),
         ],
@@ -644,7 +631,7 @@ class _PrintVisitor extends Visitor<String> {
         "scalar",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -682,7 +669,7 @@ class _PrintVisitor extends Visitor<String> {
         "union",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -696,7 +683,7 @@ class _PrintVisitor extends Visitor<String> {
         "enum",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -711,7 +698,7 @@ class _PrintVisitor extends Visitor<String> {
         "input",
         " ",
         node.name!.accept(this),
-        if (node.directives != null && node.directives.isNotEmpty) ...[
+        if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
         ],
@@ -728,9 +715,6 @@ String? _opType(OperationType t) {
     case OperationType.subscription:
       return "subscription";
   }
-
-  // dead code to satisfy lint
-  return null;
 }
 
 String? _directiveLocation(DirectiveLocation location) {
@@ -772,7 +756,4 @@ String? _directiveLocation(DirectiveLocation location) {
     case DirectiveLocation.inputFieldDefinition:
       return "INPUT_FIELD_DEFINITION";
   }
-
-  // dead code to satisfy lint
-  return null;
 }
