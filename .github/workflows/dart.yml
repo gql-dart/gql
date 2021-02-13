@@ -17,7 +17,6 @@ jobs:
           - gql_error_link
           - gql_http_link
           - gql_websocket_link
-          - gql_link
           - gql_transform_link
           - cats
           - gql_example_http_auth_link
