@@ -304,7 +304,7 @@ class _Scanner {
     if (code >= 48 && code <= 57) {
       do {
         code = peek(offset: ++digitOffset)!;
-      } while (code != null && code >= 48 && code <= 57);
+      } while (code >= 48 && code <= 57);
 
       return digitOffset;
     }
@@ -352,7 +352,7 @@ class _Scanner {
         );
       }
 
-      if (code == null || (code < 0x0020 && code != 0x0009)) {
+      if (code < 0x0020 && code != 0x0009) {
         throw SourceSpanException(
           "Unexpected character in a string literal",
           src.span(
@@ -429,11 +429,7 @@ class _Scanner {
         );
       }
 
-      if (code == null ||
-          (code < 0x0020 &&
-              code != 0x0009 &&
-              code != 0x000a &&
-              code != 0x000d)) {
+      if (code < 0x0020 && code != 0x0009 && code != 0x000a && code != 0x000d) {
         throw SourceSpanException(
           "Unexpected character in a string literal",
           src.span(position, position),

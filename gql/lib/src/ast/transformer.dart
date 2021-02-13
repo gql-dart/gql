@@ -303,19 +303,16 @@ class _Transformer extends Visitor<Node> {
 
   List<N> _visitAll<N extends Node>(
     List<N> nodes,
-  ) {
-    if (nodes == null) return nodes;
-
-    return nodes
-        .map(
-          (
-            node,
-          ) =>
-              node.accept(this),
-        )
-        .cast<N>()
-        .toList(growable: false);
-  }
+  ) =>
+      nodes
+          .map(
+            (
+              node,
+            ) =>
+                node.accept(this),
+          )
+          .cast<N>()
+          .toList(growable: false);
 
   @override
   DocumentNode visitDocumentNode(
