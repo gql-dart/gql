@@ -21,7 +21,7 @@ class GraphQLError {
     this.locations,
     this.path,
     this.extensions,
-  }) : assert(message != null);
+  });
 
   List<Object?> _getChildren() => [
         message,
@@ -62,8 +62,7 @@ class ErrorLocation {
   const ErrorLocation({
     required this.line,
     required this.column,
-  })  : assert(line != null),
-        assert(column != null);
+  });
 
   List<Object> _getChildren() => [
         line,
