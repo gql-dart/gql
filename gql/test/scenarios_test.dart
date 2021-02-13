@@ -29,7 +29,7 @@ class MyDriver extends CatDriver<ast.DocumentNode> {
     query,
     validationRules,
   }) =>
-      null;
+      [];
 }
 
 void main() {
