@@ -33,7 +33,7 @@ class Scenario {
 class TestCase {
   String? name;
 
-  String? query;
+  String query;
   String? schema;
   Map<String, dynamic>? testData;
 
@@ -43,7 +43,7 @@ class TestCase {
 
   TestCase({
     this.name,
-    this.query,
+    required this.query,
     this.schema,
     this.testData,
     this.action,
