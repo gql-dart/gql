@@ -19,7 +19,7 @@ class Operation {
   const Operation({
     required this.document,
     this.operationName,
-  }) : assert(document != null);
+  });
 
   List<Object?> _getChildren() => [
         document,
