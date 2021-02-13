@@ -19,8 +19,7 @@ class Request {
     required this.operation,
     this.variables = const <String, dynamic>{},
     this.context = const Context(),
-  })  : assert(operation != null),
-        assert(context != null);
+  });
 
   /// Clone this request adding an [entry] to [context]
   Request withContextEntry<T extends ContextEntry>(T entry) => Request(
