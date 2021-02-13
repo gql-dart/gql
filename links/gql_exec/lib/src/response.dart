@@ -73,7 +73,7 @@ class Response {
 @immutable
 class ResponseExtensions extends ContextEntry {
   /// [Response] extensions
-  final Object extensions;
+  final dynamic extensions;
 
   const ResponseExtensions(
     this.extensions,
@@ -81,6 +81,6 @@ class ResponseExtensions extends ContextEntry {
 
   @override
   List<Object> get fieldsForEquality => [
-        extensions,
+        extensions as Object,
       ];
 }
