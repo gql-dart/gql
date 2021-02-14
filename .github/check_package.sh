@@ -36,7 +36,7 @@ multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
 
 # Run tests
 # mockito requires build runner now
-multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
+multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs || true
 multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
 multipack --only $PACKAGE pub run test
 
