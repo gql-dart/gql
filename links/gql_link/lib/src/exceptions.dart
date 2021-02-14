@@ -74,10 +74,10 @@ class ContextWriteException extends LinkException {
 @immutable
 class ServerException extends LinkException {
   /// The parsed response
-  final Response parsedResponse;
+  final Response? parsedResponse;
 
   const ServerException({
-    required this.parsedResponse,
+    this.parsedResponse,
     dynamic originalException,
   }) : super(originalException);
 
