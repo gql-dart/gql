@@ -9,7 +9,7 @@ dependencies:
   gql: ^0.12.4
   code_builder: ^3.3.0
   meta: ^1.1.7
-  built_collection: ^4.0.0
+  built_collection: ^5.0.0
   built_value: ^8.0.0
   path: ^1.6.4
   recase: ^3.0.0
