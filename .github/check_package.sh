@@ -14,13 +14,12 @@ clean_up () {
 
 trap clean_up EXIT
 
-
 # Check pubspec
 multipack --only $PACKAGE pubspec clean
 multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
 
 # Override local dependencies
-multipack pubspec override
+multipack pubspec hard_override
 
 multipack --only $PACKAGE pub get
 
