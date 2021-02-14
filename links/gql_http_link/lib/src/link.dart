@@ -22,7 +22,7 @@ class HttpLinkHeaders extends ContextEntry {
 
   const HttpLinkHeaders({
     this.headers = const {},
-  }) : assert(headers != null);
+  });
 
   @override
   List<Object> get fieldsForEquality => [
@@ -42,8 +42,7 @@ class HttpLinkResponseContext extends ContextEntry {
   const HttpLinkResponseContext({
     required this.statusCode,
     required this.headers,
-  })  : assert(statusCode != null),
-        assert(headers != null);
+  });
 
   @override
   List<Object> get fieldsForEquality => [
