@@ -14,7 +14,7 @@ abstract class ContextEntry {
   const ContextEntry();
 
   /// List of values to be used for equality.
-  List<Object> get fieldsForEquality;
+  List<Object?> get fieldsForEquality;
 
   @override
   bool operator ==(Object o) =>
