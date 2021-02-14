@@ -16,11 +16,3 @@ dev_dependencies:
   mockito: ^5.0.0-nullsafety.7
   gql_pedantic: ^1.0.2
   build_runner: ^1.11.1
-
-dependency_overrides: 
-  gql:
-    path: ../../gql
-  gql_exec: 
-    path: ../gql_exec
-  gql_link:
-    path: ../gql_link
