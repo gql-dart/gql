@@ -15,6 +15,7 @@ dev_dependencies:
   test: ^1.16.2
   mockito: ^5.0.0-nullsafety.7
   gql_pedantic: ^1.0.2
+  build_runner: ^1.11.1
 
 dependency_overrides: 
   gql:

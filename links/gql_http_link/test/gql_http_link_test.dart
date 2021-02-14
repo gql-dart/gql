@@ -10,12 +10,7 @@ import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
 import "./helpers.dart";
-
-class MockClient extends Mock implements http.Client {}
-
-class MockRequestSerializer extends Mock implements RequestSerializer {}
-
-class MockResponseParser extends Mock implements ResponseParser {}
+import "./mocks.dart";
 
 class CustomScalar {
   const CustomScalar(this.value);
@@ -52,7 +47,7 @@ void main() {
 
     test("parses a successful response", () {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -89,7 +84,7 @@ void main() {
 
     test("uses the defined endpoint", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -111,14 +106,14 @@ void main() {
               "expected endpoint",
               Uri.parse("/graphql-test"),
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("uses json mime types", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -143,14 +138,14 @@ void main() {
                 containsPair("Accept", "*/*"),
               ]),
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("adds headers from context", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -188,7 +183,7 @@ void main() {
               "context headers",
               containsPair("foo", "bar"),
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
@@ -204,7 +199,7 @@ void main() {
       );
 
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -235,14 +230,14 @@ void main() {
               "default headers",
               containsPair("foo", "bar"),
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("headers from context override defaults", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -280,14 +275,14 @@ void main() {
               "headers from context",
               containsPair("Content-type", "application/jsonize"),
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("serializes the request", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -309,14 +304,14 @@ void main() {
               "serialized body",
               '{"operationName":null,"variables":{"i":12},"query":"query MyQuery {\\n  \\n}"}',
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("serializes all types", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -368,13 +363,13 @@ void main() {
                   r'"query":"query MyQuery($richInput: RichInput) {\n  \n}"'
                   r"}",
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
     test("parses a successful response with errors", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -439,7 +434,7 @@ void main() {
       });
 
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(data, 300),
@@ -478,7 +473,7 @@ void main() {
       final _response = simpleResponse(data, 200);
 
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           _response,
@@ -527,7 +522,7 @@ void main() {
       final originalException = Exception("Foo bar");
 
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -541,7 +536,7 @@ void main() {
 
       when(
         serializer.serializeRequest(
-          any!,
+          any,
         ),
       ).thenThrow(originalException);
 
@@ -574,7 +569,7 @@ void main() {
 
     test("throws ParserException when unable to serialize request", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -635,7 +630,7 @@ void main() {
 
     test("uses GET for query without files", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -664,14 +659,14 @@ void main() {
               "method",
               "GET",
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
 
     test("uses POST for mutation", () async {
       when(
-        client.send(any!),
+        client.send(any),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -700,7 +695,7 @@ void main() {
               "method",
               "POST",
             ),
-          )!,
+          ),
         ),
       ).called(1);
     });
