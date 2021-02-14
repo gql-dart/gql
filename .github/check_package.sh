@@ -4,12 +4,23 @@ set -e
 
 PACKAGE=$1
 
+git diff --exit-code
+
+clean_up () {
+    ARG=$?
+    git checkout .
+    exit $ARG
+} 
+
+trap clean_up EXIT
+
+
 # Check pubspec
 multipack --only $PACKAGE pubspec clean
 multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
 
 # Override local dependencies
-multipack pubspec hard_override
+multipack pubspec override
 
 multipack --only $PACKAGE pub get
 
@@ -29,3 +40,5 @@ multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
 multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
 multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
 multipack --only $PACKAGE pub run test
+
+git checkout .
