@@ -13,7 +13,7 @@ class ResponseParser {
               (dynamic error) => parseError(error as Map<String, dynamic>),
             )
             .toList(),
-        data: body["data"] as Map<String, dynamic>,
+        data: body["data"] as Map<String, dynamic>?,
         context: Context().withEntry(
           ResponseExtensions(
             body["extensions"],

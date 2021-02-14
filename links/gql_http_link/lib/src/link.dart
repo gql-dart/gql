@@ -9,7 +9,7 @@ import "package:meta/meta.dart";
 import "./_utils.dart";
 import "./exceptions.dart";
 
-typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>>? Function(
+typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
 
 /// HTTP link headers
@@ -152,8 +152,8 @@ class HttpLink extends Link {
 
   Future<Response> _parseHttpResponse(http.Response httpResponse) async {
     try {
-      final responseBody = await httpResponseDecoder(httpResponse)!;
-      return parser.parseResponse(responseBody);
+      final responseBody = await httpResponseDecoder(httpResponse);
+      return parser.parseResponse(responseBody!);
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
