@@ -75,9 +75,9 @@ class ResponseExtensions extends ContextEntry {
   /// [Response] extensions
   final dynamic? extensions;
 
-  const ResponseExtensions(
+  const ResponseExtensions([
     this.extensions,
-  );
+  ]);
 
   @override
   List<Object?> get fieldsForEquality => [
