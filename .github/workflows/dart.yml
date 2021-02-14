@@ -50,6 +50,10 @@ jobs:
           echo ""
           multipack --only $PACKAGE fmt -n . --set-exit-if-changed
           echo ""
+      - name: Run build_runner if necessary
+        run: |
+          multipack --only $PACKAGE pub run \
+            build_runner build --delete-conflicting-outputs || true
       - name: Analyze package
         run: |
           multipack --only $PACKAGE analyze --version
@@ -57,7 +61,6 @@ jobs:
       - name: Run tests
         run: |
           # mockito requires build runner now
-          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs || true
           multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
           multipack --only $PACKAGE pub run test
   examples:
