@@ -5,7 +5,7 @@ import "package:http/http.dart" as http;
 
 http.StreamedResponse simpleResponse(
   String body, [
-  int status,
+  int? status,
   Map<String, String> headers = const {},
 ]) {
   final List<int> bytes = utf8.encode(body);
