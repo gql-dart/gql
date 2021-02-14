@@ -56,6 +56,8 @@ jobs:
           multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
+          # mockito requires build runner now
+          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
           multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
           multipack --only $PACKAGE pub run test
   examples:
