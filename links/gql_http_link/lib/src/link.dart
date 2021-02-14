@@ -9,7 +9,7 @@ import "package:meta/meta.dart";
 import "./_utils.dart";
 import "./exceptions.dart";
 
-typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>> Function(
+typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>>? Function(
     http.Response httpResponse);
 
 /// HTTP link headers
@@ -40,8 +40,8 @@ class HttpLinkResponseContext extends ContextEntry {
   final Map<String, String> headers;
 
   const HttpLinkResponseContext({
-    @required this.statusCode,
-    @required this.headers,
+    required this.statusCode,
+    required this.headers,
   })  : assert(statusCode != null),
         assert(headers != null);
 
@@ -84,15 +84,15 @@ class HttpLink extends Link {
   /// ```
   HttpResponseDecoder httpResponseDecoder;
 
-  static Map<String, dynamic> _defaultHttpResponseDecoder(
+  static Map<String, dynamic>? _defaultHttpResponseDecoder(
           http.Response httpResponse) =>
       json.decode(
         utf8.decode(
           httpResponse.bodyBytes,
         ),
-      ) as Map<String, dynamic>;
+      ) as Map<String, dynamic>?;
 
-  http.Client _httpClient;
+  http.Client? _httpClient;
 
   /// Construct the Link
   ///
@@ -101,7 +101,7 @@ class HttpLink extends Link {
     String uri, {
     this.defaultHeaders = const {},
     this.useGETForQueries = false,
-    http.Client httpClient,
+    http.Client? httpClient,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.httpResponseDecoder = _defaultHttpResponseDecoder,
@@ -112,7 +112,7 @@ class HttpLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) async* {
     final httpResponse = await _executeRequest(request);
 
@@ -153,7 +153,7 @@ class HttpLink extends Link {
 
   Future<Response> _parseHttpResponse(http.Response httpResponse) async {
     try {
-      final responseBody = await httpResponseDecoder(httpResponse);
+      final responseBody = await httpResponseDecoder(httpResponse)!;
       return parser.parseResponse(responseBody);
     } catch (e) {
       throw HttpLinkParserException(
@@ -166,7 +166,7 @@ class HttpLink extends Link {
   Future<http.Response> _executeRequest(Request request) async {
     final httpRequest = _prepareRequest(request);
     try {
-      final response = await _httpClient.send(httpRequest);
+      final response = await _httpClient!.send(httpRequest);
       return http.Response.fromStream(response);
     } catch (e) {
       throw ServerException(
@@ -251,7 +251,7 @@ class HttpLink extends Link {
 
 Map<String, String> _getHttpLinkHeaders(Request request) {
   try {
-    final HttpLinkHeaders linkHeaders = request.context.entry();
+    final HttpLinkHeaders? linkHeaders = request.context.entry();
 
     return {
       if (linkHeaders != null) ...linkHeaders.headers,

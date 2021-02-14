@@ -25,14 +25,14 @@ class CustomScalar {
 
 void main() {
   group("HttpLink", () {
-    MockClient client;
-    Request request;
-    HttpLink link;
+    late MockClient client;
+    late Request request;
+    late HttpLink link;
 
     final Stream<Response> Function([
-      Request customRequest,
+      Request? customRequest,
     ]) execute = ([
-      Request customRequest,
+      Request? customRequest,
     ]) =>
         link.request(customRequest ?? request);
 
@@ -52,7 +52,7 @@ void main() {
 
     test("parses a successful response", () {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -89,7 +89,7 @@ void main() {
 
     test("uses the defined endpoint", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -111,14 +111,14 @@ void main() {
               "expected endpoint",
               Uri.parse("/graphql-test"),
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("uses json mime types", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -143,14 +143,14 @@ void main() {
                 containsPair("Accept", "*/*"),
               ]),
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("adds headers from context", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -188,7 +188,7 @@ void main() {
               "context headers",
               containsPair("foo", "bar"),
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
@@ -204,7 +204,7 @@ void main() {
       );
 
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -235,14 +235,14 @@ void main() {
               "default headers",
               containsPair("foo", "bar"),
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("headers from context override defaults", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -280,14 +280,14 @@ void main() {
               "headers from context",
               containsPair("Content-type", "application/jsonize"),
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("serializes the request", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -309,14 +309,14 @@ void main() {
               "serialized body",
               '{"operationName":null,"variables":{"i":12},"query":"query MyQuery {\\n  \\n}"}',
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("serializes all types", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -368,13 +368,13 @@ void main() {
                   r'"query":"query MyQuery($richInput: RichInput) {\n  \n}"'
                   r"}",
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
     test("parses a successful response with errors", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -439,14 +439,14 @@ void main() {
       });
 
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(data, 300),
         ),
       );
 
-      HttpLinkServerException exception;
+      HttpLinkServerException? exception;
 
       try {
         await execute().first;
@@ -458,7 +458,7 @@ void main() {
         exception,
         TypeMatcher<HttpLinkServerException>(),
       );
-      expect(exception.response.body, data);
+      expect(exception!.response.body, data);
       expect(
         exception.parsedResponse,
         equals(
@@ -478,14 +478,14 @@ void main() {
       final _response = simpleResponse(data, 200);
 
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           _response,
         ),
       );
 
-      HttpLinkServerException exception;
+      HttpLinkServerException? exception;
 
       try {
         await execute().first;
@@ -498,7 +498,7 @@ void main() {
         TypeMatcher<HttpLinkServerException>(),
       );
       expect(
-        exception.response.body,
+        exception!.response.body,
         data,
       );
       expect(
@@ -527,7 +527,7 @@ void main() {
       final originalException = Exception("Foo bar");
 
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -541,11 +541,11 @@ void main() {
 
       when(
         serializer.serializeRequest(
-          any,
+          any!,
         ),
       ).thenThrow(originalException);
 
-      RequestFormatException exception;
+      RequestFormatException? exception;
 
       try {
         await link
@@ -567,14 +567,14 @@ void main() {
         TypeMatcher<RequestFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         originalException,
       );
     });
 
     test("throws ParserException when unable to serialize request", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -584,7 +584,7 @@ void main() {
         ),
       );
 
-      ResponseFormatException exception;
+      ResponseFormatException? exception;
 
       try {
         await link
@@ -606,7 +606,7 @@ void main() {
         TypeMatcher<ResponseFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         TypeMatcher<FormatException>(),
       );
     });
@@ -621,8 +621,8 @@ void main() {
   });
 
   group("HttpLink useGETForQueries", () {
-    MockClient client;
-    HttpLink link;
+    late MockClient client;
+    late HttpLink link;
 
     setUp(() {
       client = MockClient();
@@ -635,7 +635,7 @@ void main() {
 
     test("uses GET for query without files", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -664,14 +664,14 @@ void main() {
               "method",
               "GET",
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
 
     test("uses POST for mutation", () async {
       when(
-        client.send(any),
+        client.send(any!),
       ).thenAnswer(
         (_) => Future.value(
           simpleResponse(
@@ -700,7 +700,7 @@ void main() {
               "method",
               "POST",
             ),
-          ),
+          )!,
         ),
       ).called(1);
     });
