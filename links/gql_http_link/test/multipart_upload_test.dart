@@ -19,8 +19,8 @@ class MockRequestSerializer extends Mock implements RequestSerializer {}
 class MockResponseParser extends Mock implements ResponseParser {}
 
 void main() {
-  MockClient mockHttpClient;
-  HttpLink httpLink;
+  MockClient? mockHttpClient;
+  late HttpLink httpLink;
 
   const String uploadMutation = r"""
     mutation($files: [Upload!]!) {
@@ -82,7 +82,7 @@ void main() {
       ];
 
   group("upload", () {
-    Request gqlRequest;
+    late Request gqlRequest;
     setUp(() {
       mockHttpClient = MockClient();
 
@@ -102,9 +102,9 @@ void main() {
     });
 
     test("request encoding", () async {
-      Uint8List bodyBytes;
+      Uint8List? bodyBytes;
       when(
-        mockHttpClient.send(any),
+        mockHttpClient!.send(any!),
       ).thenAnswer((i) async {
         bodyBytes = await (i.positionalArguments[0] as http.BaseRequest)
             .finalize()
@@ -115,11 +115,11 @@ void main() {
       await httpLink.request(gqlRequest).first;
 
       final http.MultipartRequest request = verify(
-        mockHttpClient.send(captureAny),
+        mockHttpClient!.send(captureAny!),
       ).captured.first as http.MultipartRequest;
 
       final List<String> contentTypeStringSplit =
-          request.headers["content-type"].split("; boundary=");
+          request.headers["content-type"]!.split("; boundary=");
 
       expect(request.method, "POST");
       expect(request.url.toString(), "http://localhost:3001/graphql");
@@ -169,14 +169,14 @@ void main() {
 
     test("response data", () async {
       when(
-        mockHttpClient.send(any),
+        mockHttpClient!.send(any!),
       ).thenAnswer(
         (i) async => simpleResponse(expectedResponse),
       );
 
       final response = await httpLink.request(gqlRequest).first;
 
-      final multipleUpload = (response.data["multipleUpload"] as List<dynamic>)
+      final multipleUpload = (response.data!["multipleUpload"] as List<dynamic>)
           .cast<Map<String, dynamic>>();
 
       expect(multipleUpload, <Map<String, String>>[
@@ -208,9 +208,9 @@ void main() {
     });
 
     test("query request encoding with files", () async {
-      Uint8List bodyBytes;
+      Uint8List? bodyBytes;
       when(
-        mockHttpClient.send(any),
+        mockHttpClient!.send(any!),
       ).thenAnswer((i) async {
         bodyBytes = await (i.positionalArguments[0] as http.BaseRequest)
             .finalize()
@@ -230,11 +230,11 @@ void main() {
       await httpLink.request(gqlQueryWithFiles).first;
 
       final http.MultipartRequest request = verify(
-        mockHttpClient.send(captureAny),
+        mockHttpClient!.send(captureAny!),
       ).captured.first as http.MultipartRequest;
 
       final List<String> contentTypeStringSplit =
-          request.headers["content-type"].split("; boundary=");
+          request.headers["content-type"]!.split("; boundary=");
 
       expect(request.method, "POST");
       expect(request.url.toString(), "http://localhost:3001/graphql");
