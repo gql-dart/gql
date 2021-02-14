@@ -20,7 +20,7 @@ class CustomScalar {
 
 void main() {
   group("HttpLink", () {
-    late MockClient client;
+    late MockHttpClient client;
     late Request request;
     late HttpLink link;
 
@@ -32,7 +32,7 @@ void main() {
         link.request(customRequest ?? request);
 
     setUp(() {
-      client = MockClient();
+      client = MockHttpClient();
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
@@ -189,7 +189,7 @@ void main() {
     });
 
     test("adds default headers", () async {
-      final client = MockClient();
+      final client = MockHttpClient();
       final link = HttpLink(
         "/graphql-test",
         httpClient: client,
@@ -484,8 +484,8 @@ void main() {
 
       try {
         await execute().first;
-      } catch (e) {
-        exception = e as HttpLinkServerException;
+      } on HttpLinkServerException catch (e) {
+        exception = e;
       }
 
       expect(
@@ -511,7 +511,7 @@ void main() {
 
     test("throws SerializerException when unable to serialize request",
         () async {
-      final client = MockClient();
+      final client = MockHttpClient();
       final serializer = MockRequestSerializer();
       final link = HttpLink(
         "/graphql-test",
@@ -616,11 +616,11 @@ void main() {
   });
 
   group("HttpLink useGETForQueries", () {
-    late MockClient client;
+    late MockHttpClient client;
     late HttpLink link;
 
     setUp(() {
-      client = MockClient();
+      client = MockHttpClient();
       link = HttpLink(
         "/graphql-test",
         httpClient: client,

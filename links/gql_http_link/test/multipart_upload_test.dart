@@ -13,7 +13,7 @@ import "./helpers.dart";
 import "./mocks/mocks.dart";
 
 void main() {
-  MockClient? mockHttpClient;
+  MockHttpClient? mockHttpClient;
   late HttpLink httpLink;
 
   const String uploadMutation = r"""
@@ -78,7 +78,7 @@ void main() {
   group("upload", () {
     late Request gqlRequest;
     setUp(() {
-      mockHttpClient = MockClient();
+      mockHttpClient = MockHttpClient();
 
       httpLink = HttpLink(
         "http://localhost:3001/graphql",
@@ -192,7 +192,7 @@ void main() {
 
   group("file upload useGETForQueries behavior", () {
     setUp(() {
-      mockHttpClient = MockClient();
+      mockHttpClient = MockHttpClient();
 
       httpLink = HttpLink(
         "http://localhost:3001/graphql",
