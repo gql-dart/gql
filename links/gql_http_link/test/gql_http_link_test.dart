@@ -10,7 +10,7 @@ import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
 import "./helpers.dart";
-import "./mocks.dart";
+import "./mocks/mocks.dart";
 
 class CustomScalar {
   const CustomScalar(this.value);
