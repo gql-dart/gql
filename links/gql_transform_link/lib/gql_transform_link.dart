@@ -11,8 +11,8 @@ typedef ResponseTransformer = Response Function(Response response);
 
 /// A [Link] to transform [Request]s and [Response]s
 class TransformLink extends Link {
-  final RequestTransformer requestTransformer;
-  final ResponseTransformer responseTransformer;
+  final RequestTransformer? requestTransformer;
+  final ResponseTransformer? responseTransformer;
 
   TransformLink({
     this.requestTransformer,
@@ -22,15 +22,15 @@ class TransformLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) {
     final req =
-        requestTransformer != null ? requestTransformer(request) : request;
+        requestTransformer != null ? requestTransformer!(request) : request;
 
     if (responseTransformer == null) {
-      return forward(req);
+      return forward!(req);
     }
 
-    return forward(req).map(responseTransformer);
+    return forward!(req).map(responseTransformer!);
   }
 }
