@@ -6,6 +6,7 @@
 [![Star on GitHub][github-star-badge]][github-star-link]
 [![Watch on GitHub][github-forks-badge]][github-forks-link]
 [![Discord][discord-badge]][discord-link]
+[![Melos][melos-badge]][melos-link]
 
 [license-badge]: https://img.shields.io/github/license/gql-dart/gql.svg?style=for-the-badge
 [license-link]: https://github.com/gql-dart/gql/blob/master/LICENSE
@@ -21,6 +22,8 @@
 
 [discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
 [discord-link]: https://discord.gg/NryjpVa
+[melos-badge]: https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=for-the-badge
+[melos-link]: https://github.com/invertase/melos
 
 
 This is an effort to advance the Dart GraphQL ecosystem.
@@ -154,31 +157,18 @@ and to build a community around this vendor-neutral implementation.
 
 Community contributions are welcome.
 
-### `multipack`
-This repo uses [`multipack`](https://github.com/gql-dart/multipack). To activate it run the following command.
+### `melos`
+This repo uses [`melos`](https://docs.page/invertase/melos) for monorepo management. To activate it run the following command.
 ```bash
-pub global activate multipack
+dart pub global activate melos
 ```
 
-`multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
-to run commands in topological order.
-
-Link all local packages by running
+Start your work by [bootstrapping the monorepo](https://docs.page/invertase/melos/getting-started#bootstrapping). 
 ```bash
-multipack pubspec override
+melos bootstrap
 ```
 
-Get all packages by running
-```bash
-multipack pub get
-```
-
-Clean up the pubspec file before publishing
-```bash
-multipack pubspec clean
-```
-
-See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
+See more usage examples of `melos` in [.github/workflows/dart.yml](.github/workflows/dart.yml).
 
 ## Features and bugs
 

@@ -29,35 +29,36 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      - name: Activate multipack
+      - name: Activate tools
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          pub global activate melos
+          pub global activate uni
       - name: Check pubspec
         run: |
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
+          melos clean
+          melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
+      - name: Bootstrap
         run: |
-          multipack pubspec hard_override
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          multipack --only $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Check formatting
         run: |
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          melos --scope $PACKAGE exec -- uni --tooling legacy format -n . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --version
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
-          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
-          multipack --only $PACKAGE pub run test
+          melos --scope $PACKAGE exec -- [ -d ./test ] || exit 0
+          melos --scope $PACKAGE exec -- uni test
   examples:
     strategy:
       matrix:
@@ -74,37 +75,38 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      - name: Activate multipack
+      - name: Activate tools
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          pub global activate melos
+          pub global activate uni
       - name: Check pubspec
         run: |
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
+          melos clean
+          melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
+      - name: Bootstrap
         run: |
-          multipack pubspec hard_override
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          multipack --only $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Run builders
         run: |
-          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
+          melos --scope $PACKAGE exec -- uni pub run build_runner build --delete-conflicting-outputs
       - name: Check build diff
         run: |
-          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+          melos --scope $PACKAGE exec -- git diff --exit-code **/*.gql.dart
       - name: Check formatting
         run: |
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          melos --scope $PACKAGE exec -- uni --tooling legacy format -n . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --version
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
   builder_tests:
     strategy:
       matrix:
@@ -119,41 +121,42 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      - name: Activate multipack
+      - name: Activate tools
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          pub global activate melos
+          pub global activate uni
       - name: Check pubspec
         run: |
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
+          melos clean
+          melos --scope $PACKAGE exec -- git diff --exit-code pubspec.yaml
+      - name: Bootstrap
         run: |
-          multipack pubspec hard_override
+          melos --scope $PACKAGE bootstrap
       - name: Get dependencies
         run: |
-          multipack --only $PACKAGE pub get
+          melos --scope $PACKAGE exec -- uni pub get
       - name: Run builders
         run: |
-          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
+          melos --scope $PACKAGE exec -- uni pub run build_runner build --delete-conflicting-outputs
       - name: Check build diff
         run: |
-          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+          melos --scope $PACKAGE exec -- git diff --exit-code **/*.gql.dart
       - name: Check formatting
         run: |
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          melos --scope $PACKAGE exec -- uni --tooling legacy format -n . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          melos --scope $PACKAGE exec -- uni analyze --version
+          melos --scope $PACKAGE exec -- uni analyze --fatal-warnings .
       - name: Run tests
         run: |
-          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
-          multipack --only $PACKAGE pub run test
+          melos --scope $PACKAGE exec -- [ -d ./test ] || exit 0
+          melos --scope $PACKAGE exec -- uni test
 
   publish_dry_run:
     runs-on: ubuntu-latest
@@ -166,7 +169,7 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      - name: Activate multipack
+      - name: Activate tools
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
           pub global activate multipack
@@ -191,13 +194,13 @@ jobs:
         run: |
           apt update
           apt install -y graphviz
-      - name: Activate multipack
+      - name: Activate tools
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          pub global activate melos
       - name: Generate SVG
         run: |
-          multipack info | dot -Tsvg -o docs/gql.svg
+          melos list --gviz | dot -Tsvg -o docs/gql.svg
           cat docs/gql.svg
       - name: Check changes
         run: |
