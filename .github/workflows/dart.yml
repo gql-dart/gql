@@ -96,7 +96,8 @@ jobs:
           multipack --only $PACKAGE pub get
       - name: Run builders
         run: |
-          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
+          multipack --only $PACKAGE pub run \
+            build_runner build --delete-conflicting-outputs || true
       - name: Check build diff
         run: |
           multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
