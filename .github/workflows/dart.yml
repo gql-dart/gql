@@ -19,7 +19,6 @@ jobs:
           - gql_websocket_link
           - gql_transform_link
           - cats
-          - gql_example_http_auth_link
     runs-on: ubuntu-latest
     container:
       image: google/dart:2.12-beta
@@ -60,7 +59,6 @@ jobs:
           multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
-          # mockito requires build runner now
           multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
           multipack --only $PACKAGE pub run test
   examples:
@@ -70,6 +68,9 @@ jobs:
           - gql_example_cli
           - gql_example_cli_github
           - gql_example_build
+          - gql_example_http_auth_link
+          - gql_example_dio_link
+          # gql_example_flutter would require flutter
     runs-on: ubuntu-latest
     container:
       image: google/dart:2.12-beta
