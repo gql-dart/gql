@@ -5,7 +5,6 @@ import "package:gql_dedupe_link/gql_dedupe_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:mockito/mockito.dart";
-import "package:mockito/annotations.dart";
 import "package:test/test.dart";
 
 class MockLink extends Mock implements Link {
@@ -19,7 +18,6 @@ class MockLink extends Mock implements Link {
       ) as Stream<Response>;
 }
 
-@GenerateMocks([Link])
 void main() {
   group("DedupeLink", () {
     test("executes a request", () async {
