@@ -224,7 +224,7 @@ abstract class TypeSystemDefinition extends GraphQLEntity {
   @override
   TypeSystemDefinitionNode? get astNode;
 
-  String? get name => astNode!.name!.value;
+  String? get name;
 }
 
 /// The fundamental unit of any GraphQL Schema ([spec](https://spec.graphql.org/June2018/#TypeDefinition)).
@@ -261,6 +261,9 @@ abstract class TypeDefinition extends TypeSystemDefinition {
 
   @override
   TypeDefinitionNode get astNode;
+
+  @override
+  String? get name => astNode.name.value;
 
   String? get description => astNode.description?.value;
 

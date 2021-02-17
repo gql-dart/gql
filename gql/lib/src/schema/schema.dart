@@ -29,6 +29,9 @@ class GraphQLSchema extends TypeSystemDefinition {
   @override
   final SchemaDefinitionNode? astNode;
 
+  @override
+  String? get name => null;
+
   final DocumentNode? fullDocumentAst;
 
   final List<DirectiveDefinition>? directives;
