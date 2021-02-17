@@ -645,5 +645,87 @@ void main() {
         client.close(force: true),
       ).called(1);
     });
+
+    test(
+        "throws HttpLinkServerException if response status not in specified success status list",
+        () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 201,
+          ),
+        ),
+      );
+
+      DioLinkServerException exception;
+
+      try {
+        await DioLink("/graphql-test", client: client, successStatuses: [200])
+            .request(
+              Request(
+                operation: Operation(
+                  document: parseString("query MyQuery {}"),
+                ),
+                variables: const <String, dynamic>{"i": 12},
+              ),
+            )
+            .first;
+      } catch (e) {
+        exception = e as DioLinkServerException;
+      }
+
+      expect(
+        exception,
+        TypeMatcher<DioLinkServerException>(),
+      );
+    });
+
+    test("succeeds if response status in specified success status list",
+        () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": {"test": "value"},
+            },
+            statusCode: 200,
+          ),
+        ),
+      );
+
+      DioLinkServerException exception;
+
+      final response =
+          await DioLink("/graphql-test", client: client, successStatuses: [200])
+              .request(
+                Request(
+                  operation: Operation(
+                    document: parseString("query MyQuery {}"),
+                  ),
+                  variables: const <String, dynamic>{"i": 12},
+                ),
+              )
+              .first;
+
+      expect(
+        response.data,
+        {"test": "value"},
+      );
+    });
   });
 }

@@ -71,12 +71,15 @@ class DioLink extends Link {
   /// Dio client instance.
   final dio.Dio client;
 
+  final List<int> successStatuses;
+
   DioLink(
     this.endpoint, {
     @required this.client,
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.successStatuses,
   }) : assert(client != null);
 
   @override
@@ -91,7 +94,10 @@ class DioLink extends Link {
       },
     );
 
-    if (dioResponse.statusCode >= 300 ||
+    final success = successStatuses?.contains(dioResponse.statusCode) ??
+        dioResponse.statusCode < 300;
+
+    if (!success ||
         (dioResponse.data["data"] == null &&
             dioResponse.data["errors"] == null)) {
       throw DioLinkServerException(
