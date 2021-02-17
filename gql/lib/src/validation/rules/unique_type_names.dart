@@ -14,13 +14,13 @@ class UniqueTypeNames extends ValidatingVisitor {
   List<String> typeDefinitionsNames = [];
 
   List<ValidationError> _visitTypeDefinitionNode(TypeDefinitionNode node) {
-    if (typeDefinitionsNames.contains(node.name!.value)) {
+    if (typeDefinitionsNames.contains(node.name.value)) {
       return [
         DuplicateTypeNameError(node: node),
       ];
     }
 
-    typeDefinitionsNames.add(node.name!.value);
+    typeDefinitionsNames.add(node.name.value);
 
     return [];
   }

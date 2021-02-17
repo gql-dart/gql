@@ -31,7 +31,7 @@ class UniqueEnumValueNames extends ValidatingVisitor {
       node.values.fold<_Accumulator>(
         _Accumulator(),
         (fold, node) {
-          if (fold.valueNames.contains(node.name!.value)) {
+          if (fold.valueNames.contains(node.name.value)) {
             return _Accumulator(
               valueNames: fold.valueNames,
               errors: [
@@ -47,7 +47,7 @@ class UniqueEnumValueNames extends ValidatingVisitor {
           return _Accumulator(
             valueNames: [
               ...fold.valueNames,
-              node.name!.value,
+              node.name.value,
             ],
             errors: fold.errors,
           );

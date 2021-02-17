@@ -65,7 +65,7 @@ Map<String, FragmentDefinitionNode> _collectImportedFragmentNodes(
           .whereType<FragmentDefinitionNode>()
           .map(
             (fragmentNode) => MapEntry(
-              fragmentNode.name!.value,
+              fragmentNode.name.value,
               fragmentNode,
             ),
           ),

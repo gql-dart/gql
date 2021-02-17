@@ -207,7 +207,7 @@ class _PrintVisitor extends Visitor<String> {
           FragmentDefinitionNode fragmentDefinitionNode) =>
       [
         "fragment ",
-        fragmentDefinitionNode.name!.accept(this),
+        fragmentDefinitionNode.name.accept(this),
         " ",
         fragmentDefinitionNode.typeCondition.accept(this),
         if (fragmentDefinitionNode.directives.isNotEmpty) ...[
@@ -309,7 +309,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "scalar",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -324,7 +324,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "type",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         " ",
         visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
@@ -433,7 +433,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "interface",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
@@ -447,7 +447,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "union",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -486,7 +486,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "enum",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -524,7 +524,7 @@ class _PrintVisitor extends Visitor<String> {
           "\n",
           _indent(_tabs),
         ],
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) " ",
         visitDirectiveSetNode(node.directives),
       ].join();
@@ -539,7 +539,7 @@ class _PrintVisitor extends Visitor<String> {
         ],
         "input",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitInputValueDefinitionSetNode(node.fields),
@@ -576,7 +576,7 @@ class _PrintVisitor extends Visitor<String> {
         "directive",
         " ",
         "@",
-        node.name!.accept(this),
+        node.name.accept(this),
         visitArgumentDefinitionSetNode(node.args),
         if (node.repeatable) ...[
           " ",
@@ -630,7 +630,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "scalar",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -643,7 +643,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "type",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         " ",
         visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
@@ -656,7 +656,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "interface",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         " ",
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
@@ -668,7 +668,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "union",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -682,7 +682,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "enum",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
@@ -697,7 +697,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         "input",
         " ",
-        node.name!.accept(this),
+        node.name.accept(this),
         if (node.directives.isNotEmpty) ...[
           " ",
           visitDirectiveSetNode(node.directives),
