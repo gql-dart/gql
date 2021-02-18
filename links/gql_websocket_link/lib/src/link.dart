@@ -93,7 +93,8 @@ class WebSocketLink extends Link {
 
   // Possible states of the connection.
   static const int closed = 0;
-  static const int open = 1;
+  static const int connecting = 1;
+  static const int open = 2;
   final BehaviorSubject<int> _connectionStateController =
       BehaviorSubject<int>.seeded(closed);
 
@@ -118,14 +119,13 @@ class WebSocketLink extends Link {
     this.graphQLSocketMessageDecoder = _defaultGraphQLSocketMessageDecoder,
     this.initialPayload,
     this.inactivityTimeout,
-  })  : assert(uri == null || (channelGenerator == null)) {
+  }) : assert(uri == null || (channelGenerator == null)) {
     if (uri != null) {
-    _uri = uri;
-  } else {
+      _uri = uri;
+    } else {
       _channelGenerator =
           channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(_uri));
     }
-    _connectionStateController.value = closed;
   }
 
   @override
@@ -144,17 +144,18 @@ class WebSocketLink extends Link {
 
     response.onListen = () {
       final Stream<int> waitForConnectedState =
-      _connectionStateController.where((state) => state == open).take(1);
+          _connectionStateController.where((state) => state == open).take(1);
+
       waitForConnectedState.listen((_) {
         // listen for response messages
         messagesSubscription = _messagesController.stream
             .where((message) =>
-        (message is SubscriptionData && message.id == id) ||
-            (message is SubscriptionError && message.id == id) ||
-            (message is SubscriptionComplete && message.id == id))
+                (message is SubscriptionData && message.id == id) ||
+                (message is SubscriptionError && message.id == id) ||
+                (message is SubscriptionComplete && message.id == id))
             .takeWhile((_) => !response.isClosed)
             .listen(
-              (message) {
+          (message) {
             if (message is SubscriptionData || message is SubscriptionError) {
               try {
                 final parsed = _parseMessage(message);
@@ -175,12 +176,12 @@ class WebSocketLink extends Link {
           },
         );
         // Send the request.
-      _write(
-        StartOperation(
-          id,
-          serializer.serializeRequest(requestWithContext),
-        ),
-      );
+        _write(
+          StartOperation(
+            id,
+            serializer.serializeRequest(requestWithContext),
+          ),
+        );
       });
     };
 
@@ -196,10 +197,9 @@ class WebSocketLink extends Link {
   /// Connects to the server.
   Future<void> _connect() async {
     try {
+      _connectionStateController.add(connecting);
       _channel = await _channelGenerator();
-
       _reconnectTimer?.cancel();
-
       _channel.stream.listen((dynamic message) async {
         final parsedMessage = await _parseSocketMessage(message);
         _messagesController.add(parsedMessage);
