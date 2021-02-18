@@ -95,9 +95,12 @@ class WebSocketLink extends Link {
     this.initialPayload,
     this.inactivityTimeout,
   }) : assert(uri == null || (channel == null && channelGenerator == null)) {
-    _uri = uri;
-    _channelGenerator = channelGenerator;
-    _channel = channel ?? _channelGenerator();
+    if (uri != null) {
+      _uri = uri;
+    } else {
+      _channelGenerator = channelGenerator;
+      _channel = channel ?? _channelGenerator();
+    }
     _connectionStateController.value = closed;
   }
 
@@ -106,14 +109,13 @@ class WebSocketLink extends Link {
     if (_channel == null || _connectionStateController.value == closed) {
       await _connect();
     }
+
     final StreamController<Response> response = StreamController();
     final String id = Uuid.randomUuid().toString();
 
     response.onListen = () {
-      final Stream<int> waitForConnectedState = _connectionStateController
-          .startWith(open)
-          .where((state) => state == open)
-          .take(1);
+      final Stream<int> waitForConnectedState =
+          _connectionStateController.where((state) => state == open).take(1);
 
       waitForConnectedState.listen(
         (_) {
@@ -194,8 +196,6 @@ class WebSocketLink extends Link {
     try {
       _channel ??= WebSocketChannel.connect(Uri.parse(_uri));
 
-      _connectionStateController.value = open;
-
       _messageStream =
           _channel.stream.asBroadcastStream().asyncMap(_parseSocketMessage);
       _messageSubscription = _messageStream.listen(
@@ -214,6 +214,8 @@ class WebSocketLink extends Link {
       } else {
         _write(InitOperation(initialPayload));
       }
+
+      _connectionStateController.value = open;
 
       // inactivityTimeout
       if (inactivityTimeout != null) {
