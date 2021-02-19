@@ -59,7 +59,7 @@ jobs:
           multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
-          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
+          multipack --only $PACKAGE exec [ -d ./test ] || exit 0
           multipack --only $PACKAGE pub run test
   examples:
     strategy:
@@ -159,7 +159,7 @@ jobs:
           multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
-          multipack --only $PACKAGE exec [ ! -d ./test ] && exit 0
+          multipack --only $PACKAGE exec [ -d ./test ] || exit 0
           multipack --only $PACKAGE pub run test
 
   publish_dry_run:
