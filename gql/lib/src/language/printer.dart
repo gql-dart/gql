@@ -568,22 +568,25 @@ class _PrintVisitor extends Visitor<String> {
             ].join();
 
   @override
-  String visitDirectiveDefinitionNode(DirectiveDefinitionNode node) => [
-        if (node.description != null) ...[
-          node.description!.accept(this),
-          "\n",
-        ],
-        "directive",
+  String visitDirectiveDefinitionNode(DirectiveDefinitionNode node) {
+    final description = node.description;
+    return [
+      if (description != null) ...[
+        description.accept(this),
+        "\n",
+      ],
+      "directive",
+      " ",
+      "@",
+      node.name.accept(this),
+      visitArgumentDefinitionSetNode(node.args),
+      if (node.repeatable) ...[
         " ",
-        "@",
-        node.name.accept(this),
-        visitArgumentDefinitionSetNode(node.args),
-        if (node.repeatable) ...[
-          " ",
-          "repeatable",
-        ],
-        visitDirectiveLocationSetNode(node.locations),
-      ].join();
+        "repeatable",
+      ],
+      visitDirectiveLocationSetNode(node.locations),
+    ].join();
+  }
 
   String visitDirectiveLocationSetNode(Iterable<DirectiveLocation> locations) =>
       locations.isEmpty
