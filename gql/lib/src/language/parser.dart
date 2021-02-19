@@ -52,21 +52,21 @@ class _Parser {
   }
 
   Token _expectToken(TokenKind kind, [String? errorMessage]) {
-    final next = _next()!;
-    if (next.kind == kind) {
+    final next = _next();
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected $kind",
-      _next()!.span,
+      _next()?.span,
     );
   }
 
   Token? _expectOptionalToken(TokenKind kind) {
-    final next = _next()!;
-    if (next.kind == kind) {
+    final next = _next();
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
@@ -75,21 +75,21 @@ class _Parser {
   }
 
   Token _expectKeyword(String value, [String? errorMessage]) {
-    final next = _next()!;
-    if (next.kind == TokenKind.name && next.value == value) {
+    final next = _next();
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected keyword '$value'",
-      _next()!.span,
+      _next()?.span,
     );
   }
 
   Token? _expectOptionalKeyword(String value) {
-    final next = _next()!;
-    if (next.kind == TokenKind.name && next.value == value) {
+    final next = _next();
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
@@ -173,8 +173,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown definition type '${_next()!.value}'",
-      _next()!.span,
+      "Unknown definition type '${_next()?.value}'",
+      _next()?.span,
     );
   }
 
@@ -193,8 +193,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown executable definition '${_next()!.value}'",
-      _next()!.span,
+      "Unknown executable definition '${_next()?.value}'",
+      _next()?.span,
     );
   }
 
