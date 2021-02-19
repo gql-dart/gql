@@ -766,7 +766,7 @@ abstract class RecursiveVisitor implements Visitor<void> {
 /// traversing the AST only once and collecting the return
 /// values in the `accumulator`.
 class AccumulatingVisitor<A> extends RecursiveVisitor {
-  List<SimpleVisitor<List<A>>?> visitors;
+  List<SimpleVisitor<List<A>>> visitors;
   List<A> accumulator = [];
 
   AccumulatingVisitor({
