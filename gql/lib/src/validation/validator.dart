@@ -123,17 +123,21 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
 }
 
 class _Validator {
-  Set<ValidationRule>? rules;
+  Set<ValidationRule> rules;
 
   _Validator({
-    this.rules,
+    this.rules = const {},
   });
 
   List<ValidationError> validate({
     required ast.Node node,
   }) {
     final visitor = ast.AccumulatingVisitor<ValidationError>(
-      visitors: rules!.map(_mapRule).toList(),
+      visitors: rules
+          .map(_mapRule)
+          .where((e) => e != null)
+          .cast<ValidatingVisitor>()
+          .toList(),
     );
 
     node.accept(visitor);
