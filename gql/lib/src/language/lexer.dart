@@ -28,7 +28,7 @@ enum TokenKind {
 abstract class Token {
   FileSpan? get span;
 
-  TokenKind? get kind;
+  TokenKind get kind;
 
   String get value;
 
@@ -39,12 +39,12 @@ abstract class Token {
 
 class _Token implements Token {
   @override
-  final TokenKind? kind;
+  final TokenKind kind;
   @override
   final FileSpan? span;
 
   const _Token({
-    this.kind,
+    required this.kind,
     this.span,
   });
 
