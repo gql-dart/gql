@@ -573,8 +573,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown type system definition type '${token!.value}'",
-      token.span,
+      "Unknown type system definition type '${token?.value}'",
+      token?.span,
     );
   }
 
@@ -603,8 +603,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown type system extension type '${token!.value}'",
-      token.span,
+      "Unknown type system extension type '${token?.value}'",
+      token?.span,
     );
   }
 
