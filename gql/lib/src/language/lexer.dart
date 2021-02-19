@@ -378,10 +378,19 @@ class _Scanner {
           case 116: // \t
             break;
           case 117: // \u
-            final isUnicode = isHex(peek(offset: 1)!) &&
-                isHex(peek(offset: 2)!) &&
-                isHex(peek(offset: 3)!) &&
-                isHex(peek(offset: 4)!);
+            final next1 = peek(offset: 1);
+            final next2 = peek(offset: 2);
+            final next3 = peek(offset: 3);
+            final next4 = peek(offset: 4);
+
+            final isUnicode = next1 != null &&
+                isHex(next1) &&
+                next2 != null &&
+                isHex(next2) &&
+                next3 != null &&
+                isHex(next3) &&
+                next4 != null &&
+                isHex(next4);
 
             if (!isUnicode) {
               throw SourceSpanException(
