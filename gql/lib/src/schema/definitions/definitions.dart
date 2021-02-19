@@ -342,6 +342,9 @@ class DirectiveDefinition extends TypeSystemDefinition {
   @override
   final DirectiveDefinitionNode? astNode;
 
+  @override
+  String? get name => astNode!.name.value;
+
   String? get description => astNode!.description?.value;
 
   List<InputValueDefinition>? get args => astNode!.args

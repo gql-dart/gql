@@ -14,7 +14,7 @@ abstract class ExecutableDefinition extends ExecutableWithResolver {
   @override
   ExecutableDefinitionNode get astNode;
 
-  String? get name => astNode.name?.value;
+  String? get name;
 
   static ExecutableDefinition fromNode(ExecutableDefinitionNode astNode,
       [GetExecutableType? getType]) {
@@ -45,6 +45,9 @@ class OperationDefinition extends ExecutableDefinition {
 
   @override
   final OperationDefinitionNode astNode;
+
+  @override
+  String? get name => astNode.name?.value;
 
   OperationType get type => astNode.type;
 
@@ -77,6 +80,9 @@ class FragmentDefinition extends ExecutableDefinition {
 
   @override
   final FragmentDefinitionNode astNode;
+
+  @override
+  String? get name => astNode.name.value;
 
   TypeCondition get _typeCondition => TypeCondition(astNode.typeCondition);
 
