@@ -162,14 +162,14 @@ class _Scanner {
     }
     consumeWhitespace();
 
-    if (position >= src.length) {
+    final code = peek();
+
+    if (code == null) {
       return _Token(
         kind: TokenKind.eof,
         span: src.span(src.length),
       );
     }
-
-    final code = peek()!;
 
     if ((code >= 65 && code <= 90) ||
         code == 95 ||
