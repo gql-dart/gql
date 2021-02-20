@@ -746,16 +746,21 @@ void main() {
             channel.stream.listen(
               expectAsyncUntil1<void, dynamic>(
                 (dynamic message) {
-                  // cancel the request
-                  responseSub.cancel();
                   final map =
                       json.decode(message as String) as Map<String, dynamic>;
                   if (messageCount == 0) {
                     expect(map["type"], MessageTypes.connectionInit);
+                    channel.sink.add(
+                      json.encode(
+                        ConnectionAck(),
+                      ),
+                    );
                   } else if (messageCount == 1) {
                     expect(map["id"], isA<String>());
                     expect(map["type"], MessageTypes.start);
                     subId = map["id"] as String;
+                    // cancel the request
+                    responseSub.cancel();
                   } else if (messageCount == 2) {
                     expect(map["id"], isA<String>());
                     expect(map["id"], subId);
