@@ -14,7 +14,7 @@ void main() {
     "WebSocketLink",
     () {
       test("WebSocketLink Construction with uri isn't null", () {
-        final wsLink = WebSocketLink(
+        WebSocketLink(
           "",
           initialPayload: {"authorization": "Bearer 12345"},
         );
