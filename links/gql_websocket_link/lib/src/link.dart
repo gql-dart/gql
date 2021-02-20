@@ -181,13 +181,13 @@ class WebSocketLink extends Link {
             id,
             serializer.serializeRequest(requestWithContext),
           ),
-        );
+        ).catchError(response.addError);
       });
     };
 
     response.onCancel = () {
       messagesSubscription?.cancel();
-      _write(StopOperation(id));
+      _write(StopOperation(id)).catchError(response.addError);
       _requests.removeWhere((e) => e.context.entry<RequestId>().id == id);
     };
 
@@ -201,6 +201,10 @@ class WebSocketLink extends Link {
       _channel = await _channelGenerator();
       _reconnectTimer?.cancel();
       _channel.stream.listen((dynamic message) async {
+        // Mark the connection as [open] and can be used.
+        if (_connectionStateController.value != open) {
+          _connectionStateController.add(open);
+        }
         final parsedMessage = await _parseSocketMessage(message);
         _messagesController.add(parsedMessage);
         if (parsedMessage is ConnectionAck) {
@@ -211,7 +215,7 @@ class WebSocketLink extends Link {
                 request.context.entry<RequestId>().id,
                 serializer.serializeRequest(request),
               ),
-            );
+            ).catchError(_messagesController.addError);
           });
           _reConnectRequests.clear();
         }
@@ -222,7 +226,9 @@ class WebSocketLink extends Link {
           _reConnectRequests.addAll(_requests);
           if (_reconnectTimer?.isActive != true) {
             _reconnectTimer = Timer.periodic(reconnectInterval, (timer) {
-              _connect();
+              if (_connectionStateController.value == closed) {
+                _connect();
+              }
             });
           }
         } else {
@@ -234,12 +240,12 @@ class WebSocketLink extends Link {
 
       if (initialPayload is Function) {
         final dynamic payload = await initialPayload();
-        _write(InitOperation(payload));
+        await _write(InitOperation(payload))
+            .catchError(_messagesController.addError);
       } else {
-        _write(InitOperation(initialPayload));
+        await _write(InitOperation(initialPayload))
+            .catchError(_messagesController.addError);
       }
-
-      _connectionStateController.add(open);
 
       // inactivityTimeout
       if (inactivityTimeout != null) {
@@ -277,7 +283,8 @@ class WebSocketLink extends Link {
     }
   }
 
-  void _write(final GraphQLSocketMessage message) async {
+  Future<void> _write(final GraphQLSocketMessage message) async {
+    // We can send during [connecting] & [connected].
     if (_connectionStateController.value == closed) {
       throw WebSocketLinkServerException(
         originalException: null,
