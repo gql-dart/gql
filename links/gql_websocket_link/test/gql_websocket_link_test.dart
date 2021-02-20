@@ -892,55 +892,73 @@ void main() {
         );
       });
 
-      test("Auto reconnect", () async {
-        HttpServer server;
-        WebSocket webSocket;
-        WebSocketLink link;
-        Request request;
+      test(
+        "Auto reconnect",
+        () async {
+          HttpServer server;
+          WebSocketLink link;
+          Request request;
 
-        request = Request(
-          operation: Operation(
-            operationName: "sub",
-            document: parseString("subscription MySubscription {}"),
-          ),
-        );
+          request = Request(
+            operation: Operation(
+              operationName: "sub",
+              document: parseString("subscription MySubscription {}"),
+            ),
+          );
 
-        server = await HttpServer.bind("localhost", 0);
-        server.transform(WebSocketTransformer()).listen(
-          (webSocket) async {
-            final channel = IOWebSocketChannel(webSocket);
-            var initCallCount = 0;
-            channel.stream.listen(
-              expectAsync1<void, dynamic>(
-                (dynamic message) {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
-                  expect(map["type"], MessageTypes.connectionInit);
-                  initCallCount++;
-                  // check `init` is called again
-                  if (initCallCount == 2) {
-                    return;
-                  }
-                  // disconnect
-                  webSocket.close(websocket_status.goingAway);
-                },
-                count: -1,
-              ),
-            );
-          },
-        );
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).take(2).listen(
+                expectAsync1(
+                  (webSocket) async {
+                    final channel = IOWebSocketChannel(webSocket);
+                    var messageCount = 0;
+                    channel.stream.take(1).listen(
+                          expectAsync1<void, dynamic>(
+                            (dynamic message) {
+                              final map = json.decode(message as String)
+                                  as Map<String, dynamic>;
+                              if (messageCount == 0) {
+                                expect(
+                                    map["type"], MessageTypes.connectionInit);
+                                channel.sink.add(
+                                  json.encode(
+                                    ConnectionAck(),
+                                  ),
+                                );
+                                webSocket.close(websocket_status.goingAway);
+                              }
+                              messageCount++;
+                            },
+                            count: 1,
+                            max: -1,
+                          ),
+                        );
+                  },
+                  count: 2,
+                  max: -1,
+                ),
+              );
 
-        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
-        link = WebSocketLink(null,
-            channelGenerator: () => IOWebSocketChannel(webSocket));
-        link.request(request).listen(null);
-      });
+          link = WebSocketLink(
+            null,
+            channelGenerator: () async {
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server.port}");
+              return IOWebSocketChannel(webSocket);
+            },
+            reconnectInterval: Duration(milliseconds: 500),
+          );
+          //
+          link.request(request).listen(print, onError: print);
+        },
+      );
 
       test("Auto resubscribe", () async {
-        HttpServer server;
-        WebSocket webSocket;
+        HttpServer server1;
+        HttpServer server2;
         WebSocketLink link;
         Request request;
+        int connectToServer = 1;
 
         request = Request(
           operation: Operation(
@@ -951,35 +969,91 @@ void main() {
           ),
         );
 
-        server = await HttpServer.bind("localhost", 0);
-        server.transform(WebSocketTransformer()).listen(
-          (webSocket) async {
-            final channel = IOWebSocketChannel(webSocket);
-            var subscribeCallCount = 0;
-            channel.stream.listen(
-              expectAsync1<void, dynamic>(
-                (dynamic message) {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
-                  expect(map["type"], MessageTypes.start);
-                  subscribeCallCount++;
-                  // check `start` is called again
-                  if (subscribeCallCount == 2) {
-                    return;
-                  }
-                  // disconnect
-                  webSocket.close(websocket_status.goingAway);
+        server1 = await HttpServer.bind("localhost", 0);
+        server1.transform(WebSocketTransformer()).listen(
+              expectAsync1(
+                (webSocket) async {
+                  final channel = IOWebSocketChannel(webSocket);
+                  var messageCount = 0;
+                  channel.stream.listen(
+                    expectAsync1<void, dynamic>(
+                      (dynamic message) {
+                        final map = json.decode(message as String)
+                            as Map<String, dynamic>;
+                        if (messageCount == 0) {
+                          expect(map["type"], MessageTypes.connectionInit);
+                          channel.sink.add(
+                            json.encode(
+                              ConnectionAck(),
+                            ),
+                          );
+                        } else if (messageCount == 1) {
+                          expect(map["id"], isA<String>());
+                          expect(map["type"], MessageTypes.start);
+                          // disconnect
+                          webSocket.close(websocket_status.goingAway);
+                        }
+                        messageCount++;
+                      },
+                      count: 2,
+                    ),
+                  );
                 },
-                count: -1,
+                count: 1,
               ),
             );
-          },
-        );
 
-        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
-        link = WebSocketLink(null,
-            channelGenerator: () => IOWebSocketChannel(webSocket));
-        link.request(request).listen(null);
+        server2 = await HttpServer.bind("localhost", 0);
+        server2.transform(WebSocketTransformer()).listen(
+              expectAsync1(
+                (webSocket) async {
+                  final channel = IOWebSocketChannel(webSocket);
+                  var messageCount = 0;
+                  channel.stream.listen(
+                    expectAsync1<void, dynamic>(
+                      (dynamic message) {
+                        final map = json.decode(message as String)
+                            as Map<String, dynamic>;
+                        if (messageCount == 0) {
+                          expect(map["type"], MessageTypes.connectionInit);
+                          channel.sink.add(
+                            json.encode(
+                              ConnectionAck(),
+                            ),
+                          );
+                        } else if (messageCount == 1) {
+                          expect(map["id"], isA<String>());
+                          expect(map["type"], MessageTypes.start);
+                          // disconnect
+                          webSocket.close(websocket_status.goingAway);
+                        }
+                        messageCount++;
+                      },
+                      count: 2,
+                    ),
+                  );
+                },
+                count: 1,
+              ),
+            );
+
+        link = WebSocketLink(
+          null,
+          channelGenerator: () async {
+            if (connectToServer == 1) {
+              connectToServer++;
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server1.port}");
+              return IOWebSocketChannel(webSocket);
+            } else {
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server2.port}");
+              return IOWebSocketChannel(webSocket);
+            }
+          },
+          reconnectInterval: Duration(milliseconds: 500),
+        );
+        link.request(request).listen(print, onError: print);
       });
     },
   );
