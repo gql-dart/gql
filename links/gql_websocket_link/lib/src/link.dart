@@ -174,6 +174,7 @@ class WebSocketLink extends Link {
               response.close();
             }
           },
+          onError: response.addError,
         );
         // Send the request.
         _write(
