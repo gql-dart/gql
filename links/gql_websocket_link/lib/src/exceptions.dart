@@ -9,8 +9,8 @@ class WebSocketLinkParserException extends ResponseFormatException {
   final GraphQLSocketMessage message;
 
   const WebSocketLinkParserException({
-    @required dynamic originalException,
-    @required this.message,
+    Object? originalException,
+    required this.message,
   }) : super(
           originalException: originalException,
         );
@@ -20,12 +20,12 @@ class WebSocketLinkParserException extends ResponseFormatException {
 /// or parsed response is missing both `data` and `errors`
 @immutable
 class WebSocketLinkServerException extends ServerException {
-  final GraphQLSocketMessage requestMessage;
+  final GraphQLSocketMessage? requestMessage;
 
   const WebSocketLinkServerException({
-    @required dynamic originalException,
-    @required Response parsedResponse,
-    @required this.requestMessage,
+    Object? originalException,
+    Response? parsedResponse,
+    this.requestMessage,
   }) : super(
           originalException: originalException,
           parsedResponse: parsedResponse,

@@ -21,7 +21,7 @@ typedef GraphQLSocketMessageEncoder = FutureOr<String> Function(
 class RequestId extends ContextEntry {
   final String id;
 
-  const RequestId(this.id) : assert(id != null);
+  const RequestId(this.id);
 
   @override
   List<Object> get fieldsForEquality => [id];
@@ -34,8 +34,7 @@ class RequestId extends ContextEntry {
 /// NOTE: the actual socket connection will only get established after
 /// a [Request] is handled by this [WebSocketLink].
 class WebSocketLink extends Link {
-  String _uri;
-  WebSocketChannel _channel;
+  WebSocketChannel? _channel;
 
   // Current active subscriptions
   final _requests = <Request>[];
@@ -45,7 +44,7 @@ class WebSocketLink extends Link {
 
   /// A function that returns a `WebSocketChannel`.
   /// This is useful if you have dynamic Auth token and want to regenerate it after the socket has disconnected.
-  ChannelGenerator _channelGenerator;
+  late ChannelGenerator _channelGenerator;
 
   /// Serializer used to serialize request
   final RequestSerializer serializer;
@@ -76,20 +75,20 @@ class WebSocketLink extends Link {
   /// and re send all active subscriptions. `true` by default.
   bool autoReconnect;
 
-  Timer _reconnectTimer;
+  Timer? _reconnectTimer;
 
   /// The interval between reconnects, the default value is 10 seconds.
   final Duration reconnectInterval;
 
   /// Payload to be sent with the connection_init request
   /// Must be able to `json.encode(initialPayload)`.
-  final dynamic initialPayload;
+  final dynamic? initialPayload;
 
   /// The duration after which the connection is considered unstable,
   /// because no keep alive message was received from the server in the given time-frame.
   /// The connection to the server will be closed.
   /// If the value is null this is ignored, By default this is null.
-  final Duration inactivityTimeout;
+  final Duration? inactivityTimeout;
 
   // Possible states of the connection.
   static const int closed = 0;
@@ -100,7 +99,7 @@ class WebSocketLink extends Link {
 
   final StreamController<GraphQLSocketMessage> _messagesController =
       StreamController<GraphQLSocketMessage>.broadcast();
-  StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
+  StreamSubscription<ConnectionKeepAlive>? _keepAliveSubscription;
 
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
@@ -109,8 +108,8 @@ class WebSocketLink extends Link {
   /// You can also pass custom [RequestSerializer serializer] & [ResponseParser parser].
   /// Also [initialPayload] to be passed with the first request to the GraphQL server.
   WebSocketLink(
-    String uri, {
-    ChannelGenerator channelGenerator,
+    String? uri, {
+    ChannelGenerator? channelGenerator,
     this.autoReconnect = true,
     this.reconnectInterval = const Duration(seconds: 10),
     this.serializer = const RequestSerializer(),
@@ -120,16 +119,15 @@ class WebSocketLink extends Link {
     this.initialPayload,
     this.inactivityTimeout,
   }) : assert(uri == null || (channelGenerator == null)) {
-    if (uri != null) {
-      _uri = uri;
-    } else {
-      _channelGenerator =
-          channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(_uri));
-    }
+    _channelGenerator =
+        channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(uri!));
   }
 
   @override
-  Stream<Response> request(Request request, [forward]) async* {
+  Stream<Response> request(
+    Request request, [
+    NextLink? forward,
+  ]) async* {
     final String id = Uuid.randomUuid().toString();
     final requestWithContext = request.withContextEntry<RequestId>(
       RequestId(id),
@@ -140,7 +138,7 @@ class WebSocketLink extends Link {
       await _connect();
     }
     final StreamController<Response> response = StreamController();
-    StreamSubscription<GraphQLSocketMessage> messagesSubscription;
+    StreamSubscription<GraphQLSocketMessage>? messagesSubscription;
 
     response.onListen = () {
       final Stream<int> waitForConnectedState =
@@ -201,7 +199,7 @@ class WebSocketLink extends Link {
       _connectionStateController.add(connecting);
       _channel = await _channelGenerator();
       _reconnectTimer?.cancel();
-      _channel.stream.listen((dynamic message) async {
+      _channel?.stream.listen((dynamic message) async {
         // Mark the connection as [open] and can be used.
         if (_connectionStateController.value != open) {
           _connectionStateController.add(open);
@@ -235,7 +233,7 @@ class WebSocketLink extends Link {
         } else {
           _close();
         }
-      }, onError: (dynamic error) {
+      }, onError: (Object error) {
         _messagesController.addError(error);
       });
 
@@ -256,8 +254,8 @@ class WebSocketLink extends Link {
             )
             .map<ConnectionKeepAlive>(
                 (message) => message as ConnectionKeepAlive)
-            .timeout(inactivityTimeout, onTimeout: (_) {
-          _channel.sink.close(websocket_status.goingAway);
+            .timeout(inactivityTimeout!, onTimeout: (_) {
+          _channel?.sink.close(websocket_status.goingAway);
         }).listen(null);
       }
     } catch (e) {
@@ -294,7 +292,7 @@ class WebSocketLink extends Link {
       );
     }
     final encodedMessage = await graphQLSocketMessageEncoder(message.toJson());
-    _channel.sink.add(encodedMessage);
+    _channel?.sink.add(encodedMessage);
   }
 
   Future<GraphQLSocketMessage> _parseSocketMessage(dynamic message) async {

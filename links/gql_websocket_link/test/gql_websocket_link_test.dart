@@ -727,7 +727,7 @@ void main() {
         IOWebSocketChannel channel;
         WebSocketLink link;
         Request request;
-        StreamSubscription<Response> responseSub;
+        late StreamSubscription<Response> responseSub;
 
         request = Request(
           operation: Operation(
@@ -958,7 +958,7 @@ void main() {
         WebSocketLink link;
         Request request;
         int connectToServer = 1;
-        String subId;
+        late String subId;
 
         request = Request(
           operation: Operation(

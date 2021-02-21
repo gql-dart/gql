@@ -74,8 +74,11 @@ class InitOperation extends GraphQLSocketMessage {
 /// defined in the query provided. Additional variables can be provided
 /// and sent to the server for processing.
 class QueryPayload extends JsonSerializable {
-  QueryPayload(
-      {this.operationName, @required this.query, @required this.variables});
+  QueryPayload({
+    required this.operationName,
+    required this.query,
+    required this.variables,
+  });
 
   final String operationName;
   final String query;
@@ -98,6 +101,7 @@ class StartOperation extends GraphQLSocketMessage {
   StartOperation(this.id, this.payload) : super(MessageTypes.start);
 
   final String id;
+
 //  final QueryPayload payload;
   final Map<String, dynamic> payload;
 
