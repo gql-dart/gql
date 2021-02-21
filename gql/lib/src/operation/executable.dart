@@ -26,7 +26,7 @@ class ExecutableDocument extends ExecutableWithResolver {
   ])  : _fragmentNodeMap = _collectImportedFragmentNodes([astNode, ...imports]),
         super();
 
-  final ResolveType getSchemaType;
+  final ResolveType? getSchemaType;
   final Map<String, FragmentDefinitionNode> _fragmentNodeMap;
 
   @override
@@ -36,7 +36,7 @@ class ExecutableDocument extends ExecutableWithResolver {
   @override
   final DocumentNode astNode;
 
-  FragmentDefinition getFragment(String name) {
+  FragmentDefinition? getFragment(String name) {
     final node = _fragmentNodeMap[name];
     if (node == null) {
       return null;

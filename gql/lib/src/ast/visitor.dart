@@ -224,267 +224,267 @@ abstract class Visitor<R> {
 }
 
 /// A simple implementation of [Visitor] returning `null` from each visit method.
-class SimpleVisitor<R> implements Visitor<R> {
+class SimpleVisitor<R> implements Visitor<R?> {
   @override
-  R visitDocumentNode(
+  R? visitDocumentNode(
     DocumentNode node,
   ) =>
       null;
 
   @override
-  R visitNameNode(
+  R? visitNameNode(
     NameNode node,
   ) =>
       null;
 
   @override
-  R visitDirectiveNode(
+  R? visitDirectiveNode(
     DirectiveNode node,
   ) =>
       null;
 
   @override
-  R visitListTypeNode(
+  R? visitListTypeNode(
     ListTypeNode node,
   ) =>
       null;
 
   @override
-  R visitNamedTypeNode(
+  R? visitNamedTypeNode(
     NamedTypeNode node,
   ) =>
       null;
 
   @override
-  R visitDefaultValueNode(
+  R? visitDefaultValueNode(
     DefaultValueNode node,
   ) =>
       null;
 
   @override
-  R visitVariableDefinitionNode(
+  R? visitVariableDefinitionNode(
     VariableDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitObjectFieldNode(
+  R? visitObjectFieldNode(
     ObjectFieldNode node,
   ) =>
       null;
 
   @override
-  R visitObjectValueNode(
+  R? visitObjectValueNode(
     ObjectValueNode node,
   ) =>
       null;
 
   @override
-  R visitListValueNode(
+  R? visitListValueNode(
     ListValueNode node,
   ) =>
       null;
 
   @override
-  R visitEnumValueNode(
+  R? visitEnumValueNode(
     EnumValueNode node,
   ) =>
       null;
 
   @override
-  R visitNullValueNode(
+  R? visitNullValueNode(
     NullValueNode node,
   ) =>
       null;
 
   @override
-  R visitBooleanValueNode(
+  R? visitBooleanValueNode(
     BooleanValueNode node,
   ) =>
       null;
 
   @override
-  R visitStringValueNode(
+  R? visitStringValueNode(
     StringValueNode node,
   ) =>
       null;
 
   @override
-  R visitFloatValueNode(
+  R? visitFloatValueNode(
     FloatValueNode node,
   ) =>
       null;
 
   @override
-  R visitIntValueNode(
+  R? visitIntValueNode(
     IntValueNode node,
   ) =>
       null;
 
   @override
-  R visitVariableNode(
+  R? visitVariableNode(
     VariableNode node,
   ) =>
       null;
 
   @override
-  R visitTypeConditionNode(
+  R? visitTypeConditionNode(
     TypeConditionNode node,
   ) =>
       null;
 
   @override
-  R visitFragmentDefinitionNode(
+  R? visitFragmentDefinitionNode(
     FragmentDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitInlineFragmentNode(
+  R? visitInlineFragmentNode(
     InlineFragmentNode node,
   ) =>
       null;
 
   @override
-  R visitFragmentSpreadNode(
+  R? visitFragmentSpreadNode(
     FragmentSpreadNode node,
   ) =>
       null;
 
   @override
-  R visitArgumentNode(
+  R? visitArgumentNode(
     ArgumentNode node,
   ) =>
       null;
 
   @override
-  R visitFieldNode(
+  R? visitFieldNode(
     FieldNode node,
   ) =>
       null;
 
   @override
-  R visitSelectionSetNode(
+  R? visitSelectionSetNode(
     SelectionSetNode node,
   ) =>
       null;
 
   @override
-  R visitOperationDefinitionNode(
+  R? visitOperationDefinitionNode(
     OperationDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitSchemaDefinitionNode(
+  R? visitSchemaDefinitionNode(
     SchemaDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitOperationTypeDefinitionNode(
+  R? visitOperationTypeDefinitionNode(
     OperationTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitScalarTypeDefinitionNode(
+  R? visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitObjectTypeDefinitionNode(
+  R? visitObjectTypeDefinitionNode(
     ObjectTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitFieldDefinitionNode(
+  R? visitFieldDefinitionNode(
     FieldDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitInputValueDefinitionNode(
+  R? visitInputValueDefinitionNode(
     InputValueDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitInterfaceTypeDefinitionNode(
+  R? visitInterfaceTypeDefinitionNode(
     InterfaceTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitUnionTypeDefinitionNode(
+  R? visitUnionTypeDefinitionNode(
     UnionTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitEnumTypeDefinitionNode(
+  R? visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitEnumValueDefinitionNode(
+  R? visitEnumValueDefinitionNode(
     EnumValueDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitInputObjectTypeDefinitionNode(
+  R? visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitDirectiveDefinitionNode(
+  R? visitDirectiveDefinitionNode(
     DirectiveDefinitionNode node,
   ) =>
       null;
 
   @override
-  R visitSchemaExtensionNode(
+  R? visitSchemaExtensionNode(
     SchemaExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitScalarTypeExtensionNode(
+  R? visitScalarTypeExtensionNode(
     ScalarTypeExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitObjectTypeExtensionNode(
+  R? visitObjectTypeExtensionNode(
     ObjectTypeExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitInterfaceTypeExtensionNode(
+  R? visitInterfaceTypeExtensionNode(
     InterfaceTypeExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitUnionTypeExtensionNode(
+  R? visitUnionTypeExtensionNode(
     UnionTypeExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitEnumTypeExtensionNode(
+  R? visitEnumTypeExtensionNode(
     EnumTypeExtensionNode node,
   ) =>
       null;
 
   @override
-  R visitInputObjectTypeExtensionNode(
+  R? visitInputObjectTypeExtensionNode(
     InputObjectTypeExtensionNode node,
   ) =>
       null;
@@ -780,7 +780,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitArgumentNode(node) ?? <A>[],
+        (visitor) => visitor!.visitArgumentNode(node) ?? <A>[],
       )
     ];
 
@@ -794,7 +794,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitBooleanValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitBooleanValueNode(node) ?? <A>[],
       )
     ];
 
@@ -808,7 +808,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitDefaultValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitDefaultValueNode(node) ?? <A>[],
       )
     ];
 
@@ -822,7 +822,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitDirectiveDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitDirectiveDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -836,7 +836,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitDirectiveNode(node) ?? <A>[],
+        (visitor) => visitor!.visitDirectiveNode(node) ?? <A>[],
       )
     ];
 
@@ -850,7 +850,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitDocumentNode(node) ?? <A>[],
+        (visitor) => visitor!.visitDocumentNode(node) ?? <A>[],
       )
     ];
 
@@ -864,7 +864,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitEnumTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitEnumTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -878,7 +878,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitEnumTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitEnumTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -892,7 +892,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitEnumValueDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitEnumValueDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -906,7 +906,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitEnumValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitEnumValueNode(node) ?? <A>[],
       )
     ];
 
@@ -920,7 +920,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitFieldDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitFieldDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -934,7 +934,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitFieldNode(node) ?? <A>[],
+        (visitor) => visitor!.visitFieldNode(node) ?? <A>[],
       )
     ];
 
@@ -948,7 +948,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitFloatValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitFloatValueNode(node) ?? <A>[],
       )
     ];
 
@@ -962,7 +962,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitFragmentDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitFragmentDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -976,7 +976,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitFragmentSpreadNode(node) ?? <A>[],
+        (visitor) => visitor!.visitFragmentSpreadNode(node) ?? <A>[],
       )
     ];
 
@@ -990,7 +990,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInlineFragmentNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInlineFragmentNode(node) ?? <A>[],
       )
     ];
 
@@ -1004,7 +1004,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInputObjectTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInputObjectTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1018,7 +1018,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInputObjectTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInputObjectTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1032,7 +1032,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInputValueDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInputValueDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1046,7 +1046,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitIntValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitIntValueNode(node) ?? <A>[],
       )
     ];
 
@@ -1060,7 +1060,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInterfaceTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInterfaceTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1074,7 +1074,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitInterfaceTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitInterfaceTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1088,7 +1088,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitListTypeNode(node) ?? <A>[],
+        (visitor) => visitor!.visitListTypeNode(node) ?? <A>[],
       )
     ];
 
@@ -1102,7 +1102,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitListValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitListValueNode(node) ?? <A>[],
       )
     ];
 
@@ -1116,7 +1116,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitNameNode(node) ?? <A>[],
+        (visitor) => visitor!.visitNameNode(node) ?? <A>[],
       )
     ];
 
@@ -1130,7 +1130,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitNamedTypeNode(node) ?? <A>[],
+        (visitor) => visitor!.visitNamedTypeNode(node) ?? <A>[],
       )
     ];
 
@@ -1144,7 +1144,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitNullValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitNullValueNode(node) ?? <A>[],
       )
     ];
 
@@ -1158,7 +1158,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitObjectFieldNode(node) ?? <A>[],
+        (visitor) => visitor!.visitObjectFieldNode(node) ?? <A>[],
       )
     ];
 
@@ -1172,7 +1172,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitObjectTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitObjectTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1186,7 +1186,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitObjectTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitObjectTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1200,7 +1200,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitObjectValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitObjectValueNode(node) ?? <A>[],
       )
     ];
 
@@ -1214,7 +1214,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitOperationDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitOperationDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1228,7 +1228,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitOperationTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitOperationTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1242,7 +1242,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitScalarTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitScalarTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1256,7 +1256,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitScalarTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitScalarTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1270,7 +1270,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitSchemaDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitSchemaDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1284,7 +1284,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitSchemaExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitSchemaExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1298,7 +1298,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitSelectionSetNode(node) ?? <A>[],
+        (visitor) => visitor!.visitSelectionSetNode(node) ?? <A>[],
       )
     ];
 
@@ -1312,7 +1312,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitStringValueNode(node) ?? <A>[],
+        (visitor) => visitor!.visitStringValueNode(node) ?? <A>[],
       )
     ];
 
@@ -1326,7 +1326,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitTypeConditionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitTypeConditionNode(node) ?? <A>[],
       )
     ];
 
@@ -1340,7 +1340,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitUnionTypeDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitUnionTypeDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1354,7 +1354,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitUnionTypeExtensionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitUnionTypeExtensionNode(node) ?? <A>[],
       )
     ];
 
@@ -1368,7 +1368,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitVariableDefinitionNode(node) ?? <A>[],
+        (visitor) => visitor!.visitVariableDefinitionNode(node) ?? <A>[],
       )
     ];
 
@@ -1382,7 +1382,7 @@ class AccumulatingVisitor<A> extends RecursiveVisitor {
     accumulator = [
       ...accumulator,
       ...visitors.expand(
-        (visitor) => visitor.visitVariableNode(node) ?? <A>[],
+        (visitor) => visitor!.visitVariableNode(node) ?? <A>[],
       )
     ];
 

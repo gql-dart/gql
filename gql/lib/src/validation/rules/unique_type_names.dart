@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class DuplicateTypeNameError extends ValidationError {
   const DuplicateTypeNameError({
-    TypeDefinitionNode node,
+    TypeDefinitionNode? node,
   }) : super(
           node: node,
         );

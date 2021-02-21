@@ -4,28 +4,28 @@ import './cat_model.dart';
 
 abstract class CatDriver<Doc> {
   Doc parse({
-    String source,
+    required String source,
   });
 
   Iterable<DriverError> validate({
-    Doc schema,
-    Doc query,
-    Iterable<String> validationRules,
+    Doc? schema,
+    Doc? query,
+    Iterable<String?>? validationRules,
   });
 
-  execute({
-    Doc schema,
+  dynamic execute({
+    Doc? schema,
     dynamic testData,
-    Doc query,
-    String operation,
-    Map<String, dynamic> variables,
+    Doc? query,
+    String? operation,
+    Map<String, dynamic>? variables,
   });
 }
 
 class CatRunner<Doc> {
-  CatBuilder _builder = CatBuilder();
-  CatDriver<Doc> driver;
-  List whitelist;
+  final _builder = CatBuilder();
+  CatDriver<Doc>? driver;
+  List? whitelist;
 
   CatRunner({
     this.driver,
@@ -35,41 +35,41 @@ class CatRunner<Doc> {
   void runSuite(String suitePath) {
     var suite = _builder.buildSuite(suitePath);
 
-    suite.scenarios.forEach(_runScenario);
+    suite.scenarios!.forEach(_runScenario);
   }
 
   void _runScenario(Scenario scenario) {
-    if (whitelist != null && !whitelist.contains(scenario.file)) return;
+    if (whitelist != null && !whitelist!.contains(scenario.file)) return;
     group(scenario.name, () {
-      scenario.tests.forEach(
+      scenario.tests!.forEach(
         (test) => _runTest(test, scenario),
       );
     });
   }
 
   void _runTest(TestCase testCase, Scenario scenario) {
-    var passesAssertion = testCase.assertions.firstWhere(
+    var passesAssertion = testCase.assertions!.firstWhere(
       (a) => a is PassesAssertion,
       orElse: () => null,
-    ) as PassesAssertion;
-    var syntaxAssertion = testCase.assertions.firstWhere(
+    ) as PassesAssertion?;
+    var syntaxAssertion = testCase.assertions!.firstWhere(
       (a) => a is SyntaxErrorAssertion,
       orElse: () => null,
-    ) as SyntaxErrorAssertion;
-    var errorCountAssertion = testCase.assertions.firstWhere(
+    ) as SyntaxErrorAssertion?;
+    var errorCountAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorCountAssertion,
       orElse: () => null,
-    ) as ErrorCountAssertion;
+    ) as ErrorCountAssertion?;
     var errorCodeAssertions =
-        testCase.assertions.whereType<ErrorCodeAssertion>();
-    var errorContainsAssertion = testCase.assertions.firstWhere(
+        testCase.assertions!.whereType<ErrorCodeAssertion>();
+    var errorContainsAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorContainsAssertion,
       orElse: () => null,
-    ) as ErrorContainsAssertion;
-    var errorRegexAssertion = testCase.assertions.firstWhere(
+    ) as ErrorContainsAssertion?;
+    var errorRegexAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorRegexAssertion,
       orElse: () => null,
-    ) as ErrorRegexAssertion;
+    ) as ErrorRegexAssertion?;
 
     group(testCase.name, () {
       var queryDoc;
@@ -85,7 +85,7 @@ class CatRunner<Doc> {
 
       setUp(() {
         try {
-          queryDoc = driver.parse(
+          queryDoc = driver!.parse(
             source: testCase.query,
           );
         } catch (e) {
@@ -97,7 +97,7 @@ class CatRunner<Doc> {
 
           if (schema != null) {
             try {
-              schemaDoc = driver.parse(
+              schemaDoc = driver!.parse(
                 source: schema,
               );
             } catch (e) {
@@ -109,7 +109,7 @@ class CatRunner<Doc> {
               ? (testCase.action as ValidationAction).validationRules
               : null;
 
-          validationErrors = driver.validate(
+          validationErrors = driver!.validate(
             schema: schemaDoc,
             query: queryDoc,
             validationRules: validationRules,
@@ -121,12 +121,12 @@ class CatRunner<Doc> {
           var testData = (testCase.testData ?? scenario.testData);
 
           try {
-            executionResult = driver.execute(
+            executionResult = driver!.execute(
               query: queryDoc,
               schema: schemaDoc,
               testData:
                   testData != null && testData.containsKey(action.testValue)
-                      ? testData[action.testValue]
+                      ? testData[action.testValue!]
                       : testData,
               operation: action.operationName,
               variables: action.variables,
@@ -144,14 +144,14 @@ class CatRunner<Doc> {
             expect(queryParsingError, isNull);
           });
         } else {
-          if ((passesAssertion == null || passesAssertion.passes) &&
-              !(syntaxAssertion != null && syntaxAssertion.syntaxError)) {
+          if ((passesAssertion == null || passesAssertion.passes!) &&
+              !(syntaxAssertion != null && syntaxAssertion.syntaxError!)) {
             test('parses successfuly', () {
               expect(queryDoc, isNotNull);
               expect(queryParsingError, isNull);
             });
           }
-          if (syntaxAssertion != null && syntaxAssertion.syntaxError) {
+          if (syntaxAssertion != null && syntaxAssertion.syntaxError!) {
             test('throws syntax error', () {
               expect(queryDoc, isNull);
               expect(queryParsingError, isNotNull);

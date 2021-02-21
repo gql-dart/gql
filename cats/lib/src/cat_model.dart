@@ -1,7 +1,7 @@
 class Suite {
-  Iterable<Scenario> scenarios;
+  Iterable<Scenario>? scenarios;
 
-  Map<String, ErrorDefinition> errorMapping;
+  Map<String, ErrorDefinition>? errorMapping;
 
   Suite({
     this.scenarios,
@@ -10,15 +10,15 @@ class Suite {
 }
 
 class Scenario {
-  String folder;
-  String file;
+  String? folder;
+  String? file;
 
-  String name;
+  String? name;
 
-  String schema;
-  Map<String, dynamic> testData;
+  String? schema;
+  Map<String, dynamic>? testData;
 
-  Iterable<TestCase> tests;
+  Iterable<TestCase>? tests;
 
   Scenario({
     this.folder,
@@ -31,19 +31,19 @@ class Scenario {
 }
 
 class TestCase {
-  String name;
+  String? name;
 
   String query;
-  String schema;
-  Map<String, dynamic> testData;
+  String? schema;
+  Map<String, dynamic>? testData;
 
-  Action action;
+  Action? action;
 
-  Iterable<Assertion> assertions;
+  Iterable<Assertion?>? assertions;
 
   TestCase({
     this.name,
-    this.query,
+    required this.query,
     this.schema,
     this.testData,
     this.action,
@@ -56,16 +56,16 @@ abstract class Action {}
 class ParsingAction extends Action {}
 
 class ValidationAction extends Action {
-  Iterable<String> validationRules;
+  Iterable<String?> validationRules;
 
   ValidationAction(this.validationRules);
 }
 
 class ExecutionAction extends Action {
-  String operationName;
-  Map<String, dynamic> variables;
-  bool validateQuery;
-  String testValue;
+  String? operationName;
+  Map<String, dynamic>? variables;
+  bool? validateQuery;
+  String? testValue;
 
   ExecutionAction({
     this.operationName,
@@ -78,7 +78,7 @@ class ExecutionAction extends Action {
 abstract class Assertion {}
 
 class PassesAssertion extends Assertion {
-  bool passes;
+  bool? passes;
 
   PassesAssertion({
     this.passes,
@@ -86,7 +86,7 @@ class PassesAssertion extends Assertion {
 }
 
 class SyntaxErrorAssertion extends Assertion {
-  bool syntaxError;
+  bool? syntaxError;
 
   SyntaxErrorAssertion({
     this.syntaxError,
@@ -94,11 +94,11 @@ class SyntaxErrorAssertion extends Assertion {
 }
 
 class DataAssertion extends Assertion {
-  Map<String, dynamic> data;
+  Map<String, dynamic>? data;
 }
 
 class ErrorCountAssertion extends Assertion {
-  int count;
+  int? count;
 
   ErrorCountAssertion({
     this.count,
@@ -106,9 +106,9 @@ class ErrorCountAssertion extends Assertion {
 }
 
 class ErrorCodeAssertion extends Assertion {
-  String errorCode;
-  Map<String, String> args;
-  Iterable<Location> locations;
+  String? errorCode;
+  Map<String, String>? args;
+  Iterable<Location>? locations;
 
   ErrorCodeAssertion({
     this.errorCode,
@@ -118,38 +118,38 @@ class ErrorCodeAssertion extends Assertion {
 }
 
 class ErrorContainsAssertion extends Assertion {
-  String error;
-  Iterable<Location> locations;
+  String? error;
+  Iterable<Location>? locations;
 }
 
 class ErrorRegexAssertion extends Assertion {
-  String errorRegex;
-  Iterable<Location> locations;
+  String? errorRegex;
+  Iterable<Location>? locations;
 }
 
 class ExecutionExceptionContainsAssertion extends Assertion {
-  String exception;
+  String? exception;
 }
 
 class ExecutionExceptionRegexAssertion extends Assertion {
-  String errorRegex;
+  String? errorRegex;
 }
 
 class Location {
-  int line;
-  int column;
+  int? line;
+  int? column;
 }
 
 class ErrorDefinition {
-  String message;
-  String specReference;
-  String implementationReference;
+  String? message;
+  String? specReference;
+  String? implementationReference;
 }
 
 class DriverError {
-  String code;
-  String message;
-  Location location;
+  String? code;
+  String? message;
+  Location? location;
 
   DriverError({
     this.code,
@@ -159,5 +159,5 @@ class DriverError {
 }
 
 class DriverException {
-  String message;
+  String? message;
 }

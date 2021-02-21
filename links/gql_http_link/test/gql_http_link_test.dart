@@ -10,12 +10,7 @@ import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
 import "./helpers.dart";
-
-class MockClient extends Mock implements http.Client {}
-
-class MockRequestSerializer extends Mock implements RequestSerializer {}
-
-class MockResponseParser extends Mock implements ResponseParser {}
+import "./mocks/mocks.dart";
 
 class CustomScalar {
   const CustomScalar(this.value);
@@ -25,19 +20,19 @@ class CustomScalar {
 
 void main() {
   group("HttpLink", () {
-    MockClient client;
-    Request request;
-    HttpLink link;
+    late MockHttpClient client;
+    late Request request;
+    late HttpLink link;
 
     final Stream<Response> Function([
-      Request customRequest,
+      Request? customRequest,
     ]) execute = ([
-      Request customRequest,
+      Request? customRequest,
     ]) =>
         link.request(customRequest ?? request);
 
     setUp(() {
-      client = MockClient();
+      client = MockHttpClient();
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
@@ -194,7 +189,7 @@ void main() {
     });
 
     test("adds default headers", () async {
-      final client = MockClient();
+      final client = MockHttpClient();
       final link = HttpLink(
         "/graphql-test",
         httpClient: client,
@@ -446,7 +441,7 @@ void main() {
         ),
       );
 
-      HttpLinkServerException exception;
+      HttpLinkServerException? exception;
 
       try {
         await execute().first;
@@ -458,7 +453,7 @@ void main() {
         exception,
         TypeMatcher<HttpLinkServerException>(),
       );
-      expect(exception.response.body, data);
+      expect(exception!.response.body, data);
       expect(
         exception.parsedResponse,
         equals(
@@ -485,12 +480,12 @@ void main() {
         ),
       );
 
-      HttpLinkServerException exception;
+      HttpLinkServerException? exception;
 
       try {
         await execute().first;
-      } catch (e) {
-        exception = e as HttpLinkServerException;
+      } on HttpLinkServerException catch (e) {
+        exception = e;
       }
 
       expect(
@@ -498,7 +493,7 @@ void main() {
         TypeMatcher<HttpLinkServerException>(),
       );
       expect(
-        exception.response.body,
+        exception!.response.body,
         data,
       );
       expect(
@@ -516,7 +511,7 @@ void main() {
 
     test("throws SerializerException when unable to serialize request",
         () async {
-      final client = MockClient();
+      final client = MockHttpClient();
       final serializer = MockRequestSerializer();
       final link = HttpLink(
         "/graphql-test",
@@ -545,7 +540,7 @@ void main() {
         ),
       ).thenThrow(originalException);
 
-      RequestFormatException exception;
+      RequestFormatException? exception;
 
       try {
         await link
@@ -567,7 +562,7 @@ void main() {
         TypeMatcher<RequestFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         originalException,
       );
     });
@@ -584,7 +579,7 @@ void main() {
         ),
       );
 
-      ResponseFormatException exception;
+      ResponseFormatException? exception;
 
       try {
         await link
@@ -606,7 +601,7 @@ void main() {
         TypeMatcher<ResponseFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         TypeMatcher<FormatException>(),
       );
     });
@@ -621,11 +616,11 @@ void main() {
   });
 
   group("HttpLink useGETForQueries", () {
-    MockClient client;
-    HttpLink link;
+    late MockHttpClient client;
+    late HttpLink link;
 
     setUp(() {
-      client = MockClient();
+      client = MockHttpClient();
       link = HttpLink(
         "/graphql-test",
         httpClient: client,

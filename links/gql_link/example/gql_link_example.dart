@@ -8,7 +8,7 @@ class MyLinkContext extends ContextEntry {
   const MyLinkContext(this.value);
 
   @override
-  List<Object> get fieldsForEquality => null;
+  List<Object> get fieldsForEquality => [];
 }
 
 class MyLink extends Link {
@@ -17,7 +17,7 @@ class MyLink extends Link {
         [
           Response(
             data: <String, dynamic>{
-              "context": request.context.entry<MyLinkContext>().value,
+              "context": request.context.entry<MyLinkContext>()?.value,
             },
           ),
         ],

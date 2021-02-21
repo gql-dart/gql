@@ -45,19 +45,19 @@ class _BuiltInFieldDefinition extends FieldDefinition {
   }) : super(null);
 
   @override
-  final String name;
+  final String? name;
 
   @override
-  final String description;
+  final String? description;
 
   @override
-  final GraphQLType type;
+  final GraphQLType? type;
 
   @override
-  final List<Directive> directives;
+  final List<Directive>? directives;
 
   @override
-  final List<InputValueDefinition> args;
+  final List<InputValueDefinition>? args;
 }
 
 const typeNameField = _BuiltInFieldDefinition(
@@ -83,15 +83,15 @@ class _BuiltInArgument extends InputValueDefinition {
   }) : super(null);
 
   @override
-  final String description;
+  final String? description;
   @override
-  final String name;
+  final String? name;
   @override
-  final GraphQLType type;
+  final GraphQLType? type;
   @override
-  final Value defaultValue;
+  final Value? defaultValue;
   @override
-  final List<Directive> directives;
+  final List<Directive>? directives;
 }
 
 @immutable
@@ -105,13 +105,13 @@ class _BuiltInDirective extends DirectiveDefinition {
   }) : super(null);
 
   @override
-  final String name;
+  final String? name;
   @override
-  final String description;
+  final String? description;
   @override
-  final List<InputValueDefinition> args;
+  final List<InputValueDefinition>? args;
   @override
-  final List<DirectiveLocation> locations;
+  final List<DirectiveLocation>? locations;
 
   @override
   final bool repeatable;
