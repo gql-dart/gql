@@ -958,6 +958,7 @@ void main() {
         WebSocketLink link;
         Request request;
         int connectToServer = 1;
+        String subId;
 
         request = Request(
           operation: Operation(
@@ -989,6 +990,7 @@ void main() {
                         } else if (messageCount == 1) {
                           expect(map["id"], isA<String>());
                           expect(map["type"], MessageTypes.start);
+                          subId = map["id"] as String;
                           // disconnect
                           webSocket.close(websocket_status.goingAway);
                         }
@@ -1023,6 +1025,7 @@ void main() {
                         } else if (messageCount == 1) {
                           expect(map["id"], isA<String>());
                           expect(map["type"], MessageTypes.start);
+                          expect(map["id"], subId);
                           // disconnect
                           webSocket.close(websocket_status.goingAway);
                         }
