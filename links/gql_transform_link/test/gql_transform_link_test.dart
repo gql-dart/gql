@@ -7,7 +7,16 @@ import "package:gql_transform_link/gql_transform_link.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
-class MockLink extends Mock implements Link {}
+class MockLink extends Mock implements Link {
+  @override
+  Stream<Response> request(Request? request, [NextLink? forward]) =>
+      super.noSuchMethod(
+        Invocation.method(#request, [request, forward]),
+        returnValue: Stream.fromIterable(
+          <Response>[],
+        ),
+      ) as Stream<Response>;
+}
 
 void main() {
   group("Transform Link", () {

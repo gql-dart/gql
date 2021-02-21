@@ -1,6 +1,4 @@
 import "dart:convert";
-import "dart:typed_data";
-import "package:meta/meta.dart";
 
 import "package:http/http.dart";
 import "package:gql/ast.dart";
@@ -13,7 +11,7 @@ extension WithType on gql.Request {
         .toList();
     if (operation.operationName != null) {
       definitions.removeWhere(
-        (node) => node.name.value != operation.operationName,
+        (node) => node.name!.value != operation.operationName,
       );
     }
     // TODO differentiate error types, add exception
@@ -38,7 +36,7 @@ extension WithType on gql.Request {
 /// ```
 Map<String, MultipartFile> extractFlattenedFileMap(
   dynamic body, {
-  Map<String, MultipartFile> currentMap,
+  Map<String, MultipartFile>? currentMap,
   List<String> currentPath = const <String>[],
 }) {
   currentMap ??= <String, MultipartFile>{};

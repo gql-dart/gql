@@ -3,11 +3,11 @@ import "package:gql/src/validation/validating_visitor.dart";
 import "package:gql/src/validation/validator.dart";
 
 class DuplicateFieldDefinitionNameError extends ValidationError {
-  final TypeDefinitionNode typeNode;
+  final TypeDefinitionNode? typeNode;
 
   const DuplicateFieldDefinitionNameError({
     this.typeNode,
-    NameNode nameNode,
+    NameNode? nameNode,
   }) : super(
           node: nameNode,
         );

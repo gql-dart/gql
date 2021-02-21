@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class DuplicateInputFieldNameError extends ValidationError {
   const DuplicateInputFieldNameError({
-    ObjectFieldNode node,
+    ObjectFieldNode? node,
   }) : super(
           node: node,
         );
