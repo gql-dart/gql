@@ -1,3 +1,7 @@
+## 0.13.0-nullsafety.0
+
+- first nullsafety prerelease
+
 ## 0.12.4
 
 - add enum fallback

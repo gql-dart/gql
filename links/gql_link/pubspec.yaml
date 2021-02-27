@@ -6,8 +6,8 @@ environment:
   sdk: '>=2.12.0-259.9.beta <3.0.0'
 dependencies: 
   meta: ^1.1.7
-  gql: ^0.12.3
-  gql_exec: ^0.2.5
+  gql: ^0.13.0-nullsafety.0
+  gql_exec: ^0.3.0-nullsafety.0
 dev_dependencies: 
   test: ^1.0.0
   mockito: ^4.1.1
