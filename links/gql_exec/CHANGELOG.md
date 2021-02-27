@@ -1,3 +1,7 @@
+## 0.3.0-nullsafety.0
+
+- first nullsafety prerelease
+
 ## 0.2.5
 
 - Mape `Operation.toString` more interpretable with `json.encode(printNode(document))`
