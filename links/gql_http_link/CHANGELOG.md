@@ -1,6 +1,6 @@
-## 0.4.0-nullsafety.0
+## 0.4.0-nullsafety.1
 
-- first nullsafety prerelease
+Null Safety Pre-release
 
 ## 0.3.3
 
