@@ -1,3 +1,7 @@
+## 0.13.0-nullsafety.2
+
+Loosen `source_span` constraint for `flutter_test` compatibility
+
 ## 0.13.0-nullsafety.1
 
 Null Safety Pre-release
