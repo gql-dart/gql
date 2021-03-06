@@ -1,5 +1,5 @@
 name: gql_link
-version: 0.4.0-nullsafety.1
+version: 0.4.0-nullsafety.2
 description: A simple and modular AST-based GraphQL request execution interface.
 repository: https://github.com/gql-dart/gql
 environment: 
