@@ -77,7 +77,7 @@ class Context {
         );
 
   /// Create a [Context] with [entry] added to the existing entries.
-  Context withEntry<T extends ContextEntry?>(T entry) {
+  Context withEntry<T extends ContextEntry>(T? entry) {
     if (entry != null && T != entry.runtimeType) {
       throw ArgumentError.value(
         entry,
@@ -98,7 +98,7 @@ class Context {
   Context updateEntry<T extends ContextEntry>(
     ContextUpdater<T?> update,
   ) =>
-      withEntry<T?>(
+      withEntry<T>(
         update(
           entry<T>(),
         ),
@@ -110,7 +110,7 @@ class Context {
   /// the [defaultValue] is returned.
   ///
   /// If provided, [defaultValue] must exactly match the return type [T].
-  T? entry<T extends ContextEntry?>([T? defaultValue]) {
+  T? entry<T extends ContextEntry>([T? defaultValue]) {
     if (defaultValue != null && T != defaultValue.runtimeType) {
       throw ArgumentError.value(
         defaultValue,

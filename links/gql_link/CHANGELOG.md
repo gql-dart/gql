@@ -1,4 +1,4 @@
-## 0.4.0-nullsafety.1
+## 0.4.0-nullsafety.2
 
 Null Safety Pre-release
 
