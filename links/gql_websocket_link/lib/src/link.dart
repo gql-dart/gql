@@ -232,7 +232,7 @@ class WebSocketLink extends Link {
         } else {
           _close();
         }
-      }, onError: (dynamic error) {
+      }, onError: (Object error) {
         _messagesController.addError(error);
       });
 
