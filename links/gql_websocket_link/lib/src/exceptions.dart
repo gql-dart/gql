@@ -6,7 +6,7 @@ import "package:gql_websocket_link/gql_websocket_link.dart";
 /// Exception occurring when response parsing fails
 @immutable
 class WebSocketLinkParserException extends ResponseFormatException {
-  final SubscriptionData message;
+  final GraphQLSocketMessage message;
 
   const WebSocketLinkParserException({
     @required dynamic originalException,

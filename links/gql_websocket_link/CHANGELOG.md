@@ -1,3 +1,8 @@
+## 0.2.0
+* Add `autoReconnect` feature.
+* Auto subscribe to active subscriptions after reconnect.
+* *BREAKING*: removed `channel` from constructor, use `channelGenerator` instead.
+
 ## 0.1.7
 
 - fix #188, Determine the boundary if `channelGenerator` is null and uri is not null
