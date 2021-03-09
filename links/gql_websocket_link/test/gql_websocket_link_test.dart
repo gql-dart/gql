@@ -757,7 +757,7 @@ void main() {
                   } else if (messageCount == 1) {
                     expect(map!["id"], isA<String>());
                     expect(map["type"], MessageTypes.start);
-                    subId = (map["id"] as String?);
+                    subId = map["id"] as String?;
                     // cancel the request
                     responseSub.cancel();
                   } else if (messageCount == 2) {
