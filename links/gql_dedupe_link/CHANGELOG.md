@@ -1,3 +1,7 @@
+## 2.0.0-nullsafety.1
+
+Null Safety Pre-release
+
 ## 1.0.10
 
 - remove `author` field from `pubspec.yaml`
