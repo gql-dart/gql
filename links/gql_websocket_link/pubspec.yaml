@@ -3,7 +3,7 @@ version: 0.3.0-nullsafety.2
 description: GQL Websocket Link
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.12.0-259.9.beta <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 dependencies: 
   gql: ^0.13.0-nullsafety.2
   gql_exec: ^0.3.0-nullsafety.2
@@ -13,6 +13,6 @@ dependencies:
   uuid: ^3.0.1
   web_socket_channel: ^2.0.0
 dev_dependencies: 
-  gql_pedantic: ^1.0.2
+#  gql_pedantic: ^1.0.2
   mockito: ^5.0.0
   test: ^1.16.6
