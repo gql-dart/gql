@@ -2,7 +2,6 @@
 // Adapted to `gql` by @iscriptology
 
 import "dart:convert";
-import "package:meta/meta.dart";
 
 /// These messages represent the structures used for Client-server communication
 /// in a GraphQL web-socket subscription. Each message is represented in a JSON
@@ -67,26 +66,6 @@ class InitOperation extends GraphQLSocketMessage {
 
     return jsonMap;
   }
-}
-
-/// Represent the payload used during a Start query operation.
-/// The operationName should match one of the top level query definitions
-/// defined in the query provided. Additional variables can be provided
-/// and sent to the server for processing.
-class QueryPayload extends JsonSerializable {
-  QueryPayload(
-      {this.operationName, @required this.query, @required this.variables});
-
-  final String operationName;
-  final String query;
-  final Map<String, dynamic> variables;
-
-  @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        "operationName": operationName,
-        "query": query,
-        "variables": variables,
-      };
 }
 
 /// A message to tell the server to create a subscription. The contents of the

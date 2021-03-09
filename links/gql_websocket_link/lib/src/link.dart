@@ -13,7 +13,7 @@ import "package:web_socket_channel/status.dart" as websocket_status;
 final uuid = Uuid();
 
 typedef ChannelGenerator = FutureOr<WebSocketChannel> Function();
-typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>> Function(
+typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>>? Function(
     dynamic message);
 
 typedef GraphQLSocketMessageEncoder = FutureOr<String> Function(
@@ -23,7 +23,7 @@ typedef GraphQLSocketMessageEncoder = FutureOr<String> Function(
 class RequestId extends ContextEntry {
   final String id;
 
-  const RequestId(this.id) : assert(id != null);
+  const RequestId(this.id);
 
   @override
   List<Object> get fieldsForEquality => [id];
@@ -36,8 +36,7 @@ class RequestId extends ContextEntry {
 /// NOTE: the actual socket connection will only get established after
 /// a [Request] is handled by this [WebSocketLink].
 class WebSocketLink extends Link {
-  String _uri;
-  WebSocketChannel _channel;
+  WebSocketChannel? _channel;
 
   // Current active subscriptions
   final _requests = <Request>[];
@@ -47,7 +46,7 @@ class WebSocketLink extends Link {
 
   /// A function that returns a `WebSocketChannel`.
   /// This is useful if you have dynamic Auth token and want to regenerate it after the socket has disconnected.
-  ChannelGenerator _channelGenerator;
+  late ChannelGenerator _channelGenerator;
 
   /// Serializer used to serialize request
   final RequestSerializer serializer;
@@ -70,15 +69,15 @@ class WebSocketLink extends Link {
   /// ```
   final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
 
-  static Map<String, dynamic> _defaultGraphQLSocketMessageDecoder(
+  static Map<String, dynamic>? _defaultGraphQLSocketMessageDecoder(
           dynamic message) =>
-      json.decode(message as String) as Map<String, dynamic>;
+      json.decode(message as String) as Map<String, dynamic>?;
 
   /// Automatically recreate the channel when connection is lost,
   /// and re send all active subscriptions. `true` by default.
   bool autoReconnect;
 
-  Timer _reconnectTimer;
+  Timer? _reconnectTimer;
 
   /// The interval between reconnects, the default value is 10 seconds.
   final Duration reconnectInterval;
@@ -91,7 +90,7 @@ class WebSocketLink extends Link {
   /// because no keep alive message was received from the server in the given time-frame.
   /// The connection to the server will be closed.
   /// If the value is null this is ignored, By default this is null.
-  final Duration inactivityTimeout;
+  final Duration? inactivityTimeout;
 
   // Possible states of the connection.
   static const int closed = 0;
@@ -102,7 +101,7 @@ class WebSocketLink extends Link {
 
   final StreamController<GraphQLSocketMessage> _messagesController =
       StreamController<GraphQLSocketMessage>.broadcast();
-  StreamSubscription<ConnectionKeepAlive> _keepAliveSubscription;
+  StreamSubscription<ConnectionKeepAlive>? _keepAliveSubscription;
 
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
@@ -111,8 +110,8 @@ class WebSocketLink extends Link {
   /// You can also pass custom [RequestSerializer serializer] & [ResponseParser parser].
   /// Also [initialPayload] to be passed with the first request to the GraphQL server.
   WebSocketLink(
-    String uri, {
-    ChannelGenerator channelGenerator,
+    String? uri, {
+    ChannelGenerator? channelGenerator,
     this.autoReconnect = true,
     this.reconnectInterval = const Duration(seconds: 10),
     this.serializer = const RequestSerializer(),
@@ -122,12 +121,8 @@ class WebSocketLink extends Link {
     this.initialPayload,
     this.inactivityTimeout,
   }) : assert(uri == null || (channelGenerator == null)) {
-    if (uri != null) {
-      _uri = uri;
-    } else {
-      _channelGenerator =
-          channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(_uri));
-    }
+    _channelGenerator =
+        channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(uri!));
   }
 
   @override
@@ -142,7 +137,7 @@ class WebSocketLink extends Link {
       await _connect();
     }
     final StreamController<Response> response = StreamController();
-    StreamSubscription<GraphQLSocketMessage> messagesSubscription;
+    StreamSubscription<GraphQLSocketMessage>? messagesSubscription;
 
     response.onListen = () {
       final Stream<int> waitForConnectedState =
@@ -191,7 +186,7 @@ class WebSocketLink extends Link {
     response.onCancel = () {
       messagesSubscription?.cancel();
       _write(StopOperation(id)).catchError(response.addError);
-      _requests.removeWhere((e) => e.context.entry<RequestId>().id == id);
+      _requests.removeWhere((e) => e.context.entry<RequestId>()!.id == id);
     };
 
     yield* response.stream;
@@ -203,7 +198,7 @@ class WebSocketLink extends Link {
       _connectionStateController.add(connecting);
       _channel = await _channelGenerator();
       _reconnectTimer?.cancel();
-      _channel.stream.listen((dynamic message) async {
+      _channel!.stream.listen((dynamic message) async {
         // Mark the connection as [open] and can be used.
         if (_connectionStateController.value != open) {
           _connectionStateController.add(open);
@@ -215,7 +210,7 @@ class WebSocketLink extends Link {
             // Send the request.
             _write(
               StartOperation(
-                request.context.entry<RequestId>().id,
+                request.context.entry<RequestId>()!.id,
                 serializer.serializeRequest(request),
               ),
             ).catchError(_messagesController.addError);
@@ -258,8 +253,8 @@ class WebSocketLink extends Link {
             )
             .map<ConnectionKeepAlive>(
                 (message) => message as ConnectionKeepAlive)
-            .timeout(inactivityTimeout, onTimeout: (_) {
-          _channel.sink.close(websocket_status.goingAway);
+            .timeout(inactivityTimeout!, onTimeout: (_) {
+          _channel!.sink.close(websocket_status.goingAway);
         }).listen(null);
       }
     } catch (e) {
@@ -296,11 +291,12 @@ class WebSocketLink extends Link {
       );
     }
     final encodedMessage = await graphQLSocketMessageEncoder(message.toJson());
-    _channel.sink.add(encodedMessage);
+    _channel!.sink.add(encodedMessage);
   }
 
   Future<GraphQLSocketMessage> _parseSocketMessage(dynamic message) async {
-    final Map<String, dynamic> map = await graphQLSocketMessageDecoder(message);
+    final Map<String, dynamic> map =
+        await graphQLSocketMessageDecoder(message)!;
     final String type = (map["type"] ?? "unknown") as String;
     final dynamic payload = map["payload"] ?? <String, dynamic>{};
     final String id = (map["id"] ?? "none") as String;
@@ -328,7 +324,7 @@ class WebSocketLink extends Link {
   /// Close the WebSocket channel.
   Future<void> _close() async {
     await _keepAliveSubscription?.cancel();
-    await _channel?.sink?.close(websocket_status.goingAway);
+    await _channel?.sink.close(websocket_status.goingAway);
     _connectionStateController.add(closed);
     await _connectionStateController.close();
     await _messagesController.close();
