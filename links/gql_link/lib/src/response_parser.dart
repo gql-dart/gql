@@ -26,13 +26,14 @@ class ResponseParser {
   /// Extend this to add non-standard behavior
   GraphQLError parseError(Map<String, dynamic> error) => GraphQLError(
         message: error["message"] as String,
-        path: error["path"] as List,
+        path: error["path"] as List?,
         locations: (error["locations"] as List?)
             ?.map(
-              (dynamic error) => parseLocation(error as Map<String, dynamic>),
+              (dynamic location) =>
+                  parseLocation(location as Map<String, dynamic>),
             )
             .toList(),
-        extensions: error["extensions"] as Map<String, dynamic>,
+        extensions: error["extensions"] as Map<String, dynamic>?,
       );
 
   /// Parses a response error location

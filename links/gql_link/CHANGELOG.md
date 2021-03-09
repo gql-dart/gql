@@ -1,3 +1,7 @@
+## 0.4.0-nullsafety.2
+
+Null Safety Pre-release
+
 ## 0.3.1
 
 - override toString in Exceptions for legibility (@Britannio)
