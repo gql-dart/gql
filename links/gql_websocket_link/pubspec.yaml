@@ -13,6 +13,6 @@ dependencies:
   uuid: ^3.0.1
   web_socket_channel: ^2.0.0
 dev_dependencies: 
-#  gql_pedantic: ^1.0.2
+  gql_pedantic: ^1.0.2
   mockito: ^5.0.0
   test: ^1.16.6
