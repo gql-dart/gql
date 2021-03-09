@@ -41,14 +41,14 @@ extension on dio.Options {
 // https://github.com/gql-dart/gql/blob/master/gql_http_link/test/gql_http_link_test.dart
 void main() {
   group("DioLink", () {
-    MockClient client;
-    Request request;
-    DioLink link;
+    late MockClient client;
+    late Request request;
+    late DioLink link;
 
     final Stream<Response> Function([
-      Request customRequest,
+      Request? customRequest,
     ]) execute = ([
-      Request customRequest,
+      Request? customRequest,
     ]) =>
         link.request(customRequest ?? request);
 
@@ -69,7 +69,7 @@ void main() {
     test("parses a successful response", () {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -106,7 +106,7 @@ void main() {
     test("uses the defined endpoint", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -135,7 +135,7 @@ void main() {
     test("uses json mime types", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -154,7 +154,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -173,7 +173,7 @@ void main() {
     test("adds headers from context", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -208,7 +208,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -237,7 +237,7 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -265,7 +265,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -284,7 +284,7 @@ void main() {
     test("headers from context override defaults", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -319,7 +319,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -337,7 +337,7 @@ void main() {
     test("serializes the request", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -356,7 +356,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any,
+          any!,
           data: argThat(
               equals({
                 "operationName": null,
@@ -373,7 +373,7 @@ void main() {
     test("parses a successful response with errors", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -439,7 +439,7 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -449,7 +449,7 @@ void main() {
         ),
       );
 
-      DioLinkServerException exception;
+      DioLinkServerException? exception;
 
       try {
         await execute().first;
@@ -462,7 +462,7 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response.data,
+        exception!.response.data,
         response.data,
       );
       expect(
@@ -495,7 +495,7 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -505,7 +505,7 @@ void main() {
         ),
       );
 
-      DioLinkServerException exception;
+      DioLinkServerException? exception;
 
       try {
         await execute().first;
@@ -518,7 +518,7 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response.data,
+        exception!.response.data,
         response.data,
       );
       expect(
@@ -552,7 +552,7 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any,
+          any!,
           options: anyNamed("options"),
         ),
       ).thenAnswer(
@@ -564,11 +564,11 @@ void main() {
 
       when(
         serializer.serializeRequest(
-          any,
+          any!,
         ),
       ).thenThrow(originalException);
 
-      RequestFormatException exception;
+      RequestFormatException? exception;
 
       try {
         await link
@@ -590,7 +590,7 @@ void main() {
         TypeMatcher<RequestFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         originalException,
       );
     });
@@ -598,7 +598,7 @@ void main() {
     test("throws ParserException when unable to serialize request", () async {
       when(
         client.post<dynamic>(
-          any,
+          any!,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -611,7 +611,7 @@ void main() {
         ),
       );
 
-      ResponseFormatException exception;
+      ResponseFormatException? exception;
 
       try {
         await link
