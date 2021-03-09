@@ -10,7 +10,7 @@ dependencies:
   gql_link: ^0.3.1
   meta: ^1.1.8
   rxdart: ^0.25.0
-  uuid_enhanced: ^3.0.2
+  uuid: ^2.2.2
   web_socket_channel: ^1.1.0
 dev_dependencies: 
   gql_pedantic: ^1.0.2

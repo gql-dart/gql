@@ -6,9 +6,11 @@ import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
 import "package:rxdart/rxdart.dart";
-import "package:uuid_enhanced/uuid.dart";
+import "package:uuid/uuid.dart";
 import "package:web_socket_channel/web_socket_channel.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
+
+final uuid = Uuid();
 
 typedef ChannelGenerator = FutureOr<WebSocketChannel> Function();
 typedef GraphQLSocketMessageDecoder = FutureOr<Map<String, dynamic>> Function(
@@ -130,7 +132,7 @@ class WebSocketLink extends Link {
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
-    final String id = Uuid.randomUuid().toString();
+    final String id = uuid.v4();
     final requestWithContext = request.withContextEntry<RequestId>(
       RequestId(id),
     );
