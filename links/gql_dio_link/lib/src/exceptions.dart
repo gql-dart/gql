@@ -10,8 +10,8 @@ class DioLinkParserException extends ResponseFormatException {
   final dio.Response response;
 
   const DioLinkParserException({
-    @required dynamic originalException,
-    @required this.response,
+    required dynamic originalException,
+    required this.response,
   }) : super(
           originalException: originalException,
         );
@@ -25,8 +25,8 @@ class DioLinkServerException extends ServerException {
   final dio.Response response;
 
   const DioLinkServerException({
-    @required this.response,
-    @required Response parsedResponse,
+    required this.response,
+    required Response? parsedResponse,
   }) : super(
           parsedResponse: parsedResponse,
         );
@@ -35,7 +35,7 @@ class DioLinkServerException extends ServerException {
 @immutable
 class DioLinkUnkownException extends LinkException {
   const DioLinkUnkownException({
-    @required dynamic originalException,
+    required dynamic originalException,
   }) : super(originalException);
 }
 
@@ -45,14 +45,14 @@ class DioLinkTimeoutException extends LinkException {
   final dio.DioErrorType type;
 
   const DioLinkTimeoutException({
-    @required this.type,
-    @required dynamic originalException,
+    required this.type,
+    required dynamic originalException,
   }) : super(originalException);
 }
 
 @immutable
 class DioLinkCanceledException extends LinkException {
   const DioLinkCanceledException({
-    @required dynamic originalException,
+    required dynamic originalException,
   }) : super(originalException);
 }

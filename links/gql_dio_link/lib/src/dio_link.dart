@@ -30,7 +30,7 @@ class DioLinkResponseContext extends ContextEntry {
   final int statusCode;
 
   const DioLinkResponseContext({
-    @required this.statusCode,
+    required this.statusCode,
   }) : assert(statusCode != null);
 
   @override
@@ -41,7 +41,7 @@ class DioLinkResponseContext extends ContextEntry {
 
 extension _CastDioResponse on dio.Response {
   dio.Response<T> castData<T>() => dio.Response<T>(
-        data: data as T,
+        data: data as T?,
         headers: headers,
         request: request,
         isRedirect: isRedirect,
@@ -73,7 +73,7 @@ class DioLink extends Link {
 
   DioLink(
     this.endpoint, {
-    @required this.client,
+    required this.client,
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
@@ -91,9 +91,9 @@ class DioLink extends Link {
       },
     );
 
-    if (dioResponse.statusCode >= 300 ||
-        (dioResponse.data["data"] == null &&
-            dioResponse.data["errors"] == null)) {
+    if (dioResponse.statusCode! >= 300 ||
+        (dioResponse.data!["data"] == null &&
+            dioResponse.data!["errors"] == null)) {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
@@ -115,7 +115,7 @@ class DioLink extends Link {
     try {
       return response.context.withEntry(
         DioLinkResponseContext(
-          statusCode: httpResponse.statusCode,
+          statusCode: httpResponse.statusCode!,
         ),
       );
     } catch (e) {
@@ -126,8 +126,8 @@ class DioLink extends Link {
   }
 
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
-    @required Map<String, dynamic> body,
-    @required Map<String, String> headers,
+    required Map<String, dynamic> body,
+    required Map<String, String> headers,
   }) async {
     try {
       final res = await client.post<dynamic>(
@@ -159,7 +159,7 @@ class DioLink extends Link {
           throw DioLinkCanceledException(originalException: e);
         case dio.DioErrorType.response:
           {
-            final res = e.response;
+            final res = e.response!;
             final parsedResponse = (res.data is Map<String, dynamic>)
                 ? parser.parseResponse(res.data as Map<String, dynamic>)
                 : null;
@@ -178,7 +178,7 @@ class DioLink extends Link {
 
   Response _parseDioResponse(dio.Response<Map<String, dynamic>> dioResponse) {
     try {
-      return parser.parseResponse(dioResponse.data);
+      return parser.parseResponse(dioResponse.data!);
     } catch (e) {
       throw DioLinkParserException(
         originalException: e,
@@ -200,7 +200,7 @@ class DioLink extends Link {
 
   Map<String, String> _getHttpLinkHeaders(Request request) {
     try {
-      final HttpLinkHeaders linkHeaders = request.context.entry();
+      final HttpLinkHeaders? linkHeaders = request.context.entry();
       return {
         if (linkHeaders != null) ...linkHeaders.headers,
       };
