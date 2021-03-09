@@ -148,16 +148,16 @@ class DioLink extends Link {
       return res.castData<Map<String, dynamic>>();
     } on dio.DioError catch (e) {
       switch (e.type) {
-        case dio.DioErrorType.CONNECT_TIMEOUT:
-        case dio.DioErrorType.RECEIVE_TIMEOUT:
-        case dio.DioErrorType.SEND_TIMEOUT:
+        case dio.DioErrorType.connectTimeout:
+        case dio.DioErrorType.receiveTimeout:
+        case dio.DioErrorType.sendTimeout:
           throw DioLinkTimeoutException(
             type: e.type,
             originalException: e,
           );
-        case dio.DioErrorType.CANCEL:
+        case dio.DioErrorType.cancel:
           throw DioLinkCanceledException(originalException: e);
-        case dio.DioErrorType.RESPONSE:
+        case dio.DioErrorType.response:
           {
             final res = e.response;
             final parsedResponse = (res.data is Map<String, dynamic>)
@@ -166,7 +166,7 @@ class DioLink extends Link {
             throw DioLinkServerException(
                 response: res, parsedResponse: parsedResponse);
           }
-        case dio.DioErrorType.DEFAULT:
+        case dio.DioErrorType.other:
         default:
           throw DioLinkUnkownException(originalException: e);
       }
