@@ -7,13 +7,14 @@ import "package:gql_exec/gql_exec.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:web_socket_channel/io.dart";
 import "package:test/test.dart";
+import "package:web_socket_channel/status.dart" as websocket_status;
 
 void main() {
   group(
     "WebSocketLink",
     () {
       test("WebSocketLink Construction with uri isn't null", () {
-        final wsLink = WebSocketLink(
+        WebSocketLink(
           "",
           initialPayload: {"authorization": "Bearer 12345"},
         );
@@ -54,7 +55,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           //
           link.request(request).listen(print);
         },
@@ -99,7 +100,7 @@ void main() {
 
           link = WebSocketLink(
             null,
-            channel: channel,
+            channelGenerator: () => channel,
             initialPayload: initialPayload,
           );
           //
@@ -149,7 +150,7 @@ void main() {
 
           link = WebSocketLink(
             null,
-            channel: channel,
+            channelGenerator: () => channel,
             initialPayload: initialPayload,
           );
           //
@@ -221,7 +222,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           link.request(request).listen(
             expectAsync1(
               (Response response) {
@@ -320,7 +321,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           // We expect responseData1, then responseData2 in order.
           int callCounter = 0;
           const maxCall = 2;
@@ -413,13 +414,13 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           link.request(request).listen(
             expectAsync1(
               (Response response) {
                 expect(response.data, null);
                 expect(
-                  response.errors[0],
+                  response.errors![0],
                   GraphQLError(
                     message: responseError["message"] as String,
                     locations: [
@@ -551,7 +552,7 @@ void main() {
           webSocket = await WebSocket.connect("ws://localhost:${server.port}");
           channel = IOWebSocketChannel(webSocket);
 
-          link = WebSocketLink(null, channel: channel);
+          link = WebSocketLink(null, channelGenerator: () => channel);
           // We expect responseData1, then responseData3 in order.
           int callCounter = 0;
           const maxCall = 2;
@@ -630,7 +631,7 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         expect(
           link.request(request).first,
           throwsA(isA<WebSocketLinkParserException>()),
@@ -685,41 +686,40 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         expect(
           link.request(request).first,
           throwsA(isA<WebSocketLinkServerException>()),
         );
       });
 
-      // Disable test, next release will have major architecture redesign.
-      // test("throw WebSocketLinkServerException when network fails", () async {
-      //   HttpServer server;
-      //   WebSocket webSocket;
-      //   IOWebSocketChannel channel;
-      //   WebSocketLink link;
-      //   Request request;
-      //
-      //   request = Request(
-      //     operation: Operation(
-      //       operationName: "sub",
-      //       document: parseString("subscription MySubscription {}"),
-      //     ),
-      //   );
-      //
-      //   server = await HttpServer.bind("localhost", 0);
-      //   server.transform(WebSocketTransformer());
-      //
-      //   webSocket = await WebSocket.connect("ws://localhost:${server.port}");
-      //   // Close the socket to cause network error.
-      //   await webSocket.close();
-      //   channel = IOWebSocketChannel(webSocket);
-      //   link = WebSocketLink(null, channel: channel);
-      //   expect(
-      //     link.request(request).first,
-      //     throwsA(isA<WebSocketLinkServerException>()),
-      //   );
-      // });
+      test("throw WebSocketLinkServerException when network fails", () async {
+        HttpServer server;
+        WebSocket webSocket;
+        IOWebSocketChannel channel;
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        server = await HttpServer.bind("localhost", 0);
+        server.transform(WebSocketTransformer());
+
+        webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+        // Close the socket to cause network error.
+        await webSocket.close();
+        channel = IOWebSocketChannel(webSocket);
+        link = WebSocketLink(null, channelGenerator: () => channel);
+        expect(
+          link.request(request).first,
+          throwsA(isA<WebSocketLinkServerException>()),
+        );
+      });
 
       test("send stop to server once subscription is canceled", () async {
         HttpServer server;
@@ -727,7 +727,7 @@ void main() {
         IOWebSocketChannel channel;
         WebSocketLink link;
         Request request;
-        StreamSubscription<Response> responseSub;
+        late StreamSubscription<Response> responseSub;
 
         request = Request(
           operation: Operation(
@@ -740,23 +740,28 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            var subId = "";
+            String? subId = "";
             var messageCount = 0;
             channel.stream.listen(
               expectAsyncUntil1<void, dynamic>(
                 (dynamic message) {
-                  // cancel the request
-                  responseSub.cancel();
                   final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                      json.decode(message as String) as Map<String, dynamic>?;
                   if (messageCount == 0) {
-                    expect(map["type"], MessageTypes.connectionInit);
+                    expect(map!["type"], MessageTypes.connectionInit);
+                    channel.sink.add(
+                      json.encode(
+                        ConnectionAck(),
+                      ),
+                    );
                   } else if (messageCount == 1) {
-                    expect(map["id"], isA<String>());
+                    expect(map!["id"], isA<String>());
                     expect(map["type"], MessageTypes.start);
-                    subId = map["id"] as String;
+                    subId = map["id"] as String?;
+                    // cancel the request
+                    responseSub.cancel();
                   } else if (messageCount == 2) {
-                    expect(map["id"], isA<String>());
+                    expect(map!["id"], isA<String>());
                     expect(map["id"], subId);
                     expect(map["type"], MessageTypes.stop);
                   } else {
@@ -773,7 +778,7 @@ void main() {
 
         webSocket = await WebSocket.connect("ws://localhost:${server.port}");
         channel = IOWebSocketChannel(webSocket);
-        link = WebSocketLink(null, channel: channel);
+        link = WebSocketLink(null, channelGenerator: () => channel);
         responseSub = link.request(request).listen(print);
       });
 
@@ -815,8 +820,9 @@ void main() {
 
         link = WebSocketLink(
           null,
-          channel: channel,
+          channelGenerator: () => channel,
           inactivityTimeout: Duration(seconds: 5),
+          autoReconnect: false,
         );
         link.request(request).listen(null);
         expect(
@@ -872,7 +878,7 @@ void main() {
 
         link = WebSocketLink(
           null,
-          channel: channel,
+          channelGenerator: () => channel,
           inactivityTimeout: Duration(seconds: 2),
         );
         link.request(request).listen(null);
@@ -883,6 +889,173 @@ void main() {
           ).take(20),
           neverEmits(WebSocket.closed),
         );
+      });
+
+      test(
+        "Auto reconnect",
+        () async {
+          HttpServer server;
+          WebSocketLink link;
+          Request request;
+
+          request = Request(
+            operation: Operation(
+              operationName: "sub",
+              document: parseString("subscription MySubscription {}"),
+            ),
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).take(2).listen(
+                expectAsync1(
+                  (webSocket) async {
+                    final channel = IOWebSocketChannel(webSocket);
+                    var messageCount = 0;
+                    channel.stream.take(1).listen(
+                          expectAsync1<void, dynamic>(
+                            (dynamic message) {
+                              final map = json.decode(message as String)
+                                  as Map<String, dynamic>?;
+                              if (messageCount == 0) {
+                                expect(
+                                    map!["type"], MessageTypes.connectionInit);
+                                channel.sink.add(
+                                  json.encode(
+                                    ConnectionAck(),
+                                  ),
+                                );
+                                webSocket.close(websocket_status.goingAway);
+                              }
+                              messageCount++;
+                            },
+                            count: 1,
+                            max: -1,
+                          ),
+                        );
+                  },
+                  count: 2,
+                  max: -1,
+                ),
+              );
+
+          link = WebSocketLink(
+            null,
+            channelGenerator: () async {
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server.port}");
+              return IOWebSocketChannel(webSocket);
+            },
+            reconnectInterval: Duration(milliseconds: 500),
+          );
+          //
+          link.request(request).listen(print, onError: print);
+        },
+      );
+
+      test("Auto resubscribe", () async {
+        HttpServer server1;
+        HttpServer server2;
+        WebSocketLink link;
+        Request request;
+        int connectToServer = 1;
+        String? subId;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString(
+              r"subscription MySubscription { pokemons(first: $first) { name } }",
+            ),
+          ),
+        );
+
+        server1 = await HttpServer.bind("localhost", 0);
+        server1.transform(WebSocketTransformer()).listen(
+              expectAsync1(
+                (webSocket) async {
+                  final channel = IOWebSocketChannel(webSocket);
+                  var messageCount = 0;
+                  channel.stream.listen(
+                    expectAsync1<void, dynamic>(
+                      (dynamic message) {
+                        final map = json.decode(message as String)
+                            as Map<String, dynamic>?;
+                        if (messageCount == 0) {
+                          expect(map!["type"], MessageTypes.connectionInit);
+                          channel.sink.add(
+                            json.encode(
+                              ConnectionAck(),
+                            ),
+                          );
+                        } else if (messageCount == 1) {
+                          expect(map!["id"], isA<String>());
+                          expect(map["type"], MessageTypes.start);
+                          subId = map["id"] as String?;
+                          // disconnect
+                          webSocket.close(websocket_status.goingAway);
+                        }
+                        messageCount++;
+                      },
+                      count: 2,
+                    ),
+                  );
+                },
+                count: 1,
+              ),
+            );
+
+        server2 = await HttpServer.bind("localhost", 0);
+        server2.transform(WebSocketTransformer()).listen(
+              expectAsync1(
+                (webSocket) async {
+                  final channel = IOWebSocketChannel(webSocket);
+                  var messageCount = 0;
+                  channel.stream.listen(
+                    expectAsync1<void, dynamic>(
+                      (dynamic message) {
+                        final map = json.decode(message as String)
+                            as Map<String, dynamic>?;
+                        if (messageCount == 0) {
+                          expect(map!["type"], MessageTypes.connectionInit);
+                          channel.sink.add(
+                            json.encode(
+                              ConnectionAck(),
+                            ),
+                          );
+                        } else if (messageCount == 1) {
+                          expect(map!["id"], isA<String>());
+                          expect(map["type"], MessageTypes.start);
+                          expect(map["id"], subId);
+                          // disconnect
+                          webSocket.close(websocket_status.goingAway);
+                        }
+                        messageCount++;
+                      },
+                      count: 2,
+                    ),
+                  );
+                },
+                count: 1,
+              ),
+            );
+
+        link = WebSocketLink(
+          null,
+          channelGenerator: () async {
+            if (connectToServer == 1) {
+              connectToServer++;
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server1.port}");
+              return IOWebSocketChannel(webSocket);
+            } else {
+              final webSocket =
+                  await WebSocket.connect("ws://localhost:${server2.port}");
+              return IOWebSocketChannel(webSocket);
+            }
+          },
+          reconnectInterval: Duration(milliseconds: 500),
+        );
+        link.request(request).listen(print, onError: print);
       });
     },
   );
