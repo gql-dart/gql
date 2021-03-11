@@ -9,14 +9,16 @@ import "package:gql/language.dart";
 import "package:gql_dio_link/gql_dio_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
+import "package:mockito/annotations.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
+import "gql_dio_link_test.mocks.dart";
 
-class MockClient extends Mock implements dio.Dio {}
-
-class MockRequestSerializer extends Mock implements RequestSerializer {}
-
-class MockResponseParser extends Mock implements ResponseParser {}
+// class MockClient extends Mock implements dio.Dio {}
+//
+// class MockRequestSerializer extends Mock implements RequestSerializer {}
+//
+// class MockResponseParser extends Mock implements ResponseParser {}
 
 extension on dio.Options {
   bool extEqual(Object o) {
@@ -37,12 +39,14 @@ extension on dio.Options {
   }
 }
 
-// Adaptd tests from ``gql_http_link`` tests
+// Adapted tests from ``gql_http_link`` tests
 // https://github.com/gql-dart/gql/blob/master/gql_http_link/test/gql_http_link_test.dart
+@GenerateMocks([dio.Dio, RequestSerializer])
 void main() {
   group("DioLink", () {
-    late MockClient client;
+    late MockDio client;
     late Request request;
+    late String path;
     late DioLink link;
 
     final Stream<Response> Function([
@@ -53,15 +57,16 @@ void main() {
         link.request(customRequest ?? request);
 
     setUp(() {
-      client = MockClient();
+      client = MockDio();
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
         ),
         variables: const <String, dynamic>{"i": 12},
       );
+      path = "/graphql-test";
       link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
       );
     });
@@ -69,7 +74,7 @@ void main() {
     test("parses a successful response", () {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -80,6 +85,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -106,7 +112,7 @@ void main() {
     test("uses the defined endpoint", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -117,6 +123,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -125,7 +132,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          "/graphql-test",
+          path,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -135,7 +142,7 @@ void main() {
     test("uses json mime types", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -146,6 +153,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -154,7 +162,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -173,7 +181,7 @@ void main() {
     test("adds headers from context", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -184,6 +192,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -208,7 +217,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -226,9 +235,9 @@ void main() {
     });
 
     test("adds default headers", () async {
-      final client = MockClient();
+      final client = MockDio();
       final link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
         defaultHeaders: {
           "foo": "bar",
@@ -237,7 +246,7 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -248,6 +257,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -265,7 +275,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -284,7 +294,7 @@ void main() {
     test("headers from context override defaults", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -295,6 +305,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -319,7 +330,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: argThat(
             predicate((dio.Options o) => o.extEqual(dio.Options(
@@ -337,7 +348,7 @@ void main() {
     test("serializes the request", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -348,6 +359,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -356,7 +368,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          any!,
+          any,
           data: argThat(
               equals({
                 "operationName": null,
@@ -373,7 +385,7 @@ void main() {
     test("parses a successful response with errors", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -397,6 +409,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -435,11 +448,12 @@ void main() {
           "data": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
+        request: dio.RequestOptions(path: path),
       );
 
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -491,11 +505,12 @@ void main() {
           "test": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
+        request: dio.RequestOptions(path: path),
       );
 
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -540,10 +555,10 @@ void main() {
 
     test("throws SerializerException when unable to serialize request",
         () async {
-      final client = MockClient();
+      final client = MockDio();
       final serializer = MockRequestSerializer();
       final link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
         serializer: serializer,
       );
@@ -552,19 +567,20 @@ void main() {
 
       when(
         client.post<dynamic>(
-          any!,
+          any,
           options: anyNamed("options"),
         ),
       ).thenAnswer(
         (_) => Future.value(dio.Response<Map<String, dynamic>>(
           data: <String, dynamic>{},
           statusCode: 200,
+          request: dio.RequestOptions(path: path),
         )),
       );
 
       when(
         serializer.serializeRequest(
-          any!,
+          any,
         ),
       ).thenThrow(originalException);
 
@@ -598,7 +614,7 @@ void main() {
     test("throws ParserException when unable to serialize request", () async {
       when(
         client.post<dynamic>(
-          any!,
+          any,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -607,6 +623,7 @@ void main() {
           dio.Response<String>(
             data: "foobar",
             statusCode: 200,
+            request: dio.RequestOptions(path: path),
           ),
         ),
       );
