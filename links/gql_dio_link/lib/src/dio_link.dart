@@ -15,7 +15,7 @@ class HttpLinkHeaders extends ContextEntry {
 
   const HttpLinkHeaders({
     this.headers = const {},
-  }) : assert(headers != null);
+  });
 
   @override
   List<Object> get fieldsForEquality => [
@@ -31,7 +31,7 @@ class DioLinkResponseContext extends ContextEntry {
 
   const DioLinkResponseContext({
     required this.statusCode,
-  }) : assert(statusCode != null);
+  });
 
   @override
   List<Object> get fieldsForEquality => [
@@ -77,7 +77,7 @@ class DioLink extends Link {
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
-  }) : assert(client != null);
+  });
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
@@ -213,6 +213,6 @@ class DioLink extends Link {
 
   /// Closes the underlining Dio client
   void close({bool force = false}) {
-    client?.close(force: force);
+    client.close(force: force);
   }
 }
