@@ -12,13 +12,8 @@ import "package:gql_link/gql_link.dart";
 import "package:mockito/annotations.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
-import "gql_dio_link_test.mocks.dart";
 
-// class MockClient extends Mock implements dio.Dio {}
-//
-// class MockRequestSerializer extends Mock implements RequestSerializer {}
-//
-// class MockResponseParser extends Mock implements ResponseParser {}
+import "gql_dio_link_test.mocks.dart";
 
 extension on dio.Options {
   bool extEqual(Object o) {
@@ -33,9 +28,12 @@ extension on dio.Options {
         o.responseType == responseType &&
         o.contentType == contentType &&
         o.validateStatus == validateStatus &&
+        o.receiveDataWhenStatusError == receiveDataWhenStatusError &&
+        o.followRedirects == followRedirects &&
         o.maxRedirects == maxRedirects &&
         o.requestEncoder == requestEncoder &&
-        o.responseDecoder == responseDecoder;
+        o.responseDecoder == responseDecoder &&
+        o.listFormat == listFormat;
   }
 }
 
@@ -147,15 +145,24 @@ void main() {
           options: anyNamed("options"),
         ),
       ).thenAnswer(
-        (_) => Future.value(
-          dio.Response<Map<String, dynamic>>(
-            data: <String, dynamic>{
-              "data": <String, dynamic>{},
-            },
-            statusCode: 200,
-            requestOptions: dio.RequestOptions(path: path),
-          ),
-        ),
+        (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          print(options.headers);
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+              ),
+            ),
+          );
+        },
       );
 
       await execute().first;
@@ -168,8 +175,8 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   headers: <String, dynamic>{
-                    dio.Headers.contentTypeHeader: "application/json",
-                    "Accept": "*/*",
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
                   },
                 ))),
             named: "options",
@@ -186,15 +193,23 @@ void main() {
           options: anyNamed("options"),
         ),
       ).thenAnswer(
-        (_) => Future.value(
-          dio.Response<Map<String, dynamic>>(
-            data: <String, dynamic>{
-              "data": <String, dynamic>{},
-            },
-            statusCode: 200,
-            requestOptions: dio.RequestOptions(path: path),
-          ),
-        ),
+        (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+              ),
+            ),
+          );
+        },
       );
 
       await execute(
@@ -223,8 +238,8 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   headers: <String, dynamic>{
-                    dio.Headers.contentTypeHeader: "application/json",
-                    "Accept": "*/*",
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
                     "foo": "bar",
                   },
                 ))),
@@ -281,8 +296,9 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
                     headers: <String, dynamic>{
-                      dio.Headers.contentTypeHeader: "application/json",
-                      "Accept": "*/*",
+                      dio.Headers.contentTypeHeader:
+                          dio.Headers.jsonContentType,
+                      dio.Headers.acceptHeader: "*/*",
                       "foo": "bar",
                     }))),
             named: "options",
@@ -337,7 +353,7 @@ void main() {
                     responseType: dio.ResponseType.json,
                     headers: <String, dynamic>{
                       dio.Headers.contentTypeHeader: "application/jsonize",
-                      "Accept": "*/*",
+                      dio.Headers.acceptHeader: "*/*",
                     }))),
             named: "options",
           ),
