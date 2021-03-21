@@ -86,7 +86,8 @@ class DioLink extends Link {
         await _executeDioRequest(
       body: _serializeRequest(request),
       headers: <String, String>{
-        "Accept": "*/*",
+        dio.Headers.acceptHeader: "*/*",
+        dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
         ...defaultHeaders,
         ..._getHttpLinkHeaders(request),
       },
