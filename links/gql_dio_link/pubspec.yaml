@@ -5,7 +5,7 @@ repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 dependencies: 
-  dio: ^4.0.0-beta7
+  dio: ^4.0.0-prev3
   gql_exec: ^0.3.0-nullsafety.2
   gql_link: ^0.4.0-nullsafety.2
   meta: ^1.3.0

@@ -85,7 +85,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -123,7 +123,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -153,7 +153,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -192,7 +192,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -257,7 +257,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -305,7 +305,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -359,7 +359,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -409,7 +409,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -448,7 +448,7 @@ void main() {
           "data": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
-        request: dio.RequestOptions(path: path),
+        requestOptions: dio.RequestOptions(path: path),
       );
 
       when(
@@ -505,7 +505,7 @@ void main() {
           "test": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
-        request: dio.RequestOptions(path: path),
+        requestOptions: dio.RequestOptions(path: path),
       );
 
       when(
@@ -574,7 +574,7 @@ void main() {
         (_) => Future.value(dio.Response<Map<String, dynamic>>(
           data: <String, dynamic>{},
           statusCode: 200,
-          request: dio.RequestOptions(path: path),
+          requestOptions: dio.RequestOptions(path: path),
         )),
       );
 
@@ -623,7 +623,7 @@ void main() {
           dio.Response<String>(
             data: "foobar",
             statusCode: 200,
-            request: dio.RequestOptions(path: path),
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );

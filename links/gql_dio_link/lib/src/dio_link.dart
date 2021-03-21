@@ -43,11 +43,12 @@ extension _CastDioResponse on dio.Response {
   dio.Response<T> castData<T>() => dio.Response<T>(
         data: data as T?,
         headers: headers,
-        request: request,
+        requestOptions: requestOptions,
         isRedirect: isRedirect,
         statusCode: statusCode,
         statusMessage: statusMessage,
         redirects: redirects,
+        extra: extra,
       );
 }
 
