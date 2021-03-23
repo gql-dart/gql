@@ -17,9 +17,10 @@ class _$GHeroWithFragmentsSerializer
   final String wireName = 'GHeroWithFragments';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GHeroWithFragments object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroWithFragments object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GHeroWithFragmentsVars)),
@@ -33,7 +34,7 @@ class _$GHeroWithFragmentsSerializer
 
   @override
   GHeroWithFragments deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHeroWithFragmentsBuilder();
 
@@ -41,11 +42,11 @@ class _$GHeroWithFragmentsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GHeroWithFragmentsVars))
+                  specifiedType: const FullType(_i3.GHeroWithFragmentsVars))!
               as _i3.GHeroWithFragmentsVars);
           break;
         case 'operation':
@@ -66,16 +67,14 @@ class _$GHeroWithFragments extends GHeroWithFragments {
   final _i1.Operation operation;
 
   factory _$GHeroWithFragments(
-          [void Function(GHeroWithFragmentsBuilder) updates]) =>
+          [void Function(GHeroWithFragmentsBuilder)? updates]) =>
       (new GHeroWithFragmentsBuilder()..update(updates)).build();
 
-  _$GHeroWithFragments._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GHeroWithFragments', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GHeroWithFragments', 'operation');
-    }
+  _$GHeroWithFragments._({required this.vars, required this.operation})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GHeroWithFragments', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GHeroWithFragments', 'operation');
   }
 
   @override
@@ -111,25 +110,26 @@ class _$GHeroWithFragments extends GHeroWithFragments {
 
 class GHeroWithFragmentsBuilder
     implements Builder<GHeroWithFragments, GHeroWithFragmentsBuilder> {
-  _$GHeroWithFragments _$v;
+  _$GHeroWithFragments? _$v;
 
-  _i3.GHeroWithFragmentsVarsBuilder _vars;
+  _i3.GHeroWithFragmentsVarsBuilder? _vars;
   _i3.GHeroWithFragmentsVarsBuilder get vars =>
       _$this._vars ??= new _i3.GHeroWithFragmentsVarsBuilder();
-  set vars(_i3.GHeroWithFragmentsVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GHeroWithFragmentsVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GHeroWithFragmentsBuilder() {
     GHeroWithFragments._initializeBuilder(this);
   }
 
   GHeroWithFragmentsBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -137,14 +137,12 @@ class GHeroWithFragmentsBuilder
 
   @override
   void replace(GHeroWithFragments other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithFragments;
   }
 
   @override
-  void update(void Function(GHeroWithFragmentsBuilder) updates) {
+  void update(void Function(GHeroWithFragmentsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -153,9 +151,12 @@ class GHeroWithFragmentsBuilder
     _$GHeroWithFragments _$result;
     try {
       _$result = _$v ??
-          new _$GHeroWithFragments._(vars: vars.build(), operation: operation);
+          new _$GHeroWithFragments._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GHeroWithFragments', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

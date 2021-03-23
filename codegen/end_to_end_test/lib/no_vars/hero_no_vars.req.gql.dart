@@ -21,7 +21,8 @@ abstract class GHeroNoVars implements Built<GHeroNoVars, GHeroNoVarsBuilder> {
   _i1.Operation get operation;
   static Serializer<GHeroNoVars> get serializer => _$gHeroNoVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GHeroNoVars.serializer, this);
-  static GHeroNoVars fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GHeroNoVars.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroNoVars? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GHeroNoVars.serializer, json);
 }

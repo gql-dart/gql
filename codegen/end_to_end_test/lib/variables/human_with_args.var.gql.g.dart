@@ -17,9 +17,10 @@ class _$GHumanWithArgsVarsSerializer
   final String wireName = 'GHumanWithArgsVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GHumanWithArgsVars object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GHumanWithArgsVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -29,7 +30,7 @@ class _$GHumanWithArgsVarsSerializer
 
   @override
   GHumanWithArgsVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHumanWithArgsVarsBuilder();
 
@@ -37,7 +38,7 @@ class _$GHumanWithArgsVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -55,13 +56,11 @@ class _$GHumanWithArgsVars extends GHumanWithArgsVars {
   final String id;
 
   factory _$GHumanWithArgsVars(
-          [void Function(GHumanWithArgsVarsBuilder) updates]) =>
+          [void Function(GHumanWithArgsVarsBuilder)? updates]) =>
       (new GHumanWithArgsVarsBuilder()..update(updates)).build();
 
-  _$GHumanWithArgsVars._({this.id}) : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('GHumanWithArgsVars', 'id');
-    }
+  _$GHumanWithArgsVars._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, 'GHumanWithArgsVars', 'id');
   }
 
   @override
@@ -93,17 +92,18 @@ class _$GHumanWithArgsVars extends GHumanWithArgsVars {
 
 class GHumanWithArgsVarsBuilder
     implements Builder<GHumanWithArgsVars, GHumanWithArgsVarsBuilder> {
-  _$GHumanWithArgsVars _$v;
+  _$GHumanWithArgsVars? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   GHumanWithArgsVarsBuilder();
 
   GHumanWithArgsVarsBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
       _$v = null;
     }
     return this;
@@ -111,20 +111,21 @@ class GHumanWithArgsVarsBuilder
 
   @override
   void replace(GHumanWithArgsVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHumanWithArgsVars;
   }
 
   @override
-  void update(void Function(GHumanWithArgsVarsBuilder) updates) {
+  void update(void Function(GHumanWithArgsVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GHumanWithArgsVars build() {
-    final _$result = _$v ?? new _$GHumanWithArgsVars._(id: id);
+    final _$result = _$v ??
+        new _$GHumanWithArgsVars._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GHumanWithArgsVars', 'id'));
     replace(_$result);
     return _$result;
   }

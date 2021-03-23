@@ -23,7 +23,8 @@ abstract class GCreateReview
   _i1.Operation get operation;
   static Serializer<GCreateReview> get serializer => _$gCreateReviewSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GCreateReview.serializer, this);
-  static GCreateReview fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GCreateReview.serializer, this)
+          as Map<String, dynamic>);
+  static GCreateReview? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GCreateReview.serializer, json);
 }
