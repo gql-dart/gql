@@ -9,14 +9,11 @@ import "package:gql/language.dart";
 import "package:gql_dio_link/gql_dio_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
+import "package:mockito/annotations.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
 
-class MockClient extends Mock implements dio.Dio {}
-
-class MockRequestSerializer extends Mock implements RequestSerializer {}
-
-class MockResponseParser extends Mock implements ResponseParser {}
+import "gql_dio_link_test.mocks.dart";
 
 extension on dio.Options {
   bool extEqual(Object o) {
@@ -31,37 +28,43 @@ extension on dio.Options {
         o.responseType == responseType &&
         o.contentType == contentType &&
         o.validateStatus == validateStatus &&
+        o.receiveDataWhenStatusError == receiveDataWhenStatusError &&
+        o.followRedirects == followRedirects &&
         o.maxRedirects == maxRedirects &&
         o.requestEncoder == requestEncoder &&
-        o.responseDecoder == responseDecoder;
+        o.responseDecoder == responseDecoder &&
+        o.listFormat == listFormat;
   }
 }
 
-// Adaptd tests from ``gql_http_link`` tests
+// Adapted tests from ``gql_http_link`` tests
 // https://github.com/gql-dart/gql/blob/master/gql_http_link/test/gql_http_link_test.dart
+@GenerateMocks([dio.Dio, RequestSerializer])
 void main() {
   group("DioLink", () {
-    MockClient client;
-    Request request;
-    DioLink link;
+    late MockDio client;
+    late Request request;
+    late String path;
+    late DioLink link;
 
     final Stream<Response> Function([
-      Request customRequest,
+      Request? customRequest,
     ]) execute = ([
-      Request customRequest,
+      Request? customRequest,
     ]) =>
         link.request(customRequest ?? request);
 
     setUp(() {
-      client = MockClient();
+      client = MockDio();
       request = Request(
         operation: Operation(
           document: parseString("query MyQuery {}"),
         ),
         variables: const <String, dynamic>{"i": 12},
       );
+      path = "/graphql-test";
       link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
       );
     });
@@ -80,6 +83,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -117,6 +121,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -125,7 +130,7 @@ void main() {
 
       verify(
         client.post<dynamic>(
-          "/graphql-test",
+          path,
           data: anyNamed("data"),
           options: anyNamed("options"),
         ),
@@ -140,14 +145,24 @@ void main() {
           options: anyNamed("options"),
         ),
       ).thenAnswer(
-        (_) => Future.value(
-          dio.Response<Map<String, dynamic>>(
-            data: <String, dynamic>{
-              "data": <String, dynamic>{},
-            },
-            statusCode: 200,
-          ),
-        ),
+        (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          print(options.headers);
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+              ),
+            ),
+          );
+        },
       );
 
       await execute().first;
@@ -160,8 +175,8 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   headers: <String, dynamic>{
-                    dio.Headers.contentTypeHeader: "application/json",
-                    "Accept": "*/*",
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
                   },
                 ))),
             named: "options",
@@ -178,14 +193,23 @@ void main() {
           options: anyNamed("options"),
         ),
       ).thenAnswer(
-        (_) => Future.value(
-          dio.Response<Map<String, dynamic>>(
-            data: <String, dynamic>{
-              "data": <String, dynamic>{},
-            },
-            statusCode: 200,
-          ),
-        ),
+        (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+              ),
+            ),
+          );
+        },
       );
 
       await execute(
@@ -214,8 +238,8 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                   responseType: dio.ResponseType.json,
                   headers: <String, dynamic>{
-                    dio.Headers.contentTypeHeader: "application/json",
-                    "Accept": "*/*",
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
                     "foo": "bar",
                   },
                 ))),
@@ -226,9 +250,9 @@ void main() {
     });
 
     test("adds default headers", () async {
-      final client = MockClient();
+      final client = MockDio();
       final link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
         defaultHeaders: {
           "foo": "bar",
@@ -248,6 +272,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -271,8 +296,9 @@ void main() {
             predicate((dio.Options o) => o.extEqual(dio.Options(
                     responseType: dio.ResponseType.json,
                     headers: <String, dynamic>{
-                      dio.Headers.contentTypeHeader: "application/json",
-                      "Accept": "*/*",
+                      dio.Headers.contentTypeHeader:
+                          dio.Headers.jsonContentType,
+                      dio.Headers.acceptHeader: "*/*",
                       "foo": "bar",
                     }))),
             named: "options",
@@ -295,6 +321,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -326,7 +353,7 @@ void main() {
                     responseType: dio.ResponseType.json,
                     headers: <String, dynamic>{
                       dio.Headers.contentTypeHeader: "application/jsonize",
-                      "Accept": "*/*",
+                      dio.Headers.acceptHeader: "*/*",
                     }))),
             named: "options",
           ),
@@ -348,6 +375,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -397,6 +425,7 @@ void main() {
               "data": <String, dynamic>{},
             },
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
@@ -435,6 +464,7 @@ void main() {
           "data": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
+        requestOptions: dio.RequestOptions(path: path),
       );
 
       when(
@@ -449,7 +479,7 @@ void main() {
         ),
       );
 
-      DioLinkServerException exception;
+      DioLinkServerException? exception;
 
       try {
         await execute().first;
@@ -462,7 +492,7 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response.data,
+        exception!.response.data,
         response.data,
       );
       expect(
@@ -491,6 +521,7 @@ void main() {
           "test": <String, dynamic>{"something": "random text 55656"},
         },
         statusCode: 300,
+        requestOptions: dio.RequestOptions(path: path),
       );
 
       when(
@@ -505,7 +536,7 @@ void main() {
         ),
       );
 
-      DioLinkServerException exception;
+      DioLinkServerException? exception;
 
       try {
         await execute().first;
@@ -518,7 +549,7 @@ void main() {
         TypeMatcher<DioLinkServerException>(),
       );
       expect(
-        exception.response.data,
+        exception!.response.data,
         response.data,
       );
       expect(
@@ -540,10 +571,10 @@ void main() {
 
     test("throws SerializerException when unable to serialize request",
         () async {
-      final client = MockClient();
+      final client = MockDio();
       final serializer = MockRequestSerializer();
       final link = DioLink(
-        "/graphql-test",
+        path,
         client: client,
         serializer: serializer,
       );
@@ -559,6 +590,7 @@ void main() {
         (_) => Future.value(dio.Response<Map<String, dynamic>>(
           data: <String, dynamic>{},
           statusCode: 200,
+          requestOptions: dio.RequestOptions(path: path),
         )),
       );
 
@@ -568,7 +600,7 @@ void main() {
         ),
       ).thenThrow(originalException);
 
-      RequestFormatException exception;
+      RequestFormatException? exception;
 
       try {
         await link
@@ -590,7 +622,7 @@ void main() {
         TypeMatcher<RequestFormatException>(),
       );
       expect(
-        exception.originalException,
+        exception!.originalException,
         originalException,
       );
     });
@@ -607,11 +639,12 @@ void main() {
           dio.Response<String>(
             data: "foobar",
             statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
           ),
         ),
       );
 
-      ResponseFormatException exception;
+      ResponseFormatException? exception;
 
       try {
         await link
