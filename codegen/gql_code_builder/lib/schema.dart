@@ -1,7 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql_code_builder/src/schema.dart";
 import "package:gql_code_builder/source.dart";
-import "package:meta/meta.dart";
 
 Library buildSchemaLibrary(
     SourceNode schemaSource,
@@ -24,15 +23,13 @@ Library buildSchemaLibrary(
 
 class EnumFallbackConfig {
   final bool generateFallbackValuesGlobally;
-  final String globalEnumFallbackName;
+  final String? globalEnumFallbackName;
   final Map<String, String> fallbackValueMap;
 
   const EnumFallbackConfig({
-    @required this.generateFallbackValuesGlobally,
+    required this.generateFallbackValuesGlobally,
     this.globalEnumFallbackName,
-    @required this.fallbackValueMap,
-  })  : assert(fallbackValueMap != null),
-        assert(generateFallbackValuesGlobally != null),
-        assert(
+    required this.fallbackValueMap,
+  }) : assert(
             !generateFallbackValuesGlobally || globalEnumFallbackName != null);
 }

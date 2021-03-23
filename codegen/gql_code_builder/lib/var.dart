@@ -16,7 +16,7 @@ Library buildVarLibrary(
       .whereType<OperationDefinitionNode>()
       .map(
         (op) => builtClass(
-          name: "${op.name.value}Vars",
+          name: "${op.name!.value}Vars",
           getters: op.variableDefinitions.map<Method>(
             (node) => buildGetter(
               nameNode: node.variable.name,

@@ -43,15 +43,18 @@ Library buildAstLibrary(
 }
 
 String _getName(DefinitionNode def) {
-  if (def.name != null && def.name.value != null) return def.name.value;
+  if (def is DirectiveDefinitionNode) return def.name.value;
+  if (def is TypeDefinitionNode) return def.name.value;
+  if (def is FragmentDefinitionNode) return def.name.value;
+  if (def is TypeExtensionNode) return def.name.value;
 
   if (def is SchemaDefinitionNode) return "schema";
 
   if (def is OperationDefinitionNode) {
+    if (def.name != null) return def.name!.value;
     if (def.type == OperationType.query) return "query";
     if (def.type == OperationType.mutation) return "mutation";
     if (def.type == OperationType.subscription) return "subscription";
   }
-
-  return null;
+  throw Exception("Unknown DefinitionNode type");
 }

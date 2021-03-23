@@ -30,7 +30,7 @@ Expression _node(
 
 class _PrintVisitor extends Visitor<Expression> {
   Expression _acceptOne(
-    Node node,
+    Node? node,
   ) =>
       node != null ? node.accept(this) : literalNull;
 
@@ -613,9 +613,6 @@ Expression _opType(OperationType t) {
     case OperationType.subscription:
       return _ref("OperationType.subscription");
   }
-
-  // dead code to satisfy lint
-  return null;
 }
 
 Expression _directiveLocation(DirectiveLocation location) {
@@ -657,7 +654,4 @@ Expression _directiveLocation(DirectiveLocation location) {
     case DirectiveLocation.inputFieldDefinition:
       return _ref("DirectiveLocation.inputFieldDefinition");
   }
-
-  // dead code to satisfy lint
-  return null;
 }

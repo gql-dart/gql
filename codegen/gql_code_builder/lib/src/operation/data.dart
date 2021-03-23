@@ -1,4 +1,3 @@
-import "package:meta/meta.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 
@@ -13,9 +12,13 @@ List<Class> buildOperationDataClasses(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
 ) {
+  if (op.name == null) {
+    throw Exception("Operations must be named");
+  }
+
   final fragmentMap = _fragmentMap(docSource);
   return buildSelectionSetDataClasses(
-    name: "${op.name.value}Data",
+    name: "${op.name!.value}Data",
     selections: mergeSelections(
       op.selectionSet.selections,
       fragmentMap,
@@ -78,7 +81,7 @@ String _operationType(
 ) {
   final schemaDefs = schema.definitions.whereType<SchemaDefinitionNode>();
 
-  if (schemaDefs.isEmpty) return defaultRootTypes[op.type];
+  if (schemaDefs.isEmpty) return defaultRootTypes[op.type]!;
 
   return schemaDefs.first.operationTypes
       .firstWhere(
@@ -109,24 +112,24 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
 List<Class> buildSelectionSetDataClasses({
-  @required String name,
-  @required List<SelectionNode> selections,
-  @required SourceNode schemaSource,
-  @required String type,
-  @required Map<String, Reference> typeOverrides,
-  @required Map<String, SourceSelections> fragmentMap,
-  @required Map<String, SourceSelections> superclassSelections,
+  required String name,
+  required List<SelectionNode> selections,
+  required SourceNode schemaSource,
+  required String type,
+  required Map<String, Reference> typeOverrides,
+  required Map<String, SourceSelections> fragmentMap,
+  required Map<String, SourceSelections> superclassSelections,
   bool built = true,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
-    assert(
-      fragmentMap.containsKey(selection.name.value),
-      "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
-    );
+    if (!fragmentMap.containsKey(selection.name.value)) {
+      throw Exception(
+          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+    }
     superclassSelections["${selection.name.value}"] = SourceSelections(
-      url: fragmentMap[selection.name.value].url,
+      url: fragmentMap[selection.name.value]!.url,
       selections: mergeSelections(
-        fragmentMap[selection.name.value].selections,
+        fragmentMap[selection.name.value]!.selections,
         fragmentMap,
       ).whereType<FieldNode>().toList(),
     );
@@ -138,7 +141,7 @@ List<Class> buildSelectionSetDataClasses({
       final typeDef = getTypeDefinitionNode(
         schemaSource.document,
         type,
-      );
+      )!;
       final typeNode = _getFieldTypeNode(
         typeDef,
         node.name.value,
@@ -179,7 +182,7 @@ List<Class> buildSelectionSetDataClasses({
             superclassSelections.keys.map<Reference>(
               (superName) => refer(
                 builtClassName(superName),
-                (superclassSelections[superName].url ?? "") + "#data",
+                (superclassSelections[superName]?.url ?? "") + "#data",
               ),
             ),
           )
@@ -202,7 +205,7 @@ List<Class> buildSelectionSetDataClasses({
             superclassSelections.keys.map<Reference>(
               (superName) => refer(
                 builtClassName(superName),
-                (superclassSelections[superName].url ?? "") + "#data",
+                (superclassSelections[superName]?.url ?? "") + "#data",
               ),
             ),
           ),
@@ -216,7 +219,7 @@ List<Class> buildSelectionSetDataClasses({
         .expand(
           (field) => buildSelectionSetDataClasses(
             name: "${name}_${field.alias?.value ?? field.name.value}",
-            selections: field.selectionSet.selections,
+            selections: field.selectionSet!.selections,
             fragmentMap: fragmentMap,
             schemaSource: schemaSource,
             type: unwrapTypeNode(
@@ -224,7 +227,7 @@ List<Class> buildSelectionSetDataClasses({
                 getTypeDefinitionNode(
                   schemaSource.document,
                   type,
-                ),
+                )!,
                 field.name.value,
               ),
             ).name.value,
@@ -256,7 +259,7 @@ List<SelectionNode> mergeSelections(
                 final existingNode = selectionMap[key];
                 final existingSelections = existingNode is FieldNode &&
                         existingNode.selectionSet != null
-                    ? existingNode.selectionSet.selections
+                    ? existingNode.selectionSet!.selections
                     : <SelectionNode>[];
                 selectionMap[key] = FieldNode(
                     name: selection.name,
@@ -265,7 +268,7 @@ List<SelectionNode> mergeSelections(
                         selections: mergeSelections(
                       [
                         ...existingSelections,
-                        ...selection.selectionSet.selections
+                        ...selection.selectionSet!.selections
                       ],
                       fragmentMap,
                     )));
@@ -289,12 +292,13 @@ List<SelectionNode> _expandFragmentSpreads(
         if (selection is FragmentSpreadNode) {
           if (!fragmentMap.containsKey(selection.name.value)) {
             throw Exception(
-                "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+              "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
+            );
           }
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value].selections,
+              fragmentMap[selection.name.value]!.selections,
               fragmentMap,
               false,
             )
@@ -324,7 +328,7 @@ Map<String, SourceSelections> _fragmentSelectionsForField(
             "${entry.key}_${field.alias?.value ?? field.name.value}",
             SourceSelections(
               url: entry.value.url,
-              selections: selection.selectionSet.selections
+              selections: selection.selectionSet!.selections
                   .whereType<FieldNode>()
                   .toList(),
             ),

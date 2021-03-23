@@ -5,9 +5,12 @@ class PickAllocator implements Allocator {
   final List<String> doNotPick;
   final List<String> include;
 
-  final Map<String, List<String>> _imports = {};
+  final Map<String, List<String>?> _imports = {};
 
-  PickAllocator({this.doNotPick, this.include}) {
+  PickAllocator({
+    this.doNotPick = const [],
+    this.include = const [],
+  }) {
     for (final url in include) {
       _imports[url] = null;
     }
@@ -29,7 +32,7 @@ class PickAllocator implements Allocator {
       return symbol;
     }
 
-    _imports.update(reference.url, (symbols) => symbols..add(reference.symbol),
+    _imports.update(reference.url, (symbols) => symbols?..add(reference.symbol),
         ifAbsent: () => [reference.symbol]);
 
     return symbol;
