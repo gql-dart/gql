@@ -20,7 +20,8 @@
 [discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
 [discord-link]: https://discord.gg/NryjpVa
 
-GQL WebSocket link to execute subscriptions as well as mutations & queries against a GraphQL backend
+GQL WebSocket link to execute subscriptions as well as mutations & queries against a GraphQL backend. 
+This link support `autoReconnect` and will resubscribe after reconnecting.
 
 
 ## Usage
