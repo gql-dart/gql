@@ -43,8 +43,7 @@ void main() {
               channel.stream.take(1).listen(
                 expectAsync1<void, dynamic>(
                   (dynamic message) {
-                    final map =
-                        json.decode(message as String) as Map<String, dynamic>;
+                    final map = json.decode(message as String) as Map<String, dynamic>;
                     expect(map["type"], MessageTypes.connectionInit);
                   },
                 ),
@@ -85,8 +84,7 @@ void main() {
               channel.stream.take(1).listen(
                 expectAsync1<void, dynamic>(
                   (dynamic message) {
-                    final map =
-                        json.decode(message as String) as Map<String, dynamic>;
+                    final map = json.decode(message as String) as Map<String, dynamic>;
                     expect(map["type"], MessageTypes.connectionInit);
                     expect(map["payload"], initialPayload);
                   },
@@ -135,8 +133,7 @@ void main() {
               channel.stream.take(1).listen(
                 expectAsync1<void, dynamic>(
                   (dynamic message) {
-                    final map =
-                        json.decode(message as String) as Map<String, dynamic>;
+                    final map = json.decode(message as String) as Map<String, dynamic>;
                     expect(map["type"], MessageTypes.connectionInit);
                     expect(map["payload"], baseInitialPayload);
                   },
@@ -178,8 +175,7 @@ void main() {
           final Request request = Request(
             operation: Operation(
               operationName: "pokemonsSubscription",
-              document: parseString(
-                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+              document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
             ),
             variables: const <String, dynamic>{
               "first": 3,
@@ -190,9 +186,7 @@ void main() {
           server.transform(WebSocketTransformer()).listen(
             (webSocket) async {
               final channel = IOWebSocketChannel(webSocket);
-              channel.stream
-                  .map<dynamic>((dynamic s) => json.decode(s as String))
-                  .listen(
+              channel.stream.map<dynamic>((dynamic s) => json.decode(s as String)).listen(
                 (dynamic message) {
                   if (message["type"] == "connection_init") {
                     channel.sink.add(
@@ -264,8 +258,7 @@ void main() {
           request = Request(
             operation: Operation(
               operationName: "pokemonsSubscription",
-              document: parseString(
-                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+              document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
             ),
             variables: const <String, dynamic>{
               "first": 3,
@@ -278,8 +271,7 @@ void main() {
               final channel = IOWebSocketChannel(webSocket);
               channel.stream.listen(
                 (dynamic message) async {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                  final map = json.decode(message as String) as Map<String, dynamic>;
                   if (map["type"] == "connection_init") {
                     channel.sink.add(
                       json.encode(
@@ -325,10 +317,7 @@ void main() {
           // We expect responseData1, then responseData2 in order.
           int callCounter = 0;
           const maxCall = 2;
-          link
-              .request(request)
-              .map((Response response) => response.data)
-              .listen(
+          link.request(request).map((Response response) => response.data).listen(
                 expectAsync1(
                   (data) {
                     callCounter += 1;
@@ -370,8 +359,7 @@ void main() {
           request = Request(
             operation: Operation(
               operationName: "pokemonsSubscription",
-              document: parseString(
-                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+              document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
             ),
             variables: const <String, dynamic>{
               "first": 3,
@@ -384,8 +372,7 @@ void main() {
               final channel = IOWebSocketChannel(webSocket);
               channel.stream.listen(
                 (dynamic message) {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                  final map = json.decode(message as String) as Map<String, dynamic>;
                   if (map["type"] == "connection_init") {
                     channel.sink.add(
                       json.encode(
@@ -425,15 +412,12 @@ void main() {
                     message: responseError["message"] as String,
                     locations: [
                       ErrorLocation(
-                        line: (responseError["locations"] as List)[0]["line"]
-                            as int,
-                        column: (responseError["locations"] as List)[0]
-                            ["column"] as int,
+                        line: (responseError["locations"] as List)[0]["line"] as int,
+                        column: (responseError["locations"] as List)[0]["column"] as int,
                       ),
                     ],
                     path: responseError["path"] as List<String>,
-                    extensions:
-                        responseError["extensions"] as Map<String, dynamic>,
+                    extensions: responseError["extensions"] as Map<String, dynamic>,
                   ),
                 );
               },
@@ -481,8 +465,7 @@ void main() {
           request = Request(
             operation: Operation(
               operationName: "pokemonsSubscription",
-              document: parseString(
-                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+              document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
             ),
             variables: const <String, dynamic>{
               "first": 3,
@@ -495,8 +478,7 @@ void main() {
               final channel = IOWebSocketChannel(webSocket);
               channel.stream.listen(
                 (dynamic message) async {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                  final map = json.decode(message as String) as Map<String, dynamic>;
                   if (map["type"] == "connection_init") {
                     channel.sink.add(
                       json.encode(
@@ -556,10 +538,7 @@ void main() {
           // We expect responseData1, then responseData3 in order.
           int callCounter = 0;
           const maxCall = 2;
-          link
-              .request(request)
-              .map((Response response) => response.data)
-              .listen(
+          link.request(request).map((Response response) => response.data).listen(
                 expectAsync1(
                   (data) {
                     callCounter += 1;
@@ -581,8 +560,135 @@ void main() {
         },
       );
 
-      test("throw WebSocketLinkParserException when unable to parse response",
-          () async {
+      test(
+        "stop subscription",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+          final responseData1 = {
+            "data": {
+              "pokemons": [
+                {"name": "Bulbasaur"},
+                {"name": "Ivysaur"},
+                {"name": "Venusaur"}
+              ]
+            }
+          };
+          final responseData2 = {
+            "data": {
+              "pokemons": [
+                {"name": "Charmander"},
+                {"name": "Charmeleon"},
+                {"name": "Charizard"}
+              ]
+            }
+          };
+          final responseData3 = {
+            "data": {
+              "pokemons": [
+                {"name": "Bagon"},
+                {"name": "Cacnea"},
+                {"name": "Elgyem"}
+              ]
+            }
+          };
+
+          request = Request(
+            operation: Operation(
+              operationName: "pokemonsSubscription",
+              document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            ),
+            variables: const <String, dynamic>{
+              "first": 3,
+            },
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.listen(
+                (dynamic message) async {
+                  final map = json.decode(message as String) as Map<String, dynamic>;
+                  if (map["type"] == "connection_init") {
+                    channel.sink.add(
+                      json.encode(
+                        ConnectionAck(),
+                      ),
+                    );
+                  } else if (map["type"] == "start") {
+                    channel.sink.add(
+                      json.encode(
+                        <String, dynamic>{
+                          "type": "data",
+                          "id": map["id"],
+                          "payload": {
+                            "data": responseData1,
+                            "errors": null,
+                          },
+                        },
+                      ),
+                    );
+                    await Future<void>.delayed(Duration(seconds: 1));
+                    channel.sink.add(
+                      json.encode(
+                        <String, dynamic>{
+                          "type": "data",
+                          "id": map["id"],
+                          "payload": {
+                            "data": responseData2,
+                            "errors": null,
+                          },
+                        },
+                      ),
+                    );
+                    await Future<void>.delayed(Duration(seconds: 1));
+                    channel.sink.add(
+                      json.encode(
+                        <String, dynamic>{
+                          "type": "data",
+                          "id": map["id"],
+                          "payload": {
+                            "data": responseData3,
+                            "errors": null,
+                          },
+                        },
+                      ),
+                    );
+                  }
+                },
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(null, channelGenerator: () => channel);
+          // We expect responseData1, then stop the subscription, so no more responses are expected.
+          String subId;
+          link.request(request).map((Response response) {
+            subId = response.context.entry<RequestId>().id;
+            expect(subId, isNotNull);
+            return response.data;
+          }).listen(
+            expectAsync1(
+              (data) {
+                expect(
+                  data,
+                  responseData1,
+                );
+                link.stop(subId);
+              },
+            ),
+          );
+        },
+      );
+
+      test("throw WebSocketLinkParserException when unable to parse response", () async {
         HttpServer server;
         WebSocket webSocket;
         IOWebSocketChannel channel;
@@ -600,9 +706,7 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            channel.stream
-                .map<dynamic>((dynamic s) => json.decode(s as String))
-                .listen(
+            channel.stream.map<dynamic>((dynamic s) => json.decode(s as String)).listen(
               (dynamic message) {
                 if (message["type"] == "connection_init") {
                   channel.sink.add(
@@ -638,9 +742,7 @@ void main() {
         );
       });
 
-      test(
-          "throw WebSocketLinkServerException when response is missing both `data` and `errors`",
-          () async {
+      test("throw WebSocketLinkServerException when response is missing both `data` and `errors`", () async {
         HttpServer server;
         WebSocket webSocket;
         IOWebSocketChannel channel;
@@ -658,9 +760,7 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            channel.stream
-                .map<dynamic>((dynamic s) => json.decode(s as String))
-                .listen(
+            channel.stream.map<dynamic>((dynamic s) => json.decode(s as String)).listen(
               (dynamic message) {
                 if (message["type"] == "connection_init") {
                   channel.sink.add(
@@ -745,8 +845,7 @@ void main() {
             channel.stream.listen(
               expectAsyncUntil1<void, dynamic>(
                 (dynamic message) {
-                  final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                  final map = json.decode(message as String) as Map<String, dynamic>;
                   if (messageCount == 0) {
                     expect(map["type"], MessageTypes.connectionInit);
                     channel.sink.add(
@@ -782,9 +881,7 @@ void main() {
         responseSub = link.request(request).listen(print);
       });
 
-      test(
-          "close the socket when no keep alive received from server withe inactivityTimeout",
-          () async {
+      test("close the socket when no keep alive received from server withe inactivityTimeout", () async {
         HttpServer server;
         WebSocket webSocket;
         IOWebSocketChannel channel;
@@ -793,8 +890,7 @@ void main() {
         final Request request = Request(
           operation: Operation(
             operationName: "pokemonsSubscription",
-            document: parseString(
-                r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
           ),
           variables: const <String, dynamic>{
             "first": 3,
@@ -805,9 +901,7 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            channel.stream
-                .map<dynamic>((dynamic s) => json.decode(s as String))
-                .listen(
+            channel.stream.map<dynamic>((dynamic s) => json.decode(s as String)).listen(
               (dynamic message) {
                 // Do not send anything, let it timeout.
               },
@@ -834,9 +928,7 @@ void main() {
         );
       });
 
-      test(
-          "never close the socket as long as keep alive is send from the server",
-          () async {
+      test("never close the socket as long as keep alive is send from the server", () async {
         HttpServer server;
         WebSocket webSocket;
         IOWebSocketChannel channel;
@@ -845,8 +937,7 @@ void main() {
         final Request request = Request(
           operation: Operation(
             operationName: "pokemonsSubscription",
-            document: parseString(
-                r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            document: parseString(r"subscription MySubscription { pokemons(first: $first) { name } }"),
           ),
           variables: const <String, dynamic>{
             "first": 3,
@@ -857,9 +948,7 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            channel.stream
-                .map<dynamic>((dynamic s) => json.decode(s as String))
-                .listen(
+            channel.stream.map<dynamic>((dynamic s) => json.decode(s as String)).listen(
               (dynamic message) {
                 Timer.periodic(Duration(seconds: 1), (_) {
                   channel.sink.add(
@@ -914,11 +1003,9 @@ void main() {
                     channel.stream.take(1).listen(
                           expectAsync1<void, dynamic>(
                             (dynamic message) {
-                              final map = json.decode(message as String)
-                                  as Map<String, dynamic>;
+                              final map = json.decode(message as String) as Map<String, dynamic>;
                               if (messageCount == 0) {
-                                expect(
-                                    map["type"], MessageTypes.connectionInit);
+                                expect(map["type"], MessageTypes.connectionInit);
                                 channel.sink.add(
                                   json.encode(
                                     ConnectionAck(),
@@ -941,8 +1028,7 @@ void main() {
           link = WebSocketLink(
             null,
             channelGenerator: () async {
-              final webSocket =
-                  await WebSocket.connect("ws://localhost:${server.port}");
+              final webSocket = await WebSocket.connect("ws://localhost:${server.port}");
               return IOWebSocketChannel(webSocket);
             },
             reconnectInterval: Duration(milliseconds: 500),
@@ -978,8 +1064,7 @@ void main() {
                   channel.stream.listen(
                     expectAsync1<void, dynamic>(
                       (dynamic message) {
-                        final map = json.decode(message as String)
-                            as Map<String, dynamic>;
+                        final map = json.decode(message as String) as Map<String, dynamic>;
                         if (messageCount == 0) {
                           expect(map["type"], MessageTypes.connectionInit);
                           channel.sink.add(
@@ -1013,8 +1098,7 @@ void main() {
                   channel.stream.listen(
                     expectAsync1<void, dynamic>(
                       (dynamic message) {
-                        final map = json.decode(message as String)
-                            as Map<String, dynamic>;
+                        final map = json.decode(message as String) as Map<String, dynamic>;
                         if (messageCount == 0) {
                           expect(map["type"], MessageTypes.connectionInit);
                           channel.sink.add(
@@ -1044,12 +1128,10 @@ void main() {
           channelGenerator: () async {
             if (connectToServer == 1) {
               connectToServer++;
-              final webSocket =
-                  await WebSocket.connect("ws://localhost:${server1.port}");
+              final webSocket = await WebSocket.connect("ws://localhost:${server1.port}");
               return IOWebSocketChannel(webSocket);
             } else {
-              final webSocket =
-                  await WebSocket.connect("ws://localhost:${server2.port}");
+              final webSocket = await WebSocket.connect("ws://localhost:${server2.port}");
               return IOWebSocketChannel(webSocket);
             }
           },
