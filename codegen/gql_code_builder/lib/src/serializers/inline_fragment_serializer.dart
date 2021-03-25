@@ -32,7 +32,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
       // Get JSON representation of object
       final json = StandardJsonPlugin()
           .afterSerialize(serialized, specifiedType) as Map<String, dynamic>;
-      final typeName = json["__typename"] as String ?? "";
+      final typeName = (json["__typename"] ?? "") as String;
       final type = _typeForTypename(typeName);
       final serializer =
           serializers.serializerForType(type) as StructuredSerializer;
@@ -44,7 +44,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
   }
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
     Serializers serializers,
     T object, {
     FullType specifiedType = FullType.unspecified,

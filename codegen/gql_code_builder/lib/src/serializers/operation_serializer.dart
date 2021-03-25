@@ -8,7 +8,7 @@ class OperationSerializer extends JsonSerializer<Operation> {
   @override
   Operation fromJson(Map<String, dynamic> json) => Operation(
         document: parseString(json["document"] as String),
-        operationName: json["operationName"] as String,
+        operationName: json["operationName"] as String?,
       );
 
   @override

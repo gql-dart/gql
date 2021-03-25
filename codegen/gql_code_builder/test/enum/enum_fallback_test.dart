@@ -163,7 +163,7 @@ void main() {
 
 InvokeExpression getBuiltValueEnumConstAnnotation(Field field) =>
     field.annotations.whereType<InvokeExpression>().singleWhere(
-        (annotation) =>
-            (annotation.target is Reference) &&
-            (annotation.target as Reference).symbol == "BuiltValueEnumConst",
-        orElse: () => null);
+          (annotation) =>
+              (annotation.target is Reference) &&
+              (annotation.target as Reference).symbol == "BuiltValueEnumConst",
+        );

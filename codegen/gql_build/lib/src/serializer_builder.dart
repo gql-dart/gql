@@ -53,8 +53,8 @@ class SerializerBuilder implements Builder {
     final hasSerializer = (ClassElement c) => c.fields.any((field) =>
         field.isStatic &&
         field.name == "serializer" &&
-        field.type.element.name == "Serializer" &&
-        field.type.element.source.uri.toString() ==
+        field.type.element?.name == "Serializer" &&
+        field.type.element?.source?.uri.toString() ==
             "package:built_value/serializer.dart");
 
     final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
@@ -108,6 +108,7 @@ class SerializerBuilder implements Builder {
               .where((url) => url != null)
         ],
       ),
+      true,
       true,
     );
 

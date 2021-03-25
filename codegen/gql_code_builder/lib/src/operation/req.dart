@@ -17,12 +17,12 @@ Class _buildOperationReqClass(
   OperationDefinitionNode node,
 ) =>
     builtClass(
-      name: node.name.value,
+      name: node.name!.value,
       getters: [
         Method(
           (b) => b
             ..returns = refer(
-              "${builtClassName(node.name.value)}Vars",
+              "${builtClassName(node.name!.value)}Vars",
               "#var",
             )
             ..type = MethodType.getter
@@ -43,7 +43,7 @@ Class _buildOperationReqClass(
           [],
           {
             "document": refer("document", "#ast"),
-            "operationName": literalString(node.name.value),
+            "operationName": literalString(node.name!.value),
           },
         ),
       },

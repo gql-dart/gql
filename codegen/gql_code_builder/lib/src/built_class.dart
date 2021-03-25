@@ -1,15 +1,14 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
-import "package:meta/meta.dart";
 import "package:recase/recase.dart";
 
 import "./common.dart";
 
 /// Generates a class that implements [Built], along with its serializers
 Class builtClass({
-  @required String name,
-  Iterable<Method> getters,
-  Map<String, Expression> initializers,
+  required String name,
+  Iterable<Method>? getters,
+  Map<String, Expression>? initializers,
 }) {
   final className = builtClassName(name);
   return Class(
@@ -66,7 +65,7 @@ Class builtClass({
                 initializers,
               ).code,
           ),
-        ...getters,
+        if (getters != null) ...getters,
         // Serlialization methods
         buildSerializerGetter(className).rebuild(
           (b) => b..body = Code("_\$${className.camelCase}Serializer"),

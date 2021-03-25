@@ -16,9 +16,9 @@ class _$GAliasedHeroSerializer implements StructuredSerializer<GAliasedHero> {
   final String wireName = 'GAliasedHero';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GAliasedHero object,
+  Iterable<Object?> serialize(Serializers serializers, GAliasedHero object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GAliasedHeroVars)),
@@ -31,7 +31,8 @@ class _$GAliasedHeroSerializer implements StructuredSerializer<GAliasedHero> {
   }
 
   @override
-  GAliasedHero deserialize(Serializers serializers, Iterable<Object> serialized,
+  GAliasedHero deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GAliasedHeroBuilder();
 
@@ -39,11 +40,11 @@ class _$GAliasedHeroSerializer implements StructuredSerializer<GAliasedHero> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAliasedHeroVars))
+                  specifiedType: const FullType(_i3.GAliasedHeroVars))!
               as _i3.GAliasedHeroVars);
           break;
         case 'operation':
@@ -63,16 +64,13 @@ class _$GAliasedHero extends GAliasedHero {
   @override
   final _i1.Operation operation;
 
-  factory _$GAliasedHero([void Function(GAliasedHeroBuilder) updates]) =>
+  factory _$GAliasedHero([void Function(GAliasedHeroBuilder)? updates]) =>
       (new GAliasedHeroBuilder()..update(updates)).build();
 
-  _$GAliasedHero._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GAliasedHero', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GAliasedHero', 'operation');
-    }
+  _$GAliasedHero._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GAliasedHero', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GAliasedHero', 'operation');
   }
 
   @override
@@ -106,25 +104,26 @@ class _$GAliasedHero extends GAliasedHero {
 
 class GAliasedHeroBuilder
     implements Builder<GAliasedHero, GAliasedHeroBuilder> {
-  _$GAliasedHero _$v;
+  _$GAliasedHero? _$v;
 
-  _i3.GAliasedHeroVarsBuilder _vars;
+  _i3.GAliasedHeroVarsBuilder? _vars;
   _i3.GAliasedHeroVarsBuilder get vars =>
       _$this._vars ??= new _i3.GAliasedHeroVarsBuilder();
-  set vars(_i3.GAliasedHeroVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GAliasedHeroVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GAliasedHeroBuilder() {
     GAliasedHero._initializeBuilder(this);
   }
 
   GAliasedHeroBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -132,14 +131,12 @@ class GAliasedHeroBuilder
 
   @override
   void replace(GAliasedHero other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAliasedHero;
   }
 
   @override
-  void update(void Function(GAliasedHeroBuilder) updates) {
+  void update(void Function(GAliasedHeroBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -147,10 +144,13 @@ class GAliasedHeroBuilder
   _$GAliasedHero build() {
     _$GAliasedHero _$result;
     try {
-      _$result =
-          _$v ?? new _$GAliasedHero._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GAliasedHero._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GAliasedHero', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

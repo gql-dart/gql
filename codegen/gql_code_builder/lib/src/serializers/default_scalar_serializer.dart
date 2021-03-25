@@ -13,7 +13,7 @@ class DefaultScalarSerializer<T> implements PrimitiveSerializer<T> {
   @override
   Object serialize(Serializers serializers, T scalar,
           {FullType specifiedType = FullType.unspecified}) =>
-      (scalar as dynamic).value;
+      (scalar as dynamic).value as Object;
 
   @override
   T deserialize(Serializers serializers, Object serialized,

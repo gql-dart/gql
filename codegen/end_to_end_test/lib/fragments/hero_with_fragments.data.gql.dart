@@ -19,13 +19,13 @@ abstract class GHeroWithFragmentsData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GHeroWithFragmentsData_hero get hero;
+  GHeroWithFragmentsData_hero? get hero;
   static Serializer<GHeroWithFragmentsData> get serializer =>
       _$gHeroWithFragmentsDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GHeroWithFragmentsData.serializer, this);
-  static GHeroWithFragmentsData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GHeroWithFragmentsData.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroWithFragmentsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GHeroWithFragmentsData.serializer, json);
 }
 
@@ -48,9 +48,9 @@ abstract class GHeroWithFragmentsData_hero
   GHeroWithFragmentsData_hero_friendsConnection get friendsConnection;
   static Serializer<GHeroWithFragmentsData_hero> get serializer =>
       _$gHeroWithFragmentsDataHeroSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GHeroWithFragmentsData_hero.serializer, this);
-  static GHeroWithFragmentsData_hero fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+      GHeroWithFragmentsData_hero.serializer, this) as Map<String, dynamic>);
+  static GHeroWithFragmentsData_hero? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GHeroWithFragmentsData_hero.serializer, json);
 }
@@ -71,15 +71,14 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
       b..G__typename = 'FriendsConnection';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  int get totalCount;
-  @nullable
-  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges> get edges;
+  int? get totalCount;
+  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges>? get edges;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection>
       get serializer => _$gHeroWithFragmentsDataHeroFriendsConnectionSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
-      GHeroWithFragmentsData_hero_friendsConnection.serializer, this);
-  static GHeroWithFragmentsData_hero_friendsConnection fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GHeroWithFragmentsData_hero_friendsConnection.serializer, this)
+      as Map<String, dynamic>);
+  static GHeroWithFragmentsData_hero_friendsConnection? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GHeroWithFragmentsData_hero_friendsConnection.serializer, json);
@@ -101,14 +100,14 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
       b..G__typename = 'FriendsEdge';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node get node;
+  GHeroWithFragmentsData_hero_friendsConnection_edges_node? get node;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges>
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
-      GHeroWithFragmentsData_hero_friendsConnection_edges.serializer, this);
-  static GHeroWithFragmentsData_hero_friendsConnection_edges fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GHeroWithFragmentsData_hero_friendsConnection_edges.serializer, this)
+      as Map<String, dynamic>);
+  static GHeroWithFragmentsData_hero_friendsConnection_edges? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GHeroWithFragmentsData_hero_friendsConnection_edges.serializer, json);
@@ -136,10 +135,10 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges_node>
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesNodeSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
       GHeroWithFragmentsData_hero_friendsConnection_edges_node.serializer,
-      this);
-  static GHeroWithFragmentsData_hero_friendsConnection_edges_node fromJson(
+      this) as Map<String, dynamic>);
+  static GHeroWithFragmentsData_hero_friendsConnection_edges_node? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GHeroWithFragmentsData_hero_friendsConnection_edges_node.serializer,
@@ -166,8 +165,9 @@ abstract class GheroDataData
   String get name;
   static Serializer<GheroDataData> get serializer => _$gheroDataDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GheroDataData.serializer, this);
-  static GheroDataData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GheroDataData.serializer, this)
+          as Map<String, dynamic>);
+  static GheroDataData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GheroDataData.serializer, json);
 }
 
@@ -181,14 +181,14 @@ abstract class GcomparisonFields implements GheroData {
 
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
-  int get totalCount;
-  BuiltList<GcomparisonFields_friendsConnection_edges> get edges;
+  int? get totalCount;
+  BuiltList<GcomparisonFields_friendsConnection_edges>? get edges;
   Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
-  GcomparisonFields_friendsConnection_edges_node get node;
+  GcomparisonFields_friendsConnection_edges_node? get node;
   Map<String, dynamic> toJson();
 }
 
@@ -220,8 +220,9 @@ abstract class GcomparisonFieldsData
   static Serializer<GcomparisonFieldsData> get serializer =>
       _$gcomparisonFieldsDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GcomparisonFieldsData.serializer, this);
-  static GcomparisonFieldsData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GcomparisonFieldsData.serializer, this)
+          as Map<String, dynamic>);
+  static GcomparisonFieldsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GcomparisonFieldsData.serializer, json);
 }
 
@@ -241,15 +242,14 @@ abstract class GcomparisonFieldsData_friendsConnection
       b..G__typename = 'FriendsConnection';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  int get totalCount;
-  @nullable
-  BuiltList<GcomparisonFieldsData_friendsConnection_edges> get edges;
+  int? get totalCount;
+  BuiltList<GcomparisonFieldsData_friendsConnection_edges>? get edges;
   static Serializer<GcomparisonFieldsData_friendsConnection> get serializer =>
       _$gcomparisonFieldsDataFriendsConnectionSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GcomparisonFieldsData_friendsConnection.serializer, this);
-  static GcomparisonFieldsData_friendsConnection fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GcomparisonFieldsData_friendsConnection.serializer, this)
+      as Map<String, dynamic>);
+  static GcomparisonFieldsData_friendsConnection? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GcomparisonFieldsData_friendsConnection.serializer, json);
@@ -271,13 +271,13 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
       b..G__typename = 'FriendsEdge';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GcomparisonFieldsData_friendsConnection_edges_node get node;
+  GcomparisonFieldsData_friendsConnection_edges_node? get node;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
       get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
-      GcomparisonFieldsData_friendsConnection_edges.serializer, this);
-  static GcomparisonFieldsData_friendsConnection_edges fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GcomparisonFieldsData_friendsConnection_edges.serializer, this)
+      as Map<String, dynamic>);
+  static GcomparisonFieldsData_friendsConnection_edges? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GcomparisonFieldsData_friendsConnection_edges.serializer, json);
@@ -304,9 +304,10 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
   static Serializer<GcomparisonFieldsData_friendsConnection_edges_node>
       get serializer =>
           _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
-      GcomparisonFieldsData_friendsConnection_edges_node.serializer, this);
-  static GcomparisonFieldsData_friendsConnection_edges_node fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GcomparisonFieldsData_friendsConnection_edges_node.serializer, this)
+      as Map<String, dynamic>);
+  static GcomparisonFieldsData_friendsConnection_edges_node? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GcomparisonFieldsData_friendsConnection_edges_node.serializer, json);

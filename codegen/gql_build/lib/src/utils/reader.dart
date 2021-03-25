@@ -9,9 +9,9 @@ import "package:gql_build/src/config.dart";
 
 Set<AssetId> _getImports(
   String source, {
-  AssetId from,
+  AssetId? from,
 }) {
-  final imports = <String>{};
+  final imports = <Uri>{};
 
   final patterns = [
     RegExp(r'^#\s*import\s+"([^"]+)"', multiLine: true),
@@ -19,12 +19,14 @@ Set<AssetId> _getImports(
   ];
 
   for (final pattern in patterns) {
-    pattern.allMatches(source)?.forEach(
+    pattern.allMatches(source).forEach(
       (match) {
-        final path = match?.group(1);
+        final path = match.group(1);
         if (path != null) {
           imports.add(
-            path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
+            Uri.parse(
+              path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
+            ),
           );
         }
       },
@@ -73,7 +75,7 @@ Future<SourceNode> _assetToSourceNode(
 
 Future<SourceNode> readDocument(
   BuildStep buildStep, [
-  AssetId rootId,
+  AssetId? rootId,
 ]) =>
     _assetToSourceNode(
       buildStep,

@@ -24,7 +24,8 @@ abstract class GReviewWithDate
   static Serializer<GReviewWithDate> get serializer =>
       _$gReviewWithDateSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GReviewWithDate.serializer, this);
-  static GReviewWithDate fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GReviewWithDate.serializer, this)
+          as Map<String, dynamic>);
+  static GReviewWithDate? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GReviewWithDate.serializer, json);
 }

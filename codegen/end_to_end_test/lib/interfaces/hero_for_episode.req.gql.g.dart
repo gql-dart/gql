@@ -17,9 +17,9 @@ class _$GHeroForEpisodeSerializer
   final String wireName = 'GHeroForEpisode';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GHeroForEpisode object,
+  Iterable<Object?> serialize(Serializers serializers, GHeroForEpisode object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GHeroForEpisodeVars)),
@@ -33,7 +33,7 @@ class _$GHeroForEpisodeSerializer
 
   @override
   GHeroForEpisode deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHeroForEpisodeBuilder();
 
@@ -41,11 +41,11 @@ class _$GHeroForEpisodeSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GHeroForEpisodeVars))
+                  specifiedType: const FullType(_i3.GHeroForEpisodeVars))!
               as _i3.GHeroForEpisodeVars);
           break;
         case 'operation':
@@ -65,16 +65,14 @@ class _$GHeroForEpisode extends GHeroForEpisode {
   @override
   final _i1.Operation operation;
 
-  factory _$GHeroForEpisode([void Function(GHeroForEpisodeBuilder) updates]) =>
+  factory _$GHeroForEpisode([void Function(GHeroForEpisodeBuilder)? updates]) =>
       (new GHeroForEpisodeBuilder()..update(updates)).build();
 
-  _$GHeroForEpisode._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GHeroForEpisode', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GHeroForEpisode', 'operation');
-    }
+  _$GHeroForEpisode._({required this.vars, required this.operation})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GHeroForEpisode', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GHeroForEpisode', 'operation');
   }
 
   @override
@@ -109,25 +107,26 @@ class _$GHeroForEpisode extends GHeroForEpisode {
 
 class GHeroForEpisodeBuilder
     implements Builder<GHeroForEpisode, GHeroForEpisodeBuilder> {
-  _$GHeroForEpisode _$v;
+  _$GHeroForEpisode? _$v;
 
-  _i3.GHeroForEpisodeVarsBuilder _vars;
+  _i3.GHeroForEpisodeVarsBuilder? _vars;
   _i3.GHeroForEpisodeVarsBuilder get vars =>
       _$this._vars ??= new _i3.GHeroForEpisodeVarsBuilder();
-  set vars(_i3.GHeroForEpisodeVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GHeroForEpisodeVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GHeroForEpisodeBuilder() {
     GHeroForEpisode._initializeBuilder(this);
   }
 
   GHeroForEpisodeBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -135,14 +134,12 @@ class GHeroForEpisodeBuilder
 
   @override
   void replace(GHeroForEpisode other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroForEpisode;
   }
 
   @override
-  void update(void Function(GHeroForEpisodeBuilder) updates) {
+  void update(void Function(GHeroForEpisodeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -151,9 +148,12 @@ class GHeroForEpisodeBuilder
     _$GHeroForEpisode _$result;
     try {
       _$result = _$v ??
-          new _$GHeroForEpisode._(vars: vars.build(), operation: operation);
+          new _$GHeroForEpisode._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GHeroForEpisode', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

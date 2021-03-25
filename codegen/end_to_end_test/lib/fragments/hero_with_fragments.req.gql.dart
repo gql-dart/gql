@@ -26,7 +26,8 @@ abstract class GHeroWithFragments
   static Serializer<GHeroWithFragments> get serializer =>
       _$gHeroWithFragmentsSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GHeroWithFragments.serializer, this);
-  static GHeroWithFragments fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GHeroWithFragments.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroWithFragments? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GHeroWithFragments.serializer, json);
 }

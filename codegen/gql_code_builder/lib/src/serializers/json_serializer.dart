@@ -21,7 +21,7 @@ abstract class JsonSerializer<T> implements StructuredSerializer<T> {
   }
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
     Serializers serializers,
     T object, {
     FullType specifiedType = FullType.unspecified,
