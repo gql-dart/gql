@@ -1,5 +1,5 @@
 import "package:gql_exec/gql_exec.dart";
-import 'package:meta/meta.dart';
+import "package:meta/meta.dart";
 
 /// Type of the `forward` function
 typedef NextLink = Stream<Response> Function(
