@@ -209,9 +209,9 @@ class WebSocketLink extends Link {
   /// ```
   Future<void> stop(String requestId) async {
     final messagesSubscription = _messageSubscriptions[requestId];
-    messagesSubscription?.cancel();
+    await messagesSubscription?.cancel();
     _messageSubscriptions.remove(requestId);
-    _write(StopOperation(requestId));
+    await _write(StopOperation(requestId));
     _requests.removeWhere((e) => e.context.entry<RequestId>().id == requestId);
   }
 
