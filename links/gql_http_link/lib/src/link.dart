@@ -9,8 +9,7 @@ import "package:meta/meta.dart";
 import "./_utils.dart";
 import "./exceptions.dart";
 
-typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
-    http.Response httpResponse);
+typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(http.Response httpResponse);
 
 /// HTTP link headers
 @immutable
@@ -83,9 +82,7 @@ class HttpLink extends Link {
   /// ```
   HttpResponseDecoder httpResponseDecoder;
 
-  static Map<String, dynamic>? _defaultHttpResponseDecoder(
-          http.Response httpResponse) =>
-      json.decode(
+  static Map<String, dynamic>? _defaultHttpResponseDecoder(http.Response httpResponse) => json.decode(
         utf8.decode(
           httpResponse.bodyBytes,
         ),
@@ -117,8 +114,7 @@ class HttpLink extends Link {
 
     final response = await _parseHttpResponse(httpResponse);
 
-    if (httpResponse.statusCode >= 300 ||
-        (response.data == null && response.errors == null)) {
+    if (httpResponse.statusCode >= 300 || (response.data == null && response.errors == null)) {
       throw HttpLinkServerException(
         response: httpResponse,
         parsedResponse: response,
@@ -190,10 +186,14 @@ class HttpLink extends Link {
       ...contextHeaders,
     };
 
+    final isAbsinthe = headers.containsKey("Server-type") && headers["Server-type"] == "Absinthe";
+    if (isAbsinthe) {
+      headers.remove("Server-type");
+    }
+
     final fileMap = extractFlattenedFileMap(body);
 
-    final useGetForThisRequest =
-        fileMap.isEmpty && useGETForQueries && request.isQuery;
+    final useGetForThisRequest = fileMap.isEmpty && useGETForQueries && request.isQuery;
 
     if (useGetForThisRequest) {
       return http.Request(
@@ -207,12 +207,47 @@ class HttpLink extends Link {
       )..headers.addAll(headers);
     }
 
+    if (fileMap.isNotEmpty && isAbsinthe) {
+      final dynamic variables = body["variables"];
+      String httpVariables;
+      if (variables != null && variables is Map<String, dynamic>) {
+        httpVariables = _encodeAttempter(
+          request,
+          (Map body) => json.encode(
+            body,
+            toEncodable: (dynamic object) => (object is http.MultipartFile) ? object.field : object.toJson(),
+          ),
+        )(variables);
+      }
+
+      final dynamic bodyQuery = body["query"];
+      String httpBody;
+      if (bodyQuery != null && bodyQuery is Map<String, String>) {
+        httpBody = _encodeAttempter(
+          request,
+          (Map body) => json.encode(
+            body,
+            toEncodable: (dynamic object) => (object is http.MultipartFile) ? object.field : object.toJson(),
+          ),
+        )(body);
+      } else if (bodyQuery is String) {
+        httpBody = bodyQuery;
+      } else {
+        throw "Incompatible request for Absinthe";
+      }
+
+      return http.MultipartRequest("POST", uri)
+        ..queryAbsinthe = httpBody
+        ..variableAbsinthe = httpVariables
+        ..addAllFilesAbsinthe(fileMap)
+        ..headers.addAll(headers);
+    }
+
     final httpBody = _encodeAttempter(
       request,
       (Map body) => json.encode(
         body,
-        toEncodable: (dynamic object) =>
-            (object is http.MultipartFile) ? null : object.toJson(),
+        toEncodable: (dynamic object) => (object is http.MultipartFile) ? object.field : object.toJson(),
       ),
     )(body);
 
@@ -222,6 +257,7 @@ class HttpLink extends Link {
         ..addAllFiles(fileMap)
         ..headers.addAll(headers);
     }
+
     return http.Request("POST", uri)
       ..body = httpBody
       ..headers.addAll(headers);
@@ -264,7 +300,6 @@ Map<String, String> _getHttpLinkHeaders(Request request) {
   }
 }
 
-Map<String, String> _encodeAsUriParams(Map<String, dynamic> serialized) =>
-    serialized.map<String, String>(
+Map<String, String> _encodeAsUriParams(Map<String, dynamic> serialized) => serialized.map<String, String>(
       (k, dynamic v) => MapEntry(k, v is String ? v : json.encode(v)),
     );

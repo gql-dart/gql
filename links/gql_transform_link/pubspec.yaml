@@ -3,12 +3,24 @@ version: 0.2.2
 description: GQL Link to transform Requests and Responses. May be used to update context, document, variables, data, errors, etc.
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 dependencies: 
-  gql_exec: ^0.4.0
-  gql_link: ^0.4.2
-dev_dependencies: 
-  gql: ^0.13.0
-  gql_pedantic: ^1.0.2
+  gql_exec:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: links/gql_exec
+  gql_link:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: links/gql_link
+dev_dependencies:
+  gql:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: gql
+  gql_pedantic:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: gql_pedantic
   mockito: ^5.0.0-nullsafety.7
   test: ^1.16.2

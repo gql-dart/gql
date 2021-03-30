@@ -3,12 +3,21 @@ version: 0.4.2
 description: A simple and modular AST-based GraphQL request execution interface.
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 dependencies: 
-  gql: ^0.13.0
-  gql_exec: ^0.4.0
   meta: ^1.1.7
-dev_dependencies: 
-  gql_pedantic: ^1.0.2
+  gql:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: gql
+  gql_exec:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: links/gql_exec
+dev_dependencies:
   mockito: ^5.0.16
   test: ^1.16.2
+  gql_pedantic:
+    git:
+      url: git://github.com/julienzarka/gql.git
+      path: gql_pedantic
