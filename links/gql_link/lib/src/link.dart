@@ -1,4 +1,5 @@
 import "package:gql_exec/gql_exec.dart";
+import "package:meta/meta.dart";
 
 /// Type of the `forward` function
 typedef NextLink = Stream<Response> Function(
@@ -56,7 +57,7 @@ abstract class Link {
   factory Link.split(
     bool Function(Request request) test,
     Link left, [
-    Link right = const _PassthroughLink(),
+    Link right = const PassthroughLink(),
   ]) =>
       _RouterLink((Request request) => test(request) ? left : right);
 
@@ -76,7 +77,7 @@ abstract class Link {
   Link split(
     bool Function(Request request) test,
     Link left, [
-    Link right = const _PassthroughLink(),
+    Link right = const PassthroughLink(),
   ]) =>
       concat(
         _RouterLink(
@@ -126,8 +127,9 @@ class _LinkChain extends Link {
       )!(request);
 }
 
-class _PassthroughLink extends Link {
-  const _PassthroughLink();
+@visibleForTesting
+class PassthroughLink extends Link {
+  const PassthroughLink();
 
   @override
   Stream<Response> request(

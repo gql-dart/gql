@@ -17,9 +17,9 @@ class _$GHumanWithArgsSerializer
   final String wireName = 'GHumanWithArgs';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GHumanWithArgs object,
+  Iterable<Object?> serialize(Serializers serializers, GHumanWithArgs object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GHumanWithArgsVars)),
@@ -33,7 +33,7 @@ class _$GHumanWithArgsSerializer
 
   @override
   GHumanWithArgs deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHumanWithArgsBuilder();
 
@@ -41,11 +41,11 @@ class _$GHumanWithArgsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GHumanWithArgsVars))
+                  specifiedType: const FullType(_i3.GHumanWithArgsVars))!
               as _i3.GHumanWithArgsVars);
           break;
         case 'operation':
@@ -65,16 +65,14 @@ class _$GHumanWithArgs extends GHumanWithArgs {
   @override
   final _i1.Operation operation;
 
-  factory _$GHumanWithArgs([void Function(GHumanWithArgsBuilder) updates]) =>
+  factory _$GHumanWithArgs([void Function(GHumanWithArgsBuilder)? updates]) =>
       (new GHumanWithArgsBuilder()..update(updates)).build();
 
-  _$GHumanWithArgs._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GHumanWithArgs', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GHumanWithArgs', 'operation');
-    }
+  _$GHumanWithArgs._({required this.vars, required this.operation})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GHumanWithArgs', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GHumanWithArgs', 'operation');
   }
 
   @override
@@ -109,25 +107,26 @@ class _$GHumanWithArgs extends GHumanWithArgs {
 
 class GHumanWithArgsBuilder
     implements Builder<GHumanWithArgs, GHumanWithArgsBuilder> {
-  _$GHumanWithArgs _$v;
+  _$GHumanWithArgs? _$v;
 
-  _i3.GHumanWithArgsVarsBuilder _vars;
+  _i3.GHumanWithArgsVarsBuilder? _vars;
   _i3.GHumanWithArgsVarsBuilder get vars =>
       _$this._vars ??= new _i3.GHumanWithArgsVarsBuilder();
-  set vars(_i3.GHumanWithArgsVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GHumanWithArgsVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GHumanWithArgsBuilder() {
     GHumanWithArgs._initializeBuilder(this);
   }
 
   GHumanWithArgsBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -135,14 +134,12 @@ class GHumanWithArgsBuilder
 
   @override
   void replace(GHumanWithArgs other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHumanWithArgs;
   }
 
   @override
-  void update(void Function(GHumanWithArgsBuilder) updates) {
+  void update(void Function(GHumanWithArgsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -151,9 +148,12 @@ class GHumanWithArgsBuilder
     _$GHumanWithArgs _$result;
     try {
       _$result = _$v ??
-          new _$GHumanWithArgs._(vars: vars.build(), operation: operation);
+          new _$GHumanWithArgs._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GHumanWithArgs', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
