@@ -14,10 +14,10 @@ Future<Null> main(List<String> arguments) async {
   final argResults = parser.parse(arguments);
 
   final link = HttpLink(
-    "https://graphql-pokemon.now.sh/graphql",
+    "https://graphql-pokemon2.vercel.app",
   );
 
-  final find = argResults["find"] as String;
+  final find = argResults["find"] as String?;
 
   if (find != null) {
     print("Looking for ${find}...");
@@ -34,9 +34,15 @@ Future<Null> main(List<String> arguments) async {
         )
         .first;
 
-    final data = GFindPokemonData.fromJson(result.data);
+    if (result.data == null) {
+      print("Nothing was received from the server!");
 
-    final pokemon = data.pokemon;
+      return;
+    }
+
+    final data = GFindPokemonData.fromJson(result.data!);
+
+    final GFindPokemonData_pokemon? pokemon = data!.pokemon;
 
     if (pokemon == null) {
       print("${find} was not found. Does it even exist?");
@@ -50,10 +56,10 @@ Future<Null> main(List<String> arguments) async {
     print("Found ${pokemon.name}");
     print("ID: ${pokemon.id}");
     print(
-      "Weight: ${weight.minimum} – ${weight.maximum}",
+      "Weight: ${weight?.minimum} – ${weight?.maximum}",
     );
     print(
-      "Height: ${height.minimum} – ${height.maximum}",
+      "Height: ${height?.minimum} – ${height?.maximum}",
     );
 
     return;
@@ -75,13 +81,19 @@ Future<Null> main(List<String> arguments) async {
       )
       .first;
 
-  final data = GListPokemonData.fromJson(result.data);
+  if (result.data == null) {
+    print("Nothing was received from the server!");
 
-  final pokemons = data.pokemons;
+    return;
+  }
 
-  print("Found ${pokemons.length} pokemon");
+  final data = GListPokemonData.fromJson(result.data!);
 
-  pokemons.forEach(
+  final pokemons = data!.pokemons;
+
+  print("Found ${pokemons?.length} pokemon");
+
+  pokemons?.forEach(
     (pokemon) {
       print("${pokemon.id} | ${pokemon.name}");
     },
