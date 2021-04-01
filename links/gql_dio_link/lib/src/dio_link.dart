@@ -164,10 +164,9 @@ class DioLink extends Link {
                 ? parser.parseResponse(res.data as Map<String, dynamic>)
                 : null;
             throw DioLinkServerException(
-              response: res, 
-              parsedResponse: parsedResponse,
-              originalException: e
-            );
+                response: res,
+                parsedResponse: parsedResponse,
+                originalException: e);
           }
         case dio.DioErrorType.DEFAULT:
         default:
