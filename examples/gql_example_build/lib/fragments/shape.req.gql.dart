@@ -20,7 +20,8 @@ abstract class GShape implements Built<GShape, GShapeBuilder> {
   _i1.Operation get operation;
   static Serializer<GShape> get serializer => _$gShapeSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GShape.serializer, this);
-  static GShape fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GShape.serializer, this)
+          as Map<String, dynamic>);
+  static GShape? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GShape.serializer, json);
 }

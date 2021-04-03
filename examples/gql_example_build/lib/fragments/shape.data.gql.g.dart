@@ -22,24 +22,26 @@ class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
   final String wireName = 'GShapeData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GShapeData object,
+  Iterable<Object?> serialize(Serializers serializers, GShapeData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.shape != null) {
+    Object? value;
+    value = object.shape;
+    if (value != null) {
       result
         ..add('shape')
-        ..add(serializers.serialize(object.shape,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(GShapeData_shape)));
     }
     return result;
   }
 
   @override
-  GShapeData deserialize(Serializers serializers, Iterable<Object> serialized,
+  GShapeData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GShapeDataBuilder();
 
@@ -47,7 +49,7 @@ class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -76,18 +78,20 @@ class _$GShapeData_shape__baseSerializer
   final String wireName = 'GShapeData_shape__base';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GShapeData_shape__base object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.area != null) {
+    Object? value;
+    value = object.area;
+    if (value != null) {
       result
         ..add('area')
-        ..add(serializers.serialize(object.area,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
     return result;
@@ -95,7 +99,7 @@ class _$GShapeData_shape__baseSerializer
 
   @override
   GShapeData_shape__base deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GShapeData_shape__baseBuilder();
 
@@ -103,7 +107,7 @@ class _$GShapeData_shape__baseSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -131,24 +135,27 @@ class _$GShapeData_shape__asSquareSerializer
   final String wireName = 'GShapeData_shape__asSquare';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GShapeData_shape__asSquare object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.area != null) {
+    Object? value;
+    value = object.area;
+    if (value != null) {
       result
         ..add('area')
-        ..add(serializers.serialize(object.area,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.sideLength != null) {
+    value = object.sideLength;
+    if (value != null) {
       result
         ..add('sideLength')
-        ..add(serializers.serialize(object.sideLength,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
     return result;
@@ -156,7 +163,7 @@ class _$GShapeData_shape__asSquareSerializer
 
   @override
   GShapeData_shape__asSquare deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GShapeData_shape__asSquareBuilder();
 
@@ -164,7 +171,7 @@ class _$GShapeData_shape__asSquareSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -196,30 +203,34 @@ class _$GShapeData_shape__asRectangleSerializer
   final String wireName = 'GShapeData_shape__asRectangle';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GShapeData_shape__asRectangle object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.area != null) {
+    Object? value;
+    value = object.area;
+    if (value != null) {
       result
         ..add('area')
-        ..add(serializers.serialize(object.area,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.sideLengthA != null) {
+    value = object.sideLengthA;
+    if (value != null) {
       result
         ..add('sideLengthA')
-        ..add(serializers.serialize(object.sideLengthA,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.sideLengthB != null) {
+    value = object.sideLengthB;
+    if (value != null) {
       result
         ..add('sideLengthB')
-        ..add(serializers.serialize(object.sideLengthB,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
     return result;
@@ -227,7 +238,7 @@ class _$GShapeData_shape__asRectangleSerializer
 
   @override
   GShapeData_shape__asRectangle deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GShapeData_shape__asRectangleBuilder();
 
@@ -235,7 +246,7 @@ class _$GShapeData_shape__asRectangleSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -264,15 +275,14 @@ class _$GShapeData extends GShapeData {
   @override
   final String G__typename;
   @override
-  final GShapeData_shape shape;
+  final GShapeData_shape? shape;
 
-  factory _$GShapeData([void Function(GShapeDataBuilder) updates]) =>
+  factory _$GShapeData([void Function(GShapeDataBuilder)? updates]) =>
       (new GShapeDataBuilder()..update(updates)).build();
 
-  _$GShapeData._({this.G__typename, this.shape}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GShapeData', 'G__typename');
-    }
+  _$GShapeData._({required this.G__typename, this.shape}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GShapeData', 'G__typename');
   }
 
   @override
@@ -305,24 +315,25 @@ class _$GShapeData extends GShapeData {
 }
 
 class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
-  _$GShapeData _$v;
+  _$GShapeData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GShapeData_shape _shape;
-  GShapeData_shape get shape => _$this._shape;
-  set shape(GShapeData_shape shape) => _$this._shape = shape;
+  GShapeData_shape? _shape;
+  GShapeData_shape? get shape => _$this._shape;
+  set shape(GShapeData_shape? shape) => _$this._shape = shape;
 
   GShapeDataBuilder() {
     GShapeData._initializeBuilder(this);
   }
 
   GShapeDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _shape = _$v.shape;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _shape = $v.shape;
       _$v = null;
     }
     return this;
@@ -330,21 +341,22 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
 
   @override
   void replace(GShapeData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData;
   }
 
   @override
-  void update(void Function(GShapeDataBuilder) updates) {
+  void update(void Function(GShapeDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GShapeData build() {
-    final _$result =
-        _$v ?? new _$GShapeData._(G__typename: G__typename, shape: shape);
+    final _$result = _$v ??
+        new _$GShapeData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GShapeData', 'G__typename'),
+            shape: shape);
     replace(_$result);
     return _$result;
   }
@@ -354,17 +366,16 @@ class _$GShapeData_shape__base extends GShapeData_shape__base {
   @override
   final String G__typename;
   @override
-  final double area;
+  final double? area;
 
   factory _$GShapeData_shape__base(
-          [void Function(GShapeData_shape__baseBuilder) updates]) =>
+          [void Function(GShapeData_shape__baseBuilder)? updates]) =>
       (new GShapeData_shape__baseBuilder()..update(updates)).build();
 
-  _$GShapeData_shape__base._({this.G__typename, this.area}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GShapeData_shape__base', 'G__typename');
-    }
+  _$GShapeData_shape__base._({required this.G__typename, this.area})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GShapeData_shape__base', 'G__typename');
   }
 
   @override
@@ -400,24 +411,25 @@ class _$GShapeData_shape__base extends GShapeData_shape__base {
 
 class GShapeData_shape__baseBuilder
     implements Builder<GShapeData_shape__base, GShapeData_shape__baseBuilder> {
-  _$GShapeData_shape__base _$v;
+  _$GShapeData_shape__base? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  double _area;
-  double get area => _$this._area;
-  set area(double area) => _$this._area = area;
+  double? _area;
+  double? get area => _$this._area;
+  set area(double? area) => _$this._area = area;
 
   GShapeData_shape__baseBuilder() {
     GShapeData_shape__base._initializeBuilder(this);
   }
 
   GShapeData_shape__baseBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _area = _$v.area;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _area = $v.area;
       _$v = null;
     }
     return this;
@@ -425,21 +437,22 @@ class GShapeData_shape__baseBuilder
 
   @override
   void replace(GShapeData_shape__base other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__base;
   }
 
   @override
-  void update(void Function(GShapeData_shape__baseBuilder) updates) {
+  void update(void Function(GShapeData_shape__baseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GShapeData_shape__base build() {
     final _$result = _$v ??
-        new _$GShapeData_shape__base._(G__typename: G__typename, area: area);
+        new _$GShapeData_shape__base._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GShapeData_shape__base', 'G__typename'),
+            area: area);
     replace(_$result);
     return _$result;
   }
@@ -449,20 +462,19 @@ class _$GShapeData_shape__asSquare extends GShapeData_shape__asSquare {
   @override
   final String G__typename;
   @override
-  final double area;
+  final double? area;
   @override
-  final double sideLength;
+  final double? sideLength;
 
   factory _$GShapeData_shape__asSquare(
-          [void Function(GShapeData_shape__asSquareBuilder) updates]) =>
+          [void Function(GShapeData_shape__asSquareBuilder)? updates]) =>
       (new GShapeData_shape__asSquareBuilder()..update(updates)).build();
 
-  _$GShapeData_shape__asSquare._({this.G__typename, this.area, this.sideLength})
+  _$GShapeData_shape__asSquare._(
+      {required this.G__typename, this.area, this.sideLength})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GShapeData_shape__asSquare', 'G__typename');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GShapeData_shape__asSquare', 'G__typename');
   }
 
   @override
@@ -502,29 +514,30 @@ class _$GShapeData_shape__asSquare extends GShapeData_shape__asSquare {
 class GShapeData_shape__asSquareBuilder
     implements
         Builder<GShapeData_shape__asSquare, GShapeData_shape__asSquareBuilder> {
-  _$GShapeData_shape__asSquare _$v;
+  _$GShapeData_shape__asSquare? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  double _area;
-  double get area => _$this._area;
-  set area(double area) => _$this._area = area;
+  double? _area;
+  double? get area => _$this._area;
+  set area(double? area) => _$this._area = area;
 
-  double _sideLength;
-  double get sideLength => _$this._sideLength;
-  set sideLength(double sideLength) => _$this._sideLength = sideLength;
+  double? _sideLength;
+  double? get sideLength => _$this._sideLength;
+  set sideLength(double? sideLength) => _$this._sideLength = sideLength;
 
   GShapeData_shape__asSquareBuilder() {
     GShapeData_shape__asSquare._initializeBuilder(this);
   }
 
   GShapeData_shape__asSquareBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _area = _$v.area;
-      _sideLength = _$v.sideLength;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _area = $v.area;
+      _sideLength = $v.sideLength;
       _$v = null;
     }
     return this;
@@ -532,14 +545,12 @@ class GShapeData_shape__asSquareBuilder
 
   @override
   void replace(GShapeData_shape__asSquare other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__asSquare;
   }
 
   @override
-  void update(void Function(GShapeData_shape__asSquareBuilder) updates) {
+  void update(void Function(GShapeData_shape__asSquareBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -547,7 +558,10 @@ class GShapeData_shape__asSquareBuilder
   _$GShapeData_shape__asSquare build() {
     final _$result = _$v ??
         new _$GShapeData_shape__asSquare._(
-            G__typename: G__typename, area: area, sideLength: sideLength);
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GShapeData_shape__asSquare', 'G__typename'),
+            area: area,
+            sideLength: sideLength);
     replace(_$result);
     return _$result;
   }
@@ -557,23 +571,24 @@ class _$GShapeData_shape__asRectangle extends GShapeData_shape__asRectangle {
   @override
   final String G__typename;
   @override
-  final double area;
+  final double? area;
   @override
-  final double sideLengthA;
+  final double? sideLengthA;
   @override
-  final double sideLengthB;
+  final double? sideLengthB;
 
   factory _$GShapeData_shape__asRectangle(
-          [void Function(GShapeData_shape__asRectangleBuilder) updates]) =>
+          [void Function(GShapeData_shape__asRectangleBuilder)? updates]) =>
       (new GShapeData_shape__asRectangleBuilder()..update(updates)).build();
 
   _$GShapeData_shape__asRectangle._(
-      {this.G__typename, this.area, this.sideLengthA, this.sideLengthB})
+      {required this.G__typename,
+      this.area,
+      this.sideLengthA,
+      this.sideLengthB})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GShapeData_shape__asRectangle', 'G__typename');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GShapeData_shape__asRectangle', 'G__typename');
   }
 
   @override
@@ -618,34 +633,35 @@ class GShapeData_shape__asRectangleBuilder
     implements
         Builder<GShapeData_shape__asRectangle,
             GShapeData_shape__asRectangleBuilder> {
-  _$GShapeData_shape__asRectangle _$v;
+  _$GShapeData_shape__asRectangle? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  double _area;
-  double get area => _$this._area;
-  set area(double area) => _$this._area = area;
+  double? _area;
+  double? get area => _$this._area;
+  set area(double? area) => _$this._area = area;
 
-  double _sideLengthA;
-  double get sideLengthA => _$this._sideLengthA;
-  set sideLengthA(double sideLengthA) => _$this._sideLengthA = sideLengthA;
+  double? _sideLengthA;
+  double? get sideLengthA => _$this._sideLengthA;
+  set sideLengthA(double? sideLengthA) => _$this._sideLengthA = sideLengthA;
 
-  double _sideLengthB;
-  double get sideLengthB => _$this._sideLengthB;
-  set sideLengthB(double sideLengthB) => _$this._sideLengthB = sideLengthB;
+  double? _sideLengthB;
+  double? get sideLengthB => _$this._sideLengthB;
+  set sideLengthB(double? sideLengthB) => _$this._sideLengthB = sideLengthB;
 
   GShapeData_shape__asRectangleBuilder() {
     GShapeData_shape__asRectangle._initializeBuilder(this);
   }
 
   GShapeData_shape__asRectangleBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _area = _$v.area;
-      _sideLengthA = _$v.sideLengthA;
-      _sideLengthB = _$v.sideLengthB;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _area = $v.area;
+      _sideLengthA = $v.sideLengthA;
+      _sideLengthB = $v.sideLengthB;
       _$v = null;
     }
     return this;
@@ -653,14 +669,12 @@ class GShapeData_shape__asRectangleBuilder
 
   @override
   void replace(GShapeData_shape__asRectangle other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__asRectangle;
   }
 
   @override
-  void update(void Function(GShapeData_shape__asRectangleBuilder) updates) {
+  void update(void Function(GShapeData_shape__asRectangleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -668,7 +682,8 @@ class GShapeData_shape__asRectangleBuilder
   _$GShapeData_shape__asRectangle build() {
     final _$result = _$v ??
         new _$GShapeData_shape__asRectangle._(
-            G__typename: G__typename,
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GShapeData_shape__asRectangle', 'G__typename'),
             area: area,
             sideLengthA: sideLengthA,
             sideLengthB: sideLengthB);

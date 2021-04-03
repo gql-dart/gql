@@ -52,9 +52,9 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
   final String wireName = 'GInput';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GInput object,
+  Iterable<Object?> serialize(Serializers serializers, GInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'idRequired',
       serializers.serialize(object.idRequired,
           specifiedType: const FullType(String)),
@@ -80,59 +80,67 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
       serializers.serialize(object.inputRequired,
           specifiedType: const FullType(GInput)),
     ];
-    if (object.id != null) {
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.Gbool != null) {
+    value = object.Gbool;
+    if (value != null) {
       result
         ..add('bool')
-        ..add(serializers.serialize(object.Gbool,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.Gint != null) {
+    value = object.Gint;
+    if (value != null) {
       result
         ..add('int')
-        ..add(serializers.serialize(object.Gint,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.float != null) {
+    value = object.float;
+    if (value != null) {
       result
         ..add('float')
-        ..add(serializers.serialize(object.float,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.string != null) {
+    value = object.string;
+    if (value != null) {
       result
         ..add('string')
-        ..add(serializers.serialize(object.string,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.scalar != null) {
+    value = object.scalar;
+    if (value != null) {
       result
         ..add('scalar')
-        ..add(serializers.serialize(object.scalar,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(GScalar)));
     }
-    if (object.Genum != null) {
+    value = object.Genum;
+    if (value != null) {
       result
         ..add('enum')
-        ..add(serializers.serialize(object.Genum,
-            specifiedType: const FullType(GEnum)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(GEnum)));
     }
-    if (object.input != null) {
+    value = object.input;
+    if (value != null) {
       result
         ..add('input')
-        ..add(serializers.serialize(object.input,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(GInput)));
     }
     return result;
   }
 
   @override
-  GInput deserialize(Serializers serializers, Iterable<Object> serialized,
+  GInput deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GInputBuilder();
 
@@ -140,7 +148,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -164,7 +172,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
           break;
         case 'scalar':
           result.scalar.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GScalar)) as GScalar);
+              specifiedType: const FullType(GScalar))! as GScalar);
           break;
         case 'enum':
           result.Genum = serializers.deserialize(value,
@@ -172,7 +180,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
           break;
         case 'input':
           result.input.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GInput)) as GInput);
+              specifiedType: const FullType(GInput))! as GInput);
           break;
         case 'idRequired':
           result.idRequired = serializers.deserialize(value,
@@ -196,7 +204,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
           break;
         case 'scalarRequired':
           result.scalarRequired.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GScalar)) as GScalar);
+              specifiedType: const FullType(GScalar))! as GScalar);
           break;
         case 'enumRequired':
           result.enumRequired = serializers.deserialize(value,
@@ -204,7 +212,7 @@ class _$GInputSerializer implements StructuredSerializer<GInput> {
           break;
         case 'inputRequired':
           result.inputRequired.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GInput)) as GInput);
+              specifiedType: const FullType(GInput))! as GInput);
           break;
       }
     }
@@ -217,13 +225,11 @@ class _$GScalar extends GScalar {
   @override
   final String value;
 
-  factory _$GScalar([void Function(GScalarBuilder) updates]) =>
+  factory _$GScalar([void Function(GScalarBuilder)? updates]) =>
       (new GScalarBuilder()..update(updates)).build();
 
-  _$GScalar._({this.value}) : super._() {
-    if (value == null) {
-      throw new BuiltValueNullFieldError('GScalar', 'value');
-    }
+  _$GScalar._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, 'GScalar', 'value');
   }
 
   @override
@@ -252,17 +258,18 @@ class _$GScalar extends GScalar {
 }
 
 class GScalarBuilder implements Builder<GScalar, GScalarBuilder> {
-  _$GScalar _$v;
+  _$GScalar? _$v;
 
-  String _value;
-  String get value => _$this._value;
-  set value(String value) => _$this._value = value;
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
 
   GScalarBuilder();
 
   GScalarBuilder get _$this {
-    if (_$v != null) {
-      _value = _$v.value;
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
       _$v = null;
     }
     return this;
@@ -270,20 +277,21 @@ class GScalarBuilder implements Builder<GScalar, GScalarBuilder> {
 
   @override
   void replace(GScalar other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GScalar;
   }
 
   @override
-  void update(void Function(GScalarBuilder) updates) {
+  void update(void Function(GScalarBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GScalar build() {
-    final _$result = _$v ?? new _$GScalar._(value: value);
+    final _$result = _$v ??
+        new _$GScalar._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, 'GScalar', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -291,21 +299,21 @@ class GScalarBuilder implements Builder<GScalar, GScalarBuilder> {
 
 class _$GInput extends GInput {
   @override
-  final String id;
+  final String? id;
   @override
-  final bool Gbool;
+  final bool? Gbool;
   @override
-  final int Gint;
+  final int? Gint;
   @override
-  final double float;
+  final double? float;
   @override
-  final String string;
+  final String? string;
   @override
-  final GScalar scalar;
+  final GScalar? scalar;
   @override
-  final GEnum Genum;
+  final GEnum? Genum;
   @override
-  final GInput input;
+  final GInput? input;
   @override
   final String idRequired;
   @override
@@ -323,7 +331,7 @@ class _$GInput extends GInput {
   @override
   final GInput inputRequired;
 
-  factory _$GInput([void Function(GInputBuilder) updates]) =>
+  factory _$GInput([void Function(GInputBuilder)? updates]) =>
       (new GInputBuilder()..update(updates)).build();
 
   _$GInput._(
@@ -335,39 +343,29 @@ class _$GInput extends GInput {
       this.scalar,
       this.Genum,
       this.input,
-      this.idRequired,
-      this.boolRequired,
-      this.intRequired,
-      this.floatRequired,
-      this.stringRequired,
-      this.scalarRequired,
-      this.enumRequired,
-      this.inputRequired})
+      required this.idRequired,
+      required this.boolRequired,
+      required this.intRequired,
+      required this.floatRequired,
+      required this.stringRequired,
+      required this.scalarRequired,
+      required this.enumRequired,
+      required this.inputRequired})
       : super._() {
-    if (idRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'idRequired');
-    }
-    if (boolRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'boolRequired');
-    }
-    if (intRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'intRequired');
-    }
-    if (floatRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'floatRequired');
-    }
-    if (stringRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'stringRequired');
-    }
-    if (scalarRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'scalarRequired');
-    }
-    if (enumRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'enumRequired');
-    }
-    if (inputRequired == null) {
-      throw new BuiltValueNullFieldError('GInput', 'inputRequired');
-    }
+    BuiltValueNullFieldError.checkNotNull(idRequired, 'GInput', 'idRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        boolRequired, 'GInput', 'boolRequired');
+    BuiltValueNullFieldError.checkNotNull(intRequired, 'GInput', 'intRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        floatRequired, 'GInput', 'floatRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        stringRequired, 'GInput', 'stringRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        scalarRequired, 'GInput', 'scalarRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        enumRequired, 'GInput', 'enumRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        inputRequired, 'GInput', 'inputRequired');
   }
 
   @override
@@ -459,98 +457,99 @@ class _$GInput extends GInput {
 }
 
 class GInputBuilder implements Builder<GInput, GInputBuilder> {
-  _$GInput _$v;
+  _$GInput? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  bool _Gbool;
-  bool get Gbool => _$this._Gbool;
-  set Gbool(bool Gbool) => _$this._Gbool = Gbool;
+  bool? _Gbool;
+  bool? get Gbool => _$this._Gbool;
+  set Gbool(bool? Gbool) => _$this._Gbool = Gbool;
 
-  int _Gint;
-  int get Gint => _$this._Gint;
-  set Gint(int Gint) => _$this._Gint = Gint;
+  int? _Gint;
+  int? get Gint => _$this._Gint;
+  set Gint(int? Gint) => _$this._Gint = Gint;
 
-  double _float;
-  double get float => _$this._float;
-  set float(double float) => _$this._float = float;
+  double? _float;
+  double? get float => _$this._float;
+  set float(double? float) => _$this._float = float;
 
-  String _string;
-  String get string => _$this._string;
-  set string(String string) => _$this._string = string;
+  String? _string;
+  String? get string => _$this._string;
+  set string(String? string) => _$this._string = string;
 
-  GScalarBuilder _scalar;
+  GScalarBuilder? _scalar;
   GScalarBuilder get scalar => _$this._scalar ??= new GScalarBuilder();
-  set scalar(GScalarBuilder scalar) => _$this._scalar = scalar;
+  set scalar(GScalarBuilder? scalar) => _$this._scalar = scalar;
 
-  GEnum _Genum;
-  GEnum get Genum => _$this._Genum;
-  set Genum(GEnum Genum) => _$this._Genum = Genum;
+  GEnum? _Genum;
+  GEnum? get Genum => _$this._Genum;
+  set Genum(GEnum? Genum) => _$this._Genum = Genum;
 
-  GInputBuilder _input;
+  GInputBuilder? _input;
   GInputBuilder get input => _$this._input ??= new GInputBuilder();
-  set input(GInputBuilder input) => _$this._input = input;
+  set input(GInputBuilder? input) => _$this._input = input;
 
-  String _idRequired;
-  String get idRequired => _$this._idRequired;
-  set idRequired(String idRequired) => _$this._idRequired = idRequired;
+  String? _idRequired;
+  String? get idRequired => _$this._idRequired;
+  set idRequired(String? idRequired) => _$this._idRequired = idRequired;
 
-  bool _boolRequired;
-  bool get boolRequired => _$this._boolRequired;
-  set boolRequired(bool boolRequired) => _$this._boolRequired = boolRequired;
+  bool? _boolRequired;
+  bool? get boolRequired => _$this._boolRequired;
+  set boolRequired(bool? boolRequired) => _$this._boolRequired = boolRequired;
 
-  int _intRequired;
-  int get intRequired => _$this._intRequired;
-  set intRequired(int intRequired) => _$this._intRequired = intRequired;
+  int? _intRequired;
+  int? get intRequired => _$this._intRequired;
+  set intRequired(int? intRequired) => _$this._intRequired = intRequired;
 
-  double _floatRequired;
-  double get floatRequired => _$this._floatRequired;
-  set floatRequired(double floatRequired) =>
+  double? _floatRequired;
+  double? get floatRequired => _$this._floatRequired;
+  set floatRequired(double? floatRequired) =>
       _$this._floatRequired = floatRequired;
 
-  String _stringRequired;
-  String get stringRequired => _$this._stringRequired;
-  set stringRequired(String stringRequired) =>
+  String? _stringRequired;
+  String? get stringRequired => _$this._stringRequired;
+  set stringRequired(String? stringRequired) =>
       _$this._stringRequired = stringRequired;
 
-  GScalarBuilder _scalarRequired;
+  GScalarBuilder? _scalarRequired;
   GScalarBuilder get scalarRequired =>
       _$this._scalarRequired ??= new GScalarBuilder();
-  set scalarRequired(GScalarBuilder scalarRequired) =>
+  set scalarRequired(GScalarBuilder? scalarRequired) =>
       _$this._scalarRequired = scalarRequired;
 
-  GEnum _enumRequired;
-  GEnum get enumRequired => _$this._enumRequired;
-  set enumRequired(GEnum enumRequired) => _$this._enumRequired = enumRequired;
+  GEnum? _enumRequired;
+  GEnum? get enumRequired => _$this._enumRequired;
+  set enumRequired(GEnum? enumRequired) => _$this._enumRequired = enumRequired;
 
-  GInputBuilder _inputRequired;
+  GInputBuilder? _inputRequired;
   GInputBuilder get inputRequired =>
       _$this._inputRequired ??= new GInputBuilder();
-  set inputRequired(GInputBuilder inputRequired) =>
+  set inputRequired(GInputBuilder? inputRequired) =>
       _$this._inputRequired = inputRequired;
 
   GInputBuilder();
 
   GInputBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _Gbool = _$v.Gbool;
-      _Gint = _$v.Gint;
-      _float = _$v.float;
-      _string = _$v.string;
-      _scalar = _$v.scalar?.toBuilder();
-      _Genum = _$v.Genum;
-      _input = _$v.input?.toBuilder();
-      _idRequired = _$v.idRequired;
-      _boolRequired = _$v.boolRequired;
-      _intRequired = _$v.intRequired;
-      _floatRequired = _$v.floatRequired;
-      _stringRequired = _$v.stringRequired;
-      _scalarRequired = _$v.scalarRequired?.toBuilder();
-      _enumRequired = _$v.enumRequired;
-      _inputRequired = _$v.inputRequired?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _Gbool = $v.Gbool;
+      _Gint = $v.Gint;
+      _float = $v.float;
+      _string = $v.string;
+      _scalar = $v.scalar?.toBuilder();
+      _Genum = $v.Genum;
+      _input = $v.input?.toBuilder();
+      _idRequired = $v.idRequired;
+      _boolRequired = $v.boolRequired;
+      _intRequired = $v.intRequired;
+      _floatRequired = $v.floatRequired;
+      _stringRequired = $v.stringRequired;
+      _scalarRequired = $v.scalarRequired.toBuilder();
+      _enumRequired = $v.enumRequired;
+      _inputRequired = $v.inputRequired.toBuilder();
       _$v = null;
     }
     return this;
@@ -558,14 +557,12 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
 
   @override
   void replace(GInput other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GInput;
   }
 
   @override
-  void update(void Function(GInputBuilder) updates) {
+  void update(void Function(GInputBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -583,16 +580,22 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
               scalar: _scalar?.build(),
               Genum: Genum,
               input: _input?.build(),
-              idRequired: idRequired,
-              boolRequired: boolRequired,
-              intRequired: intRequired,
-              floatRequired: floatRequired,
-              stringRequired: stringRequired,
+              idRequired: BuiltValueNullFieldError.checkNotNull(
+                  idRequired, 'GInput', 'idRequired'),
+              boolRequired: BuiltValueNullFieldError.checkNotNull(
+                  boolRequired, 'GInput', 'boolRequired'),
+              intRequired: BuiltValueNullFieldError.checkNotNull(
+                  intRequired, 'GInput', 'intRequired'),
+              floatRequired: BuiltValueNullFieldError.checkNotNull(
+                  floatRequired, 'GInput', 'floatRequired'),
+              stringRequired: BuiltValueNullFieldError.checkNotNull(
+                  stringRequired, 'GInput', 'stringRequired'),
               scalarRequired: scalarRequired.build(),
-              enumRequired: enumRequired,
+              enumRequired: BuiltValueNullFieldError.checkNotNull(
+                  enumRequired, 'GInput', 'enumRequired'),
               inputRequired: inputRequired.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'scalar';
         _scalar?.build();
