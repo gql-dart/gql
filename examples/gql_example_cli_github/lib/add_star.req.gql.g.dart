@@ -15,9 +15,9 @@ class _$GAddStarSerializer implements StructuredSerializer<GAddStar> {
   final String wireName = 'GAddStar';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GAddStar object,
+  Iterable<Object?> serialize(Serializers serializers, GAddStar object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GAddStarVars)),
@@ -30,7 +30,7 @@ class _$GAddStarSerializer implements StructuredSerializer<GAddStar> {
   }
 
   @override
-  GAddStar deserialize(Serializers serializers, Iterable<Object> serialized,
+  GAddStar deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GAddStarBuilder();
 
@@ -38,11 +38,11 @@ class _$GAddStarSerializer implements StructuredSerializer<GAddStar> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAddStarVars))
+                  specifiedType: const FullType(_i3.GAddStarVars))!
               as _i3.GAddStarVars);
           break;
         case 'operation':
@@ -62,16 +62,12 @@ class _$GAddStar extends GAddStar {
   @override
   final _i1.Operation operation;
 
-  factory _$GAddStar([void Function(GAddStarBuilder) updates]) =>
+  factory _$GAddStar([void Function(GAddStarBuilder)? updates]) =>
       (new GAddStarBuilder()..update(updates)).build();
 
-  _$GAddStar._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GAddStar', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GAddStar', 'operation');
-    }
+  _$GAddStar._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GAddStar', 'vars');
+    BuiltValueNullFieldError.checkNotNull(operation, 'GAddStar', 'operation');
   }
 
   @override
@@ -104,25 +100,26 @@ class _$GAddStar extends GAddStar {
 }
 
 class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
-  _$GAddStar _$v;
+  _$GAddStar? _$v;
 
-  _i3.GAddStarVarsBuilder _vars;
+  _i3.GAddStarVarsBuilder? _vars;
   _i3.GAddStarVarsBuilder get vars =>
       _$this._vars ??= new _i3.GAddStarVarsBuilder();
-  set vars(_i3.GAddStarVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GAddStarVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GAddStarBuilder() {
     GAddStar._initializeBuilder(this);
   }
 
   GAddStarBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -130,14 +127,12 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
 
   @override
   void replace(GAddStar other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStar;
   }
 
   @override
-  void update(void Function(GAddStarBuilder) updates) {
+  void update(void Function(GAddStarBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -145,10 +140,13 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
   _$GAddStar build() {
     _$GAddStar _$result;
     try {
-      _$result =
-          _$v ?? new _$GAddStar._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GAddStar._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GAddStar', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

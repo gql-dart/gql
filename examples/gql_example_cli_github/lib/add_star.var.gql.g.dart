@@ -16,9 +16,9 @@ class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
   final String wireName = 'GAddStarVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GAddStarVars object,
+  Iterable<Object?> serialize(Serializers serializers, GAddStarVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'starrableId',
       serializers.serialize(object.starrableId,
           specifiedType: const FullType(String)),
@@ -28,7 +28,8 @@ class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
   }
 
   @override
-  GAddStarVars deserialize(Serializers serializers, Iterable<Object> serialized,
+  GAddStarVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GAddStarVarsBuilder();
 
@@ -36,7 +37,7 @@ class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'starrableId':
           result.starrableId = serializers.deserialize(value,
@@ -53,13 +54,12 @@ class _$GAddStarVars extends GAddStarVars {
   @override
   final String starrableId;
 
-  factory _$GAddStarVars([void Function(GAddStarVarsBuilder) updates]) =>
+  factory _$GAddStarVars([void Function(GAddStarVarsBuilder)? updates]) =>
       (new GAddStarVarsBuilder()..update(updates)).build();
 
-  _$GAddStarVars._({this.starrableId}) : super._() {
-    if (starrableId == null) {
-      throw new BuiltValueNullFieldError('GAddStarVars', 'starrableId');
-    }
+  _$GAddStarVars._({required this.starrableId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        starrableId, 'GAddStarVars', 'starrableId');
   }
 
   @override
@@ -90,17 +90,18 @@ class _$GAddStarVars extends GAddStarVars {
 
 class GAddStarVarsBuilder
     implements Builder<GAddStarVars, GAddStarVarsBuilder> {
-  _$GAddStarVars _$v;
+  _$GAddStarVars? _$v;
 
-  String _starrableId;
-  String get starrableId => _$this._starrableId;
-  set starrableId(String starrableId) => _$this._starrableId = starrableId;
+  String? _starrableId;
+  String? get starrableId => _$this._starrableId;
+  set starrableId(String? starrableId) => _$this._starrableId = starrableId;
 
   GAddStarVarsBuilder();
 
   GAddStarVarsBuilder get _$this {
-    if (_$v != null) {
-      _starrableId = _$v.starrableId;
+    final $v = _$v;
+    if ($v != null) {
+      _starrableId = $v.starrableId;
       _$v = null;
     }
     return this;
@@ -108,20 +109,21 @@ class GAddStarVarsBuilder
 
   @override
   void replace(GAddStarVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarVars;
   }
 
   @override
-  void update(void Function(GAddStarVarsBuilder) updates) {
+  void update(void Function(GAddStarVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GAddStarVars build() {
-    final _$result = _$v ?? new _$GAddStarVars._(starrableId: starrableId);
+    final _$result = _$v ??
+        new _$GAddStarVars._(
+            starrableId: BuiltValueNullFieldError.checkNotNull(
+                starrableId, 'GAddStarVars', 'starrableId'));
     replace(_$result);
     return _$result;
   }

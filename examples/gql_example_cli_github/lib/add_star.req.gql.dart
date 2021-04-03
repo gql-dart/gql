@@ -21,7 +21,8 @@ abstract class GAddStar implements Built<GAddStar, GAddStarBuilder> {
   _i1.Operation get operation;
   static Serializer<GAddStar> get serializer => _$gAddStarSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GAddStar.serializer, this);
-  static GAddStar fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GAddStar.serializer, this)
+          as Map<String, dynamic>);
+  static GAddStar? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GAddStar.serializer, json);
 }

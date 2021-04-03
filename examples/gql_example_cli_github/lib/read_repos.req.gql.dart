@@ -24,7 +24,8 @@ abstract class GReadRepositories
   static Serializer<GReadRepositories> get serializer =>
       _$gReadRepositoriesSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GReadRepositories.serializer, this);
-  static GReadRepositories fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GReadRepositories.serializer, this)
+          as Map<String, dynamic>);
+  static GReadRepositories? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GReadRepositories.serializer, json);
 }
