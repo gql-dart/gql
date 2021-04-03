@@ -39,16 +39,21 @@ void query(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
-    stderr.writeln(result.errors);
+  if (result.errors?.isNotEmpty == true || result.data == null) {
+    stderr.writeln(result.errors ?? "No data received");
     exit(2);
   }
 
-  final data = GReadRepositoriesData.fromJson(result.data);
+  final data = GReadRepositoriesData.fromJson(result.data!);
+
+  if (data == null) {
+    stderr.writeln("No data received");
+    exit(2);
+  }
 
   final repositories = data.viewer.repositories.nodes;
 
-  repositories.forEach(
+  repositories?.forEach(
     (repo) {
       stdout.writeln(
         "Id: ${repo.id} Name: ${repo.name} Created at: ${repo.createdAt.value}",
@@ -81,16 +86,21 @@ void starRepository(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
-    stderr.writeln(result.errors);
+  if (result.errors?.isNotEmpty == true || result.data == null) {
+    stderr.writeln(result.errors ?? "No data received");
     exit(2);
   }
 
-  final data = GAddStarData.fromJson(result.data);
+  final data = GAddStarData.fromJson(result.data!);
 
-  final isStarred = data.action.starrable.viewerHasStarred;
+  if (data == null) {
+    stderr.writeln("No data received");
+    exit(2);
+  }
 
-  if (isStarred) {
+  final isStarred = data.action?.starrable?.viewerHasStarred;
+
+  if (isStarred == true) {
     stdout.writeln("Thanks for your star!");
   }
 
@@ -119,16 +129,21 @@ void removeStarFromRepository(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
-    stderr.writeln(result.errors);
+  if (result.errors?.isNotEmpty == true || result.data == null) {
+    stderr.writeln(result.errors ?? "No data received");
     exit(2);
   }
 
-  final data = GRemoveStarData.fromJson(result.data);
+  final data = GRemoveStarData.fromJson(result.data!);
 
-  final isStarred = data.action.starrable.viewerHasStarred;
+  if (data == null) {
+    stderr.writeln("No data received");
+    exit(2);
+  }
 
-  if (!isStarred) {
+  final isStarred = data.action?.starrable?.viewerHasStarred;
+
+  if (isStarred == false) {
     stdout.writeln("Sorry you changed your mind!");
   }
 
