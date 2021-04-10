@@ -14,8 +14,10 @@ class App extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => AllPokemonScreen());
           case 'detail':
             return MaterialPageRoute(
-                builder: (_) => PokemonDetailScreen(
-                    id: (settings.arguments as Map<String, String>)["id"]));
+              builder: (_) => PokemonDetailScreen(
+                id: (settings.arguments as Map<String, String>)["id"]!,
+              ),
+            );
           default:
             return MaterialPageRoute(builder: (_) => Scaffold());
         }
