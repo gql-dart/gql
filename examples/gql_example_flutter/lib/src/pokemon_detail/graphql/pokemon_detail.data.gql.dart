@@ -19,13 +19,13 @@ abstract class GPokemonDetailData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GPokemonDetailData_pokemon get pokemon;
+  GPokemonDetailData_pokemon? get pokemon;
   static Serializer<GPokemonDetailData> get serializer =>
       _$gPokemonDetailDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GPokemonDetailData.serializer, this);
-  static GPokemonDetailData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GPokemonDetailData.serializer, this)
+          as Map<String, dynamic>);
+  static GPokemonDetailData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GPokemonDetailData.serializer, json);
 }
 
@@ -44,21 +44,16 @@ abstract class GPokemonDetailData_pokemon
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
-  @nullable
-  String get name;
-  @nullable
-  int get maxHP;
-  @nullable
-  String get image;
-  @nullable
-  GPokemonDetailData_pokemon_weight get weight;
-  @nullable
-  GPokemonDetailData_pokemon_height get height;
+  String? get name;
+  int? get maxHP;
+  String? get image;
+  GPokemonDetailData_pokemon_weight? get weight;
+  GPokemonDetailData_pokemon_height? get height;
   static Serializer<GPokemonDetailData_pokemon> get serializer =>
       _$gPokemonDetailDataPokemonSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GPokemonDetailData_pokemon.serializer, this);
-  static GPokemonDetailData_pokemon fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+      GPokemonDetailData_pokemon.serializer, this) as Map<String, dynamic>);
+  static GPokemonDetailData_pokemon? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GPokemonDetailData_pokemon.serializer, json);
 }
@@ -77,15 +72,14 @@ abstract class GPokemonDetailData_pokemon_weight
       b..G__typename = 'PokemonDimension';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get minimum;
-  @nullable
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   static Serializer<GPokemonDetailData_pokemon_weight> get serializer =>
       _$gPokemonDetailDataPokemonWeightSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GPokemonDetailData_pokemon_weight.serializer, this);
-  static GPokemonDetailData_pokemon_weight fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GPokemonDetailData_pokemon_weight.serializer, this)
+      as Map<String, dynamic>);
+  static GPokemonDetailData_pokemon_weight? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GPokemonDetailData_pokemon_weight.serializer, json);
@@ -105,15 +99,14 @@ abstract class GPokemonDetailData_pokemon_height
       b..G__typename = 'PokemonDimension';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get minimum;
-  @nullable
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   static Serializer<GPokemonDetailData_pokemon_height> get serializer =>
       _$gPokemonDetailDataPokemonHeightSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GPokemonDetailData_pokemon_height.serializer, this);
-  static GPokemonDetailData_pokemon_height fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GPokemonDetailData_pokemon_height.serializer, this)
+      as Map<String, dynamic>);
+  static GPokemonDetailData_pokemon_height? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GPokemonDetailData_pokemon_height.serializer, json);

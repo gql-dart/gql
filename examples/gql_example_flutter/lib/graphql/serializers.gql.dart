@@ -21,8 +21,8 @@ import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.da
     show
         GPokemonDetailData,
         GPokemonDetailData_pokemon,
-        GPokemonDetailData_pokemon_weight,
-        GPokemonDetailData_pokemon_height;
+        GPokemonDetailData_pokemon_height,
+        GPokemonDetailData_pokemon_weight;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.req.gql.dart'
     show GPokemonDetail;
 import 'package:gql_example_flutter/src/pokemon_detail/graphql/pokemon_detail.var.gql.dart'
@@ -34,19 +34,19 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
-  GPokemonDetailData,
-  GPokemonDetailData_pokemon,
-  GPokemonDetailData_pokemon_weight,
-  GPokemonDetailData_pokemon_height,
-  GNestedFragmentData,
-  GPokemonCardData,
+  GAllPokemon,
   GAllPokemonData,
   GAllPokemonData_pokemons,
-  GPokemonDetail,
-  GAllPokemon,
-  GPokemonDetailVars,
+  GAllPokemonVars,
+  GNestedFragmentData,
   GNestedFragmentVars,
+  GPokemonCardData,
   GPokemonCardVars,
-  GAllPokemonVars
+  GPokemonDetail,
+  GPokemonDetailData,
+  GPokemonDetailData_pokemon,
+  GPokemonDetailData_pokemon_height,
+  GPokemonDetailData_pokemon_weight,
+  GPokemonDetailVars
 ])
 final Serializers serializers = _serializersBuilder.build();

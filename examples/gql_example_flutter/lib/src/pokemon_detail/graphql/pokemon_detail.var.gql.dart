@@ -13,14 +13,13 @@ abstract class GPokemonDetailVars
   factory GPokemonDetailVars([Function(GPokemonDetailVarsBuilder b) updates]) =
       _$GPokemonDetailVars;
 
-  @nullable
-  String get id;
-  @nullable
-  String get name;
+  String? get id;
+  String? get name;
   static Serializer<GPokemonDetailVars> get serializer =>
       _$gPokemonDetailVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GPokemonDetailVars.serializer, this);
-  static GPokemonDetailVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GPokemonDetailVars.serializer, this)
+          as Map<String, dynamic>);
+  static GPokemonDetailVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GPokemonDetailVars.serializer, json);
 }

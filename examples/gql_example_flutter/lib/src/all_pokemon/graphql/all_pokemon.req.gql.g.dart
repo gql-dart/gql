@@ -15,9 +15,9 @@ class _$GAllPokemonSerializer implements StructuredSerializer<GAllPokemon> {
   final String wireName = 'GAllPokemon';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GAllPokemon object,
+  Iterable<Object?> serialize(Serializers serializers, GAllPokemon object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GAllPokemonVars)),
@@ -30,7 +30,7 @@ class _$GAllPokemonSerializer implements StructuredSerializer<GAllPokemon> {
   }
 
   @override
-  GAllPokemon deserialize(Serializers serializers, Iterable<Object> serialized,
+  GAllPokemon deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GAllPokemonBuilder();
 
@@ -38,11 +38,11 @@ class _$GAllPokemonSerializer implements StructuredSerializer<GAllPokemon> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAllPokemonVars))
+                  specifiedType: const FullType(_i3.GAllPokemonVars))!
               as _i3.GAllPokemonVars);
           break;
         case 'operation':
@@ -62,16 +62,13 @@ class _$GAllPokemon extends GAllPokemon {
   @override
   final _i1.Operation operation;
 
-  factory _$GAllPokemon([void Function(GAllPokemonBuilder) updates]) =>
+  factory _$GAllPokemon([void Function(GAllPokemonBuilder)? updates]) =>
       (new GAllPokemonBuilder()..update(updates)).build();
 
-  _$GAllPokemon._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GAllPokemon', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GAllPokemon', 'operation');
-    }
+  _$GAllPokemon._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GAllPokemon', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GAllPokemon', 'operation');
   }
 
   @override
@@ -104,25 +101,26 @@ class _$GAllPokemon extends GAllPokemon {
 }
 
 class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
-  _$GAllPokemon _$v;
+  _$GAllPokemon? _$v;
 
-  _i3.GAllPokemonVarsBuilder _vars;
+  _i3.GAllPokemonVarsBuilder? _vars;
   _i3.GAllPokemonVarsBuilder get vars =>
       _$this._vars ??= new _i3.GAllPokemonVarsBuilder();
-  set vars(_i3.GAllPokemonVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GAllPokemonVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GAllPokemonBuilder() {
     GAllPokemon._initializeBuilder(this);
   }
 
   GAllPokemonBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -130,14 +128,12 @@ class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
 
   @override
   void replace(GAllPokemon other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAllPokemon;
   }
 
   @override
-  void update(void Function(GAllPokemonBuilder) updates) {
+  void update(void Function(GAllPokemonBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -145,10 +141,13 @@ class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
   _$GAllPokemon build() {
     _$GAllPokemon _$result;
     try {
-      _$result =
-          _$v ?? new _$GAllPokemon._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GAllPokemon._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GAllPokemon', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

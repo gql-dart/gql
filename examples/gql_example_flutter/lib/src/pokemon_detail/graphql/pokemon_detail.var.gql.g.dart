@@ -17,19 +17,23 @@ class _$GPokemonDetailVarsSerializer
   final String wireName = 'GPokemonDetailVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GPokemonDetailVars object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GPokemonDetailVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.name != null) {
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -37,7 +41,7 @@ class _$GPokemonDetailVarsSerializer
 
   @override
   GPokemonDetailVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GPokemonDetailVarsBuilder();
 
@@ -45,7 +49,7 @@ class _$GPokemonDetailVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -64,12 +68,12 @@ class _$GPokemonDetailVarsSerializer
 
 class _$GPokemonDetailVars extends GPokemonDetailVars {
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
 
   factory _$GPokemonDetailVars(
-          [void Function(GPokemonDetailVarsBuilder) updates]) =>
+          [void Function(GPokemonDetailVarsBuilder)? updates]) =>
       (new GPokemonDetailVarsBuilder()..update(updates)).build();
 
   _$GPokemonDetailVars._({this.id, this.name}) : super._();
@@ -105,22 +109,23 @@ class _$GPokemonDetailVars extends GPokemonDetailVars {
 
 class GPokemonDetailVarsBuilder
     implements Builder<GPokemonDetailVars, GPokemonDetailVarsBuilder> {
-  _$GPokemonDetailVars _$v;
+  _$GPokemonDetailVars? _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GPokemonDetailVarsBuilder();
 
   GPokemonDetailVarsBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -128,14 +133,12 @@ class GPokemonDetailVarsBuilder
 
   @override
   void replace(GPokemonDetailVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPokemonDetailVars;
   }
 
   @override
-  void update(void Function(GPokemonDetailVarsBuilder) updates) {
+  void update(void Function(GPokemonDetailVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

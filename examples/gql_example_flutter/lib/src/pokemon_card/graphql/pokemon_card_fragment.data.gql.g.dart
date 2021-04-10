@@ -17,31 +17,34 @@ class _$GPokemonCardDataSerializer
   final String wireName = 'GPokemonCardData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GPokemonCardData object,
+  Iterable<Object?> serialize(Serializers serializers, GPokemonCardData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
-    if (object.name != null) {
+    Object? value;
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.maxHP != null) {
+    value = object.maxHP;
+    if (value != null) {
       result
         ..add('maxHP')
-        ..add(serializers.serialize(object.maxHP,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.image != null) {
+    value = object.image;
+    if (value != null) {
       result
         ..add('image')
-        ..add(serializers.serialize(object.image,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -49,7 +52,7 @@ class _$GPokemonCardDataSerializer
 
   @override
   GPokemonCardData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GPokemonCardDataBuilder();
 
@@ -57,7 +60,7 @@ class _$GPokemonCardDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -92,25 +95,26 @@ class _$GPokemonCardData extends GPokemonCardData {
   @override
   final String id;
   @override
-  final String name;
+  final String? name;
   @override
-  final int maxHP;
+  final int? maxHP;
   @override
-  final String image;
+  final String? image;
 
   factory _$GPokemonCardData(
-          [void Function(GPokemonCardDataBuilder) updates]) =>
+          [void Function(GPokemonCardDataBuilder)? updates]) =>
       (new GPokemonCardDataBuilder()..update(updates)).build();
 
   _$GPokemonCardData._(
-      {this.G__typename, this.id, this.name, this.maxHP, this.image})
+      {required this.G__typename,
+      required this.id,
+      this.name,
+      this.maxHP,
+      this.image})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GPokemonCardData', 'G__typename');
-    }
-    if (id == null) {
-      throw new BuiltValueNullFieldError('GPokemonCardData', 'id');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GPokemonCardData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, 'GPokemonCardData', 'id');
   }
 
   @override
@@ -154,39 +158,40 @@ class _$GPokemonCardData extends GPokemonCardData {
 
 class GPokemonCardDataBuilder
     implements Builder<GPokemonCardData, GPokemonCardDataBuilder> {
-  _$GPokemonCardData _$v;
+  _$GPokemonCardData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  int _maxHP;
-  int get maxHP => _$this._maxHP;
-  set maxHP(int maxHP) => _$this._maxHP = maxHP;
+  int? _maxHP;
+  int? get maxHP => _$this._maxHP;
+  set maxHP(int? maxHP) => _$this._maxHP = maxHP;
 
-  String _image;
-  String get image => _$this._image;
-  set image(String image) => _$this._image = image;
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
 
   GPokemonCardDataBuilder() {
     GPokemonCardData._initializeBuilder(this);
   }
 
   GPokemonCardDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
-      _name = _$v.name;
-      _maxHP = _$v.maxHP;
-      _image = _$v.image;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _maxHP = $v.maxHP;
+      _image = $v.image;
       _$v = null;
     }
     return this;
@@ -194,14 +199,12 @@ class GPokemonCardDataBuilder
 
   @override
   void replace(GPokemonCardData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPokemonCardData;
   }
 
   @override
-  void update(void Function(GPokemonCardDataBuilder) updates) {
+  void update(void Function(GPokemonCardDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -209,8 +212,10 @@ class GPokemonCardDataBuilder
   _$GPokemonCardData build() {
     final _$result = _$v ??
         new _$GPokemonCardData._(
-            G__typename: G__typename,
-            id: id,
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GPokemonCardData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GPokemonCardData', 'id'),
             name: name,
             maxHP: maxHP,
             image: image);
