@@ -519,10 +519,18 @@ void main() {
     });
 
     test("throws DioLinkServerException for dio error response", () async {
+      final opts = dio.RequestOptions(
+        responseType: dio.ResponseType.json,
+        path: "/",
+      );
       final error = dio.DioError(
-          response:
-              dio.Response<String>(data: "Not authenticated", statusCode: 401),
-          type: dio.DioErrorType.RESPONSE);
+          requestOptions: opts,
+          response: dio.Response<String>(
+            requestOptions: opts,
+            data: "Not authenticated",
+            statusCode: 401,
+          ),
+          type: dio.DioErrorType.response);
 
       when(
         client.post<dynamic>(
@@ -534,7 +542,7 @@ void main() {
         error,
       );
 
-      DioLinkServerException exception;
+      late DioLinkServerException exception;
 
       try {
         await execute().first;
@@ -548,11 +556,11 @@ void main() {
       );
       expect(
         exception.response.data,
-        error.response.data,
+        error.response!.data,
       );
       expect(
         exception.response.statusCode,
-        error.response.statusCode,
+        error.response!.statusCode,
       );
       // Failed to parse non-grahpql formatted body, so therefore null
       expect(
@@ -563,12 +571,12 @@ void main() {
       expect(exception.originalException != null, true);
 
       final dioException = exception.originalException as dio.DioError;
-      expect(dioException.response.data, "Not authenticated");
-      expect(dioException.response.statusCode, 401);
-      expect(dioException.type, dio.DioErrorType.RESPONSE);
+      expect(dioException.response!.data, "Not authenticated");
+      expect(dioException.response!.statusCode, 401);
+      expect(dioException.type, dio.DioErrorType.response);
 
       expect(exception.toString(),
-          "DioLinkServerException(originalException: DioError [DioErrorType.RESPONSE]: , status: 401, response: Not authenticated");
+          "DioLinkServerException(originalException: DioError [DioErrorType.response]: , status: 401, response: Not authenticated");
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
