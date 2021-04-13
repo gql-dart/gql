@@ -17,9 +17,9 @@ class _$GFindPokemonVarsSerializer
   final String wireName = 'GFindPokemonVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GFindPokemonVars object,
+  Iterable<Object?> serialize(Serializers serializers, GFindPokemonVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
@@ -29,7 +29,7 @@ class _$GFindPokemonVarsSerializer
 
   @override
   GFindPokemonVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GFindPokemonVarsBuilder();
 
@@ -37,7 +37,7 @@ class _$GFindPokemonVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'name':
           result.name = serializers.deserialize(value,
@@ -55,13 +55,11 @@ class _$GFindPokemonVars extends GFindPokemonVars {
   final String name;
 
   factory _$GFindPokemonVars(
-          [void Function(GFindPokemonVarsBuilder) updates]) =>
+          [void Function(GFindPokemonVarsBuilder)? updates]) =>
       (new GFindPokemonVarsBuilder()..update(updates)).build();
 
-  _$GFindPokemonVars._({this.name}) : super._() {
-    if (name == null) {
-      throw new BuiltValueNullFieldError('GFindPokemonVars', 'name');
-    }
+  _$GFindPokemonVars._({required this.name}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, 'GFindPokemonVars', 'name');
   }
 
   @override
@@ -92,17 +90,18 @@ class _$GFindPokemonVars extends GFindPokemonVars {
 
 class GFindPokemonVarsBuilder
     implements Builder<GFindPokemonVars, GFindPokemonVarsBuilder> {
-  _$GFindPokemonVars _$v;
+  _$GFindPokemonVars? _$v;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GFindPokemonVarsBuilder();
 
   GFindPokemonVarsBuilder get _$this {
-    if (_$v != null) {
-      _name = _$v.name;
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -110,20 +109,21 @@ class GFindPokemonVarsBuilder
 
   @override
   void replace(GFindPokemonVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFindPokemonVars;
   }
 
   @override
-  void update(void Function(GFindPokemonVarsBuilder) updates) {
+  void update(void Function(GFindPokemonVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GFindPokemonVars build() {
-    final _$result = _$v ?? new _$GFindPokemonVars._(name: name);
+    final _$result = _$v ??
+        new _$GFindPokemonVars._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, 'GFindPokemonVars', 'name'));
     replace(_$result);
     return _$result;
   }

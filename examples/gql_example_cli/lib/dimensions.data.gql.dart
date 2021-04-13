@@ -8,8 +8,8 @@ part 'dimensions.data.gql.g.dart';
 
 abstract class GDimensions {
   String get G__typename;
-  String get minimum;
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   Map<String, dynamic> toJson();
 }
 
@@ -24,14 +24,13 @@ abstract class GDimensionsData
       b..G__typename = 'PokemonDimension';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get minimum;
-  @nullable
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   static Serializer<GDimensionsData> get serializer =>
       _$gDimensionsDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GDimensionsData.serializer, this);
-  static GDimensionsData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GDimensionsData.serializer, this)
+          as Map<String, dynamic>);
+  static GDimensionsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GDimensionsData.serializer, json);
 }
