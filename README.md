@@ -72,6 +72,8 @@ Ideas for future work:
 | [![version][package:gql_http_link:version]][package:gql_http_link] | [`package:gql_http_link`][package:gql_http_link:source] | `gql_http_link.dart` | Link to execute GraphQL requests via HTTP |
 | [![version][package:gql_dedupe_link:version]][package:gql_dedupe_link] | [`package:gql_dedupe_link`][package:gql_dedupe_link:source] | `gql_dedupe_link.dart` | De-duplicating Link to avoid execution of identical requests |
 | [![version][package:gql_transform_link:version]][package:gql_transform_link] | [`package:gql_transform_link`][package:gql_transform_link:source] | `gql_transform_link.dart` | GQL Link to transform Requests and Responses. May be used to update context, document, variables, data, errors, etc. |
+| [![version][package:gql_websocket_link:version]][package:gql_websocket_link] | [`package:gql_websocket_link`][package:gql_websocket_link:source] | `gql_websocket_link.dart` | GQL Link for subscriptions using websocket. |
+| [![version][package:gql_dio_link:version]][package:gql_dio_link] | [`package:gql_dio_link`][package:gql_dio_link:source] | `gql_dio_link.dart` | Similar to gql_http_link, A GQL Terminating Link to execute requests via Dio using JSON. |
 
 #### Other
 
@@ -90,34 +92,40 @@ Ideas for future work:
 [package:gql:source]: ./gql/README.md
 [package:gql]: https://pub.dartlang.org/packages/gql
 [package:gql:version]: https://img.shields.io/pub/v/gql.svg?style=flat-square 
-[package:gql_exec:source]: ./gql_exec/README.md
+[package:gql_exec:source]: ./links/gql_exec/README.md
 [package:gql_exec]: https://pub.dartlang.org/packages/gql_exec
-[package:gql_exec:version]: https://img.shields.io/pub/v/gql_exec.svg?style=flat-square 
-[package:gql_link:source]: ./gql_link/README.md
+[package:gql_exec:version]: https://img.shields.io/pub/v/gql_exec.svg?style=flat-square
+[package:gql_websocket_link]: https://pub.dartlang.org/packages/gql_websocket_link
+[package:gql_websocket_link:source]: ./links/gql_websocket_link/README.md
+[package:gql_websocket_link:version]: https://img.shields.io/pub/v/gql_websocket_link.svg?style=flat-square
+[package:gql_dio_link]: https://pub.dartlang.org/packages/gql_dio_link
+[package:gql_dio_link:source]: ./links/gql_dio_link/README.md
+[package:gql_dio_link:version]: https://img.shields.io/pub/v/gql_dio_link.svg?style=flat-square
+[package:gql_link:source]: ./links/gql_link/README.md
 [package:gql_link]: https://pub.dartlang.org/packages/gql_link
 [package:gql_link:version]: https://img.shields.io/pub/v/gql_link.svg?style=flat-square 
-[package:gql_http_link:source]: ./gql_http_link/README.md
+[package:gql_http_link:source]: ./links/gql_http_link/README.md
 [package:gql_http_link]: https://pub.dartlang.org/packages/gql_http_link
 [package:gql_http_link:version]: https://img.shields.io/pub/v/gql_http_link.svg?style=flat-square 
-[package:gql_code_builder:source]: ./gql_code_builder/README.md
+[package:gql_code_builder:source]: ./codegen/gql_code_builder/README.md
 [package:gql_code_builder]: https://pub.dartlang.org/packages/gql_code_builder
 [package:gql_code_builder:version]: https://img.shields.io/pub/v/gql_code_builder.svg?style=flat-square 
-[package:gql_build:source]: ./gql_build/README.md
+[package:gql_build:source]: ./codegen/gql_build/README.md
 [package:gql_build]: https://pub.dartlang.org/packages/gql_build
 [package:gql_build:version]: https://img.shields.io/pub/v/gql_build.svg?style=flat-square 
-[package:gql_dedupe_link:source]: ./gql_dedupe_link/README.md
+[package:gql_dedupe_link:source]: ./links/gql_dedupe_link/README.md
 [package:gql_dedupe_link]: https://pub.dartlang.org/packages/gql_dedupe_link
 [package:gql_transform_link:version]: https://img.shields.io/pub/v/gql_transform_link.svg?style=flat-square 
-[package:gql_transform_link:source]: ./gql_transform_link/README.md
+[package:gql_transform_link:source]: ./links/gql_transform_link/README.md
 [package:gql_transform_link]: https://pub.dartlang.org/packages/gql_transform_link
 [package:gql_dedupe_link:version]: https://img.shields.io/pub/v/gql_dedupe_link.svg?style=flat-square 
 [package:gql_pedantic:source]: ./gql_pedantic/README.md
 [package:gql_pedantic]: https://pub.dartlang.org/packages/gql_pedantic
 [package:gql_pedantic:version]: https://img.shields.io/pub/v/gql_pedantic.svg?style=flat-square
-[package:gql_example_cli:source]: ./gql_example_cli/README.md
+[package:gql_example_cli:source]: ./examples/gql_example_cli/README.md
 [package:gql_example_cli]: https://pub.dartlang.org/packages/gql_example_cli
 [package:gql_example_cli:version]: https://img.shields.io/pub/v/gql_example_cli.svg?style=flat-square 
-[package:gql_example_flutter:source]: ./gql_example_flutter/README.md
+[package:gql_example_flutter:source]: ./examples/gql_example_flutter/README.md
 [package:gql_example_flutter]: https://pub.dartlang.org/packages/gql_example_flutter
 [package:gql_example_flutter:version]: https://img.shields.io/pub/v/gql_example_flutter.svg?style=flat-square 
 
@@ -134,7 +142,6 @@ Ideas for future work:
 | [graphql_server][graphql_server]| Base package for implementing GraphQL servers. |
 | [graphql-to-dart][graphql-to-dart]| generate dart classes and respective JsonSerializable transcoders ([npm package][graphql-to-dart-npm]) |
 | [major_graphql][major_graphql]| generate `built_value` classes and serializers with `pub build` (successor of [graphql-to-dart][graphql-to-dart]) |
-| [gql_dio_link] | Similar to gql_http_link, A GQL Terminating Link to execute requests via Dio using JSON | 
 | Your project? | Open a PR to add it to this readme! |
 
 [artemis]: https://github.com/comigor/artemis

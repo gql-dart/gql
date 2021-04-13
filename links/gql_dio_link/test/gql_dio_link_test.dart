@@ -513,6 +513,62 @@ void main() {
           ),
         ),
       );
+
+      // Dio returned the failed response instead of throwing, so there is no exception
+      expect(exception.originalException, null);
+    });
+
+    test("throws DioLinkServerException for dio error response", () async {
+      final error = dio.DioError(
+          response:
+              dio.Response<String>(data: "Not authenticated", statusCode: 401),
+          type: dio.DioErrorType.RESPONSE);
+
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenThrow(
+        error,
+      );
+
+      DioLinkServerException exception;
+
+      try {
+        await execute().first;
+      } catch (e) {
+        exception = e as DioLinkServerException;
+      }
+
+      expect(
+        exception,
+        TypeMatcher<DioLinkServerException>(),
+      );
+      expect(
+        exception.response.data,
+        error.response.data,
+      );
+      expect(
+        exception.response.statusCode,
+        error.response.statusCode,
+      );
+      // Failed to parse non-grahpql formatted body, so therefore null
+      expect(
+        exception.parsedResponse,
+        null,
+      );
+
+      expect(exception.originalException != null, true);
+
+      final dioException = exception.originalException as dio.DioError;
+      expect(dioException.response.data, "Not authenticated");
+      expect(dioException.response.statusCode, 401);
+      expect(dioException.type, dio.DioErrorType.RESPONSE);
+
+      expect(exception.toString(),
+          "DioLinkServerException(originalException: DioError [DioErrorType.RESPONSE]: , status: 401, response: Not authenticated");
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
