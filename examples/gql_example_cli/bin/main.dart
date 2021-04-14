@@ -42,7 +42,7 @@ Future<Null> main(List<String> arguments) async {
 
     final data = GFindPokemonData.fromJson(result.data!);
 
-    final GFindPokemonData_pokemon? pokemon = data!.pokemon;
+    final GFindPokemonData_pokemon? pokemon = data.pokemon;
 
     if (pokemon == null) {
       print("${find} was not found. Does it even exist?");
@@ -56,10 +56,10 @@ Future<Null> main(List<String> arguments) async {
     print("Found ${pokemon.name}");
     print("ID: ${pokemon.id}");
     print(
-      "Weight: ${weight?.minimum} – ${weight?.maximum}",
+      "Weight: ${weight.minimum} – ${weight.maximum}",
     );
     print(
-      "Height: ${height?.minimum} – ${height?.maximum}",
+      "Height: ${height.minimum} – ${height.maximum}",
     );
 
     return;
@@ -89,11 +89,11 @@ Future<Null> main(List<String> arguments) async {
 
   final data = GListPokemonData.fromJson(result.data!);
 
-  final pokemons = data!.pokemons;
+  final pokemons = data.pokemons;
 
-  print("Found ${pokemons?.length} pokemon");
+  print("Found ${pokemons.length} pokemon");
 
-  pokemons?.forEach(
+  pokemons.forEach(
     (pokemon) {
       print("${pokemon.id} | ${pokemon.name}");
     },
