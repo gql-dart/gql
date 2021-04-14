@@ -17,7 +17,8 @@ abstract class GFindPokemonVars
   static Serializer<GFindPokemonVars> get serializer =>
       _$gFindPokemonVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GFindPokemonVars.serializer, this);
-  static GFindPokemonVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GFindPokemonVars.serializer, this)
+          as Map<String, dynamic>);
+  static GFindPokemonVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GFindPokemonVars.serializer, json);
 }

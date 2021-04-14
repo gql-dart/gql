@@ -17,23 +17,26 @@ class _$GDimensionsDataSerializer
   final String wireName = 'GDimensionsData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GDimensionsData object,
+  Iterable<Object?> serialize(Serializers serializers, GDimensionsData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.minimum != null) {
+    Object? value;
+    value = object.minimum;
+    if (value != null) {
       result
         ..add('minimum')
-        ..add(serializers.serialize(object.minimum,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.maximum != null) {
+    value = object.maximum;
+    if (value != null) {
       result
         ..add('maximum')
-        ..add(serializers.serialize(object.maximum,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -41,7 +44,7 @@ class _$GDimensionsDataSerializer
 
   @override
   GDimensionsData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GDimensionsDataBuilder();
 
@@ -49,7 +52,7 @@ class _$GDimensionsDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -74,18 +77,17 @@ class _$GDimensionsData extends GDimensionsData {
   @override
   final String G__typename;
   @override
-  final String minimum;
+  final String? minimum;
   @override
-  final String maximum;
+  final String? maximum;
 
-  factory _$GDimensionsData([void Function(GDimensionsDataBuilder) updates]) =>
+  factory _$GDimensionsData([void Function(GDimensionsDataBuilder)? updates]) =>
       (new GDimensionsDataBuilder()..update(updates)).build();
 
-  _$GDimensionsData._({this.G__typename, this.minimum, this.maximum})
+  _$GDimensionsData._({required this.G__typename, this.minimum, this.maximum})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GDimensionsData', 'G__typename');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GDimensionsData', 'G__typename');
   }
 
   @override
@@ -123,29 +125,30 @@ class _$GDimensionsData extends GDimensionsData {
 
 class GDimensionsDataBuilder
     implements Builder<GDimensionsData, GDimensionsDataBuilder> {
-  _$GDimensionsData _$v;
+  _$GDimensionsData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _minimum;
-  String get minimum => _$this._minimum;
-  set minimum(String minimum) => _$this._minimum = minimum;
+  String? _minimum;
+  String? get minimum => _$this._minimum;
+  set minimum(String? minimum) => _$this._minimum = minimum;
 
-  String _maximum;
-  String get maximum => _$this._maximum;
-  set maximum(String maximum) => _$this._maximum = maximum;
+  String? _maximum;
+  String? get maximum => _$this._maximum;
+  set maximum(String? maximum) => _$this._maximum = maximum;
 
   GDimensionsDataBuilder() {
     GDimensionsData._initializeBuilder(this);
   }
 
   GDimensionsDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _minimum = _$v.minimum;
-      _maximum = _$v.maximum;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _minimum = $v.minimum;
+      _maximum = $v.maximum;
       _$v = null;
     }
     return this;
@@ -153,14 +156,12 @@ class GDimensionsDataBuilder
 
   @override
   void replace(GDimensionsData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDimensionsData;
   }
 
   @override
-  void update(void Function(GDimensionsDataBuilder) updates) {
+  void update(void Function(GDimensionsDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -168,7 +169,10 @@ class GDimensionsDataBuilder
   _$GDimensionsData build() {
     final _$result = _$v ??
         new _$GDimensionsData._(
-            G__typename: G__typename, minimum: minimum, maximum: maximum);
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GDimensionsData', 'G__typename'),
+            minimum: minimum,
+            maximum: maximum);
     replace(_$result);
     return _$result;
   }

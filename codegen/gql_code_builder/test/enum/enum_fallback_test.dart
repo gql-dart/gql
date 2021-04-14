@@ -1,3 +1,4 @@
+// @dart=2.9
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/schema.dart";
@@ -166,4 +167,5 @@ InvokeExpression getBuiltValueEnumConstAnnotation(Field field) =>
           (annotation) =>
               (annotation.target is Reference) &&
               (annotation.target as Reference).symbol == "BuiltValueEnumConst",
+          orElse: () => null,
         );

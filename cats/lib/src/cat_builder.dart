@@ -31,7 +31,7 @@ class CatBuilder {
   Scenario buildScenario(File file, Directory folder) {
     var doc = loadYaml(
       file.readAsStringSync(),
-      sourceUrl: Uri.parse(file.path),
+      sourceUrl: Uri.file(file.path),
     );
 
     var schema;
