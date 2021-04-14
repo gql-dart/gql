@@ -27,9 +27,22 @@ class DioLinkServerException extends ServerException {
   const DioLinkServerException({
     required this.response,
     required Response? parsedResponse,
+    dynamic originalException,
   }) : super(
           parsedResponse: parsedResponse,
+          originalException: originalException,
         );
+
+  @override
+  String toString() {
+    final dynamic data = response.data;
+    String plainResponse = "...";
+    if (data is String) {
+      plainResponse =
+          data.length > 80 ? data.replaceRange(80, data.length, "...") : data;
+    }
+    return "DioLinkServerException(originalException: $originalException, status: ${response.statusCode}, response: ${parsedResponse ?? plainResponse}";
+  }
 }
 
 @immutable
