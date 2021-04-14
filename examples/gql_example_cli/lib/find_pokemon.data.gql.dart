@@ -18,13 +18,13 @@ abstract class GFindPokemonData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GFindPokemonData_pokemon get pokemon;
+  GFindPokemonData_pokemon? get pokemon;
   static Serializer<GFindPokemonData> get serializer =>
       _$gFindPokemonDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GFindPokemonData.serializer, this);
-  static GFindPokemonData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GFindPokemonData.serializer, this)
+          as Map<String, dynamic>);
+  static GFindPokemonData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GFindPokemonData.serializer, json);
 }
 
@@ -42,17 +42,15 @@ abstract class GFindPokemonData_pokemon
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
-  @nullable
-  String get name;
-  @nullable
-  GFindPokemonData_pokemon_weight get weight;
-  @nullable
-  GFindPokemonData_pokemon_height get height;
+  String? get name;
+  GFindPokemonData_pokemon_weight? get weight;
+  GFindPokemonData_pokemon_height? get height;
   static Serializer<GFindPokemonData_pokemon> get serializer =>
       _$gFindPokemonDataPokemonSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GFindPokemonData_pokemon.serializer, this);
-  static GFindPokemonData_pokemon fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GFindPokemonData_pokemon.serializer, this)
+          as Map<String, dynamic>);
+  static GFindPokemonData_pokemon? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GFindPokemonData_pokemon.serializer, json);
 }
@@ -72,15 +70,14 @@ abstract class GFindPokemonData_pokemon_weight
       b..G__typename = 'PokemonDimension';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get minimum;
-  @nullable
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   static Serializer<GFindPokemonData_pokemon_weight> get serializer =>
       _$gFindPokemonDataPokemonWeightSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GFindPokemonData_pokemon_weight.serializer, this);
-  static GFindPokemonData_pokemon_weight fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GFindPokemonData_pokemon_weight.serializer, this)
+      as Map<String, dynamic>);
+  static GFindPokemonData_pokemon_weight? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GFindPokemonData_pokemon_weight.serializer, json);
 }
@@ -100,15 +97,14 @@ abstract class GFindPokemonData_pokemon_height
       b..G__typename = 'PokemonDimension';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get minimum;
-  @nullable
-  String get maximum;
+  String? get minimum;
+  String? get maximum;
   static Serializer<GFindPokemonData_pokemon_height> get serializer =>
       _$gFindPokemonDataPokemonHeightSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GFindPokemonData_pokemon_height.serializer, this);
-  static GFindPokemonData_pokemon_height fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GFindPokemonData_pokemon_height.serializer, this)
+      as Map<String, dynamic>);
+  static GFindPokemonData_pokemon_height? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GFindPokemonData_pokemon_height.serializer, json);
 }

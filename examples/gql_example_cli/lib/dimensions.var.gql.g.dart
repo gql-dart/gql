@@ -17,21 +17,21 @@ class _$GDimensionsVarsSerializer
   final String wireName = 'GDimensionsVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GDimensionsVars object,
+  Iterable<Object?> serialize(Serializers serializers, GDimensionsVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    return <Object?>[];
   }
 
   @override
   GDimensionsVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new GDimensionsVarsBuilder().build();
   }
 }
 
 class _$GDimensionsVars extends GDimensionsVars {
-  factory _$GDimensionsVars([void Function(GDimensionsVarsBuilder) updates]) =>
+  factory _$GDimensionsVars([void Function(GDimensionsVarsBuilder)? updates]) =>
       (new GDimensionsVarsBuilder()..update(updates)).build();
 
   _$GDimensionsVars._() : super._();
@@ -63,20 +63,18 @@ class _$GDimensionsVars extends GDimensionsVars {
 
 class GDimensionsVarsBuilder
     implements Builder<GDimensionsVars, GDimensionsVarsBuilder> {
-  _$GDimensionsVars _$v;
+  _$GDimensionsVars? _$v;
 
   GDimensionsVarsBuilder();
 
   @override
   void replace(GDimensionsVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDimensionsVars;
   }
 
   @override
-  void update(void Function(GDimensionsVarsBuilder) updates) {
+  void update(void Function(GDimensionsVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

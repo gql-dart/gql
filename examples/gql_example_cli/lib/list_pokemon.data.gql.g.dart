@@ -19,17 +19,19 @@ class _$GListPokemonDataSerializer
   final String wireName = 'GListPokemonData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GListPokemonData object,
+  Iterable<Object?> serialize(Serializers serializers, GListPokemonData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.pokemons != null) {
+    Object? value;
+    value = object.pokemons;
+    if (value != null) {
       result
         ..add('pokemons')
-        ..add(serializers.serialize(object.pokemons,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GListPokemonData_pokemons)])));
     }
@@ -38,7 +40,7 @@ class _$GListPokemonDataSerializer
 
   @override
   GListPokemonData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GListPokemonDataBuilder();
 
@@ -46,7 +48,7 @@ class _$GListPokemonDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -56,7 +58,7 @@ class _$GListPokemonDataSerializer
           result.pokemons.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GListPokemonData_pokemons)
-              ])) as BuiltList<Object>);
+              ]))! as BuiltList<Object>);
           break;
       }
     }
@@ -76,20 +78,22 @@ class _$GListPokemonData_pokemonsSerializer
   final String wireName = 'GListPokemonData_pokemons';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GListPokemonData_pokemons object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
-    if (object.name != null) {
+    Object? value;
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -97,7 +101,7 @@ class _$GListPokemonData_pokemonsSerializer
 
   @override
   GListPokemonData_pokemons deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GListPokemonData_pokemonsBuilder();
 
@@ -105,7 +109,7 @@ class _$GListPokemonData_pokemonsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -130,16 +134,15 @@ class _$GListPokemonData extends GListPokemonData {
   @override
   final String G__typename;
   @override
-  final BuiltList<GListPokemonData_pokemons> pokemons;
+  final BuiltList<GListPokemonData_pokemons>? pokemons;
 
   factory _$GListPokemonData(
-          [void Function(GListPokemonDataBuilder) updates]) =>
+          [void Function(GListPokemonDataBuilder)? updates]) =>
       (new GListPokemonDataBuilder()..update(updates)).build();
 
-  _$GListPokemonData._({this.G__typename, this.pokemons}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GListPokemonData', 'G__typename');
-    }
+  _$GListPokemonData._({required this.G__typename, this.pokemons}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GListPokemonData', 'G__typename');
   }
 
   @override
@@ -174,16 +177,16 @@ class _$GListPokemonData extends GListPokemonData {
 
 class GListPokemonDataBuilder
     implements Builder<GListPokemonData, GListPokemonDataBuilder> {
-  _$GListPokemonData _$v;
+  _$GListPokemonData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GListPokemonData_pokemons> _pokemons;
+  ListBuilder<GListPokemonData_pokemons>? _pokemons;
   ListBuilder<GListPokemonData_pokemons> get pokemons =>
       _$this._pokemons ??= new ListBuilder<GListPokemonData_pokemons>();
-  set pokemons(ListBuilder<GListPokemonData_pokemons> pokemons) =>
+  set pokemons(ListBuilder<GListPokemonData_pokemons>? pokemons) =>
       _$this._pokemons = pokemons;
 
   GListPokemonDataBuilder() {
@@ -191,9 +194,10 @@ class GListPokemonDataBuilder
   }
 
   GListPokemonDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _pokemons = _$v.pokemons?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _pokemons = $v.pokemons?.toBuilder();
       _$v = null;
     }
     return this;
@@ -201,14 +205,12 @@ class GListPokemonDataBuilder
 
   @override
   void replace(GListPokemonData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GListPokemonData;
   }
 
   @override
-  void update(void Function(GListPokemonDataBuilder) updates) {
+  void update(void Function(GListPokemonDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -218,9 +220,11 @@ class GListPokemonDataBuilder
     try {
       _$result = _$v ??
           new _$GListPokemonData._(
-              G__typename: G__typename, pokemons: _pokemons?.build());
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GListPokemonData', 'G__typename'),
+              pokemons: _pokemons?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'pokemons';
         _pokemons?.build();
@@ -241,21 +245,19 @@ class _$GListPokemonData_pokemons extends GListPokemonData_pokemons {
   @override
   final String id;
   @override
-  final String name;
+  final String? name;
 
   factory _$GListPokemonData_pokemons(
-          [void Function(GListPokemonData_pokemonsBuilder) updates]) =>
+          [void Function(GListPokemonData_pokemonsBuilder)? updates]) =>
       (new GListPokemonData_pokemonsBuilder()..update(updates)).build();
 
-  _$GListPokemonData_pokemons._({this.G__typename, this.id, this.name})
+  _$GListPokemonData_pokemons._(
+      {required this.G__typename, required this.id, this.name})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GListPokemonData_pokemons', 'G__typename');
-    }
-    if (id == null) {
-      throw new BuiltValueNullFieldError('GListPokemonData_pokemons', 'id');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GListPokemonData_pokemons', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, 'GListPokemonData_pokemons', 'id');
   }
 
   @override
@@ -295,29 +297,30 @@ class _$GListPokemonData_pokemons extends GListPokemonData_pokemons {
 class GListPokemonData_pokemonsBuilder
     implements
         Builder<GListPokemonData_pokemons, GListPokemonData_pokemonsBuilder> {
-  _$GListPokemonData_pokemons _$v;
+  _$GListPokemonData_pokemons? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GListPokemonData_pokemonsBuilder() {
     GListPokemonData_pokemons._initializeBuilder(this);
   }
 
   GListPokemonData_pokemonsBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
-      _name = _$v.name;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -325,14 +328,12 @@ class GListPokemonData_pokemonsBuilder
 
   @override
   void replace(GListPokemonData_pokemons other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GListPokemonData_pokemons;
   }
 
   @override
-  void update(void Function(GListPokemonData_pokemonsBuilder) updates) {
+  void update(void Function(GListPokemonData_pokemonsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -340,7 +341,11 @@ class GListPokemonData_pokemonsBuilder
   _$GListPokemonData_pokemons build() {
     final _$result = _$v ??
         new _$GListPokemonData_pokemons._(
-            G__typename: G__typename, id: id, name: name);
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GListPokemonData_pokemons', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GListPokemonData_pokemons', 'id'),
+            name: name);
     replace(_$result);
     return _$result;
   }

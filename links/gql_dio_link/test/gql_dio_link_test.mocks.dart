@@ -2,18 +2,18 @@
 // in gql_dio_link/test/gql_dio_link_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i8;
+import "dart:async" as _i8;
 
-import 'package:dio/src/adapter.dart' as _i3;
-import 'package:dio/src/cancel_token.dart' as _i9;
-import 'package:dio/src/dio.dart' as _i7;
-import 'package:dio/src/interceptor.dart' as _i5;
-import 'package:dio/src/options.dart' as _i2;
-import 'package:dio/src/response.dart' as _i6;
-import 'package:dio/src/transformer.dart' as _i4;
-import 'package:gql_exec/src/request.dart' as _i11;
-import 'package:gql_link/src/request_serializer.dart' as _i10;
-import 'package:mockito/mockito.dart' as _i1;
+import "package:dio/src/adapter.dart" as _i3;
+import "package:dio/src/cancel_token.dart" as _i9;
+import "package:dio/src/dio.dart" as _i7;
+import "package:dio/src/interceptor.dart" as _i5;
+import "package:dio/src/options.dart" as _i2;
+import "package:dio/src/response.dart" as _i6;
+import "package:dio/src/transformer.dart" as _i4;
+import "package:gql_exec/src/request.dart" as _i11;
+import "package:gql_link/src/request_serializer.dart" as _i10;
+import "package:mockito/mockito.dart" as _i1;
 
 // ignore_for_file: comment_references
 // ignore_for_file: unnecessary_parenthesis
@@ -277,7 +277,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
           Map<String, dynamic>? queryParameters,
           _i9.CancelToken? cancelToken,
           bool? deleteOnError = true,
-          String? lengthHeader = r'content-length',
+          String? lengthHeader = r"content-length",
           dynamic data,
           _i2.Options? options}) =>
       (super.noSuchMethod(
@@ -300,7 +300,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
           {_i2.ProgressCallback? onReceiveProgress,
           _i9.CancelToken? cancelToken,
           bool? deleteOnError = true,
-          String? lengthHeader = r'content-length',
+          String? lengthHeader = r"content-length",
           dynamic data,
           _i2.Options? options}) =>
       (super.noSuchMethod(
