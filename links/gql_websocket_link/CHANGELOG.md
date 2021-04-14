@@ -1,7 +1,12 @@
+## 0.3.0-nullsafety.1
+
+- Migrate to null safety
+
 ## 0.2.0
-* Add `autoReconnect` feature.
-* Auto subscribe to active subscriptions after reconnect.
-* *BREAKING*: removed `channel` from constructor, use `channelGenerator` instead.
+
+- Add `autoReconnect` feature.
+- Auto subscribe to active subscriptions after reconnect.
+- *BREAKING*: removed `channel` from constructor, use `channelGenerator` instead.
 
 ## 0.1.7
 

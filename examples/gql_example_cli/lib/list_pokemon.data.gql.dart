@@ -18,13 +18,13 @@ abstract class GListPokemonData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  BuiltList<GListPokemonData_pokemons> get pokemons;
+  BuiltList<GListPokemonData_pokemons>? get pokemons;
   static Serializer<GListPokemonData> get serializer =>
       _$gListPokemonDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GListPokemonData.serializer, this);
-  static GListPokemonData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GListPokemonData.serializer, this)
+          as Map<String, dynamic>);
+  static GListPokemonData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GListPokemonData.serializer, json);
 }
 
@@ -42,13 +42,13 @@ abstract class GListPokemonData_pokemons
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
-  @nullable
-  String get name;
+  String? get name;
   static Serializer<GListPokemonData_pokemons> get serializer =>
       _$gListPokemonDataPokemonsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GListPokemonData_pokemons.serializer, this);
-  static GListPokemonData_pokemons fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GListPokemonData_pokemons.serializer, this)
+          as Map<String, dynamic>);
+  static GListPokemonData_pokemons? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GListPokemonData_pokemons.serializer, json);
 }
