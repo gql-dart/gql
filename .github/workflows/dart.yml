@@ -63,6 +63,7 @@ jobs:
           multipack --only $PACKAGE pub run test
   examples:
     strategy:
+      fail-fast: false
       matrix:
         package:
           - gql_example_cli
