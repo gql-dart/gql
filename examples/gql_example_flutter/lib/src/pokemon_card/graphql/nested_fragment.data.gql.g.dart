@@ -20,20 +20,22 @@ class _$GNestedFragmentDataSerializer
   final String wireName = 'GNestedFragmentData';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GNestedFragmentData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
-    if (object.name != null) {
+    Object? value;
+    value = object.name;
+    if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(object.name,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -41,7 +43,7 @@ class _$GNestedFragmentDataSerializer
 
   @override
   GNestedFragmentData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GNestedFragmentDataBuilder();
 
@@ -49,7 +51,7 @@ class _$GNestedFragmentDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -76,19 +78,18 @@ class _$GNestedFragmentData extends GNestedFragmentData {
   @override
   final String id;
   @override
-  final String name;
+  final String? name;
 
   factory _$GNestedFragmentData(
-          [void Function(GNestedFragmentDataBuilder) updates]) =>
+          [void Function(GNestedFragmentDataBuilder)? updates]) =>
       (new GNestedFragmentDataBuilder()..update(updates)).build();
 
-  _$GNestedFragmentData._({this.G__typename, this.id, this.name}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GNestedFragmentData', 'G__typename');
-    }
-    if (id == null) {
-      throw new BuiltValueNullFieldError('GNestedFragmentData', 'id');
-    }
+  _$GNestedFragmentData._(
+      {required this.G__typename, required this.id, this.name})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GNestedFragmentData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, 'GNestedFragmentData', 'id');
   }
 
   @override
@@ -127,29 +128,30 @@ class _$GNestedFragmentData extends GNestedFragmentData {
 
 class GNestedFragmentDataBuilder
     implements Builder<GNestedFragmentData, GNestedFragmentDataBuilder> {
-  _$GNestedFragmentData _$v;
+  _$GNestedFragmentData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GNestedFragmentDataBuilder() {
     GNestedFragmentData._initializeBuilder(this);
   }
 
   GNestedFragmentDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
-      _name = _$v.name;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -157,14 +159,12 @@ class GNestedFragmentDataBuilder
 
   @override
   void replace(GNestedFragmentData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GNestedFragmentData;
   }
 
   @override
-  void update(void Function(GNestedFragmentDataBuilder) updates) {
+  void update(void Function(GNestedFragmentDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -172,7 +172,11 @@ class GNestedFragmentDataBuilder
   _$GNestedFragmentData build() {
     final _$result = _$v ??
         new _$GNestedFragmentData._(
-            G__typename: G__typename, id: id, name: name);
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GNestedFragmentData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GNestedFragmentData', 'id'),
+            name: name);
     replace(_$result);
     return _$result;
   }

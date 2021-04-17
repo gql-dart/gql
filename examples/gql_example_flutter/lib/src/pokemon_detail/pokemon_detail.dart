@@ -9,7 +9,7 @@ import '../pokemon_card/pokemon_card.dart';
 class PokemonDetailScreen extends StatelessWidget {
   final String id;
 
-  const PokemonDetailScreen({this.id});
+  const PokemonDetailScreen({required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -29,37 +29,37 @@ class PokemonDetailScreen extends StatelessWidget {
               appBar: AppBar(),
               body: Center(child: CircularProgressIndicator()));
 
-        final data = GPokemonDetailData.fromJson(snapshot.data.data);
+        final data = GPokemonDetailData.fromJson(snapshot.data!.data!);
 
         return Scaffold(
           appBar: AppBar(
               title: Text(
-            data.pokemon.name,
+            data!.pokemon!.name ?? '',
           )),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               PokemonCard(
-                pokemon: data.pokemon,
+                pokemon: data.pokemon!,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
               ),
               Text(
                 'Height',
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
-              Text('min: ${data.pokemon.height.minimum}'),
-              Text('max: ${data.pokemon.height.maximum}'),
+              Text('min: ${data.pokemon!.height!.minimum}'),
+              Text('max: ${data.pokemon!.height!.maximum}'),
               Padding(
                 padding: const EdgeInsets.all(8.0),
               ),
               Text(
                 'Weight',
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
-              Text('min: ${data.pokemon.weight.minimum}'),
-              Text('max: ${data.pokemon.weight.maximum}'),
+              Text('min: ${data.pokemon!.weight!.minimum}'),
+              Text('max: ${data.pokemon!.weight!.maximum}'),
             ],
           ),
         );
