@@ -5,8 +5,8 @@ import "package:gql_link/gql_link.dart";
 import "package:gql_transform_link/gql_transform_link.dart";
 
 class HttpAuthLink extends Link {
-  Link _link;
-  String _token;
+  late Link _link;
+  String? _token;
 
   HttpAuthLink() {
     _link = Link.concat(
@@ -39,15 +39,25 @@ class HttpAuthLink extends Link {
     throw exception;
   }
 
-  Request transformRequest(Request request) =>
-      request.updateContextEntry<HttpLinkHeaders>(
+  Request transformRequest(Request request) {
+    var updatedRequest = request.updateContextEntry<HttpLinkHeaders>(
+      (headers) => HttpLinkHeaders(
+        headers: <String, String>{
+          ...headers?.headers ?? <String, String>{},
+        },
+      ),
+    );
+    if (_token != null) {
+      updatedRequest = request.updateContextEntry<HttpLinkHeaders>(
         (headers) => HttpLinkHeaders(
           headers: <String, String>{
-            ...headers?.headers ?? <String, String>{},
-            "Authorization": _token,
+            "Authorization": _token!,
           },
         ),
       );
+    }
+    return updatedRequest;
+  }
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
