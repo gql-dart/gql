@@ -15,9 +15,9 @@ class _$GShapeSerializer implements StructuredSerializer<GShape> {
   final String wireName = 'GShape';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GShape object,
+  Iterable<Object?> serialize(Serializers serializers, GShape object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GShapeVars)),
@@ -30,7 +30,7 @@ class _$GShapeSerializer implements StructuredSerializer<GShape> {
   }
 
   @override
-  GShape deserialize(Serializers serializers, Iterable<Object> serialized,
+  GShape deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GShapeBuilder();
 
@@ -38,11 +38,12 @@ class _$GShapeSerializer implements StructuredSerializer<GShape> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i3.GShapeVars)) as _i3.GShapeVars);
+                  specifiedType: const FullType(_i3.GShapeVars))!
+              as _i3.GShapeVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -61,16 +62,12 @@ class _$GShape extends GShape {
   @override
   final _i1.Operation operation;
 
-  factory _$GShape([void Function(GShapeBuilder) updates]) =>
+  factory _$GShape([void Function(GShapeBuilder)? updates]) =>
       (new GShapeBuilder()..update(updates)).build();
 
-  _$GShape._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GShape', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GShape', 'operation');
-    }
+  _$GShape._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GShape', 'vars');
+    BuiltValueNullFieldError.checkNotNull(operation, 'GShape', 'operation');
   }
 
   @override
@@ -103,25 +100,26 @@ class _$GShape extends GShape {
 }
 
 class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
-  _$GShape _$v;
+  _$GShape? _$v;
 
-  _i3.GShapeVarsBuilder _vars;
+  _i3.GShapeVarsBuilder? _vars;
   _i3.GShapeVarsBuilder get vars =>
       _$this._vars ??= new _i3.GShapeVarsBuilder();
-  set vars(_i3.GShapeVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GShapeVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GShapeBuilder() {
     GShape._initializeBuilder(this);
   }
 
   GShapeBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -129,14 +127,12 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
 
   @override
   void replace(GShape other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShape;
   }
 
   @override
-  void update(void Function(GShapeBuilder) updates) {
+  void update(void Function(GShapeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -144,10 +140,13 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
   _$GShape build() {
     _$GShape _$result;
     try {
-      _$result =
-          _$v ?? new _$GShape._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GShape._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GShape', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

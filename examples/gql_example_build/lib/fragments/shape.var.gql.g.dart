@@ -15,20 +15,20 @@ class _$GShapeVarsSerializer implements StructuredSerializer<GShapeVars> {
   final String wireName = 'GShapeVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GShapeVars object,
+  Iterable<Object?> serialize(Serializers serializers, GShapeVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    return <Object?>[];
   }
 
   @override
-  GShapeVars deserialize(Serializers serializers, Iterable<Object> serialized,
+  GShapeVars deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new GShapeVarsBuilder().build();
   }
 }
 
 class _$GShapeVars extends GShapeVars {
-  factory _$GShapeVars([void Function(GShapeVarsBuilder) updates]) =>
+  factory _$GShapeVars([void Function(GShapeVarsBuilder)? updates]) =>
       (new GShapeVarsBuilder()..update(updates)).build();
 
   _$GShapeVars._() : super._();
@@ -58,20 +58,18 @@ class _$GShapeVars extends GShapeVars {
 }
 
 class GShapeVarsBuilder implements Builder<GShapeVars, GShapeVarsBuilder> {
-  _$GShapeVars _$v;
+  _$GShapeVars? _$v;
 
   GShapeVarsBuilder();
 
   @override
   void replace(GShapeVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeVars;
   }
 
   @override
-  void update(void Function(GShapeVarsBuilder) updates) {
+  void update(void Function(GShapeVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
