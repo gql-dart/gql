@@ -44,11 +44,9 @@ class _PrintVisitor extends Visitor<Expression> {
   Expression _list(
     List<Node> nodes,
   ) =>
-      nodes != null
-          ? literalList(
-              _acceptMany(nodes),
-            )
-          : literalNull;
+      literalList(
+        _acceptMany(nodes),
+      );
 
   @override
   Expression visitArgumentNode(

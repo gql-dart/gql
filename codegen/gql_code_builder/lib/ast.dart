@@ -22,7 +22,7 @@ Library buildAstLibrary(
             source.getRefs().map(
                   (ref) => Reference(
                     ref.symbol,
-                    ref.url + "#ast",
+                    (ref.url ?? "") + "#ast",
                   ),
                 ),
           ),
