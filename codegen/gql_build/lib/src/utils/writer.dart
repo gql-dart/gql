@@ -20,13 +20,13 @@ Future<void> writeDocument(
 
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter(
-      GqlAllocator(
+      allocator: GqlAllocator(
         buildStep.inputId.uri.toString(),
         generatedAsset.uri.toString(),
         schemaUrl,
       ),
-      true,
-      true,
+      orderDirectives: true,
+      useNullSafetySyntax: true,
     ),
   )}");
 
