@@ -9,7 +9,7 @@ dependencies:
   build: ^2.0.0
   built_collection: ^5.0.0
   built_value: ^8.0.6
-  built_value_generator: ^8.0.4
+  built_value_generator: ^8.0.6
   code_builder: ^4.0.0
   dart_style: ^2.0.0
   glob: ^2.0.0
