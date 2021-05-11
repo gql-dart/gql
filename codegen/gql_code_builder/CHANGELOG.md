@@ -1,3 +1,7 @@
+## 0.2.0-nullsafety.1
+
+- bump `built_value`
+
 ## 0.2.0-nullsafety.0
 
 - add initial null-safety support
