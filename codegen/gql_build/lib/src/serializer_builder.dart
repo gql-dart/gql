@@ -99,17 +99,15 @@ class SerializerBuilder implements Builder {
     );
 
     final _emitter = DartEmitter(
-      PickAllocator(
+      allocator: PickAllocator(
         doNotPick: ["package:built_value/serializer.dart"],
         include: [
           "package:built_collection/built_collection.dart",
-          ...typeOverrides.values
-              .map((ref) => ref.url)
-              .where((url) => url != null)
+          ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
         ],
       ),
-      true,
-      true,
+      orderDirectives: true,
+      useNullSafetySyntax: true,
     );
 
     final output = AssetId(

@@ -49,7 +49,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec?> {
   ) =>
       Library(
         (b) => b.body.addAll(
-          _acceptMany(node.definitions).where((d) => d != null),
+          _acceptMany(node.definitions).whereType<Spec>(),
         ),
       );
 
