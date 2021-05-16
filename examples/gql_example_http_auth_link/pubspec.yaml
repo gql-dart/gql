@@ -2,13 +2,13 @@ name: gql_example_http_auth_link
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 dependencies: 
-  gql: ^0.13.0-nullsafety.2
-  gql_error_link: ^0.2.0-nullsafety.1
-  gql_exec: ^0.3.0-nullsafety.2
-  gql_http_link: ^0.4.0-nullsafety.1
-  gql_link: ^0.4.0-nullsafety.3
-  gql_transform_link: ^0.2.0-nullsafety.1
+  gql: ^0.13.0
+  gql_error_link: ^0.2.0
+  gql_exec: ^0.3.0
+  gql_http_link: ^0.4.0
+  gql_link: ^0.4.0
+  gql_transform_link: ^0.2.0
   http: ^0.13.1
 dev_dependencies: 
-  gql_build: ^0.2.0-nullsafety.0
+  gql_build: ^0.2.0
   gql_pedantic: ^1.0.2
