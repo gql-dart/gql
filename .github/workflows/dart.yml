@@ -193,7 +193,7 @@ jobs:
           ## See dry_run_workaround_helpers.sh for more details
           source .github/workflows/dry_run_workaround_helpers.sh
 
-          multipack --only $PACKAGES pub publish --dry-run 2>&1 | cap
+          multipack --only $PACKAGES exec pub publish --dry-run 2>&1 | cap
 
           ignore_err_when_stdout_contains 'gql_build' 'Package has 1 warning' \
             'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
