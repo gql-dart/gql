@@ -33,7 +33,7 @@ void inspectSchema() {
   print(character.isImplementedBy(droid));
   // prints "true"
 
-  print(schema.query.getField("droids").type.toString());
+  print(schema.query!.getField("droids").type.toString());
   // prints "[Droid!]"
 }
 
@@ -70,7 +70,7 @@ void inspectQuery() {
 
   final query = document.operations.first;
   final droids = query.selectionSet.fields.first;
-  final spreadDroidName = droids.selectionSet.fragmentSpreads.first;
+  final spreadDroidName = droids.selectionSet!.fragmentSpreads.first;
 
   print(
     // dereference fragment spread into fragment definition

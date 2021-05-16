@@ -53,8 +53,8 @@ class SerializerBuilder implements Builder {
     final hasSerializer = (ClassElement c) => c.fields.any((field) =>
         field.isStatic &&
         field.name == "serializer" &&
-        field.type.element.name == "Serializer" &&
-        field.type.element.source.uri.toString() ==
+        field.type.element?.name == "Serializer" &&
+        field.type.element?.source?.uri.toString() ==
             "package:built_value/serializer.dart");
 
     final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
@@ -99,16 +99,15 @@ class SerializerBuilder implements Builder {
     );
 
     final _emitter = DartEmitter(
-      PickAllocator(
+      allocator: PickAllocator(
         doNotPick: ["package:built_value/serializer.dart"],
         include: [
           "package:built_collection/built_collection.dart",
-          ...typeOverrides.values
-              .map((ref) => ref.url)
-              .where((url) => url != null)
+          ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
         ],
       ),
-      true,
+      orderDirectives: true,
+      useNullSafetySyntax: true,
     );
 
     final output = AssetId(

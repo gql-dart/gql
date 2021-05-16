@@ -1,3 +1,7 @@
+## 0.4.0-nullsafety.1
+
+Null Safety Pre-release
+
 ## 0.3.3
 
 - Add `HttpResponseDecoder httpResponseDecoder` constructor parameter

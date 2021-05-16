@@ -9,15 +9,17 @@ final fakeHttpLink = Link.function(
   (request, [forward]) async* {
     final headers = request.context.entry<HttpLinkHeaders>();
 
-    if (headers.headers["Authorization"] == null) {
+    if ((headers?.headers ?? <String, String>{})["Authorization"] == null) {
       throw HttpLinkServerException(
         response: http.Response("", 401),
+        parsedResponse: Response(),
       );
     }
 
     yield Response(
       data: <String, String>{
-        "authHeader": headers.headers["Authorization"],
+        "authHeader":
+            (headers?.headers ?? <String, String>{})["Authorization"]!,
       },
     );
   },

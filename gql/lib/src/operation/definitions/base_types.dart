@@ -12,7 +12,7 @@ abstract class ExecutableGraphQLEntity extends GraphQLEntity {
 @immutable
 abstract class ExecutableWithResolver extends ExecutableGraphQLEntity
     implements ExecutableTypeResolver {
-  const ExecutableWithResolver([GetExecutableType getType])
+  const ExecutableWithResolver([GetExecutableType? getType])
       : getType = getType ?? GetExecutableType.withoutContext,
         super();
 
@@ -32,7 +32,7 @@ abstract class ExecutableWithResolver extends ExecutableGraphQLEntity
   }
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash([astNode, getType]);
 }

@@ -26,7 +26,8 @@ abstract class GHeroForEpisode
   static Serializer<GHeroForEpisode> get serializer =>
       _$gHeroForEpisodeSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GHeroForEpisode.serializer, this);
-  static GHeroForEpisode fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GHeroForEpisode.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroForEpisode? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GHeroForEpisode.serializer, json);
 }

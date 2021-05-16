@@ -1,5 +1,6 @@
 import "dart:async";
 
+import "package:gql/language.dart";
 import "package:gql_error_link/gql_error_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
@@ -19,13 +20,18 @@ class TestException extends LinkException {
 }
 
 void main() {
+  Request req() => Request(
+        operation: Operation(document: parseString("")),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
   group("ErrorLink", () {
     group("passthrough", () {
       test("response", () {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Stream.fromIterable([
             Response(data: const <String, dynamic>{"a": 1}),
           ]),
@@ -44,7 +50,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Stream.fromIterable([
             Response(
               data: const <String, dynamic>{"a": 1},
@@ -73,7 +79,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -94,7 +100,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Stream.fromIterable([
             Response(data: const <String, dynamic>{"a": 1}),
             Response(data: const <String, dynamic>{"a": 1}),
@@ -115,7 +121,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(Response(data: const <String, dynamic>{"a": 1})),
@@ -138,7 +144,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -161,7 +167,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -186,7 +192,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error("exception"),
@@ -215,7 +221,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -249,7 +255,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -280,7 +286,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
@@ -305,7 +311,7 @@ void main() {
         final link = ErrorLink();
 
         final responseStream = link.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(
@@ -336,7 +342,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(
@@ -384,7 +390,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(
@@ -429,7 +435,7 @@ void main() {
         );
 
         final responseStream = errorLink.request(
-          null,
+          req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(

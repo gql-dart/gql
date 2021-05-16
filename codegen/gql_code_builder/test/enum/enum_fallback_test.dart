@@ -1,3 +1,4 @@
+// @dart=2.9
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/schema.dart";
@@ -6,7 +7,7 @@ import "package:test/test.dart";
 
 void main() {
   final simpleEnum =
-      EnumTypeDefinitionNode(name: NameNode(value: "testEnum"), values: [
+      EnumTypeDefinitionNode(name: NameNode(value: "testEnum"), values: const [
     EnumValueDefinitionNode(name: NameNode(value: "val1")),
     EnumValueDefinitionNode(name: NameNode(value: "val2"))
   ]);
@@ -132,10 +133,12 @@ void main() {
 
   test("works with escaped names", () {
     final clazz = buildEnumClass(
-        EnumTypeDefinitionNode(name: NameNode(value: "testEnum"), values: [
-          EnumValueDefinitionNode(name: NameNode(value: "name")),
-          EnumValueDefinitionNode(name: NameNode(value: "default"))
-        ]),
+        EnumTypeDefinitionNode(
+            name: NameNode(value: "testEnum"),
+            values: const [
+              EnumValueDefinitionNode(name: NameNode(value: "name")),
+              EnumValueDefinitionNode(name: NameNode(value: "default"))
+            ]),
         EnumFallbackConfig(
             generateFallbackValuesGlobally: false,
             fallbackValueMap: {"testEnum": "default"}));
@@ -161,7 +164,8 @@ void main() {
 
 InvokeExpression getBuiltValueEnumConstAnnotation(Field field) =>
     field.annotations.whereType<InvokeExpression>().singleWhere(
-        (annotation) =>
-            (annotation.target is Reference) &&
-            (annotation.target as Reference).symbol == "BuiltValueEnumConst",
-        orElse: () => null);
+          (annotation) =>
+              (annotation.target is Reference) &&
+              (annotation.target as Reference).symbol == "BuiltValueEnumConst",
+          orElse: () => null,
+        );

@@ -21,9 +21,9 @@ abstract class GraphQLEntity {
   const GraphQLEntity();
 
   @override
-  String toString() => printNode(astNode);
+  String toString() => printNode(astNode!);
 
-  Node get astNode;
+  Node? get astNode;
 
   @override
   bool operator ==(Object o) {
@@ -43,7 +43,7 @@ abstract class GraphQLEntity {
 @immutable
 abstract class EntityWithResolver extends GraphQLEntity
     implements TypeResolver {
-  const EntityWithResolver([ResolveType getType])
+  const EntityWithResolver([ResolveType? getType])
       : getType = getType ?? TypeResolver.withoutContext,
         super();
 
@@ -63,7 +63,7 @@ abstract class EntityWithResolver extends GraphQLEntity
   }
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash([astNode, getType]);
 }
@@ -109,7 +109,7 @@ abstract class GraphQLType extends EntityWithResolver {
 
   static GraphQLType fromNode(
     TypeNode astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ]) {
     if (astNode is NamedTypeNode) {
       return NamedType(astNode, getType);
@@ -129,7 +129,7 @@ abstract class GraphQLType extends EntityWithResolver {
 class NamedType extends GraphQLType {
   const NamedType(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ])  : getType = getType ?? TypeResolver.withoutContext,
         super();
 
@@ -142,7 +142,7 @@ class NamedType extends GraphQLType {
   /// (verifiable via [hasResolver]).
   ///
   /// See [TypeResolver] for mor details on type resolution.
-  TypeDefinition get type => getType(name);
+  TypeDefinition? get type => getType(name);
 
   /// Whether it is safe to resolve the referenced type via [type]
   bool get hasResolver => getType != TypeResolver.withoutContext;
@@ -167,7 +167,7 @@ class NamedType extends GraphQLType {
 class ListType extends GraphQLType {
   const ListType(
     this.astNode, [
-    ResolveType getType,
+    ResolveType? getType,
   ])  : getType = getType ?? TypeResolver.withoutContext,
         super();
 
@@ -222,9 +222,9 @@ abstract class TypeSystemDefinition extends GraphQLEntity {
 
   /// The underlying definition node from `gql/ast.dart`
   @override
-  TypeSystemDefinitionNode get astNode;
+  TypeSystemDefinitionNode? get astNode;
 
-  String get name => astNode.name.value;
+  String? get name;
 }
 
 /// The fundamental unit of any GraphQL Schema ([spec](https://spec.graphql.org/June2018/#TypeDefinition)).
@@ -262,7 +262,10 @@ abstract class TypeDefinition extends TypeSystemDefinition {
   @override
   TypeDefinitionNode get astNode;
 
-  String get description => astNode.description?.value;
+  @override
+  String? get name => astNode.name.value;
+
+  String? get description => astNode.description?.value;
 
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();
@@ -307,7 +310,7 @@ abstract class TypeDefinition extends TypeSystemDefinition {
 @immutable
 abstract class TypeDefinitionWithResolver extends TypeDefinition
     implements TypeResolver {
-  const TypeDefinitionWithResolver([ResolveType getType])
+  const TypeDefinitionWithResolver([ResolveType? getType])
       : getType = getType ?? TypeResolver.withoutContext,
         super();
 
@@ -327,7 +330,7 @@ abstract class TypeDefinitionWithResolver extends TypeDefinition
   }
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash([astNode, getType]);
 }

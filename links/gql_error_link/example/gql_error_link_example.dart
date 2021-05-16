@@ -16,7 +16,7 @@ final terminatingLink = Link.function(
 
     // Otherwise, yield some [Response].
     yield Response(
-      data: <String, String>{
+      data: <String, String?>{
         "magic": token.token,
       },
     );
@@ -25,7 +25,7 @@ final terminatingLink = Link.function(
 
 // In this case [AuthToken] is a simple container of a [String] token.
 class AuthToken extends ContextEntry {
-  final String token;
+  final String? token;
 
   const AuthToken({this.token});
 

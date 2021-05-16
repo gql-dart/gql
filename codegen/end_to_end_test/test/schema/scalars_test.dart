@@ -34,9 +34,9 @@ void main() {
       ..createReview.stars = 1);
 
     test('can use in GraphQL operation data', () {
-      expect(data.createReview.custom.first, equals(customField));
+      expect(data.createReview!.custom.first, equals(customField));
       expect(
-        data.createReview.toJson()['custom'].first,
+        data.createReview!.toJson()['custom'].first,
         equals(customField.toJson()),
       );
     });
@@ -61,7 +61,7 @@ void main() {
         ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
     );
     test('correctly overrides scalars in input types', () {
-      expect(input.seenOn.first, TypeMatcher<DateTime>());
+      expect(input.seenOn!.first, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -109,8 +109,8 @@ void main() {
     );
 
     test('correctly overrides scalars in data types', () {
-      expect(data.createReview.seenOn.first, TypeMatcher<DateTime>());
-      expect(data.createReview.createdAt, TypeMatcher<DateTime>());
+      expect(data.createReview!.seenOn.first, TypeMatcher<DateTime>());
+      expect(data.createReview!.createdAt, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {

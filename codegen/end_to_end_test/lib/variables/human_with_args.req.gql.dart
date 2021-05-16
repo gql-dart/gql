@@ -24,7 +24,8 @@ abstract class GHumanWithArgs
   static Serializer<GHumanWithArgs> get serializer =>
       _$gHumanWithArgsSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GHumanWithArgs.serializer, this);
-  static GHumanWithArgs fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GHumanWithArgs.serializer, this)
+          as Map<String, dynamic>);
+  static GHumanWithArgs? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GHumanWithArgs.serializer, json);
 }

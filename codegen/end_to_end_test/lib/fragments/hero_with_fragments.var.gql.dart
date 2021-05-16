@@ -14,13 +14,13 @@ abstract class GHeroWithFragmentsVars
           [Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
 
-  @nullable
-  int get first;
+  int? get first;
   static Serializer<GHeroWithFragmentsVars> get serializer =>
       _$gHeroWithFragmentsVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GHeroWithFragmentsVars.serializer, this);
-  static GHeroWithFragmentsVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GHeroWithFragmentsVars.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroWithFragmentsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GHeroWithFragmentsVars.serializer, json);
 }
 
@@ -33,8 +33,9 @@ abstract class GheroDataVars
 
   static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GheroDataVars.serializer, this);
-  static GheroDataVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GheroDataVars.serializer, this)
+          as Map<String, dynamic>);
+  static GheroDataVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GheroDataVars.serializer, json);
 }
 
@@ -46,12 +47,12 @@ abstract class GcomparisonFieldsVars
           [Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
 
-  @nullable
-  int get first;
+  int? get first;
   static Serializer<GcomparisonFieldsVars> get serializer =>
       _$gcomparisonFieldsVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GcomparisonFieldsVars.serializer, this);
-  static GcomparisonFieldsVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GcomparisonFieldsVars.serializer, this)
+          as Map<String, dynamic>);
+  static GcomparisonFieldsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GcomparisonFieldsVars.serializer, json);
 }

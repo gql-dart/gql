@@ -34,8 +34,11 @@ Class buildEnumClass(
                     .containsKey(node.name.value))
               EnumValueDefinitionNode(
                   name: NameNode(
-                      value: _ensureNoNameClashes(
-                          enumFallbackConfig.globalEnumFallbackName, node)),
+                    value: _ensureNoNameClashes(
+                      enumFallbackConfig.globalEnumFallbackName!,
+                      node,
+                    ),
+                  ),
                   fallback: true)
           ],
           builtClassName(node.name.value),

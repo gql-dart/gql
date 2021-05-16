@@ -18,13 +18,13 @@ abstract class GQueryOperationData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GQueryOperationData_field get field;
+  GQueryOperationData_field? get field;
   static Serializer<GQueryOperationData> get serializer =>
       _$gQueryOperationDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GQueryOperationData.serializer, this);
-  static GQueryOperationData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GQueryOperationData.serializer, this)
+          as Map<String, dynamic>);
+  static GQueryOperationData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GQueryOperationData.serializer, json);
 }
 
@@ -41,25 +41,17 @@ abstract class GQueryOperationData_field
       b..G__typename = 'Field';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get id;
-  @nullable
+  String? get id;
   @BuiltValueField(wireName: 'bool')
-  bool get Gbool;
-  @nullable
+  bool? get Gbool;
   @BuiltValueField(wireName: 'int')
-  int get Gint;
-  @nullable
-  double get float;
-  @nullable
-  String get string;
-  @nullable
-  _i2.GScalar get scalar;
-  @nullable
+  int? get Gint;
+  double? get float;
+  String? get string;
+  _i2.GScalar? get scalar;
   @BuiltValueField(wireName: 'enum')
-  _i2.GEnum get Genum;
-  @nullable
-  GQueryOperationData_field_field get field;
+  _i2.GEnum? get Genum;
+  GQueryOperationData_field_field? get field;
   String get idRequired;
   bool get boolRequired;
   int get intRequired;
@@ -71,8 +63,9 @@ abstract class GQueryOperationData_field
   static Serializer<GQueryOperationData_field> get serializer =>
       _$gQueryOperationDataFieldSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GQueryOperationData_field.serializer, this);
-  static GQueryOperationData_field fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GQueryOperationData_field.serializer, this)
+          as Map<String, dynamic>);
+  static GQueryOperationData_field? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GQueryOperationData_field.serializer, json);
 }
@@ -91,13 +84,13 @@ abstract class GQueryOperationData_field_field
       b..G__typename = 'Field';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get id;
+  String? get id;
   static Serializer<GQueryOperationData_field_field> get serializer =>
       _$gQueryOperationDataFieldFieldSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GQueryOperationData_field_field.serializer, this);
-  static GQueryOperationData_field_field fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GQueryOperationData_field_field.serializer, this)
+      as Map<String, dynamic>);
+  static GQueryOperationData_field_field? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GQueryOperationData_field_field.serializer, json);
 }
@@ -117,13 +110,13 @@ abstract class GQueryOperationData_field_fieldRequired
       b..G__typename = 'Field';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get id;
+  String? get id;
   static Serializer<GQueryOperationData_field_fieldRequired> get serializer =>
       _$gQueryOperationDataFieldFieldRequiredSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GQueryOperationData_field_fieldRequired.serializer, this);
-  static GQueryOperationData_field_fieldRequired fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GQueryOperationData_field_fieldRequired.serializer, this)
+      as Map<String, dynamic>);
+  static GQueryOperationData_field_fieldRequired? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GQueryOperationData_field_fieldRequired.serializer, json);

@@ -28,18 +28,20 @@ class _$GQueryOperationDataSerializer
   final String wireName = 'GQueryOperationData';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GQueryOperationData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.field != null) {
+    Object? value;
+    value = object.field;
+    if (value != null) {
       result
         ..add('field')
-        ..add(serializers.serialize(object.field,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(GQueryOperationData_field)));
     }
     return result;
@@ -47,7 +49,7 @@ class _$GQueryOperationDataSerializer
 
   @override
   GQueryOperationData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GQueryOperationDataBuilder();
 
@@ -55,7 +57,7 @@ class _$GQueryOperationDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -63,7 +65,7 @@ class _$GQueryOperationDataSerializer
           break;
         case 'field':
           result.field.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(GQueryOperationData_field))
+                  specifiedType: const FullType(GQueryOperationData_field))!
               as GQueryOperationData_field);
           break;
       }
@@ -84,10 +86,10 @@ class _$GQueryOperationData_fieldSerializer
   final String wireName = 'GQueryOperationData_field';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GQueryOperationData_field object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -117,52 +119,60 @@ class _$GQueryOperationData_fieldSerializer
           specifiedType:
               const FullType(GQueryOperationData_field_fieldRequired)),
     ];
-    if (object.id != null) {
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.Gbool != null) {
+    value = object.Gbool;
+    if (value != null) {
       result
         ..add('bool')
-        ..add(serializers.serialize(object.Gbool,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    if (object.Gint != null) {
+    value = object.Gint;
+    if (value != null) {
       result
         ..add('int')
-        ..add(serializers.serialize(object.Gint,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.float != null) {
+    value = object.float;
+    if (value != null) {
       result
         ..add('float')
-        ..add(serializers.serialize(object.float,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.string != null) {
+    value = object.string;
+    if (value != null) {
       result
         ..add('string')
-        ..add(serializers.serialize(object.string,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.scalar != null) {
+    value = object.scalar;
+    if (value != null) {
       result
         ..add('scalar')
-        ..add(serializers.serialize(object.scalar,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(_i2.GScalar)));
     }
-    if (object.Genum != null) {
+    value = object.Genum;
+    if (value != null) {
       result
         ..add('enum')
-        ..add(serializers.serialize(object.Genum,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(_i2.GEnum)));
     }
-    if (object.field != null) {
+    value = object.field;
+    if (value != null) {
       result
         ..add('field')
-        ..add(serializers.serialize(object.field,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(GQueryOperationData_field_field)));
     }
     return result;
@@ -170,7 +180,7 @@ class _$GQueryOperationData_fieldSerializer
 
   @override
   GQueryOperationData_field deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GQueryOperationData_fieldBuilder();
 
@@ -178,7 +188,7 @@ class _$GQueryOperationData_fieldSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -206,7 +216,7 @@ class _$GQueryOperationData_fieldSerializer
           break;
         case 'scalar':
           result.scalar.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i2.GScalar)) as _i2.GScalar);
+              specifiedType: const FullType(_i2.GScalar))! as _i2.GScalar);
           break;
         case 'enum':
           result.Genum = serializers.deserialize(value,
@@ -215,7 +225,7 @@ class _$GQueryOperationData_fieldSerializer
         case 'field':
           result.field.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GQueryOperationData_field_field))
+                      const FullType(GQueryOperationData_field_field))!
               as GQueryOperationData_field_field);
           break;
         case 'idRequired':
@@ -240,7 +250,7 @@ class _$GQueryOperationData_fieldSerializer
           break;
         case 'scalarRequired':
           result.scalarRequired.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i2.GScalar)) as _i2.GScalar);
+              specifiedType: const FullType(_i2.GScalar))! as _i2.GScalar);
           break;
         case 'enumRequired':
           result.enumRequired = serializers.deserialize(value,
@@ -249,7 +259,7 @@ class _$GQueryOperationData_fieldSerializer
         case 'fieldRequired':
           result.fieldRequired.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GQueryOperationData_field_fieldRequired))
+                      const FullType(GQueryOperationData_field_fieldRequired))!
               as GQueryOperationData_field_fieldRequired);
           break;
       }
@@ -270,18 +280,20 @@ class _$GQueryOperationData_field_fieldSerializer
   final String wireName = 'GQueryOperationData_field_field';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GQueryOperationData_field_field object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.id != null) {
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -289,7 +301,7 @@ class _$GQueryOperationData_field_fieldSerializer
 
   @override
   GQueryOperationData_field_field deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GQueryOperationData_field_fieldBuilder();
 
@@ -297,7 +309,7 @@ class _$GQueryOperationData_field_fieldSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -325,18 +337,20 @@ class _$GQueryOperationData_field_fieldRequiredSerializer
   final String wireName = 'GQueryOperationData_field_fieldRequired';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GQueryOperationData_field_fieldRequired object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.id != null) {
+    Object? value;
+    value = object.id;
+    if (value != null) {
       result
         ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -344,7 +358,7 @@ class _$GQueryOperationData_field_fieldRequiredSerializer
 
   @override
   GQueryOperationData_field_fieldRequired deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GQueryOperationData_field_fieldRequiredBuilder();
 
@@ -352,7 +366,7 @@ class _$GQueryOperationData_field_fieldRequiredSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -373,16 +387,15 @@ class _$GQueryOperationData extends GQueryOperationData {
   @override
   final String G__typename;
   @override
-  final GQueryOperationData_field field;
+  final GQueryOperationData_field? field;
 
   factory _$GQueryOperationData(
-          [void Function(GQueryOperationDataBuilder) updates]) =>
+          [void Function(GQueryOperationDataBuilder)? updates]) =>
       (new GQueryOperationDataBuilder()..update(updates)).build();
 
-  _$GQueryOperationData._({this.G__typename, this.field}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError('GQueryOperationData', 'G__typename');
-    }
+  _$GQueryOperationData._({required this.G__typename, this.field}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GQueryOperationData', 'G__typename');
   }
 
   @override
@@ -418,25 +431,26 @@ class _$GQueryOperationData extends GQueryOperationData {
 
 class GQueryOperationDataBuilder
     implements Builder<GQueryOperationData, GQueryOperationDataBuilder> {
-  _$GQueryOperationData _$v;
+  _$GQueryOperationData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GQueryOperationData_fieldBuilder _field;
+  GQueryOperationData_fieldBuilder? _field;
   GQueryOperationData_fieldBuilder get field =>
       _$this._field ??= new GQueryOperationData_fieldBuilder();
-  set field(GQueryOperationData_fieldBuilder field) => _$this._field = field;
+  set field(GQueryOperationData_fieldBuilder? field) => _$this._field = field;
 
   GQueryOperationDataBuilder() {
     GQueryOperationData._initializeBuilder(this);
   }
 
   GQueryOperationDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _field = _$v.field?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _field = $v.field?.toBuilder();
       _$v = null;
     }
     return this;
@@ -444,14 +458,12 @@ class GQueryOperationDataBuilder
 
   @override
   void replace(GQueryOperationData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData;
   }
 
   @override
-  void update(void Function(GQueryOperationDataBuilder) updates) {
+  void update(void Function(GQueryOperationDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -461,9 +473,11 @@ class GQueryOperationDataBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperationData._(
-              G__typename: G__typename, field: _field?.build());
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GQueryOperationData', 'G__typename'),
+              field: _field?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'field';
         _field?.build();
@@ -482,21 +496,21 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
   @override
   final String G__typename;
   @override
-  final String id;
+  final String? id;
   @override
-  final bool Gbool;
+  final bool? Gbool;
   @override
-  final int Gint;
+  final int? Gint;
   @override
-  final double float;
+  final double? float;
   @override
-  final String string;
+  final String? string;
   @override
-  final _i2.GScalar scalar;
+  final _i2.GScalar? scalar;
   @override
-  final _i2.GEnum Genum;
+  final _i2.GEnum? Genum;
   @override
-  final GQueryOperationData_field_field field;
+  final GQueryOperationData_field_field? field;
   @override
   final String idRequired;
   @override
@@ -515,11 +529,11 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
   final GQueryOperationData_field_fieldRequired fieldRequired;
 
   factory _$GQueryOperationData_field(
-          [void Function(GQueryOperationData_fieldBuilder) updates]) =>
+          [void Function(GQueryOperationData_fieldBuilder)? updates]) =>
       (new GQueryOperationData_fieldBuilder()..update(updates)).build();
 
   _$GQueryOperationData_field._(
-      {this.G__typename,
+      {required this.G__typename,
       this.id,
       this.Gbool,
       this.Gint,
@@ -528,51 +542,33 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
       this.scalar,
       this.Genum,
       this.field,
-      this.idRequired,
-      this.boolRequired,
-      this.intRequired,
-      this.floatRequired,
-      this.stringRequired,
-      this.scalarRequired,
-      this.enumRequired,
-      this.fieldRequired})
+      required this.idRequired,
+      required this.boolRequired,
+      required this.intRequired,
+      required this.floatRequired,
+      required this.stringRequired,
+      required this.scalarRequired,
+      required this.enumRequired,
+      required this.fieldRequired})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'G__typename');
-    }
-    if (idRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'idRequired');
-    }
-    if (boolRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'boolRequired');
-    }
-    if (intRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'intRequired');
-    }
-    if (floatRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'floatRequired');
-    }
-    if (stringRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'stringRequired');
-    }
-    if (scalarRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'scalarRequired');
-    }
-    if (enumRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'enumRequired');
-    }
-    if (fieldRequired == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field', 'fieldRequired');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GQueryOperationData_field', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        idRequired, 'GQueryOperationData_field', 'idRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        boolRequired, 'GQueryOperationData_field', 'boolRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        intRequired, 'GQueryOperationData_field', 'intRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        floatRequired, 'GQueryOperationData_field', 'floatRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        stringRequired, 'GQueryOperationData_field', 'stringRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        scalarRequired, 'GQueryOperationData_field', 'scalarRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        enumRequired, 'GQueryOperationData_field', 'enumRequired');
+    BuiltValueNullFieldError.checkNotNull(
+        fieldRequired, 'GQueryOperationData_field', 'fieldRequired');
   }
 
   @override
@@ -674,85 +670,85 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
 class GQueryOperationData_fieldBuilder
     implements
         Builder<GQueryOperationData_field, GQueryOperationData_fieldBuilder> {
-  _$GQueryOperationData_field _$v;
+  _$GQueryOperationData_field? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  bool _Gbool;
-  bool get Gbool => _$this._Gbool;
-  set Gbool(bool Gbool) => _$this._Gbool = Gbool;
+  bool? _Gbool;
+  bool? get Gbool => _$this._Gbool;
+  set Gbool(bool? Gbool) => _$this._Gbool = Gbool;
 
-  int _Gint;
-  int get Gint => _$this._Gint;
-  set Gint(int Gint) => _$this._Gint = Gint;
+  int? _Gint;
+  int? get Gint => _$this._Gint;
+  set Gint(int? Gint) => _$this._Gint = Gint;
 
-  double _float;
-  double get float => _$this._float;
-  set float(double float) => _$this._float = float;
+  double? _float;
+  double? get float => _$this._float;
+  set float(double? float) => _$this._float = float;
 
-  String _string;
-  String get string => _$this._string;
-  set string(String string) => _$this._string = string;
+  String? _string;
+  String? get string => _$this._string;
+  set string(String? string) => _$this._string = string;
 
-  _i2.GScalarBuilder _scalar;
+  _i2.GScalarBuilder? _scalar;
   _i2.GScalarBuilder get scalar => _$this._scalar ??= new _i2.GScalarBuilder();
-  set scalar(_i2.GScalarBuilder scalar) => _$this._scalar = scalar;
+  set scalar(_i2.GScalarBuilder? scalar) => _$this._scalar = scalar;
 
-  _i2.GEnum _Genum;
-  _i2.GEnum get Genum => _$this._Genum;
-  set Genum(_i2.GEnum Genum) => _$this._Genum = Genum;
+  _i2.GEnum? _Genum;
+  _i2.GEnum? get Genum => _$this._Genum;
+  set Genum(_i2.GEnum? Genum) => _$this._Genum = Genum;
 
-  GQueryOperationData_field_fieldBuilder _field;
+  GQueryOperationData_field_fieldBuilder? _field;
   GQueryOperationData_field_fieldBuilder get field =>
       _$this._field ??= new GQueryOperationData_field_fieldBuilder();
-  set field(GQueryOperationData_field_fieldBuilder field) =>
+  set field(GQueryOperationData_field_fieldBuilder? field) =>
       _$this._field = field;
 
-  String _idRequired;
-  String get idRequired => _$this._idRequired;
-  set idRequired(String idRequired) => _$this._idRequired = idRequired;
+  String? _idRequired;
+  String? get idRequired => _$this._idRequired;
+  set idRequired(String? idRequired) => _$this._idRequired = idRequired;
 
-  bool _boolRequired;
-  bool get boolRequired => _$this._boolRequired;
-  set boolRequired(bool boolRequired) => _$this._boolRequired = boolRequired;
+  bool? _boolRequired;
+  bool? get boolRequired => _$this._boolRequired;
+  set boolRequired(bool? boolRequired) => _$this._boolRequired = boolRequired;
 
-  int _intRequired;
-  int get intRequired => _$this._intRequired;
-  set intRequired(int intRequired) => _$this._intRequired = intRequired;
+  int? _intRequired;
+  int? get intRequired => _$this._intRequired;
+  set intRequired(int? intRequired) => _$this._intRequired = intRequired;
 
-  double _floatRequired;
-  double get floatRequired => _$this._floatRequired;
-  set floatRequired(double floatRequired) =>
+  double? _floatRequired;
+  double? get floatRequired => _$this._floatRequired;
+  set floatRequired(double? floatRequired) =>
       _$this._floatRequired = floatRequired;
 
-  String _stringRequired;
-  String get stringRequired => _$this._stringRequired;
-  set stringRequired(String stringRequired) =>
+  String? _stringRequired;
+  String? get stringRequired => _$this._stringRequired;
+  set stringRequired(String? stringRequired) =>
       _$this._stringRequired = stringRequired;
 
-  _i2.GScalarBuilder _scalarRequired;
+  _i2.GScalarBuilder? _scalarRequired;
   _i2.GScalarBuilder get scalarRequired =>
       _$this._scalarRequired ??= new _i2.GScalarBuilder();
-  set scalarRequired(_i2.GScalarBuilder scalarRequired) =>
+  set scalarRequired(_i2.GScalarBuilder? scalarRequired) =>
       _$this._scalarRequired = scalarRequired;
 
-  _i2.GEnum _enumRequired;
-  _i2.GEnum get enumRequired => _$this._enumRequired;
-  set enumRequired(_i2.GEnum enumRequired) =>
+  _i2.GEnum? _enumRequired;
+  _i2.GEnum? get enumRequired => _$this._enumRequired;
+  set enumRequired(_i2.GEnum? enumRequired) =>
       _$this._enumRequired = enumRequired;
 
-  GQueryOperationData_field_fieldRequiredBuilder _fieldRequired;
+  GQueryOperationData_field_fieldRequiredBuilder? _fieldRequired;
   GQueryOperationData_field_fieldRequiredBuilder get fieldRequired =>
       _$this._fieldRequired ??=
           new GQueryOperationData_field_fieldRequiredBuilder();
   set fieldRequired(
-          GQueryOperationData_field_fieldRequiredBuilder fieldRequired) =>
+          GQueryOperationData_field_fieldRequiredBuilder? fieldRequired) =>
       _$this._fieldRequired = fieldRequired;
 
   GQueryOperationData_fieldBuilder() {
@@ -760,24 +756,25 @@ class GQueryOperationData_fieldBuilder
   }
 
   GQueryOperationData_fieldBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
-      _Gbool = _$v.Gbool;
-      _Gint = _$v.Gint;
-      _float = _$v.float;
-      _string = _$v.string;
-      _scalar = _$v.scalar?.toBuilder();
-      _Genum = _$v.Genum;
-      _field = _$v.field?.toBuilder();
-      _idRequired = _$v.idRequired;
-      _boolRequired = _$v.boolRequired;
-      _intRequired = _$v.intRequired;
-      _floatRequired = _$v.floatRequired;
-      _stringRequired = _$v.stringRequired;
-      _scalarRequired = _$v.scalarRequired?.toBuilder();
-      _enumRequired = _$v.enumRequired;
-      _fieldRequired = _$v.fieldRequired?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _Gbool = $v.Gbool;
+      _Gint = $v.Gint;
+      _float = $v.float;
+      _string = $v.string;
+      _scalar = $v.scalar?.toBuilder();
+      _Genum = $v.Genum;
+      _field = $v.field?.toBuilder();
+      _idRequired = $v.idRequired;
+      _boolRequired = $v.boolRequired;
+      _intRequired = $v.intRequired;
+      _floatRequired = $v.floatRequired;
+      _stringRequired = $v.stringRequired;
+      _scalarRequired = $v.scalarRequired.toBuilder();
+      _enumRequired = $v.enumRequired;
+      _fieldRequired = $v.fieldRequired.toBuilder();
       _$v = null;
     }
     return this;
@@ -785,14 +782,12 @@ class GQueryOperationData_fieldBuilder
 
   @override
   void replace(GQueryOperationData_field other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field;
   }
 
   @override
-  void update(void Function(GQueryOperationData_fieldBuilder) updates) {
+  void update(void Function(GQueryOperationData_fieldBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -802,7 +797,8 @@ class GQueryOperationData_fieldBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperationData_field._(
-              G__typename: G__typename,
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GQueryOperationData_field', 'G__typename'),
               id: id,
               Gbool: Gbool,
               Gint: Gint,
@@ -811,16 +807,24 @@ class GQueryOperationData_fieldBuilder
               scalar: _scalar?.build(),
               Genum: Genum,
               field: _field?.build(),
-              idRequired: idRequired,
-              boolRequired: boolRequired,
-              intRequired: intRequired,
-              floatRequired: floatRequired,
-              stringRequired: stringRequired,
+              idRequired: BuiltValueNullFieldError.checkNotNull(
+                  idRequired, 'GQueryOperationData_field', 'idRequired'),
+              boolRequired: BuiltValueNullFieldError.checkNotNull(
+                  boolRequired, 'GQueryOperationData_field', 'boolRequired'),
+              intRequired: BuiltValueNullFieldError.checkNotNull(
+                  intRequired, 'GQueryOperationData_field', 'intRequired'),
+              floatRequired: BuiltValueNullFieldError.checkNotNull(
+                  floatRequired, 'GQueryOperationData_field', 'floatRequired'),
+              stringRequired: BuiltValueNullFieldError.checkNotNull(
+                  stringRequired,
+                  'GQueryOperationData_field',
+                  'stringRequired'),
               scalarRequired: scalarRequired.build(),
-              enumRequired: enumRequired,
+              enumRequired: BuiltValueNullFieldError.checkNotNull(
+                  enumRequired, 'GQueryOperationData_field', 'enumRequired'),
               fieldRequired: fieldRequired.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'scalar';
         _scalar?.build();
@@ -849,17 +853,16 @@ class _$GQueryOperationData_field_field
   @override
   final String G__typename;
   @override
-  final String id;
+  final String? id;
 
   factory _$GQueryOperationData_field_field(
-          [void Function(GQueryOperationData_field_fieldBuilder) updates]) =>
+          [void Function(GQueryOperationData_field_fieldBuilder)? updates]) =>
       (new GQueryOperationData_field_fieldBuilder()..update(updates)).build();
 
-  _$GQueryOperationData_field_field._({this.G__typename, this.id}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field_field', 'G__typename');
-    }
+  _$GQueryOperationData_field_field._({required this.G__typename, this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GQueryOperationData_field_field', 'G__typename');
   }
 
   @override
@@ -897,24 +900,25 @@ class GQueryOperationData_field_fieldBuilder
     implements
         Builder<GQueryOperationData_field_field,
             GQueryOperationData_field_fieldBuilder> {
-  _$GQueryOperationData_field_field _$v;
+  _$GQueryOperationData_field_field? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   GQueryOperationData_field_fieldBuilder() {
     GQueryOperationData_field_field._initializeBuilder(this);
   }
 
   GQueryOperationData_field_fieldBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
       _$v = null;
     }
     return this;
@@ -922,14 +926,12 @@ class GQueryOperationData_field_fieldBuilder
 
   @override
   void replace(GQueryOperationData_field_field other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field_field;
   }
 
   @override
-  void update(void Function(GQueryOperationData_field_fieldBuilder) updates) {
+  void update(void Function(GQueryOperationData_field_fieldBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -937,7 +939,9 @@ class GQueryOperationData_field_fieldBuilder
   _$GQueryOperationData_field_field build() {
     final _$result = _$v ??
         new _$GQueryOperationData_field_field._(
-            G__typename: G__typename, id: id);
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GQueryOperationData_field_field', 'G__typename'),
+            id: id);
     replace(_$result);
     return _$result;
   }
@@ -948,20 +952,19 @@ class _$GQueryOperationData_field_fieldRequired
   @override
   final String G__typename;
   @override
-  final String id;
+  final String? id;
 
   factory _$GQueryOperationData_field_fieldRequired(
-          [void Function(GQueryOperationData_field_fieldRequiredBuilder)
+          [void Function(GQueryOperationData_field_fieldRequiredBuilder)?
               updates]) =>
       (new GQueryOperationData_field_fieldRequiredBuilder()..update(updates))
           .build();
 
-  _$GQueryOperationData_field_fieldRequired._({this.G__typename, this.id})
+  _$GQueryOperationData_field_fieldRequired._(
+      {required this.G__typename, this.id})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GQueryOperationData_field_fieldRequired', 'G__typename');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GQueryOperationData_field_fieldRequired', 'G__typename');
   }
 
   @override
@@ -1001,24 +1004,25 @@ class GQueryOperationData_field_fieldRequiredBuilder
     implements
         Builder<GQueryOperationData_field_fieldRequired,
             GQueryOperationData_field_fieldRequiredBuilder> {
-  _$GQueryOperationData_field_fieldRequired _$v;
+  _$GQueryOperationData_field_fieldRequired? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   GQueryOperationData_field_fieldRequiredBuilder() {
     GQueryOperationData_field_fieldRequired._initializeBuilder(this);
   }
 
   GQueryOperationData_field_fieldRequiredBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
       _$v = null;
     }
     return this;
@@ -1026,15 +1030,13 @@ class GQueryOperationData_field_fieldRequiredBuilder
 
   @override
   void replace(GQueryOperationData_field_fieldRequired other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field_fieldRequired;
   }
 
   @override
   void update(
-      void Function(GQueryOperationData_field_fieldRequiredBuilder) updates) {
+      void Function(GQueryOperationData_field_fieldRequiredBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -1042,7 +1044,9 @@ class GQueryOperationData_field_fieldRequiredBuilder
   _$GQueryOperationData_field_fieldRequired build() {
     final _$result = _$v ??
         new _$GQueryOperationData_field_fieldRequired._(
-            G__typename: G__typename, id: id);
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                'GQueryOperationData_field_fieldRequired', 'G__typename'),
+            id: id);
     replace(_$result);
     return _$result;
   }

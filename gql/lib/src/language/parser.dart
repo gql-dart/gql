@@ -51,22 +51,22 @@ class _Parser {
     ++_position;
   }
 
-  Token _expectToken(TokenKind kind, [String errorMessage]) {
+  Token _expectToken(TokenKind kind, [String? errorMessage]) {
     final next = _next();
-    if (next.kind == kind) {
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected $kind",
-      _next().span,
+      _next()?.span,
     );
   }
 
-  Token _expectOptionalToken(TokenKind kind) {
+  Token? _expectOptionalToken(TokenKind kind) {
     final next = _next();
-    if (next.kind == kind) {
+    if (next != null && next.kind == kind) {
       _advance();
       return next;
     }
@@ -74,22 +74,22 @@ class _Parser {
     return null;
   }
 
-  Token _expectKeyword(String value, [String errorMessage]) {
+  Token _expectKeyword(String value, [String? errorMessage]) {
     final next = _next();
-    if (next.kind == TokenKind.name && next.value == value) {
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
 
     throw SourceSpanException(
       errorMessage ?? "Expected keyword '$value'",
-      _next().span,
+      _next()?.span,
     );
   }
 
-  Token _expectOptionalKeyword(String value) {
+  Token? _expectOptionalKeyword(String value) {
     final next = _next();
-    if (next.kind == TokenKind.name && next.value == value) {
+    if (next != null && next.kind == TokenKind.name && next.value == value) {
       _advance();
       return next;
     }
@@ -97,7 +97,7 @@ class _Parser {
     return null;
   }
 
-  Token _next({int offset = 0}) {
+  Token? _next({int offset = 0}) {
     if (_position + offset >= _length) return null;
 
     return _tokens[_position + offset];
@@ -107,7 +107,7 @@ class _Parser {
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
-    String errorMessage,
+    String? errorMessage,
   ]) {
     _expectToken(open, errorMessage);
 
@@ -124,7 +124,7 @@ class _Parser {
     TokenKind open,
     _ParseFunction<N> parse,
     TokenKind close, [
-    String errorMessage,
+    String? errorMessage,
   ]) {
     if (_peek(open)) {
       return _parseMany<N>(
@@ -148,7 +148,7 @@ class _Parser {
 
   DefinitionNode _parseDefinition() {
     if (_peek(TokenKind.name)) {
-      switch (_next().value) {
+      switch (_next()!.value) {
         case "query":
         case "mutation":
         case "subscription":
@@ -173,14 +173,14 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown definition type '${_next().value}'",
-      _next().span,
+      "Unknown definition type '${_next()?.value}'",
+      _next()?.span,
     );
   }
 
   ExecutableDefinitionNode _parseExecutableDefinition() {
     if (_peek(TokenKind.name)) {
-      switch (_next().value) {
+      switch (_next()!.value) {
         case "query":
         case "mutation":
         case "subscription":
@@ -193,8 +193,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown executable definition '${_next().value}'",
-      _next().span,
+      "Unknown executable definition '${_next()?.value}'",
+      _next()?.span,
     );
   }
 
@@ -224,7 +224,7 @@ class _Parser {
     }
 
     final operationType = _parseOperationType();
-    NameNode name;
+    NameNode? name;
     if (_peek(TokenKind.name)) name = _parseName();
 
     return OperationDefinitionNode(
@@ -249,7 +249,7 @@ class _Parser {
 
     final type = _parseType();
 
-    ValueNode defaultValue;
+    ValueNode? defaultValue;
     if (_expectOptionalToken(TokenKind.equals) != null) {
       defaultValue = _parseValue(isConst: true);
     }
@@ -303,7 +303,7 @@ class _Parser {
   ObjectFieldNode _parseNonConstObjectField() =>
       _parseObjectField(isConst: false);
 
-  ObjectFieldNode _parseObjectField({bool isConst}) {
+  ObjectFieldNode _parseObjectField({bool? isConst}) {
     final name = _parseName("Expected an object field name");
 
     _expectToken(TokenKind.colon, "Missing ':' before object field value");
@@ -315,13 +315,13 @@ class _Parser {
 
   ValueNode _parseNonConstValue() => _parseValue(isConst: false);
 
-  ValueNode _parseValue({bool isConst}) {
-    final token = _next();
+  ValueNode _parseValue({bool? isConst}) {
+    final token = _next()!;
     switch (token.kind) {
       case TokenKind.bracketL:
-        return _parseList(isConst: isConst);
+        return _parseList(isConst: isConst!);
       case TokenKind.braceL:
-        return _parseObject(isConst: isConst);
+        return _parseObject(isConst: isConst!);
       case TokenKind.int:
         _advance();
 
@@ -354,7 +354,7 @@ class _Parser {
           name: _parseName(),
         );
       case TokenKind.dollar:
-        if (!isConst) {
+        if (!isConst!) {
           return _parseVariable();
         }
 
@@ -371,7 +371,7 @@ class _Parser {
   }
 
   StringValueNode _parseStringValue() {
-    final valueToken = _next();
+    final valueToken = _next()!;
     _advance();
 
     return StringValueNode(
@@ -380,7 +380,7 @@ class _Parser {
     );
   }
 
-  ListValueNode _parseList({bool isConst}) => ListValueNode(
+  ListValueNode _parseList({required bool isConst}) => ListValueNode(
         values: _parseMany(
           TokenKind.bracketL,
           isConst ? _parseConstValue : _parseNonConstValue,
@@ -388,7 +388,7 @@ class _Parser {
         ),
       );
 
-  ObjectValueNode _parseObject({bool isConst}) => ObjectValueNode(
+  ObjectValueNode _parseObject({required bool isConst}) => ObjectValueNode(
         fields: _parseMany(
           TokenKind.braceL,
           isConst ? _parseConstObjectField : _parseNonConstObjectField,
@@ -405,7 +405,7 @@ class _Parser {
     return directives;
   }
 
-  DirectiveNode _parseDirective({bool isConst}) {
+  DirectiveNode _parseDirective({required bool isConst}) {
     _expectToken(TokenKind.at, "Expected directive name starting with '@'");
 
     return DirectiveNode(
@@ -414,7 +414,8 @@ class _Parser {
     );
   }
 
-  List<ArgumentNode> _parseArguments({bool isConst}) => _maybeParseMany(
+  List<ArgumentNode> _parseArguments({required bool isConst}) =>
+      _maybeParseMany(
         TokenKind.parenL,
         isConst ? _parseConstArgument : _parseNonConstArgument,
         TokenKind.parenR,
@@ -424,7 +425,7 @@ class _Parser {
 
   ArgumentNode _parseNonConstArgument() => _parseArgument(isConst: false);
 
-  ArgumentNode _parseArgument({bool isConst}) {
+  ArgumentNode _parseArgument({bool? isConst}) {
     final name = _parseName("Expected an argument name");
 
     _expectToken(TokenKind.colon, "Expected ':' followed by argument value");
@@ -491,7 +492,7 @@ class _Parser {
   }
 
   NameNode _parseFragmentName() {
-    final token = _next();
+    final token = _next()!;
     if (token.value == "on") {
       throw SourceSpanException(
         "Invalid fragment name 'on'",
@@ -506,7 +507,7 @@ class _Parser {
     final nameOrAlias = _parseName("Expected a field or field alias name");
 
     NameNode name;
-    NameNode alias;
+    NameNode? alias;
 
     if (_expectOptionalToken(TokenKind.colon) != null) {
       alias = nameOrAlias;
@@ -518,7 +519,7 @@ class _Parser {
     final arguments = _parseArguments(isConst: false);
     final directives = _parseDirectives(isConst: false);
 
-    SelectionSetNode selectionSet;
+    SelectionSetNode? selectionSet;
     if (_peek(TokenKind.braceL)) {
       selectionSet = _parseSelectionSet();
     }
@@ -532,7 +533,7 @@ class _Parser {
     );
   }
 
-  NameNode _parseName([String errorMessage]) {
+  NameNode _parseName([String? errorMessage]) {
     final token = _expectToken(
       TokenKind.name,
       errorMessage ?? "Expected a name",
@@ -551,7 +552,7 @@ class _Parser {
     final token = _next(offset: keywordOffset);
 
     if (_peek(TokenKind.name, offset: keywordOffset)) {
-      switch (token.value) {
+      switch (token!.value) {
         case "schema":
           return _parseSchemaDefinition();
         case "scalar":
@@ -572,8 +573,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown type system definition type '${token.value}'",
-      token.span,
+      "Unknown type system definition type '${token?.value}'",
+      token?.span,
     );
   }
 
@@ -582,8 +583,8 @@ class _Parser {
 
     final token = _next();
 
-    if (_peek(TokenKind.name) != null) {
-      switch (token.value) {
+    if (_peek(TokenKind.name)) {
+      switch (token!.value) {
         case "schema":
           return _parseSchemaExtension();
         case "scalar":
@@ -602,8 +603,8 @@ class _Parser {
     }
 
     throw SourceSpanException(
-      "Unknown type system extension type '${token.value}'",
-      token.span,
+      "Unknown type system extension type '${token?.value}'",
+      token?.span,
     );
   }
 
@@ -647,7 +648,7 @@ class _Parser {
     );
   }
 
-  StringValueNode _parseDescription() {
+  StringValueNode? _parseDescription() {
     if (_peek(TokenKind.string) || _peek(TokenKind.blockString)) {
       return _parseStringValue();
     }
@@ -720,7 +721,7 @@ class _Parser {
     final name = _parseName("Expected an input value name");
     _expectToken(TokenKind.colon, "Expected ':' followed by input value type");
     final type = _parseType();
-    ValueNode defaultValue;
+    ValueNode? defaultValue;
     if (_expectOptionalToken(TokenKind.equals) != null) {
       defaultValue = _parseConstValue();
     }
@@ -925,7 +926,7 @@ class _Parser {
     if (directives.isEmpty && operationTypes.isEmpty) {
       throw SourceSpanException(
         "Schema extension must have either directives or operation types defined",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -946,7 +947,7 @@ class _Parser {
     if (directives.isEmpty) {
       throw SourceSpanException(
         "Scalar extension must have either directives defined",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -969,7 +970,7 @@ class _Parser {
     if (interfaces.isEmpty && directives.isEmpty && fields.isEmpty) {
       throw SourceSpanException(
         "Object type extension must define at least one directive or field, or implement at lease one interface",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -993,7 +994,7 @@ class _Parser {
     if (directives.isEmpty && fields.isEmpty) {
       throw SourceSpanException(
         "Interface type extension must define at least one directive or field",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -1016,7 +1017,7 @@ class _Parser {
     if (directives.isEmpty && types.isEmpty) {
       throw SourceSpanException(
         "Union type extension must define at least one directive or type",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -1039,7 +1040,7 @@ class _Parser {
     if (directives.isEmpty && values.isEmpty) {
       throw SourceSpanException(
         "Enum type extension must define at least one directive or value",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 
@@ -1062,7 +1063,7 @@ class _Parser {
     if (directives.isEmpty && fields.isEmpty) {
       throw SourceSpanException(
         "Input type extension must define at least one directive or field, or implement at lease one interface",
-        errorToken.span.expand(_next().span),
+        errorToken!.span!.expand(_next()!.span!),
       );
     }
 

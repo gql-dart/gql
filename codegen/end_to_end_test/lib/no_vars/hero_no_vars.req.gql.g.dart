@@ -15,9 +15,9 @@ class _$GHeroNoVarsSerializer implements StructuredSerializer<GHeroNoVars> {
   final String wireName = 'GHeroNoVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GHeroNoVars object,
+  Iterable<Object?> serialize(Serializers serializers, GHeroNoVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GHeroNoVarsVars)),
@@ -30,7 +30,7 @@ class _$GHeroNoVarsSerializer implements StructuredSerializer<GHeroNoVars> {
   }
 
   @override
-  GHeroNoVars deserialize(Serializers serializers, Iterable<Object> serialized,
+  GHeroNoVars deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHeroNoVarsBuilder();
 
@@ -38,11 +38,11 @@ class _$GHeroNoVarsSerializer implements StructuredSerializer<GHeroNoVars> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GHeroNoVarsVars))
+                  specifiedType: const FullType(_i3.GHeroNoVarsVars))!
               as _i3.GHeroNoVarsVars);
           break;
         case 'operation':
@@ -62,16 +62,13 @@ class _$GHeroNoVars extends GHeroNoVars {
   @override
   final _i1.Operation operation;
 
-  factory _$GHeroNoVars([void Function(GHeroNoVarsBuilder) updates]) =>
+  factory _$GHeroNoVars([void Function(GHeroNoVarsBuilder)? updates]) =>
       (new GHeroNoVarsBuilder()..update(updates)).build();
 
-  _$GHeroNoVars._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GHeroNoVars', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GHeroNoVars', 'operation');
-    }
+  _$GHeroNoVars._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GHeroNoVars', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GHeroNoVars', 'operation');
   }
 
   @override
@@ -104,25 +101,26 @@ class _$GHeroNoVars extends GHeroNoVars {
 }
 
 class GHeroNoVarsBuilder implements Builder<GHeroNoVars, GHeroNoVarsBuilder> {
-  _$GHeroNoVars _$v;
+  _$GHeroNoVars? _$v;
 
-  _i3.GHeroNoVarsVarsBuilder _vars;
+  _i3.GHeroNoVarsVarsBuilder? _vars;
   _i3.GHeroNoVarsVarsBuilder get vars =>
       _$this._vars ??= new _i3.GHeroNoVarsVarsBuilder();
-  set vars(_i3.GHeroNoVarsVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GHeroNoVarsVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GHeroNoVarsBuilder() {
     GHeroNoVars._initializeBuilder(this);
   }
 
   GHeroNoVarsBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -130,14 +128,12 @@ class GHeroNoVarsBuilder implements Builder<GHeroNoVars, GHeroNoVarsBuilder> {
 
   @override
   void replace(GHeroNoVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroNoVars;
   }
 
   @override
-  void update(void Function(GHeroNoVarsBuilder) updates) {
+  void update(void Function(GHeroNoVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -145,10 +141,13 @@ class GHeroNoVarsBuilder implements Builder<GHeroNoVars, GHeroNoVarsBuilder> {
   _$GHeroNoVars build() {
     _$GHeroNoVars _$result;
     try {
-      _$result =
-          _$v ?? new _$GHeroNoVars._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GHeroNoVars._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GHeroNoVars', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

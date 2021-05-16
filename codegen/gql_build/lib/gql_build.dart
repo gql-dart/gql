@@ -22,7 +22,7 @@ Builder dataBuilder(
         options.config["schema"] as String,
       ),
       (options.config["add_typenames"] ?? true) as bool,
-      typeOverrideMap(options?.config["type_overrides"]),
+      typeOverrideMap(options.config["type_overrides"]),
     );
 
 /// Builds GraphQL type-safe request builder
@@ -43,7 +43,7 @@ Builder varBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
-      typeOverrideMap(options?.config["type_overrides"]),
+      typeOverrideMap(options.config["type_overrides"]),
     );
 
 /// Builds GraphQL schema types
@@ -51,8 +51,8 @@ Builder schemaBuilder(
   BuilderOptions options,
 ) =>
     SchemaBuilder(
-      typeOverrideMap(options?.config["type_overrides"]),
-      enumFallbackConfig(options?.config),
+      typeOverrideMap(options.config["type_overrides"]),
+      enumFallbackConfig(options.config),
     );
 
 /// Builds an aggregate Serlializers object for [built_value]s
@@ -65,6 +65,6 @@ Builder serializerBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
-      customSerializers(options?.config["custom_serializers"]),
-      typeOverrideMap(options?.config["type_overrides"]),
+      customSerializers(options.config["custom_serializers"]),
+      typeOverrideMap(options.config["type_overrides"]),
     );

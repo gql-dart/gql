@@ -16,9 +16,9 @@ class GqlAllocator implements Allocator {
 
   final String sourceUrl;
   final String currentUrl;
-  final String schemaUrl;
+  final String? schemaUrl;
 
-  final _imports = <String, int>{};
+  final _imports = <String, int?>{};
   var _keys = 1;
 
   GqlAllocator(
@@ -29,18 +29,17 @@ class GqlAllocator implements Allocator {
 
   @override
   String allocate(Reference reference) {
-    final symbol = reference.symbol;
+    final symbol = reference.symbol!;
+    final url = reference.url;
 
-    if (reference.url == null || _doNotImport.contains(reference.url)) {
+    if (url == null || _doNotImport.contains(url)) {
+      return symbol;
+    } else if (_doNotPrefix.contains(url)) {
+      _imports.putIfAbsent(url, () => null);
       return symbol;
     }
 
-    if (_doNotPrefix.contains(reference.url)) {
-      _imports.putIfAbsent(reference.url, () => null);
-      return symbol;
-    }
-
-    final uri = Uri.parse(reference.url);
+    final uri = Uri.parse(url);
 
     if (uri.path.endsWith(sourceExtension)) {
       final replacedUrl = uri
@@ -63,9 +62,9 @@ class GqlAllocator implements Allocator {
     if (uri.path.isEmpty && uri.fragment.isNotEmpty) {
       String replacedUrl;
       if (uri.fragment == "schema") {
-        replacedUrl = schemaUrl;
+        replacedUrl = schemaUrl!;
       } else if (uri.fragment == "serializer") {
-        replacedUrl = "${p.dirname(schemaUrl)}/serializers.gql.dart";
+        replacedUrl = "${p.dirname(schemaUrl!)}/serializers.gql.dart";
       } else {
         replacedUrl = sourceUrl.replaceAll(
           RegExp(r".graphql$"),
@@ -80,7 +79,7 @@ class GqlAllocator implements Allocator {
       return "_i${_imports.putIfAbsent(replacedUrl, _nextKey)}.$symbol";
     }
 
-    return "_i${_imports.putIfAbsent(reference.url, _nextKey)}.$symbol";
+    return "_i${_imports.putIfAbsent(url, _nextKey)}.$symbol";
   }
 
   int _nextKey() => _keys++;

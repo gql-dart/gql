@@ -21,15 +21,15 @@ class SelectionSet extends ExecutableWithResolver {
   const SelectionSet(
     this.astNode, [
     this.schemaType,
-    GetExecutableType getType,
+    GetExecutableType? getType,
   ]) : super(getType);
 
-  final TypeDefinition schemaType;
+  final TypeDefinition? schemaType;
 
   @override
-  final SelectionSetNode astNode;
+  final SelectionSetNode? astNode;
 
-  List<Selection> get selections => astNode.selections
+  List<Selection> get selections => astNode!.selections
       .map((selection) => Selection.fromNode(selection, schemaType, getType))
       .toList();
 
@@ -46,9 +46,9 @@ class SelectionSet extends ExecutableWithResolver {
 /// ([Field]s, [FragmentSpread]s, or [InlineFragment]s)s
 @immutable
 abstract class Selection extends ExecutableWithResolver {
-  const Selection([GetExecutableType getType]) : super(getType);
+  const Selection([GetExecutableType? getType]) : super(getType);
 
-  GraphQLEntity get schemaType;
+  GraphQLEntity? get schemaType;
 
   @override
   SelectionNode get astNode;
@@ -59,8 +59,8 @@ abstract class Selection extends ExecutableWithResolver {
     SelectionNode astNode, [
 
     /// The [schemaType] of the containing element
-    TypeDefinition schemaType,
-    GetExecutableType getType,
+    TypeDefinition? schemaType,
+    GetExecutableType? getType,
   ]) {
     if (astNode is FieldNode) {
       // fields can only be selected on Interface and Object types
@@ -79,7 +79,7 @@ abstract class Selection extends ExecutableWithResolver {
     }
     if (astNode is InlineFragmentNode) {
       // inline fragments must always specify a type condition
-      final onType = getType.fromSchema(astNode.typeCondition.on.name.value);
+      final onType = getType!.fromSchema!(astNode.typeCondition!.on.name.value);
       return InlineFragment(astNode, onType, getType);
     }
 
@@ -102,21 +102,21 @@ class Field extends Selection {
   const Field(
     this.astNode, [
     this.schemaType,
-    GetExecutableType getType,
+    GetExecutableType? getType,
   ]) : super(getType);
 
   @override
   final FieldNode astNode;
 
   @override
-  final FieldDefinition schemaType;
+  final FieldDefinition? schemaType;
 
   @override
   String get alias => astNode.alias?.value ?? name;
 
   String get name => astNode.name.value;
 
-  GraphQLType get type => schemaType.type;
+  GraphQLType? get type => schemaType!.type;
 
   List<Argument> get arguments =>
       astNode.arguments.map((a) => Argument(a)).toList();
@@ -124,10 +124,10 @@ class Field extends Selection {
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();
 
-  SelectionSet get selectionSet => astNode.selectionSet != null
+  SelectionSet? get selectionSet => astNode.selectionSet != null
       ? SelectionSet(
           astNode.selectionSet,
-          getType.fromSchema(type.baseTypeName),
+          getType.fromSchema!(type!.baseTypeName),
           getType,
         )
       : null;
@@ -143,14 +143,14 @@ class Field extends Selection {
 @immutable
 class FragmentSpread extends Selection {
   const FragmentSpread(this.astNode,
-      [this.schemaType, GetExecutableType getType])
+      [this.schemaType, GetExecutableType? getType])
       : super(getType);
 
   @override
   final FragmentSpreadNode astNode;
 
   @override
-  final TypeDefinition schemaType;
+  final TypeDefinition? schemaType;
 
   String get name => astNode.name.value;
 
@@ -180,7 +180,7 @@ class InlineFragment extends Selection {
   const InlineFragment(
     this.astNode, [
     this.schemaType,
-    GetExecutableType getType,
+    GetExecutableType? getType,
   ]) : super(getType);
 
   @override
@@ -188,8 +188,8 @@ class InlineFragment extends Selection {
 
   TypeCondition get typeCondition => TypeCondition(astNode.typeCondition);
 
-  TypeDefinitionWithFieldSet get onType =>
-      getType.fromSchema(onTypeName) as TypeDefinitionWithFieldSet;
+  TypeDefinitionWithFieldSet? get onType =>
+      getType.fromSchema!(onTypeName) as TypeDefinitionWithFieldSet?;
 
   String get onTypeName => typeCondition.on.name;
 
@@ -197,7 +197,7 @@ class InlineFragment extends Selection {
   String get alias => "on$onTypeName";
 
   @override
-  final TypeDefinition schemaType;
+  final TypeDefinition? schemaType;
 
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();

@@ -17,9 +17,9 @@ class _$GListPokemonVarsSerializer
   final String wireName = 'GListPokemonVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GListPokemonVars object,
+  Iterable<Object?> serialize(Serializers serializers, GListPokemonVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'count',
       serializers.serialize(object.count, specifiedType: const FullType(int)),
     ];
@@ -29,7 +29,7 @@ class _$GListPokemonVarsSerializer
 
   @override
   GListPokemonVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GListPokemonVarsBuilder();
 
@@ -37,7 +37,7 @@ class _$GListPokemonVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'count':
           result.count = serializers.deserialize(value,
@@ -55,13 +55,11 @@ class _$GListPokemonVars extends GListPokemonVars {
   final int count;
 
   factory _$GListPokemonVars(
-          [void Function(GListPokemonVarsBuilder) updates]) =>
+          [void Function(GListPokemonVarsBuilder)? updates]) =>
       (new GListPokemonVarsBuilder()..update(updates)).build();
 
-  _$GListPokemonVars._({this.count}) : super._() {
-    if (count == null) {
-      throw new BuiltValueNullFieldError('GListPokemonVars', 'count');
-    }
+  _$GListPokemonVars._({required this.count}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(count, 'GListPokemonVars', 'count');
   }
 
   @override
@@ -93,17 +91,18 @@ class _$GListPokemonVars extends GListPokemonVars {
 
 class GListPokemonVarsBuilder
     implements Builder<GListPokemonVars, GListPokemonVarsBuilder> {
-  _$GListPokemonVars _$v;
+  _$GListPokemonVars? _$v;
 
-  int _count;
-  int get count => _$this._count;
-  set count(int count) => _$this._count = count;
+  int? _count;
+  int? get count => _$this._count;
+  set count(int? count) => _$this._count = count;
 
   GListPokemonVarsBuilder();
 
   GListPokemonVarsBuilder get _$this {
-    if (_$v != null) {
-      _count = _$v.count;
+    final $v = _$v;
+    if ($v != null) {
+      _count = $v.count;
       _$v = null;
     }
     return this;
@@ -111,20 +110,21 @@ class GListPokemonVarsBuilder
 
   @override
   void replace(GListPokemonVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GListPokemonVars;
   }
 
   @override
-  void update(void Function(GListPokemonVarsBuilder) updates) {
+  void update(void Function(GListPokemonVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GListPokemonVars build() {
-    final _$result = _$v ?? new _$GListPokemonVars._(count: count);
+    final _$result = _$v ??
+        new _$GListPokemonVars._(
+            count: BuiltValueNullFieldError.checkNotNull(
+                count, 'GListPokemonVars', 'count'));
     replace(_$result);
     return _$result;
   }

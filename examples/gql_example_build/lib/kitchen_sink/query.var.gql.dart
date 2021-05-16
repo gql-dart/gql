@@ -14,25 +14,17 @@ abstract class GQueryOperationVars
   factory GQueryOperationVars(
       [Function(GQueryOperationVarsBuilder b) updates]) = _$GQueryOperationVars;
 
-  @nullable
-  String get id;
-  @nullable
+  String? get id;
   @BuiltValueField(wireName: 'bool')
-  bool get Gbool;
-  @nullable
+  bool? get Gbool;
   @BuiltValueField(wireName: 'int')
-  int get Gint;
-  @nullable
-  double get float;
-  @nullable
-  String get string;
-  @nullable
-  _i1.GScalar get scalar;
-  @nullable
+  int? get Gint;
+  double? get float;
+  String? get string;
+  _i1.GScalar? get scalar;
   @BuiltValueField(wireName: 'enum')
-  _i1.GEnum get Genum;
-  @nullable
-  _i1.GInput get input;
+  _i1.GEnum? get Genum;
+  _i1.GInput? get input;
   String get idRequired;
   bool get boolRequired;
   int get intRequired;
@@ -44,7 +36,8 @@ abstract class GQueryOperationVars
   static Serializer<GQueryOperationVars> get serializer =>
       _$gQueryOperationVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i2.serializers.serializeWith(GQueryOperationVars.serializer, this);
-  static GQueryOperationVars fromJson(Map<String, dynamic> json) =>
+      (_i2.serializers.serializeWith(GQueryOperationVars.serializer, this)
+          as Map<String, dynamic>);
+  static GQueryOperationVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GQueryOperationVars.serializer, json);
 }

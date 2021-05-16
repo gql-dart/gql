@@ -10,8 +10,8 @@ class HttpLinkParserException extends ResponseFormatException {
   final http.Response response;
 
   const HttpLinkParserException({
-    @required dynamic originalException,
-    @required this.response,
+    required dynamic originalException,
+    required this.response,
   }) : super(
           originalException: originalException,
         );
@@ -25,8 +25,8 @@ class HttpLinkServerException extends ServerException {
   final http.Response response;
 
   const HttpLinkServerException({
-    @required this.response,
-    @required Response parsedResponse,
+    required this.response,
+    required Response parsedResponse,
   }) : super(
           parsedResponse: parsedResponse,
         );

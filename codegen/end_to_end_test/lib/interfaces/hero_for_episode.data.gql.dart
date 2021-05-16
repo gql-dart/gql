@@ -20,13 +20,13 @@ abstract class GHeroForEpisodeData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  GHeroForEpisodeData_hero get hero;
+  GHeroForEpisodeData_hero? get hero;
   static Serializer<GHeroForEpisodeData> get serializer =>
       _$gHeroForEpisodeDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GHeroForEpisodeData.serializer, this);
-  static GHeroForEpisodeData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GHeroForEpisodeData.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroForEpisodeData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GHeroForEpisodeData.serializer, json);
 }
 
@@ -34,16 +34,16 @@ abstract class GHeroForEpisodeData_hero {
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
-  @nullable
-  BuiltList<GHeroForEpisodeData_hero_friends> get friends;
+  BuiltList<GHeroForEpisodeData_hero_friends>? get friends;
   static Serializer<GHeroForEpisodeData_hero> get serializer =>
       _i2.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
           'GHeroForEpisodeData_hero',
           GHeroForEpisodeData_hero__base,
           [GHeroForEpisodeData_hero__asDroid]);
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GHeroForEpisodeData_hero.serializer, this);
-  static GHeroForEpisodeData_hero fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GHeroForEpisodeData_hero.serializer, this)
+          as Map<String, dynamic>);
+  static GHeroForEpisodeData_hero? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GHeroForEpisodeData_hero.serializer, json);
 }
@@ -64,13 +64,12 @@ abstract class GHeroForEpisodeData_hero__base
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
-  @nullable
-  BuiltList<GHeroForEpisodeData_hero__base_friends> get friends;
+  BuiltList<GHeroForEpisodeData_hero__base_friends>? get friends;
   static Serializer<GHeroForEpisodeData_hero__base> get serializer =>
       _$gHeroForEpisodeDataHeroBaseSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GHeroForEpisodeData_hero__base.serializer, this);
-  static GHeroForEpisodeData_hero__base fromJson(Map<String, dynamic> json) =>
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+      GHeroForEpisodeData_hero__base.serializer, this) as Map<String, dynamic>);
+  static GHeroForEpisodeData_hero__base? fromJson(Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GHeroForEpisodeData_hero__base.serializer, json);
 }
@@ -94,9 +93,10 @@ abstract class GHeroForEpisodeData_hero__base_friends
   String get name;
   static Serializer<GHeroForEpisodeData_hero__base_friends> get serializer =>
       _$gHeroForEpisodeDataHeroBaseFriendsSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GHeroForEpisodeData_hero__base_friends.serializer, this);
-  static GHeroForEpisodeData_hero__base_friends fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GHeroForEpisodeData_hero__base_friends.serializer, this)
+      as Map<String, dynamic>);
+  static GHeroForEpisodeData_hero__base_friends? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GHeroForEpisodeData_hero__base_friends.serializer, json);
@@ -119,15 +119,14 @@ abstract class GHeroForEpisodeData_hero__asDroid
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
-  @nullable
-  BuiltList<GHeroForEpisodeData_hero__asDroid_friends> get friends;
-  @nullable
-  String get primaryFunction;
+  BuiltList<GHeroForEpisodeData_hero__asDroid_friends>? get friends;
+  String? get primaryFunction;
   static Serializer<GHeroForEpisodeData_hero__asDroid> get serializer =>
       _$gHeroForEpisodeDataHeroAsDroidSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers
-      .serializeWith(GHeroForEpisodeData_hero__asDroid.serializer, this);
-  static GHeroForEpisodeData_hero__asDroid fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GHeroForEpisodeData_hero__asDroid.serializer, this)
+      as Map<String, dynamic>);
+  static GHeroForEpisodeData_hero__asDroid? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers
           .deserializeWith(GHeroForEpisodeData_hero__asDroid.serializer, json);
@@ -152,9 +151,10 @@ abstract class GHeroForEpisodeData_hero__asDroid_friends
   String get name;
   static Serializer<GHeroForEpisodeData_hero__asDroid_friends> get serializer =>
       _$gHeroForEpisodeDataHeroAsDroidFriendsSerializer;
-  Map<String, dynamic> toJson() => _i1.serializers.serializeWith(
-      GHeroForEpisodeData_hero__asDroid_friends.serializer, this);
-  static GHeroForEpisodeData_hero__asDroid_friends fromJson(
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GHeroForEpisodeData_hero__asDroid_friends.serializer, this)
+      as Map<String, dynamic>);
+  static GHeroForEpisodeData_hero__asDroid_friends? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GHeroForEpisodeData_hero__asDroid_friends.serializer, json);
@@ -168,7 +168,7 @@ abstract class GHeroForEpisodeData_hero_friends {
 
 abstract class GDroidFragment {
   String get G__typename;
-  String get primaryFunction;
+  String? get primaryFunction;
   Map<String, dynamic> toJson();
 }
 
@@ -185,12 +185,12 @@ abstract class GDroidFragmentData
       b..G__typename = 'Droid';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @nullable
-  String get primaryFunction;
+  String? get primaryFunction;
   static Serializer<GDroidFragmentData> get serializer =>
       _$gDroidFragmentDataSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GDroidFragmentData.serializer, this);
-  static GDroidFragmentData fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GDroidFragmentData.serializer, this)
+          as Map<String, dynamic>);
+  static GDroidFragmentData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GDroidFragmentData.serializer, json);
 }

@@ -24,7 +24,8 @@ abstract class GQueryOperation
   static Serializer<GQueryOperation> get serializer =>
       _$gQueryOperationSerializer;
   Map<String, dynamic> toJson() =>
-      _i4.serializers.serializeWith(GQueryOperation.serializer, this);
-  static GQueryOperation fromJson(Map<String, dynamic> json) =>
+      (_i4.serializers.serializeWith(GQueryOperation.serializer, this)
+          as Map<String, dynamic>);
+  static GQueryOperation? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(GQueryOperation.serializer, json);
 }
