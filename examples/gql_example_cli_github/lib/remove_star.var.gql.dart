@@ -17,7 +17,8 @@ abstract class GRemoveStarVars
   static Serializer<GRemoveStarVars> get serializer =>
       _$gRemoveStarVarsSerializer;
   Map<String, dynamic> toJson() =>
-      _i1.serializers.serializeWith(GRemoveStarVars.serializer, this);
-  static GRemoveStarVars fromJson(Map<String, dynamic> json) =>
+      (_i1.serializers.serializeWith(GRemoveStarVars.serializer, this)
+          as Map<String, dynamic>);
+  static GRemoveStarVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GRemoveStarVars.serializer, json);
 }

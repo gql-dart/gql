@@ -20,10 +20,10 @@ class _$GReadRepositoriesVarsSerializer
   final String wireName = 'GReadRepositoriesVars';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GReadRepositoriesVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'nRepositories',
       serializers.serialize(object.nRepositories,
           specifiedType: const FullType(int)),
@@ -34,7 +34,7 @@ class _$GReadRepositoriesVarsSerializer
 
   @override
   GReadRepositoriesVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GReadRepositoriesVarsBuilder();
 
@@ -42,7 +42,7 @@ class _$GReadRepositoriesVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'nRepositories':
           result.nRepositories = serializers.deserialize(value,
@@ -60,14 +60,12 @@ class _$GReadRepositoriesVars extends GReadRepositoriesVars {
   final int nRepositories;
 
   factory _$GReadRepositoriesVars(
-          [void Function(GReadRepositoriesVarsBuilder) updates]) =>
+          [void Function(GReadRepositoriesVarsBuilder)? updates]) =>
       (new GReadRepositoriesVarsBuilder()..update(updates)).build();
 
-  _$GReadRepositoriesVars._({this.nRepositories}) : super._() {
-    if (nRepositories == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesVars', 'nRepositories');
-    }
+  _$GReadRepositoriesVars._({required this.nRepositories}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        nRepositories, 'GReadRepositoriesVars', 'nRepositories');
   }
 
   @override
@@ -101,17 +99,19 @@ class _$GReadRepositoriesVars extends GReadRepositoriesVars {
 
 class GReadRepositoriesVarsBuilder
     implements Builder<GReadRepositoriesVars, GReadRepositoriesVarsBuilder> {
-  _$GReadRepositoriesVars _$v;
+  _$GReadRepositoriesVars? _$v;
 
-  int _nRepositories;
-  int get nRepositories => _$this._nRepositories;
-  set nRepositories(int nRepositories) => _$this._nRepositories = nRepositories;
+  int? _nRepositories;
+  int? get nRepositories => _$this._nRepositories;
+  set nRepositories(int? nRepositories) =>
+      _$this._nRepositories = nRepositories;
 
   GReadRepositoriesVarsBuilder();
 
   GReadRepositoriesVarsBuilder get _$this {
-    if (_$v != null) {
-      _nRepositories = _$v.nRepositories;
+    final $v = _$v;
+    if ($v != null) {
+      _nRepositories = $v.nRepositories;
       _$v = null;
     }
     return this;
@@ -119,21 +119,21 @@ class GReadRepositoriesVarsBuilder
 
   @override
   void replace(GReadRepositoriesVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesVars;
   }
 
   @override
-  void update(void Function(GReadRepositoriesVarsBuilder) updates) {
+  void update(void Function(GReadRepositoriesVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GReadRepositoriesVars build() {
-    final _$result =
-        _$v ?? new _$GReadRepositoriesVars._(nRepositories: nRepositories);
+    final _$result = _$v ??
+        new _$GReadRepositoriesVars._(
+            nRepositories: BuiltValueNullFieldError.checkNotNull(
+                nRepositories, 'GReadRepositoriesVars', 'nRepositories'));
     replace(_$result);
     return _$result;
   }
