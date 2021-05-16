@@ -39,12 +39,12 @@ void query(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
+  if (result.errors != null && result.errors!.isNotEmpty) {
     stderr.writeln(result.errors);
     exit(2);
   }
 
-  final data = GReadRepositoriesData.fromJson(result.data);
+  final data = GReadRepositoriesData.fromJson(result.data!);
 
   final repositories = data.viewer.repositories.nodes;
 
@@ -81,12 +81,12 @@ void starRepository(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
+  if (result.errors != null && result.errors!.isNotEmpty) {
     stderr.writeln(result.errors);
     exit(2);
   }
 
-  final data = GAddStarData.fromJson(result.data);
+  final data = GAddStarData.fromJson(result.data!);
 
   final isStarred = data.action.starrable.viewerHasStarred;
 
@@ -119,12 +119,12 @@ void removeStarFromRepository(
       )
       .first;
 
-  if (result.errors != null && result.errors.isNotEmpty) {
+  if (result.errors != null && result.errors!.isNotEmpty) {
     stderr.writeln(result.errors);
     exit(2);
   }
 
-  final data = GRemoveStarData.fromJson(result.data);
+  final data = GRemoveStarData.fromJson(result.data!);
 
   final isStarred = data.action.starrable.viewerHasStarred;
 
