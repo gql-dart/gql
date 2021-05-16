@@ -187,26 +187,19 @@ jobs:
       - name: Publish packages
         run: |
           echo "{\"accessToken\":\"$PUB_ACCESS_TOKEN\",\"refreshToken\":\"$PUB_REFRESH_TOKEN\",\"idToken\":null,\"tokenEndpoint\":\"https://accounts.google.com/o/oauth2/token\",\"scopes\":[\"openid\",\"https://www.googleapis.com/auth/userinfo.email\"],\"expiration\":1588334512218}" > $HOME/.pub-cache/credentials.json
-          cap () { tee /tmp/capture.out }
-          ret () { cat /tmp/capture.out }
-          ignore_err_when_stdout_contains() {
-            code=$?
-            if [[ "$code" == "0" ]]; then
-              return 0
-            fi
-            output=`ret`
-            for search in $@
-            do
-              if [[ "$output" != *"$search"* ]]; then
-                return $code
-              fi
-            done
-          }
+
+          ## BEGIN TEMPORARY WORKAROUND FOR https://github.com/google/built_value.dart/issues/1032
+          ## See dry_run_workaround_helpers.sh for more details
+          source .github/workflows/dry_run_workaround_helpers.sh
+
           multipack --only $PACKAGES pub publish --dry-run 2>&1 | cap
+
           ignore_err_when_stdout_contains \
             'gql_build' \
             'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
             'Package has 1 warning'
+
+          ## END TEMPORARY WORKAROUND FOR https://github.com/google/built_value.dart/issues/1032
   check_svg:
     runs-on: ubuntu-latest
     container:
