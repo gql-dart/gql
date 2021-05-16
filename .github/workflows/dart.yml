@@ -195,8 +195,8 @@ jobs:
           ## `multipack --only $PACKAGES pub publish --dry-run`
           ##
 
-          # unmask piped errors
-          set -o pipefail
+          # unmask piped errors (set by default in gh actions)
+          # set -o pipefail 
 
           # capture the output of a command so it can be retrieved with ret
           cap () {
