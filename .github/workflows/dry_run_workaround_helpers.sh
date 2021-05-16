@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##
 ## TEMPORARY WORKAROUND HELPERS FOR https://github.com/google/built_value.dart/issues/1032
 ##
@@ -7,10 +9,10 @@
 ##
 
 # capture the output of a command so it can be retrieved with ret
-cap () { tee /tmp/capture.out }
+cap () { tee /tmp/capture.out; }
 
 # return the output of the most recent command that was captured by cap
-ret () { cat /tmp/capture.out }
+ret () { cat /tmp/capture.out; }
 
 # ignore err when stdout contains all of the given strings
 ignore_err_when_stdout_contains() {
@@ -26,3 +28,4 @@ ignore_err_when_stdout_contains() {
     fi
   done
 }
+
