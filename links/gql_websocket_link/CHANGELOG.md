@@ -1,3 +1,11 @@
+## 0.3.1
+
+- Close [227](https://github.com/gql-dart/gql/issues/227).
+
+## 0.3.0
+
+- Migrate to null safety
+
 ## 0.3.0-nullsafety.1
 
 - Migrate to null safety
