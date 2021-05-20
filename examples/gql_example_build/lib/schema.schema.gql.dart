@@ -12,14 +12,14 @@ part 'schema.schema.gql.g.dart';
 abstract class GScalar implements Built<GScalar, GScalarBuilder> {
   GScalar._();
 
-  factory GScalar([String value]) =>
+  factory GScalar([String? value]) =>
       _$GScalar((b) => value != null ? (b..value = value) : b);
 
   String get value;
   @BuiltValueSerializer(custom: true)
   static Serializer<GScalar> get serializer =>
       _i1.DefaultScalarSerializer<GScalar>(
-          (Object serialized) => GScalar(serialized));
+          (Object serialized) => GScalar((serialized as String?)));
 }
 
 class GEnum extends EnumClass {
@@ -39,25 +39,17 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
 
   factory GInput([Function(GInputBuilder b) updates]) = _$GInput;
 
-  @nullable
-  String get id;
-  @nullable
+  String? get id;
   @BuiltValueField(wireName: 'bool')
-  bool get Gbool;
-  @nullable
+  bool? get Gbool;
   @BuiltValueField(wireName: 'int')
-  int get Gint;
-  @nullable
-  double get float;
-  @nullable
-  String get string;
-  @nullable
-  GScalar get scalar;
-  @nullable
+  int? get Gint;
+  double? get float;
+  String? get string;
+  GScalar? get scalar;
   @BuiltValueField(wireName: 'enum')
-  GEnum get Genum;
-  @nullable
-  GInput get input;
+  GEnum? get Genum;
+  GInput? get input;
   String get idRequired;
   bool get boolRequired;
   int get intRequired;
@@ -68,7 +60,8 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   GInput get inputRequired;
   static Serializer<GInput> get serializer => _$gInputSerializer;
   Map<String, dynamic> toJson() =>
-      _i2.serializers.serializeWith(GInput.serializer, this);
-  static GInput fromJson(Map<String, dynamic> json) =>
+      (_i2.serializers.serializeWith(GInput.serializer, this)
+          as Map<String, dynamic>);
+  static GInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GInput.serializer, json);
 }

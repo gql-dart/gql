@@ -14,7 +14,7 @@ void main() {
       );
       final json = serializers.serialize(operation);
       final Operation deserialized =
-          serializers.deserializeWith(OperationSerializer(), json);
+          serializers.deserializeWith(OperationSerializer(), json)!;
       expect(deserialized, equals(operation));
     });
 
@@ -22,7 +22,7 @@ void main() {
       final operation = Operation(document: document);
       final json = serializers.serialize(operation);
       final Operation deserialized =
-          serializers.deserializeWith(OperationSerializer(), json);
+          serializers.deserializeWith(OperationSerializer(), json)!;
       expect(deserialized, equals(operation));
     });
   });

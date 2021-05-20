@@ -18,7 +18,7 @@ class AddTypenames extends ast.TransformingVisitor {
           ast.FieldNode(
             name: ast.NameNode(value: "__typename"),
           ),
-          ...node.selectionSet.selections
+          ...node.selectionSet!.selections
         ],
       ),
     );

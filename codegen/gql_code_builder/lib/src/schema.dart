@@ -7,7 +7,7 @@ import "package:gql_code_builder/src/schema/scalar.dart";
 import "package:gql_code_builder/source.dart";
 
 /// Build input types, enums and scalars from schema
-Spec buildSchema(
+Spec? buildSchema(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   EnumFallbackConfig enumFallbackConfig,
@@ -20,7 +20,7 @@ Spec buildSchema(
       ),
     );
 
-class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
+class _SchemaBuilderVisitor extends SimpleVisitor<Spec?> {
   final SourceNode schemaSource;
   final Map<String, Reference> typeOverrides;
   final EnumFallbackConfig enumFallbackConfig;
@@ -31,12 +31,12 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
     this.enumFallbackConfig,
   );
 
-  Spec _acceptOne(
-    Node node,
+  Spec? _acceptOne(
+    Node? node,
   ) =>
       node != null ? node.accept(this) : literalNull;
 
-  List<Spec> _acceptMany(
+  List<Spec?> _acceptMany(
     List<Node> nodes,
   ) =>
       nodes.map(_acceptOne).toList(
@@ -49,7 +49,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
   ) =>
       Library(
         (b) => b.body.addAll(
-          _acceptMany(node.definitions).where((d) => d != null),
+          _acceptMany(node.definitions).whereType<Spec>(),
         ),
       );
 
@@ -64,7 +64,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec> {
       );
 
   @override
-  Spec visitScalarTypeDefinitionNode(
+  Spec? visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
       typeOverrides.containsKey(node.name.value)

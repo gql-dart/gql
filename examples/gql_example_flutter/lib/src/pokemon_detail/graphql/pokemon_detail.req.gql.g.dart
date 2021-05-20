@@ -17,9 +17,9 @@ class _$GPokemonDetailSerializer
   final String wireName = 'GPokemonDetail';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GPokemonDetail object,
+  Iterable<Object?> serialize(Serializers serializers, GPokemonDetail object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GPokemonDetailVars)),
@@ -33,7 +33,7 @@ class _$GPokemonDetailSerializer
 
   @override
   GPokemonDetail deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GPokemonDetailBuilder();
 
@@ -41,11 +41,11 @@ class _$GPokemonDetailSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GPokemonDetailVars))
+                  specifiedType: const FullType(_i3.GPokemonDetailVars))!
               as _i3.GPokemonDetailVars);
           break;
         case 'operation':
@@ -65,16 +65,14 @@ class _$GPokemonDetail extends GPokemonDetail {
   @override
   final _i1.Operation operation;
 
-  factory _$GPokemonDetail([void Function(GPokemonDetailBuilder) updates]) =>
+  factory _$GPokemonDetail([void Function(GPokemonDetailBuilder)? updates]) =>
       (new GPokemonDetailBuilder()..update(updates)).build();
 
-  _$GPokemonDetail._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GPokemonDetail', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GPokemonDetail', 'operation');
-    }
+  _$GPokemonDetail._({required this.vars, required this.operation})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GPokemonDetail', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GPokemonDetail', 'operation');
   }
 
   @override
@@ -109,25 +107,26 @@ class _$GPokemonDetail extends GPokemonDetail {
 
 class GPokemonDetailBuilder
     implements Builder<GPokemonDetail, GPokemonDetailBuilder> {
-  _$GPokemonDetail _$v;
+  _$GPokemonDetail? _$v;
 
-  _i3.GPokemonDetailVarsBuilder _vars;
+  _i3.GPokemonDetailVarsBuilder? _vars;
   _i3.GPokemonDetailVarsBuilder get vars =>
       _$this._vars ??= new _i3.GPokemonDetailVarsBuilder();
-  set vars(_i3.GPokemonDetailVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GPokemonDetailVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GPokemonDetailBuilder() {
     GPokemonDetail._initializeBuilder(this);
   }
 
   GPokemonDetailBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -135,14 +134,12 @@ class GPokemonDetailBuilder
 
   @override
   void replace(GPokemonDetail other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPokemonDetail;
   }
 
   @override
-  void update(void Function(GPokemonDetailBuilder) updates) {
+  void update(void Function(GPokemonDetailBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -151,9 +148,12 @@ class GPokemonDetailBuilder
     _$GPokemonDetail _$result;
     try {
       _$result = _$v ??
-          new _$GPokemonDetail._(vars: vars.build(), operation: operation);
+          new _$GPokemonDetail._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GPokemonDetail', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

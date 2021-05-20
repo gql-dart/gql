@@ -4,7 +4,7 @@ import "package:gql/src/validation/validator.dart";
 
 class DuplicateOperationTypeError extends ValidationError {
   const DuplicateOperationTypeError({
-    OperationTypeDefinitionNode node,
+    OperationTypeDefinitionNode? node,
   }) : super(
           node: node,
         );

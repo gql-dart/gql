@@ -78,8 +78,8 @@ List<ValidationError> validateRequest(
 /// A base class for validation errors
 @immutable
 abstract class ValidationError {
-  final String message;
-  final ast.Node node;
+  final String? message;
+  final ast.Node? node;
 
   const ValidationError({
     this.message,
@@ -99,7 +99,7 @@ enum ValidationRule {
   uniqueArgumentNames
 }
 
-ValidatingVisitor _mapRule(ValidationRule rule) {
+ValidatingVisitor? _mapRule(ValidationRule rule) {
   switch (rule) {
     case ValidationRule.uniqueDirectiveNames:
       return UniqueDirectiveNames();
@@ -126,14 +126,18 @@ class _Validator {
   Set<ValidationRule> rules;
 
   _Validator({
-    this.rules,
+    this.rules = const {},
   });
 
   List<ValidationError> validate({
-    ast.Node node,
+    required ast.Node node,
   }) {
     final visitor = ast.AccumulatingVisitor<ValidationError>(
-      visitors: rules.map(_mapRule).toList(),
+      visitors: rules
+          .map(_mapRule)
+          .where((e) => e != null)
+          .cast<ValidatingVisitor>()
+          .toList(),
     );
 
     node.accept(visitor);

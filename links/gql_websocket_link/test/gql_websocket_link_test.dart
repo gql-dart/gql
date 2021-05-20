@@ -420,7 +420,7 @@ void main() {
               (Response response) {
                 expect(response.data, null);
                 expect(
-                  response.errors[0],
+                  response.errors![0],
                   GraphQLError(
                     message: responseError["message"] as String,
                     locations: [
@@ -727,7 +727,7 @@ void main() {
         IOWebSocketChannel channel;
         WebSocketLink link;
         Request request;
-        StreamSubscription<Response> responseSub;
+        late StreamSubscription<Response> responseSub;
 
         request = Request(
           operation: Operation(
@@ -740,28 +740,28 @@ void main() {
         server.transform(WebSocketTransformer()).listen(
           (webSocket) async {
             final channel = IOWebSocketChannel(webSocket);
-            var subId = "";
+            String? subId = "";
             var messageCount = 0;
             channel.stream.listen(
               expectAsyncUntil1<void, dynamic>(
                 (dynamic message) {
                   final map =
-                      json.decode(message as String) as Map<String, dynamic>;
+                      json.decode(message as String) as Map<String, dynamic>?;
                   if (messageCount == 0) {
-                    expect(map["type"], MessageTypes.connectionInit);
+                    expect(map!["type"], MessageTypes.connectionInit);
                     channel.sink.add(
                       json.encode(
                         ConnectionAck(),
                       ),
                     );
                   } else if (messageCount == 1) {
-                    expect(map["id"], isA<String>());
+                    expect(map!["id"], isA<String>());
                     expect(map["type"], MessageTypes.start);
-                    subId = map["id"] as String;
+                    subId = map["id"] as String?;
                     // cancel the request
                     responseSub.cancel();
                   } else if (messageCount == 2) {
-                    expect(map["id"], isA<String>());
+                    expect(map!["id"], isA<String>());
                     expect(map["id"], subId);
                     expect(map["type"], MessageTypes.stop);
                   } else {
@@ -915,10 +915,10 @@ void main() {
                           expectAsync1<void, dynamic>(
                             (dynamic message) {
                               final map = json.decode(message as String)
-                                  as Map<String, dynamic>;
+                                  as Map<String, dynamic>?;
                               if (messageCount == 0) {
                                 expect(
-                                    map["type"], MessageTypes.connectionInit);
+                                    map!["type"], MessageTypes.connectionInit);
                                 channel.sink.add(
                                   json.encode(
                                     ConnectionAck(),
@@ -958,7 +958,7 @@ void main() {
         WebSocketLink link;
         Request request;
         int connectToServer = 1;
-        String subId;
+        String? subId;
 
         request = Request(
           operation: Operation(
@@ -979,18 +979,18 @@ void main() {
                     expectAsync1<void, dynamic>(
                       (dynamic message) {
                         final map = json.decode(message as String)
-                            as Map<String, dynamic>;
+                            as Map<String, dynamic>?;
                         if (messageCount == 0) {
-                          expect(map["type"], MessageTypes.connectionInit);
+                          expect(map!["type"], MessageTypes.connectionInit);
                           channel.sink.add(
                             json.encode(
                               ConnectionAck(),
                             ),
                           );
                         } else if (messageCount == 1) {
-                          expect(map["id"], isA<String>());
+                          expect(map!["id"], isA<String>());
                           expect(map["type"], MessageTypes.start);
-                          subId = map["id"] as String;
+                          subId = map["id"] as String?;
                           // disconnect
                           webSocket.close(websocket_status.goingAway);
                         }
@@ -1014,16 +1014,16 @@ void main() {
                     expectAsync1<void, dynamic>(
                       (dynamic message) {
                         final map = json.decode(message as String)
-                            as Map<String, dynamic>;
+                            as Map<String, dynamic>?;
                         if (messageCount == 0) {
-                          expect(map["type"], MessageTypes.connectionInit);
+                          expect(map!["type"], MessageTypes.connectionInit);
                           channel.sink.add(
                             json.encode(
                               ConnectionAck(),
                             ),
                           );
                         } else if (messageCount == 1) {
-                          expect(map["id"], isA<String>());
+                          expect(map!["id"], isA<String>());
                           expect(map["type"], MessageTypes.start);
                           expect(map["id"], subId);
                           // disconnect

@@ -16,9 +16,9 @@ class _$GFindPokemonSerializer implements StructuredSerializer<GFindPokemon> {
   final String wireName = 'GFindPokemon';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GFindPokemon object,
+  Iterable<Object?> serialize(Serializers serializers, GFindPokemon object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GFindPokemonVars)),
@@ -31,7 +31,8 @@ class _$GFindPokemonSerializer implements StructuredSerializer<GFindPokemon> {
   }
 
   @override
-  GFindPokemon deserialize(Serializers serializers, Iterable<Object> serialized,
+  GFindPokemon deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GFindPokemonBuilder();
 
@@ -39,11 +40,11 @@ class _$GFindPokemonSerializer implements StructuredSerializer<GFindPokemon> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GFindPokemonVars))
+                  specifiedType: const FullType(_i3.GFindPokemonVars))!
               as _i3.GFindPokemonVars);
           break;
         case 'operation':
@@ -63,16 +64,13 @@ class _$GFindPokemon extends GFindPokemon {
   @override
   final _i1.Operation operation;
 
-  factory _$GFindPokemon([void Function(GFindPokemonBuilder) updates]) =>
+  factory _$GFindPokemon([void Function(GFindPokemonBuilder)? updates]) =>
       (new GFindPokemonBuilder()..update(updates)).build();
 
-  _$GFindPokemon._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GFindPokemon', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GFindPokemon', 'operation');
-    }
+  _$GFindPokemon._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GFindPokemon', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GFindPokemon', 'operation');
   }
 
   @override
@@ -106,25 +104,26 @@ class _$GFindPokemon extends GFindPokemon {
 
 class GFindPokemonBuilder
     implements Builder<GFindPokemon, GFindPokemonBuilder> {
-  _$GFindPokemon _$v;
+  _$GFindPokemon? _$v;
 
-  _i3.GFindPokemonVarsBuilder _vars;
+  _i3.GFindPokemonVarsBuilder? _vars;
   _i3.GFindPokemonVarsBuilder get vars =>
       _$this._vars ??= new _i3.GFindPokemonVarsBuilder();
-  set vars(_i3.GFindPokemonVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GFindPokemonVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GFindPokemonBuilder() {
     GFindPokemon._initializeBuilder(this);
   }
 
   GFindPokemonBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -132,14 +131,12 @@ class GFindPokemonBuilder
 
   @override
   void replace(GFindPokemon other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFindPokemon;
   }
 
   @override
-  void update(void Function(GFindPokemonBuilder) updates) {
+  void update(void Function(GFindPokemonBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -147,10 +144,13 @@ class GFindPokemonBuilder
   _$GFindPokemon build() {
     _$GFindPokemon _$result;
     try {
-      _$result =
-          _$v ?? new _$GFindPokemon._(vars: vars.build(), operation: operation);
+      _$result = _$v ??
+          new _$GFindPokemon._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GFindPokemon', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

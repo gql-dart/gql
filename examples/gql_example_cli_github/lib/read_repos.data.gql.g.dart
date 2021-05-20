@@ -29,10 +29,10 @@ class _$GReadRepositoriesDataSerializer
   final String wireName = 'GReadRepositoriesData';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GReadRepositoriesData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -46,7 +46,7 @@ class _$GReadRepositoriesDataSerializer
 
   @override
   GReadRepositoriesData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GReadRepositoriesDataBuilder();
 
@@ -54,7 +54,7 @@ class _$GReadRepositoriesDataSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -62,7 +62,7 @@ class _$GReadRepositoriesDataSerializer
           break;
         case 'viewer':
           result.viewer.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(GReadRepositoriesData_viewer))
+                  specifiedType: const FullType(GReadRepositoriesData_viewer))!
               as GReadRepositoriesData_viewer);
           break;
       }
@@ -83,10 +83,10 @@ class _$GReadRepositoriesData_viewerSerializer
   final String wireName = 'GReadRepositoriesData_viewer';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GReadRepositoriesData_viewer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -101,7 +101,7 @@ class _$GReadRepositoriesData_viewerSerializer
 
   @override
   GReadRepositoriesData_viewer deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GReadRepositoriesData_viewerBuilder();
 
@@ -109,7 +109,7 @@ class _$GReadRepositoriesData_viewerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -117,8 +117,8 @@ class _$GReadRepositoriesData_viewerSerializer
           break;
         case 'repositories':
           result.repositories.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(GReadRepositoriesData_viewer_repositories))
+                  specifiedType: const FullType(
+                      GReadRepositoriesData_viewer_repositories))!
               as GReadRepositoriesData_viewer_repositories);
           break;
       }
@@ -139,18 +139,20 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
   final String wireName = 'GReadRepositoriesData_viewer_repositories';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GReadRepositoriesData_viewer_repositories object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
-    if (object.nodes != null) {
+    Object? value;
+    value = object.nodes;
+    if (value != null) {
       result
         ..add('nodes')
-        ..add(serializers.serialize(object.nodes,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
               const FullType(GReadRepositoriesData_viewer_repositories_nodes)
             ])));
@@ -160,7 +162,7 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
 
   @override
   GReadRepositoriesData_viewer_repositories deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GReadRepositoriesData_viewer_repositoriesBuilder();
 
@@ -168,7 +170,7 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -178,7 +180,7 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
           result.nodes.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GReadRepositoriesData_viewer_repositories_nodes)
-              ])) as BuiltList<Object>);
+              ]))! as BuiltList<Object>);
           break;
       }
     }
@@ -199,10 +201,10 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
   final String wireName = 'GReadRepositoriesData_viewer_repositories_nodes';
 
   @override
-  Iterable<Object> serialize(Serializers serializers,
+  Iterable<Object?> serialize(Serializers serializers,
       GReadRepositoriesData_viewer_repositories_nodes object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -223,7 +225,7 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
 
   @override
   GReadRepositoriesData_viewer_repositories_nodes deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GReadRepositoriesData_viewer_repositories_nodesBuilder();
 
@@ -231,7 +233,7 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
@@ -251,7 +253,7 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
           break;
         case 'createdAt':
           result.createdAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i2.GDateTime)) as _i2.GDateTime);
+              specifiedType: const FullType(_i2.GDateTime))! as _i2.GDateTime);
           break;
       }
     }
@@ -267,17 +269,15 @@ class _$GReadRepositoriesData extends GReadRepositoriesData {
   final GReadRepositoriesData_viewer viewer;
 
   factory _$GReadRepositoriesData(
-          [void Function(GReadRepositoriesDataBuilder) updates]) =>
+          [void Function(GReadRepositoriesDataBuilder)? updates]) =>
       (new GReadRepositoriesDataBuilder()..update(updates)).build();
 
-  _$GReadRepositoriesData._({this.G__typename, this.viewer}) : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData', 'G__typename');
-    }
-    if (viewer == null) {
-      throw new BuiltValueNullFieldError('GReadRepositoriesData', 'viewer');
-    }
+  _$GReadRepositoriesData._({required this.G__typename, required this.viewer})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GReadRepositoriesData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        viewer, 'GReadRepositoriesData', 'viewer');
   }
 
   @override
@@ -313,16 +313,16 @@ class _$GReadRepositoriesData extends GReadRepositoriesData {
 
 class GReadRepositoriesDataBuilder
     implements Builder<GReadRepositoriesData, GReadRepositoriesDataBuilder> {
-  _$GReadRepositoriesData _$v;
+  _$GReadRepositoriesData? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GReadRepositoriesData_viewerBuilder _viewer;
+  GReadRepositoriesData_viewerBuilder? _viewer;
   GReadRepositoriesData_viewerBuilder get viewer =>
       _$this._viewer ??= new GReadRepositoriesData_viewerBuilder();
-  set viewer(GReadRepositoriesData_viewerBuilder viewer) =>
+  set viewer(GReadRepositoriesData_viewerBuilder? viewer) =>
       _$this._viewer = viewer;
 
   GReadRepositoriesDataBuilder() {
@@ -330,9 +330,10 @@ class GReadRepositoriesDataBuilder
   }
 
   GReadRepositoriesDataBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _viewer = _$v.viewer?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _viewer = $v.viewer.toBuilder();
       _$v = null;
     }
     return this;
@@ -340,14 +341,12 @@ class GReadRepositoriesDataBuilder
 
   @override
   void replace(GReadRepositoriesData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesData;
   }
 
   @override
-  void update(void Function(GReadRepositoriesDataBuilder) updates) {
+  void update(void Function(GReadRepositoriesDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -357,9 +356,11 @@ class GReadRepositoriesDataBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData._(
-              G__typename: G__typename, viewer: viewer.build());
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GReadRepositoriesData', 'G__typename'),
+              viewer: viewer.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'viewer';
         viewer.build();
@@ -381,19 +382,16 @@ class _$GReadRepositoriesData_viewer extends GReadRepositoriesData_viewer {
   final GReadRepositoriesData_viewer_repositories repositories;
 
   factory _$GReadRepositoriesData_viewer(
-          [void Function(GReadRepositoriesData_viewerBuilder) updates]) =>
+          [void Function(GReadRepositoriesData_viewerBuilder)? updates]) =>
       (new GReadRepositoriesData_viewerBuilder()..update(updates)).build();
 
-  _$GReadRepositoriesData_viewer._({this.G__typename, this.repositories})
+  _$GReadRepositoriesData_viewer._(
+      {required this.G__typename, required this.repositories})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer', 'G__typename');
-    }
-    if (repositories == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer', 'repositories');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GReadRepositoriesData_viewer', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        repositories, 'GReadRepositoriesData_viewer', 'repositories');
   }
 
   @override
@@ -431,18 +429,18 @@ class GReadRepositoriesData_viewerBuilder
     implements
         Builder<GReadRepositoriesData_viewer,
             GReadRepositoriesData_viewerBuilder> {
-  _$GReadRepositoriesData_viewer _$v;
+  _$GReadRepositoriesData_viewer? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GReadRepositoriesData_viewer_repositoriesBuilder _repositories;
+  GReadRepositoriesData_viewer_repositoriesBuilder? _repositories;
   GReadRepositoriesData_viewer_repositoriesBuilder get repositories =>
       _$this._repositories ??=
           new GReadRepositoriesData_viewer_repositoriesBuilder();
   set repositories(
-          GReadRepositoriesData_viewer_repositoriesBuilder repositories) =>
+          GReadRepositoriesData_viewer_repositoriesBuilder? repositories) =>
       _$this._repositories = repositories;
 
   GReadRepositoriesData_viewerBuilder() {
@@ -450,9 +448,10 @@ class GReadRepositoriesData_viewerBuilder
   }
 
   GReadRepositoriesData_viewerBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _repositories = _$v.repositories?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _repositories = $v.repositories.toBuilder();
       _$v = null;
     }
     return this;
@@ -460,14 +459,12 @@ class GReadRepositoriesData_viewerBuilder
 
   @override
   void replace(GReadRepositoriesData_viewer other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesData_viewer;
   }
 
   @override
-  void update(void Function(GReadRepositoriesData_viewerBuilder) updates) {
+  void update(void Function(GReadRepositoriesData_viewerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -477,9 +474,11 @@ class GReadRepositoriesData_viewerBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer._(
-              G__typename: G__typename, repositories: repositories.build());
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GReadRepositoriesData_viewer', 'G__typename'),
+              repositories: repositories.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'repositories';
         repositories.build();
@@ -499,20 +498,19 @@ class _$GReadRepositoriesData_viewer_repositories
   @override
   final String G__typename;
   @override
-  final BuiltList<GReadRepositoriesData_viewer_repositories_nodes> nodes;
+  final BuiltList<GReadRepositoriesData_viewer_repositories_nodes>? nodes;
 
   factory _$GReadRepositoriesData_viewer_repositories(
-          [void Function(GReadRepositoriesData_viewer_repositoriesBuilder)
+          [void Function(GReadRepositoriesData_viewer_repositoriesBuilder)?
               updates]) =>
       (new GReadRepositoriesData_viewer_repositoriesBuilder()..update(updates))
           .build();
 
-  _$GReadRepositoriesData_viewer_repositories._({this.G__typename, this.nodes})
+  _$GReadRepositoriesData_viewer_repositories._(
+      {required this.G__typename, this.nodes})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories', 'G__typename');
-    }
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        'GReadRepositoriesData_viewer_repositories', 'G__typename');
   }
 
   @override
@@ -552,18 +550,19 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
     implements
         Builder<GReadRepositoriesData_viewer_repositories,
             GReadRepositoriesData_viewer_repositoriesBuilder> {
-  _$GReadRepositoriesData_viewer_repositories _$v;
+  _$GReadRepositoriesData_viewer_repositories? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes> _nodes;
+  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>? _nodes;
   ListBuilder<GReadRepositoriesData_viewer_repositories_nodes> get nodes =>
       _$this._nodes ??=
           new ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>();
   set nodes(
-          ListBuilder<GReadRepositoriesData_viewer_repositories_nodes> nodes) =>
+          ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>?
+              nodes) =>
       _$this._nodes = nodes;
 
   GReadRepositoriesData_viewer_repositoriesBuilder() {
@@ -571,9 +570,10 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
   }
 
   GReadRepositoriesData_viewer_repositoriesBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _nodes = _$v.nodes?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _nodes = $v.nodes?.toBuilder();
       _$v = null;
     }
     return this;
@@ -581,15 +581,14 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
 
   @override
   void replace(GReadRepositoriesData_viewer_repositories other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesData_viewer_repositories;
   }
 
   @override
   void update(
-      void Function(GReadRepositoriesData_viewer_repositoriesBuilder) updates) {
+      void Function(GReadRepositoriesData_viewer_repositoriesBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
@@ -599,9 +598,11 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories._(
-              G__typename: G__typename, nodes: _nodes?.build());
+              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                  'GReadRepositoriesData_viewer_repositories', 'G__typename'),
+              nodes: _nodes?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'nodes';
         _nodes?.build();
@@ -632,40 +633,30 @@ class _$GReadRepositoriesData_viewer_repositories_nodes
   final _i2.GDateTime createdAt;
 
   factory _$GReadRepositoriesData_viewer_repositories_nodes(
-          [void Function(GReadRepositoriesData_viewer_repositories_nodesBuilder)
+          [void Function(
+                  GReadRepositoriesData_viewer_repositories_nodesBuilder)?
               updates]) =>
       (new GReadRepositoriesData_viewer_repositories_nodesBuilder()
             ..update(updates))
           .build();
 
   _$GReadRepositoriesData_viewer_repositories_nodes._(
-      {this.G__typename,
-      this.id,
-      this.name,
-      this.viewerHasStarred,
-      this.createdAt})
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      required this.viewerHasStarred,
+      required this.createdAt})
       : super._() {
-    if (G__typename == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories_nodes', 'G__typename');
-    }
-    if (id == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories_nodes', 'id');
-    }
-    if (name == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories_nodes', 'name');
-    }
-    if (viewerHasStarred == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories_nodes',
-          'viewerHasStarred');
-    }
-    if (createdAt == null) {
-      throw new BuiltValueNullFieldError(
-          'GReadRepositoriesData_viewer_repositories_nodes', 'createdAt');
-    }
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        'GReadRepositoriesData_viewer_repositories_nodes', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, 'GReadRepositoriesData_viewer_repositories_nodes', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, 'GReadRepositoriesData_viewer_repositories_nodes', 'name');
+    BuiltValueNullFieldError.checkNotNull(viewerHasStarred,
+        'GReadRepositoriesData_viewer_repositories_nodes', 'viewerHasStarred');
+    BuiltValueNullFieldError.checkNotNull(createdAt,
+        'GReadRepositoriesData_viewer_repositories_nodes', 'createdAt');
   }
 
   @override
@@ -715,29 +706,29 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
     implements
         Builder<GReadRepositoriesData_viewer_repositories_nodes,
             GReadRepositoriesData_viewer_repositories_nodesBuilder> {
-  _$GReadRepositoriesData_viewer_repositories_nodes _$v;
+  _$GReadRepositoriesData_viewer_repositories_nodes? _$v;
 
-  String _G__typename;
-  String get G__typename => _$this._G__typename;
-  set G__typename(String G__typename) => _$this._G__typename = G__typename;
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  bool _viewerHasStarred;
-  bool get viewerHasStarred => _$this._viewerHasStarred;
-  set viewerHasStarred(bool viewerHasStarred) =>
+  bool? _viewerHasStarred;
+  bool? get viewerHasStarred => _$this._viewerHasStarred;
+  set viewerHasStarred(bool? viewerHasStarred) =>
       _$this._viewerHasStarred = viewerHasStarred;
 
-  _i2.GDateTimeBuilder _createdAt;
+  _i2.GDateTimeBuilder? _createdAt;
   _i2.GDateTimeBuilder get createdAt =>
       _$this._createdAt ??= new _i2.GDateTimeBuilder();
-  set createdAt(_i2.GDateTimeBuilder createdAt) =>
+  set createdAt(_i2.GDateTimeBuilder? createdAt) =>
       _$this._createdAt = createdAt;
 
   GReadRepositoriesData_viewer_repositories_nodesBuilder() {
@@ -745,12 +736,13 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
   }
 
   GReadRepositoriesData_viewer_repositories_nodesBuilder get _$this {
-    if (_$v != null) {
-      _G__typename = _$v.G__typename;
-      _id = _$v.id;
-      _name = _$v.name;
-      _viewerHasStarred = _$v.viewerHasStarred;
-      _createdAt = _$v.createdAt?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _viewerHasStarred = $v.viewerHasStarred;
+      _createdAt = $v.createdAt.toBuilder();
       _$v = null;
     }
     return this;
@@ -758,15 +750,13 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
 
   @override
   void replace(GReadRepositoriesData_viewer_repositories_nodes other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesData_viewer_repositories_nodes;
   }
 
   @override
   void update(
-      void Function(GReadRepositoriesData_viewer_repositories_nodesBuilder)
+      void Function(GReadRepositoriesData_viewer_repositories_nodesBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
@@ -777,13 +767,21 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories_nodes._(
-              G__typename: G__typename,
-              id: id,
-              name: name,
-              viewerHasStarred: viewerHasStarred,
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  'GReadRepositoriesData_viewer_repositories_nodes',
+                  'G__typename'),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, 'GReadRepositoriesData_viewer_repositories_nodes', 'id'),
+              name: BuiltValueNullFieldError.checkNotNull(name,
+                  'GReadRepositoriesData_viewer_repositories_nodes', 'name'),
+              viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+                  viewerHasStarred,
+                  'GReadRepositoriesData_viewer_repositories_nodes',
+                  'viewerHasStarred'),
               createdAt: createdAt.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'createdAt';
         createdAt.build();

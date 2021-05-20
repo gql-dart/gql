@@ -12,13 +12,13 @@ class DedupeLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) {
     if (_inFlight.containsKey(request)) {
-      return _inFlight[request].split();
+      return _inFlight[request]!.split();
     }
 
-    final splitter = StreamSplitter(forward(request));
+    final splitter = StreamSplitter(forward!(request));
 
     _inFlight[request] = splitter;
 

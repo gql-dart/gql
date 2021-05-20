@@ -17,9 +17,9 @@ class _$GRemoveStarVarsSerializer
   final String wireName = 'GRemoveStarVars';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GRemoveStarVars object,
+  Iterable<Object?> serialize(Serializers serializers, GRemoveStarVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'starrableId',
       serializers.serialize(object.starrableId,
           specifiedType: const FullType(String)),
@@ -30,7 +30,7 @@ class _$GRemoveStarVarsSerializer
 
   @override
   GRemoveStarVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GRemoveStarVarsBuilder();
 
@@ -38,7 +38,7 @@ class _$GRemoveStarVarsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'starrableId':
           result.starrableId = serializers.deserialize(value,
@@ -55,13 +55,12 @@ class _$GRemoveStarVars extends GRemoveStarVars {
   @override
   final String starrableId;
 
-  factory _$GRemoveStarVars([void Function(GRemoveStarVarsBuilder) updates]) =>
+  factory _$GRemoveStarVars([void Function(GRemoveStarVarsBuilder)? updates]) =>
       (new GRemoveStarVarsBuilder()..update(updates)).build();
 
-  _$GRemoveStarVars._({this.starrableId}) : super._() {
-    if (starrableId == null) {
-      throw new BuiltValueNullFieldError('GRemoveStarVars', 'starrableId');
-    }
+  _$GRemoveStarVars._({required this.starrableId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        starrableId, 'GRemoveStarVars', 'starrableId');
   }
 
   @override
@@ -93,17 +92,18 @@ class _$GRemoveStarVars extends GRemoveStarVars {
 
 class GRemoveStarVarsBuilder
     implements Builder<GRemoveStarVars, GRemoveStarVarsBuilder> {
-  _$GRemoveStarVars _$v;
+  _$GRemoveStarVars? _$v;
 
-  String _starrableId;
-  String get starrableId => _$this._starrableId;
-  set starrableId(String starrableId) => _$this._starrableId = starrableId;
+  String? _starrableId;
+  String? get starrableId => _$this._starrableId;
+  set starrableId(String? starrableId) => _$this._starrableId = starrableId;
 
   GRemoveStarVarsBuilder();
 
   GRemoveStarVarsBuilder get _$this {
-    if (_$v != null) {
-      _starrableId = _$v.starrableId;
+    final $v = _$v;
+    if ($v != null) {
+      _starrableId = $v.starrableId;
       _$v = null;
     }
     return this;
@@ -111,20 +111,21 @@ class GRemoveStarVarsBuilder
 
   @override
   void replace(GRemoveStarVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarVars;
   }
 
   @override
-  void update(void Function(GRemoveStarVarsBuilder) updates) {
+  void update(void Function(GRemoveStarVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$GRemoveStarVars build() {
-    final _$result = _$v ?? new _$GRemoveStarVars._(starrableId: starrableId);
+    final _$result = _$v ??
+        new _$GRemoveStarVars._(
+            starrableId: BuiltValueNullFieldError.checkNotNull(
+                starrableId, 'GRemoveStarVars', 'starrableId'));
     replace(_$result);
     return _$result;
   }

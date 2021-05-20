@@ -21,9 +21,9 @@ abstract class Value extends GraphQLEntity {
   const Value();
 
   @override
-  ValueNode get astNode;
+  ValueNode? get astNode;
 
-  static Value fromNode(ValueNode node) {
+  static Value fromNode(ValueNode? node) {
     if (node is IntValueNode) {
       return IntValue(node);
     }
@@ -79,9 +79,9 @@ class StringValue extends Value {
   const StringValue(this.astNode);
 
   @override
-  final StringValueNode astNode;
+  final StringValueNode? astNode;
 
-  String get value => astNode.value;
+  String get value => astNode!.value;
 }
 
 @immutable
@@ -155,9 +155,9 @@ class DefaultValue extends GraphQLEntity {
   const DefaultValue(this.astNode);
 
   @override
-  final DefaultValueNode astNode;
+  final DefaultValueNode? astNode;
 
-  Value get value => Value.fromNode(astNode.value);
+  Value get value => Value.fromNode(astNode!.value);
 }
 
 // While I don't believe VariableValues are possible in the schema definition,

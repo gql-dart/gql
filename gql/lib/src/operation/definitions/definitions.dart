@@ -9,15 +9,15 @@ import "package:gql/src/operation/definitions/selections.dart";
 
 @immutable
 abstract class ExecutableDefinition extends ExecutableWithResolver {
-  const ExecutableDefinition([GetExecutableType getType]) : super(getType);
+  const ExecutableDefinition([GetExecutableType? getType]) : super(getType);
 
   @override
   ExecutableDefinitionNode get astNode;
 
-  String get name => astNode.name?.value;
+  String? get name;
 
   static ExecutableDefinition fromNode(ExecutableDefinitionNode astNode,
-      [GetExecutableType getType]) {
+      [GetExecutableType? getType]) {
     if (astNode is OperationDefinitionNode) {
       return OperationDefinition(astNode, getType);
     }
@@ -40,23 +40,26 @@ abstract class ExecutableDefinition extends ExecutableWithResolver {
 class OperationDefinition extends ExecutableDefinition {
   const OperationDefinition(
     this.astNode, [
-    GetExecutableType getType,
+    GetExecutableType? getType,
   ]) : super(getType);
 
   @override
   final OperationDefinitionNode astNode;
 
+  @override
+  String? get name => astNode.name?.value;
+
   OperationType get type => astNode.type;
 
-  ObjectTypeDefinition get schemaType =>
-      getType.fromSchema(type.name) as ObjectTypeDefinition;
+  ObjectTypeDefinition? get schemaType =>
+      getType.fromSchema!(type.name) as ObjectTypeDefinition?;
 
   List<VariableDefinition> get variables =>
       astNode.variableDefinitions.map((v) => VariableDefinition(v)).toList();
 
   SelectionSet get selectionSet => SelectionSet(
         astNode.selectionSet,
-        getType.fromSchema(type.name) as ObjectTypeDefinition,
+        getType.fromSchema!(type.name) as ObjectTypeDefinition?,
         getType,
       );
 }
@@ -72,15 +75,18 @@ class OperationDefinition extends ExecutableDefinition {
 /// when querying against an [InterfaceTypeDefinition] or [UnionTypeDefinition].
 @immutable
 class FragmentDefinition extends ExecutableDefinition {
-  const FragmentDefinition(this.astNode, [GetExecutableType getType])
+  const FragmentDefinition(this.astNode, [GetExecutableType? getType])
       : super(getType);
 
   @override
   final FragmentDefinitionNode astNode;
 
+  @override
+  String? get name => astNode.name.value;
+
   TypeCondition get _typeCondition => TypeCondition(astNode.typeCondition);
 
-  TypeDefinition get onType => getType.fromSchema(_typeCondition.on.name);
+  TypeDefinition? get onType => getType.fromSchema!(_typeCondition.on.name);
 
   List<Directive> get directives =>
       astNode.directives.map((d) => Directive(d)).toList();
@@ -104,9 +110,9 @@ class TypeCondition extends ExecutableGraphQLEntity {
   const TypeCondition(this.astNode);
 
   @override
-  final TypeConditionNode astNode;
+  final TypeConditionNode? astNode;
 
-  NamedType get on => NamedType(astNode.on);
+  NamedType get on => NamedType(astNode!.on);
 }
 
 /// [Variables](https://spec.graphql.org/June2018/#sec-Language.Variables)
@@ -120,7 +126,7 @@ class TypeCondition extends ExecutableGraphQLEntity {
 /// the execution of that operation.
 @immutable
 class VariableDefinition extends ExecutableWithResolver {
-  const VariableDefinition(this.astNode, [GetExecutableType getType])
+  const VariableDefinition(this.astNode, [GetExecutableType? getType])
       : super(getType);
 
   @override

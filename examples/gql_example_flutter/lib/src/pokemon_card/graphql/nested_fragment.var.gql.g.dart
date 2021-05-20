@@ -20,15 +20,15 @@ class _$GNestedFragmentVarsSerializer
   final String wireName = 'GNestedFragmentVars';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GNestedFragmentVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    return <Object?>[];
   }
 
   @override
   GNestedFragmentVars deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new GNestedFragmentVarsBuilder().build();
   }
@@ -36,7 +36,7 @@ class _$GNestedFragmentVarsSerializer
 
 class _$GNestedFragmentVars extends GNestedFragmentVars {
   factory _$GNestedFragmentVars(
-          [void Function(GNestedFragmentVarsBuilder) updates]) =>
+          [void Function(GNestedFragmentVarsBuilder)? updates]) =>
       (new GNestedFragmentVarsBuilder()..update(updates)).build();
 
   _$GNestedFragmentVars._() : super._();
@@ -69,20 +69,18 @@ class _$GNestedFragmentVars extends GNestedFragmentVars {
 
 class GNestedFragmentVarsBuilder
     implements Builder<GNestedFragmentVars, GNestedFragmentVarsBuilder> {
-  _$GNestedFragmentVars _$v;
+  _$GNestedFragmentVars? _$v;
 
   GNestedFragmentVarsBuilder();
 
   @override
   void replace(GNestedFragmentVars other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GNestedFragmentVars;
   }
 
   @override
-  void update(void Function(GNestedFragmentVarsBuilder) updates) {
+  void update(void Function(GNestedFragmentVarsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

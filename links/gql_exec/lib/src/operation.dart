@@ -14,14 +14,14 @@ class Operation {
   /// Name of the executable definition
   ///
   /// Must be specified if [document] contains more than one [OperationDefinitionNode]
-  final String operationName;
+  final String? operationName;
 
   const Operation({
-    @required this.document,
+    required this.document,
     this.operationName,
-  }) : assert(document != null);
+  });
 
-  List<Object> _getChildren() => [
+  List<Object?> _getChildren() => [
         document,
         operationName,
       ];
@@ -30,7 +30,7 @@ class Operation {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is Operation &&
-          const ListEquality<Object>(
+          const ListEquality<Object?>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -38,7 +38,7 @@ class Operation {
           ));
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),

@@ -28,12 +28,12 @@ class AllPokemonScreen extends StatelessWidget {
           if (snapshot.data?.data == null)
             return Center(child: CircularProgressIndicator());
 
-          final data = GAllPokemonData.fromJson(snapshot.data.data);
+          final data = GAllPokemonData.fromJson(snapshot.data!.data!);
 
           return ListView.builder(
-            itemCount: data.pokemons.length,
+            itemCount: data!.pokemons!.length,
             itemBuilder: (context, index) => PokemonCard(
-              pokemon: data.pokemons[index],
+              pokemon: data.pokemons![index],
             ),
           );
         },

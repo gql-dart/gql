@@ -7,12 +7,12 @@ import "package:meta/meta.dart";
 @immutable
 class Response {
   /// Error returned executing the [Request]
-  final List<GraphQLError> errors;
+  final List<GraphQLError>? errors;
 
   /// Data returned executing the [Request]
   ///
   /// Follows the shape of requested document.
-  final Map<String, dynamic> data;
+  final Map<String, dynamic>? data;
 
   /// A [Context] to be returned along with a [Response]
   final Context context;
@@ -21,7 +21,7 @@ class Response {
     this.errors,
     this.data,
     this.context = const Context(),
-  }) : assert(context != null);
+  });
 
   /// Clone this response adding an [entry] to [context]
   Response withContextEntry<T extends ContextEntry>(T entry) => Response(
@@ -32,7 +32,7 @@ class Response {
 
   /// Clone this response updating an [entry] to [context]
   Response updateContextEntry<T extends ContextEntry>(
-    ContextUpdater<T> update,
+    ContextUpdater<T?> update,
   ) =>
       Response(
         errors: errors,
@@ -40,7 +40,7 @@ class Response {
         context: context.updateEntry<T>(update),
       );
 
-  List<Object> _getChildren() => [
+  List<Object?> _getChildren() => [
         errors,
         data,
         context,
@@ -50,7 +50,7 @@ class Response {
   bool operator ==(Object o) =>
       identical(this, o) ||
       (o is Response &&
-          const ListEquality<Object>(
+          const ListEquality<Object?>(
             DeepCollectionEquality(),
           ).equals(
             o._getChildren(),
@@ -58,7 +58,7 @@ class Response {
           ));
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash(
         _getChildren(),
@@ -73,14 +73,14 @@ class Response {
 @immutable
 class ResponseExtensions extends ContextEntry {
   /// [Response] extensions
-  final dynamic extensions;
+  final dynamic? extensions;
 
-  const ResponseExtensions(
+  const ResponseExtensions([
     this.extensions,
-  );
+  ]);
 
   @override
-  List<Object> get fieldsForEquality => [
-        extensions,
+  List<Object?> get fieldsForEquality => [
+        extensions as Object?,
       ];
 }

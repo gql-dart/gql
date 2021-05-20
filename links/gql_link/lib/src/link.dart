@@ -1,4 +1,5 @@
 import "package:gql_exec/gql_exec.dart";
+import "package:meta/meta.dart";
 
 /// Type of the `forward` function
 typedef NextLink = Stream<Response> Function(
@@ -17,7 +18,7 @@ typedef LinkRouter = Link Function(
 /// Used by [Link.function]
 typedef LinkFunction = Stream<Response> Function(
   Request request, [
-  NextLink forward,
+  NextLink? forward,
 ]);
 
 /// [DocumentNode]-based GraphQL execution interface
@@ -56,7 +57,7 @@ abstract class Link {
   factory Link.split(
     bool Function(Request request) test,
     Link left, [
-    Link right = const _PassthroughLink(),
+    Link right = const PassthroughLink(),
   ]) =>
       _RouterLink((Request request) => test(request) ? left : right);
 
@@ -76,7 +77,7 @@ abstract class Link {
   Link split(
     bool Function(Request request) test,
     Link left, [
-    Link right = const _PassthroughLink(),
+    Link right = const PassthroughLink(),
   ]) =>
       concat(
         _RouterLink(
@@ -93,7 +94,7 @@ abstract class Link {
     ///   the next [Link]
     ///
     /// Terminating [Link]s do not call this function.
-    NextLink forward,
+    NextLink? forward,
   ]);
 }
 
@@ -105,7 +106,7 @@ class _FunctionLink extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
       function(request, forward);
 }
@@ -118,23 +119,24 @@ class _LinkChain extends Link {
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
-      links.reversed.fold<NextLink>(
+      links.reversed.fold<NextLink?>(
         forward,
         (fw, link) => (op) => link.request(op, fw),
-      )(request);
+      )!(request);
 }
 
-class _PassthroughLink extends Link {
-  const _PassthroughLink();
+@visibleForTesting
+class PassthroughLink extends Link {
+  const PassthroughLink();
 
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) =>
-      forward(request);
+      forward!(request);
 }
 
 class _RouterLink extends Link {
@@ -142,12 +144,12 @@ class _RouterLink extends Link {
 
   const _RouterLink(
     this.routeFn,
-  ) : assert(routeFn != null);
+  );
 
   @override
   Stream<Response> request(
     Request request, [
-    NextLink forward,
+    NextLink? forward,
   ]) async* {
     final link = routeFn(request);
 

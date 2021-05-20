@@ -40,7 +40,11 @@ ListBuilder<Constructor> _buildConstructors(
               Parameter(
                 (b) => b
                   ..name = "value"
-                  ..type = refer("String"),
+                  ..type = TypeReference(
+                    (b) => b
+                      ..symbol = "String"
+                      ..isNullable = true,
+                  ),
               ),
             )
             ..body = refer("_\$${scalarName}").call([
@@ -105,7 +109,15 @@ ListBuilder<Method> _buildMethods(
                     ),
                   )
                   ..lambda = true
-                  ..body = refer(scalarName).call([refer("serialized")]).code,
+                  ..body = refer(scalarName).call([
+                    refer("serialized").asA(
+                      TypeReference(
+                        (b) => b
+                          ..symbol = "String"
+                          ..isNullable = true,
+                      ),
+                    )
+                  ]).code,
               ).closure
             ]).code,
         ),

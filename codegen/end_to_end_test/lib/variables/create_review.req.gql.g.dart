@@ -16,9 +16,9 @@ class _$GCreateReviewSerializer implements StructuredSerializer<GCreateReview> {
   final String wireName = 'GCreateReview';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GCreateReview object,
+  Iterable<Object?> serialize(Serializers serializers, GCreateReview object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
           specifiedType: const FullType(_i3.GCreateReviewVars)),
@@ -32,7 +32,7 @@ class _$GCreateReviewSerializer implements StructuredSerializer<GCreateReview> {
 
   @override
   GCreateReview deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GCreateReviewBuilder();
 
@@ -40,11 +40,11 @@ class _$GCreateReviewSerializer implements StructuredSerializer<GCreateReview> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GCreateReviewVars))
+                  specifiedType: const FullType(_i3.GCreateReviewVars))!
               as _i3.GCreateReviewVars);
           break;
         case 'operation':
@@ -64,16 +64,13 @@ class _$GCreateReview extends GCreateReview {
   @override
   final _i1.Operation operation;
 
-  factory _$GCreateReview([void Function(GCreateReviewBuilder) updates]) =>
+  factory _$GCreateReview([void Function(GCreateReviewBuilder)? updates]) =>
       (new GCreateReviewBuilder()..update(updates)).build();
 
-  _$GCreateReview._({this.vars, this.operation}) : super._() {
-    if (vars == null) {
-      throw new BuiltValueNullFieldError('GCreateReview', 'vars');
-    }
-    if (operation == null) {
-      throw new BuiltValueNullFieldError('GCreateReview', 'operation');
-    }
+  _$GCreateReview._({required this.vars, required this.operation}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, 'GCreateReview', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, 'GCreateReview', 'operation');
   }
 
   @override
@@ -107,25 +104,26 @@ class _$GCreateReview extends GCreateReview {
 
 class GCreateReviewBuilder
     implements Builder<GCreateReview, GCreateReviewBuilder> {
-  _$GCreateReview _$v;
+  _$GCreateReview? _$v;
 
-  _i3.GCreateReviewVarsBuilder _vars;
+  _i3.GCreateReviewVarsBuilder? _vars;
   _i3.GCreateReviewVarsBuilder get vars =>
       _$this._vars ??= new _i3.GCreateReviewVarsBuilder();
-  set vars(_i3.GCreateReviewVarsBuilder vars) => _$this._vars = vars;
+  set vars(_i3.GCreateReviewVarsBuilder? vars) => _$this._vars = vars;
 
-  _i1.Operation _operation;
-  _i1.Operation get operation => _$this._operation;
-  set operation(_i1.Operation operation) => _$this._operation = operation;
+  _i1.Operation? _operation;
+  _i1.Operation? get operation => _$this._operation;
+  set operation(_i1.Operation? operation) => _$this._operation = operation;
 
   GCreateReviewBuilder() {
     GCreateReview._initializeBuilder(this);
   }
 
   GCreateReviewBuilder get _$this {
-    if (_$v != null) {
-      _vars = _$v.vars?.toBuilder();
-      _operation = _$v.operation;
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
       _$v = null;
     }
     return this;
@@ -133,14 +131,12 @@ class GCreateReviewBuilder
 
   @override
   void replace(GCreateReview other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateReview;
   }
 
   @override
-  void update(void Function(GCreateReviewBuilder) updates) {
+  void update(void Function(GCreateReviewBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -149,9 +145,12 @@ class GCreateReviewBuilder
     _$GCreateReview _$result;
     try {
       _$result = _$v ??
-          new _$GCreateReview._(vars: vars.build(), operation: operation);
+          new _$GCreateReview._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, 'GCreateReview', 'operation'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();

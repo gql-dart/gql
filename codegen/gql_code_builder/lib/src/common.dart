@@ -1,7 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:meta/meta.dart";
+import "package:collection/collection.dart";
 
 import "../source.dart";
 
@@ -50,12 +50,12 @@ const _reserved = <String>[
 ];
 
 class SourceSelections {
-  final String url;
+  final String? url;
   final List<SelectionNode> selections;
 
   const SourceSelections({
     this.url,
-    this.selections,
+    required this.selections,
   });
 }
 
@@ -81,20 +81,33 @@ const defaultTypeMap = <String, Reference>{
 
 Reference _typeRef(
   TypeNode type,
-  Map<String, Reference> typeMap,
-) {
+  Map<String, Reference> typeMap, [
+
+  /// TODO: remove
+  /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
+  bool inList = false,
+]) {
   if (type is NamedTypeNode) {
-    return typeMap[type.name.value] ?? Reference(type.name.value);
+    final ref = typeMap[type.name.value] ?? Reference(type.name.value);
+    return TypeReference(
+      (b) => b
+        ..url = ref.url
+        ..symbol = ref.symbol
+
+        /// TODO: remove `inList` check
+        /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
+        ..isNullable = !inList && !type.isNonNull,
+    );
   } else if (type is ListTypeNode) {
     return TypeReference(
       (b) => b
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
-        ..types.add(_typeRef(type.type, typeMap)),
+        ..isNullable = !type.isNonNull
+        ..types.add(_typeRef(type.type, typeMap, true)),
     );
   }
-
-  return null;
+  throw Exception("Unrecognized TypeNode type");
 }
 
 const defaultRootTypes = {
@@ -106,37 +119,30 @@ const defaultRootTypes = {
 NamedTypeNode unwrapTypeNode(
   TypeNode node,
 ) {
-  if (node is NamedTypeNode) {
-    return node;
-  }
-
   if (node is ListTypeNode) {
     return unwrapTypeNode(node.type);
   }
-
-  return null;
+  return node as NamedTypeNode;
 }
 
-TypeDefinitionNode getTypeDefinitionNode(
+TypeDefinitionNode? getTypeDefinitionNode(
   DocumentNode schema,
   String name,
 ) =>
-    schema.definitions.whereType<TypeDefinitionNode>().firstWhere(
-          (node) => node.name.value == name,
-          orElse: () => null,
-        );
+    schema.definitions
+        .whereType<TypeDefinitionNode>()
+        .firstWhereOrNull((node) => node.name.value == name);
 
 Method buildGetter({
-  @required NameNode nameNode,
-  @required TypeNode typeNode,
-  @required SourceNode schemaSource,
+  required NameNode nameNode,
+  required TypeNode typeNode,
+  required SourceNode schemaSource,
   Map<String, Reference> typeOverrides = const {},
-  String typeRefPrefix,
+  String? typeRefPrefix,
   bool built = true,
 }) {
   final unwrappedTypeNode = unwrapTypeNode(typeNode);
   final typeName = unwrappedTypeNode.name.value;
-  final nullable = !unwrappedTypeNode.isNonNull;
   final typeDef = getTypeDefinitionNode(
     schemaSource.document,
     typeName,
@@ -162,8 +168,6 @@ Method buildGetter({
   return Method(
     (b) => b
       ..annotations = ListBuilder(<Expression>[
-        if (built && nullable)
-          refer("nullable", "package:built_value/built_value.dart"),
         if (built && identifier(nameNode.value) != nameNode.value)
           refer("BuiltValueField", "package:built_value/built_value.dart")
               .call([], {"wireName": literalString(nameNode.value)}),
@@ -203,16 +207,22 @@ Method buildToJsonGetter(
             ? refer("serializers", "#serializer")
                 .property("serializeWith")
                 .call([
-                refer(className).property("serializer"),
-                refer("this"),
-              ]).code
+                  refer(className).property("serializer"),
+                  refer("this"),
+                ])
+                .asA(refer("Map<String, dynamic>"))
+                .code
             : null,
     );
 
 Method buildFromJsonGetter(String className) => Method(
       (b) => b
         ..static = true
-        ..returns = refer(className)
+        ..returns = TypeReference(
+          (b) => b
+            ..symbol = className
+            ..isNullable = true,
+        )
         ..name = "fromJson"
         ..requiredParameters.add(Parameter((b) => b
           ..type = refer("Map<String, dynamic>")

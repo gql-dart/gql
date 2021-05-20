@@ -12,20 +12,21 @@ Future<void> writeDocument(
   Library library,
   BuildStep buildStep,
   String extension, [
-  String schemaUrl,
+  String? schemaUrl,
 ]) {
-  if (library.body.isEmpty) return null;
+  if (library.body.isEmpty) return Future.value(null);
 
   final generatedAsset = buildStep.inputId.changeExtension(extension);
 
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter(
-      GqlAllocator(
+      allocator: GqlAllocator(
         buildStep.inputId.uri.toString(),
         generatedAsset.uri.toString(),
         schemaUrl,
       ),
-      true,
+      orderDirectives: true,
+      useNullSafetySyntax: true,
     ),
   )}");
 
