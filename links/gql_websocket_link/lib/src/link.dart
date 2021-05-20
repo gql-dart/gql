@@ -133,7 +133,7 @@ class WebSocketLink extends Link {
     );
     _requests.add(requestWithContext);
 
-    if (_channel == null || _connectionStateController.value == closed) {
+    if (_connectionStateController.value == closed) {
       await _connect();
     }
     final StreamController<Response> response = StreamController();
