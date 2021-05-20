@@ -5,8 +5,8 @@ import "dart:io";
 import "package:gql/language.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
-import "package:web_socket_channel/io.dart";
 import "package:test/test.dart";
+import "package:web_socket_channel/io.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
 void main() {

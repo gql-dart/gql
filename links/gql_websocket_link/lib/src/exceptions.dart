@@ -1,7 +1,7 @@
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:meta/meta.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
+import "package:meta/meta.dart";
 
 /// Exception occurring when response parsing fails
 @immutable
