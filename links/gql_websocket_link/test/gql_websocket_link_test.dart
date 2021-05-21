@@ -5,8 +5,8 @@ import "dart:io";
 import "package:gql/language.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_websocket_link/gql_websocket_link.dart";
-import "package:web_socket_channel/io.dart";
 import "package:test/test.dart";
+import "package:web_socket_channel/io.dart";
 import "package:web_socket_channel/status.dart" as websocket_status;
 
 void main() {
@@ -1056,6 +1056,34 @@ void main() {
           reconnectInterval: Duration(milliseconds: 500),
         );
         link.request(request).listen(print, onError: print);
+      });
+
+      test(
+          "_connect() must be called only once when executing multiple requests without awaiting",
+          () async {
+        WebSocketLink link;
+        Request request;
+
+        request = Request(
+          operation: Operation(
+            operationName: "sub",
+            document: parseString("subscription MySubscription {}"),
+          ),
+        );
+
+        link = WebSocketLink(
+          null,
+          channelGenerator: expectAsync0(
+            () async => IOWebSocketChannel.connect("ws://localhost"),
+            count: 1,
+            max: 1,
+          ),
+        );
+
+        link.request(request).listen((event) {});
+        link.request(request).listen((event) {});
+        link.request(request).listen((event) {});
+        link.request(request).listen((event) {});
       });
     },
   );
