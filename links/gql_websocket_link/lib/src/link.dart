@@ -120,7 +120,8 @@ class WebSocketLink extends Link {
     this.graphQLSocketMessageDecoder = _defaultGraphQLSocketMessageDecoder,
     this.initialPayload,
     this.inactivityTimeout,
-  }) : assert(uri == null || (channelGenerator == null)) {
+  }) : assert((uri == null && channelGenerator != null) ||
+            (uri != null && channelGenerator == null)) {
     _channelGenerator =
         channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(uri!));
   }
