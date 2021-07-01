@@ -48,6 +48,7 @@ const _reserved = <String>[
   "List",
   "Set",
   "update",
+  "values",
 ];
 
 class SourceSelections {
