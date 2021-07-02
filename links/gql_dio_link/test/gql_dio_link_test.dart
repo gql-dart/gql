@@ -249,6 +249,73 @@ void main() {
       ).called(1);
     });
 
+    test("adds extra from context", () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+            (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+                extra: options.extra,
+              ),
+            ),
+          );
+        },
+      );
+
+      await execute(
+        Request(
+          operation: Operation(
+            document: parseString("query MyQuery {}"),
+          ),
+          variables: const <String, dynamic>{"i": 12},
+          context: Context.fromList(
+            const [
+              DioExtraContext(
+                extra: {
+                  "foo": "bar",
+                },
+              ),
+            ],
+          ),
+        ),
+      ).first;
+
+      verify(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+              responseType: dio.ResponseType.json,
+              headers: <String, dynamic>{
+                dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                dio.Headers.acceptHeader: "*/*",
+              },
+              extra: <String, dynamic>{
+                "foo": "bar",
+              },
+            ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+
     test("adds default headers", () async {
       final client = MockDio();
       final link = DioLink(

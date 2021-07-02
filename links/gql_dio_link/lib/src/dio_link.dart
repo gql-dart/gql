@@ -39,6 +39,22 @@ class DioLinkResponseContext extends ContextEntry {
       ];
 }
 
+/// Dio link extra context
+@immutable
+class DioExtraContext extends ContextEntry {
+  /// Custom field that will be passed to Dio request options and response
+  final Map<String, dynamic> extra;
+
+  const DioExtraContext({
+    this.extra = const {},
+  });
+
+  @override
+  List<Object> get fieldsForEquality => [
+        extra,
+      ];
+}
+
 extension _CastDioResponse on dio.Response {
   dio.Response<T> castData<T>() => dio.Response<T>(
         data: data as T?,
@@ -91,6 +107,7 @@ class DioLink extends Link {
         ...defaultHeaders,
         ..._getHttpLinkHeaders(request),
       },
+      extra: _getRequestExtra(request),
     );
 
     if (dioResponse.statusCode! >= 300 ||
@@ -130,6 +147,7 @@ class DioLink extends Link {
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
     required Map<String, dynamic> body,
     required Map<String, String> headers,
+    required Map<String, dynamic>? extra,
   }) async {
     try {
       final res = await client.post<dynamic>(
@@ -138,6 +156,7 @@ class DioLink extends Link {
         options: dio.Options(
           responseType: dio.ResponseType.json,
           headers: headers,
+          extra: extra,
         ),
       );
       if (res.data is Map<String, dynamic> == false) {
@@ -208,6 +227,17 @@ class DioLink extends Link {
       return {
         if (linkHeaders != null) ...linkHeaders.headers,
       };
+    } catch (e) {
+      throw ContextReadException(
+        originalException: e,
+      );
+    }
+  }
+
+  Map<String, dynamic>? _getRequestExtra(Request request) {
+    try {
+      final DioExtraContext? extraContext = request.context.entry();
+      return extraContext?.extra;
     } catch (e) {
       throw ContextReadException(
         originalException: e,
