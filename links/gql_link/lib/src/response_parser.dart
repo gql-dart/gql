@@ -34,6 +34,7 @@ class ResponseParser {
             )
             .toList(),
         extensions: error["extensions"] as Map<String, dynamic>?,
+        raw: error,
       );
 
   /// Parses a response error location

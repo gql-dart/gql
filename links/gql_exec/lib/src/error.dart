@@ -16,11 +16,15 @@ class GraphQLError {
   /// Implementation-specific extensions to this error
   final Map<String, dynamic>? extensions;
 
+  /// Raw data of this error
+  final Map<String, dynamic>? raw;
+
   const GraphQLError({
     required this.message,
     this.locations,
     this.path,
     this.extensions,
+    this.raw,
   });
 
   List<Object?> _getChildren() => [
