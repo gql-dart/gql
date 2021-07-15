@@ -1,8 +1,8 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
-import "package:recase/recase.dart";
 
 import "./common.dart";
+import "./utils/to_camel_case.dart";
 
 /// Generates a class that implements [Built], along with its serializers
 Class builtClass({
@@ -68,7 +68,7 @@ Class builtClass({
         if (getters != null) ...getters,
         // Serlialization methods
         buildSerializerGetter(className).rebuild(
-          (b) => b..body = Code("_\$${className.camelCase}Serializer"),
+          (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
         ),
         buildToJsonGetter(className),
         buildFromJsonGetter(className),
