@@ -16,9 +16,7 @@ import "package:http_parser/http_parser.dart";
 
 import 'gql_dio_link_test.mocks.dart';
 
-@GenerateMocks(
-  [dio.Dio, RequestSerializer, ResponseParser],
-)
+@GenerateMocks([dio.Dio])
 void main() {
   late MockDio mockClient;
   late DioLink link;
