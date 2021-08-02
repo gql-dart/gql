@@ -1,3 +1,5 @@
+test/**/*.mocks.dart
+
 # Miscellaneous
 *.class
 *.log
