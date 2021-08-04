@@ -1,3 +1,7 @@
+## 0.3.0-alpha.0
+
+- **Breaking Change** - generated files are built to `__generated__` subdirectory
+
 ## 0.2.0-nullsafety.1
 
 - bump `built_value`
