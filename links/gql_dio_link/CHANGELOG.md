@@ -1,3 +1,7 @@
+## 0.2
+
+* Add support for file upload
+
 ## [0.1.0-nullsafety.1]
 
 * Migrate to null-safety.

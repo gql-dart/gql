@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import "package:dio/dio.dart" as dio;
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
 
+import '_utils.dart';
 import "exceptions.dart";
 
 /// HTTP link headers
@@ -84,7 +87,7 @@ class DioLink extends Link {
   Stream<Response> request(Request request, [forward]) async* {
     final dio.Response<Map<String, dynamic>> dioResponse =
         await _executeDioRequest(
-      body: _serializeRequest(request),
+      body: _prepareRequestBody(request),
       headers: <String, String>{
         dio.Headers.acceptHeader: "*/*",
         dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
@@ -110,6 +113,50 @@ class DioLink extends Link {
     );
   }
 
+  dynamic _prepareRequestBody(Request request) {
+    final body = _encodeAttempter(
+      request,
+      serializer.serializeRequest,
+    )(request);
+
+    final fileMap = extractFlattenedFileMap(body);
+
+    if (fileMap.isEmpty) return body;
+
+    final encodedBody = _encodeAttempter(
+      request,
+      (Map body) => json.encode(
+        body,
+        toEncodable: (dynamic object) =>
+            (object is dio.MultipartFile) ? null : object.toJson(),
+      ),
+    )(body);
+
+    final formBody = dio.FormData.fromMap(
+      {
+        "operations": encodedBody,
+      }..addAll(generateFileFormBody(fileMap)),
+    );
+
+    return formBody;
+  }
+
+  /// wrap an encoding transform in exception handling
+  T Function(V) _encodeAttempter<T, V>(
+    Request request,
+    T Function(V) encoder,
+  ) =>
+      (V input) {
+        try {
+          return encoder(input);
+        } catch (e) {
+          throw RequestFormatException(
+            originalException: e,
+            request: request,
+          );
+        }
+      };
+
   Context _updateResponseContext(
     Response response,
     dio.Response httpResponse,
@@ -128,7 +175,7 @@ class DioLink extends Link {
   }
 
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
-    required Map<String, dynamic> body,
+    required dynamic body,
     required Map<String, String> headers,
   }) async {
     try {
