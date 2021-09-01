@@ -96,6 +96,9 @@ abstract class Link {
     /// Terminating [Link]s do not call this function.
     NextLink? forward,
   ]);
+
+  /// Can be called to clean up resources
+  Future<void> dispose() async => null;
 }
 
 class _FunctionLink extends Link {
@@ -125,6 +128,9 @@ class _LinkChain extends Link {
         forward,
         (fw, link) => (op) => link.request(op, fw),
       )!(request);
+
+  @override
+  Future<void> dispose() => Future.wait(links.map((link) => link.dispose()));
 }
 
 @visibleForTesting
