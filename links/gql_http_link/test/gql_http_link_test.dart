@@ -606,8 +606,8 @@ void main() {
       );
     });
 
-    test("closes the underlining http client", () {
-      link.dispose();
+    test("closes the underlining http client", () async {
+      await link.dispose();
 
       verify(
         client.close(),
