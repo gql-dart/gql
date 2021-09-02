@@ -135,6 +135,10 @@ List<Class> buildSelectionSetDataClasses({
     );
   }
 
+  final superclassSelectionNodes = superclassSelections.values
+      .expand((selections) => selections.selections)
+      .toSet();
+
   final fieldGetters = selections.whereType<FieldNode>().map<Method>(
     (node) {
       final nameNode = node.alias ?? node.name;
@@ -153,6 +157,7 @@ List<Class> buildSelectionSetDataClasses({
         typeOverrides: typeOverrides,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
+        isOverride: superclassSelectionNodes.contains(node),
       );
     },
   ).toList();
@@ -188,7 +193,11 @@ List<Class> buildSelectionSetDataClasses({
           )
           ..methods.addAll([
             ...fieldGetters,
-            buildToJsonGetter(builtClassName(name), implemented: false),
+            buildToJsonGetter(
+              builtClassName(name),
+              implemented: false,
+              isOverride: superclassSelections.isNotEmpty,
+            ),
           ]),
       )
     else
@@ -199,16 +208,7 @@ List<Class> buildSelectionSetDataClasses({
           if (fieldGetters.any((getter) => getter.name == "G__typename"))
             "G__typename": literalString(type),
         },
-      ).rebuild(
-        (b) => b
-          ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
-              ),
-            ),
-          ),
+        superclassSelections: superclassSelections,
       ),
     // Build classes for each field that includes selections
     ...selections

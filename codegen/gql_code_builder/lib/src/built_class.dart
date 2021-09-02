@@ -9,24 +9,33 @@ Class builtClass({
   required String name,
   Iterable<Method>? getters,
   Map<String, Expression>? initializers,
+  Map<String, SourceSelections> superclassSelections = const {},
 }) {
   final className = builtClassName(name);
   return Class(
     (b) => b
       ..abstract = true
       ..name = className
-      ..implements.add(
-        TypeReference(
-          (b) => b
-            ..url = "package:built_value/built_value.dart"
-            ..symbol = "Built"
-            ..types = ListBuilder(
-              <Reference>[
-                refer(className),
-                refer("${className}Builder"),
-              ],
+      ..implements.addAll(
+        [
+          TypeReference(
+            (b) => b
+              ..url = "package:built_value/built_value.dart"
+              ..symbol = "Built"
+              ..types = ListBuilder(
+                <Reference>[
+                  refer(className),
+                  refer("${className}Builder"),
+                ],
+              ),
+          ),
+          ...superclassSelections.keys.map<Reference>(
+            (superName) => refer(
+              builtClassName(superName),
+              (superclassSelections[superName]?.url ?? "") + "#data",
             ),
-        ),
+          )
+        ],
       )
       ..constructors.addAll(
         [
@@ -70,7 +79,10 @@ Class builtClass({
         buildSerializerGetter(className).rebuild(
           (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
         ),
-        buildToJsonGetter(className),
+        buildToJsonGetter(
+          className,
+          isOverride: superclassSelections.isNotEmpty,
+        ),
         buildFromJsonGetter(className),
       ]),
   );
