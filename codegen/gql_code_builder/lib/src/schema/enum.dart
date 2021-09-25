@@ -2,9 +2,8 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/schema.dart";
-import "package:recase/recase.dart";
-
 import "package:gql_code_builder/src/common.dart";
+import "package:recase/recase.dart";
 
 Class buildEnumClass(
   EnumTypeDefinitionNode node,

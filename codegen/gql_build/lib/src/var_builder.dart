@@ -2,13 +2,12 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
-import "package:path/path.dart";
-
 import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/add_introspection.dart";
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/var.dart";
+import "package:path/path.dart";
 
 class VarBuilder implements Builder {
   final AssetId schemaId;

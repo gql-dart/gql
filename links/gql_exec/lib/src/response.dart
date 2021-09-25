@@ -73,7 +73,7 @@ class Response {
 @immutable
 class ResponseExtensions extends ContextEntry {
   /// [Response] extensions
-  final dynamic? extensions;
+  final dynamic extensions;
 
   const ResponseExtensions([
     this.extensions,

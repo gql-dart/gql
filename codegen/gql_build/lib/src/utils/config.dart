@@ -33,21 +33,13 @@ Set<Reference> customSerializers(dynamic customSerializersConfig) {
   return {};
 }
 
-EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) {
-  if (config == null) {
-    return EnumFallbackConfig(
-        fallbackValueMap: {},
-        generateFallbackValuesGlobally: false,
-        globalEnumFallbackName: null);
-  }
-
-  return EnumFallbackConfig(
-    globalEnumFallbackName:
-        (config["global_enum_fallback_name"] ?? "gUnknownEnumValue") as String,
-    generateFallbackValuesGlobally: config["global_enum_fallbacks"] == true,
-    fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
-  );
-}
+EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
+    EnumFallbackConfig(
+      globalEnumFallbackName: (config["global_enum_fallback_name"] ??
+          "gUnknownEnumValue") as String,
+      generateFallbackValuesGlobally: config["global_enum_fallbacks"] == true,
+      fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
+    );
 
 Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
   if (enumFallbacks is YamlMap) {

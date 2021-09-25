@@ -1,5 +1,5 @@
-import "package:mockito/annotations.dart";
 import "package:http/http.dart" as http;
+import "package:mockito/annotations.dart";
 
 export "./http.mocks.dart";
 

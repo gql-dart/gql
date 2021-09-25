@@ -1,11 +1,10 @@
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
-import "package:gql/src/schema/definitions.dart";
-import "package:gql/src/schema/definitions/value_types.dart" show Variable;
-
-import "package:gql/src/operation/definitions/type_resolver.dart";
 import "package:gql/src/operation/definitions/base_types.dart";
 import "package:gql/src/operation/definitions/selections.dart";
+import "package:gql/src/operation/definitions/type_resolver.dart";
+import "package:gql/src/schema/definitions.dart";
+import "package:gql/src/schema/definitions/value_types.dart" show Variable;
+import "package:meta/meta.dart";
 
 @immutable
 abstract class ExecutableDefinition extends ExecutableWithResolver {

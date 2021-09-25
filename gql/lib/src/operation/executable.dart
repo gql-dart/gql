@@ -1,6 +1,6 @@
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
 import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 import "./definitions.dart";
 

@@ -1,13 +1,13 @@
 import "dart:async";
 import "dart:collection";
 
+import "package:analyzer/dart/element/element.dart";
 import "package:build/build.dart";
-import "package:path/path.dart" as p;
-import "package:glob/glob.dart";
 import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
+import "package:glob/glob.dart";
 import "package:gql_code_builder/serializer.dart";
-import "package:analyzer/dart/element/element.dart";
+import "package:path/path.dart" as p;
 
 import "./allocators/pick_allocator.dart";
 

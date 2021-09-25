@@ -1,7 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:collection/collection.dart";
+import "package:gql/ast.dart";
 
 import "../source.dart";
 

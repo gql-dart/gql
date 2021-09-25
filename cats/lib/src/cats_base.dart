@@ -56,16 +56,20 @@ class CatRunner<Doc> {
       (a) => a is SyntaxErrorAssertion,
       orElse: () => null,
     ) as SyntaxErrorAssertion?;
+    // ignore: unused_local_variable
     var errorCountAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorCountAssertion,
       orElse: () => null,
     ) as ErrorCountAssertion?;
+    // ignore: unused_local_variable
     var errorCodeAssertions =
         testCase.assertions!.whereType<ErrorCodeAssertion>();
+    // ignore: unused_local_variable
     var errorContainsAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorContainsAssertion,
       orElse: () => null,
     ) as ErrorContainsAssertion?;
+    // ignore: unused_local_variable
     var errorRegexAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorRegexAssertion,
       orElse: () => null,
@@ -78,9 +82,12 @@ class CatRunner<Doc> {
       var schemaDoc;
       var schemaParsingError;
 
+      // ignore: unused_local_variable
       Iterable<DriverError> validationErrors;
 
+      // ignore: unused_local_variable
       var executionResult;
+      // ignore: unused_local_variable
       var executionError;
 
       setUp(() {

@@ -1,5 +1,5 @@
-import "package:gql/schema.dart";
 import "package:gql/operation.dart";
+import "package:gql/schema.dart";
 import "package:test/test.dart";
 
 import "./data/operations.gql.dart" as _operations;

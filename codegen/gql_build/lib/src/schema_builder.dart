@@ -2,12 +2,11 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
-import "package:path/path.dart";
-
 import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/schema.dart";
+import "package:path/path.dart";
 
 class SchemaBuilder implements Builder {
   final Map<String, Reference> typeOverrides;

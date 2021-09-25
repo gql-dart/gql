@@ -1,10 +1,10 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/schema.dart";
+import "package:gql_code_builder/source.dart";
 import "package:gql_code_builder/src/schema/enum.dart";
 import "package:gql_code_builder/src/schema/input.dart";
 import "package:gql_code_builder/src/schema/scalar.dart";
-import "package:gql_code_builder/source.dart";
 
 /// Build input types, enums and scalars from schema
 Spec? buildSchema(

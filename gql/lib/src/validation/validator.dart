@@ -1,12 +1,12 @@
 import "package:gql/ast.dart" as ast;
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
+import "package:gql/src/validation/rules/unique_argument_names.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
 import "package:gql/src/validation/rules/unique_field_definition_names.dart";
 import "package:gql/src/validation/rules/unique_input_field_names.dart";
 import "package:gql/src/validation/rules/unique_operation_types.dart";
 import "package:gql/src/validation/rules/unique_type_names.dart";
-import "package:gql/src/validation/rules/unique_argument_names.dart";
 import "package:gql/src/validation/validating_visitor.dart";
 import "package:meta/meta.dart";
 

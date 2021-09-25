@@ -1,8 +1,7 @@
-import "package:meta/meta.dart";
 import "package:collection/collection.dart";
-import "package:gql/src/schema/definitions.dart";
-
 import "package:gql/src/operation/definitions/type_resolver.dart";
+import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 @immutable
 abstract class ExecutableGraphQLEntity extends GraphQLEntity {

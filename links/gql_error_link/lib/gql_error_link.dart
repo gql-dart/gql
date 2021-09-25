@@ -2,9 +2,10 @@
 library gql_error_link;
 
 import "dart:async";
+
 import "package:async/async.dart";
-import "package:gql_link/gql_link.dart";
 import "package:gql_exec/gql_exec.dart";
+import "package:gql_link/gql_link.dart";
 
 /// A handler of GraphQL errors.
 typedef ErrorHandler = Stream<Response>? Function(

@@ -1,10 +1,9 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-
+import "package:gql_code_builder/source.dart";
+import "package:gql_code_builder/src/built_class.dart";
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/src/inline_fragment_classes.dart";
-import "package:gql_code_builder/src/built_class.dart";
-import "package:gql_code_builder/source.dart";
 
 List<Class> buildOperationDataClasses(
   OperationDefinitionNode op,
