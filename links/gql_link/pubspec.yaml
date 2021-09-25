@@ -8,7 +8,7 @@ dependencies:
   gql: ^0.13.0
   gql_exec: ^0.3.0
   meta: ^1.1.7
-dev_dependencies:
+dev_dependencies: 
   gql_pedantic: ^1.0.2
   mockito: ^4.1.1
   test: ^1.0.0

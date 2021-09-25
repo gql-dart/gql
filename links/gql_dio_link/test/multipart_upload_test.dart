@@ -8,13 +8,12 @@ import "package:dio/dio.dart" as dio;
 import "package:gql/language.dart";
 import "package:gql_dio_link/gql_dio_link.dart";
 import "package:gql_exec/gql_exec.dart";
-import "package:gql_link/gql_link.dart";
-import 'package:mockito/annotations.dart';
+import "package:http_parser/http_parser.dart";
+import "package:mockito/annotations.dart";
 import "package:mockito/mockito.dart";
 import "package:test/test.dart";
-import "package:http_parser/http_parser.dart";
 
-import 'gql_dio_link_test.mocks.dart';
+import "gql_dio_link_test.mocks.dart";
 
 @GenerateMocks([dio.Dio])
 void main() {
