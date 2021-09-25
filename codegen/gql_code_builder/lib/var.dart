@@ -1,9 +1,10 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/source.dart";
-import "package:gql_code_builder/src/built_class.dart";
-import "package:gql_code_builder/src/common.dart";
-import "package:gql_code_builder/src/frag_vars.dart";
+
+import "./source.dart";
+import "./src/built_class.dart";
+import "./src/common.dart";
+import "./src/frag_vars.dart";
 
 Library buildVarLibrary(
   SourceNode docSource,

@@ -1,11 +1,12 @@
 import "package:build/build.dart";
-import "package:gql_build/src/ast_builder.dart";
-import "package:gql_build/src/data_builder.dart";
-import "package:gql_build/src/req_builder.dart";
-import "package:gql_build/src/schema_builder.dart";
-import "package:gql_build/src/serializer_builder.dart";
-import "package:gql_build/src/utils/config.dart";
-import "package:gql_build/src/var_builder.dart";
+
+import "./src/ast_builder.dart";
+import "./src/data_builder.dart";
+import "./src/req_builder.dart";
+import "./src/schema_builder.dart";
+import "./src/serializer_builder.dart";
+import "./src/utils/config.dart";
+import "./src/var_builder.dart";
 
 /// Builds AST of a GraphQL document
 Builder astBuilder(

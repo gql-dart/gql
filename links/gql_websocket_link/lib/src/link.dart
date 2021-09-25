@@ -120,7 +120,8 @@ class WebSocketLink extends Link {
     this.graphQLSocketMessageDecoder = _defaultGraphQLSocketMessageDecoder,
     this.initialPayload,
     this.inactivityTimeout,
-  }) : assert(uri == null || (channelGenerator == null)) {
+  }) : assert((uri == null && channelGenerator != null) ||
+            (uri != null && channelGenerator == null)) {
     _channelGenerator =
         channelGenerator ?? () => WebSocketChannel.connect(Uri.parse(uri!));
   }
@@ -335,6 +336,7 @@ class WebSocketLink extends Link {
   /// Only use this, if you want to disconnect from the current server
   /// in favour of another one. If that's the case,
   /// create a new [WebSocketLink] instance.
+  @override
   Future<void> dispose() async {
     await _close();
     _channel = null;

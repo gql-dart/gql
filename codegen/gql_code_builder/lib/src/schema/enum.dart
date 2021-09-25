@@ -1,9 +1,10 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/schema.dart";
-import "package:gql_code_builder/src/common.dart";
-import "package:recase/recase.dart";
+
+import "../../schema.dart";
+import "../common.dart";
+import "../utils/to_camel_case.dart";
 
 Class buildEnumClass(
   EnumTypeDefinitionNode node,
@@ -96,7 +97,7 @@ ListBuilder<Method> _buildMethods(
             ..type = MethodType.getter
             ..name = "serializer"
             ..lambda = true
-            ..body = Code("_\$${enumName.camelCase}Serializer"),
+            ..body = Code("_\$${toCamelCase(enumName)}Serializer"),
         ),
         Method(
           (b) => b
@@ -112,7 +113,7 @@ ListBuilder<Method> _buildMethods(
             ..type = MethodType.getter
             ..name = "values"
             ..lambda = true
-            ..body = Code("_\$${enumName.camelCase}Values"),
+            ..body = Code("_\$${toCamelCase(enumName)}Values"),
         ),
         Method(
           (b) => b
@@ -127,7 +128,7 @@ ListBuilder<Method> _buildMethods(
               ),
             )
             ..lambda = true
-            ..body = refer("_\$${enumName.camelCase}ValueOf")
+            ..body = refer("_\$${toCamelCase(enumName)}ValueOf")
                 .call([refer("name")]).code,
         ),
       ],
@@ -176,5 +177,5 @@ Field _buildConst(
         ..type = refer(enumName)
         ..name = _escapeConstName(node.name.value)
         ..assignment = Code(
-            "_\$${enumName.camelCase}${_escapeConstName(node.name.value)}"),
+            "_\$${toCamelCase(enumName)}${_escapeConstName(node.name.value)}"),
     );

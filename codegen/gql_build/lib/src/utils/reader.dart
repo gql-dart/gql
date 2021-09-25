@@ -2,8 +2,9 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:gql/language.dart";
-import "package:gql_build/src/config.dart";
 import "package:gql_code_builder/source.dart";
+
+import "../config.dart";
 
 Set<AssetId> _getImports(
   String source, {
