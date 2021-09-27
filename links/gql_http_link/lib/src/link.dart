@@ -128,6 +128,7 @@ class HttpLink extends Link {
     yield Response(
       data: response.data,
       errors: response.errors,
+      response: response.response,
       context: _updateResponseContext(response, httpResponse),
     );
   }
