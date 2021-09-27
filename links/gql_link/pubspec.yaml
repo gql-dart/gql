@@ -4,7 +4,7 @@ description: A simple and modular AST-based GraphQL request execution interface.
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.12.0 <3.0.0'
-dependencies:
+dependencies: 
   gql_exec: ^0.3.0
   gql: ^0.13.0
   meta: ^1.1.7
