@@ -12,15 +12,19 @@ final fakeHttpLink = Link.function(
     if ((headers?.headers ?? <String, String>{})["Authorization"] == null) {
       throw HttpLinkServerException(
         response: http.Response("", 401),
-        parsedResponse: Response(),
+        parsedResponse: Response(response: const <String, dynamic>{}),
       );
     }
 
-    yield Response(
-      data: <String, String>{
+    final response = <String, dynamic>{
+      "data": <String, String>{
         "authHeader":
             (headers?.headers ?? <String, String>{})["Authorization"]!,
-      },
+      }
+    };
+    yield Response(
+      data: response["data"] as Map<String, dynamic>?,
+      response: response,
     );
   },
 );
