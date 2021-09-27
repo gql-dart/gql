@@ -4,7 +4,7 @@ description: GraphQL tools for parsing, transforming and printing GraphQL docume
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.12.0 <3.0.0'
-dependencies:
+dependencies: 
   collection: ^1.15.0
   meta: ^1.3.0
   source_span: ^1.8.0
