@@ -1,10 +1,9 @@
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
-import "package:gql/src/schema/definitions.dart";
-
-import "package:gql/src/operation/definitions/type_resolver.dart";
 import "package:gql/src/operation/definitions/base_types.dart";
 import "package:gql/src/operation/definitions/definitions.dart";
+import "package:gql/src/operation/definitions/type_resolver.dart";
+import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 /// [Selection Sets](https://spec.graphql.org/June2018/#sec-Selection-Sets)
 /// specify the [Field]s to select from their cooresponding schema type,

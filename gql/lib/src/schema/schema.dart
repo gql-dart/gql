@@ -1,12 +1,10 @@
 import "dart:collection";
 
 import "package:collection/collection.dart" show IterableExtension;
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
-
 import "package:gql/src/schema/defaults.dart";
-
 import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 //// A GraphQL Schema definition __without__ field resolution capacities.
 ///

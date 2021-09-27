@@ -1,5 +1,5 @@
-import "package:cats/cats.dart";
 import "package:gql/ast.dart" as ast;
+import "package:gql/cats/cats.dart";
 import "package:gql/language.dart" as lang;
 
 class IdentityTransformer extends ast.TransformingVisitor {}

@@ -1,18 +1,16 @@
 import "dart:io" show stdout, stderr, exit;
 
 import "package:args/args.dart";
-
-import "package:gql_exec/gql_exec.dart";
-import "package:gql_link/gql_link.dart";
-import "package:gql_http_link/gql_http_link.dart";
-import "package:gql_transform_link/gql_transform_link.dart";
-
 import "package:gql_example_cli_github/add_star.data.gql.dart";
 import "package:gql_example_cli_github/add_star.req.gql.dart";
-import "package:gql_example_cli_github/remove_star.data.gql.dart";
-import "package:gql_example_cli_github/remove_star.req.gql.dart";
 import "package:gql_example_cli_github/read_repos.data.gql.dart";
 import "package:gql_example_cli_github/read_repos.req.gql.dart";
+import "package:gql_example_cli_github/remove_star.data.gql.dart";
+import "package:gql_example_cli_github/remove_star.req.gql.dart";
+import "package:gql_exec/gql_exec.dart";
+import "package:gql_http_link/gql_http_link.dart";
+import "package:gql_link/gql_link.dart";
+import "package:gql_transform_link/gql_transform_link.dart";
 
 // to run the example, create a file ../local.dart with the content:
 // const String yourPersonalAccessToken =

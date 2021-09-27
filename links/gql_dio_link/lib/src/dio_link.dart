@@ -1,11 +1,11 @@
-import 'dart:convert';
+import "dart:convert";
 
 import "package:dio/dio.dart" as dio;
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
 
-import '_utils.dart';
+import "_utils.dart";
 import "exceptions.dart";
 
 /// HTTP link headers
@@ -133,7 +133,7 @@ class DioLink extends Link {
     )(body);
 
     final formBody = dio.FormData.fromMap(
-      {
+      <String, dynamic>{
         "operations": encodedBody,
       }..addAll(generateFileFormBody(fileMap)),
     );
@@ -234,17 +234,6 @@ class DioLink extends Link {
       throw DioLinkParserException(
         originalException: e,
         response: dioResponse,
-      );
-    }
-  }
-
-  Map<String, dynamic> _serializeRequest(Request request) {
-    try {
-      return serializer.serializeRequest(request);
-    } catch (e) {
-      throw RequestFormatException(
-        originalException: e,
-        request: request,
       );
     }
   }

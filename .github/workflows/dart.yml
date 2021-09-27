@@ -18,7 +18,6 @@ jobs:
           - gql_http_link
           - gql_websocket_link
           - gql_transform_link
-          - cats
     runs-on: ubuntu-latest
     container:
       image: google/dart
@@ -111,8 +110,8 @@ jobs:
           echo ""
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          multipack --only $PACKAGE exec dart analyze --version
+          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
   builder_tests:
     strategy:
       matrix:
@@ -156,8 +155,8 @@ jobs:
           echo ""
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          multipack --only $PACKAGE exec dart analyze --version
+          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
       - name: Run tests
         run: |
           multipack --only $PACKAGE exec [ -d ./test ] || exit 0

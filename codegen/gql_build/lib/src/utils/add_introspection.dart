@@ -79,10 +79,6 @@ class AddTypenameField extends TransformingVisitor {
   FragmentDefinitionNode visitFragmentDefinitionNode(
     FragmentDefinitionNode node,
   ) {
-    if (node.selectionSet == null) {
-      return node;
-    }
-
     final hasTypename = node.selectionSet.selections
         .whereType<FieldNode>()
         .any((node) => node.name.value == "__typename");
@@ -107,10 +103,6 @@ class AddTypenameField extends TransformingVisitor {
   @override
   OperationDefinitionNode visitOperationDefinitionNode(
       OperationDefinitionNode node) {
-    if (node.selectionSet == null) {
-      return node;
-    }
-
     final hasTypename = node.selectionSet.selections
         .whereType<FieldNode>()
         .any((node) => node.name.value == "__typename");

@@ -1,8 +1,7 @@
-import "package:meta/meta.dart";
 import "package:collection/collection.dart";
-
-import "package:gql/src/schema/definitions.dart";
 import "package:gql/src/operation/definitions.dart";
+import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 /// Callback to dereference a full fragment definition by name
 typedef ResolveFragment = FragmentDefinition? Function(String name);

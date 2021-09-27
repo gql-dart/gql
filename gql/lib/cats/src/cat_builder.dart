@@ -1,22 +1,22 @@
-import 'dart:io';
-import 'dart:convert';
+import "dart:convert";
+import "dart:io";
 
-import 'package:yaml/yaml.dart';
+import "package:yaml/yaml.dart";
 
-import './cat_model.dart';
+import "./cat_model.dart";
 
 class CatBuilder {
   Suite buildSuite(String suitePath) {
-    var dir = Directory(suitePath);
+    final dir = Directory(suitePath);
 
-    var folders = dir.listSync().whereType<Directory>();
+    final folders = dir.listSync().whereType<Directory>();
 
-    var scenarios = folders.expand(
+    final scenarios = folders.expand(
       (folder) => folder
           .listSync()
           .whereType<File>()
           .where(
-            (file) => file.path.endsWith('.yaml'),
+            (file) => file.path.endsWith(".yaml"),
           )
           .map(
             (file) => buildScenario(file, folder),
@@ -37,22 +37,22 @@ class CatBuilder {
     var schema;
     var testData;
 
-    var background = doc['background'];
+    final background = doc["background"];
 
     if (background != null) {
-      schema = background['schema'];
-      if (background['schema-file'] != null) {
+      schema = background["schema"];
+      if (background["schema-file"] != null) {
         schema = File(
-          '${folder.path}${Platform.pathSeparator}${background['schema-file']}',
+          "${folder.path}${Platform.pathSeparator}${background["schema-file"]}",
         ).readAsStringSync();
       }
 
       testData = json.decode(
-        json.encode(background['test-data']),
+        json.encode(background["test-data"]),
       );
-      if (background['test-data-file'] != null) {
+      if (background["test-data-file"] != null) {
         testData = File(
-          '${folder.path}${Platform.pathSeparator}${background['test-data-file']}',
+          "${folder.path}${Platform.pathSeparator}${background["test-data-file"]}",
         ).readAsStringSync();
       }
     }
@@ -60,8 +60,8 @@ class CatBuilder {
     return Scenario(
       folder: folder.path,
       file: file.path,
-      name: doc['scenario'],
-      tests: buildTests(doc['tests'], folder),
+      name: doc["scenario"],
+      tests: buildTests(doc["tests"], folder),
       schema: schema,
       testData: testData,
     );
@@ -76,59 +76,59 @@ class CatBuilder {
   }
 
   TestCase buildTest(YamlMap node, Directory folder) {
-    var background = node['given'];
-    var query = background['query'];
+    final background = node["given"];
+    final query = background["query"];
 
     var schema;
     var testData;
 
     if (background != null) {
-      schema = background['schema'];
-      if (background['schema-file'] != null) {
+      schema = background["schema"];
+      if (background["schema-file"] != null) {
         schema = File(
-          '${folder.path}${Platform.pathSeparator}${background['schema-file']}',
+          "${folder.path}${Platform.pathSeparator}${background["schema-file"]}",
         ).readAsStringSync();
       }
 
       testData = json.decode(
-        json.encode(background['test-data']),
+        json.encode(background["test-data"]),
       );
-      if (background['test-data-file'] != null) {
+      if (background["test-data-file"] != null) {
         testData = File(
-          '${folder.path}${Platform.pathSeparator}${background['test-data-file']}',
+          "${folder.path}${Platform.pathSeparator}${background["test-data-file"]}",
         ).readAsStringSync();
       }
     }
 
     return TestCase(
-      name: node['name'],
+      name: node["name"],
       query: query,
       schema: schema,
       testData: testData,
-      action: buildAction(node['when']),
-      assertions: buildAssertions(node['then']),
+      action: buildAction(node["when"]),
+      assertions: buildAssertions(node["then"]),
     );
   }
 
   Action? buildAction(YamlMap node) {
-    if (node.containsKey('parse')) {
+    if (node.containsKey("parse")) {
       return ParsingAction();
     }
-    if (node.containsKey('validate')) {
+    if (node.containsKey("validate")) {
       return ValidationAction(
-        (node['validate'] as YamlList).map(
+        (node["validate"] as YamlList).map(
           (rule) => rule,
         ),
       );
     }
-    if (node.containsKey('execute')) {
+    if (node.containsKey("execute")) {
       return ExecutionAction(
-        operationName: node['operation-name'],
+        operationName: node["operation-name"],
         variables: json.decode(
-          json.encode(node['variables']),
+          json.encode(node["variables"]),
         ),
-        validateQuery: node['validate-query'],
-        testValue: node['test-value'],
+        validateQuery: node["validate-query"],
+        testValue: node["test-value"],
       );
     }
 
@@ -149,29 +149,29 @@ class CatBuilder {
 
   Assertion? buildAssertion(YamlNode? node) {
     if (node is YamlMap) {
-      if (node.containsKey('passes')) {
+      if (node.containsKey("passes")) {
         return PassesAssertion(
-          passes: node['passes'] as bool?,
+          passes: node["passes"] as bool?,
         );
       }
 
-      if (node.containsKey('syntax-error')) {
+      if (node.containsKey("syntax-error")) {
         return SyntaxErrorAssertion(
-          syntaxError: node['syntax-error'] as bool?,
+          syntaxError: node["syntax-error"] as bool?,
         );
       }
 
-      if (node.containsKey('error-count')) {
+      if (node.containsKey("error-count")) {
         return ErrorCountAssertion(
-          count: node['error-count'],
+          count: node["error-count"],
         );
       }
 
-      if (node.containsKey('error-code')) {
+      if (node.containsKey("error-code")) {
         return ErrorCodeAssertion(
-          errorCode: node['error-code'],
-//          args: node['args'],
-//          locations: node['error-code'],
+          errorCode: node["error-code"],
+//          args: node["args"],
+//          locations: node["error-code"],
         );
       }
     }

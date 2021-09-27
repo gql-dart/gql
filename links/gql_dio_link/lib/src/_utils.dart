@@ -1,6 +1,6 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:dio/dio.dart' as dio;
+import "package:dio/dio.dart" as dio;
 
 /// Recursively extract [dio.MultipartFile]s and return them as a normalized map of [path] => [file]
 /// From the given request body
@@ -60,7 +60,7 @@ Map<String, dynamic> generateFileFormBody(
   final List<MapEntry<String, dio.MultipartFile>> fileMapEntries =
       fileMap.entries.toList(growable: false);
 
-  Map<String, dynamic> fileFormBody = <String, dynamic>{};
+  final Map<String, dynamic> fileFormBody = <String, dynamic>{};
 
   for (int i = 0; i < fileMapEntries.length; i++) {
     final MapEntry<String, dio.MultipartFile> entry = fileMapEntries[i];

@@ -1,11 +1,11 @@
 import "dart:async";
 
+import "package:async/async.dart";
 import "package:gql/language.dart";
 import "package:gql_error_link/gql_error_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:test/test.dart";
-import "package:async/async.dart";
 
 class TestException extends LinkException {
   final int id;
