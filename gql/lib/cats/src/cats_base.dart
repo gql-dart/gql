@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import './cat_builder.dart';
+import 'cat_builder.dart';
 import './cat_model.dart';
 
 abstract class CatDriver<Doc> {
