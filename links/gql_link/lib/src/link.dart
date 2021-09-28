@@ -98,7 +98,7 @@ abstract class Link {
   ]);
 
   /// Can be called to clean up resources
-  Future<void> dispose() async => null;
+  dynamic dispose() async => null;
 }
 
 class _FunctionLink extends Link {
