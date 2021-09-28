@@ -97,7 +97,7 @@ class SerializerBuilder implements Builder {
 
     final library = buildSerializerLibrary(
       builtClasses,
-       "serializers.gql.g.dart",
+      "serializers.gql.g.dart",
       additionalSerializers,
     );
 
