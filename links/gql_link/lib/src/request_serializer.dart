@@ -1,5 +1,5 @@
-import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
+import "package:gql_exec/gql_exec.dart";
 
 /// JSON [Request] serializer.
 class RequestSerializer {

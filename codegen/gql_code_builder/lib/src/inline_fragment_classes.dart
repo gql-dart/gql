@@ -1,9 +1,9 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 
-import "package:gql_code_builder/src/common.dart";
-import "package:gql_code_builder/src/operation/data.dart";
-import "package:gql_code_builder/source.dart";
+import "./common.dart";
+import "./operation/data.dart";
+import "../source.dart";
 
 /// Builds the following classes for inline fragments:
 ///   1. An abstract root class that will be implemented by each instantiable

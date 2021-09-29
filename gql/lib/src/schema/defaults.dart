@@ -15,8 +15,8 @@
 /// * the `__typename` field ([typeNameField])
 /// * the `@include` and `@skip` directives ([graphQLIncludeDirective], [graphQLSkipDirective])
 /// * the `@deprecated` directive ([graphQLDeprecatedDirective])
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
 import "./definitions.dart";
 

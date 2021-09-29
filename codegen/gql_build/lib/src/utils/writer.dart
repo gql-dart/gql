@@ -1,10 +1,11 @@
 import "dart:async";
 
-import "package:code_builder/code_builder.dart";
 import "package:build/build.dart";
+import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
 
 import "../allocators/gql_allocator.dart";
+import "../config.dart";
 
 final DartFormatter _dartfmt = DartFormatter();
 
@@ -16,7 +17,7 @@ Future<void> writeDocument(
 ]) {
   if (library.body.isEmpty) return Future.value(null);
 
-  final generatedAsset = buildStep.inputId.changeExtension(extension);
+  final generatedAsset = outputAssetId(buildStep.inputId, extension);
 
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter(

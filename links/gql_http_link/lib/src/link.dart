@@ -243,7 +243,8 @@ class HttpLink extends Link {
       };
 
   /// Closes the underlining [http.Client]
-  void dispose() {
+  @override
+  Future<void> dispose() async {
     _httpClient?.close();
   }
 }

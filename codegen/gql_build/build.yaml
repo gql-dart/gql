@@ -2,13 +2,21 @@ builders:
   ast_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['astBuilder']
-    build_extensions: { '.graphql': ['.ast.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.ast.gql.dart'],
+      }
     auto_apply: none
     build_to: source
   data_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['dataBuilder']
-    build_extensions: { '.graphql': ['.data.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.data.gql.dart'],
+      }
     auto_apply: none
     build_to: source
     applies_builders:
@@ -18,7 +26,11 @@ builders:
   req_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['reqBuilder']
-    build_extensions: { '.graphql': ['.req.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.req.gql.dart'],
+      }
     auto_apply: none
     build_to: source
     applies_builders:
@@ -28,7 +40,11 @@ builders:
   var_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['varBuilder']
-    build_extensions: { '.graphql': ['.var.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.var.gql.dart'],
+      }
     auto_apply: none
     build_to: source
     applies_builders:
@@ -38,7 +54,11 @@ builders:
   schema_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['schemaBuilder']
-    build_extensions: { '.graphql': ['.schema.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.schema.gql.dart'],
+      }
     auto_apply: none
     build_to: source
     applies_builders:
@@ -48,7 +68,11 @@ builders:
   serializer_builder:
     import: 'package:gql_build/gql_build.dart'
     builder_factories: ['serializerBuilder']
-    build_extensions: { '.gql.dart': ['.serializer.gql.dart'] }
+    build_extensions:
+      {
+        '{{dir}}/{{file}}.graphql':
+          ['{{dir}}/__generated__/{{file}}.serializer.gql.dart'],
+      }
     auto_apply: none
     build_to: source
     applies_builders: ['built_value_generator|built_value']

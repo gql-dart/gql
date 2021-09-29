@@ -10,8 +10,8 @@
 // * ObjectField<Value>
 // * ObjectValue
 // * DefaultValue
-import "package:meta/meta.dart";
 import "package:gql/ast.dart";
+import "package:meta/meta.dart";
 
 import "./base_types.dart";
 

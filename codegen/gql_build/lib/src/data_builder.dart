@@ -22,7 +22,7 @@ class DataBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        sourceExtension: [dataExtension],
+        inputPattern: [outputPattern(dataExtension)],
       };
 
   @override
@@ -46,7 +46,7 @@ class DataBuilder implements Builder {
       library,
       buildStep,
       dataExtension,
-      schemaId.changeExtension(schemaExtension).uri.toString(),
+      outputAssetId(schemaId, schemaExtension).uri.toString(),
     );
   }
 }

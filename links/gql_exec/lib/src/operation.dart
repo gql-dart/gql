@@ -1,9 +1,9 @@
 import "dart:convert";
-import "package:meta/meta.dart";
-import "package:collection/collection.dart";
 
+import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql/language.dart" show printNode;
+import "package:meta/meta.dart";
 
 /// An operation in a [document], optionally defined by [operationName]
 @immutable

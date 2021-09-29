@@ -1,5 +1,5 @@
-import "package:code_builder/code_builder.dart";
 import "package:analyzer/dart/element/element.dart";
+import "package:code_builder/code_builder.dart";
 
 Expression withCustomSerializers(
   Expression serializersExpression,
@@ -42,7 +42,7 @@ Library buildSerializerLibrary(
                     (c) => refer(c.name, c.source.uri.toString()),
                   )
                   .toList()
-                    ..sort((a, b) => a.symbol!.compareTo(b.symbol!)),
+                ..sort((a, b) => a.symbol!.compareTo(b.symbol!)),
             )
           ]),
           refer("_serializersBuilder")

@@ -1,4 +1,3 @@
-import "package:built_value/serializer.dart";
 import "package:gql/language.dart";
 import "package:gql_exec/gql_exec.dart";
 

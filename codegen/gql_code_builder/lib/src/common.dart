@@ -1,7 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
-import "package:gql/ast.dart";
 import "package:collection/collection.dart";
+import "package:gql/ast.dart";
 
 import "../source.dart";
 
@@ -142,6 +142,7 @@ Method buildGetter({
   Map<String, Reference> typeOverrides = const {},
   String? typeRefPrefix,
   bool built = true,
+  bool isOverride = false,
 }) {
   final unwrappedTypeNode = unwrapTypeNode(typeNode);
   final typeName = unwrappedTypeNode.name.value;
@@ -170,6 +171,7 @@ Method buildGetter({
   return Method(
     (b) => b
       ..annotations = ListBuilder(<Expression>[
+        if (isOverride) refer("override"),
         if (built && identifier(nameNode.value) != nameNode.value)
           refer("BuiltValueField", "package:built_value/built_value.dart")
               .call([], {"wireName": literalString(nameNode.value)}),
@@ -199,9 +201,13 @@ Method buildSerializerGetter(String className) => Method(
 Method buildToJsonGetter(
   String className, {
   bool implemented = true,
+  bool isOverride = false,
 }) =>
     Method(
       (b) => b
+        ..annotations.addAll([
+          if (isOverride) refer("override"),
+        ])
         ..returns = refer("Map<String, dynamic>")
         ..name = "toJson"
         ..lambda = implemented
