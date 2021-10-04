@@ -42,7 +42,7 @@ class _PrintVisitor extends Visitor<Expression> {
           );
 
   Expression _list(
-    List<Node> nodes,
+    List<Node>? nodes,
   ) =>
       nodes != null
           ? literalList(

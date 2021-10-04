@@ -1,6 +1,6 @@
 import "package:gql/language.dart" as lang;
-import "package:gql/schema.dart" as gql_schema;
 import "package:gql/operation.dart" as gql_operation;
+import "package:gql/schema.dart" as gql_schema;
 
 final schemaDefinition = lang.parseString(r"""
 schema {

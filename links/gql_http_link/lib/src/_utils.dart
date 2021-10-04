@@ -1,8 +1,8 @@
 import "dart:convert";
 
-import "package:http/http.dart";
 import "package:gql/ast.dart";
 import "package:gql_exec/gql_exec.dart" as gql;
+import "package:http/http.dart";
 
 extension WithType on gql.Request {
   OperationType get type {

@@ -152,7 +152,6 @@ Ideas for future work:
 [graphql-to-dart]: https://github.com/micimize/graphql-to-dart
 [graphql-to-dart-npm]: https://www.npmjs.com/package/graphql-to-dart
 [major_graphql]: https://github.com/micimize/major
-[gql_dio_link]: https://github.com/TarekkMA/gql_dio_link
 
 ## Contributing
 

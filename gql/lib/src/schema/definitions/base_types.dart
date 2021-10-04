@@ -7,10 +7,10 @@
 /// * [Directive]
 /// * [TypeSystemDefinition]
 /// * [TypeDefinition]
-import "package:meta/meta.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql/language.dart";
+import "package:meta/meta.dart";
 
 import "./definitions.dart";
 import "./type_resolver.dart";

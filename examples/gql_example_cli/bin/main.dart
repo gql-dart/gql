@@ -3,8 +3,8 @@ import "package:gql_example_cli/find_pokemon.data.gql.dart";
 import "package:gql_example_cli/find_pokemon.req.gql.dart";
 import "package:gql_example_cli/list_pokemon.data.gql.dart";
 import "package:gql_example_cli/list_pokemon.req.gql.dart";
-import "package:gql_http_link/gql_http_link.dart";
 import "package:gql_exec/gql_exec.dart";
+import "package:gql_http_link/gql_http_link.dart";
 
 Future<Null> main(List<String> arguments) async {
   final parser = ArgParser()

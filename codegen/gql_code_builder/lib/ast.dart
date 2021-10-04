@@ -1,8 +1,9 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/src/ast.dart";
-import "package:gql_code_builder/source.dart";
+
+import "./source.dart";
+import "./src/ast.dart";
 
 Library buildAstLibrary(
   SourceNode source,

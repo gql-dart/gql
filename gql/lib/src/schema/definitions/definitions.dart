@@ -9,9 +9,9 @@
 // * InterfaceTypeDefinition
 // * ObjectTypeDefinition
 // * UnionTypeDefinition
+import "package:gql/ast.dart";
 import "package:gql/src/schema/defaults.dart";
 import "package:meta/meta.dart";
-import "package:gql/ast.dart";
 
 import "./base_types.dart";
 import "./type_resolver.dart";

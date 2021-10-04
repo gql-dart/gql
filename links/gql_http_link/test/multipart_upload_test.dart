@@ -1,8 +1,8 @@
 import "dart:convert";
 import "dart:typed_data";
 
-import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:http/http.dart" as http;
 import "package:http_parser/http_parser.dart";

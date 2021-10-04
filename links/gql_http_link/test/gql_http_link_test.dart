@@ -1,8 +1,8 @@
 import "dart:async";
 import "dart:convert";
 
-import "package:gql_exec/gql_exec.dart";
 import "package:gql/language.dart";
+import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
@@ -606,8 +606,8 @@ void main() {
       );
     });
 
-    test("closes the underlining http client", () {
-      link.dispose();
+    test("closes the underlining http client", () async {
+      await link.dispose();
 
       verify(
         client.close(),

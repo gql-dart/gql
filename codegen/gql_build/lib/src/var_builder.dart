@@ -2,13 +2,13 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
+import "package:gql_code_builder/var.dart";
 import "package:path/path.dart";
 
-import "package:gql_build/src/config.dart";
-import "package:gql_build/src/utils/add_introspection.dart";
-import "package:gql_build/src/utils/reader.dart";
-import "package:gql_build/src/utils/writer.dart";
-import "package:gql_code_builder/var.dart";
+import "./config.dart";
+import "./utils/add_introspection.dart";
+import "./utils/reader.dart";
+import "./utils/writer.dart";
 
 class VarBuilder implements Builder {
   final AssetId schemaId;
@@ -21,7 +21,7 @@ class VarBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        sourceExtension: [varExtension],
+        inputPattern: [outputPattern(varExtension)],
       };
 
   @override
@@ -45,7 +45,7 @@ class VarBuilder implements Builder {
       library,
       buildStep,
       varExtension,
-      schemaId.changeExtension(schemaExtension).uri.toString(),
+      outputAssetId(schemaId, schemaExtension).uri.toString(),
     );
   }
 }

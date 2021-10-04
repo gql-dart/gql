@@ -1,7 +1,7 @@
+import "package:dio/dio.dart" as dio;
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:meta/meta.dart";
-import "package:dio/dio.dart" as dio;
 
 /// Exception occurring when parsing fails.
 @immutable
