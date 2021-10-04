@@ -1,4 +1,5 @@
 /// GQL Link to handle execution errors and exceptions
+///
 library gql_error_link;
 
 import "dart:async";
