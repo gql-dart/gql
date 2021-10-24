@@ -312,7 +312,8 @@ class WebSocketLink extends Link {
       case MessageTypes.data:
         final dynamic data = payload["data"];
         final dynamic errors = payload["errors"];
-        return SubscriptionData(id, data, errors);
+        final dynamic extensions = payload["extensions"];
+        return SubscriptionData(id, data, errors, extensions);
       case MessageTypes.error:
         return SubscriptionError(id, payload);
       case MessageTypes.complete:
