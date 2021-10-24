@@ -141,17 +141,24 @@ class ConnectionKeepAlive extends GraphQLSocketMessage {
 /// payload. The user should check the errors result before processing the
 /// data value. These error are from the query resolvers.
 class SubscriptionData extends GraphQLSocketMessage {
-  SubscriptionData(this.id, this.data, this.errors) : super(MessageTypes.data);
+  SubscriptionData(
+    this.id,
+    this.data,
+    this.errors,
+    this.extensions,
+  ) : super(MessageTypes.data);
 
   final String id;
   final dynamic data;
   final dynamic errors;
+  final dynamic extensions;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         "type": type,
         "data": data,
         "errors": errors,
+        "extensions": extensions,
       };
 
   @override

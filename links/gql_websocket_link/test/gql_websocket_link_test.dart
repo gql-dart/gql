@@ -165,6 +165,9 @@ void main() {
           WebSocket webSocket;
           IOWebSocketChannel channel;
           WebSocketLink link;
+          final responseExtensions = {
+            "customExtension": {"value": 1}
+          };
           final responseData = {
             "data": {
               "pokemons": [
@@ -209,6 +212,7 @@ void main() {
                           "payload": {
                             "data": responseData,
                             "errors": null,
+                            "extensions": responseExtensions,
                           },
                         },
                       ),
@@ -228,6 +232,10 @@ void main() {
               (Response response) {
                 expect(response.data, responseData);
                 expect(response.errors, null);
+                expect(
+                  response.context.entry<ResponseExtensions>()?.extensions,
+                  responseExtensions,
+                );
               },
             ),
           );
@@ -251,6 +259,8 @@ void main() {
               ]
             }
           };
+
+          final responseExtensions2 = {"customExtension": "1"};
           final responseData2 = {
             "data": {
               "pokemons": [
@@ -308,6 +318,7 @@ void main() {
                           "payload": {
                             "data": responseData2,
                             "errors": null,
+                            "extensions": responseExtensions2,
                           },
                         },
                       ),
@@ -325,22 +336,31 @@ void main() {
           // We expect responseData1, then responseData2 in order.
           int callCounter = 0;
           const maxCall = 2;
-          link
-              .request(request)
-              .map((Response response) => response.data)
-              .listen(
+          link.request(request).listen(
                 expectAsync1(
-                  (data) {
+                  (response) {
                     callCounter += 1;
                     if (callCounter == 1) {
                       expect(
-                        data,
+                        response.data,
                         responseData1,
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()
+                            ?.extensions,
+                        null,
                       );
                     } else if (callCounter == 2) {
                       expect(
-                        data,
+                        response.data,
                         responseData2,
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()
+                            ?.extensions,
+                        responseExtensions2,
                       );
                     }
                   },
@@ -365,6 +385,12 @@ void main() {
             ],
             "path": ["path1", "path2"],
             "extensions": {"key1": "val", "key2": 77},
+          };
+          final responseExtensions = {
+            "extensinon1": {"dw": 2},
+            "extensinon2": {
+              "l": [3]
+            },
           };
 
           request = Request(
@@ -401,6 +427,7 @@ void main() {
                           "payload": {
                             "data": null,
                             "errors": [responseError],
+                            "extensions": responseExtensions,
                           },
                         },
                       ),
@@ -435,6 +462,10 @@ void main() {
                     extensions:
                         responseError["extensions"] as Map<String, dynamic>,
                   ),
+                );
+                expect(
+                  response.context.entry<ResponseExtensions>()?.extensions,
+                  responseExtensions,
                 );
               },
             ),
