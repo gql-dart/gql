@@ -1,3 +1,4 @@
+import "package:gql/ast.dart";
 import "package:gql/src/language/parser.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
@@ -100,6 +101,59 @@ void main() {
           26,
         ),
       );
+    });
+
+    test("Directives parsing", () {
+      final doc = parseString("""
+directive @onQuery on QUERY
+directive @onMutation on MUTATION
+directive @onSubscription on SUBSCRIPTION
+directive @onField on FIELD
+directive @onFragmentDefinition on FRAGMENT_DEFINITION
+directive @onFragmentSpread on FRAGMENT_SPREAD
+directive @onInlineFragment on INLINE_FRAGMENT
+directive @onVariableDefinition on VARIABLE_DEFINITION
+directive @onSchema on SCHEMA
+directive @onScalar on SCALAR
+directive @onObject on OBJECT
+directive @onFieldDefinition on FIELD_DEFINITION
+directive @onArgumentDefinition on ARGUMENT_DEFINITION
+directive @onInterface on INTERFACE
+directive @onUnion on UNION
+directive @onEnum on ENUM
+directive @onEnumValue on ENUM_VALUE
+directive @onInputObject on INPUT_OBJECT
+directive @onInputFieldDefinition on INPUT_FIELD_DEFINITION
+""");
+
+      final map = Map.fromEntries(
+        doc.definitions.whereType<DirectiveDefinitionNode>().map((e) {
+          expect(e.locations.length, 1);
+          return MapEntry(e.name.value, e.locations.first);
+        }),
+      );
+
+      expect(map, {
+        "onQuery": DirectiveLocation.query,
+        "onMutation": DirectiveLocation.mutation,
+        "onSubscription": DirectiveLocation.subscription,
+        "onField": DirectiveLocation.field,
+        "onFragmentDefinition": DirectiveLocation.fragmentDefinition,
+        "onFragmentSpread": DirectiveLocation.fragmentSpread,
+        "onInlineFragment": DirectiveLocation.inlineFragment,
+        "onVariableDefinition": DirectiveLocation.variableDefinition,
+        "onSchema": DirectiveLocation.schema,
+        "onScalar": DirectiveLocation.scalar,
+        "onObject": DirectiveLocation.object,
+        "onFieldDefinition": DirectiveLocation.fieldDefinition,
+        "onArgumentDefinition": DirectiveLocation.argumentDefinition,
+        "onInterface": DirectiveLocation.interface,
+        "onUnion": DirectiveLocation.union,
+        "onEnum": DirectiveLocation.enumDefinition,
+        "onEnumValue": DirectiveLocation.enumValue,
+        "onInputObject": DirectiveLocation.inputObject,
+        "onInputFieldDefinition": DirectiveLocation.inputFieldDefinition,
+      });
     });
 
     test("Incomplete schema type extension", () {
