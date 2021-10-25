@@ -1116,6 +1116,106 @@ void main() {
         link.request(request).listen((event) {});
         link.request(request).listen((event) {});
       });
+
+      test(
+        "Client dispose closes the server and request streams",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+
+          final responseData = {
+            "pokemons": [
+              {"name": "2"}
+            ]
+          };
+
+          request = Request(
+            operation: Operation(
+              operationName: "pokemonsSubscription",
+              document: parseString(
+                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            ),
+            variables: const <String, dynamic>{
+              "first": 3,
+            },
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.listen(
+                expectAsync1<void, dynamic>(
+                  (dynamic message) async {
+                    final map =
+                        json.decode(message as String) as Map<String, dynamic>;
+                    if (map["type"] == "connection_init") {
+                      channel.sink.add(json.encode(ConnectionAck()));
+                    } else if (map["type"] == "start") {
+                      channel.sink.add(
+                        json.encode(
+                          <String, dynamic>{
+                            "type": "data",
+                            "id": map["id"],
+                            "payload": {
+                              "data": responseData,
+                            },
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  count: 3,
+                ),
+                onDone: expectAsync0(
+                  () {
+                    expect(channel.closeCode, websocket_status.goingAway);
+                  },
+                  count: 1,
+                ),
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(null, channelGenerator: () => channel);
+          bool received = false;
+          final firstFut = link
+              .request(request)
+              .listen(expectAsync1(
+                (Response response) async {
+                  expect(response.data, responseData);
+                  if (received) {
+                    await link.dispose();
+                  }
+                  received = true;
+                },
+                count: 1,
+              ))
+              .asFuture<Object?>();
+
+          final secondFut = link
+              .request(request)
+              .listen(expectAsync1(
+                (Response response) async {
+                  expect(response.data, responseData);
+                  if (received) {
+                    await link.dispose();
+                  }
+                  received = true;
+                },
+                count: 1,
+              ))
+              .asFuture<Object?>();
+
+          await Future.wait([firstFut, secondFut]);
+        },
+      );
     },
   );
 }
