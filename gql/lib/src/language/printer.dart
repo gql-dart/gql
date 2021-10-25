@@ -736,6 +736,8 @@ String? _directiveLocation(DirectiveLocation location) {
       return "FRAGMENT_SPREAD";
     case DirectiveLocation.inlineFragment:
       return "INLINE_FRAGMENT";
+    case DirectiveLocation.variableDefinition:
+      return "VARIABLE_DEFINITION";
     case DirectiveLocation.schema:
       return "SCHEMA";
     case DirectiveLocation.scalar:

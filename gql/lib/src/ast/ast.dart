@@ -103,6 +103,7 @@ enum DirectiveLocation {
   fragmentDefinition,
   fragmentSpread,
   inlineFragment,
+  variableDefinition,
   schema,
   scalar,
   object,

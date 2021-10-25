@@ -881,6 +881,8 @@ class _Parser {
         return DirectiveLocation.fragmentSpread;
       case "INLINE_FRAGMENT":
         return DirectiveLocation.inlineFragment;
+      case "VARIABLE_DEFINITION":
+        return DirectiveLocation.variableDefinition;
       case "SCHEMA":
         return DirectiveLocation.schema;
       case "SCALAR":
