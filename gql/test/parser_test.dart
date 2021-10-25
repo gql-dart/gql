@@ -1,5 +1,6 @@
 import "package:gql/ast.dart";
 import "package:gql/src/language/parser.dart";
+import "package:gql/src/language/printer.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
@@ -101,6 +102,52 @@ void main() {
           26,
         ),
       );
+    });
+
+    /// https://github.com/gql-dart/gql/issues/269
+    test("Interfaces implement interfaces", () {
+      final doc = parseString("""
+interface Interface0 {
+   field0: String
+}
+
+interface Interface1 implements Interface0 {
+   field0: String
+   field1: Float!
+}
+
+interface Interface2 implements Interface0 & Interface1 {
+   field0: String
+   field1: Float!
+   field2: Float
+}
+
+type Type0 implements & Interface0 & Interface1 & Interface2 {
+   field0: String
+   field1: Float!
+   field2: Float
+}
+""");
+      final map = Map.fromEntries(
+        doc.definitions.whereType<InterfaceTypeDefinitionNode>().map(
+              (e) => MapEntry(
+                e.name.value,
+                e.interfaces.map((e) => e.name.value),
+              ),
+            ),
+      );
+
+      expect(map, {
+        "Interface0": <String>[],
+        "Interface1": ["Interface0"],
+        "Interface2": ["Interface0", "Interface1"],
+      });
+
+      final printedDoc = printNode(doc).replaceAll(RegExp(r"\s+"), " ");
+      expect(printedDoc, contains("Interface0 {"));
+      expect(printedDoc, contains("Interface1 implements Interface0 {"));
+      expect(printedDoc,
+          contains("Interface2 implements Interface0 & Interface1 {"));
     });
 
     test("Directives parsing", () {
