@@ -811,11 +811,13 @@ class InputValueDefinitionNode extends Node {
 
 class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeDefinitionNode({
     this.fields = const [],
     StringValueNode? description,
     required NameNode name,
+    this.interfaces = const [],
     List<DirectiveNode> directives = const [],
     FileSpan? span,
   }) : super(
@@ -833,6 +835,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
         name,
         description,
         directives,
+        interfaces,
         fields,
       ];
 }

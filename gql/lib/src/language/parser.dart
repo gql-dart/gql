@@ -740,12 +740,14 @@ class _Parser {
     final description = _parseDescription();
     _expectKeyword("interface");
     final name = _parseName("Expected an interface name");
+    final interfaces = _parseImplementsInterfaces();
     final directives = _parseDirectives(isConst: true);
     final fields = _parseFieldsDefinition();
 
     return InterfaceTypeDefinitionNode(
       description: description,
       name: name,
+      interfaces: interfaces,
       directives: directives,
       fields: fields,
     );
