@@ -103,6 +103,15 @@ class WebSocketLink extends Link {
       StreamController<GraphQLSocketMessage>.broadcast();
   StreamSubscription<ConnectionKeepAlive>? _keepAliveSubscription;
 
+  /// Completes when the [WebSocketLink] is disposed.
+  /// Non-null when the Link is closing or already closed with [_close].
+  Completer<void>? _disposedCompleter;
+
+  /// true when the [WebSocketLink] can't send any more messages.
+  /// This happends after calling [dispose] or when [autoReconnect] is false
+  /// and the web socket disconnected.
+  bool get isDisabled => _disposedCompleter != null;
+
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
   /// if [channelGenerator] is passed, [uri] must be null.
@@ -173,6 +182,7 @@ class WebSocketLink extends Link {
             }
           },
           onError: response.addError,
+          onDone: response.close,
         );
         // Send the request.
         _write(
@@ -185,6 +195,9 @@ class WebSocketLink extends Link {
     };
 
     response.onCancel = () {
+      if (isDisabled) {
+        return;
+      }
       messagesSubscription?.cancel();
       _write(StopOperation(id)).catchError(response.addError);
       _requests.removeWhere((e) => e.context.entry<RequestId>()!.id == id);
@@ -219,6 +232,14 @@ class WebSocketLink extends Link {
           _reConnectRequests.clear();
         }
       }, onDone: () {
+        assert(
+          !isDisabled || _connectionStateController.value == closed,
+          "_connectionStateController should be disposed with a closed state",
+        );
+        if (isDisabled) {
+          // already disposed
+          return;
+        }
         _connectionStateController.add(closed);
         if (autoReconnect) {
           _reConnectRequests.clear();
@@ -312,7 +333,8 @@ class WebSocketLink extends Link {
       case MessageTypes.data:
         final dynamic data = payload["data"];
         final dynamic errors = payload["errors"];
-        return SubscriptionData(id, data, errors);
+        final dynamic extensions = payload["extensions"];
+        return SubscriptionData(id, data, errors, extensions);
       case MessageTypes.error:
         return SubscriptionError(id, payload);
       case MessageTypes.complete:
@@ -324,12 +346,17 @@ class WebSocketLink extends Link {
 
   /// Close the WebSocket channel.
   Future<void> _close() async {
+    if (_disposedCompleter != null) {
+      return _disposedCompleter!.future;
+    }
+    _disposedCompleter = Completer();
     await _keepAliveSubscription?.cancel();
     await _channel?.sink.close(websocket_status.goingAway);
     _connectionStateController.add(closed);
     await _connectionStateController.close();
     await _messagesController.close();
     _reconnectTimer?.cancel();
+    _disposedCompleter!.complete();
   }
 
   /// Disposes the underlying channel explicitly.
