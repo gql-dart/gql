@@ -232,10 +232,6 @@ class WebSocketLink extends Link {
           _reConnectRequests.clear();
         }
       }, onDone: () {
-        assert(
-          !isDisabled || _connectionStateController.value == closed,
-          "_connectionStateController should be disposed with a closed state",
-        );
         if (isDisabled) {
           // already disposed
           return;
@@ -276,7 +272,7 @@ class WebSocketLink extends Link {
             .map<ConnectionKeepAlive>(
                 (message) => message as ConnectionKeepAlive)
             .timeout(inactivityTimeout!, onTimeout: (_) {
-          _channel!.sink.close(websocket_status.goingAway);
+          _channel!.sink.close(websocket_status.normalClosure);
         }).listen(null);
       }
     } catch (e) {
@@ -378,12 +374,12 @@ class WebSocketLink extends Link {
       return _disposedCompleter!.future;
     }
     _disposedCompleter = Completer();
+    _reconnectTimer?.cancel();
     await _keepAliveSubscription?.cancel();
-    await _channel?.sink.close(websocket_status.goingAway);
+    await _channel?.sink.close(websocket_status.normalClosure);
     _connectionStateController.add(closed);
     await _connectionStateController.close();
     await _messagesController.close();
-    _reconnectTimer?.cancel();
     _disposedCompleter!.complete();
   }
 

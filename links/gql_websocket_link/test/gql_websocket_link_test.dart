@@ -1172,7 +1172,7 @@ void main() {
                 ),
                 onDone: expectAsync0(
                   () {
-                    expect(channel.closeCode, websocket_status.goingAway);
+                    expect(channel.closeCode, websocket_status.normalClosure);
                   },
                   count: 1,
                 ),
