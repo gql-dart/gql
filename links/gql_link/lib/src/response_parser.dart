@@ -14,6 +14,7 @@ class ResponseParser {
             )
             .toList(),
         data: body["data"] as Map<String, dynamic>?,
+        response: body,
         context: Context().withEntry(
           ResponseExtensions(
             body["extensions"],

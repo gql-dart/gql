@@ -30,17 +30,26 @@ void main() {
       test("response", () {
         final link = ErrorLink();
 
+        const response = <String, dynamic>{
+          "data": {"a": 1}
+        };
         final responseStream = link.request(
           req(),
           (request) => Stream.fromIterable([
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
           ]),
         );
 
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
             emitsDone,
           ]),
         );
@@ -49,14 +58,21 @@ void main() {
       test("error", () {
         final link = ErrorLink();
 
+        const response = {
+          "data": <String, dynamic>{"a": 1},
+          "errors": [
+            {"message": "Something went wrong"}
+          ],
+        };
         final responseStream = link.request(
           req(),
           (request) => Stream.fromIterable([
             Response(
-              data: const <String, dynamic>{"a": 1},
+              data: response["data"] as Map<String, dynamic>?,
               errors: const <GraphQLError>[
                 GraphQLError(message: "Something went wrong"),
               ],
+              response: response,
             ),
           ]),
         );
@@ -69,6 +85,7 @@ void main() {
               errors: const <GraphQLError>[
                 GraphQLError(message: "Something went wrong"),
               ],
+              response: response,
             ),
             emitsDone,
           ]),
@@ -99,19 +116,34 @@ void main() {
       test("response, response", () {
         final link = ErrorLink();
 
+        const response = <String, dynamic>{
+          "data": <String, dynamic>{"a": 1}
+        };
         final responseStream = link.request(
           req(),
           (request) => Stream.fromIterable([
-            Response(data: const <String, dynamic>{"a": 1}),
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
           ]),
         );
 
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
-            Response(data: const <String, dynamic>{"a": 1}),
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
             emitsDone,
           ]),
         );
@@ -120,11 +152,17 @@ void main() {
       test("response, exception", () {
         final link = ErrorLink();
 
+        const response = <String, dynamic>{
+          "data": <String, dynamic>{"a": 1}
+        };
         final responseStream = link.request(
           req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
-              Result.value(Response(data: const <String, dynamic>{"a": 1})),
+              Result.value(Response(
+                data: response["data"] as Map<String, dynamic>?,
+                response: response,
+              )),
               Result.error(TestException(1)),
             ]),
           ),
@@ -133,7 +171,10 @@ void main() {
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
             emitsError(TestException(1)),
             emitsDone,
           ]),
@@ -143,12 +184,18 @@ void main() {
       test("exception, response", () {
         final link = ErrorLink();
 
+        const response = <String, dynamic>{
+          "data": <String, dynamic>{"a": 1}
+        };
         final responseStream = link.request(
           req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.error(TestException(1)),
-              Result.value(Response(data: const <String, dynamic>{"a": 1})),
+              Result.value(Response(
+                data: response["data"] as Map<String, dynamic>?,
+                response: response,
+              )),
             ]),
           ),
         );
@@ -157,7 +204,10 @@ void main() {
           responseStream,
           emitsInOrder(<dynamic>[
             emitsError(TestException(1)),
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
             emitsDone,
           ]),
         );
@@ -250,6 +300,11 @@ void main() {
               data: <String, dynamic>{
                 "id": (exception as TestException).id,
               },
+              response: <String, dynamic>{
+                "data": <String, dynamic>{
+                  "id": exception.id,
+                },
+              },
             );
           },
         );
@@ -269,6 +324,11 @@ void main() {
           emitsInOrder(<dynamic>[
             Response(
               data: const <String, dynamic>{"id": 1},
+              response: const <String, dynamic>{
+                "data": <String, dynamic>{
+                  "id": 1,
+                },
+              },
             ),
             emitsDone,
           ]),
@@ -310,12 +370,16 @@ void main() {
       test("no error", () {
         final link = ErrorLink();
 
+        const response = <String, dynamic>{"a": 1};
         final responseStream = link.request(
           req(),
           (request) => Result.releaseStream(
             Stream.fromIterable([
               Result.value(
-                Response(data: const <String, dynamic>{"a": 1}),
+                Response(
+                  data: response["data"] as Map<String, dynamic>?,
+                  response: response,
+                ),
               ),
             ]),
           ),
@@ -324,7 +388,10 @@ void main() {
         expect(
           responseStream,
           emitsInOrder(<dynamic>[
-            Response(data: const <String, dynamic>{"a": 1}),
+            Response(
+              data: response["data"] as Map<String, dynamic>?,
+              response: response,
+            ),
             emitsDone,
           ]),
         );
@@ -341,6 +408,11 @@ void main() {
           },
         );
 
+        const response = <String, dynamic>{
+          "errors": <Map<String, dynamic>>[
+            <String, dynamic>{"message": "A"},
+          ],
+        };
         final responseStream = errorLink.request(
           req(),
           (request) => Result.releaseStream(
@@ -350,6 +422,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "A"),
                   ],
+                  response: response,
                 ),
               ),
               Result.value(
@@ -357,6 +430,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "B"),
                   ],
+                  response: response,
                 ),
               ),
             ]),
@@ -371,6 +445,7 @@ void main() {
                 errors: const <GraphQLError>[
                   GraphQLError(message: "A"),
                 ],
+                response: response,
               ),
             ),
             emitsDone,
@@ -389,6 +464,11 @@ void main() {
           },
         );
 
+        const response = <String, dynamic>{
+          "errors": <Map<String, dynamic>>[
+            <String, dynamic>{"message": "A"},
+          ],
+        };
         final responseStream = errorLink.request(
           req(),
           (request) => Result.releaseStream(
@@ -398,6 +478,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "A"),
                   ],
+                  response: response,
                 ),
               ),
               Result.value(
@@ -405,6 +486,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "B"),
                   ],
+                  response: response,
                 ),
               ),
             ]),
@@ -418,6 +500,7 @@ void main() {
               errors: const <GraphQLError>[
                 GraphQLError(message: "A"),
               ],
+              response: response,
             ),
             emitsDone,
           ]),
@@ -434,6 +517,11 @@ void main() {
               null,
         );
 
+        const response = <String, dynamic>{
+          "errors": <Map<String, dynamic>>[
+            <String, dynamic>{"message": "A"},
+          ],
+        };
         final responseStream = errorLink.request(
           req(),
           (request) => Result.releaseStream(
@@ -443,6 +531,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "A"),
                   ],
+                  response: response,
                 ),
               ),
               Result.value(
@@ -450,6 +539,7 @@ void main() {
                   errors: const <GraphQLError>[
                     GraphQLError(message: "B"),
                   ],
+                  response: response,
                 ),
               ),
             ]),
@@ -463,11 +553,13 @@ void main() {
               errors: const <GraphQLError>[
                 GraphQLError(message: "A"),
               ],
+              response: response,
             ),
             Response(
               errors: const <GraphQLError>[
                 GraphQLError(message: "B"),
               ],
+              response: response,
             ),
             emitsDone,
           ]),

@@ -27,12 +27,16 @@ void main() {
         (req) => req.variables,
       );
 
+      const response = <String, dynamic>{
+        "data": <String, dynamic>{"a": 1}
+      };
       when(
         mockLink.request(any, any),
       ).thenAnswer(
         (_) => Stream.fromIterable([
           Response(
-            data: const <String, dynamic>{"a": 1},
+            data: response["data"] as Map<String, dynamic>?,
+            response: response,
           ),
         ]),
       );
@@ -69,12 +73,16 @@ void main() {
     test("transforms response", () async {
       final mockLink = MockLink();
 
+      const response = <String, dynamic>{
+        "data": <String, dynamic>{"a": 1}
+      };
       when(
         mockLink.request(any, any),
       ).thenAnswer(
         (_) => Stream.fromIterable([
           Response(
-            data: const <String, dynamic>{"a": 1},
+            data: response["data"] as Map<String, dynamic>?,
+            response: response,
           ),
         ]),
       );
@@ -102,7 +110,8 @@ void main() {
       expect(
         await stream.first,
         Response(
-          data: const <String, dynamic>{"a": 1},
+          data: response["data"] as Map<String, dynamic>?,
+          response: response,
         ).withContextEntry(
           ResponseExtensions(
             "CUSTOM-EXTENSIONS",
