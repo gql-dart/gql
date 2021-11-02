@@ -165,6 +165,9 @@ void main() {
           WebSocket webSocket;
           IOWebSocketChannel channel;
           WebSocketLink link;
+          final responseExtensions = {
+            "customExtension": {"value": 1}
+          };
           final responseData = {
             "data": {
               "pokemons": [
@@ -209,6 +212,7 @@ void main() {
                           "payload": {
                             "data": responseData,
                             "errors": null,
+                            "extensions": responseExtensions,
                           },
                         },
                       ),
@@ -228,6 +232,10 @@ void main() {
               (Response response) {
                 expect(response.data, responseData);
                 expect(response.errors, null);
+                expect(
+                  response.context.entry<ResponseExtensions>()?.extensions,
+                  responseExtensions,
+                );
               },
             ),
           );
@@ -251,6 +259,8 @@ void main() {
               ]
             }
           };
+
+          final responseExtensions2 = {"customExtension": "1"};
           final responseData2 = {
             "data": {
               "pokemons": [
@@ -308,6 +318,7 @@ void main() {
                           "payload": {
                             "data": responseData2,
                             "errors": null,
+                            "extensions": responseExtensions2,
                           },
                         },
                       ),
@@ -325,22 +336,31 @@ void main() {
           // We expect responseData1, then responseData2 in order.
           int callCounter = 0;
           const maxCall = 2;
-          link
-              .request(request)
-              .map((Response response) => response.data)
-              .listen(
+          link.request(request).listen(
                 expectAsync1(
-                  (data) {
+                  (response) {
                     callCounter += 1;
                     if (callCounter == 1) {
                       expect(
-                        data,
+                        response.data,
                         responseData1,
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()
+                            ?.extensions,
+                        null,
                       );
                     } else if (callCounter == 2) {
                       expect(
-                        data,
+                        response.data,
                         responseData2,
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()
+                            ?.extensions,
+                        responseExtensions2,
                       );
                     }
                   },
@@ -365,6 +385,12 @@ void main() {
             ],
             "path": ["path1", "path2"],
             "extensions": {"key1": "val", "key2": 77},
+          };
+          final responseExtensions = {
+            "extensinon1": {"dw": 2},
+            "extensinon2": {
+              "l": [3]
+            },
           };
 
           request = Request(
@@ -401,6 +427,7 @@ void main() {
                           "payload": {
                             "data": null,
                             "errors": [responseError],
+                            "extensions": responseExtensions,
                           },
                         },
                       ),
@@ -435,6 +462,10 @@ void main() {
                     extensions:
                         responseError["extensions"] as Map<String, dynamic>,
                   ),
+                );
+                expect(
+                  response.context.entry<ResponseExtensions>()?.extensions,
+                  responseExtensions,
                 );
               },
             ),
@@ -1085,6 +1116,282 @@ void main() {
         link.request(request).listen((event) {});
         link.request(request).listen((event) {});
       });
+
+      test(
+        "Client dispose closes the server and request streams",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+
+          final responseData = {
+            "pokemons": [
+              {"name": "2"}
+            ]
+          };
+
+          request = Request(
+            operation: Operation(
+              operationName: "pokemonsSubscription",
+              document: parseString(
+                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            ),
+            variables: const <String, dynamic>{
+              "first": 3,
+            },
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.listen(
+                expectAsync1<void, dynamic>(
+                  (dynamic message) async {
+                    final map =
+                        json.decode(message as String) as Map<String, dynamic>;
+                    if (map["type"] == "connection_init") {
+                      channel.sink.add(json.encode(ConnectionAck()));
+                    } else if (map["type"] == "start") {
+                      channel.sink.add(
+                        json.encode(
+                          <String, dynamic>{
+                            "type": "data",
+                            "id": map["id"],
+                            "payload": {
+                              "data": responseData,
+                            },
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  count: 3,
+                ),
+                onDone: expectAsync0(
+                  () {
+                    expect(channel.closeCode, websocket_status.normalClosure);
+                  },
+                  count: 1,
+                ),
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(null, channelGenerator: () => channel);
+          bool received = false;
+          final firstFut = link
+              .request(request)
+              .listen(expectAsync1(
+                (Response response) async {
+                  expect(response.data, responseData);
+                  if (received) {
+                    await link.dispose();
+                  }
+                  received = true;
+                },
+                count: 1,
+              ))
+              .asFuture<Object?>();
+
+          final secondFut = link
+              .request(request)
+              .listen(expectAsync1(
+                (Response response) async {
+                  expect(response.data, responseData);
+                  if (received) {
+                    await link.dispose();
+                  }
+                  received = true;
+                },
+                count: 1,
+              ))
+              .asFuture<Object?>();
+
+          await Future.wait([firstFut, secondFut]);
+        },
+      );
+
+      test(
+        "error message type parsing",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+
+          final errorsList = [
+            // Map with errors (similar to data messages)
+            {
+              "errors": [
+                {
+                  "message": "error message 0",
+                  "path": ["p1", 2]
+                },
+              ],
+            },
+            // Map with errors and response extensions
+            {
+              "errors": [
+                {"message": "error message 1"}
+              ],
+              "extensions": {
+                "otherFields": 1,
+              }
+            },
+            // List of errors
+            [
+              {
+                "message": "error message 2.1",
+                "locations": [
+                  {"column": 1, "line": 2}
+                ]
+              },
+              {
+                "message": "error message 2.2",
+              }
+            ],
+            // Single error
+            {
+              "message": "error message 3",
+              "extensions": {
+                "otherFields": 3,
+              }
+            },
+          ];
+
+          request = Request(
+            operation: Operation(
+              operationName: "pokemonsSubscription",
+              document: parseString(
+                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            ),
+            variables: const <String, dynamic>{
+              "first": 3,
+            },
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.listen(
+                expectAsync1<void, dynamic>(
+                  (dynamic message) async {
+                    final map =
+                        json.decode(message as String) as Map<String, dynamic>;
+                    if (map["type"] == "connection_init") {
+                      channel.sink.add(json.encode(ConnectionAck()));
+                    } else if (map["type"] == "start") {
+                      for (final err in errorsList) {
+                        channel.sink.add(
+                          json.encode(
+                            <String, dynamic>{
+                              "type": "error",
+                              "id": map["id"],
+                              "payload": err,
+                            },
+                          ),
+                        );
+                      }
+                    }
+                  },
+                  count: 2,
+                ),
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(null, channelGenerator: () => channel);
+          int messageIndex = 0;
+          link.request(request).listen(
+                expectAsync1(
+                  (Response response) {
+                    switch (messageIndex) {
+                      case 0:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 0",
+                        );
+                        expect(
+                          response.errors!.first.path,
+                          ["p1", 2],
+                        );
+
+                        break;
+                      case 1:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 1",
+                        );
+                        expect(
+                          response.context
+                              .entry<ResponseExtensions>()!
+                              .extensions,
+                          {
+                            "otherFields": 1,
+                          },
+                        );
+                        break;
+                      case 2:
+                        final errors = response.errors!;
+                        expect(errors.length, 2);
+                        expect(
+                          errors.first.message,
+                          "error message 2.1",
+                        );
+                        expect(
+                          errors.first.locations!
+                              .map((e) => {"column": e.column, "line": e.line}),
+                          [
+                            {"column": 1, "line": 2}
+                          ],
+                        );
+                        expect(
+                          errors.last.message,
+                          "error message 2.2",
+                        );
+                        break;
+                      case 3:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 3",
+                        );
+                        expect(
+                          response.errors!.first.extensions,
+                          {
+                            "otherFields": 3,
+                          },
+                        );
+                        expect(
+                          response.context
+                              .entry<ResponseExtensions>()!
+                              .extensions,
+                          null,
+                        );
+                        break;
+                      default:
+                        throw Error();
+                    }
+                    messageIndex += 1;
+                  },
+                  count: errorsList.length,
+                ),
+              );
+        },
+      );
     },
   );
 }
