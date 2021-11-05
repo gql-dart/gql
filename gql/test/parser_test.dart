@@ -1,3 +1,5 @@
+import "package:gql/ast.dart";
+import "package:gql/language.dart";
 import "package:gql/src/language/parser.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
@@ -259,6 +261,67 @@ void main() {
           6,
         ),
       );
+    });
+
+    test("parse descriptions", () {
+      const _schemaStr = '''
+"""Schema description"""
+schema {
+  query: SomeObject
+}
+
+"Enum description"
+enum SomeEnum {
+  """Value description"""
+  VALUE
+}
+
+"""
+Object description
+"""
+type SomeObject {
+  """
+  Field description
+  """
+  someField(
+    "Arg description"
+    arg: SomeEnum
+  ): String
+}''';
+      final schemaNode = parseString(_schemaStr);
+      final schemaNodeStr = printNode(schemaNode);
+
+      for (final node in [schemaNode, parseString(schemaNodeStr)]) {
+        final schemas = node.definitions.whereType<SchemaDefinitionNode>();
+        expect(schemas.length, 1);
+        final schema = schemas.first;
+        expect(schema.description!.value, "Schema description");
+
+        final enums = node.definitions.whereType<EnumTypeDefinitionNode>();
+        expect(enums.length, 1);
+        final enumType = enums.first;
+        expect(enumType.description!.value, "Enum description");
+
+        final enumValues = enumType.values;
+        expect(enumValues.length, 1);
+        final enumValue = enumValues.first;
+        expect(enumValue.description!.value, "Value description");
+
+        final objects = node.definitions.whereType<ObjectTypeDefinitionNode>();
+        expect(objects.length, 1);
+        final objectType = objects.first;
+        expect(objectType.description!.value, "Object description");
+
+        final objectFields = objectType.fields;
+        expect(objectFields.length, 1);
+        final objectField = objectFields.first;
+        expect(objectField.description!.value, "Field description");
+
+        final arguments = objectField.args;
+        expect(arguments.length, 1);
+        final argument = arguments.first;
+        expect(argument.description!.value, "Arg description");
+      }
     });
 
     test("Missing operation types", () {
