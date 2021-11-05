@@ -1172,7 +1172,7 @@ void main() {
                 ),
                 onDone: expectAsync0(
                   () {
-                    expect(channel.closeCode, websocket_status.goingAway);
+                    expect(channel.closeCode, websocket_status.normalClosure);
                   },
                   count: 1,
                 ),
@@ -1214,6 +1214,182 @@ void main() {
               .asFuture<Object?>();
 
           await Future.wait([firstFut, secondFut]);
+        },
+      );
+
+      test(
+        "error message type parsing",
+        () async {
+          HttpServer server;
+          WebSocket webSocket;
+          IOWebSocketChannel channel;
+          WebSocketLink link;
+          Request request;
+
+          final errorsList = [
+            // Map with errors (similar to data messages)
+            {
+              "errors": [
+                {
+                  "message": "error message 0",
+                  "path": ["p1", 2]
+                },
+              ],
+            },
+            // Map with errors and response extensions
+            {
+              "errors": [
+                {"message": "error message 1"}
+              ],
+              "extensions": {
+                "otherFields": 1,
+              }
+            },
+            // List of errors
+            [
+              {
+                "message": "error message 2.1",
+                "locations": [
+                  {"column": 1, "line": 2}
+                ]
+              },
+              {
+                "message": "error message 2.2",
+              }
+            ],
+            // Single error
+            {
+              "message": "error message 3",
+              "extensions": {
+                "otherFields": 3,
+              }
+            },
+          ];
+
+          request = Request(
+            operation: Operation(
+              operationName: "pokemonsSubscription",
+              document: parseString(
+                  r"subscription MySubscription { pokemons(first: $first) { name } }"),
+            ),
+            variables: const <String, dynamic>{
+              "first": 3,
+            },
+          );
+
+          server = await HttpServer.bind("localhost", 0);
+          server.transform(WebSocketTransformer()).listen(
+            (webSocket) async {
+              final channel = IOWebSocketChannel(webSocket);
+              channel.stream.listen(
+                expectAsync1<void, dynamic>(
+                  (dynamic message) async {
+                    final map =
+                        json.decode(message as String) as Map<String, dynamic>;
+                    if (map["type"] == "connection_init") {
+                      channel.sink.add(json.encode(ConnectionAck()));
+                    } else if (map["type"] == "start") {
+                      for (final err in errorsList) {
+                        channel.sink.add(
+                          json.encode(
+                            <String, dynamic>{
+                              "type": "error",
+                              "id": map["id"],
+                              "payload": err,
+                            },
+                          ),
+                        );
+                      }
+                    }
+                  },
+                  count: 2,
+                ),
+              );
+            },
+          );
+
+          webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+          channel = IOWebSocketChannel(webSocket);
+
+          link = WebSocketLink(null, channelGenerator: () => channel);
+          int messageIndex = 0;
+          link.request(request).listen(
+                expectAsync1(
+                  (Response response) {
+                    switch (messageIndex) {
+                      case 0:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 0",
+                        );
+                        expect(
+                          response.errors!.first.path,
+                          ["p1", 2],
+                        );
+
+                        break;
+                      case 1:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 1",
+                        );
+                        expect(
+                          response.context
+                              .entry<ResponseExtensions>()!
+                              .extensions,
+                          {
+                            "otherFields": 1,
+                          },
+                        );
+                        break;
+                      case 2:
+                        final errors = response.errors!;
+                        expect(errors.length, 2);
+                        expect(
+                          errors.first.message,
+                          "error message 2.1",
+                        );
+                        expect(
+                          errors.first.locations!
+                              .map((e) => {"column": e.column, "line": e.line}),
+                          [
+                            {"column": 1, "line": 2}
+                          ],
+                        );
+                        expect(
+                          errors.last.message,
+                          "error message 2.2",
+                        );
+                        break;
+                      case 3:
+                        expect(response.errors!.length, 1);
+                        expect(
+                          response.errors!.first.message,
+                          "error message 3",
+                        );
+                        expect(
+                          response.errors!.first.extensions,
+                          {
+                            "otherFields": 3,
+                          },
+                        );
+                        expect(
+                          response.context
+                              .entry<ResponseExtensions>()!
+                              .extensions,
+                          null,
+                        );
+                        break;
+                      default:
+                        throw Error();
+                    }
+                    messageIndex += 1;
+                  },
+                  count: errorsList.length,
+                ),
+              );
         },
       );
     },

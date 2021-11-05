@@ -232,10 +232,6 @@ class WebSocketLink extends Link {
           _reConnectRequests.clear();
         }
       }, onDone: () {
-        assert(
-          !isDisabled || _connectionStateController.value == closed,
-          "_connectionStateController should be disposed with a closed state",
-        );
         if (isDisabled) {
           // already disposed
           return;
@@ -276,7 +272,7 @@ class WebSocketLink extends Link {
             .map<ConnectionKeepAlive>(
                 (message) => message as ConnectionKeepAlive)
             .timeout(inactivityTimeout!, onTimeout: (_) {
-          _channel!.sink.close(websocket_status.goingAway);
+          _channel!.sink.close(websocket_status.normalClosure);
         }).listen(null);
       }
     } catch (e) {
@@ -336,7 +332,35 @@ class WebSocketLink extends Link {
         final dynamic extensions = payload["extensions"];
         return SubscriptionData(id, data, errors, extensions);
       case MessageTypes.error:
-        return SubscriptionError(id, payload);
+        List<Map<String, Object?>>? _tryCastErrors(List<Object?> list) {
+          final allAreErrors = list.every(
+            (map) =>
+                map is Map<String, Object?> &&
+                map["message"] is String &&
+                (map["path"] is List?) &&
+                (map["locations"] is List?) &&
+                (map["extensions"] is Map<String, Object?>?),
+          );
+          return allAreErrors ? list.cast() : null;
+        }
+        Object? extensions;
+        List<Map<String, Object?>>? errors;
+        if (payload is List) {
+          errors = _tryCastErrors(payload);
+        } else if (payload is Map) {
+          if (payload["errors"] is List) {
+            extensions = payload["extensions"];
+            errors = _tryCastErrors(payload["errors"] as List);
+          } else {
+            errors = _tryCastErrors([payload]);
+            // only pass root level extensions if they weren't passed as
+            // extensions in the error
+            if (errors == null) {
+              extensions = payload["extensions"];
+            }
+          }
+        }
+        return SubscriptionError(id, payload, errors, extensions);
       case MessageTypes.complete:
         return SubscriptionComplete(id);
       default:
@@ -350,12 +374,12 @@ class WebSocketLink extends Link {
       return _disposedCompleter!.future;
     }
     _disposedCompleter = Completer();
+    _reconnectTimer?.cancel();
     await _keepAliveSubscription?.cancel();
-    await _channel?.sink.close(websocket_status.goingAway);
+    await _channel?.sink.close(websocket_status.normalClosure);
     _connectionStateController.add(closed);
     await _connectionStateController.close();
     await _messagesController.close();
-    _reconnectTimer?.cancel();
     _disposedCompleter!.complete();
   }
 
