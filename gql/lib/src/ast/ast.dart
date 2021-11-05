@@ -656,10 +656,12 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
 }
 
 class SchemaDefinitionNode extends TypeSystemDefinitionNode {
+  final StringValueNode? description;
   final List<DirectiveNode> directives;
   final List<OperationTypeDefinitionNode> operationTypes;
 
   const SchemaDefinitionNode({
+    this.description,
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan? span,
@@ -669,7 +671,8 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaDefinitionNode(this);
 
   @override
-  List<Object> get _children => <Object>[
+  List<Object?> get _children => <Object?>[
+        description,
         directives,
         operationTypes,
       ];

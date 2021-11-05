@@ -288,6 +288,10 @@ class _PrintVisitor extends Visitor<String> {
 
   @override
   String visitSchemaDefinitionNode(SchemaDefinitionNode node) => [
+        if (node.description != null) ...[
+          node.description!.accept(this),
+          "\n",
+        ],
         "schema",
         " ",
         visitDirectiveSetNode(node.directives),
