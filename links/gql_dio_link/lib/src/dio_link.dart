@@ -109,6 +109,7 @@ class DioLink extends Link {
     yield Response(
       data: gqlResponse.data,
       errors: gqlResponse.errors,
+      response: gqlResponse.response,
       context: _updateResponseContext(gqlResponse, dioResponse),
     );
   }

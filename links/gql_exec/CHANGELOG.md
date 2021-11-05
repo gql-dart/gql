@@ -1,3 +1,7 @@
+## 0.3.1
+
+Add `response`, raw http response to `Response`.
+
 ## 0.3.0-nullsafety.2
 
 Null Safety Pre-release

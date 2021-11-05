@@ -172,16 +172,25 @@ class SubscriptionData extends GraphQLSocketMessage {
 /// Errors sent from the server to the client if the subscription operation was
 /// not successful, usually due to GraphQL validation errors.
 class SubscriptionError extends GraphQLSocketMessage {
-  SubscriptionError(this.id, this.payload) : super(MessageTypes.error);
+  SubscriptionError(
+    this.id,
+    this.payload,
+    this.errors,
+    this.extensions,
+  ) : super(MessageTypes.error);
 
   final String id;
   final dynamic payload;
+  final List<Map<String, Object?>>? errors;
+  final dynamic extensions;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         "type": type,
         "id": id,
         "payload": payload,
+        if (errors != null) "errors": errors,
+        if (extensions != null) "extensions": extensions,
       };
 }
 

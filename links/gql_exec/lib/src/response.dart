@@ -14,6 +14,9 @@ class Response {
   /// Follows the shape of requested document.
   final Map<String, dynamic>? data;
 
+  /// The raw http response
+  final Map<String, dynamic> response;
+
   /// A [Context] to be returned along with a [Response]
   final Context context;
 
@@ -21,12 +24,14 @@ class Response {
     this.errors,
     this.data,
     this.context = const Context(),
+    required this.response,
   });
 
   /// Clone this response adding an [entry] to [context]
   Response withContextEntry<T extends ContextEntry>(T entry) => Response(
         errors: errors,
         data: data,
+        response: response,
         context: context.withEntry<T>(entry),
       );
 
@@ -37,12 +42,14 @@ class Response {
       Response(
         errors: errors,
         data: data,
+        response: response,
         context: context.updateEntry<T>(update),
       );
 
   List<Object?> _getChildren() => [
         errors,
         data,
+        response,
         context,
       ];
 
@@ -65,8 +72,8 @@ class Response {
       );
 
   @override
-  String toString() =>
-      "Response(data: $data, errors: $errors, context: $context)";
+  String toString() => "Response(data: $data, errors: $errors, "
+      "context: $context, response $response)";
 }
 
 /// Extensions returned with the response

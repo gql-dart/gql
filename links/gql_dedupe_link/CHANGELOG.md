@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Upgrade `gql_exec`.
+
 ## 2.0.0-nullsafety.1
 
 Null Safety Pre-release

@@ -15,9 +15,13 @@ final terminatingLink = Link.function(
     }
 
     // Otherwise, yield some [Response].
+    final data = <String, String?>{
+      "magic": token.token,
+    };
     yield Response(
-      data: <String, String?>{
-        "magic": token.token,
+      data: data,
+      response: <String, dynamic>{
+        "data": data,
       },
     );
   },
