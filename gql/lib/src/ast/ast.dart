@@ -1051,9 +1051,11 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
 
 class InterfaceTypeExtensionNode extends TypeExtensionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeExtensionNode({
     this.fields = const [],
+    this.interfaces = const [],
     required NameNode name,
     FileSpan? span,
     List<DirectiveNode> directives = const [],
@@ -1070,6 +1072,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
   List<Object?> get _children => <Object?>[
         name,
         directives,
+        interfaces,
         fields,
       ];
 }

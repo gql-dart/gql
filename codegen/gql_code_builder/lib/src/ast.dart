@@ -332,6 +332,7 @@ class _PrintVisitor extends Visitor<Expression> {
         {
           "name": _acceptOne(node.name),
           "directives": _list(node.directives),
+          "interfaces": _list(node.interfaces),
           "fields": _list(node.fields),
         },
       );

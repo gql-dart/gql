@@ -662,6 +662,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         node.name.accept(this),
         " ",
+        visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
       ].join();
