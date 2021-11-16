@@ -3,6 +3,7 @@ import "package:gql/ast.dart";
 
 import "./schema/enum.dart";
 import "./schema/input.dart";
+import "./schema/possible_types.dart";
 import "./schema/scalar.dart";
 import "../schema.dart";
 import "../source.dart";
@@ -49,9 +50,10 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec?> {
     DocumentNode node,
   ) =>
       Library(
-        (b) => b.body.addAll(
-          _acceptMany(node.definitions).whereType<Spec>(),
-        ),
+        (b) => b.body.addAll([
+          buildPossibleTypes(node.definitions),
+          ..._acceptMany(node.definitions).whereType<Spec>(),
+        ]),
       );
 
   @override
