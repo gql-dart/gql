@@ -121,6 +121,10 @@ class WebSocketLink extends Link {
   /// and the web socket disconnected.
   bool get isDisabled => _disposedCompleter != null;
 
+  /// A stream that notifies about changes of the current connection state.
+  Stream<ConnectionState> get connectionStateStream =>
+      _connectionStateController.stream;
+
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
   /// if [channelGenerator] is passed, [uri] must be null.
