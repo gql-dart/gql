@@ -54,8 +54,8 @@ jobs:
             build_runner build --delete-conflicting-outputs || true
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          multipack --only $PACKAGE exec dart analyze --version
+          multipack --only $PACKAGE exec dart analyze --fatal-warnings --no-hints .
       - name: Run tests
         run: |
           multipack --only $PACKAGE exec [ -d ./test ] || exit 0
