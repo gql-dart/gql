@@ -6,7 +6,7 @@ dependencies:
   gql: ^0.13.0
   gql_link: ^0.4.0
   gql_http_link: ^0.4.0
-  gql_exec: ^0.3.0
+  gql_exec: ^0.4.0
   cupertino_icons: ^1.0.2
   flutter: 
     sdk: flutter

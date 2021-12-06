@@ -1,3 +1,7 @@
+0.3.2
+
+- Upgrade `gql_exec`.
+
 ## 0.3.1
 
 - Close [227](https://github.com/gql-dart/gql/issues/227).
