@@ -1,5 +1,1 @@
 include: package:gql_pedantic/analysis_options.yaml
-
-analyzer:
-  exclude:
-    - 'lib/cats/src/*.dart'

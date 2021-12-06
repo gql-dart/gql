@@ -1,6 +1,5 @@
-import 'package:test/test.dart';
-import 'cat_builder.dart';
-import './cat_model.dart';
+import "package:gql/cats/cats.dart";
+import "package:test/test.dart";
 
 abstract class CatDriver<Doc> {
   Doc parse({
@@ -33,7 +32,7 @@ class CatRunner<Doc> {
   });
 
   void runSuite(String suitePath) {
-    var suite = _builder.buildSuite(suitePath);
+    final suite = _builder.buildSuite(suitePath);
 
     suite.scenarios!.forEach(_runScenario);
   }
@@ -48,47 +47,47 @@ class CatRunner<Doc> {
   }
 
   void _runTest(TestCase testCase, Scenario scenario) {
-    var passesAssertion = testCase.assertions!.firstWhere(
+    final passesAssertion = testCase.assertions!.firstWhere(
       (a) => a is PassesAssertion,
       orElse: () => null,
     ) as PassesAssertion?;
-    var syntaxAssertion = testCase.assertions!.firstWhere(
+    final syntaxAssertion = testCase.assertions!.firstWhere(
       (a) => a is SyntaxErrorAssertion,
       orElse: () => null,
     ) as SyntaxErrorAssertion?;
     // ignore: unused_local_variable
-    var errorCountAssertion = testCase.assertions!.firstWhere(
+    final errorCountAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorCountAssertion,
       orElse: () => null,
     ) as ErrorCountAssertion?;
     // ignore: unused_local_variable
-    var errorCodeAssertions =
+    final errorCodeAssertions =
         testCase.assertions!.whereType<ErrorCodeAssertion>();
     // ignore: unused_local_variable
-    var errorContainsAssertion = testCase.assertions!.firstWhere(
+    final errorContainsAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorContainsAssertion,
       orElse: () => null,
     ) as ErrorContainsAssertion?;
     // ignore: unused_local_variable
-    var errorRegexAssertion = testCase.assertions!.firstWhere(
+    final errorRegexAssertion = testCase.assertions!.firstWhere(
       (a) => a is ErrorRegexAssertion,
       orElse: () => null,
     ) as ErrorRegexAssertion?;
 
     group(testCase.name, () {
-      var queryDoc;
-      var queryParsingError;
+      Doc? queryDoc;
+      Object? queryParsingError;
 
-      var schemaDoc;
-      var schemaParsingError;
+      Doc? schemaDoc;
+      Object? schemaParsingError;
 
       // ignore: unused_local_variable
       Iterable<DriverError> validationErrors;
 
       // ignore: unused_local_variable
-      var executionResult;
+      dynamic executionResult;
       // ignore: unused_local_variable
-      var executionError;
+      dynamic executionError;
 
       setUp(() {
         try {
@@ -100,7 +99,7 @@ class CatRunner<Doc> {
         }
 
         if (testCase.action is! ParsingAction) {
-          var schema = testCase.schema ?? scenario.schema;
+          final schema = testCase.schema ?? scenario.schema;
 
           if (schema != null) {
             try {
@@ -112,7 +111,7 @@ class CatRunner<Doc> {
             }
           }
 
-          var validationRules = testCase.action is ValidationAction
+          final validationRules = testCase.action is ValidationAction
               ? (testCase.action as ValidationAction).validationRules
               : null;
 
@@ -124,8 +123,8 @@ class CatRunner<Doc> {
         }
 
         if (testCase.action is ExecutionAction) {
-          var action = testCase.action as ExecutionAction;
-          var testData = (testCase.testData ?? scenario.testData);
+          final action = testCase.action as ExecutionAction;
+          final testData = testCase.testData ?? scenario.testData;
 
           try {
             executionResult = driver!.execute(
@@ -144,22 +143,22 @@ class CatRunner<Doc> {
         }
       });
 
-      group('Query parsing', () {
+      group("Query parsing", () {
         if (testCase.action is! ParsingAction) {
-          test('parses successfuly', () {
+          test("parses successfuly", () {
             expect(queryDoc, isNotNull);
             expect(queryParsingError, isNull);
           });
         } else {
           if ((passesAssertion == null || passesAssertion.passes!) &&
               !(syntaxAssertion != null && syntaxAssertion.syntaxError!)) {
-            test('parses successfuly', () {
+            test("parses successfuly", () {
               expect(queryDoc, isNotNull);
               expect(queryParsingError, isNull);
             });
           }
           if (syntaxAssertion != null && syntaxAssertion.syntaxError!) {
-            test('throws syntax error', () {
+            test("throws syntax error", () {
               expect(queryDoc, isNull);
               expect(queryParsingError, isNotNull);
             });
@@ -168,23 +167,23 @@ class CatRunner<Doc> {
       });
 
       if (testCase.action is! ParsingAction) {
-        group('Schema parsing', () {
-          test('parses successfuly', () {
+        group("Schema parsing", () {
+          test("parses successfuly", () {
             expect(schemaDoc, isNotNull);
             expect(schemaParsingError, isNull);
           });
         });
 
 //        if (testCase.action is ValidationAction) {
-//          group('Validation', () {
+//          group("Validation", () {
 //            if (passesAssertion != null && passesAssertion.passes) {
-//              test('validates without errors', () {
+//              test("validates without errors", () {
 //                expect(validationErrors, isNotNull);
 //                expect(validationErrors, isEmpty);
 //              });
 //            }
 //            if (errorCountAssertion != null) {
-//              test('returns expected count of errors', () {
+//              test("returns expected count of errors", () {
 //                expect(validationErrors.length, errorCountAssertion.count);
 //              });
 //            }
@@ -192,7 +191,7 @@ class CatRunner<Doc> {
 //              errorCodeAssertions.forEach(
 //                (errorCodeAssertion) {
 //                  test(
-//                    'returns error code ${errorCodeAssertion.errorCode}',
+//                    "returns error code ${errorCodeAssertion.errorCode}",
 //                    () {
 //                      expect(
 //                        "error message",
