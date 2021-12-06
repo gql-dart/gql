@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Upgrade `gql_code_builder`.
+
 ## 0.3.0-alpha.0
 
 - **Breaking Change** - generated files are built to `__generated__` subdirectory
