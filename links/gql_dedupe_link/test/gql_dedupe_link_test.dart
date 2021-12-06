@@ -32,8 +32,10 @@ void main() {
         variables: const <String, dynamic>{"i": 12},
       );
 
+      const result1Data = <String, dynamic>{"a": 1};
       final result1 = Response(
-        data: const <String, dynamic>{"a": 1},
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
       );
 
       final mockLink = MockLink();
@@ -80,12 +82,16 @@ void main() {
         variables: const <String, dynamic>{"i": 42},
       );
 
+      const result1Data = <String, dynamic>{"a": 1};
       final result1 = Response(
-        data: const <String, dynamic>{"a": 1},
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
       );
 
+      const result21Data = <String, dynamic>{"a": 1};
       final result2 = Response(
-        data: const <String, dynamic>{"a": 2},
+        data: result21Data,
+        response: const <String, dynamic>{"data": result21Data},
       );
 
       final mockLink = MockLink();
@@ -143,8 +149,10 @@ void main() {
         variables: const <String, dynamic>{"i": 12},
       );
 
+      const result1Data = <String, dynamic>{"a": 1};
       final result1 = Response(
-        data: const <String, dynamic>{"a": 1},
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
       );
 
       final mockLink = MockLink();
@@ -192,8 +200,10 @@ void main() {
         variables: const <String, dynamic>{"i": 12},
       );
 
+      const result1Data = <String, dynamic>{"a": 1};
       final result1 = Response(
-        data: const <String, dynamic>{"a": 1},
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
       );
 
       final mockLink = MockLink();
@@ -238,8 +248,10 @@ void main() {
         variables: const <String, dynamic>{"i": 12},
       );
 
+      const result1Data = <String, dynamic>{"a": 1};
       final result1 = Response(
-        data: const <String, dynamic>{"a": 1},
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
       );
 
       final mockLink = MockLink();
