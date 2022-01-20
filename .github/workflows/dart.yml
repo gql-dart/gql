@@ -55,7 +55,7 @@ jobs:
       - name: Analyze package
         run: |
           multipack --only $PACKAGE exec dart analyze --version
-          multipack --only $PACKAGE exec dart analyze --fatal-warnings --no-hints .
+          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
       - name: Run tests
         run: |
           multipack --only $PACKAGE exec [ -d ./test ] || exit 0
