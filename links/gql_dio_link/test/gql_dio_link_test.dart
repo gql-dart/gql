@@ -447,14 +447,20 @@ void main() {
               ),
             ],
             response: const <String, dynamic>{
-              "data": <String, dynamic>{
-                "errors": {"message": "Execution error"},
-                "path": <dynamic>["friends", 0, "name"],
-                "extensions": <String, dynamic>{},
-                "locations": <Map<String, dynamic>>[
-                  {"line": 1, "column": 1}
-                ],
-              },
+              "data": <String, dynamic>{},
+              "errors": <Map<String, dynamic>>[
+                <String, dynamic>{
+                  "message": "Execution error",
+                  "path": <dynamic>["friends", 0, "name"],
+                  "extensions": <String, dynamic>{},
+                  "locations": <Map<String, dynamic>>[
+                    <String, dynamic>{
+                      "line": 1,
+                      "column": 1,
+                    },
+                  ],
+                },
+              ],
             },
             context: Context()
                 .withEntry(
@@ -642,7 +648,7 @@ void main() {
           Response(
               data: null,
               errors: null,
-              response: const <String, dynamic>{},
+              response: response.data as Map<String, dynamic>,
               context: Context().withEntry(
                 ResponseExtensions(null),
               )),
