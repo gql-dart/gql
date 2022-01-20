@@ -94,7 +94,7 @@ void main() {
           Response(
             data: const <String, dynamic>{},
             errors: null,
-            response: const <String, dynamic>{"date": <String, dynamic>{}},
+            response: const <String, dynamic>{"data": <String, dynamic>{}},
             context: Context()
                 .withEntry(
                   ResponseExtensions(null),
@@ -447,7 +447,7 @@ void main() {
               ),
             ],
             response: const <String, dynamic>{
-              "date": <String, dynamic>{
+              "data": <String, dynamic>{
                 "errors": {"message": "Execution error"},
                 "path": <dynamic>["friends", 0, "name"],
                 "extensions": <String, dynamic>{},
