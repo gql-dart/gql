@@ -46,7 +46,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Run build_runner if necessary
         run: |
@@ -106,7 +106,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
@@ -151,7 +151,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
