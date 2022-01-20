@@ -37,7 +37,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -90,7 +90,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -136,7 +136,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
