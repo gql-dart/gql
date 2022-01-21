@@ -1,14 +1,14 @@
 name: gql_link
-version: 0.4.1
+version: 0.4.2
 description: A simple and modular AST-based GraphQL request execution interface.
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 dependencies: 
   gql: ^0.13.0
-  gql_exec: ^0.3.1
+  gql_exec: ^0.4.0
   meta: ^1.1.7
 dev_dependencies: 
   gql_pedantic: ^1.0.2
-  mockito: ^4.1.1
-  test: ^1.0.0
+  mockito: ^5.0.16
+  test: ^1.16.2

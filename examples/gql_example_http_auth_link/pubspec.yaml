@@ -4,11 +4,11 @@ environment:
 dependencies: 
   gql: ^0.13.0
   gql_error_link: ^0.2.0
-  gql_exec: ^0.3.1
+  gql_exec: ^0.4.0
   gql_http_link: ^0.4.0
-  gql_link: ^0.4.0
+  gql_link: ^0.4.2
   gql_transform_link: ^0.2.0
   http: ^0.13.1
 dev_dependencies: 
-  gql_build: ^0.2.0
+  gql_build: ^0.4.0
   gql_pedantic: ^1.0.2

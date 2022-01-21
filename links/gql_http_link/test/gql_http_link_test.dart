@@ -419,7 +419,10 @@ void main() {
                 <String, dynamic>{
                   "message": "Execution error",
                   "path": <dynamic>["friends", 0, "name"],
-                  "location": {"line": 1, "column": 1},
+                  "extensions": <String, dynamic>{},
+                  "locations": <Map<String, dynamic>>[
+                    <String, dynamic>{"line": 1, "column": 1},
+                  ],
                 },
               ],
             },

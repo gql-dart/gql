@@ -1,9 +1,8 @@
 import "dart:convert";
 import "dart:io";
 
+import "package:gql/cats/cats.dart";
 import "package:yaml/yaml.dart";
-
-import "./cat_model.dart";
 
 class CatBuilder {
   Suite buildSuite(String suitePath) {
@@ -29,18 +28,18 @@ class CatBuilder {
   }
 
   Scenario buildScenario(File file, Directory folder) {
-    var doc = loadYaml(
+    final dynamic doc = loadYaml(
       file.readAsStringSync(),
       sourceUrl: Uri.file(file.path),
     );
 
-    var schema;
-    var testData;
+    String? schema;
+    Map<String, dynamic>? testData;
 
-    final background = doc["background"];
+    final YamlMap? background = doc["background"] as YamlMap?;
 
     if (background != null) {
-      schema = background["schema"];
+      schema = background["schema"] as String?;
       if (background["schema-file"] != null) {
         schema = File(
           "${folder.path}${Platform.pathSeparator}${background["schema-file"]}",
@@ -49,19 +48,14 @@ class CatBuilder {
 
       testData = json.decode(
         json.encode(background["test-data"]),
-      );
-      if (background["test-data-file"] != null) {
-        testData = File(
-          "${folder.path}${Platform.pathSeparator}${background["test-data-file"]}",
-        ).readAsStringSync();
-      }
+      ) as Map<String, dynamic>?;
     }
 
     return Scenario(
       folder: folder.path,
       file: file.path,
-      name: doc["scenario"],
-      tests: buildTests(doc["tests"], folder),
+      name: doc["scenario"] as String?,
+      tests: buildTests(doc["tests"] as YamlNode?, folder),
       schema: schema,
       testData: testData,
     );
@@ -69,21 +63,22 @@ class CatBuilder {
 
   Iterable<TestCase>? buildTests(YamlNode? node, Directory folder) {
     if (node is YamlList) {
-      return node.map((n) => buildTest(n, folder));
+      return node.map((dynamic n) => buildTest(n as YamlMap, folder));
     }
 
     return null;
   }
 
   TestCase buildTest(YamlMap node, Directory folder) {
-    final background = node["given"];
-    final query = background["query"];
+    final YamlMap? background = node["given"] as YamlMap?;
+    String? query;
 
-    var schema;
-    var testData;
+    String? schema;
+    Map<String, dynamic>? testData;
 
     if (background != null) {
-      schema = background["schema"];
+      query = background["query"] as String?;
+      schema = background["schema"] as String?;
       if (background["schema-file"] != null) {
         schema = File(
           "${folder.path}${Platform.pathSeparator}${background["schema-file"]}",
@@ -92,21 +87,16 @@ class CatBuilder {
 
       testData = json.decode(
         json.encode(background["test-data"]),
-      );
-      if (background["test-data-file"] != null) {
-        testData = File(
-          "${folder.path}${Platform.pathSeparator}${background["test-data-file"]}",
-        ).readAsStringSync();
-      }
+      ) as Map<String, dynamic>?;
     }
 
     return TestCase(
-      name: node["name"],
-      query: query,
+      name: node["name"] as String?,
+      query: query ?? "",
       schema: schema,
       testData: testData,
-      action: buildAction(node["when"]),
-      assertions: buildAssertions(node["then"]),
+      action: buildAction(node["when"] as YamlMap),
+      assertions: buildAssertions(node["then"] as YamlNode?),
     );
   }
 
@@ -117,18 +107,18 @@ class CatBuilder {
     if (node.containsKey("validate")) {
       return ValidationAction(
         (node["validate"] as YamlList).map(
-          (rule) => rule,
+          (dynamic rule) => rule as String?,
         ),
       );
     }
     if (node.containsKey("execute")) {
       return ExecutionAction(
-        operationName: node["operation-name"],
+        operationName: node["operation-name"] as String?,
         variables: json.decode(
           json.encode(node["variables"]),
-        ),
-        validateQuery: node["validate-query"],
-        testValue: node["test-value"],
+        ) as Map<String, dynamic>?,
+        validateQuery: node["validate-query"] == true,
+        testValue: node["test-value"] as String?,
       );
     }
 
@@ -137,7 +127,7 @@ class CatBuilder {
 
   Iterable<Assertion?>? buildAssertions(YamlNode? node) {
     if (node is YamlList) {
-      return node.map((n) => buildAssertion(n));
+      return node.map((dynamic n) => buildAssertion(n as YamlNode?));
     }
 
     if (node is YamlMap) {
@@ -163,13 +153,13 @@ class CatBuilder {
 
       if (node.containsKey("error-count")) {
         return ErrorCountAssertion(
-          count: node["error-count"],
+          count: node["error-count"] as int?,
         );
       }
 
       if (node.containsKey("error-code")) {
         return ErrorCodeAssertion(
-          errorCode: node["error-code"],
+          errorCode: node["error-code"] as String?,
 //          args: node["args"],
 //          locations: node["error-code"],
         );
