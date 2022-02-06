@@ -8,9 +8,9 @@ environment:
 dependencies: 
   built_collection: ^5.0.0
   built_value: ^8.0.6
-  gql_exec: ^0.3.0
-  gql_build: ^0.2.0
-  gql_code_builder: ^0.2.0
+  gql_exec: ^0.4.0
+  gql_build: ^0.4.0
+  gql_code_builder: ^0.4.0
 dev_dependencies: 
   build: ^2.0.0
   build_runner: ^2.0.0

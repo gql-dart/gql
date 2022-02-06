@@ -1,13 +1,13 @@
 name: gql_dedupe_link
-version: 2.0.1
+version: 2.0.2
 description: GQL Link to deduplicate identical in-flight execution requests
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 dependencies: 
   async: ^2.5.0
-  gql_exec: ^0.3.1
-  gql_link: ^0.4.0
+  gql_exec: ^0.4.0
+  gql_link: ^0.4.2
   meta: ^1.3.0
 dev_dependencies: 
   gql: ^0.13.0
