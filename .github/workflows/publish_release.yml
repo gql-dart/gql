@@ -1,8 +1,8 @@
 name: Publish Alpha
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - release
 jobs:
   publish:
     runs-on: ubuntu-latest
