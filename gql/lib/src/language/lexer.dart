@@ -26,7 +26,7 @@ enum TokenKind {
 }
 
 abstract class Token {
-  FileSpan get span;
+  FileSpan? get span;
 
   TokenKind get kind;
 
@@ -41,14 +41,14 @@ class _Token implements Token {
   @override
   final TokenKind kind;
   @override
-  final FileSpan span;
+  final FileSpan? span;
 
   const _Token({
-    this.kind,
+    required this.kind,
     this.span,
   });
 
-  String get _text => span.text;
+  String get _text => span!.text;
 
   String _getValue() {
     switch (kind) {
@@ -56,11 +56,11 @@ class _Token implements Token {
         return _text.substring(1, _text.length - 1).replaceAllMapped(
           RegExp(r'\\[nrbtf\\/"]'),
           (match) {
-            switch (match.group(0).codeUnitAt(1)) {
+            switch (match.group(0)!.codeUnitAt(1)) {
               case 34: // "
               case 47: // /
               case 92: // \
-                return match.group(0)[1];
+                return match.group(0)![1];
               case 98: // \b
                 return "\b";
               case 102: // \f
@@ -72,17 +72,17 @@ class _Token implements Token {
               case 116: // \t
                 return "\t";
               default:
-                return match.group(0);
+                return match.group(0)!;
             }
           },
         ).replaceAllMapped(
           RegExp(r"\\u[0-9A-Za-z]{4}"),
           (match) => String.fromCharCode(
             uniCharCode(
-              match.group(0).codeUnitAt(2),
-              match.group(0).codeUnitAt(3),
-              match.group(0).codeUnitAt(4),
-              match.group(0).codeUnitAt(5),
+              match.group(0)!.codeUnitAt(2),
+              match.group(0)!.codeUnitAt(3),
+              match.group(0)!.codeUnitAt(4),
+              match.group(0)!.codeUnitAt(5),
             ),
           ),
         );
@@ -91,7 +91,7 @@ class _Token implements Token {
           _text.substring(3, _text.length - 3).replaceAll('\\"""', '"""'),
         );
       default:
-        return span.text;
+        return span!.text;
     }
   }
 
@@ -110,7 +110,7 @@ class Lexer {
     Token token;
     do {
       token = scanner.scanToken();
-      if (skipComments && token.kind != TokenKind.comment) {
+      if (!skipComments || token.kind != TokenKind.comment) {
         tokens.add(token);
       }
     } while (token.kind != TokenKind.eof);
@@ -127,7 +127,7 @@ class _Scanner {
 
   _Scanner(this.src);
 
-  int peek({
+  int? peek({
     int offset = 0,
   }) {
     if (position + offset >= src.length) {
@@ -162,14 +162,14 @@ class _Scanner {
     }
     consumeWhitespace();
 
-    if (position >= src.length) {
+    final code = peek();
+
+    if (code == null) {
       return _Token(
         kind: TokenKind.eof,
         span: src.span(src.length),
       );
     }
-
-    final code = peek();
 
     if ((code >= 65 && code <= 90) ||
         code == 95 ||
@@ -233,9 +233,8 @@ class _Scanner {
   }
 
   Token scanComment() {
-    ++position;
     var length = 0;
-    int code;
+    int? code;
 
     do {
       code = peek(offset: ++length);
@@ -302,7 +301,7 @@ class _Scanner {
     var digitOffset = offset;
     var code = peek(offset: digitOffset);
 
-    if (code >= 48 && code <= 57) {
+    if (code != null && code >= 48 && code <= 57) {
       do {
         code = peek(offset: ++digitOffset);
       } while (code != null && code >= 48 && code <= 57);
@@ -353,7 +352,7 @@ class _Scanner {
         );
       }
 
-      if (code == null || (code < 0x0020 && code != 0x0009)) {
+      if (code < 0x0020 && code != 0x0009) {
         throw SourceSpanException(
           "Unexpected character in a string literal",
           src.span(
@@ -379,10 +378,19 @@ class _Scanner {
           case 116: // \t
             break;
           case 117: // \u
-            final isUnicode = isHex(peek(offset: 1)) &&
-                isHex(peek(offset: 2)) &&
-                isHex(peek(offset: 3)) &&
-                isHex(peek(offset: 4));
+            final next1 = peek(offset: 1);
+            final next2 = peek(offset: 2);
+            final next3 = peek(offset: 3);
+            final next4 = peek(offset: 4);
+
+            final isUnicode = next1 != null &&
+                isHex(next1) &&
+                next2 != null &&
+                isHex(next2) &&
+                next3 != null &&
+                isHex(next3) &&
+                next4 != null &&
+                isHex(next4);
 
             if (!isUnicode) {
               throw SourceSpanException(
@@ -430,11 +438,7 @@ class _Scanner {
         );
       }
 
-      if (code == null ||
-          (code < 0x0020 &&
-              code != 0x0009 &&
-              code != 0x000a &&
-              code != 0x000d)) {
+      if (code < 0x0020 && code != 0x0009 && code != 0x000a && code != 0x000d) {
         throw SourceSpanException(
           "Unexpected character in a string literal",
           src.span(position, position),
@@ -527,7 +531,7 @@ int char2Hex(int a) {
 String dedentBlockStringValue(String value) {
   var lines = value.split(RegExp(r"\r\n|[\n\r]"));
 
-  int commonIndent;
+  int? commonIndent;
   for (var i = 1; i < lines.length; i++) {
     final line = lines[i];
     final indent = leadingWhitespace(line);
@@ -543,7 +547,7 @@ String dedentBlockStringValue(String value) {
 
   if (commonIndent != null && commonIndent != 0) {
     lines = lines.map((line) {
-      if (line.length < commonIndent) {
+      if (line.length < commonIndent!) {
         return "";
       } else {
         return line.substring(commonIndent);

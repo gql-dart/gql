@@ -3,30 +3,33 @@ import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
 Matcher token({
-  TokenKind kind,
-  int start,
-  int end,
-  int line,
-  int column,
-  String value,
+  TokenKind? kind,
+  int? start,
+  int? end,
+  int? line,
+  int? column,
+  String? value,
 }) =>
     predicate(
       (Token token) =>
           token.kind == kind &&
-          token.span.start.offset == start &&
-          token.span.end.offset == end &&
-          token.span.start.line == line - 1 &&
-          token.span.start.column == column - 1 &&
+          token.span!.start.offset == start &&
+          token.span!.end.offset == end &&
+          token.span!.start.line == line! - 1 &&
+          token.span!.start.column == column! - 1 &&
           (value == null || token.value == value),
       "token of ${kind} at $line:$column($start-$end) $value",
     );
 
 void main() {
   group("Lexer", () {
-    Lexer lexer;
+    late Lexer lexer;
 
-    List<Token> tokenize(String text) =>
-        lexer.tokenize(SourceFile.fromString(text, url: "source"));
+    List<Token> tokenize(String text, {bool skipComments = true}) =>
+        lexer.tokenize(
+          SourceFile.fromString(text, url: "source"),
+          skipComments: skipComments,
+        );
 
     setUp(() {
       lexer = Lexer();
@@ -83,6 +86,36 @@ void main() {
           column: 3,
           value: "foo",
         )),
+      );
+
+      expect(
+        tokenize("#comment\n#\nfoo", skipComments: false),
+        allOf([
+          contains(token(
+            kind: TokenKind.comment,
+            start: 0,
+            end: 8,
+            line: 1,
+            column: 1,
+            value: "#comment",
+          )),
+          contains(token(
+            kind: TokenKind.comment,
+            start: 9,
+            end: 10,
+            line: 2,
+            column: 1,
+            value: "#",
+          )),
+          contains(token(
+            kind: TokenKind.name,
+            start: 11,
+            end: 14,
+            line: 3,
+            column: 1,
+            value: "foo",
+          )),
+        ]),
       );
 
       expect(

@@ -1,0 +1,55 @@
+targets:
+  $default:
+    builders:
+      gql_build|ast_builder:
+        enabled: true
+      gql_build|req_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+      gql_build|serializer_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+          custom_serializers:
+            - import: 'package:end_to_end_test/date_serializer.dart'
+              name: DateSerializer
+            - import: 'package:end_to_end_test/custom_field_serializer.dart'
+              name: CustomFieldSerializer
+          type_overrides:
+            Date:
+              name: DateTime
+            CustomField:
+              name: CustomField
+              import: 'package:end_to_end_test/custom_field.dart'
+      gql_build|schema_builder:
+        enabled: true
+        options:
+          enum_fallbacks:
+            LengthUnit: METER
+          type_overrides:
+            Date:
+              name: DateTime
+            CustomField:
+              name: CustomField
+              import: 'package:end_to_end_test/custom_field.dart'
+      gql_build|data_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+          type_overrides:
+            Date:
+              name: DateTime
+            CustomField:
+              name: CustomField
+              import: 'package:end_to_end_test/custom_field.dart'
+      gql_build|var_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test|lib/graphql/schema.graphql
+          type_overrides:
+            Date:
+              name: DateTime
+            CustomField:
+              name: CustomField
+              import: 'package:end_to_end_test/custom_field.dart'

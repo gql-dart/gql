@@ -12,5 +12,8 @@ doc/api/
 
 
 .idea/
+.vscode/
 
 **/*.iml
+
+**/test/**/*.mocks.dart

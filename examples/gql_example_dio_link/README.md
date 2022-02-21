@@ -1,0 +1,1 @@
+A simple command-line application that uses gql_dio_link

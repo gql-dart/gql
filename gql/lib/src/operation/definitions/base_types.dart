@@ -1,8 +1,7 @@
-import "package:meta/meta.dart";
 import "package:collection/collection.dart";
-import "package:gql/src/schema/definitions.dart";
-
 import "package:gql/src/operation/definitions/type_resolver.dart";
+import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 @immutable
 abstract class ExecutableGraphQLEntity extends GraphQLEntity {
@@ -12,7 +11,7 @@ abstract class ExecutableGraphQLEntity extends GraphQLEntity {
 @immutable
 abstract class ExecutableWithResolver extends ExecutableGraphQLEntity
     implements ExecutableTypeResolver {
-  const ExecutableWithResolver([GetExecutableType getType])
+  const ExecutableWithResolver([GetExecutableType? getType])
       : getType = getType ?? GetExecutableType.withoutContext,
         super();
 
@@ -32,7 +31,7 @@ abstract class ExecutableWithResolver extends ExecutableGraphQLEntity
   }
 
   @override
-  int get hashCode => const ListEquality<Object>(
+  int get hashCode => const ListEquality<Object?>(
         DeepCollectionEquality(),
       ).hash([astNode, getType]);
 }

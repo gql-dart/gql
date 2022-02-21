@@ -1,11 +1,10 @@
 import "dart:collection";
 
-import "package:meta/meta.dart";
+import "package:collection/collection.dart" show IterableExtension;
 import "package:gql/ast.dart";
-
 import "package:gql/src/schema/defaults.dart";
-
 import "package:gql/src/schema/definitions.dart";
+import "package:meta/meta.dart";
 
 //// A GraphQL Schema definition __without__ field resolution capacities.
 ///
@@ -21,35 +20,38 @@ class GraphQLSchema extends TypeSystemDefinition {
   const GraphQLSchema(
     this.astNode, {
     this.fullDocumentAst,
-    Map<String, TypeDefinition> typeMap,
+    Map<String?, TypeDefinition?>? typeMap,
     this.directives,
   }) : _typeMap = typeMap;
 
   @override
-  final SchemaDefinitionNode astNode;
+  final SchemaDefinitionNode? astNode;
 
-  final DocumentNode fullDocumentAst;
+  @override
+  String? get name => null;
 
-  final List<DirectiveDefinition> directives;
+  final DocumentNode? fullDocumentAst;
+
+  final List<DirectiveDefinition>? directives;
 
   /// Definition for the given directive [name], if any exists
-  DirectiveDefinition getDirective(String name) => directives.firstWhere(
+  DirectiveDefinition? getDirective(String name) =>
+      directives!.firstWhereOrNull(
         (d) => d.name == name,
-        orElse: () => null,
       );
 
-  List<OperationTypeDefinition> get operationTypes => astNode.operationTypes
+  List<OperationTypeDefinition> get operationTypes => astNode!.operationTypes
       .map(
         (o) => OperationTypeDefinition(o),
       )
       .toList();
 
   /// Map of all type names to their respective [TypeDefinition]s
-  final Map<String, TypeDefinition> _typeMap;
+  final Map<String?, TypeDefinition?>? _typeMap;
 
   /// Map of all type names to their respective [TypeDefinition]s,
   /// with type resolution enabled (if applicable)
-  Map<String, TypeDefinition> get typeMap => _typeMap.map(
+  Map<String?, TypeDefinition?> get typeMap => _typeMap!.map(
         (name, definition) => MapEntry(
           name,
           _withAwareness(definition),
@@ -60,21 +62,21 @@ class GraphQLSchema extends TypeSystemDefinition {
   ///
   /// [EnumTypeDefinition] and [ScalarTypeDefinition] do not accept [getType]
   /// because they cannot include references
-  TypeDefinition _withAwareness(TypeDefinition definition) =>
+  TypeDefinition? _withAwareness(TypeDefinition? definition) =>
       TypeResolver.addedTo(definition, getType) ?? definition;
 
   /// Resolve the given [name] into a [TypeDefinition] defined within the schema
-  TypeDefinition getType(String name) => _withAwareness(_typeMap[name]);
+  TypeDefinition? getType(String name) => _withAwareness(_typeMap![name]);
 
-  ObjectTypeDefinition _getObjectType(String name) =>
-      _withAwareness(_typeMap[name]) as ObjectTypeDefinition;
+  ObjectTypeDefinition? _getObjectType(String name) =>
+      _withAwareness(_typeMap![name]) as ObjectTypeDefinition?;
 
-  Iterable<TypeDefinition> get _allTypeDefinitions =>
-      LinkedHashSet<TypeDefinition>.from(_typeMap.values).map(_withAwareness);
+  Iterable<TypeDefinition?> get _allTypeDefinitions =>
+      LinkedHashSet<TypeDefinition>.from(_typeMap!.values).map(_withAwareness);
 
-  ObjectTypeDefinition get query => _getObjectType("query");
-  ObjectTypeDefinition get mutation => _getObjectType("mutation");
-  ObjectTypeDefinition get subscription => _getObjectType("subscription");
+  ObjectTypeDefinition? get query => _getObjectType("query");
+  ObjectTypeDefinition? get mutation => _getObjectType("mutation");
+  ObjectTypeDefinition? get subscription => _getObjectType("subscription");
 
   List<InterfaceTypeDefinition> get interaces =>
       _getAll<InterfaceTypeDefinition>();
@@ -93,7 +95,7 @@ class GraphQLSchema extends TypeSystemDefinition {
       _allTypeDefinitions.whereType<T>().toList();
 
   /// Get the possible [ObjectTypeDefinition]s that the given [abstractType] could be resolved into
-  List<ObjectTypeDefinition> getPossibleTypes(AbstractType abstractType) {
+  List<ObjectTypeDefinition> getPossibleTypes(AbstractType? abstractType) {
     if (abstractType is UnionTypeDefinition) {
       return abstractType.types;
     }
@@ -128,7 +130,7 @@ GraphQLSchema buildSchema(
     assertValidSDL(documentAST);
   }
   */
-  SchemaDefinitionNode schemaDef;
+  SchemaDefinitionNode? schemaDef;
   final _typeDefs = <TypeDefinitionNode>[];
   final _directiveDefs = <DirectiveDefinitionNode>[];
 
@@ -165,16 +167,16 @@ GraphQLSchema buildSchema(
   );
 }
 
-Map<String, ObjectTypeDefinition> _operationTypeMap(
-  Map<String, TypeDefinition> typeMap,
-  SchemaDefinitionNode schemaDef,
+Map<String, ObjectTypeDefinition?> _operationTypeMap(
+  Map<String?, TypeDefinition> typeMap,
+  SchemaDefinitionNode? schemaDef,
 ) {
   final operationTypeNames = _getOperationTypeNames(schemaDef);
   return Map.fromEntries(
     operationTypeNames.entries
         .map((e) => MapEntry(
               e.key.name,
-              typeMap[e.value] as ObjectTypeDefinition,
+              typeMap[e.value] as ObjectTypeDefinition?,
             ))
         .where((e) => e.value != null),
   );
@@ -182,7 +184,7 @@ Map<String, ObjectTypeDefinition> _operationTypeMap(
 
 /// Resolve a map of { [OperationType]: [String] typeName }
 Map<OperationType, String> _getOperationTypeNames(
-    [SchemaDefinitionNode schema]) {
+    [SchemaDefinitionNode? schema]) {
   if (schema == null) {
     return {
       OperationType.query: "Query",

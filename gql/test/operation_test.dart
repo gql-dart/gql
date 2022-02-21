@@ -1,5 +1,5 @@
-import "package:gql/schema.dart";
 import "package:gql/operation.dart";
+import "package:gql/schema.dart";
 import "package:test/test.dart";
 
 import "./data/operations.gql.dart" as _operations;
@@ -15,7 +15,7 @@ void main() {
 
     test("Can dereference schemaType", () {
       final query = document.operations.first;
-      expect(query.schemaType.name, equals("StarWarsQuery"));
+      expect(query.schemaType!.name, equals("StarWarsQuery"));
     });
   });
 
@@ -29,7 +29,7 @@ void main() {
     test("Can dereference fragmentType", () {
       final mutationField = document.operations.first.selectionSet.fields.first;
 
-      final spreads = mutationField.selectionSet.fragmentSpreads;
+      final spreads = mutationField.selectionSet!.fragmentSpreads;
       expect(spreads.first.fragment.name, equals("info"));
 
       final relationships = spreads[1].fragment;
@@ -37,7 +37,7 @@ void main() {
 
       final relationshipsFriends = relationships.selectionSet.fields.first;
       expect(
-        relationshipsFriends.selectionSet.fragmentSpreads.first.fragment.name,
+        relationshipsFriends.selectionSet!.fragmentSpreads.first.fragment.name,
         equals("friendNetwork"),
       );
     });

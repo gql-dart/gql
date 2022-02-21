@@ -1,8 +1,33 @@
 ## `gql-dart/gql` 
 
+[![MIT License][license-badge]][license-link]
+[![PRs Welcome][prs-badge]][prs-link]
+[![Watch on GitHub][github-watch-badge]][github-watch-link]
+[![Star on GitHub][github-star-badge]][github-star-link]
+[![Watch on GitHub][github-forks-badge]][github-forks-link]
+[![Discord][discord-badge]][discord-link]
+
+[license-badge]: https://img.shields.io/github/license/gql-dart/gql.svg?style=for-the-badge
+[license-link]: https://github.com/gql-dart/gql/blob/master/LICENSE
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge
+[prs-link]: https://github.com/gql-dart/gql/issues
+
+[github-watch-badge]: https://img.shields.io/github/watchers/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
+[github-watch-link]: https://github.com/gql-dart/gql/watchers
+[github-star-badge]: https://img.shields.io/github/stars/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
+[github-star-link]: https://github.com/gql-dart/gql/stargazers
+[github-forks-badge]: https://img.shields.io/github/forks/gql-dart/gql.svg?style=for-the-badge&logo=github&logoColor=ffffff
+[github-forks-link]: https://github.com/gql-dart/gql/network/members
+
+[discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
+[discord-link]: https://discord.gg/NryjpVa
+
+
 This is an effort to advance the Dart GraphQL ecosystem.
 
 It consists of multiple packages and libraries centered around GraphQL AST.
+
+![Packages](docs/gql.svg)
 
 #### Core
 
@@ -47,13 +72,14 @@ Ideas for future work:
 | [![version][package:gql_http_link:version]][package:gql_http_link] | [`package:gql_http_link`][package:gql_http_link:source] | `gql_http_link.dart` | Link to execute GraphQL requests via HTTP |
 | [![version][package:gql_dedupe_link:version]][package:gql_dedupe_link] | [`package:gql_dedupe_link`][package:gql_dedupe_link:source] | `gql_dedupe_link.dart` | De-duplicating Link to avoid execution of identical requests |
 | [![version][package:gql_transform_link:version]][package:gql_transform_link] | [`package:gql_transform_link`][package:gql_transform_link:source] | `gql_transform_link.dart` | GQL Link to transform Requests and Responses. May be used to update context, document, variables, data, errors, etc. |
+| [![version][package:gql_websocket_link:version]][package:gql_websocket_link] | [`package:gql_websocket_link`][package:gql_websocket_link:source] | `gql_websocket_link.dart` | GQL Link for subscriptions using websocket. |
+| [![version][package:gql_dio_link:version]][package:gql_dio_link] | [`package:gql_dio_link`][package:gql_dio_link:source] | `gql_dio_link.dart` | Similar to gql_http_link, A GQL Terminating Link to execute requests via Dio using JSON. |
 
 #### Other
 
 | Pub | Package | Library | Description |
 |-----|---------|---------|-------------|
 | [![version][package:gql_pedantic:version]][package:gql_pedantic] | [`package:gql_pedantic`][package:gql_pedantic:source] |  | Lint rules used by all `gql-dart/gql` packages |
-| [![version][package:multipack:version]][package:multipack] | [`package:multipack`][package:multipack:source] |  | Development tool to ease working in this monorepo setup |
 
 #### Examples
 
@@ -66,37 +92,40 @@ Ideas for future work:
 [package:gql:source]: ./gql/README.md
 [package:gql]: https://pub.dartlang.org/packages/gql
 [package:gql:version]: https://img.shields.io/pub/v/gql.svg?style=flat-square 
-[package:gql_exec:source]: ./gql_exec/README.md
+[package:gql_exec:source]: ./links/gql_exec/README.md
 [package:gql_exec]: https://pub.dartlang.org/packages/gql_exec
-[package:gql_exec:version]: https://img.shields.io/pub/v/gql_exec.svg?style=flat-square 
-[package:gql_link:source]: ./gql_link/README.md
+[package:gql_exec:version]: https://img.shields.io/pub/v/gql_exec.svg?style=flat-square
+[package:gql_websocket_link]: https://pub.dartlang.org/packages/gql_websocket_link
+[package:gql_websocket_link:source]: ./links/gql_websocket_link/README.md
+[package:gql_websocket_link:version]: https://img.shields.io/pub/v/gql_websocket_link.svg?style=flat-square
+[package:gql_dio_link]: https://pub.dartlang.org/packages/gql_dio_link
+[package:gql_dio_link:source]: ./links/gql_dio_link/README.md
+[package:gql_dio_link:version]: https://img.shields.io/pub/v/gql_dio_link.svg?style=flat-square
+[package:gql_link:source]: ./links/gql_link/README.md
 [package:gql_link]: https://pub.dartlang.org/packages/gql_link
 [package:gql_link:version]: https://img.shields.io/pub/v/gql_link.svg?style=flat-square 
-[package:gql_http_link:source]: ./gql_http_link/README.md
+[package:gql_http_link:source]: ./links/gql_http_link/README.md
 [package:gql_http_link]: https://pub.dartlang.org/packages/gql_http_link
 [package:gql_http_link:version]: https://img.shields.io/pub/v/gql_http_link.svg?style=flat-square 
-[package:gql_code_builder:source]: ./gql_code_builder/README.md
+[package:gql_code_builder:source]: ./codegen/gql_code_builder/README.md
 [package:gql_code_builder]: https://pub.dartlang.org/packages/gql_code_builder
 [package:gql_code_builder:version]: https://img.shields.io/pub/v/gql_code_builder.svg?style=flat-square 
-[package:gql_build:source]: ./gql_build/README.md
+[package:gql_build:source]: ./codegen/gql_build/README.md
 [package:gql_build]: https://pub.dartlang.org/packages/gql_build
 [package:gql_build:version]: https://img.shields.io/pub/v/gql_build.svg?style=flat-square 
-[package:gql_dedupe_link:source]: ./gql_dedupe_link/README.md
+[package:gql_dedupe_link:source]: ./links/gql_dedupe_link/README.md
 [package:gql_dedupe_link]: https://pub.dartlang.org/packages/gql_dedupe_link
 [package:gql_transform_link:version]: https://img.shields.io/pub/v/gql_transform_link.svg?style=flat-square 
-[package:gql_transform_link:source]: ./gql_transform_link/README.md
+[package:gql_transform_link:source]: ./links/gql_transform_link/README.md
 [package:gql_transform_link]: https://pub.dartlang.org/packages/gql_transform_link
 [package:gql_dedupe_link:version]: https://img.shields.io/pub/v/gql_dedupe_link.svg?style=flat-square 
 [package:gql_pedantic:source]: ./gql_pedantic/README.md
 [package:gql_pedantic]: https://pub.dartlang.org/packages/gql_pedantic
-[package:gql_pedantic:version]: https://img.shields.io/pub/v/gql_pedantic.svg?style=flat-square 
-[package:multipack:source]: ./multipack/README.md
-[package:multipack]: https://pub.dartlang.org/packages/multipack
-[package:multipack:version]: https://img.shields.io/pub/v/multipack.svg?style=flat-square 
-[package:gql_example_cli:source]: ./gql_example_cli/README.md
+[package:gql_pedantic:version]: https://img.shields.io/pub/v/gql_pedantic.svg?style=flat-square
+[package:gql_example_cli:source]: ./examples/gql_example_cli/README.md
 [package:gql_example_cli]: https://pub.dartlang.org/packages/gql_example_cli
 [package:gql_example_cli:version]: https://img.shields.io/pub/v/gql_example_cli.svg?style=flat-square 
-[package:gql_example_flutter:source]: ./gql_example_flutter/README.md
+[package:gql_example_flutter:source]: ./examples/gql_example_flutter/README.md
 [package:gql_example_flutter]: https://pub.dartlang.org/packages/gql_example_flutter
 [package:gql_example_flutter:version]: https://img.shields.io/pub/v/gql_example_flutter.svg?style=flat-square 
 
@@ -127,11 +156,35 @@ Ideas for future work:
 ## Contributing
 
 The goal of this project is to expand Dart GraphQL ecosystem
-and building a community around this vendor-neutral implementation.
+and to build a community around this vendor-neutral implementation.
 
-That said, this project is in it's early days and the best
-way to contribute currently is to open issues with questions
-about current and future scope and features of this project.
+Community contributions are welcome.
+
+### `multipack`
+This repo uses [`multipack`](https://github.com/gql-dart/multipack). To activate it run the following command.
+```bash
+pub global activate multipack
+```
+
+`multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
+to run commands in topological order.
+
+Link all local packages by running
+```bash
+multipack pubspec override
+```
+
+Get all packages by running
+```bash
+multipack pub get
+```
+
+Clean up the pubspec file before publishing
+```bash
+multipack pubspec clean
+```
+
+See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
 
 ## Features and bugs
 
