@@ -42,6 +42,7 @@ class AddTypenameField extends TransformingVisitor {
         ],
         directives: node.directives,
         description: node.description,
+        interfaces: node.interfaces,
         span: node.span,
       );
 

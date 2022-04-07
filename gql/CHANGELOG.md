@@ -1,3 +1,7 @@
+## 0.13.1
+
+- Support `interfaces`.
+
 ## 0.13.0-nullsafety.2
 
 Loosen `source_span` constraint for `flutter_test` compatibility

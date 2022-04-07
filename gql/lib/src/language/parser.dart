@@ -740,12 +740,14 @@ class _Parser {
     final description = _parseDescription();
     _expectKeyword("interface");
     final name = _parseName("Expected an interface name");
+    final interfaces = _parseImplementsInterfaces();
     final directives = _parseDirectives(isConst: true);
     final fields = _parseFieldsDefinition();
 
     return InterfaceTypeDefinitionNode(
       description: description,
       name: name,
+      interfaces: interfaces,
       directives: directives,
       fields: fields,
     );
@@ -881,6 +883,8 @@ class _Parser {
         return DirectiveLocation.fragmentSpread;
       case "INLINE_FRAGMENT":
         return DirectiveLocation.inlineFragment;
+      case "VARIABLE_DEFINITION":
+        return DirectiveLocation.variableDefinition;
       case "SCHEMA":
         return DirectiveLocation.schema;
       case "SCALAR":
@@ -988,6 +992,7 @@ class _Parser {
     _expectKeyword("interface");
 
     final name = _parseName("Expected an interface name");
+    final interfaces = _parseImplementsInterfaces();
     final directives = _parseDirectives(isConst: true);
     final fields = _parseFieldsDefinition();
 
@@ -1001,6 +1006,7 @@ class _Parser {
     return InterfaceTypeExtensionNode(
       name: name,
       directives: directives,
+      interfaces: interfaces,
       fields: fields,
     );
   }
