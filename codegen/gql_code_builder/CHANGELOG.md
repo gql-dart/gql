@@ -1,6 +1,10 @@
-## 0.4.1
+## 0.5.1
 
 - Support `interfaces`.
+
+## 0.5.0
+
+- Support analyzer >=2.3.0 < 4.0.0
 
 ## 0.4.0
 

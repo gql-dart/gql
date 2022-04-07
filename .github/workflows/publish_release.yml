@@ -1,0 +1,29 @@
+name: Publish Release
+on:
+  push:
+    branches:
+      - release
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    if: github.ref == 'refs/heads/release'
+    env:
+      PACKAGES: 'gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link'
+      PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
+      PUB_REFRESH_TOKEN: ${{ secrets.PUB_REFRESH_TOKEN }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Activate multipack
+        run: |
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          pub global activate multipack
+      - name: Sync package versions
+        run: |
+          multipack --only $PACKAGES pubspec sync-versions
+      - name: Publish packages
+        run: |
+          echo "{\"accessToken\":\"$PUB_ACCESS_TOKEN\",\"refreshToken\":\"$PUB_REFRESH_TOKEN\",\"idToken\":null,\"tokenEndpoint\":\"https://accounts.google.com/o/oauth2/token\",\"scopes\":[\"openid\",\"https://www.googleapis.com/auth/userinfo.email\"],\"expiration\":1588334512218}" > $HOME/.pub-cache/credentials.json
+          multipack --only $PACKAGES pub publish --force
