@@ -103,6 +103,7 @@ enum DirectiveLocation {
   fragmentDefinition,
   fragmentSpread,
   inlineFragment,
+  variableDefinition,
   schema,
   scalar,
   object,
@@ -656,10 +657,12 @@ abstract class TypeExtensionNode extends TypeSystemExtensionNode {
 }
 
 class SchemaDefinitionNode extends TypeSystemDefinitionNode {
+  final StringValueNode? description;
   final List<DirectiveNode> directives;
   final List<OperationTypeDefinitionNode> operationTypes;
 
   const SchemaDefinitionNode({
+    this.description,
     this.directives = const [],
     this.operationTypes = const [],
     FileSpan? span,
@@ -669,7 +672,8 @@ class SchemaDefinitionNode extends TypeSystemDefinitionNode {
   R accept<R>(Visitor<R> v) => v.visitSchemaDefinitionNode(this);
 
   @override
-  List<Object> get _children => <Object>[
+  List<Object?> get _children => <Object?>[
+        description,
         directives,
         operationTypes,
       ];
@@ -810,11 +814,13 @@ class InputValueDefinitionNode extends Node {
 
 class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeDefinitionNode({
     this.fields = const [],
     StringValueNode? description,
     required NameNode name,
+    this.interfaces = const [],
     List<DirectiveNode> directives = const [],
     FileSpan? span,
   }) : super(
@@ -832,6 +838,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
         name,
         description,
         directives,
+        interfaces,
         fields,
       ];
 }
@@ -1047,9 +1054,11 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
 
 class InterfaceTypeExtensionNode extends TypeExtensionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeExtensionNode({
     this.fields = const [],
+    this.interfaces = const [],
     required NameNode name,
     FileSpan? span,
     List<DirectiveNode> directives = const [],
@@ -1066,6 +1075,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
   List<Object?> get _children => <Object?>[
         name,
         directives,
+        interfaces,
         fields,
       ];
 }

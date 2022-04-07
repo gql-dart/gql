@@ -318,6 +318,7 @@ class _PrintVisitor extends Visitor<Expression> {
           "name": _acceptOne(node.name),
 //          "description": _acceptOne(node.description),
           "directives": _list(node.directives),
+          "interfaces": _list(node.interfaces),
           "fields": _list(node.fields),
         },
       );
@@ -331,6 +332,7 @@ class _PrintVisitor extends Visitor<Expression> {
         {
           "name": _acceptOne(node.name),
           "directives": _list(node.directives),
+          "interfaces": _list(node.interfaces),
           "fields": _list(node.fields),
         },
       );
@@ -631,6 +633,8 @@ Expression _directiveLocation(DirectiveLocation location) {
       return _ref("DirectiveLocation.fragmentSpread");
     case DirectiveLocation.inlineFragment:
       return _ref("DirectiveLocation.inlineFragment");
+    case DirectiveLocation.variableDefinition:
+      return _ref("DirectiveLocation.variableDefinition");
     case DirectiveLocation.schema:
       return _ref("DirectiveLocation.schema");
     case DirectiveLocation.scalar:

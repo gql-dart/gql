@@ -1,4 +1,5 @@
-import "package:gql/src/language/parser.dart";
+import "package:gql/ast.dart";
+import "package:gql/language.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
@@ -100,6 +101,105 @@ void main() {
           26,
         ),
       );
+    });
+
+    /// https://github.com/gql-dart/gql/issues/269
+    test("Interfaces implement interfaces", () {
+      final doc = parseString("""
+interface Interface0 {
+   field0: String
+}
+
+interface Interface1 implements Interface0 {
+   field0: String
+   field1: Float!
+}
+
+interface Interface2 implements Interface0 & Interface1 {
+   field0: String
+   field1: Float!
+   field2: Float
+}
+
+type Type0 implements & Interface0 & Interface1 & Interface2 {
+   field0: String
+   field1: Float!
+   field2: Float
+}
+""");
+      final map = Map.fromEntries(
+        doc.definitions.whereType<InterfaceTypeDefinitionNode>().map(
+              (e) => MapEntry(
+                e.name.value,
+                e.interfaces.map((e) => e.name.value),
+              ),
+            ),
+      );
+
+      expect(map, {
+        "Interface0": <String>[],
+        "Interface1": ["Interface0"],
+        "Interface2": ["Interface0", "Interface1"],
+      });
+
+      final printedDoc = printNode(doc).replaceAll(RegExp(r"\s+"), " ");
+      expect(printedDoc, contains("Interface0 {"));
+      expect(printedDoc, contains("Interface1 implements Interface0 {"));
+      expect(printedDoc,
+          contains("Interface2 implements Interface0 & Interface1 {"));
+    });
+
+    test("Directives parsing", () {
+      final doc = parseString("""
+directive @onQuery on QUERY
+directive @onMutation on MUTATION
+directive @onSubscription on SUBSCRIPTION
+directive @onField on FIELD
+directive @onFragmentDefinition on FRAGMENT_DEFINITION
+directive @onFragmentSpread on FRAGMENT_SPREAD
+directive @onInlineFragment on INLINE_FRAGMENT
+directive @onVariableDefinition on VARIABLE_DEFINITION
+directive @onSchema on SCHEMA
+directive @onScalar on SCALAR
+directive @onObject on OBJECT
+directive @onFieldDefinition on FIELD_DEFINITION
+directive @onArgumentDefinition on ARGUMENT_DEFINITION
+directive @onInterface on INTERFACE
+directive @onUnion on UNION
+directive @onEnum on ENUM
+directive @onEnumValue on ENUM_VALUE
+directive @onInputObject on INPUT_OBJECT
+directive @onInputFieldDefinition on INPUT_FIELD_DEFINITION
+""");
+
+      final map = Map.fromEntries(
+        doc.definitions.whereType<DirectiveDefinitionNode>().map((e) {
+          expect(e.locations.length, 1);
+          return MapEntry(e.name.value, e.locations.first);
+        }),
+      );
+
+      expect(map, {
+        "onQuery": DirectiveLocation.query,
+        "onMutation": DirectiveLocation.mutation,
+        "onSubscription": DirectiveLocation.subscription,
+        "onField": DirectiveLocation.field,
+        "onFragmentDefinition": DirectiveLocation.fragmentDefinition,
+        "onFragmentSpread": DirectiveLocation.fragmentSpread,
+        "onInlineFragment": DirectiveLocation.inlineFragment,
+        "onVariableDefinition": DirectiveLocation.variableDefinition,
+        "onSchema": DirectiveLocation.schema,
+        "onScalar": DirectiveLocation.scalar,
+        "onObject": DirectiveLocation.object,
+        "onFieldDefinition": DirectiveLocation.fieldDefinition,
+        "onArgumentDefinition": DirectiveLocation.argumentDefinition,
+        "onInterface": DirectiveLocation.interface,
+        "onUnion": DirectiveLocation.union,
+        "onEnum": DirectiveLocation.enumDefinition,
+        "onEnumValue": DirectiveLocation.enumValue,
+        "onInputObject": DirectiveLocation.inputObject,
+        "onInputFieldDefinition": DirectiveLocation.inputFieldDefinition,
+      });
     });
 
     test("Incomplete schema type extension", () {
@@ -259,6 +359,67 @@ void main() {
           6,
         ),
       );
+    });
+
+    test("parse descriptions", () {
+      const _schemaStr = '''
+"""Schema description"""
+schema {
+  query: SomeObject
+}
+
+"Enum description"
+enum SomeEnum {
+  """Value description"""
+  VALUE
+}
+
+"""
+Object description
+"""
+type SomeObject {
+  """
+  Field description
+  """
+  someField(
+    "Arg description"
+    arg: SomeEnum
+  ): String
+}''';
+      final schemaNode = parseString(_schemaStr);
+      final schemaNodeStr = printNode(schemaNode);
+
+      for (final node in [schemaNode, parseString(schemaNodeStr)]) {
+        final schemas = node.definitions.whereType<SchemaDefinitionNode>();
+        expect(schemas.length, 1);
+        final schema = schemas.first;
+        expect(schema.description!.value, "Schema description");
+
+        final enums = node.definitions.whereType<EnumTypeDefinitionNode>();
+        expect(enums.length, 1);
+        final enumType = enums.first;
+        expect(enumType.description!.value, "Enum description");
+
+        final enumValues = enumType.values;
+        expect(enumValues.length, 1);
+        final enumValue = enumValues.first;
+        expect(enumValue.description!.value, "Value description");
+
+        final objects = node.definitions.whereType<ObjectTypeDefinitionNode>();
+        expect(objects.length, 1);
+        final objectType = objects.first;
+        expect(objectType.description!.value, "Object description");
+
+        final objectFields = objectType.fields;
+        expect(objectFields.length, 1);
+        final objectField = objectFields.first;
+        expect(objectField.description!.value, "Field description");
+
+        final arguments = objectField.args;
+        expect(arguments.length, 1);
+        final argument = arguments.first;
+        expect(argument.description!.value, "Arg description");
+      }
     });
 
     test("Missing operation types", () {

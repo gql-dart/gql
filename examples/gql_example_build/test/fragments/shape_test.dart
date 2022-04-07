@@ -13,6 +13,7 @@ String? getShapeInfo(GShapeData data) {
   if (shape is GShapeData_shape__asRectangle) {
     return "$type(area: $area, sideLengthA: ${shape.sideLengthA}, sideLengthB: ${shape.sideLengthB})";
   }
+  return null;
 }
 
 void main() {

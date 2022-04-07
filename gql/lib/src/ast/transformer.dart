@@ -639,6 +639,7 @@ class _Transformer extends Visitor<Node> {
       description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
+      interfaces: _visitAll(node.interfaces),
     );
 
     return visitors.fold(
@@ -655,6 +656,7 @@ class _Transformer extends Visitor<Node> {
       name: _visitOne(node.name),
       directives: _visitAll(node.directives),
       fields: _visitAll(node.fields),
+      interfaces: _visitAll(node.interfaces),
     );
 
     return visitors.fold(
@@ -864,6 +866,7 @@ class _Transformer extends Visitor<Node> {
     SchemaDefinitionNode node,
   ) {
     final updatedNode = SchemaDefinitionNode(
+      description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       operationTypes: _visitAll(node.operationTypes),
     );
