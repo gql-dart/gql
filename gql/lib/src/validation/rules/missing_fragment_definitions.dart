@@ -38,7 +38,8 @@ class MisingFragmentDefinition extends ValidatingVisitor {
     node.accept(recusriveVisitor);
     // validate that all FragmentSpreadNode has a FragmentDefinitionNode
     for (final fragmentSpread in recusriveVisitor.fragmentSpreads) {
-      if (recusriveVisitor.fragmentDefinitions.any((f) => f.name.value == fragmentSpread.name.value)) {
+      if (recusriveVisitor.fragmentDefinitions
+          .any((f) => f.name.value == fragmentSpread.name.value)) {
         continue;
       } else {
         errors.add(MissingFragmentDefinitionError(node: fragmentSpread));
