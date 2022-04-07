@@ -1,3 +1,15 @@
+## 0.5.1
+
+- Support `interfaces`.
+
+## 0.5.0
+
+- Support analyzer >=2.3.0 < 4.0.0
+
+## 0.4.0
+
+- Bump `gql_exec` version.
+
 ## 0.3.0-alpha.0
 
 - **Breaking Change** - generated files are built to `__generated__` subdirectory

@@ -103,6 +103,7 @@ enum DirectiveLocation {
   fragmentDefinition,
   fragmentSpread,
   inlineFragment,
+  variableDefinition,
   schema,
   scalar,
   object,
@@ -813,11 +814,13 @@ class InputValueDefinitionNode extends Node {
 
 class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeDefinitionNode({
     this.fields = const [],
     StringValueNode? description,
     required NameNode name,
+    this.interfaces = const [],
     List<DirectiveNode> directives = const [],
     FileSpan? span,
   }) : super(
@@ -835,6 +838,7 @@ class InterfaceTypeDefinitionNode extends TypeDefinitionNode {
         name,
         description,
         directives,
+        interfaces,
         fields,
       ];
 }
@@ -1050,9 +1054,11 @@ class ObjectTypeExtensionNode extends TypeExtensionNode {
 
 class InterfaceTypeExtensionNode extends TypeExtensionNode {
   final List<FieldDefinitionNode> fields;
+  final List<NamedTypeNode> interfaces;
 
   const InterfaceTypeExtensionNode({
     this.fields = const [],
+    this.interfaces = const [],
     required NameNode name,
     FileSpan? span,
     List<DirectiveNode> directives = const [],
@@ -1069,6 +1075,7 @@ class InterfaceTypeExtensionNode extends TypeExtensionNode {
   List<Object?> get _children => <Object?>[
         name,
         directives,
+        interfaces,
         fields,
       ];
 }

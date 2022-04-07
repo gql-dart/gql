@@ -37,7 +37,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -46,7 +46,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Run build_runner if necessary
         run: |
@@ -54,8 +54,8 @@ jobs:
             build_runner build --delete-conflicting-outputs || true
       - name: Analyze package
         run: |
-          multipack --only $PACKAGE analyze --version
-          multipack --only $PACKAGE analyze --fatal-warnings --no-hints .
+          multipack --only $PACKAGE exec dart analyze --version
+          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
       - name: Run tests
         run: |
           multipack --only $PACKAGE exec [ -d ./test ] || exit 0
@@ -90,7 +90,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -106,7 +106,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |
@@ -136,7 +136,7 @@ jobs:
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
         run: |
-          multipack pubspec hard_override
+          multipack pubspec override
       - name: Get dependencies
         run: |
           multipack --only $PACKAGE pub get
@@ -151,7 +151,7 @@ jobs:
           echo ""
           echo "A list of incorrectly formatted files may follow:"
           echo ""
-          multipack --only $PACKAGE fmt -n . --set-exit-if-changed
+          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
           echo ""
       - name: Analyze package
         run: |

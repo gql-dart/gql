@@ -439,6 +439,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         node.name.accept(this),
         " ",
+        visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
       ].join();
@@ -665,6 +666,7 @@ class _PrintVisitor extends Visitor<String> {
         " ",
         node.name.accept(this),
         " ",
+        visitImplementsSetNode(node.interfaces),
         visitDirectiveSetNode(node.directives),
         visitFieldSetNode(node.fields),
       ].join();
@@ -740,6 +742,8 @@ String? _directiveLocation(DirectiveLocation location) {
       return "FRAGMENT_SPREAD";
     case DirectiveLocation.inlineFragment:
       return "INLINE_FRAGMENT";
+    case DirectiveLocation.variableDefinition:
+      return "VARIABLE_DEFINITION";
     case DirectiveLocation.schema:
       return "SCHEMA";
     case DirectiveLocation.scalar:

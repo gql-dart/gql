@@ -1,3 +1,7 @@
+## 0.4.2
+
+- Upgrade `gql_exec`.
+
 ## 0.4.1
 
 - Upgrade `gql_exec`.

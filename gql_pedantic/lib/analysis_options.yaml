@@ -58,7 +58,9 @@ linter:
     - unnecessary_overrides
     - unnecessary_parenthesis
     - package_names
-    - sort_pub_dependencies
+#    Sort dependencies is causing CI to fail, multipack does not sort dependencies when doing override.
+#    https://github.com/gql-dart/multipack/issues/12
+#    - sort_pub_dependencies
     - avoid_unused_constructor_parameters
     - constant_identifier_names
     - parameter_assignments

@@ -1,10 +1,14 @@
+## 0.4.0
+
+- [BREAKING] Bump version due to a braking change in `0.3.1`.
+
 ## 0.3.1
 
-Add `response`, raw http response to `Response`.
+- Add `response`, raw http response to `Response`.
 
 ## 0.3.0-nullsafety.2
 
-Null Safety Pre-release
+- Null Safety Pre-release
 
 ## 0.2.5
 
