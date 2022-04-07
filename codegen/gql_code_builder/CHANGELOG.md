@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Support `interfaces`.
+
 ## 0.4.0
 
 - Bump `gql_exec` version.
