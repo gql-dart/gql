@@ -120,7 +120,7 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
     case ValidationRule.uniqueArgumentNames:
       return UniqueArgumentNames();
     case ValidationRule.missingFragmentDefinition:
-      return MisingFragmentDefinition();
+      return MissingFragmentDefinition();
     default:
       return null;
   }

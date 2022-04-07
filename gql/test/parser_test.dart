@@ -1,7 +1,5 @@
 import "package:gql/ast.dart";
 import "package:gql/language.dart";
-import "package:gql/src/language/parser.dart";
-import "package:gql/src/language/printer.dart";
 import "package:source_span/source_span.dart";
 import "package:test/test.dart";
 
