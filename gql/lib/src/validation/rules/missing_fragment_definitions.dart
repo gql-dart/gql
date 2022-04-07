@@ -26,19 +26,20 @@ class MissingFragmentDefinitionError implements ValidationError {
 }
 
 /// Validates that every [FragmentSpreadNode] has [FragmentDefinitionNode] within the same [DocumentNode]
-class MisingFragmentDefinition extends ValidatingVisitor {
+class MissingFragmentDefinition extends ValidatingVisitor {
   @override
   List<ValidationError> visitDocumentNode(DocumentNode node) {
     final errors = <ValidationError>[];
     // a workaround the fact that ValidatingVisitor is a SimpleVisitor which will only visit each node once.
     // the document is recursively being visited here to ensure that all [FragmentSpreadNode]s and [FragmentDefiniton]s
     // have been visited before returning an error.
-    final recusriveVisitor = _MisingFragmentDefinitionRecursive();
+    final recusriveVisitor = _MissingFragmentDefinitionRecursive();
     // visit all children of the given document node
     node.accept(recusriveVisitor);
     // validate that all FragmentSpreadNode has a FragmentDefinitionNode
     for (final fragmentSpread in recusriveVisitor.fragmentSpreads) {
-      if (recusriveVisitor.fragmentDefinitions.any((f) => f.name.value == fragmentSpread.name.value)) {
+      if (recusriveVisitor.fragmentDefinitions
+          .any((f) => f.name.value == fragmentSpread.name.value)) {
         continue;
       } else {
         errors.add(MissingFragmentDefinitionError(node: fragmentSpread));
@@ -48,7 +49,7 @@ class MisingFragmentDefinition extends ValidatingVisitor {
   }
 }
 
-class _MisingFragmentDefinitionRecursive extends RecursiveVisitor {
+class _MissingFragmentDefinitionRecursive extends RecursiveVisitor {
   final List<FragmentDefinitionNode> fragmentDefinitions = [];
   final List<FragmentSpreadNode> fragmentSpreads = [];
 

@@ -866,6 +866,7 @@ class _Transformer extends Visitor<Node> {
     SchemaDefinitionNode node,
   ) {
     final updatedNode = SchemaDefinitionNode(
+      description: _visitOne(node.description),
       directives: _visitAll(node.directives),
       operationTypes: _visitAll(node.operationTypes),
     );

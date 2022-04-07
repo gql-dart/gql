@@ -1,6 +1,7 @@
 ## 0.13.1
 
 - Support `interfaces`.
+- Add support for Schema description.
 
 ## 0.13.0-nullsafety.2
 

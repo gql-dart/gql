@@ -609,9 +609,11 @@ class _Parser {
   }
 
   SchemaDefinitionNode _parseSchemaDefinition() {
+    final description = _parseDescription();
     _expectKeyword("schema");
 
     return SchemaDefinitionNode(
+      description: description,
       directives: _parseDirectives(
         isConst: true,
       ),
