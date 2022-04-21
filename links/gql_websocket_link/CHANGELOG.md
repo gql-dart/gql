@@ -1,3 +1,7 @@
+## 0.3.3
+
+- Expose `connectionStateStream` getter on `WebSocketLink`.
+
 ## 0.3.2
 
 - Upgrade `gql_exec`.
