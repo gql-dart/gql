@@ -12,6 +12,7 @@ Library buildVarLibrary(
   String partUrl,
   Map<String, Reference> typeOverrides,
 ) {
+  ///
   final operationVarClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
       .map(
