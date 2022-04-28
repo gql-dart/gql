@@ -110,7 +110,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
               {
                 for (var v in inlineFragments
                     .where((frag) => frag.typeCondition != null))
-                  refer(v.typeCondition!.on.name.value): refer(
+                  "${v.typeCondition!.on.name.value}": refer(
                     "${name}__as${v.typeCondition!.on.name.value}",
                   )
               },
