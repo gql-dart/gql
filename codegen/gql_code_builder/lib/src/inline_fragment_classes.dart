@@ -104,14 +104,16 @@ List<Method> _inlineFragmentRootSerializationMethods({
             ..types.add(refer(name))).call([
             literalString(name),
             refer("${name}__base"),
-            literalList(
+            literalMap(
               /// TODO: Handle inline fragments without a type condition
               /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
-              inlineFragments.where((frag) => frag.typeCondition != null).map(
-                    (inlineFragment) => refer(
-                      "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-                    ),
-                  ),
+              {
+                for (var v in inlineFragments
+                    .where((frag) => frag.typeCondition != null))
+                  refer(v.typeCondition!.on.name.value): refer(
+                    "${name}__as${v.typeCondition!.on.name.value}",
+                  )
+              },
             ),
           ]).code,
       ),
