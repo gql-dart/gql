@@ -9,7 +9,7 @@ import "package:built_value/standard_json_plugin.dart";
 class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
   final String rootName;
   final Type baseClass;
-  final List<Type> asTypeClasses;
+  final Map<String, Type> asTypeClasses;
 
   InlineFragmentSerializer(
     this.rootName,
@@ -17,10 +17,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
     this.asTypeClasses,
   );
 
-  Type _typeForTypename(String name) => asTypeClasses.firstWhere(
-        (c) => c.toString() == "${rootName}__as${name}",
-        orElse: () => baseClass,
-      );
+  Type _typeForTypename(String name) => asTypeClasses[name] ?? baseClass;
 
   @override
   T deserialize(
