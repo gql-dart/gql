@@ -39,7 +39,7 @@ abstract class GHeroForEpisodeData_hero {
       _i2.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
           'GHeroForEpisodeData_hero',
           GHeroForEpisodeData_hero__base,
-          [GHeroForEpisodeData_hero__asDroid]);
+          { 'Droid': GHeroForEpisodeData_hero__asDroid });
   Map<String, dynamic> toJson() =>
       (_i1.serializers.serializeWith(GHeroForEpisodeData_hero.serializer, this)
           as Map<String, dynamic>);
