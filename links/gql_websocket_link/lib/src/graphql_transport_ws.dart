@@ -687,13 +687,14 @@ class _ConnectionState {
               ? null
               : await options.connectionParams!();
 
+          final _initMsg = await options.graphQLSocketMessageEncoder(
+            ConnectionInitMessage(payload),
+          );
           // connectionParams might take too long causing the server to kick off the client
           // the necessary error/close event is already reported - simply stop execution
           if (!isOpen) return;
 
-          socket.sink.add(await options.graphQLSocketMessageEncoder(
-            ConnectionInitMessage(payload),
-          ));
+          socket.sink.add(_initMsg);
 
           if (options.connectionAckWaitTimeout.isFinite &&
               options.connectionAckWaitTimeout > 0) {
@@ -821,7 +822,10 @@ class _ConnectionState {
         released.then((_) {
           if (locks == 0) {
             // and if no more locks are present, complete the connection
-            final complete = () => socket.sink.close(1000, "Normal Closure");
+            final complete = () {
+              isOpen = false;
+              socket.sink.close(1000, "Normal Closure");
+            };
             if (options.lazyCloseTimeout.isFinite &&
                 options.lazyCloseTimeout > 0) {
               // if the keepalive is set, allow for the specified calmdown time and
@@ -886,6 +890,8 @@ class _Client extends Client {
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
 
           // if done while waiting for connect, release the connection lock right away
+          final _subscribeMsg = await options
+              .graphQLSocketMessageEncoder(SubscribeMessage(id, payload));
           if (done) return release();
 
           final unlisten = emitter.onMessage(id, (message) {
@@ -906,17 +912,14 @@ class _Client extends Client {
             }
           });
 
-          socket.sink.add(
-            await options
-                .graphQLSocketMessageEncoder(SubscribeMessage(id, payload)),
-          );
+          socket.sink.add(_subscribeMsg);
 
           releaser = () async {
+            final _completeMsg =
+                await options.graphQLSocketMessageEncoder(CompleteMessage(id));
             if (!done && state.isOpen) {
               // if not completed already and socket is open, send complete message to server on release
-              socket.sink.add(
-                await options.graphQLSocketMessageEncoder(CompleteMessage(id)),
-              );
+              socket.sink.add(_completeMsg);
             }
             state.locks--;
             done = true;

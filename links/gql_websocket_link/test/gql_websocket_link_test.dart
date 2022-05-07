@@ -964,7 +964,6 @@ void _testLinks(
     );
   });
 
-  // TODO: invalid message
   test("never close the socket as long as keep alive is send from the server",
       () async {
     HttpServer server;
@@ -991,13 +990,26 @@ void _testLinks(
             .map<dynamic>((dynamic s) => json.decode(s as String))
             .listen(
           (dynamic message) {
-            Timer.periodic(Duration(seconds: 1), (_) {
-              channel.sink.add(
-                json.encode(
-                  ConnectionKeepAlive(),
-                ),
-              );
-            });
+            if (isApolloSubProtocol) {
+              Timer.periodic(Duration(seconds: 1), (_) {
+                channel.sink.add(
+                  json.encode(
+                    isApolloSubProtocol
+                        ? ConnectionKeepAlive()
+                        : {"type": "ping"},
+                  ),
+                );
+              });
+            } else {
+              final type = (message as Map)["type"] as String;
+              if (type == "connection_init") {
+                return channel.sink.add(json.encode(ConnectionAck()));
+              } else if (type == "ping") {
+                Timer.periodic(Duration(seconds: 1), (_) {
+                  channel.sink.add(json.encode({"type": "pong"}));
+                });
+              }
+            }
           },
         );
       },
