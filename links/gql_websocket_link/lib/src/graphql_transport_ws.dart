@@ -645,9 +645,10 @@ class _ConnectionState {
               ?.cancel(); // in case where a pong was received before a ping (this is valid behaviour)
           queuedPing =
               Timer(Duration(milliseconds: options.keepAlive), () async {
+            final _pingMsg =
+                await options.graphQLSocketMessageEncoder(PingMessage(null));
             if (isOpen) {
-              socket.sink.add(
-                  await options.graphQLSocketMessageEncoder(PingMessage(null)));
+              socket.sink.add(_pingMsg);
               emitter.emit(Event.ping, [false, null]);
             }
           });
@@ -698,6 +699,8 @@ class _ConnectionState {
               options.connectionAckWaitTimeout > 0) {
             connectionAckTimeout = Timer(
                 Duration(milliseconds: options.connectionAckWaitTimeout), () {
+              _log("connectionAckTimeout");
+              isOpen = false;
               socket.sink.close(
                 closeCodeInteger(CloseCode.connectionAcknowledgementTimeout),
                 "Connection acknowledgement timeout",

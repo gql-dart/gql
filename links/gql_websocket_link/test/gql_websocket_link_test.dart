@@ -56,21 +56,46 @@ void main() {
           inactivityTimeout,
           autoReconnect,
           reconnectInterval,
-        }) =>
-            GQLTransportWebSocketLink(
-          ClientOptions(
-            socketMaker: uri != null
-                ? WebSocketMaker.url(() => uri)
-                : WebSocketMaker.generator(channelGenerator!),
-            connectionParams: initialPayload,
-            // TODO: inactivity close
-            keepAlive: inactivityTimeout?.inMilliseconds ?? 0,
-            retryAttempts: autoReconnect == false ? 0 : 5,
-            retryWait: reconnectInterval != null
-                ? (_) => Future.delayed(reconnectInterval)
-                : ClientOptions.randomisedExponentialBackoff,
-          ),
-        ),
+        }) {
+          Timer? timer;
+          WebSocketChannel? activeSocket;
+          return GQLTransportWebSocketLink(
+            ClientOptions(
+              socketMaker: uri != null
+                  ? WebSocketMaker.url(() => uri)
+                  : WebSocketMaker.generator(channelGenerator!),
+              connectionParams: initialPayload,
+              // TODO: inactivity close and use Duration
+              keepAlive: inactivityTimeout?.inMilliseconds ?? 0,
+              connectionAckWaitTimeout: inactivityTimeout?.inMilliseconds ?? 0,
+              retryAttempts: autoReconnect == false ? 0 : 5,
+              retryWait: reconnectInterval != null
+                  ? (_) => Future.delayed(reconnectInterval)
+                  : ClientOptions.randomisedExponentialBackoff,
+              on: {
+                Event.connected: (WebSocketChannel socket, Object? payload) =>
+                    activeSocket = socket,
+                Event.ping: (bool received, Object? payload) {
+                  if (!received) {
+                    // sent
+                    timer = Timer(Duration(seconds: 5), () {
+                      // TODO:
+                      // if (activeSocket!.readyState == WebSocket.OPEN) {
+                      activeSocket!.sink.close(4408, "Request Timeout");
+                      // }
+                    }); // wait 5 seconds for the pong and then close the connection
+                  }
+                },
+                Event.pong: (bool received, Object? payload) {
+                  if (received) {
+                    // pong is received, clear connection close timeout
+                    timer?.cancel();
+                  }
+                },
+              },
+            ),
+          );
+        },
         isApolloSubProtocol: false,
       );
     });
@@ -927,7 +952,9 @@ void _testLinks(
       inactivityTimeout: Duration(seconds: 5),
       autoReconnect: false,
     );
-    link.request(request).listen(null);
+    link.request(request).listen(null, onError: (Object err) {
+      // TODO: check error?
+    });
     expect(
       Stream<int>.periodic(
         Duration(milliseconds: 500),
