@@ -29,6 +29,18 @@ class RequestId extends ContextEntry {
   List<Object> get fieldsForEquality => [id];
 }
 
+/// Possible connection states of the [WebSocketLink].
+enum ConnectionState {
+  /// The [WebSocketLink] is closed.
+  closed,
+
+  /// The [WebSocketLink] is currently connecting.
+  connecting,
+
+  /// The [WebSocketLink] has an opened connection.
+  open,
+}
+
 /// A Universal WebSocket [Link] implementation to support the
 /// WebSocket-GraphQL transport.
 /// It supports subscriptions, query and mutation operations as well.
@@ -92,12 +104,9 @@ class WebSocketLink extends Link {
   /// If the value is null this is ignored, By default this is null.
   final Duration? inactivityTimeout;
 
-  // Possible states of the connection.
-  static const int closed = 0;
-  static const int connecting = 1;
-  static const int open = 2;
-  final BehaviorSubject<int> _connectionStateController =
-      BehaviorSubject<int>.seeded(closed);
+  /// Tracks state of the connection state.
+  final BehaviorSubject<ConnectionState> _connectionStateController =
+      BehaviorSubject<ConnectionState>.seeded(ConnectionState.closed);
 
   final StreamController<GraphQLSocketMessage> _messagesController =
       StreamController<GraphQLSocketMessage>.broadcast();
@@ -111,6 +120,10 @@ class WebSocketLink extends Link {
   /// This happends after calling [dispose] or when [autoReconnect] is false
   /// and the web socket disconnected.
   bool get isDisabled => _disposedCompleter != null;
+
+  /// A stream that notifies about changes of the current connection state.
+  Stream<ConnectionState> get connectionStateStream =>
+      _connectionStateController.stream;
 
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
@@ -143,15 +156,17 @@ class WebSocketLink extends Link {
     );
     _requests.add(requestWithContext);
 
-    if (_connectionStateController.value == closed) {
+    if (_connectionStateController.value == ConnectionState.closed) {
       await _connect();
     }
     final StreamController<Response> response = StreamController();
     StreamSubscription<GraphQLSocketMessage>? messagesSubscription;
 
     response.onListen = () {
-      final Stream<int> waitForConnectedState =
-          _connectionStateController.where((state) => state == open).take(1);
+      final Stream<ConnectionState> waitForConnectedState =
+          _connectionStateController
+              .where((state) => state == ConnectionState.open)
+              .take(1);
 
       waitForConnectedState.listen((_) {
         // listen for response messages
@@ -209,13 +224,13 @@ class WebSocketLink extends Link {
   /// Connects to the server.
   Future<void> _connect() async {
     try {
-      _connectionStateController.add(connecting);
+      _connectionStateController.add(ConnectionState.connecting);
       _channel = await _channelGenerator();
       _reconnectTimer?.cancel();
       _channel!.stream.listen((dynamic message) async {
         // Mark the connection as [open] and can be used.
-        if (_connectionStateController.value != open) {
-          _connectionStateController.add(open);
+        if (_connectionStateController.value != ConnectionState.open) {
+          _connectionStateController.add(ConnectionState.open);
         }
         final parsedMessage = await _parseSocketMessage(message);
         _messagesController.add(parsedMessage);
@@ -236,13 +251,13 @@ class WebSocketLink extends Link {
           // already disposed
           return;
         }
-        _connectionStateController.add(closed);
+        _connectionStateController.add(ConnectionState.closed);
         if (autoReconnect) {
           _reConnectRequests.clear();
           _reConnectRequests.addAll(_requests);
           if (_reconnectTimer?.isActive != true) {
             _reconnectTimer = Timer.periodic(reconnectInterval, (timer) {
-              if (_connectionStateController.value == closed) {
+              if (_connectionStateController.value == ConnectionState.closed) {
                 _connect();
               }
             });
@@ -301,7 +316,7 @@ class WebSocketLink extends Link {
 
   Future<void> _write(final GraphQLSocketMessage message) async {
     // We can send during [connecting] & [connected].
-    if (_connectionStateController.value == closed) {
+    if (_connectionStateController.value == ConnectionState.closed) {
       throw WebSocketLinkServerException(
         originalException: null,
         parsedResponse: null,
@@ -377,7 +392,7 @@ class WebSocketLink extends Link {
     _reconnectTimer?.cancel();
     await _keepAliveSubscription?.cancel();
     await _channel?.sink.close(websocket_status.normalClosure);
-    _connectionStateController.add(closed);
+    _connectionStateController.add(ConnectionState.closed);
     await _connectionStateController.close();
     await _messagesController.close();
     _disposedCompleter!.complete();

@@ -2,14 +2,14 @@ import "package:built_value/serializer.dart";
 import "package:built_value/standard_json_plugin.dart";
 
 /// Deserializes a GraphQL selection with inline fragments into it's
-/// appropriate concrete data class based on its `__typename` field.
+/// appropriate concrete data class based on its  `__typename` field.
 ///
 /// If no `__typename` is found, it will simply return a base data class that
 /// only includes the common fields.
 class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
   final String rootName;
   final Type baseClass;
-  final List<Type> asTypeClasses;
+  final Map<String, Type> asTypeClasses;
 
   InlineFragmentSerializer(
     this.rootName,
@@ -17,10 +17,7 @@ class InlineFragmentSerializer<T> implements StructuredSerializer<T> {
     this.asTypeClasses,
   );
 
-  Type _typeForTypename(String name) => asTypeClasses.firstWhere(
-        (c) => c.toString() == "${rootName}__as${name}",
-        orElse: () => baseClass,
-      );
+  Type _typeForTypename(String name) => asTypeClasses[name] ?? baseClass;
 
   @override
   T deserialize(
