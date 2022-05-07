@@ -7,6 +7,7 @@ import "package:gql_exec/gql_exec.dart"
     show Request, Response, Context, RequestExtensionsThunk, ResponseExtensions;
 import "package:gql_link/gql_link.dart"
     show Link, NextLink, RequestSerializer, ResponseParser;
+import "package:gql_websocket_link/gql_websocket_link.dart";
 import "package:web_socket_channel/web_socket_channel.dart"
     show WebSocketChannel;
 
@@ -544,10 +545,11 @@ class _ConnectionState {
 
   /// Checks the `connect` problem and evaluates if the client should retry.
   bool shouldRetryConnectOrThrow(Object errOrCloseEvent) {
+    _log("shouldRetryConnectOrThrow $errOrCloseEvent");
     // some close codes are worth reporting immediately
     if (errOrCloseEvent is LikeCloseEvent &&
         (_isFatalInternalCloseCode(errOrCloseEvent.code) ||
-            [
+            const [
               CloseCode.internalServerError,
               CloseCode.internalClientError,
               CloseCode.badRequest,
@@ -611,7 +613,6 @@ class _ConnectionState {
     final denied = _comp.completeError;
     _log("_startConnecting");
 
-    // ignore: unawaited_futures
     (() async {
       if (retrying) {
         await options.retryWait(retries);
@@ -657,8 +658,8 @@ class _ConnectionState {
 
       void Function(Object)? onError =
           (Object err) => emitter.emit(Event.error, [err]);
-      void Function(Object?)? onClose =
-          (Object? event) => emitter.emit(Event.closed, [event]);
+      void Function(Object)? onClose =
+          (Object event) => emitter.emit(Event.closed, [event]);
       errorOrClosed((errOrEvent) {
         _log("errorOrClosed $errOrEvent");
         connecting = null;
@@ -728,9 +729,19 @@ class _ConnectionState {
         (Object? msg) async {
           _log("socket.stream msg protocol:${socket.protocol} msg:${msg}");
           try {
-            final messageMap = await options.graphQLSocketMessageDecoder(msg);
-            final message = parseMessage(messageMap!);
+            final Message message;
+            try {
+              final messageMap = await options.graphQLSocketMessageDecoder(msg);
+              message = parseMessage(messageMap!);
+            } catch (e) {
+              throw WebSocketLinkParserException(
+                // TODO:
+                message: ConnectionAck(),
+                originalException: e,
+              );
+            }
             // parseMessage(msg!, reviver: options.jsonMessageReviver);
+            if (!isOpen) return;
             emitter.emit(Event.message, [message]);
             if (message is PingMessage || message is PongMessage) {
               final msgPayload = message is PingMessage
@@ -776,6 +787,7 @@ class _ConnectionState {
             ));
           } catch (err) {
             // stop reading messages as soon as reading breaks once
+            print("_messageSubs.cancel()");
             // ignore: unawaited_futures
             _messageSubs.cancel();
             emitter.emit(Event.error, [err]);
@@ -786,14 +798,26 @@ class _ConnectionState {
             );
           }
         },
-        // TODO: close event?
-        onDone: () => onClose?.call("DONE"),
+        onDone: () => onClose?.call(
+          socket.closeCode == null
+              ? "DONE"
+              : LikeCloseEvent(
+                  code: socket.closeCode!,
+                  reason: socket.closeReason!,
+                ),
+        ),
         onError: (Object err) => onError?.call(err),
       );
 
       // TODO: listen to open event on WebSocketChannel
       onOpen();
-    })();
+    })()
+        .onError(
+      (error, stackTrace) => denied(
+        WebSocketLinkServerException(originalException: error),
+        stackTrace,
+      ),
+    );
     return _comp.future;
   }
 
@@ -1109,6 +1133,10 @@ class LikeCloseEvent {
     required this.reason,
     this.wasClean,
   });
+
+  @override
+  String toString() =>
+      "LikeCloseEvent(code: $code, reason: $reason, wasClean: $wasClean)";
 }
 
 // bool _isLikeCloseEvent(dynamic val)=>  val is Map && val.containsKey("code") && val.containsKey("reason");
@@ -1144,6 +1172,12 @@ class GQLTransportWebSocketLink extends Link {
   final Client client;
 
   @override
+  Future<void> dispose() async {
+    await super.dispose();
+    await client.dispose();
+  }
+
+  @override
   Stream<Response> request(Request request, [NextLink? forward]) {
     final controller = StreamController<ExecutionResult>();
     void Function()? cancelSub;
@@ -1165,14 +1199,22 @@ class GQLTransportWebSocketLink extends Link {
     };
 
     return controller.stream.map(
-      (event) => Response(
-        context: event.extensions == null
-            ? const Context()
-            : const Context().withEntry(ResponseExtensions(event.extensions)),
-        response: event.rawResponse,
-        data: event.data,
-        errors: event.errors,
-      ),
+      (event) {
+        final response = Response(
+          context: event.extensions == null
+              ? const Context()
+              : const Context().withEntry(ResponseExtensions(event.extensions)),
+          response: event.rawResponse,
+          data: event.data,
+          errors: event.errors,
+        );
+        if (event.data == null && event.errors == null) {
+          throw WebSocketLinkServerException(
+            parsedResponse: response,
+          );
+        }
+        return response;
+      },
     );
   }
 }
