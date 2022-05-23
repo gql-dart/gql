@@ -12,7 +12,7 @@ dev_dependencies:
   test: ^1.16.2
   gql_pedantic:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql_pedantic
   cats: 
     path: ../cats

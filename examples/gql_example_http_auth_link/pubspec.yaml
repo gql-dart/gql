@@ -4,35 +4,35 @@ environment:
 dependencies:
   gql:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql
   gql_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_link
   gql_exec:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_exec
   gql_error_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_error_link
   gql_transform_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_transform_link
   gql_http_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_http_link
   http: ^0.13.1
 dev_dependencies:
   gql_pedantic:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql_pedantic
   gql_build:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: codegen/gql_build

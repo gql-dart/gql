@@ -8,11 +8,11 @@ dependencies:
   async: ^2.5.0
   gql_exec:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_exec
   gql_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_link
   meta: ^1.3.0
 dev_dependencies: 
@@ -20,9 +20,9 @@ dev_dependencies:
   mockito: ^5.0.0-nullsafety.7
   gql:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql
   gql_pedantic:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql_pedantic

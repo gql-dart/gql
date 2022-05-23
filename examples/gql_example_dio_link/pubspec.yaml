@@ -6,17 +6,17 @@ dependencies:
   dio: ^4.0.0
   gql:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql
   gql_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_link
   gql_exec:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_exec
   gql_dio_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_dio_link

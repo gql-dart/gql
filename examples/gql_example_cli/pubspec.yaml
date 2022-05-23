@@ -5,27 +5,27 @@ dependencies:
   args: ^2.0.0
   gql:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql
   gql_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_link
   gql_exec:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_exec
   gql_http_link:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: links/gql_http_link
 dev_dependencies: 
   build_runner: ^2.0.0
   gql_pedantic:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: gql_pedantic
   gql_build:
     git:
-      url: git://github.com/julienzarka/gql.git
+      url: https://github.com/julienzarka/gql.git
       path: codegen/gql_build
