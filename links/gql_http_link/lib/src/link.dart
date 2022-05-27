@@ -66,6 +66,9 @@ class HttpLink extends Link {
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
 
+  /// set to `true` to follow redirects in request chain
+  final bool followRedirects;
+
   /// set to `true` to use the HTTP `GET` method for queries (but not for mutations)
   final bool useGETForQueries;
 
@@ -104,6 +107,7 @@ class HttpLink extends Link {
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.httpResponseDecoder = _defaultHttpResponseDecoder,
+    this.followRedirects = false,
   }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
   }
@@ -116,8 +120,9 @@ class HttpLink extends Link {
     final httpResponse = await _executeRequest(request);
 
     final response = await _parseHttpResponse(httpResponse);
+    final maxStatusCode = followRedirects ? 400 : 300;
 
-    if (httpResponse.statusCode >= 300 ||
+    if (httpResponse.statusCode >= maxStatusCode ||
         (response.data == null && response.errors == null)) {
       throw HttpLinkServerException(
         response: httpResponse,
@@ -204,7 +209,9 @@ class HttpLink extends Link {
             _encodeAsUriParams,
           )(body),
         ),
-      )..headers.addAll(headers);
+      )
+        ..headers.addAll(headers)
+        ..followRedirects = followRedirects;
     }
 
     final httpBody = _encodeAttempter(
@@ -220,11 +227,13 @@ class HttpLink extends Link {
       return http.MultipartRequest("POST", uri)
         ..body = httpBody
         ..addAllFiles(fileMap)
-        ..headers.addAll(headers);
+        ..headers.addAll(headers)
+        ..followRedirects = followRedirects;
     }
     return http.Request("POST", uri)
       ..body = httpBody
-      ..headers.addAll(headers);
+      ..headers.addAll(headers)
+      ..followRedirects = followRedirects;
   }
 
   /// wrap an encoding transform in exception handling
