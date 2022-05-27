@@ -164,6 +164,7 @@ class HttpLink extends Link {
       if (!followRedirects && (httpResponse.statusCode == 301 || httpResponse.statusCode == 302)) {
         rethrow;
       }
+      return Response(response: const <String, dynamic>{});
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
