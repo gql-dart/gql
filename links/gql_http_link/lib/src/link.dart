@@ -160,6 +160,10 @@ class HttpLink extends Link {
     try {
       final responseBody = await httpResponseDecoder(httpResponse);
       return parser.parseResponse(responseBody!);
+    } on ResponseFormatException {
+      if (!followRedirects && (httpResponse.statusCode == 301 || httpResponse.statusCode == 302)) {
+        rethrow;
+      }
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
