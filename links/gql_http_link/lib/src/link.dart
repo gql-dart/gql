@@ -66,7 +66,7 @@ class HttpLink extends Link {
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
 
-  /// set to `true` to follow redirects in request chain
+  /// set to `false` to throw exceptions on redirects in request chain, defaults to true
   final bool followRedirects;
 
   /// set to `true` to use the HTTP `GET` method for queries (but not for mutations)
@@ -107,7 +107,7 @@ class HttpLink extends Link {
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.httpResponseDecoder = _defaultHttpResponseDecoder,
-    this.followRedirects = false,
+    this.followRedirects = true,
   }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
   }
@@ -160,11 +160,17 @@ class HttpLink extends Link {
     try {
       final responseBody = await httpResponseDecoder(httpResponse);
       return parser.parseResponse(responseBody!);
-    } on ResponseFormatException {
-      if (!followRedirects && (httpResponse.statusCode == 301 || httpResponse.statusCode == 302)) {
+    } on FormatException {
+      if (!followRedirects &&
+          (httpResponse.statusCode == 301 || httpResponse.statusCode == 302)) {
         rethrow;
       }
-      return Response(response: const <String, dynamic>{});
+
+      // Empty data object sent to bypass HttpLinkServerException in subsequent request() invocation
+      return Response(
+        data: const <String, dynamic>{},
+        response: const <String, dynamic>{},
+      );
     } catch (e) {
       throw HttpLinkParserException(
         originalException: e,
