@@ -13,6 +13,7 @@ dev_dependencies:
   gql_pedantic:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql_pedantic
   cats: 
     path: ../cats

@@ -6,18 +6,22 @@ dependencies:
   gql:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql
   gql_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_link
   gql_exec:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_exec
   gql_http_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_http_link
   cupertino_icons: ^1.0.2
   flutter: 
@@ -27,10 +31,12 @@ dev_dependencies:
   gql_pedantic:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql_pedantic
   gql_build:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: codegen/gql_build
   flutter_test: 
     sdk: flutter

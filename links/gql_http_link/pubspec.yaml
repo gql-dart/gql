@@ -8,14 +8,17 @@ dependencies:
   gql:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql
   gql_exec:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_exec
   gql_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_link
   http: ^0.13.0
   http_parser: ^4.0.0
@@ -25,6 +28,7 @@ dev_dependencies:
   gql_pedantic:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql_pedantic
   mockito: ^5.0.0-nullsafety.7
   test: ^1.16.2

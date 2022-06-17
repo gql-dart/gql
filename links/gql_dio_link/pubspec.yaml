@@ -9,10 +9,12 @@ dependencies:
   gql_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_link
   gql_exec:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_exec
   meta: ^1.3.0
 dev_dependencies:
@@ -22,9 +24,11 @@ dev_dependencies:
   gql:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql
   gql_pedantic:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql_pedantic
   collection: ^1.15.0

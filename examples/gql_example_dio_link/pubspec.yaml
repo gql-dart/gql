@@ -7,16 +7,20 @@ dependencies:
   gql:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: gql
   gql_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_link
   gql_exec:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_exec
   gql_dio_link:
     git:
       url: https://github.com/julienzarka/gql.git
+      ref: update_gql_fork
       path: links/gql_dio_link
