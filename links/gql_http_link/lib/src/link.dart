@@ -209,7 +209,7 @@ class HttpLink extends Link {
 
     if (fileMap.isNotEmpty && isAbsinthe) {
       final dynamic variables = body["variables"];
-      String httpVariables;
+      String httpVariables = '';
       if (variables != null && variables is Map<String, dynamic>) {
         httpVariables = _encodeAttempter(
           request,
