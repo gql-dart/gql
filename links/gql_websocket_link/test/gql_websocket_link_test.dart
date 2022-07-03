@@ -71,11 +71,12 @@ void main() {
               retryAttempts: autoReconnect == false ? 0 : 5,
               retryWait: reconnectInterval != null
                   ? (_) => Future.delayed(reconnectInterval)
-                  : ClientOptions.randomisedExponentialBackoff,
+                  : ClientOptions.randomizedExponentialBackoff,
               on: {
-                Event.connected: (WebSocketChannel socket, Object? payload) =>
-                    activeSocket = socket,
-                Event.ping: (bool received, Object? payload) {
+                TransportWsEventType.connected:
+                    (WebSocketChannel socket, Object? payload) =>
+                        activeSocket = socket,
+                TransportWsEventType.ping: (bool received, Object? payload) {
                   if (!received) {
                     // sent
                     timer = Timer(Duration(seconds: 5), () {
@@ -86,7 +87,7 @@ void main() {
                     }); // wait 5 seconds for the pong and then close the connection
                   }
                 },
-                Event.pong: (bool received, Object? payload) {
+                TransportWsEventType.pong: (bool received, Object? payload) {
                   if (received) {
                     // pong is received, clear connection close timeout
                     timer?.cancel();
