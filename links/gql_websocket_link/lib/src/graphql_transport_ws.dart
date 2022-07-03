@@ -60,105 +60,163 @@ enum TransportWsEventType {
   error,
 }
 
-// /**
-//  * All events that could occur.
-//  *
-//  * @category Client
-//  */
-// export type Event =
-//   | EventConnecting
-//   | EventOpened
-//   | EventConnected
-//   | EventPing
-//   | EventPong
-//   | EventMessage
-//   | EventClosed
-//   | EventError;
+class TransportWsEvent {
+  final TransportWsEventType type;
 
-/// @category Client */
-typedef EventConnectingListener = void Function();
+  final WebSocketChannel? socket;
+  final Map<String, Object?>? payload;
+  final bool? received;
+  final Message? message;
+  final Object? event;
 
-/// The first argument is actually the `WebSocket`, but to avoid
-/// bundling DOM typings because the client can run in Node env too,
-/// you should assert the websocket type during implementation.
-///
-/// @category Client
-typedef EventOpenedListener = void Function(Object socket);
+  T? execute<T>(TransportWsEventHandler<T> handler) {
+    switch (type) {
+      case TransportWsEventType.connecting:
+        return handler.connecting?.call();
+      case TransportWsEventType.opened:
+        return handler.opened?.call(socket!);
+      case TransportWsEventType.connected:
+        return handler.connected?.call(socket!, payload);
+      case TransportWsEventType.ping:
+        return handler.ping?.call(payload, received: received!);
+      case TransportWsEventType.pong:
+        return handler.pong?.call(payload, received: received!);
+      case TransportWsEventType.message:
+        return handler.message?.call(message!);
+      case TransportWsEventType.closed:
+        return handler.closed?.call(event!);
+      case TransportWsEventType.error:
+        return handler.error?.call(event!);
+    }
+  }
 
-/// The first argument is actually the `WebSocket`, but to avoid
-/// bundling DOM typings because the client can run in Node env too,
-/// you should assert the websocket type during implementation.
-///
-/// Also, the second argument is the optional payload that the server may
-/// send through the `ConnectionAck` message.
-///
-/// @category Client
-typedef EventConnectedListener = void Function(
-  Object socket,
-  Map<String, Object?> // ConnectionAckMessage['payload']
-      payload,
-);
+  const TransportWsEvent.connecting()
+      : type = TransportWsEventType.connecting,
+        socket = null,
+        payload = null,
+        received = null,
+        message = null,
+        event = null;
+  const TransportWsEvent.opened(WebSocketChannel this.socket)
+      : type = TransportWsEventType.opened,
+        payload = null,
+        received = null,
+        message = null,
+        event = null;
+  const TransportWsEvent.connected(
+    WebSocketChannel this.socket,
+    this.payload,
+  )   : type = TransportWsEventType.connected,
+        received = null,
+        message = null,
+        event = null;
 
-/// The first argument communicates whether the ping was received from the server.
-/// If `false`, the ping was sent by the client.
-///
-/// @category Client
-typedef EventPingListener = void Function(
-  bool received,
-  Map<String, Object?>
-      // PingMessage['payload']
-      payload,
-);
+  const TransportWsEvent.ping(
+    this.payload, {
+    required bool this.received,
+  })  : type = TransportWsEventType.ping,
+        socket = null,
+        message = null,
+        event = null;
+  const TransportWsEvent.pong(
+    this.payload, {
+    required bool this.received,
+  })  : type = TransportWsEventType.pong,
+        socket = null,
+        message = null,
+        event = null;
 
-/// The first argument communicates whether the pong was received from the server.
-/// If `false`, the pong was sent by the client.
-///
-/// @category Client
-typedef EventPongListener = void Function(
-  bool received,
-  Map<String, Object?>
-      // PongMessage['payload']
-      payload,
-);
+  const TransportWsEvent.message(Message this.message)
+      : type = TransportWsEventType.message,
+        payload = null,
+        received = null,
+        socket = null,
+        event = null;
+  const TransportWsEvent.closed(Object this.event)
+      : type = TransportWsEventType.closed,
+        payload = null,
+        received = null,
+        message = null,
+        socket = null;
+  const TransportWsEvent.error(Object this.event)
+      : type = TransportWsEventType.error,
+        payload = null,
+        received = null,
+        message = null,
+        socket = null;
+}
+
+class TransportWsEventHandler<T> {
+  /// Executed when the client is staring a connection
+  final T? Function()? connecting;
+
+  /// The first argument is actually the `WebSocket`, but to avoid
+  /// bundling DOM typings because the client can run in Node env too,
+  /// you should assert the websocket type during implementation.
+  final T? Function(WebSocketChannel socket)? opened;
+
+  /// The first argument is actually the `WebSocket`, but to avoid
+  /// bundling DOM typings because the client can run in Node env too,
+  /// you should assert the websocket type during implementation.
+  ///
+  /// Also, the second argument is the optional payload that the server may
+  /// send through the `ConnectionAck` message.
+  final T? Function(WebSocketChannel socket, Map<String, Object?>? payload)?
+      connected;
+
+  /// The first argument communicates whether the ping was received from the server.
+  /// If `false`, the ping was sent by the client.
+  final T? Function(Map<String, Object?>? payload, {required bool received})?
+      ping;
+
+  /// The first argument communicates whether the pong was received from the server.
+  /// If `false`, the pong was sent by the client.
+  final T? Function(Map<String, Object?>? payload, {required bool received})?
+      pong;
+
+  /// Called for all **valid** messages received by the client. Mainly useful for
+  /// debugging and logging received messages.
+  final T? Function(Message message)? message;
+
+  /// The argument is actually the websocket `CloseEvent`, but to avoid
+  /// bundling DOM typings because the client can run in Node env too,
+  /// you should assert the websocket type during implementation.
+  final T? Function(Object event)? closed;
+
+  /// Events dispatched from the WebSocket `onerror` are handled in this listener,
+  /// as well as all internal client errors that could throw.
+  final T? Function(Object event)? error;
+
+  const TransportWsEventHandler({
+    this.connecting,
+    this.opened,
+    this.connected,
+    this.ping,
+    this.pong,
+    this.message,
+    this.closed,
+    this.error,
+  });
+
+  T? handle(TransportWsEvent event) => event.execute(this);
+
+  Set<TransportWsEventType> eventTypesHandled() => {
+        if (connecting != null) TransportWsEventType.connecting,
+        if (opened != null) TransportWsEventType.opened,
+        if (connected != null) TransportWsEventType.connected,
+        if (ping != null) TransportWsEventType.ping,
+        if (pong != null) TransportWsEventType.pong,
+        if (message != null) TransportWsEventType.message,
+        if (closed != null) TransportWsEventType.closed,
+        if (error != null) TransportWsEventType.error,
+      };
+}
 
 /// Called for all **valid** messages received by the client. Mainly useful for
 /// debugging and logging received messages.
 ///
 /// @category Client
 typedef EventMessageListener = void Function(Message message);
-
-/// The argument is actually the websocket `CloseEvent`, but to avoid
-/// bundling DOM typings because the client can run in Node env too,
-/// you should assert the websocket type during implementation.
-///
-/// @category Client
-typedef EventClosedListener = void Function(Object event);
-
-/// Events dispatched from the WebSocket `onerror` are handled in this listener,
-/// as well as all internal client errors that could throw.
-///
-/// @category Client
-typedef EventErrorListener = void Function(Object error);
-
-/// @category Client */
-// typedef EventListener = Function;
-// E extends EventConnecting
-//   ? EventConnectingListener
-//   : E extends EventOpened
-//   ? EventOpenedListener
-//   : E extends EventConnected
-//   ? EventConnectedListener
-//   : E extends EventPing
-//   ? EventPingListener
-//   : E extends EventPong
-//   ? EventPongListener
-//   : E extends EventMessage
-//   ? EventMessageListener
-//   : E extends EventClosed
-//   ? EventClosedListener
-//   : E extends EventError
-//   ? EventErrorListener
-//   : never;
 
 class WebSocketMaker {
   final FutureOr<String> Function()? url;
@@ -333,7 +391,7 @@ class ClientOptions {
   ///
   /// The listeners passed in will **always** be the first ones
   /// to get the emitted event before other registered listeners.
-  final Map<TransportWsEventType, Function>? on;
+  final List<TransportWsEventHandler>? on;
 
   /// A custom WebSocket implementation to use instead of the
   /// one provided by the global scope. Mostly useful for when
@@ -456,7 +514,7 @@ abstract class Client {
   ClientOptions get options;
 
   /// Listens on the client which dispatches events about the socket state.
-  void Function() on(TransportWsEventType event, Function listener);
+  void Function() on(TransportWsEventHandler listener);
 
   /// Subscribes through the WebSocket following the config parameters. It
   /// uses the `sink` to emit received data or errors. Returns a _cleanup_
@@ -567,16 +625,18 @@ class _ConnectionState {
   void errorOrClosed(void Function(Object errOrEvent) cb) {
     final listening = <void Function()>[];
     listening.addAll([
-      // errors are fatal and more critical than close events, throw them first
-      emitter.on(TransportWsEventType.error, (Object err) {
-        listening.forEach((unlisten) => unlisten());
-        cb(err);
-      }),
-      // closes can be graceful and not fatal, throw them second (if error didnt throw)
-      emitter.on(TransportWsEventType.closed, (Object event) {
-        listening.forEach((unlisten) => unlisten());
-        cb(event);
-      }),
+      emitter.on(TransportWsEventHandler<void>(
+        // errors are fatal and more critical than close events, throw them first
+        error: (Object err) {
+          listening.forEach((unlisten) => unlisten());
+          cb(err);
+        },
+        // closes can be graceful and not fatal, throw them second (if error didnt throw)
+        closed: (Object event) {
+          listening.forEach((unlisten) => unlisten());
+          cb(event);
+        },
+      )),
     ]);
   }
 
@@ -600,7 +660,7 @@ class _ConnectionState {
         retries++;
       }
 
-      emitter.emit(TransportWsEventType.connecting);
+      emitter.emit(const TransportWsEvent.connecting());
       final WebSocketChannel socket;
       if (options.socketMaker.url != null) {
         socket = WebSocketChannel.connect(
@@ -623,16 +683,16 @@ class _ConnectionState {
                 await options.graphQLSocketMessageEncoder(PingMessage(null));
             if (isOpen) {
               socket.sink.add(_pingMsg);
-              emitter.emit(TransportWsEventType.ping, [false, null]);
+              emitter.emit(TransportWsEvent.ping(null, received: false));
             }
           });
         }
       }
 
       void Function(Object)? onError =
-          (Object err) => emitter.emit(TransportWsEventType.error, [err]);
+          (Object err) => emitter.emit(TransportWsEvent.error(err));
       void Function(Object)? onClose =
-          (Object event) => emitter.emit(TransportWsEventType.closed, [event]);
+          (Object event) => emitter.emit(TransportWsEvent.closed(event));
       errorOrClosed((errOrEvent) {
         _log("errorOrClosed $errOrEvent");
         connecting = null;
@@ -656,7 +716,7 @@ class _ConnectionState {
         _log("onOpen");
         isOpen = true;
         try {
-          emitter.emit(TransportWsEventType.opened, [socket]);
+          emitter.emit(TransportWsEvent.opened(socket));
           final payload = options.connectionParams == null
               ? null
               : await options.connectionParams!();
@@ -685,7 +745,7 @@ class _ConnectionState {
 
           enqueuePing(); // enqueue ping (noop if disabled)
         } catch (err) {
-          emitter.emit(TransportWsEventType.error, [err]);
+          emitter.emit(TransportWsEvent.error(err));
           await socket.sink.close(
             closeCodeInteger(CloseCode.internalClientError),
             limitCloseReason(
@@ -715,16 +775,15 @@ class _ConnectionState {
             }
             // parseMessage(msg!, reviver: options.jsonMessageReviver);
             if (!isOpen) return;
-            emitter.emit(TransportWsEventType.message, [message]);
+            emitter.emit(TransportWsEvent.message(message));
             if (message is PingMessage || message is PongMessage) {
               final msgPayload = message is PingMessage
                   ? message.payload
                   : (message as PongMessage).payload;
               emitter.emit(
                 message is PingMessage
-                    ? TransportWsEventType.ping
-                    : TransportWsEventType.pong,
-                [true, msgPayload],
+                    ? TransportWsEvent.ping(msgPayload, received: true)
+                    : TransportWsEvent.pong(msgPayload, received: true),
               ); // received
 
               if (message is PongMessage) {
@@ -735,7 +794,8 @@ class _ConnectionState {
                   await options
                       .graphQLSocketMessageEncoder(PongMessage(msgPayload)),
                 );
-                emitter.emit(TransportWsEventType.pong, [false, msgPayload]);
+                emitter
+                    .emit(TransportWsEvent.pong(msgPayload, received: false));
               }
               return; // ping and pongs can be received whenever
             }
@@ -748,10 +808,10 @@ class _ConnectionState {
             }
             connectionAckTimeout?.cancel();
             acknowledged = true;
-            emitter.emit(TransportWsEventType.connected, [
+            emitter.emit(TransportWsEvent.connected(
               socket,
-              message.payload
-            ]); // connected = socket opened + acknowledged
+              message.payload,
+            )); // connected = socket opened + acknowledged
             retrying = false; // future lazy connects are not retries
             retries = 0; // reset the retries on connect
             final _completer = Completer<void>();
@@ -765,7 +825,7 @@ class _ConnectionState {
             print("_messageSubs.cancel()");
             // ignore: unawaited_futures
             _messageSubs.cancel();
-            emitter.emit(TransportWsEventType.error, [err]);
+            emitter.emit(TransportWsEvent.error(err));
             // ignore: unawaited_futures
             socket.sink.close(
               closeCodeInteger(CloseCode.badResponse),
@@ -860,8 +920,7 @@ class _Client extends Client {
   ClientOptions get options => state.options;
 
   @override
-  void Function() on(TransportWsEventType event, Function listener) =>
-      emitter.on(event, listener);
+  void Function() on(TransportWsEventHandler listener) => emitter.on(listener);
 
   @override
   void Function() subscribe(
@@ -966,16 +1025,13 @@ class _Client extends Client {
     _log("terminate");
     if (state.connecting != null) {
       // only if there is a connection
-      emitter.emit(
-        TransportWsEventType.closed,
-        [
-          LikeCloseEvent(
-            code: 4499,
-            reason: "Terminated",
-            wasClean: false,
-          ),
-        ],
-      );
+      emitter.emit(TransportWsEvent.closed(
+        LikeCloseEvent(
+          code: 4499,
+          reason: "Terminated",
+          wasClean: false,
+        ),
+      ));
     }
   }
 }
@@ -993,7 +1049,7 @@ class _Connection {
 }
 
 class _Emitter {
-  final Map<TransportWsEventType, List<Function>> listeners;
+  final Map<TransportWsEventType, List<TransportWsEventHandler>> listeners;
   final void Function() Function(String id, void Function(Message) listener)
       onMessage;
   _Emitter({
@@ -1001,21 +1057,28 @@ class _Emitter {
     required this.onMessage,
   });
 
-  void Function() on<E extends TransportWsEventType>(
-      E event, Function listener) {
-    final l = listeners[event] as List<Function>;
-    l.add(listener);
+  void Function() on(TransportWsEventHandler listener) {
+    final types = listener.eventTypesHandled();
+    for (final event in types) {
+      final l = listeners.putIfAbsent(event, () => []);
+      l.add(listener);
+    }
     return () {
-      l.remove(listener);
+      for (final event in types) {
+        final l = listeners[event]!;
+        l.remove(listener);
+      }
     };
   }
 
-  void emit(TransportWsEventType event, [List<Object?>? args]) {
-    _log("emit $event ($args)");
+  void emit(TransportWsEvent event) {
+    _log("emit $event");
+    final list = listeners[event.type];
+    if (list == null) return;
     // we copy the listeners so that unlistens dont "pull the rug under our feet"
-    for (final listener in [...listeners[event]!]) {
+    for (final listener in [...list]) {
       // @ts-expect-error: The args should fit
-      Function.apply(listener, args);
+      event.execute<dynamic>(listener);
     }
   }
 }
@@ -1038,14 +1101,22 @@ Client createClient(ClientOptions options) {
       _listenersMessage[message.id]?.call(message);
     }
 
-    final on = options.on;
-
-    final Map<TransportWsEventType, List<Function>> listeners =
+    final Map<TransportWsEventType, List<TransportWsEventHandler>> listeners =
         Map.fromIterables(
       TransportWsEventType.values,
-      TransportWsEventType.values.map((e) => on?[e] != null ? [on![e]!] : []),
+      TransportWsEventType.values.map((e) => []),
     );
-    listeners[TransportWsEventType.message]!.insert(0, emitMessage);
+    listeners[TransportWsEventType.message]!
+        .add(TransportWsEventHandler<void>(message: emitMessage));
+
+    final on = options.on;
+    if (on != null) {
+      for (final handler in on) {
+        for (final type in handler.eventTypesHandled()) {
+          listeners[type]!.add(handler);
+        }
+      }
+    }
 
     return _Emitter(
       onMessage: onMessage,

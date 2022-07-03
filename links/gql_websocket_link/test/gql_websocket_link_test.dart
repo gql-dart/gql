@@ -72,28 +72,29 @@ void main() {
               retryWait: reconnectInterval != null
                   ? (_) => Future.delayed(reconnectInterval)
                   : ClientOptions.randomizedExponentialBackoff,
-              on: {
-                TransportWsEventType.connected:
-                    (WebSocketChannel socket, Object? payload) =>
-                        activeSocket = socket,
-                TransportWsEventType.ping: (bool received, Object? payload) {
-                  if (!received) {
-                    // sent
-                    timer = Timer(Duration(seconds: 5), () {
-                      // TODO:
-                      // if (activeSocket!.readyState == WebSocket.OPEN) {
-                      activeSocket!.sink.close(4408, "Request Timeout");
-                      // }
-                    }); // wait 5 seconds for the pong and then close the connection
-                  }
-                },
-                TransportWsEventType.pong: (bool received, Object? payload) {
-                  if (received) {
-                    // pong is received, clear connection close timeout
-                    timer?.cancel();
-                  }
-                },
-              },
+              on: [
+                TransportWsEventHandler<void>(
+                  connected: (WebSocketChannel socket, Object? payload) =>
+                      activeSocket = socket,
+                  ping: (Object? payload, {required bool received}) {
+                    if (!received) {
+                      // sent
+                      timer = Timer(Duration(seconds: 5), () {
+                        // TODO:
+                        // if (activeSocket!.readyState == WebSocket.OPEN) {
+                        activeSocket!.sink.close(4408, "Request Timeout");
+                        // }
+                      }); // wait 5 seconds for the pong and then close the connection
+                    }
+                  },
+                  pong: (Object? payload, {required bool received}) {
+                    if (received) {
+                      // pong is received, clear connection close timeout
+                      timer?.cancel();
+                    }
+                  },
+                ),
+              ],
             ),
           );
         },
