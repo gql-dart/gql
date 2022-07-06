@@ -61,7 +61,7 @@ class HttpLinkResponseContext extends ContextEntry {
 /// [http.Client] to the constructor.
 class HttpLink extends Link {
   /// Endpoint of the GraphQL service
-  final Uri uri;
+  Uri uri;
 
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
@@ -167,6 +167,12 @@ class HttpLink extends Link {
     final httpRequest = _prepareRequest(request);
     try {
       final response = await _httpClient!.send(httpRequest);
+      if (response.statusCode == 301 || response.statusCode == 302) {
+        // `location` header will never be null on statusCode 301 or 302.
+        // More info. https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302
+        uri = Uri.parse(response.headers["location"]!);
+        return _executeRequest(request);
+      }
       return http.Response.fromStream(response);
     } catch (e) {
       throw ServerException(
@@ -220,10 +226,12 @@ class HttpLink extends Link {
       return http.MultipartRequest("POST", uri)
         ..body = httpBody
         ..addAllFiles(fileMap)
+        ..followRedirects = true
         ..headers.addAll(headers);
     }
     return http.Request("POST", uri)
       ..body = httpBody
+      ..followRedirects = true
       ..headers.addAll(headers);
   }
 
