@@ -168,9 +168,9 @@ class HttpLink extends Link {
     try {
       final response = await _httpClient!.send(httpRequest);
       if (response.statusCode == 301 || response.statusCode == 302) {
-        if (response.headers["location"] != null) {
-          uri = Uri.parse(response.headers["location"]!);
-        }
+        // `location` header will never be null on statusCode 301 or 302.
+        // More info. https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302
+        uri = Uri.parse(response.headers["location"]!);
         return _executeRequest(request);
       }
       return http.Response.fromStream(response);
