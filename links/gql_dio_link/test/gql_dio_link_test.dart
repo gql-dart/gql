@@ -65,6 +65,7 @@ void main() {
       link = DioLink(
         path,
         client: client,
+        useGETForQueries: false,
       );
     });
 
@@ -763,6 +764,118 @@ void main() {
       verify(
         client.close(force: true),
       ).called(1);
+    });
+  });
+  group("useGETForQueries", () {
+    late MockDio client;
+    late Request request;
+    late String path;
+    late DioLink link;
+
+    final Stream<Response> Function([
+      Request? customRequest,
+    ]) execute = ([
+      Request? customRequest,
+    ]) =>
+        link.request(customRequest ?? request);
+
+    setUp(() {
+      client = MockDio();
+      request = Request(
+        operation: Operation(
+          document: parseString("query MyQuery {}"),
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+      path = "/graphql-test";
+      link = DioLink(
+        path,
+        client: client,
+        useGETForQueries: true,
+      );
+    });
+
+    test("uses GET for query without files", () {
+      when(
+        client.get<dynamic>(
+          any,
+          queryParameters: anyNamed("queryParameters"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
+          ),
+        ),
+      );
+
+      expect(
+        execute(),
+        emitsInOrder(<dynamic>[
+          Response(
+            data: const <String, dynamic>{},
+            errors: null,
+            response: const <String, dynamic>{"data": <String, dynamic>{}},
+            context: Context()
+                .withEntry(
+                  ResponseExtensions(null),
+                )
+                .withEntry(
+                  DioLinkResponseContext(statusCode: 200),
+                ),
+          ),
+          emitsDone,
+        ]),
+      );
+    });
+
+    test("uses POST for mutation", () {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
+          ),
+        ),
+      );
+
+      expect(
+        execute(Request(
+          operation: Operation(
+            document: parseString("mutation MyMutation {}"),
+          ),
+          variables: const <String, dynamic>{"i": 12},
+        )),
+        emitsInOrder(<dynamic>[
+          Response(
+            data: const <String, dynamic>{},
+            errors: null,
+            response: const <String, dynamic>{"data": <String, dynamic>{}},
+            context: Context()
+                .withEntry(
+                  ResponseExtensions(null),
+                )
+                .withEntry(
+                  DioLinkResponseContext(statusCode: 200),
+                ),
+          ),
+          emitsDone,
+        ]),
+      );
     });
   });
 }
