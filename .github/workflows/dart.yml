@@ -30,7 +30,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Check pubspec
         run: |
           multipack --only $PACKAGE pubspec clean
@@ -129,7 +129,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Check pubspec
         run: |
           multipack --only $PACKAGE pubspec clean
@@ -176,7 +176,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Bump to alpha version
         run: |
           multipack --only $PACKAGES pubspec bump-alpha
@@ -214,7 +214,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Generate SVG
         run: |
           multipack info | dot -Tsvg -o docs/gql.svg
