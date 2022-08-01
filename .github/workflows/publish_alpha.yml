@@ -19,7 +19,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Bump to alpha version
         run: |
           multipack --only $PACKAGES pubspec bump-alpha
