@@ -83,7 +83,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Check pubspec
         run: |
           multipack --only $PACKAGE pubspec clean
