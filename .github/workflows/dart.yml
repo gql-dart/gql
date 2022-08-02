@@ -217,8 +217,9 @@ jobs:
           dart pub global activate multipack
       - name: Generate SVG
         run: |
-          multipack info | dot -Tsvg -o docs/gql.svg
+          multipack info > docs/graph.dot
+          dot -Tsvg docs/graph.dot > docs/gql.svg 
           cat docs/gql.svg
       - name: Check changes
         run: |
-          git diff --exit-code docs/gql.svg
+          git diff --exit-code docs/graph.dot
