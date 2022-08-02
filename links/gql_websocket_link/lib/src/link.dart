@@ -290,12 +290,13 @@ class WebSocketLink extends Link {
           _channel!.sink.close(websocket_status.normalClosure);
         }).listen(null);
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       if (e is LinkException) {
         rethrow;
       } else {
         throw WebSocketLinkServerException(
           originalException: e,
+          originalStackTrace: stackTrace,
           parsedResponse: null,
           requestMessage: null,
         );
@@ -306,9 +307,10 @@ class WebSocketLink extends Link {
   Response _parseMessage(GraphQLSocketMessage message) {
     try {
       return parser.parseResponse(message.toJson());
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw WebSocketLinkParserException(
         originalException: e,
+        originalStackTrace: stackTrace,
         message: message,
       );
     }
