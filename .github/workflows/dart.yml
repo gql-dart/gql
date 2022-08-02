@@ -193,7 +193,7 @@ jobs:
           ## See dry_run_workaround_helpers.sh for more details
           source .github/workflows/dry_run_workaround_helpers.sh
 
-          multipack --only $PACKAGES exec 'pub publish --dry-run 2>&1' | cap
+          multipack --only $PACKAGES exec 'dart pub publish --dry-run 2>&1' | cap
 
           ignore_err_when_stdout_contains \
             'Publishing gql_build' \
