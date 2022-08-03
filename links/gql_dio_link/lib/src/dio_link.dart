@@ -75,12 +75,16 @@ class DioLink extends Link {
   /// Dio client instance.
   final dio.Dio client;
 
+  /// Wether to use a GET request for queries.
+  final bool useGETForQueries;
+
   DioLink(
     this.endpoint, {
     required this.client,
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.useGETForQueries = false,
   });
 
   @override
@@ -94,6 +98,7 @@ class DioLink extends Link {
         ...defaultHeaders,
         ..._getHttpLinkHeaders(request),
       },
+      isQuery: request.isQuery,
     );
 
     if (dioResponse.statusCode! >= 300 ||
@@ -178,16 +183,32 @@ class DioLink extends Link {
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
     required dynamic body,
     required Map<String, String> headers,
+    required bool isQuery,
   }) async {
     try {
-      final res = await client.post<dynamic>(
-        endpoint,
-        data: body,
-        options: dio.Options(
-          responseType: dio.ResponseType.json,
-          headers: headers,
-        ),
-      );
+      dio.Response<dynamic> res;
+
+      final useGet =
+          useGETForQueries && body is Map<String, dynamic> && isQuery;
+      if (useGet) {
+        res = await client.get<dynamic>(
+          endpoint,
+          queryParameters: body as Map<String, dynamic>,
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
+      } else {
+        res = await client.post<dynamic>(
+          endpoint,
+          data: body,
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
+      }
       if (res.data is Map<String, dynamic> == false) {
         throw DioLinkParserException(
             // ignore: prefer_adjacent_string_concatenation

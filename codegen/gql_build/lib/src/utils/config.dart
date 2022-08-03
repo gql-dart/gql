@@ -10,7 +10,7 @@ Map<String, Reference> typeOverrideMap(dynamic typeOverrideConfig) {
           entry.key as String,
           Reference(
             entry.value["name"] as String,
-            entry.value["import"] as String,
+            entry.value["import"] as String?,
           ),
         ),
       ),

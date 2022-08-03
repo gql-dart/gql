@@ -20,7 +20,7 @@ jobs:
           - gql_transform_link
     runs-on: ubuntu-latest
     container:
-      image: google/dart
+      image: dart
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -73,7 +73,7 @@ jobs:
           # gql_example_flutter would require flutter
     runs-on: ubuntu-latest
     container:
-      image: google/dart
+      image: dart
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -83,7 +83,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Check pubspec
         run: |
           multipack --only $PACKAGE pubspec clean
@@ -119,7 +119,7 @@ jobs:
           - end_to_end_test
     runs-on: ubuntu-latest
     container:
-      image: google/dart
+      image: dart
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
@@ -165,7 +165,7 @@ jobs:
   publish_dry_run:
     runs-on: ubuntu-latest
     container:
-      image: google/dart
+      image: dart
     env:
       PACKAGES: 'gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link'
       PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
@@ -193,7 +193,7 @@ jobs:
           ## See dry_run_workaround_helpers.sh for more details
           source .github/workflows/dry_run_workaround_helpers.sh
 
-          multipack --only $PACKAGES exec 'pub publish --dry-run 2>&1' | cap
+          multipack --only $PACKAGES exec 'dart pub publish --dry-run 2>&1' | cap
 
           ignore_err_when_stdout_contains \
             'Publishing gql_build' \
@@ -203,7 +203,7 @@ jobs:
   check_svg:
     runs-on: ubuntu-latest
     container:
-      image: google/dart
+      image: dart
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
@@ -217,8 +217,9 @@ jobs:
           dart pub global activate multipack
       - name: Generate SVG
         run: |
-          multipack info | dot -Tsvg -o docs/gql.svg
+          multipack info > docs/graph.dot
+          dot -Tsvg docs/graph.dot > docs/gql.svg 
           cat docs/gql.svg
       - name: Check changes
         run: |
-          git diff --exit-code docs/gql.svg
+          git diff --exit-code docs/graph.dot
