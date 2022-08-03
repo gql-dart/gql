@@ -1,6 +1,8 @@
 import "dart:convert";
 
 import "package:dio/dio.dart" as dio;
+import "package:gql/ast.dart";
+import "package:gql_exec/gql_exec.dart" as gql;
 
 /// Recursively extract [dio.MultipartFile]s and return them as a normalized map of [path] => [file]
 /// From the given request body
@@ -78,4 +80,22 @@ Map<String, dynamic> generateFileFormBody(
   }
 
   return fileFormBody;
+}
+
+extension WithType on gql.Request {
+  OperationType get type {
+    final definitions = operation.document.definitions
+        .whereType<OperationDefinitionNode>()
+        .toList();
+    if (operation.operationName != null) {
+      definitions.removeWhere(
+        (node) => node.name!.value != operation.operationName,
+      );
+    }
+    // TODO differentiate error types, add exception
+    assert(definitions.length == 1);
+    return definitions.first.type;
+  }
+
+  bool get isQuery => type == OperationType.query;
 }
