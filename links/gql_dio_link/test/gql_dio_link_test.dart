@@ -772,9 +772,7 @@ void main() {
     late String path;
     late DioLink link;
 
-    final Stream<Response> Function([
-      Request? customRequest,
-    ]) execute = ([
+    final Stream<Response> Function([Request? customRequest]) execute = ([
       Request? customRequest,
     ]) =>
         link.request(customRequest ?? request);
@@ -797,9 +795,10 @@ void main() {
 
     test("uses GET for query without files", () {
       when(
-        client.get<dynamic>(
-          any,
-          queryParameters: anyNamed("queryParameters"),
+        client.getUri<dynamic>(
+          Uri.parse(
+            "/graphql-test?operationName=null&variables=%7B%22i%22%3A12%7D&query=query+MyQuery+%7B%0A++%0A%7D",
+          ),
           options: anyNamed("options"),
         ),
       ).thenAnswer(
