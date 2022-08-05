@@ -20,9 +20,9 @@ String outputPattern(String extension) =>
     "{{inputDir}}/${outputDir}/{{file}}${extension}";
 
 String outputPath(String inputPath) {
-  final pathSegments = inputPath.split('/');
+  final pathSegments = inputPath.split("/");
   pathSegments.insert(pathSegments.length - 1, outputDir);
-  return pathSegments.join('/');
+  return pathSegments.join("/");
 }
 
 AssetId outputAssetId(AssetId inputAssetId, String extension) => AssetId(
