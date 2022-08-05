@@ -1,5 +1,4 @@
 import "package:build/build.dart";
-import "package:path/path.dart" as p;
 
 const sourceExtension = ".graphql";
 
@@ -21,9 +20,9 @@ String outputPattern(String extension) =>
     "{{inputDir}}/${outputDir}/{{file}}${extension}";
 
 String outputPath(String inputPath) {
-  final pathSegments = p.url.split(inputPath);
+  final pathSegments = inputPath.split('/');
   pathSegments.insert(pathSegments.length - 1, outputDir);
-  return p.joinAll(pathSegments);
+  return pathSegments.join('/');
 }
 
 AssetId outputAssetId(AssetId inputAssetId, String extension) => AssetId(
