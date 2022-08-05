@@ -91,7 +91,7 @@ class DioLink extends Link {
   Stream<Response> request(Request request, [forward]) async* {
     final dio.Response<Map<String, dynamic>> dioResponse =
         await _executeDioRequest(
-      body: _prepareRequestBody(request),
+      request: request,
       headers: <String, String>{
         dio.Headers.acceptHeader: "*/*",
         dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
@@ -147,6 +147,11 @@ class DioLink extends Link {
     return formBody;
   }
 
+  Map<String, String> _encodeAsUriParams(Map<String, dynamic> serialized) =>
+      serialized.map<String, String>(
+        (k, dynamic v) => MapEntry(k, v is String ? v : json.encode(v)),
+      );
+
   /// wrap an encoding transform in exception handling
   T Function(V) _encodeAttempter<T, V>(
     Request request,
@@ -181,19 +186,24 @@ class DioLink extends Link {
   }
 
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
-    required dynamic body,
+    required Request request,
     required Map<String, String> headers,
     required bool isQuery,
   }) async {
     try {
+      final dynamic body = _prepareRequestBody(request);
       dio.Response<dynamic> res;
 
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
-        res = await client.get<dynamic>(
-          endpoint,
-          queryParameters: body as Map<String, dynamic>,
+        res = await client.getUri<dynamic>(
+          Uri.parse(endpoint).replace(
+            queryParameters: _encodeAttempter(
+              request,
+              _encodeAsUriParams,
+            )(body as Map<String, dynamic>),
+          ),
           options: dio.Options(
             responseType: dio.ResponseType.json,
             headers: headers,

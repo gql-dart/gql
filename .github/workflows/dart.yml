@@ -201,16 +201,14 @@ jobs:
             'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
 
   check_svg:
-    runs-on: ubuntu-latest
-    container:
-      image: dart
+    runs-on: macos-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
       - name: Install GraphViz
         run: |
-          apt update
-          apt install -y graphviz
+          brew install graphviz
+          brew install dart-sdk
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
