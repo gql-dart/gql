@@ -202,14 +202,13 @@ jobs:
 
   check_svg:
     runs-on: macos-latest
-    container:
-      image: dart
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
       - name: Install GraphViz
         run: |
           brew install graphviz
+          brew install dart
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
