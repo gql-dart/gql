@@ -208,7 +208,7 @@ jobs:
       - name: Install GraphViz
         run: |
           brew install graphviz
-          brew install dart
+          brew install dart-sdk
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
