@@ -10,9 +10,11 @@ class WebSocketLinkParserException extends ResponseFormatException {
 
   const WebSocketLinkParserException({
     Object? originalException,
+    StackTrace? originalStackTrace,
     required this.message,
   }) : super(
           originalException: originalException,
+          originalStackTrace: originalStackTrace,
         );
 }
 
@@ -24,10 +26,12 @@ class WebSocketLinkServerException extends ServerException {
 
   const WebSocketLinkServerException({
     Object? originalException,
+    StackTrace? originalStackTrace,
     Response? parsedResponse,
     this.requestMessage,
   }) : super(
           originalException: originalException,
+          originalStackTrace: originalStackTrace,
           parsedResponse: parsedResponse,
         );
 }
