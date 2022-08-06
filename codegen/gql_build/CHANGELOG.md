@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Fixes dependency issues by upgrading to `gql_code_builder`.
+
 ## 0.4.1
 
 - Support `interfaces`.
