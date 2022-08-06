@@ -1,4 +1,4 @@
-## 0.4.2
+## 0.5.0
 
 - Fixes dependency issues by upgrading to `gql_code_builder`.
 
