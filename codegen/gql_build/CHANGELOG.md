@@ -1,3 +1,8 @@
+## 0.6.0
+
+- generate 'possibleTypesMap' in the schema
+- to disable, set 'generate_possible_types_map' to `false` in build.yaml
+
 ## 0.5.0
 
 - Fixes dependency issues by upgrading to `gql_code_builder`.
