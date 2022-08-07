@@ -1,8 +1,8 @@
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/graphql/schema.schema.gql.dart';
-import 'package:end_to_end_test/variables/human_with_args.var.gql.dart';
-import 'package:end_to_end_test/variables/create_review.var.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
+import 'package:end_to_end_test/variables/__generated__/human_with_args.var.gql.dart';
+import 'package:end_to_end_test/variables/__generated__/create_review.var.gql.dart';
 
 void main() {
   group("Basic Args", () {

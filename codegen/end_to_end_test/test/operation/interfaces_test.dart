@@ -1,6 +1,6 @@
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/interfaces/hero_for_episode.data.gql.dart';
+import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart';
 
 void main() {
   group("Interfaces", () {

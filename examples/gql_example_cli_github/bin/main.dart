@@ -1,12 +1,12 @@
 import "dart:io" show stdout, stderr, exit;
 
 import "package:args/args.dart";
-import "package:gql_example_cli_github/add_star.data.gql.dart";
-import "package:gql_example_cli_github/add_star.req.gql.dart";
-import "package:gql_example_cli_github/read_repos.data.gql.dart";
-import "package:gql_example_cli_github/read_repos.req.gql.dart";
-import "package:gql_example_cli_github/remove_star.data.gql.dart";
-import "package:gql_example_cli_github/remove_star.req.gql.dart";
+import "package:gql_example_cli_github/__generated__/add_star.data.gql.dart";
+import "package:gql_example_cli_github/__generated__/add_star.req.gql.dart";
+import "package:gql_example_cli_github/__generated__/read_repos.data.gql.dart";
+import "package:gql_example_cli_github/__generated__/read_repos.req.gql.dart";
+import "package:gql_example_cli_github/__generated__/remove_star.data.gql.dart";
+import "package:gql_example_cli_github/__generated__/remove_star.req.gql.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 import "package:gql_link/gql_link.dart";
