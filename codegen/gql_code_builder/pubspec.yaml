@@ -10,7 +10,7 @@ dependencies:
   built_value: ^8.0.6
   code_builder: ^4.0.0
   collection: ^1.15.0
-  gql: ^0.13.0
+  gql: ^0.14.0
   gql_exec: ^0.4.0
   path: ^1.8.0
 dev_dependencies: 

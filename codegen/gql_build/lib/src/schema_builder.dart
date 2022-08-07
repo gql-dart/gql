@@ -12,10 +12,12 @@ import "./utils/writer.dart";
 class SchemaBuilder implements Builder {
   final Map<String, Reference> typeOverrides;
   final EnumFallbackConfig enumFallbackConfig;
+  final bool generatePossibleTypesMap;
 
   SchemaBuilder(
     this.typeOverrides,
     this.enumFallbackConfig,
+      this.generatePossibleTypesMap,
   );
 
   @override
@@ -37,6 +39,7 @@ class SchemaBuilder implements Builder {
       basename(generatedPartUrl),
       typeOverrides,
       enumFallbackConfig,
+      generatePossibleTypesMap: generatePossibleTypesMap,
     );
 
     return writeDocument(

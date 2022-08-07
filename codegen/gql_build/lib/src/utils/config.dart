@@ -41,6 +41,9 @@ EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
       fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
     );
 
+bool generatePossibleTypesConfig(Map<String, dynamic> config) =>
+    config["generate_possible_types_map"] as bool? ?? true;
+
 Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
   if (enumFallbacks is YamlMap) {
     return Map.fromEntries(
