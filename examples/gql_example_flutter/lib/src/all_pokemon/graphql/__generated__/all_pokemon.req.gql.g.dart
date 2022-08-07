@@ -36,7 +36,7 @@ class _$GAllPokemonSerializer implements StructuredSerializer<GAllPokemon> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -47,7 +47,7 @@ class _$GAllPokemonSerializer implements StructuredSerializer<GAllPokemon> {
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -63,12 +63,12 @@ class _$GAllPokemon extends GAllPokemon {
   final _i1.Operation operation;
 
   factory _$GAllPokemon([void Function(GAllPokemonBuilder)? updates]) =>
-      (new GAllPokemonBuilder()..update(updates)).build();
+      (new GAllPokemonBuilder()..update(updates))._build();
 
   _$GAllPokemon._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GAllPokemon', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GAllPokemon', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, 'GAllPokemon', 'operation');
+        operation, r'GAllPokemon', 'operation');
   }
 
   @override
@@ -93,7 +93,7 @@ class _$GAllPokemon extends GAllPokemon {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAllPokemon')
+    return (newBuiltValueToStringHelper(r'GAllPokemon')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -138,14 +138,16 @@ class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
   }
 
   @override
-  _$GAllPokemon build() {
+  GAllPokemon build() => _build();
+
+  _$GAllPokemon _build() {
     _$GAllPokemon _$result;
     try {
       _$result = _$v ??
           new _$GAllPokemon._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GAllPokemon', 'operation'));
+                  operation, r'GAllPokemon', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -153,7 +155,7 @@ class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAllPokemon', _$failedField, e.toString());
+            r'GAllPokemon', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -162,4 +164,4 @@ class GAllPokemonBuilder implements Builder<GAllPokemon, GAllPokemonBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

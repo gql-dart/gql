@@ -68,12 +68,16 @@ abstract class GFindPokemonData_pokemon_weight
 
   static void _initializeBuilder(GFindPokemonData_pokemon_weightBuilder b) =>
       b..G__typename = 'PokemonDimension';
+  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
   String? get minimum;
+  @override
   String? get maximum;
   static Serializer<GFindPokemonData_pokemon_weight> get serializer =>
       _$gFindPokemonDataPokemonWeightSerializer;
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers
           .serializeWith(GFindPokemonData_pokemon_weight.serializer, this)
       as Map<String, dynamic>);
@@ -95,12 +99,16 @@ abstract class GFindPokemonData_pokemon_height
 
   static void _initializeBuilder(GFindPokemonData_pokemon_heightBuilder b) =>
       b..G__typename = 'PokemonDimension';
+  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
   String? get minimum;
+  @override
   String? get maximum;
   static Serializer<GFindPokemonData_pokemon_height> get serializer =>
       _$gFindPokemonDataPokemonHeightSerializer;
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers
           .serializeWith(GFindPokemonData_pokemon_height.serializer, this)
       as Map<String, dynamic>);

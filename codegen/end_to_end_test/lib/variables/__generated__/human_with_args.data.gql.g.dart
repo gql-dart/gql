@@ -46,13 +46,13 @@ class _$GHumanWithArgsDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'human':
           result.human.replace(serializers.deserialize(value,
@@ -106,21 +106,21 @@ class _$GHumanWithArgsData_humanSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'height':
           result.height = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
       }
     }
@@ -137,11 +137,11 @@ class _$GHumanWithArgsData extends GHumanWithArgsData {
 
   factory _$GHumanWithArgsData(
           [void Function(GHumanWithArgsDataBuilder)? updates]) =>
-      (new GHumanWithArgsDataBuilder()..update(updates)).build();
+      (new GHumanWithArgsDataBuilder()..update(updates))._build();
 
   _$GHumanWithArgsData._({required this.G__typename, this.human}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GHumanWithArgsData', 'G__typename');
+        G__typename, r'GHumanWithArgsData', 'G__typename');
   }
 
   @override
@@ -168,7 +168,7 @@ class _$GHumanWithArgsData extends GHumanWithArgsData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GHumanWithArgsData')
+    return (newBuiltValueToStringHelper(r'GHumanWithArgsData')
           ..add('G__typename', G__typename)
           ..add('human', human))
         .toString();
@@ -214,13 +214,15 @@ class GHumanWithArgsDataBuilder
   }
 
   @override
-  _$GHumanWithArgsData build() {
+  GHumanWithArgsData build() => _build();
+
+  _$GHumanWithArgsData _build() {
     _$GHumanWithArgsData _$result;
     try {
       _$result = _$v ??
           new _$GHumanWithArgsData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GHumanWithArgsData', 'G__typename'),
+                  G__typename, r'GHumanWithArgsData', 'G__typename'),
               human: _human?.build());
     } catch (_) {
       late String _$failedField;
@@ -229,7 +231,7 @@ class GHumanWithArgsDataBuilder
         _human?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GHumanWithArgsData', _$failedField, e.toString());
+            r'GHumanWithArgsData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -248,15 +250,15 @@ class _$GHumanWithArgsData_human extends GHumanWithArgsData_human {
 
   factory _$GHumanWithArgsData_human(
           [void Function(GHumanWithArgsData_humanBuilder)? updates]) =>
-      (new GHumanWithArgsData_humanBuilder()..update(updates)).build();
+      (new GHumanWithArgsData_humanBuilder()..update(updates))._build();
 
   _$GHumanWithArgsData_human._(
       {required this.G__typename, required this.name, this.height})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GHumanWithArgsData_human', 'G__typename');
+        G__typename, r'GHumanWithArgsData_human', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GHumanWithArgsData_human', 'name');
+        name, r'GHumanWithArgsData_human', 'name');
   }
 
   @override
@@ -285,7 +287,7 @@ class _$GHumanWithArgsData_human extends GHumanWithArgsData_human {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GHumanWithArgsData_human')
+    return (newBuiltValueToStringHelper(r'GHumanWithArgsData_human')
           ..add('G__typename', G__typename)
           ..add('name', name)
           ..add('height', height))
@@ -337,17 +339,19 @@ class GHumanWithArgsData_humanBuilder
   }
 
   @override
-  _$GHumanWithArgsData_human build() {
+  GHumanWithArgsData_human build() => _build();
+
+  _$GHumanWithArgsData_human _build() {
     final _$result = _$v ??
         new _$GHumanWithArgsData_human._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GHumanWithArgsData_human', 'G__typename'),
+                G__typename, r'GHumanWithArgsData_human', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GHumanWithArgsData_human', 'name'),
+                name, r'GHumanWithArgsData_human', 'name'),
             height: height);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

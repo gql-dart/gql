@@ -49,21 +49,21 @@ class _$GNestedFragmentDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -82,14 +82,14 @@ class _$GNestedFragmentData extends GNestedFragmentData {
 
   factory _$GNestedFragmentData(
           [void Function(GNestedFragmentDataBuilder)? updates]) =>
-      (new GNestedFragmentDataBuilder()..update(updates)).build();
+      (new GNestedFragmentDataBuilder()..update(updates))._build();
 
   _$GNestedFragmentData._(
       {required this.G__typename, required this.id, this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GNestedFragmentData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, 'GNestedFragmentData', 'id');
+        G__typename, r'GNestedFragmentData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, r'GNestedFragmentData', 'id');
   }
 
   @override
@@ -118,7 +118,7 @@ class _$GNestedFragmentData extends GNestedFragmentData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GNestedFragmentData')
+    return (newBuiltValueToStringHelper(r'GNestedFragmentData')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name))
@@ -169,17 +169,19 @@ class GNestedFragmentDataBuilder
   }
 
   @override
-  _$GNestedFragmentData build() {
+  GNestedFragmentData build() => _build();
+
+  _$GNestedFragmentData _build() {
     final _$result = _$v ??
         new _$GNestedFragmentData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GNestedFragmentData', 'G__typename'),
+                G__typename, r'GNestedFragmentData', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GNestedFragmentData', 'id'),
+                id, r'GNestedFragmentData', 'id'),
             name: name);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

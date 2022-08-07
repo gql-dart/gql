@@ -35,13 +35,13 @@ class _$GListPokemonVarsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -56,10 +56,10 @@ class _$GListPokemonVars extends GListPokemonVars {
 
   factory _$GListPokemonVars(
           [void Function(GListPokemonVarsBuilder)? updates]) =>
-      (new GListPokemonVarsBuilder()..update(updates)).build();
+      (new GListPokemonVarsBuilder()..update(updates))._build();
 
   _$GListPokemonVars._({required this.count}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(count, 'GListPokemonVars', 'count');
+    BuiltValueNullFieldError.checkNotNull(count, r'GListPokemonVars', 'count');
   }
 
   @override
@@ -83,7 +83,7 @@ class _$GListPokemonVars extends GListPokemonVars {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GListPokemonVars')
+    return (newBuiltValueToStringHelper(r'GListPokemonVars')
           ..add('count', count))
         .toString();
   }
@@ -120,14 +120,16 @@ class GListPokemonVarsBuilder
   }
 
   @override
-  _$GListPokemonVars build() {
+  GListPokemonVars build() => _build();
+
+  _$GListPokemonVars _build() {
     final _$result = _$v ??
         new _$GListPokemonVars._(
             count: BuiltValueNullFieldError.checkNotNull(
-                count, 'GListPokemonVars', 'count'));
+                count, r'GListPokemonVars', 'count'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

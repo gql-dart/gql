@@ -52,13 +52,13 @@ class _$GPokemonDetailDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pokemon':
           result.pokemon.replace(serializers.deserialize(value,
@@ -139,29 +139,29 @@ class _$GPokemonDetailData_pokemonSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maxHP':
           result.maxHP = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'weight':
           result.weight.replace(serializers.deserialize(value,
@@ -227,21 +227,21 @@ class _$GPokemonDetailData_pokemon_weightSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maximum':
           result.maximum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -295,21 +295,21 @@ class _$GPokemonDetailData_pokemon_heightSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maximum':
           result.maximum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -326,12 +326,12 @@ class _$GPokemonDetailData extends GPokemonDetailData {
 
   factory _$GPokemonDetailData(
           [void Function(GPokemonDetailDataBuilder)? updates]) =>
-      (new GPokemonDetailDataBuilder()..update(updates)).build();
+      (new GPokemonDetailDataBuilder()..update(updates))._build();
 
   _$GPokemonDetailData._({required this.G__typename, this.pokemon})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GPokemonDetailData', 'G__typename');
+        G__typename, r'GPokemonDetailData', 'G__typename');
   }
 
   @override
@@ -358,7 +358,7 @@ class _$GPokemonDetailData extends GPokemonDetailData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPokemonDetailData')
+    return (newBuiltValueToStringHelper(r'GPokemonDetailData')
           ..add('G__typename', G__typename)
           ..add('pokemon', pokemon))
         .toString();
@@ -405,13 +405,15 @@ class GPokemonDetailDataBuilder
   }
 
   @override
-  _$GPokemonDetailData build() {
+  GPokemonDetailData build() => _build();
+
+  _$GPokemonDetailData _build() {
     _$GPokemonDetailData _$result;
     try {
       _$result = _$v ??
           new _$GPokemonDetailData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GPokemonDetailData', 'G__typename'),
+                  G__typename, r'GPokemonDetailData', 'G__typename'),
               pokemon: _pokemon?.build());
     } catch (_) {
       late String _$failedField;
@@ -420,7 +422,7 @@ class GPokemonDetailDataBuilder
         _pokemon?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GPokemonDetailData', _$failedField, e.toString());
+            r'GPokemonDetailData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -447,7 +449,7 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
 
   factory _$GPokemonDetailData_pokemon(
           [void Function(GPokemonDetailData_pokemonBuilder)? updates]) =>
-      (new GPokemonDetailData_pokemonBuilder()..update(updates)).build();
+      (new GPokemonDetailData_pokemonBuilder()..update(updates))._build();
 
   _$GPokemonDetailData_pokemon._(
       {required this.G__typename,
@@ -459,9 +461,9 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
       this.height})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GPokemonDetailData_pokemon', 'G__typename');
+        G__typename, r'GPokemonDetailData_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GPokemonDetailData_pokemon', 'id');
+        id, r'GPokemonDetailData_pokemon', 'id');
   }
 
   @override
@@ -502,7 +504,7 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon')
+    return (newBuiltValueToStringHelper(r'GPokemonDetailData_pokemon')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -582,15 +584,17 @@ class GPokemonDetailData_pokemonBuilder
   }
 
   @override
-  _$GPokemonDetailData_pokemon build() {
+  GPokemonDetailData_pokemon build() => _build();
+
+  _$GPokemonDetailData_pokemon _build() {
     _$GPokemonDetailData_pokemon _$result;
     try {
       _$result = _$v ??
           new _$GPokemonDetailData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GPokemonDetailData_pokemon', 'G__typename'),
+                  G__typename, r'GPokemonDetailData_pokemon', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'GPokemonDetailData_pokemon', 'id'),
+                  id, r'GPokemonDetailData_pokemon', 'id'),
               name: name,
               maxHP: maxHP,
               image: image,
@@ -605,7 +609,7 @@ class GPokemonDetailData_pokemonBuilder
         _height?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GPokemonDetailData_pokemon', _$failedField, e.toString());
+            r'GPokemonDetailData_pokemon', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -625,13 +629,14 @@ class _$GPokemonDetailData_pokemon_weight
 
   factory _$GPokemonDetailData_pokemon_weight(
           [void Function(GPokemonDetailData_pokemon_weightBuilder)? updates]) =>
-      (new GPokemonDetailData_pokemon_weightBuilder()..update(updates)).build();
+      (new GPokemonDetailData_pokemon_weightBuilder()..update(updates))
+          ._build();
 
   _$GPokemonDetailData_pokemon_weight._(
       {required this.G__typename, this.minimum, this.maximum})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GPokemonDetailData_pokemon_weight', 'G__typename');
+        G__typename, r'GPokemonDetailData_pokemon_weight', 'G__typename');
   }
 
   @override
@@ -660,7 +665,7 @@ class _$GPokemonDetailData_pokemon_weight
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon_weight')
+    return (newBuiltValueToStringHelper(r'GPokemonDetailData_pokemon_weight')
           ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
@@ -714,11 +719,13 @@ class GPokemonDetailData_pokemon_weightBuilder
   }
 
   @override
-  _$GPokemonDetailData_pokemon_weight build() {
+  GPokemonDetailData_pokemon_weight build() => _build();
+
+  _$GPokemonDetailData_pokemon_weight _build() {
     final _$result = _$v ??
         new _$GPokemonDetailData_pokemon_weight._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                'GPokemonDetailData_pokemon_weight', 'G__typename'),
+                r'GPokemonDetailData_pokemon_weight', 'G__typename'),
             minimum: minimum,
             maximum: maximum);
     replace(_$result);
@@ -737,13 +744,14 @@ class _$GPokemonDetailData_pokemon_height
 
   factory _$GPokemonDetailData_pokemon_height(
           [void Function(GPokemonDetailData_pokemon_heightBuilder)? updates]) =>
-      (new GPokemonDetailData_pokemon_heightBuilder()..update(updates)).build();
+      (new GPokemonDetailData_pokemon_heightBuilder()..update(updates))
+          ._build();
 
   _$GPokemonDetailData_pokemon_height._(
       {required this.G__typename, this.minimum, this.maximum})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GPokemonDetailData_pokemon_height', 'G__typename');
+        G__typename, r'GPokemonDetailData_pokemon_height', 'G__typename');
   }
 
   @override
@@ -772,7 +780,7 @@ class _$GPokemonDetailData_pokemon_height
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPokemonDetailData_pokemon_height')
+    return (newBuiltValueToStringHelper(r'GPokemonDetailData_pokemon_height')
           ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
@@ -826,11 +834,13 @@ class GPokemonDetailData_pokemon_heightBuilder
   }
 
   @override
-  _$GPokemonDetailData_pokemon_height build() {
+  GPokemonDetailData_pokemon_height build() => _build();
+
+  _$GPokemonDetailData_pokemon_height _build() {
     final _$result = _$v ??
         new _$GPokemonDetailData_pokemon_height._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                'GPokemonDetailData_pokemon_height', 'G__typename'),
+                r'GPokemonDetailData_pokemon_height', 'G__typename'),
             minimum: minimum,
             maximum: maximum);
     replace(_$result);
@@ -838,4 +848,4 @@ class GPokemonDetailData_pokemon_heightBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -3,7 +3,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart' as _i1;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i1;
 import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
     as _i2;
 

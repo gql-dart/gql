@@ -94,7 +94,8 @@ class _$GLengthUnitSerializer implements PrimitiveSerializer<GLengthUnit> {
   @override
   GLengthUnit deserialize(Serializers serializers, Object serialized,
           {FullType specifiedType = FullType.unspecified}) =>
-      GLengthUnit.valueOf(_fromWire[serialized] ?? serialized as String);
+      GLengthUnit.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
 class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
@@ -144,17 +145,17 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'stars':
           result.stars = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'commentary':
           result.commentary = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'favorite_color':
           result.favorite_color.replace(serializers.deserialize(value,
@@ -164,7 +165,7 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
           result.seenOn.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(DateTime)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -201,21 +202,21 @@ class _$GColorInputSerializer implements StructuredSerializer<GColorInput> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'red':
           result.red = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'green':
           result.green = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'blue':
           result.blue = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -235,12 +236,12 @@ class _$GReviewInput extends GReviewInput {
   final BuiltList<DateTime>? seenOn;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder)? updates]) =>
-      (new GReviewInputBuilder()..update(updates)).build();
+      (new GReviewInputBuilder()..update(updates))._build();
 
   _$GReviewInput._(
       {required this.stars, this.commentary, this.favorite_color, this.seenOn})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(stars, 'GReviewInput', 'stars');
+    BuiltValueNullFieldError.checkNotNull(stars, r'GReviewInput', 'stars');
   }
 
   @override
@@ -270,7 +271,7 @@ class _$GReviewInput extends GReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReviewInput')
+    return (newBuiltValueToStringHelper(r'GReviewInput')
           ..add('stars', stars)
           ..add('commentary', commentary)
           ..add('favorite_color', favorite_color)
@@ -328,13 +329,15 @@ class GReviewInputBuilder
   }
 
   @override
-  _$GReviewInput build() {
+  GReviewInput build() => _build();
+
+  _$GReviewInput _build() {
     _$GReviewInput _$result;
     try {
       _$result = _$v ??
           new _$GReviewInput._(
               stars: BuiltValueNullFieldError.checkNotNull(
-                  stars, 'GReviewInput', 'stars'),
+                  stars, r'GReviewInput', 'stars'),
               commentary: commentary,
               favorite_color: _favorite_color?.build(),
               seenOn: _seenOn?.build());
@@ -347,7 +350,7 @@ class GReviewInputBuilder
         _seenOn?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReviewInput', _$failedField, e.toString());
+            r'GReviewInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -365,13 +368,13 @@ class _$GColorInput extends GColorInput {
   final int blue;
 
   factory _$GColorInput([void Function(GColorInputBuilder)? updates]) =>
-      (new GColorInputBuilder()..update(updates)).build();
+      (new GColorInputBuilder()..update(updates))._build();
 
   _$GColorInput._({required this.red, required this.green, required this.blue})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(red, 'GColorInput', 'red');
-    BuiltValueNullFieldError.checkNotNull(green, 'GColorInput', 'green');
-    BuiltValueNullFieldError.checkNotNull(blue, 'GColorInput', 'blue');
+    BuiltValueNullFieldError.checkNotNull(red, r'GColorInput', 'red');
+    BuiltValueNullFieldError.checkNotNull(green, r'GColorInput', 'green');
+    BuiltValueNullFieldError.checkNotNull(blue, r'GColorInput', 'blue');
   }
 
   @override
@@ -397,7 +400,7 @@ class _$GColorInput extends GColorInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GColorInput')
+    return (newBuiltValueToStringHelper(r'GColorInput')
           ..add('red', red)
           ..add('green', green)
           ..add('blue', blue))
@@ -445,15 +448,17 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
   }
 
   @override
-  _$GColorInput build() {
+  GColorInput build() => _build();
+
+  _$GColorInput _build() {
     final _$result = _$v ??
         new _$GColorInput._(
             red: BuiltValueNullFieldError.checkNotNull(
-                red, 'GColorInput', 'red'),
+                red, r'GColorInput', 'red'),
             green: BuiltValueNullFieldError.checkNotNull(
-                green, 'GColorInput', 'green'),
+                green, r'GColorInput', 'green'),
             blue: BuiltValueNullFieldError.checkNotNull(
-                blue, 'GColorInput', 'blue'));
+                blue, r'GColorInput', 'blue'));
     replace(_$result);
     return _$result;
   }
@@ -464,10 +469,10 @@ class _$GISODate extends GISODate {
   final String value;
 
   factory _$GISODate([void Function(GISODateBuilder)? updates]) =>
-      (new GISODateBuilder()..update(updates)).build();
+      (new GISODateBuilder()..update(updates))._build();
 
   _$GISODate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GISODate', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GISODate', 'value');
   }
 
   @override
@@ -490,7 +495,7 @@ class _$GISODate extends GISODate {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GISODate')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GISODate')..add('value', value))
         .toString();
   }
 }
@@ -525,14 +530,16 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
   }
 
   @override
-  _$GISODate build() {
+  GISODate build() => _build();
+
+  _$GISODate _build() {
     final _$result = _$v ??
         new _$GISODate._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GISODate', 'value'));
+                value, r'GISODate', 'value'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

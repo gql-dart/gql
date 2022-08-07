@@ -39,7 +39,7 @@ class _$GReviewWithDateSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -50,7 +50,7 @@ class _$GReviewWithDateSerializer
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -66,13 +66,13 @@ class _$GReviewWithDate extends GReviewWithDate {
   final _i1.Operation operation;
 
   factory _$GReviewWithDate([void Function(GReviewWithDateBuilder)? updates]) =>
-      (new GReviewWithDateBuilder()..update(updates)).build();
+      (new GReviewWithDateBuilder()..update(updates))._build();
 
   _$GReviewWithDate._({required this.vars, required this.operation})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GReviewWithDate', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GReviewWithDate', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, 'GReviewWithDate', 'operation');
+        operation, r'GReviewWithDate', 'operation');
   }
 
   @override
@@ -98,7 +98,7 @@ class _$GReviewWithDate extends GReviewWithDate {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReviewWithDate')
+    return (newBuiltValueToStringHelper(r'GReviewWithDate')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -144,14 +144,16 @@ class GReviewWithDateBuilder
   }
 
   @override
-  _$GReviewWithDate build() {
+  GReviewWithDate build() => _build();
+
+  _$GReviewWithDate _build() {
     _$GReviewWithDate _$result;
     try {
       _$result = _$v ??
           new _$GReviewWithDate._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GReviewWithDate', 'operation'));
+                  operation, r'GReviewWithDate', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -159,7 +161,7 @@ class GReviewWithDateBuilder
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReviewWithDate', _$failedField, e.toString());
+            r'GReviewWithDate', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -168,4 +170,4 @@ class GReviewWithDateBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

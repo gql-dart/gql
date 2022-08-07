@@ -2,7 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart' as _i4;
+import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart'
+    as _i4;
 import 'package:gql_example_flutter/src/all_pokemon/graphql/__generated__/all_pokemon.ast.gql.dart'
     as _i2;
 import 'package:gql_example_flutter/src/all_pokemon/graphql/__generated__/all_pokemon.var.gql.dart'

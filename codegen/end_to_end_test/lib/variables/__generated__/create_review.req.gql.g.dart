@@ -38,7 +38,7 @@ class _$GCreateReviewSerializer implements StructuredSerializer<GCreateReview> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -49,7 +49,7 @@ class _$GCreateReviewSerializer implements StructuredSerializer<GCreateReview> {
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -65,12 +65,12 @@ class _$GCreateReview extends GCreateReview {
   final _i1.Operation operation;
 
   factory _$GCreateReview([void Function(GCreateReviewBuilder)? updates]) =>
-      (new GCreateReviewBuilder()..update(updates)).build();
+      (new GCreateReviewBuilder()..update(updates))._build();
 
   _$GCreateReview._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GCreateReview', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GCreateReview', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, 'GCreateReview', 'operation');
+        operation, r'GCreateReview', 'operation');
   }
 
   @override
@@ -95,7 +95,7 @@ class _$GCreateReview extends GCreateReview {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateReview')
+    return (newBuiltValueToStringHelper(r'GCreateReview')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -141,14 +141,16 @@ class GCreateReviewBuilder
   }
 
   @override
-  _$GCreateReview build() {
+  GCreateReview build() => _build();
+
+  _$GCreateReview _build() {
     _$GCreateReview _$result;
     try {
       _$result = _$v ??
           new _$GCreateReview._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GCreateReview', 'operation'));
+                  operation, r'GCreateReview', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -156,7 +158,7 @@ class GCreateReviewBuilder
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateReview', _$failedField, e.toString());
+            r'GCreateReview', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -165,4 +167,4 @@ class GCreateReviewBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

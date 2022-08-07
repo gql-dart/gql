@@ -50,13 +50,13 @@ class _$GReviewWithDateDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'createReview':
           result.createReview.replace(serializers.deserialize(value,
@@ -133,41 +133,41 @@ class _$GReviewWithDateData_createReviewSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'episode':
           result.episode = serializers.deserialize(value,
-              specifiedType: const FullType(_i2.GEpisode)) as _i2.GEpisode;
+              specifiedType: const FullType(_i2.GEpisode)) as _i2.GEpisode?;
           break;
         case 'stars':
           result.stars = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'commentary':
           result.commentary = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'seenOn':
           result.seenOn.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(DateTime)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'custom':
           result.custom.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(_i3.CustomField)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -184,12 +184,12 @@ class _$GReviewWithDateData extends GReviewWithDateData {
 
   factory _$GReviewWithDateData(
           [void Function(GReviewWithDateDataBuilder)? updates]) =>
-      (new GReviewWithDateDataBuilder()..update(updates)).build();
+      (new GReviewWithDateDataBuilder()..update(updates))._build();
 
   _$GReviewWithDateData._({required this.G__typename, this.createReview})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GReviewWithDateData', 'G__typename');
+        G__typename, r'GReviewWithDateData', 'G__typename');
   }
 
   @override
@@ -216,7 +216,7 @@ class _$GReviewWithDateData extends GReviewWithDateData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReviewWithDateData')
+    return (newBuiltValueToStringHelper(r'GReviewWithDateData')
           ..add('G__typename', G__typename)
           ..add('createReview', createReview))
         .toString();
@@ -263,13 +263,15 @@ class GReviewWithDateDataBuilder
   }
 
   @override
-  _$GReviewWithDateData build() {
+  GReviewWithDateData build() => _build();
+
+  _$GReviewWithDateData _build() {
     _$GReviewWithDateData _$result;
     try {
       _$result = _$v ??
           new _$GReviewWithDateData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GReviewWithDateData', 'G__typename'),
+                  G__typename, r'GReviewWithDateData', 'G__typename'),
               createReview: _createReview?.build());
     } catch (_) {
       late String _$failedField;
@@ -278,7 +280,7 @@ class GReviewWithDateDataBuilder
         _createReview?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReviewWithDateData', _$failedField, e.toString());
+            r'GReviewWithDateData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -306,7 +308,7 @@ class _$GReviewWithDateData_createReview
 
   factory _$GReviewWithDateData_createReview(
           [void Function(GReviewWithDateData_createReviewBuilder)? updates]) =>
-      (new GReviewWithDateData_createReviewBuilder()..update(updates)).build();
+      (new GReviewWithDateData_createReviewBuilder()..update(updates))._build();
 
   _$GReviewWithDateData_createReview._(
       {required this.G__typename,
@@ -318,13 +320,13 @@ class _$GReviewWithDateData_createReview
       required this.custom})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GReviewWithDateData_createReview', 'G__typename');
+        G__typename, r'GReviewWithDateData_createReview', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        stars, 'GReviewWithDateData_createReview', 'stars');
+        stars, r'GReviewWithDateData_createReview', 'stars');
     BuiltValueNullFieldError.checkNotNull(
-        seenOn, 'GReviewWithDateData_createReview', 'seenOn');
+        seenOn, r'GReviewWithDateData_createReview', 'seenOn');
     BuiltValueNullFieldError.checkNotNull(
-        custom, 'GReviewWithDateData_createReview', 'custom');
+        custom, r'GReviewWithDateData_createReview', 'custom');
   }
 
   @override
@@ -365,7 +367,7 @@ class _$GReviewWithDateData_createReview
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReviewWithDateData_createReview')
+    return (newBuiltValueToStringHelper(r'GReviewWithDateData_createReview')
           ..add('G__typename', G__typename)
           ..add('episode', episode)
           ..add('stars', stars)
@@ -444,16 +446,18 @@ class GReviewWithDateData_createReviewBuilder
   }
 
   @override
-  _$GReviewWithDateData_createReview build() {
+  GReviewWithDateData_createReview build() => _build();
+
+  _$GReviewWithDateData_createReview _build() {
     _$GReviewWithDateData_createReview _$result;
     try {
       _$result = _$v ??
           new _$GReviewWithDateData_createReview._(
               G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  'GReviewWithDateData_createReview', 'G__typename'),
+                  r'GReviewWithDateData_createReview', 'G__typename'),
               episode: episode,
               stars: BuiltValueNullFieldError.checkNotNull(
-                  stars, 'GReviewWithDateData_createReview', 'stars'),
+                  stars, r'GReviewWithDateData_createReview', 'stars'),
               commentary: commentary,
               createdAt: createdAt,
               seenOn: seenOn.build(),
@@ -467,7 +471,7 @@ class GReviewWithDateData_createReviewBuilder
         custom.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReviewWithDateData_createReview', _$failedField, e.toString());
+            r'GReviewWithDateData_createReview', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -476,4 +480,4 @@ class GReviewWithDateData_createReviewBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -2,9 +2,12 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart' as _i4;
-import 'package:end_to_end_test/variables/__generated__/create_review.ast.gql.dart' as _i2;
-import 'package:end_to_end_test/variables/__generated__/create_review.var.gql.dart' as _i3;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i4;
+import 'package:end_to_end_test/variables/__generated__/create_review.ast.gql.dart'
+    as _i2;
+import 'package:end_to_end_test/variables/__generated__/create_review.var.gql.dart'
+    as _i3;
 import 'package:gql_exec/gql_exec.dart' as _i1;
 
 part 'create_review.req.gql.g.dart';

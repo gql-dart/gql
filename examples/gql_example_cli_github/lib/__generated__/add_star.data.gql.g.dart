@@ -47,13 +47,13 @@ class _$GAddStarDataSerializer implements StructuredSerializer<GAddStarData> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'action':
           result.action.replace(serializers.deserialize(value,
@@ -105,13 +105,13 @@ class _$GAddStarData_actionSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'starrable':
           result.starrable.replace(serializers.deserialize(value,
@@ -159,17 +159,17 @@ class _$GAddStarData_action_starrableSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'viewerHasStarred':
           result.viewerHasStarred = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
       }
     }
@@ -185,11 +185,11 @@ class _$GAddStarData extends GAddStarData {
   final GAddStarData_action? action;
 
   factory _$GAddStarData([void Function(GAddStarDataBuilder)? updates]) =>
-      (new GAddStarDataBuilder()..update(updates)).build();
+      (new GAddStarDataBuilder()..update(updates))._build();
 
   _$GAddStarData._({required this.G__typename, this.action}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GAddStarData', 'G__typename');
+        G__typename, r'GAddStarData', 'G__typename');
   }
 
   @override
@@ -214,7 +214,7 @@ class _$GAddStarData extends GAddStarData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarData')
+    return (newBuiltValueToStringHelper(r'GAddStarData')
           ..add('G__typename', G__typename)
           ..add('action', action))
         .toString();
@@ -260,13 +260,15 @@ class GAddStarDataBuilder
   }
 
   @override
-  _$GAddStarData build() {
+  GAddStarData build() => _build();
+
+  _$GAddStarData _build() {
     _$GAddStarData _$result;
     try {
       _$result = _$v ??
           new _$GAddStarData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GAddStarData', 'G__typename'),
+                  G__typename, r'GAddStarData', 'G__typename'),
               action: _action?.build());
     } catch (_) {
       late String _$failedField;
@@ -275,7 +277,7 @@ class GAddStarDataBuilder
         _action?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddStarData', _$failedField, e.toString());
+            r'GAddStarData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -292,12 +294,12 @@ class _$GAddStarData_action extends GAddStarData_action {
 
   factory _$GAddStarData_action(
           [void Function(GAddStarData_actionBuilder)? updates]) =>
-      (new GAddStarData_actionBuilder()..update(updates)).build();
+      (new GAddStarData_actionBuilder()..update(updates))._build();
 
   _$GAddStarData_action._({required this.G__typename, this.starrable})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GAddStarData_action', 'G__typename');
+        G__typename, r'GAddStarData_action', 'G__typename');
   }
 
   @override
@@ -324,7 +326,7 @@ class _$GAddStarData_action extends GAddStarData_action {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarData_action')
+    return (newBuiltValueToStringHelper(r'GAddStarData_action')
           ..add('G__typename', G__typename)
           ..add('starrable', starrable))
         .toString();
@@ -371,13 +373,15 @@ class GAddStarData_actionBuilder
   }
 
   @override
-  _$GAddStarData_action build() {
+  GAddStarData_action build() => _build();
+
+  _$GAddStarData_action _build() {
     _$GAddStarData_action _$result;
     try {
       _$result = _$v ??
           new _$GAddStarData_action._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GAddStarData_action', 'G__typename'),
+                  G__typename, r'GAddStarData_action', 'G__typename'),
               starrable: _starrable?.build());
     } catch (_) {
       late String _$failedField;
@@ -386,7 +390,7 @@ class GAddStarData_actionBuilder
         _starrable?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddStarData_action', _$failedField, e.toString());
+            r'GAddStarData_action', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -403,15 +407,15 @@ class _$GAddStarData_action_starrable extends GAddStarData_action_starrable {
 
   factory _$GAddStarData_action_starrable(
           [void Function(GAddStarData_action_starrableBuilder)? updates]) =>
-      (new GAddStarData_action_starrableBuilder()..update(updates)).build();
+      (new GAddStarData_action_starrableBuilder()..update(updates))._build();
 
   _$GAddStarData_action_starrable._(
       {required this.G__typename, required this.viewerHasStarred})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GAddStarData_action_starrable', 'G__typename');
+        G__typename, r'GAddStarData_action_starrable', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        viewerHasStarred, 'GAddStarData_action_starrable', 'viewerHasStarred');
+        viewerHasStarred, r'GAddStarData_action_starrable', 'viewerHasStarred');
   }
 
   @override
@@ -438,7 +442,7 @@ class _$GAddStarData_action_starrable extends GAddStarData_action_starrable {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarData_action_starrable')
+    return (newBuiltValueToStringHelper(r'GAddStarData_action_starrable')
           ..add('G__typename', G__typename)
           ..add('viewerHasStarred', viewerHasStarred))
         .toString();
@@ -486,18 +490,20 @@ class GAddStarData_action_starrableBuilder
   }
 
   @override
-  _$GAddStarData_action_starrable build() {
+  GAddStarData_action_starrable build() => _build();
+
+  _$GAddStarData_action_starrable _build() {
     final _$result = _$v ??
         new _$GAddStarData_action_starrable._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GAddStarData_action_starrable', 'G__typename'),
+                G__typename, r'GAddStarData_action_starrable', 'G__typename'),
             viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
                 viewerHasStarred,
-                'GAddStarData_action_starrable',
+                r'GAddStarData_action_starrable',
                 'viewerHasStarred'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

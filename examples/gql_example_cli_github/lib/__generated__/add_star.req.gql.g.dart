@@ -36,7 +36,7 @@ class _$GAddStarSerializer implements StructuredSerializer<GAddStar> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -47,7 +47,7 @@ class _$GAddStarSerializer implements StructuredSerializer<GAddStar> {
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -63,11 +63,11 @@ class _$GAddStar extends GAddStar {
   final _i1.Operation operation;
 
   factory _$GAddStar([void Function(GAddStarBuilder)? updates]) =>
-      (new GAddStarBuilder()..update(updates)).build();
+      (new GAddStarBuilder()..update(updates))._build();
 
   _$GAddStar._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GAddStar', 'vars');
-    BuiltValueNullFieldError.checkNotNull(operation, 'GAddStar', 'operation');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GAddStar', 'vars');
+    BuiltValueNullFieldError.checkNotNull(operation, r'GAddStar', 'operation');
   }
 
   @override
@@ -92,7 +92,7 @@ class _$GAddStar extends GAddStar {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStar')
+    return (newBuiltValueToStringHelper(r'GAddStar')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -137,14 +137,16 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
   }
 
   @override
-  _$GAddStar build() {
+  GAddStar build() => _build();
+
+  _$GAddStar _build() {
     _$GAddStar _$result;
     try {
       _$result = _$v ??
           new _$GAddStar._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GAddStar', 'operation'));
+                  operation, r'GAddStar', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -152,7 +154,7 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddStar', _$failedField, e.toString());
+            r'GAddStar', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -161,4 +163,4 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

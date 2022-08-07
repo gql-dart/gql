@@ -39,7 +39,7 @@ class _$GHeroForEpisodeSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -50,7 +50,7 @@ class _$GHeroForEpisodeSerializer
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -66,13 +66,13 @@ class _$GHeroForEpisode extends GHeroForEpisode {
   final _i1.Operation operation;
 
   factory _$GHeroForEpisode([void Function(GHeroForEpisodeBuilder)? updates]) =>
-      (new GHeroForEpisodeBuilder()..update(updates)).build();
+      (new GHeroForEpisodeBuilder()..update(updates))._build();
 
   _$GHeroForEpisode._({required this.vars, required this.operation})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GHeroForEpisode', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GHeroForEpisode', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, 'GHeroForEpisode', 'operation');
+        operation, r'GHeroForEpisode', 'operation');
   }
 
   @override
@@ -98,7 +98,7 @@ class _$GHeroForEpisode extends GHeroForEpisode {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GHeroForEpisode')
+    return (newBuiltValueToStringHelper(r'GHeroForEpisode')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -144,14 +144,16 @@ class GHeroForEpisodeBuilder
   }
 
   @override
-  _$GHeroForEpisode build() {
+  GHeroForEpisode build() => _build();
+
+  _$GHeroForEpisode _build() {
     _$GHeroForEpisode _$result;
     try {
       _$result = _$v ??
           new _$GHeroForEpisode._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GHeroForEpisode', 'operation'));
+                  operation, r'GHeroForEpisode', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -159,7 +161,7 @@ class GHeroForEpisodeBuilder
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GHeroForEpisode', _$failedField, e.toString());
+            r'GHeroForEpisode', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -168,4 +170,4 @@ class GHeroForEpisodeBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -51,13 +51,13 @@ class _$GFindPokemonDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pokemon':
           result.pokemon.replace(serializers.deserialize(value,
@@ -125,21 +125,21 @@ class _$GFindPokemonData_pokemonSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'weight':
           result.weight.replace(serializers.deserialize(value,
@@ -205,21 +205,21 @@ class _$GFindPokemonData_pokemon_weightSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maximum':
           result.maximum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -273,21 +273,21 @@ class _$GFindPokemonData_pokemon_heightSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maximum':
           result.maximum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -304,11 +304,11 @@ class _$GFindPokemonData extends GFindPokemonData {
 
   factory _$GFindPokemonData(
           [void Function(GFindPokemonDataBuilder)? updates]) =>
-      (new GFindPokemonDataBuilder()..update(updates)).build();
+      (new GFindPokemonDataBuilder()..update(updates))._build();
 
   _$GFindPokemonData._({required this.G__typename, this.pokemon}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GFindPokemonData', 'G__typename');
+        G__typename, r'GFindPokemonData', 'G__typename');
   }
 
   @override
@@ -334,7 +334,7 @@ class _$GFindPokemonData extends GFindPokemonData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GFindPokemonData')
+    return (newBuiltValueToStringHelper(r'GFindPokemonData')
           ..add('G__typename', G__typename)
           ..add('pokemon', pokemon))
         .toString();
@@ -381,13 +381,15 @@ class GFindPokemonDataBuilder
   }
 
   @override
-  _$GFindPokemonData build() {
+  GFindPokemonData build() => _build();
+
+  _$GFindPokemonData _build() {
     _$GFindPokemonData _$result;
     try {
       _$result = _$v ??
           new _$GFindPokemonData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GFindPokemonData', 'G__typename'),
+                  G__typename, r'GFindPokemonData', 'G__typename'),
               pokemon: _pokemon?.build());
     } catch (_) {
       late String _$failedField;
@@ -396,7 +398,7 @@ class GFindPokemonDataBuilder
         _pokemon?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GFindPokemonData', _$failedField, e.toString());
+            r'GFindPokemonData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -419,7 +421,7 @@ class _$GFindPokemonData_pokemon extends GFindPokemonData_pokemon {
 
   factory _$GFindPokemonData_pokemon(
           [void Function(GFindPokemonData_pokemonBuilder)? updates]) =>
-      (new GFindPokemonData_pokemonBuilder()..update(updates)).build();
+      (new GFindPokemonData_pokemonBuilder()..update(updates))._build();
 
   _$GFindPokemonData_pokemon._(
       {required this.G__typename,
@@ -429,8 +431,9 @@ class _$GFindPokemonData_pokemon extends GFindPokemonData_pokemon {
       this.height})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GFindPokemonData_pokemon', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, 'GFindPokemonData_pokemon', 'id');
+        G__typename, r'GFindPokemonData_pokemon', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GFindPokemonData_pokemon', 'id');
   }
 
   @override
@@ -463,7 +466,7 @@ class _$GFindPokemonData_pokemon extends GFindPokemonData_pokemon {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GFindPokemonData_pokemon')
+    return (newBuiltValueToStringHelper(r'GFindPokemonData_pokemon')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -531,15 +534,17 @@ class GFindPokemonData_pokemonBuilder
   }
 
   @override
-  _$GFindPokemonData_pokemon build() {
+  GFindPokemonData_pokemon build() => _build();
+
+  _$GFindPokemonData_pokemon _build() {
     _$GFindPokemonData_pokemon _$result;
     try {
       _$result = _$v ??
           new _$GFindPokemonData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GFindPokemonData_pokemon', 'G__typename'),
+                  G__typename, r'GFindPokemonData_pokemon', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'GFindPokemonData_pokemon', 'id'),
+                  id, r'GFindPokemonData_pokemon', 'id'),
               name: name,
               weight: _weight?.build(),
               height: _height?.build());
@@ -552,7 +557,7 @@ class GFindPokemonData_pokemonBuilder
         _height?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GFindPokemonData_pokemon', _$failedField, e.toString());
+            r'GFindPokemonData_pokemon', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -572,13 +577,13 @@ class _$GFindPokemonData_pokemon_weight
 
   factory _$GFindPokemonData_pokemon_weight(
           [void Function(GFindPokemonData_pokemon_weightBuilder)? updates]) =>
-      (new GFindPokemonData_pokemon_weightBuilder()..update(updates)).build();
+      (new GFindPokemonData_pokemon_weightBuilder()..update(updates))._build();
 
   _$GFindPokemonData_pokemon_weight._(
       {required this.G__typename, this.minimum, this.maximum})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GFindPokemonData_pokemon_weight', 'G__typename');
+        G__typename, r'GFindPokemonData_pokemon_weight', 'G__typename');
   }
 
   @override
@@ -607,7 +612,7 @@ class _$GFindPokemonData_pokemon_weight
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GFindPokemonData_pokemon_weight')
+    return (newBuiltValueToStringHelper(r'GFindPokemonData_pokemon_weight')
           ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
@@ -660,11 +665,13 @@ class GFindPokemonData_pokemon_weightBuilder
   }
 
   @override
-  _$GFindPokemonData_pokemon_weight build() {
+  GFindPokemonData_pokemon_weight build() => _build();
+
+  _$GFindPokemonData_pokemon_weight _build() {
     final _$result = _$v ??
         new _$GFindPokemonData_pokemon_weight._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GFindPokemonData_pokemon_weight', 'G__typename'),
+                G__typename, r'GFindPokemonData_pokemon_weight', 'G__typename'),
             minimum: minimum,
             maximum: maximum);
     replace(_$result);
@@ -683,13 +690,13 @@ class _$GFindPokemonData_pokemon_height
 
   factory _$GFindPokemonData_pokemon_height(
           [void Function(GFindPokemonData_pokemon_heightBuilder)? updates]) =>
-      (new GFindPokemonData_pokemon_heightBuilder()..update(updates)).build();
+      (new GFindPokemonData_pokemon_heightBuilder()..update(updates))._build();
 
   _$GFindPokemonData_pokemon_height._(
       {required this.G__typename, this.minimum, this.maximum})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GFindPokemonData_pokemon_height', 'G__typename');
+        G__typename, r'GFindPokemonData_pokemon_height', 'G__typename');
   }
 
   @override
@@ -718,7 +725,7 @@ class _$GFindPokemonData_pokemon_height
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GFindPokemonData_pokemon_height')
+    return (newBuiltValueToStringHelper(r'GFindPokemonData_pokemon_height')
           ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
@@ -771,11 +778,13 @@ class GFindPokemonData_pokemon_heightBuilder
   }
 
   @override
-  _$GFindPokemonData_pokemon_height build() {
+  GFindPokemonData_pokemon_height build() => _build();
+
+  _$GFindPokemonData_pokemon_height _build() {
     final _$result = _$v ??
         new _$GFindPokemonData_pokemon_height._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GFindPokemonData_pokemon_height', 'G__typename'),
+                G__typename, r'GFindPokemonData_pokemon_height', 'G__typename'),
             minimum: minimum,
             maximum: maximum);
     replace(_$result);
@@ -783,4 +792,4 @@ class GFindPokemonData_pokemon_heightBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

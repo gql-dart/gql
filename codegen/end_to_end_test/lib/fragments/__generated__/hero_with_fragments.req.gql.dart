@@ -6,7 +6,8 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.ast.
     as _i2;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     as _i3;
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart' as _i4;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i4;
 import 'package:gql_exec/gql_exec.dart' as _i1;
 
 part 'hero_with_fragments.req.gql.g.dart';

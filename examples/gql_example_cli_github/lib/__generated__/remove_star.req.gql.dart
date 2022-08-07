@@ -2,9 +2,12 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_cli_github/remove_star.ast.gql.dart' as _i2;
-import 'package:gql_example_cli_github/remove_star.var.gql.dart' as _i3;
-import 'package:gql_example_cli_github/serializers.gql.dart' as _i4;
+import 'package:gql_example_cli_github/__generated__/remove_star.ast.gql.dart'
+    as _i2;
+import 'package:gql_example_cli_github/__generated__/remove_star.var.gql.dart'
+    as _i3;
+import 'package:gql_example_cli_github/__generated__/serializers.gql.dart'
+    as _i4;
 import 'package:gql_exec/gql_exec.dart' as _i1;
 
 part 'remove_star.req.gql.g.dart';

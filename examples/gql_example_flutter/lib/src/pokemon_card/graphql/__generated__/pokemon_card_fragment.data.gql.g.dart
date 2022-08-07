@@ -58,29 +58,29 @@ class _$GPokemonCardDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maxHP':
           result.maxHP = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -103,7 +103,7 @@ class _$GPokemonCardData extends GPokemonCardData {
 
   factory _$GPokemonCardData(
           [void Function(GPokemonCardDataBuilder)? updates]) =>
-      (new GPokemonCardDataBuilder()..update(updates)).build();
+      (new GPokemonCardDataBuilder()..update(updates))._build();
 
   _$GPokemonCardData._(
       {required this.G__typename,
@@ -113,8 +113,8 @@ class _$GPokemonCardData extends GPokemonCardData {
       this.image})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GPokemonCardData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, 'GPokemonCardData', 'id');
+        G__typename, r'GPokemonCardData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, r'GPokemonCardData', 'id');
   }
 
   @override
@@ -146,7 +146,7 @@ class _$GPokemonCardData extends GPokemonCardData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPokemonCardData')
+    return (newBuiltValueToStringHelper(r'GPokemonCardData')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -209,13 +209,15 @@ class GPokemonCardDataBuilder
   }
 
   @override
-  _$GPokemonCardData build() {
+  GPokemonCardData build() => _build();
+
+  _$GPokemonCardData _build() {
     final _$result = _$v ??
         new _$GPokemonCardData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GPokemonCardData', 'G__typename'),
+                G__typename, r'GPokemonCardData', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GPokemonCardData', 'id'),
+                id, r'GPokemonCardData', 'id'),
             name: name,
             maxHP: maxHP,
             image: image);
@@ -224,4 +226,4 @@ class GPokemonCardDataBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

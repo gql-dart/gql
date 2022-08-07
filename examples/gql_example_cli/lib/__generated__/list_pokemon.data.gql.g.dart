@@ -46,19 +46,19 @@ class _$GListPokemonDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pokemons':
           result.pokemons.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GListPokemonData_pokemons)
-              ]))! as BuiltList<Object>);
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -107,21 +107,21 @@ class _$GListPokemonData_pokemonsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -138,11 +138,11 @@ class _$GListPokemonData extends GListPokemonData {
 
   factory _$GListPokemonData(
           [void Function(GListPokemonDataBuilder)? updates]) =>
-      (new GListPokemonDataBuilder()..update(updates)).build();
+      (new GListPokemonDataBuilder()..update(updates))._build();
 
   _$GListPokemonData._({required this.G__typename, this.pokemons}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GListPokemonData', 'G__typename');
+        G__typename, r'GListPokemonData', 'G__typename');
   }
 
   @override
@@ -168,7 +168,7 @@ class _$GListPokemonData extends GListPokemonData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GListPokemonData')
+    return (newBuiltValueToStringHelper(r'GListPokemonData')
           ..add('G__typename', G__typename)
           ..add('pokemons', pokemons))
         .toString();
@@ -215,13 +215,15 @@ class GListPokemonDataBuilder
   }
 
   @override
-  _$GListPokemonData build() {
+  GListPokemonData build() => _build();
+
+  _$GListPokemonData _build() {
     _$GListPokemonData _$result;
     try {
       _$result = _$v ??
           new _$GListPokemonData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GListPokemonData', 'G__typename'),
+                  G__typename, r'GListPokemonData', 'G__typename'),
               pokemons: _pokemons?.build());
     } catch (_) {
       late String _$failedField;
@@ -230,7 +232,7 @@ class GListPokemonDataBuilder
         _pokemons?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GListPokemonData', _$failedField, e.toString());
+            r'GListPokemonData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -249,15 +251,15 @@ class _$GListPokemonData_pokemons extends GListPokemonData_pokemons {
 
   factory _$GListPokemonData_pokemons(
           [void Function(GListPokemonData_pokemonsBuilder)? updates]) =>
-      (new GListPokemonData_pokemonsBuilder()..update(updates)).build();
+      (new GListPokemonData_pokemonsBuilder()..update(updates))._build();
 
   _$GListPokemonData_pokemons._(
       {required this.G__typename, required this.id, this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GListPokemonData_pokemons', 'G__typename');
+        G__typename, r'GListPokemonData_pokemons', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GListPokemonData_pokemons', 'id');
+        id, r'GListPokemonData_pokemons', 'id');
   }
 
   @override
@@ -286,7 +288,7 @@ class _$GListPokemonData_pokemons extends GListPokemonData_pokemons {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GListPokemonData_pokemons')
+    return (newBuiltValueToStringHelper(r'GListPokemonData_pokemons')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name))
@@ -338,17 +340,19 @@ class GListPokemonData_pokemonsBuilder
   }
 
   @override
-  _$GListPokemonData_pokemons build() {
+  GListPokemonData_pokemons build() => _build();
+
+  _$GListPokemonData_pokemons _build() {
     final _$result = _$v ??
         new _$GListPokemonData_pokemons._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GListPokemonData_pokemons', 'G__typename'),
+                G__typename, r'GListPokemonData_pokemons', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GListPokemonData_pokemons', 'id'),
+                id, r'GListPokemonData_pokemons', 'id'),
             name: name);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

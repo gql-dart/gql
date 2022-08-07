@@ -2,7 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart' as _i1;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i1;
 
 part 'human_with_args.var.gql.g.dart';
 

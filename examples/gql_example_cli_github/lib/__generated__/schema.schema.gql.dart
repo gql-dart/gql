@@ -5,7 +5,8 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
     as _i2;
-import 'package:gql_example_cli_github/serializers.gql.dart' as _i1;
+import 'package:gql_example_cli_github/__generated__/serializers.gql.dart'
+    as _i1;
 
 part 'schema.schema.gql.g.dart';
 
@@ -3455,7 +3456,8 @@ abstract class GRegistryPackageMetadatum
       _$GRegistryPackageMetadatum;
 
   String get name;
-  bool? get update;
+  @BuiltValueField(wireName: 'update')
+  bool? get Gupdate;
   String get value;
   static Serializer<GRegistryPackageMetadatum> get serializer =>
       _$gRegistryPackageMetadatumSerializer;

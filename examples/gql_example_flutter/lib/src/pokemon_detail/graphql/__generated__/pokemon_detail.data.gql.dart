@@ -2,7 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart' as _i1;
+import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart'
+    as _i1;
 import 'package:gql_example_flutter/src/pokemon_card/graphql/__generated__/pokemon_card_fragment.data.gql.dart'
     as _i2;
 
@@ -41,16 +42,22 @@ abstract class GPokemonDetailData_pokemon
 
   static void _initializeBuilder(GPokemonDetailData_pokemonBuilder b) =>
       b..G__typename = 'Pokemon';
+  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
   String get id;
+  @override
   String? get name;
+  @override
   int? get maxHP;
+  @override
   String? get image;
   GPokemonDetailData_pokemon_weight? get weight;
   GPokemonDetailData_pokemon_height? get height;
   static Serializer<GPokemonDetailData_pokemon> get serializer =>
       _$gPokemonDetailDataPokemonSerializer;
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
       GPokemonDetailData_pokemon.serializer, this) as Map<String, dynamic>);
   static GPokemonDetailData_pokemon? fromJson(Map<String, dynamic> json) =>

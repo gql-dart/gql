@@ -2,7 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart' as _i4;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i4;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.ast.gql.dart'
     as _i2;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'

@@ -2,7 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart' as _i1;
+import 'package:gql_example_flutter/graphql/__generated__/serializers.gql.dart'
+    as _i1;
 
 part 'nested_fragment.var.gql.g.dart';
 

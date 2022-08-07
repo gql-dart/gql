@@ -50,21 +50,21 @@ class _$GDimensionsDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'minimum':
           result.minimum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'maximum':
           result.maximum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -82,12 +82,12 @@ class _$GDimensionsData extends GDimensionsData {
   final String? maximum;
 
   factory _$GDimensionsData([void Function(GDimensionsDataBuilder)? updates]) =>
-      (new GDimensionsDataBuilder()..update(updates)).build();
+      (new GDimensionsDataBuilder()..update(updates))._build();
 
   _$GDimensionsData._({required this.G__typename, this.minimum, this.maximum})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GDimensionsData', 'G__typename');
+        G__typename, r'GDimensionsData', 'G__typename');
   }
 
   @override
@@ -115,7 +115,7 @@ class _$GDimensionsData extends GDimensionsData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDimensionsData')
+    return (newBuiltValueToStringHelper(r'GDimensionsData')
           ..add('G__typename', G__typename)
           ..add('minimum', minimum)
           ..add('maximum', maximum))
@@ -166,11 +166,13 @@ class GDimensionsDataBuilder
   }
 
   @override
-  _$GDimensionsData build() {
+  GDimensionsData build() => _build();
+
+  _$GDimensionsData _build() {
     final _$result = _$v ??
         new _$GDimensionsData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GDimensionsData', 'G__typename'),
+                G__typename, r'GDimensionsData', 'G__typename'),
             minimum: minimum,
             maximum: maximum);
     replace(_$result);
@@ -178,4 +180,4 @@ class GDimensionsDataBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -35,13 +35,13 @@ class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'starrableId':
           result.starrableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -55,11 +55,11 @@ class _$GAddStarVars extends GAddStarVars {
   final String starrableId;
 
   factory _$GAddStarVars([void Function(GAddStarVarsBuilder)? updates]) =>
-      (new GAddStarVarsBuilder()..update(updates)).build();
+      (new GAddStarVarsBuilder()..update(updates))._build();
 
   _$GAddStarVars._({required this.starrableId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        starrableId, 'GAddStarVars', 'starrableId');
+        starrableId, r'GAddStarVars', 'starrableId');
   }
 
   @override
@@ -82,7 +82,7 @@ class _$GAddStarVars extends GAddStarVars {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarVars')
+    return (newBuiltValueToStringHelper(r'GAddStarVars')
           ..add('starrableId', starrableId))
         .toString();
   }
@@ -119,14 +119,16 @@ class GAddStarVarsBuilder
   }
 
   @override
-  _$GAddStarVars build() {
+  GAddStarVars build() => _build();
+
+  _$GAddStarVars _build() {
     final _$result = _$v ??
         new _$GAddStarVars._(
             starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, 'GAddStarVars', 'starrableId'));
+                starrableId, r'GAddStarVars', 'starrableId'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

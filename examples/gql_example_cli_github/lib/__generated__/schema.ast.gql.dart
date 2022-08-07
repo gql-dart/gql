@@ -105,6 +105,7 @@ const ActionExecutionCapabilitySetting = _i1.EnumTypeDefinitionNode(
 const Actor = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Actor'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'avatarUrl'),
@@ -792,6 +793,7 @@ const ArchiveRepositoryPayload = _i1.ObjectTypeDefinitionNode(
 const Assignable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Assignable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'assignees'),
@@ -894,6 +896,7 @@ const Assignee = _i1.UnionTypeDefinitionNode(
 const AuditEntry = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'AuditEntry'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'action'),
@@ -1911,6 +1914,7 @@ const CloneTemplateRepositoryPayload = _i1.ObjectTypeDefinitionNode(
 const Closable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Closable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'closed'),
@@ -2114,6 +2118,7 @@ const CollaboratorAffiliation = _i1.EnumTypeDefinitionNode(
 const Comment = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Comment'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'author'),
@@ -3403,6 +3408,7 @@ const ConnectedEvent = _i1.ObjectTypeDefinitionNode(
 const Contribution = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Contribution'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'isRestricted'),
@@ -5561,6 +5567,7 @@ const DefaultRepositoryPermissionField = _i1.EnumTypeDefinitionNode(
 const Deletable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Deletable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'viewerCanDelete'),
@@ -7147,6 +7154,7 @@ const EnterpriseAdministratorRole = _i1.EnumTypeDefinitionNode(
 const EnterpriseAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'EnterpriseAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'enterpriseResourcePath'),
@@ -11222,6 +11230,7 @@ const GitHubMetadata = _i1.ObjectTypeDefinitionNode(
 const GitObject = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'GitObject'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'abbreviatedOid'),
@@ -11267,6 +11276,7 @@ const GitSSHRemote = _i1.ScalarTypeDefinitionNode(
 const GitSignature = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'GitSignature'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'email'),
@@ -11555,6 +11565,7 @@ const Hovercard = _i1.ObjectTypeDefinitionNode(
 const HovercardContext = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'HovercardContext'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'message'),
@@ -13403,6 +13414,7 @@ const LabelOrderField = _i1.EnumTypeDefinitionNode(
 const Labelable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Labelable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'labels'),
@@ -13841,6 +13853,7 @@ const LockReason = _i1.EnumTypeDefinitionNode(
 const Lockable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Lockable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'activeLockReason'),
@@ -14512,6 +14525,7 @@ const MarketplaceListingEdge = _i1.ObjectTypeDefinitionNode(
 const MemberStatusable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'MemberStatusable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'memberStatuses'),
@@ -17352,6 +17366,7 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
 const Node = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Node'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -17363,6 +17378,7 @@ const Node = _i1.InterfaceTypeDefinitionNode(
 const OauthApplicationAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'OauthApplicationAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'oauthApplicationName'),
@@ -22638,6 +22654,7 @@ const OrganizationAuditEntryConnection = _i1.ObjectTypeDefinitionNode(
 const OrganizationAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'OrganizationAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'organization'),
@@ -23763,6 +23780,7 @@ const ProfileItemShowcase = _i1.ObjectTypeDefinitionNode(
 const ProfileOwner = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'ProfileOwner'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'anyPinnableItems'),
@@ -24521,6 +24539,7 @@ const ProjectOrderField = _i1.EnumTypeDefinitionNode(
 const ProjectOwner = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'ProjectOwner'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -28322,6 +28341,7 @@ const RateLimit = _i1.ObjectTypeDefinitionNode(
 const Reactable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Reactable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'databaseId'),
@@ -29950,6 +29970,7 @@ const RegistryPackageMetadatum = _i1.InputObjectTypeDefinitionNode(
 const RegistryPackageOwner = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RegistryPackageOwner'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -30043,6 +30064,7 @@ const RegistryPackageOwner = _i1.InterfaceTypeDefinitionNode(
 const RegistryPackageSearch = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RegistryPackageSearch'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -36227,6 +36249,7 @@ const RepositoryAffiliation = _i1.EnumTypeDefinitionNode(
 const RepositoryAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RepositoryAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'repository'),
@@ -36399,6 +36422,7 @@ const RepositoryEdge = _i1.ObjectTypeDefinitionNode(
 const RepositoryInfo = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RepositoryInfo'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'createdAt'),
@@ -36653,6 +36677,7 @@ const RepositoryLockReason = _i1.EnumTypeDefinitionNode(
 const RepositoryNode = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RepositoryNode'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'repository'),
@@ -36697,6 +36722,7 @@ const RepositoryOrderField = _i1.EnumTypeDefinitionNode(
 const RepositoryOwner = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'RepositoryOwner'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'avatarUrl'),
@@ -38846,6 +38872,7 @@ const SmimeSignature = _i1.ObjectTypeDefinitionNode(
 const Sponsorable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Sponsorable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'sponsorsListing'),
@@ -39470,6 +39497,7 @@ const StargazerEdge = _i1.ObjectTypeDefinitionNode(
 const Starrable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Starrable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -39769,6 +39797,7 @@ const SubmitPullRequestReviewPayload = _i1.ObjectTypeDefinitionNode(
 const Subscribable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Subscribable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'id'),
@@ -40774,6 +40803,7 @@ const TeamAddRepositoryAuditEntry = _i1.ObjectTypeDefinitionNode(
 const TeamAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'TeamAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'team'),
@@ -42538,6 +42568,7 @@ const Topic = _i1.ObjectTypeDefinitionNode(
 const TopicAuditEntryData = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'TopicAuditEntryData'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'topic'),
@@ -42922,6 +42953,7 @@ const UnfollowUserPayload = _i1.ObjectTypeDefinitionNode(
 const UniformResourceLocatable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'UniformResourceLocatable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'resourcePath'),
@@ -43316,6 +43348,7 @@ const UnsubscribedEvent = _i1.ObjectTypeDefinitionNode(
 const Updatable = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'Updatable'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'viewerCanUpdate'),
@@ -43327,6 +43360,7 @@ const Updatable = _i1.InterfaceTypeDefinitionNode(
 const UpdatableComment = _i1.InterfaceTypeDefinitionNode(
     name: _i1.NameNode(value: 'UpdatableComment'),
     directives: [],
+    interfaces: [],
     fields: [
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'viewerCannotUpdateReasons'),

@@ -4739,17 +4739,17 @@ class _$GAcceptEnterpriseAdministratorInvitationInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'invitationId':
           result.invitationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -4798,21 +4798,21 @@ class _$GAcceptTopicSuggestionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -4883,23 +4883,23 @@ class _$GAddAssigneesToAssignableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'assignableId':
           result.assignableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -4944,21 +4944,21 @@ class _$GAddCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'subjectId':
           result.subjectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5009,23 +5009,23 @@ class _$GAddLabelsToLabelableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'labelableId':
           result.labelableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5086,25 +5086,25 @@ class _$GAddProjectCardInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'contentId':
           result.contentId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'note':
           result.note = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectColumnId':
           result.projectColumnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5153,21 +5153,21 @@ class _$GAddProjectColumnInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'projectId':
           result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5254,17 +5254,17 @@ class _$GAddPullRequestReviewCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'commitOID':
           result.commitOID.replace(serializers.deserialize(value,
@@ -5272,23 +5272,23 @@ class _$GAddPullRequestReviewCommentInputSerializer
           break;
         case 'inReplyTo':
           result.inReplyTo = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'path':
           result.path = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'position':
           result.position = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestReviewId':
           result.pullRequestReviewId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -5364,23 +5364,23 @@ class _$GAddPullRequestReviewInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'comments':
           result.comments.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GDraftPullRequestReviewComment)
-              ]))! as BuiltList<Object>);
+              ]))! as BuiltList<Object?>);
           break;
         case 'commitOID':
           result.commitOID.replace(serializers.deserialize(value,
@@ -5389,11 +5389,11 @@ class _$GAddPullRequestReviewInputSerializer
         case 'event':
           result.event = serializers.deserialize(value,
                   specifiedType: const FullType(GPullRequestReviewEvent))
-              as GPullRequestReviewEvent;
+              as GPullRequestReviewEvent?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5439,22 +5439,22 @@ class _$GAddReactionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'content':
           result.content = serializers.deserialize(value,
-                  specifiedType: const FullType(GReactionContent))
+                  specifiedType: const FullType(GReactionContent))!
               as GReactionContent;
           break;
         case 'subjectId':
           result.subjectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5496,17 +5496,17 @@ class _$GAddStarInputSerializer implements StructuredSerializer<GAddStarInput> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'starrableId':
           result.starrableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5553,17 +5553,17 @@ class _$GArchiveRepositoryInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5609,19 +5609,19 @@ class _$GAuditLogOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
                   specifiedType: const FullType(GOrderDirection))
-              as GOrderDirection;
+              as GOrderDirection?;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType: const FullType(GAuditLogOrderField))
-              as GAuditLogOrderField;
+              as GAuditLogOrderField?;
           break;
       }
     }
@@ -5686,17 +5686,17 @@ class _$GCancelEnterpriseAdminInvitationInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'invitationId':
           result.invitationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5774,17 +5774,17 @@ class _$GChangeUserStatusInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'emoji':
           result.emoji = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'expiresAt':
           result.expiresAt.replace(serializers.deserialize(value,
@@ -5792,15 +5792,15 @@ class _$GChangeUserStatusInputSerializer
           break;
         case 'limitedAvailability':
           result.limitedAvailability = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'organizationId':
           result.organizationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -5847,17 +5847,17 @@ class _$GClearLabelsFromLabelableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labelableId':
           result.labelableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -5923,37 +5923,37 @@ class _$GCloneProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'includeWorkflows':
           result.includeWorkflows = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'public':
           result.public = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'sourceId':
           result.sourceId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'targetOwnerId':
           result.targetOwnerId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -6015,33 +6015,33 @@ class _$GCloneTemplateRepositoryInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'ownerId':
           result.ownerId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'visibility':
           result.visibility = serializers.deserialize(value,
-                  specifiedType: const FullType(GRepositoryVisibility))
+                  specifiedType: const FullType(GRepositoryVisibility))!
               as GRepositoryVisibility;
           break;
       }
@@ -6085,17 +6085,17 @@ class _$GCloseIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'issueId':
           result.issueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -6142,17 +6142,17 @@ class _$GClosePullRequestInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -6255,7 +6255,7 @@ class _$GCommitAuthorSerializer implements StructuredSerializer<GCommitAuthor> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -6263,11 +6263,11 @@ class _$GCommitAuthorSerializer implements StructuredSerializer<GCommitAuthor> {
           result.emails.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -6310,18 +6310,18 @@ class _$GCommitContributionOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GCommitContributionOrderField))
+                  specifiedType: const FullType(GCommitContributionOrderField))!
               as GCommitContributionOrderField;
           break;
       }
@@ -6386,19 +6386,19 @@ class _$GContributionOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType: const FullType(GContributionOrderField))
-              as GContributionOrderField;
+              as GContributionOrderField?;
           break;
       }
     }
@@ -6481,29 +6481,29 @@ class _$GConvertProjectCardNoteToIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectCardId':
           result.projectCardId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -6646,80 +6646,80 @@ class _$GCreateBranchProtectionRuleInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'dismissesStaleReviews':
           result.dismissesStaleReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'isAdminEnforced':
           result.isAdminEnforced = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'pattern':
           result.pattern = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pushActorIds':
           result.pushActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'requiredApprovingReviewCount':
           result.requiredApprovingReviewCount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'requiredStatusCheckContexts':
           result.requiredStatusCheckContexts.replace(serializers.deserialize(
                   value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'requiresApprovingReviews':
           result.requiresApprovingReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresCodeOwnerReviews':
           result.requiresCodeOwnerReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresCommitSignatures':
           result.requiresCommitSignatures = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresStatusChecks':
           result.requiresStatusChecks = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresStrictStatusChecks':
           result.requiresStrictStatusChecks = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'restrictsPushes':
           result.restrictsPushes = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'restrictsReviewDismissals':
           result.restrictsReviewDismissals = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'reviewDismissalActorIds':
           result.reviewDismissalActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -6779,7 +6779,7 @@ class _$GCreateEnterpriseOrganizationInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -6787,27 +6787,27 @@ class _$GCreateEnterpriseOrganizationInputSerializer
           result.adminLogins.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'billingEmail':
           result.billingEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'login':
           result.login = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'profileName':
           result.profileName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -6891,7 +6891,7 @@ class _$GCreateIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -6899,39 +6899,39 @@ class _$GCreateIssueInputSerializer
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'milestoneId':
           result.milestoneId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7002,36 +7002,36 @@ class _$GCreateProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'ownerId':
           result.ownerId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryIds':
           result.repositoryIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'template':
           result.template = serializers.deserialize(value,
                   specifiedType: const FullType(GProjectTemplate))
-              as GProjectTemplate;
+              as GProjectTemplate?;
           break;
       }
     }
@@ -7101,37 +7101,37 @@ class _$GCreatePullRequestInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'baseRefName':
           result.baseRefName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'headRefName':
           result.headRefName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'maintainerCanModify':
           result.maintainerCanModify = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7179,17 +7179,17 @@ class _$GCreateRefInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'oid':
           result.oid.replace(serializers.deserialize(value,
@@ -7197,7 +7197,7 @@ class _$GCreateRefInputSerializer
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7295,25 +7295,25 @@ class _$GCreateRepositoryInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'hasIssuesEnabled':
           result.hasIssuesEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'hasWikiEnabled':
           result.hasWikiEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'homepageUrl':
           result.homepageUrl.replace(serializers.deserialize(value,
@@ -7321,23 +7321,23 @@ class _$GCreateRepositoryInputSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'ownerId':
           result.ownerId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'teamId':
           result.teamId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'template':
           result.template = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'visibility':
           result.visibility = serializers.deserialize(value,
-                  specifiedType: const FullType(GRepositoryVisibility))
+                  specifiedType: const FullType(GRepositoryVisibility))!
               as GRepositoryVisibility;
           break;
       }
@@ -7387,21 +7387,21 @@ class _$GCreateTeamDiscussionCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'discussionId':
           result.discussionId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7460,29 +7460,29 @@ class _$GCreateTeamDiscussionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'private':
           result.private = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'teamId':
           result.teamId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7534,26 +7534,26 @@ class _$GDeclineTopicSuggestionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'reason':
           result.reason = serializers.deserialize(value,
-                  specifiedType: const FullType(GTopicSuggestionDeclineReason))
+                  specifiedType: const FullType(GTopicSuggestionDeclineReason))!
               as GTopicSuggestionDeclineReason;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7620,17 +7620,17 @@ class _$GDeleteBranchProtectionRuleInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'branchProtectionRuleId':
           result.branchProtectionRuleId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -7676,17 +7676,17 @@ class _$GDeleteDeploymentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7732,17 +7732,17 @@ class _$GDeleteIssueCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7785,17 +7785,17 @@ class _$GDeleteIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'issueId':
           result.issueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7842,17 +7842,17 @@ class _$GDeleteProjectCardInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'cardId':
           result.cardId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -7899,17 +7899,17 @@ class _$GDeleteProjectColumnInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'columnId':
           result.columnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -7956,17 +7956,17 @@ class _$GDeleteProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectId':
           result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8012,17 +8012,17 @@ class _$GDeletePullRequestReviewCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8069,17 +8069,17 @@ class _$GDeletePullRequestReviewInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestReviewId':
           result.pullRequestReviewId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8122,17 +8122,17 @@ class _$GDeleteRefInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'refId':
           result.refId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8178,17 +8178,17 @@ class _$GDeleteTeamDiscussionCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8234,17 +8234,17 @@ class _$GDeleteTeamDiscussionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8283,18 +8283,18 @@ class _$GDeploymentOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GDeploymentOrderField))
+                  specifiedType: const FullType(GDeploymentOrderField))!
               as GDeploymentOrderField;
           break;
       }
@@ -8399,21 +8399,21 @@ class _$GDismissPullRequestReviewInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pullRequestReviewId':
           result.pullRequestReviewId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -8457,21 +8457,21 @@ class _$GDraftPullRequestReviewCommentSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'path':
           result.path = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'position':
           result.position = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -8515,19 +8515,19 @@ class _$GEnterpriseAdministratorInvitationOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GEnterpriseAdministratorInvitationOrderField))
+                      GEnterpriseAdministratorInvitationOrderField))!
               as GEnterpriseAdministratorInvitationOrderField;
           break;
       }
@@ -8681,18 +8681,18 @@ class _$GEnterpriseMemberOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GEnterpriseMemberOrderField))
+                  specifiedType: const FullType(GEnterpriseMemberOrderField))!
               as GEnterpriseMemberOrderField;
           break;
       }
@@ -8805,19 +8805,19 @@ class _$GEnterpriseServerInstallationOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseServerInstallationOrderField))
+                      const FullType(GEnterpriseServerInstallationOrderField))!
               as GEnterpriseServerInstallationOrderField;
           break;
       }
@@ -8884,19 +8884,19 @@ class _$GEnterpriseServerUserAccountEmailOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GEnterpriseServerUserAccountEmailOrderField))
+                      GEnterpriseServerUserAccountEmailOrderField))!
               as GEnterpriseServerUserAccountEmailOrderField;
           break;
       }
@@ -8964,19 +8964,19 @@ class _$GEnterpriseServerUserAccountOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseServerUserAccountOrderField))
+                      const FullType(GEnterpriseServerUserAccountOrderField))!
               as GEnterpriseServerUserAccountOrderField;
           break;
       }
@@ -9043,19 +9043,19 @@ class _$GEnterpriseServerUserAccountsUploadOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GEnterpriseServerUserAccountsUploadOrderField))
+                      GEnterpriseServerUserAccountsUploadOrderField))!
               as GEnterpriseServerUserAccountsUploadOrderField;
           break;
       }
@@ -9188,17 +9188,17 @@ class _$GFollowUserInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'userId':
           result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -9253,18 +9253,18 @@ class _$GGistOrderSerializer implements StructuredSerializer<GGistOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GGistOrderField))
+                  specifiedType: const FullType(GGistOrderField))!
               as GGistOrderField;
           break;
       }
@@ -9408,30 +9408,30 @@ class _$GInviteEnterpriseAdminInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'email':
           result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'invitee':
           result.invitee = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'role':
           result.role = serializers.deserialize(value,
                   specifiedType: const FullType(GEnterpriseAdministratorRole))
-              as GEnterpriseAdministratorRole;
+              as GEnterpriseAdministratorRole?;
           break;
       }
     }
@@ -9520,31 +9520,31 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'assignee':
           result.assignee = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'createdBy':
           result.createdBy = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labels':
           result.labels.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'mentioned':
           result.mentioned = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'milestone':
           result.milestone = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'since':
           result.since.replace(serializers.deserialize(value,
@@ -9554,11 +9554,11 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
           result.states.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GIssueState)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'viewerSubscribed':
           result.viewerSubscribed = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -9595,18 +9595,18 @@ class _$GIssueOrderSerializer implements StructuredSerializer<GIssueOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GIssueOrderField))
+                  specifiedType: const FullType(GIssueOrderField))!
               as GIssueOrderField;
           break;
       }
@@ -9698,18 +9698,18 @@ class _$GLabelOrderSerializer implements StructuredSerializer<GLabelOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GLabelOrderField))
+                  specifiedType: const FullType(GLabelOrderField))!
               as GLabelOrderField;
           break;
       }
@@ -9767,18 +9767,18 @@ class _$GLanguageOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GLanguageOrderField))
+                  specifiedType: const FullType(GLanguageOrderField))!
               as GLanguageOrderField;
           break;
       }
@@ -9847,21 +9847,21 @@ class _$GLinkRepositoryToProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectId':
           result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -9912,21 +9912,21 @@ class _$GLockLockableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lockReason':
           result.lockReason = serializers.deserialize(value,
-              specifiedType: const FullType(GLockReason)) as GLockReason;
+              specifiedType: const FullType(GLockReason)) as GLockReason?;
           break;
         case 'lockableId':
           result.lockableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -9997,29 +9997,29 @@ class _$GMergeBranchInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'base':
           result.base = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'commitMessage':
           result.commitMessage = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'head':
           result.head = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -10094,21 +10094,21 @@ class _$GMergePullRequestInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'commitBody':
           result.commitBody = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'commitHeadline':
           result.commitHeadline = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'expectedHeadOid':
           result.expectedHeadOid.replace(serializers.deserialize(value,
@@ -10117,11 +10117,11 @@ class _$GMergePullRequestInputSerializer
         case 'mergeMethod':
           result.mergeMethod = serializers.deserialize(value,
                   specifiedType: const FullType(GPullRequestMergeMethod))
-              as GPullRequestMergeMethod;
+              as GPullRequestMergeMethod?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -10178,18 +10178,18 @@ class _$GMilestoneOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GMilestoneOrderField))
+                  specifiedType: const FullType(GMilestoneOrderField))!
               as GMilestoneOrderField;
           break;
       }
@@ -10283,25 +10283,25 @@ class _$GMoveProjectCardInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'afterCardId':
           result.afterCardId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'cardId':
           result.cardId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'columnId':
           result.columnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -10355,21 +10355,21 @@ class _$GMoveProjectColumnInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'afterColumnId':
           result.afterColumnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'columnId':
           result.columnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -10780,18 +10780,18 @@ class _$GOrganizationOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrganizationOrderField))
+                  specifiedType: const FullType(GOrganizationOrderField))!
               as GOrganizationOrderField;
           break;
       }
@@ -10922,18 +10922,18 @@ class _$GProjectOrderSerializer implements StructuredSerializer<GProjectOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GProjectOrderField))
+                  specifiedType: const FullType(GProjectOrderField))!
               as GProjectOrderField;
           break;
       }
@@ -11045,18 +11045,18 @@ class _$GPullRequestOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GPullRequestOrderField))
+                  specifiedType: const FullType(GPullRequestOrderField))!
               as GPullRequestOrderField;
           break;
       }
@@ -11247,18 +11247,18 @@ class _$GReactionOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GReactionOrderField))
+                  specifiedType: const FullType(GReactionOrderField))!
               as GReactionOrderField;
           break;
       }
@@ -11314,18 +11314,18 @@ class _$GRefOrderSerializer implements StructuredSerializer<GRefOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-              specifiedType: const FullType(GRefOrderField)) as GRefOrderField;
+              specifiedType: const FullType(GRefOrderField))! as GRefOrderField;
           break;
       }
     }
@@ -11394,17 +11394,17 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11455,7 +11455,7 @@ class _$GRegistryPackageMetadatumSerializer
           specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.update;
+    value = object.Gupdate;
     if (value != null) {
       result
         ..add('update')
@@ -11473,21 +11473,21 @@ class _$GRegistryPackageMetadatumSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'update':
-          result.update = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.Gupdate = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'value':
           result.value = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11543,18 +11543,18 @@ class _$GReleaseOrderSerializer implements StructuredSerializer<GReleaseOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GReleaseOrderField))
+                  specifiedType: const FullType(GReleaseOrderField))!
               as GReleaseOrderField;
           break;
       }
@@ -11624,23 +11624,23 @@ class _$GRemoveAssigneesFromAssignableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'assignableId':
           result.assignableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -11690,21 +11690,21 @@ class _$GRemoveEnterpriseAdminInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'login':
           result.login = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11754,21 +11754,21 @@ class _$GRemoveEnterpriseOrganizationInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'organizationId':
           result.organizationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11819,23 +11819,23 @@ class _$GRemoveLabelsFromLabelableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'labelableId':
           result.labelableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11885,21 +11885,21 @@ class _$GRemoveOutsideCollaboratorInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'organizationId':
           result.organizationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'userId':
           result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -11949,22 +11949,22 @@ class _$GRemoveReactionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'content':
           result.content = serializers.deserialize(value,
-                  specifiedType: const FullType(GReactionContent))
+                  specifiedType: const FullType(GReactionContent))!
               as GReactionContent;
           break;
         case 'subjectId':
           result.subjectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12007,17 +12007,17 @@ class _$GRemoveStarInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'starrableId':
           result.starrableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12060,17 +12060,17 @@ class _$GReopenIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'issueId':
           result.issueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12117,17 +12117,17 @@ class _$GReopenPullRequestInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12351,19 +12351,19 @@ class _$GRepositoryInvitationOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GRepositoryInvitationOrderField))
+                      const FullType(GRepositoryInvitationOrderField))!
               as GRepositoryInvitationOrderField;
           break;
       }
@@ -12441,18 +12441,18 @@ class _$GRepositoryOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GRepositoryOrderField))
+                  specifiedType: const FullType(GRepositoryOrderField))!
               as GRepositoryOrderField;
           break;
       }
@@ -12595,33 +12595,33 @@ class _$GRequestReviewsInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'teamIds':
           result.teamIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'union':
           result.union = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'userIds':
           result.userIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -12668,17 +12668,17 @@ class _$GResolveReviewThreadInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'threadId':
           result.threadId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12754,18 +12754,18 @@ class _$GSavedReplyOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GSavedReplyOrderField))
+                  specifiedType: const FullType(GSavedReplyOrderField))!
               as GSavedReplyOrderField;
           break;
       }
@@ -12863,19 +12863,19 @@ class _$GSecurityAdvisoryIdentifierFilterSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GSecurityAdvisoryIdentifierType))
+                      const FullType(GSecurityAdvisoryIdentifierType))!
               as GSecurityAdvisoryIdentifierType;
           break;
         case 'value':
           result.value = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -12938,18 +12938,18 @@ class _$GSecurityAdvisoryOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GSecurityAdvisoryOrderField))
+                  specifiedType: const FullType(GSecurityAdvisoryOrderField))!
               as GSecurityAdvisoryOrderField;
           break;
       }
@@ -13031,19 +13031,19 @@ class _$GSecurityVulnerabilityOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GSecurityVulnerabilityOrderField))
+                      const FullType(GSecurityVulnerabilityOrderField))!
               as GSecurityVulnerabilityOrderField;
           break;
       }
@@ -13104,18 +13104,18 @@ class _$GSponsorsTierOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GSponsorsTierOrderField))
+                  specifiedType: const FullType(GSponsorsTierOrderField))!
               as GSponsorsTierOrderField;
           break;
       }
@@ -13174,18 +13174,18 @@ class _$GSponsorshipOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GSponsorshipOrderField))
+                  specifiedType: const FullType(GSponsorshipOrderField))!
               as GSponsorshipOrderField;
           break;
       }
@@ -13259,18 +13259,18 @@ class _$GStarOrderSerializer implements StructuredSerializer<GStarOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GStarOrderField))
+                  specifiedType: const FullType(GStarOrderField))!
               as GStarOrderField;
           break;
       }
@@ -13374,30 +13374,30 @@ class _$GSubmitPullRequestReviewInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'event':
           result.event = serializers.deserialize(value,
-                  specifiedType: const FullType(GPullRequestReviewEvent))
+                  specifiedType: const FullType(GPullRequestReviewEvent))!
               as GPullRequestReviewEvent;
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestReviewId':
           result.pullRequestReviewId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -13458,19 +13458,19 @@ class _$GTeamDiscussionCommentOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GTeamDiscussionCommentOrderField))
+                      const FullType(GTeamDiscussionCommentOrderField))!
               as GTeamDiscussionCommentOrderField;
           break;
       }
@@ -13534,18 +13534,18 @@ class _$GTeamDiscussionOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GTeamDiscussionOrderField))
+                  specifiedType: const FullType(GTeamDiscussionOrderField))!
               as GTeamDiscussionOrderField;
           break;
       }
@@ -13604,18 +13604,18 @@ class _$GTeamMemberOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GTeamMemberOrderField))
+                  specifiedType: const FullType(GTeamMemberOrderField))!
               as GTeamMemberOrderField;
           break;
       }
@@ -13707,18 +13707,18 @@ class _$GTeamOrderSerializer implements StructuredSerializer<GTeamOrder> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GTeamOrderField))
+                  specifiedType: const FullType(GTeamOrderField))!
               as GTeamOrderField;
           break;
       }
@@ -13797,18 +13797,18 @@ class _$GTeamRepositoryOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GTeamRepositoryOrderField))
+                  specifiedType: const FullType(GTeamRepositoryOrderField))!
               as GTeamRepositoryOrderField;
           break;
       }
@@ -13915,21 +13915,21 @@ class _$GTransferIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'issueId':
           result.issueId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -13976,17 +13976,17 @@ class _$GUnarchiveRepositoryInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14030,17 +14030,17 @@ class _$GUnfollowUserInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'userId':
           result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14090,21 +14090,21 @@ class _$GUnlinkRepositoryFromProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectId':
           result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14151,17 +14151,17 @@ class _$GUnlockLockableInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lockableId':
           result.lockableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14211,21 +14211,21 @@ class _$GUnmarkIssueAsDuplicateInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'canonicalId':
           result.canonicalId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'duplicateId':
           result.duplicateId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14272,17 +14272,17 @@ class _$GUnresolveReviewThreadInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'threadId':
           result.threadId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14429,80 +14429,80 @@ class _$GUpdateBranchProtectionRuleInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'branchProtectionRuleId':
           result.branchProtectionRuleId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'dismissesStaleReviews':
           result.dismissesStaleReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'isAdminEnforced':
           result.isAdminEnforced = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'pattern':
           result.pattern = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pushActorIds':
           result.pushActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'requiredApprovingReviewCount':
           result.requiredApprovingReviewCount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'requiredStatusCheckContexts':
           result.requiredStatusCheckContexts.replace(serializers.deserialize(
                   value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'requiresApprovingReviews':
           result.requiresApprovingReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresCodeOwnerReviews':
           result.requiresCodeOwnerReviews = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresCommitSignatures':
           result.requiresCommitSignatures = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresStatusChecks':
           result.requiresStatusChecks = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'requiresStrictStatusChecks':
           result.requiresStrictStatusChecks = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'restrictsPushes':
           result.restrictsPushes = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'restrictsReviewDismissals':
           result.restrictsReviewDismissals = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'reviewDismissalActorIds':
           result.reviewDismissalActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -14556,23 +14556,23 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'capability':
           result.capability = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GActionExecutionCapabilitySetting))
+                      const FullType(GActionExecutionCapabilitySetting))!
               as GActionExecutionCapabilitySetting;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -14625,25 +14625,25 @@ class _$GUpdateEnterpriseAdministratorRoleInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'login':
           result.login = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'role':
           result.role = serializers.deserialize(value,
-                  specifiedType: const FullType(GEnterpriseAdministratorRole))
+                  specifiedType: const FullType(GEnterpriseAdministratorRole))!
               as GEnterpriseAdministratorRole;
           break;
       }
@@ -14699,22 +14699,22 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -14770,22 +14770,22 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GEnterpriseDefaultRepositoryPermissionSettingValue))
+                      GEnterpriseDefaultRepositoryPermissionSettingValue))!
               as GEnterpriseDefaultRepositoryPermissionSettingValue;
           break;
       }
@@ -14841,22 +14841,22 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputSeriali
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -14944,39 +14944,39 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'membersCanCreateInternalRepositories':
           result.membersCanCreateInternalRepositories = serializers
-              .deserialize(value, specifiedType: const FullType(bool)) as bool;
+              .deserialize(value, specifiedType: const FullType(bool)) as bool?;
           break;
         case 'membersCanCreatePrivateRepositories':
           result.membersCanCreatePrivateRepositories = serializers
-              .deserialize(value, specifiedType: const FullType(bool)) as bool;
+              .deserialize(value, specifiedType: const FullType(bool)) as bool?;
           break;
         case 'membersCanCreatePublicRepositories':
           result.membersCanCreatePublicRepositories = serializers
-              .deserialize(value, specifiedType: const FullType(bool)) as bool;
+              .deserialize(value, specifiedType: const FullType(bool)) as bool?;
           break;
         case 'membersCanCreateRepositoriesPolicyEnabled':
           result.membersCanCreateRepositoriesPolicyEnabled = serializers
-              .deserialize(value, specifiedType: const FullType(bool)) as bool;
+              .deserialize(value, specifiedType: const FullType(bool)) as bool?;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType: const FullType(
                       GEnterpriseMembersCanCreateRepositoriesSettingValue))
-              as GEnterpriseMembersCanCreateRepositoriesSettingValue;
+              as GEnterpriseMembersCanCreateRepositoriesSettingValue?;
           break;
       }
     }
@@ -15030,22 +15030,22 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15101,22 +15101,22 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15172,22 +15172,22 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15243,22 +15243,22 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GEnterpriseMembersCanMakePurchasesSettingValue))
+                      GEnterpriseMembersCanMakePurchasesSettingValue))!
               as GEnterpriseMembersCanMakePurchasesSettingValue;
           break;
       }
@@ -15314,22 +15314,22 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15385,22 +15385,22 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15455,22 +15455,22 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15546,33 +15546,33 @@ class _$GUpdateEnterpriseProfileInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'location':
           result.location = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'websiteUrl':
           result.websiteUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -15624,22 +15624,22 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15692,22 +15692,22 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(GEnterpriseEnabledDisabledSettingValue))
+                      const FullType(GEnterpriseEnabledDisabledSettingValue))!
               as GEnterpriseEnabledDisabledSettingValue;
           break;
       }
@@ -15762,21 +15762,22 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'enterpriseId':
           result.enterpriseId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'settingValue':
           result.settingValue = serializers.deserialize(value,
-                  specifiedType: const FullType(GEnterpriseEnabledSettingValue))
+                  specifiedType:
+                      const FullType(GEnterpriseEnabledSettingValue))!
               as GEnterpriseEnabledSettingValue;
           break;
       }
@@ -15825,21 +15826,21 @@ class _$GUpdateIssueCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -15933,7 +15934,7 @@ class _$GUpdateIssueInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -15941,43 +15942,43 @@ class _$GUpdateIssueInputSerializer
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'milestoneId':
           result.milestoneId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'state':
           result.state = serializers.deserialize(value,
-              specifiedType: const FullType(GIssueState)) as GIssueState;
+              specifiedType: const FullType(GIssueState)) as GIssueState?;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -16038,25 +16039,25 @@ class _$GUpdateProjectCardInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'isArchived':
           result.isArchived = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'note':
           result.note = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectCardId':
           result.projectCardId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16105,21 +16106,21 @@ class _$GUpdateProjectColumnInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'projectColumnId':
           result.projectColumnId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16194,33 +16195,33 @@ class _$GUpdateProjectInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectId':
           result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'public':
           result.public = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'state':
           result.state = serializers.deserialize(value,
-              specifiedType: const FullType(GProjectState)) as GProjectState;
+              specifiedType: const FullType(GProjectState)) as GProjectState?;
           break;
       }
     }
@@ -16333,7 +16334,7 @@ class _$GUpdatePullRequestInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -16341,52 +16342,52 @@ class _$GUpdatePullRequestInputSerializer
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'baseRefName':
           result.baseRefName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'maintainerCanModify':
           result.maintainerCanModify = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'milestoneId':
           result.milestoneId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
         case 'pullRequestId':
           result.pullRequestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'state':
           result.state = serializers.deserialize(value,
                   specifiedType: const FullType(GPullRequestUpdateState))
-              as GPullRequestUpdateState;
+              as GPullRequestUpdateState?;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -16435,21 +16436,21 @@ class _$GUpdatePullRequestReviewCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestReviewCommentId':
           result.pullRequestReviewCommentId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16498,21 +16499,21 @@ class _$GUpdatePullRequestReviewInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pullRequestReviewId':
           result.pullRequestReviewId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16565,17 +16566,17 @@ class _$GUpdateRefInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'force':
           result.force = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'oid':
           result.oid.replace(serializers.deserialize(value,
@@ -16583,7 +16584,7 @@ class _$GUpdateRefInputSerializer
           break;
         case 'refId':
           result.refId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16679,29 +16680,29 @@ class _$GUpdateRepositoryInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'hasIssuesEnabled':
           result.hasIssuesEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'hasProjectsEnabled':
           result.hasProjectsEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'hasWikiEnabled':
           result.hasWikiEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'homepageUrl':
           result.homepageUrl.replace(serializers.deserialize(value,
@@ -16709,15 +16710,15 @@ class _$GUpdateRepositoryInputSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'template':
           result.template = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -16767,22 +16768,22 @@ class _$GUpdateSubscriptionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'state':
           result.state = serializers.deserialize(value,
-                  specifiedType: const FullType(GSubscriptionState))
+                  specifiedType: const FullType(GSubscriptionState))!
               as GSubscriptionState;
           break;
         case 'subscribableId':
           result.subscribableId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16837,25 +16838,25 @@ class _$GUpdateTeamDiscussionCommentInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'bodyVersion':
           result.bodyVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -16929,33 +16930,33 @@ class _$GUpdateTeamDiscussionInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'bodyVersion':
           result.bodyVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'pinned':
           result.pinned = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -17003,23 +17004,23 @@ class _$GUpdateTopicsInputSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'clientMutationId':
           result.clientMutationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'repositoryId':
           result.repositoryId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'topicNames':
           result.topicNames.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object>);
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -17076,18 +17077,18 @@ class _$GUserStatusOrderSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'direction':
           result.direction = serializers.deserialize(value,
-                  specifiedType: const FullType(GOrderDirection))
+                  specifiedType: const FullType(GOrderDirection))!
               as GOrderDirection;
           break;
         case 'field':
           result.field = serializers.deserialize(value,
-                  specifiedType: const FullType(GUserStatusOrderField))
+                  specifiedType: const FullType(GUserStatusOrderField))!
               as GUserStatusOrderField;
           break;
       }
@@ -17127,13 +17128,13 @@ class _$GAcceptEnterpriseAdministratorInvitationInput
               updates]) =>
       (new GAcceptEnterpriseAdministratorInvitationInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GAcceptEnterpriseAdministratorInvitationInput._(
       {this.clientMutationId, required this.invitationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(invitationId,
-        'GAcceptEnterpriseAdministratorInvitationInput', 'invitationId');
+        r'GAcceptEnterpriseAdministratorInvitationInput', 'invitationId');
   }
 
   @override
@@ -17162,7 +17163,7 @@ class _$GAcceptEnterpriseAdministratorInvitationInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GAcceptEnterpriseAdministratorInvitationInput')
+            r'GAcceptEnterpriseAdministratorInvitationInput')
           ..add('clientMutationId', clientMutationId)
           ..add('invitationId', invitationId))
         .toString();
@@ -17210,13 +17211,15 @@ class GAcceptEnterpriseAdministratorInvitationInputBuilder
   }
 
   @override
-  _$GAcceptEnterpriseAdministratorInvitationInput build() {
+  GAcceptEnterpriseAdministratorInvitationInput build() => _build();
+
+  _$GAcceptEnterpriseAdministratorInvitationInput _build() {
     final _$result = _$v ??
         new _$GAcceptEnterpriseAdministratorInvitationInput._(
             clientMutationId: clientMutationId,
             invitationId: BuiltValueNullFieldError.checkNotNull(
                 invitationId,
-                'GAcceptEnterpriseAdministratorInvitationInput',
+                r'GAcceptEnterpriseAdministratorInvitationInput',
                 'invitationId'));
     replace(_$result);
     return _$result;
@@ -17233,15 +17236,15 @@ class _$GAcceptTopicSuggestionInput extends GAcceptTopicSuggestionInput {
 
   factory _$GAcceptTopicSuggestionInput(
           [void Function(GAcceptTopicSuggestionInputBuilder)? updates]) =>
-      (new GAcceptTopicSuggestionInputBuilder()..update(updates)).build();
+      (new GAcceptTopicSuggestionInputBuilder()..update(updates))._build();
 
   _$GAcceptTopicSuggestionInput._(
       {this.clientMutationId, required this.name, required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GAcceptTopicSuggestionInput', 'name');
+        name, r'GAcceptTopicSuggestionInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GAcceptTopicSuggestionInput', 'repositoryId');
+        repositoryId, r'GAcceptTopicSuggestionInput', 'repositoryId');
   }
 
   @override
@@ -17270,7 +17273,7 @@ class _$GAcceptTopicSuggestionInput extends GAcceptTopicSuggestionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAcceptTopicSuggestionInput')
+    return (newBuiltValueToStringHelper(r'GAcceptTopicSuggestionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
           ..add('repositoryId', repositoryId))
@@ -17322,14 +17325,16 @@ class GAcceptTopicSuggestionInputBuilder
   }
 
   @override
-  _$GAcceptTopicSuggestionInput build() {
+  GAcceptTopicSuggestionInput build() => _build();
+
+  _$GAcceptTopicSuggestionInput _build() {
     final _$result = _$v ??
         new _$GAcceptTopicSuggestionInput._(
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GAcceptTopicSuggestionInput', 'name'),
+                name, r'GAcceptTopicSuggestionInput', 'name'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GAcceptTopicSuggestionInput', 'repositoryId'));
+                repositoryId, r'GAcceptTopicSuggestionInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -17345,7 +17350,7 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
 
   factory _$GAddAssigneesToAssignableInput(
           [void Function(GAddAssigneesToAssignableInputBuilder)? updates]) =>
-      (new GAddAssigneesToAssignableInputBuilder()..update(updates)).build();
+      (new GAddAssigneesToAssignableInputBuilder()..update(updates))._build();
 
   _$GAddAssigneesToAssignableInput._(
       {required this.assignableId,
@@ -17353,9 +17358,9 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
       this.clientMutationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        assignableId, 'GAddAssigneesToAssignableInput', 'assignableId');
+        assignableId, r'GAddAssigneesToAssignableInput', 'assignableId');
     BuiltValueNullFieldError.checkNotNull(
-        assigneeIds, 'GAddAssigneesToAssignableInput', 'assigneeIds');
+        assigneeIds, r'GAddAssigneesToAssignableInput', 'assigneeIds');
   }
 
   @override
@@ -17384,7 +17389,7 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddAssigneesToAssignableInput')
+    return (newBuiltValueToStringHelper(r'GAddAssigneesToAssignableInput')
           ..add('assignableId', assignableId)
           ..add('assigneeIds', assigneeIds)
           ..add('clientMutationId', clientMutationId))
@@ -17438,13 +17443,15 @@ class GAddAssigneesToAssignableInputBuilder
   }
 
   @override
-  _$GAddAssigneesToAssignableInput build() {
+  GAddAssigneesToAssignableInput build() => _build();
+
+  _$GAddAssigneesToAssignableInput _build() {
     _$GAddAssigneesToAssignableInput _$result;
     try {
       _$result = _$v ??
           new _$GAddAssigneesToAssignableInput._(
               assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
-                  'GAddAssigneesToAssignableInput', 'assignableId'),
+                  r'GAddAssigneesToAssignableInput', 'assignableId'),
               assigneeIds: assigneeIds.build(),
               clientMutationId: clientMutationId);
     } catch (_) {
@@ -17454,7 +17461,7 @@ class GAddAssigneesToAssignableInputBuilder
         assigneeIds.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddAssigneesToAssignableInput', _$failedField, e.toString());
+            r'GAddAssigneesToAssignableInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -17473,14 +17480,14 @@ class _$GAddCommentInput extends GAddCommentInput {
 
   factory _$GAddCommentInput(
           [void Function(GAddCommentInputBuilder)? updates]) =>
-      (new GAddCommentInputBuilder()..update(updates)).build();
+      (new GAddCommentInputBuilder()..update(updates))._build();
 
   _$GAddCommentInput._(
       {required this.body, this.clientMutationId, required this.subjectId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(body, 'GAddCommentInput', 'body');
+    BuiltValueNullFieldError.checkNotNull(body, r'GAddCommentInput', 'body');
     BuiltValueNullFieldError.checkNotNull(
-        subjectId, 'GAddCommentInput', 'subjectId');
+        subjectId, r'GAddCommentInput', 'subjectId');
   }
 
   @override
@@ -17508,7 +17515,7 @@ class _$GAddCommentInput extends GAddCommentInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddCommentInput')
+    return (newBuiltValueToStringHelper(r'GAddCommentInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('subjectId', subjectId))
@@ -17558,14 +17565,16 @@ class GAddCommentInputBuilder
   }
 
   @override
-  _$GAddCommentInput build() {
+  GAddCommentInput build() => _build();
+
+  _$GAddCommentInput _build() {
     final _$result = _$v ??
         new _$GAddCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GAddCommentInput', 'body'),
+                body, r'GAddCommentInput', 'body'),
             clientMutationId: clientMutationId,
             subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, 'GAddCommentInput', 'subjectId'));
+                subjectId, r'GAddCommentInput', 'subjectId'));
     replace(_$result);
     return _$result;
   }
@@ -17581,7 +17590,7 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
 
   factory _$GAddLabelsToLabelableInput(
           [void Function(GAddLabelsToLabelableInputBuilder)? updates]) =>
-      (new GAddLabelsToLabelableInputBuilder()..update(updates)).build();
+      (new GAddLabelsToLabelableInputBuilder()..update(updates))._build();
 
   _$GAddLabelsToLabelableInput._(
       {this.clientMutationId,
@@ -17589,9 +17598,9 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
       required this.labelableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        labelIds, 'GAddLabelsToLabelableInput', 'labelIds');
+        labelIds, r'GAddLabelsToLabelableInput', 'labelIds');
     BuiltValueNullFieldError.checkNotNull(
-        labelableId, 'GAddLabelsToLabelableInput', 'labelableId');
+        labelableId, r'GAddLabelsToLabelableInput', 'labelableId');
   }
 
   @override
@@ -17620,7 +17629,7 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddLabelsToLabelableInput')
+    return (newBuiltValueToStringHelper(r'GAddLabelsToLabelableInput')
           ..add('clientMutationId', clientMutationId)
           ..add('labelIds', labelIds)
           ..add('labelableId', labelableId))
@@ -17672,7 +17681,9 @@ class GAddLabelsToLabelableInputBuilder
   }
 
   @override
-  _$GAddLabelsToLabelableInput build() {
+  GAddLabelsToLabelableInput build() => _build();
+
+  _$GAddLabelsToLabelableInput _build() {
     _$GAddLabelsToLabelableInput _$result;
     try {
       _$result = _$v ??
@@ -17680,7 +17691,7 @@ class GAddLabelsToLabelableInputBuilder
               clientMutationId: clientMutationId,
               labelIds: labelIds.build(),
               labelableId: BuiltValueNullFieldError.checkNotNull(
-                  labelableId, 'GAddLabelsToLabelableInput', 'labelableId'));
+                  labelableId, r'GAddLabelsToLabelableInput', 'labelableId'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -17688,7 +17699,7 @@ class GAddLabelsToLabelableInputBuilder
         labelIds.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddLabelsToLabelableInput', _$failedField, e.toString());
+            r'GAddLabelsToLabelableInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -17709,7 +17720,7 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
 
   factory _$GAddProjectCardInput(
           [void Function(GAddProjectCardInputBuilder)? updates]) =>
-      (new GAddProjectCardInputBuilder()..update(updates)).build();
+      (new GAddProjectCardInputBuilder()..update(updates))._build();
 
   _$GAddProjectCardInput._(
       {this.clientMutationId,
@@ -17718,7 +17729,7 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
       required this.projectColumnId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectColumnId, 'GAddProjectCardInput', 'projectColumnId');
+        projectColumnId, r'GAddProjectCardInput', 'projectColumnId');
   }
 
   @override
@@ -17750,7 +17761,7 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddProjectCardInput')
+    return (newBuiltValueToStringHelper(r'GAddProjectCardInput')
           ..add('clientMutationId', clientMutationId)
           ..add('contentId', contentId)
           ..add('note', note)
@@ -17807,14 +17818,16 @@ class GAddProjectCardInputBuilder
   }
 
   @override
-  _$GAddProjectCardInput build() {
+  GAddProjectCardInput build() => _build();
+
+  _$GAddProjectCardInput _build() {
     final _$result = _$v ??
         new _$GAddProjectCardInput._(
             clientMutationId: clientMutationId,
             contentId: contentId,
             note: note,
             projectColumnId: BuiltValueNullFieldError.checkNotNull(
-                projectColumnId, 'GAddProjectCardInput', 'projectColumnId'));
+                projectColumnId, r'GAddProjectCardInput', 'projectColumnId'));
     replace(_$result);
     return _$result;
   }
@@ -17830,15 +17843,15 @@ class _$GAddProjectColumnInput extends GAddProjectColumnInput {
 
   factory _$GAddProjectColumnInput(
           [void Function(GAddProjectColumnInputBuilder)? updates]) =>
-      (new GAddProjectColumnInputBuilder()..update(updates)).build();
+      (new GAddProjectColumnInputBuilder()..update(updates))._build();
 
   _$GAddProjectColumnInput._(
       {this.clientMutationId, required this.name, required this.projectId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GAddProjectColumnInput', 'name');
+        name, r'GAddProjectColumnInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        projectId, 'GAddProjectColumnInput', 'projectId');
+        projectId, r'GAddProjectColumnInput', 'projectId');
   }
 
   @override
@@ -17867,7 +17880,7 @@ class _$GAddProjectColumnInput extends GAddProjectColumnInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddProjectColumnInput')
+    return (newBuiltValueToStringHelper(r'GAddProjectColumnInput')
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
           ..add('projectId', projectId))
@@ -17917,14 +17930,16 @@ class GAddProjectColumnInputBuilder
   }
 
   @override
-  _$GAddProjectColumnInput build() {
+  GAddProjectColumnInput build() => _build();
+
+  _$GAddProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GAddProjectColumnInput._(
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GAddProjectColumnInput', 'name'),
+                name, r'GAddProjectColumnInput', 'name'),
             projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, 'GAddProjectColumnInput', 'projectId'));
+                projectId, r'GAddProjectColumnInput', 'projectId'));
     replace(_$result);
     return _$result;
   }
@@ -17951,7 +17966,8 @@ class _$GAddPullRequestReviewCommentInput
 
   factory _$GAddPullRequestReviewCommentInput(
           [void Function(GAddPullRequestReviewCommentInputBuilder)? updates]) =>
-      (new GAddPullRequestReviewCommentInputBuilder()..update(updates)).build();
+      (new GAddPullRequestReviewCommentInputBuilder()..update(updates))
+          ._build();
 
   _$GAddPullRequestReviewCommentInput._(
       {required this.body,
@@ -17964,7 +17980,7 @@ class _$GAddPullRequestReviewCommentInput
       this.pullRequestReviewId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GAddPullRequestReviewCommentInput', 'body');
+        body, r'GAddPullRequestReviewCommentInput', 'body');
   }
 
   @override
@@ -18010,7 +18026,7 @@ class _$GAddPullRequestReviewCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddPullRequestReviewCommentInput')
+    return (newBuiltValueToStringHelper(r'GAddPullRequestReviewCommentInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('commitOID', commitOID)
@@ -18097,13 +18113,15 @@ class GAddPullRequestReviewCommentInputBuilder
   }
 
   @override
-  _$GAddPullRequestReviewCommentInput build() {
+  GAddPullRequestReviewCommentInput build() => _build();
+
+  _$GAddPullRequestReviewCommentInput _build() {
     _$GAddPullRequestReviewCommentInput _$result;
     try {
       _$result = _$v ??
           new _$GAddPullRequestReviewCommentInput._(
               body: BuiltValueNullFieldError.checkNotNull(
-                  body, 'GAddPullRequestReviewCommentInput', 'body'),
+                  body, r'GAddPullRequestReviewCommentInput', 'body'),
               clientMutationId: clientMutationId,
               commitOID: _commitOID?.build(),
               inReplyTo: inReplyTo,
@@ -18118,7 +18136,7 @@ class GAddPullRequestReviewCommentInputBuilder
         _commitOID?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddPullRequestReviewCommentInput', _$failedField, e.toString());
+            r'GAddPullRequestReviewCommentInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -18143,7 +18161,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
 
   factory _$GAddPullRequestReviewInput(
           [void Function(GAddPullRequestReviewInputBuilder)? updates]) =>
-      (new GAddPullRequestReviewInputBuilder()..update(updates)).build();
+      (new GAddPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GAddPullRequestReviewInput._(
       {this.body,
@@ -18154,7 +18172,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
       required this.pullRequestId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GAddPullRequestReviewInput', 'pullRequestId');
+        pullRequestId, r'GAddPullRequestReviewInput', 'pullRequestId');
   }
 
   @override
@@ -18192,7 +18210,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddPullRequestReviewInput')
+    return (newBuiltValueToStringHelper(r'GAddPullRequestReviewInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('comments', comments)
@@ -18266,7 +18284,9 @@ class GAddPullRequestReviewInputBuilder
   }
 
   @override
-  _$GAddPullRequestReviewInput build() {
+  GAddPullRequestReviewInput build() => _build();
+
+  _$GAddPullRequestReviewInput _build() {
     _$GAddPullRequestReviewInput _$result;
     try {
       _$result = _$v ??
@@ -18278,7 +18298,7 @@ class GAddPullRequestReviewInputBuilder
               event: event,
               pullRequestId: BuiltValueNullFieldError.checkNotNull(
                   pullRequestId,
-                  'GAddPullRequestReviewInput',
+                  r'GAddPullRequestReviewInput',
                   'pullRequestId'));
     } catch (_) {
       late String _$failedField;
@@ -18289,7 +18309,7 @@ class GAddPullRequestReviewInputBuilder
         _commitOID?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAddPullRequestReviewInput', _$failedField, e.toString());
+            r'GAddPullRequestReviewInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -18308,15 +18328,15 @@ class _$GAddReactionInput extends GAddReactionInput {
 
   factory _$GAddReactionInput(
           [void Function(GAddReactionInputBuilder)? updates]) =>
-      (new GAddReactionInputBuilder()..update(updates)).build();
+      (new GAddReactionInputBuilder()..update(updates))._build();
 
   _$GAddReactionInput._(
       {this.clientMutationId, required this.content, required this.subjectId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        content, 'GAddReactionInput', 'content');
+        content, r'GAddReactionInput', 'content');
     BuiltValueNullFieldError.checkNotNull(
-        subjectId, 'GAddReactionInput', 'subjectId');
+        subjectId, r'GAddReactionInput', 'subjectId');
   }
 
   @override
@@ -18344,7 +18364,7 @@ class _$GAddReactionInput extends GAddReactionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddReactionInput')
+    return (newBuiltValueToStringHelper(r'GAddReactionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('content', content)
           ..add('subjectId', subjectId))
@@ -18394,14 +18414,16 @@ class GAddReactionInputBuilder
   }
 
   @override
-  _$GAddReactionInput build() {
+  GAddReactionInput build() => _build();
+
+  _$GAddReactionInput _build() {
     final _$result = _$v ??
         new _$GAddReactionInput._(
             clientMutationId: clientMutationId,
             content: BuiltValueNullFieldError.checkNotNull(
-                content, 'GAddReactionInput', 'content'),
+                content, r'GAddReactionInput', 'content'),
             subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, 'GAddReactionInput', 'subjectId'));
+                subjectId, r'GAddReactionInput', 'subjectId'));
     replace(_$result);
     return _$result;
   }
@@ -18414,12 +18436,12 @@ class _$GAddStarInput extends GAddStarInput {
   final String starrableId;
 
   factory _$GAddStarInput([void Function(GAddStarInputBuilder)? updates]) =>
-      (new GAddStarInputBuilder()..update(updates)).build();
+      (new GAddStarInputBuilder()..update(updates))._build();
 
   _$GAddStarInput._({this.clientMutationId, required this.starrableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        starrableId, 'GAddStarInput', 'starrableId');
+        starrableId, r'GAddStarInput', 'starrableId');
   }
 
   @override
@@ -18444,7 +18466,7 @@ class _$GAddStarInput extends GAddStarInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAddStarInput')
+    return (newBuiltValueToStringHelper(r'GAddStarInput')
           ..add('clientMutationId', clientMutationId)
           ..add('starrableId', starrableId))
         .toString();
@@ -18488,12 +18510,14 @@ class GAddStarInputBuilder
   }
 
   @override
-  _$GAddStarInput build() {
+  GAddStarInput build() => _build();
+
+  _$GAddStarInput _build() {
     final _$result = _$v ??
         new _$GAddStarInput._(
             clientMutationId: clientMutationId,
             starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, 'GAddStarInput', 'starrableId'));
+                starrableId, r'GAddStarInput', 'starrableId'));
     replace(_$result);
     return _$result;
   }
@@ -18507,13 +18531,13 @@ class _$GArchiveRepositoryInput extends GArchiveRepositoryInput {
 
   factory _$GArchiveRepositoryInput(
           [void Function(GArchiveRepositoryInputBuilder)? updates]) =>
-      (new GArchiveRepositoryInputBuilder()..update(updates)).build();
+      (new GArchiveRepositoryInputBuilder()..update(updates))._build();
 
   _$GArchiveRepositoryInput._(
       {this.clientMutationId, required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GArchiveRepositoryInput', 'repositoryId');
+        repositoryId, r'GArchiveRepositoryInput', 'repositoryId');
   }
 
   @override
@@ -18540,7 +18564,7 @@ class _$GArchiveRepositoryInput extends GArchiveRepositoryInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GArchiveRepositoryInput')
+    return (newBuiltValueToStringHelper(r'GArchiveRepositoryInput')
           ..add('clientMutationId', clientMutationId)
           ..add('repositoryId', repositoryId))
         .toString();
@@ -18585,12 +18609,14 @@ class GArchiveRepositoryInputBuilder
   }
 
   @override
-  _$GArchiveRepositoryInput build() {
+  GArchiveRepositoryInput build() => _build();
+
+  _$GArchiveRepositoryInput _build() {
     final _$result = _$v ??
         new _$GArchiveRepositoryInput._(
             clientMutationId: clientMutationId,
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GArchiveRepositoryInput', 'repositoryId'));
+                repositoryId, r'GArchiveRepositoryInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -18603,7 +18629,7 @@ class _$GAuditLogOrder extends GAuditLogOrder {
   final GAuditLogOrderField? field;
 
   factory _$GAuditLogOrder([void Function(GAuditLogOrderBuilder)? updates]) =>
-      (new GAuditLogOrderBuilder()..update(updates)).build();
+      (new GAuditLogOrderBuilder()..update(updates))._build();
 
   _$GAuditLogOrder._({this.direction, this.field}) : super._();
 
@@ -18630,7 +18656,7 @@ class _$GAuditLogOrder extends GAuditLogOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAuditLogOrder')
+    return (newBuiltValueToStringHelper(r'GAuditLogOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -18673,7 +18699,9 @@ class GAuditLogOrderBuilder
   }
 
   @override
-  _$GAuditLogOrder build() {
+  GAuditLogOrder build() => _build();
+
+  _$GAuditLogOrder _build() {
     final _$result =
         _$v ?? new _$GAuditLogOrder._(direction: direction, field: field);
     replace(_$result);
@@ -18692,13 +18720,13 @@ class _$GCancelEnterpriseAdminInvitationInput
           [void Function(GCancelEnterpriseAdminInvitationInputBuilder)?
               updates]) =>
       (new GCancelEnterpriseAdminInvitationInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GCancelEnterpriseAdminInvitationInput._(
       {this.clientMutationId, required this.invitationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        invitationId, 'GCancelEnterpriseAdminInvitationInput', 'invitationId');
+        invitationId, r'GCancelEnterpriseAdminInvitationInput', 'invitationId');
   }
 
   @override
@@ -18726,7 +18754,8 @@ class _$GCancelEnterpriseAdminInvitationInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCancelEnterpriseAdminInvitationInput')
+    return (newBuiltValueToStringHelper(
+            r'GCancelEnterpriseAdminInvitationInput')
           ..add('clientMutationId', clientMutationId)
           ..add('invitationId', invitationId))
         .toString();
@@ -18773,12 +18802,14 @@ class GCancelEnterpriseAdminInvitationInputBuilder
   }
 
   @override
-  _$GCancelEnterpriseAdminInvitationInput build() {
+  GCancelEnterpriseAdminInvitationInput build() => _build();
+
+  _$GCancelEnterpriseAdminInvitationInput _build() {
     final _$result = _$v ??
         new _$GCancelEnterpriseAdminInvitationInput._(
             clientMutationId: clientMutationId,
             invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
-                'GCancelEnterpriseAdminInvitationInput', 'invitationId'));
+                r'GCancelEnterpriseAdminInvitationInput', 'invitationId'));
     replace(_$result);
     return _$result;
   }
@@ -18800,7 +18831,7 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
 
   factory _$GChangeUserStatusInput(
           [void Function(GChangeUserStatusInputBuilder)? updates]) =>
-      (new GChangeUserStatusInputBuilder()..update(updates)).build();
+      (new GChangeUserStatusInputBuilder()..update(updates))._build();
 
   _$GChangeUserStatusInput._(
       {this.clientMutationId,
@@ -18846,7 +18877,7 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GChangeUserStatusInput')
+    return (newBuiltValueToStringHelper(r'GChangeUserStatusInput')
           ..add('clientMutationId', clientMutationId)
           ..add('emoji', emoji)
           ..add('expiresAt', expiresAt)
@@ -18917,7 +18948,9 @@ class GChangeUserStatusInputBuilder
   }
 
   @override
-  _$GChangeUserStatusInput build() {
+  GChangeUserStatusInput build() => _build();
+
+  _$GChangeUserStatusInput _build() {
     _$GChangeUserStatusInput _$result;
     try {
       _$result = _$v ??
@@ -18935,7 +18968,7 @@ class GChangeUserStatusInputBuilder
         _expiresAt?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GChangeUserStatusInput', _$failedField, e.toString());
+            r'GChangeUserStatusInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -18952,13 +18985,13 @@ class _$GClearLabelsFromLabelableInput extends GClearLabelsFromLabelableInput {
 
   factory _$GClearLabelsFromLabelableInput(
           [void Function(GClearLabelsFromLabelableInputBuilder)? updates]) =>
-      (new GClearLabelsFromLabelableInputBuilder()..update(updates)).build();
+      (new GClearLabelsFromLabelableInputBuilder()..update(updates))._build();
 
   _$GClearLabelsFromLabelableInput._(
       {this.clientMutationId, required this.labelableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        labelableId, 'GClearLabelsFromLabelableInput', 'labelableId');
+        labelableId, r'GClearLabelsFromLabelableInput', 'labelableId');
   }
 
   @override
@@ -18985,7 +19018,7 @@ class _$GClearLabelsFromLabelableInput extends GClearLabelsFromLabelableInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GClearLabelsFromLabelableInput')
+    return (newBuiltValueToStringHelper(r'GClearLabelsFromLabelableInput')
           ..add('clientMutationId', clientMutationId)
           ..add('labelableId', labelableId))
         .toString();
@@ -19031,12 +19064,14 @@ class GClearLabelsFromLabelableInputBuilder
   }
 
   @override
-  _$GClearLabelsFromLabelableInput build() {
+  GClearLabelsFromLabelableInput build() => _build();
+
+  _$GClearLabelsFromLabelableInput _build() {
     final _$result = _$v ??
         new _$GClearLabelsFromLabelableInput._(
             clientMutationId: clientMutationId,
             labelableId: BuiltValueNullFieldError.checkNotNull(
-                labelableId, 'GClearLabelsFromLabelableInput', 'labelableId'));
+                labelableId, r'GClearLabelsFromLabelableInput', 'labelableId'));
     replace(_$result);
     return _$result;
   }
@@ -19060,7 +19095,7 @@ class _$GCloneProjectInput extends GCloneProjectInput {
 
   factory _$GCloneProjectInput(
           [void Function(GCloneProjectInputBuilder)? updates]) =>
-      (new GCloneProjectInputBuilder()..update(updates)).build();
+      (new GCloneProjectInputBuilder()..update(updates))._build();
 
   _$GCloneProjectInput._(
       {this.body,
@@ -19072,12 +19107,12 @@ class _$GCloneProjectInput extends GCloneProjectInput {
       required this.targetOwnerId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        includeWorkflows, 'GCloneProjectInput', 'includeWorkflows');
-    BuiltValueNullFieldError.checkNotNull(name, 'GCloneProjectInput', 'name');
+        includeWorkflows, r'GCloneProjectInput', 'includeWorkflows');
+    BuiltValueNullFieldError.checkNotNull(name, r'GCloneProjectInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        sourceId, 'GCloneProjectInput', 'sourceId');
+        sourceId, r'GCloneProjectInput', 'sourceId');
     BuiltValueNullFieldError.checkNotNull(
-        targetOwnerId, 'GCloneProjectInput', 'targetOwnerId');
+        targetOwnerId, r'GCloneProjectInput', 'targetOwnerId');
   }
 
   @override
@@ -19118,7 +19153,7 @@ class _$GCloneProjectInput extends GCloneProjectInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCloneProjectInput')
+    return (newBuiltValueToStringHelper(r'GCloneProjectInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('includeWorkflows', includeWorkflows)
@@ -19194,20 +19229,22 @@ class GCloneProjectInputBuilder
   }
 
   @override
-  _$GCloneProjectInput build() {
+  GCloneProjectInput build() => _build();
+
+  _$GCloneProjectInput _build() {
     final _$result = _$v ??
         new _$GCloneProjectInput._(
             body: body,
             clientMutationId: clientMutationId,
             includeWorkflows: BuiltValueNullFieldError.checkNotNull(
-                includeWorkflows, 'GCloneProjectInput', 'includeWorkflows'),
+                includeWorkflows, r'GCloneProjectInput', 'includeWorkflows'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GCloneProjectInput', 'name'),
+                name, r'GCloneProjectInput', 'name'),
             public: public,
             sourceId: BuiltValueNullFieldError.checkNotNull(
-                sourceId, 'GCloneProjectInput', 'sourceId'),
+                sourceId, r'GCloneProjectInput', 'sourceId'),
             targetOwnerId: BuiltValueNullFieldError.checkNotNull(
-                targetOwnerId, 'GCloneProjectInput', 'targetOwnerId'));
+                targetOwnerId, r'GCloneProjectInput', 'targetOwnerId'));
     replace(_$result);
     return _$result;
   }
@@ -19229,7 +19266,7 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
 
   factory _$GCloneTemplateRepositoryInput(
           [void Function(GCloneTemplateRepositoryInputBuilder)? updates]) =>
-      (new GCloneTemplateRepositoryInputBuilder()..update(updates)).build();
+      (new GCloneTemplateRepositoryInputBuilder()..update(updates))._build();
 
   _$GCloneTemplateRepositoryInput._(
       {this.clientMutationId,
@@ -19240,13 +19277,13 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
       required this.visibility})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GCloneTemplateRepositoryInput', 'name');
+        name, r'GCloneTemplateRepositoryInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        ownerId, 'GCloneTemplateRepositoryInput', 'ownerId');
+        ownerId, r'GCloneTemplateRepositoryInput', 'ownerId');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GCloneTemplateRepositoryInput', 'repositoryId');
+        repositoryId, r'GCloneTemplateRepositoryInput', 'repositoryId');
     BuiltValueNullFieldError.checkNotNull(
-        visibility, 'GCloneTemplateRepositoryInput', 'visibility');
+        visibility, r'GCloneTemplateRepositoryInput', 'visibility');
   }
 
   @override
@@ -19286,7 +19323,7 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCloneTemplateRepositoryInput')
+    return (newBuiltValueToStringHelper(r'GCloneTemplateRepositoryInput')
           ..add('clientMutationId', clientMutationId)
           ..add('description', description)
           ..add('name', name)
@@ -19357,19 +19394,21 @@ class GCloneTemplateRepositoryInputBuilder
   }
 
   @override
-  _$GCloneTemplateRepositoryInput build() {
+  GCloneTemplateRepositoryInput build() => _build();
+
+  _$GCloneTemplateRepositoryInput _build() {
     final _$result = _$v ??
         new _$GCloneTemplateRepositoryInput._(
             clientMutationId: clientMutationId,
             description: description,
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GCloneTemplateRepositoryInput', 'name'),
+                name, r'GCloneTemplateRepositoryInput', 'name'),
             ownerId: BuiltValueNullFieldError.checkNotNull(
-                ownerId, 'GCloneTemplateRepositoryInput', 'ownerId'),
+                ownerId, r'GCloneTemplateRepositoryInput', 'ownerId'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GCloneTemplateRepositoryInput', 'repositoryId'),
+                repositoryId, r'GCloneTemplateRepositoryInput', 'repositoryId'),
             visibility: BuiltValueNullFieldError.checkNotNull(
-                visibility, 'GCloneTemplateRepositoryInput', 'visibility'));
+                visibility, r'GCloneTemplateRepositoryInput', 'visibility'));
     replace(_$result);
     return _$result;
   }
@@ -19383,12 +19422,12 @@ class _$GCloseIssueInput extends GCloseIssueInput {
 
   factory _$GCloseIssueInput(
           [void Function(GCloseIssueInputBuilder)? updates]) =>
-      (new GCloseIssueInputBuilder()..update(updates)).build();
+      (new GCloseIssueInputBuilder()..update(updates))._build();
 
   _$GCloseIssueInput._({this.clientMutationId, required this.issueId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        issueId, 'GCloseIssueInput', 'issueId');
+        issueId, r'GCloseIssueInput', 'issueId');
   }
 
   @override
@@ -19414,7 +19453,7 @@ class _$GCloseIssueInput extends GCloseIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCloseIssueInput')
+    return (newBuiltValueToStringHelper(r'GCloseIssueInput')
           ..add('clientMutationId', clientMutationId)
           ..add('issueId', issueId))
         .toString();
@@ -19458,12 +19497,14 @@ class GCloseIssueInputBuilder
   }
 
   @override
-  _$GCloseIssueInput build() {
+  GCloseIssueInput build() => _build();
+
+  _$GCloseIssueInput _build() {
     final _$result = _$v ??
         new _$GCloseIssueInput._(
             clientMutationId: clientMutationId,
             issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, 'GCloseIssueInput', 'issueId'));
+                issueId, r'GCloseIssueInput', 'issueId'));
     replace(_$result);
     return _$result;
   }
@@ -19477,13 +19518,13 @@ class _$GClosePullRequestInput extends GClosePullRequestInput {
 
   factory _$GClosePullRequestInput(
           [void Function(GClosePullRequestInputBuilder)? updates]) =>
-      (new GClosePullRequestInputBuilder()..update(updates)).build();
+      (new GClosePullRequestInputBuilder()..update(updates))._build();
 
   _$GClosePullRequestInput._(
       {this.clientMutationId, required this.pullRequestId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GClosePullRequestInput', 'pullRequestId');
+        pullRequestId, r'GClosePullRequestInput', 'pullRequestId');
   }
 
   @override
@@ -19510,7 +19551,7 @@ class _$GClosePullRequestInput extends GClosePullRequestInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GClosePullRequestInput')
+    return (newBuiltValueToStringHelper(r'GClosePullRequestInput')
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestId', pullRequestId))
         .toString();
@@ -19555,12 +19596,14 @@ class GClosePullRequestInputBuilder
   }
 
   @override
-  _$GClosePullRequestInput build() {
+  GClosePullRequestInput build() => _build();
+
+  _$GClosePullRequestInput _build() {
     final _$result = _$v ??
         new _$GClosePullRequestInput._(
             clientMutationId: clientMutationId,
             pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestId, 'GClosePullRequestInput', 'pullRequestId'));
+                pullRequestId, r'GClosePullRequestInput', 'pullRequestId'));
     replace(_$result);
     return _$result;
   }
@@ -19573,7 +19616,7 @@ class _$GCommitAuthor extends GCommitAuthor {
   final String? id;
 
   factory _$GCommitAuthor([void Function(GCommitAuthorBuilder)? updates]) =>
-      (new GCommitAuthorBuilder()..update(updates)).build();
+      (new GCommitAuthorBuilder()..update(updates))._build();
 
   _$GCommitAuthor._({this.emails, this.id}) : super._();
 
@@ -19597,7 +19640,7 @@ class _$GCommitAuthor extends GCommitAuthor {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCommitAuthor')
+    return (newBuiltValueToStringHelper(r'GCommitAuthor')
           ..add('emails', emails)
           ..add('id', id))
         .toString();
@@ -19641,7 +19684,9 @@ class GCommitAuthorBuilder
   }
 
   @override
-  _$GCommitAuthor build() {
+  GCommitAuthor build() => _build();
+
+  _$GCommitAuthor _build() {
     _$GCommitAuthor _$result;
     try {
       _$result = _$v ?? new _$GCommitAuthor._(emails: _emails?.build(), id: id);
@@ -19652,7 +19697,7 @@ class GCommitAuthorBuilder
         _emails?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCommitAuthor', _$failedField, e.toString());
+            r'GCommitAuthor', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -19669,14 +19714,14 @@ class _$GCommitContributionOrder extends GCommitContributionOrder {
 
   factory _$GCommitContributionOrder(
           [void Function(GCommitContributionOrderBuilder)? updates]) =>
-      (new GCommitContributionOrderBuilder()..update(updates)).build();
+      (new GCommitContributionOrderBuilder()..update(updates))._build();
 
   _$GCommitContributionOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GCommitContributionOrder', 'direction');
+        direction, r'GCommitContributionOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GCommitContributionOrder', 'field');
+        field, r'GCommitContributionOrder', 'field');
   }
 
   @override
@@ -19703,7 +19748,7 @@ class _$GCommitContributionOrder extends GCommitContributionOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCommitContributionOrder')
+    return (newBuiltValueToStringHelper(r'GCommitContributionOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -19747,13 +19792,15 @@ class GCommitContributionOrderBuilder
   }
 
   @override
-  _$GCommitContributionOrder build() {
+  GCommitContributionOrder build() => _build();
+
+  _$GCommitContributionOrder _build() {
     final _$result = _$v ??
         new _$GCommitContributionOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GCommitContributionOrder', 'direction'),
+                direction, r'GCommitContributionOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GCommitContributionOrder', 'field'));
+                field, r'GCommitContributionOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -19767,11 +19814,11 @@ class _$GContributionOrder extends GContributionOrder {
 
   factory _$GContributionOrder(
           [void Function(GContributionOrderBuilder)? updates]) =>
-      (new GContributionOrderBuilder()..update(updates)).build();
+      (new GContributionOrderBuilder()..update(updates))._build();
 
   _$GContributionOrder._({required this.direction, this.field}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GContributionOrder', 'direction');
+        direction, r'GContributionOrder', 'direction');
   }
 
   @override
@@ -19798,7 +19845,7 @@ class _$GContributionOrder extends GContributionOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GContributionOrder')
+    return (newBuiltValueToStringHelper(r'GContributionOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -19841,11 +19888,13 @@ class GContributionOrderBuilder
   }
 
   @override
-  _$GContributionOrder build() {
+  GContributionOrder build() => _build();
+
+  _$GContributionOrder _build() {
     final _$result = _$v ??
         new _$GContributionOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GContributionOrder', 'direction'),
+                direction, r'GContributionOrder', 'direction'),
             field: field);
     replace(_$result);
     return _$result;
@@ -19869,7 +19918,7 @@ class _$GConvertProjectCardNoteToIssueInput
           [void Function(GConvertProjectCardNoteToIssueInputBuilder)?
               updates]) =>
       (new GConvertProjectCardNoteToIssueInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GConvertProjectCardNoteToIssueInput._(
       {this.body,
@@ -19879,9 +19928,9 @@ class _$GConvertProjectCardNoteToIssueInput
       this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectCardId, 'GConvertProjectCardNoteToIssueInput', 'projectCardId');
+        projectCardId, r'GConvertProjectCardNoteToIssueInput', 'projectCardId');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GConvertProjectCardNoteToIssueInput', 'repositoryId');
+        repositoryId, r'GConvertProjectCardNoteToIssueInput', 'repositoryId');
   }
 
   @override
@@ -19916,7 +19965,7 @@ class _$GConvertProjectCardNoteToIssueInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GConvertProjectCardNoteToIssueInput')
+    return (newBuiltValueToStringHelper(r'GConvertProjectCardNoteToIssueInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('projectCardId', projectCardId)
@@ -19982,15 +20031,17 @@ class GConvertProjectCardNoteToIssueInputBuilder
   }
 
   @override
-  _$GConvertProjectCardNoteToIssueInput build() {
+  GConvertProjectCardNoteToIssueInput build() => _build();
+
+  _$GConvertProjectCardNoteToIssueInput _build() {
     final _$result = _$v ??
         new _$GConvertProjectCardNoteToIssueInput._(
             body: body,
             clientMutationId: clientMutationId,
             projectCardId: BuiltValueNullFieldError.checkNotNull(projectCardId,
-                'GConvertProjectCardNoteToIssueInput', 'projectCardId'),
+                r'GConvertProjectCardNoteToIssueInput', 'projectCardId'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                'GConvertProjectCardNoteToIssueInput', 'repositoryId'),
+                r'GConvertProjectCardNoteToIssueInput', 'repositoryId'),
             title: title);
     replace(_$result);
     return _$result;
@@ -20034,7 +20085,7 @@ class _$GCreateBranchProtectionRuleInput
 
   factory _$GCreateBranchProtectionRuleInput(
           [void Function(GCreateBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GCreateBranchProtectionRuleInputBuilder()..update(updates)).build();
+      (new GCreateBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GCreateBranchProtectionRuleInput._(
       {this.clientMutationId,
@@ -20055,9 +20106,9 @@ class _$GCreateBranchProtectionRuleInput
       this.reviewDismissalActorIds})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pattern, 'GCreateBranchProtectionRuleInput', 'pattern');
+        pattern, r'GCreateBranchProtectionRuleInput', 'pattern');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GCreateBranchProtectionRuleInput', 'repositoryId');
+        repositoryId, r'GCreateBranchProtectionRuleInput', 'repositoryId');
   }
 
   @override
@@ -20134,7 +20185,7 @@ class _$GCreateBranchProtectionRuleInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateBranchProtectionRuleInput')
+    return (newBuiltValueToStringHelper(r'GCreateBranchProtectionRuleInput')
           ..add('clientMutationId', clientMutationId)
           ..add('dismissesStaleReviews', dismissesStaleReviews)
           ..add('isAdminEnforced', isAdminEnforced)
@@ -20282,7 +20333,9 @@ class GCreateBranchProtectionRuleInputBuilder
   }
 
   @override
-  _$GCreateBranchProtectionRuleInput build() {
+  GCreateBranchProtectionRuleInput build() => _build();
+
+  _$GCreateBranchProtectionRuleInput _build() {
     _$GCreateBranchProtectionRuleInput _$result;
     try {
       _$result = _$v ??
@@ -20291,10 +20344,10 @@ class GCreateBranchProtectionRuleInputBuilder
               dismissesStaleReviews: dismissesStaleReviews,
               isAdminEnforced: isAdminEnforced,
               pattern: BuiltValueNullFieldError.checkNotNull(
-                  pattern, 'GCreateBranchProtectionRuleInput', 'pattern'),
+                  pattern, r'GCreateBranchProtectionRuleInput', 'pattern'),
               pushActorIds: _pushActorIds?.build(),
               repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                  'GCreateBranchProtectionRuleInput', 'repositoryId'),
+                  r'GCreateBranchProtectionRuleInput', 'repositoryId'),
               requiredApprovingReviewCount: requiredApprovingReviewCount,
               requiredStatusCheckContexts:
                   _requiredStatusCheckContexts?.build(),
@@ -20319,7 +20372,7 @@ class GCreateBranchProtectionRuleInputBuilder
         _reviewDismissalActorIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateBranchProtectionRuleInput', _$failedField, e.toString());
+            r'GCreateBranchProtectionRuleInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -20347,7 +20400,7 @@ class _$GCreateEnterpriseOrganizationInput
           [void Function(GCreateEnterpriseOrganizationInputBuilder)?
               updates]) =>
       (new GCreateEnterpriseOrganizationInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GCreateEnterpriseOrganizationInput._(
       {required this.adminLogins,
@@ -20358,15 +20411,15 @@ class _$GCreateEnterpriseOrganizationInput
       required this.profileName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        adminLogins, 'GCreateEnterpriseOrganizationInput', 'adminLogins');
+        adminLogins, r'GCreateEnterpriseOrganizationInput', 'adminLogins');
     BuiltValueNullFieldError.checkNotNull(
-        billingEmail, 'GCreateEnterpriseOrganizationInput', 'billingEmail');
+        billingEmail, r'GCreateEnterpriseOrganizationInput', 'billingEmail');
     BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, 'GCreateEnterpriseOrganizationInput', 'enterpriseId');
+        enterpriseId, r'GCreateEnterpriseOrganizationInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
-        login, 'GCreateEnterpriseOrganizationInput', 'login');
+        login, r'GCreateEnterpriseOrganizationInput', 'login');
     BuiltValueNullFieldError.checkNotNull(
-        profileName, 'GCreateEnterpriseOrganizationInput', 'profileName');
+        profileName, r'GCreateEnterpriseOrganizationInput', 'profileName');
   }
 
   @override
@@ -20404,7 +20457,7 @@ class _$GCreateEnterpriseOrganizationInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateEnterpriseOrganizationInput')
+    return (newBuiltValueToStringHelper(r'GCreateEnterpriseOrganizationInput')
           ..add('adminLogins', adminLogins)
           ..add('billingEmail', billingEmail)
           ..add('clientMutationId', clientMutationId)
@@ -20477,21 +20530,23 @@ class GCreateEnterpriseOrganizationInputBuilder
   }
 
   @override
-  _$GCreateEnterpriseOrganizationInput build() {
+  GCreateEnterpriseOrganizationInput build() => _build();
+
+  _$GCreateEnterpriseOrganizationInput _build() {
     _$GCreateEnterpriseOrganizationInput _$result;
     try {
       _$result = _$v ??
           new _$GCreateEnterpriseOrganizationInput._(
               adminLogins: adminLogins.build(),
               billingEmail: BuiltValueNullFieldError.checkNotNull(billingEmail,
-                  'GCreateEnterpriseOrganizationInput', 'billingEmail'),
+                  r'GCreateEnterpriseOrganizationInput', 'billingEmail'),
               clientMutationId: clientMutationId,
               enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                  'GCreateEnterpriseOrganizationInput', 'enterpriseId'),
+                  r'GCreateEnterpriseOrganizationInput', 'enterpriseId'),
               login: BuiltValueNullFieldError.checkNotNull(
-                  login, 'GCreateEnterpriseOrganizationInput', 'login'),
+                  login, r'GCreateEnterpriseOrganizationInput', 'login'),
               profileName: BuiltValueNullFieldError.checkNotNull(profileName,
-                  'GCreateEnterpriseOrganizationInput', 'profileName'));
+                  r'GCreateEnterpriseOrganizationInput', 'profileName'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -20499,7 +20554,7 @@ class GCreateEnterpriseOrganizationInputBuilder
         adminLogins.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateEnterpriseOrganizationInput', _$failedField, e.toString());
+            r'GCreateEnterpriseOrganizationInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -20528,7 +20583,7 @@ class _$GCreateIssueInput extends GCreateIssueInput {
 
   factory _$GCreateIssueInput(
           [void Function(GCreateIssueInputBuilder)? updates]) =>
-      (new GCreateIssueInputBuilder()..update(updates)).build();
+      (new GCreateIssueInputBuilder()..update(updates))._build();
 
   _$GCreateIssueInput._(
       {this.assigneeIds,
@@ -20541,8 +20596,8 @@ class _$GCreateIssueInput extends GCreateIssueInput {
       required this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GCreateIssueInput', 'repositoryId');
-    BuiltValueNullFieldError.checkNotNull(title, 'GCreateIssueInput', 'title');
+        repositoryId, r'GCreateIssueInput', 'repositoryId');
+    BuiltValueNullFieldError.checkNotNull(title, r'GCreateIssueInput', 'title');
   }
 
   @override
@@ -20585,7 +20640,7 @@ class _$GCreateIssueInput extends GCreateIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateIssueInput')
+    return (newBuiltValueToStringHelper(r'GCreateIssueInput')
           ..add('assigneeIds', assigneeIds)
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
@@ -20670,7 +20725,9 @@ class GCreateIssueInputBuilder
   }
 
   @override
-  _$GCreateIssueInput build() {
+  GCreateIssueInput build() => _build();
+
+  _$GCreateIssueInput _build() {
     _$GCreateIssueInput _$result;
     try {
       _$result = _$v ??
@@ -20682,9 +20739,9 @@ class GCreateIssueInputBuilder
               milestoneId: milestoneId,
               projectIds: _projectIds?.build(),
               repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, 'GCreateIssueInput', 'repositoryId'),
+                  repositoryId, r'GCreateIssueInput', 'repositoryId'),
               title: BuiltValueNullFieldError.checkNotNull(
-                  title, 'GCreateIssueInput', 'title'));
+                  title, r'GCreateIssueInput', 'title'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -20698,7 +20755,7 @@ class GCreateIssueInputBuilder
         _projectIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateIssueInput', _$failedField, e.toString());
+            r'GCreateIssueInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -20723,7 +20780,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
 
   factory _$GCreateProjectInput(
           [void Function(GCreateProjectInputBuilder)? updates]) =>
-      (new GCreateProjectInputBuilder()..update(updates)).build();
+      (new GCreateProjectInputBuilder()..update(updates))._build();
 
   _$GCreateProjectInput._(
       {this.body,
@@ -20733,9 +20790,9 @@ class _$GCreateProjectInput extends GCreateProjectInput {
       this.repositoryIds,
       this.template})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, 'GCreateProjectInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateProjectInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        ownerId, 'GCreateProjectInput', 'ownerId');
+        ownerId, r'GCreateProjectInput', 'ownerId');
   }
 
   @override
@@ -20773,7 +20830,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateProjectInput')
+    return (newBuiltValueToStringHelper(r'GCreateProjectInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
@@ -20843,7 +20900,9 @@ class GCreateProjectInputBuilder
   }
 
   @override
-  _$GCreateProjectInput build() {
+  GCreateProjectInput build() => _build();
+
+  _$GCreateProjectInput _build() {
     _$GCreateProjectInput _$result;
     try {
       _$result = _$v ??
@@ -20851,9 +20910,9 @@ class GCreateProjectInputBuilder
               body: body,
               clientMutationId: clientMutationId,
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'GCreateProjectInput', 'name'),
+                  name, r'GCreateProjectInput', 'name'),
               ownerId: BuiltValueNullFieldError.checkNotNull(
-                  ownerId, 'GCreateProjectInput', 'ownerId'),
+                  ownerId, r'GCreateProjectInput', 'ownerId'),
               repositoryIds: _repositoryIds?.build(),
               template: template);
     } catch (_) {
@@ -20863,7 +20922,7 @@ class GCreateProjectInputBuilder
         _repositoryIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateProjectInput', _$failedField, e.toString());
+            r'GCreateProjectInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -20890,7 +20949,7 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
 
   factory _$GCreatePullRequestInput(
           [void Function(GCreatePullRequestInputBuilder)? updates]) =>
-      (new GCreatePullRequestInputBuilder()..update(updates)).build();
+      (new GCreatePullRequestInputBuilder()..update(updates))._build();
 
   _$GCreatePullRequestInput._(
       {required this.baseRefName,
@@ -20902,13 +20961,13 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
       required this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        baseRefName, 'GCreatePullRequestInput', 'baseRefName');
+        baseRefName, r'GCreatePullRequestInput', 'baseRefName');
     BuiltValueNullFieldError.checkNotNull(
-        headRefName, 'GCreatePullRequestInput', 'headRefName');
+        headRefName, r'GCreatePullRequestInput', 'headRefName');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GCreatePullRequestInput', 'repositoryId');
+        repositoryId, r'GCreatePullRequestInput', 'repositoryId');
     BuiltValueNullFieldError.checkNotNull(
-        title, 'GCreatePullRequestInput', 'title');
+        title, r'GCreatePullRequestInput', 'title');
   }
 
   @override
@@ -20949,7 +21008,7 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreatePullRequestInput')
+    return (newBuiltValueToStringHelper(r'GCreatePullRequestInput')
           ..add('baseRefName', baseRefName)
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
@@ -21025,20 +21084,22 @@ class GCreatePullRequestInputBuilder
   }
 
   @override
-  _$GCreatePullRequestInput build() {
+  GCreatePullRequestInput build() => _build();
+
+  _$GCreatePullRequestInput _build() {
     final _$result = _$v ??
         new _$GCreatePullRequestInput._(
             baseRefName: BuiltValueNullFieldError.checkNotNull(
-                baseRefName, 'GCreatePullRequestInput', 'baseRefName'),
+                baseRefName, r'GCreatePullRequestInput', 'baseRefName'),
             body: body,
             clientMutationId: clientMutationId,
             headRefName: BuiltValueNullFieldError.checkNotNull(
-                headRefName, 'GCreatePullRequestInput', 'headRefName'),
+                headRefName, r'GCreatePullRequestInput', 'headRefName'),
             maintainerCanModify: maintainerCanModify,
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GCreatePullRequestInput', 'repositoryId'),
+                repositoryId, r'GCreatePullRequestInput', 'repositoryId'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'GCreatePullRequestInput', 'title'));
+                title, r'GCreatePullRequestInput', 'title'));
     replace(_$result);
     return _$result;
   }
@@ -21055,7 +21116,7 @@ class _$GCreateRefInput extends GCreateRefInput {
   final String repositoryId;
 
   factory _$GCreateRefInput([void Function(GCreateRefInputBuilder)? updates]) =>
-      (new GCreateRefInputBuilder()..update(updates)).build();
+      (new GCreateRefInputBuilder()..update(updates))._build();
 
   _$GCreateRefInput._(
       {this.clientMutationId,
@@ -21063,10 +21124,10 @@ class _$GCreateRefInput extends GCreateRefInput {
       required this.oid,
       required this.repositoryId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, 'GCreateRefInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(oid, 'GCreateRefInput', 'oid');
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateRefInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(oid, r'GCreateRefInput', 'oid');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GCreateRefInput', 'repositoryId');
+        repositoryId, r'GCreateRefInput', 'repositoryId');
   }
 
   @override
@@ -21097,7 +21158,7 @@ class _$GCreateRefInput extends GCreateRefInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateRefInput')
+    return (newBuiltValueToStringHelper(r'GCreateRefInput')
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
           ..add('oid', oid)
@@ -21153,17 +21214,19 @@ class GCreateRefInputBuilder
   }
 
   @override
-  _$GCreateRefInput build() {
+  GCreateRefInput build() => _build();
+
+  _$GCreateRefInput _build() {
     _$GCreateRefInput _$result;
     try {
       _$result = _$v ??
           new _$GCreateRefInput._(
               clientMutationId: clientMutationId,
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'GCreateRefInput', 'name'),
+                  name, r'GCreateRefInput', 'name'),
               oid: oid.build(),
               repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, 'GCreateRefInput', 'repositoryId'));
+                  repositoryId, r'GCreateRefInput', 'repositoryId'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -21171,7 +21234,7 @@ class GCreateRefInputBuilder
         oid.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateRefInput', _$failedField, e.toString());
+            r'GCreateRefInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -21204,7 +21267,7 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
 
   factory _$GCreateRepositoryInput(
           [void Function(GCreateRepositoryInputBuilder)? updates]) =>
-      (new GCreateRepositoryInputBuilder()..update(updates)).build();
+      (new GCreateRepositoryInputBuilder()..update(updates))._build();
 
   _$GCreateRepositoryInput._(
       {this.clientMutationId,
@@ -21219,9 +21282,9 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
       required this.visibility})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GCreateRepositoryInput', 'name');
+        name, r'GCreateRepositoryInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        visibility, 'GCreateRepositoryInput', 'visibility');
+        visibility, r'GCreateRepositoryInput', 'visibility');
   }
 
   @override
@@ -21273,7 +21336,7 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateRepositoryInput')
+    return (newBuiltValueToStringHelper(r'GCreateRepositoryInput')
           ..add('clientMutationId', clientMutationId)
           ..add('description', description)
           ..add('hasIssuesEnabled', hasIssuesEnabled)
@@ -21369,7 +21432,9 @@ class GCreateRepositoryInputBuilder
   }
 
   @override
-  _$GCreateRepositoryInput build() {
+  GCreateRepositoryInput build() => _build();
+
+  _$GCreateRepositoryInput _build() {
     _$GCreateRepositoryInput _$result;
     try {
       _$result = _$v ??
@@ -21380,12 +21445,12 @@ class GCreateRepositoryInputBuilder
               hasWikiEnabled: hasWikiEnabled,
               homepageUrl: _homepageUrl?.build(),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'GCreateRepositoryInput', 'name'),
+                  name, r'GCreateRepositoryInput', 'name'),
               ownerId: ownerId,
               teamId: teamId,
               template: template,
               visibility: BuiltValueNullFieldError.checkNotNull(
-                  visibility, 'GCreateRepositoryInput', 'visibility'));
+                  visibility, r'GCreateRepositoryInput', 'visibility'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -21393,7 +21458,7 @@ class GCreateRepositoryInputBuilder
         _homepageUrl?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GCreateRepositoryInput', _$failedField, e.toString());
+            r'GCreateRepositoryInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -21413,15 +21478,16 @@ class _$GCreateTeamDiscussionCommentInput
 
   factory _$GCreateTeamDiscussionCommentInput(
           [void Function(GCreateTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GCreateTeamDiscussionCommentInputBuilder()..update(updates)).build();
+      (new GCreateTeamDiscussionCommentInputBuilder()..update(updates))
+          ._build();
 
   _$GCreateTeamDiscussionCommentInput._(
       {required this.body, this.clientMutationId, required this.discussionId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GCreateTeamDiscussionCommentInput', 'body');
+        body, r'GCreateTeamDiscussionCommentInput', 'body');
     BuiltValueNullFieldError.checkNotNull(
-        discussionId, 'GCreateTeamDiscussionCommentInput', 'discussionId');
+        discussionId, r'GCreateTeamDiscussionCommentInput', 'discussionId');
   }
 
   @override
@@ -21450,7 +21516,7 @@ class _$GCreateTeamDiscussionCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateTeamDiscussionCommentInput')
+    return (newBuiltValueToStringHelper(r'GCreateTeamDiscussionCommentInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('discussionId', discussionId))
@@ -21503,14 +21569,16 @@ class GCreateTeamDiscussionCommentInputBuilder
   }
 
   @override
-  _$GCreateTeamDiscussionCommentInput build() {
+  GCreateTeamDiscussionCommentInput build() => _build();
+
+  _$GCreateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GCreateTeamDiscussionCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GCreateTeamDiscussionCommentInput', 'body'),
+                body, r'GCreateTeamDiscussionCommentInput', 'body'),
             clientMutationId: clientMutationId,
             discussionId: BuiltValueNullFieldError.checkNotNull(discussionId,
-                'GCreateTeamDiscussionCommentInput', 'discussionId'));
+                r'GCreateTeamDiscussionCommentInput', 'discussionId'));
     replace(_$result);
     return _$result;
   }
@@ -21530,7 +21598,7 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
 
   factory _$GCreateTeamDiscussionInput(
           [void Function(GCreateTeamDiscussionInputBuilder)? updates]) =>
-      (new GCreateTeamDiscussionInputBuilder()..update(updates)).build();
+      (new GCreateTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GCreateTeamDiscussionInput._(
       {required this.body,
@@ -21540,11 +21608,11 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
       required this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GCreateTeamDiscussionInput', 'body');
+        body, r'GCreateTeamDiscussionInput', 'body');
     BuiltValueNullFieldError.checkNotNull(
-        teamId, 'GCreateTeamDiscussionInput', 'teamId');
+        teamId, r'GCreateTeamDiscussionInput', 'teamId');
     BuiltValueNullFieldError.checkNotNull(
-        title, 'GCreateTeamDiscussionInput', 'title');
+        title, r'GCreateTeamDiscussionInput', 'title');
   }
 
   @override
@@ -21579,7 +21647,7 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GCreateTeamDiscussionInput')
+    return (newBuiltValueToStringHelper(r'GCreateTeamDiscussionInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('private', private)
@@ -21642,17 +21710,19 @@ class GCreateTeamDiscussionInputBuilder
   }
 
   @override
-  _$GCreateTeamDiscussionInput build() {
+  GCreateTeamDiscussionInput build() => _build();
+
+  _$GCreateTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GCreateTeamDiscussionInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GCreateTeamDiscussionInput', 'body'),
+                body, r'GCreateTeamDiscussionInput', 'body'),
             clientMutationId: clientMutationId,
             private: private,
             teamId: BuiltValueNullFieldError.checkNotNull(
-                teamId, 'GCreateTeamDiscussionInput', 'teamId'),
+                teamId, r'GCreateTeamDiscussionInput', 'teamId'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'GCreateTeamDiscussionInput', 'title'));
+                title, r'GCreateTeamDiscussionInput', 'title'));
     replace(_$result);
     return _$result;
   }
@@ -21663,10 +21733,10 @@ class _$GDate extends GDate {
   final String value;
 
   factory _$GDate([void Function(GDateBuilder)? updates]) =>
-      (new GDateBuilder()..update(updates)).build();
+      (new GDateBuilder()..update(updates))._build();
 
   _$GDate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GDate', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GDate', 'value');
   }
 
   @override
@@ -21689,7 +21759,7 @@ class _$GDate extends GDate {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDate')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GDate')..add('value', value))
         .toString();
   }
 }
@@ -21724,11 +21794,13 @@ class GDateBuilder implements Builder<GDate, GDateBuilder> {
   }
 
   @override
-  _$GDate build() {
+  GDate build() => _build();
+
+  _$GDate _build() {
     final _$result = _$v ??
         new _$GDate._(
-            value:
-                BuiltValueNullFieldError.checkNotNull(value, 'GDate', 'value'));
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GDate', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -21739,10 +21811,10 @@ class _$GDateTime extends GDateTime {
   final String value;
 
   factory _$GDateTime([void Function(GDateTimeBuilder)? updates]) =>
-      (new GDateTimeBuilder()..update(updates)).build();
+      (new GDateTimeBuilder()..update(updates))._build();
 
   _$GDateTime._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GDateTime', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GDateTime', 'value');
   }
 
   @override
@@ -21765,7 +21837,7 @@ class _$GDateTime extends GDateTime {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDateTime')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GDateTime')..add('value', value))
         .toString();
   }
 }
@@ -21800,11 +21872,13 @@ class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
   }
 
   @override
-  _$GDateTime build() {
+  GDateTime build() => _build();
+
+  _$GDateTime _build() {
     final _$result = _$v ??
         new _$GDateTime._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GDateTime', 'value'));
+                value, r'GDateTime', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -21822,7 +21896,7 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
 
   factory _$GDeclineTopicSuggestionInput(
           [void Function(GDeclineTopicSuggestionInputBuilder)? updates]) =>
-      (new GDeclineTopicSuggestionInputBuilder()..update(updates)).build();
+      (new GDeclineTopicSuggestionInputBuilder()..update(updates))._build();
 
   _$GDeclineTopicSuggestionInput._(
       {this.clientMutationId,
@@ -21831,11 +21905,11 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
       required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GDeclineTopicSuggestionInput', 'name');
+        name, r'GDeclineTopicSuggestionInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        reason, 'GDeclineTopicSuggestionInput', 'reason');
+        reason, r'GDeclineTopicSuggestionInput', 'reason');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GDeclineTopicSuggestionInput', 'repositoryId');
+        repositoryId, r'GDeclineTopicSuggestionInput', 'repositoryId');
   }
 
   @override
@@ -21867,7 +21941,7 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeclineTopicSuggestionInput')
+    return (newBuiltValueToStringHelper(r'GDeclineTopicSuggestionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
           ..add('reason', reason)
@@ -21925,16 +21999,18 @@ class GDeclineTopicSuggestionInputBuilder
   }
 
   @override
-  _$GDeclineTopicSuggestionInput build() {
+  GDeclineTopicSuggestionInput build() => _build();
+
+  _$GDeclineTopicSuggestionInput _build() {
     final _$result = _$v ??
         new _$GDeclineTopicSuggestionInput._(
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GDeclineTopicSuggestionInput', 'name'),
+                name, r'GDeclineTopicSuggestionInput', 'name'),
             reason: BuiltValueNullFieldError.checkNotNull(
-                reason, 'GDeclineTopicSuggestionInput', 'reason'),
+                reason, r'GDeclineTopicSuggestionInput', 'reason'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GDeclineTopicSuggestionInput', 'repositoryId'));
+                repositoryId, r'GDeclineTopicSuggestionInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -21949,13 +22025,13 @@ class _$GDeleteBranchProtectionRuleInput
 
   factory _$GDeleteBranchProtectionRuleInput(
           [void Function(GDeleteBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GDeleteBranchProtectionRuleInputBuilder()..update(updates)).build();
+      (new GDeleteBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GDeleteBranchProtectionRuleInput._(
       {required this.branchProtectionRuleId, this.clientMutationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(branchProtectionRuleId,
-        'GDeleteBranchProtectionRuleInput', 'branchProtectionRuleId');
+        r'GDeleteBranchProtectionRuleInput', 'branchProtectionRuleId');
   }
 
   @override
@@ -21983,7 +22059,7 @@ class _$GDeleteBranchProtectionRuleInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteBranchProtectionRuleInput')
+    return (newBuiltValueToStringHelper(r'GDeleteBranchProtectionRuleInput')
           ..add('branchProtectionRuleId', branchProtectionRuleId)
           ..add('clientMutationId', clientMutationId))
         .toString();
@@ -22030,12 +22106,14 @@ class GDeleteBranchProtectionRuleInputBuilder
   }
 
   @override
-  _$GDeleteBranchProtectionRuleInput build() {
+  GDeleteBranchProtectionRuleInput build() => _build();
+
+  _$GDeleteBranchProtectionRuleInput _build() {
     final _$result = _$v ??
         new _$GDeleteBranchProtectionRuleInput._(
             branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
                 branchProtectionRuleId,
-                'GDeleteBranchProtectionRuleInput',
+                r'GDeleteBranchProtectionRuleInput',
                 'branchProtectionRuleId'),
             clientMutationId: clientMutationId);
     replace(_$result);
@@ -22051,11 +22129,11 @@ class _$GDeleteDeploymentInput extends GDeleteDeploymentInput {
 
   factory _$GDeleteDeploymentInput(
           [void Function(GDeleteDeploymentInputBuilder)? updates]) =>
-      (new GDeleteDeploymentInputBuilder()..update(updates)).build();
+      (new GDeleteDeploymentInputBuilder()..update(updates))._build();
 
   _$GDeleteDeploymentInput._({this.clientMutationId, required this.id})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'GDeleteDeploymentInput', 'id');
+    BuiltValueNullFieldError.checkNotNull(id, r'GDeleteDeploymentInput', 'id');
   }
 
   @override
@@ -22082,7 +22160,7 @@ class _$GDeleteDeploymentInput extends GDeleteDeploymentInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteDeploymentInput')
+    return (newBuiltValueToStringHelper(r'GDeleteDeploymentInput')
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
         .toString();
@@ -22126,12 +22204,14 @@ class GDeleteDeploymentInputBuilder
   }
 
   @override
-  _$GDeleteDeploymentInput build() {
+  GDeleteDeploymentInput build() => _build();
+
+  _$GDeleteDeploymentInput _build() {
     final _$result = _$v ??
         new _$GDeleteDeploymentInput._(
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GDeleteDeploymentInput', 'id'));
+                id, r'GDeleteDeploymentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -22145,11 +22225,12 @@ class _$GDeleteIssueCommentInput extends GDeleteIssueCommentInput {
 
   factory _$GDeleteIssueCommentInput(
           [void Function(GDeleteIssueCommentInputBuilder)? updates]) =>
-      (new GDeleteIssueCommentInputBuilder()..update(updates)).build();
+      (new GDeleteIssueCommentInputBuilder()..update(updates))._build();
 
   _$GDeleteIssueCommentInput._({this.clientMutationId, required this.id})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'GDeleteIssueCommentInput', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDeleteIssueCommentInput', 'id');
   }
 
   @override
@@ -22176,7 +22257,7 @@ class _$GDeleteIssueCommentInput extends GDeleteIssueCommentInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteIssueCommentInput')
+    return (newBuiltValueToStringHelper(r'GDeleteIssueCommentInput')
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
         .toString();
@@ -22221,12 +22302,14 @@ class GDeleteIssueCommentInputBuilder
   }
 
   @override
-  _$GDeleteIssueCommentInput build() {
+  GDeleteIssueCommentInput build() => _build();
+
+  _$GDeleteIssueCommentInput _build() {
     final _$result = _$v ??
         new _$GDeleteIssueCommentInput._(
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GDeleteIssueCommentInput', 'id'));
+                id, r'GDeleteIssueCommentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -22240,12 +22323,12 @@ class _$GDeleteIssueInput extends GDeleteIssueInput {
 
   factory _$GDeleteIssueInput(
           [void Function(GDeleteIssueInputBuilder)? updates]) =>
-      (new GDeleteIssueInputBuilder()..update(updates)).build();
+      (new GDeleteIssueInputBuilder()..update(updates))._build();
 
   _$GDeleteIssueInput._({this.clientMutationId, required this.issueId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        issueId, 'GDeleteIssueInput', 'issueId');
+        issueId, r'GDeleteIssueInput', 'issueId');
   }
 
   @override
@@ -22271,7 +22354,7 @@ class _$GDeleteIssueInput extends GDeleteIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteIssueInput')
+    return (newBuiltValueToStringHelper(r'GDeleteIssueInput')
           ..add('clientMutationId', clientMutationId)
           ..add('issueId', issueId))
         .toString();
@@ -22315,12 +22398,14 @@ class GDeleteIssueInputBuilder
   }
 
   @override
-  _$GDeleteIssueInput build() {
+  GDeleteIssueInput build() => _build();
+
+  _$GDeleteIssueInput _build() {
     final _$result = _$v ??
         new _$GDeleteIssueInput._(
             clientMutationId: clientMutationId,
             issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, 'GDeleteIssueInput', 'issueId'));
+                issueId, r'GDeleteIssueInput', 'issueId'));
     replace(_$result);
     return _$result;
   }
@@ -22334,12 +22419,12 @@ class _$GDeleteProjectCardInput extends GDeleteProjectCardInput {
 
   factory _$GDeleteProjectCardInput(
           [void Function(GDeleteProjectCardInputBuilder)? updates]) =>
-      (new GDeleteProjectCardInputBuilder()..update(updates)).build();
+      (new GDeleteProjectCardInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectCardInput._({required this.cardId, this.clientMutationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        cardId, 'GDeleteProjectCardInput', 'cardId');
+        cardId, r'GDeleteProjectCardInput', 'cardId');
   }
 
   @override
@@ -22366,7 +22451,7 @@ class _$GDeleteProjectCardInput extends GDeleteProjectCardInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteProjectCardInput')
+    return (newBuiltValueToStringHelper(r'GDeleteProjectCardInput')
           ..add('cardId', cardId)
           ..add('clientMutationId', clientMutationId))
         .toString();
@@ -22411,11 +22496,13 @@ class GDeleteProjectCardInputBuilder
   }
 
   @override
-  _$GDeleteProjectCardInput build() {
+  GDeleteProjectCardInput build() => _build();
+
+  _$GDeleteProjectCardInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectCardInput._(
             cardId: BuiltValueNullFieldError.checkNotNull(
-                cardId, 'GDeleteProjectCardInput', 'cardId'),
+                cardId, r'GDeleteProjectCardInput', 'cardId'),
             clientMutationId: clientMutationId);
     replace(_$result);
     return _$result;
@@ -22430,12 +22517,12 @@ class _$GDeleteProjectColumnInput extends GDeleteProjectColumnInput {
 
   factory _$GDeleteProjectColumnInput(
           [void Function(GDeleteProjectColumnInputBuilder)? updates]) =>
-      (new GDeleteProjectColumnInputBuilder()..update(updates)).build();
+      (new GDeleteProjectColumnInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectColumnInput._({this.clientMutationId, required this.columnId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        columnId, 'GDeleteProjectColumnInput', 'columnId');
+        columnId, r'GDeleteProjectColumnInput', 'columnId');
   }
 
   @override
@@ -22462,7 +22549,7 @@ class _$GDeleteProjectColumnInput extends GDeleteProjectColumnInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteProjectColumnInput')
+    return (newBuiltValueToStringHelper(r'GDeleteProjectColumnInput')
           ..add('clientMutationId', clientMutationId)
           ..add('columnId', columnId))
         .toString();
@@ -22507,12 +22594,14 @@ class GDeleteProjectColumnInputBuilder
   }
 
   @override
-  _$GDeleteProjectColumnInput build() {
+  GDeleteProjectColumnInput build() => _build();
+
+  _$GDeleteProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectColumnInput._(
             clientMutationId: clientMutationId,
             columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, 'GDeleteProjectColumnInput', 'columnId'));
+                columnId, r'GDeleteProjectColumnInput', 'columnId'));
     replace(_$result);
     return _$result;
   }
@@ -22526,12 +22615,12 @@ class _$GDeleteProjectInput extends GDeleteProjectInput {
 
   factory _$GDeleteProjectInput(
           [void Function(GDeleteProjectInputBuilder)? updates]) =>
-      (new GDeleteProjectInputBuilder()..update(updates)).build();
+      (new GDeleteProjectInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectInput._({this.clientMutationId, required this.projectId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectId, 'GDeleteProjectInput', 'projectId');
+        projectId, r'GDeleteProjectInput', 'projectId');
   }
 
   @override
@@ -22558,7 +22647,7 @@ class _$GDeleteProjectInput extends GDeleteProjectInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteProjectInput')
+    return (newBuiltValueToStringHelper(r'GDeleteProjectInput')
           ..add('clientMutationId', clientMutationId)
           ..add('projectId', projectId))
         .toString();
@@ -22602,12 +22691,14 @@ class GDeleteProjectInputBuilder
   }
 
   @override
-  _$GDeleteProjectInput build() {
+  GDeleteProjectInput build() => _build();
+
+  _$GDeleteProjectInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectInput._(
             clientMutationId: clientMutationId,
             projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, 'GDeleteProjectInput', 'projectId'));
+                projectId, r'GDeleteProjectInput', 'projectId'));
     replace(_$result);
     return _$result;
   }
@@ -22624,13 +22715,13 @@ class _$GDeletePullRequestReviewCommentInput
           [void Function(GDeletePullRequestReviewCommentInputBuilder)?
               updates]) =>
       (new GDeletePullRequestReviewCommentInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GDeletePullRequestReviewCommentInput._(
       {this.clientMutationId, required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GDeletePullRequestReviewCommentInput', 'id');
+        id, r'GDeletePullRequestReviewCommentInput', 'id');
   }
 
   @override
@@ -22657,7 +22748,7 @@ class _$GDeletePullRequestReviewCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeletePullRequestReviewCommentInput')
+    return (newBuiltValueToStringHelper(r'GDeletePullRequestReviewCommentInput')
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
         .toString();
@@ -22704,12 +22795,14 @@ class GDeletePullRequestReviewCommentInputBuilder
   }
 
   @override
-  _$GDeletePullRequestReviewCommentInput build() {
+  GDeletePullRequestReviewCommentInput build() => _build();
+
+  _$GDeletePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
         new _$GDeletePullRequestReviewCommentInput._(
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GDeletePullRequestReviewCommentInput', 'id'));
+                id, r'GDeletePullRequestReviewCommentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -22723,13 +22816,13 @@ class _$GDeletePullRequestReviewInput extends GDeletePullRequestReviewInput {
 
   factory _$GDeletePullRequestReviewInput(
           [void Function(GDeletePullRequestReviewInputBuilder)? updates]) =>
-      (new GDeletePullRequestReviewInputBuilder()..update(updates)).build();
+      (new GDeletePullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GDeletePullRequestReviewInput._(
       {this.clientMutationId, required this.pullRequestReviewId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        'GDeletePullRequestReviewInput', 'pullRequestReviewId');
+        r'GDeletePullRequestReviewInput', 'pullRequestReviewId');
   }
 
   @override
@@ -22757,7 +22850,7 @@ class _$GDeletePullRequestReviewInput extends GDeletePullRequestReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeletePullRequestReviewInput')
+    return (newBuiltValueToStringHelper(r'GDeletePullRequestReviewInput')
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestReviewId', pullRequestReviewId))
         .toString();
@@ -22804,13 +22897,15 @@ class GDeletePullRequestReviewInputBuilder
   }
 
   @override
-  _$GDeletePullRequestReviewInput build() {
+  GDeletePullRequestReviewInput build() => _build();
+
+  _$GDeletePullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GDeletePullRequestReviewInput._(
             clientMutationId: clientMutationId,
             pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
                 pullRequestReviewId,
-                'GDeletePullRequestReviewInput',
+                r'GDeletePullRequestReviewInput',
                 'pullRequestReviewId'));
     replace(_$result);
     return _$result;
@@ -22824,11 +22919,11 @@ class _$GDeleteRefInput extends GDeleteRefInput {
   final String refId;
 
   factory _$GDeleteRefInput([void Function(GDeleteRefInputBuilder)? updates]) =>
-      (new GDeleteRefInputBuilder()..update(updates)).build();
+      (new GDeleteRefInputBuilder()..update(updates))._build();
 
   _$GDeleteRefInput._({this.clientMutationId, required this.refId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(refId, 'GDeleteRefInput', 'refId');
+    BuiltValueNullFieldError.checkNotNull(refId, r'GDeleteRefInput', 'refId');
   }
 
   @override
@@ -22854,7 +22949,7 @@ class _$GDeleteRefInput extends GDeleteRefInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteRefInput')
+    return (newBuiltValueToStringHelper(r'GDeleteRefInput')
           ..add('clientMutationId', clientMutationId)
           ..add('refId', refId))
         .toString();
@@ -22898,12 +22993,14 @@ class GDeleteRefInputBuilder
   }
 
   @override
-  _$GDeleteRefInput build() {
+  GDeleteRefInput build() => _build();
+
+  _$GDeleteRefInput _build() {
     final _$result = _$v ??
         new _$GDeleteRefInput._(
             clientMutationId: clientMutationId,
             refId: BuiltValueNullFieldError.checkNotNull(
-                refId, 'GDeleteRefInput', 'refId'));
+                refId, r'GDeleteRefInput', 'refId'));
     replace(_$result);
     return _$result;
   }
@@ -22918,13 +23015,14 @@ class _$GDeleteTeamDiscussionCommentInput
 
   factory _$GDeleteTeamDiscussionCommentInput(
           [void Function(GDeleteTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GDeleteTeamDiscussionCommentInputBuilder()..update(updates)).build();
+      (new GDeleteTeamDiscussionCommentInputBuilder()..update(updates))
+          ._build();
 
   _$GDeleteTeamDiscussionCommentInput._(
       {this.clientMutationId, required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GDeleteTeamDiscussionCommentInput', 'id');
+        id, r'GDeleteTeamDiscussionCommentInput', 'id');
   }
 
   @override
@@ -22951,7 +23049,7 @@ class _$GDeleteTeamDiscussionCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteTeamDiscussionCommentInput')
+    return (newBuiltValueToStringHelper(r'GDeleteTeamDiscussionCommentInput')
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
         .toString();
@@ -22998,12 +23096,14 @@ class GDeleteTeamDiscussionCommentInputBuilder
   }
 
   @override
-  _$GDeleteTeamDiscussionCommentInput build() {
+  GDeleteTeamDiscussionCommentInput build() => _build();
+
+  _$GDeleteTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GDeleteTeamDiscussionCommentInput._(
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GDeleteTeamDiscussionCommentInput', 'id'));
+                id, r'GDeleteTeamDiscussionCommentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -23017,12 +23117,12 @@ class _$GDeleteTeamDiscussionInput extends GDeleteTeamDiscussionInput {
 
   factory _$GDeleteTeamDiscussionInput(
           [void Function(GDeleteTeamDiscussionInputBuilder)? updates]) =>
-      (new GDeleteTeamDiscussionInputBuilder()..update(updates)).build();
+      (new GDeleteTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GDeleteTeamDiscussionInput._({this.clientMutationId, required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GDeleteTeamDiscussionInput', 'id');
+        id, r'GDeleteTeamDiscussionInput', 'id');
   }
 
   @override
@@ -23049,7 +23149,7 @@ class _$GDeleteTeamDiscussionInput extends GDeleteTeamDiscussionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeleteTeamDiscussionInput')
+    return (newBuiltValueToStringHelper(r'GDeleteTeamDiscussionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
         .toString();
@@ -23094,12 +23194,14 @@ class GDeleteTeamDiscussionInputBuilder
   }
 
   @override
-  _$GDeleteTeamDiscussionInput build() {
+  GDeleteTeamDiscussionInput build() => _build();
+
+  _$GDeleteTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GDeleteTeamDiscussionInput._(
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GDeleteTeamDiscussionInput', 'id'));
+                id, r'GDeleteTeamDiscussionInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -23113,13 +23215,13 @@ class _$GDeploymentOrder extends GDeploymentOrder {
 
   factory _$GDeploymentOrder(
           [void Function(GDeploymentOrderBuilder)? updates]) =>
-      (new GDeploymentOrderBuilder()..update(updates)).build();
+      (new GDeploymentOrderBuilder()..update(updates))._build();
 
   _$GDeploymentOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GDeploymentOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GDeploymentOrder', 'field');
+        direction, r'GDeploymentOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GDeploymentOrder', 'field');
   }
 
   @override
@@ -23145,7 +23247,7 @@ class _$GDeploymentOrder extends GDeploymentOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDeploymentOrder')
+    return (newBuiltValueToStringHelper(r'GDeploymentOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23188,13 +23290,15 @@ class GDeploymentOrderBuilder
   }
 
   @override
-  _$GDeploymentOrder build() {
+  GDeploymentOrder build() => _build();
+
+  _$GDeploymentOrder _build() {
     final _$result = _$v ??
         new _$GDeploymentOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GDeploymentOrder', 'direction'),
+                direction, r'GDeploymentOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GDeploymentOrder', 'field'));
+                field, r'GDeploymentOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23210,7 +23314,7 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
 
   factory _$GDismissPullRequestReviewInput(
           [void Function(GDismissPullRequestReviewInputBuilder)? updates]) =>
-      (new GDismissPullRequestReviewInputBuilder()..update(updates)).build();
+      (new GDismissPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GDismissPullRequestReviewInput._(
       {this.clientMutationId,
@@ -23218,9 +23322,9 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
       required this.pullRequestReviewId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        message, 'GDismissPullRequestReviewInput', 'message');
+        message, r'GDismissPullRequestReviewInput', 'message');
     BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        'GDismissPullRequestReviewInput', 'pullRequestReviewId');
+        r'GDismissPullRequestReviewInput', 'pullRequestReviewId');
   }
 
   @override
@@ -23249,7 +23353,7 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDismissPullRequestReviewInput')
+    return (newBuiltValueToStringHelper(r'GDismissPullRequestReviewInput')
           ..add('clientMutationId', clientMutationId)
           ..add('message', message)
           ..add('pullRequestReviewId', pullRequestReviewId))
@@ -23302,15 +23406,17 @@ class GDismissPullRequestReviewInputBuilder
   }
 
   @override
-  _$GDismissPullRequestReviewInput build() {
+  GDismissPullRequestReviewInput build() => _build();
+
+  _$GDismissPullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GDismissPullRequestReviewInput._(
             clientMutationId: clientMutationId,
             message: BuiltValueNullFieldError.checkNotNull(
-                message, 'GDismissPullRequestReviewInput', 'message'),
+                message, r'GDismissPullRequestReviewInput', 'message'),
             pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
                 pullRequestReviewId,
-                'GDismissPullRequestReviewInput',
+                r'GDismissPullRequestReviewInput',
                 'pullRequestReviewId'));
     replace(_$result);
     return _$result;
@@ -23327,17 +23433,17 @@ class _$GDraftPullRequestReviewComment extends GDraftPullRequestReviewComment {
 
   factory _$GDraftPullRequestReviewComment(
           [void Function(GDraftPullRequestReviewCommentBuilder)? updates]) =>
-      (new GDraftPullRequestReviewCommentBuilder()..update(updates)).build();
+      (new GDraftPullRequestReviewCommentBuilder()..update(updates))._build();
 
   _$GDraftPullRequestReviewComment._(
       {required this.body, required this.path, required this.position})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GDraftPullRequestReviewComment', 'body');
+        body, r'GDraftPullRequestReviewComment', 'body');
     BuiltValueNullFieldError.checkNotNull(
-        path, 'GDraftPullRequestReviewComment', 'path');
+        path, r'GDraftPullRequestReviewComment', 'path');
     BuiltValueNullFieldError.checkNotNull(
-        position, 'GDraftPullRequestReviewComment', 'position');
+        position, r'GDraftPullRequestReviewComment', 'position');
   }
 
   @override
@@ -23366,7 +23472,7 @@ class _$GDraftPullRequestReviewComment extends GDraftPullRequestReviewComment {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GDraftPullRequestReviewComment')
+    return (newBuiltValueToStringHelper(r'GDraftPullRequestReviewComment')
           ..add('body', body)
           ..add('path', path)
           ..add('position', position))
@@ -23417,15 +23523,17 @@ class GDraftPullRequestReviewCommentBuilder
   }
 
   @override
-  _$GDraftPullRequestReviewComment build() {
+  GDraftPullRequestReviewComment build() => _build();
+
+  _$GDraftPullRequestReviewComment _build() {
     final _$result = _$v ??
         new _$GDraftPullRequestReviewComment._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GDraftPullRequestReviewComment', 'body'),
+                body, r'GDraftPullRequestReviewComment', 'body'),
             path: BuiltValueNullFieldError.checkNotNull(
-                path, 'GDraftPullRequestReviewComment', 'path'),
+                path, r'GDraftPullRequestReviewComment', 'path'),
             position: BuiltValueNullFieldError.checkNotNull(
-                position, 'GDraftPullRequestReviewComment', 'position'));
+                position, r'GDraftPullRequestReviewComment', 'position'));
     replace(_$result);
     return _$result;
   }
@@ -23442,15 +23550,15 @@ class _$GEnterpriseAdministratorInvitationOrder
           [void Function(GEnterpriseAdministratorInvitationOrderBuilder)?
               updates]) =>
       (new GEnterpriseAdministratorInvitationOrderBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GEnterpriseAdministratorInvitationOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseAdministratorInvitationOrder', 'direction');
+        direction, r'GEnterpriseAdministratorInvitationOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseAdministratorInvitationOrder', 'field');
+        field, r'GEnterpriseAdministratorInvitationOrder', 'field');
   }
 
   @override
@@ -23479,7 +23587,7 @@ class _$GEnterpriseAdministratorInvitationOrder
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GEnterpriseAdministratorInvitationOrder')
+            r'GEnterpriseAdministratorInvitationOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23526,13 +23634,15 @@ class GEnterpriseAdministratorInvitationOrderBuilder
   }
 
   @override
-  _$GEnterpriseAdministratorInvitationOrder build() {
+  GEnterpriseAdministratorInvitationOrder build() => _build();
+
+  _$GEnterpriseAdministratorInvitationOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseAdministratorInvitationOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(direction,
-                'GEnterpriseAdministratorInvitationOrder', 'direction'),
+                r'GEnterpriseAdministratorInvitationOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseAdministratorInvitationOrder', 'field'));
+                field, r'GEnterpriseAdministratorInvitationOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23546,14 +23656,14 @@ class _$GEnterpriseMemberOrder extends GEnterpriseMemberOrder {
 
   factory _$GEnterpriseMemberOrder(
           [void Function(GEnterpriseMemberOrderBuilder)? updates]) =>
-      (new GEnterpriseMemberOrderBuilder()..update(updates)).build();
+      (new GEnterpriseMemberOrderBuilder()..update(updates))._build();
 
   _$GEnterpriseMemberOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseMemberOrder', 'direction');
+        direction, r'GEnterpriseMemberOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseMemberOrder', 'field');
+        field, r'GEnterpriseMemberOrder', 'field');
   }
 
   @override
@@ -23580,7 +23690,7 @@ class _$GEnterpriseMemberOrder extends GEnterpriseMemberOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GEnterpriseMemberOrder')
+    return (newBuiltValueToStringHelper(r'GEnterpriseMemberOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23623,13 +23733,15 @@ class GEnterpriseMemberOrderBuilder
   }
 
   @override
-  _$GEnterpriseMemberOrder build() {
+  GEnterpriseMemberOrder build() => _build();
+
+  _$GEnterpriseMemberOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseMemberOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GEnterpriseMemberOrder', 'direction'),
+                direction, r'GEnterpriseMemberOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseMemberOrder', 'field'));
+                field, r'GEnterpriseMemberOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23646,15 +23758,15 @@ class _$GEnterpriseServerInstallationOrder
           [void Function(GEnterpriseServerInstallationOrderBuilder)?
               updates]) =>
       (new GEnterpriseServerInstallationOrderBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GEnterpriseServerInstallationOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseServerInstallationOrder', 'direction');
+        direction, r'GEnterpriseServerInstallationOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseServerInstallationOrder', 'field');
+        field, r'GEnterpriseServerInstallationOrder', 'field');
   }
 
   @override
@@ -23681,7 +23793,7 @@ class _$GEnterpriseServerInstallationOrder
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GEnterpriseServerInstallationOrder')
+    return (newBuiltValueToStringHelper(r'GEnterpriseServerInstallationOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23728,13 +23840,15 @@ class GEnterpriseServerInstallationOrderBuilder
   }
 
   @override
-  _$GEnterpriseServerInstallationOrder build() {
+  GEnterpriseServerInstallationOrder build() => _build();
+
+  _$GEnterpriseServerInstallationOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerInstallationOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GEnterpriseServerInstallationOrder', 'direction'),
+                direction, r'GEnterpriseServerInstallationOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseServerInstallationOrder', 'field'));
+                field, r'GEnterpriseServerInstallationOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23751,15 +23865,15 @@ class _$GEnterpriseServerUserAccountEmailOrder
           [void Function(GEnterpriseServerUserAccountEmailOrderBuilder)?
               updates]) =>
       (new GEnterpriseServerUserAccountEmailOrderBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GEnterpriseServerUserAccountEmailOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseServerUserAccountEmailOrder', 'direction');
+        direction, r'GEnterpriseServerUserAccountEmailOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseServerUserAccountEmailOrder', 'field');
+        field, r'GEnterpriseServerUserAccountEmailOrder', 'field');
   }
 
   @override
@@ -23788,7 +23902,7 @@ class _$GEnterpriseServerUserAccountEmailOrder
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GEnterpriseServerUserAccountEmailOrder')
+            r'GEnterpriseServerUserAccountEmailOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23835,13 +23949,15 @@ class GEnterpriseServerUserAccountEmailOrderBuilder
   }
 
   @override
-  _$GEnterpriseServerUserAccountEmailOrder build() {
+  GEnterpriseServerUserAccountEmailOrder build() => _build();
+
+  _$GEnterpriseServerUserAccountEmailOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountEmailOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(direction,
-                'GEnterpriseServerUserAccountEmailOrder', 'direction'),
+                r'GEnterpriseServerUserAccountEmailOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseServerUserAccountEmailOrder', 'field'));
+                field, r'GEnterpriseServerUserAccountEmailOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23856,15 +23972,16 @@ class _$GEnterpriseServerUserAccountOrder
 
   factory _$GEnterpriseServerUserAccountOrder(
           [void Function(GEnterpriseServerUserAccountOrderBuilder)? updates]) =>
-      (new GEnterpriseServerUserAccountOrderBuilder()..update(updates)).build();
+      (new GEnterpriseServerUserAccountOrderBuilder()..update(updates))
+          ._build();
 
   _$GEnterpriseServerUserAccountOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseServerUserAccountOrder', 'direction');
+        direction, r'GEnterpriseServerUserAccountOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseServerUserAccountOrder', 'field');
+        field, r'GEnterpriseServerUserAccountOrder', 'field');
   }
 
   @override
@@ -23891,7 +24008,7 @@ class _$GEnterpriseServerUserAccountOrder
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GEnterpriseServerUserAccountOrder')
+    return (newBuiltValueToStringHelper(r'GEnterpriseServerUserAccountOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -23938,13 +24055,15 @@ class GEnterpriseServerUserAccountOrderBuilder
   }
 
   @override
-  _$GEnterpriseServerUserAccountOrder build() {
+  GEnterpriseServerUserAccountOrder build() => _build();
+
+  _$GEnterpriseServerUserAccountOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GEnterpriseServerUserAccountOrder', 'direction'),
+                direction, r'GEnterpriseServerUserAccountOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseServerUserAccountOrder', 'field'));
+                field, r'GEnterpriseServerUserAccountOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -23961,15 +24080,15 @@ class _$GEnterpriseServerUserAccountsUploadOrder
           [void Function(GEnterpriseServerUserAccountsUploadOrderBuilder)?
               updates]) =>
       (new GEnterpriseServerUserAccountsUploadOrderBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GEnterpriseServerUserAccountsUploadOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GEnterpriseServerUserAccountsUploadOrder', 'direction');
+        direction, r'GEnterpriseServerUserAccountsUploadOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GEnterpriseServerUserAccountsUploadOrder', 'field');
+        field, r'GEnterpriseServerUserAccountsUploadOrder', 'field');
   }
 
   @override
@@ -23998,7 +24117,7 @@ class _$GEnterpriseServerUserAccountsUploadOrder
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GEnterpriseServerUserAccountsUploadOrder')
+            r'GEnterpriseServerUserAccountsUploadOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -24045,13 +24164,15 @@ class GEnterpriseServerUserAccountsUploadOrderBuilder
   }
 
   @override
-  _$GEnterpriseServerUserAccountsUploadOrder build() {
+  GEnterpriseServerUserAccountsUploadOrder build() => _build();
+
+  _$GEnterpriseServerUserAccountsUploadOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountsUploadOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(direction,
-                'GEnterpriseServerUserAccountsUploadOrder', 'direction'),
+                r'GEnterpriseServerUserAccountsUploadOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GEnterpriseServerUserAccountsUploadOrder', 'field'));
+                field, r'GEnterpriseServerUserAccountsUploadOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -24065,11 +24186,12 @@ class _$GFollowUserInput extends GFollowUserInput {
 
   factory _$GFollowUserInput(
           [void Function(GFollowUserInputBuilder)? updates]) =>
-      (new GFollowUserInputBuilder()..update(updates)).build();
+      (new GFollowUserInputBuilder()..update(updates))._build();
 
   _$GFollowUserInput._({this.clientMutationId, required this.userId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(userId, 'GFollowUserInput', 'userId');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GFollowUserInput', 'userId');
   }
 
   @override
@@ -24095,7 +24217,7 @@ class _$GFollowUserInput extends GFollowUserInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GFollowUserInput')
+    return (newBuiltValueToStringHelper(r'GFollowUserInput')
           ..add('clientMutationId', clientMutationId)
           ..add('userId', userId))
         .toString();
@@ -24139,12 +24261,14 @@ class GFollowUserInputBuilder
   }
 
   @override
-  _$GFollowUserInput build() {
+  GFollowUserInput build() => _build();
+
+  _$GFollowUserInput _build() {
     final _$result = _$v ??
         new _$GFollowUserInput._(
             clientMutationId: clientMutationId,
             userId: BuiltValueNullFieldError.checkNotNull(
-                userId, 'GFollowUserInput', 'userId'));
+                userId, r'GFollowUserInput', 'userId'));
     replace(_$result);
     return _$result;
   }
@@ -24157,11 +24281,12 @@ class _$GGistOrder extends GGistOrder {
   final GGistOrderField field;
 
   factory _$GGistOrder([void Function(GGistOrderBuilder)? updates]) =>
-      (new GGistOrderBuilder()..update(updates)).build();
+      (new GGistOrderBuilder()..update(updates))._build();
 
   _$GGistOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(direction, 'GGistOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GGistOrder', 'field');
+    BuiltValueNullFieldError.checkNotNull(
+        direction, r'GGistOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GGistOrder', 'field');
   }
 
   @override
@@ -24186,7 +24311,7 @@ class _$GGistOrder extends GGistOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GGistOrder')
+    return (newBuiltValueToStringHelper(r'GGistOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -24228,13 +24353,15 @@ class GGistOrderBuilder implements Builder<GGistOrder, GGistOrderBuilder> {
   }
 
   @override
-  _$GGistOrder build() {
+  GGistOrder build() => _build();
+
+  _$GGistOrder _build() {
     final _$result = _$v ??
         new _$GGistOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GGistOrder', 'direction'),
+                direction, r'GGistOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GGistOrder', 'field'));
+                field, r'GGistOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -24245,10 +24372,10 @@ class _$GGitObjectID extends GGitObjectID {
   final String value;
 
   factory _$GGitObjectID([void Function(GGitObjectIDBuilder)? updates]) =>
-      (new GGitObjectIDBuilder()..update(updates)).build();
+      (new GGitObjectIDBuilder()..update(updates))._build();
 
   _$GGitObjectID._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GGitObjectID', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GGitObjectID', 'value');
   }
 
   @override
@@ -24271,7 +24398,7 @@ class _$GGitObjectID extends GGitObjectID {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GGitObjectID')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GGitObjectID')..add('value', value))
         .toString();
   }
 }
@@ -24307,11 +24434,13 @@ class GGitObjectIDBuilder
   }
 
   @override
-  _$GGitObjectID build() {
+  GGitObjectID build() => _build();
+
+  _$GGitObjectID _build() {
     final _$result = _$v ??
         new _$GGitObjectID._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GGitObjectID', 'value'));
+                value, r'GGitObjectID', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -24322,10 +24451,10 @@ class _$GGitSSHRemote extends GGitSSHRemote {
   final String value;
 
   factory _$GGitSSHRemote([void Function(GGitSSHRemoteBuilder)? updates]) =>
-      (new GGitSSHRemoteBuilder()..update(updates)).build();
+      (new GGitSSHRemoteBuilder()..update(updates))._build();
 
   _$GGitSSHRemote._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GGitSSHRemote', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GGitSSHRemote', 'value');
   }
 
   @override
@@ -24348,7 +24477,7 @@ class _$GGitSSHRemote extends GGitSSHRemote {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GGitSSHRemote')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GGitSSHRemote')..add('value', value))
         .toString();
   }
 }
@@ -24384,11 +24513,13 @@ class GGitSSHRemoteBuilder
   }
 
   @override
-  _$GGitSSHRemote build() {
+  GGitSSHRemote build() => _build();
+
+  _$GGitSSHRemote _build() {
     final _$result = _$v ??
         new _$GGitSSHRemote._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GGitSSHRemote', 'value'));
+                value, r'GGitSSHRemote', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -24399,10 +24530,10 @@ class _$GGitTimestamp extends GGitTimestamp {
   final String value;
 
   factory _$GGitTimestamp([void Function(GGitTimestampBuilder)? updates]) =>
-      (new GGitTimestampBuilder()..update(updates)).build();
+      (new GGitTimestampBuilder()..update(updates))._build();
 
   _$GGitTimestamp._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GGitTimestamp', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GGitTimestamp', 'value');
   }
 
   @override
@@ -24425,7 +24556,7 @@ class _$GGitTimestamp extends GGitTimestamp {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GGitTimestamp')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GGitTimestamp')..add('value', value))
         .toString();
   }
 }
@@ -24461,11 +24592,13 @@ class GGitTimestampBuilder
   }
 
   @override
-  _$GGitTimestamp build() {
+  GGitTimestamp build() => _build();
+
+  _$GGitTimestamp _build() {
     final _$result = _$v ??
         new _$GGitTimestamp._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GGitTimestamp', 'value'));
+                value, r'GGitTimestamp', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -24476,10 +24609,10 @@ class _$GHTML extends GHTML {
   final String value;
 
   factory _$GHTML([void Function(GHTMLBuilder)? updates]) =>
-      (new GHTMLBuilder()..update(updates)).build();
+      (new GHTMLBuilder()..update(updates))._build();
 
   _$GHTML._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GHTML', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GHTML', 'value');
   }
 
   @override
@@ -24502,7 +24635,7 @@ class _$GHTML extends GHTML {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GHTML')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GHTML')..add('value', value))
         .toString();
   }
 }
@@ -24537,11 +24670,13 @@ class GHTMLBuilder implements Builder<GHTML, GHTMLBuilder> {
   }
 
   @override
-  _$GHTML build() {
+  GHTML build() => _build();
+
+  _$GHTML _build() {
     final _$result = _$v ??
         new _$GHTML._(
-            value:
-                BuiltValueNullFieldError.checkNotNull(value, 'GHTML', 'value'));
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GHTML', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -24561,7 +24696,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
 
   factory _$GInviteEnterpriseAdminInput(
           [void Function(GInviteEnterpriseAdminInputBuilder)? updates]) =>
-      (new GInviteEnterpriseAdminInputBuilder()..update(updates)).build();
+      (new GInviteEnterpriseAdminInputBuilder()..update(updates))._build();
 
   _$GInviteEnterpriseAdminInput._(
       {this.clientMutationId,
@@ -24571,7 +24706,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
       this.role})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, 'GInviteEnterpriseAdminInput', 'enterpriseId');
+        enterpriseId, r'GInviteEnterpriseAdminInput', 'enterpriseId');
   }
 
   @override
@@ -24606,7 +24741,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GInviteEnterpriseAdminInput')
+    return (newBuiltValueToStringHelper(r'GInviteEnterpriseAdminInput')
           ..add('clientMutationId', clientMutationId)
           ..add('email', email)
           ..add('enterpriseId', enterpriseId)
@@ -24670,13 +24805,15 @@ class GInviteEnterpriseAdminInputBuilder
   }
 
   @override
-  _$GInviteEnterpriseAdminInput build() {
+  GInviteEnterpriseAdminInput build() => _build();
+
+  _$GInviteEnterpriseAdminInput _build() {
     final _$result = _$v ??
         new _$GInviteEnterpriseAdminInput._(
             clientMutationId: clientMutationId,
             email: email,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, 'GInviteEnterpriseAdminInput', 'enterpriseId'),
+                enterpriseId, r'GInviteEnterpriseAdminInput', 'enterpriseId'),
             invitee: invitee,
             role: role);
     replace(_$result);
@@ -24703,7 +24840,7 @@ class _$GIssueFilters extends GIssueFilters {
   final bool? viewerSubscribed;
 
   factory _$GIssueFilters([void Function(GIssueFiltersBuilder)? updates]) =>
-      (new GIssueFiltersBuilder()..update(updates)).build();
+      (new GIssueFiltersBuilder()..update(updates))._build();
 
   _$GIssueFilters._(
       {this.assignee,
@@ -24755,7 +24892,7 @@ class _$GIssueFilters extends GIssueFilters {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GIssueFilters')
+    return (newBuiltValueToStringHelper(r'GIssueFilters')
           ..add('assignee', assignee)
           ..add('createdBy', createdBy)
           ..add('labels', labels)
@@ -24837,7 +24974,9 @@ class GIssueFiltersBuilder
   }
 
   @override
-  _$GIssueFilters build() {
+  GIssueFilters build() => _build();
+
+  _$GIssueFilters _build() {
     _$GIssueFilters _$result;
     try {
       _$result = _$v ??
@@ -24862,7 +25001,7 @@ class GIssueFiltersBuilder
         _states?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GIssueFilters', _$failedField, e.toString());
+            r'GIssueFilters', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -24878,12 +25017,12 @@ class _$GIssueOrder extends GIssueOrder {
   final GIssueOrderField field;
 
   factory _$GIssueOrder([void Function(GIssueOrderBuilder)? updates]) =>
-      (new GIssueOrderBuilder()..update(updates)).build();
+      (new GIssueOrderBuilder()..update(updates))._build();
 
   _$GIssueOrder._({required this.direction, required this.field}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GIssueOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GIssueOrder', 'field');
+        direction, r'GIssueOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GIssueOrder', 'field');
   }
 
   @override
@@ -24908,7 +25047,7 @@ class _$GIssueOrder extends GIssueOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GIssueOrder')
+    return (newBuiltValueToStringHelper(r'GIssueOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -24950,13 +25089,15 @@ class GIssueOrderBuilder implements Builder<GIssueOrder, GIssueOrderBuilder> {
   }
 
   @override
-  _$GIssueOrder build() {
+  GIssueOrder build() => _build();
+
+  _$GIssueOrder _build() {
     final _$result = _$v ??
         new _$GIssueOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GIssueOrder', 'direction'),
+                direction, r'GIssueOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GIssueOrder', 'field'));
+                field, r'GIssueOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -24969,12 +25110,12 @@ class _$GLabelOrder extends GLabelOrder {
   final GLabelOrderField field;
 
   factory _$GLabelOrder([void Function(GLabelOrderBuilder)? updates]) =>
-      (new GLabelOrderBuilder()..update(updates)).build();
+      (new GLabelOrderBuilder()..update(updates))._build();
 
   _$GLabelOrder._({required this.direction, required this.field}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GLabelOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GLabelOrder', 'field');
+        direction, r'GLabelOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GLabelOrder', 'field');
   }
 
   @override
@@ -24999,7 +25140,7 @@ class _$GLabelOrder extends GLabelOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GLabelOrder')
+    return (newBuiltValueToStringHelper(r'GLabelOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -25041,13 +25182,15 @@ class GLabelOrderBuilder implements Builder<GLabelOrder, GLabelOrderBuilder> {
   }
 
   @override
-  _$GLabelOrder build() {
+  GLabelOrder build() => _build();
+
+  _$GLabelOrder _build() {
     final _$result = _$v ??
         new _$GLabelOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GLabelOrder', 'direction'),
+                direction, r'GLabelOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GLabelOrder', 'field'));
+                field, r'GLabelOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -25060,13 +25203,13 @@ class _$GLanguageOrder extends GLanguageOrder {
   final GLanguageOrderField field;
 
   factory _$GLanguageOrder([void Function(GLanguageOrderBuilder)? updates]) =>
-      (new GLanguageOrderBuilder()..update(updates)).build();
+      (new GLanguageOrderBuilder()..update(updates))._build();
 
   _$GLanguageOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GLanguageOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GLanguageOrder', 'field');
+        direction, r'GLanguageOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GLanguageOrder', 'field');
   }
 
   @override
@@ -25092,7 +25235,7 @@ class _$GLanguageOrder extends GLanguageOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GLanguageOrder')
+    return (newBuiltValueToStringHelper(r'GLanguageOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -25135,13 +25278,15 @@ class GLanguageOrderBuilder
   }
 
   @override
-  _$GLanguageOrder build() {
+  GLanguageOrder build() => _build();
+
+  _$GLanguageOrder _build() {
     final _$result = _$v ??
         new _$GLanguageOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GLanguageOrder', 'direction'),
+                direction, r'GLanguageOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GLanguageOrder', 'field'));
+                field, r'GLanguageOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -25157,7 +25302,7 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
 
   factory _$GLinkRepositoryToProjectInput(
           [void Function(GLinkRepositoryToProjectInputBuilder)? updates]) =>
-      (new GLinkRepositoryToProjectInputBuilder()..update(updates)).build();
+      (new GLinkRepositoryToProjectInputBuilder()..update(updates))._build();
 
   _$GLinkRepositoryToProjectInput._(
       {this.clientMutationId,
@@ -25165,9 +25310,9 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
       required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectId, 'GLinkRepositoryToProjectInput', 'projectId');
+        projectId, r'GLinkRepositoryToProjectInput', 'projectId');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GLinkRepositoryToProjectInput', 'repositoryId');
+        repositoryId, r'GLinkRepositoryToProjectInput', 'repositoryId');
   }
 
   @override
@@ -25196,7 +25341,7 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GLinkRepositoryToProjectInput')
+    return (newBuiltValueToStringHelper(r'GLinkRepositoryToProjectInput')
           ..add('clientMutationId', clientMutationId)
           ..add('projectId', projectId)
           ..add('repositoryId', repositoryId))
@@ -25248,14 +25393,16 @@ class GLinkRepositoryToProjectInputBuilder
   }
 
   @override
-  _$GLinkRepositoryToProjectInput build() {
+  GLinkRepositoryToProjectInput build() => _build();
+
+  _$GLinkRepositoryToProjectInput _build() {
     final _$result = _$v ??
         new _$GLinkRepositoryToProjectInput._(
             clientMutationId: clientMutationId,
             projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, 'GLinkRepositoryToProjectInput', 'projectId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GLinkRepositoryToProjectInput', 'repositoryId'));
+                projectId, r'GLinkRepositoryToProjectInput', 'projectId'),
+            repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
+                r'GLinkRepositoryToProjectInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -25271,13 +25418,13 @@ class _$GLockLockableInput extends GLockLockableInput {
 
   factory _$GLockLockableInput(
           [void Function(GLockLockableInputBuilder)? updates]) =>
-      (new GLockLockableInputBuilder()..update(updates)).build();
+      (new GLockLockableInputBuilder()..update(updates))._build();
 
   _$GLockLockableInput._(
       {this.clientMutationId, this.lockReason, required this.lockableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        lockableId, 'GLockLockableInput', 'lockableId');
+        lockableId, r'GLockLockableInput', 'lockableId');
   }
 
   @override
@@ -25306,7 +25453,7 @@ class _$GLockLockableInput extends GLockLockableInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GLockLockableInput')
+    return (newBuiltValueToStringHelper(r'GLockLockableInput')
           ..add('clientMutationId', clientMutationId)
           ..add('lockReason', lockReason)
           ..add('lockableId', lockableId))
@@ -25356,13 +25503,15 @@ class GLockLockableInputBuilder
   }
 
   @override
-  _$GLockLockableInput build() {
+  GLockLockableInput build() => _build();
+
+  _$GLockLockableInput _build() {
     final _$result = _$v ??
         new _$GLockLockableInput._(
             clientMutationId: clientMutationId,
             lockReason: lockReason,
             lockableId: BuiltValueNullFieldError.checkNotNull(
-                lockableId, 'GLockLockableInput', 'lockableId'));
+                lockableId, r'GLockLockableInput', 'lockableId'));
     replace(_$result);
     return _$result;
   }
@@ -25382,7 +25531,7 @@ class _$GMergeBranchInput extends GMergeBranchInput {
 
   factory _$GMergeBranchInput(
           [void Function(GMergeBranchInputBuilder)? updates]) =>
-      (new GMergeBranchInputBuilder()..update(updates)).build();
+      (new GMergeBranchInputBuilder()..update(updates))._build();
 
   _$GMergeBranchInput._(
       {required this.base,
@@ -25391,10 +25540,10 @@ class _$GMergeBranchInput extends GMergeBranchInput {
       required this.head,
       required this.repositoryId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(base, 'GMergeBranchInput', 'base');
-    BuiltValueNullFieldError.checkNotNull(head, 'GMergeBranchInput', 'head');
+    BuiltValueNullFieldError.checkNotNull(base, r'GMergeBranchInput', 'base');
+    BuiltValueNullFieldError.checkNotNull(head, r'GMergeBranchInput', 'head');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GMergeBranchInput', 'repositoryId');
+        repositoryId, r'GMergeBranchInput', 'repositoryId');
   }
 
   @override
@@ -25428,7 +25577,7 @@ class _$GMergeBranchInput extends GMergeBranchInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GMergeBranchInput')
+    return (newBuiltValueToStringHelper(r'GMergeBranchInput')
           ..add('base', base)
           ..add('clientMutationId', clientMutationId)
           ..add('commitMessage', commitMessage)
@@ -25491,17 +25640,19 @@ class GMergeBranchInputBuilder
   }
 
   @override
-  _$GMergeBranchInput build() {
+  GMergeBranchInput build() => _build();
+
+  _$GMergeBranchInput _build() {
     final _$result = _$v ??
         new _$GMergeBranchInput._(
             base: BuiltValueNullFieldError.checkNotNull(
-                base, 'GMergeBranchInput', 'base'),
+                base, r'GMergeBranchInput', 'base'),
             clientMutationId: clientMutationId,
             commitMessage: commitMessage,
             head: BuiltValueNullFieldError.checkNotNull(
-                head, 'GMergeBranchInput', 'head'),
+                head, r'GMergeBranchInput', 'head'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GMergeBranchInput', 'repositoryId'));
+                repositoryId, r'GMergeBranchInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -25523,7 +25674,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
 
   factory _$GMergePullRequestInput(
           [void Function(GMergePullRequestInputBuilder)? updates]) =>
-      (new GMergePullRequestInputBuilder()..update(updates)).build();
+      (new GMergePullRequestInputBuilder()..update(updates))._build();
 
   _$GMergePullRequestInput._(
       {this.clientMutationId,
@@ -25534,7 +25685,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
       required this.pullRequestId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GMergePullRequestInput', 'pullRequestId');
+        pullRequestId, r'GMergePullRequestInput', 'pullRequestId');
   }
 
   @override
@@ -25572,7 +25723,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GMergePullRequestInput')
+    return (newBuiltValueToStringHelper(r'GMergePullRequestInput')
           ..add('clientMutationId', clientMutationId)
           ..add('commitBody', commitBody)
           ..add('commitHeadline', commitHeadline)
@@ -25645,7 +25796,9 @@ class GMergePullRequestInputBuilder
   }
 
   @override
-  _$GMergePullRequestInput build() {
+  GMergePullRequestInput build() => _build();
+
+  _$GMergePullRequestInput _build() {
     _$GMergePullRequestInput _$result;
     try {
       _$result = _$v ??
@@ -25656,7 +25809,7 @@ class GMergePullRequestInputBuilder
               expectedHeadOid: _expectedHeadOid?.build(),
               mergeMethod: mergeMethod,
               pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, 'GMergePullRequestInput', 'pullRequestId'));
+                  pullRequestId, r'GMergePullRequestInput', 'pullRequestId'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -25664,7 +25817,7 @@ class GMergePullRequestInputBuilder
         _expectedHeadOid?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GMergePullRequestInput', _$failedField, e.toString());
+            r'GMergePullRequestInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -25680,13 +25833,13 @@ class _$GMilestoneOrder extends GMilestoneOrder {
   final GMilestoneOrderField field;
 
   factory _$GMilestoneOrder([void Function(GMilestoneOrderBuilder)? updates]) =>
-      (new GMilestoneOrderBuilder()..update(updates)).build();
+      (new GMilestoneOrderBuilder()..update(updates))._build();
 
   _$GMilestoneOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GMilestoneOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GMilestoneOrder', 'field');
+        direction, r'GMilestoneOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GMilestoneOrder', 'field');
   }
 
   @override
@@ -25712,7 +25865,7 @@ class _$GMilestoneOrder extends GMilestoneOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GMilestoneOrder')
+    return (newBuiltValueToStringHelper(r'GMilestoneOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -25755,13 +25908,15 @@ class GMilestoneOrderBuilder
   }
 
   @override
-  _$GMilestoneOrder build() {
+  GMilestoneOrder build() => _build();
+
+  _$GMilestoneOrder _build() {
     final _$result = _$v ??
         new _$GMilestoneOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GMilestoneOrder', 'direction'),
+                direction, r'GMilestoneOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GMilestoneOrder', 'field'));
+                field, r'GMilestoneOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -25779,7 +25934,7 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
 
   factory _$GMoveProjectCardInput(
           [void Function(GMoveProjectCardInputBuilder)? updates]) =>
-      (new GMoveProjectCardInputBuilder()..update(updates)).build();
+      (new GMoveProjectCardInputBuilder()..update(updates))._build();
 
   _$GMoveProjectCardInput._(
       {this.afterCardId,
@@ -25788,9 +25943,9 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
       required this.columnId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        cardId, 'GMoveProjectCardInput', 'cardId');
+        cardId, r'GMoveProjectCardInput', 'cardId');
     BuiltValueNullFieldError.checkNotNull(
-        columnId, 'GMoveProjectCardInput', 'columnId');
+        columnId, r'GMoveProjectCardInput', 'columnId');
   }
 
   @override
@@ -25822,7 +25977,7 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GMoveProjectCardInput')
+    return (newBuiltValueToStringHelper(r'GMoveProjectCardInput')
           ..add('afterCardId', afterCardId)
           ..add('cardId', cardId)
           ..add('clientMutationId', clientMutationId)
@@ -25878,15 +26033,17 @@ class GMoveProjectCardInputBuilder
   }
 
   @override
-  _$GMoveProjectCardInput build() {
+  GMoveProjectCardInput build() => _build();
+
+  _$GMoveProjectCardInput _build() {
     final _$result = _$v ??
         new _$GMoveProjectCardInput._(
             afterCardId: afterCardId,
             cardId: BuiltValueNullFieldError.checkNotNull(
-                cardId, 'GMoveProjectCardInput', 'cardId'),
+                cardId, r'GMoveProjectCardInput', 'cardId'),
             clientMutationId: clientMutationId,
             columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, 'GMoveProjectCardInput', 'columnId'));
+                columnId, r'GMoveProjectCardInput', 'columnId'));
     replace(_$result);
     return _$result;
   }
@@ -25902,13 +26059,13 @@ class _$GMoveProjectColumnInput extends GMoveProjectColumnInput {
 
   factory _$GMoveProjectColumnInput(
           [void Function(GMoveProjectColumnInputBuilder)? updates]) =>
-      (new GMoveProjectColumnInputBuilder()..update(updates)).build();
+      (new GMoveProjectColumnInputBuilder()..update(updates))._build();
 
   _$GMoveProjectColumnInput._(
       {this.afterColumnId, this.clientMutationId, required this.columnId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        columnId, 'GMoveProjectColumnInput', 'columnId');
+        columnId, r'GMoveProjectColumnInput', 'columnId');
   }
 
   @override
@@ -25938,7 +26095,7 @@ class _$GMoveProjectColumnInput extends GMoveProjectColumnInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GMoveProjectColumnInput')
+    return (newBuiltValueToStringHelper(r'GMoveProjectColumnInput')
           ..add('afterColumnId', afterColumnId)
           ..add('clientMutationId', clientMutationId)
           ..add('columnId', columnId))
@@ -25990,13 +26147,15 @@ class GMoveProjectColumnInputBuilder
   }
 
   @override
-  _$GMoveProjectColumnInput build() {
+  GMoveProjectColumnInput build() => _build();
+
+  _$GMoveProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GMoveProjectColumnInput._(
             afterColumnId: afterColumnId,
             clientMutationId: clientMutationId,
             columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, 'GMoveProjectColumnInput', 'columnId'));
+                columnId, r'GMoveProjectColumnInput', 'columnId'));
     replace(_$result);
     return _$result;
   }
@@ -26010,13 +26169,14 @@ class _$GOrganizationOrder extends GOrganizationOrder {
 
   factory _$GOrganizationOrder(
           [void Function(GOrganizationOrderBuilder)? updates]) =>
-      (new GOrganizationOrderBuilder()..update(updates)).build();
+      (new GOrganizationOrderBuilder()..update(updates))._build();
 
   _$GOrganizationOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GOrganizationOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GOrganizationOrder', 'field');
+        direction, r'GOrganizationOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(
+        field, r'GOrganizationOrder', 'field');
   }
 
   @override
@@ -26043,7 +26203,7 @@ class _$GOrganizationOrder extends GOrganizationOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GOrganizationOrder')
+    return (newBuiltValueToStringHelper(r'GOrganizationOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26086,13 +26246,15 @@ class GOrganizationOrderBuilder
   }
 
   @override
-  _$GOrganizationOrder build() {
+  GOrganizationOrder build() => _build();
+
+  _$GOrganizationOrder _build() {
     final _$result = _$v ??
         new _$GOrganizationOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GOrganizationOrder', 'direction'),
+                direction, r'GOrganizationOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GOrganizationOrder', 'field'));
+                field, r'GOrganizationOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26104,10 +26266,10 @@ class _$GPreciseDateTime extends GPreciseDateTime {
 
   factory _$GPreciseDateTime(
           [void Function(GPreciseDateTimeBuilder)? updates]) =>
-      (new GPreciseDateTimeBuilder()..update(updates)).build();
+      (new GPreciseDateTimeBuilder()..update(updates))._build();
 
   _$GPreciseDateTime._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GPreciseDateTime', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GPreciseDateTime', 'value');
   }
 
   @override
@@ -26131,7 +26293,7 @@ class _$GPreciseDateTime extends GPreciseDateTime {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPreciseDateTime')
+    return (newBuiltValueToStringHelper(r'GPreciseDateTime')
           ..add('value', value))
         .toString();
   }
@@ -26168,11 +26330,13 @@ class GPreciseDateTimeBuilder
   }
 
   @override
-  _$GPreciseDateTime build() {
+  GPreciseDateTime build() => _build();
+
+  _$GPreciseDateTime _build() {
     final _$result = _$v ??
         new _$GPreciseDateTime._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GPreciseDateTime', 'value'));
+                value, r'GPreciseDateTime', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -26185,13 +26349,13 @@ class _$GProjectOrder extends GProjectOrder {
   final GProjectOrderField field;
 
   factory _$GProjectOrder([void Function(GProjectOrderBuilder)? updates]) =>
-      (new GProjectOrderBuilder()..update(updates)).build();
+      (new GProjectOrderBuilder()..update(updates))._build();
 
   _$GProjectOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GProjectOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GProjectOrder', 'field');
+        direction, r'GProjectOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GProjectOrder', 'field');
   }
 
   @override
@@ -26216,7 +26380,7 @@ class _$GProjectOrder extends GProjectOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GProjectOrder')
+    return (newBuiltValueToStringHelper(r'GProjectOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26259,13 +26423,15 @@ class GProjectOrderBuilder
   }
 
   @override
-  _$GProjectOrder build() {
+  GProjectOrder build() => _build();
+
+  _$GProjectOrder _build() {
     final _$result = _$v ??
         new _$GProjectOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GProjectOrder', 'direction'),
+                direction, r'GProjectOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GProjectOrder', 'field'));
+                field, r'GProjectOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26279,13 +26445,13 @@ class _$GPullRequestOrder extends GPullRequestOrder {
 
   factory _$GPullRequestOrder(
           [void Function(GPullRequestOrderBuilder)? updates]) =>
-      (new GPullRequestOrderBuilder()..update(updates)).build();
+      (new GPullRequestOrderBuilder()..update(updates))._build();
 
   _$GPullRequestOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GPullRequestOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GPullRequestOrder', 'field');
+        direction, r'GPullRequestOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GPullRequestOrder', 'field');
   }
 
   @override
@@ -26311,7 +26477,7 @@ class _$GPullRequestOrder extends GPullRequestOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GPullRequestOrder')
+    return (newBuiltValueToStringHelper(r'GPullRequestOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26354,13 +26520,15 @@ class GPullRequestOrderBuilder
   }
 
   @override
-  _$GPullRequestOrder build() {
+  GPullRequestOrder build() => _build();
+
+  _$GPullRequestOrder _build() {
     final _$result = _$v ??
         new _$GPullRequestOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GPullRequestOrder', 'direction'),
+                direction, r'GPullRequestOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GPullRequestOrder', 'field'));
+                field, r'GPullRequestOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26373,13 +26541,13 @@ class _$GReactionOrder extends GReactionOrder {
   final GReactionOrderField field;
 
   factory _$GReactionOrder([void Function(GReactionOrderBuilder)? updates]) =>
-      (new GReactionOrderBuilder()..update(updates)).build();
+      (new GReactionOrderBuilder()..update(updates))._build();
 
   _$GReactionOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GReactionOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GReactionOrder', 'field');
+        direction, r'GReactionOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GReactionOrder', 'field');
   }
 
   @override
@@ -26405,7 +26573,7 @@ class _$GReactionOrder extends GReactionOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReactionOrder')
+    return (newBuiltValueToStringHelper(r'GReactionOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26448,13 +26616,15 @@ class GReactionOrderBuilder
   }
 
   @override
-  _$GReactionOrder build() {
+  GReactionOrder build() => _build();
+
+  _$GReactionOrder _build() {
     final _$result = _$v ??
         new _$GReactionOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GReactionOrder', 'direction'),
+                direction, r'GReactionOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GReactionOrder', 'field'));
+                field, r'GReactionOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26467,11 +26637,11 @@ class _$GRefOrder extends GRefOrder {
   final GRefOrderField field;
 
   factory _$GRefOrder([void Function(GRefOrderBuilder)? updates]) =>
-      (new GRefOrderBuilder()..update(updates)).build();
+      (new GRefOrderBuilder()..update(updates))._build();
 
   _$GRefOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(direction, 'GRefOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GRefOrder', 'field');
+    BuiltValueNullFieldError.checkNotNull(direction, r'GRefOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GRefOrder', 'field');
   }
 
   @override
@@ -26496,7 +26666,7 @@ class _$GRefOrder extends GRefOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRefOrder')
+    return (newBuiltValueToStringHelper(r'GRefOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26538,13 +26708,15 @@ class GRefOrderBuilder implements Builder<GRefOrder, GRefOrderBuilder> {
   }
 
   @override
-  _$GRefOrder build() {
+  GRefOrder build() => _build();
+
+  _$GRefOrder _build() {
     final _$result = _$v ??
         new _$GRefOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GRefOrder', 'direction'),
+                direction, r'GRefOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GRefOrder', 'field'));
+                field, r'GRefOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26563,14 +26735,14 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
               updates]) =>
       (new GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
       {this.clientMutationId, required this.enterpriseId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
+        r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
         'enterpriseId');
   }
 
@@ -26602,7 +26774,7 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput')
+            r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId))
         .toString();
@@ -26651,13 +26823,15 @@ class GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder
   }
 
   @override
-  _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput build() {
+  GRegenerateEnterpriseIdentityProviderRecoveryCodesInput build() => _build();
+
+  _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput _build() {
     final _$result = _$v ??
         new _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
+                r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
                 'enterpriseId'));
     replace(_$result);
     return _$result;
@@ -26668,21 +26842,21 @@ class _$GRegistryPackageMetadatum extends GRegistryPackageMetadatum {
   @override
   final String name;
   @override
-  final bool? update;
+  final bool? Gupdate;
   @override
   final String value;
 
   factory _$GRegistryPackageMetadatum(
           [void Function(GRegistryPackageMetadatumBuilder)? updates]) =>
-      (new GRegistryPackageMetadatumBuilder()..update(updates)).build();
+      (new GRegistryPackageMetadatumBuilder()..update(updates))._build();
 
   _$GRegistryPackageMetadatum._(
-      {required this.name, this.update, required this.value})
+      {required this.name, this.Gupdate, required this.value})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GRegistryPackageMetadatum', 'name');
+        name, r'GRegistryPackageMetadatum', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        value, 'GRegistryPackageMetadatum', 'value');
+        value, r'GRegistryPackageMetadatum', 'value');
   }
 
   @override
@@ -26699,21 +26873,21 @@ class _$GRegistryPackageMetadatum extends GRegistryPackageMetadatum {
     if (identical(other, this)) return true;
     return other is GRegistryPackageMetadatum &&
         name == other.name &&
-        update == other.update &&
+        Gupdate == other.Gupdate &&
         value == other.value;
   }
 
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, name.hashCode), update.hashCode), value.hashCode));
+        $jc($jc($jc(0, name.hashCode), Gupdate.hashCode), value.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRegistryPackageMetadatum')
+    return (newBuiltValueToStringHelper(r'GRegistryPackageMetadatum')
           ..add('name', name)
-          ..add('update', update)
+          ..add('Gupdate', Gupdate)
           ..add('value', value))
         .toString();
   }
@@ -26728,9 +26902,9 @@ class GRegistryPackageMetadatumBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  bool? _update;
-  bool? get update => _$this._update;
-  set update(bool? update) => _$this._update = update;
+  bool? _Gupdate;
+  bool? get Gupdate => _$this._Gupdate;
+  set Gupdate(bool? Gupdate) => _$this._Gupdate = Gupdate;
 
   String? _value;
   String? get value => _$this._value;
@@ -26742,7 +26916,7 @@ class GRegistryPackageMetadatumBuilder
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
-      _update = $v.update;
+      _Gupdate = $v.Gupdate;
       _value = $v.value;
       _$v = null;
     }
@@ -26761,14 +26935,16 @@ class GRegistryPackageMetadatumBuilder
   }
 
   @override
-  _$GRegistryPackageMetadatum build() {
+  GRegistryPackageMetadatum build() => _build();
+
+  _$GRegistryPackageMetadatum _build() {
     final _$result = _$v ??
         new _$GRegistryPackageMetadatum._(
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GRegistryPackageMetadatum', 'name'),
-            update: update,
+                name, r'GRegistryPackageMetadatum', 'name'),
+            Gupdate: Gupdate,
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GRegistryPackageMetadatum', 'value'));
+                value, r'GRegistryPackageMetadatum', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -26781,13 +26957,13 @@ class _$GReleaseOrder extends GReleaseOrder {
   final GReleaseOrderField field;
 
   factory _$GReleaseOrder([void Function(GReleaseOrderBuilder)? updates]) =>
-      (new GReleaseOrderBuilder()..update(updates)).build();
+      (new GReleaseOrderBuilder()..update(updates))._build();
 
   _$GReleaseOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GReleaseOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GReleaseOrder', 'field');
+        direction, r'GReleaseOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GReleaseOrder', 'field');
   }
 
   @override
@@ -26812,7 +26988,7 @@ class _$GReleaseOrder extends GReleaseOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReleaseOrder')
+    return (newBuiltValueToStringHelper(r'GReleaseOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -26855,13 +27031,15 @@ class GReleaseOrderBuilder
   }
 
   @override
-  _$GReleaseOrder build() {
+  GReleaseOrder build() => _build();
+
+  _$GReleaseOrder _build() {
     final _$result = _$v ??
         new _$GReleaseOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GReleaseOrder', 'direction'),
+                direction, r'GReleaseOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GReleaseOrder', 'field'));
+                field, r'GReleaseOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -26880,7 +27058,7 @@ class _$GRemoveAssigneesFromAssignableInput
           [void Function(GRemoveAssigneesFromAssignableInputBuilder)?
               updates]) =>
       (new GRemoveAssigneesFromAssignableInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GRemoveAssigneesFromAssignableInput._(
       {required this.assignableId,
@@ -26888,9 +27066,9 @@ class _$GRemoveAssigneesFromAssignableInput
       this.clientMutationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        assignableId, 'GRemoveAssigneesFromAssignableInput', 'assignableId');
+        assignableId, r'GRemoveAssigneesFromAssignableInput', 'assignableId');
     BuiltValueNullFieldError.checkNotNull(
-        assigneeIds, 'GRemoveAssigneesFromAssignableInput', 'assigneeIds');
+        assigneeIds, r'GRemoveAssigneesFromAssignableInput', 'assigneeIds');
   }
 
   @override
@@ -26919,7 +27097,7 @@ class _$GRemoveAssigneesFromAssignableInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveAssigneesFromAssignableInput')
+    return (newBuiltValueToStringHelper(r'GRemoveAssigneesFromAssignableInput')
           ..add('assignableId', assignableId)
           ..add('assigneeIds', assigneeIds)
           ..add('clientMutationId', clientMutationId))
@@ -26974,13 +27152,15 @@ class GRemoveAssigneesFromAssignableInputBuilder
   }
 
   @override
-  _$GRemoveAssigneesFromAssignableInput build() {
+  GRemoveAssigneesFromAssignableInput build() => _build();
+
+  _$GRemoveAssigneesFromAssignableInput _build() {
     _$GRemoveAssigneesFromAssignableInput _$result;
     try {
       _$result = _$v ??
           new _$GRemoveAssigneesFromAssignableInput._(
               assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
-                  'GRemoveAssigneesFromAssignableInput', 'assignableId'),
+                  r'GRemoveAssigneesFromAssignableInput', 'assignableId'),
               assigneeIds: assigneeIds.build(),
               clientMutationId: clientMutationId);
     } catch (_) {
@@ -26990,7 +27170,9 @@ class GRemoveAssigneesFromAssignableInputBuilder
         assigneeIds.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GRemoveAssigneesFromAssignableInput', _$failedField, e.toString());
+            r'GRemoveAssigneesFromAssignableInput',
+            _$failedField,
+            e.toString());
       }
       rethrow;
     }
@@ -27009,15 +27191,15 @@ class _$GRemoveEnterpriseAdminInput extends GRemoveEnterpriseAdminInput {
 
   factory _$GRemoveEnterpriseAdminInput(
           [void Function(GRemoveEnterpriseAdminInputBuilder)? updates]) =>
-      (new GRemoveEnterpriseAdminInputBuilder()..update(updates)).build();
+      (new GRemoveEnterpriseAdminInputBuilder()..update(updates))._build();
 
   _$GRemoveEnterpriseAdminInput._(
       {this.clientMutationId, required this.enterpriseId, required this.login})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, 'GRemoveEnterpriseAdminInput', 'enterpriseId');
+        enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
-        login, 'GRemoveEnterpriseAdminInput', 'login');
+        login, r'GRemoveEnterpriseAdminInput', 'login');
   }
 
   @override
@@ -27047,7 +27229,7 @@ class _$GRemoveEnterpriseAdminInput extends GRemoveEnterpriseAdminInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveEnterpriseAdminInput')
+    return (newBuiltValueToStringHelper(r'GRemoveEnterpriseAdminInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('login', login))
@@ -27099,14 +27281,16 @@ class GRemoveEnterpriseAdminInputBuilder
   }
 
   @override
-  _$GRemoveEnterpriseAdminInput build() {
+  GRemoveEnterpriseAdminInput build() => _build();
+
+  _$GRemoveEnterpriseAdminInput _build() {
     final _$result = _$v ??
         new _$GRemoveEnterpriseAdminInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, 'GRemoveEnterpriseAdminInput', 'enterpriseId'),
+                enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId'),
             login: BuiltValueNullFieldError.checkNotNull(
-                login, 'GRemoveEnterpriseAdminInput', 'login'));
+                login, r'GRemoveEnterpriseAdminInput', 'login'));
     replace(_$result);
     return _$result;
   }
@@ -27125,7 +27309,7 @@ class _$GRemoveEnterpriseOrganizationInput
           [void Function(GRemoveEnterpriseOrganizationInputBuilder)?
               updates]) =>
       (new GRemoveEnterpriseOrganizationInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GRemoveEnterpriseOrganizationInput._(
       {this.clientMutationId,
@@ -27133,9 +27317,9 @@ class _$GRemoveEnterpriseOrganizationInput
       required this.organizationId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, 'GRemoveEnterpriseOrganizationInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        organizationId, 'GRemoveEnterpriseOrganizationInput', 'organizationId');
+        enterpriseId, r'GRemoveEnterpriseOrganizationInput', 'enterpriseId');
+    BuiltValueNullFieldError.checkNotNull(organizationId,
+        r'GRemoveEnterpriseOrganizationInput', 'organizationId');
   }
 
   @override
@@ -27165,7 +27349,7 @@ class _$GRemoveEnterpriseOrganizationInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveEnterpriseOrganizationInput')
+    return (newBuiltValueToStringHelper(r'GRemoveEnterpriseOrganizationInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('organizationId', organizationId))
@@ -27219,15 +27403,17 @@ class GRemoveEnterpriseOrganizationInputBuilder
   }
 
   @override
-  _$GRemoveEnterpriseOrganizationInput build() {
+  GRemoveEnterpriseOrganizationInput build() => _build();
+
+  _$GRemoveEnterpriseOrganizationInput _build() {
     final _$result = _$v ??
         new _$GRemoveEnterpriseOrganizationInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                'GRemoveEnterpriseOrganizationInput', 'enterpriseId'),
+                r'GRemoveEnterpriseOrganizationInput', 'enterpriseId'),
             organizationId: BuiltValueNullFieldError.checkNotNull(
                 organizationId,
-                'GRemoveEnterpriseOrganizationInput',
+                r'GRemoveEnterpriseOrganizationInput',
                 'organizationId'));
     replace(_$result);
     return _$result;
@@ -27245,7 +27431,7 @@ class _$GRemoveLabelsFromLabelableInput
 
   factory _$GRemoveLabelsFromLabelableInput(
           [void Function(GRemoveLabelsFromLabelableInputBuilder)? updates]) =>
-      (new GRemoveLabelsFromLabelableInputBuilder()..update(updates)).build();
+      (new GRemoveLabelsFromLabelableInputBuilder()..update(updates))._build();
 
   _$GRemoveLabelsFromLabelableInput._(
       {this.clientMutationId,
@@ -27253,9 +27439,9 @@ class _$GRemoveLabelsFromLabelableInput
       required this.labelableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        labelIds, 'GRemoveLabelsFromLabelableInput', 'labelIds');
+        labelIds, r'GRemoveLabelsFromLabelableInput', 'labelIds');
     BuiltValueNullFieldError.checkNotNull(
-        labelableId, 'GRemoveLabelsFromLabelableInput', 'labelableId');
+        labelableId, r'GRemoveLabelsFromLabelableInput', 'labelableId');
   }
 
   @override
@@ -27284,7 +27470,7 @@ class _$GRemoveLabelsFromLabelableInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveLabelsFromLabelableInput')
+    return (newBuiltValueToStringHelper(r'GRemoveLabelsFromLabelableInput')
           ..add('clientMutationId', clientMutationId)
           ..add('labelIds', labelIds)
           ..add('labelableId', labelableId))
@@ -27337,7 +27523,9 @@ class GRemoveLabelsFromLabelableInputBuilder
   }
 
   @override
-  _$GRemoveLabelsFromLabelableInput build() {
+  GRemoveLabelsFromLabelableInput build() => _build();
+
+  _$GRemoveLabelsFromLabelableInput _build() {
     _$GRemoveLabelsFromLabelableInput _$result;
     try {
       _$result = _$v ??
@@ -27345,7 +27533,7 @@ class GRemoveLabelsFromLabelableInputBuilder
               clientMutationId: clientMutationId,
               labelIds: labelIds.build(),
               labelableId: BuiltValueNullFieldError.checkNotNull(labelableId,
-                  'GRemoveLabelsFromLabelableInput', 'labelableId'));
+                  r'GRemoveLabelsFromLabelableInput', 'labelableId'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -27353,7 +27541,7 @@ class GRemoveLabelsFromLabelableInputBuilder
         labelIds.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GRemoveLabelsFromLabelableInput', _$failedField, e.toString());
+            r'GRemoveLabelsFromLabelableInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -27373,7 +27561,7 @@ class _$GRemoveOutsideCollaboratorInput
 
   factory _$GRemoveOutsideCollaboratorInput(
           [void Function(GRemoveOutsideCollaboratorInputBuilder)? updates]) =>
-      (new GRemoveOutsideCollaboratorInputBuilder()..update(updates)).build();
+      (new GRemoveOutsideCollaboratorInputBuilder()..update(updates))._build();
 
   _$GRemoveOutsideCollaboratorInput._(
       {this.clientMutationId,
@@ -27381,9 +27569,9 @@ class _$GRemoveOutsideCollaboratorInput
       required this.userId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        organizationId, 'GRemoveOutsideCollaboratorInput', 'organizationId');
+        organizationId, r'GRemoveOutsideCollaboratorInput', 'organizationId');
     BuiltValueNullFieldError.checkNotNull(
-        userId, 'GRemoveOutsideCollaboratorInput', 'userId');
+        userId, r'GRemoveOutsideCollaboratorInput', 'userId');
   }
 
   @override
@@ -27413,7 +27601,7 @@ class _$GRemoveOutsideCollaboratorInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveOutsideCollaboratorInput')
+    return (newBuiltValueToStringHelper(r'GRemoveOutsideCollaboratorInput')
           ..add('clientMutationId', clientMutationId)
           ..add('organizationId', organizationId)
           ..add('userId', userId))
@@ -27466,16 +27654,18 @@ class GRemoveOutsideCollaboratorInputBuilder
   }
 
   @override
-  _$GRemoveOutsideCollaboratorInput build() {
+  GRemoveOutsideCollaboratorInput build() => _build();
+
+  _$GRemoveOutsideCollaboratorInput _build() {
     final _$result = _$v ??
         new _$GRemoveOutsideCollaboratorInput._(
             clientMutationId: clientMutationId,
             organizationId: BuiltValueNullFieldError.checkNotNull(
                 organizationId,
-                'GRemoveOutsideCollaboratorInput',
+                r'GRemoveOutsideCollaboratorInput',
                 'organizationId'),
             userId: BuiltValueNullFieldError.checkNotNull(
-                userId, 'GRemoveOutsideCollaboratorInput', 'userId'));
+                userId, r'GRemoveOutsideCollaboratorInput', 'userId'));
     replace(_$result);
     return _$result;
   }
@@ -27491,15 +27681,15 @@ class _$GRemoveReactionInput extends GRemoveReactionInput {
 
   factory _$GRemoveReactionInput(
           [void Function(GRemoveReactionInputBuilder)? updates]) =>
-      (new GRemoveReactionInputBuilder()..update(updates)).build();
+      (new GRemoveReactionInputBuilder()..update(updates))._build();
 
   _$GRemoveReactionInput._(
       {this.clientMutationId, required this.content, required this.subjectId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        content, 'GRemoveReactionInput', 'content');
+        content, r'GRemoveReactionInput', 'content');
     BuiltValueNullFieldError.checkNotNull(
-        subjectId, 'GRemoveReactionInput', 'subjectId');
+        subjectId, r'GRemoveReactionInput', 'subjectId');
   }
 
   @override
@@ -27528,7 +27718,7 @@ class _$GRemoveReactionInput extends GRemoveReactionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveReactionInput')
+    return (newBuiltValueToStringHelper(r'GRemoveReactionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('content', content)
           ..add('subjectId', subjectId))
@@ -27578,14 +27768,16 @@ class GRemoveReactionInputBuilder
   }
 
   @override
-  _$GRemoveReactionInput build() {
+  GRemoveReactionInput build() => _build();
+
+  _$GRemoveReactionInput _build() {
     final _$result = _$v ??
         new _$GRemoveReactionInput._(
             clientMutationId: clientMutationId,
             content: BuiltValueNullFieldError.checkNotNull(
-                content, 'GRemoveReactionInput', 'content'),
+                content, r'GRemoveReactionInput', 'content'),
             subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, 'GRemoveReactionInput', 'subjectId'));
+                subjectId, r'GRemoveReactionInput', 'subjectId'));
     replace(_$result);
     return _$result;
   }
@@ -27599,12 +27791,12 @@ class _$GRemoveStarInput extends GRemoveStarInput {
 
   factory _$GRemoveStarInput(
           [void Function(GRemoveStarInputBuilder)? updates]) =>
-      (new GRemoveStarInputBuilder()..update(updates)).build();
+      (new GRemoveStarInputBuilder()..update(updates))._build();
 
   _$GRemoveStarInput._({this.clientMutationId, required this.starrableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        starrableId, 'GRemoveStarInput', 'starrableId');
+        starrableId, r'GRemoveStarInput', 'starrableId');
   }
 
   @override
@@ -27630,7 +27822,7 @@ class _$GRemoveStarInput extends GRemoveStarInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRemoveStarInput')
+    return (newBuiltValueToStringHelper(r'GRemoveStarInput')
           ..add('clientMutationId', clientMutationId)
           ..add('starrableId', starrableId))
         .toString();
@@ -27674,12 +27866,14 @@ class GRemoveStarInputBuilder
   }
 
   @override
-  _$GRemoveStarInput build() {
+  GRemoveStarInput build() => _build();
+
+  _$GRemoveStarInput _build() {
     final _$result = _$v ??
         new _$GRemoveStarInput._(
             clientMutationId: clientMutationId,
             starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, 'GRemoveStarInput', 'starrableId'));
+                starrableId, r'GRemoveStarInput', 'starrableId'));
     replace(_$result);
     return _$result;
   }
@@ -27693,12 +27887,12 @@ class _$GReopenIssueInput extends GReopenIssueInput {
 
   factory _$GReopenIssueInput(
           [void Function(GReopenIssueInputBuilder)? updates]) =>
-      (new GReopenIssueInputBuilder()..update(updates)).build();
+      (new GReopenIssueInputBuilder()..update(updates))._build();
 
   _$GReopenIssueInput._({this.clientMutationId, required this.issueId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        issueId, 'GReopenIssueInput', 'issueId');
+        issueId, r'GReopenIssueInput', 'issueId');
   }
 
   @override
@@ -27724,7 +27918,7 @@ class _$GReopenIssueInput extends GReopenIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReopenIssueInput')
+    return (newBuiltValueToStringHelper(r'GReopenIssueInput')
           ..add('clientMutationId', clientMutationId)
           ..add('issueId', issueId))
         .toString();
@@ -27768,12 +27962,14 @@ class GReopenIssueInputBuilder
   }
 
   @override
-  _$GReopenIssueInput build() {
+  GReopenIssueInput build() => _build();
+
+  _$GReopenIssueInput _build() {
     final _$result = _$v ??
         new _$GReopenIssueInput._(
             clientMutationId: clientMutationId,
             issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, 'GReopenIssueInput', 'issueId'));
+                issueId, r'GReopenIssueInput', 'issueId'));
     replace(_$result);
     return _$result;
   }
@@ -27787,13 +27983,13 @@ class _$GReopenPullRequestInput extends GReopenPullRequestInput {
 
   factory _$GReopenPullRequestInput(
           [void Function(GReopenPullRequestInputBuilder)? updates]) =>
-      (new GReopenPullRequestInputBuilder()..update(updates)).build();
+      (new GReopenPullRequestInputBuilder()..update(updates))._build();
 
   _$GReopenPullRequestInput._(
       {this.clientMutationId, required this.pullRequestId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GReopenPullRequestInput', 'pullRequestId');
+        pullRequestId, r'GReopenPullRequestInput', 'pullRequestId');
   }
 
   @override
@@ -27820,7 +28016,7 @@ class _$GReopenPullRequestInput extends GReopenPullRequestInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReopenPullRequestInput')
+    return (newBuiltValueToStringHelper(r'GReopenPullRequestInput')
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestId', pullRequestId))
         .toString();
@@ -27866,12 +28062,14 @@ class GReopenPullRequestInputBuilder
   }
 
   @override
-  _$GReopenPullRequestInput build() {
+  GReopenPullRequestInput build() => _build();
+
+  _$GReopenPullRequestInput _build() {
     final _$result = _$v ??
         new _$GReopenPullRequestInput._(
             clientMutationId: clientMutationId,
             pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestId, 'GReopenPullRequestInput', 'pullRequestId'));
+                pullRequestId, r'GReopenPullRequestInput', 'pullRequestId'));
     replace(_$result);
     return _$result;
   }
@@ -27885,14 +28083,14 @@ class _$GRepositoryInvitationOrder extends GRepositoryInvitationOrder {
 
   factory _$GRepositoryInvitationOrder(
           [void Function(GRepositoryInvitationOrderBuilder)? updates]) =>
-      (new GRepositoryInvitationOrderBuilder()..update(updates)).build();
+      (new GRepositoryInvitationOrderBuilder()..update(updates))._build();
 
   _$GRepositoryInvitationOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GRepositoryInvitationOrder', 'direction');
+        direction, r'GRepositoryInvitationOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GRepositoryInvitationOrder', 'field');
+        field, r'GRepositoryInvitationOrder', 'field');
   }
 
   @override
@@ -27919,7 +28117,7 @@ class _$GRepositoryInvitationOrder extends GRepositoryInvitationOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRepositoryInvitationOrder')
+    return (newBuiltValueToStringHelper(r'GRepositoryInvitationOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -27963,13 +28161,15 @@ class GRepositoryInvitationOrderBuilder
   }
 
   @override
-  _$GRepositoryInvitationOrder build() {
+  GRepositoryInvitationOrder build() => _build();
+
+  _$GRepositoryInvitationOrder _build() {
     final _$result = _$v ??
         new _$GRepositoryInvitationOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GRepositoryInvitationOrder', 'direction'),
+                direction, r'GRepositoryInvitationOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GRepositoryInvitationOrder', 'field'));
+                field, r'GRepositoryInvitationOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -27983,13 +28183,13 @@ class _$GRepositoryOrder extends GRepositoryOrder {
 
   factory _$GRepositoryOrder(
           [void Function(GRepositoryOrderBuilder)? updates]) =>
-      (new GRepositoryOrderBuilder()..update(updates)).build();
+      (new GRepositoryOrderBuilder()..update(updates))._build();
 
   _$GRepositoryOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GRepositoryOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GRepositoryOrder', 'field');
+        direction, r'GRepositoryOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GRepositoryOrder', 'field');
   }
 
   @override
@@ -28015,7 +28215,7 @@ class _$GRepositoryOrder extends GRepositoryOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRepositoryOrder')
+    return (newBuiltValueToStringHelper(r'GRepositoryOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28058,13 +28258,15 @@ class GRepositoryOrderBuilder
   }
 
   @override
-  _$GRepositoryOrder build() {
+  GRepositoryOrder build() => _build();
+
+  _$GRepositoryOrder _build() {
     final _$result = _$v ??
         new _$GRepositoryOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GRepositoryOrder', 'direction'),
+                direction, r'GRepositoryOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GRepositoryOrder', 'field'));
+                field, r'GRepositoryOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28084,7 +28286,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
 
   factory _$GRequestReviewsInput(
           [void Function(GRequestReviewsInputBuilder)? updates]) =>
-      (new GRequestReviewsInputBuilder()..update(updates)).build();
+      (new GRequestReviewsInputBuilder()..update(updates))._build();
 
   _$GRequestReviewsInput._(
       {this.clientMutationId,
@@ -28094,7 +28296,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
       this.userIds})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GRequestReviewsInput', 'pullRequestId');
+        pullRequestId, r'GRequestReviewsInput', 'pullRequestId');
   }
 
   @override
@@ -28129,7 +28331,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GRequestReviewsInput')
+    return (newBuiltValueToStringHelper(r'GRequestReviewsInput')
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestId', pullRequestId)
           ..add('teamIds', teamIds)
@@ -28194,14 +28396,16 @@ class GRequestReviewsInputBuilder
   }
 
   @override
-  _$GRequestReviewsInput build() {
+  GRequestReviewsInput build() => _build();
+
+  _$GRequestReviewsInput _build() {
     _$GRequestReviewsInput _$result;
     try {
       _$result = _$v ??
           new _$GRequestReviewsInput._(
               clientMutationId: clientMutationId,
               pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, 'GRequestReviewsInput', 'pullRequestId'),
+                  pullRequestId, r'GRequestReviewsInput', 'pullRequestId'),
               teamIds: _teamIds?.build(),
               union: union,
               userIds: _userIds?.build());
@@ -28215,7 +28419,7 @@ class GRequestReviewsInputBuilder
         _userIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GRequestReviewsInput', _$failedField, e.toString());
+            r'GRequestReviewsInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -28232,12 +28436,12 @@ class _$GResolveReviewThreadInput extends GResolveReviewThreadInput {
 
   factory _$GResolveReviewThreadInput(
           [void Function(GResolveReviewThreadInputBuilder)? updates]) =>
-      (new GResolveReviewThreadInputBuilder()..update(updates)).build();
+      (new GResolveReviewThreadInputBuilder()..update(updates))._build();
 
   _$GResolveReviewThreadInput._({this.clientMutationId, required this.threadId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        threadId, 'GResolveReviewThreadInput', 'threadId');
+        threadId, r'GResolveReviewThreadInput', 'threadId');
   }
 
   @override
@@ -28264,7 +28468,7 @@ class _$GResolveReviewThreadInput extends GResolveReviewThreadInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GResolveReviewThreadInput')
+    return (newBuiltValueToStringHelper(r'GResolveReviewThreadInput')
           ..add('clientMutationId', clientMutationId)
           ..add('threadId', threadId))
         .toString();
@@ -28309,12 +28513,14 @@ class GResolveReviewThreadInputBuilder
   }
 
   @override
-  _$GResolveReviewThreadInput build() {
+  GResolveReviewThreadInput build() => _build();
+
+  _$GResolveReviewThreadInput _build() {
     final _$result = _$v ??
         new _$GResolveReviewThreadInput._(
             clientMutationId: clientMutationId,
             threadId: BuiltValueNullFieldError.checkNotNull(
-                threadId, 'GResolveReviewThreadInput', 'threadId'));
+                threadId, r'GResolveReviewThreadInput', 'threadId'));
     replace(_$result);
     return _$result;
   }
@@ -28328,13 +28534,13 @@ class _$GSavedReplyOrder extends GSavedReplyOrder {
 
   factory _$GSavedReplyOrder(
           [void Function(GSavedReplyOrderBuilder)? updates]) =>
-      (new GSavedReplyOrderBuilder()..update(updates)).build();
+      (new GSavedReplyOrderBuilder()..update(updates))._build();
 
   _$GSavedReplyOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GSavedReplyOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GSavedReplyOrder', 'field');
+        direction, r'GSavedReplyOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GSavedReplyOrder', 'field');
   }
 
   @override
@@ -28360,7 +28566,7 @@ class _$GSavedReplyOrder extends GSavedReplyOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSavedReplyOrder')
+    return (newBuiltValueToStringHelper(r'GSavedReplyOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28403,13 +28609,15 @@ class GSavedReplyOrderBuilder
   }
 
   @override
-  _$GSavedReplyOrder build() {
+  GSavedReplyOrder build() => _build();
+
+  _$GSavedReplyOrder _build() {
     final _$result = _$v ??
         new _$GSavedReplyOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GSavedReplyOrder', 'direction'),
+                direction, r'GSavedReplyOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GSavedReplyOrder', 'field'));
+                field, r'GSavedReplyOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28424,15 +28632,16 @@ class _$GSecurityAdvisoryIdentifierFilter
 
   factory _$GSecurityAdvisoryIdentifierFilter(
           [void Function(GSecurityAdvisoryIdentifierFilterBuilder)? updates]) =>
-      (new GSecurityAdvisoryIdentifierFilterBuilder()..update(updates)).build();
+      (new GSecurityAdvisoryIdentifierFilterBuilder()..update(updates))
+          ._build();
 
   _$GSecurityAdvisoryIdentifierFilter._(
       {required this.type, required this.value})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, 'GSecurityAdvisoryIdentifierFilter', 'type');
+        type, r'GSecurityAdvisoryIdentifierFilter', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        value, 'GSecurityAdvisoryIdentifierFilter', 'value');
+        value, r'GSecurityAdvisoryIdentifierFilter', 'value');
   }
 
   @override
@@ -28459,7 +28668,7 @@ class _$GSecurityAdvisoryIdentifierFilter
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSecurityAdvisoryIdentifierFilter')
+    return (newBuiltValueToStringHelper(r'GSecurityAdvisoryIdentifierFilter')
           ..add('type', type)
           ..add('value', value))
         .toString();
@@ -28505,13 +28714,15 @@ class GSecurityAdvisoryIdentifierFilterBuilder
   }
 
   @override
-  _$GSecurityAdvisoryIdentifierFilter build() {
+  GSecurityAdvisoryIdentifierFilter build() => _build();
+
+  _$GSecurityAdvisoryIdentifierFilter _build() {
     final _$result = _$v ??
         new _$GSecurityAdvisoryIdentifierFilter._(
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'GSecurityAdvisoryIdentifierFilter', 'type'),
+                type, r'GSecurityAdvisoryIdentifierFilter', 'type'),
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GSecurityAdvisoryIdentifierFilter', 'value'));
+                value, r'GSecurityAdvisoryIdentifierFilter', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -28525,14 +28736,14 @@ class _$GSecurityAdvisoryOrder extends GSecurityAdvisoryOrder {
 
   factory _$GSecurityAdvisoryOrder(
           [void Function(GSecurityAdvisoryOrderBuilder)? updates]) =>
-      (new GSecurityAdvisoryOrderBuilder()..update(updates)).build();
+      (new GSecurityAdvisoryOrderBuilder()..update(updates))._build();
 
   _$GSecurityAdvisoryOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GSecurityAdvisoryOrder', 'direction');
+        direction, r'GSecurityAdvisoryOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GSecurityAdvisoryOrder', 'field');
+        field, r'GSecurityAdvisoryOrder', 'field');
   }
 
   @override
@@ -28559,7 +28770,7 @@ class _$GSecurityAdvisoryOrder extends GSecurityAdvisoryOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSecurityAdvisoryOrder')
+    return (newBuiltValueToStringHelper(r'GSecurityAdvisoryOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28602,13 +28813,15 @@ class GSecurityAdvisoryOrderBuilder
   }
 
   @override
-  _$GSecurityAdvisoryOrder build() {
+  GSecurityAdvisoryOrder build() => _build();
+
+  _$GSecurityAdvisoryOrder _build() {
     final _$result = _$v ??
         new _$GSecurityAdvisoryOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GSecurityAdvisoryOrder', 'direction'),
+                direction, r'GSecurityAdvisoryOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GSecurityAdvisoryOrder', 'field'));
+                field, r'GSecurityAdvisoryOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28622,15 +28835,15 @@ class _$GSecurityVulnerabilityOrder extends GSecurityVulnerabilityOrder {
 
   factory _$GSecurityVulnerabilityOrder(
           [void Function(GSecurityVulnerabilityOrderBuilder)? updates]) =>
-      (new GSecurityVulnerabilityOrderBuilder()..update(updates)).build();
+      (new GSecurityVulnerabilityOrderBuilder()..update(updates))._build();
 
   _$GSecurityVulnerabilityOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GSecurityVulnerabilityOrder', 'direction');
+        direction, r'GSecurityVulnerabilityOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GSecurityVulnerabilityOrder', 'field');
+        field, r'GSecurityVulnerabilityOrder', 'field');
   }
 
   @override
@@ -28657,7 +28870,7 @@ class _$GSecurityVulnerabilityOrder extends GSecurityVulnerabilityOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSecurityVulnerabilityOrder')
+    return (newBuiltValueToStringHelper(r'GSecurityVulnerabilityOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28702,13 +28915,15 @@ class GSecurityVulnerabilityOrderBuilder
   }
 
   @override
-  _$GSecurityVulnerabilityOrder build() {
+  GSecurityVulnerabilityOrder build() => _build();
+
+  _$GSecurityVulnerabilityOrder _build() {
     final _$result = _$v ??
         new _$GSecurityVulnerabilityOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GSecurityVulnerabilityOrder', 'direction'),
+                direction, r'GSecurityVulnerabilityOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GSecurityVulnerabilityOrder', 'field'));
+                field, r'GSecurityVulnerabilityOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28722,13 +28937,14 @@ class _$GSponsorsTierOrder extends GSponsorsTierOrder {
 
   factory _$GSponsorsTierOrder(
           [void Function(GSponsorsTierOrderBuilder)? updates]) =>
-      (new GSponsorsTierOrderBuilder()..update(updates)).build();
+      (new GSponsorsTierOrderBuilder()..update(updates))._build();
 
   _$GSponsorsTierOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GSponsorsTierOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GSponsorsTierOrder', 'field');
+        direction, r'GSponsorsTierOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(
+        field, r'GSponsorsTierOrder', 'field');
   }
 
   @override
@@ -28755,7 +28971,7 @@ class _$GSponsorsTierOrder extends GSponsorsTierOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSponsorsTierOrder')
+    return (newBuiltValueToStringHelper(r'GSponsorsTierOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28798,13 +29014,15 @@ class GSponsorsTierOrderBuilder
   }
 
   @override
-  _$GSponsorsTierOrder build() {
+  GSponsorsTierOrder build() => _build();
+
+  _$GSponsorsTierOrder _build() {
     final _$result = _$v ??
         new _$GSponsorsTierOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GSponsorsTierOrder', 'direction'),
+                direction, r'GSponsorsTierOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GSponsorsTierOrder', 'field'));
+                field, r'GSponsorsTierOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28818,13 +29036,13 @@ class _$GSponsorshipOrder extends GSponsorshipOrder {
 
   factory _$GSponsorshipOrder(
           [void Function(GSponsorshipOrderBuilder)? updates]) =>
-      (new GSponsorshipOrderBuilder()..update(updates)).build();
+      (new GSponsorshipOrderBuilder()..update(updates))._build();
 
   _$GSponsorshipOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GSponsorshipOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GSponsorshipOrder', 'field');
+        direction, r'GSponsorshipOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GSponsorshipOrder', 'field');
   }
 
   @override
@@ -28850,7 +29068,7 @@ class _$GSponsorshipOrder extends GSponsorshipOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSponsorshipOrder')
+    return (newBuiltValueToStringHelper(r'GSponsorshipOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28893,13 +29111,15 @@ class GSponsorshipOrderBuilder
   }
 
   @override
-  _$GSponsorshipOrder build() {
+  GSponsorshipOrder build() => _build();
+
+  _$GSponsorshipOrder _build() {
     final _$result = _$v ??
         new _$GSponsorshipOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GSponsorshipOrder', 'direction'),
+                direction, r'GSponsorshipOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GSponsorshipOrder', 'field'));
+                field, r'GSponsorshipOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -28912,11 +29132,12 @@ class _$GStarOrder extends GStarOrder {
   final GStarOrderField field;
 
   factory _$GStarOrder([void Function(GStarOrderBuilder)? updates]) =>
-      (new GStarOrderBuilder()..update(updates)).build();
+      (new GStarOrderBuilder()..update(updates))._build();
 
   _$GStarOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(direction, 'GStarOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GStarOrder', 'field');
+    BuiltValueNullFieldError.checkNotNull(
+        direction, r'GStarOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GStarOrder', 'field');
   }
 
   @override
@@ -28941,7 +29162,7 @@ class _$GStarOrder extends GStarOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GStarOrder')
+    return (newBuiltValueToStringHelper(r'GStarOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -28983,13 +29204,15 @@ class GStarOrderBuilder implements Builder<GStarOrder, GStarOrderBuilder> {
   }
 
   @override
-  _$GStarOrder build() {
+  GStarOrder build() => _build();
+
+  _$GStarOrder _build() {
     final _$result = _$v ??
         new _$GStarOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GStarOrder', 'direction'),
+                direction, r'GStarOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GStarOrder', 'field'));
+                field, r'GStarOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29009,7 +29232,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
 
   factory _$GSubmitPullRequestReviewInput(
           [void Function(GSubmitPullRequestReviewInputBuilder)? updates]) =>
-      (new GSubmitPullRequestReviewInputBuilder()..update(updates)).build();
+      (new GSubmitPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GSubmitPullRequestReviewInput._(
       {this.body,
@@ -29019,7 +29242,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
       this.pullRequestReviewId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        event, 'GSubmitPullRequestReviewInput', 'event');
+        event, r'GSubmitPullRequestReviewInput', 'event');
   }
 
   @override
@@ -29054,7 +29277,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GSubmitPullRequestReviewInput')
+    return (newBuiltValueToStringHelper(r'GSubmitPullRequestReviewInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('event', event)
@@ -29120,13 +29343,15 @@ class GSubmitPullRequestReviewInputBuilder
   }
 
   @override
-  _$GSubmitPullRequestReviewInput build() {
+  GSubmitPullRequestReviewInput build() => _build();
+
+  _$GSubmitPullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GSubmitPullRequestReviewInput._(
             body: body,
             clientMutationId: clientMutationId,
             event: BuiltValueNullFieldError.checkNotNull(
-                event, 'GSubmitPullRequestReviewInput', 'event'),
+                event, r'GSubmitPullRequestReviewInput', 'event'),
             pullRequestId: pullRequestId,
             pullRequestReviewId: pullRequestReviewId);
     replace(_$result);
@@ -29142,15 +29367,15 @@ class _$GTeamDiscussionCommentOrder extends GTeamDiscussionCommentOrder {
 
   factory _$GTeamDiscussionCommentOrder(
           [void Function(GTeamDiscussionCommentOrderBuilder)? updates]) =>
-      (new GTeamDiscussionCommentOrderBuilder()..update(updates)).build();
+      (new GTeamDiscussionCommentOrderBuilder()..update(updates))._build();
 
   _$GTeamDiscussionCommentOrder._(
       {required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GTeamDiscussionCommentOrder', 'direction');
+        direction, r'GTeamDiscussionCommentOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GTeamDiscussionCommentOrder', 'field');
+        field, r'GTeamDiscussionCommentOrder', 'field');
   }
 
   @override
@@ -29177,7 +29402,7 @@ class _$GTeamDiscussionCommentOrder extends GTeamDiscussionCommentOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTeamDiscussionCommentOrder')
+    return (newBuiltValueToStringHelper(r'GTeamDiscussionCommentOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -29222,13 +29447,15 @@ class GTeamDiscussionCommentOrderBuilder
   }
 
   @override
-  _$GTeamDiscussionCommentOrder build() {
+  GTeamDiscussionCommentOrder build() => _build();
+
+  _$GTeamDiscussionCommentOrder _build() {
     final _$result = _$v ??
         new _$GTeamDiscussionCommentOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GTeamDiscussionCommentOrder', 'direction'),
+                direction, r'GTeamDiscussionCommentOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GTeamDiscussionCommentOrder', 'field'));
+                field, r'GTeamDiscussionCommentOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29242,14 +29469,14 @@ class _$GTeamDiscussionOrder extends GTeamDiscussionOrder {
 
   factory _$GTeamDiscussionOrder(
           [void Function(GTeamDiscussionOrderBuilder)? updates]) =>
-      (new GTeamDiscussionOrderBuilder()..update(updates)).build();
+      (new GTeamDiscussionOrderBuilder()..update(updates))._build();
 
   _$GTeamDiscussionOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GTeamDiscussionOrder', 'direction');
+        direction, r'GTeamDiscussionOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GTeamDiscussionOrder', 'field');
+        field, r'GTeamDiscussionOrder', 'field');
   }
 
   @override
@@ -29276,7 +29503,7 @@ class _$GTeamDiscussionOrder extends GTeamDiscussionOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTeamDiscussionOrder')
+    return (newBuiltValueToStringHelper(r'GTeamDiscussionOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -29319,13 +29546,15 @@ class GTeamDiscussionOrderBuilder
   }
 
   @override
-  _$GTeamDiscussionOrder build() {
+  GTeamDiscussionOrder build() => _build();
+
+  _$GTeamDiscussionOrder _build() {
     final _$result = _$v ??
         new _$GTeamDiscussionOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GTeamDiscussionOrder', 'direction'),
+                direction, r'GTeamDiscussionOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GTeamDiscussionOrder', 'field'));
+                field, r'GTeamDiscussionOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29339,13 +29568,13 @@ class _$GTeamMemberOrder extends GTeamMemberOrder {
 
   factory _$GTeamMemberOrder(
           [void Function(GTeamMemberOrderBuilder)? updates]) =>
-      (new GTeamMemberOrderBuilder()..update(updates)).build();
+      (new GTeamMemberOrderBuilder()..update(updates))._build();
 
   _$GTeamMemberOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GTeamMemberOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GTeamMemberOrder', 'field');
+        direction, r'GTeamMemberOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GTeamMemberOrder', 'field');
   }
 
   @override
@@ -29371,7 +29600,7 @@ class _$GTeamMemberOrder extends GTeamMemberOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTeamMemberOrder')
+    return (newBuiltValueToStringHelper(r'GTeamMemberOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -29414,13 +29643,15 @@ class GTeamMemberOrderBuilder
   }
 
   @override
-  _$GTeamMemberOrder build() {
+  GTeamMemberOrder build() => _build();
+
+  _$GTeamMemberOrder _build() {
     final _$result = _$v ??
         new _$GTeamMemberOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GTeamMemberOrder', 'direction'),
+                direction, r'GTeamMemberOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GTeamMemberOrder', 'field'));
+                field, r'GTeamMemberOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29433,11 +29664,12 @@ class _$GTeamOrder extends GTeamOrder {
   final GTeamOrderField field;
 
   factory _$GTeamOrder([void Function(GTeamOrderBuilder)? updates]) =>
-      (new GTeamOrderBuilder()..update(updates)).build();
+      (new GTeamOrderBuilder()..update(updates))._build();
 
   _$GTeamOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(direction, 'GTeamOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GTeamOrder', 'field');
+    BuiltValueNullFieldError.checkNotNull(
+        direction, r'GTeamOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GTeamOrder', 'field');
   }
 
   @override
@@ -29462,7 +29694,7 @@ class _$GTeamOrder extends GTeamOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTeamOrder')
+    return (newBuiltValueToStringHelper(r'GTeamOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -29504,13 +29736,15 @@ class GTeamOrderBuilder implements Builder<GTeamOrder, GTeamOrderBuilder> {
   }
 
   @override
-  _$GTeamOrder build() {
+  GTeamOrder build() => _build();
+
+  _$GTeamOrder _build() {
     final _$result = _$v ??
         new _$GTeamOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GTeamOrder', 'direction'),
+                direction, r'GTeamOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GTeamOrder', 'field'));
+                field, r'GTeamOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29524,14 +29758,14 @@ class _$GTeamRepositoryOrder extends GTeamRepositoryOrder {
 
   factory _$GTeamRepositoryOrder(
           [void Function(GTeamRepositoryOrderBuilder)? updates]) =>
-      (new GTeamRepositoryOrderBuilder()..update(updates)).build();
+      (new GTeamRepositoryOrderBuilder()..update(updates))._build();
 
   _$GTeamRepositoryOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GTeamRepositoryOrder', 'direction');
+        direction, r'GTeamRepositoryOrder', 'direction');
     BuiltValueNullFieldError.checkNotNull(
-        field, 'GTeamRepositoryOrder', 'field');
+        field, r'GTeamRepositoryOrder', 'field');
   }
 
   @override
@@ -29558,7 +29792,7 @@ class _$GTeamRepositoryOrder extends GTeamRepositoryOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTeamRepositoryOrder')
+    return (newBuiltValueToStringHelper(r'GTeamRepositoryOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -29601,13 +29835,15 @@ class GTeamRepositoryOrderBuilder
   }
 
   @override
-  _$GTeamRepositoryOrder build() {
+  GTeamRepositoryOrder build() => _build();
+
+  _$GTeamRepositoryOrder _build() {
     final _$result = _$v ??
         new _$GTeamRepositoryOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GTeamRepositoryOrder', 'direction'),
+                direction, r'GTeamRepositoryOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GTeamRepositoryOrder', 'field'));
+                field, r'GTeamRepositoryOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -29623,7 +29859,7 @@ class _$GTransferIssueInput extends GTransferIssueInput {
 
   factory _$GTransferIssueInput(
           [void Function(GTransferIssueInputBuilder)? updates]) =>
-      (new GTransferIssueInputBuilder()..update(updates)).build();
+      (new GTransferIssueInputBuilder()..update(updates))._build();
 
   _$GTransferIssueInput._(
       {this.clientMutationId,
@@ -29631,9 +29867,9 @@ class _$GTransferIssueInput extends GTransferIssueInput {
       required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        issueId, 'GTransferIssueInput', 'issueId');
+        issueId, r'GTransferIssueInput', 'issueId');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GTransferIssueInput', 'repositoryId');
+        repositoryId, r'GTransferIssueInput', 'repositoryId');
   }
 
   @override
@@ -29662,7 +29898,7 @@ class _$GTransferIssueInput extends GTransferIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GTransferIssueInput')
+    return (newBuiltValueToStringHelper(r'GTransferIssueInput')
           ..add('clientMutationId', clientMutationId)
           ..add('issueId', issueId)
           ..add('repositoryId', repositoryId))
@@ -29712,14 +29948,16 @@ class GTransferIssueInputBuilder
   }
 
   @override
-  _$GTransferIssueInput build() {
+  GTransferIssueInput build() => _build();
+
+  _$GTransferIssueInput _build() {
     final _$result = _$v ??
         new _$GTransferIssueInput._(
             clientMutationId: clientMutationId,
             issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, 'GTransferIssueInput', 'issueId'),
+                issueId, r'GTransferIssueInput', 'issueId'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GTransferIssueInput', 'repositoryId'));
+                repositoryId, r'GTransferIssueInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -29730,10 +29968,10 @@ class _$GURI extends GURI {
   final String value;
 
   factory _$GURI([void Function(GURIBuilder)? updates]) =>
-      (new GURIBuilder()..update(updates)).build();
+      (new GURIBuilder()..update(updates))._build();
 
   _$GURI._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GURI', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value');
   }
 
   @override
@@ -29756,7 +29994,7 @@ class _$GURI extends GURI {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GURI')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GURI')..add('value', value))
         .toString();
   }
 }
@@ -29791,11 +30029,13 @@ class GURIBuilder implements Builder<GURI, GURIBuilder> {
   }
 
   @override
-  _$GURI build() {
+  GURI build() => _build();
+
+  _$GURI _build() {
     final _$result = _$v ??
         new _$GURI._(
             value:
-                BuiltValueNullFieldError.checkNotNull(value, 'GURI', 'value'));
+                BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -29809,13 +30049,13 @@ class _$GUnarchiveRepositoryInput extends GUnarchiveRepositoryInput {
 
   factory _$GUnarchiveRepositoryInput(
           [void Function(GUnarchiveRepositoryInputBuilder)? updates]) =>
-      (new GUnarchiveRepositoryInputBuilder()..update(updates)).build();
+      (new GUnarchiveRepositoryInputBuilder()..update(updates))._build();
 
   _$GUnarchiveRepositoryInput._(
       {this.clientMutationId, required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GUnarchiveRepositoryInput', 'repositoryId');
+        repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId');
   }
 
   @override
@@ -29842,7 +30082,7 @@ class _$GUnarchiveRepositoryInput extends GUnarchiveRepositoryInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnarchiveRepositoryInput')
+    return (newBuiltValueToStringHelper(r'GUnarchiveRepositoryInput')
           ..add('clientMutationId', clientMutationId)
           ..add('repositoryId', repositoryId))
         .toString();
@@ -29887,12 +30127,14 @@ class GUnarchiveRepositoryInputBuilder
   }
 
   @override
-  _$GUnarchiveRepositoryInput build() {
+  GUnarchiveRepositoryInput build() => _build();
+
+  _$GUnarchiveRepositoryInput _build() {
     final _$result = _$v ??
         new _$GUnarchiveRepositoryInput._(
             clientMutationId: clientMutationId,
             repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, 'GUnarchiveRepositoryInput', 'repositoryId'));
+                repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -29906,12 +30148,12 @@ class _$GUnfollowUserInput extends GUnfollowUserInput {
 
   factory _$GUnfollowUserInput(
           [void Function(GUnfollowUserInputBuilder)? updates]) =>
-      (new GUnfollowUserInputBuilder()..update(updates)).build();
+      (new GUnfollowUserInputBuilder()..update(updates))._build();
 
   _$GUnfollowUserInput._({this.clientMutationId, required this.userId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        userId, 'GUnfollowUserInput', 'userId');
+        userId, r'GUnfollowUserInput', 'userId');
   }
 
   @override
@@ -29938,7 +30180,7 @@ class _$GUnfollowUserInput extends GUnfollowUserInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnfollowUserInput')
+    return (newBuiltValueToStringHelper(r'GUnfollowUserInput')
           ..add('clientMutationId', clientMutationId)
           ..add('userId', userId))
         .toString();
@@ -29982,12 +30224,14 @@ class GUnfollowUserInputBuilder
   }
 
   @override
-  _$GUnfollowUserInput build() {
+  GUnfollowUserInput build() => _build();
+
+  _$GUnfollowUserInput _build() {
     final _$result = _$v ??
         new _$GUnfollowUserInput._(
             clientMutationId: clientMutationId,
             userId: BuiltValueNullFieldError.checkNotNull(
-                userId, 'GUnfollowUserInput', 'userId'));
+                userId, r'GUnfollowUserInput', 'userId'));
     replace(_$result);
     return _$result;
   }
@@ -30004,7 +30248,8 @@ class _$GUnlinkRepositoryFromProjectInput
 
   factory _$GUnlinkRepositoryFromProjectInput(
           [void Function(GUnlinkRepositoryFromProjectInputBuilder)? updates]) =>
-      (new GUnlinkRepositoryFromProjectInputBuilder()..update(updates)).build();
+      (new GUnlinkRepositoryFromProjectInputBuilder()..update(updates))
+          ._build();
 
   _$GUnlinkRepositoryFromProjectInput._(
       {this.clientMutationId,
@@ -30012,9 +30257,9 @@ class _$GUnlinkRepositoryFromProjectInput
       required this.repositoryId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectId, 'GUnlinkRepositoryFromProjectInput', 'projectId');
+        projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId');
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GUnlinkRepositoryFromProjectInput', 'repositoryId');
+        repositoryId, r'GUnlinkRepositoryFromProjectInput', 'repositoryId');
   }
 
   @override
@@ -30043,7 +30288,7 @@ class _$GUnlinkRepositoryFromProjectInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnlinkRepositoryFromProjectInput')
+    return (newBuiltValueToStringHelper(r'GUnlinkRepositoryFromProjectInput')
           ..add('clientMutationId', clientMutationId)
           ..add('projectId', projectId)
           ..add('repositoryId', repositoryId))
@@ -30096,14 +30341,16 @@ class GUnlinkRepositoryFromProjectInputBuilder
   }
 
   @override
-  _$GUnlinkRepositoryFromProjectInput build() {
+  GUnlinkRepositoryFromProjectInput build() => _build();
+
+  _$GUnlinkRepositoryFromProjectInput _build() {
     final _$result = _$v ??
         new _$GUnlinkRepositoryFromProjectInput._(
             clientMutationId: clientMutationId,
             projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, 'GUnlinkRepositoryFromProjectInput', 'projectId'),
+                projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId'),
             repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                'GUnlinkRepositoryFromProjectInput', 'repositoryId'));
+                r'GUnlinkRepositoryFromProjectInput', 'repositoryId'));
     replace(_$result);
     return _$result;
   }
@@ -30117,12 +30364,12 @@ class _$GUnlockLockableInput extends GUnlockLockableInput {
 
   factory _$GUnlockLockableInput(
           [void Function(GUnlockLockableInputBuilder)? updates]) =>
-      (new GUnlockLockableInputBuilder()..update(updates)).build();
+      (new GUnlockLockableInputBuilder()..update(updates))._build();
 
   _$GUnlockLockableInput._({this.clientMutationId, required this.lockableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        lockableId, 'GUnlockLockableInput', 'lockableId');
+        lockableId, r'GUnlockLockableInput', 'lockableId');
   }
 
   @override
@@ -30149,7 +30396,7 @@ class _$GUnlockLockableInput extends GUnlockLockableInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnlockLockableInput')
+    return (newBuiltValueToStringHelper(r'GUnlockLockableInput')
           ..add('clientMutationId', clientMutationId)
           ..add('lockableId', lockableId))
         .toString();
@@ -30193,12 +30440,14 @@ class GUnlockLockableInputBuilder
   }
 
   @override
-  _$GUnlockLockableInput build() {
+  GUnlockLockableInput build() => _build();
+
+  _$GUnlockLockableInput _build() {
     final _$result = _$v ??
         new _$GUnlockLockableInput._(
             clientMutationId: clientMutationId,
             lockableId: BuiltValueNullFieldError.checkNotNull(
-                lockableId, 'GUnlockLockableInput', 'lockableId'));
+                lockableId, r'GUnlockLockableInput', 'lockableId'));
     replace(_$result);
     return _$result;
   }
@@ -30214,7 +30463,7 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
 
   factory _$GUnmarkIssueAsDuplicateInput(
           [void Function(GUnmarkIssueAsDuplicateInputBuilder)? updates]) =>
-      (new GUnmarkIssueAsDuplicateInputBuilder()..update(updates)).build();
+      (new GUnmarkIssueAsDuplicateInputBuilder()..update(updates))._build();
 
   _$GUnmarkIssueAsDuplicateInput._(
       {required this.canonicalId,
@@ -30222,9 +30471,9 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
       required this.duplicateId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        canonicalId, 'GUnmarkIssueAsDuplicateInput', 'canonicalId');
+        canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId');
     BuiltValueNullFieldError.checkNotNull(
-        duplicateId, 'GUnmarkIssueAsDuplicateInput', 'duplicateId');
+        duplicateId, r'GUnmarkIssueAsDuplicateInput', 'duplicateId');
   }
 
   @override
@@ -30253,7 +30502,7 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnmarkIssueAsDuplicateInput')
+    return (newBuiltValueToStringHelper(r'GUnmarkIssueAsDuplicateInput')
           ..add('canonicalId', canonicalId)
           ..add('clientMutationId', clientMutationId)
           ..add('duplicateId', duplicateId))
@@ -30305,14 +30554,16 @@ class GUnmarkIssueAsDuplicateInputBuilder
   }
 
   @override
-  _$GUnmarkIssueAsDuplicateInput build() {
+  GUnmarkIssueAsDuplicateInput build() => _build();
+
+  _$GUnmarkIssueAsDuplicateInput _build() {
     final _$result = _$v ??
         new _$GUnmarkIssueAsDuplicateInput._(
             canonicalId: BuiltValueNullFieldError.checkNotNull(
-                canonicalId, 'GUnmarkIssueAsDuplicateInput', 'canonicalId'),
+                canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId'),
             clientMutationId: clientMutationId,
             duplicateId: BuiltValueNullFieldError.checkNotNull(
-                duplicateId, 'GUnmarkIssueAsDuplicateInput', 'duplicateId'));
+                duplicateId, r'GUnmarkIssueAsDuplicateInput', 'duplicateId'));
     replace(_$result);
     return _$result;
   }
@@ -30326,13 +30577,13 @@ class _$GUnresolveReviewThreadInput extends GUnresolveReviewThreadInput {
 
   factory _$GUnresolveReviewThreadInput(
           [void Function(GUnresolveReviewThreadInputBuilder)? updates]) =>
-      (new GUnresolveReviewThreadInputBuilder()..update(updates)).build();
+      (new GUnresolveReviewThreadInputBuilder()..update(updates))._build();
 
   _$GUnresolveReviewThreadInput._(
       {this.clientMutationId, required this.threadId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        threadId, 'GUnresolveReviewThreadInput', 'threadId');
+        threadId, r'GUnresolveReviewThreadInput', 'threadId');
   }
 
   @override
@@ -30359,7 +30610,7 @@ class _$GUnresolveReviewThreadInput extends GUnresolveReviewThreadInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUnresolveReviewThreadInput')
+    return (newBuiltValueToStringHelper(r'GUnresolveReviewThreadInput')
           ..add('clientMutationId', clientMutationId)
           ..add('threadId', threadId))
         .toString();
@@ -30405,12 +30656,14 @@ class GUnresolveReviewThreadInputBuilder
   }
 
   @override
-  _$GUnresolveReviewThreadInput build() {
+  GUnresolveReviewThreadInput build() => _build();
+
+  _$GUnresolveReviewThreadInput _build() {
     final _$result = _$v ??
         new _$GUnresolveReviewThreadInput._(
             clientMutationId: clientMutationId,
             threadId: BuiltValueNullFieldError.checkNotNull(
-                threadId, 'GUnresolveReviewThreadInput', 'threadId'));
+                threadId, r'GUnresolveReviewThreadInput', 'threadId'));
     replace(_$result);
     return _$result;
   }
@@ -30453,7 +30706,7 @@ class _$GUpdateBranchProtectionRuleInput
 
   factory _$GUpdateBranchProtectionRuleInput(
           [void Function(GUpdateBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GUpdateBranchProtectionRuleInputBuilder()..update(updates)).build();
+      (new GUpdateBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GUpdateBranchProtectionRuleInput._(
       {required this.branchProtectionRuleId,
@@ -30474,7 +30727,7 @@ class _$GUpdateBranchProtectionRuleInput
       this.reviewDismissalActorIds})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(branchProtectionRuleId,
-        'GUpdateBranchProtectionRuleInput', 'branchProtectionRuleId');
+        r'GUpdateBranchProtectionRuleInput', 'branchProtectionRuleId');
   }
 
   @override
@@ -30552,7 +30805,7 @@ class _$GUpdateBranchProtectionRuleInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateBranchProtectionRuleInput')
+    return (newBuiltValueToStringHelper(r'GUpdateBranchProtectionRuleInput')
           ..add('branchProtectionRuleId', branchProtectionRuleId)
           ..add('clientMutationId', clientMutationId)
           ..add('dismissesStaleReviews', dismissesStaleReviews)
@@ -30701,14 +30954,16 @@ class GUpdateBranchProtectionRuleInputBuilder
   }
 
   @override
-  _$GUpdateBranchProtectionRuleInput build() {
+  GUpdateBranchProtectionRuleInput build() => _build();
+
+  _$GUpdateBranchProtectionRuleInput _build() {
     _$GUpdateBranchProtectionRuleInput _$result;
     try {
       _$result = _$v ??
           new _$GUpdateBranchProtectionRuleInput._(
               branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
                   branchProtectionRuleId,
-                  'GUpdateBranchProtectionRuleInput',
+                  r'GUpdateBranchProtectionRuleInput',
                   'branchProtectionRuleId'),
               clientMutationId: clientMutationId,
               dismissesStaleReviews: dismissesStaleReviews,
@@ -30739,7 +30994,7 @@ class GUpdateBranchProtectionRuleInputBuilder
         _reviewDismissalActorIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdateBranchProtectionRuleInput', _$failedField, e.toString());
+            r'GUpdateBranchProtectionRuleInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -30763,18 +31018,20 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
               updates]) =>
       (new GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseActionExecutionCapabilitySettingInput._(
       {required this.capability,
       this.clientMutationId,
       required this.enterpriseId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(capability,
-        'GUpdateEnterpriseActionExecutionCapabilitySettingInput', 'capability');
+    BuiltValueNullFieldError.checkNotNull(
+        capability,
+        r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+        'capability');
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+        r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
         'enterpriseId');
   }
 
@@ -30808,7 +31065,7 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseActionExecutionCapabilitySettingInput')
+            r'GUpdateEnterpriseActionExecutionCapabilitySettingInput')
           ..add('capability', capability)
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId))
@@ -30864,17 +31121,19 @@ class GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseActionExecutionCapabilitySettingInput build() {
+  GUpdateEnterpriseActionExecutionCapabilitySettingInput build() => _build();
+
+  _$GUpdateEnterpriseActionExecutionCapabilitySettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseActionExecutionCapabilitySettingInput._(
             capability: BuiltValueNullFieldError.checkNotNull(
                 capability,
-                'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+                r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
                 'capability'),
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+                r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
                 'enterpriseId'));
     replace(_$result);
     return _$result;
@@ -30896,7 +31155,7 @@ class _$GUpdateEnterpriseAdministratorRoleInput
           [void Function(GUpdateEnterpriseAdministratorRoleInputBuilder)?
               updates]) =>
       (new GUpdateEnterpriseAdministratorRoleInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseAdministratorRoleInput._(
       {this.clientMutationId,
@@ -30905,11 +31164,11 @@ class _$GUpdateEnterpriseAdministratorRoleInput
       required this.role})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId');
+        r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
-        login, 'GUpdateEnterpriseAdministratorRoleInput', 'login');
+        login, r'GUpdateEnterpriseAdministratorRoleInput', 'login');
     BuiltValueNullFieldError.checkNotNull(
-        role, 'GUpdateEnterpriseAdministratorRoleInput', 'role');
+        role, r'GUpdateEnterpriseAdministratorRoleInput', 'role');
   }
 
   @override
@@ -30943,7 +31202,7 @@ class _$GUpdateEnterpriseAdministratorRoleInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseAdministratorRoleInput')
+            r'GUpdateEnterpriseAdministratorRoleInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('login', login)
@@ -31002,16 +31261,18 @@ class GUpdateEnterpriseAdministratorRoleInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseAdministratorRoleInput build() {
+  GUpdateEnterpriseAdministratorRoleInput build() => _build();
+
+  _$GUpdateEnterpriseAdministratorRoleInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseAdministratorRoleInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId'),
+                r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId'),
             login: BuiltValueNullFieldError.checkNotNull(
-                login, 'GUpdateEnterpriseAdministratorRoleInput', 'login'),
+                login, r'GUpdateEnterpriseAdministratorRoleInput', 'login'),
             role: BuiltValueNullFieldError.checkNotNull(
-                role, 'GUpdateEnterpriseAdministratorRoleInput', 'role'));
+                role, r'GUpdateEnterpriseAdministratorRoleInput', 'role'));
     replace(_$result);
     return _$result;
   }
@@ -31032,7 +31293,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
               updates]) =>
       (new GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._(
       {this.clientMutationId,
@@ -31041,11 +31302,11 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+        r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+        r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
         'settingValue');
   }
 
@@ -31082,7 +31343,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput')
+            r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -31140,17 +31401,20 @@ class GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput build() {
+  GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+                r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+                r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -31172,7 +31436,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
               updates]) =>
       (new GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._(
       {this.clientMutationId,
@@ -31181,11 +31445,11 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+        r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+        r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
         'settingValue');
   }
 
@@ -31220,7 +31484,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput')
+            r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -31278,17 +31542,19 @@ class GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput build() {
+  GUpdateEnterpriseDefaultRepositoryPermissionSettingInput build() => _build();
+
+  _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+                r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+                r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -31310,7 +31576,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput._(
       {this.clientMutationId,
@@ -31319,11 +31585,11 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+        r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+        r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
         'settingValue');
   }
 
@@ -31360,7 +31626,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput')
+            r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -31421,18 +31687,21 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput build() {
+  GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
                 ._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+                r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+                r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -31462,7 +31731,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._(
       {this.clientMutationId,
@@ -31475,7 +31744,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
+        r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
         'enterpriseId');
   }
 
@@ -31528,7 +31797,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput')
+            r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('membersCanCreateInternalRepositories',
@@ -31635,13 +31904,15 @@ class GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput build() {
+  GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput build() => _build();
+
+  _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
+                r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
                 'enterpriseId'),
             membersCanCreateInternalRepositories:
                 membersCanCreateInternalRepositories,
@@ -31672,7 +31943,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._(
       {this.clientMutationId,
@@ -31680,9 +31951,9 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
       required this.settingValue})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'enterpriseId');
+        r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(settingValue,
-        'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'settingValue');
+        r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'settingValue');
   }
 
   @override
@@ -31716,7 +31987,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput')
+            r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -31772,17 +32043,19 @@ class GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput build() {
+  GUpdateEnterpriseMembersCanDeleteIssuesSettingInput build() => _build();
+
+  _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
+                r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
+                r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -31804,7 +32077,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._(
       {this.clientMutationId,
@@ -31813,11 +32086,11 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+        r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+        r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
         'settingValue');
   }
 
@@ -31853,7 +32126,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput')
+            r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -31911,17 +32184,19 @@ class GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput build() {
+  GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput build() => _build();
+
+  _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+                r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+                r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -31943,7 +32218,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._(
       {this.clientMutationId,
@@ -31952,11 +32227,11 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+        r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+        r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
         'settingValue');
   }
 
@@ -31993,7 +32268,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput')
+            r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32051,17 +32326,20 @@ class GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput build() {
+  GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+                r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+                r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32083,17 +32361,21 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput._(
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseMembersCanMakePurchasesSettingInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(settingValue,
-        'GUpdateEnterpriseMembersCanMakePurchasesSettingInput', 'settingValue');
+    BuiltValueNullFieldError.checkNotNull(
+        enterpriseId,
+        r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+        'enterpriseId');
+    BuiltValueNullFieldError.checkNotNull(
+        settingValue,
+        r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+        'settingValue');
   }
 
   @override
@@ -32127,7 +32409,7 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanMakePurchasesSettingInput')
+            r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32185,17 +32467,19 @@ class GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput build() {
+  GUpdateEnterpriseMembersCanMakePurchasesSettingInput build() => _build();
+
+  _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+                r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+                r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32217,7 +32501,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._(
       {this.clientMutationId,
@@ -32226,11 +32510,11 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+        r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+        r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
         'settingValue');
   }
 
@@ -32267,7 +32551,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput')
+            r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32327,17 +32611,20 @@ class GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput build() {
+  GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+                r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+                r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32359,7 +32646,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
               updates]) =>
       (new GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._(
       {this.clientMutationId,
@@ -32368,11 +32655,11 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+        r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+        r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
         'settingValue');
   }
 
@@ -32409,7 +32696,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput')
+            r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32469,17 +32756,20 @@ class GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput build() {
+  GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+                r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+                r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32501,7 +32791,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
               updates]) =>
       (new GUpdateEnterpriseOrganizationProjectsSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseOrganizationProjectsSettingInput._(
       {this.clientMutationId,
@@ -32509,9 +32799,9 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
       required this.settingValue})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseOrganizationProjectsSettingInput', 'enterpriseId');
+        r'GUpdateEnterpriseOrganizationProjectsSettingInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(settingValue,
-        'GUpdateEnterpriseOrganizationProjectsSettingInput', 'settingValue');
+        r'GUpdateEnterpriseOrganizationProjectsSettingInput', 'settingValue');
   }
 
   @override
@@ -32545,7 +32835,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseOrganizationProjectsSettingInput')
+            r'GUpdateEnterpriseOrganizationProjectsSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32601,17 +32891,19 @@ class GUpdateEnterpriseOrganizationProjectsSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseOrganizationProjectsSettingInput build() {
+  GUpdateEnterpriseOrganizationProjectsSettingInput build() => _build();
+
+  _$GUpdateEnterpriseOrganizationProjectsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseOrganizationProjectsSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseOrganizationProjectsSettingInput',
+                r'GUpdateEnterpriseOrganizationProjectsSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseOrganizationProjectsSettingInput',
+                r'GUpdateEnterpriseOrganizationProjectsSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32634,7 +32926,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
 
   factory _$GUpdateEnterpriseProfileInput(
           [void Function(GUpdateEnterpriseProfileInputBuilder)? updates]) =>
-      (new GUpdateEnterpriseProfileInputBuilder()..update(updates)).build();
+      (new GUpdateEnterpriseProfileInputBuilder()..update(updates))._build();
 
   _$GUpdateEnterpriseProfileInput._(
       {this.clientMutationId,
@@ -32645,7 +32937,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
       this.websiteUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, 'GUpdateEnterpriseProfileInput', 'enterpriseId');
+        enterpriseId, r'GUpdateEnterpriseProfileInput', 'enterpriseId');
   }
 
   @override
@@ -32685,7 +32977,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateEnterpriseProfileInput')
+    return (newBuiltValueToStringHelper(r'GUpdateEnterpriseProfileInput')
           ..add('clientMutationId', clientMutationId)
           ..add('description', description)
           ..add('enterpriseId', enterpriseId)
@@ -32755,13 +33047,15 @@ class GUpdateEnterpriseProfileInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseProfileInput build() {
+  GUpdateEnterpriseProfileInput build() => _build();
+
+  _$GUpdateEnterpriseProfileInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseProfileInput._(
             clientMutationId: clientMutationId,
             description: description,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, 'GUpdateEnterpriseProfileInput', 'enterpriseId'),
+                enterpriseId, r'GUpdateEnterpriseProfileInput', 'enterpriseId'),
             location: location,
             name: name,
             websiteUrl: websiteUrl);
@@ -32785,7 +33079,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
               updates]) =>
       (new GUpdateEnterpriseRepositoryProjectsSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseRepositoryProjectsSettingInput._(
       {this.clientMutationId,
@@ -32793,9 +33087,9 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
       required this.settingValue})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseRepositoryProjectsSettingInput', 'enterpriseId');
+        r'GUpdateEnterpriseRepositoryProjectsSettingInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(settingValue,
-        'GUpdateEnterpriseRepositoryProjectsSettingInput', 'settingValue');
+        r'GUpdateEnterpriseRepositoryProjectsSettingInput', 'settingValue');
   }
 
   @override
@@ -32828,7 +33122,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseRepositoryProjectsSettingInput')
+            r'GUpdateEnterpriseRepositoryProjectsSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -32884,17 +33178,19 @@ class GUpdateEnterpriseRepositoryProjectsSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseRepositoryProjectsSettingInput build() {
+  GUpdateEnterpriseRepositoryProjectsSettingInput build() => _build();
+
+  _$GUpdateEnterpriseRepositoryProjectsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseRepositoryProjectsSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseRepositoryProjectsSettingInput',
+                r'GUpdateEnterpriseRepositoryProjectsSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseRepositoryProjectsSettingInput',
+                r'GUpdateEnterpriseRepositoryProjectsSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -32915,7 +33211,7 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
               updates]) =>
       (new GUpdateEnterpriseTeamDiscussionsSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
       {this.clientMutationId,
@@ -32923,9 +33219,9 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
       required this.settingValue})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId');
+        r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(settingValue,
-        'GUpdateEnterpriseTeamDiscussionsSettingInput', 'settingValue');
+        r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'settingValue');
   }
 
   @override
@@ -32957,7 +33253,7 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseTeamDiscussionsSettingInput')
+            r'GUpdateEnterpriseTeamDiscussionsSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -33013,15 +33309,19 @@ class GUpdateEnterpriseTeamDiscussionsSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseTeamDiscussionsSettingInput build() {
+  GUpdateEnterpriseTeamDiscussionsSettingInput build() => _build();
+
+  _$GUpdateEnterpriseTeamDiscussionsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
             clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId'),
+            enterpriseId: BuiltValueNullFieldError.checkNotNull(
+                enterpriseId,
+                r'GUpdateEnterpriseTeamDiscussionsSettingInput',
+                'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseTeamDiscussionsSettingInput',
+                r'GUpdateEnterpriseTeamDiscussionsSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -33043,7 +33343,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
               updates]) =>
       (new GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._(
       {this.clientMutationId,
@@ -33052,11 +33352,11 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         enterpriseId,
-        'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+        r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
         'enterpriseId');
     BuiltValueNullFieldError.checkNotNull(
         settingValue,
-        'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+        r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
         'settingValue');
   }
 
@@ -33093,7 +33393,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput')
+            r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput')
           ..add('clientMutationId', clientMutationId)
           ..add('enterpriseId', enterpriseId)
           ..add('settingValue', settingValue))
@@ -33152,17 +33452,20 @@ class GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
   }
 
   @override
-  _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput build() {
+  GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput build() =>
+      _build();
+
+  _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
-                'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+                r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
                 'enterpriseId'),
             settingValue: BuiltValueNullFieldError.checkNotNull(
                 settingValue,
-                'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+                r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
                 'settingValue'));
     replace(_$result);
     return _$result;
@@ -33179,14 +33482,15 @@ class _$GUpdateIssueCommentInput extends GUpdateIssueCommentInput {
 
   factory _$GUpdateIssueCommentInput(
           [void Function(GUpdateIssueCommentInputBuilder)? updates]) =>
-      (new GUpdateIssueCommentInputBuilder()..update(updates)).build();
+      (new GUpdateIssueCommentInputBuilder()..update(updates))._build();
 
   _$GUpdateIssueCommentInput._(
       {required this.body, this.clientMutationId, required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GUpdateIssueCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(id, 'GUpdateIssueCommentInput', 'id');
+        body, r'GUpdateIssueCommentInput', 'body');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GUpdateIssueCommentInput', 'id');
   }
 
   @override
@@ -33215,7 +33519,7 @@ class _$GUpdateIssueCommentInput extends GUpdateIssueCommentInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateIssueCommentInput')
+    return (newBuiltValueToStringHelper(r'GUpdateIssueCommentInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('id', id))
@@ -33266,14 +33570,16 @@ class GUpdateIssueCommentInputBuilder
   }
 
   @override
-  _$GUpdateIssueCommentInput build() {
+  GUpdateIssueCommentInput build() => _build();
+
+  _$GUpdateIssueCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdateIssueCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GUpdateIssueCommentInput', 'body'),
+                body, r'GUpdateIssueCommentInput', 'body'),
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GUpdateIssueCommentInput', 'id'));
+                id, r'GUpdateIssueCommentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -33301,7 +33607,7 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
 
   factory _$GUpdateIssueInput(
           [void Function(GUpdateIssueInputBuilder)? updates]) =>
-      (new GUpdateIssueInputBuilder()..update(updates)).build();
+      (new GUpdateIssueInputBuilder()..update(updates))._build();
 
   _$GUpdateIssueInput._(
       {this.assigneeIds,
@@ -33314,7 +33620,7 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
       this.state,
       this.title})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'GUpdateIssueInput', 'id');
+    BuiltValueNullFieldError.checkNotNull(id, r'GUpdateIssueInput', 'id');
   }
 
   @override
@@ -33362,7 +33668,7 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateIssueInput')
+    return (newBuiltValueToStringHelper(r'GUpdateIssueInput')
           ..add('assigneeIds', assigneeIds)
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
@@ -33453,7 +33759,9 @@ class GUpdateIssueInputBuilder
   }
 
   @override
-  _$GUpdateIssueInput build() {
+  GUpdateIssueInput build() => _build();
+
+  _$GUpdateIssueInput _build() {
     _$GUpdateIssueInput _$result;
     try {
       _$result = _$v ??
@@ -33462,7 +33770,7 @@ class GUpdateIssueInputBuilder
               body: body,
               clientMutationId: clientMutationId,
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'GUpdateIssueInput', 'id'),
+                  id, r'GUpdateIssueInput', 'id'),
               labelIds: _labelIds?.build(),
               milestoneId: milestoneId,
               projectIds: _projectIds?.build(),
@@ -33481,7 +33789,7 @@ class GUpdateIssueInputBuilder
         _projectIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdateIssueInput', _$failedField, e.toString());
+            r'GUpdateIssueInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -33502,7 +33810,7 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
 
   factory _$GUpdateProjectCardInput(
           [void Function(GUpdateProjectCardInputBuilder)? updates]) =>
-      (new GUpdateProjectCardInputBuilder()..update(updates)).build();
+      (new GUpdateProjectCardInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectCardInput._(
       {this.clientMutationId,
@@ -33511,7 +33819,7 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
       required this.projectCardId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectCardId, 'GUpdateProjectCardInput', 'projectCardId');
+        projectCardId, r'GUpdateProjectCardInput', 'projectCardId');
   }
 
   @override
@@ -33543,7 +33851,7 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateProjectCardInput')
+    return (newBuiltValueToStringHelper(r'GUpdateProjectCardInput')
           ..add('clientMutationId', clientMutationId)
           ..add('isArchived', isArchived)
           ..add('note', note)
@@ -33601,14 +33909,16 @@ class GUpdateProjectCardInputBuilder
   }
 
   @override
-  _$GUpdateProjectCardInput build() {
+  GUpdateProjectCardInput build() => _build();
+
+  _$GUpdateProjectCardInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectCardInput._(
             clientMutationId: clientMutationId,
             isArchived: isArchived,
             note: note,
             projectCardId: BuiltValueNullFieldError.checkNotNull(
-                projectCardId, 'GUpdateProjectCardInput', 'projectCardId'));
+                projectCardId, r'GUpdateProjectCardInput', 'projectCardId'));
     replace(_$result);
     return _$result;
   }
@@ -33624,7 +33934,7 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
 
   factory _$GUpdateProjectColumnInput(
           [void Function(GUpdateProjectColumnInputBuilder)? updates]) =>
-      (new GUpdateProjectColumnInputBuilder()..update(updates)).build();
+      (new GUpdateProjectColumnInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectColumnInput._(
       {this.clientMutationId,
@@ -33632,9 +33942,9 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
       required this.projectColumnId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GUpdateProjectColumnInput', 'name');
+        name, r'GUpdateProjectColumnInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        projectColumnId, 'GUpdateProjectColumnInput', 'projectColumnId');
+        projectColumnId, r'GUpdateProjectColumnInput', 'projectColumnId');
   }
 
   @override
@@ -33663,7 +33973,7 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateProjectColumnInput')
+    return (newBuiltValueToStringHelper(r'GUpdateProjectColumnInput')
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
           ..add('projectColumnId', projectColumnId))
@@ -33715,15 +34025,17 @@ class GUpdateProjectColumnInputBuilder
   }
 
   @override
-  _$GUpdateProjectColumnInput build() {
+  GUpdateProjectColumnInput build() => _build();
+
+  _$GUpdateProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectColumnInput._(
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'GUpdateProjectColumnInput', 'name'),
+                name, r'GUpdateProjectColumnInput', 'name'),
             projectColumnId: BuiltValueNullFieldError.checkNotNull(
                 projectColumnId,
-                'GUpdateProjectColumnInput',
+                r'GUpdateProjectColumnInput',
                 'projectColumnId'));
     replace(_$result);
     return _$result;
@@ -33746,7 +34058,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
 
   factory _$GUpdateProjectInput(
           [void Function(GUpdateProjectInputBuilder)? updates]) =>
-      (new GUpdateProjectInputBuilder()..update(updates)).build();
+      (new GUpdateProjectInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectInput._(
       {this.body,
@@ -33757,7 +34069,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
       this.state})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        projectId, 'GUpdateProjectInput', 'projectId');
+        projectId, r'GUpdateProjectInput', 'projectId');
   }
 
   @override
@@ -33795,7 +34107,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateProjectInput')
+    return (newBuiltValueToStringHelper(r'GUpdateProjectInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('name', name)
@@ -33863,14 +34175,16 @@ class GUpdateProjectInputBuilder
   }
 
   @override
-  _$GUpdateProjectInput build() {
+  GUpdateProjectInput build() => _build();
+
+  _$GUpdateProjectInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectInput._(
             body: body,
             clientMutationId: clientMutationId,
             name: name,
             projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, 'GUpdateProjectInput', 'projectId'),
+                projectId, r'GUpdateProjectInput', 'projectId'),
             public: public,
             state: state);
     replace(_$result);
@@ -33904,7 +34218,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
 
   factory _$GUpdatePullRequestInput(
           [void Function(GUpdatePullRequestInputBuilder)? updates]) =>
-      (new GUpdatePullRequestInputBuilder()..update(updates)).build();
+      (new GUpdatePullRequestInputBuilder()..update(updates))._build();
 
   _$GUpdatePullRequestInput._(
       {this.assigneeIds,
@@ -33920,7 +34234,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
       this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, 'GUpdatePullRequestInput', 'pullRequestId');
+        pullRequestId, r'GUpdatePullRequestInput', 'pullRequestId');
   }
 
   @override
@@ -33975,7 +34289,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdatePullRequestInput')
+    return (newBuiltValueToStringHelper(r'GUpdatePullRequestInput')
           ..add('assigneeIds', assigneeIds)
           ..add('baseRefName', baseRefName)
           ..add('body', body)
@@ -34081,7 +34395,9 @@ class GUpdatePullRequestInputBuilder
   }
 
   @override
-  _$GUpdatePullRequestInput build() {
+  GUpdatePullRequestInput build() => _build();
+
+  _$GUpdatePullRequestInput _build() {
     _$GUpdatePullRequestInput _$result;
     try {
       _$result = _$v ??
@@ -34095,7 +34411,7 @@ class GUpdatePullRequestInputBuilder
               milestoneId: milestoneId,
               projectIds: _projectIds?.build(),
               pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, 'GUpdatePullRequestInput', 'pullRequestId'),
+                  pullRequestId, r'GUpdatePullRequestInput', 'pullRequestId'),
               state: state,
               title: title);
     } catch (_) {
@@ -34111,7 +34427,7 @@ class GUpdatePullRequestInputBuilder
         _projectIds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdatePullRequestInput', _$failedField, e.toString());
+            r'GUpdatePullRequestInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -34133,7 +34449,7 @@ class _$GUpdatePullRequestReviewCommentInput
           [void Function(GUpdatePullRequestReviewCommentInputBuilder)?
               updates]) =>
       (new GUpdatePullRequestReviewCommentInputBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GUpdatePullRequestReviewCommentInput._(
       {required this.body,
@@ -34141,9 +34457,9 @@ class _$GUpdatePullRequestReviewCommentInput
       required this.pullRequestReviewCommentId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GUpdatePullRequestReviewCommentInput', 'body');
+        body, r'GUpdatePullRequestReviewCommentInput', 'body');
     BuiltValueNullFieldError.checkNotNull(pullRequestReviewCommentId,
-        'GUpdatePullRequestReviewCommentInput', 'pullRequestReviewCommentId');
+        r'GUpdatePullRequestReviewCommentInput', 'pullRequestReviewCommentId');
   }
 
   @override
@@ -34172,7 +34488,7 @@ class _$GUpdatePullRequestReviewCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdatePullRequestReviewCommentInput')
+    return (newBuiltValueToStringHelper(r'GUpdatePullRequestReviewCommentInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestReviewCommentId', pullRequestReviewCommentId))
@@ -34226,15 +34542,17 @@ class GUpdatePullRequestReviewCommentInputBuilder
   }
 
   @override
-  _$GUpdatePullRequestReviewCommentInput build() {
+  GUpdatePullRequestReviewCommentInput build() => _build();
+
+  _$GUpdatePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdatePullRequestReviewCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GUpdatePullRequestReviewCommentInput', 'body'),
+                body, r'GUpdatePullRequestReviewCommentInput', 'body'),
             clientMutationId: clientMutationId,
             pullRequestReviewCommentId: BuiltValueNullFieldError.checkNotNull(
                 pullRequestReviewCommentId,
-                'GUpdatePullRequestReviewCommentInput',
+                r'GUpdatePullRequestReviewCommentInput',
                 'pullRequestReviewCommentId'));
     replace(_$result);
     return _$result;
@@ -34251,7 +34569,7 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
 
   factory _$GUpdatePullRequestReviewInput(
           [void Function(GUpdatePullRequestReviewInputBuilder)? updates]) =>
-      (new GUpdatePullRequestReviewInputBuilder()..update(updates)).build();
+      (new GUpdatePullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GUpdatePullRequestReviewInput._(
       {required this.body,
@@ -34259,9 +34577,9 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
       required this.pullRequestReviewId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GUpdatePullRequestReviewInput', 'body');
+        body, r'GUpdatePullRequestReviewInput', 'body');
     BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        'GUpdatePullRequestReviewInput', 'pullRequestReviewId');
+        r'GUpdatePullRequestReviewInput', 'pullRequestReviewId');
   }
 
   @override
@@ -34290,7 +34608,7 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdatePullRequestReviewInput')
+    return (newBuiltValueToStringHelper(r'GUpdatePullRequestReviewInput')
           ..add('body', body)
           ..add('clientMutationId', clientMutationId)
           ..add('pullRequestReviewId', pullRequestReviewId))
@@ -34343,15 +34661,17 @@ class GUpdatePullRequestReviewInputBuilder
   }
 
   @override
-  _$GUpdatePullRequestReviewInput build() {
+  GUpdatePullRequestReviewInput build() => _build();
+
+  _$GUpdatePullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GUpdatePullRequestReviewInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GUpdatePullRequestReviewInput', 'body'),
+                body, r'GUpdatePullRequestReviewInput', 'body'),
             clientMutationId: clientMutationId,
             pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
                 pullRequestReviewId,
-                'GUpdatePullRequestReviewInput',
+                r'GUpdatePullRequestReviewInput',
                 'pullRequestReviewId'));
     replace(_$result);
     return _$result;
@@ -34369,7 +34689,7 @@ class _$GUpdateRefInput extends GUpdateRefInput {
   final String refId;
 
   factory _$GUpdateRefInput([void Function(GUpdateRefInputBuilder)? updates]) =>
-      (new GUpdateRefInputBuilder()..update(updates)).build();
+      (new GUpdateRefInputBuilder()..update(updates))._build();
 
   _$GUpdateRefInput._(
       {this.clientMutationId,
@@ -34377,8 +34697,8 @@ class _$GUpdateRefInput extends GUpdateRefInput {
       required this.oid,
       required this.refId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(oid, 'GUpdateRefInput', 'oid');
-    BuiltValueNullFieldError.checkNotNull(refId, 'GUpdateRefInput', 'refId');
+    BuiltValueNullFieldError.checkNotNull(oid, r'GUpdateRefInput', 'oid');
+    BuiltValueNullFieldError.checkNotNull(refId, r'GUpdateRefInput', 'refId');
   }
 
   @override
@@ -34409,7 +34729,7 @@ class _$GUpdateRefInput extends GUpdateRefInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateRefInput')
+    return (newBuiltValueToStringHelper(r'GUpdateRefInput')
           ..add('clientMutationId', clientMutationId)
           ..add('force', force)
           ..add('oid', oid)
@@ -34465,7 +34785,9 @@ class GUpdateRefInputBuilder
   }
 
   @override
-  _$GUpdateRefInput build() {
+  GUpdateRefInput build() => _build();
+
+  _$GUpdateRefInput _build() {
     _$GUpdateRefInput _$result;
     try {
       _$result = _$v ??
@@ -34474,7 +34796,7 @@ class GUpdateRefInputBuilder
               force: force,
               oid: oid.build(),
               refId: BuiltValueNullFieldError.checkNotNull(
-                  refId, 'GUpdateRefInput', 'refId'));
+                  refId, r'GUpdateRefInput', 'refId'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -34482,7 +34804,7 @@ class GUpdateRefInputBuilder
         oid.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdateRefInput', _$failedField, e.toString());
+            r'GUpdateRefInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -34513,7 +34835,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
 
   factory _$GUpdateRepositoryInput(
           [void Function(GUpdateRepositoryInputBuilder)? updates]) =>
-      (new GUpdateRepositoryInputBuilder()..update(updates)).build();
+      (new GUpdateRepositoryInputBuilder()..update(updates))._build();
 
   _$GUpdateRepositoryInput._(
       {this.clientMutationId,
@@ -34527,7 +34849,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
       this.template})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GUpdateRepositoryInput', 'repositoryId');
+        repositoryId, r'GUpdateRepositoryInput', 'repositoryId');
   }
 
   @override
@@ -34576,7 +34898,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateRepositoryInput')
+    return (newBuiltValueToStringHelper(r'GUpdateRepositoryInput')
           ..add('clientMutationId', clientMutationId)
           ..add('description', description)
           ..add('hasIssuesEnabled', hasIssuesEnabled)
@@ -34666,7 +34988,9 @@ class GUpdateRepositoryInputBuilder
   }
 
   @override
-  _$GUpdateRepositoryInput build() {
+  GUpdateRepositoryInput build() => _build();
+
+  _$GUpdateRepositoryInput _build() {
     _$GUpdateRepositoryInput _$result;
     try {
       _$result = _$v ??
@@ -34679,7 +35003,7 @@ class GUpdateRepositoryInputBuilder
               homepageUrl: _homepageUrl?.build(),
               name: name,
               repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, 'GUpdateRepositoryInput', 'repositoryId'),
+                  repositoryId, r'GUpdateRepositoryInput', 'repositoryId'),
               template: template);
     } catch (_) {
       late String _$failedField;
@@ -34688,7 +35012,7 @@ class GUpdateRepositoryInputBuilder
         _homepageUrl?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdateRepositoryInput', _$failedField, e.toString());
+            r'GUpdateRepositoryInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -34707,7 +35031,7 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
 
   factory _$GUpdateSubscriptionInput(
           [void Function(GUpdateSubscriptionInputBuilder)? updates]) =>
-      (new GUpdateSubscriptionInputBuilder()..update(updates)).build();
+      (new GUpdateSubscriptionInputBuilder()..update(updates))._build();
 
   _$GUpdateSubscriptionInput._(
       {this.clientMutationId,
@@ -34715,9 +35039,9 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
       required this.subscribableId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        state, 'GUpdateSubscriptionInput', 'state');
+        state, r'GUpdateSubscriptionInput', 'state');
     BuiltValueNullFieldError.checkNotNull(
-        subscribableId, 'GUpdateSubscriptionInput', 'subscribableId');
+        subscribableId, r'GUpdateSubscriptionInput', 'subscribableId');
   }
 
   @override
@@ -34746,7 +35070,7 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateSubscriptionInput')
+    return (newBuiltValueToStringHelper(r'GUpdateSubscriptionInput')
           ..add('clientMutationId', clientMutationId)
           ..add('state', state)
           ..add('subscribableId', subscribableId))
@@ -34798,14 +35122,16 @@ class GUpdateSubscriptionInputBuilder
   }
 
   @override
-  _$GUpdateSubscriptionInput build() {
+  GUpdateSubscriptionInput build() => _build();
+
+  _$GUpdateSubscriptionInput _build() {
     final _$result = _$v ??
         new _$GUpdateSubscriptionInput._(
             clientMutationId: clientMutationId,
             state: BuiltValueNullFieldError.checkNotNull(
-                state, 'GUpdateSubscriptionInput', 'state'),
+                state, r'GUpdateSubscriptionInput', 'state'),
             subscribableId: BuiltValueNullFieldError.checkNotNull(
-                subscribableId, 'GUpdateSubscriptionInput', 'subscribableId'));
+                subscribableId, r'GUpdateSubscriptionInput', 'subscribableId'));
     replace(_$result);
     return _$result;
   }
@@ -34824,7 +35150,8 @@ class _$GUpdateTeamDiscussionCommentInput
 
   factory _$GUpdateTeamDiscussionCommentInput(
           [void Function(GUpdateTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GUpdateTeamDiscussionCommentInputBuilder()..update(updates)).build();
+      (new GUpdateTeamDiscussionCommentInputBuilder()..update(updates))
+          ._build();
 
   _$GUpdateTeamDiscussionCommentInput._(
       {required this.body,
@@ -34833,9 +35160,9 @@ class _$GUpdateTeamDiscussionCommentInput
       required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        body, 'GUpdateTeamDiscussionCommentInput', 'body');
+        body, r'GUpdateTeamDiscussionCommentInput', 'body');
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GUpdateTeamDiscussionCommentInput', 'id');
+        id, r'GUpdateTeamDiscussionCommentInput', 'id');
   }
 
   @override
@@ -34867,7 +35194,7 @@ class _$GUpdateTeamDiscussionCommentInput
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateTeamDiscussionCommentInput')
+    return (newBuiltValueToStringHelper(r'GUpdateTeamDiscussionCommentInput')
           ..add('body', body)
           ..add('bodyVersion', bodyVersion)
           ..add('clientMutationId', clientMutationId)
@@ -34926,15 +35253,17 @@ class GUpdateTeamDiscussionCommentInputBuilder
   }
 
   @override
-  _$GUpdateTeamDiscussionCommentInput build() {
+  GUpdateTeamDiscussionCommentInput build() => _build();
+
+  _$GUpdateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdateTeamDiscussionCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
-                body, 'GUpdateTeamDiscussionCommentInput', 'body'),
+                body, r'GUpdateTeamDiscussionCommentInput', 'body'),
             bodyVersion: bodyVersion,
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GUpdateTeamDiscussionCommentInput', 'id'));
+                id, r'GUpdateTeamDiscussionCommentInput', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -34956,7 +35285,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
 
   factory _$GUpdateTeamDiscussionInput(
           [void Function(GUpdateTeamDiscussionInputBuilder)? updates]) =>
-      (new GUpdateTeamDiscussionInputBuilder()..update(updates)).build();
+      (new GUpdateTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GUpdateTeamDiscussionInput._(
       {this.body,
@@ -34967,7 +35296,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
       this.title})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GUpdateTeamDiscussionInput', 'id');
+        id, r'GUpdateTeamDiscussionInput', 'id');
   }
 
   @override
@@ -35005,7 +35334,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateTeamDiscussionInput')
+    return (newBuiltValueToStringHelper(r'GUpdateTeamDiscussionInput')
           ..add('body', body)
           ..add('bodyVersion', bodyVersion)
           ..add('clientMutationId', clientMutationId)
@@ -35074,14 +35403,16 @@ class GUpdateTeamDiscussionInputBuilder
   }
 
   @override
-  _$GUpdateTeamDiscussionInput build() {
+  GUpdateTeamDiscussionInput build() => _build();
+
+  _$GUpdateTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GUpdateTeamDiscussionInput._(
             body: body,
             bodyVersion: bodyVersion,
             clientMutationId: clientMutationId,
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'GUpdateTeamDiscussionInput', 'id'),
+                id, r'GUpdateTeamDiscussionInput', 'id'),
             pinned: pinned,
             title: title);
     replace(_$result);
@@ -35099,7 +35430,7 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
 
   factory _$GUpdateTopicsInput(
           [void Function(GUpdateTopicsInputBuilder)? updates]) =>
-      (new GUpdateTopicsInputBuilder()..update(updates)).build();
+      (new GUpdateTopicsInputBuilder()..update(updates))._build();
 
   _$GUpdateTopicsInput._(
       {this.clientMutationId,
@@ -35107,9 +35438,9 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
       required this.topicNames})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        repositoryId, 'GUpdateTopicsInput', 'repositoryId');
+        repositoryId, r'GUpdateTopicsInput', 'repositoryId');
     BuiltValueNullFieldError.checkNotNull(
-        topicNames, 'GUpdateTopicsInput', 'topicNames');
+        topicNames, r'GUpdateTopicsInput', 'topicNames');
   }
 
   @override
@@ -35139,7 +35470,7 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUpdateTopicsInput')
+    return (newBuiltValueToStringHelper(r'GUpdateTopicsInput')
           ..add('clientMutationId', clientMutationId)
           ..add('repositoryId', repositoryId)
           ..add('topicNames', topicNames))
@@ -35191,14 +35522,16 @@ class GUpdateTopicsInputBuilder
   }
 
   @override
-  _$GUpdateTopicsInput build() {
+  GUpdateTopicsInput build() => _build();
+
+  _$GUpdateTopicsInput _build() {
     _$GUpdateTopicsInput _$result;
     try {
       _$result = _$v ??
           new _$GUpdateTopicsInput._(
               clientMutationId: clientMutationId,
               repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, 'GUpdateTopicsInput', 'repositoryId'),
+                  repositoryId, r'GUpdateTopicsInput', 'repositoryId'),
               topicNames: topicNames.build());
     } catch (_) {
       late String _$failedField;
@@ -35207,7 +35540,7 @@ class GUpdateTopicsInputBuilder
         topicNames.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GUpdateTopicsInput', _$failedField, e.toString());
+            r'GUpdateTopicsInput', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -35224,13 +35557,13 @@ class _$GUserStatusOrder extends GUserStatusOrder {
 
   factory _$GUserStatusOrder(
           [void Function(GUserStatusOrderBuilder)? updates]) =>
-      (new GUserStatusOrderBuilder()..update(updates)).build();
+      (new GUserStatusOrderBuilder()..update(updates))._build();
 
   _$GUserStatusOrder._({required this.direction, required this.field})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        direction, 'GUserStatusOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, 'GUserStatusOrder', 'field');
+        direction, r'GUserStatusOrder', 'direction');
+    BuiltValueNullFieldError.checkNotNull(field, r'GUserStatusOrder', 'field');
   }
 
   @override
@@ -35256,7 +35589,7 @@ class _$GUserStatusOrder extends GUserStatusOrder {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GUserStatusOrder')
+    return (newBuiltValueToStringHelper(r'GUserStatusOrder')
           ..add('direction', direction)
           ..add('field', field))
         .toString();
@@ -35299,13 +35632,15 @@ class GUserStatusOrderBuilder
   }
 
   @override
-  _$GUserStatusOrder build() {
+  GUserStatusOrder build() => _build();
+
+  _$GUserStatusOrder _build() {
     final _$result = _$v ??
         new _$GUserStatusOrder._(
             direction: BuiltValueNullFieldError.checkNotNull(
-                direction, 'GUserStatusOrder', 'direction'),
+                direction, r'GUserStatusOrder', 'direction'),
             field: BuiltValueNullFieldError.checkNotNull(
-                field, 'GUserStatusOrder', 'field'));
+                field, r'GUserStatusOrder', 'field'));
     replace(_$result);
     return _$result;
   }
@@ -35317,10 +35652,10 @@ class _$GX509Certificate extends GX509Certificate {
 
   factory _$GX509Certificate(
           [void Function(GX509CertificateBuilder)? updates]) =>
-      (new GX509CertificateBuilder()..update(updates)).build();
+      (new GX509CertificateBuilder()..update(updates))._build();
 
   _$GX509Certificate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GX509Certificate', 'value');
+    BuiltValueNullFieldError.checkNotNull(value, r'GX509Certificate', 'value');
   }
 
   @override
@@ -35344,7 +35679,7 @@ class _$GX509Certificate extends GX509Certificate {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GX509Certificate')
+    return (newBuiltValueToStringHelper(r'GX509Certificate')
           ..add('value', value))
         .toString();
   }
@@ -35381,14 +35716,16 @@ class GX509CertificateBuilder
   }
 
   @override
-  _$GX509Certificate build() {
+  GX509Certificate build() => _build();
+
+  _$GX509Certificate _build() {
     final _$result = _$v ??
         new _$GX509Certificate._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GX509Certificate', 'value'));
+                value, r'GX509Certificate', 'value'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

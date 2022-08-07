@@ -39,7 +39,7 @@ class _$GHumanWithArgsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -50,7 +50,7 @@ class _$GHumanWithArgsSerializer
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Operation)) as _i1.Operation;
+              specifiedType: const FullType(_i1.Operation))! as _i1.Operation;
           break;
       }
     }
@@ -66,13 +66,13 @@ class _$GHumanWithArgs extends GHumanWithArgs {
   final _i1.Operation operation;
 
   factory _$GHumanWithArgs([void Function(GHumanWithArgsBuilder)? updates]) =>
-      (new GHumanWithArgsBuilder()..update(updates)).build();
+      (new GHumanWithArgsBuilder()..update(updates))._build();
 
   _$GHumanWithArgs._({required this.vars, required this.operation})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, 'GHumanWithArgs', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GHumanWithArgs', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, 'GHumanWithArgs', 'operation');
+        operation, r'GHumanWithArgs', 'operation');
   }
 
   @override
@@ -98,7 +98,7 @@ class _$GHumanWithArgs extends GHumanWithArgs {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GHumanWithArgs')
+    return (newBuiltValueToStringHelper(r'GHumanWithArgs')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
@@ -144,14 +144,16 @@ class GHumanWithArgsBuilder
   }
 
   @override
-  _$GHumanWithArgs build() {
+  GHumanWithArgs build() => _build();
+
+  _$GHumanWithArgs _build() {
     _$GHumanWithArgs _$result;
     try {
       _$result = _$v ??
           new _$GHumanWithArgs._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, 'GHumanWithArgs', 'operation'));
+                  operation, r'GHumanWithArgs', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -159,7 +161,7 @@ class GHumanWithArgsBuilder
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GHumanWithArgs', _$failedField, e.toString());
+            r'GHumanWithArgs', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -168,4 +170,4 @@ class GHumanWithArgsBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -52,13 +52,13 @@ class _$GReadRepositoriesDataSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'viewer':
           result.viewer.replace(serializers.deserialize(value,
@@ -107,13 +107,13 @@ class _$GReadRepositoriesData_viewerSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'repositories':
           result.repositories.replace(serializers.deserialize(value,
@@ -168,19 +168,19 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'nodes':
           result.nodes.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GReadRepositoriesData_viewer_repositories_nodes)
-              ]))! as BuiltList<Object>);
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -231,25 +231,25 @@ class _$GReadRepositoriesData_viewer_repositories_nodesSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'viewerHasStarred':
           result.viewerHasStarred = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'createdAt':
           result.createdAt.replace(serializers.deserialize(value,
@@ -270,14 +270,14 @@ class _$GReadRepositoriesData extends GReadRepositoriesData {
 
   factory _$GReadRepositoriesData(
           [void Function(GReadRepositoriesDataBuilder)? updates]) =>
-      (new GReadRepositoriesDataBuilder()..update(updates)).build();
+      (new GReadRepositoriesDataBuilder()..update(updates))._build();
 
   _$GReadRepositoriesData._({required this.G__typename, required this.viewer})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GReadRepositoriesData', 'G__typename');
+        G__typename, r'GReadRepositoriesData', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        viewer, 'GReadRepositoriesData', 'viewer');
+        viewer, r'GReadRepositoriesData', 'viewer');
   }
 
   @override
@@ -304,7 +304,7 @@ class _$GReadRepositoriesData extends GReadRepositoriesData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReadRepositoriesData')
+    return (newBuiltValueToStringHelper(r'GReadRepositoriesData')
           ..add('G__typename', G__typename)
           ..add('viewer', viewer))
         .toString();
@@ -351,13 +351,15 @@ class GReadRepositoriesDataBuilder
   }
 
   @override
-  _$GReadRepositoriesData build() {
+  GReadRepositoriesData build() => _build();
+
+  _$GReadRepositoriesData _build() {
     _$GReadRepositoriesData _$result;
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GReadRepositoriesData', 'G__typename'),
+                  G__typename, r'GReadRepositoriesData', 'G__typename'),
               viewer: viewer.build());
     } catch (_) {
       late String _$failedField;
@@ -366,7 +368,7 @@ class GReadRepositoriesDataBuilder
         viewer.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReadRepositoriesData', _$failedField, e.toString());
+            r'GReadRepositoriesData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -383,15 +385,15 @@ class _$GReadRepositoriesData_viewer extends GReadRepositoriesData_viewer {
 
   factory _$GReadRepositoriesData_viewer(
           [void Function(GReadRepositoriesData_viewerBuilder)? updates]) =>
-      (new GReadRepositoriesData_viewerBuilder()..update(updates)).build();
+      (new GReadRepositoriesData_viewerBuilder()..update(updates))._build();
 
   _$GReadRepositoriesData_viewer._(
       {required this.G__typename, required this.repositories})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GReadRepositoriesData_viewer', 'G__typename');
+        G__typename, r'GReadRepositoriesData_viewer', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        repositories, 'GReadRepositoriesData_viewer', 'repositories');
+        repositories, r'GReadRepositoriesData_viewer', 'repositories');
   }
 
   @override
@@ -418,7 +420,7 @@ class _$GReadRepositoriesData_viewer extends GReadRepositoriesData_viewer {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GReadRepositoriesData_viewer')
+    return (newBuiltValueToStringHelper(r'GReadRepositoriesData_viewer')
           ..add('G__typename', G__typename)
           ..add('repositories', repositories))
         .toString();
@@ -469,13 +471,15 @@ class GReadRepositoriesData_viewerBuilder
   }
 
   @override
-  _$GReadRepositoriesData_viewer build() {
+  GReadRepositoriesData_viewer build() => _build();
+
+  _$GReadRepositoriesData_viewer _build() {
     _$GReadRepositoriesData_viewer _$result;
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, 'GReadRepositoriesData_viewer', 'G__typename'),
+                  G__typename, r'GReadRepositoriesData_viewer', 'G__typename'),
               repositories: repositories.build());
     } catch (_) {
       late String _$failedField;
@@ -484,7 +488,7 @@ class GReadRepositoriesData_viewerBuilder
         repositories.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReadRepositoriesData_viewer', _$failedField, e.toString());
+            r'GReadRepositoriesData_viewer', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -504,13 +508,13 @@ class _$GReadRepositoriesData_viewer_repositories
           [void Function(GReadRepositoriesData_viewer_repositoriesBuilder)?
               updates]) =>
       (new GReadRepositoriesData_viewer_repositoriesBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$GReadRepositoriesData_viewer_repositories._(
       {required this.G__typename, this.nodes})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
-        'GReadRepositoriesData_viewer_repositories', 'G__typename');
+        r'GReadRepositoriesData_viewer_repositories', 'G__typename');
   }
 
   @override
@@ -539,7 +543,7 @@ class _$GReadRepositoriesData_viewer_repositories
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GReadRepositoriesData_viewer_repositories')
+            r'GReadRepositoriesData_viewer_repositories')
           ..add('G__typename', G__typename)
           ..add('nodes', nodes))
         .toString();
@@ -593,13 +597,15 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
   }
 
   @override
-  _$GReadRepositoriesData_viewer_repositories build() {
+  GReadRepositoriesData_viewer_repositories build() => _build();
+
+  _$GReadRepositoriesData_viewer_repositories _build() {
     _$GReadRepositoriesData_viewer_repositories _$result;
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories._(
               G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  'GReadRepositoriesData_viewer_repositories', 'G__typename'),
+                  r'GReadRepositoriesData_viewer_repositories', 'G__typename'),
               nodes: _nodes?.build());
     } catch (_) {
       late String _$failedField;
@@ -608,7 +614,7 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
         _nodes?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReadRepositoriesData_viewer_repositories',
+            r'GReadRepositoriesData_viewer_repositories',
             _$failedField,
             e.toString());
       }
@@ -638,7 +644,7 @@ class _$GReadRepositoriesData_viewer_repositories_nodes
               updates]) =>
       (new GReadRepositoriesData_viewer_repositories_nodesBuilder()
             ..update(updates))
-          .build();
+          ._build();
 
   _$GReadRepositoriesData_viewer_repositories_nodes._(
       {required this.G__typename,
@@ -648,15 +654,15 @@ class _$GReadRepositoriesData_viewer_repositories_nodes
       required this.createdAt})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
-        'GReadRepositoriesData_viewer_repositories_nodes', 'G__typename');
+        r'GReadRepositoriesData_viewer_repositories_nodes', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, 'GReadRepositoriesData_viewer_repositories_nodes', 'id');
+        id, r'GReadRepositoriesData_viewer_repositories_nodes', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, 'GReadRepositoriesData_viewer_repositories_nodes', 'name');
+        name, r'GReadRepositoriesData_viewer_repositories_nodes', 'name');
     BuiltValueNullFieldError.checkNotNull(viewerHasStarred,
-        'GReadRepositoriesData_viewer_repositories_nodes', 'viewerHasStarred');
+        r'GReadRepositoriesData_viewer_repositories_nodes', 'viewerHasStarred');
     BuiltValueNullFieldError.checkNotNull(createdAt,
-        'GReadRepositoriesData_viewer_repositories_nodes', 'createdAt');
+        r'GReadRepositoriesData_viewer_repositories_nodes', 'createdAt');
   }
 
   @override
@@ -692,7 +698,7 @@ class _$GReadRepositoriesData_viewer_repositories_nodes
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            'GReadRepositoriesData_viewer_repositories_nodes')
+            r'GReadRepositoriesData_viewer_repositories_nodes')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -762,22 +768,24 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
   }
 
   @override
-  _$GReadRepositoriesData_viewer_repositories_nodes build() {
+  GReadRepositoriesData_viewer_repositories_nodes build() => _build();
+
+  _$GReadRepositoriesData_viewer_repositories_nodes _build() {
     _$GReadRepositoriesData_viewer_repositories_nodes _$result;
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories_nodes._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
-                  'GReadRepositoriesData_viewer_repositories_nodes',
+                  r'GReadRepositoriesData_viewer_repositories_nodes',
                   'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'GReadRepositoriesData_viewer_repositories_nodes', 'id'),
+                  id, r'GReadRepositoriesData_viewer_repositories_nodes', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(name,
-                  'GReadRepositoriesData_viewer_repositories_nodes', 'name'),
+                  r'GReadRepositoriesData_viewer_repositories_nodes', 'name'),
               viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
                   viewerHasStarred,
-                  'GReadRepositoriesData_viewer_repositories_nodes',
+                  r'GReadRepositoriesData_viewer_repositories_nodes',
                   'viewerHasStarred'),
               createdAt: createdAt.build());
     } catch (_) {
@@ -787,7 +795,7 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
         createdAt.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GReadRepositoriesData_viewer_repositories_nodes',
+            r'GReadRepositoriesData_viewer_repositories_nodes',
             _$failedField,
             e.toString());
       }
@@ -798,4 +806,4 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

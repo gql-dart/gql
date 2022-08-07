@@ -3,30 +3,32 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
-import 'package:gql_example_cli_github/add_star.data.gql.dart'
+import 'package:gql_example_cli_github/__generated__/add_star.data.gql.dart'
     show GAddStarData, GAddStarData_action, GAddStarData_action_starrable;
-import 'package:gql_example_cli_github/add_star.req.gql.dart' show GAddStar;
-import 'package:gql_example_cli_github/add_star.var.gql.dart' show GAddStarVars;
-import 'package:gql_example_cli_github/read_repos.data.gql.dart'
+import 'package:gql_example_cli_github/__generated__/add_star.req.gql.dart'
+    show GAddStar;
+import 'package:gql_example_cli_github/__generated__/add_star.var.gql.dart'
+    show GAddStarVars;
+import 'package:gql_example_cli_github/__generated__/read_repos.data.gql.dart'
     show
         GReadRepositoriesData,
         GReadRepositoriesData_viewer,
         GReadRepositoriesData_viewer_repositories,
         GReadRepositoriesData_viewer_repositories_nodes;
-import 'package:gql_example_cli_github/read_repos.req.gql.dart'
+import 'package:gql_example_cli_github/__generated__/read_repos.req.gql.dart'
     show GReadRepositories;
-import 'package:gql_example_cli_github/read_repos.var.gql.dart'
+import 'package:gql_example_cli_github/__generated__/read_repos.var.gql.dart'
     show GReadRepositoriesVars;
-import 'package:gql_example_cli_github/remove_star.data.gql.dart'
+import 'package:gql_example_cli_github/__generated__/remove_star.data.gql.dart'
     show
         GRemoveStarData,
         GRemoveStarData_action,
         GRemoveStarData_action_starrable;
-import 'package:gql_example_cli_github/remove_star.req.gql.dart'
+import 'package:gql_example_cli_github/__generated__/remove_star.req.gql.dart'
     show GRemoveStar;
-import 'package:gql_example_cli_github/remove_star.var.gql.dart'
+import 'package:gql_example_cli_github/__generated__/remove_star.var.gql.dart'
     show GRemoveStarVars;
-import 'package:gql_example_cli_github/schema.schema.gql.dart'
+import 'package:gql_example_cli_github/__generated__/schema.schema.gql.dart'
     show
         GAcceptEnterpriseAdministratorInvitationInput,
         GAcceptTopicSuggestionInput,
