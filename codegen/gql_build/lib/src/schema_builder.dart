@@ -17,7 +17,7 @@ class SchemaBuilder implements Builder {
   SchemaBuilder(
     this.typeOverrides,
     this.enumFallbackConfig,
-      this.generatePossibleTypesMap,
+    this.generatePossibleTypesMap,
   );
 
   @override

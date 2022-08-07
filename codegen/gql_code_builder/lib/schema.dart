@@ -4,11 +4,12 @@ import "package:gql_code_builder/source.dart";
 import "package:gql_code_builder/src/schema.dart";
 import "package:gql_code_builder/src/utils/possible_types.dart";
 
-Library buildSchemaLibrary(SourceNode schemaSource,
-    String partUrl,
-    Map<String, Reference> typeOverrides,
-    EnumFallbackConfig enumFallbackConfig, {
-      bool generatePossibleTypesMap = false,
+Library buildSchemaLibrary(
+  SourceNode schemaSource,
+  String partUrl,
+  Map<String, Reference> typeOverrides,
+  EnumFallbackConfig enumFallbackConfig, {
+  bool generatePossibleTypesMap = false,
 }) {
   final lib = buildSchema(
     schemaSource,
@@ -23,7 +24,7 @@ Library buildSchemaLibrary(SourceNode schemaSource,
     possibleTypes = null;
   }
   return lib.rebuild(
-        (b) {
+    (b) {
       b.directives.add(
         Directive.part(partUrl),
       );
@@ -41,9 +42,7 @@ Code buildPossibleTypes(DocumentNode document) {
   // wrap the map in a literal for codegen
   final possibleTypesLiteral = literalMap(possibleTypesMap);
   // assign the literal to a const variable named "possibleTypes"
-  return possibleTypesLiteral
-      .assignConst("possibleTypesMap")
-      .statement;
+  return possibleTypesLiteral.assignConst("possibleTypesMap").statement;
 }
 
 class EnumFallbackConfig {
@@ -55,5 +54,6 @@ class EnumFallbackConfig {
     required this.generateFallbackValuesGlobally,
     this.globalEnumFallbackName,
     required this.fallbackValueMap,
-  }) : assert(!generateFallbackValuesGlobally || globalEnumFallbackName != null);
+  }) : assert(
+            !generateFallbackValuesGlobally || globalEnumFallbackName != null);
 }

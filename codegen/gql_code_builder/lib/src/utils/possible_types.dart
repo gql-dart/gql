@@ -37,13 +37,15 @@ extension PossibleTypes on DocumentNode {
       return [typeDefinition];
     }
     if (typeDefinition is UnionTypeDefinitionNode) {
-      return typeDefinition.types.expand((e) => _lookupConcreteTypes(e.name.value));
+      return typeDefinition.types
+          .expand((e) => _lookupConcreteTypes(e.name.value));
     }
 
     if (typeDefinition is InterfaceTypeDefinitionNode) {
       return definitions.whereType<ObjectTypeDefinitionNode>().where(
-            (element) =>
-                element.interfaces.where((element) => element.name.value == name).isNotEmpty,
+            (element) => element.interfaces
+                .where((element) => element.name.value == name)
+                .isNotEmpty,
           );
     }
 
@@ -66,8 +68,11 @@ extension PossibleTypes on DocumentNode {
 
 final _memoizedTypeDefinitionsOf = _memo1(_typeDefinitionsOf);
 
-Map<String, TypeDefinitionNode> _typeDefinitionsOf(DocumentNode schema) => Map.fromEntries(
-      schema.definitions.whereType<TypeDefinitionNode>().map((e) => MapEntry(e.name.value, e)),
+Map<String, TypeDefinitionNode> _typeDefinitionsOf(DocumentNode schema) =>
+    Map.fromEntries(
+      schema.definitions
+          .whereType<TypeDefinitionNode>()
+          .map((e) => MapEntry(e.name.value, e)),
     );
 
 /// Checks 1 argument for equality with [==] operator and returns the cached
