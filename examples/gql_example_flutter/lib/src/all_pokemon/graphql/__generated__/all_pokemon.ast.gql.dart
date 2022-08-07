@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:gql/ast.dart' as _i1;
 import 'package:gql_example_flutter/src/pokemon_card/graphql/__generated__/nested_fragment.ast.gql.dart'
     as _i3;
