@@ -66,3 +66,7 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   static GInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GInput.serializer, json);
 }
+
+const possibleTypesMap = {
+  'Shape': {'Square', 'Rectangle'}
+};
