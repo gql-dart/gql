@@ -1,8 +1,8 @@
 import "package:args/args.dart";
-import "package:gql_example_cli/find_pokemon.data.gql.dart";
-import "package:gql_example_cli/find_pokemon.req.gql.dart";
-import "package:gql_example_cli/list_pokemon.data.gql.dart";
-import "package:gql_example_cli/list_pokemon.req.gql.dart";
+import "package:gql_example_cli/__generated__/find_pokemon.data.gql.dart";
+import "package:gql_example_cli/__generated__/find_pokemon.req.gql.dart";
+import "package:gql_example_cli/__generated__/list_pokemon.data.gql.dart";
+import "package:gql_example_cli/__generated__/list_pokemon.req.gql.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
 
