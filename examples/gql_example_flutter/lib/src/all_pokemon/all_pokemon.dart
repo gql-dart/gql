@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gql_exec/gql_exec.dart';
 
-import './graphql/all_pokemon.data.gql.dart';
-import './graphql/all_pokemon.req.gql.dart';
+import './graphql/__generated__/all_pokemon.data.gql.dart';
+import './graphql/__generated__/all_pokemon.req.gql.dart';
 import '../config.dart';
 import '../pokemon_card/pokemon_card.dart';
 
