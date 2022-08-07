@@ -2,7 +2,7 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_cli/serializers.gql.dart' as _i1;
+import 'package:gql_example_cli/__generated__/serializers.gql.dart' as _i1;
 
 part 'dimensions.data.gql.g.dart';
 

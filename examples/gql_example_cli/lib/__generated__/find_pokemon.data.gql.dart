@@ -2,8 +2,8 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_cli/dimensions.data.gql.dart' as _i2;
-import 'package:gql_example_cli/serializers.gql.dart' as _i1;
+import 'package:gql_example_cli/__generated__/dimensions.data.gql.dart' as _i2;
+import 'package:gql_example_cli/__generated__/serializers.gql.dart' as _i1;
 
 part 'find_pokemon.data.gql.g.dart';
 

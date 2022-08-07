@@ -2,9 +2,9 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_example_cli/list_pokemon.ast.gql.dart' as _i2;
-import 'package:gql_example_cli/list_pokemon.var.gql.dart' as _i3;
-import 'package:gql_example_cli/serializers.gql.dart' as _i4;
+import 'package:gql_example_cli/__generated__/list_pokemon.ast.gql.dart' as _i2;
+import 'package:gql_example_cli/__generated__/list_pokemon.var.gql.dart' as _i3;
+import 'package:gql_example_cli/__generated__/serializers.gql.dart' as _i4;
 import 'package:gql_exec/gql_exec.dart' as _i1;
 
 part 'list_pokemon.req.gql.g.dart';

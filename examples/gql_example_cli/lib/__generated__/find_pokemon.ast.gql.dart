@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 import 'package:gql/ast.dart' as _i1;
-import 'package:gql_example_cli/dimensions.ast.gql.dart' as _i2;
+import 'package:gql_example_cli/__generated__/dimensions.ast.gql.dart' as _i2;
 
 const FindPokemon = _i1.OperationDefinitionNode(
     type: _i1.OperationType.query,
