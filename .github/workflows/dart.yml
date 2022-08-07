@@ -100,7 +100,7 @@ jobs:
             build_runner build --delete-conflicting-outputs || true
       - name: Check build diff
         run: |
-          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+          multipack --only $PACKAGE exec git diff --exit-code lib/
       - name: Check formatting
         run: |
           echo ""
