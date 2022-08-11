@@ -8,7 +8,7 @@ dependencies:
   collection: ^1.15.0
   meta: ^1.3.0
   source_span: ^1.8.0
+  yaml: ^3.0.0
 dev_dependencies: 
   gql_pedantic: ^1.0.2
   test: ^1.16.2
-  yaml: ^3.0.0

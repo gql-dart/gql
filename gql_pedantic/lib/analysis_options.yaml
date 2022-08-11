@@ -73,6 +73,7 @@ linter:
     - prefer_inlined_adds
     - prefer_typing_uninitialized_variables
     - unnecessary_lambdas
+    - depend_on_referenced_packages
 
 analyzer:
   strong-mode:
@@ -149,3 +150,4 @@ analyzer:
     prefer_inlined_adds: error
     prefer_typing_uninitialized_variables: error
     unnecessary_lambdas: error
+    depend_on_referenced_packages: error

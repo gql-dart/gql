@@ -6,6 +6,7 @@ dependencies:
   gql: ^0.14.0
   gql_exec: ^0.4.0
   gql_http_link: ^0.4.2
+  gql_link: ^0.5.0
   gql_transform_link: ^0.2.2
 dev_dependencies: 
   build_runner: ^2.0.0
