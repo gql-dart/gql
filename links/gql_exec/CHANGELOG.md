@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Upgrade `gql`
+
 ## 0.4.0
 
 - [BREAKING] Bump version due to a braking change in `0.3.1`.
