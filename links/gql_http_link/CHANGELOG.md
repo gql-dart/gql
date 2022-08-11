@@ -1,3 +1,7 @@
+## 0.4.3
+
+- Add support for useGETForQueries
+
 ## 0.4.2
 
 - Upgrade `gql_exec`.

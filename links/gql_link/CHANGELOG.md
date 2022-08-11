@@ -1,7 +1,6 @@
 ## 0.5.0
 
-- add stacktrace to exceptions
-
+- BREAKING: add stacktrace to exceptions
 
 ## 0.4.2
 
