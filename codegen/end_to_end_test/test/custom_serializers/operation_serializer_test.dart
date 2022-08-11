@@ -2,8 +2,8 @@ import "package:test/test.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_code_builder/src/serializers/operation_serializer.dart";
 
-import 'package:end_to_end_test/fragments/hero_with_fragments.ast.gql.dart';
-import 'package:end_to_end_test/graphql/serializers.gql.dart';
+import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.ast.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart';
 
 void main() {
   group("Operation Type", () {

@@ -75,25 +75,30 @@ class DioLink extends Link {
   /// Dio client instance.
   final dio.Dio client;
 
+  /// Wether to use a GET request for queries.
+  final bool useGETForQueries;
+
   DioLink(
     this.endpoint, {
     required this.client,
     this.defaultHeaders = const {},
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
+    this.useGETForQueries = false,
   });
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
     final dio.Response<Map<String, dynamic>> dioResponse =
         await _executeDioRequest(
-      body: _prepareRequestBody(request),
+      request: request,
       headers: <String, String>{
         dio.Headers.acceptHeader: "*/*",
         dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
         ...defaultHeaders,
         ..._getHttpLinkHeaders(request),
       },
+      isQuery: request.isQuery,
     );
 
     if (dioResponse.statusCode! >= 300 ||
@@ -142,6 +147,11 @@ class DioLink extends Link {
     return formBody;
   }
 
+  Map<String, String> _encodeAsUriParams(Map<String, dynamic> serialized) =>
+      serialized.map<String, String>(
+        (k, dynamic v) => MapEntry(k, v is String ? v : json.encode(v)),
+      );
+
   /// wrap an encoding transform in exception handling
   T Function(V) _encodeAttempter<T, V>(
     Request request,
@@ -150,9 +160,10 @@ class DioLink extends Link {
       (V input) {
         try {
           return encoder(input);
-        } catch (e) {
+        } catch (e, stackTrace) {
           throw RequestFormatException(
             originalException: e,
+            originalStackTrace: stackTrace,
             request: request,
           );
         }
@@ -168,35 +179,59 @@ class DioLink extends Link {
           statusCode: httpResponse.statusCode!,
         ),
       );
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ContextWriteException(
         originalException: e,
+        originalStackTrace: stackTrace,
       );
     }
   }
 
   Future<dio.Response<Map<String, dynamic>>> _executeDioRequest({
-    required dynamic body,
+    required Request request,
     required Map<String, String> headers,
+    required bool isQuery,
   }) async {
     try {
-      final res = await client.post<dynamic>(
-        endpoint,
-        data: body,
-        options: dio.Options(
-          responseType: dio.ResponseType.json,
-          headers: headers,
-        ),
-      );
+      final dynamic body = _prepareRequestBody(request);
+      dio.Response<dynamic> res;
+
+      final useGet =
+          useGETForQueries && body is Map<String, dynamic> && isQuery;
+      if (useGet) {
+        res = await client.getUri<dynamic>(
+          Uri.parse(endpoint).replace(
+            queryParameters: _encodeAttempter(
+              request,
+              _encodeAsUriParams,
+            )(body as Map<String, dynamic>),
+          ),
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
+      } else {
+        res = await client.post<dynamic>(
+          endpoint,
+          data: body,
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
+      }
       if (res.data is Map<String, dynamic> == false) {
         throw DioLinkParserException(
-            // ignore: prefer_adjacent_string_concatenation
-            originalException: "Expected response data to be of type " +
-                "'Map<String, dynamic>' but found ${res.data.runtimeType}",
-            response: res);
+          // ignore: prefer_adjacent_string_concatenation
+          originalException: "Expected response data to be of type " +
+              "'Map<String, dynamic>' but found ${res.data.runtimeType}",
+          originalStackTrace: StackTrace.current,
+          response: res,
+        );
       }
       return res.castData<Map<String, dynamic>>();
-    } on dio.DioError catch (e) {
+    } on dio.DioError catch (e, stackTrace) {
       switch (e.type) {
         case dio.DioErrorType.connectTimeout:
         case dio.DioErrorType.receiveTimeout:
@@ -204,9 +239,13 @@ class DioLink extends Link {
           throw DioLinkTimeoutException(
             type: e.type,
             originalException: e,
+            originalStackTrace: stackTrace,
           );
         case dio.DioErrorType.cancel:
-          throw DioLinkCanceledException(originalException: e);
+          throw DioLinkCanceledException(
+            originalException: e,
+            originalStackTrace: stackTrace,
+          );
         case dio.DioErrorType.response:
           {
             final res = e.response!;
@@ -214,27 +253,36 @@ class DioLink extends Link {
                 ? parser.parseResponse(res.data as Map<String, dynamic>)
                 : null;
             throw DioLinkServerException(
-                response: res,
-                parsedResponse: parsedResponse,
-                originalException: e);
+              response: res,
+              parsedResponse: parsedResponse,
+              originalException: e,
+              originalStackTrace: stackTrace,
+            );
           }
         case dio.DioErrorType.other:
         default:
-          throw DioLinkUnkownException(originalException: e);
+          throw DioLinkUnkownException(
+            originalException: e,
+            originalStackTrace: stackTrace,
+          );
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       if (e is LinkException) rethrow;
-      throw DioLinkUnkownException(originalException: e);
+      throw DioLinkUnkownException(
+        originalException: e,
+        originalStackTrace: stackTrace,
+      );
     }
   }
 
   Response _parseDioResponse(dio.Response<Map<String, dynamic>> dioResponse) {
     try {
       return parser.parseResponse(dioResponse.data!);
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw DioLinkParserException(
         originalException: e,
         response: dioResponse,
+        originalStackTrace: stackTrace,
       );
     }
   }
@@ -245,9 +293,10 @@ class DioLink extends Link {
       return {
         if (linkHeaders != null) ...linkHeaders.headers,
       };
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ContextReadException(
         originalException: e,
+        originalStackTrace: stackTrace,
       );
     }
   }

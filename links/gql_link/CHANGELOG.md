@@ -1,3 +1,7 @@
+## 0.5.0
+
+- BREAKING: add stacktrace to exceptions
+
 ## 0.4.2
 
 - Upgrade `gql_exec`.

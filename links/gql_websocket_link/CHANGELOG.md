@@ -1,3 +1,7 @@
+## 0.3.4
+
+- add stackTrace to exceptions
+
 ## 0.3.3
 
 - Expose `connectionStateStream` getter on `WebSocketLink`.

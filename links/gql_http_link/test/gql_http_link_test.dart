@@ -645,6 +645,9 @@ void main() {
     });
 
     test("uses GET for query without files", () async {
+      final expectedUri = Uri.parse(
+        "/graphql-test?operationName=null&variables=%7B%22i%22%3A12%7D&query=query+MyQuery+%7B%0A++%0A%7D",
+      );
       when(
         client.send(any),
       ).thenAnswer(
@@ -670,11 +673,10 @@ void main() {
       verify(
         client.send(
           argThat(
-            isA<http.Request>().having(
-              (request) => request.method,
-              "method",
-              "GET",
-            ),
+            isA<http.Request>()
+                .having((request) => request.method, "method", "GET")
+                .having((request) => request.body, "body", "")
+                .having((request) => request.url, "url", expectedUri),
           ),
         ),
       ).called(1);

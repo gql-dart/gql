@@ -10,10 +10,12 @@ class HttpLinkParserException extends ResponseFormatException {
   final http.Response response;
 
   const HttpLinkParserException({
-    required dynamic originalException,
+    required Object? originalException,
+    required StackTrace? originalStackTrace,
     required this.response,
   }) : super(
           originalException: originalException,
+          originalStackTrace: originalStackTrace,
         );
 }
 
