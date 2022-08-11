@@ -4,7 +4,7 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 dependencies: 
   dio: ^4.0.0
-  gql: ^0.13.0
-  gql_link: ^0.4.2
+  gql: ^0.14.0
+  gql_link: ^0.5.0
   gql_exec: ^0.4.0
-  gql_dio_link: ^0.1.0
+  gql_dio_link: ^0.2.3

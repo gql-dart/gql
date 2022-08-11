@@ -15,5 +15,6 @@ dev_dependencies:
   code_builder: ^4.2.0
   collection: ^1.15.0
   gql_pedantic: ^1.0.2
+  http_parser: ^4.0.0
   mockito: ^5.3.0
   test: ^1.14.3
