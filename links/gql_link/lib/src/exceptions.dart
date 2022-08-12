@@ -5,14 +5,16 @@ import "package:meta/meta.dart";
 @immutable
 abstract class LinkException implements Exception {
   /// The original exception causing this exception
-  final dynamic originalException;
+  final Object? originalException;
+  final StackTrace? originalStackTrace;
 
   const LinkException(
     this.originalException,
+    this.originalStackTrace,
   );
 
   @override
-  String toString() => "LinkException($originalException)";
+  String toString() => "LinkException($originalException, $originalStackTrace)";
 }
 
 /// Exception occurring when a terminating link
@@ -24,12 +26,13 @@ class RequestFormatException extends LinkException {
 
   const RequestFormatException({
     required this.request,
-    dynamic originalException,
-  }) : super(originalException);
+    Object? originalException,
+    StackTrace? originalStackTrace,
+  }) : super(originalException, originalStackTrace);
 
   @override
   String toString() =>
-      "RequestFormatException(originalException: $originalException, request: $request)";
+      "RequestFormatException(originalException: $originalException, originalStackTrace: $originalStackTrace, request: $request)";
 }
 
 /// Exception occurring when a terminating link
@@ -37,36 +40,39 @@ class RequestFormatException extends LinkException {
 @immutable
 class ResponseFormatException extends LinkException {
   const ResponseFormatException({
-    dynamic originalException,
-  }) : super(originalException);
+    Object? originalException,
+    StackTrace? originalStackTrace,
+  }) : super(originalException, originalStackTrace);
 
   @override
   String toString() =>
-      "ResponseFormatException(originalException: $originalException)";
+      "ResponseFormatException(originalException: $originalException, originalStackTrace: $originalStackTrace)";
 }
 
 /// Exception occurring when reading from the context
 @immutable
 class ContextReadException extends LinkException {
   const ContextReadException({
-    dynamic originalException,
-  }) : super(originalException);
+    Object? originalException,
+    StackTrace? originalStackTrace,
+  }) : super(originalException, originalStackTrace);
 
   @override
   String toString() =>
-      "ContextReadException(originalException: $originalException)";
+      "ContextReadException(originalException: $originalException, originalStackTrace: $originalStackTrace)";
 }
 
 /// Exception occurring when writing to the context
 @immutable
 class ContextWriteException extends LinkException {
   const ContextWriteException({
-    dynamic originalException,
-  }) : super(originalException);
+    Object? originalException,
+    StackTrace? originalStackTrace,
+  }) : super(originalException, originalStackTrace);
 
   @override
   String toString() =>
-      "ContextWriteException(originalException: $originalException)";
+      "ContextWriteException(originalException: $originalException, originalStackTrace: $originalStackTrace)";
 }
 
 /// Exception occurring when network fails
@@ -78,10 +84,11 @@ class ServerException extends LinkException {
 
   const ServerException({
     this.parsedResponse,
-    dynamic originalException,
-  }) : super(originalException);
+    Object? originalException,
+    StackTrace? originalStackTrace,
+  }) : super(originalException, originalStackTrace);
 
   @override
   String toString() =>
-      "ServerException(originalException: $originalException, parsedResponse: $parsedResponse)";
+      "ServerException(originalException: $originalException, originalStackTrace: $originalStackTrace, parsedResponse: $parsedResponse)";
 }

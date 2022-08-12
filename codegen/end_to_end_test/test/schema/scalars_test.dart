@@ -1,9 +1,9 @@
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/graphql/schema.schema.gql.dart';
-import 'package:end_to_end_test/graphql/serializers.gql.dart';
-import 'package:end_to_end_test/scalars/review_with_date.data.gql.dart';
-import 'package:end_to_end_test/scalars/review_with_date.var.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart';
+import 'package:end_to_end_test/scalars/__generated__/review_with_date.data.gql.dart';
+import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart';
 import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart';
 

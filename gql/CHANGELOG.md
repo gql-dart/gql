@@ -1,3 +1,7 @@
+## 0.14.0
+
+- BREAKING: add DirectiveLocation.variableDefinition
+
 ## 0.13.1
 
 - Support `interfaces`.
