@@ -1,6 +1,6 @@
-## 0.5.0
+## 0.4.4
 
-- BREAKING: compatibility with gql_link 0.5.0: add stacktraces to exceptions
+- compatibility with gql_link 0.5.0: add stacktraces to exceptions
 
 ## 0.4.3
 
