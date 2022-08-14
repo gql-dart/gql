@@ -1,3 +1,7 @@
+## 0.5.0
+
+- BREAKING: compatibility with gql_link 0.5.0: add stacktraces to exceptions
+
 ## 0.4.3
 
 - Add support for useGETForQueries
