@@ -1,4 +1,3 @@
-
 import "package:gql/cats/cats.dart";
 import "package:test/test.dart";
 
@@ -22,36 +21,36 @@ class CatRunner<Doc> {
     if (whitelist != null && !whitelist!.contains(scenario.file)) return;
     group(scenario.name, () {
       scenario.tests!.forEach(
-            (test) => _runTest(test, scenario),
+        (test) => _runTest(test, scenario),
       );
     });
   }
 
   void _runTest(TestCase testCase, Scenario scenario) {
     final passesAssertion = testCase.assertions!.firstWhere(
-          (a) => a is PassesAssertion,
+      (a) => a is PassesAssertion,
       orElse: () => null,
     ) as PassesAssertion?;
     final syntaxAssertion = testCase.assertions!.firstWhere(
-          (a) => a is SyntaxErrorAssertion,
+      (a) => a is SyntaxErrorAssertion,
       orElse: () => null,
     ) as SyntaxErrorAssertion?;
     // ignore: unused_local_variable
     final errorCountAssertion = testCase.assertions!.firstWhere(
-          (a) => a is ErrorCountAssertion,
+      (a) => a is ErrorCountAssertion,
       orElse: () => null,
     ) as ErrorCountAssertion?;
     // ignore: unused_local_variable
     final errorCodeAssertions =
-    testCase.assertions!.whereType<ErrorCodeAssertion>();
+        testCase.assertions!.whereType<ErrorCodeAssertion>();
     // ignore: unused_local_variable
     final errorContainsAssertion = testCase.assertions!.firstWhere(
-          (a) => a is ErrorContainsAssertion,
+      (a) => a is ErrorContainsAssertion,
       orElse: () => null,
     ) as ErrorContainsAssertion?;
     // ignore: unused_local_variable
     final errorRegexAssertion = testCase.assertions!.firstWhere(
-          (a) => a is ErrorRegexAssertion,
+      (a) => a is ErrorRegexAssertion,
       orElse: () => null,
     ) as ErrorRegexAssertion?;
 
@@ -112,9 +111,9 @@ class CatRunner<Doc> {
               query: queryDoc,
               schema: schemaDoc,
               testData:
-              testData != null && testData.containsKey(action.testValue)
-                  ? testData[action.testValue!]
-                  : testData,
+                  testData != null && testData.containsKey(action.testValue)
+                      ? testData[action.testValue!]
+                      : testData,
               operation: action.operationName,
               variables: action.variables,
             );
