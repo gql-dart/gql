@@ -5808,7 +5808,7 @@ abstract class GX509Certificate
           (Object serialized) => GX509Certificate((serialized as String?)));
 }
 
-const possibleTypesMap = {
+const Map<String, Set<String>> possibleTypesMap = {
   'Node': {
     'AddedToProjectEvent',
     'App',

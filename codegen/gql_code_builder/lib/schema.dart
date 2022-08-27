@@ -42,7 +42,9 @@ Code buildPossibleTypes(DocumentNode document) {
   // wrap the map in a literal for codegen
   final possibleTypesLiteral = literalMap(possibleTypesMap);
   // assign the literal to a const variable named "possibleTypes"
-  return possibleTypesLiteral.assignConst("possibleTypesMap").statement;
+  return possibleTypesLiteral
+      .assignConst("possibleTypesMap", Reference("Map<String, Set<String>>"))
+      .statement;
 }
 
 class EnumFallbackConfig {
