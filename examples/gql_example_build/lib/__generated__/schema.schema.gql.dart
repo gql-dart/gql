@@ -68,6 +68,6 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
       _i2.serializers.deserializeWith(GInput.serializer, json);
 }
 
-const possibleTypesMap = {
+const Map<String, Set<String>> possibleTypesMap = {
   'Shape': {'Square', 'Rectangle'}
 };
