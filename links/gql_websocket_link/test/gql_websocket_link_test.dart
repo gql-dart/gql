@@ -1223,10 +1223,11 @@ void _testLinks(
       ),
     );
 
-    link.request(request).listen((event) {});
-    link.request(request).listen((event) {});
-    link.request(request).listen((event) {});
-    link.request(request).listen((event) {});
+    final onError = isApolloSubProtocol ? null : (Object _) {};
+    link.request(request).listen((event) {}, onError: onError);
+    link.request(request).listen((event) {}, onError: onError);
+    link.request(request).listen((event) {}, onError: onError);
+    link.request(request).listen((event) {}, onError: onError);
   });
 
   test(
@@ -1377,6 +1378,9 @@ void _testLinks(
           }
         },
       ];
+      if (!isApolloSubProtocol) {
+        errorsList.removeWhere((element) => element is! List);
+      }
 
       request = Request(
         operation: Operation(
@@ -1425,79 +1429,108 @@ void _testLinks(
 
       link = makeLink(null, channelGenerator: () => channel);
       int messageIndex = 0;
-      link.request(request).listen(
-            expectAsync1(
-              (Response response) {
-                switch (messageIndex) {
-                  case 0:
-                    expect(response.errors!.length, 1);
-                    expect(
-                      response.errors!.first.message,
-                      "error message 0",
-                    );
-                    expect(
-                      response.errors!.first.path,
-                      ["p1", 2],
-                    );
+      if (isApolloSubProtocol) {
+        link.request(request).listen(
+              expectAsync1(
+                (Response response) {
+                  switch (messageIndex) {
+                    case 0:
+                      expect(response.errors!.length, 1);
+                      expect(
+                        response.errors!.first.message,
+                        "error message 0",
+                      );
+                      expect(
+                        response.errors!.first.path,
+                        ["p1", 2],
+                      );
 
-                    break;
-                  case 1:
-                    expect(response.errors!.length, 1);
-                    expect(
-                      response.errors!.first.message,
-                      "error message 1",
-                    );
-                    expect(
-                      response.context.entry<ResponseExtensions>()!.extensions,
-                      {
-                        "otherFields": 1,
-                      },
-                    );
-                    break;
-                  case 2:
-                    final errors = response.errors!;
-                    expect(errors.length, 2);
-                    expect(
-                      errors.first.message,
-                      "error message 2.1",
-                    );
-                    expect(
-                      errors.first.locations!
-                          .map((e) => {"column": e.column, "line": e.line}),
-                      [
-                        {"column": 1, "line": 2}
-                      ],
-                    );
-                    expect(
-                      errors.last.message,
-                      "error message 2.2",
-                    );
-                    break;
-                  case 3:
-                    expect(response.errors!.length, 1);
-                    expect(
-                      response.errors!.first.message,
-                      "error message 3",
-                    );
-                    expect(
-                      response.errors!.first.extensions,
-                      {
-                        "otherFields": 3,
-                      },
-                    );
-                    expect(
-                      response.context.entry<ResponseExtensions>()!.extensions,
-                      null,
-                    );
-                    break;
-                  default:
-                    throw Error();
-                }
-                messageIndex += 1;
-              },
-              count: errorsList.length,
-            ),
-          );
+                      break;
+                    case 1:
+                      expect(response.errors!.length, 1);
+                      expect(
+                        response.errors!.first.message,
+                        "error message 1",
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()!
+                            .extensions,
+                        {
+                          "otherFields": 1,
+                        },
+                      );
+                      break;
+                    case 2:
+                      final errors = response.errors!;
+                      expect(errors.length, 2);
+                      expect(
+                        errors.first.message,
+                        "error message 2.1",
+                      );
+                      expect(
+                        errors.first.locations!
+                            .map((e) => {"column": e.column, "line": e.line}),
+                        [
+                          {"column": 1, "line": 2}
+                        ],
+                      );
+                      expect(
+                        errors.last.message,
+                        "error message 2.2",
+                      );
+                      break;
+                    case 3:
+                      expect(response.errors!.length, 1);
+                      expect(
+                        response.errors!.first.message,
+                        "error message 3",
+                      );
+                      expect(
+                        response.errors!.first.extensions,
+                        {
+                          "otherFields": 3,
+                        },
+                      );
+                      expect(
+                        response.context
+                            .entry<ResponseExtensions>()!
+                            .extensions,
+                        null,
+                      );
+                      break;
+                    default:
+                      throw Error();
+                  }
+                  messageIndex += 1;
+                },
+                count: errorsList.length,
+              ),
+            );
+      } else {
+        link.request(request).listen(
+          (event) {},
+          onError: (Object err, StackTrace stack) {
+            final errors = err as List<GraphQLError>;
+            expect(errors.length, 2);
+            expect(
+              errors.first.message,
+              "error message 2.1",
+            );
+            expect(
+              errors.first.locations!
+                  .map((e) => {"column": e.column, "line": e.line}),
+              [
+                {"column": 1, "line": 2}
+              ],
+            );
+            expect(
+              errors.last.message,
+              "error message 2.2",
+            );
+          },
+        );
+      }
     },
   );
 }

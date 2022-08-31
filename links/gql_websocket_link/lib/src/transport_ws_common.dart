@@ -453,7 +453,7 @@ Message? castMessage(Object val) {
 Message parseMessage(Map<String, Object?> data) {
   final msg = castMessage(data);
   if (msg == null) {
-    throw Exception("Invalid message");
+    throw Exception("Invalid message: $data");
   }
   return msg;
 }

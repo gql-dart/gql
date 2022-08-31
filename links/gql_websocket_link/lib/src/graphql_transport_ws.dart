@@ -955,18 +955,14 @@ class _Client extends Client {
           final unlisten = emitter.onMessage(id, (message) {
             if (message is NextMessage) {
               sink.add(message.payload);
-              return;
             } else if (message is ErrorMessage) {
               errored = true;
               done = true;
               sink.addError(message.payload);
               releaser();
-              return;
-            }
-            if (message is CompleteMessage) {
+            } else if (message is CompleteMessage) {
               done = true;
               releaser(); // release completes the sink
-              return;
             }
           });
 
