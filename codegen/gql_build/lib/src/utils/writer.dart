@@ -33,6 +33,8 @@ Future<void> writeDocument(
 
   return buildStep.writeAsString(
     generatedAsset,
-    "// GENERATED CODE - DO NOT MODIFY BY HAND\n\n" + genSrc,
+    "// GENERATED CODE - DO NOT MODIFY BY HAND\n"
+            "// ignore_for_file: type=lint\n\n" +
+        genSrc,
   );
 }
