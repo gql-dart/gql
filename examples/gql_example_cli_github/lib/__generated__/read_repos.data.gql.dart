@@ -73,7 +73,7 @@ abstract class GReadRepositoriesData_viewer_repositories
       b..G__typename = 'RepositoryConnection';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GReadRepositoriesData_viewer_repositories_nodes>? get nodes;
+  BuiltList<GReadRepositoriesData_viewer_repositories_nodes?>? get nodes;
   static Serializer<GReadRepositoriesData_viewer_repositories> get serializer =>
       _$gReadRepositoriesDataViewerRepositoriesSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

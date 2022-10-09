@@ -150,6 +150,10 @@ List<Class> buildSelectionSetDataClasses({
         typeDef,
         node.name.value,
       );
+      final hasSkipOrInclude = node.directives.any(
+        (directive) =>
+            directive.name.value == "skip" || directive.name.value == "include",
+      );
       return buildGetter(
         nameNode: nameNode,
         typeNode: typeNode,
@@ -158,6 +162,7 @@ List<Class> buildSelectionSetDataClasses({
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
+        forceNullable: hasSkipOrInclude,
       );
     },
   ).toList();

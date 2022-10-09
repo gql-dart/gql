@@ -20,7 +20,7 @@ abstract class GListPokemonData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GListPokemonData_pokemons>? get pokemons;
+  BuiltList<GListPokemonData_pokemons?>? get pokemons;
   static Serializer<GListPokemonData> get serializer =>
       _$gListPokemonDataSerializer;
   Map<String, dynamic> toJson() =>

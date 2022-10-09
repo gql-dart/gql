@@ -93,12 +93,12 @@ class _$GReviewWithDateData_createReviewSerializer
       serializers.serialize(object.stars, specifiedType: const FullType(int)),
       'seenOn',
       serializers.serialize(object.seenOn,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(DateTime)])),
+          specifiedType: const FullType(
+              BuiltList, const [const FullType.nullable(DateTime)])),
       'custom',
       serializers.serialize(object.custom,
           specifiedType: const FullType(
-              BuiltList, const [const FullType(_i3.CustomField)])),
+              BuiltList, const [const FullType.nullable(_i3.CustomField)])),
     ];
     Object? value;
     value = object.episode;
@@ -160,14 +160,14 @@ class _$GReviewWithDateData_createReviewSerializer
         case 'seenOn':
           result.seenOn.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(DateTime)]))!
+                      BuiltList, const [const FullType.nullable(DateTime)]))!
               as BuiltList<Object?>);
           break;
         case 'custom':
           result.custom.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(_i3.CustomField)]))!
-              as BuiltList<Object?>);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(_i3.CustomField)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -302,9 +302,9 @@ class _$GReviewWithDateData_createReview
   @override
   final DateTime? createdAt;
   @override
-  final BuiltList<DateTime> seenOn;
+  final BuiltList<DateTime?> seenOn;
   @override
-  final BuiltList<_i3.CustomField> custom;
+  final BuiltList<_i3.CustomField?> custom;
 
   factory _$GReviewWithDateData_createReview(
           [void Function(GReviewWithDateData_createReviewBuilder)? updates]) =>
@@ -405,15 +405,15 @@ class GReviewWithDateData_createReviewBuilder
   DateTime? get createdAt => _$this._createdAt;
   set createdAt(DateTime? createdAt) => _$this._createdAt = createdAt;
 
-  ListBuilder<DateTime>? _seenOn;
-  ListBuilder<DateTime> get seenOn =>
-      _$this._seenOn ??= new ListBuilder<DateTime>();
-  set seenOn(ListBuilder<DateTime>? seenOn) => _$this._seenOn = seenOn;
+  ListBuilder<DateTime?>? _seenOn;
+  ListBuilder<DateTime?> get seenOn =>
+      _$this._seenOn ??= new ListBuilder<DateTime?>();
+  set seenOn(ListBuilder<DateTime?>? seenOn) => _$this._seenOn = seenOn;
 
-  ListBuilder<_i3.CustomField>? _custom;
-  ListBuilder<_i3.CustomField> get custom =>
-      _$this._custom ??= new ListBuilder<_i3.CustomField>();
-  set custom(ListBuilder<_i3.CustomField>? custom) => _$this._custom = custom;
+  ListBuilder<_i3.CustomField?>? _custom;
+  ListBuilder<_i3.CustomField?> get custom =>
+      _$this._custom ??= new ListBuilder<_i3.CustomField?>();
+  set custom(ListBuilder<_i3.CustomField?>? custom) => _$this._custom = custom;
 
   GReviewWithDateData_createReviewBuilder() {
     GReviewWithDateData_createReview._initializeBuilder(this);

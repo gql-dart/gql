@@ -52,8 +52,8 @@ abstract class GReviewWithDateData_createReview
   int get stars;
   String? get commentary;
   DateTime? get createdAt;
-  BuiltList<DateTime> get seenOn;
-  BuiltList<_i3.CustomField> get custom;
+  BuiltList<DateTime?> get seenOn;
+  BuiltList<_i3.CustomField?> get custom;
   static Serializer<GReviewWithDateData_createReview> get serializer =>
       _$gReviewWithDateDataCreateReviewSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers

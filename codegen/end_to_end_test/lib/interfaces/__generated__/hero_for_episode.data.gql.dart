@@ -37,7 +37,7 @@ abstract class GHeroForEpisodeData_hero {
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
-  BuiltList<GHeroForEpisodeData_hero_friends>? get friends;
+  BuiltList<GHeroForEpisodeData_hero_friends?>? get friends;
   static Serializer<GHeroForEpisodeData_hero> get serializer =>
       _i2.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
           'GHeroForEpisodeData_hero',
@@ -70,7 +70,7 @@ abstract class GHeroForEpisodeData_hero__base
   @override
   String get name;
   @override
-  BuiltList<GHeroForEpisodeData_hero__base_friends>? get friends;
+  BuiltList<GHeroForEpisodeData_hero__base_friends?>? get friends;
   static Serializer<GHeroForEpisodeData_hero__base> get serializer =>
       _$gHeroForEpisodeDataHeroBaseSerializer;
   @override
@@ -132,7 +132,7 @@ abstract class GHeroForEpisodeData_hero__asDroid
   @override
   String get name;
   @override
-  BuiltList<GHeroForEpisodeData_hero__asDroid_friends>? get friends;
+  BuiltList<GHeroForEpisodeData_hero__asDroid_friends?>? get friends;
   @override
   String? get primaryFunction;
   static Serializer<GHeroForEpisodeData_hero__asDroid> get serializer =>

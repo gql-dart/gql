@@ -88,29 +88,23 @@ const defaultTypeMap = <String, Reference>{
 
 Reference _typeRef(
   TypeNode type,
-  Map<String, Reference> typeMap, [
-
-  /// TODO: remove
-  /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
-  bool inList = false,
-]) {
+  Map<String, Reference> typeMap,
+  bool forceNullable,
+) {
   if (type is NamedTypeNode) {
     final ref = typeMap[type.name.value] ?? Reference(type.name.value);
     return TypeReference(
       (b) => b
         ..url = ref.url
         ..symbol = ref.symbol
-
-        /// TODO: remove `inList` check
-        /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
-        ..isNullable = !inList && !type.isNonNull,
+        ..isNullable = forceNullable || !type.isNonNull,
     );
   } else if (type is ListTypeNode) {
     return TypeReference(
       (b) => b
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
-        ..isNullable = !type.isNonNull
+        ..isNullable = forceNullable || !type.isNonNull
         ..types.add(_typeRef(type.type, typeMap, true)),
     );
   }
@@ -148,6 +142,7 @@ Method buildGetter({
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
+  bool forceNullable = false,
 }) {
   final unwrappedTypeNode = unwrapTypeNode(typeNode);
   final typeName = unwrappedTypeNode.name.value;
@@ -168,10 +163,7 @@ Method buildGetter({
     ...typeOverrides,
   };
 
-  final returnType = _typeRef(
-    typeNode,
-    typeMap,
-  );
+  final returnType = _typeRef(typeNode, typeMap, forceNullable);
 
   return Method(
     (b) => b

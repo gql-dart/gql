@@ -109,7 +109,7 @@ class _$GHeroForEpisodeData_hero__baseSerializer
         ..add('friends')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(GHeroForEpisodeData_hero__base_friends)
+              const FullType.nullable(GHeroForEpisodeData_hero__base_friends)
             ])));
     }
     return result;
@@ -138,7 +138,7 @@ class _$GHeroForEpisodeData_hero__baseSerializer
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GHeroForEpisodeData_hero__base_friends)
+                const FullType.nullable(GHeroForEpisodeData_hero__base_friends)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -228,7 +228,7 @@ class _$GHeroForEpisodeData_hero__asDroidSerializer
         ..add('friends')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(GHeroForEpisodeData_hero__asDroid_friends)
+              const FullType.nullable(GHeroForEpisodeData_hero__asDroid_friends)
             ])));
     }
     value = object.primaryFunction;
@@ -264,7 +264,8 @@ class _$GHeroForEpisodeData_hero__asDroidSerializer
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GHeroForEpisodeData_hero__asDroid_friends)
+                const FullType.nullable(
+                    GHeroForEpisodeData_hero__asDroid_friends)
               ]))! as BuiltList<Object?>);
           break;
         case 'primaryFunction':
@@ -487,7 +488,7 @@ class _$GHeroForEpisodeData_hero__base extends GHeroForEpisodeData_hero__base {
   @override
   final String name;
   @override
-  final BuiltList<GHeroForEpisodeData_hero__base_friends>? friends;
+  final BuiltList<GHeroForEpisodeData_hero__base_friends?>? friends;
 
   factory _$GHeroForEpisodeData_hero__base(
           [void Function(GHeroForEpisodeData_hero__baseBuilder)? updates]) =>
@@ -550,11 +551,11 @@ class GHeroForEpisodeData_hero__baseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<GHeroForEpisodeData_hero__base_friends>? _friends;
-  ListBuilder<GHeroForEpisodeData_hero__base_friends> get friends =>
+  ListBuilder<GHeroForEpisodeData_hero__base_friends?>? _friends;
+  ListBuilder<GHeroForEpisodeData_hero__base_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GHeroForEpisodeData_hero__base_friends>();
-  set friends(ListBuilder<GHeroForEpisodeData_hero__base_friends>? friends) =>
+          new ListBuilder<GHeroForEpisodeData_hero__base_friends?>();
+  set friends(ListBuilder<GHeroForEpisodeData_hero__base_friends?>? friends) =>
       _$this._friends = friends;
 
   GHeroForEpisodeData_hero__baseBuilder() {
@@ -729,7 +730,7 @@ class _$GHeroForEpisodeData_hero__asDroid
   @override
   final String name;
   @override
-  final BuiltList<GHeroForEpisodeData_hero__asDroid_friends>? friends;
+  final BuiltList<GHeroForEpisodeData_hero__asDroid_friends?>? friends;
   @override
   final String? primaryFunction;
 
@@ -801,12 +802,12 @@ class GHeroForEpisodeData_hero__asDroidBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<GHeroForEpisodeData_hero__asDroid_friends>? _friends;
-  ListBuilder<GHeroForEpisodeData_hero__asDroid_friends> get friends =>
+  ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>? _friends;
+  ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GHeroForEpisodeData_hero__asDroid_friends>();
+          new ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>();
   set friends(
-          ListBuilder<GHeroForEpisodeData_hero__asDroid_friends>? friends) =>
+          ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>? friends) =>
       _$this._friends = friends;
 
   String? _primaryFunction;

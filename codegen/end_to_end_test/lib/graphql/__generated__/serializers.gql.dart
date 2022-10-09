@@ -14,6 +14,18 @@ import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
+import 'package:end_to_end_test/directives/__generated__/hero_include.data.gql.dart'
+    show GHeroIncludeData, GHeroIncludeData_hero;
+import 'package:end_to_end_test/directives/__generated__/hero_include.req.gql.dart'
+    show GHeroInclude;
+import 'package:end_to_end_test/directives/__generated__/hero_include.var.gql.dart'
+    show GHeroIncludeVars;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.data.gql.dart'
+    show GHeroSkipData, GHeroSkipData_hero;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.req.gql.dart'
+    show GHeroSkip;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.var.gql.dart'
+    show GHeroSkipVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
@@ -101,10 +113,18 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeData_hero__base,
   GHeroForEpisodeData_hero__base_friends,
   GHeroForEpisodeVars,
+  GHeroInclude,
+  GHeroIncludeData,
+  GHeroIncludeData_hero,
+  GHeroIncludeVars,
   GHeroNoVars,
   GHeroNoVarsData,
   GHeroNoVarsData_hero,
   GHeroNoVarsVars,
+  GHeroSkip,
+  GHeroSkipData,
+  GHeroSkipData_hero,
+  GHeroSkipVars,
   GHeroWithFragments,
   GHeroWithFragmentsData,
   GHeroWithFragmentsData_hero,

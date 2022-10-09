@@ -91,7 +91,7 @@ abstract class GAddAssigneesToAssignableInput
       _$GAddAssigneesToAssignableInput;
 
   String get assignableId;
-  BuiltList<String> get assigneeIds;
+  BuiltList<String?> get assigneeIds;
   String? get clientMutationId;
   static Serializer<GAddAssigneesToAssignableInput> get serializer =>
       _$gAddAssigneesToAssignableInputSerializer;
@@ -131,7 +131,7 @@ abstract class GAddLabelsToLabelableInput
       _$GAddLabelsToLabelableInput;
 
   String? get clientMutationId;
-  BuiltList<String> get labelIds;
+  BuiltList<String?> get labelIds;
   String get labelableId;
   static Serializer<GAddLabelsToLabelableInput> get serializer =>
       _$gAddLabelsToLabelableInputSerializer;
@@ -223,7 +223,7 @@ abstract class GAddPullRequestReviewInput
 
   String? get body;
   String? get clientMutationId;
-  BuiltList<GDraftPullRequestReviewComment>? get comments;
+  BuiltList<GDraftPullRequestReviewComment?>? get comments;
   GGitObjectID? get commitOID;
   GPullRequestReviewEvent? get event;
   String get pullRequestId;
@@ -563,7 +563,7 @@ abstract class GCommitAuthor
   factory GCommitAuthor([Function(GCommitAuthorBuilder b) updates]) =
       _$GCommitAuthor;
 
-  BuiltList<String>? get emails;
+  BuiltList<String?>? get emails;
   String? get id;
   static Serializer<GCommitAuthor> get serializer => _$gCommitAuthorSerializer;
   Map<String, dynamic> toJson() =>
@@ -683,10 +683,10 @@ abstract class GCreateBranchProtectionRuleInput
   bool? get dismissesStaleReviews;
   bool? get isAdminEnforced;
   String get pattern;
-  BuiltList<String>? get pushActorIds;
+  BuiltList<String?>? get pushActorIds;
   String get repositoryId;
   int? get requiredApprovingReviewCount;
-  BuiltList<String>? get requiredStatusCheckContexts;
+  BuiltList<String?>? get requiredStatusCheckContexts;
   bool? get requiresApprovingReviews;
   bool? get requiresCodeOwnerReviews;
   bool? get requiresCommitSignatures;
@@ -694,7 +694,7 @@ abstract class GCreateBranchProtectionRuleInput
   bool? get requiresStrictStatusChecks;
   bool? get restrictsPushes;
   bool? get restrictsReviewDismissals;
-  BuiltList<String>? get reviewDismissalActorIds;
+  BuiltList<String?>? get reviewDismissalActorIds;
   static Serializer<GCreateBranchProtectionRuleInput> get serializer =>
       _$gCreateBranchProtectionRuleInputSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers
@@ -716,7 +716,7 @@ abstract class GCreateEnterpriseOrganizationInput
           [Function(GCreateEnterpriseOrganizationInputBuilder b) updates]) =
       _$GCreateEnterpriseOrganizationInput;
 
-  BuiltList<String> get adminLogins;
+  BuiltList<String?> get adminLogins;
   String get billingEmail;
   String? get clientMutationId;
   String get enterpriseId;
@@ -740,12 +740,12 @@ abstract class GCreateIssueInput
   factory GCreateIssueInput([Function(GCreateIssueInputBuilder b) updates]) =
       _$GCreateIssueInput;
 
-  BuiltList<String>? get assigneeIds;
+  BuiltList<String?>? get assigneeIds;
   String? get body;
   String? get clientMutationId;
-  BuiltList<String>? get labelIds;
+  BuiltList<String?>? get labelIds;
   String? get milestoneId;
-  BuiltList<String>? get projectIds;
+  BuiltList<String?>? get projectIds;
   String get repositoryId;
   String get title;
   static Serializer<GCreateIssueInput> get serializer =>
@@ -768,7 +768,7 @@ abstract class GCreateProjectInput
   String? get clientMutationId;
   String get name;
   String get ownerId;
-  BuiltList<String>? get repositoryIds;
+  BuiltList<String?>? get repositoryIds;
   GProjectTemplate? get template;
   static Serializer<GCreateProjectInput> get serializer =>
       _$gCreateProjectInputSerializer;
@@ -2017,11 +2017,11 @@ abstract class GIssueFilters
 
   String? get assignee;
   String? get createdBy;
-  BuiltList<String>? get labels;
+  BuiltList<String?>? get labels;
   String? get mentioned;
   String? get milestone;
   GDateTime? get since;
-  BuiltList<GIssueState>? get states;
+  BuiltList<GIssueState?>? get states;
   bool? get viewerSubscribed;
   static Serializer<GIssueFilters> get serializer => _$gIssueFiltersSerializer;
   Map<String, dynamic> toJson() =>
@@ -3538,7 +3538,7 @@ abstract class GRemoveAssigneesFromAssignableInput
       _$GRemoveAssigneesFromAssignableInput;
 
   String get assignableId;
-  BuiltList<String> get assigneeIds;
+  BuiltList<String?> get assigneeIds;
   String? get clientMutationId;
   static Serializer<GRemoveAssigneesFromAssignableInput> get serializer =>
       _$gRemoveAssigneesFromAssignableInputSerializer;
@@ -3607,7 +3607,7 @@ abstract class GRemoveLabelsFromLabelableInput
       _$GRemoveLabelsFromLabelableInput;
 
   String? get clientMutationId;
-  BuiltList<String> get labelIds;
+  BuiltList<String?> get labelIds;
   String get labelableId;
   static Serializer<GRemoveLabelsFromLabelableInput> get serializer =>
       _$gRemoveLabelsFromLabelableInputSerializer;
@@ -4064,9 +4064,9 @@ abstract class GRequestReviewsInput
 
   String? get clientMutationId;
   String get pullRequestId;
-  BuiltList<String>? get teamIds;
+  BuiltList<String?>? get teamIds;
   bool? get union;
-  BuiltList<String>? get userIds;
+  BuiltList<String?>? get userIds;
   static Serializer<GRequestReviewsInput> get serializer =>
       _$gRequestReviewsInputSerializer;
   Map<String, dynamic> toJson() =>
@@ -4931,9 +4931,9 @@ abstract class GUpdateBranchProtectionRuleInput
   bool? get dismissesStaleReviews;
   bool? get isAdminEnforced;
   String? get pattern;
-  BuiltList<String>? get pushActorIds;
+  BuiltList<String?>? get pushActorIds;
   int? get requiredApprovingReviewCount;
-  BuiltList<String>? get requiredStatusCheckContexts;
+  BuiltList<String?>? get requiredStatusCheckContexts;
   bool? get requiresApprovingReviews;
   bool? get requiresCodeOwnerReviews;
   bool? get requiresCommitSignatures;
@@ -4941,7 +4941,7 @@ abstract class GUpdateBranchProtectionRuleInput
   bool? get requiresStrictStatusChecks;
   bool? get restrictsPushes;
   bool? get restrictsReviewDismissals;
-  BuiltList<String>? get reviewDismissalActorIds;
+  BuiltList<String?>? get reviewDismissalActorIds;
   static Serializer<GUpdateBranchProtectionRuleInput> get serializer =>
       _$gUpdateBranchProtectionRuleInputSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers
@@ -5449,13 +5449,13 @@ abstract class GUpdateIssueInput
   factory GUpdateIssueInput([Function(GUpdateIssueInputBuilder b) updates]) =
       _$GUpdateIssueInput;
 
-  BuiltList<String>? get assigneeIds;
+  BuiltList<String?>? get assigneeIds;
   String? get body;
   String? get clientMutationId;
   String get id;
-  BuiltList<String>? get labelIds;
+  BuiltList<String?>? get labelIds;
   String? get milestoneId;
-  BuiltList<String>? get projectIds;
+  BuiltList<String?>? get projectIds;
   GIssueState? get state;
   String? get title;
   static Serializer<GUpdateIssueInput> get serializer =>
@@ -5540,14 +5540,14 @@ abstract class GUpdatePullRequestInput
           [Function(GUpdatePullRequestInputBuilder b) updates]) =
       _$GUpdatePullRequestInput;
 
-  BuiltList<String>? get assigneeIds;
+  BuiltList<String?>? get assigneeIds;
   String? get baseRefName;
   String? get body;
   String? get clientMutationId;
-  BuiltList<String>? get labelIds;
+  BuiltList<String?>? get labelIds;
   bool? get maintainerCanModify;
   String? get milestoneId;
-  BuiltList<String>? get projectIds;
+  BuiltList<String?>? get projectIds;
   String get pullRequestId;
   GPullRequestUpdateState? get state;
   String? get title;
@@ -5732,7 +5732,7 @@ abstract class GUpdateTopicsInput
 
   String? get clientMutationId;
   String get repositoryId;
-  BuiltList<String> get topicNames;
+  BuiltList<String?> get topicNames;
   static Serializer<GUpdateTopicsInput> get serializer =>
       _$gUpdateTopicsInputSerializer;
   Map<String, dynamic> toJson() =>
