@@ -7,7 +7,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: dart:latest
     if: github.ref == 'refs/heads/master'
     env:
       PACKAGES: 'gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link'
@@ -19,7 +19,7 @@ jobs:
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          pub global activate multipack
+          dart pub global activate multipack
       - name: Bump to alpha version
         run: |
           multipack --only $PACKAGES pubspec bump-alpha

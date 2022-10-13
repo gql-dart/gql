@@ -1,11 +1,11 @@
 import "package:test/test.dart";
 import "package:gql/language.dart";
 
-import 'package:end_to_end_test/variables/human_with_args.req.gql.dart';
-import 'package:end_to_end_test/variables/human_with_args.ast.gql.dart'
+import 'package:end_to_end_test/variables/__generated__/human_with_args.req.gql.dart';
+import 'package:end_to_end_test/variables/__generated__/human_with_args.ast.gql.dart'
     as human_with_args_ast;
-import 'package:end_to_end_test/no_vars/hero_no_vars.req.gql.dart';
-import 'package:end_to_end_test/no_vars/hero_no_vars.ast.gql.dart'
+import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart';
+import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.ast.gql.dart'
     as hero_no_args_ast;
 
 void main() {

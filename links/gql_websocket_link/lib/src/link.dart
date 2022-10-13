@@ -81,9 +81,9 @@ class WebSocketLink extends Link {
   /// ```
   final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
 
-  static Map<String, dynamic>? _defaultGraphQLSocketMessageDecoder(
+  static Map<String, dynamic> _defaultGraphQLSocketMessageDecoder(
           dynamic message) =>
-      json.decode(message as String) as Map<String, dynamic>?;
+      json.decode(message as String) as Map<String, dynamic>;
 
   /// Automatically recreate the channel when connection is lost,
   /// and re send all active subscriptions. `true` by default.
@@ -290,12 +290,13 @@ class WebSocketLink extends Link {
           _channel!.sink.close(websocket_status.normalClosure);
         }).listen(null);
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       if (e is LinkException) {
         rethrow;
       } else {
         throw WebSocketLinkServerException(
           originalException: e,
+          originalStackTrace: stackTrace,
           parsedResponse: null,
           requestMessage: null,
         );
@@ -306,9 +307,10 @@ class WebSocketLink extends Link {
   Response _parseMessage(GraphQLSocketMessage message) {
     try {
       return parser.parseResponse(message.toJson());
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw WebSocketLinkParserException(
         originalException: e,
+        originalStackTrace: stackTrace,
         message: message,
       );
     }
@@ -328,58 +330,67 @@ class WebSocketLink extends Link {
   }
 
   Future<GraphQLSocketMessage> _parseSocketMessage(dynamic message) async {
-    final Map<String, dynamic> map =
-        await graphQLSocketMessageDecoder(message)!;
-    final String type = (map["type"] ?? "unknown") as String;
-    final dynamic payload = map["payload"] ?? <String, dynamic>{};
-    final String id = (map["id"] ?? "none") as String;
+    try {
+      final Map<String, dynamic> map =
+          await graphQLSocketMessageDecoder(message)!;
+      final String type = (map["type"] ?? "unknown") as String;
+      final dynamic payload = map["payload"] ?? <String, dynamic>{};
+      final String id = (map["id"] ?? "none") as String;
 
-    switch (type) {
-      case MessageTypes.connectionAck:
-        return ConnectionAck();
-      case MessageTypes.connectionError:
-        return ConnectionError(payload);
-      case MessageTypes.connectionKeepAlive:
-        return ConnectionKeepAlive();
-      case MessageTypes.data:
-        final dynamic data = payload["data"];
-        final dynamic errors = payload["errors"];
-        final dynamic extensions = payload["extensions"];
-        return SubscriptionData(id, data, errors, extensions);
-      case MessageTypes.error:
-        List<Map<String, Object?>>? _tryCastErrors(List<Object?> list) {
-          final allAreErrors = list.every(
-            (map) =>
-                map is Map<String, Object?> &&
-                map["message"] is String &&
-                (map["path"] is List?) &&
-                (map["locations"] is List?) &&
-                (map["extensions"] is Map<String, Object?>?),
-          );
-          return allAreErrors ? list.cast() : null;
-        }
-        Object? extensions;
-        List<Map<String, Object?>>? errors;
-        if (payload is List) {
-          errors = _tryCastErrors(payload);
-        } else if (payload is Map) {
-          if (payload["errors"] is List) {
-            extensions = payload["extensions"];
-            errors = _tryCastErrors(payload["errors"] as List);
-          } else {
-            errors = _tryCastErrors([payload]);
-            // only pass root level extensions if they weren't passed as
-            // extensions in the error
-            if (errors == null) {
+      switch (type) {
+        case MessageTypes.connectionAck:
+          return ConnectionAck();
+        case MessageTypes.connectionError:
+          return ConnectionError(payload);
+        case MessageTypes.connectionKeepAlive:
+          return ConnectionKeepAlive();
+        case MessageTypes.data:
+          final dynamic data = payload["data"];
+          final dynamic errors = payload["errors"];
+          final dynamic extensions = payload["extensions"];
+          return SubscriptionData(id, data, errors, extensions);
+        case MessageTypes.error:
+          List<Map<String, Object?>>? _tryCastErrors(List<Object?> list) {
+            final allAreErrors = list.every(
+              (map) =>
+                  map is Map<String, Object?> &&
+                  map["message"] is String &&
+                  (map["path"] is List?) &&
+                  (map["locations"] is List?) &&
+                  (map["extensions"] is Map<String, Object?>?),
+            );
+            return allAreErrors ? list.cast() : null;
+          }
+          Object? extensions;
+          List<Map<String, Object?>>? errors;
+          if (payload is List) {
+            errors = _tryCastErrors(payload);
+          } else if (payload is Map) {
+            if (payload["errors"] is List) {
               extensions = payload["extensions"];
+              errors = _tryCastErrors(payload["errors"] as List);
+            } else {
+              errors = _tryCastErrors([payload]);
+              // only pass root level extensions if they weren't passed as
+              // extensions in the error
+              if (errors == null) {
+                extensions = payload["extensions"];
+              }
             }
           }
-        }
-        return SubscriptionError(id, payload, errors, extensions);
-      case MessageTypes.complete:
-        return SubscriptionComplete(id);
-      default:
-        return UnknownData(map);
+          return SubscriptionError(id, payload, errors, extensions);
+        case MessageTypes.complete:
+          return SubscriptionComplete(id);
+        default:
+          return UnknownData(map);
+      }
+    } catch (e, s) {
+      throw WebSocketLinkServerException(
+        originalException: e,
+        originalStackTrace: s,
+        parsedResponse: null,
+        requestMessage: null,
+      );
     }
   }
 

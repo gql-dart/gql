@@ -49,6 +49,11 @@ const _reserved = <String>[
   "Set",
   "update",
   "values",
+  "build",
+  "replace",
+  "toJson",
+  "fromJson",
+  "serializer",
 ];
 
 class SourceSelections {

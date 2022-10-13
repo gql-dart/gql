@@ -1,7 +1,7 @@
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/aliases/aliased_hero.data.gql.dart';
-import 'package:end_to_end_test/graphql/schema.schema.gql.dart';
+import 'package:end_to_end_test/aliases/__generated__/aliased_hero.data.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
 
 void main() {
   group("Aliases", () {

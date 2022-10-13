@@ -1,3 +1,7 @@
+## 0.6.0
+
+- add support for generating `possibleTypesMap`. 
+
 ## 0.5.1
 
 - Support `interfaces`.

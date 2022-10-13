@@ -149,9 +149,10 @@ class HttpLink extends Link {
           headers: httpResponse.headers,
         ),
       );
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ContextWriteException(
         originalException: e,
+        originalStackTrace: stackTrace,
       );
     }
   }
@@ -171,9 +172,10 @@ class HttpLink extends Link {
         data: const <String, dynamic>{},
         response: const <String, dynamic>{},
       );
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw HttpLinkParserException(
         originalException: e,
+        originalStackTrace: stackTrace,
         response: httpResponse,
       );
     }
@@ -184,9 +186,10 @@ class HttpLink extends Link {
     try {
       final response = await _httpClient!.send(httpRequest);
       return http.Response.fromStream(response);
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ServerException(
         originalException: e,
+        originalStackTrace: stackTrace,
         parsedResponse: null,
       );
     }
@@ -255,9 +258,10 @@ class HttpLink extends Link {
       (V input) {
         try {
           return encoder(input);
-        } catch (e) {
+        } catch (e, stackTrace) {
           throw RequestFormatException(
             originalException: e,
+            originalStackTrace: stackTrace,
             request: request,
           );
         }
@@ -277,9 +281,10 @@ Map<String, String> _getHttpLinkHeaders(Request request) {
     return {
       if (linkHeaders != null) ...linkHeaders.headers,
     };
-  } catch (e) {
+  } catch (e, stackTrace) {
     throw ContextReadException(
       originalException: e,
+      originalStackTrace: stackTrace,
     );
   }
 }

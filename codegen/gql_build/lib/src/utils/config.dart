@@ -10,7 +10,7 @@ Map<String, Reference> typeOverrideMap(dynamic typeOverrideConfig) {
           entry.key as String,
           Reference(
             entry.value["name"] as String,
-            entry.value["import"] as String,
+            entry.value["import"] as String?,
           ),
         ),
       ),
@@ -40,6 +40,9 @@ EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
       generateFallbackValuesGlobally: config["global_enum_fallbacks"] == true,
       fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
     );
+
+bool generatePossibleTypesConfig(Map<String, dynamic> config) =>
+    config["generate_possible_types_map"] as bool? ?? true;
 
 Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
   if (enumFallbacks is YamlMap) {
