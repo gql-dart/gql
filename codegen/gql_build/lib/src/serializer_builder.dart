@@ -56,14 +56,14 @@ class SerializerBuilder implements Builder {
     final hasSerializer = (ClassElement c) => c.fields.any((field) =>
         field.isStatic &&
         field.name == "serializer" &&
-        field.type.element?.name == "Serializer" &&
-        field.type.element?.source?.uri.toString() ==
+        field.type.element2?.name == "Serializer" &&
+        field.type.element2?.source?.uri.toString() ==
             "package:built_value/serializer.dart");
 
     final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
-        (interface.element.name == "Built" ||
-            interface.element.name == "EnumClass") &&
-        interface.element.source.uri.toString() ==
+        (interface.element2.name == "Built" ||
+            interface.element2.name == "EnumClass") &&
+        interface.element2.source.uri.toString() ==
             "package:built_value/built_value.dart");
 
     await for (final input in buildStep.findAssets(_generatedFiles)) {
