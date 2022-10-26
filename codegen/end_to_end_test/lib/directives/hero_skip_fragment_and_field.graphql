@@ -1,0 +1,11 @@
+query HeroSkipFragment($skipDetails: Boolean!) {
+    hero {
+        id
+        ...HeroDetail @skip(if: $skipDetails)
+    }
+}
+
+fragment HeroDetail on Character {
+    id
+    name
+}

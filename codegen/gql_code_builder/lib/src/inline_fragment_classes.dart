@@ -17,6 +17,7 @@ List<Class> buildInlineFragmentClasses({
   required List<Method> fieldGetters,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,
+  required SourceNode documentSource,
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
@@ -57,6 +58,7 @@ List<Class> buildInlineFragmentClasses({
         ),
         fragmentMap: fragmentMap,
         schemaSource: schemaSource,
+        docSource: documentSource,
         type: type,
         typeOverrides: typeOverrides,
         superclassSelections: {
@@ -80,6 +82,7 @@ List<Class> buildInlineFragmentClasses({
               ),
               fragmentMap: fragmentMap,
               schemaSource: schemaSource,
+              docSource: documentSource,
               type: inlineFragment.typeCondition!.on.name.value,
               typeOverrides: typeOverrides,
               superclassSelections: {

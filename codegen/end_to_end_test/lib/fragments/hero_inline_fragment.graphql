@@ -1,0 +1,10 @@
+query HeroWithInlineFragments($skipName: Boolean!) {
+    hero(episode: JEDI) {
+        ... {
+            id
+        }
+        ... @skip(if: $skipName) {
+            name
+        }
+    }
+}
