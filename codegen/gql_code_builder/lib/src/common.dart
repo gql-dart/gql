@@ -86,14 +86,7 @@ const defaultTypeMap = <String, Reference>{
   "Boolean": Reference("bool"),
 };
 
-Reference _typeRef(
-  TypeNode type,
-  Map<String, Reference> typeMap, [
-
-  /// TODO: remove
-  /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
-  bool inList = false,
-]) {
+Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
   if (type is NamedTypeNode) {
     final ref = typeMap[type.name.value] ?? Reference(type.name.value);
     return TypeReference(
@@ -103,7 +96,7 @@ Reference _typeRef(
 
         /// TODO: remove `inList` check
         /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
-        ..isNullable = !inList && !type.isNonNull,
+        ..isNullable = !type.isNonNull,
     );
   } else if (type is ListTypeNode) {
     return TypeReference(
@@ -111,7 +104,7 @@ Reference _typeRef(
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
         ..isNullable = !type.isNonNull
-        ..types.add(_typeRef(type.type, typeMap, true)),
+        ..types.add(_typeRef(type.type, typeMap)),
     );
   }
   throw Exception("Unrecognized TypeNode type");

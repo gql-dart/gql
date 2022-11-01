@@ -192,7 +192,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
         ..add('edges')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(
+              const FullType.nullable(
                   GHeroWithFragmentsData_hero_friendsConnection_edges)
             ])));
     }
@@ -222,7 +222,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
         case 'edges':
           result.edges.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(
+                const FullType.nullable(
                     GHeroWithFragmentsData_hero_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
@@ -499,7 +499,8 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
         ..add('edges')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(GcomparisonFieldsData_friendsConnection_edges)
+              const FullType.nullable(
+                  GcomparisonFieldsData_friendsConnection_edges)
             ])));
     }
     return result;
@@ -528,7 +529,8 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
         case 'edges':
           result.edges.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GcomparisonFieldsData_friendsConnection_edges)
+                const FullType.nullable(
+                    GcomparisonFieldsData_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -925,7 +927,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
   @override
   final int? totalCount;
   @override
-  final BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges>? edges;
+  final BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? edges;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection(
           [void Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder)?
@@ -991,13 +993,13 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
   int? get totalCount => _$this._totalCount;
   set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
-  ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>? _edges;
+  ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>? _edges;
   ListBuilder<
-      GHeroWithFragmentsData_hero_friendsConnection_edges> get edges => _$this
+      GHeroWithFragmentsData_hero_friendsConnection_edges?> get edges => _$this
           ._edges ??=
-      new ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>();
+      new ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>();
   set edges(
-          ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>?
+          ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>?
               edges) =>
       _$this._edges = edges;
 
@@ -1571,7 +1573,7 @@ class _$GcomparisonFieldsData_friendsConnection
   @override
   final int? totalCount;
   @override
-  final BuiltList<GcomparisonFieldsData_friendsConnection_edges>? edges;
+  final BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? edges;
 
   factory _$GcomparisonFieldsData_friendsConnection(
           [void Function(GcomparisonFieldsData_friendsConnectionBuilder)?
@@ -1636,12 +1638,12 @@ class GcomparisonFieldsData_friendsConnectionBuilder
   int? get totalCount => _$this._totalCount;
   set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
-  ListBuilder<GcomparisonFieldsData_friendsConnection_edges>? _edges;
-  ListBuilder<GcomparisonFieldsData_friendsConnection_edges> get edges =>
+  ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>? _edges;
+  ListBuilder<GcomparisonFieldsData_friendsConnection_edges?> get edges =>
       _$this._edges ??=
-          new ListBuilder<GcomparisonFieldsData_friendsConnection_edges>();
+          new ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>();
   set edges(
-          ListBuilder<GcomparisonFieldsData_friendsConnection_edges>? edges) =>
+          ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>? edges) =>
       _$this._edges = edges;
 
   GcomparisonFieldsData_friendsConnectionBuilder() {

@@ -253,7 +253,7 @@ abstract class GAddPullRequestReviewInput
 
   String? get body;
   String? get clientMutationId;
-  BuiltList<GDraftPullRequestReviewComment>? get comments;
+  BuiltList<GDraftPullRequestReviewComment?>? get comments;
   GGitObjectID? get commitOID;
   GPullRequestReviewEvent? get event;
   String get pullRequestId;

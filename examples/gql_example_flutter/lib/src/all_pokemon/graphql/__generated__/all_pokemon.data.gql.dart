@@ -23,7 +23,7 @@ abstract class GAllPokemonData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GAllPokemonData_pokemons>? get pokemons;
+  BuiltList<GAllPokemonData_pokemons?>? get pokemons;
   static Serializer<GAllPokemonData> get serializer =>
       _$gAllPokemonDataSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

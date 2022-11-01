@@ -32,8 +32,8 @@ class _$GAllPokemonDataSerializer
       result
         ..add('pokemons')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(GAllPokemonData_pokemons)])));
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(GAllPokemonData_pokemons)])));
     }
     return result;
   }
@@ -57,7 +57,7 @@ class _$GAllPokemonDataSerializer
         case 'pokemons':
           result.pokemons.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GAllPokemonData_pokemons)
+                const FullType.nullable(GAllPokemonData_pokemons)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -155,7 +155,7 @@ class _$GAllPokemonData extends GAllPokemonData {
   @override
   final String G__typename;
   @override
-  final BuiltList<GAllPokemonData_pokemons>? pokemons;
+  final BuiltList<GAllPokemonData_pokemons?>? pokemons;
 
   factory _$GAllPokemonData([void Function(GAllPokemonDataBuilder)? updates]) =>
       (new GAllPokemonDataBuilder()..update(updates))._build();
@@ -203,10 +203,10 @@ class GAllPokemonDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GAllPokemonData_pokemons>? _pokemons;
-  ListBuilder<GAllPokemonData_pokemons> get pokemons =>
-      _$this._pokemons ??= new ListBuilder<GAllPokemonData_pokemons>();
-  set pokemons(ListBuilder<GAllPokemonData_pokemons>? pokemons) =>
+  ListBuilder<GAllPokemonData_pokemons?>? _pokemons;
+  ListBuilder<GAllPokemonData_pokemons?> get pokemons =>
+      _$this._pokemons ??= new ListBuilder<GAllPokemonData_pokemons?>();
+  set pokemons(ListBuilder<GAllPokemonData_pokemons?>? pokemons) =>
       _$this._pokemons = pokemons;
 
   GAllPokemonDataBuilder() {

@@ -32,8 +32,8 @@ class _$GListPokemonDataSerializer
       result
         ..add('pokemons')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(GListPokemonData_pokemons)])));
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(GListPokemonData_pokemons)])));
     }
     return result;
   }
@@ -57,7 +57,7 @@ class _$GListPokemonDataSerializer
         case 'pokemons':
           result.pokemons.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GListPokemonData_pokemons)
+                const FullType.nullable(GListPokemonData_pokemons)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -134,7 +134,7 @@ class _$GListPokemonData extends GListPokemonData {
   @override
   final String G__typename;
   @override
-  final BuiltList<GListPokemonData_pokemons>? pokemons;
+  final BuiltList<GListPokemonData_pokemons?>? pokemons;
 
   factory _$GListPokemonData(
           [void Function(GListPokemonDataBuilder)? updates]) =>
@@ -183,10 +183,10 @@ class GListPokemonDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GListPokemonData_pokemons>? _pokemons;
-  ListBuilder<GListPokemonData_pokemons> get pokemons =>
-      _$this._pokemons ??= new ListBuilder<GListPokemonData_pokemons>();
-  set pokemons(ListBuilder<GListPokemonData_pokemons>? pokemons) =>
+  ListBuilder<GListPokemonData_pokemons?>? _pokemons;
+  ListBuilder<GListPokemonData_pokemons?> get pokemons =>
+      _$this._pokemons ??= new ListBuilder<GListPokemonData_pokemons?>();
+  set pokemons(ListBuilder<GListPokemonData_pokemons?>? pokemons) =>
       _$this._pokemons = pokemons;
 
   GListPokemonDataBuilder() {

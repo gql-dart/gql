@@ -91,7 +91,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
   @override
   int? get totalCount;
   @override
-  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges>? get edges;
+  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? get edges;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection>
       get serializer => _$gHeroWithFragmentsDataHeroFriendsConnectionSerializer;
   @override
@@ -226,7 +226,7 @@ abstract class GcomparisonFields implements GheroData {
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
   int? get totalCount;
-  BuiltList<GcomparisonFields_friendsConnection_edges>? get edges;
+  BuiltList<GcomparisonFields_friendsConnection_edges?>? get edges;
   Map<String, dynamic> toJson();
 }
 
@@ -302,7 +302,7 @@ abstract class GcomparisonFieldsData_friendsConnection
   @override
   int? get totalCount;
   @override
-  BuiltList<GcomparisonFieldsData_friendsConnection_edges>? get edges;
+  BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? get edges;
   static Serializer<GcomparisonFieldsData_friendsConnection> get serializer =>
       _$gcomparisonFieldsDataFriendsConnectionSerializer;
   @override
