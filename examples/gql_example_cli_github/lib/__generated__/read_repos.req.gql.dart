@@ -23,14 +23,20 @@ abstract class GReadRepositories
 
   static void _initializeBuilder(GReadRepositoriesBuilder b) => b
     ..operation = _i1.Operation(
-        document: _i2.document, operationName: 'ReadRepositories');
+      document: _i2.document,
+      operationName: 'ReadRepositories',
+    );
   _i3.GReadRepositoriesVars get vars;
   _i1.Operation get operation;
   static Serializer<GReadRepositories> get serializer =>
       _$gReadRepositoriesSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GReadRepositories.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GReadRepositories.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GReadRepositories? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GReadRepositories.serializer, json);
+      _i4.serializers.deserializeWith(
+        GReadRepositories.serializer,
+        json,
+      );
 }

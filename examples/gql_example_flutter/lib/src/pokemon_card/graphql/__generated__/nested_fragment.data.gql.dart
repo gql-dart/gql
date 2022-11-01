@@ -37,9 +37,13 @@ abstract class GNestedFragmentData
   static Serializer<GNestedFragmentData> get serializer =>
       _$gNestedFragmentDataSerializer;
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GNestedFragmentData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GNestedFragmentData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GNestedFragmentData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GNestedFragmentData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GNestedFragmentData.serializer,
+        json,
+      );
 }

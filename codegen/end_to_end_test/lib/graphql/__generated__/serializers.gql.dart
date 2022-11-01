@@ -129,6 +129,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GcomparisonFieldsData_friendsConnection_edges_node,
   GcomparisonFieldsVars,
   GheroDataData,
-  GheroDataVars
+  GheroDataVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

@@ -17,9 +17,13 @@ abstract class GDimensionsVars
 
   static Serializer<GDimensionsVars> get serializer =>
       _$gDimensionsVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GDimensionsVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GDimensionsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GDimensionsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GDimensionsVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GDimensionsVars.serializer,
+        json,
+      );
 }

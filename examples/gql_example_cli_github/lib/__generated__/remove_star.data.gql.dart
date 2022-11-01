@@ -23,11 +23,15 @@ abstract class GRemoveStarData
   GRemoveStarData_action? get action;
   static Serializer<GRemoveStarData> get serializer =>
       _$gRemoveStarDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GRemoveStarData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveStarData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GRemoveStarData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GRemoveStarData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GRemoveStarData.serializer,
+        json,
+      );
 }
 
 abstract class GRemoveStarData_action
@@ -45,11 +49,15 @@ abstract class GRemoveStarData_action
   GRemoveStarData_action_starrable? get starrable;
   static Serializer<GRemoveStarData_action> get serializer =>
       _$gRemoveStarDataActionSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GRemoveStarData_action.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveStarData_action.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GRemoveStarData_action? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GRemoveStarData_action.serializer, json);
+      _i1.serializers.deserializeWith(
+        GRemoveStarData_action.serializer,
+        json,
+      );
 }
 
 abstract class GRemoveStarData_action_starrable
@@ -69,11 +77,14 @@ abstract class GRemoveStarData_action_starrable
   bool get viewerHasStarred;
   static Serializer<GRemoveStarData_action_starrable> get serializer =>
       _$gRemoveStarDataActionStarrableSerializer;
-  Map<String, dynamic> toJson() => (_i1.serializers
-          .serializeWith(GRemoveStarData_action_starrable.serializer, this)
-      as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveStarData_action_starrable.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GRemoveStarData_action_starrable? fromJson(
           Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GRemoveStarData_action_starrable.serializer, json);
+      _i1.serializers.deserializeWith(
+        GRemoveStarData_action_starrable.serializer,
+        json,
+      );
 }
