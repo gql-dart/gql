@@ -18,9 +18,13 @@ abstract class GPokemonCardVars
 
   static Serializer<GPokemonCardVars> get serializer =>
       _$gPokemonCardVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPokemonCardVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPokemonCardVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GPokemonCardVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GPokemonCardVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GPokemonCardVars.serializer,
+        json,
+      );
 }

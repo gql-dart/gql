@@ -20,14 +20,20 @@ abstract class GRemoveStar implements Built<GRemoveStar, GRemoveStarBuilder> {
   factory GRemoveStar([Function(GRemoveStarBuilder b) updates]) = _$GRemoveStar;
 
   static void _initializeBuilder(GRemoveStarBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'RemoveStar');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'RemoveStar',
+    );
   _i3.GRemoveStarVars get vars;
   _i1.Operation get operation;
   static Serializer<GRemoveStar> get serializer => _$gRemoveStarSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GRemoveStar.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GRemoveStar.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GRemoveStar? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GRemoveStar.serializer, json);
+      _i4.serializers.deserializeWith(
+        GRemoveStar.serializer,
+        json,
+      );
 }

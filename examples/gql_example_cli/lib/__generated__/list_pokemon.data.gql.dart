@@ -23,11 +23,15 @@ abstract class GListPokemonData
   BuiltList<GListPokemonData_pokemons>? get pokemons;
   static Serializer<GListPokemonData> get serializer =>
       _$gListPokemonDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GListPokemonData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GListPokemonData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GListPokemonData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GListPokemonData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GListPokemonData.serializer,
+        json,
+      );
 }
 
 abstract class GListPokemonData_pokemons
@@ -47,10 +51,13 @@ abstract class GListPokemonData_pokemons
   String? get name;
   static Serializer<GListPokemonData_pokemons> get serializer =>
       _$gListPokemonDataPokemonsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GListPokemonData_pokemons.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GListPokemonData_pokemons.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GListPokemonData_pokemons? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GListPokemonData_pokemons.serializer, json);
+      _i1.serializers.deserializeWith(
+        GListPokemonData_pokemons.serializer,
+        json,
+      );
 }

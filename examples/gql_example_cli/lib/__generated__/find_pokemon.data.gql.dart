@@ -23,11 +23,15 @@ abstract class GFindPokemonData
   GFindPokemonData_pokemon? get pokemon;
   static Serializer<GFindPokemonData> get serializer =>
       _$gFindPokemonDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GFindPokemonData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GFindPokemonData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GFindPokemonData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GFindPokemonData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GFindPokemonData.serializer,
+        json,
+      );
 }
 
 abstract class GFindPokemonData_pokemon
@@ -49,12 +53,15 @@ abstract class GFindPokemonData_pokemon
   GFindPokemonData_pokemon_height? get height;
   static Serializer<GFindPokemonData_pokemon> get serializer =>
       _$gFindPokemonDataPokemonSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GFindPokemonData_pokemon.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GFindPokemonData_pokemon.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GFindPokemonData_pokemon? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GFindPokemonData_pokemon.serializer, json);
+      _i1.serializers.deserializeWith(
+        GFindPokemonData_pokemon.serializer,
+        json,
+      );
 }
 
 abstract class GFindPokemonData_pokemon_weight
@@ -80,12 +87,15 @@ abstract class GFindPokemonData_pokemon_weight
   static Serializer<GFindPokemonData_pokemon_weight> get serializer =>
       _$gFindPokemonDataPokemonWeightSerializer;
   @override
-  Map<String, dynamic> toJson() => (_i1.serializers
-          .serializeWith(GFindPokemonData_pokemon_weight.serializer, this)
-      as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GFindPokemonData_pokemon_weight.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GFindPokemonData_pokemon_weight? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GFindPokemonData_pokemon_weight.serializer, json);
+      _i1.serializers.deserializeWith(
+        GFindPokemonData_pokemon_weight.serializer,
+        json,
+      );
 }
 
 abstract class GFindPokemonData_pokemon_height
@@ -111,10 +121,13 @@ abstract class GFindPokemonData_pokemon_height
   static Serializer<GFindPokemonData_pokemon_height> get serializer =>
       _$gFindPokemonDataPokemonHeightSerializer;
   @override
-  Map<String, dynamic> toJson() => (_i1.serializers
-          .serializeWith(GFindPokemonData_pokemon_height.serializer, this)
-      as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GFindPokemonData_pokemon_height.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GFindPokemonData_pokemon_height? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GFindPokemonData_pokemon_height.serializer, json);
+      _i1.serializers.deserializeWith(
+        GFindPokemonData_pokemon_height.serializer,
+        json,
+      );
 }

@@ -50,9 +50,13 @@ abstract class GPokemonCardData
   static Serializer<GPokemonCardData> get serializer =>
       _$gPokemonCardDataSerializer;
   @override
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GPokemonCardData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GPokemonCardData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GPokemonCardData? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(GPokemonCardData.serializer, json);
+      _i2.serializers.deserializeWith(
+        GPokemonCardData.serializer,
+        json,
+      );
 }

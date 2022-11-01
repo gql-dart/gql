@@ -20,14 +20,20 @@ abstract class GAllPokemon implements Built<GAllPokemon, GAllPokemonBuilder> {
   factory GAllPokemon([Function(GAllPokemonBuilder b) updates]) = _$GAllPokemon;
 
   static void _initializeBuilder(GAllPokemonBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'AllPokemon');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'AllPokemon',
+    );
   _i3.GAllPokemonVars get vars;
   _i1.Operation get operation;
   static Serializer<GAllPokemon> get serializer => _$gAllPokemonSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GAllPokemon.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GAllPokemon.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAllPokemon? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GAllPokemon.serializer, json);
+      _i4.serializers.deserializeWith(
+        GAllPokemon.serializer,
+        json,
+      );
 }

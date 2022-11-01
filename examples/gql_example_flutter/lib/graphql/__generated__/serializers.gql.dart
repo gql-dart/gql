@@ -47,6 +47,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPokemonDetailData_pokemon,
   GPokemonDetailData_pokemon_height,
   GPokemonDetailData_pokemon_weight,
-  GPokemonDetailVars
+  GPokemonDetailVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

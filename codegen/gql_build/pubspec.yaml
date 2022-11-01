@@ -10,8 +10,8 @@ dependencies:
   built_collection: ^5.0.0
   built_value: ^8.0.6
   built_value_generator: ^8.0.6
-  code_builder: ^4.0.0
-  dart_style: ^2.0.0
+  code_builder: ^4.3.0
+  dart_style: ^2.2.4
   glob: ^2.0.0
   gql: ^0.14.0
   gql_code_builder: ^0.6.0

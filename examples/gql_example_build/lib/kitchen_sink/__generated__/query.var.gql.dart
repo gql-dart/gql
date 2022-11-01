@@ -37,9 +37,13 @@ abstract class GQueryOperationVars
   _i1.GInput get inputRequired;
   static Serializer<GQueryOperationVars> get serializer =>
       _$gQueryOperationVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GQueryOperationVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GQueryOperationVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GQueryOperationVars? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(GQueryOperationVars.serializer, json);
+      _i2.serializers.deserializeWith(
+        GQueryOperationVars.serializer,
+        json,
+      );
 }

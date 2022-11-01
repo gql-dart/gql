@@ -22,11 +22,15 @@ abstract class GAddStarData
   String get G__typename;
   GAddStarData_action? get action;
   static Serializer<GAddStarData> get serializer => _$gAddStarDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAddStarData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAddStarData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAddStarData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAddStarData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAddStarData.serializer,
+        json,
+      );
 }
 
 abstract class GAddStarData_action
@@ -43,11 +47,15 @@ abstract class GAddStarData_action
   GAddStarData_action_starrable? get starrable;
   static Serializer<GAddStarData_action> get serializer =>
       _$gAddStarDataActionSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAddStarData_action.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAddStarData_action.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAddStarData_action? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAddStarData_action.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAddStarData_action.serializer,
+        json,
+      );
 }
 
 abstract class GAddStarData_action_starrable
@@ -68,8 +76,12 @@ abstract class GAddStarData_action_starrable
   static Serializer<GAddStarData_action_starrable> get serializer =>
       _$gAddStarDataActionStarrableSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GAddStarData_action_starrable.serializer, this) as Map<String, dynamic>);
+        GAddStarData_action_starrable.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAddStarData_action_starrable? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GAddStarData_action_starrable.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAddStarData_action_starrable.serializer,
+        json,
+      );
 }

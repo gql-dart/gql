@@ -19,13 +19,20 @@ abstract class GShape implements Built<GShape, GShapeBuilder> {
   factory GShape([Function(GShapeBuilder b) updates]) = _$GShape;
 
   static void _initializeBuilder(GShapeBuilder b) => b
-    ..operation = _i1.Operation(document: _i2.document, operationName: 'Shape');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'Shape',
+    );
   _i3.GShapeVars get vars;
   _i1.Operation get operation;
   static Serializer<GShape> get serializer => _$gShapeSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GShape.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GShape.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShape? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GShape.serializer, json);
+      _i4.serializers.deserializeWith(
+        GShape.serializer,
+        json,
+      );
 }
