@@ -5336,8 +5336,9 @@ class _$GAddPullRequestReviewInputSerializer
       result
         ..add('comments')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(BuiltList,
-                const [const FullType(GDraftPullRequestReviewComment)])));
+            specifiedType: const FullType(BuiltList, const [
+              const FullType.nullable(GDraftPullRequestReviewComment)
+            ])));
     }
     value = object.commitOID;
     if (value != null) {
@@ -5379,7 +5380,7 @@ class _$GAddPullRequestReviewInputSerializer
         case 'comments':
           result.comments.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GDraftPullRequestReviewComment)
+                const FullType.nullable(GDraftPullRequestReviewComment)
               ]))! as BuiltList<Object?>);
           break;
         case 'commitOID':
@@ -18151,7 +18152,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
   @override
   final String? clientMutationId;
   @override
-  final BuiltList<GDraftPullRequestReviewComment>? comments;
+  final BuiltList<GDraftPullRequestReviewComment?>? comments;
   @override
   final GGitObjectID? commitOID;
   @override
@@ -18235,10 +18236,10 @@ class GAddPullRequestReviewInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  ListBuilder<GDraftPullRequestReviewComment>? _comments;
-  ListBuilder<GDraftPullRequestReviewComment> get comments =>
-      _$this._comments ??= new ListBuilder<GDraftPullRequestReviewComment>();
-  set comments(ListBuilder<GDraftPullRequestReviewComment>? comments) =>
+  ListBuilder<GDraftPullRequestReviewComment?>? _comments;
+  ListBuilder<GDraftPullRequestReviewComment?> get comments =>
+      _$this._comments ??= new ListBuilder<GDraftPullRequestReviewComment?>();
+  set comments(ListBuilder<GDraftPullRequestReviewComment?>? comments) =>
       _$this._comments = comments;
 
   GGitObjectIDBuilder? _commitOID;
