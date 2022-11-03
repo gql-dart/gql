@@ -63,3 +63,4 @@ export "src/error.dart";
 export "src/operation.dart";
 export "src/request.dart";
 export "src/response.dart";
+export "src/http.dart";

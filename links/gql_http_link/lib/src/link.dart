@@ -14,35 +14,22 @@ typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
 
 /// HTTP link headers
 @immutable
-class HttpLinkHeaders extends ContextEntry {
-  /// Headers to be added to the request.
-  ///
-  /// May overrides Apollo Client awareness headers.
-  final Map<String, String> headers;
-
+class HttpLinkHeaders extends BaseHttpLinkHeaders {
   const HttpLinkHeaders({
-    this.headers = const {},
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        headers,
-      ];
+    Map<String, String> headers = const {},
+  }) : super(headers: headers);
 }
 
 /// HTTP link Response Context
 @immutable
-class HttpLinkResponseContext extends ContextEntry {
-  /// HTTP status code of the response
-  final int statusCode;
-
+class HttpLinkResponseContext extends BaseHttpLinkResponseContext {
   /// HTTP response headers
   final Map<String, String> headers;
 
   const HttpLinkResponseContext({
-    required this.statusCode,
+    required int statusCode,
     required this.headers,
-  });
+  }) : super(statusCode: statusCode);
 
   @override
   List<Object> get fieldsForEquality => [
