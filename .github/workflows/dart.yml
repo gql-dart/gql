@@ -200,23 +200,3 @@ jobs:
             'Package has 1 warning' \
             'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
 
-  check_svg:
-    runs-on: macos-latest
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Install GraphViz
-        run: |
-          brew install graphviz
-          brew install dart-sdk
-      - name: Activate multipack
-        run: |
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Generate SVG
-        run: |
-          multipack info | dot -Tsvg -o docs/gql.svg
-          cat docs/gql.svg
-      - name: Check changes
-        run: |
-          git diff --exit-code docs/gql.svg
