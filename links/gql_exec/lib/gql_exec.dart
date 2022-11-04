@@ -60,6 +60,7 @@ library execution;
 
 export "src/context.dart";
 export "src/error.dart";
+export "src/http.dart";
 export "src/operation.dart";
 export "src/request.dart";
 export "src/response.dart";

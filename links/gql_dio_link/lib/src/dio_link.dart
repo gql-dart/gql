@@ -10,15 +10,10 @@ import "exceptions.dart";
 
 /// HTTP link headers
 @immutable
-class HttpLinkHeaders extends ContextEntry {
-  /// Headers to be added to the request.
-  ///
-  /// May overrides Apollo Client awareness headers.
-  final Map<String, String> headers;
-
+class HttpLinkHeaders extends BaseHttpLinkHeaders {
   const HttpLinkHeaders({
-    this.headers = const {},
-  });
+    Map<String, String> headers = const {},
+  }) : super(headers: headers);
 
   @override
   List<Object> get fieldsForEquality => [
@@ -28,18 +23,10 @@ class HttpLinkHeaders extends ContextEntry {
 
 /// Dio link Response Context
 @immutable
-class DioLinkResponseContext extends ContextEntry {
-  /// Dio status code of the response
-  final int statusCode;
-
+class DioLinkResponseContext extends BaseHttpLinkResponseContext {
   const DioLinkResponseContext({
-    required this.statusCode,
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        statusCode,
-      ];
+    required int statusCode,
+  }) : super(statusCode: statusCode);
 }
 
 extension _CastDioResponse on dio.Response {
