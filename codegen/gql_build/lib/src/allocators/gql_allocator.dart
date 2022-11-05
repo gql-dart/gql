@@ -2,8 +2,6 @@ import "package:code_builder/code_builder.dart";
 import "package:gql_build/src/config.dart";
 import "package:path/path.dart" as p;
 
-import "../config.dart";
-
 class GqlAllocator implements Allocator {
   static const _doNotImport = [
     "dart:core",

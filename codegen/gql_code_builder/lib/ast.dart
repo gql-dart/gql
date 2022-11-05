@@ -9,14 +9,14 @@ Library buildAstLibrary(
   SourceNode source,
 ) {
   final definitions = source.document.definitions.map(
-    (def) => fromNode(def).assignConst(_getName(def)).statement,
+    (def) => declareConst(_getName(def)).assign(fromNode(def)).statement,
   );
 
-  final document = refer(
-    "DocumentNode",
-    "package:gql/ast.dart",
-  )
-      .call(
+  final document = declareConst("document")
+      .assign(refer(
+        "DocumentNode",
+        "package:gql/ast.dart",
+      ).call(
         [],
         {
           "definitions": literalList(
@@ -28,8 +28,7 @@ Library buildAstLibrary(
                 ),
           ),
         },
-      )
-      .assignConst("document")
+      ))
       .statement;
 
   return Library(
