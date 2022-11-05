@@ -42,8 +42,9 @@ Code buildPossibleTypes(DocumentNode document) {
   // wrap the map in a literal for codegen
   final possibleTypesLiteral = literalMap(possibleTypesMap);
   // assign the literal to a const variable named "possibleTypes"
-  return possibleTypesLiteral
-      .assignConst("possibleTypesMap", Reference("Map<String, Set<String>>"))
+  return declareConst("possibleTypesMap",
+          type: Reference("Map<String, Set<String>>"))
+      .assign(possibleTypesLiteral)
       .statement;
 }
 
