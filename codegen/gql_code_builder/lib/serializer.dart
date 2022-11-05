@@ -22,7 +22,8 @@ Library buildSerializerLibrary(
           withCustomSerializers(
             declareFinal(
               "_serializersBuilder",
-              type: refer("SerializersBuilder", "package:built_value/serializer.dart"),
+              type: refer(
+                  "SerializersBuilder", "package:built_value/serializer.dart"),
             )
                 .assign(
                   refer(r"_$serializers"),
@@ -47,7 +48,8 @@ Library buildSerializerLibrary(
             )
           ]),
           declareFinal("serializers",
-                  type: refer("Serializers", "package:built_value/serializer.dart"))
+                  type: refer(
+                      "Serializers", "package:built_value/serializer.dart"))
               .assign(refer("_serializersBuilder"))
               .property("build")
               .call([]).statement,
