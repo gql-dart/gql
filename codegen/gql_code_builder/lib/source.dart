@@ -1,5 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/common.dart";
 
 /// Source node represents source file and it's imports
 class SourceNode {
@@ -27,7 +28,7 @@ class SourceNode {
   Set<Reference> getRefs() => {
         ...document.definitions.map(
           (definition) => Reference(
-            _getName(definition),
+            identifier(_getName(definition)),
             url,
           ),
         ),

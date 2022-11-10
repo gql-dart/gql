@@ -30,6 +30,15 @@ const schema = _i1.SchemaDefinitionNode(
     ),
   ],
 );
+const Gextends = _i1.DirectiveDefinitionNode(
+  name: _i1.NameNode(value: 'extends'),
+  args: [],
+  locations: [
+    _i1.DirectiveLocation.object,
+    _i1.DirectiveLocation.interface,
+  ],
+  repeatable: false,
+);
 const Query = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Query'),
   directives: [],
@@ -930,6 +939,7 @@ const CustomField = _i1.ScalarTypeDefinitionNode(
 );
 const document = _i1.DocumentNode(definitions: [
   schema,
+  Gextends,
   Query,
   Mutation,
   Subscription,

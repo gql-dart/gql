@@ -6,6 +6,9 @@ schema {
   subscription: Subscription
 }
 
+directive @extends on OBJECT | INTERFACE
+
+
 # The query type, represents all of the entry points into our object graph
 type Query {
   hero(episode: Episode): Character
