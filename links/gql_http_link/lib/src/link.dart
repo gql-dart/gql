@@ -14,35 +14,22 @@ typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
 
 /// HTTP link headers
 @immutable
-class HttpLinkHeaders extends ContextEntry {
-  /// Headers to be added to the request.
-  ///
-  /// May overrides Apollo Client awareness headers.
-  final Map<String, String> headers;
-
+class HttpLinkHeaders extends BaseHttpLinkHeaders {
   const HttpLinkHeaders({
-    this.headers = const {},
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        headers,
-      ];
+    Map<String, String> headers = const {},
+  }) : super(headers: headers);
 }
 
 /// HTTP link Response Context
 @immutable
-class HttpLinkResponseContext extends ContextEntry {
-  /// HTTP status code of the response
-  final int statusCode;
-
+class HttpLinkResponseContext extends BaseHttpLinkResponseContext {
   /// HTTP response headers
   final Map<String, String> headers;
 
   const HttpLinkResponseContext({
-    required this.statusCode,
+    required int statusCode,
     required this.headers,
-  });
+  }) : super(statusCode: statusCode);
 
   @override
   List<Object> get fieldsForEquality => [
@@ -144,9 +131,10 @@ class HttpLink extends Link {
           headers: httpResponse.headers,
         ),
       );
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ContextWriteException(
         originalException: e,
+        originalStackTrace: stackTrace,
       );
     }
   }
@@ -155,9 +143,10 @@ class HttpLink extends Link {
     try {
       final responseBody = await httpResponseDecoder(httpResponse);
       return parser.parseResponse(responseBody!);
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw HttpLinkParserException(
         originalException: e,
+        originalStackTrace: stackTrace,
         response: httpResponse,
       );
     }
@@ -168,9 +157,10 @@ class HttpLink extends Link {
     try {
       final response = await _httpClient!.send(httpRequest);
       return http.Response.fromStream(response);
-    } catch (e) {
+    } catch (e, stackTrace) {
       throw ServerException(
         originalException: e,
+        originalStackTrace: stackTrace,
         parsedResponse: null,
       );
     }
@@ -235,9 +225,10 @@ class HttpLink extends Link {
       (V input) {
         try {
           return encoder(input);
-        } catch (e) {
+        } catch (e, stackTrace) {
           throw RequestFormatException(
             originalException: e,
+            originalStackTrace: stackTrace,
             request: request,
           );
         }
@@ -257,9 +248,10 @@ Map<String, String> _getHttpLinkHeaders(Request request) {
     return {
       if (linkHeaders != null) ...linkHeaders.headers,
     };
-  } catch (e) {
+  } catch (e, stackTrace) {
     throw ContextReadException(
       originalException: e,
+      originalStackTrace: stackTrace,
     );
   }
 }

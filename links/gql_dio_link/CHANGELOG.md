@@ -1,3 +1,8 @@
+## 0.2.3
+
+* add support for useGETForQueries
+* allow uploading Multipartfiles
+
 ## 0.2.2
 
 * Upgrade `gql_exec`.

@@ -1,3 +1,11 @@
+## 0.7.0
+
+- **Breaking Change**: properly generate nullable types for nullable elements in lists
+
+## 0.6.0
+
+- add support for generating `possibleTypesMap`. 
+
 ## 0.5.1
 
 - Support `interfaces`.

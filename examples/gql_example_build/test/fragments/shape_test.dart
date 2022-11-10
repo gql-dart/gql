@@ -1,4 +1,4 @@
-import "package:gql_example_build/fragments/shape.data.gql.dart";
+import "package:gql_example_build/fragments/__generated__/shape.data.gql.dart";
 import "package:test/test.dart";
 
 String? getShapeInfo(GShapeData data) {

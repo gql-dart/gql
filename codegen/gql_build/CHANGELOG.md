@@ -1,3 +1,16 @@
+# 0.7.0
+
+- **Breaking Change**: properly generate nullable types for nullable elements in lists
+
+## 0.6.0
+
+- generate 'possibleTypesMap' in the schema
+- to disable, set 'generate_possible_types_map' to `false` in build.yaml
+
+## 0.5.0
+
+- Fixes dependency issues by upgrading to `gql_code_builder`.
+
 ## 0.4.1
 
 - Support `interfaces`.

@@ -1,6 +1,6 @@
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/fragments/hero_with_fragments.data.gql.dart';
+import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart';
 
 void main() {
   group("Fragments", () {

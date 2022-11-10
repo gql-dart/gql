@@ -10,7 +10,7 @@ import "package:test/test.dart";
 class TestException extends LinkException {
   final int id;
 
-  const TestException(this.id) : super(null);
+  const TestException(this.id) : super(null, null);
 
   @override
   bool operator ==(Object o) => o is TestException && o.id == id;

@@ -1,8 +1,8 @@
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/serializers.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart';
 import "package:test/test.dart";
 
-import 'package:end_to_end_test/graphql/schema.schema.gql.dart';
+import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
 
 void main() {
   group("Enums", () {
