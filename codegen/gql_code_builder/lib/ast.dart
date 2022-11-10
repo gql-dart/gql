@@ -10,7 +10,8 @@ Library buildAstLibrary(
   SourceNode source,
 ) {
   final definitions = source.document.definitions.map(
-    (def) => declareConst(identifier(_getName(def))).assign(fromNode(def)).statement,
+    (def) =>
+        declareConst(identifier(_getName(def))).assign(fromNode(def)).statement,
   );
 
   final document = declareConst("document")
