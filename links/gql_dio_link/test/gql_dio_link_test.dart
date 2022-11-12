@@ -100,7 +100,7 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  DioLinkResponseContext(statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -467,7 +467,7 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  DioLinkResponseContext(statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -825,7 +825,7 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  DioLinkResponseContext(statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -869,7 +869,7 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  DioLinkResponseContext(statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
