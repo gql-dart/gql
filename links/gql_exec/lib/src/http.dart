@@ -32,7 +32,8 @@ class HttpLinkResponseContext extends ContextEntry {
   /// HTTP headers of the response. if you need duplicated headers, use [rawHeaders]
   Map<String, String>? get headers =>
       _headers ??
-      _rawHeaders?.map((key, valueList) => MapEntry(key, valueList.isEmpty ? "" : valueList.last));
+      _rawHeaders?.map((key, valueList) =>
+          MapEntry(key, valueList.isEmpty ? "" : valueList.last));
 
   /// HTTP headers
   Map<String, List<String>>? get rawHeaders =>

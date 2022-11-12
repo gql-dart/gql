@@ -7,7 +7,6 @@ import "package:gql_link/gql_link.dart";
 import "_utils.dart";
 import "exceptions.dart";
 
-
 @Deprecated("Use HttpLinkResponseContext instead")
 typedef DioLinkResponseContext = HttpLinkResponseContext;
 

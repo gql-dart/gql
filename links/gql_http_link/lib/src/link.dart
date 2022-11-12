@@ -12,7 +12,6 @@ import "./exceptions.dart";
 typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
 
-
 /// A simple HttpLink implementation.
 ///
 /// To use non-standard [Request] and [Response] shapes
