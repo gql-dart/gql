@@ -29,13 +29,13 @@ class HttpLinkResponseContext extends ContextEntry {
 
   final Map<String, List<String>>? _rawHeaders;
 
-  /// HTTP headers of the response. if you need duplicated headers, use [rawHeaders]
+  /// HTTP headers of the response. if you need repeated headers, use [rawHeaders]
   Map<String, String>? get headers =>
       _headers ??
       _rawHeaders?.map((key, valueList) =>
           MapEntry(key, valueList.isEmpty ? "" : valueList.last));
 
-  /// HTTP headers
+  /// HTTP headers, including repeated headers, of the response.
   Map<String, List<String>>? get rawHeaders =>
       _rawHeaders ?? _headers?.map((key, value) => MapEntry(key, [value]));
 
