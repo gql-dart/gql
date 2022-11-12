@@ -12,31 +12,6 @@ import "./exceptions.dart";
 typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
 
-/// HTTP link headers
-@immutable
-class HttpLinkHeaders extends BaseHttpLinkHeaders {
-  const HttpLinkHeaders({
-    Map<String, String> headers = const {},
-  }) : super(headers: headers);
-}
-
-/// HTTP link Response Context
-@immutable
-class HttpLinkResponseContext extends BaseHttpLinkResponseContext {
-  /// HTTP response headers
-  final Map<String, String> headers;
-
-  const HttpLinkResponseContext({
-    required int statusCode,
-    required this.headers,
-  }) : super(statusCode: statusCode);
-
-  @override
-  List<Object> get fieldsForEquality => [
-        statusCode,
-        headers,
-      ];
-}
 
 /// A simple HttpLink implementation.
 ///
