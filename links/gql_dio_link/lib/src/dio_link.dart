@@ -3,31 +3,12 @@ import "dart:convert";
 import "package:dio/dio.dart" as dio;
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:meta/meta.dart";
 
 import "_utils.dart";
 import "exceptions.dart";
 
-/// HTTP link headers
-@immutable
-class HttpLinkHeaders extends BaseHttpLinkHeaders {
-  const HttpLinkHeaders({
-    Map<String, String> headers = const {},
-  }) : super(headers: headers);
-
-  @override
-  List<Object> get fieldsForEquality => [
-        headers,
-      ];
-}
-
-/// Dio link Response Context
-@immutable
-class DioLinkResponseContext extends BaseHttpLinkResponseContext {
-  const DioLinkResponseContext({
-    required int statusCode,
-  }) : super(statusCode: statusCode);
-}
+@Deprecated("Use HttpLinkResponseContext instead")
+typedef DioLinkResponseContext = HttpLinkResponseContext;
 
 extension _CastDioResponse on dio.Response {
   dio.Response<T> castData<T>() => dio.Response<T>(
@@ -162,8 +143,9 @@ class DioLink extends Link {
   ) {
     try {
       return response.context.withEntry(
-        DioLinkResponseContext(
+        HttpLinkResponseContext(
           statusCode: httpResponse.statusCode!,
+          rawHeaders: httpResponse.headers.map,
         ),
       );
     } catch (e, stackTrace) {
