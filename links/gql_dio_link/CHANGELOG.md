@@ -1,3 +1,7 @@
+## 0.2.4
+
+* use HttpLinkResponseContext from gql_exec
+
 ## 0.2.3
 
 * add support for useGETForQueries

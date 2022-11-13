@@ -1,3 +1,7 @@
+## 0.4.5
+
+- use HttpLinkResponseContext from gql_exec
+
 ## 0.4.4
 
 - compatibility with gql_link 0.5.0: add stacktraces to exceptions

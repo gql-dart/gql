@@ -1,10 +1,15 @@
+## 0.4.3
+
+- add HttpLinkResponseContext, HttpLinkHeaders for consumation by gql_http_link and gql_dio_link and 
+  other packages that might need to operator on the http layer
+
 ## 0.4.1
 
 - Upgrade `gql`
 
 ## 0.4.0
 
-- [BREAKING] Bump version due to a braking change in `0.3.1`.
+- [BREAKING] Bump version due to a breaking change in `0.3.1`.
 
 ## 0.3.1
 
@@ -16,7 +21,7 @@
 
 ## 0.2.5
 
-- Mape `Operation.toString` more interpretable with `json.encode(printNode(document))`
+- Make `Operation.toString` more interpretable with `json.encode(printNode(document))`
 
 ## 0.2.4
 
