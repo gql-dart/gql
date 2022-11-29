@@ -30,6 +30,15 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.
     show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
+    show
+        GheroFieldsFragmentData,
+        GHeroWithInterfaceSubTypedFragmentsData,
+        GHeroWithInterfaceSubTypedFragmentsData_hero,
+        GheroFieldsFragmentData__asDroid,
+        GheroFieldsFragmentData__asHuman,
+        GheroFieldsFragmentData__base,
+        GhumanFieldsFragmentData;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.var.gql.dart'
@@ -86,6 +95,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
+  ..add(GheroFieldsFragmentData.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAliasedHero,
@@ -120,6 +130,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
+  GHeroWithInterfaceSubTypedFragmentsData,
+  GHeroWithInterfaceSubTypedFragmentsData_hero,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
@@ -139,7 +151,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GcomparisonFieldsVars,
   GheroDataData,
   GheroDataVars,
+  GheroFieldsFragmentData__asDroid,
+  GheroFieldsFragmentData__asHuman,
+  GheroFieldsFragmentData__base,
   GheroFieldsFragmentVars,
+  GhumanFieldsFragmentData,
   GhumanFieldsFragmentVars,
 ])
 final Serializers serializers = _serializersBuilder.build();
