@@ -84,12 +84,9 @@ const heroFieldsFragment = _i1.FragmentDefinitionNode(
       )),
       directives: [],
       selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'primaryFunction'),
-          alias: null,
-          arguments: [],
+        _i1.FragmentSpreadNode(
+          name: _i1.NameNode(value: 'droidFieldsFragment'),
           directives: [],
-          selectionSet: null,
         )
       ]),
     ),
@@ -118,10 +115,51 @@ const humanFieldsFragment = _i1.FragmentDefinitionNode(
       directives: [],
       selectionSet: null,
     ),
+    _i1.FieldNode(
+      name: _i1.NameNode(value: 'friends'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: _i1.SelectionSetNode(selections: [
+        _i1.InlineFragmentNode(
+          typeCondition: _i1.TypeConditionNode(
+              on: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Droid'),
+            isNonNull: false,
+          )),
+          directives: [],
+          selectionSet: _i1.SelectionSetNode(selections: [
+            _i1.FragmentSpreadNode(
+              name: _i1.NameNode(value: 'droidFieldsFragment'),
+              directives: [],
+            )
+          ]),
+        )
+      ]),
+    ),
+  ]),
+);
+const droidFieldsFragment = _i1.FragmentDefinitionNode(
+  name: _i1.NameNode(value: 'droidFieldsFragment'),
+  typeCondition: _i1.TypeConditionNode(
+      on: _i1.NamedTypeNode(
+    name: _i1.NameNode(value: 'Droid'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: _i1.SelectionSetNode(selections: [
+    _i1.FieldNode(
+      name: _i1.NameNode(value: 'primaryFunction'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    )
   ]),
 );
 const document = _i1.DocumentNode(definitions: [
   HeroWithInterfaceSubTypedFragments,
   heroFieldsFragment,
   humanFieldsFragment,
+  droidFieldsFragment,
 ]);

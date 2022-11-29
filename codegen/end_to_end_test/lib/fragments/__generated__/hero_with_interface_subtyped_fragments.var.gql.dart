@@ -78,3 +78,25 @@ abstract class GhumanFieldsFragmentVars
         json,
       );
 }
+
+abstract class GdroidFieldsFragmentVars
+    implements
+        Built<GdroidFieldsFragmentVars, GdroidFieldsFragmentVarsBuilder> {
+  GdroidFieldsFragmentVars._();
+
+  factory GdroidFieldsFragmentVars(
+          [Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
+      _$GdroidFieldsFragmentVars;
+
+  static Serializer<GdroidFieldsFragmentVars> get serializer =>
+      _$gdroidFieldsFragmentVarsSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GdroidFieldsFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GdroidFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GdroidFieldsFragmentVars.serializer,
+        json,
+      );
+}

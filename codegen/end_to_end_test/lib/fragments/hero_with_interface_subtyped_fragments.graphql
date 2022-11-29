@@ -13,11 +13,20 @@ fragment heroFieldsFragment on Character {
   }
 
   ...on Droid {
-    primaryFunction
+    ...droidFieldsFragment
   }
 }
 
 fragment humanFieldsFragment on Human {
   homePlanet
   birthday
+  friends {
+    ...on Droid {
+      ...droidFieldsFragment
+    }
+  }
+}
+
+fragment droidFieldsFragment on Droid {
+  primaryFunction
 }

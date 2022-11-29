@@ -13,6 +13,8 @@ Serializer<GheroFieldsFragmentVars> _$gheroFieldsFragmentVarsSerializer =
     new _$GheroFieldsFragmentVarsSerializer();
 Serializer<GhumanFieldsFragmentVars> _$ghumanFieldsFragmentVarsSerializer =
     new _$GhumanFieldsFragmentVarsSerializer();
+Serializer<GdroidFieldsFragmentVars> _$gdroidFieldsFragmentVarsSerializer =
+    new _$GdroidFieldsFragmentVarsSerializer();
 
 class _$GHeroWithInterfaceSubTypedFragmentsVarsSerializer
     implements StructuredSerializer<GHeroWithInterfaceSubTypedFragmentsVars> {
@@ -107,6 +109,31 @@ class _$GhumanFieldsFragmentVarsSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new GhumanFieldsFragmentVarsBuilder().build();
+  }
+}
+
+class _$GdroidFieldsFragmentVarsSerializer
+    implements StructuredSerializer<GdroidFieldsFragmentVars> {
+  @override
+  final Iterable<Type> types = const [
+    GdroidFieldsFragmentVars,
+    _$GdroidFieldsFragmentVars
+  ];
+  @override
+  final String wireName = 'GdroidFieldsFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GdroidFieldsFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GdroidFieldsFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GdroidFieldsFragmentVarsBuilder().build();
   }
 }
 
@@ -321,6 +348,67 @@ class GhumanFieldsFragmentVarsBuilder
 
   _$GhumanFieldsFragmentVars _build() {
     final _$result = _$v ?? new _$GhumanFieldsFragmentVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GdroidFieldsFragmentVars extends GdroidFieldsFragmentVars {
+  factory _$GdroidFieldsFragmentVars(
+          [void Function(GdroidFieldsFragmentVarsBuilder)? updates]) =>
+      (new GdroidFieldsFragmentVarsBuilder()..update(updates))._build();
+
+  _$GdroidFieldsFragmentVars._() : super._();
+
+  @override
+  GdroidFieldsFragmentVars rebuild(
+          void Function(GdroidFieldsFragmentVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GdroidFieldsFragmentVarsBuilder toBuilder() =>
+      new GdroidFieldsFragmentVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GdroidFieldsFragmentVars;
+  }
+
+  @override
+  int get hashCode {
+    return 244025792;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GdroidFieldsFragmentVars').toString();
+  }
+}
+
+class GdroidFieldsFragmentVarsBuilder
+    implements
+        Builder<GdroidFieldsFragmentVars, GdroidFieldsFragmentVarsBuilder> {
+  _$GdroidFieldsFragmentVars? _$v;
+
+  GdroidFieldsFragmentVarsBuilder();
+
+  @override
+  void replace(GdroidFieldsFragmentVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GdroidFieldsFragmentVars;
+  }
+
+  @override
+  void update(void Function(GdroidFieldsFragmentVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GdroidFieldsFragmentVars build() => _build();
+
+  _$GdroidFieldsFragmentVars _build() {
+    final _$result = _$v ?? new _$GdroidFieldsFragmentVars._();
     replace(_$result);
     return _$result;
   }
