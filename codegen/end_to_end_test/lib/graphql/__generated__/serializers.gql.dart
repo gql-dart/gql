@@ -30,6 +30,13 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.
     show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
+    show GHeroWithInterfaceSubTypedFragments;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.var.gql.dart'
+    show
+        GHeroWithInterfaceSubTypedFragmentsVars,
+        GheroFieldsFragmentVars,
+        GhumanFieldsFragmentVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show GColorInput, GEpisode, GISODate, GLengthUnit, GReviewInput;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart'
@@ -112,6 +119,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsData_hero_friendsConnection_edges,
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
   GHeroWithFragmentsVars,
+  GHeroWithInterfaceSubTypedFragments,
+  GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
   GHumanWithArgsData_human,
@@ -130,5 +139,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GcomparisonFieldsVars,
   GheroDataData,
   GheroDataVars,
+  GheroFieldsFragmentVars,
+  GhumanFieldsFragmentVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

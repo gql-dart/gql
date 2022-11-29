@@ -1,10 +1,10 @@
 query HeroWithInterfaceSubTypedFragments($episode: Episode!) {
   hero(episode: $episode) {
-    ...characterFieldsFragment
+    ...heroFieldsFragment
   }
 }
 
-fragment characterFieldsFragment on Character {
+fragment heroFieldsFragment on Character {
   id
   name
 
