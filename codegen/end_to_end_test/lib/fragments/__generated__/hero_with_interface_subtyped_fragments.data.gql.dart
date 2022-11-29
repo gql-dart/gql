@@ -131,6 +131,8 @@ abstract class GheroFieldsFragment__asHuman_friends__asDroid
     implements GheroFieldsFragment__asHuman_friends, GdroidFieldsFragment {
   @override
   String get G__typename;
+  String get id;
+  String get name;
   @override
   String? get primaryFunction;
   @override
@@ -328,6 +330,8 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
+  String get name;
   @override
   String? get primaryFunction;
   static Serializer<GheroFieldsFragmentData__asHuman_friends__asDroid>
@@ -408,6 +412,8 @@ abstract class GhumanFieldsFragment_friends__asDroid
     implements GhumanFieldsFragment_friends, GdroidFieldsFragment {
   @override
   String get G__typename;
+  String get id;
+  String get name;
   @override
   String? get primaryFunction;
   @override
@@ -522,6 +528,8 @@ abstract class GhumanFieldsFragmentData_friends__asDroid
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
+  String get name;
   @override
   String? get primaryFunction;
   static Serializer<GhumanFieldsFragmentData_friends__asDroid> get serializer =>

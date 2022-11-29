@@ -22,6 +22,8 @@ fragment humanFieldsFragment on Human {
   birthday
   friends {
     ...on Droid {
+      id
+      name
       ...droidFieldsFragment
     }
   }
