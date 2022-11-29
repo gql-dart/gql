@@ -1,0 +1,23 @@
+query HeroWithInterfaceSubTypedFragments($episode: Episode!) {
+  hero(episode: $episode) {
+    ...characterFieldsFragment
+  }
+}
+
+fragment characterFieldsFragment on Character {
+  id
+  name
+
+  ...on Human {
+    ...humanFieldsFragment
+  }
+
+  ...on Droid {
+    primaryFunction
+  }
+}
+
+fragment humanFieldsFragment on Human {
+  homePlanet
+  birthday
+}
