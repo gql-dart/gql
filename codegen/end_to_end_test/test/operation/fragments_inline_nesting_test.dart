@@ -10,7 +10,6 @@ void main() {
         "id": "luke",
         "name": "Luke",
         "homePlanet": "Tattoine",
-        "birthday": 200059200000,
         "friends": [
           {
             "__typename": "Droid",
@@ -29,14 +28,12 @@ void main() {
             "id": "han",
             "name": "Han Solo",
             "homePlanet": "Nerf",
-            "birthday": 200059200000,
           },
           {
             "__typename": "Human",
             "id": "leia",
             "name": "Leia Organa",
             "homePlanet": "Alderaan",
-            "birthday": 200059200000,
           },
         ],
       };
@@ -46,7 +43,6 @@ void main() {
       expect(gqlHuman?.id, equals("luke"));
       expect(gqlHuman?.name, equals("Luke"));
       expect(gqlHuman?.homePlanet, equals("Tattoine"));
-      expect(gqlHuman?.birthday, equals(DateTime.parse("1976-05-04T08:00:00")));
 
       final gqlHuman_droidFriends = gqlHuman?.friends
           ?.whereType<GheroFieldsFragmentData__asHuman_friends__asDroid>();
@@ -62,8 +58,6 @@ void main() {
       expect(gqlHuman_humanFriends?.first.id, equals("han"));
       expect(gqlHuman_humanFriends?.first.name, equals("Han Solo"));
       expect(gqlHuman_humanFriends?.first.homePlanet, equals("Nerf"));
-      expect(gqlHuman_humanFriends?.first.birthday,
-          equals(DateTime.parse("1976-05-04T08:00:00")));
     });
   });
 }

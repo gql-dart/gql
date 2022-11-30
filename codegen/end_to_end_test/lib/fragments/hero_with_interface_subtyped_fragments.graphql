@@ -19,7 +19,6 @@ fragment heroFieldsFragment on Character {
 
 fragment humanFieldsFragment on Human {
   homePlanet
-  birthday
   friends {
     ...on Droid {
       id
@@ -30,7 +29,6 @@ fragment humanFieldsFragment on Human {
       id
       name
       homePlanet
-      birthday
     }
   }
 }

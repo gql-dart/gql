@@ -109,13 +109,6 @@ const humanFieldsFragment = _i1.FragmentDefinitionNode(
       selectionSet: null,
     ),
     _i1.FieldNode(
-      name: _i1.NameNode(value: 'birthday'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    _i1.FieldNode(
       name: _i1.NameNode(value: 'friends'),
       alias: null,
       arguments: [],
@@ -173,13 +166,6 @@ const humanFieldsFragment = _i1.FragmentDefinitionNode(
             ),
             _i1.FieldNode(
               name: _i1.NameNode(value: 'homePlanet'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'birthday'),
               alias: null,
               arguments: [],
               directives: [],

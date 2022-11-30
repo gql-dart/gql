@@ -106,8 +106,6 @@ abstract class GheroFieldsFragment__asHuman
   @override
   String? get homePlanet;
   @override
-  DateTime get birthday;
-  @override
   BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   @override
   Map<String, dynamic> toJson();
@@ -146,7 +144,6 @@ abstract class GheroFieldsFragment__asHuman_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  DateTime get birthday;
   @override
   Map<String, dynamic> toJson();
 }
@@ -250,8 +247,6 @@ abstract class GheroFieldsFragmentData__asHuman
   String get name;
   @override
   String? get homePlanet;
-  @override
-  DateTime get birthday;
   @override
   BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
   static Serializer<GheroFieldsFragmentData__asHuman> get serializer =>
@@ -385,7 +380,6 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  DateTime get birthday;
   static Serializer<GheroFieldsFragmentData__asHuman_friends__asHuman>
       get serializer =>
           _$gheroFieldsFragmentDataAsHumanFriendsAsHumanSerializer;
@@ -443,7 +437,6 @@ abstract class GheroFieldsFragmentData__asDroid
 abstract class GhumanFieldsFragment {
   String get G__typename;
   String? get homePlanet;
-  DateTime get birthday;
   BuiltList<GhumanFieldsFragment_friends?>? get friends;
   Map<String, dynamic> toJson();
 }
@@ -479,7 +472,6 @@ abstract class GhumanFieldsFragment_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  DateTime get birthday;
   @override
   Map<String, dynamic> toJson();
 }
@@ -501,8 +493,6 @@ abstract class GhumanFieldsFragmentData
   String get G__typename;
   @override
   String? get homePlanet;
-  @override
-  DateTime get birthday;
   @override
   BuiltList<GhumanFieldsFragmentData_friends?>? get friends;
   static Serializer<GhumanFieldsFragmentData> get serializer =>
@@ -634,7 +624,6 @@ abstract class GhumanFieldsFragmentData_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  DateTime get birthday;
   static Serializer<GhumanFieldsFragmentData_friends__asHuman> get serializer =>
       _$ghumanFieldsFragmentDataFriendsAsHumanSerializer;
   @override

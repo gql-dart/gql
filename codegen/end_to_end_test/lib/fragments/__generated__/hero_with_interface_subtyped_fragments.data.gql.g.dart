@@ -243,9 +243,6 @@ class _$GheroFieldsFragmentData__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'birthday',
-      serializers.serialize(object.birthday,
-          specifiedType: const FullType(DateTime)),
     ];
     Object? value;
     value = object.homePlanet;
@@ -294,10 +291,6 @@ class _$GheroFieldsFragmentData__asHumanSerializer
         case 'homePlanet':
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'birthday':
-          result.birthday = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime))! as DateTime;
           break;
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
@@ -456,9 +449,6 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'birthday',
-      serializers.serialize(object.birthday,
-          specifiedType: const FullType(DateTime)),
     ];
     Object? value;
     value = object.homePlanet;
@@ -499,10 +489,6 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer
         case 'homePlanet':
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'birthday':
-          result.birthday = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime))! as DateTime;
           break;
       }
     }
@@ -598,9 +584,6 @@ class _$GhumanFieldsFragmentDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'birthday',
-      serializers.serialize(object.birthday,
-          specifiedType: const FullType(DateTime)),
     ];
     Object? value;
     value = object.homePlanet;
@@ -641,10 +624,6 @@ class _$GhumanFieldsFragmentDataSerializer
         case 'homePlanet':
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'birthday':
-          result.birthday = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime))! as DateTime;
           break;
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
@@ -796,9 +775,6 @@ class _$GhumanFieldsFragmentData_friends__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'birthday',
-      serializers.serialize(object.birthday,
-          specifiedType: const FullType(DateTime)),
     ];
     Object? value;
     value = object.homePlanet;
@@ -838,10 +814,6 @@ class _$GhumanFieldsFragmentData_friends__asHumanSerializer
         case 'homePlanet':
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'birthday':
-          result.birthday = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime))! as DateTime;
           break;
       }
     }
@@ -1287,8 +1259,6 @@ class _$GheroFieldsFragmentData__asHuman
   @override
   final String? homePlanet;
   @override
-  final DateTime birthday;
-  @override
   final BuiltList<GheroFieldsFragmentData__asHuman_friends?>? friends;
 
   factory _$GheroFieldsFragmentData__asHuman(
@@ -1300,7 +1270,6 @@ class _$GheroFieldsFragmentData__asHuman
       required this.id,
       required this.name,
       this.homePlanet,
-      required this.birthday,
       this.friends})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -1309,8 +1278,6 @@ class _$GheroFieldsFragmentData__asHuman
         id, r'GheroFieldsFragmentData__asHuman', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GheroFieldsFragmentData__asHuman', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        birthday, r'GheroFieldsFragmentData__asHuman', 'birthday');
   }
 
   @override
@@ -1330,19 +1297,14 @@ class _$GheroFieldsFragmentData__asHuman
         id == other.id &&
         name == other.name &&
         homePlanet == other.homePlanet &&
-        birthday == other.birthday &&
         friends == other.friends;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
-                    name.hashCode),
-                homePlanet.hashCode),
-            birthday.hashCode),
+        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+            homePlanet.hashCode),
         friends.hashCode));
   }
 
@@ -1353,7 +1315,6 @@ class _$GheroFieldsFragmentData__asHuman
           ..add('id', id)
           ..add('name', name)
           ..add('homePlanet', homePlanet)
-          ..add('birthday', birthday)
           ..add('friends', friends))
         .toString();
   }
@@ -1381,10 +1342,6 @@ class GheroFieldsFragmentData__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  DateTime? _birthday;
-  DateTime? get birthday => _$this._birthday;
-  set birthday(DateTime? birthday) => _$this._birthday = birthday;
-
   ListBuilder<GheroFieldsFragmentData__asHuman_friends?>? _friends;
   ListBuilder<GheroFieldsFragmentData__asHuman_friends?> get friends =>
       _$this._friends ??=
@@ -1404,7 +1361,6 @@ class GheroFieldsFragmentData__asHumanBuilder
       _id = $v.id;
       _name = $v.name;
       _homePlanet = $v.homePlanet;
-      _birthday = $v.birthday;
       _friends = $v.friends?.toBuilder();
       _$v = null;
     }
@@ -1437,8 +1393,6 @@ class GheroFieldsFragmentData__asHumanBuilder
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'GheroFieldsFragmentData__asHuman', 'name'),
               homePlanet: homePlanet,
-              birthday: BuiltValueNullFieldError.checkNotNull(
-                  birthday, r'GheroFieldsFragmentData__asHuman', 'birthday'),
               friends: _friends?.build());
     } catch (_) {
       late String _$failedField;
@@ -1714,8 +1668,6 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
   final String name;
   @override
   final String? homePlanet;
-  @override
-  final DateTime birthday;
 
   factory _$GheroFieldsFragmentData__asHuman_friends__asHuman(
           [void Function(
@@ -1729,8 +1681,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
       {required this.G__typename,
       required this.id,
       required this.name,
-      this.homePlanet,
-      required this.birthday})
+      this.homePlanet})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'G__typename');
@@ -1738,8 +1689,6 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
         id, r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'name');
-    BuiltValueNullFieldError.checkNotNull(birthday,
-        r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'birthday');
   }
 
   @override
@@ -1761,16 +1710,14 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
-        homePlanet == other.homePlanet &&
-        birthday == other.birthday;
+        homePlanet == other.homePlanet;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-            homePlanet.hashCode),
-        birthday.hashCode));
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        homePlanet.hashCode));
   }
 
   @override
@@ -1780,8 +1727,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
-          ..add('homePlanet', homePlanet)
-          ..add('birthday', birthday))
+          ..add('homePlanet', homePlanet))
         .toString();
   }
 }
@@ -1808,10 +1754,6 @@ class GheroFieldsFragmentData__asHuman_friends__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  DateTime? _birthday;
-  DateTime? get birthday => _$this._birthday;
-  set birthday(DateTime? birthday) => _$this._birthday = birthday;
-
   GheroFieldsFragmentData__asHuman_friends__asHumanBuilder() {
     GheroFieldsFragmentData__asHuman_friends__asHuman._initializeBuilder(this);
   }
@@ -1823,7 +1765,6 @@ class GheroFieldsFragmentData__asHuman_friends__asHumanBuilder
       _id = $v.id;
       _name = $v.name;
       _homePlanet = $v.homePlanet;
-      _birthday = $v.birthday;
       _$v = null;
     }
     return this;
@@ -1856,11 +1797,7 @@ class GheroFieldsFragmentData__asHuman_friends__asHumanBuilder
                 id, r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(name,
                 r'GheroFieldsFragmentData__asHuman_friends__asHuman', 'name'),
-            homePlanet: homePlanet,
-            birthday: BuiltValueNullFieldError.checkNotNull(
-                birthday,
-                r'GheroFieldsFragmentData__asHuman_friends__asHuman',
-                'birthday'));
+            homePlanet: homePlanet);
     replace(_$result);
     return _$result;
   }
@@ -2006,8 +1943,6 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
   @override
   final String? homePlanet;
   @override
-  final DateTime birthday;
-  @override
   final BuiltList<GhumanFieldsFragmentData_friends?>? friends;
 
   factory _$GhumanFieldsFragmentData(
@@ -2015,15 +1950,10 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
       (new GhumanFieldsFragmentDataBuilder()..update(updates))._build();
 
   _$GhumanFieldsFragmentData._(
-      {required this.G__typename,
-      this.homePlanet,
-      required this.birthday,
-      this.friends})
+      {required this.G__typename, this.homePlanet, this.friends})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GhumanFieldsFragmentData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        birthday, r'GhumanFieldsFragmentData', 'birthday');
   }
 
   @override
@@ -2041,15 +1971,12 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
     return other is GhumanFieldsFragmentData &&
         G__typename == other.G__typename &&
         homePlanet == other.homePlanet &&
-        birthday == other.birthday &&
         friends == other.friends;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, G__typename.hashCode), homePlanet.hashCode),
-            birthday.hashCode),
+    return $jf($jc($jc($jc(0, G__typename.hashCode), homePlanet.hashCode),
         friends.hashCode));
   }
 
@@ -2058,7 +1985,6 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
     return (newBuiltValueToStringHelper(r'GhumanFieldsFragmentData')
           ..add('G__typename', G__typename)
           ..add('homePlanet', homePlanet)
-          ..add('birthday', birthday)
           ..add('friends', friends))
         .toString();
   }
@@ -2077,10 +2003,6 @@ class GhumanFieldsFragmentDataBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  DateTime? _birthday;
-  DateTime? get birthday => _$this._birthday;
-  set birthday(DateTime? birthday) => _$this._birthday = birthday;
-
   ListBuilder<GhumanFieldsFragmentData_friends?>? _friends;
   ListBuilder<GhumanFieldsFragmentData_friends?> get friends =>
       _$this._friends ??= new ListBuilder<GhumanFieldsFragmentData_friends?>();
@@ -2096,7 +2018,6 @@ class GhumanFieldsFragmentDataBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _homePlanet = $v.homePlanet;
-      _birthday = $v.birthday;
       _friends = $v.friends?.toBuilder();
       _$v = null;
     }
@@ -2125,8 +2046,6 @@ class GhumanFieldsFragmentDataBuilder
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GhumanFieldsFragmentData', 'G__typename'),
               homePlanet: homePlanet,
-              birthday: BuiltValueNullFieldError.checkNotNull(
-                  birthday, r'GhumanFieldsFragmentData', 'birthday'),
               friends: _friends?.build());
     } catch (_) {
       late String _$failedField;
@@ -2390,8 +2309,6 @@ class _$GhumanFieldsFragmentData_friends__asHuman
   final String name;
   @override
   final String? homePlanet;
-  @override
-  final DateTime birthday;
 
   factory _$GhumanFieldsFragmentData_friends__asHuman(
           [void Function(GhumanFieldsFragmentData_friends__asHumanBuilder)?
@@ -2403,8 +2320,7 @@ class _$GhumanFieldsFragmentData_friends__asHuman
       {required this.G__typename,
       required this.id,
       required this.name,
-      this.homePlanet,
-      required this.birthday})
+      this.homePlanet})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GhumanFieldsFragmentData_friends__asHuman', 'G__typename');
@@ -2412,8 +2328,6 @@ class _$GhumanFieldsFragmentData_friends__asHuman
         id, r'GhumanFieldsFragmentData_friends__asHuman', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GhumanFieldsFragmentData_friends__asHuman', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        birthday, r'GhumanFieldsFragmentData_friends__asHuman', 'birthday');
   }
 
   @override
@@ -2433,16 +2347,14 @@ class _$GhumanFieldsFragmentData_friends__asHuman
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
-        homePlanet == other.homePlanet &&
-        birthday == other.birthday;
+        homePlanet == other.homePlanet;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-            homePlanet.hashCode),
-        birthday.hashCode));
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        homePlanet.hashCode));
   }
 
   @override
@@ -2452,8 +2364,7 @@ class _$GhumanFieldsFragmentData_friends__asHuman
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
-          ..add('homePlanet', homePlanet)
-          ..add('birthday', birthday))
+          ..add('homePlanet', homePlanet))
         .toString();
   }
 }
@@ -2480,10 +2391,6 @@ class GhumanFieldsFragmentData_friends__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  DateTime? _birthday;
-  DateTime? get birthday => _$this._birthday;
-  set birthday(DateTime? birthday) => _$this._birthday = birthday;
-
   GhumanFieldsFragmentData_friends__asHumanBuilder() {
     GhumanFieldsFragmentData_friends__asHuman._initializeBuilder(this);
   }
@@ -2495,7 +2402,6 @@ class GhumanFieldsFragmentData_friends__asHumanBuilder
       _id = $v.id;
       _name = $v.name;
       _homePlanet = $v.homePlanet;
-      _birthday = $v.birthday;
       _$v = null;
     }
     return this;
@@ -2526,9 +2432,7 @@ class GhumanFieldsFragmentData_friends__asHumanBuilder
                 id, r'GhumanFieldsFragmentData_friends__asHuman', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GhumanFieldsFragmentData_friends__asHuman', 'name'),
-            homePlanet: homePlanet,
-            birthday: BuiltValueNullFieldError.checkNotNull(birthday,
-                r'GhumanFieldsFragmentData_friends__asHuman', 'birthday'));
+            homePlanet: homePlanet);
     replace(_$result);
     return _$result;
   }
