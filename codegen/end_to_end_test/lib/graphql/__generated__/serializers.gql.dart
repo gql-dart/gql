@@ -41,10 +41,12 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentData__asDroid,
         GheroFieldsFragmentData__asHuman,
         GheroFieldsFragmentData__asHuman_friends__asDroid,
+        GheroFieldsFragmentData__asHuman_friends__asHuman,
         GheroFieldsFragmentData__asHuman_friends__base,
         GheroFieldsFragmentData__base,
         GhumanFieldsFragmentData,
         GhumanFieldsFragmentData_friends__asDroid,
+        GhumanFieldsFragmentData_friends__asHuman,
         GhumanFieldsFragmentData_friends__base;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
@@ -166,11 +168,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GheroFieldsFragmentData__asDroid,
   GheroFieldsFragmentData__asHuman,
   GheroFieldsFragmentData__asHuman_friends__asDroid,
+  GheroFieldsFragmentData__asHuman_friends__asHuman,
   GheroFieldsFragmentData__asHuman_friends__base,
   GheroFieldsFragmentData__base,
   GheroFieldsFragmentVars,
   GhumanFieldsFragmentData,
   GhumanFieldsFragmentData_friends__asDroid,
+  GhumanFieldsFragmentData_friends__asHuman,
   GhumanFieldsFragmentData_friends__base,
   GhumanFieldsFragmentVars,
 ])

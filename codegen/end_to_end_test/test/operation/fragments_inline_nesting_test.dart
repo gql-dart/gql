@@ -24,6 +24,20 @@ void main() {
             "name": "C3-PO",
             "primaryFunction": "Protocol Droid"
           },
+          {
+            "__typename": "Human",
+            "id": "han",
+            "name": "Han Solo",
+            "homePlanet": "Nerf",
+            "birthday": 200059200000,
+          },
+          {
+            "__typename": "Human",
+            "id": "leia",
+            "name": "Leia Organa",
+            "homePlanet": "Alderaan",
+            "birthday": 200059200000,
+          },
         ],
       };
 
@@ -33,9 +47,23 @@ void main() {
       expect(gqlHuman?.name, equals("Luke"));
       expect(gqlHuman?.homePlanet, equals("Tattoine"));
       expect(gqlHuman?.birthday, equals(DateTime.parse("1976-05-04T08:00:00")));
-      expect(gqlHuman?.friends?.first?.G__typename, equals("Droid"));
-      // FAILS: "The getter 'primaryFunction' isn't defined for the type 'GheroFieldsFragmentData__asHuman_friends'."
-      // expect(gqlHuman?.friends?.first?.primaryFunction, equals("Astromech"));
+
+      final gqlHuman_droidFriends = gqlHuman?.friends
+          ?.whereType<GheroFieldsFragmentData__asHuman_friends__asDroid>();
+
+      expect(gqlHuman_droidFriends?.first.G__typename, equals("Droid"));
+      expect(gqlHuman_droidFriends?.first.id, equals("r2d2"));
+      expect(gqlHuman_droidFriends?.first.name, equals("R2-D2"));
+      expect(gqlHuman_droidFriends?.first.primaryFunction, equals("Astromech"));
+
+      final gqlHuman_humanFriends = gqlHuman?.friends
+          ?.whereType<GheroFieldsFragmentData__asHuman_friends__asHuman>();
+
+      expect(gqlHuman_humanFriends?.first.id, equals("han"));
+      expect(gqlHuman_humanFriends?.first.name, equals("Han Solo"));
+      expect(gqlHuman_humanFriends?.first.homePlanet, equals("Nerf"));
+      expect(gqlHuman_humanFriends?.first.birthday,
+          equals(DateTime.parse("1976-05-04T08:00:00")));
     });
   });
 }

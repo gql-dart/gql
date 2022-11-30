@@ -26,6 +26,13 @@ fragment humanFieldsFragment on Human {
       name
       ...droidFieldsFragment
     }
+    #### NOTE: This cannot self-reference ...humanFieldsFragment hench the expanded fields
+    ...on Human {
+      id
+      name
+      homePlanet
+      birthday
+    }
   }
 }
 
