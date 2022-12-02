@@ -18,22 +18,10 @@ void main() {
             "primaryFunction": "Astromech"
           },
           {
-            "__typename": "Droid",
-            "id": "c3po",
-            "name": "C3-PO",
-            "primaryFunction": "Protocol Droid"
-          },
-          {
             "__typename": "Human",
             "id": "han",
             "name": "Han Solo",
             "homePlanet": "Nerf",
-          },
-          {
-            "__typename": "Human",
-            "id": "leia",
-            "name": "Leia Organa",
-            "homePlanet": "Alderaan",
           },
         ],
       };
@@ -58,6 +46,53 @@ void main() {
       expect(gqlHuman_humanFriends?.first.id, equals("han"));
       expect(gqlHuman_humanFriends?.first.name, equals("Han Solo"));
       expect(gqlHuman_humanFriends?.first.homePlanet, equals("Nerf"));
+    });
+
+    test('can be serialized and deserialized', () {
+      final obiwan = GheroFieldsFragmentData__asHuman(
+        (d) => d
+          ..G__typename = "Human"
+          ..id = "obiwan"
+          ..name = "Obiwan"
+          ..homePlanet = "Stewjon"
+          ..friends.addAll([
+            GheroFieldsFragmentData__asHuman_friends__asDroid(
+              (b) => b
+                ..G__typename = "Droid"
+                ..id = "r2d2"
+                ..name = "R2-D2"
+                ..primaryFunction = "Astromech",
+            ),
+            GheroFieldsFragmentData__asHuman_friends__asHuman((b) => b
+              ..G__typename = "Human"
+              ..id = "luke"
+              ..name = "Luke"
+              ..homePlanet = "Tattoine"),
+          ]),
+      );
+
+      final json = {
+        "__typename": "Human",
+        "id": "obiwan",
+        "name": "Obiwan",
+        "homePlanet": "Stewjon",
+        "friends": [
+          {
+            "__typename": "Droid",
+            "id": "r2d2",
+            "name": "R2-D2",
+            "primaryFunction": "Astromech"
+          },
+          {
+            "__typename": "Human",
+            "id": "luke",
+            "name": "Luke",
+            "homePlanet": "Tattoine",
+          },
+        ],
+      };
+
+      expect(obiwan.toJson(), equals(json));
     });
   });
 }
