@@ -295,10 +295,17 @@ List<SelectionNode> _expandFragmentSpreads(
               "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
             );
           }
+
+          final fragmentSelections =
+              fragmentMap[selection.name.value]!.selections;
+
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value]!.selections,
+              [
+                ...fragmentSelections.whereType<FieldNode>(),
+                ...fragmentSelections.whereType<FragmentSpreadNode>(),
+              ],
               fragmentMap,
               false,
             )
