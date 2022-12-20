@@ -151,6 +151,7 @@ class HttpLink extends Link {
     if (asyncGraphQLInterceptor != null) {
       manabieHeaders = await asyncGraphQLInterceptor!();
     }
+    print("HttpLink: ${manabieHeaders}");
 
     final contextHeaders = _getHttpLinkHeaders(request);
     final headers = {
