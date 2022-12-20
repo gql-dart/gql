@@ -126,7 +126,7 @@ class HttpLink extends Link {
   }
 
   Future<http.Response> _executeRequest(Request request) async {
-    final httpRequest = _prepareRequest(request);
+    final httpRequest = await _prepareRequest(request);
     try {
       final response = await _httpClient!.send(httpRequest);
       return http.Response.fromStream(response);
@@ -139,11 +139,16 @@ class HttpLink extends Link {
     }
   }
 
-  http.BaseRequest _prepareRequest(Request request) {
+  Future<http.BaseRequest> _prepareRequest(Request request) async {
     final body = _encodeAttempter(
       request,
       serializer.serializeRequest,
     )(request);
+
+    var manabieHeaders = <String, String>{};
+    if (asyncGraphQLInterceptor != null) {
+      manabieHeaders = await asyncGraphQLInterceptor!();
+    }
 
     final contextHeaders = _getHttpLinkHeaders(request);
     final headers = {
@@ -151,6 +156,7 @@ class HttpLink extends Link {
       "Accept": "*/*",
       ...defaultHeaders,
       ...contextHeaders,
+      ...manabieHeaders,
     };
 
     final fileMap = extractFlattenedFileMap(body);
