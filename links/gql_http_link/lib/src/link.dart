@@ -11,6 +11,8 @@ import "./exceptions.dart";
 typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
 
+Future<Map<String, String>> Function()? asyncGraphQLInterceptor;
+
 /// A simple HttpLink implementation.
 ///
 /// To use non-standard [Request] and [Response] shapes
