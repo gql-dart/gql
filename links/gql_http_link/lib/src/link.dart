@@ -3,6 +3,7 @@ import "dart:convert";
 
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
+import "package:grpc/grpc.dart" as grpc;
 import "package:http/http.dart" as http;
 
 import "./_utils.dart";
@@ -10,8 +11,6 @@ import "./exceptions.dart";
 
 typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
-
-Future<Map<String, String>> Function()? asyncGraphQLInterceptor;
 
 /// A simple HttpLink implementation.
 ///
@@ -148,10 +147,9 @@ class HttpLink extends Link {
     )(request);
 
     var manabieHeaders = <String, String>{};
-    if (asyncGraphQLInterceptor != null) {
-      manabieHeaders = await asyncGraphQLInterceptor!();
+    if (grpc.asyncInterceptor != null) {
+      manabieHeaders = await grpc.asyncInterceptor!();
     }
-    print("HttpLink: ${manabieHeaders}");
 
     final contextHeaders = _getHttpLinkHeaders(request);
     final headers = {
