@@ -82,8 +82,12 @@ class ServerException extends LinkException {
   /// The parsed response
   final Response? parsedResponse;
 
+  /// The status code of the request, if available
+  final int? statusCode;
+
   const ServerException({
     this.parsedResponse,
+    this.statusCode,
     Object? originalException,
     StackTrace? originalStackTrace,
   }) : super(originalException, originalStackTrace);

@@ -33,6 +33,7 @@ class DioLinkServerException extends ServerException {
     StackTrace? originalStackTrace,
   }) : super(
           parsedResponse: parsedResponse,
+          statusCode: response.statusCode,
           originalException: originalException,
           originalStackTrace: originalStackTrace,
         );

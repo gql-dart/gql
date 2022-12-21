@@ -31,5 +31,6 @@ class HttpLinkServerException extends ServerException {
     required Response parsedResponse,
   }) : super(
           parsedResponse: parsedResponse,
+          statusCode: response.statusCode,
         );
 }
