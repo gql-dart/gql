@@ -29,8 +29,9 @@ class HttpLinkServerException extends ServerException {
   const HttpLinkServerException({
     required this.response,
     required Response parsedResponse,
+    int? statusCode,
   }) : super(
           parsedResponse: parsedResponse,
-          statusCode: response.statusCode,
+          statusCode: statusCode,
         );
 }
