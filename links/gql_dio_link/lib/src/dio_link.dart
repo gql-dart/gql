@@ -75,6 +75,7 @@ class DioLink extends Link {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
+        statusCode: dioResponse.statusCode,
       );
     }
 

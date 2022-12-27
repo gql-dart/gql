@@ -82,6 +82,7 @@ class HttpLink extends Link {
       throw HttpLinkServerException(
         response: httpResponse,
         parsedResponse: response,
+        statusCode: httpResponse.statusCode,
       );
     }
 
