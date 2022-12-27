@@ -1,3 +1,8 @@
+## 0.5.1
+
+- add optional statusCode to ServerException 
+
+
 ## 0.5.0
 
 - BREAKING: add stacktrace to exceptions

@@ -1,3 +1,7 @@
+## 0.2.5
+
+* add statusCode to DioLinkServerException
+
 ## 0.2.4
 
 * use HttpLinkResponseContext from gql_exec
