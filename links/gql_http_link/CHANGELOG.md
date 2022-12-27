@@ -1,3 +1,7 @@
+## 0.4.6
+
+- add statusCode to HttpLinkServerException
+
 ## 0.4.5
 
 - use HttpLinkResponseContext from gql_exec
