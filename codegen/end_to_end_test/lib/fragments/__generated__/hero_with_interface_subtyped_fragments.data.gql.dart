@@ -84,6 +84,23 @@ abstract class GheroFieldsFragment {
   String get name;
 }
 
+extension GheroFieldsFragmentWhenExtension on GheroFieldsFragment {
+  _T when<_T>({
+    required _T Function(GheroFieldsFragment__asHuman) human,
+    required _T Function(GheroFieldsFragment__asDroid) droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Human':
+        return human(this as GheroFieldsFragment__asHuman);
+      case 'Droid':
+        return droid(this as GheroFieldsFragment__asDroid);
+      default:
+        return orElse();
+    }
+  }
+}
+
 abstract class GheroFieldsFragment__base implements GheroFieldsFragment {
   @override
   String get G__typename;
@@ -115,6 +132,24 @@ abstract class GheroFieldsFragment__asHuman_friends
     implements GhumanFieldsFragment_friends {
   @override
   String get G__typename;
+}
+
+extension GheroFieldsFragment__asHuman_friendsWhenExtension
+    on GheroFieldsFragment__asHuman_friends {
+  _T when<_T>({
+    required _T Function(GheroFieldsFragment__asHuman_friends__asDroid) droid,
+    required _T Function(GheroFieldsFragment__asHuman_friends__asHuman) human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid(this as GheroFieldsFragment__asHuman_friends__asDroid);
+      case 'Human':
+        return human(this as GheroFieldsFragment__asHuman_friends__asHuman);
+      default:
+        return orElse();
+    }
+  }
 }
 
 abstract class GheroFieldsFragment__asHuman_friends__base
@@ -188,6 +223,23 @@ abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
         GheroFieldsFragmentData.serializer,
         json,
       );
+}
+
+extension GheroFieldsFragmentDataWhenExtension on GheroFieldsFragmentData {
+  _T when<_T>({
+    required _T Function(GheroFieldsFragmentData__asHuman) human,
+    required _T Function(GheroFieldsFragmentData__asDroid) droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Human':
+        return human(this as GheroFieldsFragmentData__asHuman);
+      case 'Droid':
+        return droid(this as GheroFieldsFragmentData__asDroid);
+      default:
+        return orElse();
+    }
+  }
 }
 
 abstract class GheroFieldsFragmentData__base
@@ -288,6 +340,26 @@ abstract class GheroFieldsFragmentData__asHuman_friends
         GheroFieldsFragmentData__asHuman_friends.serializer,
         json,
       );
+}
+
+extension GheroFieldsFragmentData__asHuman_friendsWhenExtension
+    on GheroFieldsFragmentData__asHuman_friends {
+  _T when<_T>({
+    required _T Function(GheroFieldsFragmentData__asHuman_friends__asDroid)
+        droid,
+    required _T Function(GheroFieldsFragmentData__asHuman_friends__asHuman)
+        human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid(this as GheroFieldsFragmentData__asHuman_friends__asDroid);
+      case 'Human':
+        return human(this as GheroFieldsFragmentData__asHuman_friends__asHuman);
+      default:
+        return orElse();
+    }
+  }
 }
 
 abstract class GheroFieldsFragmentData__asHuman_friends__base
@@ -445,6 +517,24 @@ abstract class GhumanFieldsFragment_friends {
   String get G__typename;
 }
 
+extension GhumanFieldsFragment_friendsWhenExtension
+    on GhumanFieldsFragment_friends {
+  _T when<_T>({
+    required _T Function(GhumanFieldsFragment_friends__asDroid) droid,
+    required _T Function(GhumanFieldsFragment_friends__asHuman) human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid(this as GhumanFieldsFragment_friends__asDroid);
+      case 'Human':
+        return human(this as GhumanFieldsFragment_friends__asHuman);
+      default:
+        return orElse();
+    }
+  }
+}
+
 abstract class GhumanFieldsFragment_friends__base
     implements GhumanFieldsFragment_friends {
   @override
@@ -533,6 +623,24 @@ abstract class GhumanFieldsFragmentData_friends
         GhumanFieldsFragmentData_friends.serializer,
         json,
       );
+}
+
+extension GhumanFieldsFragmentData_friendsWhenExtension
+    on GhumanFieldsFragmentData_friends {
+  _T when<_T>({
+    required _T Function(GhumanFieldsFragmentData_friends__asDroid) droid,
+    required _T Function(GhumanFieldsFragmentData_friends__asHuman) human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid(this as GhumanFieldsFragmentData_friends__asDroid);
+      case 'Human':
+        return human(this as GhumanFieldsFragmentData_friends__asHuman);
+      default:
+        return orElse();
+    }
+  }
 }
 
 abstract class GhumanFieldsFragmentData_friends__base

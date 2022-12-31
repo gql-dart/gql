@@ -6,7 +6,7 @@ import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
-List<Class> buildOperationDataClasses(
+List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
@@ -34,7 +34,7 @@ List<Class> buildOperationDataClasses(
   );
 }
 
-List<Class> buildFragmentDataClasses(
+List<Spec> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
@@ -111,7 +111,7 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
-List<Class> buildSelectionSetDataClasses({
+List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,

@@ -53,13 +53,13 @@ abstract class GAllPokemonData_pokemons
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
-  String get id;
-  @override
-  String? get name;
-  @override
   int? get maxHP;
   @override
   String? get image;
+  @override
+  String get id;
+  @override
+  String? get name;
   static Serializer<GAllPokemonData_pokemons> get serializer =>
       _$gAllPokemonDataPokemonsSerializer;
   @override

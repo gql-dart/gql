@@ -12,7 +12,7 @@ import "../source.dart";
 ///   2. A "base" instantiable class that includes the common fields.
 ///   3. An instantiable class for each inline fragment that includes the
 ///      common fields and the fragment fields.
-List<Class> buildInlineFragmentClasses({
+List<Spec> buildInlineFragmentClasses({
   required String name,
   required List<Method> fieldGetters,
   required List<SelectionNode> selections,
@@ -46,6 +46,11 @@ List<Class> buildInlineFragmentClasses({
               ),
           ]),
       ),
+      if (inlineFragments
+          .where((element) => element.typeCondition != null)
+          .isNotEmpty)
+        inlineFragmentWhenExtension(name, inlineFragments),
+
       ...buildSelectionSetDataClasses(
         name: "${name}__base",
         selections: mergeSelections(
@@ -89,6 +94,60 @@ List<Class> buildInlineFragmentClasses({
             ),
           ),
     ];
+
+Extension inlineFragmentWhenExtension(
+    String name, List<InlineFragmentNode> inlineFragments) {
+  final genericTypeParam = TypeReference((b) => b..symbol = "_T");
+
+  final genericTypeParamCode =
+      genericTypeParam.accept(DartEmitter()).toString();
+
+  String getGeneratedTypeName(InlineFragmentNode node) =>
+      builtClassName("${name}__as${node.typeCondition!.on.name.value}");
+
+  String getSchemaTypeName(InlineFragmentNode node) =>
+      node.typeCondition!.on.name.value;
+
+  String getParameterName(InlineFragmentNode node) =>
+      identifier(getSchemaTypeName(node).replaceRange(
+          0, 1, getSchemaTypeName(node).substring(0, 1).toLowerCase()));
+
+  return Extension((e) => e
+    ..name = builtClassName(name) + "WhenExtension"
+    ..on = refer(builtClassName(name))
+    ..methods.add(Method((m) => m
+      ..name = "when"
+      ..returns = genericTypeParam
+      ..types.add(genericTypeParam)
+      ..optionalParameters.addAll(
+        inlineFragments.where((element) => element.typeCondition != null).map(
+              (inlineFragment) => Parameter((p) => p
+                ..name = getParameterName(inlineFragment)
+                ..type = refer(
+                  "$genericTypeParamCode Function(${getGeneratedTypeName(inlineFragment)})",
+                )
+                ..named = true
+                ..required = true),
+            ),
+      )
+      ..optionalParameters.add(
+        Parameter((p) => p
+          ..name = "orElse" //TODO name collision check
+          ..type = refer("$genericTypeParamCode Function()")
+          ..named = true
+          ..required = true),
+      )
+      ..body = Code("""
+          switch(G__typename) {""" +
+          inlineFragments
+              .where((element) => element.typeCondition != null)
+              .map((inlineFragment) =>
+                  "case '${getSchemaTypeName(inlineFragment)}': "
+                  "return ${getParameterName(inlineFragment)}"
+                  "(this as ${getGeneratedTypeName(inlineFragment)}); ")
+              .join() +
+          "default: return orElse();}"))));
+}
 
 List<Method> _inlineFragmentRootSerializationMethods({
   required String name,

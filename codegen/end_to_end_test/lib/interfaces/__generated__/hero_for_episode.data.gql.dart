@@ -59,6 +59,20 @@ abstract class GHeroForEpisodeData_hero {
       );
 }
 
+extension GHeroForEpisodeData_heroWhenExtension on GHeroForEpisodeData_hero {
+  _T when<_T>({
+    required _T Function(GHeroForEpisodeData_hero__asDroid) droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid(this as GHeroForEpisodeData_hero__asDroid);
+      default:
+        return orElse();
+    }
+  }
+}
+
 abstract class GHeroForEpisodeData_hero__base
     implements
         Built<GHeroForEpisodeData_hero__base,
