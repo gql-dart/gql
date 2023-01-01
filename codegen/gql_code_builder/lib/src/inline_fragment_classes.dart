@@ -1,5 +1,7 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/when_extension_config.dart";
+import "package:gql_code_builder/src/when_extension.dart";
 
 import "./common.dart";
 import "./operation/data.dart";
@@ -23,57 +25,60 @@ List<Spec> buildInlineFragmentClasses({
   required Map<String, SourceSelections> superclassSelections,
   required List<InlineFragmentNode> inlineFragments,
   required bool built,
-}) =>
-    [
-      Class(
-        (b) => b
-          ..abstract = true
-          ..name = builtClassName(name)
-          ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
-              ),
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+}) {
+  final whenExtension = inlineFragmentWhenExtension(
+    baseTypeName: name,
+    inlineFragments: inlineFragments,
+    config: whenExtensionConfig,
+  );
+  return [
+    Class(
+      (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..implements.addAll(
+          superclassSelections.keys.map<Reference>(
+            (superName) => refer(
+              builtClassName(superName),
+              (superclassSelections[superName]?.url ?? "") + "#data",
             ),
-          )
-          ..methods.addAll([
-            ...fieldGetters,
-            if (built)
-              ..._inlineFragmentRootSerializationMethods(
-                name: builtClassName(name),
-                inlineFragments: inlineFragments,
-              ),
-          ]),
+          ),
+        )
+        ..methods.addAll([
+          ...fieldGetters,
+          if (built)
+            ..._inlineFragmentRootSerializationMethods(
+              name: builtClassName(name),
+              inlineFragments: inlineFragments,
+            ),
+        ]),
+    ),
+    if (whenExtension != null) whenExtension,
+    ...buildSelectionSetDataClasses(
+      name: "${name}__base",
+      selections: mergeSelections(
+        [
+          ...selections.whereType<FieldNode>(),
+          ...selections.whereType<FragmentSpreadNode>(),
+        ],
+        fragmentMap,
       ),
-      if (inlineFragments
-          .where((element) => element.typeCondition != null)
-          .isNotEmpty)
-        inlineFragmentWhenExtension(name, inlineFragments),
+      fragmentMap: fragmentMap,
+      schemaSource: schemaSource,
+      type: type,
+      typeOverrides: typeOverrides,
+      superclassSelections: {
+        name: SourceSelections(url: null, selections: selections)
+      },
+      built: built,
+      whenExtensionConfig: whenExtensionConfig,
+    ),
 
-      ...buildSelectionSetDataClasses(
-        name: "${name}__base",
-        selections: mergeSelections(
-          [
-            ...selections.whereType<FieldNode>(),
-            ...selections.whereType<FragmentSpreadNode>(),
-          ],
-          fragmentMap,
-        ),
-        fragmentMap: fragmentMap,
-        schemaSource: schemaSource,
-        type: type,
-        typeOverrides: typeOverrides,
-        superclassSelections: {
-          name: SourceSelections(url: null, selections: selections)
-        },
-        built: built,
-      ),
-
-      /// TODO: Handle inline fragments without a type condition
-      /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
-      ...inlineFragments.where((frag) => frag.typeCondition != null).expand(
-            (inlineFragment) => buildSelectionSetDataClasses(
+    /// TODO: Handle inline fragments without a type condition
+    /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
+    ...inlineFragments.where((frag) => frag.typeCondition != null).expand(
+          (inlineFragment) => buildSelectionSetDataClasses(
               name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
               selections: mergeSelections(
                 [
@@ -91,62 +96,9 @@ List<Spec> buildInlineFragmentClasses({
                 name: SourceSelections(url: null, selections: selections)
               },
               built: built,
-            ),
-          ),
-    ];
-
-Extension inlineFragmentWhenExtension(
-    String name, List<InlineFragmentNode> inlineFragments) {
-  final genericTypeParam = TypeReference((b) => b..symbol = "_T");
-
-  final genericTypeParamCode =
-      genericTypeParam.accept(DartEmitter()).toString();
-
-  String getGeneratedTypeName(InlineFragmentNode node) =>
-      builtClassName("${name}__as${node.typeCondition!.on.name.value}");
-
-  String getSchemaTypeName(InlineFragmentNode node) =>
-      node.typeCondition!.on.name.value;
-
-  String getParameterName(InlineFragmentNode node) =>
-      identifier(getSchemaTypeName(node).replaceRange(
-          0, 1, getSchemaTypeName(node).substring(0, 1).toLowerCase()));
-
-  return Extension((e) => e
-    ..name = builtClassName(name) + "WhenExtension"
-    ..on = refer(builtClassName(name))
-    ..methods.add(Method((m) => m
-      ..name = "when"
-      ..returns = genericTypeParam
-      ..types.add(genericTypeParam)
-      ..optionalParameters.addAll(
-        inlineFragments.where((element) => element.typeCondition != null).map(
-              (inlineFragment) => Parameter((p) => p
-                ..name = getParameterName(inlineFragment)
-                ..type = refer(
-                  "$genericTypeParamCode Function(${getGeneratedTypeName(inlineFragment)})",
-                )
-                ..named = true
-                ..required = true),
-            ),
-      )
-      ..optionalParameters.add(
-        Parameter((p) => p
-          ..name = "orElse" //TODO name collision check
-          ..type = refer("$genericTypeParamCode Function()")
-          ..named = true
-          ..required = true),
-      )
-      ..body = Code("""
-          switch(G__typename) {""" +
-          inlineFragments
-              .where((element) => element.typeCondition != null)
-              .map((inlineFragment) =>
-                  "case '${getSchemaTypeName(inlineFragment)}': "
-                  "return ${getParameterName(inlineFragment)}"
-                  "(this as ${getGeneratedTypeName(inlineFragment)}); ")
-              .join() +
-          "default: return orElse();}"))));
+              whenExtensionConfig: whenExtensionConfig),
+        ),
+  ];
 }
 
 List<Method> _inlineFragmentRootSerializationMethods({

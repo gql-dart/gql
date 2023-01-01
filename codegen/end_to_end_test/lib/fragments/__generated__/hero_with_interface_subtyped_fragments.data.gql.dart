@@ -92,9 +92,28 @@ extension GheroFieldsFragmentWhenExtension on GheroFieldsFragment {
   }) {
     switch (G__typename) {
       case 'Human':
-        return human(this as GheroFieldsFragment__asHuman);
+        return human((this as GheroFieldsFragment__asHuman));
       case 'Droid':
-        return droid(this as GheroFieldsFragment__asDroid);
+        return droid((this as GheroFieldsFragment__asDroid));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GheroFieldsFragment__asHuman)? human,
+    _T Function(GheroFieldsFragment__asDroid)? droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Human':
+        return human != null
+            ? human((this as GheroFieldsFragment__asHuman))
+            : orElse();
+      case 'Droid':
+        return droid != null
+            ? droid((this as GheroFieldsFragment__asDroid))
+            : orElse();
       default:
         return orElse();
     }
@@ -143,9 +162,28 @@ extension GheroFieldsFragment__asHuman_friendsWhenExtension
   }) {
     switch (G__typename) {
       case 'Droid':
-        return droid(this as GheroFieldsFragment__asHuman_friends__asDroid);
+        return droid((this as GheroFieldsFragment__asHuman_friends__asDroid));
       case 'Human':
-        return human(this as GheroFieldsFragment__asHuman_friends__asHuman);
+        return human((this as GheroFieldsFragment__asHuman_friends__asHuman));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GheroFieldsFragment__asHuman_friends__asDroid)? droid,
+    _T Function(GheroFieldsFragment__asHuman_friends__asHuman)? human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid != null
+            ? droid((this as GheroFieldsFragment__asHuman_friends__asDroid))
+            : orElse();
+      case 'Human':
+        return human != null
+            ? human((this as GheroFieldsFragment__asHuman_friends__asHuman))
+            : orElse();
       default:
         return orElse();
     }
@@ -233,9 +271,28 @@ extension GheroFieldsFragmentDataWhenExtension on GheroFieldsFragmentData {
   }) {
     switch (G__typename) {
       case 'Human':
-        return human(this as GheroFieldsFragmentData__asHuman);
+        return human((this as GheroFieldsFragmentData__asHuman));
       case 'Droid':
-        return droid(this as GheroFieldsFragmentData__asDroid);
+        return droid((this as GheroFieldsFragmentData__asDroid));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GheroFieldsFragmentData__asHuman)? human,
+    _T Function(GheroFieldsFragmentData__asDroid)? droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Human':
+        return human != null
+            ? human((this as GheroFieldsFragmentData__asHuman))
+            : orElse();
+      case 'Droid':
+        return droid != null
+            ? droid((this as GheroFieldsFragmentData__asDroid))
+            : orElse();
       default:
         return orElse();
     }
@@ -353,9 +410,30 @@ extension GheroFieldsFragmentData__asHuman_friendsWhenExtension
   }) {
     switch (G__typename) {
       case 'Droid':
-        return droid(this as GheroFieldsFragmentData__asHuman_friends__asDroid);
+        return droid(
+            (this as GheroFieldsFragmentData__asHuman_friends__asDroid));
       case 'Human':
-        return human(this as GheroFieldsFragmentData__asHuman_friends__asHuman);
+        return human(
+            (this as GheroFieldsFragmentData__asHuman_friends__asHuman));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GheroFieldsFragmentData__asHuman_friends__asDroid)? droid,
+    _T Function(GheroFieldsFragmentData__asHuman_friends__asHuman)? human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid != null
+            ? droid((this as GheroFieldsFragmentData__asHuman_friends__asDroid))
+            : orElse();
+      case 'Human':
+        return human != null
+            ? human((this as GheroFieldsFragmentData__asHuman_friends__asHuman))
+            : orElse();
       default:
         return orElse();
     }
@@ -526,9 +604,28 @@ extension GhumanFieldsFragment_friendsWhenExtension
   }) {
     switch (G__typename) {
       case 'Droid':
-        return droid(this as GhumanFieldsFragment_friends__asDroid);
+        return droid((this as GhumanFieldsFragment_friends__asDroid));
       case 'Human':
-        return human(this as GhumanFieldsFragment_friends__asHuman);
+        return human((this as GhumanFieldsFragment_friends__asHuman));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GhumanFieldsFragment_friends__asDroid)? droid,
+    _T Function(GhumanFieldsFragment_friends__asHuman)? human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid != null
+            ? droid((this as GhumanFieldsFragment_friends__asDroid))
+            : orElse();
+      case 'Human':
+        return human != null
+            ? human((this as GhumanFieldsFragment_friends__asHuman))
+            : orElse();
       default:
         return orElse();
     }
@@ -634,9 +731,28 @@ extension GhumanFieldsFragmentData_friendsWhenExtension
   }) {
     switch (G__typename) {
       case 'Droid':
-        return droid(this as GhumanFieldsFragmentData_friends__asDroid);
+        return droid((this as GhumanFieldsFragmentData_friends__asDroid));
       case 'Human':
-        return human(this as GhumanFieldsFragmentData_friends__asHuman);
+        return human((this as GhumanFieldsFragmentData_friends__asHuman));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GhumanFieldsFragmentData_friends__asDroid)? droid,
+    _T Function(GhumanFieldsFragmentData_friends__asHuman)? human,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid != null
+            ? droid((this as GhumanFieldsFragmentData_friends__asDroid))
+            : orElse();
+      case 'Human':
+        return human != null
+            ? human((this as GhumanFieldsFragmentData_friends__asHuman))
+            : orElse();
       default:
         return orElse();
     }

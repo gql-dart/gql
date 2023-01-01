@@ -66,7 +66,21 @@ extension GHeroForEpisodeData_heroWhenExtension on GHeroForEpisodeData_hero {
   }) {
     switch (G__typename) {
       case 'Droid':
-        return droid(this as GHeroForEpisodeData_hero__asDroid);
+        return droid((this as GHeroForEpisodeData_hero__asDroid));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GHeroForEpisodeData_hero__asDroid)? droid,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Droid':
+        return droid != null
+            ? droid((this as GHeroForEpisodeData_hero__asDroid))
+            : orElse();
       default:
         return orElse();
     }

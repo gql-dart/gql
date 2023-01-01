@@ -1,5 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "../../source.dart";
 import "../built_class.dart";
@@ -11,6 +12,7 @@ List<Spec> buildOperationDataClasses(
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 ) {
   if (op.name == null) {
     throw Exception("Operations must be named");
@@ -31,6 +33,7 @@ List<Spec> buildOperationDataClasses(
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
     superclassSelections: {},
+    whenExtensionConfig: whenExtensionConfig,
   );
 }
 
@@ -39,6 +42,7 @@ List<Spec> buildFragmentDataClasses(
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   final selections = mergeSelections(
@@ -56,6 +60,7 @@ List<Spec> buildFragmentDataClasses(
       fragmentMap: fragmentMap,
       superclassSelections: {},
       built: false,
+      whenExtensionConfig: whenExtensionConfig,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -71,6 +76,7 @@ List<Spec> buildFragmentDataClasses(
           selections: selections,
         )
       },
+      whenExtensionConfig: whenExtensionConfig,
     ),
   ];
 }
@@ -120,6 +126,7 @@ List<Spec> buildSelectionSetDataClasses({
   required Map<String, SourceSelections> fragmentMap,
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -177,6 +184,7 @@ List<Spec> buildSelectionSetDataClasses({
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
         built: built,
+        whenExtensionConfig: whenExtensionConfig,
       )
     else if (!built)
       Class(
@@ -237,6 +245,7 @@ List<Spec> buildSelectionSetDataClasses({
               field,
             ),
             built: inlineFragments.isNotEmpty ? false : built,
+            whenExtensionConfig: whenExtensionConfig,
           ),
         ),
   ];
