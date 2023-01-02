@@ -1,8 +1,11 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/source.dart";
+import "package:gql_code_builder/src/config/enum_fallback_config.dart";
 import "package:gql_code_builder/src/schema.dart";
 import "package:gql_code_builder/src/utils/possible_types.dart";
+
+export "package:gql_code_builder/src/config/enum_fallback_config.dart";
 
 Library buildSchemaLibrary(
   SourceNode schemaSource,
@@ -46,17 +49,4 @@ Code buildPossibleTypes(DocumentNode document) {
           type: Reference("Map<String, Set<String>>"))
       .assign(possibleTypesLiteral)
       .statement;
-}
-
-class EnumFallbackConfig {
-  final bool generateFallbackValuesGlobally;
-  final String? globalEnumFallbackName;
-  final Map<String, String> fallbackValueMap;
-
-  const EnumFallbackConfig({
-    required this.generateFallbackValuesGlobally,
-    this.globalEnumFallbackName,
-    required this.fallbackValueMap,
-  }) : assert(
-            !generateFallbackValuesGlobally || globalEnumFallbackName != null);
 }

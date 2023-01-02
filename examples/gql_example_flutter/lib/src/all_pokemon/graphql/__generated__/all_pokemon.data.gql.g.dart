@@ -89,13 +89,6 @@ class _$GAllPokemonData_pokemonsSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.maxHP;
     if (value != null) {
       result
@@ -106,6 +99,13 @@ class _$GAllPokemonData_pokemonsSerializer
     if (value != null) {
       result
         ..add('image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -128,20 +128,20 @@ class _$GAllPokemonData_pokemonsSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'maxHP':
           result.maxHP = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -265,13 +265,13 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
   @override
   final String G__typename;
   @override
-  final String id;
-  @override
-  final String? name;
-  @override
   final int? maxHP;
   @override
   final String? image;
+  @override
+  final String id;
+  @override
+  final String? name;
 
   factory _$GAllPokemonData_pokemons(
           [void Function(GAllPokemonData_pokemonsBuilder)? updates]) =>
@@ -279,10 +279,10 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
 
   _$GAllPokemonData_pokemons._(
       {required this.G__typename,
-      required this.id,
-      this.name,
       this.maxHP,
-      this.image})
+      this.image,
+      required this.id,
+      this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GAllPokemonData_pokemons', 'G__typename');
@@ -304,28 +304,30 @@ class _$GAllPokemonData_pokemons extends GAllPokemonData_pokemons {
     if (identical(other, this)) return true;
     return other is GAllPokemonData_pokemons &&
         G__typename == other.G__typename &&
-        id == other.id &&
-        name == other.name &&
         maxHP == other.maxHP &&
-        image == other.image;
+        image == other.image &&
+        id == other.id &&
+        name == other.name;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-            maxHP.hashCode),
-        image.hashCode));
+        $jc(
+            $jc($jc($jc(0, G__typename.hashCode), maxHP.hashCode),
+                image.hashCode),
+            id.hashCode),
+        name.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GAllPokemonData_pokemons')
           ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('name', name)
           ..add('maxHP', maxHP)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('id', id)
+          ..add('name', name))
         .toString();
   }
 }
@@ -339,14 +341,6 @@ class GAllPokemonData_pokemonsBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   int? _maxHP;
   int? get maxHP => _$this._maxHP;
   set maxHP(int? maxHP) => _$this._maxHP = maxHP;
@@ -354,6 +348,14 @@ class GAllPokemonData_pokemonsBuilder
   String? _image;
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GAllPokemonData_pokemonsBuilder() {
     GAllPokemonData_pokemons._initializeBuilder(this);
@@ -363,10 +365,10 @@ class GAllPokemonData_pokemonsBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _id = $v.id;
-      _name = $v.name;
       _maxHP = $v.maxHP;
       _image = $v.image;
+      _id = $v.id;
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -391,11 +393,11 @@ class GAllPokemonData_pokemonsBuilder
         new _$GAllPokemonData_pokemons._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GAllPokemonData_pokemons', 'G__typename'),
+            maxHP: maxHP,
+            image: image,
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GAllPokemonData_pokemons', 'id'),
-            name: name,
-            maxHP: maxHP,
-            image: image);
+            name: name);
     replace(_$result);
     return _$result;
   }

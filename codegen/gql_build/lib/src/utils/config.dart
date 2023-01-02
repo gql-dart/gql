@@ -1,4 +1,5 @@
 import "package:code_builder/code_builder.dart";
+import "package:gql_code_builder/data.dart";
 import "package:gql_code_builder/schema.dart";
 import "package:yaml/yaml.dart";
 
@@ -40,6 +41,16 @@ EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
       generateFallbackValuesGlobally: config["global_enum_fallbacks"] == true,
       fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
     );
+
+InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig(
+    Map<String, dynamic> config) {
+  final whenYamlConfig = config["when_extensions"] as YamlMap?;
+
+  return InlineFragmentSpreadWhenExtensionConfig(
+    generateMaybeWhenExtensionMethod: whenYamlConfig?["maybeWhen"] == true,
+    generateWhenExtensionMethod: whenYamlConfig?["when"] == true,
+  );
+}
 
 bool generatePossibleTypesConfig(Map<String, dynamic> config) =>
     config["generate_possible_types_map"] as bool? ?? true;
