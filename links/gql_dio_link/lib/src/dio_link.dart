@@ -66,7 +66,8 @@ class DioLink extends Link {
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
-    final dio.Response<Map<String, dynamic>> dioResponse = await _executeDioRequest(
+    final dio.Response<Map<String, dynamic>> dioResponse =
+        await _executeDioRequest(
       request: request,
       headers: <String, String>{
         dio.Headers.acceptHeader: "*/*",
@@ -78,7 +79,8 @@ class DioLink extends Link {
     );
 
     if (dioResponse.statusCode! >= 300 ||
-        (dioResponse.data!["data"] == null && dioResponse.data!["errors"] == null)) {
+        (dioResponse.data!["data"] == null &&
+            dioResponse.data!["errors"] == null)) {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
@@ -109,7 +111,8 @@ class DioLink extends Link {
       request,
       (Map body) => json.encode(
         body,
-        toEncodable: (dynamic object) => (object is dio.MultipartFile) ? null : object.toJson(),
+        toEncodable: (dynamic object) =>
+            (object is dio.MultipartFile) ? null : object.toJson(),
       ),
     )(body);
 
@@ -172,7 +175,8 @@ class DioLink extends Link {
       final dynamic body = _prepareRequestBody(request);
       dio.Response<dynamic> res;
 
-      final useGet = useGETForQueries && body is Map<String, dynamic> && isQuery;
+      final useGet =
+          useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
         res = await client.getUri<dynamic>(
           Uri.parse(endpoint).replace(
@@ -262,7 +266,8 @@ class DioLink extends Link {
         error: e.error,
         response: e.response,
         requestOptions: dio.RequestOptions(
-          data: e.requestOptions.data is Map<String, dynamic> || e.requestOptions is String
+          data: e.requestOptions.data is Map<String, dynamic> ||
+                  e.requestOptions is String
               ? e.requestOptions.data
               : null, // could be FormData, which is not serializable
           onSendProgress: null,
@@ -282,7 +287,8 @@ class DioLink extends Link {
           connectTimeout: e.requestOptions.connectTimeout,
           contentType: e.requestOptions.contentType,
           receiveTimeout: e.requestOptions.receiveTimeout,
-          receiveDataWhenStatusError: e.requestOptions.receiveDataWhenStatusError,
+          receiveDataWhenStatusError:
+              e.requestOptions.receiveDataWhenStatusError,
           sendTimeout: e.requestOptions.sendTimeout,
         ),
       );

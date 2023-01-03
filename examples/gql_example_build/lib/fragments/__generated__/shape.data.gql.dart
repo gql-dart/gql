@@ -56,6 +56,42 @@ abstract class GShapeData_shape {
       );
 }
 
+extension GShapeData_shapeWhenExtension on GShapeData_shape {
+  _T when<_T>({
+    required _T Function(GShapeData_shape__asSquare) square,
+    required _T Function(GShapeData_shape__asRectangle) rectangle,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Square':
+        return square((this as GShapeData_shape__asSquare));
+      case 'Rectangle':
+        return rectangle((this as GShapeData_shape__asRectangle));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GShapeData_shape__asSquare)? square,
+    _T Function(GShapeData_shape__asRectangle)? rectangle,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Square':
+        return square != null
+            ? square((this as GShapeData_shape__asSquare))
+            : orElse();
+      case 'Rectangle':
+        return rectangle != null
+            ? rectangle((this as GShapeData_shape__asRectangle))
+            : orElse();
+      default:
+        return orElse();
+    }
+  }
+}
+
 abstract class GShapeData_shape__base
     implements
         Built<GShapeData_shape__base, GShapeData_shape__baseBuilder>,
