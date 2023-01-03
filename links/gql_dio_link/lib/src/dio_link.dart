@@ -213,8 +213,6 @@ class DioLink extends Link {
     } on dio.DioError catch (e, stackTrace) {
       final dio.DioError resolvedError;
       if (serializableErrors) {
-        print(
-            "DioLink: serializableErrors is true, stripping out non-serializable fields from DioError");
         resolvedError = _serializableDioError(e);
       } else {
         resolvedError = e;
