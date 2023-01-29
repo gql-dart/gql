@@ -7,17 +7,14 @@ import "package:gql_code_builder/src/utils/possible_types.dart";
 
 export "package:gql_code_builder/src/config/enum_fallback_config.dart";
 
-Library buildSchemaLibrary(
-  SourceNode schemaSource,
-  String partUrl,
-  Map<String, Reference> typeOverrides,
-  EnumFallbackConfig enumFallbackConfig, {
-  bool generatePossibleTypesMap = false,
-}) {
+Library buildSchemaLibrary(SourceNode schemaSource, String partUrl,
+    Map<String, Reference> typeOverrides, EnumFallbackConfig enumFallbackConfig,
+    {bool generatePossibleTypesMap = false, Allocator? allocator}) {
   final lib = buildSchema(
     schemaSource,
     typeOverrides,
     enumFallbackConfig,
+    allocator ?? Allocator(),
   ) as Library;
 
   final Code? possibleTypes;
@@ -45,8 +42,7 @@ Code buildPossibleTypes(DocumentNode document) {
   // wrap the map in a literal for codegen
   final possibleTypesLiteral = literalMap(possibleTypesMap);
   // assign the literal to a const variable named "possibleTypes"
-  return declareConst("possibleTypesMap",
-          type: Reference("Map<String, Set<String>>"))
+  return declareConst("possibleTypesMap", type: Reference("Map<String, Set<String>>"))
       .assign(possibleTypesLiteral)
       .statement;
 }

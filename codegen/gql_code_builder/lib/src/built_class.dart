@@ -11,6 +11,7 @@ Class builtClass({
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
   List<Method> methods = const [],
+  bool hasCustomSerializer = false,
 }) {
   final className = builtClassName(name);
   return Class(
@@ -76,7 +77,8 @@ Class builtClass({
               ).code,
           ),
         if (getters != null) ...getters,
-        // Serlialization methods
+        // Serialization methods
+        if(!hasCustomSerializer)
         buildSerializerGetter(className).rebuild(
           (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
         ),

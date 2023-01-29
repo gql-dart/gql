@@ -1,3 +1,6 @@
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:gql_exec/value.dart';
 import "package:test/test.dart";
 
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
@@ -47,21 +50,19 @@ void main() {
     final scalar = GISODate(isoString);
 
     test('correctly serializes and deserializes', () {
-      expect(serializers.deserializeWith(GISODate.serializer, isoString),
-          equals(scalar));
-      expect(serializers.serializeWith(GISODate.serializer, scalar),
-          equals(isoString));
+      expect(serializers.deserializeWith(GISODate.serializer, isoString), equals(scalar));
+      expect(serializers.serializeWith(GISODate.serializer, scalar), equals(isoString));
     });
   });
 
   group("Custom scalars in input types", () {
-    final input = GReviewInput(
-      (b) => b
-        ..stars = 4
-        ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
-    );
+    final input = GReviewInput((b) => b
+      ..stars = 4
+      ..seenOn = Value(
+        BuiltList([DateTime.fromMillisecondsSinceEpoch(1591892597000)]),
+      ));
     test('correctly overrides scalars in input types', () {
-      expect(input.seenOn!.first, TypeMatcher<DateTime>());
+      expect(input.seenOn!.value!.first, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -78,11 +79,11 @@ void main() {
     final vars = GReviewWithDateVars(
       (b) => b
         ..review.stars = 4
-        ..createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
+        ..createdAt = Value(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
     );
 
     test('correctly overrides scalars in variable types', () {
-      expect(vars.createdAt, TypeMatcher<DateTime>());
+      expect(vars.createdAt!.value, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -101,11 +102,8 @@ void main() {
     final data = GReviewWithDateData(
       (b) => b
         ..createReview.stars = 1
-        ..createReview
-            .seenOn
-            .add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
-        ..createReview.createdAt =
-            DateTime.fromMillisecondsSinceEpoch(1591892597000),
+        ..createReview.seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
+        ..createReview.createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
     );
 
     test('correctly overrides scalars in data types', () {

@@ -63,6 +63,20 @@ new enum values are added to the schema and the client has not updated to the ne
 `global_enum_fallbacks`: \[bool\] Add a generated fallback value for each enum value (except for ones that have a custom fallback value specified in the enum_fallbacks map).
 Defaults to false.
 
+`when_extensions`: [Map\] whether to enable the `when`/`maybeWhen` extension on the generated data classes
+from inline fragment spreads with type conditions. 
+Supported keys are `when` and `maybeWhen`, and the values are booleans indicating whether to enable 
+generation of the extension method not.
+
+
+Example:
+
+```yaml
+when_extensions:
+  when: true # enable the `when` extension method
+  maybeWhen: true  # enable the `maybeWhen` extension method
+```
+
 Example:
 
 ```yaml

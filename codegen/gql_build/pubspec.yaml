@@ -20,3 +20,38 @@ dependencies:
 dev_dependencies: 
   build_test: ^2.0.0
   gql_pedantic: ^1.0.2
+dependency_overrides: 
+  gql_pedantic: 
+    path: ../../gql_pedantic
+  gql: 
+    path: ../../gql
+  gql_exec: 
+    path: ../../links/gql_exec
+  gql_link: 
+    path: ../../links/gql_link
+  gql_websocket_link: 
+    path: ../../links/gql_websocket_link
+  gql_transform_link: 
+    path: ../../links/gql_transform_link
+  gql_http_link: 
+    path: ../../links/gql_http_link
+  gql_error_link: 
+    path: ../../links/gql_error_link
+  gql_code_builder: 
+    path: ../gql_code_builder
+  gql_example_http_auth_link: 
+    path: ../../examples/gql_example_http_auth_link
+  gql_dio_link: 
+    path: ../../links/gql_dio_link
+  gql_example_dio_link: 
+    path: ../../examples/gql_example_dio_link
+  gql_example_cli_github: 
+    path: ../../examples/gql_example_cli_github
+  gql_example_cli: 
+    path: ../../examples/gql_example_cli
+  gql_example_build: 
+    path: ../../examples/gql_example_build
+  gql_dedupe_link: 
+    path: ../../links/gql_dedupe_link
+  end_to_end_test: 
+    path: ../end_to_end_test

@@ -57,7 +57,13 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentVars,
         GhumanFieldsFragmentVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
-    show GColorInput, GEpisode, GISODate, GLengthUnit, GReviewInput;
+    show
+        GColorInput,
+        GCustomFieldInput,
+        GEpisode,
+        GISODate,
+        GLengthUnit,
+        GReviewInput;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart'
     show
         GHeroForEpisodeData_hero,
@@ -83,6 +89,12 @@ import 'package:end_to_end_test/scalars/__generated__/review_with_date.req.gql.d
     show GReviewWithDate;
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart'
     show GReviewWithDateVars;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.data.gql.dart'
+    show GCreateCustomFieldData;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.req.gql.dart'
+    show GCreateCustomField;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.var.gql.dart'
+    show GCreateCustomFieldVars;
 import 'package:end_to_end_test/variables/__generated__/create_review.data.gql.dart'
     show GCreateReviewData, GCreateReviewData_createReview;
 import 'package:end_to_end_test/variables/__generated__/create_review.req.gql.dart'
@@ -116,10 +128,14 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
   GColorInput,
+  GCreateCustomField,
+  GCreateCustomFieldData,
+  GCreateCustomFieldVars,
   GCreateReview,
   GCreateReviewData,
   GCreateReviewData_createReview,
   GCreateReviewVars,
+  GCustomFieldInput,
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,

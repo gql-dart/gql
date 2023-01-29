@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hero_with_fragments.req.gql.dart';
+part of 'create_custom_field.req.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GHeroWithFragments> _$gHeroWithFragmentsSerializer =
-    new _$GHeroWithFragmentsSerializer();
+Serializer<GCreateCustomField> _$gCreateCustomFieldSerializer =
+    new _$GCreateCustomFieldSerializer();
 
-class _$GHeroWithFragmentsSerializer
-    implements StructuredSerializer<GHeroWithFragments> {
+class _$GCreateCustomFieldSerializer
+    implements StructuredSerializer<GCreateCustomField> {
   @override
-  final Iterable<Type> types = const [GHeroWithFragments, _$GHeroWithFragments];
+  final Iterable<Type> types = const [GCreateCustomField, _$GCreateCustomField];
   @override
-  final String wireName = 'GHeroWithFragments';
+  final String wireName = 'GCreateCustomField';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GHeroWithFragments object,
+      Serializers serializers, GCreateCustomField object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GHeroWithFragmentsVars)),
+          specifiedType: const FullType(_i3.GCreateCustomFieldVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i1.Operation)),
@@ -33,10 +33,10 @@ class _$GHeroWithFragmentsSerializer
   }
 
   @override
-  GHeroWithFragments deserialize(
+  GCreateCustomField deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithFragmentsBuilder();
+    final result = new GCreateCustomFieldBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -46,8 +46,8 @@ class _$GHeroWithFragmentsSerializer
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GHeroWithFragmentsVars))!
-              as _i3.GHeroWithFragmentsVars);
+                  specifiedType: const FullType(_i3.GCreateCustomFieldVars))!
+              as _i3.GCreateCustomFieldVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -60,36 +60,36 @@ class _$GHeroWithFragmentsSerializer
   }
 }
 
-class _$GHeroWithFragments extends GHeroWithFragments {
+class _$GCreateCustomField extends GCreateCustomField {
   @override
-  final _i3.GHeroWithFragmentsVars vars;
+  final _i3.GCreateCustomFieldVars vars;
   @override
   final _i1.Operation operation;
 
-  factory _$GHeroWithFragments(
-          [void Function(GHeroWithFragmentsBuilder)? updates]) =>
-      (new GHeroWithFragmentsBuilder()..update(updates))._build();
+  factory _$GCreateCustomField(
+          [void Function(GCreateCustomFieldBuilder)? updates]) =>
+      (new GCreateCustomFieldBuilder()..update(updates))._build();
 
-  _$GHeroWithFragments._({required this.vars, required this.operation})
+  _$GCreateCustomField._({required this.vars, required this.operation})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GHeroWithFragments', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GCreateCustomField', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GHeroWithFragments', 'operation');
+        operation, r'GCreateCustomField', 'operation');
   }
 
   @override
-  GHeroWithFragments rebuild(
-          void Function(GHeroWithFragmentsBuilder) updates) =>
+  GCreateCustomField rebuild(
+          void Function(GCreateCustomFieldBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithFragmentsBuilder toBuilder() =>
-      new GHeroWithFragmentsBuilder()..replace(this);
+  GCreateCustomFieldBuilder toBuilder() =>
+      new GCreateCustomFieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithFragments &&
+    return other is GCreateCustomField &&
         vars == other.vars &&
         operation == other.operation;
   }
@@ -105,31 +105,31 @@ class _$GHeroWithFragments extends GHeroWithFragments {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GHeroWithFragments')
+    return (newBuiltValueToStringHelper(r'GCreateCustomField')
           ..add('vars', vars)
           ..add('operation', operation))
         .toString();
   }
 }
 
-class GHeroWithFragmentsBuilder
-    implements Builder<GHeroWithFragments, GHeroWithFragmentsBuilder> {
-  _$GHeroWithFragments? _$v;
+class GCreateCustomFieldBuilder
+    implements Builder<GCreateCustomField, GCreateCustomFieldBuilder> {
+  _$GCreateCustomField? _$v;
 
-  _i3.GHeroWithFragmentsVarsBuilder? _vars;
-  _i3.GHeroWithFragmentsVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GHeroWithFragmentsVarsBuilder();
-  set vars(_i3.GHeroWithFragmentsVarsBuilder? vars) => _$this._vars = vars;
+  _i3.GCreateCustomFieldVarsBuilder? _vars;
+  _i3.GCreateCustomFieldVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GCreateCustomFieldVarsBuilder();
+  set vars(_i3.GCreateCustomFieldVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
   _i1.Operation? get operation => _$this._operation;
   set operation(_i1.Operation? operation) => _$this._operation = operation;
 
-  GHeroWithFragmentsBuilder() {
-    GHeroWithFragments._initializeBuilder(this);
+  GCreateCustomFieldBuilder() {
+    GCreateCustomField._initializeBuilder(this);
   }
 
-  GHeroWithFragmentsBuilder get _$this {
+  GCreateCustomFieldBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _vars = $v.vars.toBuilder();
@@ -140,27 +140,27 @@ class GHeroWithFragmentsBuilder
   }
 
   @override
-  void replace(GHeroWithFragments other) {
+  void replace(GCreateCustomField other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithFragments;
+    _$v = other as _$GCreateCustomField;
   }
 
   @override
-  void update(void Function(GHeroWithFragmentsBuilder)? updates) {
+  void update(void Function(GCreateCustomFieldBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithFragments build() => _build();
+  GCreateCustomField build() => _build();
 
-  _$GHeroWithFragments _build() {
-    _$GHeroWithFragments _$result;
+  _$GCreateCustomField _build() {
+    _$GCreateCustomField _$result;
     try {
       _$result = _$v ??
-          new _$GHeroWithFragments._(
+          new _$GCreateCustomField._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHeroWithFragments', 'operation'));
+                  operation, r'GCreateCustomField', 'operation'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -168,7 +168,7 @@ class GHeroWithFragmentsBuilder
         vars.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GHeroWithFragments', _$failedField, e.toString());
+            r'GCreateCustomField', _$failedField, e.toString());
       }
       rethrow;
     }

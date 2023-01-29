@@ -29,10 +29,9 @@ class SerializerBuilder implements Builder {
   static final _generatedFiles = Glob("lib/**.gql.dart");
 
   // create a path for the serializers output in same directory as schema
-  List<String> get pathSegments =>
-      outputAssetId(schemaId, serializerExtension).pathSegments
-        ..removeLast()
-        ..add("serializers.gql.dart");
+  List<String> get pathSegments => outputAssetId(schemaId, serializerExtension).pathSegments
+    ..removeLast()
+    ..add("serializers.gql.dart");
 
   @override
   Map<String, List<String>> get buildExtensions => {
@@ -42,29 +41,32 @@ class SerializerBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
+    final allocator = PickAllocator(
+      doNotPick: ["package:built_value/serializer.dart"],
+      include: [
+        "package:built_collection/built_collection.dart",
+        ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
+      ],
+    );
+
     /// BuiltValue classes with serializers. These will be added automatically
     /// using `@SerializersFor`.
-    final builtClasses =
-        SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
+    final builtClasses = SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
 
     /// Non BuiltValue classes with serializers (i.e. inline fragment classes).
     /// These need to be added manually since `@SerializersFor` only recognizes
     /// BuiltValue classes.
-    final nonBuiltClasses =
-        SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
+    final nonBuiltClasses = SplayTreeSet<ClassElement>((a, b) => a.name.compareTo(b.name));
 
     final hasSerializer = (ClassElement c) => c.fields.any((field) =>
         field.isStatic &&
         field.name == "serializer" &&
         field.type.element?.name == "Serializer" &&
-        field.type.element?.source?.uri.toString() ==
-            "package:built_value/serializer.dart");
+        field.type.element?.source?.uri.toString() == "package:built_value/serializer.dart");
 
     final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
-        (interface.element.name == "Built" ||
-            interface.element.name == "EnumClass") &&
-        interface.element.source.uri.toString() ==
-            "package:built_value/built_value.dart");
+        (interface.element.name == "Built" || interface.element.name == "EnumClass") &&
+        interface.element.source.uri.toString() == "package:built_value/built_value.dart");
 
     await for (final input in buildStep.findAssets(_generatedFiles)) {
       final lib = await buildStep.resolver.libraryFor(input);
@@ -102,13 +104,7 @@ class SerializerBuilder implements Builder {
     );
 
     final _emitter = DartEmitter(
-      allocator: PickAllocator(
-        doNotPick: ["package:built_value/serializer.dart"],
-        include: [
-          "package:built_collection/built_collection.dart",
-          ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
-        ],
-      ),
+      allocator: allocator,
       orderDirectives: true,
       useNullSafetySyntax: true,
     );
