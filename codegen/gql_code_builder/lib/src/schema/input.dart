@@ -19,8 +19,8 @@ List<Class> buildInputClasses(
         schemaSource,
         typeOverrides,
       );
-      final serializer =
-          nullAwareJsonSerializerClass(inputClass, allocator, schemaSource, typeOverrides);
+      final serializer = nullAwareJsonSerializerClass(
+          inputClass, allocator, schemaSource, typeOverrides);
       return [inputClass, serializer];
     }).toList();
 

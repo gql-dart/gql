@@ -203,7 +203,8 @@ Method buildOptionalGetter({
       ..isNullable = true
       ..url = "package:gql_exec/value.dart"
       ..symbol = "Value"
-      ..types.add((baseGetter.returns as TypeReference).rebuild((b3) => b3..isNullable = false))));
+      ..types.add((baseGetter.returns as TypeReference)
+          .rebuild((b3) => b3..isNullable = false))));
   return optionalGetter;
 }
 
@@ -263,5 +264,6 @@ Method buildFromJsonGetter(String className) => Method(
         ..lambda = true
         ..body = refer("serializers", "#serializer")
             .property("deserializeWith")
-            .call([refer(className).property("serializer"), refer("json")]).code,
+            .call(
+                [refer(className).property("serializer"), refer("json")]).code,
     );

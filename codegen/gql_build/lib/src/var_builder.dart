@@ -30,8 +30,10 @@ class VarBuilder implements Builder {
     final doc = await readDocument(buildStep);
     final schema = await readDocument(buildStep, schemaId);
 
-    final generatedPartUrl =
-        buildStep.inputId.changeExtension(generatedFileExtension(varExtension)).uri.path;
+    final generatedPartUrl = buildStep.inputId
+        .changeExtension(generatedFileExtension(varExtension))
+        .uri
+        .path;
 
     final schemaUrl = outputAssetId(schemaId, schemaExtension).uri.toString();
     final allocator = GqlAllocator(
@@ -40,8 +42,8 @@ class VarBuilder implements Builder {
       schemaUrl,
     );
 
-    final library = buildVarLibrary(
-        doc, addTypenames(schema), basename(generatedPartUrl), typeOverrides, allocator);
+    final library = buildVarLibrary(doc, addTypenames(schema),
+        basename(generatedPartUrl), typeOverrides, allocator);
 
     return writeDocument(
       library,

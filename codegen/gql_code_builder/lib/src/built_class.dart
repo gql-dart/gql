@@ -78,10 +78,10 @@ Class builtClass({
           ),
         if (getters != null) ...getters,
         // Serialization methods
-        if(!hasCustomSerializer)
-        buildSerializerGetter(className).rebuild(
-          (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
-        ),
+        if (!hasCustomSerializer)
+          buildSerializerGetter(className).rebuild(
+            (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
+          ),
         buildToJsonGetter(
           className,
           isOverride: superclassSelections.isNotEmpty,

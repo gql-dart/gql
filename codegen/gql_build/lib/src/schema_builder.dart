@@ -15,7 +15,8 @@ class SchemaBuilder implements Builder {
   final EnumFallbackConfig enumFallbackConfig;
   final bool generatePossibleTypesMap;
 
-  SchemaBuilder(this.typeOverrides, this.enumFallbackConfig, this.generatePossibleTypesMap);
+  SchemaBuilder(this.typeOverrides, this.enumFallbackConfig,
+      this.generatePossibleTypesMap);
 
   @override
   Map<String, List<String>> get buildExtensions => {
@@ -26,10 +27,13 @@ class SchemaBuilder implements Builder {
   FutureOr<void> build(BuildStep buildStep) async {
     final doc = await readDocument(buildStep);
 
-    final generatedPartUrl =
-        buildStep.inputId.changeExtension(generatedFileExtension(schemaExtension)).uri.path;
+    final generatedPartUrl = buildStep.inputId
+        .changeExtension(generatedFileExtension(schemaExtension))
+        .uri
+        .path;
 
-    final schemaUrl = outputAssetId(buildStep.inputId, schemaExtension).uri.toString();
+    final schemaUrl =
+        outputAssetId(buildStep.inputId, schemaExtension).uri.toString();
     final allocator = GqlAllocator(
       buildStep.inputId.uri.toString(),
       outputAssetId(buildStep.inputId, schemaExtension).uri.toString(),
@@ -38,8 +42,10 @@ class SchemaBuilder implements Builder {
 
     final library = buildSchemaLibrary(
         doc, basename(generatedPartUrl), typeOverrides, enumFallbackConfig,
-        generatePossibleTypesMap: generatePossibleTypesMap, allocator: allocator);
+        generatePossibleTypesMap: generatePossibleTypesMap,
+        allocator: allocator);
 
-    return writeDocument(library, buildStep, schemaExtension, schemaUrl, allocator);
+    return writeDocument(
+        library, buildStep, schemaExtension, schemaUrl, allocator);
   }
 }

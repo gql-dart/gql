@@ -33,13 +33,15 @@ Library buildVarLibrary(
       .toList();
 
   Map<String, FragmentDefinitionNode> _fragmentMap(SourceNode source) => {
-        for (var def in source.document.definitions.whereType<FragmentDefinitionNode>())
+        for (var def
+            in source.document.definitions.whereType<FragmentDefinitionNode>())
           def.name.value: def,
         for (var import in source.imports) ..._fragmentMap(import)
       };
 
-  final fragmentVarClasses =
-      docSource.document.definitions.whereType<FragmentDefinitionNode>().map((frag) {
+  final fragmentVarClasses = docSource.document.definitions
+      .whereType<FragmentDefinitionNode>()
+      .map((frag) {
     final varTypes = fragmentVarTypes(
       fragment: frag,
       fragmentMap: _fragmentMap(docSource),
@@ -86,18 +88,19 @@ Library buildVarLibrary(
   );
 }
 
-Method nullAwareJsonSerializerField(Node op, String className) => Method((b) => b
-  ..annotations
-      .add(CodeExpression(Code("BuiltValueSerializer(custom: true, serializeNulls: true)")))
-  ..static = true
-  ..type = MethodType.getter
-  ..lambda = true
-  ..returns = TypeReference((b2) => b2
-    ..symbol = "Serializer"
-    ..url = "package:built_value/serializer.dart"
-    ..types.add(refer(className)))
-  ..name = "serializer"
-  ..body = Code("${className}Serializer()"));
+Method nullAwareJsonSerializerField(Node op, String className) =>
+    Method((b) => b
+      ..annotations.add(CodeExpression(
+          Code("BuiltValueSerializer(custom: true, serializeNulls: true)")))
+      ..static = true
+      ..type = MethodType.getter
+      ..lambda = true
+      ..returns = TypeReference((b2) => b2
+        ..symbol = "Serializer"
+        ..url = "package:built_value/serializer.dart"
+        ..types.add(refer(className)))
+      ..name = "serializer"
+      ..body = Code("${className}Serializer()"));
 
 Class nullAwareJsonSerializerClass(
   Class base,
@@ -131,7 +134,8 @@ Class nullAwareJsonSerializerClass(
           ..returns = refer("Iterable<Object?>")
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serializers"
-            ..type = refer("Serializers", "package:built_value/serializer.dart")))
+            ..type =
+                refer("Serializers", "package:built_value/serializer.dart")))
           ..requiredParameters.add(Parameter((b) => b
             ..name = "object"
             ..type = refer(base.name)))
@@ -140,13 +144,15 @@ Class nullAwareJsonSerializerClass(
             ..named = true
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
-          ..body = _serializerBody(base, allocator, schemaSource, typeOverrides)),
+          ..body =
+              _serializerBody(base, allocator, schemaSource, typeOverrides)),
         Method((b) => b
           ..name = "deserialize"
           ..returns = refer(base.name)
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serializers"
-            ..type = refer("Serializers", "package:built_value/serializer.dart")))
+            ..type =
+                refer("Serializers", "package:built_value/serializer.dart")))
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serialized"
             ..type = refer("Iterable<Object?>")))
@@ -155,20 +161,22 @@ Class nullAwareJsonSerializerClass(
             ..named = true
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
-          ..body = _deserializerBody(base, allocator, schemaSource, typeOverrides)),
+          ..body =
+              _deserializerBody(base, allocator, schemaSource, typeOverrides)),
       ]));
 
 Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
     Map<String, Reference> typeOverrides) {
   final vars = <Code>[];
 
-  for (final field
-      in base.methods.where((field) => !field.static && field.type == MethodType.getter)) {
+  for (final field in base.methods
+      .where((field) => !field.static && field.type == MethodType.getter)) {
     final isOptionalValue = isValue(field.returns!);
     final statements = <Code>[];
 
     if (isOptionalValue) {
-      final realType = (field.returns as TypeReference).types.first as TypeReference;
+      final realType =
+          (field.returns as TypeReference).types.first as TypeReference;
 
       final _valueVarName = "_\$${field.name}value";
 
@@ -221,7 +229,9 @@ String _generateFieldDeserializers(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
 ) =>
-    clazz.methods.where((field) => field.type == MethodType.getter && !field.static).map((field) {
+    clazz.methods
+        .where((field) => field.type == MethodType.getter && !field.static)
+        .map((field) {
       var type = field.returns!;
       final isWrappedValue = isValue(type);
       if (isWrappedValue) {
@@ -229,14 +239,18 @@ String _generateFieldDeserializers(
       }
       final fullType = _generateFullType(type as TypeReference, allocator);
 
-      final typeDefNode = getTypeDefinitionNode(schemaSource.document, type.symbol.substring(1));
+      final typeDefNode = getTypeDefinitionNode(
+          schemaSource.document, type.symbol.substring(1));
 
-      print(typeDefNode.runtimeType.toString() + " " + (typeDefNode?.name.value.toString() ?? ""));
+      print(typeDefNode.runtimeType.toString() +
+          " " +
+          (typeDefNode?.name.value.toString() ?? ""));
 
       //TODO this feels flaky, find a better way
       final isBuilder = type.url != null &&
           !isWrappedValue &&
-          (typeDefNode is! ScalarTypeDefinitionNode && typeDefNode is! EnumTypeDefinitionNode);
+          (typeDefNode is! ScalarTypeDefinitionNode &&
+              typeDefNode is! EnumTypeDefinitionNode);
 
       /// TODO check for wireName
 
@@ -289,9 +303,11 @@ bool isValue(Reference ref) {
 }
 
 String _getWireName(Method m) {
-  final annotation =
-      m.annotations.firstWhereOrNull((a) => a is InvokeExpression && a.name == "BuiltValueField")
-          as InvokeExpression?;
+  final annotation = m.annotations.firstWhereOrNull(
+          (a) => a is InvokeExpression && a.name == "BuiltValueField")
+      as InvokeExpression?;
   if (annotation == null) return m.name!;
-  return (annotation.namedArguments["wireName"] as LiteralExpression?)?.literal ?? m.name!;
+  return (annotation.namedArguments["wireName"] as LiteralExpression?)
+          ?.literal ??
+      m.name!;
 }

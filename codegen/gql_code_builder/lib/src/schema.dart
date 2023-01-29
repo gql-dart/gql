@@ -32,8 +32,8 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final EnumFallbackConfig enumFallbackConfig;
   final Allocator allocator;
 
-  _SchemaBuilderVisitor(
-      this.schemaSource, this.typeOverrides, this.enumFallbackConfig, this.allocator);
+  _SchemaBuilderVisitor(this.schemaSource, this.typeOverrides,
+      this.enumFallbackConfig, this.allocator);
 
   @override
   List<Spec> visitDocumentNode(
@@ -58,8 +58,8 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
       schemaSource,
       typeOverrides,
     );
-    final serializer =
-        nullAwareJsonSerializerClass(inputClass, allocator, schemaSource, typeOverrides);
+    final serializer = nullAwareJsonSerializerClass(
+        inputClass, allocator, schemaSource, typeOverrides);
     return [inputClass, serializer];
   }
 
@@ -67,7 +67,9 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   List<Spec> visitScalarTypeDefinitionNode(
     ScalarTypeDefinitionNode node,
   ) =>
-      typeOverrides.containsKey(node.name.value) ? [] : [buildScalarClass(node)];
+      typeOverrides.containsKey(node.name.value)
+          ? []
+          : [buildScalarClass(node)];
 
   @override
   List<Spec> visitEnumTypeDefinitionNode(
