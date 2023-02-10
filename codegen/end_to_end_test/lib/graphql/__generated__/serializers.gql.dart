@@ -1,6 +1,19 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
+import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.data.gql.dart'
+    show
+        GPostFragmentData,
+        GPostFragmentData_isFavorited,
+        GPostFragmentData_isLiked,
+        GPostsData,
+        GPostsData_posts,
+        GPostsData_posts_isFavorited,
+        GPostsData_posts_isLiked;
+import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.req.gql.dart'
+    show GPosts;
+import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.var.gql.dart'
+    show GPostFragmentVars, GPostsVars;
 import 'package:end_to_end_test/aliases/__generated__/aliased_hero.data.gql.dart'
     show
         GAliasedHeroData,
@@ -57,7 +70,14 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentVars,
         GhumanFieldsFragmentVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
-    show GColorInput, GEpisode, GISODate, GLengthUnit, GReviewInput;
+    show
+        GColorInput,
+        GEpisode,
+        GISODate,
+        GLengthUnit,
+        GPostFavoritesInput,
+        GPostLikesInput,
+        GReviewInput;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart'
     show
         GHeroForEpisodeData_hero,
@@ -151,6 +171,18 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHumanWithArgsVars,
   GISODate,
   GLengthUnit,
+  GPostFavoritesInput,
+  GPostFragmentData,
+  GPostFragmentData_isFavorited,
+  GPostFragmentData_isLiked,
+  GPostFragmentVars,
+  GPostLikesInput,
+  GPosts,
+  GPostsData,
+  GPostsData_posts,
+  GPostsData_posts_isFavorited,
+  GPostsData_posts_isLiked,
+  GPostsVars,
   GReviewInput,
   GReviewWithDate,
   GReviewWithDateData,
