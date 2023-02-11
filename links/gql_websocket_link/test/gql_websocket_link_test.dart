@@ -1096,7 +1096,6 @@ void main() {
         Request request;
 
         final server = await HttpServer.bind("localhost", 0);
-        addTearDown(server.close);
         final port = server.port;
 
         request = Request(
