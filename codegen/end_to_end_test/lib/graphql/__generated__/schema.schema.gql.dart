@@ -85,6 +85,48 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
       );
 }
 
+abstract class GPostLikesInput
+    implements Built<GPostLikesInput, GPostLikesInputBuilder> {
+  GPostLikesInput._();
+
+  factory GPostLikesInput([Function(GPostLikesInputBuilder b) updates]) =
+      _$GPostLikesInput;
+
+  String get id;
+  static Serializer<GPostLikesInput> get serializer =>
+      _$gPostLikesInputSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostLikesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GPostLikesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostLikesInput.serializer,
+        json,
+      );
+}
+
+abstract class GPostFavoritesInput
+    implements Built<GPostFavoritesInput, GPostFavoritesInputBuilder> {
+  GPostFavoritesInput._();
+
+  factory GPostFavoritesInput(
+      [Function(GPostFavoritesInputBuilder b) updates]) = _$GPostFavoritesInput;
+
+  String get id;
+  static Serializer<GPostFavoritesInput> get serializer =>
+      _$gPostFavoritesInputSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFavoritesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GPostFavoritesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostFavoritesInput.serializer,
+        json,
+      );
+}
+
 abstract class GISODate implements Built<GISODate, GISODateBuilder> {
   GISODate._();
 
