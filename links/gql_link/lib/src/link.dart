@@ -89,7 +89,6 @@ abstract class Link {
   Stream<Response> request(
     /// An incoming [Request]
     Request request, [
-
     /// Function that invokes the [request] function of
     ///   the next [Link]
     ///
