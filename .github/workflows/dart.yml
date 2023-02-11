@@ -33,6 +33,9 @@ jobs:
           dart pub global activate multipack
       - name: Check pubspec
         run: |
+          pwd
+          git status
+          ls -al
           multipack --only $PACKAGE pubspec clean
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
