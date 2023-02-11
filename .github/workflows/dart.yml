@@ -84,6 +84,7 @@ jobs:
       - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
         run: |
           git config --system --add safe.directory /__w/gql/ 
+          git config --system --add safe.directory /__w/gql/gql
       - name: Clone repository
         uses: actions/checkout@v3
       - name: Activate multipack
@@ -134,6 +135,7 @@ jobs:
       - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
         run: |
           git config --system --add safe.directory /__w/gql/ 
+          git config --system --add safe.directory /__w/gql/gql
       - name: Clone repository
         uses: actions/checkout@v3
       - name: Activate multipack
