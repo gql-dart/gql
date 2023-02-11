@@ -57,7 +57,8 @@ Map<NameNode, TypeNode> _varTypesForSelections({
       } else if (selection is FragmentSpreadNode) {
         final fragment = fragmentMap[selection.name.value];
         if (fragment == null) {
-          throw Exception("Missing fragment definition for ${selection.name.value}");
+          throw Exception(
+              "Missing fragment definition for ${selection.name.value}");
         }
         return {
           ...argMap,
@@ -89,14 +90,17 @@ Map<NameNode, TypeNode> _varTypesForField({
   return {
     for (final arg in field.arguments)
       if (arg.value is VariableNode)
-        arg.name: fieldDef.args.firstWhere((inputVal) => inputVal.name == arg.name).type
+        arg.name: fieldDef.args
+            .firstWhere((inputVal) => inputVal.name == arg.name)
+            .type
       else if (arg.value is ObjectValueNode)
         ..._varTypesForObjectValue(
           argName: arg.name,
           objectValue: arg.value as ObjectValueNode,
           schema: schema,
-          parentType: unwrapTypeNode(
-              fieldDef.args.firstWhere((inputVal) => inputVal.name == arg.name).type),
+          parentType: unwrapTypeNode(fieldDef.args
+              .firstWhere((inputVal) => inputVal.name == arg.name)
+              .type),
         )
   };
 }
@@ -116,15 +120,17 @@ Map<NameNode, TypeNode> _varTypesForObjectValue({
     return {
       for (final field in objectValue.fields)
         if (field.value is VariableNode)
-          (field.value as VariableNode).name:
-              parentTypeDef.fields.firstWhere((inputVal) => inputVal.name == field.name).type
+          (field.value as VariableNode).name: parentTypeDef.fields
+              .firstWhere((inputVal) => inputVal.name == field.name)
+              .type
         else if (field.value is ObjectValueNode)
           ..._varTypesForObjectValue(
             argName: field.name,
             objectValue: field.value as ObjectValueNode,
             schema: schema,
-            parentType: unwrapTypeNode(
-                parentTypeDef.fields.firstWhere((inputVal) => inputVal.name == field.name).type),
+            parentType: unwrapTypeNode(parentTypeDef.fields
+                .firstWhere((inputVal) => inputVal.name == field.name)
+                .type),
           )
     };
   }
