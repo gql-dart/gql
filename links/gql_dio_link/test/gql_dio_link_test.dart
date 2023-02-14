@@ -554,7 +554,7 @@ void main() {
             data: "Not authenticated",
             statusCode: 401,
           ),
-          type: dio.DioErrorType.response);
+          type: dio.DioErrorType.badResponse);
 
       when(
         client.post<dynamic>(
@@ -597,10 +597,10 @@ void main() {
       final dioException = exception.originalException as dio.DioError;
       expect(dioException.response!.data, "Not authenticated");
       expect(dioException.response!.statusCode, 401);
-      expect(dioException.type, dio.DioErrorType.response);
+      expect(dioException.type, dio.DioErrorType.badResponse);
 
       expect(exception.toString(),
-          "DioLinkServerException(originalException: DioError [DioErrorType.response]: , status: 401, response: Not authenticated");
+          "DioLinkServerException(originalException: DioError [bad response]: null, status: 401, response: Not authenticated");
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
