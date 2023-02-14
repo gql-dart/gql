@@ -219,7 +219,7 @@ class DioLink extends Link {
       }
 
       switch (resolvedError.type) {
-        case dio.DioErrorType.connectTimeout:
+        case dio.DioErrorType.connectionTimeout:
         case dio.DioErrorType.receiveTimeout:
         case dio.DioErrorType.sendTimeout:
           throw DioLinkTimeoutException(
@@ -232,7 +232,7 @@ class DioLink extends Link {
             originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.response:
+        case dio.DioErrorType.badResponse:
           {
             final res = resolvedError.response!;
             final parsedResponse = (res.data is Map<String, dynamic>)
@@ -245,7 +245,7 @@ class DioLink extends Link {
               originalStackTrace: stackTrace,
             );
           }
-        case dio.DioErrorType.other:
+        case dio.DioErrorType.unknown:
         default:
           throw DioLinkUnkownException(
             originalException: resolvedError,
