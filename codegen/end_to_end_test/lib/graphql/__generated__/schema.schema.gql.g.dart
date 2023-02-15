@@ -811,4 +811,85 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
   }
 }
 
+class _$GJson extends GJson {
+  @override
+  final String value;
+
+  factory _$GJson([void Function(GJsonBuilder)? updates]) =>
+      (new GJsonBuilder()..update(updates))._build();
+
+  _$GJson._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GJson', 'value');
+  }
+
+  @override
+  GJson rebuild(void Function(GJsonBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GJsonBuilder toBuilder() => new GJsonBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GJson && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GJson')..add('value', value))
+        .toString();
+  }
+}
+
+class GJsonBuilder implements Builder<GJson, GJsonBuilder> {
+  _$GJson? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GJsonBuilder();
+
+  GJsonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GJson other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GJson;
+  }
+
+  @override
+  void update(void Function(GJsonBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GJson build() => _build();
+
+  _$GJson _build() {
+    final _$result = _$v ??
+        new _$GJson._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GJson', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

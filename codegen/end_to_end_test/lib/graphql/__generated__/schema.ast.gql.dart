@@ -195,7 +195,16 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'filter'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Json'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -964,7 +973,16 @@ const Post = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        )
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'filter'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Json'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'PostLikes'),
@@ -1084,6 +1102,10 @@ const CustomField = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'CustomField'),
   directives: [],
 );
+const Json = _i1.ScalarTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Json'),
+  directives: [],
+);
 const document = _i1.DocumentNode(definitions: [
   schema,
   Gextends,
@@ -1111,4 +1133,5 @@ const document = _i1.DocumentNode(definitions: [
   Date,
   ISODate,
   CustomField,
+  Json,
 ]);
