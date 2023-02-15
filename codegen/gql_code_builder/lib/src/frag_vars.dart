@@ -133,9 +133,9 @@ Map<NameNode, TypeNode> _varTypesForObjectValue({
                 .type),
           )
     };
+  } else {
+    return {};
   }
-  throw Exception(
-      "Parent type definition '${parentTypeDef.runtimeType}' is not an ObjectTypeDefinitionNode");
 }
 
 /// Given a field from a query, fetches the field's definition from the schema
