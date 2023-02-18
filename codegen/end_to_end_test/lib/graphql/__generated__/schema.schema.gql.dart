@@ -140,6 +140,18 @@ abstract class GISODate implements Built<GISODate, GISODateBuilder> {
           (Object serialized) => GISODate((serialized as String?)));
 }
 
+abstract class GJson implements Built<GJson, GJsonBuilder> {
+  GJson._();
+
+  factory GJson([String? value]) =>
+      _$GJson((b) => value != null ? (b..value = value) : b);
+
+  String get value;
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GJson> get serializer => _i2.DefaultScalarSerializer<GJson>(
+      (Object serialized) => GJson((serialized as String?)));
+}
+
 const Map<String, Set<String>> possibleTypesMap = {
   'Character': {
     'Human',

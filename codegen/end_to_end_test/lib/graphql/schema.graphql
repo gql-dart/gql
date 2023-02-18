@@ -18,7 +18,7 @@ type Query {
   droid(id: ID!): Droid
   human(id: ID!): Human
   starship(id: ID!): Starship
-  posts(userId: ID!): [Post]
+  posts(userId: ID!, filter: Json): [Post]
 }
 
 # The mutation type, represents all updates we can make to our data
@@ -178,7 +178,7 @@ type Starship {
 type Post {
   id: ID!
   body: String!
-  favoritedUsers(where: PostLikesInput): PostLikes
+  favoritedUsers(where: PostLikesInput, filter: Json): PostLikes
   likedUsers(where: PostFavoritesInput): PostFavorites
 }
 
@@ -203,3 +203,5 @@ union SearchResult = Human | Droid | Starship
 scalar Date
 scalar ISODate
 scalar CustomField
+
+scalar Json
