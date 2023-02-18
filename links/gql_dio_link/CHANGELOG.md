@@ -1,3 +1,7 @@
+## 0.3.0
+
+* migrate to dio 5.0.0
+
 ## 0.2.5
 
 * add statusCode to DioLinkServerException

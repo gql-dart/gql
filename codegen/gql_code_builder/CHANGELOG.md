@@ -1,3 +1,8 @@
+## 0.7.1
+
+- experimental support for when/maybeWhen methods in inline spread fragments with type condition
+- fix issue with generating fragment classes with variables, see https://github.com/gql-dart/ferry/issues/484
+
 ## 0.7.0
 
 - **Breaking Change**: properly generate nullable types for nullable elements in lists
