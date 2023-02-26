@@ -1,16 +1,10 @@
-
-
-
 import "package:gql/ast.dart";
 import "package:gql/language.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:test/test.dart";
 
 void main() {
-
-
-  group("getOperationType", ()
-  {
+  group("getOperationType", () {
     test("returns the operation type for query", () {
       final query = parseString("""
         query MyQuery {
@@ -18,11 +12,11 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MyQuery").getOperationType();
+      final type = Operation(document: query, operationName: "MyQuery")
+          .getOperationType();
 
       expect(type, OperationType.query);
     });
-
 
     test("returns the operation type for mutation", () {
       final query = parseString("""
@@ -31,7 +25,8 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MyMutation").getOperationType();
+      final type = Operation(document: query, operationName: "MyMutation")
+          .getOperationType();
 
       expect(type, OperationType.mutation);
     });
@@ -43,11 +38,11 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MySubscription").getOperationType();
+      final type = Operation(document: query, operationName: "MySubscription")
+          .getOperationType();
 
       expect(type, OperationType.subscription);
     });
-
 
     test("return type of not name is passed to operation", () {
       final query = parseString("""
@@ -72,7 +67,8 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MyMutation").getOperationType();
+      final type = Operation(document: query, operationName: "MyMutation")
+          .getOperationType();
 
       expect(type, OperationType.mutation);
     });
@@ -88,7 +84,8 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MyOperation").getOperationType();
+      final type = Operation(document: query, operationName: "MyOperation")
+          .getOperationType();
 
       expect(type, null);
     });
@@ -100,12 +97,10 @@ void main() {
         }
       """);
 
-      final type = Operation(document: query, operationName: "MyFragment").getOperationType();
+      final type = Operation(document: query, operationName: "MyFragment")
+          .getOperationType();
 
       expect(type, null);
     });
-
-
   });
-
 }

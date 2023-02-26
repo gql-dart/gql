@@ -7,7 +7,10 @@ extension OperationTypeExtension on Operation {
   OperationType? getOperationType() {
     final visitor = _OperationTypeVisitor(operationName);
 
-    final type = document.definitions.map((d) => d.accept(visitor)).whereNotNull().firstOrNull;
+    final type = document.definitions
+        .map((d) => d.accept(visitor))
+        .whereNotNull()
+        .firstOrNull;
 
     return type;
   }
@@ -15,7 +18,6 @@ extension OperationTypeExtension on Operation {
 
 /// use visitor to avoid expensive type checks
 class _OperationTypeVisitor extends Visitor<OperationType?> {
-
   final String? operationName;
 
   _OperationTypeVisitor(this.operationName);
@@ -30,7 +32,8 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitDefaultValueNode(DefaultValueNode node) => null;
 
   @override
-  OperationType? visitDirectiveDefinitionNode(DirectiveDefinitionNode node) => null;
+  OperationType? visitDirectiveDefinitionNode(DirectiveDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitDirectiveNode(DirectiveNode node) => null;
@@ -39,13 +42,15 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitDocumentNode(DocumentNode node) => null;
 
   @override
-  OperationType? visitEnumTypeDefinitionNode(EnumTypeDefinitionNode node) => null;
+  OperationType? visitEnumTypeDefinitionNode(EnumTypeDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitEnumTypeExtensionNode(EnumTypeExtensionNode node) => null;
 
   @override
-  OperationType? visitEnumValueDefinitionNode(EnumValueDefinitionNode node) => null;
+  OperationType? visitEnumValueDefinitionNode(EnumValueDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitEnumValueNode(EnumValueNode node) => null;
@@ -60,7 +65,8 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitFloatValueNode(FloatValueNode node) => null;
 
   @override
-  OperationType? visitFragmentDefinitionNode(FragmentDefinitionNode node) => null;
+  OperationType? visitFragmentDefinitionNode(FragmentDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitFragmentSpreadNode(FragmentSpreadNode node) => null;
@@ -69,22 +75,31 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitInlineFragmentNode(InlineFragmentNode node) => null;
 
   @override
-  OperationType? visitInputObjectTypeDefinitionNode(InputObjectTypeDefinitionNode node) => null;
+  OperationType? visitInputObjectTypeDefinitionNode(
+          InputObjectTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitInputObjectTypeExtensionNode(InputObjectTypeExtensionNode node) => null;
+  OperationType? visitInputObjectTypeExtensionNode(
+          InputObjectTypeExtensionNode node) =>
+      null;
 
   @override
-  OperationType? visitInputValueDefinitionNode(InputValueDefinitionNode node) => null;
+  OperationType? visitInputValueDefinitionNode(InputValueDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitIntValueNode(IntValueNode node) => null;
 
   @override
-  OperationType? visitInterfaceTypeDefinitionNode(InterfaceTypeDefinitionNode node) => null;
+  OperationType? visitInterfaceTypeDefinitionNode(
+          InterfaceTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitInterfaceTypeExtensionNode(InterfaceTypeExtensionNode node) => null;
+  OperationType? visitInterfaceTypeExtensionNode(
+          InterfaceTypeExtensionNode node) =>
+      null;
 
   @override
   OperationType? visitListTypeNode(ListTypeNode node) => null;
@@ -105,25 +120,34 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitObjectFieldNode(ObjectFieldNode node) => null;
 
   @override
-  OperationType? visitObjectTypeDefinitionNode(ObjectTypeDefinitionNode node) => null;
+  OperationType? visitObjectTypeDefinitionNode(ObjectTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitObjectTypeExtensionNode(ObjectTypeExtensionNode node) => null;
+  OperationType? visitObjectTypeExtensionNode(ObjectTypeExtensionNode node) =>
+      null;
 
   @override
   OperationType? visitObjectValueNode(ObjectValueNode node) => null;
 
   @override
-  OperationType? visitOperationDefinitionNode(OperationDefinitionNode node) => operationName == null || node.name?.value == operationName ? node.type : null;
+  OperationType? visitOperationDefinitionNode(OperationDefinitionNode node) =>
+      operationName == null || node.name?.value == operationName
+          ? node.type
+          : null;
 
   @override
-  OperationType? visitOperationTypeDefinitionNode(OperationTypeDefinitionNode node) => null;
+  OperationType? visitOperationTypeDefinitionNode(
+          OperationTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitScalarTypeDefinitionNode(ScalarTypeDefinitionNode node) => null;
+  OperationType? visitScalarTypeDefinitionNode(ScalarTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitScalarTypeExtensionNode(ScalarTypeExtensionNode node) => null;
+  OperationType? visitScalarTypeExtensionNode(ScalarTypeExtensionNode node) =>
+      null;
 
   @override
   OperationType? visitSchemaDefinitionNode(SchemaDefinitionNode node) => null;
@@ -141,13 +165,16 @@ class _OperationTypeVisitor extends Visitor<OperationType?> {
   OperationType? visitTypeConditionNode(TypeConditionNode node) => null;
 
   @override
-  OperationType? visitUnionTypeDefinitionNode(UnionTypeDefinitionNode node) => null;
+  OperationType? visitUnionTypeDefinitionNode(UnionTypeDefinitionNode node) =>
+      null;
 
   @override
-  OperationType? visitUnionTypeExtensionNode(UnionTypeExtensionNode node) => null;
+  OperationType? visitUnionTypeExtensionNode(UnionTypeExtensionNode node) =>
+      null;
 
   @override
-  OperationType? visitVariableDefinitionNode(VariableDefinitionNode node) => null;
+  OperationType? visitVariableDefinitionNode(VariableDefinitionNode node) =>
+      null;
 
   @override
   OperationType? visitVariableNode(VariableNode node) => null;
