@@ -274,6 +274,10 @@ class WebSocketLink extends Link {
           _close();
         }
       }, onError: (Object error) {
+        if(autoReconnect && error is WebSocketChannelException) {
+          _connectionErrorController.add(ConnectionError(error));
+          return;
+        }
         _messagesController.addError(error);
       });
 
