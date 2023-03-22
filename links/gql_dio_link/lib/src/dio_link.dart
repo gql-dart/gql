@@ -30,6 +30,7 @@ extension _CastDioResponse on dio.Response {
 class DioLink extends Link {
   /// Endpoint of the GraphQL service
   final String endpoint;
+  final dio.CancelToken? cancelToken;
 
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
@@ -54,15 +55,14 @@ class DioLink extends Link {
   /// other potentially non-serializable fields like callbacks or the cancel token.
   final bool serializableErrors;
 
-  DioLink(
-    this.endpoint, {
-    required this.client,
-    this.defaultHeaders = const {},
-    this.serializer = const RequestSerializer(),
-    this.parser = const ResponseParser(),
-    this.useGETForQueries = false,
-    this.serializableErrors = false,
-  });
+  DioLink(this.endpoint,
+      {required this.client,
+      this.defaultHeaders = const {},
+      this.serializer = const RequestSerializer(),
+      this.parser = const ResponseParser(),
+      this.useGETForQueries = false,
+      this.serializableErrors = false,
+      this.cancelToken});
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
@@ -178,27 +178,55 @@ class DioLink extends Link {
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
-        res = await client.getUri<dynamic>(
-          Uri.parse(endpoint).replace(
-            queryParameters: _encodeAttempter(
-              request,
-              _encodeAsUriParams,
-            )(body as Map<String, dynamic>),
-          ),
-          options: dio.Options(
-            responseType: dio.ResponseType.json,
-            headers: headers,
-          ),
-        );
+        if (cancelToken != null) {
+          res = await client.getUri<dynamic>(
+            Uri.parse(endpoint).replace(
+              queryParameters: _encodeAttempter(
+                request,
+                _encodeAsUriParams,
+              )(body as Map<String, dynamic>),
+            ),
+            cancelToken: cancelToken,
+            options: dio.Options(
+              responseType: dio.ResponseType.json,
+              headers: headers,
+            ),
+          );
+        } else {
+          res = await client.getUri<dynamic>(
+            Uri.parse(endpoint).replace(
+              queryParameters: _encodeAttempter(
+                request,
+                _encodeAsUriParams,
+              )(body as Map<String, dynamic>),
+            ),
+            options: dio.Options(
+              responseType: dio.ResponseType.json,
+              headers: headers,
+            ),
+          );
+        }
       } else {
-        res = await client.post<dynamic>(
-          endpoint,
-          data: body,
-          options: dio.Options(
-            responseType: dio.ResponseType.json,
-            headers: headers,
-          ),
-        );
+        if (cancelToken != null) {
+          res = await client.post<dynamic>(
+            endpoint,
+            cancelToken: cancelToken,
+            data: body,
+            options: dio.Options(
+              responseType: dio.ResponseType.json,
+              headers: headers,
+            ),
+          );
+        } else {
+          res = await client.post<dynamic>(
+            endpoint,
+            data: body,
+            options: dio.Options(
+              responseType: dio.ResponseType.json,
+              headers: headers,
+            ),
+          );
+        }
       }
       if (res.data is Map<String, dynamic> == false) {
         throw DioLinkParserException(
