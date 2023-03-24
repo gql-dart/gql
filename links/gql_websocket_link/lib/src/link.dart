@@ -417,6 +417,7 @@ class WebSocketLink extends Link {
     await _channel?.sink.close(websocket_status.normalClosure);
     _connectionStateController.add(ConnectionState.closed);
     await _connectionStateController.close();
+    await _connectionErrorController.close();
     await _messagesController.close();
     _disposedCompleter!.complete();
   }
