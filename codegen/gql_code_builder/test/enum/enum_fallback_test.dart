@@ -1,4 +1,3 @@
-// @dart=2.9
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/schema.dart";
@@ -43,7 +42,7 @@ void main() {
 
     expect(enumAnnotation, isNotNull);
 
-    expect(enumAnnotation.namedArguments["fallback"], literalTrue);
+    expect(enumAnnotation!.namedArguments["fallback"], literalTrue);
 
     for (final otherField
         in clazz.fields.where((field) => field != fallbackvalue)) {
@@ -68,7 +67,7 @@ void main() {
 
     expect(enumAnnotation, isNotNull);
 
-    expect(enumAnnotation.namedArguments["fallback"], literalTrue);
+    expect(enumAnnotation!.namedArguments["fallback"], literalTrue);
 
     for (final otherField
         in clazz.fields.where((field) => field != fallbackvalue)) {
@@ -94,7 +93,7 @@ void main() {
 
     expect(enumAnnotation, isNotNull);
 
-    expect(enumAnnotation.namedArguments["fallback"], literalTrue);
+    expect(enumAnnotation!.namedArguments["fallback"], literalTrue);
 
     for (final otherField
         in clazz.fields.where((field) => field != fallbackvalue)) {
@@ -120,7 +119,7 @@ void main() {
 
     expect(enumAnnotation, isNotNull);
 
-    expect(enumAnnotation.namedArguments["fallback"], literalTrue);
+    expect(enumAnnotation!.namedArguments["fallback"], literalTrue);
 
     for (final otherField
         in clazz.fields.where((field) => field != fallbackvalue)) {
@@ -150,7 +149,7 @@ void main() {
 
     expect(enumAnnotation, isNotNull);
 
-    expect(enumAnnotation.namedArguments["fallback"], literalTrue);
+    expect(enumAnnotation!.namedArguments["fallback"], literalTrue);
 
     for (final otherField
         in clazz.fields.where((field) => field != fallbackvalue)) {
@@ -162,10 +161,10 @@ void main() {
   });
 }
 
-InvokeExpression getBuiltValueEnumConstAnnotation(Field field) =>
-    field.annotations.whereType<InvokeExpression>().singleWhere(
+InvokeExpression? getBuiltValueEnumConstAnnotation(Field field) =>
+    field.annotations.whereType<InvokeExpression?>().singleWhere(
           (annotation) =>
-              (annotation.target is Reference) &&
-              (annotation.target as Reference).symbol == "BuiltValueEnumConst",
+              (annotation?.target is Reference) &&
+              (annotation?.target as Reference).symbol == "BuiltValueEnumConst",
           orElse: () => null,
         );

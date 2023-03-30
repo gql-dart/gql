@@ -154,7 +154,8 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
         ..add('nodes')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(GReadRepositoriesData_viewer_repositories_nodes)
+              const FullType.nullable(
+                  GReadRepositoriesData_viewer_repositories_nodes)
             ])));
     }
     return result;
@@ -179,7 +180,8 @@ class _$GReadRepositoriesData_viewer_repositoriesSerializer
         case 'nodes':
           result.nodes.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GReadRepositoriesData_viewer_repositories_nodes)
+                const FullType.nullable(
+                    GReadRepositoriesData_viewer_repositories_nodes)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -502,7 +504,7 @@ class _$GReadRepositoriesData_viewer_repositories
   @override
   final String G__typename;
   @override
-  final BuiltList<GReadRepositoriesData_viewer_repositories_nodes>? nodes;
+  final BuiltList<GReadRepositoriesData_viewer_repositories_nodes?>? nodes;
 
   factory _$GReadRepositoriesData_viewer_repositories(
           [void Function(GReadRepositoriesData_viewer_repositoriesBuilder)?
@@ -560,12 +562,12 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>? _nodes;
-  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes> get nodes =>
+  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes?>? _nodes;
+  ListBuilder<GReadRepositoriesData_viewer_repositories_nodes?> get nodes =>
       _$this._nodes ??=
-          new ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>();
+          new ListBuilder<GReadRepositoriesData_viewer_repositories_nodes?>();
   set nodes(
-          ListBuilder<GReadRepositoriesData_viewer_repositories_nodes>?
+          ListBuilder<GReadRepositoriesData_viewer_repositories_nodes?>?
               nodes) =>
       _$this._nodes = nodes;
 

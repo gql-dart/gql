@@ -34,9 +34,13 @@ abstract class GDimensionsData
   static Serializer<GDimensionsData> get serializer =>
       _$gDimensionsDataSerializer;
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GDimensionsData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GDimensionsData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GDimensionsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GDimensionsData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GDimensionsData.serializer,
+        json,
+      );
 }

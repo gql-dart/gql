@@ -23,11 +23,15 @@ abstract class GHumanWithArgsData
   GHumanWithArgsData_human? get human;
   static Serializer<GHumanWithArgsData> get serializer =>
       _$gHumanWithArgsDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHumanWithArgsData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHumanWithArgsData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GHumanWithArgsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHumanWithArgsData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHumanWithArgsData.serializer,
+        json,
+      );
 }
 
 abstract class GHumanWithArgsData_human
@@ -47,10 +51,13 @@ abstract class GHumanWithArgsData_human
   double? get height;
   static Serializer<GHumanWithArgsData_human> get serializer =>
       _$gHumanWithArgsDataHumanSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHumanWithArgsData_human.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHumanWithArgsData_human.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GHumanWithArgsData_human? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GHumanWithArgsData_human.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHumanWithArgsData_human.serializer,
+        json,
+      );
 }

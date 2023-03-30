@@ -111,12 +111,12 @@ class _$GHeroWithFragmentsData_heroSerializer
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'friendsConnection',
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GHeroWithFragmentsData_hero_friendsConnection)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -142,15 +142,15 @@ class _$GHeroWithFragmentsData_heroSerializer
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'friendsConnection':
           result.friendsConnection.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       GHeroWithFragmentsData_hero_friendsConnection))!
               as GHeroWithFragmentsData_hero_friendsConnection);
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -192,7 +192,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
         ..add('edges')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(
+              const FullType.nullable(
                   GHeroWithFragmentsData_hero_friendsConnection_edges)
             ])));
     }
@@ -222,7 +222,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
         case 'edges':
           result.edges.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(
+                const FullType.nullable(
                     GHeroWithFragmentsData_hero_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
@@ -499,7 +499,8 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
         ..add('edges')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(GcomparisonFieldsData_friendsConnection_edges)
+              const FullType.nullable(
+                  GcomparisonFieldsData_friendsConnection_edges)
             ])));
     }
     return result;
@@ -528,7 +529,8 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
         case 'edges':
           result.edges.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GcomparisonFieldsData_friendsConnection_edges)
+                const FullType.nullable(
+                    GcomparisonFieldsData_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -689,7 +691,11 @@ class _$GHeroWithFragmentsData extends GHeroWithFragmentsData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), hero.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, hero.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -772,9 +778,9 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   @override
   final String id;
   @override
-  final String name;
-  @override
   final GHeroWithFragmentsData_hero_friendsConnection friendsConnection;
+  @override
+  final String name;
 
   factory _$GHeroWithFragmentsData_hero(
           [void Function(GHeroWithFragmentsData_heroBuilder)? updates]) =>
@@ -783,17 +789,17 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   _$GHeroWithFragmentsData_hero._(
       {required this.G__typename,
       required this.id,
-      required this.name,
-      required this.friendsConnection})
+      required this.friendsConnection,
+      required this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GHeroWithFragmentsData_hero', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GHeroWithFragmentsData_hero', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroWithFragmentsData_hero', 'name');
-    BuiltValueNullFieldError.checkNotNull(
         friendsConnection, r'GHeroWithFragmentsData_hero', 'friendsConnection');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GHeroWithFragmentsData_hero', 'name');
   }
 
   @override
@@ -811,15 +817,19 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
     return other is GHeroWithFragmentsData_hero &&
         G__typename == other.G__typename &&
         id == other.id &&
-        name == other.name &&
-        friendsConnection == other.friendsConnection;
+        friendsConnection == other.friendsConnection &&
+        name == other.name;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-        friendsConnection.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, friendsConnection.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -827,8 +837,8 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
     return (newBuiltValueToStringHelper(r'GHeroWithFragmentsData_hero')
           ..add('G__typename', G__typename)
           ..add('id', id)
-          ..add('name', name)
-          ..add('friendsConnection', friendsConnection))
+          ..add('friendsConnection', friendsConnection)
+          ..add('name', name))
         .toString();
   }
 }
@@ -847,10 +857,6 @@ class GHeroWithFragmentsData_heroBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   GHeroWithFragmentsData_hero_friendsConnectionBuilder? _friendsConnection;
   GHeroWithFragmentsData_hero_friendsConnectionBuilder get friendsConnection =>
       _$this._friendsConnection ??=
@@ -859,6 +865,10 @@ class GHeroWithFragmentsData_heroBuilder
           GHeroWithFragmentsData_hero_friendsConnectionBuilder?
               friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GHeroWithFragmentsData_heroBuilder() {
     GHeroWithFragmentsData_hero._initializeBuilder(this);
@@ -869,8 +879,8 @@ class GHeroWithFragmentsData_heroBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _id = $v.id;
-      _name = $v.name;
       _friendsConnection = $v.friendsConnection.toBuilder();
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -899,9 +909,9 @@ class GHeroWithFragmentsData_heroBuilder
                   G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GHeroWithFragmentsData_hero', 'id'),
+              friendsConnection: friendsConnection.build(),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GHeroWithFragmentsData_hero', 'name'),
-              friendsConnection: friendsConnection.build());
+                  name, r'GHeroWithFragmentsData_hero', 'name'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -925,7 +935,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
   @override
   final int? totalCount;
   @override
-  final BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges>? edges;
+  final BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? edges;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection(
           [void Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder)?
@@ -962,8 +972,12 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, G__typename.hashCode), totalCount.hashCode),
-        edges.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, totalCount.hashCode);
+    _$hash = $jc(_$hash, edges.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -991,13 +1005,13 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
   int? get totalCount => _$this._totalCount;
   set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
-  ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>? _edges;
+  ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>? _edges;
   ListBuilder<
-      GHeroWithFragmentsData_hero_friendsConnection_edges> get edges => _$this
+      GHeroWithFragmentsData_hero_friendsConnection_edges?> get edges => _$this
           ._edges ??=
-      new ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>();
+      new ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>();
   set edges(
-          ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges>?
+          ListBuilder<GHeroWithFragmentsData_hero_friendsConnection_edges?>?
               edges) =>
       _$this._edges = edges;
 
@@ -1105,7 +1119,11 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), node.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, node.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1244,7 +1262,11 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1352,7 +1374,11 @@ class _$GheroDataData extends GheroDataData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1466,9 +1492,13 @@ class _$GcomparisonFieldsData extends GcomparisonFieldsData {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-        friendsConnection.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, friendsConnection.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1571,7 +1601,7 @@ class _$GcomparisonFieldsData_friendsConnection
   @override
   final int? totalCount;
   @override
-  final BuiltList<GcomparisonFieldsData_friendsConnection_edges>? edges;
+  final BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? edges;
 
   factory _$GcomparisonFieldsData_friendsConnection(
           [void Function(GcomparisonFieldsData_friendsConnectionBuilder)?
@@ -1607,8 +1637,12 @@ class _$GcomparisonFieldsData_friendsConnection
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, G__typename.hashCode), totalCount.hashCode),
-        edges.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, totalCount.hashCode);
+    _$hash = $jc(_$hash, edges.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1636,12 +1670,12 @@ class GcomparisonFieldsData_friendsConnectionBuilder
   int? get totalCount => _$this._totalCount;
   set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
-  ListBuilder<GcomparisonFieldsData_friendsConnection_edges>? _edges;
-  ListBuilder<GcomparisonFieldsData_friendsConnection_edges> get edges =>
+  ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>? _edges;
+  ListBuilder<GcomparisonFieldsData_friendsConnection_edges?> get edges =>
       _$this._edges ??=
-          new ListBuilder<GcomparisonFieldsData_friendsConnection_edges>();
+          new ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>();
   set edges(
-          ListBuilder<GcomparisonFieldsData_friendsConnection_edges>? edges) =>
+          ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>? edges) =>
       _$this._edges = edges;
 
   GcomparisonFieldsData_friendsConnectionBuilder() {
@@ -1742,7 +1776,11 @@ class _$GcomparisonFieldsData_friendsConnection_edges
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), node.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, node.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1876,7 +1914,11 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1947,4 +1989,4 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

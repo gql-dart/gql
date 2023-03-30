@@ -41,6 +41,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GListPokemon,
   GListPokemonData,
   GListPokemonData_pokemons,
-  GListPokemonVars
+  GListPokemonVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

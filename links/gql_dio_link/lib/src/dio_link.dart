@@ -3,44 +3,12 @@ import "dart:convert";
 import "package:dio/dio.dart" as dio;
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
-import "package:meta/meta.dart";
 
 import "_utils.dart";
 import "exceptions.dart";
 
-/// HTTP link headers
-@immutable
-class HttpLinkHeaders extends ContextEntry {
-  /// Headers to be added to the request.
-  ///
-  /// May overrides Apollo Client awareness headers.
-  final Map<String, String> headers;
-
-  const HttpLinkHeaders({
-    this.headers = const {},
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        headers,
-      ];
-}
-
-/// Dio link Response Context
-@immutable
-class DioLinkResponseContext extends ContextEntry {
-  /// Dio status code of the response
-  final int statusCode;
-
-  const DioLinkResponseContext({
-    required this.statusCode,
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        statusCode,
-      ];
-}
+@Deprecated("Use HttpLinkResponseContext instead")
+typedef DioLinkResponseContext = HttpLinkResponseContext;
 
 extension _CastDioResponse on dio.Response {
   dio.Response<T> castData<T>() => dio.Response<T>(
@@ -75,8 +43,16 @@ class DioLink extends Link {
   /// Dio client instance.
   final dio.Dio client;
 
-  /// Wether to use a GET request for queries.
+  /// Whether to use a GET request for queries.
   final bool useGETForQueries;
+
+  /// Whether errors should be serializable.
+  /// Must be set to `true` when the errors should be able to be sent
+  /// across isolate boundaries.
+  /// In particular, setting this to true causes the [FormData] of
+  /// [dio.RequestOptions] of [dio.DioError] to be stripped out from thrown Exceptions, along with
+  /// other potentially non-serializable fields like callbacks or the cancel token.
+  final bool serializableErrors;
 
   DioLink(
     this.endpoint, {
@@ -85,6 +61,7 @@ class DioLink extends Link {
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.useGETForQueries = false,
+    this.serializableErrors = false,
   });
 
   @override
@@ -107,6 +84,7 @@ class DioLink extends Link {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
+        statusCode: dioResponse.statusCode,
       );
     }
 
@@ -175,8 +153,9 @@ class DioLink extends Link {
   ) {
     try {
       return response.context.withEntry(
-        DioLinkResponseContext(
+        HttpLinkResponseContext(
           statusCode: httpResponse.statusCode!,
+          rawHeaders: httpResponse.headers.map,
         ),
       );
     } catch (e, stackTrace) {
@@ -232,37 +211,44 @@ class DioLink extends Link {
       }
       return res.castData<Map<String, dynamic>>();
     } on dio.DioError catch (e, stackTrace) {
-      switch (e.type) {
-        case dio.DioErrorType.connectTimeout:
+      final dio.DioError resolvedError;
+      if (serializableErrors) {
+        resolvedError = _serializableDioError(e);
+      } else {
+        resolvedError = e;
+      }
+
+      switch (resolvedError.type) {
+        case dio.DioErrorType.connectionTimeout:
         case dio.DioErrorType.receiveTimeout:
         case dio.DioErrorType.sendTimeout:
           throw DioLinkTimeoutException(
-            type: e.type,
-            originalException: e,
+            type: resolvedError.type,
+            originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
         case dio.DioErrorType.cancel:
           throw DioLinkCanceledException(
-            originalException: e,
+            originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.response:
+        case dio.DioErrorType.badResponse:
           {
-            final res = e.response!;
+            final res = resolvedError.response!;
             final parsedResponse = (res.data is Map<String, dynamic>)
                 ? parser.parseResponse(res.data as Map<String, dynamic>)
                 : null;
             throw DioLinkServerException(
               response: res,
               parsedResponse: parsedResponse,
-              originalException: e,
+              originalException: resolvedError,
               originalStackTrace: stackTrace,
             );
           }
-        case dio.DioErrorType.other:
+        case dio.DioErrorType.unknown:
         default:
           throw DioLinkUnkownException(
-            originalException: e,
+            originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
       }
@@ -274,6 +260,38 @@ class DioLink extends Link {
       );
     }
   }
+
+  dio.DioError _serializableDioError(dio.DioError e) => dio.DioError(
+        type: e.type,
+        error: e.error,
+        response: e.response,
+        requestOptions: dio.RequestOptions(
+          data: e.requestOptions.data is Map<String, dynamic> ||
+                  e.requestOptions is String
+              ? e.requestOptions.data
+              : null, // could be FormData, which is not serializable
+          onSendProgress: null,
+          onReceiveProgress: null,
+          cancelToken: null,
+          responseDecoder: null,
+          requestEncoder: null,
+          validateStatus: null,
+          path: e.requestOptions.path,
+          method: e.requestOptions.method,
+          baseUrl: e.requestOptions.baseUrl,
+          headers: e.requestOptions.headers,
+          queryParameters: e.requestOptions.queryParameters,
+          extra: e.requestOptions.extra,
+          maxRedirects: e.requestOptions.maxRedirects,
+          followRedirects: e.requestOptions.followRedirects,
+          connectTimeout: e.requestOptions.connectTimeout,
+          contentType: e.requestOptions.contentType,
+          receiveTimeout: e.requestOptions.receiveTimeout,
+          receiveDataWhenStatusError:
+              e.requestOptions.receiveDataWhenStatusError,
+          sendTimeout: e.requestOptions.sendTimeout,
+        ),
+      );
 
   Response _parseDioResponse(dio.Response<Map<String, dynamic>> dioResponse) {
     try {

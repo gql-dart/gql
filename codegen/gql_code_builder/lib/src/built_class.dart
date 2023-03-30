@@ -10,6 +10,7 @@ Class builtClass({
   Iterable<Method>? getters,
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
+  List<Method> methods = const [],
 }) {
   final className = builtClassName(name);
   return Class(
@@ -84,6 +85,7 @@ Class builtClass({
           isOverride: superclassSelections.isNotEmpty,
         ),
         buildFromJsonGetter(className),
+        ...methods
       ]),
   );
 }

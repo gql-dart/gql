@@ -23,14 +23,18 @@ abstract class GAllPokemonData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GAllPokemonData_pokemons>? get pokemons;
+  BuiltList<GAllPokemonData_pokemons?>? get pokemons;
   static Serializer<GAllPokemonData> get serializer =>
       _$gAllPokemonDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAllPokemonData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAllPokemonData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAllPokemonData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAllPokemonData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAllPokemonData.serializer,
+        json,
+      );
 }
 
 abstract class GAllPokemonData_pokemons
@@ -49,20 +53,23 @@ abstract class GAllPokemonData_pokemons
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
-  String get id;
-  @override
-  String? get name;
-  @override
   int? get maxHP;
   @override
   String? get image;
+  @override
+  String get id;
+  @override
+  String? get name;
   static Serializer<GAllPokemonData_pokemons> get serializer =>
       _$gAllPokemonDataPokemonsSerializer;
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAllPokemonData_pokemons.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAllPokemonData_pokemons.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GAllPokemonData_pokemons? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GAllPokemonData_pokemons.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAllPokemonData_pokemons.serializer,
+        json,
+      );
 }

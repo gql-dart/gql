@@ -94,13 +94,6 @@ class _$GPokemonDetailData_pokemonSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.maxHP;
     if (value != null) {
       result
@@ -111,6 +104,13 @@ class _$GPokemonDetailData_pokemonSerializer
     if (value != null) {
       result
         ..add('image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -147,20 +147,20 @@ class _$GPokemonDetailData_pokemonSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'maxHP':
           result.maxHP = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'weight':
@@ -435,13 +435,13 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   @override
   final String G__typename;
   @override
-  final String id;
-  @override
-  final String? name;
-  @override
   final int? maxHP;
   @override
   final String? image;
+  @override
+  final String id;
+  @override
+  final String? name;
   @override
   final GPokemonDetailData_pokemon_weight? weight;
   @override
@@ -453,10 +453,10 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
 
   _$GPokemonDetailData_pokemon._(
       {required this.G__typename,
-      required this.id,
-      this.name,
       this.maxHP,
       this.image,
+      required this.id,
+      this.name,
       this.weight,
       this.height})
       : super._() {
@@ -480,10 +480,10 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
     if (identical(other, this)) return true;
     return other is GPokemonDetailData_pokemon &&
         G__typename == other.G__typename &&
-        id == other.id &&
-        name == other.name &&
         maxHP == other.maxHP &&
         image == other.image &&
+        id == other.id &&
+        name == other.name &&
         weight == other.weight &&
         height == other.height;
   }
@@ -494,10 +494,10 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
-                        name.hashCode),
-                    maxHP.hashCode),
-                image.hashCode),
+                    $jc($jc($jc(0, G__typename.hashCode), maxHP.hashCode),
+                        image.hashCode),
+                    id.hashCode),
+                name.hashCode),
             weight.hashCode),
         height.hashCode));
   }
@@ -506,10 +506,10 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   String toString() {
     return (newBuiltValueToStringHelper(r'GPokemonDetailData_pokemon')
           ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('name', name)
           ..add('maxHP', maxHP)
           ..add('image', image)
+          ..add('id', id)
+          ..add('name', name)
           ..add('weight', weight)
           ..add('height', height))
         .toString();
@@ -525,14 +525,6 @@ class GPokemonDetailData_pokemonBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   int? _maxHP;
   int? get maxHP => _$this._maxHP;
   set maxHP(int? maxHP) => _$this._maxHP = maxHP;
@@ -540,6 +532,14 @@ class GPokemonDetailData_pokemonBuilder
   String? _image;
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GPokemonDetailData_pokemon_weightBuilder? _weight;
   GPokemonDetailData_pokemon_weightBuilder get weight =>
@@ -561,10 +561,10 @@ class GPokemonDetailData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _id = $v.id;
-      _name = $v.name;
       _maxHP = $v.maxHP;
       _image = $v.image;
+      _id = $v.id;
+      _name = $v.name;
       _weight = $v.weight?.toBuilder();
       _height = $v.height?.toBuilder();
       _$v = null;
@@ -593,11 +593,11 @@ class GPokemonDetailData_pokemonBuilder
           new _$GPokemonDetailData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GPokemonDetailData_pokemon', 'G__typename'),
+              maxHP: maxHP,
+              image: image,
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GPokemonDetailData_pokemon', 'id'),
               name: name,
-              maxHP: maxHP,
-              image: image,
               weight: _weight?.build(),
               height: _height?.build());
     } catch (_) {

@@ -598,6 +598,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUserBlockDuration,
   GUserStatusOrder,
   GUserStatusOrderField,
-  GX509Certificate
+  GX509Certificate,
 ])
 final Serializers serializers = _serializersBuilder.build();

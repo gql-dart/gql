@@ -4,52 +4,12 @@ import "dart:convert";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 import "package:http/http.dart" as http;
-import "package:meta/meta.dart";
 
 import "./_utils.dart";
 import "./exceptions.dart";
 
 typedef HttpResponseDecoder = FutureOr<Map<String, dynamic>?> Function(
     http.Response httpResponse);
-
-/// HTTP link headers
-@immutable
-class HttpLinkHeaders extends ContextEntry {
-  /// Headers to be added to the request.
-  ///
-  /// May overrides Apollo Client awareness headers.
-  final Map<String, String> headers;
-
-  const HttpLinkHeaders({
-    this.headers = const {},
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        headers,
-      ];
-}
-
-/// HTTP link Response Context
-@immutable
-class HttpLinkResponseContext extends ContextEntry {
-  /// HTTP status code of the response
-  final int statusCode;
-
-  /// HTTP response headers
-  final Map<String, String> headers;
-
-  const HttpLinkResponseContext({
-    required this.statusCode,
-    required this.headers,
-  });
-
-  @override
-  List<Object> get fieldsForEquality => [
-        statusCode,
-        headers,
-      ];
-}
 
 /// A simple HttpLink implementation.
 ///
@@ -122,6 +82,7 @@ class HttpLink extends Link {
       throw HttpLinkServerException(
         response: httpResponse,
         parsedResponse: response,
+        statusCode: httpResponse.statusCode,
       );
     }
 

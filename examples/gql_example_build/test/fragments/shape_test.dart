@@ -49,4 +49,43 @@ void main() {
       );
     });
   });
+
+  group("when()", () {
+    test("square", () {
+      const shapeData = <String, dynamic>{
+        "shape": <String, dynamic>{
+          "__typename": "Square",
+          "area": 4,
+          "sideLength": 2,
+        },
+      };
+      final shape = GShapeData.fromJson(shapeData)!;
+      expect(
+          shape.shape!.when(
+            square: (square) => square.sideLength,
+            rectangle: (_) => fail("not a rectangle"),
+            orElse: () => fail("not a square"),
+          ),
+          2);
+    });
+
+    test("rectangle", () {
+      const shapeData = <String, dynamic>{
+        "shape": <String, dynamic>{
+          "__typename": "Rectangle",
+          "area": 3,
+          "sideLengthA": 3,
+          "sideLengthB": 1,
+        },
+      };
+      final shape = GShapeData.fromJson(shapeData)!;
+      expect(
+          shape.shape!.when(
+            square: (_) => fail("not a square"),
+            rectangle: (rectangle) => rectangle.sideLengthA,
+            orElse: () => fail("not a rectangle"),
+          ),
+          3);
+    });
+  });
 }

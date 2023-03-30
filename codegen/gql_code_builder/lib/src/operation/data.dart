@@ -1,16 +1,18 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "../../source.dart";
 import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
-List<Class> buildOperationDataClasses(
+List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 ) {
   if (op.name == null) {
     throw Exception("Operations must be named");
@@ -31,14 +33,16 @@ List<Class> buildOperationDataClasses(
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
     superclassSelections: {},
+    whenExtensionConfig: whenExtensionConfig,
   );
 }
 
-List<Class> buildFragmentDataClasses(
+List<Spec> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   final selections = mergeSelections(
@@ -56,6 +60,7 @@ List<Class> buildFragmentDataClasses(
       fragmentMap: fragmentMap,
       superclassSelections: {},
       built: false,
+      whenExtensionConfig: whenExtensionConfig,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -71,6 +76,7 @@ List<Class> buildFragmentDataClasses(
           selections: selections,
         )
       },
+      whenExtensionConfig: whenExtensionConfig,
     ),
   ];
 }
@@ -111,7 +117,7 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
-List<Class> buildSelectionSetDataClasses({
+List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,
@@ -120,6 +126,7 @@ List<Class> buildSelectionSetDataClasses({
   required Map<String, SourceSelections> fragmentMap,
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -177,6 +184,7 @@ List<Class> buildSelectionSetDataClasses({
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
         built: built,
+        whenExtensionConfig: whenExtensionConfig,
       )
     else if (!built)
       Class(
@@ -237,6 +245,7 @@ List<Class> buildSelectionSetDataClasses({
               field,
             ),
             built: inlineFragments.isNotEmpty ? false : built,
+            whenExtensionConfig: whenExtensionConfig,
           ),
         ),
   ];
@@ -295,10 +304,17 @@ List<SelectionNode> _expandFragmentSpreads(
               "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
             );
           }
+
+          final fragmentSelections =
+              fragmentMap[selection.name.value]!.selections;
+
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value]!.selections,
+              [
+                ...fragmentSelections.whereType<FieldNode>(),
+                ...fragmentSelections.whereType<FragmentSpreadNode>(),
+              ],
               fragmentMap,
               false,
             )

@@ -61,13 +61,20 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   GEnum get enumRequired;
   GInput get inputRequired;
   static Serializer<GInput> get serializer => _$gInputSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GInput? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(GInput.serializer, json);
+      _i2.serializers.deserializeWith(
+        GInput.serializer,
+        json,
+      );
 }
 
 const Map<String, Set<String>> possibleTypesMap = {
-  'Shape': {'Square', 'Rectangle'}
+  'Shape': {
+    'Square',
+    'Rectangle',
+  }
 };

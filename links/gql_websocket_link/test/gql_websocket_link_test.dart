@@ -1207,6 +1207,9 @@ void _testLinks(
     Link link;
     Request request;
 
+    final server = await HttpServer.bind("localhost", 0);
+    final port = server.port;
+
     request = Request(
       operation: Operation(
         operationName: "sub",
@@ -1217,7 +1220,7 @@ void _testLinks(
     link = makeLink(
       null,
       channelGenerator: expectAsync0(
-        () async => IOWebSocketChannel.connect("ws://localhost"),
+        () async => IOWebSocketChannel.connect("ws://localhost:$port"),
         count: 1,
         max: 1,
       ),

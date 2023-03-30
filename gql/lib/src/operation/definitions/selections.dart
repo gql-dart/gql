@@ -56,7 +56,6 @@ abstract class Selection extends ExecutableWithResolver {
 
   static Selection fromNode(
     SelectionNode astNode, [
-
     /// The [schemaType] of the containing element
     TypeDefinition? schemaType,
     GetExecutableType? getType,

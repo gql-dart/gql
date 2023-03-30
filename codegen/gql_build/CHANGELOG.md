@@ -1,3 +1,7 @@
+# 0.7.0
+
+- **Breaking Change**: properly generate nullable types for nullable elements in lists
+
 ## 0.6.0
 
 - generate 'possibleTypesMap' in the schema

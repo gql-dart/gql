@@ -6,6 +6,9 @@ schema {
   subscription: Subscription
 }
 
+directive @extends on OBJECT | INTERFACE
+
+
 # The query type, represents all of the entry points into our object graph
 type Query {
   hero(episode: Episode): Character
@@ -15,6 +18,7 @@ type Query {
   droid(id: ID!): Droid
   human(id: ID!): Human
   starship(id: ID!): Starship
+  posts(userId: ID!, filter: Json): [Post]
 }
 
 # The mutation type, represents all updates we can make to our data
@@ -171,8 +175,33 @@ type Starship {
   coordinates: [[Float!]!]
 }
 
+type Post {
+  id: ID!
+  body: String!
+  favoritedUsers(where: PostLikesInput, filter: Json): PostLikes
+  likedUsers(where: PostFavoritesInput): PostFavorites
+}
+
+type PostLikes {
+  totalCount: Int!
+}
+
+type PostFavorites {
+  totalCount: Int!
+}
+
+input PostLikesInput {
+  id: ID!
+}
+
+input PostFavoritesInput {
+  id: ID!
+}
+
 union SearchResult = Human | Droid | Starship
 
 scalar Date
 scalar ISODate
 scalar CustomField
+
+scalar Json

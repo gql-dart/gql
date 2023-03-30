@@ -29,7 +29,10 @@ class GEpisode extends EnumClass {
 class GLengthUnit extends EnumClass {
   const GLengthUnit._(String name) : super(name);
 
-  @BuiltValueEnumConst(wireName: 'METER', fallback: true)
+  @BuiltValueEnumConst(
+    wireName: 'METER',
+    fallback: true,
+  )
   static const GLengthUnit METER = _$gLengthUnitMETER;
 
   static const GLengthUnit FOOT = _$gLengthUnitFOOT;
@@ -49,13 +52,17 @@ abstract class GReviewInput
   int get stars;
   String? get commentary;
   GColorInput? get favorite_color;
-  BuiltList<DateTime>? get seenOn;
+  BuiltList<DateTime?>? get seenOn;
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GReviewInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GReviewInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GReviewInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GReviewInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GReviewInput.serializer,
+        json,
+      );
 }
 
 abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
@@ -67,11 +74,57 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   int get green;
   int get blue;
   static Serializer<GColorInput> get serializer => _$gColorInputSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GColorInput.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GColorInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GColorInput? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GColorInput.serializer, json);
+      _i1.serializers.deserializeWith(
+        GColorInput.serializer,
+        json,
+      );
+}
+
+abstract class GPostLikesInput
+    implements Built<GPostLikesInput, GPostLikesInputBuilder> {
+  GPostLikesInput._();
+
+  factory GPostLikesInput([Function(GPostLikesInputBuilder b) updates]) =
+      _$GPostLikesInput;
+
+  String get id;
+  static Serializer<GPostLikesInput> get serializer =>
+      _$gPostLikesInputSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostLikesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GPostLikesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostLikesInput.serializer,
+        json,
+      );
+}
+
+abstract class GPostFavoritesInput
+    implements Built<GPostFavoritesInput, GPostFavoritesInputBuilder> {
+  GPostFavoritesInput._();
+
+  factory GPostFavoritesInput(
+      [Function(GPostFavoritesInputBuilder b) updates]) = _$GPostFavoritesInput;
+
+  String get id;
+  static Serializer<GPostFavoritesInput> get serializer =>
+      _$gPostFavoritesInputSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFavoritesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GPostFavoritesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostFavoritesInput.serializer,
+        json,
+      );
 }
 
 abstract class GISODate implements Built<GISODate, GISODateBuilder> {
@@ -87,7 +140,26 @@ abstract class GISODate implements Built<GISODate, GISODateBuilder> {
           (Object serialized) => GISODate((serialized as String?)));
 }
 
+abstract class GJson implements Built<GJson, GJsonBuilder> {
+  GJson._();
+
+  factory GJson([String? value]) =>
+      _$GJson((b) => value != null ? (b..value = value) : b);
+
+  String get value;
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GJson> get serializer => _i2.DefaultScalarSerializer<GJson>(
+      (Object serialized) => GJson((serialized as String?)));
+}
+
 const Map<String, Set<String>> possibleTypesMap = {
-  'Character': {'Human', 'Droid'},
-  'SearchResult': {'Human', 'Droid', 'Starship'}
+  'Character': {
+    'Human',
+    'Droid',
+  },
+  'SearchResult': {
+    'Human',
+    'Droid',
+    'Starship',
+  },
 };

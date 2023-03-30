@@ -21,15 +21,21 @@ abstract class GQueryOperation
       _$GQueryOperation;
 
   static void _initializeBuilder(GQueryOperationBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'QueryOperation');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'QueryOperation',
+    );
   _i3.GQueryOperationVars get vars;
   _i1.Operation get operation;
   static Serializer<GQueryOperation> get serializer =>
       _$gQueryOperationSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GQueryOperation.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GQueryOperation.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GQueryOperation? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GQueryOperation.serializer, json);
+      _i4.serializers.deserializeWith(
+        GQueryOperation.serializer,
+        json,
+      );
 }

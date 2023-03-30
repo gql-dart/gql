@@ -103,8 +103,8 @@ class _$GAliasedHeroData_empireHeroSerializer
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'from',
       serializers.serialize(object.from,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(_i2.GEpisode)])),
+          specifiedType: const FullType(
+              BuiltList, const [const FullType.nullable(_i2.GEpisode)])),
     ];
 
     return result;
@@ -136,9 +136,9 @@ class _$GAliasedHeroData_empireHeroSerializer
           break;
         case 'from':
           result.from.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(_i2.GEpisode)]))!
-              as BuiltList<Object?>);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(_i2.GEpisode)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -171,8 +171,8 @@ class _$GAliasedHeroData_jediHeroSerializer
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'from',
       serializers.serialize(object.from,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(_i2.GEpisode)])),
+          specifiedType: const FullType(
+              BuiltList, const [const FullType.nullable(_i2.GEpisode)])),
     ];
 
     return result;
@@ -204,9 +204,9 @@ class _$GAliasedHeroData_jediHeroSerializer
           break;
         case 'from':
           result.from.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(_i2.GEpisode)]))!
-              as BuiltList<Object?>);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(_i2.GEpisode)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -253,8 +253,12 @@ class _$GAliasedHeroData extends GAliasedHeroData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, G__typename.hashCode), empireHero.hashCode),
-        jediHero.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, empireHero.hashCode);
+    _$hash = $jc(_$hash, jediHero.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -351,7 +355,7 @@ class _$GAliasedHeroData_empireHero extends GAliasedHeroData_empireHero {
   @override
   final String name;
   @override
-  final BuiltList<_i2.GEpisode> from;
+  final BuiltList<_i2.GEpisode?> from;
 
   factory _$GAliasedHeroData_empireHero(
           [void Function(GAliasedHeroData_empireHeroBuilder)? updates]) =>
@@ -394,9 +398,13 @@ class _$GAliasedHeroData_empireHero extends GAliasedHeroData_empireHero {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-        from.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, from.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -428,10 +436,10 @@ class GAliasedHeroData_empireHeroBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<_i2.GEpisode>? _from;
-  ListBuilder<_i2.GEpisode> get from =>
-      _$this._from ??= new ListBuilder<_i2.GEpisode>();
-  set from(ListBuilder<_i2.GEpisode>? from) => _$this._from = from;
+  ListBuilder<_i2.GEpisode?>? _from;
+  ListBuilder<_i2.GEpisode?> get from =>
+      _$this._from ??= new ListBuilder<_i2.GEpisode?>();
+  set from(ListBuilder<_i2.GEpisode?>? from) => _$this._from = from;
 
   GAliasedHeroData_empireHeroBuilder() {
     GAliasedHeroData_empireHero._initializeBuilder(this);
@@ -499,7 +507,7 @@ class _$GAliasedHeroData_jediHero extends GAliasedHeroData_jediHero {
   @override
   final String name;
   @override
-  final BuiltList<_i2.GEpisode> from;
+  final BuiltList<_i2.GEpisode?> from;
 
   factory _$GAliasedHeroData_jediHero(
           [void Function(GAliasedHeroData_jediHeroBuilder)? updates]) =>
@@ -542,9 +550,13 @@ class _$GAliasedHeroData_jediHero extends GAliasedHeroData_jediHero {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
-        from.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, from.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -575,10 +587,10 @@ class GAliasedHeroData_jediHeroBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<_i2.GEpisode>? _from;
-  ListBuilder<_i2.GEpisode> get from =>
-      _$this._from ??= new ListBuilder<_i2.GEpisode>();
-  set from(ListBuilder<_i2.GEpisode>? from) => _$this._from = from;
+  ListBuilder<_i2.GEpisode?>? _from;
+  ListBuilder<_i2.GEpisode?> get from =>
+      _$this._from ??= new ListBuilder<_i2.GEpisode?>();
+  set from(ListBuilder<_i2.GEpisode?>? from) => _$this._from = from;
 
   GAliasedHeroData_jediHeroBuilder() {
     GAliasedHeroData_jediHero._initializeBuilder(this);
@@ -638,4 +650,4 @@ class GAliasedHeroData_jediHeroBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

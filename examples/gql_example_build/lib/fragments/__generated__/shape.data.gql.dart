@@ -21,11 +21,15 @@ abstract class GShapeData implements Built<GShapeData, GShapeDataBuilder> {
   String get G__typename;
   GShapeData_shape? get shape;
   static Serializer<GShapeData> get serializer => _$gShapeDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GShapeData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GShapeData.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShapeData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GShapeData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GShapeData.serializer,
+        json,
+      );
 }
 
 abstract class GShapeData_shape {
@@ -34,15 +38,58 @@ abstract class GShapeData_shape {
   double? get area;
   static Serializer<GShapeData_shape> get serializer =>
       _i2.InlineFragmentSerializer<GShapeData_shape>(
-          'GShapeData_shape', GShapeData_shape__base, {
-        'Square': GShapeData_shape__asSquare,
-        'Rectangle': GShapeData_shape__asRectangle
-      });
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GShapeData_shape.serializer, this)
-          as Map<String, dynamic>);
+        'GShapeData_shape',
+        GShapeData_shape__base,
+        {
+          'Square': GShapeData_shape__asSquare,
+          'Rectangle': GShapeData_shape__asRectangle,
+        },
+      );
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GShapeData_shape.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShapeData_shape? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GShapeData_shape.serializer, json);
+      _i1.serializers.deserializeWith(
+        GShapeData_shape.serializer,
+        json,
+      );
+}
+
+extension GShapeData_shapeWhenExtension on GShapeData_shape {
+  _T when<_T>({
+    required _T Function(GShapeData_shape__asSquare) square,
+    required _T Function(GShapeData_shape__asRectangle) rectangle,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Square':
+        return square((this as GShapeData_shape__asSquare));
+      case 'Rectangle':
+        return rectangle((this as GShapeData_shape__asRectangle));
+      default:
+        return orElse();
+    }
+  }
+
+  _T maybeWhen<_T>({
+    _T Function(GShapeData_shape__asSquare)? square,
+    _T Function(GShapeData_shape__asRectangle)? rectangle,
+    required _T Function() orElse,
+  }) {
+    switch (G__typename) {
+      case 'Square':
+        return square != null
+            ? square((this as GShapeData_shape__asSquare))
+            : orElse();
+      case 'Rectangle':
+        return rectangle != null
+            ? rectangle((this as GShapeData_shape__asRectangle))
+            : orElse();
+      default:
+        return orElse();
+    }
+  }
 }
 
 abstract class GShapeData_shape__base
@@ -65,11 +112,15 @@ abstract class GShapeData_shape__base
   static Serializer<GShapeData_shape__base> get serializer =>
       _$gShapeDataShapeBaseSerializer;
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GShapeData_shape__base.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GShapeData_shape__base.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShapeData_shape__base? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GShapeData_shape__base.serializer, json);
+      _i1.serializers.deserializeWith(
+        GShapeData_shape__base.serializer,
+        json,
+      );
 }
 
 abstract class GShapeData_shape__asSquare
@@ -94,10 +145,14 @@ abstract class GShapeData_shape__asSquare
       _$gShapeDataShapeAsSquareSerializer;
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GShapeData_shape__asSquare.serializer, this) as Map<String, dynamic>);
+        GShapeData_shape__asSquare.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShapeData_shape__asSquare? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GShapeData_shape__asSquare.serializer, json);
+      _i1.serializers.deserializeWith(
+        GShapeData_shape__asSquare.serializer,
+        json,
+      );
 }
 
 abstract class GShapeData_shape__asRectangle
@@ -124,8 +179,12 @@ abstract class GShapeData_shape__asRectangle
       _$gShapeDataShapeAsRectangleSerializer;
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GShapeData_shape__asRectangle.serializer, this) as Map<String, dynamic>);
+        GShapeData_shape__asRectangle.serializer,
+        this,
+      ) as Map<String, dynamic>);
   static GShapeData_shape__asRectangle? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GShapeData_shape__asRectangle.serializer, json);
+      _i1.serializers.deserializeWith(
+        GShapeData_shape__asRectangle.serializer,
+        json,
+      );
 }
