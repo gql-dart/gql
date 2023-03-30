@@ -2,21 +2,17 @@ import "dart:async";
 import "dart:convert" show json;
 import "dart:math" show Random;
 
-import "package:gql/language.dart" show printNode;
-import "package:gql_exec/gql_exec.dart"
-    show Request, Response, Context, RequestExtensionsThunk, ResponseExtensions;
+import "package:gql_exec/gql_exec.dart" show Request, Response;
 import "package:gql_link/gql_link.dart"
     show Link, NextLink, RequestSerializer, ResponseParser;
-import "package:gql_websocket_link/gql_websocket_link.dart";
+import "package:gql_websocket_link/src/exceptions.dart"
+    show WebSocketLinkParserException, WebSocketLinkServerException;
+import "package:gql_websocket_link/src/messages.dart" show ConnectionAck;
 import "package:web_socket_channel/web_socket_channel.dart"
     show WebSocketChannel;
 
 import "link.dart" show ChannelGenerator, GraphQLSocketMessageDecoder;
 import "transport_ws_common.dart";
-
-void _log(Object message) {
-  print(message);
-}
 
 enum TransportWsEventType {
   /// WebSocket started connecting.
@@ -230,7 +226,7 @@ class WebSocketMaker {
 /// Configuration used for the GraphQL over WebSocket client.
 ///
 /// @category Client
-class ClientOptions {
+class TransportWsClientOptions {
   /// URL of the GraphQL over WebSocket Protocol compliant server to connect.
   ///
   /// If the option is a function, it will be called on every WebSocket connection attempt.
@@ -286,7 +282,7 @@ class ClientOptions {
   /// a calmdown time before actually closing the connection. Kinda' like a lazy close "debounce".
   ///
   /// @default 0 // close immediately
-  final int lazyCloseTimeout;
+  final Duration lazyCloseTimeout;
 
   /// The timout between dispatched keep-alive messages, naimly server pings. Internally
   /// dispatches the `PingMessage` type to the server and expects a `PongMessage` in response.
@@ -323,7 +319,7 @@ class ClientOptions {
   /// ```
   ///
   /// @default 0
-  final int keepAlive;
+  final Duration keepAlive;
 
   /// The amount of time for which the client will wait
   /// for `ConnectionAck` message.
@@ -336,7 +332,7 @@ class ClientOptions {
   /// dispatching a close event `4418: Connection acknowledgement timeout`
   ///
   /// @default 0
-  final int connectionAckWaitTimeout;
+  final Duration connectionAckWaitTimeout;
 
   /// Disable sending the `PongMessage` automatically.
   ///
@@ -444,14 +440,17 @@ class ClientOptions {
   ) =>
       json.decode(message as String) as Map<String, dynamic>?;
 
-  const ClientOptions({
+  /// A function that logs events within the execution of the [TransportWsClient].
+  final void Function(String logMessage)? log;
+
+  const TransportWsClientOptions({
     required this.socketMaker,
     this.connectionParams,
     this.lazy = true,
     this.onNonLazyError = print,
-    this.lazyCloseTimeout = 0,
-    this.keepAlive = 0,
-    this.connectionAckWaitTimeout = 0,
+    this.lazyCloseTimeout = Duration.zero,
+    this.keepAlive = Duration.zero,
+    this.connectionAckWaitTimeout = Duration.zero,
     this.disablePong = false,
     this.retryAttempts = 0,
     this.retryWait = randomizedExponentialBackoff,
@@ -462,9 +461,8 @@ class ClientOptions {
     this.parser = const ResponseParser(),
     this.graphQLSocketMessageEncoder = defaultGraphQLSocketMessageEncoder,
     this.graphQLSocketMessageDecoder = defaultGraphQLSocketMessageDecoder,
+    this.log,
   });
-
-  // ChannelGenerator? channelGenerator,
 
   static final _random = Random();
 
@@ -510,8 +508,8 @@ class _Connected {
 }
 
 /// @category Client */
-abstract class Client {
-  ClientOptions get options;
+abstract class TransportWsClient {
+  TransportWsClientOptions get options;
 
   /// Listens on the client which dispatches events about the socket state.
   void Function() on(TransportWsEventHandler listener);
@@ -563,7 +561,7 @@ class _ConnectionState {
   }
 
   final _Emitter emitter;
-  final ClientOptions options;
+  final TransportWsClientOptions options;
 
   Future<_Connected>? connecting;
   int locks = 0;
@@ -576,7 +574,7 @@ class _ConnectionState {
 
   /// Checks the `connect` problem and evaluates if the client should retry.
   bool shouldRetryConnectOrThrow(Object errOrCloseEvent) {
-    _log("shouldRetryConnectOrThrow $errOrCloseEvent");
+    options.log?.call("shouldRetryConnectOrThrow $errOrCloseEvent");
     // some close codes are worth reporting immediately
     if (errOrCloseEvent is LikeCloseEvent &&
         (_isFatalInternalCloseCode(errOrCloseEvent.code) ||
@@ -644,7 +642,7 @@ class _ConnectionState {
     final _comp = Completer<_Connected>();
     final connected = _comp.complete;
     final denied = _comp.completeError;
-    _log("_startConnecting");
+    options.log?.call("_startConnecting");
 
     (() async {
       if (retrying) {
@@ -654,7 +652,8 @@ class _ConnectionState {
         if (locks == 0) {
           connecting = null;
           return denied(
-              LikeCloseEvent(code: 1000, reason: "All Subscriptions Gone"));
+            LikeCloseEvent(code: 1000, reason: "All Subscriptions Gone"),
+          );
         }
 
         retries++;
@@ -674,11 +673,10 @@ class _ConnectionState {
       Timer? connectionAckTimeout;
       Timer? queuedPing;
       void enqueuePing() {
-        if (options.keepAlive.isFinite && options.keepAlive > 0) {
+        if (options.keepAlive.inMicroseconds > 0) {
           queuedPing
               ?.cancel(); // in case where a pong was received before a ping (this is valid behaviour)
-          queuedPing =
-              Timer(Duration(milliseconds: options.keepAlive), () async {
+          queuedPing = Timer(options.keepAlive, () async {
             final _pingMsg =
                 await options.graphQLSocketMessageEncoder(PingMessage(null));
             if (isOpen) {
@@ -694,7 +692,7 @@ class _ConnectionState {
       void Function(Object)? onClose =
           (Object event) => emitter.emit(TransportWsEvent.closed(event));
       errorOrClosed((errOrEvent) {
-        _log("errorOrClosed $errOrEvent");
+        options.log?.call("errorOrClosed $errOrEvent");
         connecting = null;
         isOpen = false;
         connectionAckTimeout?.cancel();
@@ -713,7 +711,7 @@ class _ConnectionState {
 
       void onOpen() async {
         if (isOpen) return;
-        _log("onOpen");
+        options.log?.call("onOpen");
         isOpen = true;
         try {
           emitter.emit(TransportWsEvent.opened(socket));
@@ -730,11 +728,9 @@ class _ConnectionState {
 
           socket.sink.add(_initMsg);
 
-          if (options.connectionAckWaitTimeout.isFinite &&
-              options.connectionAckWaitTimeout > 0) {
-            connectionAckTimeout = Timer(
-                Duration(milliseconds: options.connectionAckWaitTimeout), () {
-              _log("connectionAckTimeout");
+          if (options.connectionAckWaitTimeout.inMicroseconds > 0) {
+            connectionAckTimeout = Timer(options.connectionAckWaitTimeout, () {
+              options.log?.call("connectionAckTimeout");
               isOpen = false;
               socket.sink.close(
                 closeCodeInteger(CloseCode.connectionAcknowledgementTimeout),
@@ -760,17 +756,20 @@ class _ConnectionState {
       late final StreamSubscription _messageSubs;
       _messageSubs = socket.stream.listen(
         (Object? msg) async {
-          _log("socket.stream msg protocol:${socket.protocol} msg:${msg}");
+          options.log?.call(
+            "socket.stream protocol:${socket.protocol} msg:${msg}",
+          );
           try {
             final TransportWsMessage message;
             try {
               final messageMap = await options.graphQLSocketMessageDecoder(msg);
               message = parseMessage(messageMap!, options.parser);
-            } catch (e) {
+            } catch (e, s) {
               throw WebSocketLinkParserException(
-                // TODO:
+                // TODO: should not be ConnectionAck
                 message: ConnectionAck(),
                 originalException: e,
+                originalStackTrace: s,
               );
             }
             // parseMessage(msg!, reviver: options.jsonMessageReviver);
@@ -849,7 +848,10 @@ class _ConnectionState {
     })()
         .onError(
       (error, stackTrace) => denied(
-        WebSocketLinkServerException(originalException: error),
+        WebSocketLinkServerException(
+          originalException: error,
+          originalStackTrace: stackTrace,
+        ),
         stackTrace,
       ),
     );
@@ -860,7 +862,7 @@ class _ConnectionState {
     connecting ??= _startConnecting();
     final _connection = await connecting!;
 
-    _log("_connection");
+    options.log?.call("_connection");
 
     final socket = _connection.socket;
     final throwOnClose = _connection.throwOnClose;
@@ -885,13 +887,12 @@ class _ConnectionState {
               isOpen = false;
               socket.sink.close(1000, "Normal Closure");
             };
-            if (options.lazyCloseTimeout.isFinite &&
-                options.lazyCloseTimeout > 0) {
+            if (options.lazyCloseTimeout.inMicroseconds > 0) {
               // if the keepalive is set, allow for the specified calmdown time and
               // then complete. but only if no lock got created in the meantime and
               // if the socket is still open
               Future.delayed(
-                Duration(milliseconds: options.lazyCloseTimeout),
+                options.lazyCloseTimeout,
                 () {
                   if (locks == 0 && isOpen) {
                     complete();
@@ -911,13 +912,13 @@ class _ConnectionState {
   }
 }
 
-class _Client extends Client {
+class _Client extends TransportWsClient {
   _Client({required this.state});
 
   final _ConnectionState state;
   _Emitter get emitter => state.emitter;
   @override
-  ClientOptions get options => state.options;
+  TransportWsClientOptions get options => state.options;
 
   @override
   void Function() on(TransportWsEventHandler listener) => emitter.on(listener);
@@ -928,7 +929,7 @@ class _Client extends Client {
     EventSink<Response> sink,
   ) {
     final id = options.generateID();
-    _log("subscribe $id");
+    options.log?.call("subscribe $id");
 
     bool done = false;
     bool errored = false;
@@ -1008,7 +1009,7 @@ class _Client extends Client {
 
   @override
   Future<void> dispose() async {
-    _log("dispose");
+    options.log?.call("dispose");
     state.disposed = true;
     if (state.connecting != null) {
       // if there is a connection, close it
@@ -1019,7 +1020,7 @@ class _Client extends Client {
 
   @override
   void terminate() {
-    _log("terminate");
+    options.log?.call("terminate");
     if (state.connecting != null) {
       // only if there is a connection
       emitter.emit(TransportWsEvent.closed(
@@ -1051,9 +1052,11 @@ class _Emitter {
     String id,
     void Function(TransportWsMessage) listener,
   ) onMessage;
+  final void Function(String logMessage)? log;
   _Emitter({
     required this.listeners,
     required this.onMessage,
+    this.log,
   });
 
   void Function() on(TransportWsEventHandler listener) {
@@ -1071,7 +1074,7 @@ class _Emitter {
   }
 
   void emit(TransportWsEvent event) {
-    _log("emit $event");
+    log?.call("emit $event");
     final list = listeners[event.type];
     if (list == null) return;
     // we copy the listeners so that unlistens dont "pull the rug under our feet"
@@ -1120,6 +1123,7 @@ TransportWsClient createClient(TransportWsClientOptions options) {
     return _Emitter(
       onMessage: onMessage,
       listeners: listeners,
+      log: options.log,
     );
   })();
 
@@ -1167,10 +1171,10 @@ bool _isFatalInternalCloseCode(int code) {
   return code >= 1000 && code <= 1999;
 }
 
-class GQLTransportWebSocketLink extends Link {
-  GQLTransportWebSocketLink(ClientOptions options)
+class TransportWebSocketLink extends Link {
+  TransportWebSocketLink(TransportWsClientOptions options)
       : client = createClient(options);
-  final Client client;
+  final TransportWsClient client;
 
   @override
   Future<void> dispose() async {
