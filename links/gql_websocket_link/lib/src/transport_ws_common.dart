@@ -27,6 +27,7 @@ enum CloseCode {
   tooManyInitialisationRequests,
 }
 
+/// Converts a [CloseCode] to an integer used to close a web socket connection.
 int closeCodeInteger(CloseCode code) => const {
       CloseCode.internalServerError: 4500,
       CloseCode.internalClientError: 4005,
@@ -81,7 +82,7 @@ class ConnectionAckMessage extends TransportWsMessage {
   Map<String, Object?> toJson() => {"type": type.name, "payload": payload};
 }
 
-/// @category Common */
+/// @category Common
 class PingMessage extends TransportWsMessage {
   const PingMessage(this.payload);
 
@@ -93,7 +94,7 @@ class PingMessage extends TransportWsMessage {
       {"type": type.name, if (payload != null) "payload": payload};
 }
 
-/// @category Common */
+/// @category Common
 class PongMessage extends TransportWsMessage {
   const PongMessage(this.payload);
 
@@ -105,7 +106,7 @@ class PongMessage extends TransportWsMessage {
       {"type": type.name, if (payload != null) "payload": payload};
 }
 
-/// @category Common */
+/// @category Common
 class SubscribeMessage extends TransportWsMessage {
   const SubscribeMessage(this.id, this.payload);
 
@@ -114,7 +115,7 @@ class SubscribeMessage extends TransportWsMessage {
   @override
   final String id;
 
-  /// [SubscribePayload] or [Request]
+  /// Serialized [Request]
   final Map<String, Object?> payload;
   @override
   Map<String, Object?> toJson() => {
@@ -123,102 +124,6 @@ class SubscribeMessage extends TransportWsMessage {
         "payload": payload,
       };
 }
-
-/// @category Common */
-class SubscribePayload {
-  final String? operationName;
-  final String query;
-  final Map<String, Object?>? variables;
-  final Map<String, Object?>? extensions;
-
-  SubscribePayload({
-    this.operationName,
-    required this.query,
-    this.variables,
-    this.extensions,
-  });
-
-  Map<String, Object?> toJson() => {
-        "operationName": operationName,
-        "query": query,
-        "variables": variables,
-        "extensions": extensions,
-      };
-}
-
-/// @category Common */
-class ExecutionResult {
-  // <Data, Extensions>
-  final List<GraphQLError>? errors;
-  final Map<String, Object?>? data;
-  final bool? hasNext;
-  final Map<String, Object?>? extensions;
-  final List<
-      String // | number
-      >? path;
-  final String? label;
-  final Map<String, Object?> rawResponse;
-
-  ExecutionResult({
-    this.errors,
-    this.data,
-    this.hasNext,
-    this.extensions,
-    this.path,
-    this.label,
-    required this.rawResponse,
-  });
-
-  Map<String, Object?> toJson() => {
-        "errors": errors?.map(_errorToJson).toList(),
-        "data": data,
-        "hasNext": hasNext,
-        "extensions": extensions,
-        "path": path,
-        "label": label,
-      };
-
-  factory ExecutionResult.fromJson(Map<String, Object?> map) => ExecutionResult(
-        errors: map["errors"] != null
-            ? (map["errors"] as List<Object?>)
-                .map((x) => const ResponseParser()
-                    .parseError(x as Map<String, Object?>))
-                .toList()
-            : null,
-        data: map["data"] as Map<String, Object?>?,
-        hasNext: map["hasNext"] as bool?,
-        extensions: map["extensions"] as Map<String, Object?>?,
-        path: (map["path"] as List?)?.cast<String>(),
-        label: map["label"] as String?,
-        rawResponse: map,
-      );
-}
-
-Map<String, Object?> _errorToJson(GraphQLError x) => {
-      "extensions": x.extensions,
-      "locations": x.locations
-          ?.map((e) => {"column": e.column, "line": e.line})
-          .toList(),
-      "message": x.message,
-      "path": x.path,
-    };
-
-// /// @category Common
-// class ExecutionPatchResult<Data, Extensions>
-//     extends ExecutionResult<Data, Extensions> {
-//   @override
-//   final List<GraphQLError>? errors;
-//   @override
-//   final Data? data;
-//   final List<
-//       String // | number
-//       >? path;
-//   final String? label;
-//   @override
-//   final bool hasNext;
-//   @override
-//   final Extensions? extensions;
-// }
 
 /// @category Common
 class NextMessage extends TransportWsMessage {
@@ -254,6 +159,15 @@ class ErrorMessage extends TransportWsMessage {
       };
 }
 
+Map<String, Object?> _errorToJson(GraphQLError x) => {
+      "extensions": x.extensions,
+      "locations": x.locations
+          ?.map((e) => {"column": e.column, "line": e.line})
+          .toList(),
+      "message": x.message,
+      "path": x.path,
+    };
+
 /// @category Common
 class CompleteMessage extends TransportWsMessage {
   const CompleteMessage(this.id);
@@ -268,9 +182,14 @@ class CompleteMessage extends TransportWsMessage {
 
 abstract class TransportWsMessage {
   const TransportWsMessage();
+
+  /// The type of the message.
   TransportWsMessageType get type;
+
+  /// The id of the message.
   String? get id => null;
 
+  /// Converts the message to a JSON object.
   Map<String, Object?> toJson();
 }
 
@@ -363,15 +282,6 @@ TransportWsMessage? castMessage(Object val, ResponseParser parser) {
   }
 }
 
-// /// Function for transforming values within a message during JSON parsing
-// /// The values are produced by parsing the incoming raw JSON.
-// ///
-// /// Read more about using it:
-// /// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter
-// ///
-// /// @category Common
-// typedef JSONMessageReviver = Object? Function(String key, Object? value);
-
 /// Parses the raw websocket message data to a valid message.
 ///
 /// @category Common
@@ -385,26 +295,6 @@ TransportWsMessage parseMessage(
   }
   return msg;
 }
-
-// /// Function that allows customization of the produced JSON string
-// /// for the elements of an outgoing `Message` object.
-// ///
-// /// Read more about using it:
-// /// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter
-// ///
-// /// @category Common
-// typedef JSONMessageReplacer = Object? Function(
-//     // Object this_, String key,
-//     Object? value);
-
-// /// Stringifies a valid message ready to be sent through the socket.
-// ///
-// /// @category Common
-// String stringifyMessage(
-//   Message msg, {
-//   JSONMessageReplacer? replacer,
-// }) =>
-//     json.encode(msg, toEncodable: replacer);
 
 /// Limits the WebSocket close event reason to not exceed a length of one frame.
 /// Reference: https://datatracker.ietf.org/doc/html/rfc6455#section-5.2.

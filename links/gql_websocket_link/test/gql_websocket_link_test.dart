@@ -71,7 +71,7 @@ void main() {
               retryWait: reconnectInterval != null
                   ? (_) => Future.delayed(reconnectInterval)
                   : TransportWsClientOptions.randomizedExponentialBackoff,
-              on: [
+              eventHandlers: [
                 if (inactivityTimeout != null)
                   TransportWsEventHandler<void>(
                     connected: (WebSocketChannel socket, Object? payload) =>

@@ -1,5 +1,5 @@
 import "dart:async";
-import "dart:convert" show json;
+import "dart:convert" show jsonDecode, jsonEncode;
 import "dart:math" show Random;
 
 import "package:gql_exec/gql_exec.dart" show Request, Response;
@@ -56,15 +56,17 @@ enum TransportWsEventType {
   error,
 }
 
+/// An event dispatched by the [TransportWsClient].
 class TransportWsEvent {
+  /// The type of the event.
   final TransportWsEventType type;
-
   final WebSocketChannel? socket;
   final Map<String, Object?>? payload;
   final bool? received;
   final TransportWsMessage? message;
   final Object? event;
 
+  /// Executes the handler for the current event type.
   T? execute<T>(TransportWsEventHandler<T> handler) {
     switch (type) {
       case TransportWsEventType.connecting:
@@ -142,6 +144,7 @@ class TransportWsEvent {
         socket = null;
 }
 
+/// A class that handles events dispatched by the [TransportWsClient].
 class TransportWsEventHandler<T> {
   /// Executed when the client is staring a connection
   final T? Function()? connecting;
@@ -183,6 +186,7 @@ class TransportWsEventHandler<T> {
   /// as well as all internal client errors that could throw.
   final T? Function(Object event)? error;
 
+  /// A class that handles events dispatched by the [TransportWsClient].
   const TransportWsEventHandler({
     this.connecting,
     this.opened,
@@ -194,8 +198,10 @@ class TransportWsEventHandler<T> {
     this.error,
   });
 
+  /// Executes the handler for the given [event].
   T? handle(TransportWsEvent event) => event.execute(this);
 
+  /// The [TransportWsEventType]s that this handler will handle.
   Set<TransportWsEventType> eventTypesHandled() => {
         if (connecting != null) TransportWsEventType.connecting,
         if (opened != null) TransportWsEventType.opened,
@@ -214,12 +220,21 @@ class TransportWsEventHandler<T> {
 /// @category Client
 typedef _EventMessageListener = void Function(TransportWsMessage message);
 
+/// Creates a [WebSocketChannel] from a URL or a [ChannelGenerator].
 class WebSocketMaker {
+  /// A function that returns the URL of the GraphQL server.
+  /// Will be used to create the [WebSocketChannel].
   final FutureOr<String> Function()? url;
+
+  /// A generator that will be used to create the [WebSocketChannel].
   final ChannelGenerator? generator;
 
+  /// A function that returns the URL of the GraphQL server.
+  /// Will be used to create the [WebSocketChannel].
   const WebSocketMaker.url(FutureOr<String> Function() this.url)
       : generator = null;
+
+  /// A generator that will be used to create the [WebSocketChannel].
   const WebSocketMaker.generator(ChannelGenerator this.generator) : url = null;
 }
 
@@ -274,14 +289,14 @@ class TransportWsClientOptions {
   /// - An `Error`: some internal issue has occured, all internal errors are
   /// fatal by nature.
   ///
-  /// @default console.error
+  /// @default [print]
   final void Function(Object? errorOrCloseEvent)? onNonLazyError;
 
   /// How long should the client wait before closing the socket after the last oparation has
   /// completed. This is meant to be used in combination with `lazy`. You might want to have
   /// a calmdown time before actually closing the connection. Kinda' like a lazy close "debounce".
   ///
-  /// @default 0 // close immediately
+  /// @default [Duration.zero] // close immediately
   final Duration lazyCloseTimeout;
 
   /// The timout between dispatched keep-alive messages, naimly server pings. Internally
@@ -318,7 +333,7 @@ class TransportWsClientOptions {
   /// });
   /// ```
   ///
-  /// @default 0
+  /// @default [Duration.zero]
   final Duration keepAlive;
 
   /// The amount of time for which the client will wait
@@ -331,7 +346,7 @@ class TransportWsClientOptions {
   /// the client will terminate the socket by
   /// dispatching a close event `4418: Connection acknowledgement timeout`
   ///
-  /// @default 0
+  /// @default [Duration.zero]
   final Duration connectionAckWaitTimeout;
 
   /// Disable sending the `PongMessage` automatically.
@@ -364,7 +379,7 @@ class TransportWsClientOptions {
   /// `retries` argument counts actual connection attempts, so it will begin with
   /// 0 after the first retryable disconnect.
   ///
-  /// @default Randomised exponential backoff
+  /// @default [randomizedExponentialBackoff]
   final Future<void> Function(int retries) retryWait;
 
   /// Check if the close event or connection error is fatal. If you return `true`,
@@ -379,7 +394,7 @@ class TransportWsClientOptions {
   /// what is returned. They are listed in the documentation of the `retryAttempts`
   /// option.
   ///
-  /// @default Non close events
+  /// @default [isFatalConnectionProblemDefault] Non close events
   final bool Function(Object errOrCloseEvent) isFatalConnectionProblem;
 
   /// Register listeners before initialising the client. This way
@@ -387,7 +402,7 @@ class TransportWsClientOptions {
   ///
   /// The listeners passed in will **always** be the first ones
   /// to get the emitted event before other registered listeners.
-  final List<TransportWsEventHandler>? on;
+  final List<TransportWsEventHandler>? eventHandlers;
 
   /// A custom WebSocket implementation to use instead of the
   /// one provided by the global scope. Mostly useful for when
@@ -401,48 +416,43 @@ class TransportWsClientOptions {
   /// in case you need more uniqueness.
   ///
   /// Reference: https://gist.github.com/jed/982883
+  ///
+  /// @default [generateUUID]
   final String Function() generateID;
 
-  // /// An optional override for the JSON.parse function used to hydrate
-  // /// incoming messages to this client. Useful for parsing custom datatypes
-  // /// out of the incoming JSON.
-  // final JSONMessageReviver? jsonMessageReviver;
-
-  // /// An optional override for the JSON.stringify function used to serialize
-  // /// outgoing messages from this client. Useful for serializing custom
-  // /// datatypes out to the client.
-  // final JSONMessageReplacer? jsonMessageReplacer;
-
-  /// Serializer used to serialize requests.
+  /// Serializer used to serialize [Request]s.
   final RequestSerializer serializer;
 
-  /// Response parser.
+  /// Parses [Response]s from the Web Socket message.
   final ResponseParser parser;
 
   /// A function that encodes the request message to json string before sending it over the network.
   final FutureOr<Object> Function(TransportWsMessage message)
       graphQLSocketMessageEncoder;
 
+  /// The default [graphQLSocketMessageEncoder] that encodes the request message to json string.
   static String defaultGraphQLSocketMessageEncoder(
           TransportWsMessage message) =>
-      json.encode(message);
+      jsonEncode(message);
 
   /// A function that decodes the incoming http response to `Map<String, dynamic>`,
   /// the decoded map will be then passes to the `RequestSerializer`.
   /// It is recommended for performance to decode the response using `compute` function.
-  /// ```
+  /// ```dart
   /// graphQLSocketMessageDecoder : (dynamic message) async => await compute(jsonDecode, message as String) as Map<String, dynamic>,
   /// ```
   final GraphQLSocketMessageDecoder graphQLSocketMessageDecoder;
 
+  /// The default [graphQLSocketMessageDecoder] that decodes the request message from a json string.
   static Map<String, dynamic>? defaultGraphQLSocketMessageDecoder(
-    dynamic message,
-  ) =>
-      json.decode(message as String) as Map<String, dynamic>?;
+          dynamic message) =>
+      jsonDecode(message as String) as Map<String, dynamic>?;
 
   /// A function that logs events within the execution of the [TransportWsClient].
+  /// Useful for debugging.
   final void Function(String logMessage)? log;
 
+  /// Options for a [TransportWsClient] instance.
   const TransportWsClientOptions({
     required this.socketMaker,
     this.connectionParams,
@@ -455,7 +465,7 @@ class TransportWsClientOptions {
     this.retryAttempts = 0,
     this.retryWait = randomizedExponentialBackoff,
     this.isFatalConnectionProblem = isFatalConnectionProblemDefault,
-    this.on,
+    this.eventHandlers,
     this.generateID = generateUUID,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
@@ -466,6 +476,7 @@ class TransportWsClientOptions {
 
   static final _random = Random();
 
+  /// Start with 1s delay and adds random timeout from 300ms to 3s
   static Future<void> randomizedExponentialBackoff(int retries) async {
     int retryDelay = 1000; // start with 1s delay
     for (int i = 0; i < retries; i++) {
@@ -480,8 +491,8 @@ class TransportWsClientOptions {
     );
   }
 
+  /// non `CloseEvent`s are fatal by default
   static bool isFatalConnectionProblemDefault(Object errOrCloseEvent) =>
-      // non `CloseEvent`s are fatal by default
       errOrCloseEvent is! LikeCloseEvent;
 
   /// Generates a v4 UUID to be used as the ID using `Math`
@@ -509,6 +520,7 @@ class _Connected {
 
 /// @category Client */
 abstract class TransportWsClient {
+  /// The options used to create the client.
   TransportWsClientOptions get options;
 
   /// Listens on the client which dispatches events about the socket state.
@@ -534,6 +546,7 @@ abstract class TransportWsClient {
   /// can happen on iOS Safari, see: https://github.com/enisdenjo/graphql-ws/discussions/290.
   void terminate();
 
+  /// Closes the WebSocket gracefully.
   Future<void> dispose();
 }
 
@@ -569,7 +582,7 @@ class _ConnectionState {
   int retries = 0;
   bool disposed = false;
 
-  // TODO:
+  // TODO: WebSocketChannel should have a `state` getter and `onStateChange` stream
   bool isOpen = false;
 
   /// Checks the `connect` problem and evaluates if the client should retry.
@@ -868,7 +881,7 @@ class _ConnectionState {
     final throwOnClose = _connection.throwOnClose;
 
     // if the provided socket is in a closing state, wait for the throw on close
-    // TODO:
+    // TODO: WebSocketChannel should have a `state` getter
     // if (socket.readyState == WebSocketImpl.CLOSING) await throwOnClose;
 
     final _releaseComp = Completer<void>();
@@ -1111,7 +1124,7 @@ TransportWsClient createClient(TransportWsClientOptions options) {
     listeners[TransportWsEventType.message]!
         .add(TransportWsEventHandler<void>(message: emitMessage));
 
-    final on = options.on;
+    final on = options.eventHandlers;
     if (on != null) {
       for (final handler in on) {
         for (final type in handler.eventTypesHandled()) {
