@@ -66,7 +66,7 @@ class TransportWsEvent {
   final WebSocketChannel? socket;
   final Map<String, Object?>? payload;
   final bool? received;
-  final Message? message;
+  final TransportWsMessage? message;
   final Object? event;
 
   T? execute<T>(TransportWsEventHandler<T> handler) {
@@ -126,7 +126,7 @@ class TransportWsEvent {
         message = null,
         event = null;
 
-  const TransportWsEvent.message(Message this.message)
+  const TransportWsEvent.message(TransportWsMessage this.message)
       : type = TransportWsEventType.message,
         payload = null,
         received = null,
@@ -176,7 +176,7 @@ class TransportWsEventHandler<T> {
 
   /// Called for all **valid** messages received by the client. Mainly useful for
   /// debugging and logging received messages.
-  final T? Function(Message message)? message;
+  final T? Function(TransportWsMessage message)? message;
 
   /// The argument is actually the websocket `CloseEvent`, but to avoid
   /// bundling DOM typings because the client can run in Node env too,
@@ -216,7 +216,7 @@ class TransportWsEventHandler<T> {
 /// debugging and logging received messages.
 ///
 /// @category Client
-typedef EventMessageListener = void Function(Message message);
+typedef _EventMessageListener = void Function(TransportWsMessage message);
 
 class WebSocketMaker {
   final FutureOr<String> Function()? url;
@@ -417,18 +417,18 @@ class ClientOptions {
   // /// datatypes out to the client.
   // final JSONMessageReplacer? jsonMessageReplacer;
 
-  // TODO: use parser and serializer
   /// Serializer used to serialize requests.
   final RequestSerializer serializer;
 
-  // TODO: use parser and serializer
   /// Response parser.
   final ResponseParser parser;
 
   /// A function that encodes the request message to json string before sending it over the network.
-  final FutureOr<Object> Function(Message message) graphQLSocketMessageEncoder;
+  final FutureOr<Object> Function(TransportWsMessage message)
+      graphQLSocketMessageEncoder;
 
-  static String defaultGraphQLSocketMessageEncoder(Message message) =>
+  static String defaultGraphQLSocketMessageEncoder(
+          TransportWsMessage message) =>
       json.encode(message);
 
   /// A function that decodes the incoming http response to `Map<String, dynamic>`,
@@ -520,8 +520,8 @@ abstract class Client {
   /// uses the `sink` to emit received data or errors. Returns a _cleanup_
   /// function used for dropping the subscription and cleaning stuff up.
   void Function() subscribe(
-    SubscribePayload payload,
-    EventSink<ExecutionResult> sink,
+    Request payload,
+    EventSink<Response> sink,
   );
 
   /// Terminates the WebSocket abruptly and immediately.
@@ -762,10 +762,10 @@ class _ConnectionState {
         (Object? msg) async {
           _log("socket.stream msg protocol:${socket.protocol} msg:${msg}");
           try {
-            final Message message;
+            final TransportWsMessage message;
             try {
               final messageMap = await options.graphQLSocketMessageDecoder(msg);
-              message = parseMessage(messageMap!);
+              message = parseMessage(messageMap!, options.parser);
             } catch (e) {
               throw WebSocketLinkParserException(
                 // TODO:
@@ -924,8 +924,8 @@ class _Client extends Client {
 
   @override
   void Function() subscribe(
-    SubscribePayload payload,
-    EventSink<ExecutionResult> sink,
+    Request payload,
+    EventSink<Response> sink,
   ) {
     final id = options.generateID();
     _log("subscribe $id");
@@ -948,8 +948,9 @@ class _Client extends Client {
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
 
           // if done while waiting for connect, release the connection lock right away
-          final _subscribeMsg = await options
-              .graphQLSocketMessageEncoder(SubscribeMessage(id, payload));
+          final _subscribeMsg = await options.graphQLSocketMessageEncoder(
+            SubscribeMessage(id, options.serializer.serializeRequest(payload)),
+          );
           if (done) return release();
 
           final unlisten = emitter.onMessage(id, (message) {
@@ -1046,8 +1047,10 @@ class _Connection {
 
 class _Emitter {
   final Map<TransportWsEventType, List<TransportWsEventHandler>> listeners;
-  final void Function() Function(String id, void Function(Message) listener)
-      onMessage;
+  final void Function() Function(
+    String id,
+    void Function(TransportWsMessage) listener,
+  ) onMessage;
   _Emitter({
     required this.listeners,
     required this.onMessage,
@@ -1082,18 +1085,18 @@ class _Emitter {
 /// Creates a disposable GraphQL over WebSocket client.
 ///
 /// @category Client
-Client createClient(ClientOptions options) {
+TransportWsClient createClient(TransportWsClientOptions options) {
   // websocket status emitter, subscriptions are handled differently
   final emitter = (() {
-    final Map<String, EventMessageListener> _listenersMessage = {};
-    void Function() onMessage(String id, EventMessageListener listener) {
+    final Map<String, _EventMessageListener> _listenersMessage = {};
+    void Function() onMessage(String id, _EventMessageListener listener) {
       _listenersMessage[id] = listener;
       return () {
         _listenersMessage.remove(id);
       };
     }
 
-    void emitMessage(Message message) {
+    void emitMessage(TransportWsMessage message) {
       _listenersMessage[message.id]?.call(message);
     }
 
@@ -1148,8 +1151,6 @@ class LikeCloseEvent {
       "LikeCloseEvent(code: $code, reason: $reason, wasClean: $wasClean)";
 }
 
-// bool _isLikeCloseEvent(dynamic val)=>  val is Map && val.containsKey("code") && val.containsKey("reason");
-
 bool _isFatalInternalCloseCode(int code) {
   if (const [
     1000, // Normal Closure is not an erroneous close code
@@ -1179,18 +1180,10 @@ class GQLTransportWebSocketLink extends Link {
 
   @override
   Stream<Response> request(Request request, [NextLink? forward]) {
-    final controller = StreamController<ExecutionResult>();
+    final controller = StreamController<Response>();
     void Function()? cancelSub;
     controller.onListen = () {
-      final payload = SubscribePayload(
-        query: printNode(request.operation.document),
-        variables: request.variables,
-        operationName: request.operation.operationName,
-        extensions: request.context
-            .entry<RequestExtensionsThunk>()
-            ?.getRequestExtensions(request) as Map<String, Object?>?,
-      );
-      cancelSub = client.subscribe(payload, controller.sink);
+      cancelSub = client.subscribe(request, controller.sink);
     };
 
     controller.onCancel = () {
@@ -1199,18 +1192,11 @@ class GQLTransportWebSocketLink extends Link {
     };
 
     return controller.stream.map(
-      (event) {
-        final response = Response(
-          context: event.extensions == null
-              ? const Context()
-              : const Context().withEntry(ResponseExtensions(event.extensions)),
-          response: event.rawResponse,
-          data: event.data,
-          errors: event.errors,
-        );
-        if (event.data == null && event.errors == null) {
+      (response) {
+        if (response.data == null && response.errors == null) {
           throw WebSocketLinkServerException(
             parsedResponse: response,
+            // TODO pass more data?
           );
         }
         return response;

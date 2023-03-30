@@ -1,28 +1,10 @@
-import "package:gql_exec/gql_exec.dart" show GraphQLError;
+import "package:gql_exec/gql_exec.dart" show GraphQLError, Request, Response;
 import "package:gql_link/gql_link.dart" show ResponseParser;
-
-///
-/// common
-///
-
-// import { GraphQLError } from 'graphql';
-// import {
-//   isObject,
-//   areGraphQLErrors,
-//   hasOwnProperty,
-//   hasOwnObjectProperty,
-//   hasOwnStringProperty,
-// } from './utils';
 
 /// The WebSocket sub-protocol used for the [GraphQL over WebSocket Protocol](/PROTOCOL.md).
 ///
 /// @category Common
 const graphQLTransportWSProtocol = "graphql-transport-ws";
-
-// /// The deprecated subprotocol used by [subscriptions-transport-ws](https://github.com/apollographql/subscriptions-transport-ws).
-// ///
-// /// @private
-// const DEPRECATED_GRAPHQL_WS_PROTOCOL = "graphql-ws";
 
 /// `graphql-ws` expected and standard close codes of the [GraphQL over WebSocket Protocol](/PROTOCOL.md).
 ///
@@ -59,43 +41,10 @@ int closeCodeInteger(CloseCode code) => const {
       CloseCode.tooManyInitialisationRequests: 4429,
     }[code]!;
 
-/**
- * ID is a string type alias representing
- * the globally unique ID used for identifying
- * subscriptions established by the client.
- *
- * @category Common
- */
-// typedef ID = String;
-
-// /// @category Common */
-// abstract class Disposable {
-//   /// Dispose of the instance and clear up resources. */
-//   FutureOr<void> dispose();
-// }
-
-// /// A representation of any set of values over any amount of time.
-// ///
-// /// @category Common
-// abstract class Sink<T> {
-//   /// Next value arriving. */
-//   void next(T value);
-
-//   /// An error that has occured. Calling this function "closes" the sink.
-//   /// Besides the errors being `Error` and `readonly GraphQLError[]`, it
-//   /// can also be a `CloseEvent`, but to avoid bundling DOM typings because
-//   /// the client can run in Node env too, you should assert the close event
-//   /// type during implementation.
-//   void error(Object error);
-
-//   /// The sink has completed. This function "closes" the sink. */
-//   void complete();
-// }
-
 /// Types of messages allowed to be sent by the client/server over the WS protocol.
 ///
 /// @category Common
-enum MessageType {
+enum TransportWsMessageType {
   // ignore: constant_identifier_names
   connection_init, // Client -> Server
   // ignore: constant_identifier_names
@@ -111,63 +60,67 @@ enum MessageType {
 }
 
 /// @category Common */
-class ConnectionInitMessage extends Message {
+class ConnectionInitMessage extends TransportWsMessage {
   const ConnectionInitMessage(this.payload);
 
   @override
-  MessageType get type => MessageType.connection_init;
+  TransportWsMessageType get type => TransportWsMessageType.connection_init;
   final Map<String, Object?>? payload;
   @override
   Map<String, Object?> toJson() => {"type": type.name, "payload": payload};
 }
 
 /// @category Common */
-class ConnectionAckMessage extends Message {
+class ConnectionAckMessage extends TransportWsMessage {
   const ConnectionAckMessage(this.payload);
 
   @override
-  MessageType get type => MessageType.connection_ack;
+  TransportWsMessageType get type => TransportWsMessageType.connection_ack;
   final Map<String, Object?>? payload;
   @override
   Map<String, Object?> toJson() => {"type": type.name, "payload": payload};
 }
 
 /// @category Common */
-class PingMessage extends Message {
+class PingMessage extends TransportWsMessage {
   const PingMessage(this.payload);
 
   @override
-  MessageType get type => MessageType.ping;
+  TransportWsMessageType get type => TransportWsMessageType.ping;
   final Map<String, Object?>? payload;
   @override
-  Map<String, Object?> toJson() => {"type": type.name, "payload": payload};
+  Map<String, Object?> toJson() =>
+      {"type": type.name, if (payload != null) "payload": payload};
 }
 
 /// @category Common */
-class PongMessage extends Message {
+class PongMessage extends TransportWsMessage {
   const PongMessage(this.payload);
 
   @override
-  MessageType get type => MessageType.pong;
+  TransportWsMessageType get type => TransportWsMessageType.pong;
   final Map<String, Object?>? payload;
   @override
-  Map<String, Object?> toJson() => {"type": type.name, "payload": payload};
+  Map<String, Object?> toJson() =>
+      {"type": type.name, if (payload != null) "payload": payload};
 }
 
 /// @category Common */
-class SubscribeMessage extends Message {
+class SubscribeMessage extends TransportWsMessage {
   const SubscribeMessage(this.id, this.payload);
 
   @override
-  MessageType get type => MessageType.subscribe;
+  TransportWsMessageType get type => TransportWsMessageType.subscribe;
   @override
   final String id;
-  final SubscribePayload payload;
+
+  /// [SubscribePayload] or [Request]
+  final Map<String, Object?> payload;
   @override
   Map<String, Object?> toJson() => {
         "id": id,
         "type": type.name,
-        "payload": payload.toJson(),
+        "payload": payload,
       };
 }
 
@@ -268,31 +221,31 @@ Map<String, Object?> _errorToJson(GraphQLError x) => {
 // }
 
 /// @category Common
-class NextMessage extends Message {
+class NextMessage extends TransportWsMessage {
   const NextMessage(this.id, this.payload);
 
   @override
-  MessageType get type => MessageType.next;
+  TransportWsMessageType get type => TransportWsMessageType.next;
   @override
   final String id;
-  final ExecutionResult payload;
+  final Response payload;
   @override
   Map<String, Object?> toJson() => {
         "id": id,
         "type": type.name,
-        "payload": payload.toJson(),
+        "payload": payload.data,
       };
 }
 
 /// @category Common
-class ErrorMessage extends Message {
+class ErrorMessage extends TransportWsMessage {
   const ErrorMessage(this.id, this.payload);
 
   @override
   final String id;
   final List<GraphQLError> payload;
   @override
-  MessageType get type => MessageType.error;
+  TransportWsMessageType get type => TransportWsMessageType.error;
   @override
   Map<String, Object?> toJson() => {
         "id": id,
@@ -302,40 +255,20 @@ class ErrorMessage extends Message {
 }
 
 /// @category Common
-class CompleteMessage extends Message {
+class CompleteMessage extends TransportWsMessage {
   const CompleteMessage(this.id);
 
   @override
-  MessageType get type => MessageType.complete;
+  TransportWsMessageType get type => TransportWsMessageType.complete;
   @override
   final String id;
   @override
   Map<String, Object?> toJson() => {"id": id, "type": type.name};
 }
 
-/// @category Common
-// export type Message<T extends MessageType = MessageType> =
-//   T extends MessageType.ConnectionAck
-//     ? ConnectionAckMessage
-//     : T extends MessageType.ConnectionInit
-//     ? ConnectionInitMessage
-//     : T extends MessageType.Ping
-//     ? PingMessage
-//     : T extends MessageType.Pong
-//     ? PongMessage
-//     : T extends MessageType.Subscribe
-//     ? SubscribeMessage
-//     : T extends MessageType.Next
-//     ? NextMessage
-//     : T extends MessageType.Error
-//     ? ErrorMessage
-//     : T extends MessageType.Complete
-//     ? CompleteMessage
-//     : never;
-
-abstract class Message {
-  const Message();
-  MessageType get type;
+abstract class TransportWsMessage {
+  const TransportWsMessage();
+  TransportWsMessageType get type;
   String? get id => null;
 
   Map<String, Object?> toJson();
@@ -344,44 +277,44 @@ abstract class Message {
 /// Checks if the provided value is a message.
 ///
 /// @category Common
-Message? castMessage(Object val) {
-  if (val is Message) return val;
+TransportWsMessage? castMessage(Object val, ResponseParser parser) {
+  if (val is TransportWsMessage) return val;
   if (val is! Map<String, Object?>) {
     return null;
   }
   final typeStr = val["type"];
   // all messages must have the `type` prop
-  if (!MessageType.values.map((v) => v.name).contains(typeStr)) {
+  if (!TransportWsMessageType.values.map((v) => v.name).contains(typeStr)) {
     return null;
   }
 
-  final type = MessageType.values.byName(typeStr as String);
+  final type = TransportWsMessageType.values.byName(typeStr as String);
 
   // validate other properties depending on the `type`
   switch (type) {
-    case MessageType.connection_init:
-    case MessageType.connection_ack:
-    case MessageType.ping:
-    case MessageType.pong:
+    case TransportWsMessageType.connection_init:
+    case TransportWsMessageType.connection_ack:
+    case TransportWsMessageType.ping:
+    case TransportWsMessageType.pong:
       {
         // the connection ack, ping and pong messages can have optional payload object too
         final payload = val["payload"];
         if (payload is Map<String, Object?>?) {
           switch (type) {
-            case MessageType.connection_init:
+            case TransportWsMessageType.connection_init:
               return ConnectionInitMessage(payload);
-            case MessageType.connection_ack:
+            case TransportWsMessageType.connection_ack:
               return ConnectionAckMessage(payload);
-            case MessageType.ping:
+            case TransportWsMessageType.ping:
               return PingMessage(payload);
-            case MessageType.pong:
+            case TransportWsMessageType.pong:
               return PongMessage(payload);
             default:
           }
         }
         return null;
       }
-    case MessageType.subscribe:
+    case TransportWsMessageType.subscribe:
       final id = val["id"];
       final payload = val["payload"];
       if (id is! String || payload is! Map<String, Object?>) return null;
@@ -396,28 +329,20 @@ Message? castMessage(Object val) {
           (variables is! Map<String, Object?>?)) {
         return null;
       }
-      return SubscribeMessage(
-        id,
-        SubscribePayload(
-          query: query,
-          extensions: extensions,
-          operationName: operationName,
-          variables: variables,
-        ),
-      );
-    case MessageType.next:
+      return SubscribeMessage(id, payload);
+    case TransportWsMessageType.next:
       final id = val["id"];
       final payload = val["payload"];
 
       try {
         return NextMessage(
           id as String,
-          ExecutionResult.fromJson(payload as Map<String, Object?>),
+          parser.parseResponse(payload as Map<String, Object?>),
         );
       } catch (_) {
         return null;
       }
-    case MessageType.error:
+    case TransportWsMessageType.error:
       final id = val["id"];
       final payload = val["payload"];
 
@@ -432,7 +357,7 @@ Message? castMessage(Object val) {
       } catch (_) {
         return null;
       }
-    case MessageType.complete:
+    case TransportWsMessageType.complete:
       final id = val["id"];
       return id is String ? CompleteMessage(id) : null;
   }
@@ -450,8 +375,11 @@ Message? castMessage(Object val) {
 /// Parses the raw websocket message data to a valid message.
 ///
 /// @category Common
-Message parseMessage(Map<String, Object?> data) {
-  final msg = castMessage(data);
+TransportWsMessage parseMessage(
+  Map<String, Object?> data,
+  ResponseParser parser,
+) {
+  final msg = castMessage(data, parser);
   if (msg == null) {
     throw Exception("Invalid message: $data");
   }
