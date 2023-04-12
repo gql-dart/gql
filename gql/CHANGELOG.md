@@ -1,3 +1,7 @@
+## 0.15.0
+
+- Add a const constructor to `Visitor` and the applicable sub-classes.
+
 ## 0.14.0
 
 - BREAKING: add DirectiveLocation.variableDefinition
