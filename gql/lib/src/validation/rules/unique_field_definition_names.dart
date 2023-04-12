@@ -24,6 +24,7 @@ class _Accumulator {
 }
 
 class UniqueFieldDefinitionNames extends ValidatingVisitor {
+  const UniqueFieldDefinitionNames();
   List<ValidationError> _validateFields(
     List<NameNode> nodes,
     TypeDefinitionNode typeNode,

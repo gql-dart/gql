@@ -26,7 +26,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<Spec?> {
   final Map<String, Reference> typeOverrides;
   final EnumFallbackConfig enumFallbackConfig;
 
-  _SchemaBuilderVisitor(
+  const _SchemaBuilderVisitor(
     this.schemaSource,
     this.typeOverrides,
     this.enumFallbackConfig,

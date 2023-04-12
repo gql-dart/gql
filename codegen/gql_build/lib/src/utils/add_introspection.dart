@@ -14,6 +14,7 @@ const typenameField = FieldDefinitionNode(
 );
 
 class AddTypenameField extends TransformingVisitor {
+  const AddTypenameField();
   @override
   ObjectTypeDefinitionNode visitObjectTypeDefinitionNode(
     ObjectTypeDefinitionNode node,
@@ -129,7 +130,7 @@ class AddTypenameField extends TransformingVisitor {
 
 DocumentNode _transform(DocumentNode doc) => transform(
       doc,
-      [
+      const [
         AddTypenameField(),
       ],
     );

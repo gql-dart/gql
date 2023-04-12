@@ -21,6 +21,7 @@ class _Accumulator {
 }
 
 class UniqueOperationTypes extends ValidatingVisitor {
+  const UniqueOperationTypes();
   @override
   List<ValidationError> visitSchemaDefinitionNode(
     SchemaDefinitionNode node,
