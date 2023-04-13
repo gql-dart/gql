@@ -10,6 +10,6 @@ dependencies:
   gql_transform_link: ^0.2.2
 dev_dependencies: 
   build_runner: ^2.0.0
-  dart_style: 2.2.4 # dart formatter, only update when dart format also updates to match the format, otherwise CI format check will fail
+  dart_style: 2.2.4
   gql_build: ^0.7.0
   gql_pedantic: ^1.0.2
