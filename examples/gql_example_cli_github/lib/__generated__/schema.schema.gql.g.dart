@@ -36,9 +36,8 @@ GActionExecutionCapabilitySetting _$gActionExecutionCapabilitySettingValueOf(
 }
 
 final BuiltSet<GActionExecutionCapabilitySetting>
-    _$gActionExecutionCapabilitySettingValues =
-    new BuiltSet<GActionExecutionCapabilitySetting>(const <
-        GActionExecutionCapabilitySetting>[
+    _$gActionExecutionCapabilitySettingValues = new BuiltSet<
+        GActionExecutionCapabilitySetting>(const <GActionExecutionCapabilitySetting>[
   _$gActionExecutionCapabilitySettingALL_ACTIONS,
   _$gActionExecutionCapabilitySettingDISABLED,
   _$gActionExecutionCapabilitySettingLOCAL_ACTIONS_ONLY,
@@ -258,9 +257,8 @@ GDefaultRepositoryPermissionField _$gDefaultRepositoryPermissionFieldValueOf(
 }
 
 final BuiltSet<GDefaultRepositoryPermissionField>
-    _$gDefaultRepositoryPermissionFieldValues =
-    new BuiltSet<GDefaultRepositoryPermissionField>(const <
-        GDefaultRepositoryPermissionField>[
+    _$gDefaultRepositoryPermissionFieldValues = new BuiltSet<
+        GDefaultRepositoryPermissionField>(const <GDefaultRepositoryPermissionField>[
   _$gDefaultRepositoryPermissionFieldADMIN,
   _$gDefaultRepositoryPermissionFieldNONE,
   _$gDefaultRepositoryPermissionFieldREAD,
@@ -403,9 +401,8 @@ GEnterpriseAdministratorInvitationOrderField
 }
 
 final BuiltSet<GEnterpriseAdministratorInvitationOrderField>
-    _$gEnterpriseAdministratorInvitationOrderFieldValues =
-    new BuiltSet<GEnterpriseAdministratorInvitationOrderField>(const <
-        GEnterpriseAdministratorInvitationOrderField>[
+    _$gEnterpriseAdministratorInvitationOrderFieldValues = new BuiltSet<
+        GEnterpriseAdministratorInvitationOrderField>(const <GEnterpriseAdministratorInvitationOrderField>[
   _$gEnterpriseAdministratorInvitationOrderFieldCREATED_AT,
 ]);
 
@@ -469,9 +466,8 @@ GEnterpriseDefaultRepositoryPermissionSettingValue
 }
 
 final BuiltSet<GEnterpriseDefaultRepositoryPermissionSettingValue>
-    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues =
-    new BuiltSet<GEnterpriseDefaultRepositoryPermissionSettingValue>(const <
-        GEnterpriseDefaultRepositoryPermissionSettingValue>[
+    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues = new BuiltSet<
+        GEnterpriseDefaultRepositoryPermissionSettingValue>(const <GEnterpriseDefaultRepositoryPermissionSettingValue>[
   _$gEnterpriseDefaultRepositoryPermissionSettingValueADMIN,
   _$gEnterpriseDefaultRepositoryPermissionSettingValueNONE,
   _$gEnterpriseDefaultRepositoryPermissionSettingValueNO_POLICY,
@@ -504,9 +500,8 @@ GEnterpriseEnabledDisabledSettingValue
 }
 
 final BuiltSet<GEnterpriseEnabledDisabledSettingValue>
-    _$gEnterpriseEnabledDisabledSettingValueValues =
-    new BuiltSet<GEnterpriseEnabledDisabledSettingValue>(const <
-        GEnterpriseEnabledDisabledSettingValue>[
+    _$gEnterpriseEnabledDisabledSettingValueValues = new BuiltSet<
+        GEnterpriseEnabledDisabledSettingValue>(const <GEnterpriseEnabledDisabledSettingValue>[
   _$gEnterpriseEnabledDisabledSettingValueDISABLED,
   _$gEnterpriseEnabledDisabledSettingValueENABLED,
   _$gEnterpriseEnabledDisabledSettingValueNO_POLICY,
@@ -594,9 +589,8 @@ GEnterpriseMembersCanCreateRepositoriesSettingValue
 }
 
 final BuiltSet<GEnterpriseMembersCanCreateRepositoriesSettingValue>
-    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues =
-    new BuiltSet<GEnterpriseMembersCanCreateRepositoriesSettingValue>(const <
-        GEnterpriseMembersCanCreateRepositoriesSettingValue>[
+    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues = new BuiltSet<
+        GEnterpriseMembersCanCreateRepositoriesSettingValue>(const <GEnterpriseMembersCanCreateRepositoriesSettingValue>[
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueALL,
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueDISABLED,
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueNO_POLICY,
@@ -624,9 +618,8 @@ GEnterpriseMembersCanMakePurchasesSettingValue
 }
 
 final BuiltSet<GEnterpriseMembersCanMakePurchasesSettingValue>
-    _$gEnterpriseMembersCanMakePurchasesSettingValueValues =
-    new BuiltSet<GEnterpriseMembersCanMakePurchasesSettingValue>(const <
-        GEnterpriseMembersCanMakePurchasesSettingValue>[
+    _$gEnterpriseMembersCanMakePurchasesSettingValueValues = new BuiltSet<
+        GEnterpriseMembersCanMakePurchasesSettingValue>(const <GEnterpriseMembersCanMakePurchasesSettingValue>[
   _$gEnterpriseMembersCanMakePurchasesSettingValueDISABLED,
   _$gEnterpriseMembersCanMakePurchasesSettingValueENABLED,
 ]);
@@ -656,9 +649,8 @@ GEnterpriseServerInstallationOrderField
 }
 
 final BuiltSet<GEnterpriseServerInstallationOrderField>
-    _$gEnterpriseServerInstallationOrderFieldValues =
-    new BuiltSet<GEnterpriseServerInstallationOrderField>(const <
-        GEnterpriseServerInstallationOrderField>[
+    _$gEnterpriseServerInstallationOrderFieldValues = new BuiltSet<
+        GEnterpriseServerInstallationOrderField>(const <GEnterpriseServerInstallationOrderField>[
   _$gEnterpriseServerInstallationOrderFieldCREATED_AT,
   _$gEnterpriseServerInstallationOrderFieldCUSTOMER_NAME,
   _$gEnterpriseServerInstallationOrderFieldHOST_NAME,
@@ -679,9 +671,8 @@ GEnterpriseServerUserAccountEmailOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountEmailOrderField>
-    _$gEnterpriseServerUserAccountEmailOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountEmailOrderField>(const <
-        GEnterpriseServerUserAccountEmailOrderField>[
+    _$gEnterpriseServerUserAccountEmailOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountEmailOrderField>(const <GEnterpriseServerUserAccountEmailOrderField>[
   _$gEnterpriseServerUserAccountEmailOrderFieldEMAIL,
 ]);
 
@@ -705,9 +696,8 @@ GEnterpriseServerUserAccountOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountOrderField>
-    _$gEnterpriseServerUserAccountOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountOrderField>(const <
-        GEnterpriseServerUserAccountOrderField>[
+    _$gEnterpriseServerUserAccountOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountOrderField>(const <GEnterpriseServerUserAccountOrderField>[
   _$gEnterpriseServerUserAccountOrderFieldLOGIN,
   _$gEnterpriseServerUserAccountOrderFieldREMOTE_CREATED_AT,
 ]);
@@ -727,9 +717,8 @@ GEnterpriseServerUserAccountsUploadOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadOrderField>
-    _$gEnterpriseServerUserAccountsUploadOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountsUploadOrderField>(const <
-        GEnterpriseServerUserAccountsUploadOrderField>[
+    _$gEnterpriseServerUserAccountsUploadOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountsUploadOrderField>(const <GEnterpriseServerUserAccountsUploadOrderField>[
   _$gEnterpriseServerUserAccountsUploadOrderFieldCREATED_AT,
 ]);
 
@@ -758,9 +747,8 @@ GEnterpriseServerUserAccountsUploadSyncState
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadSyncState>
-    _$gEnterpriseServerUserAccountsUploadSyncStateValues =
-    new BuiltSet<GEnterpriseServerUserAccountsUploadSyncState>(const <
-        GEnterpriseServerUserAccountsUploadSyncState>[
+    _$gEnterpriseServerUserAccountsUploadSyncStateValues = new BuiltSet<
+        GEnterpriseServerUserAccountsUploadSyncState>(const <GEnterpriseServerUserAccountsUploadSyncState>[
   _$gEnterpriseServerUserAccountsUploadSyncStateFAILURE,
   _$gEnterpriseServerUserAccountsUploadSyncStatePENDING,
   _$gEnterpriseServerUserAccountsUploadSyncStateSUCCESS,
@@ -786,9 +774,8 @@ GEnterpriseUserAccountMembershipRole
 }
 
 final BuiltSet<GEnterpriseUserAccountMembershipRole>
-    _$gEnterpriseUserAccountMembershipRoleValues =
-    new BuiltSet<GEnterpriseUserAccountMembershipRole>(const <
-        GEnterpriseUserAccountMembershipRole>[
+    _$gEnterpriseUserAccountMembershipRoleValues = new BuiltSet<
+        GEnterpriseUserAccountMembershipRole>(const <GEnterpriseUserAccountMembershipRole>[
   _$gEnterpriseUserAccountMembershipRoleMEMBER,
   _$gEnterpriseUserAccountMembershipRoleOWNER,
 ]);
@@ -1050,9 +1037,8 @@ GIdentityProviderConfigurationState
 }
 
 final BuiltSet<GIdentityProviderConfigurationState>
-    _$gIdentityProviderConfigurationStateValues =
-    new BuiltSet<GIdentityProviderConfigurationState>(const <
-        GIdentityProviderConfigurationState>[
+    _$gIdentityProviderConfigurationStateValues = new BuiltSet<
+        GIdentityProviderConfigurationState>(const <GIdentityProviderConfigurationState>[
   _$gIdentityProviderConfigurationStateCONFIGURED,
   _$gIdentityProviderConfigurationStateENFORCED,
   _$gIdentityProviderConfigurationStateUNCONFIGURED,
@@ -1458,9 +1444,8 @@ GOauthApplicationCreateAuditEntryState
 }
 
 final BuiltSet<GOauthApplicationCreateAuditEntryState>
-    _$gOauthApplicationCreateAuditEntryStateValues =
-    new BuiltSet<GOauthApplicationCreateAuditEntryState>(const <
-        GOauthApplicationCreateAuditEntryState>[
+    _$gOauthApplicationCreateAuditEntryStateValues = new BuiltSet<
+        GOauthApplicationCreateAuditEntryState>(const <GOauthApplicationCreateAuditEntryState>[
   _$gOauthApplicationCreateAuditEntryStateACTIVE,
   _$gOauthApplicationCreateAuditEntryStatePENDING_DELETION,
   _$gOauthApplicationCreateAuditEntryStateSUSPENDED,
@@ -1549,9 +1534,8 @@ GOrgAddMemberAuditEntryPermission _$gOrgAddMemberAuditEntryPermissionValueOf(
 }
 
 final BuiltSet<GOrgAddMemberAuditEntryPermission>
-    _$gOrgAddMemberAuditEntryPermissionValues =
-    new BuiltSet<GOrgAddMemberAuditEntryPermission>(const <
-        GOrgAddMemberAuditEntryPermission>[
+    _$gOrgAddMemberAuditEntryPermissionValues = new BuiltSet<
+        GOrgAddMemberAuditEntryPermission>(const <GOrgAddMemberAuditEntryPermission>[
   _$gOrgAddMemberAuditEntryPermissionADMIN,
   _$gOrgAddMemberAuditEntryPermissionREAD,
 ]);
@@ -1590,9 +1574,8 @@ GOrgCreateAuditEntryBillingPlan _$gOrgCreateAuditEntryBillingPlanValueOf(
 }
 
 final BuiltSet<GOrgCreateAuditEntryBillingPlan>
-    _$gOrgCreateAuditEntryBillingPlanValues =
-    new BuiltSet<GOrgCreateAuditEntryBillingPlan>(const <
-        GOrgCreateAuditEntryBillingPlan>[
+    _$gOrgCreateAuditEntryBillingPlanValues = new BuiltSet<
+        GOrgCreateAuditEntryBillingPlan>(const <GOrgCreateAuditEntryBillingPlan>[
   _$gOrgCreateAuditEntryBillingPlanBUSINESS,
   _$gOrgCreateAuditEntryBillingPlanBUSINESS_PLUS,
   _$gOrgCreateAuditEntryBillingPlanFREE,
@@ -1628,9 +1611,8 @@ GOrgRemoveBillingManagerAuditEntryReason
 }
 
 final BuiltSet<GOrgRemoveBillingManagerAuditEntryReason>
-    _$gOrgRemoveBillingManagerAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveBillingManagerAuditEntryReason>(const <
-        GOrgRemoveBillingManagerAuditEntryReason>[
+    _$gOrgRemoveBillingManagerAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveBillingManagerAuditEntryReason>(const <GOrgRemoveBillingManagerAuditEntryReason>[
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
   _$gOrgRemoveBillingManagerAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
@@ -1671,9 +1653,8 @@ GOrgRemoveMemberAuditEntryMembershipType
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryMembershipType>
-    _$gOrgRemoveMemberAuditEntryMembershipTypeValues =
-    new BuiltSet<GOrgRemoveMemberAuditEntryMembershipType>(const <
-        GOrgRemoveMemberAuditEntryMembershipType>[
+    _$gOrgRemoveMemberAuditEntryMembershipTypeValues = new BuiltSet<
+        GOrgRemoveMemberAuditEntryMembershipType>(const <GOrgRemoveMemberAuditEntryMembershipType>[
   _$gOrgRemoveMemberAuditEntryMembershipTypeADMIN,
   _$gOrgRemoveMemberAuditEntryMembershipTypeBILLING_MANAGER,
   _$gOrgRemoveMemberAuditEntryMembershipTypeDIRECT_MEMBER,
@@ -1708,9 +1689,8 @@ GOrgRemoveMemberAuditEntryReason _$gOrgRemoveMemberAuditEntryReasonValueOf(
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryReason>
-    _$gOrgRemoveMemberAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveMemberAuditEntryReason>(const <
-        GOrgRemoveMemberAuditEntryReason>[
+    _$gOrgRemoveMemberAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveMemberAuditEntryReason>(const <GOrgRemoveMemberAuditEntryReason>[
   _$gOrgRemoveMemberAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveMemberAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
   _$gOrgRemoveMemberAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
@@ -1746,8 +1726,8 @@ GOrgRemoveOutsideCollaboratorAuditEntryMembershipType
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>
     _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeValues =
-    new BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>(const <
-        GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>[
+    new BuiltSet<
+        GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>(const <GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeBILLING_MANAGER,
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeOUTSIDE_COLLABORATOR,
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeUNAFFILIATED,
@@ -1775,9 +1755,8 @@ GOrgRemoveOutsideCollaboratorAuditEntryReason
 }
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryReason>
-    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryReason>(const <
-        GOrgRemoveOutsideCollaboratorAuditEntryReason>[
+    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveOutsideCollaboratorAuditEntryReason>(const <GOrgRemoveOutsideCollaboratorAuditEntryReason>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
 ]);
@@ -1814,8 +1793,8 @@ GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission
 
 final BuiltSet<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>
     _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionValues =
-    new BuiltSet<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>(const <
-        GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>[
+    new BuiltSet<
+        GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>(const <GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>[
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionADMIN,
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionNONE,
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionREAD,
@@ -1842,9 +1821,8 @@ GOrgUpdateMemberAuditEntryPermission
 }
 
 final BuiltSet<GOrgUpdateMemberAuditEntryPermission>
-    _$gOrgUpdateMemberAuditEntryPermissionValues =
-    new BuiltSet<GOrgUpdateMemberAuditEntryPermission>(const <
-        GOrgUpdateMemberAuditEntryPermission>[
+    _$gOrgUpdateMemberAuditEntryPermissionValues = new BuiltSet<
+        GOrgUpdateMemberAuditEntryPermission>(const <GOrgUpdateMemberAuditEntryPermission>[
   _$gOrgUpdateMemberAuditEntryPermissionADMIN,
   _$gOrgUpdateMemberAuditEntryPermissionREAD,
 ]);
@@ -1873,8 +1851,8 @@ GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility
 
 final BuiltSet<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>
     _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityValues =
-    new BuiltSet<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>(const <
-        GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>[
+    new BuiltSet<
+        GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>(const <GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>[
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityALL,
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityPUBLIC,
 ]);
@@ -1984,8 +1962,8 @@ GOrganizationMembersCanCreateRepositoriesSettingValue
 
 final BuiltSet<GOrganizationMembersCanCreateRepositoriesSettingValue>
     _$gOrganizationMembersCanCreateRepositoriesSettingValueValues =
-    new BuiltSet<GOrganizationMembersCanCreateRepositoriesSettingValue>(const <
-        GOrganizationMembersCanCreateRepositoriesSettingValue>[
+    new BuiltSet<
+        GOrganizationMembersCanCreateRepositoriesSettingValue>(const <GOrganizationMembersCanCreateRepositoriesSettingValue>[
   _$gOrganizationMembersCanCreateRepositoriesSettingValueALL,
   _$gOrganizationMembersCanCreateRepositoriesSettingValueDISABLED,
   _$gOrganizationMembersCanCreateRepositoriesSettingValuePRIVATE,
@@ -2636,9 +2614,8 @@ GPullRequestTimelineItemsItemType _$gPullRequestTimelineItemsItemTypeValueOf(
 }
 
 final BuiltSet<GPullRequestTimelineItemsItemType>
-    _$gPullRequestTimelineItemsItemTypeValues =
-    new BuiltSet<GPullRequestTimelineItemsItemType>(const <
-        GPullRequestTimelineItemsItemType>[
+    _$gPullRequestTimelineItemsItemTypeValues = new BuiltSet<
+        GPullRequestTimelineItemsItemType>(const <GPullRequestTimelineItemsItemType>[
   _$gPullRequestTimelineItemsItemTypeADDED_TO_PROJECT_EVENT,
   _$gPullRequestTimelineItemsItemTypeASSIGNED_EVENT,
   _$gPullRequestTimelineItemsItemTypeBASE_REF_CHANGED_EVENT,
@@ -2937,9 +2914,8 @@ GRepoAccessAuditEntryVisibility _$gRepoAccessAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoAccessAuditEntryVisibility>
-    _$gRepoAccessAuditEntryVisibilityValues =
-    new BuiltSet<GRepoAccessAuditEntryVisibility>(const <
-        GRepoAccessAuditEntryVisibility>[
+    _$gRepoAccessAuditEntryVisibilityValues = new BuiltSet<
+        GRepoAccessAuditEntryVisibility>(const <GRepoAccessAuditEntryVisibility>[
   _$gRepoAccessAuditEntryVisibilityINTERNAL,
   _$gRepoAccessAuditEntryVisibilityPRIVATE,
   _$gRepoAccessAuditEntryVisibilityPUBLIC,
@@ -2970,9 +2946,8 @@ GRepoAddMemberAuditEntryVisibility _$gRepoAddMemberAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoAddMemberAuditEntryVisibility>
-    _$gRepoAddMemberAuditEntryVisibilityValues =
-    new BuiltSet<GRepoAddMemberAuditEntryVisibility>(const <
-        GRepoAddMemberAuditEntryVisibility>[
+    _$gRepoAddMemberAuditEntryVisibilityValues = new BuiltSet<
+        GRepoAddMemberAuditEntryVisibility>(const <GRepoAddMemberAuditEntryVisibility>[
   _$gRepoAddMemberAuditEntryVisibilityINTERNAL,
   _$gRepoAddMemberAuditEntryVisibilityPRIVATE,
   _$gRepoAddMemberAuditEntryVisibilityPUBLIC,
@@ -3003,9 +2978,8 @@ GRepoArchivedAuditEntryVisibility _$gRepoArchivedAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoArchivedAuditEntryVisibility>
-    _$gRepoArchivedAuditEntryVisibilityValues =
-    new BuiltSet<GRepoArchivedAuditEntryVisibility>(const <
-        GRepoArchivedAuditEntryVisibility>[
+    _$gRepoArchivedAuditEntryVisibilityValues = new BuiltSet<
+        GRepoArchivedAuditEntryVisibility>(const <GRepoArchivedAuditEntryVisibility>[
   _$gRepoArchivedAuditEntryVisibilityINTERNAL,
   _$gRepoArchivedAuditEntryVisibilityPRIVATE,
   _$gRepoArchivedAuditEntryVisibilityPUBLIC,
@@ -3036,9 +3010,8 @@ GRepoChangeMergeSettingAuditEntryMergeType
 }
 
 final BuiltSet<GRepoChangeMergeSettingAuditEntryMergeType>
-    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues =
-    new BuiltSet<GRepoChangeMergeSettingAuditEntryMergeType>(const <
-        GRepoChangeMergeSettingAuditEntryMergeType>[
+    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues = new BuiltSet<
+        GRepoChangeMergeSettingAuditEntryMergeType>(const <GRepoChangeMergeSettingAuditEntryMergeType>[
   _$gRepoChangeMergeSettingAuditEntryMergeTypeMERGE,
   _$gRepoChangeMergeSettingAuditEntryMergeTypeREBASE,
   _$gRepoChangeMergeSettingAuditEntryMergeTypeSQUASH,
@@ -3067,9 +3040,8 @@ GRepoCreateAuditEntryVisibility _$gRepoCreateAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoCreateAuditEntryVisibility>
-    _$gRepoCreateAuditEntryVisibilityValues =
-    new BuiltSet<GRepoCreateAuditEntryVisibility>(const <
-        GRepoCreateAuditEntryVisibility>[
+    _$gRepoCreateAuditEntryVisibilityValues = new BuiltSet<
+        GRepoCreateAuditEntryVisibility>(const <GRepoCreateAuditEntryVisibility>[
   _$gRepoCreateAuditEntryVisibilityINTERNAL,
   _$gRepoCreateAuditEntryVisibilityPRIVATE,
   _$gRepoCreateAuditEntryVisibilityPUBLIC,
@@ -3100,9 +3072,8 @@ GRepoDestroyAuditEntryVisibility _$gRepoDestroyAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoDestroyAuditEntryVisibility>
-    _$gRepoDestroyAuditEntryVisibilityValues =
-    new BuiltSet<GRepoDestroyAuditEntryVisibility>(const <
-        GRepoDestroyAuditEntryVisibility>[
+    _$gRepoDestroyAuditEntryVisibilityValues = new BuiltSet<
+        GRepoDestroyAuditEntryVisibility>(const <GRepoDestroyAuditEntryVisibility>[
   _$gRepoDestroyAuditEntryVisibilityINTERNAL,
   _$gRepoDestroyAuditEntryVisibilityPRIVATE,
   _$gRepoDestroyAuditEntryVisibilityPUBLIC,
@@ -3133,9 +3104,8 @@ GRepoRemoveMemberAuditEntryVisibility
 }
 
 final BuiltSet<GRepoRemoveMemberAuditEntryVisibility>
-    _$gRepoRemoveMemberAuditEntryVisibilityValues =
-    new BuiltSet<GRepoRemoveMemberAuditEntryVisibility>(const <
-        GRepoRemoveMemberAuditEntryVisibility>[
+    _$gRepoRemoveMemberAuditEntryVisibilityValues = new BuiltSet<
+        GRepoRemoveMemberAuditEntryVisibility>(const <GRepoRemoveMemberAuditEntryVisibility>[
   _$gRepoRemoveMemberAuditEntryVisibilityINTERNAL,
   _$gRepoRemoveMemberAuditEntryVisibilityPRIVATE,
   _$gRepoRemoveMemberAuditEntryVisibilityPUBLIC,
@@ -3227,9 +3197,8 @@ GRepositoryInvitationOrderField _$gRepositoryInvitationOrderFieldValueOf(
 }
 
 final BuiltSet<GRepositoryInvitationOrderField>
-    _$gRepositoryInvitationOrderFieldValues =
-    new BuiltSet<GRepositoryInvitationOrderField>(const <
-        GRepositoryInvitationOrderField>[
+    _$gRepositoryInvitationOrderFieldValues = new BuiltSet<
+        GRepositoryInvitationOrderField>(const <GRepositoryInvitationOrderField>[
   _$gRepositoryInvitationOrderFieldCREATED_AT,
   _$gRepositoryInvitationOrderFieldINVITEE_LOGIN,
 ]);
@@ -3554,9 +3523,8 @@ GSecurityAdvisoryIdentifierType _$gSecurityAdvisoryIdentifierTypeValueOf(
 }
 
 final BuiltSet<GSecurityAdvisoryIdentifierType>
-    _$gSecurityAdvisoryIdentifierTypeValues =
-    new BuiltSet<GSecurityAdvisoryIdentifierType>(const <
-        GSecurityAdvisoryIdentifierType>[
+    _$gSecurityAdvisoryIdentifierTypeValues = new BuiltSet<
+        GSecurityAdvisoryIdentifierType>(const <GSecurityAdvisoryIdentifierType>[
   _$gSecurityAdvisoryIdentifierTypeCVE,
   _$gSecurityAdvisoryIdentifierTypeGHSA,
 ]);
@@ -3631,9 +3599,8 @@ GSecurityVulnerabilityOrderField _$gSecurityVulnerabilityOrderFieldValueOf(
 }
 
 final BuiltSet<GSecurityVulnerabilityOrderField>
-    _$gSecurityVulnerabilityOrderFieldValues =
-    new BuiltSet<GSecurityVulnerabilityOrderField>(const <
-        GSecurityVulnerabilityOrderField>[
+    _$gSecurityVulnerabilityOrderFieldValues = new BuiltSet<
+        GSecurityVulnerabilityOrderField>(const <GSecurityVulnerabilityOrderField>[
   _$gSecurityVulnerabilityOrderFieldUPDATED_AT,
 ]);
 
@@ -3789,9 +3756,8 @@ GTeamDiscussionCommentOrderField _$gTeamDiscussionCommentOrderFieldValueOf(
 }
 
 final BuiltSet<GTeamDiscussionCommentOrderField>
-    _$gTeamDiscussionCommentOrderFieldValues =
-    new BuiltSet<GTeamDiscussionCommentOrderField>(const <
-        GTeamDiscussionCommentOrderField>[
+    _$gTeamDiscussionCommentOrderFieldValues = new BuiltSet<
+        GTeamDiscussionCommentOrderField>(const <GTeamDiscussionCommentOrderField>[
   _$gTeamDiscussionCommentOrderFieldNUMBER,
 ]);
 
