@@ -108,11 +108,11 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
     case ValidationRule.uniqueEnumValueNames:
       return UniqueEnumValueNames();
     case ValidationRule.uniqueFieldDefinitionNames:
-      return UniqueFieldDefinitionNames();
+      return const UniqueFieldDefinitionNames();
     case ValidationRule.loneSchemaDefinition:
       return LoneSchemaDefinition();
     case ValidationRule.uniqueOperationTypes:
-      return UniqueOperationTypes();
+      return const UniqueOperationTypes();
     case ValidationRule.uniqueTypeNames:
       return UniqueTypeNames();
     case ValidationRule.uniqueInputFieldNames:
@@ -120,7 +120,7 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
     case ValidationRule.uniqueArgumentNames:
       return UniqueArgumentNames();
     case ValidationRule.missingFragmentDefinition:
-      return MissingFragmentDefinition();
+      return const MissingFragmentDefinition();
     default:
       return null;
   }
