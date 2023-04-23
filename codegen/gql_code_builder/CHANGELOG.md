@@ -1,3 +1,7 @@
+## 0.7.2
+
+- Add a const constructor to `_PrintVisitor` and `_SchemaBuilderVisitor`.
+
 ## 0.7.1
 
 - experimental support for when/maybeWhen methods in inline spread fragments with type condition
