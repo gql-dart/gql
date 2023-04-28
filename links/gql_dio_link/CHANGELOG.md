@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
 ## 0.3.0
 
 * migrate to dio 5.0.0

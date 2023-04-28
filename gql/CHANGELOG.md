@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
 ## 0.14.1
 
 - Add a const constructor to `Visitor` and the applicable sub-classes.
