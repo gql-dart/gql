@@ -3,7 +3,7 @@ version: 1.0.0
 description: GQL Terminating Link to execute requests via HTTP using JSON.
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.13.0 <3.0.0'
+  sdk: '>=2.13.0 <4.0.0'
 dependencies: 
   gql: ^1.0.0
   gql_exec: ^1.0.0

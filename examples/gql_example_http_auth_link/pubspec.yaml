@@ -1,6 +1,6 @@
 name: gql_example_http_auth_link
 environment: 
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <4.0.0'
 dependencies: 
   gql: ^1.0.0
   gql_error_link: ^1.0.0

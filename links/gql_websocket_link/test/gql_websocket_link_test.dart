@@ -112,13 +112,11 @@ void _testLinks(
     Duration? inactivityTimeout,
     bool? autoReconnect,
     Duration? reconnectInterval,
-  })
-      makeLink, {
+  }) makeLink, {
   required bool isApolloSubProtocol,
 }) {
   final dataMessageType = isApolloSubProtocol ? "data" : "next";
   final startMessageType = isApolloSubProtocol ? "start" : "subscribe";
-  final keepAliveMessageType = isApolloSubProtocol ? "ka" : "pong";
 
   test(
     "send connection_init",
@@ -1095,111 +1093,137 @@ void _testLinks(
     },
   );
 
-  test("Auto resubscribe", () async {
-    HttpServer server1;
-    HttpServer server2;
-    Link link;
-    Request request;
-    int connectToServer = 1;
-    String? subId;
+  test(
+    "Auto resubscribe",
+    () async {
+      HttpServer server1;
+      HttpServer server2;
+      Link link;
+      Request request;
+      int connectToServer = 1;
+      String? subId;
+      final Completer<void> completer = Completer<void>();
+      final Completer<void> stopReceivedCompleter = Completer<void>();
 
-    request = Request(
-      operation: Operation(
-        operationName: "sub",
-        document: parseString(
-          r"subscription MySubscription { pokemons(first: $first) { name } }",
+      request = Request(
+        operation: Operation(
+          operationName: "sub",
+          document: parseString(
+            r"subscription MySubscription { pokemons(first: $first) { name } }",
+          ),
         ),
-      ),
-    );
+      );
 
-    server1 = await HttpServer.bind("localhost", 0);
-    server1.transform(WebSocketTransformer()).listen(
-          expectAsync1(
-            (webSocket) async {
-              final channel = IOWebSocketChannel(webSocket);
-              var messageCount = 0;
-              channel.stream.listen(
-                expectAsync1<void, dynamic>(
-                  (dynamic message) {
-                    final map =
-                        json.decode(message as String) as Map<String, dynamic>?;
-                    if (messageCount == 0) {
-                      expect(map!["type"], MessageTypes.connectionInit);
-                      channel.sink.add(
-                        json.encode(
-                          ConnectionAck(),
-                        ),
-                      );
-                    } else if (messageCount == 1) {
-                      expect(map!["id"], isA<String>());
-                      expect(map["type"], startMessageType);
-                      subId = map["id"] as String?;
-                      // disconnect
-                      webSocket.close(websocket_status.goingAway);
-                    }
-                    messageCount++;
-                  },
-                  count: 2,
-                ),
-              );
-            },
-            count: 1,
-          ),
-        );
+      server1 = await HttpServer.bind("localhost", 0);
+      server1.transform(WebSocketTransformer()).listen(
+            expectAsync1(
+              (webSocket) async {
+                final channel = IOWebSocketChannel(webSocket);
+                var messageCount = 0;
+                channel.stream.listen(
+                  expectAsync1<void, dynamic>(
+                    (dynamic message) {
+                      final map = json.decode(message as String)
+                          as Map<String, dynamic>?;
+                      if (messageCount == 0) {
+                        expect(map!["type"], MessageTypes.connectionInit);
+                        channel.sink.add(
+                          json.encode(
+                            ConnectionAck(),
+                          ),
+                        );
+                      } else if (messageCount == 1) {
+                        expect(map!["id"], isA<String>());
+                        expect(map["type"], startMessageType);
+                        subId = map["id"] as String?;
+                        // disconnect
+                        webSocket.close(websocket_status.goingAway);
+                      }
+                      messageCount++;
+                    },
+                    count: 2,
+                    reason:
+                        "server1 should only receive 2 messages, init and start",
+                    id: "server1:websocket_messages",
+                  ),
+                );
+              },
+              count: 1,
+              reason: "server 1 should only be connected once",
+              id: "server1:websocket_connections",
+            ),
+          );
 
-    server2 = await HttpServer.bind("localhost", 0);
-    server2.transform(WebSocketTransformer()).listen(
-          expectAsync1(
-            (webSocket) async {
-              final channel = IOWebSocketChannel(webSocket);
-              var messageCount = 0;
-              channel.stream.listen(
-                expectAsync1<void, dynamic>(
-                  (dynamic message) {
-                    final map =
-                        json.decode(message as String) as Map<String, dynamic>?;
-                    if (messageCount == 0) {
-                      expect(map!["type"], MessageTypes.connectionInit);
-                      channel.sink.add(
-                        json.encode(
-                          ConnectionAck(),
-                        ),
-                      );
-                    } else if (messageCount == 1) {
-                      expect(map!["id"], isA<String>());
-                      expect(map["type"], startMessageType);
-                      expect(map["id"], subId);
-                      // disconnect
-                      webSocket.close(websocket_status.goingAway);
-                    }
-                    messageCount++;
-                  },
-                  count: 2,
-                ),
-              );
-            },
-            count: 1,
-          ),
-        );
+      server2 = await HttpServer.bind("localhost", 0);
+      server2.transform(WebSocketTransformer()).listen(
+            expectAsync1(
+              (webSocket) async {
+                final channel = IOWebSocketChannel(webSocket);
+                var messageCount = 0;
+                channel.stream.listen(
+                  expectAsync1<void, dynamic>(
+                    (dynamic message) {
+                      final map = json.decode(message as String)
+                          as Map<String, dynamic>?;
+                      if (messageCount == 0) {
+                        expect(map!["type"], MessageTypes.connectionInit);
+                        channel.sink.add(
+                          json.encode(
+                            ConnectionAck(),
+                          ),
+                        );
+                      } else if (messageCount == 1) {
+                        expect(map!["id"], isA<String>());
+                        expect(map["type"], startMessageType);
+                        expect(map["id"], subId);
+                        completer.complete();
+                      } else {
+                        expect(map!["id"], isA<String>());
+                        expect(
+                            map["type"],
+                            isApolloSubProtocol
+                                ? MessageTypes.stop
+                                : MessageTypes.complete);
+                        expect(map["id"], subId);
 
-    link = makeLink(
-      null,
-      channelGenerator: () async {
-        if (connectToServer == 1) {
-          connectToServer++;
-          final webSocket =
-              await WebSocket.connect("ws://localhost:${server1.port}");
-          return IOWebSocketChannel(webSocket);
-        } else {
-          final webSocket =
-              await WebSocket.connect("ws://localhost:${server2.port}");
-          return IOWebSocketChannel(webSocket);
-        }
-      },
-      reconnectInterval: Duration(milliseconds: 500),
-    );
-    link.request(request).listen(print, onError: print);
-  });
+                        stopReceivedCompleter.complete();
+                      }
+                      messageCount++;
+                    },
+                    count: 3,
+                    id: "server2:websocket_messages",
+                    reason:
+                        "server 2 should receive init, subscription and complete/stop msg",
+                  ),
+                );
+              },
+              count: 1,
+              reason: "server 2 should only receive one connection",
+            ),
+          );
+
+      link = makeLink(
+        null,
+        channelGenerator: () async {
+          if (connectToServer == 1) {
+            connectToServer++;
+            final webSocket =
+                await WebSocket.connect("ws://localhost:${server1.port}");
+            return IOWebSocketChannel(webSocket);
+          } else {
+            final webSocket =
+                await WebSocket.connect("ws://localhost:${server2.port}");
+            return IOWebSocketChannel(webSocket);
+          }
+        },
+        reconnectInterval: Duration(milliseconds: 500),
+      );
+      final sub = link.request(request).listen(print, onError: print);
+      await completer.future;
+      await sub.cancel();
+      await stopReceivedCompleter.future;
+    },
+  );
 
   test(
       "_connect() must be called only once when executing multiple requests without awaiting",
