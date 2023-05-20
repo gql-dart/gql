@@ -117,7 +117,6 @@ void _testLinks(
 }) {
   final dataMessageType = isApolloSubProtocol ? "data" : "next";
   final startMessageType = isApolloSubProtocol ? "start" : "subscribe";
-  final keepAliveMessageType = isApolloSubProtocol ? "ka" : "pong";
 
   test(
     "send connection_init",
@@ -1007,7 +1006,7 @@ void _testLinks(
                 return channel.sink.add(json.encode(ConnectionAck()));
               } else if (type == "ping") {
                 Timer.periodic(Duration(seconds: 1), (_) {
-                  channel.sink.add(json.encode({"type": keepAliveMessageType}));
+                  channel.sink.add(json.encode({"type": "pong"}));
                 });
               }
             }
@@ -1101,6 +1100,9 @@ void _testLinks(
     Request request;
     int connectToServer = 1;
     String? subId;
+    final Completer<void> startReceivedCompleter = Completer<void>();
+    final Completer<void> stopReceivedCompleter = Completer<void>();
+
 
     request = Request(
       operation: Operation(
@@ -1139,10 +1141,15 @@ void _testLinks(
                     messageCount++;
                   },
                   count: 2,
+                  reason: "server1 should only receive 2 messages, init and start",
+
+                  id: "server1:websocket_messages",
                 ),
               );
             },
             count: 1,
+            reason: "server 1 should only be connected once",
+            id: "server1:websocket_connections",
           ),
         );
 
@@ -1168,16 +1175,24 @@ void _testLinks(
                       expect(map!["id"], isA<String>());
                       expect(map["type"], startMessageType);
                       expect(map["id"], subId);
-                      // disconnect
-                      webSocket.close(websocket_status.goingAway);
+                      startReceivedCompleter.complete();
+                    } else {
+                      expect(map!["id"], isA<String>());
+                      expect(map["type"], isApolloSubProtocol ? MessageTypes.stop : MessageTypes.complete);
+                      expect(map["id"], subId);
+
+                      stopReceivedCompleter.complete();
                     }
                     messageCount++;
                   },
-                  count: 2,
+                  count: 3,
+                  id: "server2:websocket_messages",
+                  reason: "server 2 should receive init, subscription and complete/stop msg",
                 ),
               );
             },
             count: 1,
+            reason: "server 2 should only receive one connection",
           ),
         );
 
@@ -1197,8 +1212,13 @@ void _testLinks(
       },
       reconnectInterval: Duration(milliseconds: 500),
     );
-    link.request(request).listen(print, onError: print);
-  });
+    final sub = link.request(request).listen(print, onError: print);
+    await startReceivedCompleter.future;
+    await sub.cancel();
+    await stopReceivedCompleter.future;
+  },
+
+  );
 
   test(
       "_connect() must be called only once when executing multiple requests without awaiting",
