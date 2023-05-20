@@ -1007,7 +1007,7 @@ void _testLinks(
                 return channel.sink.add(json.encode(ConnectionAck()));
               } else if (type == "ping") {
                 Timer.periodic(Duration(seconds: 1), (_) {
-                  channel.sink.add(json.encode({"type": "pong"}));
+                  channel.sink.add(json.encode({"type": keepAliveMessageType}));
                 });
               }
             }
