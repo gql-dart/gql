@@ -1102,7 +1102,7 @@ void _testLinks(
       Request request;
       int connectToServer = 1;
       String? subId;
-      final Completer<void> startReceivedCompleter = Completer<void>();
+      final Completer<void> completer = Completer<void>();
       final Completer<void> stopReceivedCompleter = Completer<void>();
 
       request = Request(
@@ -1176,7 +1176,7 @@ void _testLinks(
                         expect(map!["id"], isA<String>());
                         expect(map["type"], startMessageType);
                         expect(map["id"], subId);
-                        startReceivedCompleter.complete();
+                        completer.complete();
                       } else {
                         expect(map!["id"], isA<String>());
                         expect(
@@ -1219,7 +1219,7 @@ void _testLinks(
         reconnectInterval: Duration(milliseconds: 500),
       );
       final sub = link.request(request).listen(print, onError: print);
-      await startReceivedCompleter.future;
+      await completer.future;
       await sub.cancel();
       await stopReceivedCompleter.future;
     },
