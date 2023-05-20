@@ -3,7 +3,7 @@ version: 1.0.0
 description: GQL Websocket Link
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.15.0 <4.0.0'
 dependencies: 
   gql: ^1.0.0
   gql_exec: ^1.0.0
