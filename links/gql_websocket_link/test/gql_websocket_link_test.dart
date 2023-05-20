@@ -112,8 +112,7 @@ void _testLinks(
     Duration? inactivityTimeout,
     bool? autoReconnect,
     Duration? reconnectInterval,
-  })
-      makeLink, {
+  }) makeLink, {
   required bool isApolloSubProtocol,
 }) {
   final dataMessageType = isApolloSubProtocol ? "data" : "next";
