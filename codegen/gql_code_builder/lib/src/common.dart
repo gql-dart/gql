@@ -177,37 +177,6 @@ Method buildGetter({
   );
 }
 
-Method buildOptionalGetter({
-  required NameNode nameNode,
-  required TypeNode typeNode,
-  required SourceNode schemaSource,
-  Map<String, Reference> typeOverrides = const {},
-  String? typeRefPrefix,
-  bool built = true,
-  bool isOverride = false,
-}) {
-  final baseGetter = buildGetter(
-    nameNode: nameNode,
-    typeNode: typeNode,
-    schemaSource: schemaSource,
-    typeOverrides: typeOverrides,
-    typeRefPrefix: typeRefPrefix,
-    built: built,
-    isOverride: isOverride,
-  );
-
-  if (typeNode.isNonNull) return baseGetter;
-
-  final optionalGetter = baseGetter.rebuild((b) => b
-    ..returns = TypeReference((b2) => b2
-      ..isNullable = true
-      ..url = "package:gql_exec/value.dart"
-      ..symbol = "Value"
-      ..types.add((baseGetter.returns as TypeReference)
-          .rebuild((b3) => b3..isNullable = false))));
-  return optionalGetter;
-}
-
 Method buildSerializerGetter(String className) => Method(
       (b) => b
         ..static = true

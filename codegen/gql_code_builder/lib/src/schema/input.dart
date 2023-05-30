@@ -32,7 +32,7 @@ Class buildInputClass(
     builtClass(
       name: node.name.value,
       getters: node.fields.map<Method>(
-        (node) => buildOptionalGetter(
+        (node) => buildGetter(
           nameNode: node.name,
           typeNode: node.type,
           schemaSource: schemaSource,
