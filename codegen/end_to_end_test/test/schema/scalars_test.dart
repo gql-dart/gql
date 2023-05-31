@@ -44,10 +44,8 @@ import "package:test/test.dart": ['some', 'substrings']
     final scalar = GISODate(isoString);
 
     test('correctly serializes and deserializes', () {
-      expect(serializers.deserializeWith(GISODate.serializer, isoString),
-          equals(scalar));
-      expect(serializers.serializeWith(GISODate.serializer, scalar),
-          equals(isoString));
+      expect(serializers.deserializeWith(GISODate.serializer, isoString), equals(scalar));
+      expect(serializers.serializeWith(GISODate.serializer, scalar), equals(isoString));
     });
   });
 
@@ -98,11 +96,8 @@ import "package:test/test.dart": ['some', 'substrings']
     final data = GReviewWithDateData(
       (b) => b
         ..createReview.stars = 1
-        ..createReview
-            .seenOn
-            .add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
-        ..createReview.createdAt =
-            DateTime.fromMillisecondsSinceEpoch(1591892597000),
+        ..createReview.seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
+        ..createReview.createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
     );
 
     test('correctly overrides scalars in data types', () {
