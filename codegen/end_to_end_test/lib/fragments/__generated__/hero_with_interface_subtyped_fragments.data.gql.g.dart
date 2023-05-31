@@ -919,11 +919,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, hero.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), hero.hashCode));
   }
 
   @override
@@ -1056,12 +1052,8 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode));
   }
 
   @override
@@ -1181,12 +1173,8 @@ class _$GheroFieldsFragmentData__base extends GheroFieldsFragmentData__base {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode));
   }
 
   @override
@@ -1314,14 +1302,10 @@ class _$GheroFieldsFragmentData__asHuman
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, homePlanet.hashCode);
-    _$hash = $jc(_$hash, friends.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+            homePlanet.hashCode),
+        friends.hashCode));
   }
 
   @override
@@ -1465,10 +1449,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__base
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(0, G__typename.hashCode));
   }
 
   @override
@@ -1588,13 +1569,9 @@ class _$GheroFieldsFragmentData__asHuman_friends__asDroid
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, primaryFunction.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        primaryFunction.hashCode));
   }
 
   @override
@@ -1738,13 +1715,9 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHuman
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, homePlanet.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        homePlanet.hashCode));
   }
 
   @override
@@ -1880,13 +1853,9 @@ class _$GheroFieldsFragmentData__asDroid
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, primaryFunction.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        primaryFunction.hashCode));
   }
 
   @override
@@ -2007,12 +1976,8 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, homePlanet.hashCode);
-    _$hash = $jc(_$hash, friends.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc($jc(0, G__typename.hashCode), homePlanet.hashCode),
+        friends.hashCode));
   }
 
   @override
@@ -2134,10 +2099,7 @@ class _$GhumanFieldsFragmentData_friends__base
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(0, G__typename.hashCode));
   }
 
   @override
@@ -2250,13 +2212,9 @@ class _$GhumanFieldsFragmentData_friends__asDroid
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, primaryFunction.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        primaryFunction.hashCode));
   }
 
   @override
@@ -2394,13 +2352,9 @@ class _$GhumanFieldsFragmentData_friends__asHuman
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, homePlanet.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        homePlanet.hashCode));
   }
 
   @override
@@ -2520,11 +2474,7 @@ class _$GdroidFieldsFragmentData extends GdroidFieldsFragmentData {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, primaryFunction.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), primaryFunction.hashCode));
   }
 
   @override
@@ -2589,4 +2539,4 @@ class GdroidFieldsFragmentDataBuilder
   }
 }
 
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

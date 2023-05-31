@@ -17,6 +17,8 @@ abstract class GHumanWithArgsVars
       _$GHumanWithArgsVars;
 
   String get id;
+  static Serializer<GHumanWithArgsVars> get serializer =>
+      _$gHumanWithArgsVarsSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHumanWithArgsVars.serializer,
         this,
@@ -26,48 +28,4 @@ abstract class GHumanWithArgsVars
         GHumanWithArgsVars.serializer,
         json,
       );
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GHumanWithArgsVars> get serializer =>
-      GHumanWithArgsVarsSerializer();
-}
-
-class GHumanWithArgsVarsSerializer
-    extends StructuredSerializer<GHumanWithArgsVars> {
-  final String wireName = 'GHumanWithArgsVars';
-
-  final Iterable<Type> types = const [GHumanWithArgsVars, _$GHumanWithArgsVars];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GHumanWithArgsVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    result.add('id');
-    result.add(serializers.serialize(object.id,
-        specifiedType: const FullType(String)));
-    return result;
-  }
-
-  GHumanWithArgsVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GHumanWithArgsVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'id':
-          var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          builder.id = fieldValue;
-          break;
-      }
-    }
-    return builder.build();
-  }
 }

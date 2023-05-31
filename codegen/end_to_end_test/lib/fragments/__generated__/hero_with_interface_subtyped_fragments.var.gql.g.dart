@@ -6,6 +6,137 @@ part of 'hero_with_interface_subtyped_fragments.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GHeroWithInterfaceSubTypedFragmentsVars>
+    _$gHeroWithInterfaceSubTypedFragmentsVarsSerializer =
+    new _$GHeroWithInterfaceSubTypedFragmentsVarsSerializer();
+Serializer<GheroFieldsFragmentVars> _$gheroFieldsFragmentVarsSerializer =
+    new _$GheroFieldsFragmentVarsSerializer();
+Serializer<GhumanFieldsFragmentVars> _$ghumanFieldsFragmentVarsSerializer =
+    new _$GhumanFieldsFragmentVarsSerializer();
+Serializer<GdroidFieldsFragmentVars> _$gdroidFieldsFragmentVarsSerializer =
+    new _$GdroidFieldsFragmentVarsSerializer();
+
+class _$GHeroWithInterfaceSubTypedFragmentsVarsSerializer
+    implements StructuredSerializer<GHeroWithInterfaceSubTypedFragmentsVars> {
+  @override
+  final Iterable<Type> types = const [
+    GHeroWithInterfaceSubTypedFragmentsVars,
+    _$GHeroWithInterfaceSubTypedFragmentsVars
+  ];
+  @override
+  final String wireName = 'GHeroWithInterfaceSubTypedFragmentsVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroWithInterfaceSubTypedFragmentsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'episode',
+      serializers.serialize(object.episode,
+          specifiedType: const FullType(_i1.GEpisode)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GHeroWithInterfaceSubTypedFragmentsVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GHeroWithInterfaceSubTypedFragmentsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'episode':
+          result.episode = serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GEpisode))! as _i1.GEpisode;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GheroFieldsFragmentVarsSerializer
+    implements StructuredSerializer<GheroFieldsFragmentVars> {
+  @override
+  final Iterable<Type> types = const [
+    GheroFieldsFragmentVars,
+    _$GheroFieldsFragmentVars
+  ];
+  @override
+  final String wireName = 'GheroFieldsFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GheroFieldsFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GheroFieldsFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GheroFieldsFragmentVarsBuilder().build();
+  }
+}
+
+class _$GhumanFieldsFragmentVarsSerializer
+    implements StructuredSerializer<GhumanFieldsFragmentVars> {
+  @override
+  final Iterable<Type> types = const [
+    GhumanFieldsFragmentVars,
+    _$GhumanFieldsFragmentVars
+  ];
+  @override
+  final String wireName = 'GhumanFieldsFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GhumanFieldsFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GhumanFieldsFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GhumanFieldsFragmentVarsBuilder().build();
+  }
+}
+
+class _$GdroidFieldsFragmentVarsSerializer
+    implements StructuredSerializer<GdroidFieldsFragmentVars> {
+  @override
+  final Iterable<Type> types = const [
+    GdroidFieldsFragmentVars,
+    _$GdroidFieldsFragmentVars
+  ];
+  @override
+  final String wireName = 'GdroidFieldsFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GdroidFieldsFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GdroidFieldsFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GdroidFieldsFragmentVarsBuilder().build();
+  }
+}
+
 class _$GHeroWithInterfaceSubTypedFragmentsVars
     extends GHeroWithInterfaceSubTypedFragmentsVars {
   @override
@@ -42,10 +173,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsVars
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, episode.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(0, episode.hashCode));
   }
 
   @override
@@ -286,4 +414,4 @@ class GdroidFieldsFragmentVarsBuilder
   }
 }
 
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

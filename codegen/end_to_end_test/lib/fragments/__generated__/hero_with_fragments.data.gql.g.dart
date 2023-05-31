@@ -691,11 +691,7 @@ class _$GHeroWithFragmentsData extends GHeroWithFragmentsData {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, hero.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), hero.hashCode));
   }
 
   @override
@@ -823,13 +819,10 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, friendsConnection.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
+            friendsConnection.hashCode),
+        name.hashCode));
   }
 
   @override
@@ -972,12 +965,8 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, totalCount.hashCode);
-    _$hash = $jc(_$hash, edges.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc($jc(0, G__typename.hashCode), totalCount.hashCode),
+        edges.hashCode));
   }
 
   @override
@@ -1119,11 +1108,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, node.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), node.hashCode));
   }
 
   @override
@@ -1262,11 +1247,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
   }
 
   @override
@@ -1374,11 +1355,7 @@ class _$GheroDataData extends GheroDataData {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
   }
 
   @override
@@ -1492,13 +1469,9 @@ class _$GcomparisonFieldsData extends GcomparisonFieldsData {
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, friendsConnection.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), name.hashCode),
+        friendsConnection.hashCode));
   }
 
   @override
@@ -1637,12 +1610,8 @@ class _$GcomparisonFieldsData_friendsConnection
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, totalCount.hashCode);
-    _$hash = $jc(_$hash, edges.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc($jc(0, G__typename.hashCode), totalCount.hashCode),
+        edges.hashCode));
   }
 
   @override
@@ -1776,11 +1745,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, node.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), node.hashCode));
   }
 
   @override
@@ -1914,11 +1879,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
 
   @override
   int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
+    return $jf($jc($jc(0, G__typename.hashCode), name.hashCode));
   }
 
   @override
@@ -1989,4 +1950,4 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   }
 }
 
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

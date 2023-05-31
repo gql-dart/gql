@@ -1,19 +1,13 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
-import 'package:gql_exec/value.dart';
-import "package:test/test.dart";
-
+import 'package:end_to_end_test/custom_field.dart';
+import 'package:end_to_end_test/custom_field_serializer.dart';
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart';
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.data.gql.dart';
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart';
-import 'package:end_to_end_test/custom_field.dart';
-import 'package:end_to_end_test/custom_field_serializer.dart';
-
-void main() {
-  group("Custom scalars from non-standard dart types", () {
-    final customField = CustomField('hi', 4.5, {
-      'subfield': ['some', 'substrings']
+import 'package:gql_exec/value.dart';
+import "package:test/test.dart": ['some', 'substrings']
     });
 
     test('correctly serializes and deserializes', () {
@@ -58,13 +52,13 @@ void main() {
   });
 
   group("Custom scalars in input types", () {
-    final input = GReviewInput((b) => b
-      ..stars = 4
-      ..seenOn = Value(
-        BuiltList([DateTime.fromMillisecondsSinceEpoch(1591892597000)]),
-      ));
+    final input = GReviewInput(
+      (b) => b
+        ..stars = 4
+        ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
+    );
     test('correctly overrides scalars in input types', () {
-      expect(input.seenOn!.value!.first, TypeMatcher<DateTime>());
+      expect(input.seenOn!.first, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -81,11 +75,11 @@ void main() {
     final vars = GReviewWithDateVars(
       (b) => b
         ..review.stars = 4
-        ..createdAt = Value(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
+        ..createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
     );
 
     test('correctly overrides scalars in variable types', () {
-      expect(vars.createdAt!.value, TypeMatcher<DateTime>());
+      expect(vars.createdAt, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {

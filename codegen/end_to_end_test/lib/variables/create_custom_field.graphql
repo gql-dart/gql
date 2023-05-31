@@ -1,5 +1,0 @@
-
-
-mutation CreateCustomField($input: CustomFieldInput!) {
-    createCustomField(input: $input)
-}
