@@ -1,6 +1,8 @@
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
-import 'package:gql_exec/value.dart';
-import "package:test/test.dart"
+import "package:test/test.dart";
+
+void main() {
+  group("Inputs", () {
     test('can be instantiated', () {
       GReviewInput(
         (b) => b

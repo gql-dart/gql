@@ -1,13 +1,15 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
 import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart';
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart';
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.data.gql.dart';
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart';
-import 'package:gql_exec/value.dart';
-import "package:test/test.dart": ['some', 'substrings']
+import "package:test/test.dart";
+
+void main() {
+  group("Custom scalars from non-standard dart types", () {
+    final customField = CustomField('hi', 4.5, {
+      'subfield': ['some', 'substrings']
     });
 
     test('correctly serializes and deserializes', () {
@@ -44,8 +46,10 @@ import "package:test/test.dart": ['some', 'substrings']
     final scalar = GISODate(isoString);
 
     test('correctly serializes and deserializes', () {
-      expect(serializers.deserializeWith(GISODate.serializer, isoString), equals(scalar));
-      expect(serializers.serializeWith(GISODate.serializer, scalar), equals(isoString));
+      expect(serializers.deserializeWith(GISODate.serializer, isoString),
+          equals(scalar));
+      expect(serializers.serializeWith(GISODate.serializer, scalar),
+          equals(isoString));
     });
   });
 
@@ -96,8 +100,11 @@ import "package:test/test.dart": ['some', 'substrings']
     final data = GReviewWithDateData(
       (b) => b
         ..createReview.stars = 1
-        ..createReview.seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
-        ..createReview.createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
+        ..createReview
+            .seenOn
+            .add(DateTime.fromMillisecondsSinceEpoch(1591892597000))
+        ..createReview.createdAt =
+            DateTime.fromMillisecondsSinceEpoch(1591892597000),
     );
 
     test('correctly overrides scalars in data types', () {
