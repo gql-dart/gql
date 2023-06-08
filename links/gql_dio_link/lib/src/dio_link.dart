@@ -50,7 +50,7 @@ class DioLink extends Link {
   /// Must be set to `true` when the errors should be able to be sent
   /// across isolate boundaries.
   /// In particular, setting this to true causes the [FormData] of
-  /// [dio.RequestOptions] of [dio.DioError] to be stripped out from thrown Exceptions, along with
+  /// [dio.RequestOptions] of [dio.DioException] to be stripped out from thrown Exceptions, along with
   /// other potentially non-serializable fields like callbacks or the cancel token.
   final bool serializableErrors;
 
@@ -210,29 +210,29 @@ class DioLink extends Link {
         );
       }
       return res.castData<Map<String, dynamic>>();
-    } on dio.DioError catch (e, stackTrace) {
-      final dio.DioError resolvedError;
+    } on dio.DioException catch (e, stackTrace) {
+      final dio.DioException resolvedError;
       if (serializableErrors) {
-        resolvedError = _serializableDioError(e);
+        resolvedError = _serializableDioException(e);
       } else {
         resolvedError = e;
       }
 
       switch (resolvedError.type) {
-        case dio.DioErrorType.connectionTimeout:
-        case dio.DioErrorType.receiveTimeout:
-        case dio.DioErrorType.sendTimeout:
+        case dio.DioExceptionType.connectionTimeout:
+        case dio.DioExceptionType.receiveTimeout:
+        case dio.DioExceptionType.sendTimeout:
           throw DioLinkTimeoutException(
             type: resolvedError.type,
             originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.cancel:
+        case dio.DioExceptionType.cancel:
           throw DioLinkCanceledException(
             originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.badResponse:
+        case dio.DioExceptionType.badResponse:
           {
             final res = resolvedError.response!;
             final parsedResponse = (res.data is Map<String, dynamic>)
@@ -245,7 +245,7 @@ class DioLink extends Link {
               originalStackTrace: stackTrace,
             );
           }
-        case dio.DioErrorType.unknown:
+        case dio.DioExceptionType.unknown:
         default:
           throw DioLinkUnkownException(
             originalException: resolvedError,
@@ -261,7 +261,8 @@ class DioLink extends Link {
     }
   }
 
-  dio.DioError _serializableDioError(dio.DioError e) => dio.DioError(
+  dio.DioException _serializableDioException(dio.DioException e) =>
+      dio.DioException(
         type: e.type,
         error: e.error,
         response: e.response,
@@ -290,6 +291,9 @@ class DioLink extends Link {
           receiveDataWhenStatusError:
               e.requestOptions.receiveDataWhenStatusError,
           sendTimeout: e.requestOptions.sendTimeout,
+          responseType: e.requestOptions.responseType,
+          listFormat: e.requestOptions.listFormat,
+          persistentConnection: e.requestOptions.persistentConnection,
         ),
       );
 
