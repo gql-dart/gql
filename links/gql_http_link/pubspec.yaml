@@ -1,5 +1,5 @@
 name: gql_http_link
-version: 1.0.0
+version: 1.0.1
 description: GQL Terminating Link to execute requests via HTTP using JSON.
 repository: https://github.com/gql-dart/gql
 environment: 
@@ -8,7 +8,7 @@ dependencies:
   gql: ^1.0.0
   gql_exec: ^1.0.0
   gql_link: ^1.0.0
-  http: ^0.13.0
+  http: '>0.13.0 <2.0.0'
   http_parser: ^4.0.0
   meta: ^1.3.0
 dev_dependencies: 
