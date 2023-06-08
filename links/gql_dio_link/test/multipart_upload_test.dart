@@ -239,8 +239,8 @@ void main() {
         any,
         data: anyNamed("data"),
         options: anyNamed("options"),
-      )).thenAnswer((i) async => Future.error(dio.DioError(
-            type: dio.DioErrorType.receiveTimeout,
+      )).thenAnswer((i) async => Future.error(dio.DioException(
+            type: dio.DioExceptionType.receiveTimeout,
             requestOptions: dio.RequestOptions(
               path: i.positionalArguments[0] as String,
               data: i.namedArguments[Symbol("data")] as dio.FormData,
@@ -250,10 +250,10 @@ void main() {
           () => link.request(gqlRequest).first,
           throwsA(isA<DioLinkTimeoutException>()
               .having((e) => e.originalException, "with a dio error",
-                  isA<dio.DioError>())
+                  isA<dio.DioException>())
               .having(
                   (e) =>
-                      (e.originalException as dio.DioError).requestOptions.data,
+                      (e.originalException as dio.DioException).requestOptions.data,
                   "with removed FormData",
                   isNull)));
     });
@@ -268,8 +268,8 @@ void main() {
         any,
         data: anyNamed("data"),
         options: anyNamed("options"),
-      )).thenAnswer((i) async => Future.error(dio.DioError(
-            type: dio.DioErrorType.receiveTimeout,
+      )).thenAnswer((i) async => Future.error(dio.DioException(
+            type: dio.DioExceptionType.receiveTimeout,
             requestOptions: dio.RequestOptions(
               path: i.positionalArguments[0] as String,
               data: i.namedArguments[Symbol("data")] as dio.FormData,
@@ -279,10 +279,10 @@ void main() {
           () => link.request(gqlRequest).first,
           throwsA(isA<DioLinkTimeoutException>()
               .having((e) => e.originalException, "with a dio error",
-                  isA<dio.DioError>())
+                  isA<dio.DioException>())
               .having(
                   (e) =>
-                      (e.originalException as dio.DioError).requestOptions.data,
+                      (e.originalException as dio.DioException).requestOptions.data,
                   "with removed FormData",
                   isA<dio.FormData>())));
     });
