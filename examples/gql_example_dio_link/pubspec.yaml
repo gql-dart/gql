@@ -1,6 +1,6 @@
 name: gql_example_dio_link
 description: A simple example to show gql_dio_link
-environment:
+environment: 
   sdk: '>=2.12.0 <4.0.0'
 dependencies: 
   dio: ^5.0.0
