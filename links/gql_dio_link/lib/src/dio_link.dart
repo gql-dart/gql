@@ -261,8 +261,7 @@ class DioLink extends Link {
     }
   }
 
-  dio.DioException _serializableDioException(dio.DioException e) => e
-    .copyWith(
+  dio.DioException _serializableDioException(dio.DioException e) => e.copyWith(
         requestOptions: e.requestOptions.copyWith(
           data: e.requestOptions.data is Map<String, dynamic> ||
                   e.requestOptions.data is String ||

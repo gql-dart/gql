@@ -252,8 +252,9 @@ void main() {
               .having((e) => e.originalException, "with a dio error",
                   isA<dio.DioException>())
               .having(
-                  (e) =>
-                      (e.originalException as dio.DioException).requestOptions.data,
+                  (e) => (e.originalException as dio.DioException)
+                      .requestOptions
+                      .data,
                   "with removed FormData",
                   isNull)));
     });
@@ -281,8 +282,9 @@ void main() {
               .having((e) => e.originalException, "with a dio error",
                   isA<dio.DioException>())
               .having(
-                  (e) =>
-                      (e.originalException as dio.DioException).requestOptions.data,
+                  (e) => (e.originalException as dio.DioException)
+                      .requestOptions
+                      .data,
                   "with removed FormData",
                   isA<dio.FormData>())));
     });
