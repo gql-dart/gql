@@ -261,11 +261,14 @@ class DioLink extends Link {
     }
   }
 
-  dio.DioException _serializableDioException(dio.DioException e) => e.copyWith(
-        requestOptions: e.requestOptions.copyWith(
+  dio.DioException _serializableDioException(dio.DioException e) =>
+      dio.DioException(
+        type: e.type,
+        error: e.error,
+        response: e.response,
+        requestOptions: dio.RequestOptions(
           data: e.requestOptions.data is Map<String, dynamic> ||
-                  e.requestOptions.data is String ||
-                  e.requestOptions.data is List<int>
+                  e.requestOptions is String
               ? e.requestOptions.data
               : null, // could be FormData, which is not serializable
           onSendProgress: null,
@@ -274,6 +277,23 @@ class DioLink extends Link {
           responseDecoder: null,
           requestEncoder: null,
           validateStatus: null,
+          path: e.requestOptions.path,
+          method: e.requestOptions.method,
+          baseUrl: e.requestOptions.baseUrl,
+          headers: e.requestOptions.headers,
+          queryParameters: e.requestOptions.queryParameters,
+          extra: e.requestOptions.extra,
+          maxRedirects: e.requestOptions.maxRedirects,
+          followRedirects: e.requestOptions.followRedirects,
+          connectTimeout: e.requestOptions.connectTimeout,
+          contentType: e.requestOptions.contentType,
+          receiveTimeout: e.requestOptions.receiveTimeout,
+          receiveDataWhenStatusError:
+              e.requestOptions.receiveDataWhenStatusError,
+          sendTimeout: e.requestOptions.sendTimeout,
+          responseType: e.requestOptions.responseType,
+          listFormat: e.requestOptions.listFormat,
+          persistentConnection: e.requestOptions.persistentConnection,
         ),
       );
 
