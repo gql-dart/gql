@@ -30,5 +30,6 @@ jobs:
         run: |
           mkdir -p $XDG_CONFIG_HOME/dart/
           echo $PUB_CREDENTIALS_JSON > $XDG_CONFIG_HOME/dart/pub-credentials.json
+          mkdir -p $HOME/.config/dart/
           echo $PUB_CREDENTIALS_JSON > $HOME/.config/dart/pub-credentials.json
           multipack --only $PACKAGES pub publish --force
