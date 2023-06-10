@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Support the `graphql-transport-ws` protocol. Thanks to Juan Manuel Castillo for the contribution.
+
 ## 1.0.0
 
 - Mark the package as stable with a `1.0.0` release.
