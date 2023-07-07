@@ -1,3 +1,7 @@
+# 0.8.0
+
+- Add a const constructor to `AddTypenameField`.
+
 # 0.7.0
 
 - **Breaking Change**: properly generate nullable types for nullable elements in lists

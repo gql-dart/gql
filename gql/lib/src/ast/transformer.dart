@@ -21,6 +21,7 @@ N transform<N extends Node>(
 /// the visit methods relevant to your transformation.
 /// [transform] will make sure to walk the AST recursively.
 abstract class TransformingVisitor extends Visitor<Node> {
+  const TransformingVisitor();
   @override
   DocumentNode visitDocumentNode(
     DocumentNode node,
@@ -287,9 +288,9 @@ abstract class TransformingVisitor extends Visitor<Node> {
 }
 
 class _Transformer extends Visitor<Node> {
-  List<TransformingVisitor> visitors;
+  final List<TransformingVisitor> visitors;
 
-  _Transformer({
+  const _Transformer({
     this.visitors = const [],
   });
 

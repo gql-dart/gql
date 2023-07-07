@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
 ## 0.3.4
 
 - add stackTrace to exceptions
