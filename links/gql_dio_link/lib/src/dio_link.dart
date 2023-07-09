@@ -5,6 +5,7 @@ import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
 import "_utils.dart";
+import "dio_cancel_token_context_entry.dart";
 import "exceptions.dart";
 
 @Deprecated("Use HttpLinkResponseContext instead")
@@ -30,7 +31,7 @@ extension _CastDioResponse on dio.Response {
 class DioLink extends Link {
   /// Endpoint of the GraphQL service
   final String endpoint;
-  final dio.CancelToken? cancelToken;
+  // final dio.CancelToken? cancelToken;
 
   /// Default HTTP headers
   final Map<String, String> defaultHeaders;
@@ -55,14 +56,15 @@ class DioLink extends Link {
   /// other potentially non-serializable fields like callbacks or the cancel token.
   final bool serializableErrors;
 
-  DioLink(this.endpoint,
-      {required this.client,
-      this.defaultHeaders = const {},
-      this.serializer = const RequestSerializer(),
-      this.parser = const ResponseParser(),
-      this.useGETForQueries = false,
-      this.serializableErrors = false,
-      this.cancelToken});
+  DioLink(
+    this.endpoint, {
+    required this.client,
+    this.defaultHeaders = const {},
+    this.serializer = const RequestSerializer(),
+    this.parser = const ResponseParser(),
+    this.useGETForQueries = false,
+    this.serializableErrors = false,
+  });
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
@@ -174,7 +176,9 @@ class DioLink extends Link {
     try {
       final dynamic body = _prepareRequestBody(request);
       dio.Response<dynamic> res;
-
+      final dio.CancelToken? cancelToken =
+          request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
+      print("LINK Cancel token is $cancelToken");
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
