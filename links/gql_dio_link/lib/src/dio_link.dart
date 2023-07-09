@@ -68,8 +68,7 @@ class DioLink extends Link {
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
-    final dio.Response<Map<String, dynamic>> dioResponse =
-        await _executeDioRequest(
+    final dio.Response<Map<String, dynamic>> dioResponse = await _executeDioRequest(
       request: request,
       headers: <String, String>{
         dio.Headers.acceptHeader: "*/*",
@@ -81,8 +80,7 @@ class DioLink extends Link {
     );
 
     if (dioResponse.statusCode! >= 300 ||
-        (dioResponse.data!["data"] == null &&
-            dioResponse.data!["errors"] == null)) {
+        (dioResponse.data!["data"] == null && dioResponse.data!["errors"] == null)) {
       throw DioLinkServerException(
         response: dioResponse,
         parsedResponse: _parseDioResponse(dioResponse),
@@ -179,58 +177,31 @@ class DioLink extends Link {
       final dio.CancelToken? cancelToken =
           request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
 
-      final useGet =
-          useGETForQueries && body is Map<String, dynamic> && isQuery;
+      final useGet = useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
-        if (cancelToken != null) {
-          res = await client.getUri<dynamic>(
-            Uri.parse(endpoint).replace(
-              queryParameters: _encodeAttempter(
-                request,
-                _encodeAsUriParams,
-              )(body as Map<String, dynamic>),
-            ),
-            cancelToken: cancelToken,
-            options: dio.Options(
-              responseType: dio.ResponseType.json,
-              headers: headers,
-            ),
-          );
-        } else {
-          res = await client.getUri<dynamic>(
-            Uri.parse(endpoint).replace(
-              queryParameters: _encodeAttempter(
-                request,
-                _encodeAsUriParams,
-              )(body as Map<String, dynamic>),
-            ),
-            options: dio.Options(
-              responseType: dio.ResponseType.json,
-              headers: headers,
-            ),
-          );
-        }
+        res = await client.getUri<dynamic>(
+          Uri.parse(endpoint).replace(
+            queryParameters: _encodeAttempter(
+              request,
+              _encodeAsUriParams,
+            )(body as Map<String, dynamic>),
+          ),
+          cancelToken: cancelToken,
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
       } else {
-        if (cancelToken != null) {
-          res = await client.post<dynamic>(
-            endpoint,
-            cancelToken: cancelToken,
-            data: body,
-            options: dio.Options(
-              responseType: dio.ResponseType.json,
-              headers: headers,
-            ),
-          );
-        } else {
-          res = await client.post<dynamic>(
-            endpoint,
-            data: body,
-            options: dio.Options(
-              responseType: dio.ResponseType.json,
-              headers: headers,
-            ),
-          );
-        }
+        res = await client.post<dynamic>(
+          endpoint,
+          cancelToken: cancelToken,
+          data: body,
+          options: dio.Options(
+            responseType: dio.ResponseType.json,
+            headers: headers,
+          ),
+        );
       }
       if (res.data is Map<String, dynamic> == false) {
         throw DioLinkParserException(
@@ -293,14 +264,12 @@ class DioLink extends Link {
     }
   }
 
-  dio.DioException _serializableDioException(dio.DioException e) =>
-      dio.DioException(
+  dio.DioException _serializableDioException(dio.DioException e) => dio.DioException(
         type: e.type,
         error: e.error,
         response: e.response,
         requestOptions: dio.RequestOptions(
-          data: e.requestOptions.data is Map<String, dynamic> ||
-                  e.requestOptions is String
+          data: e.requestOptions.data is Map<String, dynamic> || e.requestOptions is String
               ? e.requestOptions.data
               : null, // could be FormData, which is not serializable
           onSendProgress: null,
@@ -320,8 +289,7 @@ class DioLink extends Link {
           connectTimeout: e.requestOptions.connectTimeout,
           contentType: e.requestOptions.contentType,
           receiveTimeout: e.requestOptions.receiveTimeout,
-          receiveDataWhenStatusError:
-              e.requestOptions.receiveDataWhenStatusError,
+          receiveDataWhenStatusError: e.requestOptions.receiveDataWhenStatusError,
           sendTimeout: e.requestOptions.sendTimeout,
           responseType: e.requestOptions.responseType,
           listFormat: e.requestOptions.listFormat,
