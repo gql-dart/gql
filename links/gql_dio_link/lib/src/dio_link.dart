@@ -178,7 +178,7 @@ class DioLink extends Link {
       dio.Response<dynamic> res;
       final dio.CancelToken? cancelToken =
           request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
-      print("LINK Cancel token is $cancelToken");
+
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
       if (useGet) {
