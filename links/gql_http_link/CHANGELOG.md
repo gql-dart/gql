@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Support http 1.0.0
+
 ## 1.0.0
 
 - Mark the package as stable with a `1.0.0` release.
