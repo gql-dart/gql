@@ -18,3 +18,8 @@ dev_dependencies:
   http_parser: ^4.0.0
   mockito: ^5.3.0
   test: ^1.14.3
+topics: 
+  - graphql
+  - gql
+  - gql-link
+  - dio
