@@ -20,7 +20,7 @@ dependencies:
 dev_dependencies: 
   build_test: ^2.0.0
   gql_pedantic: ^1.0.2
-topics:
+topics: 
   - graphql
   - gql
   - codegen
