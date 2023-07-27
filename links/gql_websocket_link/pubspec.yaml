@@ -4,6 +4,10 @@ description: GQL Websocket Link
 repository: https://github.com/gql-dart/gql
 environment: 
   sdk: '>=2.15.0 <4.0.0'
+topics:
+  - graphql
+  - gql
+  - gql-link
 dependencies: 
   gql: ^1.0.0
   gql_exec: ^1.0.0

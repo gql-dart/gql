@@ -2,6 +2,9 @@ name: gql
 version: 1.0.0
 description: GraphQL tools for parsing, transforming and printing GraphQL documents.
 repository: https://github.com/gql-dart/gql
+topics:
+  - graphql
+  - gql
 environment: 
   sdk: '>=2.12.0 <4.0.0'
 dependencies: 
