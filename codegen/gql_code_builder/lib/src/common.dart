@@ -138,6 +138,7 @@ Method buildGetter({
   required TypeNode typeNode,
   required SourceNode schemaSource,
   Map<String, Reference> typeOverrides = const {},
+  Reference? typeRefAlias,
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
@@ -151,7 +152,9 @@ Method buildGetter({
 
   final typeMap = {
     ...defaultTypeMap,
-    if (typeRefPrefix != null)
+    if (typeRefAlias != null)
+      typeName: typeRefAlias
+    else if (typeRefPrefix != null)
       typeName: refer("${typeRefPrefix}_${nameNode.value}")
     else if (typeDef != null)
       typeName: refer(
