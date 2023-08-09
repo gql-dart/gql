@@ -56,7 +56,8 @@ Extension? inlineFragmentWhenExtension(
   /// returns the name of the concrete built class for the inlineFragment
   /// so we can refer to it in the generated code
   String getGeneratedTypeName(InlineFragmentNode node) {
-    final typeName = builtClassName("${baseTypeName}__as${node.typeCondition!.on.name.value}");
+    final typeName = builtClassName(
+        "${baseTypeName}__as${node.typeCondition!.on.name.value}");
     return dataClassAliasMap[typeName]?.symbol ?? typeName;
   }
 

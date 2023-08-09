@@ -41,13 +41,14 @@ List<Spec> buildInlineFragmentClasses({
         ..name = builtClassName(name)
         ..implements.addAll(
           superclassSelections.keys
-            .where((superName) => !dataClassAliasMap.containsKey(builtClassName(superName)))
-            .map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
+              .where((superName) =>
+                  !dataClassAliasMap.containsKey(builtClassName(superName)))
+              .map<Reference>(
+                (superName) => refer(
+                  builtClassName(superName),
+                  (superclassSelections[superName]?.url ?? "") + "#data",
+                ),
               ),
-            ),
         )
         ..methods.addAll([
           ...fieldGetters,
@@ -87,34 +88,35 @@ List<Spec> buildInlineFragmentClasses({
       if (frag.typeCondition == null) {
         return false;
       }
-      final typeName = builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
+      final typeName =
+          builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
       if (dataClassAliasMap.containsKey(typeName)) {
         // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
         return false;
       }
       return true;
     }).expand(
-          (inlineFragment) => buildSelectionSetDataClasses(
-              name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-              selections: mergeSelections(
-                [
-                  ...selections.whereType<FieldNode>(),
-                  ...selections.whereType<FragmentSpreadNode>(),
-                  ...inlineFragment.selectionSet.selections,
-                ],
-                fragmentMap,
-              ),
-              fragmentMap: fragmentMap,
-              dataClassAliasMap: dataClassAliasMap,
-              schemaSource: schemaSource,
-              type: inlineFragment.typeCondition!.on.name.value,
-              typeOverrides: typeOverrides,
-              superclassSelections: {
-                name: SourceSelections(url: null, selections: selections)
-              },
-              built: built,
-              whenExtensionConfig: whenExtensionConfig),
-        ),
+      (inlineFragment) => buildSelectionSetDataClasses(
+          name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
+          selections: mergeSelections(
+            [
+              ...selections.whereType<FieldNode>(),
+              ...selections.whereType<FragmentSpreadNode>(),
+              ...inlineFragment.selectionSet.selections,
+            ],
+            fragmentMap,
+          ),
+          fragmentMap: fragmentMap,
+          dataClassAliasMap: dataClassAliasMap,
+          schemaSource: schemaSource,
+          type: inlineFragment.typeCondition!.on.name.value,
+          typeOverrides: typeOverrides,
+          superclassSelections: {
+            name: SourceSelections(url: null, selections: selections)
+          },
+          built: built,
+          whenExtensionConfig: whenExtensionConfig),
+    ),
   ];
 }
 
@@ -139,9 +141,11 @@ List<Method> _inlineFragmentRootSerializationMethods({
               {
                 for (var v in inlineFragments
                     .where((frag) => frag.typeCondition != null))
-                  "${v.typeCondition!.on.name.value}": dataClassAliasMap["${name}__as${v.typeCondition!.on.name.value}"] ?? refer(
-                    "${name}__as${v.typeCondition!.on.name.value}",
-                  )
+                  "${v.typeCondition!.on.name.value}": dataClassAliasMap[
+                          "${name}__as${v.typeCondition!.on.name.value}"] ??
+                      refer(
+                        "${name}__as${v.typeCondition!.on.name.value}",
+                      )
               },
             ),
           ]).code,

@@ -159,7 +159,8 @@ List<Spec> buildSelectionSetDataClasses({
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
-        typeRefAlias: dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
+        typeRefAlias:
+            dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
@@ -192,13 +193,14 @@ List<Spec> buildSelectionSetDataClasses({
           ..name = builtClassName(name)
           ..implements.addAll(
             superclassSelections.keys
-                .where((superName) => !dataClassAliasMap.containsKey(builtClassName(superName)))
+                .where((superName) =>
+                    !dataClassAliasMap.containsKey(builtClassName(superName)))
                 .map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
-              ),
-            ),
+                  (superName) => refer(
+                    builtClassName(superName),
+                    (superclassSelections[superName]?.url ?? "") + "#data",
+                  ),
+                ),
           )
           ..methods.addAll([
             ...fieldGetters,
@@ -224,8 +226,10 @@ List<Spec> buildSelectionSetDataClasses({
     ...selections
         .whereType<FieldNode>()
         .where(
-          (field) => field.selectionSet != null
-              && !dataClassAliasMap.containsKey(builtClassName("${name}_${field.alias?.value ?? field.name.value}")),
+          (field) =>
+              field.selectionSet != null &&
+              !dataClassAliasMap.containsKey(builtClassName(
+                  "${name}_${field.alias?.value ?? field.name.value}")),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
@@ -257,9 +261,9 @@ List<Spec> buildSelectionSetDataClasses({
 
 /// Shrink merged fields nodes based on FragmentMap
 List<SelectionNode> shrinkSelections(
-    List<SelectionNode> selections,
-    Map<String, SourceSelections> fragmentMap,
-    )  {
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
   final unmerged = [...selections];
 
   for (final selection in selections) {
@@ -269,17 +273,20 @@ List<SelectionNode> shrinkSelections(
         name: selection.name,
         alias: selection.alias,
         selectionSet: SelectionSetNode(
-          selections: shrinkSelections(selection.selectionSet!.selections, fragmentMap),
+          selections:
+              shrinkSelections(selection.selectionSet!.selections, fragmentMap),
         ),
       );
-    } else if (selection is InlineFragmentNode && selection.typeCondition != null) {
+    } else if (selection is InlineFragmentNode &&
+        selection.typeCondition != null) {
       /// TODO: Handle inline fragments without a type condition
       final index = unmerged.indexOf(selection);
       unmerged[index] = InlineFragmentNode(
         typeCondition: selection.typeCondition,
         directives: selection.directives,
         selectionSet: SelectionSetNode(
-          selections: shrinkSelections(selection.selectionSet.selections, fragmentMap),
+          selections:
+              shrinkSelections(selection.selectionSet.selections, fragmentMap),
         ),
       );
     }
@@ -290,7 +297,8 @@ List<SelectionNode> shrinkSelections(
     final spreadIndex = unmerged.indexOf(node);
     final duplicateIndexList = <int>[];
     unmerged.forEachIndexed((selectionIndex, selection) {
-      if (selectionIndex > spreadIndex && fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
+      if (selectionIndex > spreadIndex &&
+          fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
         duplicateIndexList.add(selectionIndex);
       }
     });
@@ -316,7 +324,7 @@ List<SelectionNode> mergeSelections(
               } else {
                 final existingNode = selectionMap[key];
                 final existingSelections = existingNode is FieldNode &&
-                    existingNode.selectionSet != null
+                        existingNode.selectionSet != null
                     ? existingNode.selectionSet!.selections
                     : <SelectionNode>[];
                 selectionMap[key] = FieldNode(
@@ -324,14 +332,15 @@ List<SelectionNode> mergeSelections(
                     alias: selection.alias,
                     selectionSet: SelectionSetNode(
                         selections: mergeSelections(
-                          [
-                            ...existingSelections,
-                            ...selection.selectionSet!.selections
-                          ],
-                          fragmentMap,
-                        )));
+                      [
+                        ...existingSelections,
+                        ...selection.selectionSet!.selections
+                      ],
+                      fragmentMap,
+                    )));
               }
-            } else if (selection is InlineFragmentNode && selection.typeCondition != null) {
+            } else if (selection is InlineFragmentNode &&
+                selection.typeCondition != null) {
               /// TODO: Handle inline fragments without a type condition
               final key = selection.typeCondition!.on.name.value;
               if (selectionMap.containsKey(key)) {
@@ -341,7 +350,9 @@ List<SelectionNode> mergeSelections(
                   selectionSet: SelectionSetNode(
                     selections: mergeSelections(
                       [
-                        ...(selectionMap[key] as InlineFragmentNode).selectionSet.selections,
+                        ...(selectionMap[key] as InlineFragmentNode)
+                            .selectionSet
+                            .selections,
                         ...selection.selectionSet.selections,
                       ],
                       fragmentMap,

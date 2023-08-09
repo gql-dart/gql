@@ -63,18 +63,19 @@ Library buildDataLibrary(
   );
 }
 
-
 Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-  for (var def
-  in source.document.definitions.whereType<FragmentDefinitionNode>())
-    def.name.value: SourceSelections(
-      url: source.url,
-      selections: def.selectionSet.selections,
-    ),
-  for (var import in source.imports) ..._fragmentMap(import)
-};
+      for (var def
+          in source.document.definitions.whereType<FragmentDefinitionNode>())
+        def.name.value: SourceSelections(
+          url: source.url,
+          selections: def.selectionSet.selections,
+        ),
+      for (var import in source.imports) ..._fragmentMap(import)
+    };
 
-Map<String, Reference> _dataClassAliasMap(SourceNode source, Map<String, SourceSelections> fragmentMap, [Map<String, Reference>? aliasMap, Set<String>? visitedSource]) {
+Map<String, Reference> _dataClassAliasMap(
+    SourceNode source, Map<String, SourceSelections> fragmentMap,
+    [Map<String, Reference>? aliasMap, Set<String>? visitedSource]) {
   aliasMap ??= {};
   visitedSource ??= {};
 
@@ -85,7 +86,8 @@ Map<String, Reference> _dataClassAliasMap(SourceNode source, Map<String, SourceS
     }
   });
 
-  for (final def in source.document.definitions.whereType<OperationDefinitionNode>()) {
+  for (final def
+      in source.document.definitions.whereType<OperationDefinitionNode>()) {
     _dataClassAliasMapDFS(
       typeRefPrefix: builtClassName("${def.name!.value}Data"),
       getAliasTypeName: (fragmentName) => "${builtClassName(fragmentName)}Data",
@@ -95,7 +97,8 @@ Map<String, Reference> _dataClassAliasMap(SourceNode source, Map<String, SourceS
     );
   }
 
-  for (final def in source.document.definitions.whereType<FragmentDefinitionNode>()) {
+  for (final def
+      in source.document.definitions.whereType<FragmentDefinitionNode>()) {
     _dataClassAliasMapDFS(
       typeRefPrefix: builtClassName(def.name.value),
       getAliasTypeName: builtClassName,
@@ -125,15 +128,19 @@ void _dataClassAliasMapDFS({
   if (selections.isEmpty) return;
 
   // flatten selections to extract untouched fragments while visiting children.
-  final shrunkenSelections = shrinkSelections(mergeSelections(selections, fragmentMap), fragmentMap);
+  final shrunkenSelections =
+      shrinkSelections(mergeSelections(selections, fragmentMap), fragmentMap);
 
   // alias single fragment and finish
-  final selectionsWithoutTypename = shrunkenSelections.where((s) => !(s is FieldNode && s.name.value == "__typename"));
-  if (selectionsWithoutTypename.length == 1 && selectionsWithoutTypename.first is FragmentSpreadNode) {
+  final selectionsWithoutTypename = shrunkenSelections
+      .where((s) => !(s is FieldNode && s.name.value == "__typename"));
+  if (selectionsWithoutTypename.length == 1 &&
+      selectionsWithoutTypename.first is FragmentSpreadNode) {
     final node = selectionsWithoutTypename.first as FragmentSpreadNode;
     final fragment = fragmentMap[node.name.value];
     final fragmentTypeName = getAliasTypeName(node.name.value);
-    aliasMap[typeRefPrefix] = refer(fragmentTypeName, "${fragment!.url ?? ""}#data");
+    aliasMap[typeRefPrefix] =
+        refer(fragmentTypeName, "${fragment!.url ?? ""}#data");
     // print("alias $typeRefPrefix => $fragmentTypeName");
     return;
   }
@@ -142,14 +149,19 @@ void _dataClassAliasMapDFS({
     if (node is FragmentSpreadNode) {
       // exclude redefined selections from each fragment selections
       final fragmentSelections = fragmentMap[node.name.value]!.selections;
-      final exclusiveFragmentSelections = mergeSelections(fragmentSelections, fragmentMap).where((s1) {
+      final exclusiveFragmentSelections =
+          mergeSelections(fragmentSelections, fragmentMap).where((s1) {
         if (s1 is FieldNode) {
           final name = (s1.alias ?? s1.name).value;
-          return selectionsWithoutTypename.whereType<FieldNode>().every((s2) => name != (s2.alias ?? s2.name).value);
+          return selectionsWithoutTypename
+              .whereType<FieldNode>()
+              .every((s2) => name != (s2.alias ?? s2.name).value);
         } else if (s1 is InlineFragmentNode && s1.typeCondition != null) {
           /// TODO: Handle inline fragments without a type condition
           final name = s1.typeCondition!.on.name.value;
-          return selectionsWithoutTypename.whereType<InlineFragmentNode>().every((s2) => name != s2.typeCondition?.on.name.value);
+          return selectionsWithoutTypename
+              .whereType<InlineFragmentNode>()
+              .every((s2) => name != s2.typeCondition?.on.name.value);
         }
         return false;
       }).toList();
@@ -165,7 +177,8 @@ void _dataClassAliasMapDFS({
       if (node.typeCondition != null) {
         /// TODO: Handle inline fragments without a type condition
         _dataClassAliasMapDFS(
-          typeRefPrefix: "${typeRefPrefix}__as${node.typeCondition!.on.name.value}",
+          typeRefPrefix:
+              "${typeRefPrefix}__as${node.typeCondition!.on.name.value}",
           getAliasTypeName: getAliasTypeName,
           selections: [
             ...selections.where((s) => !(s is InlineFragmentNode)),

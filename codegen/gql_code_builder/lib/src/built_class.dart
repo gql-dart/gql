@@ -32,13 +32,15 @@ Class builtClass({
               ),
           ),
           ...superclassSelections.keys
-              .where((superName) => dataClassAliasMap?.containsKey(builtClassName(superName)) != true)
+              .where((superName) =>
+                  dataClassAliasMap?.containsKey(builtClassName(superName)) !=
+                  true)
               .map<Reference>(
-            (superName) => refer(
-              builtClassName(superName),
-              (superclassSelections[superName]?.url ?? "") + "#data",
-            ),
-          )
+                (superName) => refer(
+                  builtClassName(superName),
+                  (superclassSelections[superName]?.url ?? "") + "#data",
+                ),
+              )
         ],
       )
       ..constructors.addAll(
