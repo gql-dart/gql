@@ -76,9 +76,6 @@ linter:
     - depend_on_referenced_packages
 
 analyzer:
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
   errors:
     # pedantic 1.8.0
     avoid_empty_else: error

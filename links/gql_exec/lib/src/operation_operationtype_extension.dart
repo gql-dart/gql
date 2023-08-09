@@ -20,7 +20,7 @@ extension OperationTypeExtension on Operation {
 class _OperationTypeVisitor extends Visitor<OperationType?> {
   final String? operationName;
 
-  _OperationTypeVisitor(this.operationName);
+  const _OperationTypeVisitor(this.operationName);
 
   @override
   OperationType? visitArgumentNode(ArgumentNode node) => null;
