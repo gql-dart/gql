@@ -2,11 +2,13 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
+import "package:gql_code_builder/src/config/data_class_config.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "./source.dart";
 import "./src/operation/data.dart";
 
+export "package:gql_code_builder/src/config/data_class_config.dart";
 export "package:gql_code_builder/src/config/when_extension_config.dart";
 
 Library buildDataLibrary(
@@ -19,9 +21,14 @@ Library buildDataLibrary(
     generateWhenExtensionMethod: false,
     generateMaybeWhenExtensionMethod: false,
   ),
+  DataClassConfig dataClassConfig = const DataClassConfig(
+    reuseFragments: false,
+  ),
 ]) {
   final fragmentMap = _fragmentMap(docSource);
-  final dataClassAliasMap = _dataClassAliasMap(docSource, fragmentMap);
+  final dataClassAliasMap = dataClassConfig.reuseFragments
+      ? _dataClassAliasMap(docSource, fragmentMap)
+      : <String, Reference>{};
 
   final operationDataClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()

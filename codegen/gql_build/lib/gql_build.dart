@@ -19,12 +19,14 @@ Builder dataBuilder(
   BuilderOptions options,
 ) =>
     DataBuilder(
-        AssetId.parse(
-          options.config["schema"] as String,
-        ),
-        (options.config["add_typenames"] ?? true) as bool,
-        typeOverrideMap(options.config["type_overrides"]),
-        whenExtensionConfig: whenExtensionConfig(options.config));
+      AssetId.parse(
+        options.config["schema"] as String,
+      ),
+      (options.config["add_typenames"] ?? true) as bool,
+      typeOverrideMap(options.config["type_overrides"]),
+      whenExtensionConfig: whenExtensionConfig(options.config),
+      dataClassConfig: dataClassConfig(options.config),
+    );
 
 /// Builds GraphQL type-safe request builder
 Builder reqBuilder(

@@ -14,6 +14,7 @@ class DataBuilder implements Builder {
   final bool addTypenames;
   final Map<String, Reference> typeOverrides;
   final InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig;
+  final DataClassConfig dataClassConfig;
 
   DataBuilder(
     this.schemaId,
@@ -22,6 +23,9 @@ class DataBuilder implements Builder {
     this.whenExtensionConfig = const InlineFragmentSpreadWhenExtensionConfig(
       generateWhenExtensionMethod: false,
       generateMaybeWhenExtensionMethod: false,
+    ),
+    this.dataClassConfig = const DataClassConfig(
+      reuseFragments: false,
     ),
   });
 
@@ -41,11 +45,13 @@ class DataBuilder implements Builder {
         .path;
 
     final library = buildDataLibrary(
-        addTypenames ? introspection.addTypenames(doc) : doc,
-        introspection.addTypenames(schema),
-        basename(generatedPartUrl),
-        typeOverrides,
-        whenExtensionConfig);
+      addTypenames ? introspection.addTypenames(doc) : doc,
+      introspection.addTypenames(schema),
+      basename(generatedPartUrl),
+      typeOverrides,
+      whenExtensionConfig,
+      dataClassConfig,
+    );
 
     return writeDocument(
       library,
