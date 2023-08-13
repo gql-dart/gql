@@ -181,7 +181,7 @@ void _dataClassAliasMapDFS({
               "${typeRefPrefix}__as${node.typeCondition!.on.name.value}",
           getAliasTypeName: getAliasTypeName,
           selections: [
-            ...selections.where((s) => !(s is InlineFragmentNode)),
+            ...selections.where((s) => s != node),
             ...node.selectionSet.selections,
           ],
           fragmentMap: fragmentMap,
