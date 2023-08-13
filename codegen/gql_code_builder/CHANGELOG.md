@@ -1,3 +1,8 @@
+## 0.8.0
+
+- add `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
+
+
 ## 0.7.2
 
 - Add a const constructor to `_PrintVisitor` and `_SchemaBuilderVisitor`.
