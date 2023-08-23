@@ -27,7 +27,7 @@ Library buildDataLibrary(
   ),
 ]) {
   final fragmentMap = _fragmentMap(docSource);
-  final possibleTypesMap = _possibleTypesMap(schemaSource);
+  final possibleTypesMap = dataClassConfig.reuseFragments ? _possibleTypesMap(schemaSource) : <String, Set<String>>{};
   final dataClassAliasMap = dataClassConfig.reuseFragments
       ? _dataClassAliasMap(docSource, fragmentMap, possibleTypesMap)
       : <String, Reference>{};
@@ -75,13 +75,13 @@ Library buildDataLibrary(
 }
 
 Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-      for (var def
+      for (final def
           in source.document.definitions.whereType<FragmentDefinitionNode>())
         def.name.value: SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
         ),
-      for (var import in source.imports) ..._fragmentMap(import)
+      for (final import in source.imports) ..._fragmentMap(import)
     };
 
 Map<String, Set<String>> _possibleTypesMap(SourceNode source,

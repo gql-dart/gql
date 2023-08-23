@@ -302,6 +302,9 @@ List<SelectionNode> shrinkSelections(
 
   final duplicateIndices = <int>{};
   for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
+    if (!fragmentMap.containsKey(node.name.value)) {
+      throw "Cannot find a fragment ${node.name.value} from current file.";
+    }
     final fragment = fragmentMap[node.name.value]!;
     final fragmentSpreadIndex = unmerged.indexOf(node);
     unmerged.forEachIndexed((selectionIndex, selection) {
