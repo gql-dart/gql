@@ -27,7 +27,9 @@ Library buildDataLibrary(
   ),
 ]) {
   final fragmentMap = _fragmentMap(docSource);
-  final possibleTypesMap = dataClassConfig.reuseFragments ? _possibleTypesMap(schemaSource) : <String, Set<String>>{};
+  final possibleTypesMap = dataClassConfig.reuseFragments
+      ? _possibleTypesMap(schemaSource)
+      : <String, Set<String>>{};
   final dataClassAliasMap = dataClassConfig.reuseFragments
       ? _dataClassAliasMap(docSource, fragmentMap, possibleTypesMap)
       : <String, Reference>{};
