@@ -148,7 +148,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
               /// TODO: Handle inline fragments without a type condition
               /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
               {
-                for (var v in inlineFragments
+                for (final v in inlineFragments
                     .where((frag) => frag.typeCondition != null))
                   "${v.typeCondition!.on.name.value}": dataClassAliasMap[
                           "${name}__as${v.typeCondition!.on.name.value}"] ??
