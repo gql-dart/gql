@@ -185,7 +185,6 @@ void _dataClassAliasMapDFS({
     aliasMap[typeRefPrefix] =
         refer(fragmentTypeName, "${fragment!.url ?? ""}#data");
     // print("alias $typeRefPrefix => $fragmentTypeName");
-    return;
   }
 
   for (final node in selectionsWithoutTypename) {
