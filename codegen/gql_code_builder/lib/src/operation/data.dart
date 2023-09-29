@@ -306,11 +306,15 @@ List<SelectionNode> shrinkSelections(
       throw "Cannot find a fragment ${node.name.value} from current file.";
     }
     final fragment = fragmentMap[node.name.value]!;
+    final fragmentExpanded = {
+      ...fragment.selections,
+      ..._expandFragmentSpreads(fragment.selections, fragmentMap)
+    };
     final fragmentSpreadIndex = unmerged.indexOf(node);
     unmerged.forEachIndexed((selectionIndex, selection) {
       if (selectionIndex != fragmentSpreadIndex &&
           !(selection is FieldNode && selection.name.value == "__typename") &&
-          fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
+          fragmentExpanded.any((s) => s.hashCode == selection.hashCode)) {
         duplicateIndices.add(selectionIndex);
       }
     });
