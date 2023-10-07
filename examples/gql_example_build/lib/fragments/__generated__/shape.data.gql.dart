@@ -17,14 +17,17 @@ abstract class GShapeData implements Built<GShapeData, GShapeDataBuilder> {
 
   static void _initializeBuilder(GShapeDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GShapeData_shape? get shape;
   static Serializer<GShapeData> get serializer => _$gShapeDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeData.serializer,
@@ -45,10 +48,12 @@ abstract class GShapeData_shape {
           'Rectangle': GShapeData_shape__asRectangle,
         },
       );
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeData_shape? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeData_shape.serializer,
@@ -104,6 +109,7 @@ abstract class GShapeData_shape__base
 
   static void _initializeBuilder(GShapeData_shape__baseBuilder b) =>
       b..G__typename = 'Shape';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -111,11 +117,13 @@ abstract class GShapeData_shape__base
   double? get area;
   static Serializer<GShapeData_shape__base> get serializer =>
       _$gShapeDataShapeBaseSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__base.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeData_shape__base? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeData_shape__base.serializer,
@@ -135,6 +143,7 @@ abstract class GShapeData_shape__asSquare
 
   static void _initializeBuilder(GShapeData_shape__asSquareBuilder b) =>
       b..G__typename = 'Square';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -143,11 +152,13 @@ abstract class GShapeData_shape__asSquare
   double? get sideLength;
   static Serializer<GShapeData_shape__asSquare> get serializer =>
       _$gShapeDataShapeAsSquareSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__asSquare.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeData_shape__asSquare? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeData_shape__asSquare.serializer,
@@ -168,6 +179,7 @@ abstract class GShapeData_shape__asRectangle
 
   static void _initializeBuilder(GShapeData_shape__asRectangleBuilder b) =>
       b..G__typename = 'Rectangle';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -177,11 +189,13 @@ abstract class GShapeData_shape__asRectangle
   double? get sideLengthB;
   static Serializer<GShapeData_shape__asRectangle> get serializer =>
       _$gShapeDataShapeAsRectangleSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__asRectangle.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeData_shape__asRectangle? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeData_shape__asRectangle.serializer,

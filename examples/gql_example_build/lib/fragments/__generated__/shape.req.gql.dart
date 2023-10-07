@@ -23,13 +23,16 @@ abstract class GShape implements Built<GShape, GShapeBuilder> {
       document: _i2.document,
       operationName: 'Shape',
     );
+
   _i3.GShapeVars get vars;
   _i1.Operation get operation;
   static Serializer<GShape> get serializer => _$gShapeSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GShape.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShape? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GShape.serializer,

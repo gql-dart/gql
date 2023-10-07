@@ -18,15 +18,18 @@ abstract class GQueryOperationData
 
   static void _initializeBuilder(GQueryOperationDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GQueryOperationData_field? get field;
   static Serializer<GQueryOperationData> get serializer =>
       _$gQueryOperationDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GQueryOperationData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperationData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GQueryOperationData.serializer,
@@ -45,6 +48,7 @@ abstract class GQueryOperationData_field
 
   static void _initializeBuilder(GQueryOperationData_fieldBuilder b) =>
       b..G__typename = 'Field';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String? get id;
@@ -68,10 +72,12 @@ abstract class GQueryOperationData_field
   GQueryOperationData_field_fieldRequired get fieldRequired;
   static Serializer<GQueryOperationData_field> get serializer =>
       _$gQueryOperationDataFieldSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GQueryOperationData_field.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperationData_field? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GQueryOperationData_field.serializer,
@@ -91,15 +97,18 @@ abstract class GQueryOperationData_field_field
 
   static void _initializeBuilder(GQueryOperationData_field_fieldBuilder b) =>
       b..G__typename = 'Field';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String? get id;
   static Serializer<GQueryOperationData_field_field> get serializer =>
       _$gQueryOperationDataFieldFieldSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GQueryOperationData_field_field.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperationData_field_field? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GQueryOperationData_field_field.serializer,
@@ -120,15 +129,18 @@ abstract class GQueryOperationData_field_fieldRequired
   static void _initializeBuilder(
           GQueryOperationData_field_fieldRequiredBuilder b) =>
       b..G__typename = 'Field';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String? get id;
   static Serializer<GQueryOperationData_field_fieldRequired> get serializer =>
       _$gQueryOperationDataFieldFieldRequiredSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GQueryOperationData_field_fieldRequired.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperationData_field_fieldRequired? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
