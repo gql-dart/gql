@@ -31660,7 +31660,7 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
   _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
-                ._(
+            ._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
