@@ -18,10 +18,12 @@ abstract class GAddStarVars
 
   String get starrableId;
   static Serializer<GAddStarVars> get serializer => _$gAddStarVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GAddStarVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAddStarVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GAddStarVars.serializer,

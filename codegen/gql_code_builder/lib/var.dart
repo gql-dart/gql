@@ -30,10 +30,10 @@ Library buildVarLibrary(
       .toList();
 
   Map<String, FragmentDefinitionNode> _fragmentMap(SourceNode source) => {
-        for (var def
+        for (final def
             in source.document.definitions.whereType<FragmentDefinitionNode>())
           def.name.value: def,
-        for (var import in source.imports) ..._fragmentMap(import)
+        for (final import in source.imports) ..._fragmentMap(import)
       };
 
   final fragmentVarClasses = docSource.document.definitions

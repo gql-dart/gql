@@ -3,9 +3,9 @@ version: 0.8.0
 description: Dart code builders taking *.graphql documents and SDL to build useful classes.
 repository: https://github.com/gql-dart/gql
 environment: 
-  sdk: '>=2.12.0 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 dependencies: 
-  analyzer: '>=4.6.0 <6.0.0'
+  analyzer: '>=4.6.0 <7.0.0'
   built_collection: ^5.0.0
   built_value: ^8.0.6
   code_builder: ^4.3.0

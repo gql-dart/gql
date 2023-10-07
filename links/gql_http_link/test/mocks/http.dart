@@ -4,6 +4,7 @@ import "package:mockito/annotations.dart";
 export "./http.mocks.dart";
 
 @GenerateMocks([], customMocks: [
-  MockSpec<http.Client>(returnNullOnMissingStub: true, as: #MockHttpClient)
+  MockSpec<http.Client>(
+      onMissingStub: OnMissingStub.returnDefault, as: #MockHttpClient)
 ])
 void main() {}

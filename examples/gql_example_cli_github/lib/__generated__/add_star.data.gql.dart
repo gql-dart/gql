@@ -18,14 +18,17 @@ abstract class GAddStarData
 
   static void _initializeBuilder(GAddStarDataBuilder b) =>
       b..G__typename = 'Mutation';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GAddStarData_action? get action;
   static Serializer<GAddStarData> get serializer => _$gAddStarDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GAddStarData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAddStarData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GAddStarData.serializer,
@@ -42,15 +45,18 @@ abstract class GAddStarData_action
 
   static void _initializeBuilder(GAddStarData_actionBuilder b) =>
       b..G__typename = 'AddStarPayload';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GAddStarData_action_starrable? get starrable;
   static Serializer<GAddStarData_action> get serializer =>
       _$gAddStarDataActionSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GAddStarData_action.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAddStarData_action? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GAddStarData_action.serializer,
@@ -70,15 +76,18 @@ abstract class GAddStarData_action_starrable
 
   static void _initializeBuilder(GAddStarData_action_starrableBuilder b) =>
       b..G__typename = 'Starrable';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   bool get viewerHasStarred;
   static Serializer<GAddStarData_action_starrable> get serializer =>
       _$gAddStarDataActionStarrableSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GAddStarData_action_starrable.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAddStarData_action_starrable? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GAddStarData_action_starrable.serializer,
