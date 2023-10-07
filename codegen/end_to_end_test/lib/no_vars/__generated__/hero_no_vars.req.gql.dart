@@ -24,13 +24,16 @@ abstract class GHeroNoVars implements Built<GHeroNoVars, GHeroNoVarsBuilder> {
       document: _i2.document,
       operationName: 'HeroNoVars',
     );
+
   _i3.GHeroNoVarsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroNoVars> get serializer => _$gHeroNoVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHeroNoVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroNoVars? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GHeroNoVars.serializer,

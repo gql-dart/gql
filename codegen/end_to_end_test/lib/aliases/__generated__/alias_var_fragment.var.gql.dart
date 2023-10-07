@@ -16,10 +16,12 @@ abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
 
   String get userId;
   static Serializer<GPostsVars> get serializer => _$gPostsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsVars.serializer,
@@ -37,10 +39,12 @@ abstract class GPostFragmentVars
   String get userId;
   static Serializer<GPostFragmentVars> get serializer =>
       _$gPostFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentVars.serializer,

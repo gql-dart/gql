@@ -22,7 +22,9 @@ class GEpisode extends EnumClass {
   static const GEpisode JEDI = _$gEpisodeJEDI;
 
   static Serializer<GEpisode> get serializer => _$gEpisodeSerializer;
+
   static BuiltSet<GEpisode> get values => _$gEpisodeValues;
+
   static GEpisode valueOf(String name) => _$gEpisodeValueOf(name);
 }
 
@@ -38,7 +40,9 @@ class GLengthUnit extends EnumClass {
   static const GLengthUnit FOOT = _$gLengthUnitFOOT;
 
   static Serializer<GLengthUnit> get serializer => _$gLengthUnitSerializer;
+
   static BuiltSet<GLengthUnit> get values => _$gLengthUnitValues;
+
   static GLengthUnit valueOf(String name) => _$gLengthUnitValueOf(name);
 }
 
@@ -54,10 +58,12 @@ abstract class GReviewInput
   GColorInput? get favorite_color;
   BuiltList<DateTime?>? get seenOn;
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReviewInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReviewInput.serializer,
@@ -74,10 +80,12 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   int get green;
   int get blue;
   static Serializer<GColorInput> get serializer => _$gColorInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GColorInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GColorInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GColorInput.serializer,
@@ -95,10 +103,12 @@ abstract class GPostLikesInput
   String get id;
   static Serializer<GPostLikesInput> get serializer =>
       _$gPostLikesInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostLikesInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostLikesInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostLikesInput.serializer,
@@ -116,10 +126,12 @@ abstract class GPostFavoritesInput
   String get id;
   static Serializer<GPostFavoritesInput> get serializer =>
       _$gPostFavoritesInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFavoritesInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFavoritesInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFavoritesInput.serializer,
