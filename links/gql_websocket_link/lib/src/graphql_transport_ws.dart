@@ -95,31 +95,33 @@ class TransportWsEvent {
         received = null,
         message = null,
         event = null;
+
   const TransportWsEvent.opened(WebSocketChannel this.socket)
       : type = TransportWsEventType.opened,
         payload = null,
         received = null,
         message = null,
         event = null;
-  const TransportWsEvent.connected(
-      WebSocketChannel this.socket,
-      this.payload,
-      )   : type = TransportWsEventType.connected,
+
+  const TransportWsEvent.connected(WebSocketChannel this.socket,
+      this.payload,)
+      : type = TransportWsEventType.connected,
         received = null,
         message = null,
         event = null;
 
-  const TransportWsEvent.ping(
-      this.payload, {
-        required bool this.received,
-      })  : type = TransportWsEventType.ping,
+  const TransportWsEvent.ping(this.payload, {
+    required bool this.received,
+  })
+      : type = TransportWsEventType.ping,
         socket = null,
         message = null,
         event = null;
-  const TransportWsEvent.pong(
-      this.payload, {
-        required bool this.received,
-      })  : type = TransportWsEventType.pong,
+
+  const TransportWsEvent.pong(this.payload, {
+    required bool this.received,
+  })
+      : type = TransportWsEventType.pong,
         socket = null,
         message = null,
         event = null;
@@ -130,12 +132,14 @@ class TransportWsEvent {
         received = null,
         socket = null,
         event = null;
+
   const TransportWsEvent.closed(Object this.event)
       : type = TransportWsEventType.closed,
         payload = null,
         received = null,
         message = null,
         socket = null;
+
   const TransportWsEvent.error(Object this.event)
       : type = TransportWsEventType.error,
         payload = null,
@@ -202,16 +206,17 @@ class TransportWsEventHandler<T> {
   T? handle(TransportWsEvent event) => event.execute(this);
 
   /// The [TransportWsEventType]s that this handler will handle.
-  Set<TransportWsEventType> eventTypesHandled() => {
-    if (connecting != null) TransportWsEventType.connecting,
-    if (opened != null) TransportWsEventType.opened,
-    if (connected != null) TransportWsEventType.connected,
-    if (ping != null) TransportWsEventType.ping,
-    if (pong != null) TransportWsEventType.pong,
-    if (message != null) TransportWsEventType.message,
-    if (closed != null) TransportWsEventType.closed,
-    if (error != null) TransportWsEventType.error,
-  };
+  Set<TransportWsEventType> eventTypesHandled() =>
+      {
+        if (connecting != null) TransportWsEventType.connecting,
+        if (opened != null) TransportWsEventType.opened,
+        if (connected != null) TransportWsEventType.connected,
+        if (ping != null) TransportWsEventType.ping,
+        if (pong != null) TransportWsEventType.pong,
+        if (message != null) TransportWsEventType.message,
+        if (closed != null) TransportWsEventType.closed,
+        if (error != null) TransportWsEventType.error,
+      };
 }
 
 /// Called for all **valid** messages received by the client. Mainly useful for
@@ -512,15 +517,16 @@ class TransportWsClientOptions {
   /// in case you need more uniqueness.
   ///
   /// Reference: https://gist.github.com/jed/982883
-  static String generateUUID() => "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
-      .replaceAllMapped(RegExp("[xy]"), (c) {
-    final int r = (_random.nextDouble() * 16).floor() | 0;
-    final v = c.group(0) == "x" ? r : (r & 0x3) | 0x8;
-    return v.toRadixString(16);
-  });
+  static String generateUUID() =>
+      "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+          .replaceAllMapped(RegExp("[xy]"), (c) {
+        final int r = (_random.nextDouble() * 16).floor() | 0;
+        final v = c.group(0) == "x" ? r : (r & 0x3) | 0x8;
+        return v.toRadixString(16);
+      });
 
   /// By default, connection should not retry on fatal errors
-  static bool shouldRetryDefault(Object errOrCloseEvent){
+  static bool shouldRetryDefault(Object errOrCloseEvent) {
     if (errOrCloseEvent is LikeCloseEvent &&
         (_isFatalInternalCloseCode(errOrCloseEvent.code) ||
             const [
@@ -547,10 +553,8 @@ class _Connected {
   final WebSocketChannel socket;
   final Future<void> throwOnClose;
 
-  _Connected(
-      this.socket,
-      this.throwOnClose,
-      );
+  _Connected(this.socket,
+      this.throwOnClose,);
 }
 
 /// @category Client */
@@ -564,10 +568,8 @@ abstract class TransportWsClient {
   /// Subscribes through the WebSocket following the config parameters. It
   /// uses the `sink` to emit received data or errors. Returns a _cleanup_
   /// function used for dropping the subscription and cleaning stuff up.
-  void Function() subscribe(
-      Request payload,
-      EventSink<Response> sink,
-      );
+  void Function() subscribe(Request payload,
+      EventSink<Response> sink,);
 
   /// Terminates the WebSocket abruptly and immediately.
   ///
@@ -628,7 +630,7 @@ class _ConnectionState {
     if (disposed) return false;
 
     // some close codes are worth reporting immediately
-    if(!options.shouldRetry(errOrCloseEvent)){
+    if (!options.shouldRetry(errOrCloseEvent)) {
       throw errOrCloseEvent;
     }
 
@@ -866,14 +868,15 @@ class _ConnectionState {
             );
           }
         },
-        onDone: () => onClose?.call(
-          socket.closeCode == null
-              ? "DONE"
-              : LikeCloseEvent(
-            code: socket.closeCode!,
-            reason: socket.closeReason,
-          ),
-        ),
+        onDone: () =>
+            onClose?.call(
+              socket.closeCode == null
+                  ? "DONE"
+                  : LikeCloseEvent(
+                code: socket.closeCode!,
+                reason: socket.closeReason,
+              ),
+            ),
         onError: (Object err) => onError?.call(err),
       );
 
@@ -881,13 +884,14 @@ class _ConnectionState {
       onOpen();
     })()
         .onError(
-          (error, stackTrace) => denied(
-        WebSocketLinkServerException(
-          originalException: error,
-          originalStackTrace: stackTrace,
-        ),
-        stackTrace,
-      ),
+          (error, stackTrace) =>
+          denied(
+            WebSocketLinkServerException(
+              originalException: error,
+              originalStackTrace: stackTrace,
+            ),
+            stackTrace,
+          ),
     );
     return _comp.future;
   }
@@ -950,7 +954,9 @@ class _Client extends TransportWsClient {
   _Client({required this.state});
 
   final _ConnectionState state;
+
   _Emitter get emitter => state.emitter;
+
   @override
   TransportWsClientOptions get options => state.options;
 
@@ -958,10 +964,8 @@ class _Client extends TransportWsClient {
   void Function() on(TransportWsEventHandler listener) => emitter.on(listener);
 
   @override
-  void Function() subscribe(
-      Request payload,
-      EventSink<Response> sink,
-      ) {
+  void Function() subscribe(Request payload,
+      EventSink<Response> sink,) {
     final id = options.generateID();
     options.log?.call("subscribe $id");
 
@@ -1087,6 +1091,7 @@ class _Emitter {
       void Function(TransportWsMessage) listener,
       ) onMessage;
   final void Function(String logMessage)? log;
+
   _Emitter({
     required this.listeners,
     required this.onMessage,
