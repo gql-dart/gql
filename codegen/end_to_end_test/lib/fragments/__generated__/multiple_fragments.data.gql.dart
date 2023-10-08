@@ -19,15 +19,18 @@ abstract class GHeroWith2FragmentsData
 
   static void _initializeBuilder(GHeroWith2FragmentsDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GHeroWith2FragmentsData_hero? get hero;
   static Serializer<GHeroWith2FragmentsData> get serializer =>
       _$gHeroWith2FragmentsDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWith2FragmentsData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWith2FragmentsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroWith2FragmentsData.serializer,
@@ -49,6 +52,7 @@ abstract class GHeroWith2FragmentsData_hero
 
   static void _initializeBuilder(GHeroWith2FragmentsData_heroBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -58,11 +62,13 @@ abstract class GHeroWith2FragmentsData_hero
   String get id;
   static Serializer<GHeroWith2FragmentsData_hero> get serializer =>
       _$gHeroWith2FragmentsDataHeroSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWith2FragmentsData_hero.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWith2FragmentsData_hero? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroWith2FragmentsData_hero.serializer,
@@ -85,17 +91,20 @@ abstract class GheroNameData
 
   static void _initializeBuilder(GheroNameDataBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
   String get name;
   static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroNameData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroNameData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GheroNameData.serializer,
@@ -117,17 +126,20 @@ abstract class GheroIdData
 
   static void _initializeBuilder(GheroIdDataBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
   String get id;
   static Serializer<GheroIdData> get serializer => _$gheroIdDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroIdData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroIdData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GheroIdData.serializer,

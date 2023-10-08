@@ -22,15 +22,18 @@ abstract class GReadRepositoriesData
 
   static void _initializeBuilder(GReadRepositoriesDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GReadRepositoriesData_viewer get viewer;
   static Serializer<GReadRepositoriesData> get serializer =>
       _$gReadRepositoriesDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReadRepositoriesData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositoriesData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReadRepositoriesData.serializer,
@@ -50,15 +53,18 @@ abstract class GReadRepositoriesData_viewer
 
   static void _initializeBuilder(GReadRepositoriesData_viewerBuilder b) =>
       b..G__typename = 'User';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GReadRepositoriesData_viewer_repositories get repositories;
   static Serializer<GReadRepositoriesData_viewer> get serializer =>
       _$gReadRepositoriesDataViewerSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReadRepositoriesData_viewer.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositoriesData_viewer? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReadRepositoriesData_viewer.serializer,
@@ -79,15 +85,18 @@ abstract class GReadRepositoriesData_viewer_repositories
   static void _initializeBuilder(
           GReadRepositoriesData_viewer_repositoriesBuilder b) =>
       b..G__typename = 'RepositoryConnection';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   BuiltList<GReadRepositoriesData_viewer_repositories_nodes?>? get nodes;
   static Serializer<GReadRepositoriesData_viewer_repositories> get serializer =>
       _$gReadRepositoriesDataViewerRepositoriesSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReadRepositoriesData_viewer_repositories.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositoriesData_viewer_repositories? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -109,6 +118,7 @@ abstract class GReadRepositoriesData_viewer_repositories_nodes
   static void _initializeBuilder(
           GReadRepositoriesData_viewer_repositories_nodesBuilder b) =>
       b..G__typename = 'Repository';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
@@ -118,10 +128,12 @@ abstract class GReadRepositoriesData_viewer_repositories_nodes
   static Serializer<GReadRepositoriesData_viewer_repositories_nodes>
       get serializer =>
           _$gReadRepositoriesDataViewerRepositoriesNodesSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReadRepositoriesData_viewer_repositories_nodes.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositoriesData_viewer_repositories_nodes? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(

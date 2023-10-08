@@ -24,6 +24,7 @@ abstract class GDimensionsData
 
   static void _initializeBuilder(GDimensionsDataBuilder b) =>
       b..G__typename = 'PokemonDimension';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -33,11 +34,13 @@ abstract class GDimensionsData
   String? get maximum;
   static Serializer<GDimensionsData> get serializer =>
       _$gDimensionsDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GDimensionsData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GDimensionsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GDimensionsData.serializer,

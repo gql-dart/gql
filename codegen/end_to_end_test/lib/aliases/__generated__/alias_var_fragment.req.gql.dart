@@ -24,13 +24,16 @@ abstract class GPosts implements Built<GPosts, GPostsBuilder> {
       document: _i2.document,
       operationName: 'Posts',
     );
+
   _i3.GPostsVars get vars;
   _i1.Operation get operation;
   static Serializer<GPosts> get serializer => _$gPostsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GPosts.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPosts? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GPosts.serializer,

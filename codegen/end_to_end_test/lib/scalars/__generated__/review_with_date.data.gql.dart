@@ -22,15 +22,18 @@ abstract class GReviewWithDateData
 
   static void _initializeBuilder(GReviewWithDateDataBuilder b) =>
       b..G__typename = 'Mutation';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GReviewWithDateData_createReview? get createReview;
   static Serializer<GReviewWithDateData> get serializer =>
       _$gReviewWithDateDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReviewWithDateData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewWithDateData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReviewWithDateData.serializer,
@@ -50,6 +53,7 @@ abstract class GReviewWithDateData_createReview
 
   static void _initializeBuilder(GReviewWithDateData_createReviewBuilder b) =>
       b..G__typename = 'Review';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   _i2.GEpisode? get episode;
@@ -60,10 +64,12 @@ abstract class GReviewWithDateData_createReview
   BuiltList<_i3.CustomField> get custom;
   static Serializer<GReviewWithDateData_createReview> get serializer =>
       _$gReviewWithDateDataCreateReviewSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReviewWithDateData_createReview.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewWithDateData_createReview? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(

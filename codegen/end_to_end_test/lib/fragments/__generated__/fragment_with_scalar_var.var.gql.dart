@@ -23,10 +23,12 @@ abstract class GPostsWithFixedVariableVars
   _i1.GJson? get filter;
   static Serializer<GPostsWithFixedVariableVars> get serializer =>
       _$gPostsWithFixedVariableVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GPostsWithFixedVariableVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsWithFixedVariableVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GPostsWithFixedVariableVars.serializer,
@@ -45,10 +47,12 @@ abstract class GPostFragmentForUser1Vars
 
   static Serializer<GPostFragmentForUser1Vars> get serializer =>
       _$gPostFragmentForUser1VarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GPostFragmentForUser1Vars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentForUser1Vars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GPostFragmentForUser1Vars.serializer,
