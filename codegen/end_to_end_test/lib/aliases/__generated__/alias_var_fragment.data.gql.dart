@@ -17,14 +17,17 @@ abstract class GPostsData implements Built<GPostsData, GPostsDataBuilder> {
 
   static void _initializeBuilder(GPostsDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   BuiltList<GPostsData_posts?>? get posts;
   static Serializer<GPostsData> get serializer => _$gPostsDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsData.serializer,
@@ -41,6 +44,7 @@ abstract class GPostsData_posts
 
   static void _initializeBuilder(GPostsData_postsBuilder b) =>
       b..G__typename = 'Post';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -52,11 +56,13 @@ abstract class GPostsData_posts
   GPostsData_posts_isLiked? get isLiked;
   static Serializer<GPostsData_posts> get serializer =>
       _$gPostsDataPostsSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsData_posts? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsData_posts.serializer,
@@ -77,6 +83,7 @@ abstract class GPostsData_posts_isFavorited
 
   static void _initializeBuilder(GPostsData_posts_isFavoritedBuilder b) =>
       b..G__typename = 'PostLikes';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -84,11 +91,13 @@ abstract class GPostsData_posts_isFavorited
   int get totalCount;
   static Serializer<GPostsData_posts_isFavorited> get serializer =>
       _$gPostsDataPostsIsFavoritedSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts_isFavorited.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsData_posts_isFavorited? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsData_posts_isFavorited.serializer,
@@ -108,6 +117,7 @@ abstract class GPostsData_posts_isLiked
 
   static void _initializeBuilder(GPostsData_posts_isLikedBuilder b) =>
       b..G__typename = 'PostFavorites';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -115,11 +125,13 @@ abstract class GPostsData_posts_isLiked
   int get totalCount;
   static Serializer<GPostsData_posts_isLiked> get serializer =>
       _$gPostsDataPostsIsLikedSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts_isLiked.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsData_posts_isLiked? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsData_posts_isLiked.serializer,
@@ -158,6 +170,7 @@ abstract class GPostFragmentData
 
   static void _initializeBuilder(GPostFragmentDataBuilder b) =>
       b..G__typename = 'Post';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -169,11 +182,13 @@ abstract class GPostFragmentData
   GPostFragmentData_isLiked? get isLiked;
   static Serializer<GPostFragmentData> get serializer =>
       _$gPostFragmentDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentData.serializer,
@@ -194,6 +209,7 @@ abstract class GPostFragmentData_isFavorited
 
   static void _initializeBuilder(GPostFragmentData_isFavoritedBuilder b) =>
       b..G__typename = 'PostLikes';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -201,11 +217,13 @@ abstract class GPostFragmentData_isFavorited
   int get totalCount;
   static Serializer<GPostFragmentData_isFavorited> get serializer =>
       _$gPostFragmentDataIsFavoritedSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData_isFavorited.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentData_isFavorited? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentData_isFavorited.serializer,
@@ -225,6 +243,7 @@ abstract class GPostFragmentData_isLiked
 
   static void _initializeBuilder(GPostFragmentData_isLikedBuilder b) =>
       b..G__typename = 'PostFavorites';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -232,11 +251,13 @@ abstract class GPostFragmentData_isLiked
   int get totalCount;
   static Serializer<GPostFragmentData_isLiked> get serializer =>
       _$gPostFragmentDataIsLikedSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData_isLiked.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentData_isLiked? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentData_isLiked.serializer,

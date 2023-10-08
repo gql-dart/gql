@@ -18,15 +18,18 @@ abstract class GHumanWithArgsData
 
   static void _initializeBuilder(GHumanWithArgsDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GHumanWithArgsData_human? get human;
   static Serializer<GHumanWithArgsData> get serializer =>
       _$gHumanWithArgsDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHumanWithArgsData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHumanWithArgsData.serializer,
@@ -45,16 +48,19 @@ abstract class GHumanWithArgsData_human
 
   static void _initializeBuilder(GHumanWithArgsData_humanBuilder b) =>
       b..G__typename = 'Human';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
   double? get height;
   static Serializer<GHumanWithArgsData_human> get serializer =>
       _$gHumanWithArgsDataHumanSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHumanWithArgsData_human.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgsData_human? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHumanWithArgsData_human.serializer,
