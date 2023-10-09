@@ -103,25 +103,26 @@ class TransportWsEvent {
         message = null,
         event = null;
 
-  const TransportWsEvent.connected(WebSocketChannel this.socket,
-      this.payload,)
-      : type = TransportWsEventType.connected,
+  const TransportWsEvent.connected(
+    WebSocketChannel this.socket,
+    this.payload,
+  )   : type = TransportWsEventType.connected,
         received = null,
         message = null,
         event = null;
 
-  const TransportWsEvent.ping(this.payload, {
+  const TransportWsEvent.ping(
+    this.payload, {
     required bool this.received,
-  })
-      : type = TransportWsEventType.ping,
+  })  : type = TransportWsEventType.ping,
         socket = null,
         message = null,
         event = null;
 
-  const TransportWsEvent.pong(this.payload, {
+  const TransportWsEvent.pong(
+    this.payload, {
     required bool this.received,
-  })
-      : type = TransportWsEventType.pong,
+  })  : type = TransportWsEventType.pong,
         socket = null,
         message = null,
         event = null;
@@ -165,17 +166,17 @@ class TransportWsEventHandler<T> {
   /// Also, the second argument is the optional payload that the server may
   /// send through the `ConnectionAck` message.
   final T? Function(WebSocketChannel socket, Map<String, Object?>? payload)?
-  connected;
+      connected;
 
   /// The first argument communicates whether the ping was received from the server.
   /// If `false`, the ping was sent by the client.
   final T? Function(Map<String, Object?>? payload, {required bool received})?
-  ping;
+      ping;
 
   /// The first argument communicates whether the pong was received from the server.
   /// If `false`, the pong was sent by the client.
   final T? Function(Map<String, Object?>? payload, {required bool received})?
-  pong;
+      pong;
 
   /// Called for all **valid** messages received by the client. Mainly useful for
   /// debugging and logging received messages.
@@ -206,8 +207,7 @@ class TransportWsEventHandler<T> {
   T? handle(TransportWsEvent event) => event.execute(this);
 
   /// The [TransportWsEventType]s that this handler will handle.
-  Set<TransportWsEventType> eventTypesHandled() =>
-      {
+  Set<TransportWsEventType> eventTypesHandled() => {
         if (connecting != null) TransportWsEventType.connecting,
         if (opened != null) TransportWsEventType.opened,
         if (connected != null) TransportWsEventType.connected,
@@ -444,11 +444,11 @@ class TransportWsClientOptions {
 
   /// A function that encodes the request message to json string before sending it over the network.
   final FutureOr<Object> Function(TransportWsMessage message)
-  graphQLSocketMessageEncoder;
+      graphQLSocketMessageEncoder;
 
   /// The default [graphQLSocketMessageEncoder] that encodes the request message to json string.
   static String defaultGraphQLSocketMessageEncoder(
-      TransportWsMessage message) =>
+          TransportWsMessage message) =>
       jsonEncode(message);
 
   /// A function that decodes the incoming http response to `Map<String, dynamic>`,
@@ -461,7 +461,7 @@ class TransportWsClientOptions {
 
   /// The default [graphQLSocketMessageDecoder] that decodes the request message from a json string.
   static Map<String, dynamic>? defaultGraphQLSocketMessageDecoder(
-      dynamic message) =>
+          dynamic message) =>
       jsonDecode(message as String) as Map<String, dynamic>?;
 
   /// A function that logs events within the execution of the [TransportWsClient].
@@ -517,8 +517,7 @@ class TransportWsClientOptions {
   /// in case you need more uniqueness.
   ///
   /// Reference: https://gist.github.com/jed/982883
-  static String generateUUID() =>
-      "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+  static String generateUUID() => "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
           .replaceAllMapped(RegExp("[xy]"), (c) {
         final int r = (_random.nextDouble() * 16).floor() | 0;
         final v = c.group(0) == "x" ? r : (r & 0x3) | 0x8;
@@ -553,8 +552,10 @@ class _Connected {
   final WebSocketChannel socket;
   final Future<void> throwOnClose;
 
-  _Connected(this.socket,
-      this.throwOnClose,);
+  _Connected(
+    this.socket,
+    this.throwOnClose,
+  );
 }
 
 /// @category Client */
@@ -568,8 +569,10 @@ abstract class TransportWsClient {
   /// Subscribes through the WebSocket following the config parameters. It
   /// uses the `sink` to emit received data or errors. Returns a _cleanup_
   /// function used for dropping the subscription and cleaning stuff up.
-  void Function() subscribe(Request payload,
-      EventSink<Response> sink,);
+  void Function() subscribe(
+    Request payload,
+    EventSink<Response> sink,
+  );
 
   /// Terminates the WebSocket abruptly and immediately.
   ///
@@ -714,7 +717,7 @@ class _ConnectionState {
               ?.cancel(); // in case where a pong was received before a ping (this is valid behaviour)
           queuedPing = Timer(options.keepAlive, () async {
             final _pingMsg =
-            await options.graphQLSocketMessageEncoder(PingMessage(null));
+                await options.graphQLSocketMessageEncoder(PingMessage(null));
             if (isOpen) {
               socket.sink.add(_pingMsg);
               emitter.emit(TransportWsEvent.ping(null, received: false));
@@ -791,7 +794,7 @@ class _ConnectionState {
       bool acknowledged = false;
       late final StreamSubscription _messageSubs;
       _messageSubs = socket.stream.listen(
-            (Object? msg) async {
+        (Object? msg) async {
           options.log?.call(
             "socket.stream protocol:${socket.protocol} msg:${msg}",
           );
@@ -868,15 +871,14 @@ class _ConnectionState {
             );
           }
         },
-        onDone: () =>
-            onClose?.call(
-              socket.closeCode == null
-                  ? "DONE"
-                  : LikeCloseEvent(
-                code: socket.closeCode!,
-                reason: socket.closeReason,
-              ),
-            ),
+        onDone: () => onClose?.call(
+          socket.closeCode == null
+              ? "DONE"
+              : LikeCloseEvent(
+                  code: socket.closeCode!,
+                  reason: socket.closeReason,
+                ),
+        ),
         onError: (Object err) => onError?.call(err),
       );
 
@@ -884,14 +886,13 @@ class _ConnectionState {
       onOpen();
     })()
         .onError(
-          (error, stackTrace) =>
-          denied(
-            WebSocketLinkServerException(
-              originalException: error,
-              originalStackTrace: stackTrace,
-            ),
-            stackTrace,
-          ),
+      (error, stackTrace) => denied(
+        WebSocketLinkServerException(
+          originalException: error,
+          originalStackTrace: stackTrace,
+        ),
+        stackTrace,
+      ),
     );
     return _comp.future;
   }
@@ -931,7 +932,7 @@ class _ConnectionState {
               // if the socket is still open
               Future.delayed(
                 options.lazyCloseTimeout,
-                    () {
+                () {
                   if (locks == 0 && isOpen) {
                     complete();
                   }
@@ -964,8 +965,10 @@ class _Client extends TransportWsClient {
   void Function() on(TransportWsEventHandler listener) => emitter.on(listener);
 
   @override
-  void Function() subscribe(Request payload,
-      EventSink<Response> sink,) {
+  void Function() subscribe(
+    Request payload,
+    EventSink<Response> sink,
+  ) {
     final id = options.generateID();
     options.log?.call("subscribe $id");
 
@@ -1010,7 +1013,7 @@ class _Client extends TransportWsClient {
 
           releaser = () async {
             final _completeMsg =
-            await options.graphQLSocketMessageEncoder(CompleteMessage(id));
+                await options.graphQLSocketMessageEncoder(CompleteMessage(id));
             if (!done && state.isOpen) {
               // if not completed already and socket is open, send complete message to server on release
               socket.sink.add(_completeMsg);
@@ -1087,9 +1090,9 @@ class _Connection {
 class _Emitter {
   final Map<TransportWsEventType, List<TransportWsEventHandler>> listeners;
   final void Function() Function(
-      String id,
-      void Function(TransportWsMessage) listener,
-      ) onMessage;
+    String id,
+    void Function(TransportWsMessage) listener,
+  ) onMessage;
   final void Function(String logMessage)? log;
 
   _Emitter({
@@ -1143,7 +1146,7 @@ TransportWsClient createClient(TransportWsClientOptions options) {
     }
 
     final Map<TransportWsEventType, List<TransportWsEventHandler>> listeners =
-    Map.fromIterables(
+        Map.fromIterables(
       TransportWsEventType.values,
       TransportWsEventType.values.map((e) => []),
     );
@@ -1235,7 +1238,7 @@ class TransportWebSocketLink extends Link {
     };
 
     return controller.stream.map(
-          (response) {
+      (response) {
         if (response.data == null && response.errors == null) {
           throw WebSocketLinkServerException(
             parsedResponse: response,
