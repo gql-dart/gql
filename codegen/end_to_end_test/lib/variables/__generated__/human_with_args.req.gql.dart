@@ -26,14 +26,17 @@ abstract class GHumanWithArgs
       document: _i2.document,
       operationName: 'HumanWithArgs',
     );
+
   _i3.GHumanWithArgsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHumanWithArgs> get serializer =>
       _$gHumanWithArgsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHumanWithArgs.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgs? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GHumanWithArgs.serializer,

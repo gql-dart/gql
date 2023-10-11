@@ -26,14 +26,17 @@ abstract class GHeroForEpisode
       document: _i2.document,
       operationName: 'HeroForEpisode',
     );
+
   _i3.GHeroForEpisodeVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroForEpisode> get serializer =>
       _$gHeroForEpisodeSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHeroForEpisode.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroForEpisode? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GHeroForEpisode.serializer,

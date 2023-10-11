@@ -24,10 +24,12 @@ abstract class GHeroWithInterfaceSubTypedFragmentsVars
   _i1.GEpisode get episode;
   static Serializer<GHeroWithInterfaceSubTypedFragmentsVars> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GHeroWithInterfaceSubTypedFragmentsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithInterfaceSubTypedFragmentsVars? fromJson(
           Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
@@ -46,10 +48,12 @@ abstract class GheroFieldsFragmentVars
 
   static Serializer<GheroFieldsFragmentVars> get serializer =>
       _$gheroFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GheroFieldsFragmentVars.serializer,
@@ -68,10 +72,12 @@ abstract class GhumanFieldsFragmentVars
 
   static Serializer<GhumanFieldsFragmentVars> get serializer =>
       _$ghumanFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GhumanFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GhumanFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GhumanFieldsFragmentVars.serializer,
@@ -90,10 +96,12 @@ abstract class GdroidFieldsFragmentVars
 
   static Serializer<GdroidFieldsFragmentVars> get serializer =>
       _$gdroidFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GdroidFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GdroidFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GdroidFieldsFragmentVars.serializer,

@@ -21,15 +21,18 @@ abstract class GPostsWithFixedVariableData
 
   static void _initializeBuilder(GPostsWithFixedVariableDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   BuiltList<GPostsWithFixedVariableData_posts?>? get posts;
   static Serializer<GPostsWithFixedVariableData> get serializer =>
       _$gPostsWithFixedVariableDataSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsWithFixedVariableData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsWithFixedVariableData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsWithFixedVariableData.serializer,
@@ -50,6 +53,7 @@ abstract class GPostsWithFixedVariableData_posts
 
   static void _initializeBuilder(GPostsWithFixedVariableData_postsBuilder b) =>
       b..G__typename = 'Post';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -59,11 +63,13 @@ abstract class GPostsWithFixedVariableData_posts
   GPostsWithFixedVariableData_posts_favoritedUsers? get favoritedUsers;
   static Serializer<GPostsWithFixedVariableData_posts> get serializer =>
       _$gPostsWithFixedVariableDataPostsSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsWithFixedVariableData_posts.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsWithFixedVariableData_posts? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -86,6 +92,7 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
   static void _initializeBuilder(
           GPostsWithFixedVariableData_posts_favoritedUsersBuilder b) =>
       b..G__typename = 'PostLikes';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -94,11 +101,13 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
   static Serializer<GPostsWithFixedVariableData_posts_favoritedUsers>
       get serializer =>
           _$gPostsWithFixedVariableDataPostsFavoritedUsersSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsWithFixedVariableData_posts_favoritedUsers.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsWithFixedVariableData_posts_favoritedUsers? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -132,6 +141,7 @@ abstract class GPostFragmentForUser1Data
 
   static void _initializeBuilder(GPostFragmentForUser1DataBuilder b) =>
       b..G__typename = 'Post';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -141,11 +151,13 @@ abstract class GPostFragmentForUser1Data
   GPostFragmentForUser1Data_favoritedUsers? get favoritedUsers;
   static Serializer<GPostFragmentForUser1Data> get serializer =>
       _$gPostFragmentForUser1DataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentForUser1Data.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentForUser1Data? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentForUser1Data.serializer,
@@ -167,6 +179,7 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
   static void _initializeBuilder(
           GPostFragmentForUser1Data_favoritedUsersBuilder b) =>
       b..G__typename = 'PostLikes';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -174,11 +187,13 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
   int get totalCount;
   static Serializer<GPostFragmentForUser1Data_favoritedUsers> get serializer =>
       _$gPostFragmentForUser1DataFavoritedUsersSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentForUser1Data_favoritedUsers.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostFragmentForUser1Data_favoritedUsers? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
