@@ -1,3 +1,11 @@
+# 0.9.0
+
+- add `reuse_fragments` option to builder in order to reuse data classes of selection sets that only include a single inline fragment spread
+
+# 0.8.0
+
+- Add a const constructor to `AddTypenameField`.
+
 # 0.7.0
 
 - **Breaking Change**: properly generate nullable types for nullable elements in lists

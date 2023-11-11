@@ -26,14 +26,17 @@ abstract class GCreateCustomField
       document: _i2.document,
       operationName: 'CreateCustomField',
     );
+
   _i3.GCreateCustomFieldVars get vars;
   _i1.Operation get operation;
   static Serializer<GCreateCustomField> get serializer =>
       _$gCreateCustomFieldSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GCreateCustomField.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GCreateCustomField? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GCreateCustomField.serializer,

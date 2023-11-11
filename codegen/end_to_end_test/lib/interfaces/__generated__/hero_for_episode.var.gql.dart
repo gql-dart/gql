@@ -23,11 +23,13 @@ abstract class GHeroForEpisodeVars
         GHeroForEpisodeVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroForEpisodeVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GHeroForEpisodeVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GHeroForEpisodeVars> get serializer =>
       GHeroForEpisodeVarsSerializer();
@@ -44,11 +46,13 @@ abstract class GDroidFragmentVars
         GDroidFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GDroidFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GDroidFragmentVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GDroidFragmentVars> get serializer =>
       GDroidFragmentVarsSerializer();
@@ -124,9 +128,7 @@ class GDroidFragmentVarsSerializer
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }

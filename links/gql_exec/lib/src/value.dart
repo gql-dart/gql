@@ -1,20 +1,36 @@
-class Value<T extends Object> {
-  final T? _value;
+/// A value that may or may not be present.
+/// This is used to represent three possible states:
+/// - The value is absent. It will not be serialized.
+/// - The value is present and null. It will be serialized as null.
+/// - The value is present and non-null. It will be serialized as the value.
+sealed class Value<T extends Object> {
+  const Value._();
 
-  T? get value => _value;
+  /// The value is absent. It will not be serialized.
+  const factory Value.absent() = AbsentValue;
 
-  /// Create a (present) value by wrapping the [value] provided.
-  const Value(T? value) : _value = value;
+  /// The value is present. It may still be be null.
+  /// If the value is null, it will be serialized as null.
+  /// If the value is non-null, it will be serialized as the value.
+  const factory Value.present(T value) = PresentValue<T>;
+}
 
-  const Value.ofNull() : _value = null;
+class AbsentValue extends Value<Never> {
+  const AbsentValue() : super._();
+}
+
+class PresentValue<T extends Object> extends Value<T> {
+  final T? value;
+
+  const PresentValue(this.value) : super._();
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Value<T> &&
+      other is PresentValue<T> &&
           runtimeType == other.runtimeType &&
-          _value == other._value;
+          value == other.value;
 
   @override
-  int get hashCode => _value.hashCode;
+  int get hashCode => value.hashCode;
 }

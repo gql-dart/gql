@@ -1,3 +1,17 @@
+## 0.8.0
+
+- add `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
+
+
+## 0.7.2
+
+- Add a const constructor to `_PrintVisitor` and `_SchemaBuilderVisitor`.
+
+## 0.7.1
+
+- experimental support for when/maybeWhen methods in inline spread fragments with type condition
+- fix issue with generating fragment classes with variables, see https://github.com/gql-dart/ferry/issues/484
+
 ## 0.7.0
 
 - **Breaking Change**: properly generate nullable types for nullable elements in lists

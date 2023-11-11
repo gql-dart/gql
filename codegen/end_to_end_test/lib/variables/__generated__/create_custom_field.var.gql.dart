@@ -24,11 +24,13 @@ abstract class GCreateCustomFieldVars
         GCreateCustomFieldVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GCreateCustomFieldVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GCreateCustomFieldVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GCreateCustomFieldVars> get serializer =>
       GCreateCustomFieldVarsSerializer();

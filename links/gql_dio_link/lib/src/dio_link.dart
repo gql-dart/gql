@@ -5,6 +5,7 @@ import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
 import "_utils.dart";
+import "dio_cancel_token_context_entry.dart";
 import "exceptions.dart";
 
 @Deprecated("Use HttpLinkResponseContext instead")
@@ -50,7 +51,7 @@ class DioLink extends Link {
   /// Must be set to `true` when the errors should be able to be sent
   /// across isolate boundaries.
   /// In particular, setting this to true causes the [FormData] of
-  /// [dio.RequestOptions] of [dio.DioError] to be stripped out from thrown Exceptions, along with
+  /// [dio.RequestOptions] of [dio.DioException] to be stripped out from thrown Exceptions, along with
   /// other potentially non-serializable fields like callbacks or the cancel token.
   final bool serializableErrors;
 
@@ -174,6 +175,8 @@ class DioLink extends Link {
     try {
       final dynamic body = _prepareRequestBody(request);
       dio.Response<dynamic> res;
+      final dio.CancelToken? cancelToken =
+          request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
 
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
@@ -185,6 +188,7 @@ class DioLink extends Link {
               _encodeAsUriParams,
             )(body as Map<String, dynamic>),
           ),
+          cancelToken: cancelToken,
           options: dio.Options(
             responseType: dio.ResponseType.json,
             headers: headers,
@@ -193,6 +197,7 @@ class DioLink extends Link {
       } else {
         res = await client.post<dynamic>(
           endpoint,
+          cancelToken: cancelToken,
           data: body,
           options: dio.Options(
             responseType: dio.ResponseType.json,
@@ -210,29 +215,29 @@ class DioLink extends Link {
         );
       }
       return res.castData<Map<String, dynamic>>();
-    } on dio.DioError catch (e, stackTrace) {
-      final dio.DioError resolvedError;
+    } on dio.DioException catch (e, stackTrace) {
+      final dio.DioException resolvedError;
       if (serializableErrors) {
-        resolvedError = _serializableDioError(e);
+        resolvedError = _serializableDioException(e);
       } else {
         resolvedError = e;
       }
 
       switch (resolvedError.type) {
-        case dio.DioErrorType.connectTimeout:
-        case dio.DioErrorType.receiveTimeout:
-        case dio.DioErrorType.sendTimeout:
+        case dio.DioExceptionType.connectionTimeout:
+        case dio.DioExceptionType.receiveTimeout:
+        case dio.DioExceptionType.sendTimeout:
           throw DioLinkTimeoutException(
             type: resolvedError.type,
             originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.cancel:
+        case dio.DioExceptionType.cancel:
           throw DioLinkCanceledException(
             originalException: resolvedError,
             originalStackTrace: stackTrace,
           );
-        case dio.DioErrorType.response:
+        case dio.DioExceptionType.badResponse:
           {
             final res = resolvedError.response!;
             final parsedResponse = (res.data is Map<String, dynamic>)
@@ -245,7 +250,7 @@ class DioLink extends Link {
               originalStackTrace: stackTrace,
             );
           }
-        case dio.DioErrorType.other:
+        case dio.DioExceptionType.unknown:
         default:
           throw DioLinkUnkownException(
             originalException: resolvedError,
@@ -261,7 +266,8 @@ class DioLink extends Link {
     }
   }
 
-  dio.DioError _serializableDioError(dio.DioError e) => dio.DioError(
+  dio.DioException _serializableDioException(dio.DioException e) =>
+      dio.DioException(
         type: e.type,
         error: e.error,
         response: e.response,
@@ -290,6 +296,9 @@ class DioLink extends Link {
           receiveDataWhenStatusError:
               e.requestOptions.receiveDataWhenStatusError,
           sendTimeout: e.requestOptions.sendTimeout,
+          responseType: e.requestOptions.responseType,
+          listFormat: e.requestOptions.listFormat,
+          persistentConnection: e.requestOptions.persistentConnection,
         ),
       );
 

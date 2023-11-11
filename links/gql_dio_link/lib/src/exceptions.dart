@@ -62,7 +62,7 @@ class DioLinkUnkownException extends LinkException {
 @immutable
 class DioLinkTimeoutException extends LinkException {
   /// Either a CONNECT_TIMEOUT, RECEIVE_TIMEOUT, or SEND_TIMEOUT
-  final dio.DioErrorType type;
+  final dio.DioExceptionType type;
 
   const DioLinkTimeoutException({
     required this.type,

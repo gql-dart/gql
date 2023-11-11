@@ -2,6 +2,8 @@ import "package:gql/src/ast/ast.dart";
 
 /// A class defining visit methods for all concrete subclasses of [Node].
 abstract class Visitor<R> {
+  const Visitor();
+
   /// Visit [DocumentNode].
   R visitDocumentNode(
     DocumentNode node,
@@ -225,6 +227,7 @@ abstract class Visitor<R> {
 
 /// A simple implementation of [Visitor] returning `null` from each visit method.
 class SimpleVisitor<R> implements Visitor<R?> {
+  const SimpleVisitor();
   @override
   R? visitDocumentNode(
     DocumentNode node,
@@ -495,6 +498,7 @@ class SimpleVisitor<R> implements Visitor<R?> {
 /// When extending any of the visit methods you are responsible for calling the same
 /// visit method on `super` to make sure the whole AST is visited.
 abstract class RecursiveVisitor implements Visitor<void> {
+  const RecursiveVisitor();
   @override
   void visitArgumentNode(
     ArgumentNode node,

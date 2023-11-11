@@ -23,11 +23,13 @@ abstract class GAliasedHeroVars
         GAliasedHeroVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAliasedHeroVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GAliasedHeroVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GAliasedHeroVars> get serializer =>
       GAliasedHeroVarsSerializer();

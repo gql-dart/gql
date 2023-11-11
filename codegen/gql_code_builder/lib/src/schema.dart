@@ -30,9 +30,10 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final SourceNode schemaSource;
   final Map<String, Reference> typeOverrides;
   final EnumFallbackConfig enumFallbackConfig;
+
   final Allocator allocator;
 
-  _SchemaBuilderVisitor(this.schemaSource, this.typeOverrides,
+  const _SchemaBuilderVisitor(this.schemaSource, this.typeOverrides,
       this.enumFallbackConfig, this.allocator);
 
   @override

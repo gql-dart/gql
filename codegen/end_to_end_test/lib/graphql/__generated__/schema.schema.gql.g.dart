@@ -425,6 +425,174 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
   }
 }
 
+class _$GPostLikesInput extends GPostLikesInput {
+  @override
+  final String id;
+
+  factory _$GPostLikesInput([void Function(GPostLikesInputBuilder)? updates]) =>
+      (new GPostLikesInputBuilder()..update(updates))._build();
+
+  _$GPostLikesInput._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GPostLikesInput', 'id');
+  }
+
+  @override
+  GPostLikesInput rebuild(void Function(GPostLikesInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GPostLikesInputBuilder toBuilder() =>
+      new GPostLikesInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GPostLikesInput && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GPostLikesInput')..add('id', id))
+        .toString();
+  }
+}
+
+class GPostLikesInputBuilder
+    implements Builder<GPostLikesInput, GPostLikesInputBuilder> {
+  _$GPostLikesInput? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GPostLikesInputBuilder();
+
+  GPostLikesInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GPostLikesInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GPostLikesInput;
+  }
+
+  @override
+  void update(void Function(GPostLikesInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GPostLikesInput build() => _build();
+
+  _$GPostLikesInput _build() {
+    final _$result = _$v ??
+        new _$GPostLikesInput._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostLikesInput', 'id'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GPostFavoritesInput extends GPostFavoritesInput {
+  @override
+  final String id;
+
+  factory _$GPostFavoritesInput(
+          [void Function(GPostFavoritesInputBuilder)? updates]) =>
+      (new GPostFavoritesInputBuilder()..update(updates))._build();
+
+  _$GPostFavoritesInput._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GPostFavoritesInput', 'id');
+  }
+
+  @override
+  GPostFavoritesInput rebuild(
+          void Function(GPostFavoritesInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GPostFavoritesInputBuilder toBuilder() =>
+      new GPostFavoritesInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GPostFavoritesInput && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GPostFavoritesInput')..add('id', id))
+        .toString();
+  }
+}
+
+class GPostFavoritesInputBuilder
+    implements Builder<GPostFavoritesInput, GPostFavoritesInputBuilder> {
+  _$GPostFavoritesInput? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GPostFavoritesInputBuilder();
+
+  GPostFavoritesInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GPostFavoritesInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GPostFavoritesInput;
+  }
+
+  @override
+  void update(void Function(GPostFavoritesInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GPostFavoritesInput build() => _build();
+
+  _$GPostFavoritesInput _build() {
+    final _$result = _$v ??
+        new _$GPostFavoritesInput._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostFavoritesInput', 'id'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GISODate extends GISODate {
   @override
   final String value;
@@ -501,6 +669,87 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
         new _$GISODate._(
             value: BuiltValueNullFieldError.checkNotNull(
                 value, r'GISODate', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GJson extends GJson {
+  @override
+  final String value;
+
+  factory _$GJson([void Function(GJsonBuilder)? updates]) =>
+      (new GJsonBuilder()..update(updates))._build();
+
+  _$GJson._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GJson', 'value');
+  }
+
+  @override
+  GJson rebuild(void Function(GJsonBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GJsonBuilder toBuilder() => new GJsonBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GJson && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GJson')..add('value', value))
+        .toString();
+  }
+}
+
+class GJsonBuilder implements Builder<GJson, GJsonBuilder> {
+  _$GJson? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GJsonBuilder();
+
+  GJsonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GJson other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GJson;
+  }
+
+  @override
+  void update(void Function(GJsonBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GJson build() => _build();
+
+  _$GJson _build() {
+    final _$result = _$v ??
+        new _$GJson._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GJson', 'value'));
     replace(_$result);
     return _$result;
   }

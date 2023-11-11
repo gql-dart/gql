@@ -26,12 +26,14 @@ abstract class GHeroWithInterfaceSubTypedFragmentsVars
         GHeroWithInterfaceSubTypedFragmentsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithInterfaceSubTypedFragmentsVars? fromJson(
           Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GHeroWithInterfaceSubTypedFragmentsVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GHeroWithInterfaceSubTypedFragmentsVars> get serializer =>
       GHeroWithInterfaceSubTypedFragmentsVarsSerializer();
@@ -49,11 +51,13 @@ abstract class GheroFieldsFragmentVars
         GheroFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GheroFieldsFragmentVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GheroFieldsFragmentVars> get serializer =>
       GheroFieldsFragmentVarsSerializer();
@@ -72,11 +76,13 @@ abstract class GhumanFieldsFragmentVars
         GhumanFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GhumanFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GhumanFieldsFragmentVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GhumanFieldsFragmentVars> get serializer =>
       GhumanFieldsFragmentVarsSerializer();
@@ -95,11 +101,13 @@ abstract class GdroidFieldsFragmentVars
         GdroidFieldsFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GdroidFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GdroidFieldsFragmentVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GdroidFieldsFragmentVars> get serializer =>
       GdroidFieldsFragmentVarsSerializer();
@@ -178,9 +186,7 @@ class GheroFieldsFragmentVarsSerializer
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }
@@ -215,9 +221,7 @@ class GhumanFieldsFragmentVarsSerializer
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }
@@ -252,9 +256,7 @@ class GdroidFieldsFragmentVarsSerializer
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }

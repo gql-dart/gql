@@ -26,14 +26,17 @@ abstract class GHeroWithFragments
       document: _i2.document,
       operationName: 'HeroWithFragments',
     );
+
   _i3.GHeroWithFragmentsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroWithFragments> get serializer =>
       _$gHeroWithFragmentsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHeroWithFragments.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithFragments? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GHeroWithFragments.serializer,

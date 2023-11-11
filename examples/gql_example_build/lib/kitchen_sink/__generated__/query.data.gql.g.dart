@@ -417,7 +417,11 @@ class _$GQueryOperationData extends GQueryOperationData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -607,42 +611,26 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        0,
-                                                                        G__typename
-                                                                            .hashCode),
-                                                                    id.hashCode),
-                                                                Gbool.hashCode),
-                                                            Gint.hashCode),
-                                                        float.hashCode),
-                                                    string.hashCode),
-                                                scalar.hashCode),
-                                            Genum.hashCode),
-                                        field.hashCode),
-                                    idRequired.hashCode),
-                                boolRequired.hashCode),
-                            intRequired.hashCode),
-                        floatRequired.hashCode),
-                    stringRequired.hashCode),
-                scalarRequired.hashCode),
-            enumRequired.hashCode),
-        fieldRequired.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, Gbool.hashCode);
+    _$hash = $jc(_$hash, Gint.hashCode);
+    _$hash = $jc(_$hash, float.hashCode);
+    _$hash = $jc(_$hash, string.hashCode);
+    _$hash = $jc(_$hash, scalar.hashCode);
+    _$hash = $jc(_$hash, Genum.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jc(_$hash, idRequired.hashCode);
+    _$hash = $jc(_$hash, boolRequired.hashCode);
+    _$hash = $jc(_$hash, intRequired.hashCode);
+    _$hash = $jc(_$hash, floatRequired.hashCode);
+    _$hash = $jc(_$hash, stringRequired.hashCode);
+    _$hash = $jc(_$hash, scalarRequired.hashCode);
+    _$hash = $jc(_$hash, enumRequired.hashCode);
+    _$hash = $jc(_$hash, fieldRequired.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -888,7 +876,11 @@ class _$GQueryOperationData_field_field
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -993,7 +985,11 @@ class _$GQueryOperationData_field_fieldRequired
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1060,4 +1056,4 @@ class GQueryOperationData_field_fieldRequiredBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

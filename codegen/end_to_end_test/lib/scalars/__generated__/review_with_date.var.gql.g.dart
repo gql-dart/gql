@@ -8,11 +8,11 @@ part of 'review_with_date.var.gql.dart';
 
 class _$GReviewWithDateVars extends GReviewWithDateVars {
   @override
-  final _i2.Value<_i1.GEpisode>? episode;
+  final _i1.Value<_i2.GEpisode>? episode;
   @override
-  final _i1.GReviewInput review;
+  final _i2.GReviewInput review;
   @override
-  final _i2.Value<DateTime>? createdAt;
+  final _i1.Value<DateTime>? createdAt;
 
   factory _$GReviewWithDateVars(
           [void Function(GReviewWithDateVarsBuilder)? updates]) =>
@@ -66,18 +66,18 @@ class GReviewWithDateVarsBuilder
     implements Builder<GReviewWithDateVars, GReviewWithDateVarsBuilder> {
   _$GReviewWithDateVars? _$v;
 
-  _i2.Value<_i1.GEpisode>? _episode;
-  _i2.Value<_i1.GEpisode>? get episode => _$this._episode;
-  set episode(_i2.Value<_i1.GEpisode>? episode) => _$this._episode = episode;
+  _i1.Value<_i2.GEpisode>? _episode;
+  _i1.Value<_i2.GEpisode>? get episode => _$this._episode;
+  set episode(_i1.Value<_i2.GEpisode>? episode) => _$this._episode = episode;
 
-  _i1.GReviewInputBuilder? _review;
-  _i1.GReviewInputBuilder get review =>
-      _$this._review ??= new _i1.GReviewInputBuilder();
-  set review(_i1.GReviewInputBuilder? review) => _$this._review = review;
+  _i2.GReviewInputBuilder? _review;
+  _i2.GReviewInputBuilder get review =>
+      _$this._review ??= new _i2.GReviewInputBuilder();
+  set review(_i2.GReviewInputBuilder? review) => _$this._review = review;
 
-  _i2.Value<DateTime>? _createdAt;
-  _i2.Value<DateTime>? get createdAt => _$this._createdAt;
-  set createdAt(_i2.Value<DateTime>? createdAt) =>
+  _i1.Value<DateTime>? _createdAt;
+  _i1.Value<DateTime>? get createdAt => _$this._createdAt;
+  set createdAt(_i1.Value<DateTime>? createdAt) =>
       _$this._createdAt = createdAt;
 
   GReviewWithDateVarsBuilder();

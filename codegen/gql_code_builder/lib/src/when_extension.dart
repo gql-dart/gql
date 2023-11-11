@@ -39,7 +39,8 @@ Code _caseStatement(InlineFragmentNode inlineFragment) =>
 Extension? inlineFragmentWhenExtension(
     {required String baseTypeName,
     required List<InlineFragmentNode> inlineFragments,
-    required InlineFragmentSpreadWhenExtensionConfig config}) {
+    required InlineFragmentSpreadWhenExtensionConfig config,
+    required Map<String, Reference> dataClassAliasMap}) {
   final inlineFragmentsWithTypConditions = inlineFragments
       .where((inlineFragment) => inlineFragment.typeCondition != null)
       .toList();
@@ -54,8 +55,11 @@ Extension? inlineFragmentWhenExtension(
 
   /// returns the name of the concrete built class for the inlineFragment
   /// so we can refer to it in the generated code
-  String getGeneratedTypeName(InlineFragmentNode node) =>
-      builtClassName("${baseTypeName}__as${node.typeCondition!.on.name.value}");
+  String getGeneratedTypeName(InlineFragmentNode node) {
+    final typeName = builtClassName(
+        "${baseTypeName}__as${node.typeCondition!.on.name.value}");
+    return dataClassAliasMap[typeName]?.symbol ?? typeName;
+  }
 
   /// a pool of parameter names which have already been used
   /// so we can avoid name clashes

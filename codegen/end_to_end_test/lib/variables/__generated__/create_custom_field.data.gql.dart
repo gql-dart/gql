@@ -20,15 +20,18 @@ abstract class GCreateCustomFieldData
 
   static void _initializeBuilder(GCreateCustomFieldDataBuilder b) =>
       b..G__typename = 'Mutation';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   _i1.CustomField? get createCustomField;
   static Serializer<GCreateCustomFieldData> get serializer =>
       _$gCreateCustomFieldDataSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GCreateCustomFieldData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GCreateCustomFieldData? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GCreateCustomFieldData.serializer,

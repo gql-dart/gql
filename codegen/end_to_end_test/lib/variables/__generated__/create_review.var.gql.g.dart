@@ -8,9 +8,9 @@ part of 'create_review.var.gql.dart';
 
 class _$GCreateReviewVars extends GCreateReviewVars {
   @override
-  final _i2.Value<_i1.GEpisode>? episode;
+  final _i1.Value<_i2.GEpisode>? episode;
   @override
-  final _i1.GReviewInput review;
+  final _i2.GReviewInput review;
 
   factory _$GCreateReviewVars(
           [void Function(GCreateReviewVarsBuilder)? updates]) =>
@@ -59,14 +59,14 @@ class GCreateReviewVarsBuilder
     implements Builder<GCreateReviewVars, GCreateReviewVarsBuilder> {
   _$GCreateReviewVars? _$v;
 
-  _i2.Value<_i1.GEpisode>? _episode;
-  _i2.Value<_i1.GEpisode>? get episode => _$this._episode;
-  set episode(_i2.Value<_i1.GEpisode>? episode) => _$this._episode = episode;
+  _i1.Value<_i2.GEpisode>? _episode;
+  _i1.Value<_i2.GEpisode>? get episode => _$this._episode;
+  set episode(_i1.Value<_i2.GEpisode>? episode) => _$this._episode = episode;
 
-  _i1.GReviewInputBuilder? _review;
-  _i1.GReviewInputBuilder get review =>
-      _$this._review ??= new _i1.GReviewInputBuilder();
-  set review(_i1.GReviewInputBuilder? review) => _$this._review = review;
+  _i2.GReviewInputBuilder? _review;
+  _i2.GReviewInputBuilder get review =>
+      _$this._review ??= new _i2.GReviewInputBuilder();
+  set review(_i2.GReviewInputBuilder? review) => _$this._review = review;
 
   GCreateReviewVarsBuilder();
 

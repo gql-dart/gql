@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:gql_error_link/gql_error_link.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_http_link/gql_http_link.dart";
@@ -8,6 +10,9 @@ class HttpAuthLink extends Link {
   late Link _link;
   String? _token;
 
+  bool _isRefreshing = false;
+  final List<Completer> _tokenRefreshQueue = [];
+
   HttpAuthLink() {
     _link = Link.concat(
       ErrorLink(onException: handleException),
@@ -16,10 +21,28 @@ class HttpAuthLink extends Link {
   }
 
   Future<void> updateToken() async {
-    _token = await Future.delayed(
-      Duration(milliseconds: 10),
-      () => "Valid token",
-    );
+    if (!_isRefreshing) {
+      try {
+        _isRefreshing = true;
+
+        _token = await Future.delayed(
+          Duration(milliseconds: 10),
+          () => "Valid token",
+        );
+
+        _tokenRefreshQueue.forEach((completer) {
+          completer.complete(_token!);
+        });
+        _tokenRefreshQueue.clear();
+      } finally {
+        _isRefreshing = false;
+      }
+    } else {
+      // If token refresh is already in progress, queue the request
+      final completer = Completer<String>();
+      _tokenRefreshQueue.add(completer);
+      _token = await completer.future;
+    }
   }
 
   Stream<Response> handleException(

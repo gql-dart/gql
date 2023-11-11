@@ -23,11 +23,13 @@ abstract class GHeroWithFragmentsVars
         GHeroWithFragmentsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GHeroWithFragmentsVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GHeroWithFragmentsVars> get serializer =>
       GHeroWithFragmentsVarsSerializer();
@@ -44,11 +46,13 @@ abstract class GheroDataVars
         GheroDataVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroDataVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GheroDataVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GheroDataVars> get serializer => GheroDataVarsSerializer();
 }
@@ -66,11 +70,13 @@ abstract class GcomparisonFieldsVars
         GcomparisonFieldsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GcomparisonFieldsVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GcomparisonFieldsVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GcomparisonFieldsVars> get serializer =>
       GcomparisonFieldsVarsSerializer();
@@ -92,10 +98,10 @@ class GHeroWithFragmentsVarsSerializer
   }) {
     final result = <Object?>[];
     final _$firstvalue = object.first;
-    if (_$firstvalue != null) {
+    if (_$firstvalue case _i1.PresentValue(value: final _$value)) {
       result.add('first');
-      result.add(serializers.serialize(_$firstvalue!.value,
-          specifiedType: const FullType(int)));
+      result.add(
+          serializers.serialize(_$value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -115,7 +121,7 @@ class GHeroWithFragmentsVarsSerializer
         case 'first':
           var fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.first = _i1.Value(fieldValue);
+          builder.first = _i1.PresentValue(fieldValue);
           break;
       }
     }
@@ -148,9 +154,7 @@ class GheroDataVarsSerializer extends StructuredSerializer<GheroDataVars> {
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }
@@ -172,10 +176,10 @@ class GcomparisonFieldsVarsSerializer
   }) {
     final result = <Object?>[];
     final _$firstvalue = object.first;
-    if (_$firstvalue != null) {
+    if (_$firstvalue case _i1.PresentValue(value: final _$value)) {
       result.add('first');
-      result.add(serializers.serialize(_$firstvalue!.value,
-          specifiedType: const FullType(int)));
+      result.add(
+          serializers.serialize(_$value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -195,7 +199,7 @@ class GcomparisonFieldsVarsSerializer
         case 'first':
           var fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.first = _i1.Value(fieldValue);
+          builder.first = _i1.PresentValue(fieldValue);
           break;
       }
     }

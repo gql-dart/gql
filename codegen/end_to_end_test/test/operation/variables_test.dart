@@ -20,10 +20,10 @@ void main() {
 
   group("Complex Args", () {
     final args = GCreateReviewVars((b) => b
-      ..episode = Value(GEpisode.EMPIRE)
+      ..episode = Value.present(GEpisode.EMPIRE)
       ..review.stars = 5
-      ..review.commentary = Value("this was amazing!!!")
-      ..review.favorite_color = Value(GColorInput((b) => b
+      ..review.commentary = Value.present("this was amazing!!!")
+      ..review.favorite_color = Value.present(GColorInput((b) => b
         ..blue = 255
         ..green = 120
         ..red = 80)));

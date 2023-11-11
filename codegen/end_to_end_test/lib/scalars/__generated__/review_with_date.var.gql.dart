@@ -5,10 +5,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
-    as _i1;
+    as _i2;
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
     as _i3;
-import 'package:gql_exec/value.dart' as _i2;
+import 'package:gql_exec/value.dart' as _i1;
 
 part 'review_with_date.var.gql.g.dart';
 
@@ -19,18 +19,20 @@ abstract class GReviewWithDateVars
   factory GReviewWithDateVars(
       [Function(GReviewWithDateVarsBuilder b) updates]) = _$GReviewWithDateVars;
 
-  _i2.Value<_i1.GEpisode>? get episode;
-  _i1.GReviewInput get review;
-  _i2.Value<DateTime>? get createdAt;
+  _i1.Value<_i2.GEpisode>? get episode;
+  _i2.GReviewInput get review;
+  _i1.Value<DateTime>? get createdAt;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GReviewWithDateVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewWithDateVars? fromJson(Map<String, dynamic> json) =>
       _i3.serializers.deserializeWith(
         GReviewWithDateVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GReviewWithDateVars> get serializer =>
       GReviewWithDateVarsSerializer();
@@ -52,18 +54,18 @@ class GReviewWithDateVarsSerializer
   }) {
     final result = <Object?>[];
     final _$episodevalue = object.episode;
-    if (_$episodevalue != null) {
+    if (_$episodevalue case _i1.PresentValue(value: final _$value)) {
       result.add('episode');
-      result.add(serializers.serialize(_$episodevalue!.value,
-          specifiedType: const FullType(_i1.GEpisode)));
+      result.add(serializers.serialize(_$value,
+          specifiedType: const FullType(_i2.GEpisode)));
     }
     result.add('review');
     result.add(serializers.serialize(object.review,
-        specifiedType: const FullType(_i1.GReviewInput)));
+        specifiedType: const FullType(_i2.GReviewInput)));
     final _$createdAtvalue = object.createdAt;
-    if (_$createdAtvalue != null) {
+    if (_$createdAtvalue case _i1.PresentValue(value: final _$value)) {
       result.add('createdAt');
-      result.add(serializers.serialize(_$createdAtvalue!.value,
+      result.add(serializers.serialize(_$value,
           specifiedType: const FullType(DateTime)));
     }
     return result;
@@ -83,19 +85,19 @@ class GReviewWithDateVarsSerializer
       switch (key) {
         case 'episode':
           var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.GEpisode)) as _i1.GEpisode;
-          builder.episode = _i2.Value(fieldValue);
+              specifiedType: const FullType(_i2.GEpisode)) as _i2.GEpisode;
+          builder.episode = _i1.PresentValue(fieldValue);
           break;
         case 'review':
           var fieldValue = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.GReviewInput))
-              as _i1.GReviewInput;
+                  specifiedType: const FullType(_i2.GReviewInput))
+              as _i2.GReviewInput;
           builder.review.replace(fieldValue);
           break;
         case 'createdAt':
           var fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
-          builder.createdAt = _i2.Value(fieldValue);
+          builder.createdAt = _i1.PresentValue(fieldValue);
           break;
       }
     }

@@ -2,6 +2,7 @@ import "package:gql/ast.dart" as ast;
 import "package:gql/language.dart" as lang;
 
 class AddTypenames extends ast.TransformingVisitor {
+  const AddTypenames();
   @override
   ast.FieldNode visitFieldNode(ast.FieldNode node) {
     if (node.selectionSet == null) {
@@ -44,7 +45,7 @@ void main() {
 
   final ast.DocumentNode withTypenames = ast.transform(
     doc,
-    [
+    const [
       AddTypenames(),
     ],
   );

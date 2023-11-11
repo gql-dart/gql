@@ -8,8 +8,8 @@ void main() {
     test('can be instantiated', () {
       GReviewInput((b) => b
         ..stars = 4
-        ..commentary = Value("This was a great movie!")
-        ..favorite_color = Value(GColorInput((b) => b
+        ..commentary = Value.present("This was a great movie!")
+        ..favorite_color = Value.present(GColorInput((b) => b
           ..red = 225
           ..blue = 255
           ..green = 123)));
@@ -18,7 +18,7 @@ void main() {
     test('can be serialized and deserialized', () {
       final input = GReviewInput((b) => b
         ..stars = 4
-        ..favorite_color = Value(GColorInput((b) => b
+        ..favorite_color = Value.present(GColorInput((b) => b
           ..red = 225
           ..blue = 255
           ..green = 123)));

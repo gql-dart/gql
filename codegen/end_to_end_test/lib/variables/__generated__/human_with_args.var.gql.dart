@@ -21,11 +21,13 @@ abstract class GHumanWithArgsVars
         GHumanWithArgsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHumanWithArgsVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GHumanWithArgsVars> get serializer =>
       GHumanWithArgsVarsSerializer();

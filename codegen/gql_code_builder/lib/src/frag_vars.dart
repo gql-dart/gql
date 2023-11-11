@@ -93,7 +93,49 @@ Map<NameNode, TypeNode> _varTypesForField({
         arg.name: fieldDef.args
             .firstWhere((inputVal) => inputVal.name == arg.name)
             .type
+      else if (arg.value is ObjectValueNode)
+        ..._varTypesForObjectValue(
+          argName: arg.name,
+          objectValue: arg.value as ObjectValueNode,
+          schema: schema,
+          parentType: unwrapTypeNode(fieldDef.args
+              .firstWhere((inputVal) => inputVal.name == arg.name)
+              .type),
+        )
   };
+}
+
+/// Returns a map of a field's argument variables from a nested object to their respective types from the schema
+/// e.g. when used like this: { foo(bar: { baz: $baz }) }
+/// the returned map would be { baz: <type> }
+Map<NameNode, TypeNode> _varTypesForObjectValue({
+  required NameNode argName,
+  required ObjectValueNode objectValue,
+  required DocumentNode schema,
+  required NamedTypeNode parentType,
+}) {
+  final parentTypeDef = getTypeDefinitionNode(schema, parentType.name.value);
+
+  if (parentTypeDef is InputObjectTypeDefinitionNode) {
+    return {
+      for (final field in objectValue.fields)
+        if (field.value is VariableNode)
+          (field.value as VariableNode).name: parentTypeDef.fields
+              .firstWhere((inputVal) => inputVal.name == field.name)
+              .type
+        else if (field.value is ObjectValueNode)
+          ..._varTypesForObjectValue(
+            argName: field.name,
+            objectValue: field.value as ObjectValueNode,
+            schema: schema,
+            parentType: unwrapTypeNode(parentTypeDef.fields
+                .firstWhere((inputVal) => inputVal.name == field.name)
+                .type),
+          )
+    };
+  } else {
+    return {};
+  }
 }
 
 /// Given a field from a query, fetches the field's definition from the schema

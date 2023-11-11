@@ -6,7 +6,7 @@ Expression fromNode(
   Node node,
 ) =>
     node.accept(
-      _PrintVisitor(),
+      const _PrintVisitor(),
     );
 
 Reference _ref(
@@ -29,6 +29,7 @@ Expression _node(
     );
 
 class _PrintVisitor extends Visitor<Expression> {
+  const _PrintVisitor();
   Expression _acceptOne(
     Node? node,
   ) =>

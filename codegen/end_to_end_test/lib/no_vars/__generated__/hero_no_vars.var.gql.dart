@@ -20,11 +20,13 @@ abstract class GHeroNoVarsVars
         GHeroNoVarsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroNoVarsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroNoVarsVars.serializer,
         json,
       );
+
   @BuiltValueSerializer(custom: true, serializeNulls: true)
   static Serializer<GHeroNoVarsVars> get serializer =>
       GHeroNoVarsVarsSerializer();
@@ -55,9 +57,7 @@ class GHeroNoVarsVarsSerializer extends StructuredSerializer<GHeroNoVarsVars> {
       final key = iterator.current as String;
       iterator.moveNext();
       final Object? value = iterator.current;
-      switch (key) {
-        
-      }
+      switch (key) {}
     }
     return builder.build();
   }

@@ -33,10 +33,10 @@ Library buildVarLibrary(
       .toList();
 
   Map<String, FragmentDefinitionNode> _fragmentMap(SourceNode source) => {
-        for (var def
+        for (final def
             in source.document.definitions.whereType<FragmentDefinitionNode>())
           def.name.value: def,
-        for (var import in source.imports) ..._fragmentMap(import)
+        for (final import in source.imports) ..._fragmentMap(import)
       };
 
   final fragmentVarClasses = docSource.document.definitions
@@ -70,14 +70,14 @@ Library buildVarLibrary(
       ..body.addAll([
         ...operationVarClasses,
         ...fragmentVarClasses,
-        for (var op in operationVarClasses)
+        for (final op in operationVarClasses)
           nullAwareJsonSerializerClass(
             op,
             allocator,
             schemaSource,
             typeOverrides,
           ),
-        for (var frag in fragmentVarClasses)
+        for (final frag in fragmentVarClasses)
           nullAwareJsonSerializerClass(
             frag,
             allocator,
@@ -181,10 +181,11 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
       final _valueVarName = "_\$${field.name}value";
 
       statements.add(Code("final $_valueVarName = object.${field.name};"));
-      statements.add(Code("if ($_valueVarName != null) {"));
+      statements.add(Code(
+          "if ($_valueVarName case ${allocator.allocate(refer("PresentValue", 'package:gql_exec/value.dart'))}(value: final _\$value) ) {"));
       statements.add(Code("result.add('${_getWireName(field)}');"));
       statements.add(Code(
-          "result.add(serializers.serialize($_valueVarName!.value, specifiedType: const ${_generateFullType(realType, allocator)}));"));
+          "result.add(serializers.serialize(_\$value, specifiedType: const ${_generateFullType(realType, allocator)}));"));
       statements.add(Code("}"));
     } else {
       statements.add(Code("result.add('${_getWireName(field)}');"));
@@ -265,7 +266,7 @@ case '${_getWireName(field)}':
       """;
       } else {
         base += """
-        builder.${field.name} = ${isWrappedValue ? "${allocator.allocate(_valueTypeRef)}(fieldValue)" : "fieldValue"};
+        builder.${field.name} = ${isWrappedValue ? "${allocator.allocate(_presentValueTypeRef)}(fieldValue)" : "fieldValue"};
       """;
       }
 
@@ -294,6 +295,10 @@ String _generateTypeCast(TypeReference ref, Allocator allocator) {
 
 final _valueTypeRef = TypeReference((b) => b
   ..symbol = "Value"
+  ..url = "package:gql_exec/value.dart");
+
+final _presentValueTypeRef = TypeReference((b) => b
+  ..symbol = "PresentValue"
   ..url = "package:gql_exec/value.dart");
 
 bool isValue(Reference ref) {

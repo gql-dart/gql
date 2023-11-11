@@ -24,13 +24,16 @@ abstract class GRemoveStar implements Built<GRemoveStar, GRemoveStarBuilder> {
       document: _i2.document,
       operationName: 'RemoveStar',
     );
+
   _i3.GRemoveStarVars get vars;
   _i1.Operation get operation;
   static Serializer<GRemoveStar> get serializer => _$gRemoveStarSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GRemoveStar.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GRemoveStar? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GRemoveStar.serializer,
