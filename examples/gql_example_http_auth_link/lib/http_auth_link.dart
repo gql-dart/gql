@@ -22,18 +22,21 @@ class HttpAuthLink extends Link {
 
   Future<void> updateToken() async {
     if (!_isRefreshing) {
-      _isRefreshing = true;
+      try {
+        _isRefreshing = true;
 
-      _token = await Future.delayed(
-        Duration(milliseconds: 10),
-        () => "Valid token",
-      );
+        _token = await Future.delayed(
+          Duration(milliseconds: 10),
+          () => "Valid token",
+        );
 
-      _isRefreshing = false;
-      _tokenRefreshQueue.forEach((completer) {
-        completer.complete(_token!);
-      });
-      _tokenRefreshQueue.clear();
+        _tokenRefreshQueue.forEach((completer) {
+          completer.complete(_token!);
+        });
+        _tokenRefreshQueue.clear();
+      } finally {
+        _isRefreshing = false;
+      }
     } else {
       // If token refresh is already in progress, queue the request
       final completer = Completer<String>();
