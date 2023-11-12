@@ -184,7 +184,9 @@ class GReviewInputBuilder
   set seenOn(_i1.Value<BuiltList<DateTime?>>? seenOn) =>
       _$this._seenOn = seenOn;
 
-  GReviewInputBuilder();
+  GReviewInputBuilder() {
+    GReviewInput._initializeBuilder(this);
+  }
 
   GReviewInputBuilder get _$this {
     final $v = _$v;
@@ -292,7 +294,9 @@ class GCustomFieldInputBuilder
   set customField(_i1.Value<_i2.CustomField>? customField) =>
       _$this._customField = customField;
 
-  GCustomFieldInputBuilder();
+  GCustomFieldInputBuilder() {
+    GCustomFieldInput._initializeBuilder(this);
+  }
 
   GCustomFieldInputBuilder get _$this {
     final $v = _$v;
