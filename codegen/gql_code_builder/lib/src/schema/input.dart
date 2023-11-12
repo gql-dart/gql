@@ -46,8 +46,19 @@ Class buildInputClass(
       ),
       hasCustomSerializer:
           triStateValueConfig == TriStateValueConfig.onAllNullableFields,
+      initializers: {
+        if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
+          ..._inputClassValueInitializers(node)
+      },
       methods: [
         if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
           nullAwareJsonSerializerField(node, "G${node.name.value}"),
       ],
     );
+
+Map<String, Expression> _inputClassValueInitializers(
+        InputObjectTypeDefinitionNode op) =>
+    {
+      for (final node in op.fields.where((element) => !element.type.isNonNull))
+        identifier(node.name.value): absentValueConstructorInvocation()
+    };

@@ -63,7 +63,7 @@ void main() {
         BuiltList([DateTime.fromMillisecondsSinceEpoch(1591892597000)]),
       ));
     test('correctly overrides scalars in input types', () {
-      expect((input.seenOn! as PresentValue<BuiltList>).value!.first,
+      expect((input.seenOn as PresentValue<BuiltList>).value!.first,
           TypeMatcher<DateTime>());
     });
 
@@ -86,7 +86,7 @@ void main() {
     );
 
     test('correctly overrides scalars in variable types', () {
-      expect((vars.createdAt! as PresentValue).value, TypeMatcher<DateTime>());
+      expect((vars.createdAt as PresentValue).value, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {

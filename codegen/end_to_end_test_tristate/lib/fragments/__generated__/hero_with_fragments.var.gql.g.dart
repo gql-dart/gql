@@ -8,13 +8,16 @@ part of 'hero_with_fragments.var.gql.dart';
 
 class _$GHeroWithFragmentsVars extends GHeroWithFragmentsVars {
   @override
-  final _i1.Value<int>? first;
+  final _i1.Value<int> first;
 
   factory _$GHeroWithFragmentsVars(
           [void Function(GHeroWithFragmentsVarsBuilder)? updates]) =>
       (new GHeroWithFragmentsVarsBuilder()..update(updates))._build();
 
-  _$GHeroWithFragmentsVars._({this.first}) : super._();
+  _$GHeroWithFragmentsVars._({required this.first}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        first, r'GHeroWithFragmentsVars', 'first');
+  }
 
   @override
   GHeroWithFragmentsVars rebuild(
@@ -83,7 +86,10 @@ class GHeroWithFragmentsVarsBuilder
   GHeroWithFragmentsVars build() => _build();
 
   _$GHeroWithFragmentsVars _build() {
-    final _$result = _$v ?? new _$GHeroWithFragmentsVars._(first: first);
+    final _$result = _$v ??
+        new _$GHeroWithFragmentsVars._(
+            first: BuiltValueNullFieldError.checkNotNull(
+                first, r'GHeroWithFragmentsVars', 'first'));
     replace(_$result);
     return _$result;
   }

@@ -213,7 +213,7 @@ Method buildOptionalGetter({
 
   final optionalGetter = baseGetter.rebuild((b) => b
     ..returns = TypeReference((b2) => b2
-      ..isNullable = true
+      ..isNullable = false
       ..url = valueTypeUrl
       ..symbol = valueTypeSymbol
       ..types.add((baseGetter.returns as TypeReference)

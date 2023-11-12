@@ -99,19 +99,27 @@ class _$GReviewInput extends GReviewInput {
   @override
   final int stars;
   @override
-  final _i1.Value<String>? commentary;
+  final _i1.Value<String> commentary;
   @override
-  final _i1.Value<GColorInput>? favorite_color;
+  final _i1.Value<GColorInput> favorite_color;
   @override
-  final _i1.Value<BuiltList<DateTime?>>? seenOn;
+  final _i1.Value<BuiltList<DateTime?>> seenOn;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder)? updates]) =>
       (new GReviewInputBuilder()..update(updates))._build();
 
   _$GReviewInput._(
-      {required this.stars, this.commentary, this.favorite_color, this.seenOn})
+      {required this.stars,
+      required this.commentary,
+      required this.favorite_color,
+      required this.seenOn})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(stars, r'GReviewInput', 'stars');
+    BuiltValueNullFieldError.checkNotNull(
+        commentary, r'GReviewInput', 'commentary');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite_color, r'GReviewInput', 'favorite_color');
+    BuiltValueNullFieldError.checkNotNull(seenOn, r'GReviewInput', 'seenOn');
   }
 
   @override
@@ -176,7 +184,9 @@ class GReviewInputBuilder
   set seenOn(_i1.Value<BuiltList<DateTime?>>? seenOn) =>
       _$this._seenOn = seenOn;
 
-  GReviewInputBuilder();
+  GReviewInputBuilder() {
+    GReviewInput._initializeBuilder(this);
+  }
 
   GReviewInputBuilder get _$this {
     final $v = _$v;
@@ -209,9 +219,12 @@ class GReviewInputBuilder
         new _$GReviewInput._(
             stars: BuiltValueNullFieldError.checkNotNull(
                 stars, r'GReviewInput', 'stars'),
-            commentary: commentary,
-            favorite_color: favorite_color,
-            seenOn: seenOn);
+            commentary: BuiltValueNullFieldError.checkNotNull(
+                commentary, r'GReviewInput', 'commentary'),
+            favorite_color: BuiltValueNullFieldError.checkNotNull(
+                favorite_color, r'GReviewInput', 'favorite_color'),
+            seenOn: BuiltValueNullFieldError.checkNotNull(
+                seenOn, r'GReviewInput', 'seenOn'));
     replace(_$result);
     return _$result;
   }
@@ -221,14 +234,17 @@ class _$GCustomFieldInput extends GCustomFieldInput {
   @override
   final String id;
   @override
-  final _i1.Value<_i2.CustomField>? customField;
+  final _i1.Value<_i2.CustomField> customField;
 
   factory _$GCustomFieldInput(
           [void Function(GCustomFieldInputBuilder)? updates]) =>
       (new GCustomFieldInputBuilder()..update(updates))._build();
 
-  _$GCustomFieldInput._({required this.id, this.customField}) : super._() {
+  _$GCustomFieldInput._({required this.id, required this.customField})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'GCustomFieldInput', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        customField, r'GCustomFieldInput', 'customField');
   }
 
   @override
@@ -278,7 +294,9 @@ class GCustomFieldInputBuilder
   set customField(_i1.Value<_i2.CustomField>? customField) =>
       _$this._customField = customField;
 
-  GCustomFieldInputBuilder();
+  GCustomFieldInputBuilder() {
+    GCustomFieldInput._initializeBuilder(this);
+  }
 
   GCustomFieldInputBuilder get _$this {
     final $v = _$v;
@@ -309,7 +327,8 @@ class GCustomFieldInputBuilder
         new _$GCustomFieldInput._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GCustomFieldInput', 'id'),
-            customField: customField);
+            customField: BuiltValueNullFieldError.checkNotNull(
+                customField, r'GCustomFieldInput', 'customField'));
     replace(_$result);
     return _$result;
   }

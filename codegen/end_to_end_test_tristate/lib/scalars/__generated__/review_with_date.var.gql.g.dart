@@ -8,20 +8,25 @@ part of 'review_with_date.var.gql.dart';
 
 class _$GReviewWithDateVars extends GReviewWithDateVars {
   @override
-  final _i1.Value<_i2.GEpisode>? episode;
+  final _i1.Value<_i2.GEpisode> episode;
   @override
   final _i2.GReviewInput review;
   @override
-  final _i1.Value<DateTime>? createdAt;
+  final _i1.Value<DateTime> createdAt;
 
   factory _$GReviewWithDateVars(
           [void Function(GReviewWithDateVarsBuilder)? updates]) =>
       (new GReviewWithDateVarsBuilder()..update(updates))._build();
 
-  _$GReviewWithDateVars._({this.episode, required this.review, this.createdAt})
+  _$GReviewWithDateVars._(
+      {required this.episode, required this.review, required this.createdAt})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
+        episode, r'GReviewWithDateVars', 'episode');
+    BuiltValueNullFieldError.checkNotNull(
         review, r'GReviewWithDateVars', 'review');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, r'GReviewWithDateVars', 'createdAt');
   }
 
   @override
@@ -114,7 +119,11 @@ class GReviewWithDateVarsBuilder
     try {
       _$result = _$v ??
           new _$GReviewWithDateVars._(
-              episode: episode, review: review.build(), createdAt: createdAt);
+              episode: BuiltValueNullFieldError.checkNotNull(
+                  episode, r'GReviewWithDateVars', 'episode'),
+              review: review.build(),
+              createdAt: BuiltValueNullFieldError.checkNotNull(
+                  createdAt, r'GReviewWithDateVars', 'createdAt'));
     } catch (_) {
       late String _$failedField;
       try {
