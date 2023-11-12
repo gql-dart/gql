@@ -1,5 +1,5 @@
 name: gql_error_link
-version: 1.0.0
+version: 1.0.0+1
 description: GQL Link to handle execution errors and exceptions
 repository: https://github.com/gql-dart/gql
 environment: 
