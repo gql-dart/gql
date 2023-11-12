@@ -106,7 +106,7 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
   }
 
   for (final field in fields) {
-    final isOptionalValue = isValue(field.returns!);
+    final isOptionalValue = _isValue(field.returns!);
     final statements = <Code>[];
 
     if (isOptionalValue) {
@@ -117,7 +117,7 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
 
       statements.add(Code("final $_valueVarName = object.${field.name};"));
       statements.add(Code(
-          "if ($_valueVarName case ${allocator.allocate(refer("PresentValue", 'package:gql_exec/value.dart'))}(value: final _\$value) ) {"));
+          "if ($_valueVarName case ${allocator.allocate(presentValueTypeRef)}(value: final _\$value) ) {"));
       statements.add(Code("result.add('${_getWireName(field)}');"));
       statements.add(Code(
           "result.add(serializers.serialize(_\$value, specifiedType: const ${_generateFullType(realType, allocator)}));"));
@@ -176,7 +176,7 @@ String _generateFieldDeserializers(
 ) =>
     fields.map((field) {
       var type = field.returns!;
-      final isWrappedValue = isValue(type);
+      final isWrappedValue = _isValue(type);
       if (isWrappedValue) {
         type = (type as TypeReference).types.first;
       }
@@ -195,18 +195,22 @@ String _generateFieldDeserializers(
           (typeDefNode is! ScalarTypeDefinitionNode &&
               typeDefNode is! EnumTypeDefinitionNode);
 
+      const fieldNameVariableName = "_\$fieldValue";
+
+      final fieldNameExpr = CodeExpression(Code(fieldNameVariableName));
+
       var base = """
 case '${_getWireName(field)}':
-  var fieldValue = serializers.deserialize(
+  var ${fieldNameVariableName} = serializers.deserialize(
       value, specifiedType: const $fullType) as ${_generateTypeCast(type, allocator)};""";
 
       if (isBuilder) {
         base += """
-        builder.${field.name}.replace(fieldValue);
+        builder.${field.name}.replace($fieldNameVariableName);
       """;
       } else {
         base += """
-        builder.${field.name} = ${isWrappedValue ? "${allocator.allocate(presentValueTypeRef)}(fieldValue)" : "fieldValue"};
+        builder.${field.name} = ${isWrappedValue ? newPresentValueConstructorInvocation(fieldNameExpr, allocator) : fieldNameVariableName};
       """;
       }
 
@@ -237,12 +241,6 @@ String _getWireName(Method m) {
   return parseLiteralString(wireNameExpr);
 }
 
-bool isValue(Reference ref) {
-  if (ref is! TypeReference) return false;
-
-  return ref.symbol == valueTypeRef.symbol && ref.url == valueTypeRef.url;
-}
-
 Code _generateFullType(TypeReference ref, Allocator allocator) {
   if (ref.types.isEmpty) {
     return Code("FullType(${allocator.allocate(ref)})");
@@ -269,14 +267,30 @@ final valueTypeRef = TypeReference(
     ..url = valueTypeUrl,
 );
 
+final absentValueTypeRef = TypeReference(
+  (b) => b
+    ..symbol = "AbsentValue"
+    ..url = valueTypeUrl,
+);
+
 final presentValueTypeRef = TypeReference(
   (b) => b
     ..symbol = "PresentValue"
     ..url = valueTypeUrl,
 );
 
-final absentValueTypeRef = TypeReference(
-  (b) => b
-    ..symbol = "AbsentValue"
-    ..url = valueTypeUrl,
-);
+Expression absentValueConstructorInvocation() =>
+    absentValueTypeRef.constInstance(const []);
+
+String newPresentValueConstructorInvocation(
+    Expression value, Allocator allocator) {
+  final prefixedRef = allocator.allocate(presentValueTypeRef);
+
+  return "$prefixedRef(${value.code})";
+}
+
+bool _isValue(Reference ref) {
+  if (ref is! TypeReference) return false;
+
+  return ref.symbol == valueTypeRef.symbol && ref.url == valueTypeRef.url;
+}

@@ -110,6 +110,5 @@ Map<String, Expression> _varClassValueInitializers(
     {
       for (final node
           in op.variableDefinitions.where((element) => !element.type.isNonNull))
-        identifier(node.variable.name.value):
-            absentValueTypeRef.constInstance(const [])
+        identifier(node.variable.name.value): absentValueConstructorInvocation()
     };

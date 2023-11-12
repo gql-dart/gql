@@ -117,9 +117,9 @@ final class GHeroWith2FragmentsVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'first':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.first = _i1.PresentValue(fieldValue);
+          builder.first = _i1.PresentValue(_$fieldValue);
           break;
       }
     }

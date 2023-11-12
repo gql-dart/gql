@@ -122,9 +122,9 @@ final class GHeroWithFragmentsVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'first':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.first = _i1.PresentValue(fieldValue);
+          builder.first = _i1.PresentValue(_$fieldValue);
           break;
       }
     }
@@ -189,9 +189,9 @@ final class GcomparisonFieldsVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'first':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.first = fieldValue;
+          builder.first = _$fieldValue;
           break;
       }
     }

@@ -70,10 +70,10 @@ final class GCreateCustomFieldVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'input':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
                   specifiedType: const FullType(_i1.GCustomFieldInput))
               as _i1.GCustomFieldInput;
-          builder.input.replace(fieldValue);
+          builder.input.replace(_$fieldValue);
           break;
       }
     }

@@ -103,9 +103,9 @@ final class GPostsWithFixedVariableVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'filter':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(_i2.GJson)) as _i2.GJson;
-          builder.filter = _i1.PresentValue(fieldValue);
+          builder.filter = _i1.PresentValue(_$fieldValue);
           break;
       }
     }

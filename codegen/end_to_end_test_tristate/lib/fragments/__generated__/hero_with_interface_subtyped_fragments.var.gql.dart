@@ -147,9 +147,9 @@ final class GHeroWithInterfaceSubTypedFragmentsVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'episode':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(_i1.GEpisode)) as _i1.GEpisode;
-          builder.episode = fieldValue;
+          builder.episode = _$fieldValue;
           break;
       }
     }

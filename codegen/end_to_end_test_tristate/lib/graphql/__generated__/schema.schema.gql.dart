@@ -122,26 +122,26 @@ final class GReviewInputSerializer extends StructuredSerializer<GReviewInput> {
       final Object? value = iterator.current;
       switch (key) {
         case 'stars':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.stars = fieldValue;
+          builder.stars = _$fieldValue;
           break;
         case 'commentary':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.commentary = _i1.PresentValue(fieldValue);
+          builder.commentary = _i1.PresentValue(_$fieldValue);
           break;
         case 'favorite_color':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(GColorInput)) as GColorInput;
-          builder.favorite_color = _i1.PresentValue(fieldValue);
+          builder.favorite_color = _i1.PresentValue(_$fieldValue);
           break;
         case 'seenOn':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, [FullType(DateTime)]))
               as BuiltList<DateTime>;
-          builder.seenOn = _i1.PresentValue(fieldValue);
+          builder.seenOn = _i1.PresentValue(_$fieldValue);
           break;
       }
     }
@@ -211,15 +211,15 @@ final class GCustomFieldInputSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.id = fieldValue;
+          builder.id = _$fieldValue;
           break;
         case 'customField':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
                   specifiedType: const FullType(_i2.CustomField))
               as _i2.CustomField;
-          builder.customField = _i1.PresentValue(fieldValue);
+          builder.customField = _i1.PresentValue(_$fieldValue);
           break;
       }
     }
@@ -286,19 +286,19 @@ final class GColorInputSerializer extends StructuredSerializer<GColorInput> {
       final Object? value = iterator.current;
       switch (key) {
         case 'red':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.red = fieldValue;
+          builder.red = _$fieldValue;
           break;
         case 'green':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.green = fieldValue;
+          builder.green = _$fieldValue;
           break;
         case 'blue':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          builder.blue = fieldValue;
+          builder.blue = _$fieldValue;
           break;
       }
     }
@@ -361,9 +361,9 @@ final class GPostLikesInputSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.id = fieldValue;
+          builder.id = _$fieldValue;
           break;
       }
     }
@@ -429,9 +429,9 @@ final class GPostFavoritesInputSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.id = fieldValue;
+          builder.id = _$fieldValue;
           break;
       }
     }

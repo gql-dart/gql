@@ -64,9 +64,9 @@ final class GHumanWithArgsVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.id = fieldValue;
+          builder.id = _$fieldValue;
           break;
       }
     }

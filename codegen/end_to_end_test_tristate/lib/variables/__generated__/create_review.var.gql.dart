@@ -77,15 +77,15 @@ final class GCreateReviewVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'episode':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(_i2.GEpisode)) as _i2.GEpisode;
-          builder.episode = _i1.PresentValue(fieldValue);
+          builder.episode = _i1.PresentValue(_$fieldValue);
           break;
         case 'review':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
                   specifiedType: const FullType(_i2.GReviewInput))
               as _i2.GReviewInput;
-          builder.review.replace(fieldValue);
+          builder.review.replace(_$fieldValue);
           break;
       }
     }

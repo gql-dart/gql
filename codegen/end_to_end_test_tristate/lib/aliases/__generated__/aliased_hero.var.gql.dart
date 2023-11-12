@@ -66,9 +66,9 @@ final class GAliasedHeroVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'ep':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(_i1.GEpisode)) as _i1.GEpisode;
-          builder.ep = fieldValue;
+          builder.ep = _$fieldValue;
           break;
       }
     }

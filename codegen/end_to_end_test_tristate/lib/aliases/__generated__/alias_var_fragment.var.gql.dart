@@ -84,9 +84,9 @@ final class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
       final Object? value = iterator.current;
       switch (key) {
         case 'userId':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.userId = fieldValue;
+          builder.userId = _$fieldValue;
           break;
       }
     }
@@ -125,9 +125,9 @@ final class GPostFragmentVarsSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'userId':
-          var fieldValue = serializers.deserialize(value,
+          var _$fieldValue = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          builder.userId = fieldValue;
+          builder.userId = _$fieldValue;
           break;
       }
     }
