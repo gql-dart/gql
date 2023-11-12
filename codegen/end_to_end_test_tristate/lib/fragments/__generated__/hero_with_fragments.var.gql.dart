@@ -21,7 +21,7 @@ abstract class GHeroWithFragmentsVars
   static void _initializeBuilder(GHeroWithFragmentsVarsBuilder b) =>
       b..first = const _i1.AbsentValue();
 
-  _i1.Value<int>? get first;
+  _i1.Value<int> get first;
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GHeroWithFragmentsVars.serializer,
         this,

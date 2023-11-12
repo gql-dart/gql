@@ -8,7 +8,7 @@ part of 'create_review.var.gql.dart';
 
 class _$GCreateReviewVars extends GCreateReviewVars {
   @override
-  final _i1.Value<_i2.GEpisode>? episode;
+  final _i1.Value<_i2.GEpisode> episode;
   @override
   final _i2.GReviewInput review;
 
@@ -16,7 +16,10 @@ class _$GCreateReviewVars extends GCreateReviewVars {
           [void Function(GCreateReviewVarsBuilder)? updates]) =>
       (new GCreateReviewVarsBuilder()..update(updates))._build();
 
-  _$GCreateReviewVars._({this.episode, required this.review}) : super._() {
+  _$GCreateReviewVars._({required this.episode, required this.review})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        episode, r'GCreateReviewVars', 'episode');
     BuiltValueNullFieldError.checkNotNull(
         review, r'GCreateReviewVars', 'review');
   }
@@ -100,7 +103,10 @@ class GCreateReviewVarsBuilder
     _$GCreateReviewVars _$result;
     try {
       _$result = _$v ??
-          new _$GCreateReviewVars._(episode: episode, review: review.build());
+          new _$GCreateReviewVars._(
+              episode: BuiltValueNullFieldError.checkNotNull(
+                  episode, r'GCreateReviewVars', 'episode'),
+              review: review.build());
     } catch (_) {
       late String _$failedField;
       try {
