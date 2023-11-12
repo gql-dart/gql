@@ -2,11 +2,13 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/source.dart";
 import "package:gql_code_builder/src/config/enum_fallback_config.dart";
+import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
 import "package:gql_code_builder/src/schema.dart";
 import "package:gql_code_builder/src/utils/possible_types.dart";
-import "package:gql_code_builder/var.dart";
 
 export "package:gql_code_builder/src/config/enum_fallback_config.dart";
+export "./src/config/tristate_optionals_config.dart";
+
 
 Library buildSchemaLibrary(SourceNode schemaSource, String partUrl,
     Map<String, Reference> typeOverrides, EnumFallbackConfig enumFallbackConfig,

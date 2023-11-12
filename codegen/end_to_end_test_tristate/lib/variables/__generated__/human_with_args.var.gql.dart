@@ -33,7 +33,7 @@ abstract class GHumanWithArgsVars
       GHumanWithArgsVarsSerializer();
 }
 
-class GHumanWithArgsVarsSerializer
+final class GHumanWithArgsVarsSerializer
     extends StructuredSerializer<GHumanWithArgsVars> {
   final String wireName = 'GHumanWithArgsVars';
 

@@ -80,7 +80,7 @@ abstract class GheroIdVars implements Built<GheroIdVars, GheroIdVarsBuilder> {
   static Serializer<GheroIdVars> get serializer => GheroIdVarsSerializer();
 }
 
-class GHeroWith2FragmentsVarsSerializer
+final class GHeroWith2FragmentsVarsSerializer
     extends StructuredSerializer<GHeroWith2FragmentsVars> {
   final String wireName = 'GHeroWith2FragmentsVars';
 
@@ -127,7 +127,8 @@ class GHeroWith2FragmentsVarsSerializer
   }
 }
 
-class GheroNameVarsSerializer extends StructuredSerializer<GheroNameVars> {
+final class GheroNameVarsSerializer
+    extends StructuredSerializer<GheroNameVars> {
   final String wireName = 'GheroNameVars';
 
   final Iterable<Type> types = const [GheroNameVars, _$GheroNameVars];
@@ -149,7 +150,7 @@ class GheroNameVarsSerializer extends StructuredSerializer<GheroNameVars> {
   }
 }
 
-class GheroIdVarsSerializer extends StructuredSerializer<GheroIdVars> {
+final class GheroIdVarsSerializer extends StructuredSerializer<GheroIdVars> {
   final String wireName = 'GheroIdVars';
 
   final Iterable<Type> types = const [GheroIdVars, _$GheroIdVars];

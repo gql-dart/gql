@@ -54,7 +54,7 @@ abstract class GPostFragmentVars
       GPostFragmentVarsSerializer();
 }
 
-class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
+final class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
   final String wireName = 'GPostsVars';
 
   final Iterable<Type> types = const [GPostsVars, _$GPostsVars];
@@ -94,7 +94,7 @@ class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
   }
 }
 
-class GPostFragmentVarsSerializer
+final class GPostFragmentVarsSerializer
     extends StructuredSerializer<GPostFragmentVars> {
   final String wireName = 'GPostFragmentVars';
 

@@ -40,7 +40,7 @@ abstract class GCreateReviewVars
       GCreateReviewVarsSerializer();
 }
 
-class GCreateReviewVarsSerializer
+final class GCreateReviewVarsSerializer
     extends StructuredSerializer<GCreateReviewVars> {
   final String wireName = 'GCreateReviewVars';
 

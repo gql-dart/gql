@@ -4,7 +4,6 @@ import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql_build/src/allocators/gql_allocator.dart";
 import "package:gql_code_builder/schema.dart";
-import "package:gql_code_builder/var.dart";
 import "package:path/path.dart";
 
 import "./config.dart";

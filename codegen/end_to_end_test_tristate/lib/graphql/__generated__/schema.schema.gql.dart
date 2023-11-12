@@ -74,7 +74,7 @@ abstract class GReviewInput
   static Serializer<GReviewInput> get serializer => GReviewInputSerializer();
 }
 
-class GReviewInputSerializer extends StructuredSerializer<GReviewInput> {
+final class GReviewInputSerializer extends StructuredSerializer<GReviewInput> {
   final String wireName = 'GReviewInput';
 
   final Iterable<Type> types = const [GReviewInput, _$GReviewInput];
@@ -174,7 +174,7 @@ abstract class GCustomFieldInput
       GCustomFieldInputSerializer();
 }
 
-class GCustomFieldInputSerializer
+final class GCustomFieldInputSerializer
     extends StructuredSerializer<GCustomFieldInput> {
   final String wireName = 'GCustomFieldInput';
 
@@ -250,7 +250,7 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   static Serializer<GColorInput> get serializer => GColorInputSerializer();
 }
 
-class GColorInputSerializer extends StructuredSerializer<GColorInput> {
+final class GColorInputSerializer extends StructuredSerializer<GColorInput> {
   final String wireName = 'GColorInput';
 
   final Iterable<Type> types = const [GColorInput, _$GColorInput];
@@ -330,7 +330,8 @@ abstract class GPostLikesInput
       GPostLikesInputSerializer();
 }
 
-class GPostLikesInputSerializer extends StructuredSerializer<GPostLikesInput> {
+final class GPostLikesInputSerializer
+    extends StructuredSerializer<GPostLikesInput> {
   final String wireName = 'GPostLikesInput';
 
   final Iterable<Type> types = const [GPostLikesInput, _$GPostLikesInput];
@@ -394,7 +395,7 @@ abstract class GPostFavoritesInput
       GPostFavoritesInputSerializer();
 }
 
-class GPostFavoritesInputSerializer
+final class GPostFavoritesInputSerializer
     extends StructuredSerializer<GPostFavoritesInput> {
   final String wireName = 'GPostFavoritesInput';
 

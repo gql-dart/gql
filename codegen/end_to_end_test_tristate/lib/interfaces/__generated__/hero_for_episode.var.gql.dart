@@ -58,7 +58,7 @@ abstract class GDroidFragmentVars
       GDroidFragmentVarsSerializer();
 }
 
-class GHeroForEpisodeVarsSerializer
+final class GHeroForEpisodeVarsSerializer
     extends StructuredSerializer<GHeroForEpisodeVars> {
   final String wireName = 'GHeroForEpisodeVars';
 
@@ -102,7 +102,7 @@ class GHeroForEpisodeVarsSerializer
   }
 }
 
-class GDroidFragmentVarsSerializer
+final class GDroidFragmentVarsSerializer
     extends StructuredSerializer<GDroidFragmentVars> {
   final String wireName = 'GDroidFragmentVars';
 

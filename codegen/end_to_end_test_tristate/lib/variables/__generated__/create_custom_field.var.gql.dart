@@ -36,7 +36,7 @@ abstract class GCreateCustomFieldVars
       GCreateCustomFieldVarsSerializer();
 }
 
-class GCreateCustomFieldVarsSerializer
+final class GCreateCustomFieldVarsSerializer
     extends StructuredSerializer<GCreateCustomFieldVars> {
   final String wireName = 'GCreateCustomFieldVars';
 

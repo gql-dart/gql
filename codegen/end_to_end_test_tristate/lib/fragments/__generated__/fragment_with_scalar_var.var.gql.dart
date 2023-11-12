@@ -66,7 +66,7 @@ abstract class GPostFragmentForUser1Vars
       GPostFragmentForUser1VarsSerializer();
 }
 
-class GPostsWithFixedVariableVarsSerializer
+final class GPostsWithFixedVariableVarsSerializer
     extends StructuredSerializer<GPostsWithFixedVariableVars> {
   final String wireName = 'GPostsWithFixedVariableVars';
 
@@ -113,7 +113,7 @@ class GPostsWithFixedVariableVarsSerializer
   }
 }
 
-class GPostFragmentForUser1VarsSerializer
+final class GPostFragmentForUser1VarsSerializer
     extends StructuredSerializer<GPostFragmentForUser1Vars> {
   final String wireName = 'GPostFragmentForUser1Vars';
 

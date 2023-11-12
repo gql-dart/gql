@@ -1,7 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql_code_builder/data.dart";
 import "package:gql_code_builder/schema.dart";
-import "package:gql_code_builder/var.dart";
 import "package:yaml/yaml.dart";
 
 Map<String, Reference> typeOverrideMap(dynamic typeOverrideConfig) {

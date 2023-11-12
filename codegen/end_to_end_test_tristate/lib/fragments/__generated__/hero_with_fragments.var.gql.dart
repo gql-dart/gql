@@ -85,7 +85,7 @@ abstract class GcomparisonFieldsVars
       GcomparisonFieldsVarsSerializer();
 }
 
-class GHeroWithFragmentsVarsSerializer
+final class GHeroWithFragmentsVarsSerializer
     extends StructuredSerializer<GHeroWithFragmentsVars> {
   final String wireName = 'GHeroWithFragmentsVars';
 
@@ -132,7 +132,8 @@ class GHeroWithFragmentsVarsSerializer
   }
 }
 
-class GheroDataVarsSerializer extends StructuredSerializer<GheroDataVars> {
+final class GheroDataVarsSerializer
+    extends StructuredSerializer<GheroDataVars> {
   final String wireName = 'GheroDataVars';
 
   final Iterable<Type> types = const [GheroDataVars, _$GheroDataVars];
@@ -154,7 +155,7 @@ class GheroDataVarsSerializer extends StructuredSerializer<GheroDataVars> {
   }
 }
 
-class GcomparisonFieldsVarsSerializer
+final class GcomparisonFieldsVarsSerializer
     extends StructuredSerializer<GcomparisonFieldsVars> {
   final String wireName = 'GcomparisonFieldsVars';
 

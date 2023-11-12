@@ -42,7 +42,7 @@ abstract class GReviewWithDateVars
       GReviewWithDateVarsSerializer();
 }
 
-class GReviewWithDateVarsSerializer
+final class GReviewWithDateVarsSerializer
     extends StructuredSerializer<GReviewWithDateVars> {
   final String wireName = 'GReviewWithDateVars';
 

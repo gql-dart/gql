@@ -2,7 +2,7 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/var.dart";
+import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
 
 import "../source.dart";
 
@@ -181,6 +181,9 @@ Method buildGetter({
   );
 }
 
+/// like [buildGetter] but wraps the return type in a [Value] for nullable types
+/// in order to distinguish between `null` and absent values
+/// if [useTriStateValueForNullableTypes] is [TriStateValueConfig.onAllNullableFields]
 Method buildOptionalGetter({
   required NameNode nameNode,
   required TypeNode typeNode,
@@ -206,7 +209,6 @@ Method buildOptionalGetter({
       useTriStateValueForNullableTypes == TriStateValueConfig.never) {
     return baseGetter;
   }
-  ;
 
   final optionalGetter = baseGetter.rebuild((b) => b
     ..returns = TypeReference((b2) => b2

@@ -1,6 +1,10 @@
+## 0.9.9
+
+- 
+
 ## 0.8.0
 
-- add `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
+- add experimental `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
 
 
 ## 0.7.2

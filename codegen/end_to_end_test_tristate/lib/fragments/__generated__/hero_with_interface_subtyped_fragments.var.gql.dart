@@ -113,7 +113,7 @@ abstract class GdroidFieldsFragmentVars
       GdroidFieldsFragmentVarsSerializer();
 }
 
-class GHeroWithInterfaceSubTypedFragmentsVarsSerializer
+final class GHeroWithInterfaceSubTypedFragmentsVarsSerializer
     extends StructuredSerializer<GHeroWithInterfaceSubTypedFragmentsVars> {
   final String wireName = 'GHeroWithInterfaceSubTypedFragmentsVars';
 
@@ -157,7 +157,7 @@ class GHeroWithInterfaceSubTypedFragmentsVarsSerializer
   }
 }
 
-class GheroFieldsFragmentVarsSerializer
+final class GheroFieldsFragmentVarsSerializer
     extends StructuredSerializer<GheroFieldsFragmentVars> {
   final String wireName = 'GheroFieldsFragmentVars';
 
@@ -183,7 +183,7 @@ class GheroFieldsFragmentVarsSerializer
   }
 }
 
-class GhumanFieldsFragmentVarsSerializer
+final class GhumanFieldsFragmentVarsSerializer
     extends StructuredSerializer<GhumanFieldsFragmentVars> {
   final String wireName = 'GhumanFieldsFragmentVars';
 
@@ -209,7 +209,7 @@ class GhumanFieldsFragmentVarsSerializer
   }
 }
 
-class GdroidFieldsFragmentVarsSerializer
+final class GdroidFieldsFragmentVarsSerializer
     extends StructuredSerializer<GdroidFieldsFragmentVars> {
   final String wireName = 'GdroidFieldsFragmentVars';
 

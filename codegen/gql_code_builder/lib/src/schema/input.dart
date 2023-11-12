@@ -1,6 +1,7 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
-import "package:gql_code_builder/var.dart";
+import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
+import "package:gql_code_builder/src/tristate_optionals.dart";
 
 import "../../source.dart";
 import "../built_class.dart";

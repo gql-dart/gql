@@ -32,7 +32,8 @@ abstract class GHeroNoVarsVars
       GHeroNoVarsVarsSerializer();
 }
 
-class GHeroNoVarsVarsSerializer extends StructuredSerializer<GHeroNoVarsVars> {
+final class GHeroNoVarsVarsSerializer
+    extends StructuredSerializer<GHeroNoVarsVars> {
   final String wireName = 'GHeroNoVarsVars';
 
   final Iterable<Type> types = const [GHeroNoVarsVars, _$GHeroNoVarsVars];

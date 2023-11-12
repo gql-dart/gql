@@ -35,7 +35,7 @@ abstract class GAliasedHeroVars
       GAliasedHeroVarsSerializer();
 }
 
-class GAliasedHeroVarsSerializer
+final class GAliasedHeroVarsSerializer
     extends StructuredSerializer<GAliasedHeroVars> {
   final String wireName = 'GAliasedHeroVars';
 
