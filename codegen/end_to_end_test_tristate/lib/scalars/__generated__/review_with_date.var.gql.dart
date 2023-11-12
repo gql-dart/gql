@@ -23,9 +23,9 @@ abstract class GReviewWithDateVars
     ..episode = const _i1.AbsentValue()
     ..createdAt = const _i1.AbsentValue();
 
-  _i1.Value<_i2.GEpisode>? get episode;
+  _i1.Value<_i2.GEpisode> get episode;
   _i2.GReviewInput get review;
-  _i1.Value<DateTime>? get createdAt;
+  _i1.Value<DateTime> get createdAt;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GReviewWithDateVars.serializer,
         this,

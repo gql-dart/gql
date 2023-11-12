@@ -55,10 +55,15 @@ abstract class GReviewInput
   factory GReviewInput([Function(GReviewInputBuilder b) updates]) =
       _$GReviewInput;
 
+  static void _initializeBuilder(GReviewInputBuilder b) => b
+    ..commentary = const _i1.AbsentValue()
+    ..favorite_color = const _i1.AbsentValue()
+    ..seenOn = const _i1.AbsentValue();
+
   int get stars;
-  _i1.Value<String>? get commentary;
-  _i1.Value<GColorInput>? get favorite_color;
-  _i1.Value<BuiltList<DateTime?>>? get seenOn;
+  _i1.Value<String> get commentary;
+  _i1.Value<GColorInput> get favorite_color;
+  _i1.Value<BuiltList<DateTime?>> get seenOn;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GReviewInput.serializer,
         this,
@@ -156,8 +161,11 @@ abstract class GCustomFieldInput
   factory GCustomFieldInput([Function(GCustomFieldInputBuilder b) updates]) =
       _$GCustomFieldInput;
 
+  static void _initializeBuilder(GCustomFieldInputBuilder b) =>
+      b..customField = const _i1.AbsentValue();
+
   String get id;
-  _i1.Value<_i2.CustomField>? get customField;
+  _i1.Value<_i2.CustomField> get customField;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GCustomFieldInput.serializer,
         this,

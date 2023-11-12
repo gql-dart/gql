@@ -22,7 +22,7 @@ abstract class GCreateReviewVars
   static void _initializeBuilder(GCreateReviewVarsBuilder b) =>
       b..episode = const _i1.AbsentValue();
 
-  _i1.Value<_i2.GEpisode>? get episode;
+  _i1.Value<_i2.GEpisode> get episode;
   _i2.GReviewInput get review;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GCreateReviewVars.serializer,

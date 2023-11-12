@@ -24,7 +24,7 @@ abstract class GPostsWithFixedVariableVars
   static void _initializeBuilder(GPostsWithFixedVariableVarsBuilder b) =>
       b..filter = const _i1.AbsentValue();
 
-  _i1.Value<_i2.GJson>? get filter;
+  _i1.Value<_i2.GJson> get filter;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GPostsWithFixedVariableVars.serializer,
         this,

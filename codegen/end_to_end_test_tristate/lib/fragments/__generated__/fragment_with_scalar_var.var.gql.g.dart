@@ -8,13 +8,16 @@ part of 'fragment_with_scalar_var.var.gql.dart';
 
 class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
   @override
-  final _i1.Value<_i2.GJson>? filter;
+  final _i1.Value<_i2.GJson> filter;
 
   factory _$GPostsWithFixedVariableVars(
           [void Function(GPostsWithFixedVariableVarsBuilder)? updates]) =>
       (new GPostsWithFixedVariableVarsBuilder()..update(updates))._build();
 
-  _$GPostsWithFixedVariableVars._({this.filter}) : super._();
+  _$GPostsWithFixedVariableVars._({required this.filter}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        filter, r'GPostsWithFixedVariableVars', 'filter');
+  }
 
   @override
   GPostsWithFixedVariableVars rebuild(
@@ -85,7 +88,10 @@ class GPostsWithFixedVariableVarsBuilder
   GPostsWithFixedVariableVars build() => _build();
 
   _$GPostsWithFixedVariableVars _build() {
-    final _$result = _$v ?? new _$GPostsWithFixedVariableVars._(filter: filter);
+    final _$result = _$v ??
+        new _$GPostsWithFixedVariableVars._(
+            filter: BuiltValueNullFieldError.checkNotNull(
+                filter, r'GPostsWithFixedVariableVars', 'filter'));
     replace(_$result);
     return _$result;
   }
