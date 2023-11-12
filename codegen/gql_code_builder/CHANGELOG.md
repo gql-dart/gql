@@ -1,6 +1,11 @@
-## 0.9.9
+## 0.9.0
 
-- 
+- add TriStateValueConfig option in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
+  - absent
+  - null
+  - non-null value
+  in serialization 
+
 
 ## 0.8.0
 
