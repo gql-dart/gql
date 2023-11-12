@@ -225,7 +225,10 @@ String _getWireName(Method m) {
       .map((annotation) {
         if (annotation
             case InvokeExpression(
-              target: Reference(symbol: "BuiltValueField")
+              target: Reference(
+                symbol: "BuiltValueField",
+                url: "package:built_value/built_value.dart",
+              )
             )) {
           return annotation.namedArguments["wireName"];
         }
