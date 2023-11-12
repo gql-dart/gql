@@ -1,3 +1,7 @@
+## 0.9.1+1
+
+- fix generating the `Value` wrappers as nullable
+
 ## 0.9.0
 
 - add TriStateValueConfig option in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
