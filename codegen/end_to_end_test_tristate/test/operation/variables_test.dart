@@ -1,4 +1,4 @@
-import 'package:gql_exec/value.dart';
+import 'package:gql_tristate_value/gql_tristate_value.dart';
 import "package:test/test.dart";
 
 import 'package:end_to_end_test_tristate/graphql/__generated__/schema.schema.gql.dart';
