@@ -1,2 +1,1 @@
-
 enum TriStateValueConfig { onAllNullableFields, never }

@@ -24,18 +24,17 @@ Method nullAwareJsonSerializerField(Node op, String className) =>
       ..name = "serializer"
       ..body = Code("${className}Serializer()"));
 
-
 /// builds a custom serializer for the generated class which
 /// is aware of the `Value` type and can serialize it to json
 /// in order to distinguish between `null`, and absent values
 /// use the corresponding nullAwareJsonSerializerField() method
 /// to add the serializer to the generated class
 Class nullAwareJsonSerializerClass(
-    Class base,
-    Allocator allocator,
-    SourceNode schemaSource,
-    Map<String, Reference> typeOverrides,
-    ) =>
+  Class base,
+  Allocator allocator,
+  SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
+) =>
     Class((b) => b
       ..name = "${base.name}Serializer"
       ..modifier = ClassModifier.final$
@@ -45,7 +44,7 @@ Class nullAwareJsonSerializerClass(
         ..types.add(refer(base.name)))
       ..fields.addAll([
         Field(
-              (b) => b
+          (b) => b
             ..name = "wireName"
             ..modifier = FieldModifier.final$
             ..type = refer("String")
@@ -64,7 +63,7 @@ Class nullAwareJsonSerializerClass(
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serializers"
             ..type =
-            refer("Serializers", "package:built_value/serializer.dart")))
+                refer("Serializers", "package:built_value/serializer.dart")))
           ..requiredParameters.add(Parameter((b) => b
             ..name = "object"
             ..type = refer(base.name)))
@@ -74,14 +73,14 @@ Class nullAwareJsonSerializerClass(
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
           ..body =
-          _serializerBody(base, allocator, schemaSource, typeOverrides)),
+              _serializerBody(base, allocator, schemaSource, typeOverrides)),
         Method((b) => b
           ..name = "deserialize"
           ..returns = refer(base.name)
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serializers"
             ..type =
-            refer("Serializers", "package:built_value/serializer.dart")))
+                refer("Serializers", "package:built_value/serializer.dart")))
           ..requiredParameters.add(Parameter((b) => b
             ..name = "serialized"
             ..type = refer("Iterable<Object?>")))
@@ -91,10 +90,8 @@ Class nullAwareJsonSerializerClass(
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
           ..body =
-          _deserializerBody(base, allocator, schemaSource, typeOverrides)),
+              _deserializerBody(base, allocator, schemaSource, typeOverrides)),
       ]));
-
-
 
 Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
     Map<String, Reference> typeOverrides) {
@@ -114,7 +111,7 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
 
     if (isOptionalValue) {
       final realType =
-      (field.returns as TypeReference).types.first as TypeReference;
+          (field.returns as TypeReference).types.first as TypeReference;
 
       final _valueVarName = "_\$${field.name}value";
 
@@ -159,11 +156,11 @@ Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
         final Object? value = iterator.current;
         switch (key) {
           ${_generateFieldDeserializers(
-      nonEmptyFieldsList,
-      allocator,
-      schemaSource,
-      typeOverrides,
-    )}
+        nonEmptyFieldsList,
+        allocator,
+        schemaSource,
+        typeOverrides,
+      )}
         }
       }
       return builder.build();
@@ -171,13 +168,12 @@ Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
   };
 }
 
-
 String _generateFieldDeserializers(
-    List<Method> fields,
-    Allocator allocator,
-    SourceNode schemaSource,
-    Map<String, Reference> typeOverrides,
-    ) =>
+  List<Method> fields,
+  Allocator allocator,
+  SourceNode schemaSource,
+  Map<String, Reference> typeOverrides,
+) =>
     fields.map((field) {
       var type = field.returns!;
       final isWrappedValue = isValue(type);
@@ -190,8 +186,8 @@ String _generateFieldDeserializers(
       /// TODO refactor this
       final originalSymbolName = type.symbol.substring(1);
 
-      final typeDefNode = getTypeDefinitionNode(
-          schemaSource.document,originalSymbolName );
+      final typeDefNode =
+          getTypeDefinitionNode(schemaSource.document, originalSymbolName);
 
       //TODO this feels flaky, find a better way
       final isBuilder = type.url != null &&
@@ -210,7 +206,7 @@ case '${_getWireName(field)}':
       """;
       } else {
         base += """
-        builder.${field.name} = ${isWrappedValue ? "${allocator.allocate(_presentValueTypeRef)}(fieldValue)" : "fieldValue"};
+        builder.${field.name} = ${isWrappedValue ? "${allocator.allocate(presentValueTypeRef)}(fieldValue)" : "fieldValue"};
       """;
       }
 
@@ -220,18 +216,17 @@ break;
 """;
     }).join();
 
-
 String _getWireName(Method m) {
   final wireNameExpr = m.annotations
       .map((annotation) {
-    if (annotation
-    case InvokeExpression(
-    target: Reference(symbol: "BuiltValueField")
-    )) {
-      return annotation.namedArguments["wireName"];
-    }
-    return null;
-  })
+        if (annotation
+            case InvokeExpression(
+              target: Reference(symbol: "BuiltValueField")
+            )) {
+          return annotation.namedArguments["wireName"];
+        }
+        return null;
+      })
       .whereNotNull()
       .firstOrNull;
 
@@ -245,7 +240,7 @@ String _getWireName(Method m) {
 bool isValue(Reference ref) {
   if (ref is! TypeReference) return false;
 
-  return ref.symbol == _valueTypeRef.symbol && ref.url == _valueTypeRef.url;
+  return ref.symbol == valueTypeRef.symbol && ref.url == valueTypeRef.url;
 }
 
 Code _generateFullType(TypeReference ref, Allocator allocator) {
@@ -265,10 +260,23 @@ String _generateTypeCast(TypeReference ref, Allocator allocator) {
   }
 }
 
-final _valueTypeRef = TypeReference((b) => b
-  ..symbol = "Value"
-  ..url = "package:gql_exec/value.dart");
+const valueTypeSymbol = "Value";
+const valueTypeUrl = "package:gql_exec/value.dart";
 
-final _presentValueTypeRef = TypeReference((b) => b
-  ..symbol = "PresentValue"
-  ..url = "package:gql_exec/value.dart");
+final valueTypeRef = TypeReference(
+  (b) => b
+    ..symbol = valueTypeSymbol
+    ..url = valueTypeUrl,
+);
+
+final presentValueTypeRef = TypeReference(
+  (b) => b
+    ..symbol = "PresentValue"
+    ..url = valueTypeUrl,
+);
+
+final absentValueTypeRef = TypeReference(
+  (b) => b
+    ..symbol = "AbsentValue"
+    ..url = valueTypeUrl,
+);

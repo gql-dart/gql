@@ -111,13 +111,5 @@ Map<String, Expression> _varClassValueInitializers(
       for (final node
           in op.variableDefinitions.where((element) => !element.type.isNonNull))
         identifier(node.variable.name.value):
-            refer("AbsentValue", "package:gql_exec/value.dart")
-                .constInstance(const [])
+            absentValueTypeRef.constInstance(const [])
     };
-
-
-
-
-
-
-

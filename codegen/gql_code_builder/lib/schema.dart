@@ -9,7 +9,6 @@ import "package:gql_code_builder/src/utils/possible_types.dart";
 export "package:gql_code_builder/src/config/enum_fallback_config.dart";
 export "./src/config/tristate_optionals_config.dart";
 
-
 Library buildSchemaLibrary(SourceNode schemaSource, String partUrl,
     Map<String, Reference> typeOverrides, EnumFallbackConfig enumFallbackConfig,
     {bool generatePossibleTypesMap = false,
