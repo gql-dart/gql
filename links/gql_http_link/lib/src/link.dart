@@ -53,6 +53,8 @@ class HttpLink extends Link {
 
   http.Client? _httpClient;
 
+  final bool followRedirects;
+
   /// Construct the Link
   ///
   /// You can pass a [httpClient] to extend to customize the network request.
@@ -64,6 +66,7 @@ class HttpLink extends Link {
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
     this.httpResponseDecoder = _defaultHttpResponseDecoder,
+    this.followRedirects = false,
   }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
   }
@@ -188,6 +191,7 @@ class HttpLink extends Link {
     }
     return http.Request("POST", uri)
       ..body = httpBody
+      ..followRedirects = followRedirects
       ..headers.addAll(headers);
   }
 

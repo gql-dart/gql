@@ -2,6 +2,7 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
 
 import "../source.dart";
 
@@ -93,9 +94,6 @@ Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
       (b) => b
         ..url = ref.url
         ..symbol = ref.symbol
-
-        /// TODO: remove `inList` check
-        /// https://github.com/google/built_value.dart/issues/1011#issuecomment-804843573
         ..isNullable = !type.isNonNull,
     );
   } else if (type is ListTypeNode) {
@@ -181,6 +179,45 @@ Method buildGetter({
       ..type = MethodType.getter
       ..name = identifier(nameNode.value),
   );
+}
+
+/// like [buildGetter] but wraps the return type in a [Value] for nullable types
+/// in order to distinguish between `null` and absent values
+/// if [useTriStateValueForNullableTypes] is [TriStateValueConfig.onAllNullableFields]
+Method buildOptionalGetter({
+  required NameNode nameNode,
+  required TypeNode typeNode,
+  required SourceNode schemaSource,
+  Map<String, Reference> typeOverrides = const {},
+  String? typeRefPrefix,
+  bool built = true,
+  bool isOverride = false,
+  TriStateValueConfig useTriStateValueForNullableTypes =
+      TriStateValueConfig.never,
+}) {
+  final baseGetter = buildGetter(
+    nameNode: nameNode,
+    typeNode: typeNode,
+    schemaSource: schemaSource,
+    typeOverrides: typeOverrides,
+    typeRefPrefix: typeRefPrefix,
+    built: built,
+    isOverride: isOverride,
+  );
+
+  if (typeNode.isNonNull ||
+      useTriStateValueForNullableTypes == TriStateValueConfig.never) {
+    return baseGetter;
+  }
+
+  final optionalGetter = baseGetter.rebuild((b) => b
+    ..returns = TypeReference((b2) => b2
+      ..isNullable = true
+      ..url = "package:gql_exec/value.dart"
+      ..symbol = "Value"
+      ..types.add((baseGetter.returns as TypeReference)
+          .rebuild((b3) => b3..isNullable = false))));
+  return optionalGetter;
 }
 
 Method buildSerializerGetter(String className) => Method(

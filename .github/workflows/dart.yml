@@ -125,6 +125,7 @@ jobs:
       matrix:
         package:
           - end_to_end_test
+          - end_to_end_test_tristate
     runs-on: ubuntu-latest
     container:
       image: dart

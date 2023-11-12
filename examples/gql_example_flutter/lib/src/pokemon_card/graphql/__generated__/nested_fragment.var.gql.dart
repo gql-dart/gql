@@ -18,10 +18,12 @@ abstract class GNestedFragmentVars
 
   static Serializer<GNestedFragmentVars> get serializer =>
       _$gNestedFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GNestedFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GNestedFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GNestedFragmentVars.serializer,

@@ -27,6 +27,7 @@ abstract class GNestedFragmentData
 
   static void _initializeBuilder(GNestedFragmentDataBuilder b) =>
       b..G__typename = 'Pokemon';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -36,11 +37,13 @@ abstract class GNestedFragmentData
   String? get name;
   static Serializer<GNestedFragmentData> get serializer =>
       _$gNestedFragmentDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GNestedFragmentData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GNestedFragmentData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GNestedFragmentData.serializer,

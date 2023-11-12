@@ -24,13 +24,16 @@ abstract class GAllPokemon implements Built<GAllPokemon, GAllPokemonBuilder> {
       document: _i2.document,
       operationName: 'AllPokemon',
     );
+
   _i3.GAllPokemonVars get vars;
   _i1.Operation get operation;
   static Serializer<GAllPokemon> get serializer => _$gAllPokemonSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GAllPokemon.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAllPokemon? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GAllPokemon.serializer,
