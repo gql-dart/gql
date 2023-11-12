@@ -23,13 +23,16 @@ abstract class GFindPokemon
       document: _i2.document,
       operationName: 'FindPokemon',
     );
+
   _i3.GFindPokemonVars get vars;
   _i1.Operation get operation;
   static Serializer<GFindPokemon> get serializer => _$gFindPokemonSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GFindPokemon.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GFindPokemon? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GFindPokemon.serializer,

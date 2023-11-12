@@ -71,13 +71,13 @@ Library buildDataLibrary(
 }
 
 Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-      for (var def
+      for (final def
           in source.document.definitions.whereType<FragmentDefinitionNode>())
         def.name.value: SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
         ),
-      for (var import in source.imports) ..._fragmentMap(import)
+      for (final import in source.imports) ..._fragmentMap(import)
     };
 
 Map<String, Reference> _dataClassAliasMap(

@@ -55,13 +55,11 @@ void main() {
   });
 
   group("Custom scalars in input types", () {
-    final input = GReviewInput(
-      (b) => b
-        ..stars = 4
-        ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
-    );
+    final input = GReviewInput((b) => b
+      ..stars = 4
+      ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)));
     test('correctly overrides scalars in input types', () {
-      expect(input.seenOn!.first, TypeMatcher<DateTime>());
+      expect((input.seenOn!).first, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -82,7 +80,7 @@ void main() {
     );
 
     test('correctly overrides scalars in variable types', () {
-      expect(vars.createdAt, TypeMatcher<DateTime>());
+      expect((vars.createdAt), TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {

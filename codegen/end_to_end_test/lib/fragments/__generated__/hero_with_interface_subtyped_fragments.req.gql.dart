@@ -31,14 +31,17 @@ abstract class GHeroWithInterfaceSubTypedFragments
           document: _i2.document,
           operationName: 'HeroWithInterfaceSubTypedFragments',
         );
+
   _i3.GHeroWithInterfaceSubTypedFragmentsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroWithInterfaceSubTypedFragments> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHeroWithInterfaceSubTypedFragments.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithInterfaceSubTypedFragments? fromJson(
           Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(

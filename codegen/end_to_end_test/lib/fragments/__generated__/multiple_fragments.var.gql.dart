@@ -20,10 +20,12 @@ abstract class GHeroWith2FragmentsVars
   int? get first;
   static Serializer<GHeroWith2FragmentsVars> get serializer =>
       _$gHeroWith2FragmentsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWith2FragmentsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWith2FragmentsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroWith2FragmentsVars.serializer,
@@ -39,10 +41,12 @@ abstract class GheroNameVars
       _$GheroNameVars;
 
   static Serializer<GheroNameVars> get serializer => _$gheroNameVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroNameVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroNameVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GheroNameVars.serializer,
@@ -56,10 +60,12 @@ abstract class GheroIdVars implements Built<GheroIdVars, GheroIdVarsBuilder> {
   factory GheroIdVars([Function(GheroIdVarsBuilder b) updates]) = _$GheroIdVars;
 
   static Serializer<GheroIdVars> get serializer => _$gheroIdVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroIdVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroIdVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GheroIdVars.serializer,

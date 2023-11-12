@@ -43,21 +43,21 @@ Builder varBuilder(
   BuilderOptions options,
 ) =>
     VarBuilder(
-      AssetId.parse(
-        options.config["schema"] as String,
-      ),
-      typeOverrideMap(options.config["type_overrides"]),
-    );
+        AssetId.parse(
+          options.config["schema"] as String,
+        ),
+        typeOverrideMap(options.config["type_overrides"]),
+        triStateOptionalsConfig(options.config));
 
 /// Builds GraphQL schema types
 Builder schemaBuilder(
   BuilderOptions options,
 ) =>
     SchemaBuilder(
-      typeOverrideMap(options.config["type_overrides"]),
-      enumFallbackConfig(options.config),
-      generatePossibleTypesConfig(options.config),
-    );
+        typeOverrideMap(options.config["type_overrides"]),
+        enumFallbackConfig(options.config),
+        generatePossibleTypesConfig(options.config),
+        triStateOptionalsConfig(options.config));
 
 /// Builds an aggregate Serlializers object for [built_value]s
 ///

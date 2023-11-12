@@ -20,10 +20,12 @@ abstract class GHeroWithFragmentsVars
   int? get first;
   static Serializer<GHeroWithFragmentsVars> get serializer =>
       _$gHeroWithFragmentsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithFragmentsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroWithFragmentsVars.serializer,
@@ -39,10 +41,12 @@ abstract class GheroDataVars
       _$GheroDataVars;
 
   static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroDataVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GheroDataVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GheroDataVars.serializer,
@@ -61,10 +65,12 @@ abstract class GcomparisonFieldsVars
   int? get first;
   static Serializer<GcomparisonFieldsVars> get serializer =>
       _$gcomparisonFieldsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GcomparisonFieldsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GcomparisonFieldsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GcomparisonFieldsVars.serializer,

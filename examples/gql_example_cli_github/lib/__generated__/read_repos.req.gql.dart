@@ -26,14 +26,17 @@ abstract class GReadRepositories
       document: _i2.document,
       operationName: 'ReadRepositories',
     );
+
   _i3.GReadRepositoriesVars get vars;
   _i1.Operation get operation;
   static Serializer<GReadRepositories> get serializer =>
       _$gReadRepositoriesSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GReadRepositories.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositories? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GReadRepositories.serializer,

@@ -27,14 +27,17 @@ abstract class GPostsWithFixedVariable
       document: _i2.document,
       operationName: 'PostsWithFixedVariable',
     );
+
   _i3.GPostsWithFixedVariableVars get vars;
   _i1.Operation get operation;
   static Serializer<GPostsWithFixedVariable> get serializer =>
       _$gPostsWithFixedVariableSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GPostsWithFixedVariable.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPostsWithFixedVariable? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GPostsWithFixedVariable.serializer,

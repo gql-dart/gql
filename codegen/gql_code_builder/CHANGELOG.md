@@ -1,6 +1,15 @@
+## 0.9.0
+
+- add TriStateValueConfig option in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
+  - absent
+  - null
+  - non-null value
+  in serialization 
+
+
 ## 0.8.0
 
-- add `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
+- add experimental `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
 
 
 ## 0.7.2

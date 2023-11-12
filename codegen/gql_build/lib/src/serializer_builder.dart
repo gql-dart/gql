@@ -42,6 +42,14 @@ class SerializerBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
+    final allocator = PickAllocator(
+      doNotPick: ["package:built_value/serializer.dart"],
+      include: [
+        "package:built_collection/built_collection.dart",
+        ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
+      ],
+    );
+
     /// BuiltValue classes with serializers. These will be added automatically
     /// using `@SerializersFor`.
     final builtClasses =
@@ -102,13 +110,7 @@ class SerializerBuilder implements Builder {
     );
 
     final _emitter = DartEmitter(
-      allocator: PickAllocator(
-        doNotPick: ["package:built_value/serializer.dart"],
-        include: [
-          "package:built_collection/built_collection.dart",
-          ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
-        ],
-      ),
+      allocator: allocator,
       orderDirectives: true,
       useNullSafetySyntax: true,
     );

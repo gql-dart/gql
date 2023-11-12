@@ -16,7 +16,6 @@ linter:
     - no_duplicate_case_values
     - null_closures
     - prefer_contains
-    - prefer_equal_for_default_values
     - prefer_is_empty
     - prefer_is_not_empty
     - prefer_iterable_whereType
@@ -32,7 +31,6 @@ linter:
     - valid_regexps
     # pedantic 1.9.0
     - always_declare_return_types
-    - always_require_non_null_named_parameters
     - annotate_overrides
     - avoid_null_checks_in_equality_operators
     - camel_case_extensions
