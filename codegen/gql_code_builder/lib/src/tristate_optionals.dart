@@ -262,7 +262,7 @@ String _generateTypeCast(TypeReference ref, Allocator allocator) {
 }
 
 const valueTypeSymbol = "Value";
-const valueTypeUrl = "package:gql_exec/value.dart";
+const valueTypeUrl = "package:gql_tristate_value/gql_tristate_value.dart";
 
 final valueTypeRef = TypeReference(
   (b) => b

@@ -1,5 +1,5 @@
 name: gql_exec
-version: 1.0.0
+version: 1.1.0
 description: Basis for GraphQL execution layer to support Link and Client.
 repository: https://github.com/gql-dart/gql
 environment: 

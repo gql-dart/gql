@@ -6,7 +6,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test_tristate/graphql/__generated__/serializers.gql.dart'
     as _i2;
-import 'package:gql_exec/value.dart' as _i1;
+import 'package:gql_tristate_value/gql_tristate_value.dart' as _i1;
 
 part 'multiple_fragments.var.gql.g.dart';
 

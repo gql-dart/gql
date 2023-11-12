@@ -18,6 +18,7 @@ jobs:
           - gql_http_link
           - gql_websocket_link
           - gql_transform_link
+          - gql_tristate_value
     runs-on: ubuntu-latest
     container:
       image: dart:latest

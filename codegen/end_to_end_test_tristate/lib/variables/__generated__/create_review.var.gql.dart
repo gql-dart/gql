@@ -8,7 +8,7 @@ import 'package:end_to_end_test_tristate/graphql/__generated__/schema.schema.gql
     as _i2;
 import 'package:end_to_end_test_tristate/graphql/__generated__/serializers.gql.dart'
     as _i3;
-import 'package:gql_exec/value.dart' as _i1;
+import 'package:gql_tristate_value/gql_tristate_value.dart' as _i1;
 
 part 'create_review.var.gql.g.dart';
 
