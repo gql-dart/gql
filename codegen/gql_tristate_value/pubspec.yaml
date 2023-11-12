@@ -6,6 +6,7 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 dev_dependencies: 
   test: ^1.16.8
+  lints: ^3.0.0
 topics: 
   - graphql
   - gql
