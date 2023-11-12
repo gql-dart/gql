@@ -3,6 +3,7 @@ import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
+import "package:gql_code_builder/src/tristate_optionals.dart";
 
 import "../source.dart";
 
@@ -213,8 +214,8 @@ Method buildOptionalGetter({
   final optionalGetter = baseGetter.rebuild((b) => b
     ..returns = TypeReference((b2) => b2
       ..isNullable = true
-      ..url = "package:gql_exec/value.dart"
-      ..symbol = "Value"
+      ..url = valueTypeUrl
+      ..symbol = valueTypeSymbol
       ..types.add((baseGetter.returns as TypeReference)
           .rebuild((b3) => b3..isNullable = false))));
   return optionalGetter;

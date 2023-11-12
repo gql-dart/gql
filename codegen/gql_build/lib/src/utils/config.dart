@@ -74,7 +74,7 @@ Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
 }
 
 TriStateValueConfig triStateOptionalsConfig(Map<String, dynamic> config) {
-  final configValue = config["tristate_optionals"];
+  final Object? configValue = config["tristate_optionals"];
 
   if (configValue is bool) {
     return configValue

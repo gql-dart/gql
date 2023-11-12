@@ -10,7 +10,7 @@ import 'package:end_to_end_test_tristate/graphql/__generated__/serializers.gql.d
     as _i3;
 import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
     as _i4;
-import 'package:gql_exec/value.dart' as _i1;
+import 'package:gql_tristate_value/gql_tristate_value.dart' as _i1;
 
 part 'schema.schema.gql.g.dart';
 
