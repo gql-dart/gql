@@ -6,11 +6,68 @@ part of 'create_review.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GCreateReviewVars> _$gCreateReviewVarsSerializer =
+    new _$GCreateReviewVarsSerializer();
+
+class _$GCreateReviewVarsSerializer
+    implements StructuredSerializer<GCreateReviewVars> {
+  @override
+  final Iterable<Type> types = const [GCreateReviewVars, _$GCreateReviewVars];
+  @override
+  final String wireName = 'GCreateReviewVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateReviewVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'review',
+      serializers.serialize(object.review,
+          specifiedType: const FullType(_i1.GReviewInput)),
+    ];
+    Object? value;
+    value = object.episode;
+    if (value != null) {
+      result
+        ..add('episode')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i1.GEpisode)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateReviewVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateReviewVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'episode':
+          result.episode = serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GEpisode)) as _i1.GEpisode?;
+          break;
+        case 'review':
+          result.review.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.GReviewInput))!
+              as _i1.GReviewInput);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GCreateReviewVars extends GCreateReviewVars {
   @override
-  final _i1.Value<_i2.GEpisode>? episode;
+  final _i1.GEpisode? episode;
   @override
-  final _i2.GReviewInput review;
+  final _i1.GReviewInput review;
 
   factory _$GCreateReviewVars(
           [void Function(GCreateReviewVarsBuilder)? updates]) =>
@@ -59,14 +116,14 @@ class GCreateReviewVarsBuilder
     implements Builder<GCreateReviewVars, GCreateReviewVarsBuilder> {
   _$GCreateReviewVars? _$v;
 
-  _i1.Value<_i2.GEpisode>? _episode;
-  _i1.Value<_i2.GEpisode>? get episode => _$this._episode;
-  set episode(_i1.Value<_i2.GEpisode>? episode) => _$this._episode = episode;
+  _i1.GEpisode? _episode;
+  _i1.GEpisode? get episode => _$this._episode;
+  set episode(_i1.GEpisode? episode) => _$this._episode = episode;
 
-  _i2.GReviewInputBuilder? _review;
-  _i2.GReviewInputBuilder get review =>
-      _$this._review ??= new _i2.GReviewInputBuilder();
-  set review(_i2.GReviewInputBuilder? review) => _$this._review = review;
+  _i1.GReviewInputBuilder? _review;
+  _i1.GReviewInputBuilder get review =>
+      _$this._review ??= new _i1.GReviewInputBuilder();
+  set review(_i1.GReviewInputBuilder? review) => _$this._review = review;
 
   GCreateReviewVarsBuilder();
 

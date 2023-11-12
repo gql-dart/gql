@@ -5,10 +5,9 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
-    as _i2;
+    as _i1;
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
-    as _i3;
-import 'package:gql_exec/value.dart' as _i1;
+    as _i2;
 
 part 'fragment_with_scalar_var.var.gql.g.dart';
 
@@ -21,21 +20,20 @@ abstract class GPostsWithFixedVariableVars
           [Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
       _$GPostsWithFixedVariableVars;
 
-  _i1.Value<_i2.GJson>? get filter;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  _i1.GJson? get filter;
+  static Serializer<GPostsWithFixedVariableVars> get serializer =>
+      _$gPostsWithFixedVariableVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GPostsWithFixedVariableVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GPostsWithFixedVariableVars? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i2.serializers.deserializeWith(
         GPostsWithFixedVariableVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GPostsWithFixedVariableVars> get serializer =>
-      GPostsWithFixedVariableVarsSerializer();
 }
 
 abstract class GPostFragmentForUser1Vars
@@ -47,100 +45,17 @@ abstract class GPostFragmentForUser1Vars
           [Function(GPostFragmentForUser1VarsBuilder b) updates]) =
       _$GPostFragmentForUser1Vars;
 
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  static Serializer<GPostFragmentForUser1Vars> get serializer =>
+      _$gPostFragmentForUser1VarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GPostFragmentForUser1Vars.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GPostFragmentForUser1Vars? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i2.serializers.deserializeWith(
         GPostFragmentForUser1Vars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GPostFragmentForUser1Vars> get serializer =>
-      GPostFragmentForUser1VarsSerializer();
-}
-
-class GPostsWithFixedVariableVarsSerializer
-    extends StructuredSerializer<GPostsWithFixedVariableVars> {
-  final String wireName = 'GPostsWithFixedVariableVars';
-
-  final Iterable<Type> types = const [
-    GPostsWithFixedVariableVars,
-    _$GPostsWithFixedVariableVars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GPostsWithFixedVariableVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    final _$filtervalue = object.filter;
-    if (_$filtervalue case _i1.PresentValue(value: final _$value)) {
-      result.add('filter');
-      result.add(serializers.serialize(_$value,
-          specifiedType: const FullType(_i2.GJson)));
-    }
-    return result;
-  }
-
-  GPostsWithFixedVariableVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GPostsWithFixedVariableVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'filter':
-          var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(_i2.GJson)) as _i2.GJson;
-          builder.filter = _i1.PresentValue(fieldValue);
-          break;
-      }
-    }
-    return builder.build();
-  }
-}
-
-class GPostFragmentForUser1VarsSerializer
-    extends StructuredSerializer<GPostFragmentForUser1Vars> {
-  final String wireName = 'GPostFragmentForUser1Vars';
-
-  final Iterable<Type> types = const [
-    GPostFragmentForUser1Vars,
-    _$GPostFragmentForUser1Vars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GPostFragmentForUser1Vars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    return result;
-  }
-
-  GPostFragmentForUser1Vars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GPostFragmentForUser1VarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {}
-    }
-    return builder.build();
-  }
 }

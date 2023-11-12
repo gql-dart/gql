@@ -15,6 +15,8 @@ abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
   factory GPostsVars([Function(GPostsVarsBuilder b) updates]) = _$GPostsVars;
 
   String get userId;
+  static Serializer<GPostsVars> get serializer => _$gPostsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsVars.serializer,
         this,
@@ -25,9 +27,6 @@ abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
         GPostsVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GPostsVars> get serializer => GPostsVarsSerializer();
 }
 
 abstract class GPostFragmentVars
@@ -38,6 +37,9 @@ abstract class GPostFragmentVars
       _$GPostFragmentVars;
 
   String get userId;
+  static Serializer<GPostFragmentVars> get serializer =>
+      _$gPostFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentVars.serializer,
         this,
@@ -48,89 +50,4 @@ abstract class GPostFragmentVars
         GPostFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GPostFragmentVars> get serializer =>
-      GPostFragmentVarsSerializer();
-}
-
-class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
-  final String wireName = 'GPostsVars';
-
-  final Iterable<Type> types = const [GPostsVars, _$GPostsVars];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GPostsVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    result.add('userId');
-    result.add(serializers.serialize(object.userId,
-        specifiedType: const FullType(String)));
-    return result;
-  }
-
-  GPostsVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GPostsVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'userId':
-          var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          builder.userId = fieldValue;
-          break;
-      }
-    }
-    return builder.build();
-  }
-}
-
-class GPostFragmentVarsSerializer
-    extends StructuredSerializer<GPostFragmentVars> {
-  final String wireName = 'GPostFragmentVars';
-
-  final Iterable<Type> types = const [GPostFragmentVars, _$GPostFragmentVars];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GPostFragmentVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    result.add('userId');
-    result.add(serializers.serialize(object.userId,
-        specifiedType: const FullType(String)));
-    return result;
-  }
-
-  GPostFragmentVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GPostFragmentVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'userId':
-          var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          builder.userId = fieldValue;
-          break;
-      }
-    }
-    return builder.build();
-  }
 }

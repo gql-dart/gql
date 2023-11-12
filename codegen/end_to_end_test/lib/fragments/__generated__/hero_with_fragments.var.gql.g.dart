@@ -6,9 +6,132 @@ part of 'hero_with_fragments.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GHeroWithFragmentsVars> _$gHeroWithFragmentsVarsSerializer =
+    new _$GHeroWithFragmentsVarsSerializer();
+Serializer<GheroDataVars> _$gheroDataVarsSerializer =
+    new _$GheroDataVarsSerializer();
+Serializer<GcomparisonFieldsVars> _$gcomparisonFieldsVarsSerializer =
+    new _$GcomparisonFieldsVarsSerializer();
+
+class _$GHeroWithFragmentsVarsSerializer
+    implements StructuredSerializer<GHeroWithFragmentsVars> {
+  @override
+  final Iterable<Type> types = const [
+    GHeroWithFragmentsVars,
+    _$GHeroWithFragmentsVars
+  ];
+  @override
+  final String wireName = 'GHeroWithFragmentsVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroWithFragmentsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.first;
+    if (value != null) {
+      result
+        ..add('first')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GHeroWithFragmentsVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GHeroWithFragmentsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'first':
+          result.first = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GheroDataVarsSerializer implements StructuredSerializer<GheroDataVars> {
+  @override
+  final Iterable<Type> types = const [GheroDataVars, _$GheroDataVars];
+  @override
+  final String wireName = 'GheroDataVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GheroDataVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GheroDataVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GheroDataVarsBuilder().build();
+  }
+}
+
+class _$GcomparisonFieldsVarsSerializer
+    implements StructuredSerializer<GcomparisonFieldsVars> {
+  @override
+  final Iterable<Type> types = const [
+    GcomparisonFieldsVars,
+    _$GcomparisonFieldsVars
+  ];
+  @override
+  final String wireName = 'GcomparisonFieldsVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GcomparisonFieldsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.first;
+    if (value != null) {
+      result
+        ..add('first')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GcomparisonFieldsVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GcomparisonFieldsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'first':
+          result.first = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GHeroWithFragmentsVars extends GHeroWithFragmentsVars {
   @override
-  final _i1.Value<int>? first;
+  final int? first;
 
   factory _$GHeroWithFragmentsVars(
           [void Function(GHeroWithFragmentsVarsBuilder)? updates]) =>
@@ -51,9 +174,9 @@ class GHeroWithFragmentsVarsBuilder
     implements Builder<GHeroWithFragmentsVars, GHeroWithFragmentsVarsBuilder> {
   _$GHeroWithFragmentsVars? _$v;
 
-  _i1.Value<int>? _first;
-  _i1.Value<int>? get first => _$this._first;
-  set first(_i1.Value<int>? first) => _$this._first = first;
+  int? _first;
+  int? get first => _$this._first;
+  set first(int? first) => _$this._first = first;
 
   GHeroWithFragmentsVarsBuilder();
 
@@ -146,7 +269,7 @@ class GheroDataVarsBuilder
 
 class _$GcomparisonFieldsVars extends GcomparisonFieldsVars {
   @override
-  final _i1.Value<int>? first;
+  final int? first;
 
   factory _$GcomparisonFieldsVars(
           [void Function(GcomparisonFieldsVarsBuilder)? updates]) =>
@@ -189,9 +312,9 @@ class GcomparisonFieldsVarsBuilder
     implements Builder<GcomparisonFieldsVars, GcomparisonFieldsVarsBuilder> {
   _$GcomparisonFieldsVars? _$v;
 
-  _i1.Value<int>? _first;
-  _i1.Value<int>? get first => _$this._first;
-  set first(_i1.Value<int>? first) => _$this._first = first;
+  int? _first;
+  int? get first => _$this._first;
+  set first(int? first) => _$this._first = first;
 
   GcomparisonFieldsVarsBuilder();
 

@@ -6,6 +6,56 @@ part of 'create_custom_field.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GCreateCustomFieldVars> _$gCreateCustomFieldVarsSerializer =
+    new _$GCreateCustomFieldVarsSerializer();
+
+class _$GCreateCustomFieldVarsSerializer
+    implements StructuredSerializer<GCreateCustomFieldVars> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateCustomFieldVars,
+    _$GCreateCustomFieldVars
+  ];
+  @override
+  final String wireName = 'GCreateCustomFieldVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateCustomFieldVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'input',
+      serializers.serialize(object.input,
+          specifiedType: const FullType(_i1.GCustomFieldInput)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateCustomFieldVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateCustomFieldVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'input':
+          result.input.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.GCustomFieldInput))!
+              as _i1.GCustomFieldInput);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GCreateCustomFieldVars extends GCreateCustomFieldVars {
   @override
   final _i1.GCustomFieldInput input;

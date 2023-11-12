@@ -14,6 +14,7 @@ Spec? buildSchema(
   Map<String, Reference> typeOverrides,
   EnumFallbackConfig enumFallbackConfig,
   Allocator allocator,
+  TriStateValueConfig triStateValueConfig,
 ) =>
     schemaSource.document
         .accept(
@@ -22,6 +23,7 @@ Spec? buildSchema(
             typeOverrides,
             enumFallbackConfig,
             allocator,
+            triStateValueConfig,
           ),
         )
         ?.first;
@@ -32,9 +34,10 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final EnumFallbackConfig enumFallbackConfig;
 
   final Allocator allocator;
+  final TriStateValueConfig triStateValueConfig;
 
   const _SchemaBuilderVisitor(this.schemaSource, this.typeOverrides,
-      this.enumFallbackConfig, this.allocator);
+      this.enumFallbackConfig, this.allocator, this.triStateValueConfig);
 
   @override
   List<Spec> visitDocumentNode(
@@ -54,14 +57,17 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   List<Spec> visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) {
-    final inputClass = buildInputClass(
-      node,
-      schemaSource,
-      typeOverrides,
-    );
-    final serializer = nullAwareJsonSerializerClass(
-        inputClass, allocator, schemaSource, typeOverrides);
-    return [inputClass, serializer];
+    final inputClass =
+        buildInputClass(node, schemaSource, typeOverrides, triStateValueConfig);
+
+    return switch (triStateValueConfig) {
+      TriStateValueConfig.never => [inputClass],
+      TriStateValueConfig.onAllNullableFields => [
+          inputClass,
+          nullAwareJsonSerializerClass(
+              inputClass, allocator, schemaSource, typeOverrides)
+        ],
+    };
   }
 
   @override

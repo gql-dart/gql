@@ -10,6 +10,7 @@ List<Class> buildInputClasses(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   Allocator allocator,
+  TriStateValueConfig triStateValueConfig,
 ) =>
     schemaSource.document.definitions
         .whereType<InputObjectTypeDefinitionNode>()
@@ -18,6 +19,7 @@ List<Class> buildInputClasses(
         node,
         schemaSource,
         typeOverrides,
+        triStateValueConfig,
       );
       final serializer = nullAwareJsonSerializerClass(
           inputClass, allocator, schemaSource, typeOverrides);
@@ -28,6 +30,7 @@ Class buildInputClass(
   InputObjectTypeDefinitionNode node,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  TriStateValueConfig triStateValueConfig,
 ) =>
     builtClass(
       name: node.name.value,
@@ -37,10 +40,13 @@ Class buildInputClass(
           typeNode: node.type,
           schemaSource: schemaSource,
           typeOverrides: typeOverrides,
+          useTriStateValueForNullableTypes: triStateValueConfig,
         ),
       ),
-      hasCustomSerializer: true,
+      hasCustomSerializer:
+          triStateValueConfig == TriStateValueConfig.onAllNullableFields,
       methods: [
-        nullAwareJsonSerializerField(node, "G${node.name.value}"),
+        if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
+          nullAwareJsonSerializerField(node, "G${node.name.value}"),
       ],
     );

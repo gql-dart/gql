@@ -6,6 +6,79 @@ part of 'hero_for_episode.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GHeroForEpisodeVars> _$gHeroForEpisodeVarsSerializer =
+    new _$GHeroForEpisodeVarsSerializer();
+Serializer<GDroidFragmentVars> _$gDroidFragmentVarsSerializer =
+    new _$GDroidFragmentVarsSerializer();
+
+class _$GHeroForEpisodeVarsSerializer
+    implements StructuredSerializer<GHeroForEpisodeVars> {
+  @override
+  final Iterable<Type> types = const [
+    GHeroForEpisodeVars,
+    _$GHeroForEpisodeVars
+  ];
+  @override
+  final String wireName = 'GHeroForEpisodeVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroForEpisodeVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'ep',
+      serializers.serialize(object.ep,
+          specifiedType: const FullType(_i1.GEpisode)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GHeroForEpisodeVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GHeroForEpisodeVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'ep':
+          result.ep = serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GEpisode))! as _i1.GEpisode;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDroidFragmentVarsSerializer
+    implements StructuredSerializer<GDroidFragmentVars> {
+  @override
+  final Iterable<Type> types = const [GDroidFragmentVars, _$GDroidFragmentVars];
+  @override
+  final String wireName = 'GDroidFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDroidFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GDroidFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GDroidFragmentVarsBuilder().build();
+  }
+}
+
 class _$GHeroForEpisodeVars extends GHeroForEpisodeVars {
   @override
   final _i1.GEpisode ep;

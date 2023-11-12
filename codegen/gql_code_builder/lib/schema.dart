@@ -4,18 +4,17 @@ import "package:gql_code_builder/source.dart";
 import "package:gql_code_builder/src/config/enum_fallback_config.dart";
 import "package:gql_code_builder/src/schema.dart";
 import "package:gql_code_builder/src/utils/possible_types.dart";
+import "package:gql_code_builder/var.dart";
 
 export "package:gql_code_builder/src/config/enum_fallback_config.dart";
 
 Library buildSchemaLibrary(SourceNode schemaSource, String partUrl,
     Map<String, Reference> typeOverrides, EnumFallbackConfig enumFallbackConfig,
-    {bool generatePossibleTypesMap = false, Allocator? allocator}) {
-  final lib = buildSchema(
-    schemaSource,
-    typeOverrides,
-    enumFallbackConfig,
-    allocator ?? Allocator(),
-  ) as Library;
+    {bool generatePossibleTypesMap = false,
+    Allocator? allocator,
+    TriStateValueConfig triStateValueConfig = TriStateValueConfig.never}) {
+  final lib = buildSchema(schemaSource, typeOverrides, enumFallbackConfig,
+      allocator ?? Allocator(), triStateValueConfig) as Library;
 
   final Code? possibleTypes;
   if (generatePossibleTypesMap && lib.body.isNotEmpty) {

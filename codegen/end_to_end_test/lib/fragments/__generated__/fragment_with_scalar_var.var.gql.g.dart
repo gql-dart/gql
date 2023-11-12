@@ -6,9 +6,89 @@ part of 'fragment_with_scalar_var.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GPostsWithFixedVariableVars>
+    _$gPostsWithFixedVariableVarsSerializer =
+    new _$GPostsWithFixedVariableVarsSerializer();
+Serializer<GPostFragmentForUser1Vars> _$gPostFragmentForUser1VarsSerializer =
+    new _$GPostFragmentForUser1VarsSerializer();
+
+class _$GPostsWithFixedVariableVarsSerializer
+    implements StructuredSerializer<GPostsWithFixedVariableVars> {
+  @override
+  final Iterable<Type> types = const [
+    GPostsWithFixedVariableVars,
+    _$GPostsWithFixedVariableVars
+  ];
+  @override
+  final String wireName = 'GPostsWithFixedVariableVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPostsWithFixedVariableVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.filter;
+    if (value != null) {
+      result
+        ..add('filter')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i1.GJson)));
+    }
+    return result;
+  }
+
+  @override
+  GPostsWithFixedVariableVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GPostsWithFixedVariableVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'filter':
+          result.filter.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GJson))! as _i1.GJson);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GPostFragmentForUser1VarsSerializer
+    implements StructuredSerializer<GPostFragmentForUser1Vars> {
+  @override
+  final Iterable<Type> types = const [
+    GPostFragmentForUser1Vars,
+    _$GPostFragmentForUser1Vars
+  ];
+  @override
+  final String wireName = 'GPostFragmentForUser1Vars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPostFragmentForUser1Vars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GPostFragmentForUser1Vars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GPostFragmentForUser1VarsBuilder().build();
+  }
+}
+
 class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
   @override
-  final _i1.Value<_i2.GJson>? filter;
+  final _i1.GJson? filter;
 
   factory _$GPostsWithFixedVariableVars(
           [void Function(GPostsWithFixedVariableVarsBuilder)? updates]) =>
@@ -53,16 +133,16 @@ class GPostsWithFixedVariableVarsBuilder
             GPostsWithFixedVariableVarsBuilder> {
   _$GPostsWithFixedVariableVars? _$v;
 
-  _i1.Value<_i2.GJson>? _filter;
-  _i1.Value<_i2.GJson>? get filter => _$this._filter;
-  set filter(_i1.Value<_i2.GJson>? filter) => _$this._filter = filter;
+  _i1.GJsonBuilder? _filter;
+  _i1.GJsonBuilder get filter => _$this._filter ??= new _i1.GJsonBuilder();
+  set filter(_i1.GJsonBuilder? filter) => _$this._filter = filter;
 
   GPostsWithFixedVariableVarsBuilder();
 
   GPostsWithFixedVariableVarsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _filter = $v.filter;
+      _filter = $v.filter?.toBuilder();
       _$v = null;
     }
     return this;
@@ -83,7 +163,21 @@ class GPostsWithFixedVariableVarsBuilder
   GPostsWithFixedVariableVars build() => _build();
 
   _$GPostsWithFixedVariableVars _build() {
-    final _$result = _$v ?? new _$GPostsWithFixedVariableVars._(filter: filter);
+    _$GPostsWithFixedVariableVars _$result;
+    try {
+      _$result =
+          _$v ?? new _$GPostsWithFixedVariableVars._(filter: _filter?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'filter';
+        _filter?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GPostsWithFixedVariableVars', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

@@ -1,4 +1,3 @@
-import 'package:gql_exec/value.dart';
 import "package:test/test.dart";
 
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
@@ -20,13 +19,12 @@ void main() {
 
   group("Complex Args", () {
     final args = GCreateReviewVars((b) => b
-      ..episode = Value.present(GEpisode.EMPIRE)
+      ..episode = GEpisode.EMPIRE
       ..review.stars = 5
-      ..review.commentary = Value.present("this was amazing!!!")
-      ..review.favorite_color = Value.present(GColorInput((b) => b
-        ..blue = 255
-        ..green = 120
-        ..red = 80)));
+      ..review.commentary = ("this was amazing!!!")
+      ..review.favorite_color.blue = 255
+      ..review.favorite_color.green = 120
+      ..review.favorite_color.red = 80);
 
     final json = {
       "episode": "EMPIRE",

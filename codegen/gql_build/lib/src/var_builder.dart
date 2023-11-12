@@ -14,10 +14,12 @@ import "./utils/writer.dart";
 class VarBuilder implements Builder {
   final AssetId schemaId;
   final Map<String, Reference> typeOverrides;
+  final TriStateValueConfig triStateValueConfig;
 
   VarBuilder(
     this.schemaId,
     this.typeOverrides,
+    this.triStateValueConfig,
   );
 
   @override
@@ -42,8 +44,14 @@ class VarBuilder implements Builder {
       schemaUrl,
     );
 
-    final library = buildVarLibrary(doc, addTypenames(schema),
-        basename(generatedPartUrl), typeOverrides, allocator);
+    final library = buildVarLibrary(
+      doc,
+      addTypenames(schema),
+      basename(generatedPartUrl),
+      typeOverrides,
+      allocator,
+      triStateValueConfig,
+    );
 
     return writeDocument(
       library,

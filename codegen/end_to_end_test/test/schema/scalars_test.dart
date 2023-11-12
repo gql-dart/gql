@@ -1,5 +1,3 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:gql_exec/value.dart';
 import "package:test/test.dart";
 
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart';
@@ -59,12 +57,9 @@ void main() {
   group("Custom scalars in input types", () {
     final input = GReviewInput((b) => b
       ..stars = 4
-      ..seenOn = Value.present(
-        BuiltList([DateTime.fromMillisecondsSinceEpoch(1591892597000)]),
-      ));
+      ..seenOn.add(DateTime.fromMillisecondsSinceEpoch(1591892597000)));
     test('correctly overrides scalars in input types', () {
-      expect((input.seenOn! as PresentValue<BuiltList>).value!.first,
-          TypeMatcher<DateTime>());
+      expect((input.seenOn!).first, TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {
@@ -81,12 +76,11 @@ void main() {
     final vars = GReviewWithDateVars(
       (b) => b
         ..review.stars = 4
-        ..createdAt =
-            Value.present(DateTime.fromMillisecondsSinceEpoch(1591892597000)),
+        ..createdAt = DateTime.fromMillisecondsSinceEpoch(1591892597000),
     );
 
     test('correctly overrides scalars in variable types', () {
-      expect((vars.createdAt! as PresentValue).value, TypeMatcher<DateTime>());
+      expect((vars.createdAt), TypeMatcher<DateTime>());
     });
 
     test('can be serialized and deserialized with custom serializer', () {

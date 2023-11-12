@@ -22,6 +22,9 @@ abstract class GHeroWithInterfaceSubTypedFragmentsVars
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsVars;
 
   _i1.GEpisode get episode;
+  static Serializer<GHeroWithInterfaceSubTypedFragmentsVars> get serializer =>
+      _$gHeroWithInterfaceSubTypedFragmentsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GHeroWithInterfaceSubTypedFragmentsVars.serializer,
         this,
@@ -33,10 +36,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsVars
         GHeroWithInterfaceSubTypedFragmentsVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GHeroWithInterfaceSubTypedFragmentsVars> get serializer =>
-      GHeroWithInterfaceSubTypedFragmentsVarsSerializer();
 }
 
 abstract class GheroFieldsFragmentVars
@@ -46,6 +45,9 @@ abstract class GheroFieldsFragmentVars
   factory GheroFieldsFragmentVars(
           [Function(GheroFieldsFragmentVarsBuilder b) updates]) =
       _$GheroFieldsFragmentVars;
+
+  static Serializer<GheroFieldsFragmentVars> get serializer =>
+      _$gheroFieldsFragmentVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroFieldsFragmentVars.serializer,
@@ -57,10 +59,6 @@ abstract class GheroFieldsFragmentVars
         GheroFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GheroFieldsFragmentVars> get serializer =>
-      GheroFieldsFragmentVarsSerializer();
 }
 
 abstract class GhumanFieldsFragmentVars
@@ -72,6 +70,9 @@ abstract class GhumanFieldsFragmentVars
           [Function(GhumanFieldsFragmentVarsBuilder b) updates]) =
       _$GhumanFieldsFragmentVars;
 
+  static Serializer<GhumanFieldsFragmentVars> get serializer =>
+      _$ghumanFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GhumanFieldsFragmentVars.serializer,
         this,
@@ -82,10 +83,6 @@ abstract class GhumanFieldsFragmentVars
         GhumanFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GhumanFieldsFragmentVars> get serializer =>
-      GhumanFieldsFragmentVarsSerializer();
 }
 
 abstract class GdroidFieldsFragmentVars
@@ -97,6 +94,9 @@ abstract class GdroidFieldsFragmentVars
           [Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
       _$GdroidFieldsFragmentVars;
 
+  static Serializer<GdroidFieldsFragmentVars> get serializer =>
+      _$gdroidFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GdroidFieldsFragmentVars.serializer,
         this,
@@ -107,157 +107,4 @@ abstract class GdroidFieldsFragmentVars
         GdroidFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GdroidFieldsFragmentVars> get serializer =>
-      GdroidFieldsFragmentVarsSerializer();
-}
-
-class GHeroWithInterfaceSubTypedFragmentsVarsSerializer
-    extends StructuredSerializer<GHeroWithInterfaceSubTypedFragmentsVars> {
-  final String wireName = 'GHeroWithInterfaceSubTypedFragmentsVars';
-
-  final Iterable<Type> types = const [
-    GHeroWithInterfaceSubTypedFragmentsVars,
-    _$GHeroWithInterfaceSubTypedFragmentsVars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GHeroWithInterfaceSubTypedFragmentsVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    result.add('episode');
-    result.add(serializers.serialize(object.episode,
-        specifiedType: const FullType(_i1.GEpisode)));
-    return result;
-  }
-
-  GHeroWithInterfaceSubTypedFragmentsVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GHeroWithInterfaceSubTypedFragmentsVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'episode':
-          var fieldValue = serializers.deserialize(value,
-              specifiedType: const FullType(_i1.GEpisode)) as _i1.GEpisode;
-          builder.episode = fieldValue;
-          break;
-      }
-    }
-    return builder.build();
-  }
-}
-
-class GheroFieldsFragmentVarsSerializer
-    extends StructuredSerializer<GheroFieldsFragmentVars> {
-  final String wireName = 'GheroFieldsFragmentVars';
-
-  final Iterable<Type> types = const [
-    GheroFieldsFragmentVars,
-    _$GheroFieldsFragmentVars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GheroFieldsFragmentVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    return result;
-  }
-
-  GheroFieldsFragmentVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GheroFieldsFragmentVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {}
-    }
-    return builder.build();
-  }
-}
-
-class GhumanFieldsFragmentVarsSerializer
-    extends StructuredSerializer<GhumanFieldsFragmentVars> {
-  final String wireName = 'GhumanFieldsFragmentVars';
-
-  final Iterable<Type> types = const [
-    GhumanFieldsFragmentVars,
-    _$GhumanFieldsFragmentVars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GhumanFieldsFragmentVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    return result;
-  }
-
-  GhumanFieldsFragmentVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GhumanFieldsFragmentVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {}
-    }
-    return builder.build();
-  }
-}
-
-class GdroidFieldsFragmentVarsSerializer
-    extends StructuredSerializer<GdroidFieldsFragmentVars> {
-  final String wireName = 'GdroidFieldsFragmentVars';
-
-  final Iterable<Type> types = const [
-    GdroidFieldsFragmentVars,
-    _$GdroidFieldsFragmentVars
-  ];
-
-  Iterable<Object?> serialize(
-    Serializers serializers,
-    GdroidFieldsFragmentVars object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = <Object?>[];
-    return result;
-  }
-
-  GdroidFieldsFragmentVars deserialize(
-    Serializers serializers,
-    Iterable<Object?> serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final builder = GdroidFieldsFragmentVarsBuilder();
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {}
-    }
-    return builder.build();
-  }
 }

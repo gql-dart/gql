@@ -6,6 +6,51 @@ part of 'aliased_hero.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GAliasedHeroVars> _$gAliasedHeroVarsSerializer =
+    new _$GAliasedHeroVarsSerializer();
+
+class _$GAliasedHeroVarsSerializer
+    implements StructuredSerializer<GAliasedHeroVars> {
+  @override
+  final Iterable<Type> types = const [GAliasedHeroVars, _$GAliasedHeroVars];
+  @override
+  final String wireName = 'GAliasedHeroVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GAliasedHeroVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'ep',
+      serializers.serialize(object.ep,
+          specifiedType: const FullType(_i1.GEpisode)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAliasedHeroVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GAliasedHeroVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'ep':
+          result.ep = serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GEpisode))! as _i1.GEpisode;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GAliasedHeroVars extends GAliasedHeroVars {
   @override
   final _i1.GEpisode ep;

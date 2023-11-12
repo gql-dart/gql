@@ -6,6 +6,51 @@ part of 'human_with_args.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GHumanWithArgsVars> _$gHumanWithArgsVarsSerializer =
+    new _$GHumanWithArgsVarsSerializer();
+
+class _$GHumanWithArgsVarsSerializer
+    implements StructuredSerializer<GHumanWithArgsVars> {
+  @override
+  final Iterable<Type> types = const [GHumanWithArgsVars, _$GHumanWithArgsVars];
+  @override
+  final String wireName = 'GHumanWithArgsVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GHumanWithArgsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GHumanWithArgsVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GHumanWithArgsVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GHumanWithArgsVars extends GHumanWithArgsVars {
   @override
   final String id;

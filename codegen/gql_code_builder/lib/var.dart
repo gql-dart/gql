@@ -8,12 +8,15 @@ import "./src/common.dart";
 import "./src/frag_vars.dart";
 
 Library buildVarLibrary(
-  SourceNode docSource,
-  SourceNode schemaSource,
-  String partUrl,
-  Map<String, Reference> typeOverrides,
-  Allocator allocator,
-) {
+    SourceNode docSource,
+    SourceNode schemaSource,
+    String partUrl,
+    Map<String, Reference> typeOverrides,
+    Allocator allocator,
+    TriStateValueConfig useTriStateValueForNullableTypes) {
+  final hasCustomSerializer = useTriStateValueForNullableTypes ==
+      TriStateValueConfig.onAllNullableFields;
+
   final operationVarClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
       .map((op) => builtClass(
@@ -24,11 +27,19 @@ Library buildVarLibrary(
                   typeNode: node.type,
                   schemaSource: schemaSource,
                   typeOverrides: typeOverrides,
+                  useTriStateValueForNullableTypes:
+                      useTriStateValueForNullableTypes,
                 ),
               ),
-              hasCustomSerializer: true,
+              hasCustomSerializer: hasCustomSerializer,
+              initializers: switch (useTriStateValueForNullableTypes) {
+                TriStateValueConfig.onAllNullableFields =>
+                  _varClassValueInitializers(op),
+                TriStateValueConfig.never => {},
+              },
               methods: [
-                nullAwareJsonSerializerField(op, "G${op.name!.value}Vars"),
+                if (hasCustomSerializer)
+                  nullAwareJsonSerializerField(op, "G${op.name!.value}Vars"),
               ]))
       .toList();
 
@@ -57,9 +68,10 @@ Library buildVarLibrary(
           typeOverrides: typeOverrides,
         ),
       ),
-      hasCustomSerializer: true,
+      hasCustomSerializer: hasCustomSerializer,
       methods: [
-        nullAwareJsonSerializerField(frag, "G${frag.name.value}Vars"),
+        if (hasCustomSerializer)
+          nullAwareJsonSerializerField(frag, "G${frag.name.value}Vars"),
       ],
     );
   }).toList();
@@ -70,23 +82,35 @@ Library buildVarLibrary(
       ..body.addAll([
         ...operationVarClasses,
         ...fragmentVarClasses,
-        for (final op in operationVarClasses)
-          nullAwareJsonSerializerClass(
-            op,
-            allocator,
-            schemaSource,
-            typeOverrides,
-          ),
-        for (final frag in fragmentVarClasses)
-          nullAwareJsonSerializerClass(
-            frag,
-            allocator,
-            schemaSource,
-            typeOverrides,
-          ),
+        if (hasCustomSerializer) ...[
+          for (final op in operationVarClasses)
+            nullAwareJsonSerializerClass(
+              op,
+              allocator,
+              schemaSource,
+              typeOverrides,
+            ),
+          for (final frag in fragmentVarClasses)
+            nullAwareJsonSerializerClass(
+              frag,
+              allocator,
+              schemaSource,
+              typeOverrides,
+            ),
+        ]
       ]),
   );
 }
+
+Map<String, Expression> _varClassValueInitializers(
+        OperationDefinitionNode op) =>
+    {
+      for (final node
+          in op.variableDefinitions.where((element) => !element.type.isNonNull))
+        identifier(node.variable.name.value):
+            refer("AbsentValue", "package:gql_exec/value.dart")
+                .constInstance(const [])
+    };
 
 Method nullAwareJsonSerializerField(Node op, String className) =>
     Method((b) => b
@@ -169,8 +193,15 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
     Map<String, Reference> typeOverrides) {
   final vars = <Code>[];
 
-  for (final field in base.methods
-      .where((field) => !field.static && field.type == MethodType.getter)) {
+  final fields = base.methods
+      .where((field) => field.type == MethodType.getter && !field.static)
+      .toList();
+
+  if (fields.isEmpty) {
+    return Code("return const [];");
+  }
+
+  for (final field in fields) {
     final isOptionalValue = isValue(field.returns!);
     final statements = <Code>[];
 
@@ -205,8 +236,15 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
 }
 
 Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
-        Map<String, Reference> typeOverrides) =>
-    Code("""final builder =  ${base.name}Builder();
+    Map<String, Reference> typeOverrides) {
+  final fields = base.methods
+      .where((field) => field.type == MethodType.getter && !field.static)
+      .toList();
+
+  return switch (fields) {
+    [] => Code("return ${base.name}();"),
+    final nonEmptyFieldsList => Code("""
+      final builder =  ${base.name}Builder();  
       final iterator = serialized.iterator;
       while (iterator.moveNext()) {
         final key = iterator.current as String;
@@ -214,25 +252,25 @@ Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
         final Object? value = iterator.current;
         switch (key) {
           ${_generateFieldDeserializers(
-      base,
-      allocator,
-      schemaSource,
-      typeOverrides,
-    )}
+        nonEmptyFieldsList,
+        allocator,
+        schemaSource,
+        typeOverrides,
+      )}
         }
       }
       return builder.build();
-    """);
+    """),
+  };
+}
 
 String _generateFieldDeserializers(
-  Class clazz,
+  List<Method> fields,
   Allocator allocator,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
 ) =>
-    clazz.methods
-        .where((field) => field.type == MethodType.getter && !field.static)
-        .map((field) {
+    fields.map((field) {
       var type = field.returns!;
       final isWrappedValue = isValue(type);
       if (isWrappedValue) {
@@ -243,17 +281,11 @@ String _generateFieldDeserializers(
       final typeDefNode = getTypeDefinitionNode(
           schemaSource.document, type.symbol.substring(1));
 
-      print(typeDefNode.runtimeType.toString() +
-          " " +
-          (typeDefNode?.name.value.toString() ?? ""));
-
       //TODO this feels flaky, find a better way
       final isBuilder = type.url != null &&
           !isWrappedValue &&
           (typeDefNode is! ScalarTypeDefinitionNode &&
               typeDefNode is! EnumTypeDefinitionNode);
-
-      /// TODO check for wireName
 
       var base = """
 case '${_getWireName(field)}':
@@ -308,11 +340,24 @@ bool isValue(Reference ref) {
 }
 
 String _getWireName(Method m) {
-  final annotation = m.annotations.firstWhereOrNull(
-          (a) => a is InvokeExpression && a.name == "BuiltValueField")
-      as InvokeExpression?;
-  if (annotation == null) return m.name!;
-  return (annotation.namedArguments["wireName"] as LiteralExpression?)
-          ?.literal ??
-      m.name!;
+  final wireNameExpr = m.annotations
+      .map((annotation) {
+        if (annotation
+            case InvokeExpression(
+              target: Reference(symbol: "BuiltValueField")
+            )) {
+          return annotation.namedArguments["wireName"];
+        }
+        return null;
+      })
+      .whereNotNull()
+      .firstOrNull;
+
+  if (wireNameExpr is! LiteralExpression) {
+    return m.name!;
+  }
+  // remove quotes from string literal
+  return wireNameExpr.literal.substring(1, wireNameExpr.literal.length - 1);
 }
+
+enum TriStateValueConfig { onAllNullableFields, never }

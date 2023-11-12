@@ -6,6 +6,30 @@ part of 'hero_no_vars.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GHeroNoVarsVars> _$gHeroNoVarsVarsSerializer =
+    new _$GHeroNoVarsVarsSerializer();
+
+class _$GHeroNoVarsVarsSerializer
+    implements StructuredSerializer<GHeroNoVarsVars> {
+  @override
+  final Iterable<Type> types = const [GHeroNoVarsVars, _$GHeroNoVarsVars];
+  @override
+  final String wireName = 'GHeroNoVarsVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GHeroNoVarsVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GHeroNoVarsVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GHeroNoVarsVarsBuilder().build();
+  }
+}
+
 class _$GHeroNoVarsVars extends GHeroNoVarsVars {
   factory _$GHeroNoVarsVars([void Function(GHeroNoVarsVarsBuilder)? updates]) =>
       (new GHeroNoVarsVarsBuilder()..update(updates))._build();

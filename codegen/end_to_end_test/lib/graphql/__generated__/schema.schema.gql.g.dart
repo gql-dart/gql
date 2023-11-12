@@ -52,6 +52,15 @@ final BuiltSet<GLengthUnit> _$gLengthUnitValues =
 
 Serializer<GEpisode> _$gEpisodeSerializer = new _$GEpisodeSerializer();
 Serializer<GLengthUnit> _$gLengthUnitSerializer = new _$GLengthUnitSerializer();
+Serializer<GReviewInput> _$gReviewInputSerializer =
+    new _$GReviewInputSerializer();
+Serializer<GCustomFieldInput> _$gCustomFieldInputSerializer =
+    new _$GCustomFieldInputSerializer();
+Serializer<GColorInput> _$gColorInputSerializer = new _$GColorInputSerializer();
+Serializer<GPostLikesInput> _$gPostLikesInputSerializer =
+    new _$GPostLikesInputSerializer();
+Serializer<GPostFavoritesInput> _$gPostFavoritesInputSerializer =
+    new _$GPostFavoritesInputSerializer();
 
 class _$GEpisodeSerializer implements PrimitiveSerializer<GEpisode> {
   @override
@@ -95,15 +104,281 @@ class _$GLengthUnitSerializer implements PrimitiveSerializer<GLengthUnit> {
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
+class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
+  @override
+  final Iterable<Type> types = const [GReviewInput, _$GReviewInput];
+  @override
+  final String wireName = 'GReviewInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GReviewInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'stars',
+      serializers.serialize(object.stars, specifiedType: const FullType(int)),
+    ];
+    Object? value;
+    value = object.commentary;
+    if (value != null) {
+      result
+        ..add('commentary')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite_color;
+    if (value != null) {
+      result
+        ..add('favorite_color')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GColorInput)));
+    }
+    value = object.seenOn;
+    if (value != null) {
+      result
+        ..add('seenOn')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType.nullable(DateTime)])));
+    }
+    return result;
+  }
+
+  @override
+  GReviewInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GReviewInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'stars':
+          result.stars = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'commentary':
+          result.commentary = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite_color':
+          result.favorite_color.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GColorInput))! as GColorInput);
+          break;
+        case 'seenOn':
+          result.seenOn.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType.nullable(DateTime)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCustomFieldInputSerializer
+    implements StructuredSerializer<GCustomFieldInput> {
+  @override
+  final Iterable<Type> types = const [GCustomFieldInput, _$GCustomFieldInput];
+  @override
+  final String wireName = 'GCustomFieldInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCustomFieldInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.customField;
+    if (value != null) {
+      result
+        ..add('customField')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i2.CustomField)));
+    }
+    return result;
+  }
+
+  @override
+  GCustomFieldInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCustomFieldInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'customField':
+          result.customField = serializers.deserialize(value,
+                  specifiedType: const FullType(_i2.CustomField))
+              as _i2.CustomField?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GColorInputSerializer implements StructuredSerializer<GColorInput> {
+  @override
+  final Iterable<Type> types = const [GColorInput, _$GColorInput];
+  @override
+  final String wireName = 'GColorInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GColorInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'red',
+      serializers.serialize(object.red, specifiedType: const FullType(int)),
+      'green',
+      serializers.serialize(object.green, specifiedType: const FullType(int)),
+      'blue',
+      serializers.serialize(object.blue, specifiedType: const FullType(int)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GColorInput deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GColorInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'red':
+          result.red = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'green':
+          result.green = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'blue':
+          result.blue = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GPostLikesInputSerializer
+    implements StructuredSerializer<GPostLikesInput> {
+  @override
+  final Iterable<Type> types = const [GPostLikesInput, _$GPostLikesInput];
+  @override
+  final String wireName = 'GPostLikesInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GPostLikesInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GPostLikesInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GPostLikesInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GPostFavoritesInputSerializer
+    implements StructuredSerializer<GPostFavoritesInput> {
+  @override
+  final Iterable<Type> types = const [
+    GPostFavoritesInput,
+    _$GPostFavoritesInput
+  ];
+  @override
+  final String wireName = 'GPostFavoritesInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPostFavoritesInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GPostFavoritesInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GPostFavoritesInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GReviewInput extends GReviewInput {
   @override
   final int stars;
   @override
-  final _i1.Value<String>? commentary;
+  final String? commentary;
   @override
-  final _i1.Value<GColorInput>? favorite_color;
+  final GColorInput? favorite_color;
   @override
-  final _i1.Value<BuiltList<DateTime?>>? seenOn;
+  final BuiltList<DateTime?>? seenOn;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder)? updates]) =>
       (new GReviewInputBuilder()..update(updates))._build();
@@ -161,20 +436,20 @@ class GReviewInputBuilder
   int? get stars => _$this._stars;
   set stars(int? stars) => _$this._stars = stars;
 
-  _i1.Value<String>? _commentary;
-  _i1.Value<String>? get commentary => _$this._commentary;
-  set commentary(_i1.Value<String>? commentary) =>
-      _$this._commentary = commentary;
+  String? _commentary;
+  String? get commentary => _$this._commentary;
+  set commentary(String? commentary) => _$this._commentary = commentary;
 
-  _i1.Value<GColorInput>? _favorite_color;
-  _i1.Value<GColorInput>? get favorite_color => _$this._favorite_color;
-  set favorite_color(_i1.Value<GColorInput>? favorite_color) =>
+  GColorInputBuilder? _favorite_color;
+  GColorInputBuilder get favorite_color =>
+      _$this._favorite_color ??= new GColorInputBuilder();
+  set favorite_color(GColorInputBuilder? favorite_color) =>
       _$this._favorite_color = favorite_color;
 
-  _i1.Value<BuiltList<DateTime?>>? _seenOn;
-  _i1.Value<BuiltList<DateTime?>>? get seenOn => _$this._seenOn;
-  set seenOn(_i1.Value<BuiltList<DateTime?>>? seenOn) =>
-      _$this._seenOn = seenOn;
+  ListBuilder<DateTime?>? _seenOn;
+  ListBuilder<DateTime?> get seenOn =>
+      _$this._seenOn ??= new ListBuilder<DateTime?>();
+  set seenOn(ListBuilder<DateTime?>? seenOn) => _$this._seenOn = seenOn;
 
   GReviewInputBuilder();
 
@@ -183,8 +458,8 @@ class GReviewInputBuilder
     if ($v != null) {
       _stars = $v.stars;
       _commentary = $v.commentary;
-      _favorite_color = $v.favorite_color;
-      _seenOn = $v.seenOn;
+      _favorite_color = $v.favorite_color?.toBuilder();
+      _seenOn = $v.seenOn?.toBuilder();
       _$v = null;
     }
     return this;
@@ -205,13 +480,28 @@ class GReviewInputBuilder
   GReviewInput build() => _build();
 
   _$GReviewInput _build() {
-    final _$result = _$v ??
-        new _$GReviewInput._(
-            stars: BuiltValueNullFieldError.checkNotNull(
-                stars, r'GReviewInput', 'stars'),
-            commentary: commentary,
-            favorite_color: favorite_color,
-            seenOn: seenOn);
+    _$GReviewInput _$result;
+    try {
+      _$result = _$v ??
+          new _$GReviewInput._(
+              stars: BuiltValueNullFieldError.checkNotNull(
+                  stars, r'GReviewInput', 'stars'),
+              commentary: commentary,
+              favorite_color: _favorite_color?.build(),
+              seenOn: _seenOn?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'favorite_color';
+        _favorite_color?.build();
+        _$failedField = 'seenOn';
+        _seenOn?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GReviewInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
@@ -221,7 +511,7 @@ class _$GCustomFieldInput extends GCustomFieldInput {
   @override
   final String id;
   @override
-  final _i1.Value<_i2.CustomField>? customField;
+  final _i2.CustomField? customField;
 
   factory _$GCustomFieldInput(
           [void Function(GCustomFieldInputBuilder)? updates]) =>
@@ -273,9 +563,9 @@ class GCustomFieldInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  _i1.Value<_i2.CustomField>? _customField;
-  _i1.Value<_i2.CustomField>? get customField => _$this._customField;
-  set customField(_i1.Value<_i2.CustomField>? customField) =>
+  _i2.CustomField? _customField;
+  _i2.CustomField? get customField => _$this._customField;
+  set customField(_i2.CustomField? customField) =>
       _$this._customField = customField;
 
   GCustomFieldInputBuilder();

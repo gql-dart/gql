@@ -114,6 +114,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
+          () => new ListBuilder<DateTime?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
           () => new ListBuilder<GEpisode?>())
       ..addBuilderFactory(

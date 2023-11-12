@@ -2,6 +2,7 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/var.dart";
 
 import "../source.dart";
 
@@ -188,6 +189,8 @@ Method buildOptionalGetter({
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
+  TriStateValueConfig useTriStateValueForNullableTypes =
+      TriStateValueConfig.never,
 }) {
   final baseGetter = buildGetter(
     nameNode: nameNode,
@@ -199,7 +202,11 @@ Method buildOptionalGetter({
     isOverride: isOverride,
   );
 
-  if (typeNode.isNonNull) return baseGetter;
+  if (typeNode.isNonNull ||
+      useTriStateValueForNullableTypes == TriStateValueConfig.never) {
+    return baseGetter;
+  }
+  ;
 
   final optionalGetter = baseGetter.rebuild((b) => b
     ..returns = TypeReference((b2) => b2
