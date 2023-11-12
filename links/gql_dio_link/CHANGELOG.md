@@ -1,3 +1,7 @@
+## 1.0.1+1
+
+- add topics
+
 ## 1.0.1
 
 - Update to dio 5.2.0, migrate from DioError to DioException (the symbol `DioError`
