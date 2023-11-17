@@ -8,18 +8,18 @@ import "package:gql_link/gql_link.dart";
 
 /// A [Link] to deduplicate [Request]s
 class DedupeLink extends Link {
-  final List<OperationType> _nonDedupeTypes;
+  final List<OperationType> _nonDedupeOperationTypes;
   final Map<Request, StreamSplitter<Response>> _inFlight = {};
 
-  DedupeLink({List<OperationType> nonDedupeTypes = const []})
-      : _nonDedupeTypes = nonDedupeTypes;
+  DedupeLink({List<OperationType> nonDedupeOperationTypes = const []})
+      : _nonDedupeOperationTypes = nonDedupeOperationTypes;
 
   @override
   Stream<Response> request(
     Request request, [
     NextLink? forward,
   ]) {
-    final shouldDedupe = !_nonDedupeTypes.contains(
+    final shouldDedupe = !_nonDedupeOperationTypes.contains(
       request.operation.getOperationType(),
     );
 

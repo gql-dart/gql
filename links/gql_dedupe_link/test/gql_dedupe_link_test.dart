@@ -220,7 +220,7 @@ void main() {
       });
 
       final link = Link.from([
-        DedupeLink(nonDedupeTypes: [OperationType.query]),
+        DedupeLink(nonDedupeOperationTypes: [OperationType.query]),
         mockLink,
       ]);
 
