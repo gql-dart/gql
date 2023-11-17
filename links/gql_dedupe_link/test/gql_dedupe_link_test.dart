@@ -185,7 +185,8 @@ void main() {
       expect(await return2, result1);
     });
 
-    test("does not dedupe identical queries if of type in nonDedupeTypes",
+    test(
+        "does not dedupe identical queries if shouldPreventDedupe is true for request",
         () async {
       var count = 0;
       final document = parseString(
@@ -220,7 +221,10 @@ void main() {
       });
 
       final link = Link.from([
-        DedupeLink(nonDedupeOperationTypes: [OperationType.query]),
+        DedupeLink(
+          shouldPreventDedupe: (req) =>
+              req.operation.getOperationType() == OperationType.query,
+        ),
         mockLink,
       ]);
 

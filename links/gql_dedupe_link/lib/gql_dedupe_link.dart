@@ -2,26 +2,26 @@
 library gql_dedupe_link;
 
 import "package:async/async.dart";
-import "package:gql/ast.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
 /// A [Link] to deduplicate [Request]s
 class DedupeLink extends Link {
-  final List<OperationType> _nonDedupeOperationTypes;
+  final bool Function(Request request) _shouldPreventDedupe;
   final Map<Request, StreamSplitter<Response>> _inFlight = {};
 
-  DedupeLink({List<OperationType> nonDedupeOperationTypes = const []})
-      : _nonDedupeOperationTypes = nonDedupeOperationTypes;
+  static bool _defaultPreventDedupe(Request request) => false;
+
+  DedupeLink({
+    bool Function(Request request) shouldPreventDedupe = _defaultPreventDedupe,
+  }) : _shouldPreventDedupe = shouldPreventDedupe;
 
   @override
   Stream<Response> request(
     Request request, [
     NextLink? forward,
   ]) {
-    final shouldDedupe = !_nonDedupeOperationTypes.contains(
-      request.operation.getOperationType(),
-    );
+    final shouldDedupe = !_shouldPreventDedupe(request);
 
     if (shouldDedupe && _inFlight.containsKey(request)) {
       return _inFlight[request]!.split();
