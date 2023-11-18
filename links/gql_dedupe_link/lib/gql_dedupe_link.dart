@@ -7,21 +7,21 @@ import "package:gql_link/gql_link.dart";
 
 /// A [Link] to deduplicate [Request]s
 class DedupeLink extends Link {
-  final bool Function(Request request) _shouldPreventDedupe;
+  final bool Function(Request request) _shouldDedupe;
   final Map<Request, StreamSplitter<Response>> _inFlight = {};
 
-  static bool _defaultPreventDedupe(Request request) => false;
+  static bool _defaultShouldDedupe(Request request) => true;
 
   DedupeLink({
-    bool Function(Request request) shouldPreventDedupe = _defaultPreventDedupe,
-  }) : _shouldPreventDedupe = shouldPreventDedupe;
+    bool Function(Request request) shouldDedupe = _defaultShouldDedupe,
+  }) : _shouldDedupe = shouldDedupe;
 
   @override
   Stream<Response> request(
     Request request, [
     NextLink? forward,
   ]) {
-    final shouldDedupe = !_shouldPreventDedupe(request);
+    final shouldDedupe = _shouldDedupe(request);
 
     if (shouldDedupe && _inFlight.containsKey(request)) {
       return _inFlight[request]!.split();
