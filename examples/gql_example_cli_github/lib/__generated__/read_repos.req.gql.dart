@@ -18,7 +18,8 @@ abstract class GReadRepositories
     implements Built<GReadRepositories, GReadRepositoriesBuilder> {
   GReadRepositories._();
 
-  factory GReadRepositories([Function(GReadRepositoriesBuilder b) updates]) =
+  factory GReadRepositories(
+          [void Function(GReadRepositoriesBuilder b) updates]) =
       _$GReadRepositories;
 
   static void _initializeBuilder(GReadRepositoriesBuilder b) => b

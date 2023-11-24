@@ -13,7 +13,8 @@ part 'alias_var_fragment.data.gql.g.dart';
 abstract class GPostsData implements Built<GPostsData, GPostsDataBuilder> {
   GPostsData._();
 
-  factory GPostsData([Function(GPostsDataBuilder b) updates]) = _$GPostsData;
+  factory GPostsData([void Function(GPostsDataBuilder b) updates]) =
+      _$GPostsData;
 
   static void _initializeBuilder(GPostsDataBuilder b) =>
       b..G__typename = 'Query';
@@ -39,7 +40,7 @@ abstract class GPostsData_posts
     implements Built<GPostsData_posts, GPostsData_postsBuilder>, GPostFragment {
   GPostsData_posts._();
 
-  factory GPostsData_posts([Function(GPostsData_postsBuilder b) updates]) =
+  factory GPostsData_posts([void Function(GPostsData_postsBuilder b) updates]) =
       _$GPostsData_posts;
 
   static void _initializeBuilder(GPostsData_postsBuilder b) =>
@@ -78,7 +79,7 @@ abstract class GPostsData_posts_isFavorited
   GPostsData_posts_isFavorited._();
 
   factory GPostsData_posts_isFavorited(
-          [Function(GPostsData_posts_isFavoritedBuilder b) updates]) =
+          [void Function(GPostsData_posts_isFavoritedBuilder b) updates]) =
       _$GPostsData_posts_isFavorited;
 
   static void _initializeBuilder(GPostsData_posts_isFavoritedBuilder b) =>
@@ -112,7 +113,7 @@ abstract class GPostsData_posts_isLiked
   GPostsData_posts_isLiked._();
 
   factory GPostsData_posts_isLiked(
-          [Function(GPostsData_posts_isLikedBuilder b) updates]) =
+          [void Function(GPostsData_posts_isLikedBuilder b) updates]) =
       _$GPostsData_posts_isLiked;
 
   static void _initializeBuilder(GPostsData_posts_isLikedBuilder b) =>
@@ -165,7 +166,8 @@ abstract class GPostFragmentData
         GPostFragment {
   GPostFragmentData._();
 
-  factory GPostFragmentData([Function(GPostFragmentDataBuilder b) updates]) =
+  factory GPostFragmentData(
+          [void Function(GPostFragmentDataBuilder b) updates]) =
       _$GPostFragmentData;
 
   static void _initializeBuilder(GPostFragmentDataBuilder b) =>
@@ -204,7 +206,7 @@ abstract class GPostFragmentData_isFavorited
   GPostFragmentData_isFavorited._();
 
   factory GPostFragmentData_isFavorited(
-          [Function(GPostFragmentData_isFavoritedBuilder b) updates]) =
+          [void Function(GPostFragmentData_isFavoritedBuilder b) updates]) =
       _$GPostFragmentData_isFavorited;
 
   static void _initializeBuilder(GPostFragmentData_isFavoritedBuilder b) =>
@@ -238,7 +240,7 @@ abstract class GPostFragmentData_isLiked
   GPostFragmentData_isLiked._();
 
   factory GPostFragmentData_isLiked(
-          [Function(GPostFragmentData_isLikedBuilder b) updates]) =
+          [void Function(GPostFragmentData_isLikedBuilder b) updates]) =
       _$GPostFragmentData_isLiked;
 
   static void _initializeBuilder(GPostFragmentData_isLikedBuilder b) =>

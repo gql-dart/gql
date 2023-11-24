@@ -13,7 +13,7 @@ abstract class GFindPokemonData
     implements Built<GFindPokemonData, GFindPokemonDataBuilder> {
   GFindPokemonData._();
 
-  factory GFindPokemonData([Function(GFindPokemonDataBuilder b) updates]) =
+  factory GFindPokemonData([void Function(GFindPokemonDataBuilder b) updates]) =
       _$GFindPokemonData;
 
   static void _initializeBuilder(GFindPokemonDataBuilder b) =>
@@ -43,7 +43,7 @@ abstract class GFindPokemonData_pokemon
   GFindPokemonData_pokemon._();
 
   factory GFindPokemonData_pokemon(
-          [Function(GFindPokemonData_pokemonBuilder b) updates]) =
+          [void Function(GFindPokemonData_pokemonBuilder b) updates]) =
       _$GFindPokemonData_pokemon;
 
   static void _initializeBuilder(GFindPokemonData_pokemonBuilder b) =>
@@ -78,7 +78,7 @@ abstract class GFindPokemonData_pokemon_weight
   GFindPokemonData_pokemon_weight._();
 
   factory GFindPokemonData_pokemon_weight(
-          [Function(GFindPokemonData_pokemon_weightBuilder b) updates]) =
+          [void Function(GFindPokemonData_pokemon_weightBuilder b) updates]) =
       _$GFindPokemonData_pokemon_weight;
 
   static void _initializeBuilder(GFindPokemonData_pokemon_weightBuilder b) =>
@@ -115,7 +115,7 @@ abstract class GFindPokemonData_pokemon_height
   GFindPokemonData_pokemon_height._();
 
   factory GFindPokemonData_pokemon_height(
-          [Function(GFindPokemonData_pokemon_heightBuilder b) updates]) =
+          [void Function(GFindPokemonData_pokemon_heightBuilder b) updates]) =
       _$GFindPokemonData_pokemon_height;
 
   static void _initializeBuilder(GFindPokemonData_pokemon_heightBuilder b) =>

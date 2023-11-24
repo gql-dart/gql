@@ -16,7 +16,8 @@ abstract class GCreateReviewVars
     implements Built<GCreateReviewVars, GCreateReviewVarsBuilder> {
   GCreateReviewVars._();
 
-  factory GCreateReviewVars([Function(GCreateReviewVarsBuilder b) updates]) =
+  factory GCreateReviewVars(
+          [void Function(GCreateReviewVarsBuilder b) updates]) =
       _$GCreateReviewVars;
 
   static void _initializeBuilder(GCreateReviewVarsBuilder b) =>

@@ -16,7 +16,7 @@ abstract class GAllPokemonData
     implements Built<GAllPokemonData, GAllPokemonDataBuilder> {
   GAllPokemonData._();
 
-  factory GAllPokemonData([Function(GAllPokemonDataBuilder b) updates]) =
+  factory GAllPokemonData([void Function(GAllPokemonDataBuilder b) updates]) =
       _$GAllPokemonData;
 
   static void _initializeBuilder(GAllPokemonDataBuilder b) =>
@@ -47,7 +47,7 @@ abstract class GAllPokemonData_pokemons
   GAllPokemonData_pokemons._();
 
   factory GAllPokemonData_pokemons(
-          [Function(GAllPokemonData_pokemonsBuilder b) updates]) =
+          [void Function(GAllPokemonData_pokemonsBuilder b) updates]) =
       _$GAllPokemonData_pokemons;
 
   static void _initializeBuilder(GAllPokemonData_pokemonsBuilder b) =>

@@ -17,7 +17,8 @@ part 'remove_star.req.gql.g.dart';
 abstract class GRemoveStar implements Built<GRemoveStar, GRemoveStarBuilder> {
   GRemoveStar._();
 
-  factory GRemoveStar([Function(GRemoveStarBuilder b) updates]) = _$GRemoveStar;
+  factory GRemoveStar([void Function(GRemoveStarBuilder b) updates]) =
+      _$GRemoveStar;
 
   static void _initializeBuilder(GRemoveStarBuilder b) => b
     ..operation = _i1.Operation(

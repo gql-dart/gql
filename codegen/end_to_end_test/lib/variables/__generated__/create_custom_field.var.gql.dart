@@ -16,7 +16,7 @@ abstract class GCreateCustomFieldVars
   GCreateCustomFieldVars._();
 
   factory GCreateCustomFieldVars(
-          [Function(GCreateCustomFieldVarsBuilder b) updates]) =
+          [void Function(GCreateCustomFieldVarsBuilder b) updates]) =
       _$GCreateCustomFieldVars;
 
   _i1.GCustomFieldInput get input;

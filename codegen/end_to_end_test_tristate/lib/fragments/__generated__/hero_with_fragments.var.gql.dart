@@ -15,7 +15,7 @@ abstract class GHeroWithFragmentsVars
   GHeroWithFragmentsVars._();
 
   factory GHeroWithFragmentsVars(
-          [Function(GHeroWithFragmentsVarsBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
 
   static void _initializeBuilder(GHeroWithFragmentsVarsBuilder b) =>
@@ -42,7 +42,7 @@ abstract class GheroDataVars
     implements Built<GheroDataVars, GheroDataVarsBuilder> {
   GheroDataVars._();
 
-  factory GheroDataVars([Function(GheroDataVarsBuilder b) updates]) =
+  factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
 
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
@@ -65,7 +65,7 @@ abstract class GcomparisonFieldsVars
   GcomparisonFieldsVars._();
 
   factory GcomparisonFieldsVars(
-          [Function(GcomparisonFieldsVarsBuilder b) updates]) =
+          [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
 
   int? get first;

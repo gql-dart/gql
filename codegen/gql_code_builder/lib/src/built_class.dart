@@ -51,11 +51,13 @@ Class builtClass({
             (b) => b
               ..factory = true
               ..optionalParameters.add(
-                Parameter(
-                  (b) => b
-                    ..name = "updates"
-                    ..type = refer("Function(${className}Builder b)"),
-                ),
+                Parameter((b) => b
+                  ..name = "updates"
+                  ..type = FunctionType((b) => b
+                    ..requiredParameters.add(
+                      refer("${className}Builder b"),
+                    )
+                    ..returnType = refer("void"))),
               )
               ..redirect = refer("_\$${className}"),
           ),

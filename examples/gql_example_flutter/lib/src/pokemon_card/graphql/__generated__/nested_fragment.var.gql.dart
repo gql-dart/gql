@@ -14,7 +14,8 @@ abstract class GNestedFragmentVars
   GNestedFragmentVars._();
 
   factory GNestedFragmentVars(
-      [Function(GNestedFragmentVarsBuilder b) updates]) = _$GNestedFragmentVars;
+          [void Function(GNestedFragmentVarsBuilder b) updates]) =
+      _$GNestedFragmentVars;
 
   static Serializer<GNestedFragmentVars> get serializer =>
       _$gNestedFragmentVarsSerializer;

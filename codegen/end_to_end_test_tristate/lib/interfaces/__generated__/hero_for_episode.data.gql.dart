@@ -17,7 +17,8 @@ abstract class GHeroForEpisodeData
   GHeroForEpisodeData._();
 
   factory GHeroForEpisodeData(
-      [Function(GHeroForEpisodeDataBuilder b) updates]) = _$GHeroForEpisodeData;
+          [void Function(GHeroForEpisodeDataBuilder b) updates]) =
+      _$GHeroForEpisodeData;
 
   static void _initializeBuilder(GHeroForEpisodeDataBuilder b) =>
       b..G__typename = 'Query';
@@ -100,7 +101,7 @@ abstract class GHeroForEpisodeData_hero__base
   GHeroForEpisodeData_hero__base._();
 
   factory GHeroForEpisodeData_hero__base(
-          [Function(GHeroForEpisodeData_hero__baseBuilder b) updates]) =
+          [void Function(GHeroForEpisodeData_hero__baseBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__base;
 
   static void _initializeBuilder(GHeroForEpisodeData_hero__baseBuilder b) =>
@@ -137,8 +138,8 @@ abstract class GHeroForEpisodeData_hero__base_friends
   GHeroForEpisodeData_hero__base_friends._();
 
   factory GHeroForEpisodeData_hero__base_friends(
-          [Function(GHeroForEpisodeData_hero__base_friendsBuilder b) updates]) =
-      _$GHeroForEpisodeData_hero__base_friends;
+      [void Function(GHeroForEpisodeData_hero__base_friendsBuilder b)
+          updates]) = _$GHeroForEpisodeData_hero__base_friends;
 
   static void _initializeBuilder(
           GHeroForEpisodeData_hero__base_friendsBuilder b) =>
@@ -175,7 +176,7 @@ abstract class GHeroForEpisodeData_hero__asDroid
   GHeroForEpisodeData_hero__asDroid._();
 
   factory GHeroForEpisodeData_hero__asDroid(
-          [Function(GHeroForEpisodeData_hero__asDroidBuilder b) updates]) =
+          [void Function(GHeroForEpisodeData_hero__asDroidBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__asDroid;
 
   static void _initializeBuilder(GHeroForEpisodeData_hero__asDroidBuilder b) =>
@@ -215,7 +216,7 @@ abstract class GHeroForEpisodeData_hero__asDroid_friends
   GHeroForEpisodeData_hero__asDroid_friends._();
 
   factory GHeroForEpisodeData_hero__asDroid_friends(
-      [Function(GHeroForEpisodeData_hero__asDroid_friendsBuilder b)
+      [void Function(GHeroForEpisodeData_hero__asDroid_friendsBuilder b)
           updates]) = _$GHeroForEpisodeData_hero__asDroid_friends;
 
   static void _initializeBuilder(
@@ -262,7 +263,8 @@ abstract class GDroidFragmentData
         GDroidFragment {
   GDroidFragmentData._();
 
-  factory GDroidFragmentData([Function(GDroidFragmentDataBuilder b) updates]) =
+  factory GDroidFragmentData(
+          [void Function(GDroidFragmentDataBuilder b) updates]) =
       _$GDroidFragmentData;
 
   static void _initializeBuilder(GDroidFragmentDataBuilder b) =>

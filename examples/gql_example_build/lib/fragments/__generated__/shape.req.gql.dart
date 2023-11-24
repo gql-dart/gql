@@ -16,7 +16,7 @@ part 'shape.req.gql.g.dart';
 abstract class GShape implements Built<GShape, GShapeBuilder> {
   GShape._();
 
-  factory GShape([Function(GShapeBuilder b) updates]) = _$GShape;
+  factory GShape([void Function(GShapeBuilder b) updates]) = _$GShape;
 
   static void _initializeBuilder(GShapeBuilder b) => b
     ..operation = _i1.Operation(

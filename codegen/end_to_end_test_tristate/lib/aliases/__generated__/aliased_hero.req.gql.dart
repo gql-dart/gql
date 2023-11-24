@@ -18,7 +18,7 @@ abstract class GAliasedHero
     implements Built<GAliasedHero, GAliasedHeroBuilder> {
   GAliasedHero._();
 
-  factory GAliasedHero([Function(GAliasedHeroBuilder b) updates]) =
+  factory GAliasedHero([void Function(GAliasedHeroBuilder b) updates]) =
       _$GAliasedHero;
 
   static void _initializeBuilder(GAliasedHeroBuilder b) => b

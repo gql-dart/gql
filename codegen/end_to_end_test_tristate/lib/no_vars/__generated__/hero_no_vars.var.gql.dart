@@ -13,7 +13,7 @@ abstract class GHeroNoVarsVars
     implements Built<GHeroNoVarsVars, GHeroNoVarsVarsBuilder> {
   GHeroNoVarsVars._();
 
-  factory GHeroNoVarsVars([Function(GHeroNoVarsVarsBuilder b) updates]) =
+  factory GHeroNoVarsVars([void Function(GHeroNoVarsVarsBuilder b) updates]) =
       _$GHeroNoVarsVars;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

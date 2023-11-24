@@ -17,7 +17,7 @@ part 'alias_var_fragment.req.gql.g.dart';
 abstract class GPosts implements Built<GPosts, GPostsBuilder> {
   GPosts._();
 
-  factory GPosts([Function(GPostsBuilder b) updates]) = _$GPosts;
+  factory GPosts([void Function(GPostsBuilder b) updates]) = _$GPosts;
 
   static void _initializeBuilder(GPostsBuilder b) => b
     ..operation = _i1.Operation(

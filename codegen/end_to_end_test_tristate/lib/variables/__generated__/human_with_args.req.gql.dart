@@ -18,7 +18,7 @@ abstract class GHumanWithArgs
     implements Built<GHumanWithArgs, GHumanWithArgsBuilder> {
   GHumanWithArgs._();
 
-  factory GHumanWithArgs([Function(GHumanWithArgsBuilder b) updates]) =
+  factory GHumanWithArgs([void Function(GHumanWithArgsBuilder b) updates]) =
       _$GHumanWithArgs;
 
   static void _initializeBuilder(GHumanWithArgsBuilder b) => b

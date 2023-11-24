@@ -11,7 +11,8 @@ part 'shape.var.gql.g.dart';
 abstract class GShapeVars implements Built<GShapeVars, GShapeVarsBuilder> {
   GShapeVars._();
 
-  factory GShapeVars([Function(GShapeVarsBuilder b) updates]) = _$GShapeVars;
+  factory GShapeVars([void Function(GShapeVarsBuilder b) updates]) =
+      _$GShapeVars;
 
   static Serializer<GShapeVars> get serializer => _$gShapeVarsSerializer;
 

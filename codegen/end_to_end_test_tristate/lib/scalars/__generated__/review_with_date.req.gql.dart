@@ -18,7 +18,7 @@ abstract class GReviewWithDate
     implements Built<GReviewWithDate, GReviewWithDateBuilder> {
   GReviewWithDate._();
 
-  factory GReviewWithDate([Function(GReviewWithDateBuilder b) updates]) =
+  factory GReviewWithDate([void Function(GReviewWithDateBuilder b) updates]) =
       _$GReviewWithDate;
 
   static void _initializeBuilder(GReviewWithDateBuilder b) => b

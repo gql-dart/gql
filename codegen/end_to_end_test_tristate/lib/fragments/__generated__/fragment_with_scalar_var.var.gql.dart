@@ -18,7 +18,7 @@ abstract class GPostsWithFixedVariableVars
   GPostsWithFixedVariableVars._();
 
   factory GPostsWithFixedVariableVars(
-          [Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
       _$GPostsWithFixedVariableVars;
 
   static void _initializeBuilder(GPostsWithFixedVariableVarsBuilder b) =>
@@ -47,7 +47,7 @@ abstract class GPostFragmentForUser1Vars
   GPostFragmentForUser1Vars._();
 
   factory GPostFragmentForUser1Vars(
-          [Function(GPostFragmentForUser1VarsBuilder b) updates]) =
+          [void Function(GPostFragmentForUser1VarsBuilder b) updates]) =
       _$GPostFragmentForUser1Vars;
 
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(

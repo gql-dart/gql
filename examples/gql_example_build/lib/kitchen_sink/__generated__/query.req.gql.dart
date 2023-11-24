@@ -17,7 +17,7 @@ abstract class GQueryOperation
     implements Built<GQueryOperation, GQueryOperationBuilder> {
   GQueryOperation._();
 
-  factory GQueryOperation([Function(GQueryOperationBuilder b) updates]) =
+  factory GQueryOperation([void Function(GQueryOperationBuilder b) updates]) =
       _$GQueryOperation;
 
   static void _initializeBuilder(GQueryOperationBuilder b) => b
