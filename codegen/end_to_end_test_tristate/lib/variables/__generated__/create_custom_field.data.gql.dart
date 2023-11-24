@@ -15,7 +15,7 @@ abstract class GCreateCustomFieldData
   GCreateCustomFieldData._();
 
   factory GCreateCustomFieldData(
-          [Function(GCreateCustomFieldDataBuilder b) updates]) =
+          [void Function(GCreateCustomFieldDataBuilder b) updates]) =
       _$GCreateCustomFieldData;
 
   static void _initializeBuilder(GCreateCustomFieldDataBuilder b) =>

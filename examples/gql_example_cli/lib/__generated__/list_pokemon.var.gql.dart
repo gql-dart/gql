@@ -12,7 +12,7 @@ abstract class GListPokemonVars
     implements Built<GListPokemonVars, GListPokemonVarsBuilder> {
   GListPokemonVars._();
 
-  factory GListPokemonVars([Function(GListPokemonVarsBuilder b) updates]) =
+  factory GListPokemonVars([void Function(GListPokemonVarsBuilder b) updates]) =
       _$GListPokemonVars;
 
   int get count;

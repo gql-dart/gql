@@ -15,7 +15,7 @@ abstract class GListPokemon
     implements Built<GListPokemon, GListPokemonBuilder> {
   GListPokemon._();
 
-  factory GListPokemon([Function(GListPokemonBuilder b) updates]) =
+  factory GListPokemon([void Function(GListPokemonBuilder b) updates]) =
       _$GListPokemon;
 
   static void _initializeBuilder(GListPokemonBuilder b) => b

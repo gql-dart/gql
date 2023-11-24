@@ -41,7 +41,7 @@ class GEnum extends EnumClass {
 abstract class GInput implements Built<GInput, GInputBuilder> {
   GInput._();
 
-  factory GInput([Function(GInputBuilder b) updates]) = _$GInput;
+  factory GInput([void Function(GInputBuilder b) updates]) = _$GInput;
 
   String? get id;
   @BuiltValueField(wireName: 'bool')

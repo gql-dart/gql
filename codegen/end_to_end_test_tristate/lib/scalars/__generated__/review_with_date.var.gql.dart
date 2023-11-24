@@ -17,7 +17,8 @@ abstract class GReviewWithDateVars
   GReviewWithDateVars._();
 
   factory GReviewWithDateVars(
-      [Function(GReviewWithDateVarsBuilder b) updates]) = _$GReviewWithDateVars;
+          [void Function(GReviewWithDateVarsBuilder b) updates]) =
+      _$GReviewWithDateVars;
 
   static void _initializeBuilder(GReviewWithDateVarsBuilder b) => b
     ..episode = const _i1.AbsentValue()

@@ -19,7 +19,7 @@ abstract class GDimensionsData
     implements Built<GDimensionsData, GDimensionsDataBuilder>, GDimensions {
   GDimensionsData._();
 
-  factory GDimensionsData([Function(GDimensionsDataBuilder b) updates]) =
+  factory GDimensionsData([void Function(GDimensionsDataBuilder b) updates]) =
       _$GDimensionsData;
 
   static void _initializeBuilder(GDimensionsDataBuilder b) =>

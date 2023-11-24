@@ -14,7 +14,7 @@ abstract class GReadRepositoriesVars
   GReadRepositoriesVars._();
 
   factory GReadRepositoriesVars(
-          [Function(GReadRepositoriesVarsBuilder b) updates]) =
+          [void Function(GReadRepositoriesVarsBuilder b) updates]) =
       _$GReadRepositoriesVars;
 
   int get nRepositories;

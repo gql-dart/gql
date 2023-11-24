@@ -51,7 +51,7 @@ abstract class GReviewInput
     implements Built<GReviewInput, GReviewInputBuilder> {
   GReviewInput._();
 
-  factory GReviewInput([Function(GReviewInputBuilder b) updates]) =
+  factory GReviewInput([void Function(GReviewInputBuilder b) updates]) =
       _$GReviewInput;
 
   int get stars;
@@ -76,7 +76,8 @@ abstract class GCustomFieldInput
     implements Built<GCustomFieldInput, GCustomFieldInputBuilder> {
   GCustomFieldInput._();
 
-  factory GCustomFieldInput([Function(GCustomFieldInputBuilder b) updates]) =
+  factory GCustomFieldInput(
+          [void Function(GCustomFieldInputBuilder b) updates]) =
       _$GCustomFieldInput;
 
   String get id;
@@ -99,7 +100,8 @@ abstract class GCustomFieldInput
 abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   GColorInput._();
 
-  factory GColorInput([Function(GColorInputBuilder b) updates]) = _$GColorInput;
+  factory GColorInput([void Function(GColorInputBuilder b) updates]) =
+      _$GColorInput;
 
   int get red;
   int get green;
@@ -122,7 +124,7 @@ abstract class GPostLikesInput
     implements Built<GPostLikesInput, GPostLikesInputBuilder> {
   GPostLikesInput._();
 
-  factory GPostLikesInput([Function(GPostLikesInputBuilder b) updates]) =
+  factory GPostLikesInput([void Function(GPostLikesInputBuilder b) updates]) =
       _$GPostLikesInput;
 
   String get id;
@@ -146,7 +148,8 @@ abstract class GPostFavoritesInput
   GPostFavoritesInput._();
 
   factory GPostFavoritesInput(
-      [Function(GPostFavoritesInputBuilder b) updates]) = _$GPostFavoritesInput;
+          [void Function(GPostFavoritesInputBuilder b) updates]) =
+      _$GPostFavoritesInput;
 
   String get id;
   static Serializer<GPostFavoritesInput> get serializer =>

@@ -18,7 +18,7 @@ abstract class GPokemonDetail
     implements Built<GPokemonDetail, GPokemonDetailBuilder> {
   GPokemonDetail._();
 
-  factory GPokemonDetail([Function(GPokemonDetailBuilder b) updates]) =
+  factory GPokemonDetail([void Function(GPokemonDetailBuilder b) updates]) =
       _$GPokemonDetail;
 
   static void _initializeBuilder(GPokemonDetailBuilder b) => b

@@ -14,7 +14,8 @@ abstract class GQueryOperationData
   GQueryOperationData._();
 
   factory GQueryOperationData(
-      [Function(GQueryOperationDataBuilder b) updates]) = _$GQueryOperationData;
+          [void Function(GQueryOperationDataBuilder b) updates]) =
+      _$GQueryOperationData;
 
   static void _initializeBuilder(GQueryOperationDataBuilder b) =>
       b..G__typename = 'Query';
@@ -43,7 +44,7 @@ abstract class GQueryOperationData_field
   GQueryOperationData_field._();
 
   factory GQueryOperationData_field(
-          [Function(GQueryOperationData_fieldBuilder b) updates]) =
+          [void Function(GQueryOperationData_fieldBuilder b) updates]) =
       _$GQueryOperationData_field;
 
   static void _initializeBuilder(GQueryOperationData_fieldBuilder b) =>
@@ -92,7 +93,7 @@ abstract class GQueryOperationData_field_field
   GQueryOperationData_field_field._();
 
   factory GQueryOperationData_field_field(
-          [Function(GQueryOperationData_field_fieldBuilder b) updates]) =
+          [void Function(GQueryOperationData_field_fieldBuilder b) updates]) =
       _$GQueryOperationData_field_field;
 
   static void _initializeBuilder(GQueryOperationData_field_fieldBuilder b) =>
@@ -123,7 +124,7 @@ abstract class GQueryOperationData_field_fieldRequired
   GQueryOperationData_field_fieldRequired._();
 
   factory GQueryOperationData_field_fieldRequired(
-      [Function(GQueryOperationData_field_fieldRequiredBuilder b)
+      [void Function(GQueryOperationData_field_fieldRequiredBuilder b)
           updates]) = _$GQueryOperationData_field_fieldRequired;
 
   static void _initializeBuilder(

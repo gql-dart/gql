@@ -18,7 +18,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsVars
   GHeroWithInterfaceSubTypedFragmentsVars._();
 
   factory GHeroWithInterfaceSubTypedFragmentsVars(
-      [Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder b)
+      [void Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsVars;
 
   _i1.GEpisode get episode;
@@ -43,7 +43,7 @@ abstract class GheroFieldsFragmentVars
   GheroFieldsFragmentVars._();
 
   factory GheroFieldsFragmentVars(
-          [Function(GheroFieldsFragmentVarsBuilder b) updates]) =
+          [void Function(GheroFieldsFragmentVarsBuilder b) updates]) =
       _$GheroFieldsFragmentVars;
 
   static Serializer<GheroFieldsFragmentVars> get serializer =>
@@ -67,7 +67,7 @@ abstract class GhumanFieldsFragmentVars
   GhumanFieldsFragmentVars._();
 
   factory GhumanFieldsFragmentVars(
-          [Function(GhumanFieldsFragmentVarsBuilder b) updates]) =
+          [void Function(GhumanFieldsFragmentVarsBuilder b) updates]) =
       _$GhumanFieldsFragmentVars;
 
   static Serializer<GhumanFieldsFragmentVars> get serializer =>
@@ -91,7 +91,7 @@ abstract class GdroidFieldsFragmentVars
   GdroidFieldsFragmentVars._();
 
   factory GdroidFieldsFragmentVars(
-          [Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
+          [void Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
       _$GdroidFieldsFragmentVars;
 
   static Serializer<GdroidFieldsFragmentVars> get serializer =>

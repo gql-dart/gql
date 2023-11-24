@@ -19,7 +19,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData
   GHeroWithInterfaceSubTypedFragmentsData._();
 
   factory GHeroWithInterfaceSubTypedFragmentsData(
-      [Function(GHeroWithInterfaceSubTypedFragmentsDataBuilder b)
+      [void Function(GHeroWithInterfaceSubTypedFragmentsDataBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsData;
 
   static void _initializeBuilder(
@@ -53,7 +53,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero
   GHeroWithInterfaceSubTypedFragmentsData_hero._();
 
   factory GHeroWithInterfaceSubTypedFragmentsData_hero(
-      [Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder b)
+      [void Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsData_hero;
 
   static void _initializeBuilder(
@@ -315,7 +315,7 @@ abstract class GheroFieldsFragmentData__base
   GheroFieldsFragmentData__base._();
 
   factory GheroFieldsFragmentData__base(
-          [Function(GheroFieldsFragmentData__baseBuilder b) updates]) =
+          [void Function(GheroFieldsFragmentData__baseBuilder b) updates]) =
       _$GheroFieldsFragmentData__base;
 
   static void _initializeBuilder(GheroFieldsFragmentData__baseBuilder b) =>
@@ -353,7 +353,7 @@ abstract class GheroFieldsFragmentData__asHuman
   GheroFieldsFragmentData__asHuman._();
 
   factory GheroFieldsFragmentData__asHuman(
-          [Function(GheroFieldsFragmentData__asHumanBuilder b) updates]) =
+          [void Function(GheroFieldsFragmentData__asHumanBuilder b) updates]) =
       _$GheroFieldsFragmentData__asHuman;
 
   static void _initializeBuilder(GheroFieldsFragmentData__asHumanBuilder b) =>
@@ -464,7 +464,7 @@ abstract class GheroFieldsFragmentData__asHuman_friends__base
   GheroFieldsFragmentData__asHuman_friends__base._();
 
   factory GheroFieldsFragmentData__asHuman_friends__base(
-      [Function(GheroFieldsFragmentData__asHuman_friends__baseBuilder b)
+      [void Function(GheroFieldsFragmentData__asHuman_friends__baseBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__base;
 
   static void _initializeBuilder(
@@ -500,7 +500,7 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
   GheroFieldsFragmentData__asHuman_friends__asDroid._();
 
   factory GheroFieldsFragmentData__asHuman_friends__asDroid(
-      [Function(GheroFieldsFragmentData__asHuman_friends__asDroidBuilder b)
+      [void Function(GheroFieldsFragmentData__asHuman_friends__asDroidBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__asDroid;
 
   static void _initializeBuilder(
@@ -540,7 +540,7 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
   GheroFieldsFragmentData__asHuman_friends__asHuman._();
 
   factory GheroFieldsFragmentData__asHuman_friends__asHuman(
-      [Function(GheroFieldsFragmentData__asHuman_friends__asHumanBuilder b)
+      [void Function(GheroFieldsFragmentData__asHuman_friends__asHumanBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__asHuman;
 
   static void _initializeBuilder(
@@ -580,7 +580,7 @@ abstract class GheroFieldsFragmentData__asDroid
   GheroFieldsFragmentData__asDroid._();
 
   factory GheroFieldsFragmentData__asDroid(
-          [Function(GheroFieldsFragmentData__asDroidBuilder b) updates]) =
+          [void Function(GheroFieldsFragmentData__asDroidBuilder b) updates]) =
       _$GheroFieldsFragmentData__asDroid;
 
   static void _initializeBuilder(GheroFieldsFragmentData__asDroidBuilder b) =>
@@ -698,7 +698,7 @@ abstract class GhumanFieldsFragmentData
   GhumanFieldsFragmentData._();
 
   factory GhumanFieldsFragmentData(
-          [Function(GhumanFieldsFragmentDataBuilder b) updates]) =
+          [void Function(GhumanFieldsFragmentDataBuilder b) updates]) =
       _$GhumanFieldsFragmentData;
 
   static void _initializeBuilder(GhumanFieldsFragmentDataBuilder b) =>
@@ -800,8 +800,8 @@ abstract class GhumanFieldsFragmentData_friends__base
   GhumanFieldsFragmentData_friends__base._();
 
   factory GhumanFieldsFragmentData_friends__base(
-          [Function(GhumanFieldsFragmentData_friends__baseBuilder b) updates]) =
-      _$GhumanFieldsFragmentData_friends__base;
+      [void Function(GhumanFieldsFragmentData_friends__baseBuilder b)
+          updates]) = _$GhumanFieldsFragmentData_friends__base;
 
   static void _initializeBuilder(
           GhumanFieldsFragmentData_friends__baseBuilder b) =>
@@ -836,7 +836,7 @@ abstract class GhumanFieldsFragmentData_friends__asDroid
   GhumanFieldsFragmentData_friends__asDroid._();
 
   factory GhumanFieldsFragmentData_friends__asDroid(
-      [Function(GhumanFieldsFragmentData_friends__asDroidBuilder b)
+      [void Function(GhumanFieldsFragmentData_friends__asDroidBuilder b)
           updates]) = _$GhumanFieldsFragmentData_friends__asDroid;
 
   static void _initializeBuilder(
@@ -875,7 +875,7 @@ abstract class GhumanFieldsFragmentData_friends__asHuman
   GhumanFieldsFragmentData_friends__asHuman._();
 
   factory GhumanFieldsFragmentData_friends__asHuman(
-      [Function(GhumanFieldsFragmentData_friends__asHumanBuilder b)
+      [void Function(GhumanFieldsFragmentData_friends__asHumanBuilder b)
           updates]) = _$GhumanFieldsFragmentData_friends__asHuman;
 
   static void _initializeBuilder(
@@ -918,7 +918,7 @@ abstract class GdroidFieldsFragmentData
   GdroidFieldsFragmentData._();
 
   factory GdroidFieldsFragmentData(
-          [Function(GdroidFieldsFragmentDataBuilder b) updates]) =
+          [void Function(GdroidFieldsFragmentDataBuilder b) updates]) =
       _$GdroidFieldsFragmentData;
 
   static void _initializeBuilder(GdroidFieldsFragmentDataBuilder b) =>

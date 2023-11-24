@@ -13,7 +13,7 @@ abstract class GListPokemonData
     implements Built<GListPokemonData, GListPokemonDataBuilder> {
   GListPokemonData._();
 
-  factory GListPokemonData([Function(GListPokemonDataBuilder b) updates]) =
+  factory GListPokemonData([void Function(GListPokemonDataBuilder b) updates]) =
       _$GListPokemonData;
 
   static void _initializeBuilder(GListPokemonDataBuilder b) =>
@@ -43,7 +43,7 @@ abstract class GListPokemonData_pokemons
   GListPokemonData_pokemons._();
 
   factory GListPokemonData_pokemons(
-          [Function(GListPokemonData_pokemonsBuilder b) updates]) =
+          [void Function(GListPokemonData_pokemonsBuilder b) updates]) =
       _$GListPokemonData_pokemons;
 
   static void _initializeBuilder(GListPokemonData_pokemonsBuilder b) =>

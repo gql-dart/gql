@@ -14,7 +14,8 @@ abstract class GQueryOperationVars
   GQueryOperationVars._();
 
   factory GQueryOperationVars(
-      [Function(GQueryOperationVarsBuilder b) updates]) = _$GQueryOperationVars;
+          [void Function(GQueryOperationVarsBuilder b) updates]) =
+      _$GQueryOperationVars;
 
   String? get id;
   @BuiltValueField(wireName: 'bool')

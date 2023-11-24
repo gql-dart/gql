@@ -13,7 +13,8 @@ abstract class GHumanWithArgsData
     implements Built<GHumanWithArgsData, GHumanWithArgsDataBuilder> {
   GHumanWithArgsData._();
 
-  factory GHumanWithArgsData([Function(GHumanWithArgsDataBuilder b) updates]) =
+  factory GHumanWithArgsData(
+          [void Function(GHumanWithArgsDataBuilder b) updates]) =
       _$GHumanWithArgsData;
 
   static void _initializeBuilder(GHumanWithArgsDataBuilder b) =>
@@ -43,7 +44,7 @@ abstract class GHumanWithArgsData_human
   GHumanWithArgsData_human._();
 
   factory GHumanWithArgsData_human(
-          [Function(GHumanWithArgsData_humanBuilder b) updates]) =
+          [void Function(GHumanWithArgsData_humanBuilder b) updates]) =
       _$GHumanWithArgsData_human;
 
   static void _initializeBuilder(GHumanWithArgsData_humanBuilder b) =>

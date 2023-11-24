@@ -13,7 +13,7 @@ abstract class GAddStarVars
     implements Built<GAddStarVars, GAddStarVarsBuilder> {
   GAddStarVars._();
 
-  factory GAddStarVars([Function(GAddStarVarsBuilder b) updates]) =
+  factory GAddStarVars([void Function(GAddStarVarsBuilder b) updates]) =
       _$GAddStarVars;
 
   String get starrableId;

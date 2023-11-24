@@ -15,7 +15,7 @@ abstract class GFindPokemon
     implements Built<GFindPokemon, GFindPokemonBuilder> {
   GFindPokemon._();
 
-  factory GFindPokemon([Function(GFindPokemonBuilder b) updates]) =
+  factory GFindPokemon([void Function(GFindPokemonBuilder b) updates]) =
       _$GFindPokemon;
 
   static void _initializeBuilder(GFindPokemonBuilder b) => b

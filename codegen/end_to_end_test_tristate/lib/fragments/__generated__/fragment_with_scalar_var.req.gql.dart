@@ -19,7 +19,7 @@ abstract class GPostsWithFixedVariable
   GPostsWithFixedVariable._();
 
   factory GPostsWithFixedVariable(
-          [Function(GPostsWithFixedVariableBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableBuilder b) updates]) =
       _$GPostsWithFixedVariable;
 
   static void _initializeBuilder(GPostsWithFixedVariableBuilder b) => b

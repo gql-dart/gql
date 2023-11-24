@@ -17,7 +17,8 @@ part 'hero_no_vars.req.gql.g.dart';
 abstract class GHeroNoVars implements Built<GHeroNoVars, GHeroNoVarsBuilder> {
   GHeroNoVars._();
 
-  factory GHeroNoVars([Function(GHeroNoVarsBuilder b) updates]) = _$GHeroNoVars;
+  factory GHeroNoVars([void Function(GHeroNoVarsBuilder b) updates]) =
+      _$GHeroNoVars;
 
   static void _initializeBuilder(GHeroNoVarsBuilder b) => b
     ..operation = _i1.Operation(

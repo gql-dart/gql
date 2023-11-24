@@ -16,7 +16,7 @@ abstract class GPostsWithFixedVariableData
   GPostsWithFixedVariableData._();
 
   factory GPostsWithFixedVariableData(
-          [Function(GPostsWithFixedVariableDataBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableDataBuilder b) updates]) =
       _$GPostsWithFixedVariableData;
 
   static void _initializeBuilder(GPostsWithFixedVariableDataBuilder b) =>
@@ -48,7 +48,7 @@ abstract class GPostsWithFixedVariableData_posts
   GPostsWithFixedVariableData_posts._();
 
   factory GPostsWithFixedVariableData_posts(
-          [Function(GPostsWithFixedVariableData_postsBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableData_postsBuilder b) updates]) =
       _$GPostsWithFixedVariableData_posts;
 
   static void _initializeBuilder(GPostsWithFixedVariableData_postsBuilder b) =>
@@ -86,7 +86,7 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
   GPostsWithFixedVariableData_posts_favoritedUsers._();
 
   factory GPostsWithFixedVariableData_posts_favoritedUsers(
-      [Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder b)
+      [void Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder b)
           updates]) = _$GPostsWithFixedVariableData_posts_favoritedUsers;
 
   static void _initializeBuilder(
@@ -136,7 +136,7 @@ abstract class GPostFragmentForUser1Data
   GPostFragmentForUser1Data._();
 
   factory GPostFragmentForUser1Data(
-          [Function(GPostFragmentForUser1DataBuilder b) updates]) =
+          [void Function(GPostFragmentForUser1DataBuilder b) updates]) =
       _$GPostFragmentForUser1Data;
 
   static void _initializeBuilder(GPostFragmentForUser1DataBuilder b) =>
@@ -173,7 +173,7 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
   GPostFragmentForUser1Data_favoritedUsers._();
 
   factory GPostFragmentForUser1Data_favoritedUsers(
-      [Function(GPostFragmentForUser1Data_favoritedUsersBuilder b)
+      [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder b)
           updates]) = _$GPostFragmentForUser1Data_favoritedUsers;
 
   static void _initializeBuilder(

@@ -17,7 +17,7 @@ part 'add_star.req.gql.g.dart';
 abstract class GAddStar implements Built<GAddStar, GAddStarBuilder> {
   GAddStar._();
 
-  factory GAddStar([Function(GAddStarBuilder b) updates]) = _$GAddStar;
+  factory GAddStar([void Function(GAddStarBuilder b) updates]) = _$GAddStar;
 
   static void _initializeBuilder(GAddStarBuilder b) => b
     ..operation = _i1.Operation(
