@@ -3,9 +3,9 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
 import "package:gql_code_builder/src/when_extension.dart";
 
+import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
-import "../source.dart";
 
 /// Builds the following classes for inline fragments:
 ///   1. An abstract root class that will be implemented by each instantiable
