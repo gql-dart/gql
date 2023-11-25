@@ -63,6 +63,30 @@ void main () {
 
 ```
 
+## Websocket Sub-Protocols And Their Dart Implementations
+
+There are two websocket sub-protocols available for GraphQL supported by this package:
+
+- `graphql-ws`  (also known as `subscriptions-transport-ws`, which is the name of the npm package which implements it, [spec](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md)])
+- `graphql-transport-ws` (confusingly, also known as `graphql-ws`, which is the name of the npm package which implements it [spec](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md))
+
+In this document, we will refer to the protocols not by their npm package names, but by the name of the sub-protocol.
+
+See also the [Apollo docs](https://www.apollographql.com/docs/react/data/subscriptions/#websocket-subprotocols).
+
+Generally, you should use `graphql-transport-ws` if your server supports it.
+
+In order to use `graphql-transport-ws`, you need to use the `TransportWebSocketLink` class.
+For `graphql-ws`, use the `WebSocketLink` class.
+
+The `WebSocketLink` class has some known issues, see:
+
+- https://github.com/gql-dart/gql/issues/430
+
+
+
+
+
 ## Features and bugs
 
 Please file feature requests and bugs at the [GitHub][tracker].
