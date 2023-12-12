@@ -86,6 +86,8 @@ Map<String, Reference> _dataClassAliasMap(
   aliasMap ??= {};
   visitedSource ??= {};
 
+  print("_dataClassAliasMap: ${source.url}");
+
   source.imports.forEach((s) {
     if (!visitedSource!.contains(source.url)) {
       visitedSource.add(source.url);
@@ -132,6 +134,8 @@ void _dataClassAliasMapDFS({
   required Map<String, SourceSelections> fragmentMap,
   required Map<String, Reference> aliasMap,
 }) {
+  print("_dataClassAliasMapDFS: $typeRefPrefix");
+
   if (selections.isEmpty) return;
 
   // flatten selections to extract untouched fragments while visiting children.
@@ -182,13 +186,15 @@ void _dataClassAliasMapDFS({
       );
     } else if (node is InlineFragmentNode) {
       if (node.typeCondition != null) {
+        print(
+            "inline fragment: ${typeRefPrefix} ${node.typeCondition!.on.name.value} ${node.selectionSet.selections}");
+
         /// TODO: Handle inline fragments without a type condition
         _dataClassAliasMapDFS(
           typeRefPrefix:
               "${typeRefPrefix}__as${node.typeCondition!.on.name.value}",
           getAliasTypeName: getAliasTypeName,
           selections: [
-            ...selections.where((s) => s != node),
             ...node.selectionSet.selections,
           ],
           fragmentMap: fragmentMap,
@@ -196,6 +202,7 @@ void _dataClassAliasMapDFS({
         );
       }
     } else if (node is FieldNode && node.selectionSet != null) {
+      print("field: ${(node.alias ?? node.name).value}");
       _dataClassAliasMapDFS(
         typeRefPrefix: "${typeRefPrefix}_${(node.alias ?? node.name).value}",
         getAliasTypeName: getAliasTypeName,
