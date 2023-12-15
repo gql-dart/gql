@@ -12,38 +12,3 @@ dev_dependencies:
   gql_pedantic: ^1.0.2
   mockito: ^5.0.16
   test: ^1.16.2
-dependency_overrides: 
-  gql_pedantic: 
-    path: ../../gql_pedantic
-  gql: 
-    path: ../../gql
-  gql_exec: 
-    path: ../gql_exec
-  gql_websocket_link: 
-    path: ../gql_websocket_link
-  gql_transform_link: 
-    path: ../gql_transform_link
-  gql_http_link: 
-    path: ../gql_http_link
-  gql_error_link: 
-    path: ../gql_error_link
-  gql_code_builder: 
-    path: ../../codegen/gql_code_builder
-  gql_build: 
-    path: ../../codegen/gql_build
-  gql_example_http_auth_link: 
-    path: ../../examples/gql_example_http_auth_link
-  gql_dio_link: 
-    path: ../gql_dio_link
-  gql_example_dio_link: 
-    path: ../../examples/gql_example_dio_link
-  gql_example_cli_github: 
-    path: ../../examples/gql_example_cli_github
-  gql_example_cli: 
-    path: ../../examples/gql_example_cli
-  gql_example_build: 
-    path: ../../examples/gql_example_build
-  gql_dedupe_link: 
-    path: ../gql_dedupe_link
-  end_to_end_test: 
-    path: ../../codegen/end_to_end_test
