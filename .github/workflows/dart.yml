@@ -20,7 +20,7 @@ jobs:
           - gql_transform_link
     runs-on: ubuntu-latest
     container:
-      image: dart:stable
+      image: dart:latest
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
