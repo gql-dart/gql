@@ -213,4 +213,80 @@ void main() {
       ]);
     });
   });
+
+  group("serializable multipart upload errors", () {
+    late Request gqlRequest;
+    setUp(() {
+      mockClient = MockDio();
+
+      gqlRequest = Request(
+        operation: Operation(
+          document: parseString(uploadMutation),
+        ),
+        variables: <String, dynamic>{
+          "files": testFiles(),
+        },
+      );
+    });
+
+    test("response error with serializable errors", () async {
+      link = DioLink(
+        "http://localhost:3001/graphql",
+        client: mockClient,
+        serializableErrors: true,
+      );
+      when(mockClient.post<dynamic>(
+        any,
+        data: anyNamed("data"),
+        options: anyNamed("options"),
+      )).thenAnswer((i) async => Future.error(dio.DioException(
+            type: dio.DioExceptionType.receiveTimeout,
+            requestOptions: dio.RequestOptions(
+              path: i.positionalArguments[0] as String,
+              data: i.namedArguments[Symbol("data")] as dio.FormData,
+            ),
+          )));
+      expect(
+          () => link.request(gqlRequest).first,
+          throwsA(isA<DioLinkTimeoutException>()
+              .having((e) => e.originalException, "with a dio error",
+                  isA<dio.DioException>())
+              .having(
+                  (e) => (e.originalException as dio.DioException)
+                      .requestOptions
+                      .data,
+                  "with removed FormData",
+                  isNull)));
+    });
+
+    test("response error without serializable errors", () async {
+      link = DioLink(
+        "http://localhost:3001/graphql",
+        client: mockClient,
+        serializableErrors: false,
+      );
+      when(mockClient.post<dynamic>(
+        any,
+        data: anyNamed("data"),
+        options: anyNamed("options"),
+      )).thenAnswer((i) async => Future.error(dio.DioException(
+            type: dio.DioExceptionType.receiveTimeout,
+            requestOptions: dio.RequestOptions(
+              path: i.positionalArguments[0] as String,
+              data: i.namedArguments[Symbol("data")] as dio.FormData,
+            ),
+          )));
+      expect(
+          () => link.request(gqlRequest).first,
+          throwsA(isA<DioLinkTimeoutException>()
+              .having((e) => e.originalException, "with a dio error",
+                  isA<dio.DioException>())
+              .having(
+                  (e) => (e.originalException as dio.DioException)
+                      .requestOptions
+                      .data,
+                  "with removed FormData",
+                  isA<dio.FormData>())));
+    });
+  });
 }

@@ -1,18 +1,23 @@
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
+
 import "package:gql/ast.dart";
-import "package:gql/language.dart";
+
+import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "../../source.dart";
 import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
-List<Class> buildOperationDataClasses(
+List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  Map<String, SourceSelections> fragmentMap,
+  Map<String, Reference> dataClassAliasMap,
 ) {
   if (op.name == null) {
     throw Exception("Operations must be named");
@@ -23,13 +28,12 @@ List<Class> buildOperationDataClasses(
   final fields = collectFields(
       docSource,
       schemaSource,
-      getTypeDefinitionNode(
-          schemaSource.flatDocument, _operationType(schemaSource.flatDocument, op))!,
+      getTypeDefinitionNode(schemaSource.flatDocument,
+          _operationType(schemaSource.flatDocument, op))!,
       op.selectionSet.selections,
       {});
 
-  print(
-      "${op.name?.value} ${fields}");
+  print("${op.name?.value} ${fields}");
 
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
@@ -45,17 +49,21 @@ List<Class> buildOperationDataClasses(
     ),
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
+    dataClassAliasMap: dataClassAliasMap,
     superclassSelections: {},
+    whenExtensionConfig: whenExtensionConfig,
   );
 }
 
-List<Class> buildFragmentDataClasses(
+List<Spec> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  Map<String, SourceSelections> fragmentMap,
+  Map<String, Reference> dataClassAliasMap,
 ) {
-  final fragmentMap = _fragmentMap(docSource);
   final selections = mergeSelections(
     frag.selectionSet.selections,
     fragmentMap,
@@ -70,8 +78,10 @@ List<Class> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {},
       built: false,
+      whenExtensionConfig: whenExtensionConfig,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -82,12 +92,14 @@ List<Class> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {
         frag.name.value: SourceSelections(
           url: docSource.url,
           selections: selections,
         )
       },
+      whenExtensionConfig: whenExtensionConfig,
     ),
   ];
 }
@@ -110,12 +122,13 @@ String _operationType(
 }
 
 Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-      for (var def in source.document.definitions.whereType<FragmentDefinitionNode>())
+      for (final def
+          in source.document.definitions.whereType<FragmentDefinitionNode>())
         def.name.value: SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
         ),
-      for (var import in source.imports) ..._fragmentMap(import)
+      for (final import in source.imports) ..._fragmentMap(import)
     };
 
 /// Builds one or more data classes, with properties based on [selections].
@@ -127,7 +140,7 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
-List<Class> buildSelectionSetDataClasses({
+List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,
@@ -135,14 +148,15 @@ List<Class> buildSelectionSetDataClasses({
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Reference> dataClassAliasMap,
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
   final fields = collectFields(docSource, schemaSource,
       getTypeDefinitionNode(schemaSource.flatDocument, type)!, selections, {});
 
-  print(
-      "${name} ${fields}");
+  print("${name} ${fields}");
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
@@ -157,8 +171,9 @@ List<Class> buildSelectionSetDataClasses({
     );
   }
 
-  final superclassSelectionNodes =
-      superclassSelections.values.expand((selections) => selections.selections).toSet();
+  final superclassSelectionNodes = superclassSelections.values
+      .expand((selections) => selections.selections)
+      .toSet();
 
   final fieldGetters = selections.whereType<FieldNode>().map<Method>(
     (node) {
@@ -172,13 +187,16 @@ List<Class> buildSelectionSetDataClasses({
         node.name.value,
       );
       final hasSkipOrInclude = node.directives.any(
-        (directive) => directive.name.value == "skip" || directive.name.value == "include",
+        (directive) =>
+            directive.name.value == "skip" || directive.name.value == "include",
       );
       return buildGetter(
         nameNode: nameNode,
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
+        typeRefAlias:
+            dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
@@ -200,22 +218,27 @@ List<Class> buildSelectionSetDataClasses({
         type: type,
         typeOverrides: typeOverrides,
         fragmentMap: fragmentMap,
+        dataClassAliasMap: dataClassAliasMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
         built: built,
+        whenExtensionConfig: whenExtensionConfig,
       )
-    else if (!built)
+    else if (!built && dataClassAliasMap[name] == null)
       Class(
         (b) => b
           ..abstract = true
           ..name = builtClassName(name)
           ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
-              ),
-            ),
+            superclassSelections.keys
+                .where((superName) =>
+                    !dataClassAliasMap.containsKey(builtClassName(superName)))
+                .map<Reference>(
+                  (superName) => refer(
+                    builtClassName(superName),
+                    (superclassSelections[superName]?.url ?? "") + "#data",
+                  ),
+                ),
           )
           ..methods.addAll([
             ...fieldGetters,
@@ -235,18 +258,23 @@ List<Class> buildSelectionSetDataClasses({
             "G__typename": literalString(type),
         },
         superclassSelections: superclassSelections,
+        dataClassAliasMap: dataClassAliasMap,
       ),
     // Build classes for each field that includes selections
     ...selections
         .whereType<FieldNode>()
         .where(
-          (field) => field.selectionSet != null,
+          (field) =>
+              field.selectionSet != null &&
+              !dataClassAliasMap.containsKey(builtClassName(
+                  "${name}_${field.alias?.value ?? field.name.value}")),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
             name: "${name}_${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet!.selections,
             fragmentMap: fragmentMap,
+            dataClassAliasMap: dataClassAliasMap,
             schemaSource: schemaSource,
             docSource: docSource,
             type: unwrapTypeNode(
@@ -264,9 +292,59 @@ List<Class> buildSelectionSetDataClasses({
               field,
             ),
             built: inlineFragments.isNotEmpty ? false : built,
+            whenExtensionConfig: whenExtensionConfig,
           ),
         ),
   ];
+}
+
+/// Shrink merged fields nodes based on FragmentMap
+List<SelectionNode> shrinkSelections(
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final unmerged = [...selections];
+
+  for (final selection in selections) {
+    if (selection is FieldNode && selection.selectionSet != null) {
+      final index = unmerged.indexOf(selection);
+      unmerged[index] = FieldNode(
+        name: selection.name,
+        alias: selection.alias,
+        selectionSet: SelectionSetNode(
+          selections:
+              shrinkSelections(selection.selectionSet!.selections, fragmentMap),
+        ),
+      );
+    } else if (selection is InlineFragmentNode &&
+        selection.typeCondition != null) {
+      /// TODO: Handle inline fragments without a type condition
+      final index = unmerged.indexOf(selection);
+      unmerged[index] = InlineFragmentNode(
+        typeCondition: selection.typeCondition,
+        directives: selection.directives,
+        selectionSet: SelectionSetNode(
+          selections:
+              shrinkSelections(selection.selectionSet.selections, fragmentMap),
+        ),
+      );
+    }
+  }
+
+  for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
+    final fragment = fragmentMap[node.name.value]!;
+    final spreadIndex = unmerged.indexOf(node);
+    final duplicateIndexList = <int>[];
+    unmerged.forEachIndexed((selectionIndex, selection) {
+      if (selectionIndex > spreadIndex &&
+          fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
+        duplicateIndexList.add(selectionIndex);
+      }
+    });
+    duplicateIndexList.reversed.forEach(unmerged.removeAt);
+  }
+
+  return unmerged;
 }
 
 /// Deeply merges field nodes
@@ -300,6 +378,29 @@ List<SelectionNode> mergeSelections(
                       fragmentMap,
                     )));
               }
+            } else if (selection is InlineFragmentNode &&
+                selection.typeCondition != null) {
+              /// TODO: Handle inline fragments without a type condition
+              final key = selection.typeCondition!.on.name.value;
+              if (selectionMap.containsKey(key)) {
+                selectionMap[key] = InlineFragmentNode(
+                  typeCondition: selection.typeCondition,
+                  directives: selection.directives,
+                  selectionSet: SelectionSetNode(
+                    selections: mergeSelections(
+                      [
+                        ...(selectionMap[key] as InlineFragmentNode)
+                            .selectionSet
+                            .selections,
+                        ...selection.selectionSet.selections,
+                      ],
+                      fragmentMap,
+                    ),
+                  ),
+                );
+              } else {
+                selectionMap[key] = selection;
+              }
             } else {
               selectionMap[selection.hashCode.toString()] = selection;
             }
@@ -322,10 +423,17 @@ List<SelectionNode> _expandFragmentSpreads(
               "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
             );
           }
+
+          final fragmentSelections =
+              fragmentMap[selection.name.value]!.selections;
+
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value]!.selections,
+              [
+                ...fragmentSelections.whereType<FieldNode>(),
+                ...fragmentSelections.whereType<FragmentSpreadNode>(),
+              ],
               fragmentMap,
               false,
             )
@@ -355,7 +463,9 @@ Map<String, SourceSelections> _fragmentSelectionsForField(
             "${entry.key}_${field.alias?.value ?? field.name.value}",
             SourceSelections(
               url: entry.value.url,
-              selections: selection.selectionSet!.selections.whereType<FieldNode>().toList(),
+              selections: selection.selectionSet!.selections
+                  .whereType<FieldNode>()
+                  .toList(),
             ),
           ),
         ),
@@ -408,14 +518,11 @@ class FieldNoteWithNullability {
 
   @override
   String toString() =>
-     "FieldNoteWithNullability{field: ${field.name.value}, forceNullable: $isMaybeSkipped}";
+      "FieldNoteWithNullability{field: ${field.name.value}, forceNullable: $isMaybeSkipped}";
 
   FieldNoteWithNullability merge(bool isMaybeSkipped) =>
-     FieldNoteWithNullability(field, this.isMaybeSkipped && isMaybeSkipped);
+      FieldNoteWithNullability(field, this.isMaybeSkipped && isMaybeSkipped);
 }
-
-
-
 
 //https://spec.graphql.org/draft/#CollectFields()
 Map<String, List<FieldNoteWithNullability>> collectFields(
@@ -429,7 +536,6 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
   final groupedFields = <String, List<FieldNoteWithNullability>>{};
   //For each selection in selectionSet:
   for (final selection in selectionSet) {
-
     final isMaybeSkipped = selection.directives.any(
       (directive) => const {"skip", "include"}.contains(directive.name.value),
     );
@@ -440,10 +546,12 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
       if (!groupedFields.containsKey(selection.name.value)) {
         //Append the field to groupedFields under the response name of the aliased field or the field name.
         groupedFields
-            .putIfAbsent(selection.alias?.value ?? selection.name.value, () => [])
+            .putIfAbsent(
+                selection.alias?.value ?? selection.name.value, () => [])
             .add(FieldNoteWithNullability(selection, isMaybeSkipped));
       } else {
-        print("Skipping field ${selection.name.value} because it's already present");
+        print(
+            "Skipping field ${selection.name.value} because it's already present");
       }
     }
     //If the selection is an inline fragment:
@@ -452,14 +560,15 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
       final fragmentType = selection.typeCondition;
       //If fragmentType is not null and DoesFragmentTypeApply(objectType, fragmentType) is false, continue with the next selection in selectionSet.
       if (fragmentType != null &&
-          !doesFragmentTypeApply(objectType, fragmentType, schema.flatDocument)) {
+          !doesFragmentTypeApply(
+              objectType, fragmentType, schema.flatDocument)) {
         continue;
       }
       //Let fragmentSelectionSet be the top-level selection set of selection.
       final fragmentSelectionSet = selection.selectionSet;
       //Let fragmentGroupedFieldSet be the result of calling CollectFields(objectType, fragmentSelectionSet, variableValues, visitedFragments).
-      final fragmentGroupedFieldSet = collectFields(
-          document, schema, objectType, fragmentSelectionSet.selections, visitedFragments);
+      final fragmentGroupedFieldSet = collectFields(document, schema,
+          objectType, fragmentSelectionSet.selections, visitedFragments);
       //For each fragmentGroup in fragmentGroupedFieldSet:
       for (final fragmentGroup in fragmentGroupedFieldSet.entries) {
         //If fragmentGroup is not already present in groupedFields:
@@ -467,16 +576,20 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
           //Let responseKey be the response key shared by all fields in fragmentGroup.
           final responseKey = fragmentGroup.key;
           //Let groupForResponseKey be the list in groupedFields for responseKey; if no such list exists, create it as an empty list.
-          final groupForResponseKey = groupedFields.putIfAbsent(responseKey, () => []);
-          final values = fragmentGroup.value.map((e) => FieldNoteWithNullability(e.field, isMaybeSkipped || e.isMaybeSkipped)).toList();
+          final groupForResponseKey =
+              groupedFields.putIfAbsent(responseKey, () => []);
+          final values = fragmentGroup.value
+              .map((e) => FieldNoteWithNullability(
+                  e.field, isMaybeSkipped || e.isMaybeSkipped))
+              .toList();
           //Append all items in fragmentGroup to groupForResponseKey.
           groupForResponseKey.addAll(values);
-        }else {
-          print("Skipping field ${fragmentGroup.key} because it's already present 2");
+        } else {
+          print(
+              "Skipping field ${fragmentGroup.key} because it's already present 2");
         }
       }
     }
-
 
     //If the selection is a fragment spread:
     else if (selection is FragmentSpreadNode) {
@@ -485,14 +598,17 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
       final fragmentSpreadName = selection.name.value;
       //If fragmentSpreadName is in visitedFragments, continue with the next selection in selectionSet.
       if (visitedFragments.contains(fragmentSpreadName)) {
-        print("Skipping fragment $fragmentSpreadName because it's already visited");
+        print(
+            "Skipping fragment $fragmentSpreadName because it's already visited");
         continue;
       }
       //Add fragmentSpreadName to visitedFragments.
       visitedFragments.add(fragmentSpreadName);
       //Let fragment be the Fragment in the current Document whose name is fragmentSpreadName.
-      final fragment = document.flatDocument.definitions.firstWhereOrNull((definition) =>
-              definition is FragmentDefinitionNode && definition.name.value == fragmentSpreadName)
+      final fragment = document.flatDocument.definitions.firstWhereOrNull(
+              (definition) =>
+                  definition is FragmentDefinitionNode &&
+                  definition.name.value == fragmentSpreadName)
           as FragmentDefinitionNode?;
       //If no such fragment exists, continue with the next selection in selectionSet.
       if (fragment == null) {
@@ -501,23 +617,28 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
       //Let fragmentType be the type condition on fragment.
       final fragmentType = fragment.typeCondition;
       //If DoesFragmentTypeApply(objectType, fragmentType) is false, continue with the next selection in selectionSet.
-      if (!doesFragmentTypeApply(objectType, fragmentType, schema.flatDocument)) {
+      if (!doesFragmentTypeApply(
+          objectType, fragmentType, schema.flatDocument)) {
         continue;
       }
       //Let fragmentSelectionSet be the top-level selection set of fragment.
       final fragmentSelectionSet = fragment.selectionSet;
       //Let fragmentGroupedFieldSet be the result of calling CollectFields(objectType, fragmentSelectionSet, variableValues, visitedFragments).
-      final fragmentGroupedFieldSet = collectFields(
-          document, schema, objectType, fragmentSelectionSet.selections, visitedFragments);
+      final fragmentGroupedFieldSet = collectFields(document, schema,
+          objectType, fragmentSelectionSet.selections, visitedFragments);
       //For each fragmentGroup in fragmentGroupedFieldSet:
       for (final fragmentGroup in fragmentGroupedFieldSet.entries) {
         //Let responseKey be the response key shared by all fields in fragmentGroup.
         final responseKey = fragmentGroup.key;
         //Let groupForResponseKey be the list in groupedFields for responseKey; if no such list exists, create it as an empty list.
-        final groupForResponseKey = groupedFields.putIfAbsent(responseKey, () => []);
+        final groupForResponseKey =
+            groupedFields.putIfAbsent(responseKey, () => []);
         //Append all items in fragmentGroup to groupForResponseKey.
 
-        final values = fragmentGroup.value.map((e) => FieldNoteWithNullability(e.field, isMaybeSkipped || e.isMaybeSkipped)).toList();
+        final values = fragmentGroup.value
+            .map((e) => FieldNoteWithNullability(
+                e.field, isMaybeSkipped || e.isMaybeSkipped))
+            .toList();
 
         groupForResponseKey.addAll(values);
       }
@@ -527,19 +648,21 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
   return groupedFields;
 }
 
-
 //https://spec.graphql.org/draft/#DoesFragmentTypeApply()
-bool doesFragmentTypeApply(
-    TypeDefinitionNode objectType, TypeConditionNode fragmentConditionType, DocumentNode schema) {
+bool doesFragmentTypeApply(TypeDefinitionNode objectType,
+    TypeConditionNode fragmentConditionType, DocumentNode schema) {
   final fragmentType = schema.definitions.firstWhereOrNull((definition) =>
-      definition is TypeDefinitionNode &&
-      definition.name.value == fragmentConditionType.on.name.value) as TypeDefinitionNode?;
+          definition is TypeDefinitionNode &&
+          definition.name.value == fragmentConditionType.on.name.value)
+      as TypeDefinitionNode?;
 
   if (fragmentType is UnionTypeDefinitionNode) {
-    return fragmentType.types.any((type) => type.name.value == objectType.name.value);
+    return fragmentType.types
+        .any((type) => type.name.value == objectType.name.value);
   } else if (fragmentType is InterfaceTypeDefinitionNode) {
     return objectType is ObjectTypeDefinitionNode &&
-        objectType.interfaces.any((type) => type.name.value == fragmentType.name.value);
+        objectType.interfaces
+            .any((type) => type.name.value == fragmentType.name.value);
   } else if (fragmentType is ObjectTypeDefinitionNode) {
     return objectType.name.value == fragmentType.name.value;
   } else {

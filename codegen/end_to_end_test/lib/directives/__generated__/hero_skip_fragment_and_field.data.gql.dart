@@ -14,21 +14,28 @@ abstract class GHeroSkipFragmentData
   GHeroSkipFragmentData._();
 
   factory GHeroSkipFragmentData(
-          [Function(GHeroSkipFragmentDataBuilder b) updates]) =
+          [void Function(GHeroSkipFragmentDataBuilder b) updates]) =
       _$GHeroSkipFragmentData;
 
   static void _initializeBuilder(GHeroSkipFragmentDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GHeroSkipFragmentData_hero? get hero;
   static Serializer<GHeroSkipFragmentData> get serializer =>
       _$gHeroSkipFragmentDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroSkipFragmentData.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroSkipFragmentData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroSkipFragmentData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroSkipFragmentData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroSkipFragmentData.serializer,
+        json,
+      );
 }
 
 abstract class GHeroSkipFragmentData_hero
@@ -38,11 +45,12 @@ abstract class GHeroSkipFragmentData_hero
   GHeroSkipFragmentData_hero._();
 
   factory GHeroSkipFragmentData_hero(
-          [Function(GHeroSkipFragmentData_heroBuilder b) updates]) =
+          [void Function(GHeroSkipFragmentData_heroBuilder b) updates]) =
       _$GHeroSkipFragmentData_hero;
 
   static void _initializeBuilder(GHeroSkipFragmentData_heroBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -52,12 +60,18 @@ abstract class GHeroSkipFragmentData_hero
   String get name;
   static Serializer<GHeroSkipFragmentData_hero> get serializer =>
       _$gHeroSkipFragmentDataHeroSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GHeroSkipFragmentData_hero.serializer, this) as Map<String, dynamic>);
+        GHeroSkipFragmentData_hero.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroSkipFragmentData_hero? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GHeroSkipFragmentData_hero.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroSkipFragmentData_hero.serializer,
+        json,
+      );
 }
 
 abstract class GHeroDetail {
@@ -71,11 +85,12 @@ abstract class GHeroDetailData
     implements Built<GHeroDetailData, GHeroDetailDataBuilder>, GHeroDetail {
   GHeroDetailData._();
 
-  factory GHeroDetailData([Function(GHeroDetailDataBuilder b) updates]) =
+  factory GHeroDetailData([void Function(GHeroDetailDataBuilder b) updates]) =
       _$GHeroDetailData;
 
   static void _initializeBuilder(GHeroDetailDataBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -85,10 +100,16 @@ abstract class GHeroDetailData
   String get name;
   static Serializer<GHeroDetailData> get serializer =>
       _$gHeroDetailDataSerializer;
+
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroDetailData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroDetailData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroDetailData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroDetailData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroDetailData.serializer,
+        json,
+      );
 }

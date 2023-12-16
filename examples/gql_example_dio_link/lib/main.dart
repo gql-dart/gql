@@ -26,7 +26,7 @@ void main(List<String> arguments) async {
       ))
       .first;
 
-  final countryName = res.data["countries"][0]["name"] as String;
+  final countryName = res.data!["countries"][0]["name"] as String;
 
   print("The country that uses EGP as a form of curruncy is ${countryName}");
 }

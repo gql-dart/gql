@@ -13,14 +13,20 @@ abstract class GHeroNoVarsVars
     implements Built<GHeroNoVarsVars, GHeroNoVarsVarsBuilder> {
   GHeroNoVarsVars._();
 
-  factory GHeroNoVarsVars([Function(GHeroNoVarsVarsBuilder b) updates]) =
+  factory GHeroNoVarsVars([void Function(GHeroNoVarsVarsBuilder b) updates]) =
       _$GHeroNoVarsVars;
 
   static Serializer<GHeroNoVarsVars> get serializer =>
       _$gHeroNoVarsVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroNoVarsVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroNoVarsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroNoVarsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroNoVarsVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroNoVarsVars.serializer,
+        json,
+      );
 }

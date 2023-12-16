@@ -18,19 +18,28 @@ abstract class GHeroMergeSkip
     implements Built<GHeroMergeSkip, GHeroMergeSkipBuilder> {
   GHeroMergeSkip._();
 
-  factory GHeroMergeSkip([Function(GHeroMergeSkipBuilder b) updates]) =
+  factory GHeroMergeSkip([void Function(GHeroMergeSkipBuilder b) updates]) =
       _$GHeroMergeSkip;
 
   static void _initializeBuilder(GHeroMergeSkipBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'HeroMergeSkip');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'HeroMergeSkip',
+    );
+
   _i3.GHeroMergeSkipVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroMergeSkip> get serializer =>
       _$gHeroMergeSkipSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GHeroMergeSkip.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHeroMergeSkip.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroMergeSkip? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GHeroMergeSkip.serializer, json);
+      _i4.serializers.deserializeWith(
+        GHeroMergeSkip.serializer,
+        json,
+      );
 }

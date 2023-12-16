@@ -18,19 +18,29 @@ abstract class GHeroSkipFragment
     implements Built<GHeroSkipFragment, GHeroSkipFragmentBuilder> {
   GHeroSkipFragment._();
 
-  factory GHeroSkipFragment([Function(GHeroSkipFragmentBuilder b) updates]) =
+  factory GHeroSkipFragment(
+          [void Function(GHeroSkipFragmentBuilder b) updates]) =
       _$GHeroSkipFragment;
 
   static void _initializeBuilder(GHeroSkipFragmentBuilder b) => b
     ..operation = _i1.Operation(
-        document: _i2.document, operationName: 'HeroSkipFragment');
+      document: _i2.document,
+      operationName: 'HeroSkipFragment',
+    );
+
   _i3.GHeroSkipFragmentVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroSkipFragment> get serializer =>
       _$gHeroSkipFragmentSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GHeroSkipFragment.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHeroSkipFragment.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroSkipFragment? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GHeroSkipFragment.serializer, json);
+      _i4.serializers.deserializeWith(
+        GHeroSkipFragment.serializer,
+        json,
+      );
 }

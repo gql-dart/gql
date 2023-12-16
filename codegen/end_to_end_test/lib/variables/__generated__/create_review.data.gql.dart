@@ -15,21 +15,29 @@ abstract class GCreateReviewData
     implements Built<GCreateReviewData, GCreateReviewDataBuilder> {
   GCreateReviewData._();
 
-  factory GCreateReviewData([Function(GCreateReviewDataBuilder b) updates]) =
+  factory GCreateReviewData(
+          [void Function(GCreateReviewDataBuilder b) updates]) =
       _$GCreateReviewData;
 
   static void _initializeBuilder(GCreateReviewDataBuilder b) =>
       b..G__typename = 'Mutation';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GCreateReviewData_createReview? get createReview;
   static Serializer<GCreateReviewData> get serializer =>
       _$gCreateReviewDataSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GCreateReviewData.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GCreateReviewData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GCreateReviewData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GCreateReviewData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GCreateReviewData.serializer,
+        json,
+      );
 }
 
 abstract class GCreateReviewData_createReview
@@ -39,11 +47,12 @@ abstract class GCreateReviewData_createReview
   GCreateReviewData_createReview._();
 
   factory GCreateReviewData_createReview(
-          [Function(GCreateReviewData_createReviewBuilder b) updates]) =
+          [void Function(GCreateReviewData_createReviewBuilder b) updates]) =
       _$GCreateReviewData_createReview;
 
   static void _initializeBuilder(GCreateReviewData_createReviewBuilder b) =>
       b..G__typename = 'Review';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   _i2.GEpisode? get episode;
@@ -51,9 +60,15 @@ abstract class GCreateReviewData_createReview
   String? get commentary;
   static Serializer<GCreateReviewData_createReview> get serializer =>
       _$gCreateReviewDataCreateReviewSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GCreateReviewData_createReview.serializer, this) as Map<String, dynamic>);
+        GCreateReviewData_createReview.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GCreateReviewData_createReview? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GCreateReviewData_createReview.serializer, json);
+      _i1.serializers.deserializeWith(
+        GCreateReviewData_createReview.serializer,
+        json,
+      );
 }

@@ -1,6 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/common.dart";
 
 import "./source.dart";
 import "./src/ast.dart";
@@ -9,14 +10,15 @@ Library buildAstLibrary(
   SourceNode source,
 ) {
   final definitions = source.document.definitions.map(
-    (def) => fromNode(def).assignConst(_getName(def)).statement,
+    (def) =>
+        declareConst(identifier(_getName(def))).assign(fromNode(def)).statement,
   );
 
-  final document = refer(
-    "DocumentNode",
-    "package:gql/ast.dart",
-  )
-      .call(
+  final document = declareConst("document")
+      .assign(refer(
+        "DocumentNode",
+        "package:gql/ast.dart",
+      ).call(
         [],
         {
           "definitions": literalList(
@@ -28,8 +30,7 @@ Library buildAstLibrary(
                 ),
           ),
         },
-      )
-      .assignConst("document")
+      ))
       .statement;
 
   return Library(

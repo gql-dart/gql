@@ -37,6 +37,9 @@ targets:
         enabled: true
         options:
           schema: end_to_end_test|lib/graphql/schema.graphql
+          when_extensions:
+            when: true
+            maybeWhen: true
           type_overrides:
             Date:
               name: DateTime

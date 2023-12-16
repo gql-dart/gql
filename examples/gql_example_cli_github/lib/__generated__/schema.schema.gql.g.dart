@@ -36,9 +36,8 @@ GActionExecutionCapabilitySetting _$gActionExecutionCapabilitySettingValueOf(
 }
 
 final BuiltSet<GActionExecutionCapabilitySetting>
-    _$gActionExecutionCapabilitySettingValues =
-    new BuiltSet<GActionExecutionCapabilitySetting>(const <
-        GActionExecutionCapabilitySetting>[
+    _$gActionExecutionCapabilitySettingValues = new BuiltSet<
+        GActionExecutionCapabilitySetting>(const <GActionExecutionCapabilitySetting>[
   _$gActionExecutionCapabilitySettingALL_ACTIONS,
   _$gActionExecutionCapabilitySettingDISABLED,
   _$gActionExecutionCapabilitySettingLOCAL_ACTIONS_ONLY,
@@ -258,9 +257,8 @@ GDefaultRepositoryPermissionField _$gDefaultRepositoryPermissionFieldValueOf(
 }
 
 final BuiltSet<GDefaultRepositoryPermissionField>
-    _$gDefaultRepositoryPermissionFieldValues =
-    new BuiltSet<GDefaultRepositoryPermissionField>(const <
-        GDefaultRepositoryPermissionField>[
+    _$gDefaultRepositoryPermissionFieldValues = new BuiltSet<
+        GDefaultRepositoryPermissionField>(const <GDefaultRepositoryPermissionField>[
   _$gDefaultRepositoryPermissionFieldADMIN,
   _$gDefaultRepositoryPermissionFieldNONE,
   _$gDefaultRepositoryPermissionFieldREAD,
@@ -403,9 +401,8 @@ GEnterpriseAdministratorInvitationOrderField
 }
 
 final BuiltSet<GEnterpriseAdministratorInvitationOrderField>
-    _$gEnterpriseAdministratorInvitationOrderFieldValues =
-    new BuiltSet<GEnterpriseAdministratorInvitationOrderField>(const <
-        GEnterpriseAdministratorInvitationOrderField>[
+    _$gEnterpriseAdministratorInvitationOrderFieldValues = new BuiltSet<
+        GEnterpriseAdministratorInvitationOrderField>(const <GEnterpriseAdministratorInvitationOrderField>[
   _$gEnterpriseAdministratorInvitationOrderFieldCREATED_AT,
 ]);
 
@@ -469,9 +466,8 @@ GEnterpriseDefaultRepositoryPermissionSettingValue
 }
 
 final BuiltSet<GEnterpriseDefaultRepositoryPermissionSettingValue>
-    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues =
-    new BuiltSet<GEnterpriseDefaultRepositoryPermissionSettingValue>(const <
-        GEnterpriseDefaultRepositoryPermissionSettingValue>[
+    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues = new BuiltSet<
+        GEnterpriseDefaultRepositoryPermissionSettingValue>(const <GEnterpriseDefaultRepositoryPermissionSettingValue>[
   _$gEnterpriseDefaultRepositoryPermissionSettingValueADMIN,
   _$gEnterpriseDefaultRepositoryPermissionSettingValueNONE,
   _$gEnterpriseDefaultRepositoryPermissionSettingValueNO_POLICY,
@@ -504,9 +500,8 @@ GEnterpriseEnabledDisabledSettingValue
 }
 
 final BuiltSet<GEnterpriseEnabledDisabledSettingValue>
-    _$gEnterpriseEnabledDisabledSettingValueValues =
-    new BuiltSet<GEnterpriseEnabledDisabledSettingValue>(const <
-        GEnterpriseEnabledDisabledSettingValue>[
+    _$gEnterpriseEnabledDisabledSettingValueValues = new BuiltSet<
+        GEnterpriseEnabledDisabledSettingValue>(const <GEnterpriseEnabledDisabledSettingValue>[
   _$gEnterpriseEnabledDisabledSettingValueDISABLED,
   _$gEnterpriseEnabledDisabledSettingValueENABLED,
   _$gEnterpriseEnabledDisabledSettingValueNO_POLICY,
@@ -594,9 +589,8 @@ GEnterpriseMembersCanCreateRepositoriesSettingValue
 }
 
 final BuiltSet<GEnterpriseMembersCanCreateRepositoriesSettingValue>
-    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues =
-    new BuiltSet<GEnterpriseMembersCanCreateRepositoriesSettingValue>(const <
-        GEnterpriseMembersCanCreateRepositoriesSettingValue>[
+    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues = new BuiltSet<
+        GEnterpriseMembersCanCreateRepositoriesSettingValue>(const <GEnterpriseMembersCanCreateRepositoriesSettingValue>[
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueALL,
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueDISABLED,
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueNO_POLICY,
@@ -624,9 +618,8 @@ GEnterpriseMembersCanMakePurchasesSettingValue
 }
 
 final BuiltSet<GEnterpriseMembersCanMakePurchasesSettingValue>
-    _$gEnterpriseMembersCanMakePurchasesSettingValueValues =
-    new BuiltSet<GEnterpriseMembersCanMakePurchasesSettingValue>(const <
-        GEnterpriseMembersCanMakePurchasesSettingValue>[
+    _$gEnterpriseMembersCanMakePurchasesSettingValueValues = new BuiltSet<
+        GEnterpriseMembersCanMakePurchasesSettingValue>(const <GEnterpriseMembersCanMakePurchasesSettingValue>[
   _$gEnterpriseMembersCanMakePurchasesSettingValueDISABLED,
   _$gEnterpriseMembersCanMakePurchasesSettingValueENABLED,
 ]);
@@ -656,9 +649,8 @@ GEnterpriseServerInstallationOrderField
 }
 
 final BuiltSet<GEnterpriseServerInstallationOrderField>
-    _$gEnterpriseServerInstallationOrderFieldValues =
-    new BuiltSet<GEnterpriseServerInstallationOrderField>(const <
-        GEnterpriseServerInstallationOrderField>[
+    _$gEnterpriseServerInstallationOrderFieldValues = new BuiltSet<
+        GEnterpriseServerInstallationOrderField>(const <GEnterpriseServerInstallationOrderField>[
   _$gEnterpriseServerInstallationOrderFieldCREATED_AT,
   _$gEnterpriseServerInstallationOrderFieldCUSTOMER_NAME,
   _$gEnterpriseServerInstallationOrderFieldHOST_NAME,
@@ -679,9 +671,8 @@ GEnterpriseServerUserAccountEmailOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountEmailOrderField>
-    _$gEnterpriseServerUserAccountEmailOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountEmailOrderField>(const <
-        GEnterpriseServerUserAccountEmailOrderField>[
+    _$gEnterpriseServerUserAccountEmailOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountEmailOrderField>(const <GEnterpriseServerUserAccountEmailOrderField>[
   _$gEnterpriseServerUserAccountEmailOrderFieldEMAIL,
 ]);
 
@@ -705,9 +696,8 @@ GEnterpriseServerUserAccountOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountOrderField>
-    _$gEnterpriseServerUserAccountOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountOrderField>(const <
-        GEnterpriseServerUserAccountOrderField>[
+    _$gEnterpriseServerUserAccountOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountOrderField>(const <GEnterpriseServerUserAccountOrderField>[
   _$gEnterpriseServerUserAccountOrderFieldLOGIN,
   _$gEnterpriseServerUserAccountOrderFieldREMOTE_CREATED_AT,
 ]);
@@ -727,9 +717,8 @@ GEnterpriseServerUserAccountsUploadOrderField
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadOrderField>
-    _$gEnterpriseServerUserAccountsUploadOrderFieldValues =
-    new BuiltSet<GEnterpriseServerUserAccountsUploadOrderField>(const <
-        GEnterpriseServerUserAccountsUploadOrderField>[
+    _$gEnterpriseServerUserAccountsUploadOrderFieldValues = new BuiltSet<
+        GEnterpriseServerUserAccountsUploadOrderField>(const <GEnterpriseServerUserAccountsUploadOrderField>[
   _$gEnterpriseServerUserAccountsUploadOrderFieldCREATED_AT,
 ]);
 
@@ -758,9 +747,8 @@ GEnterpriseServerUserAccountsUploadSyncState
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadSyncState>
-    _$gEnterpriseServerUserAccountsUploadSyncStateValues =
-    new BuiltSet<GEnterpriseServerUserAccountsUploadSyncState>(const <
-        GEnterpriseServerUserAccountsUploadSyncState>[
+    _$gEnterpriseServerUserAccountsUploadSyncStateValues = new BuiltSet<
+        GEnterpriseServerUserAccountsUploadSyncState>(const <GEnterpriseServerUserAccountsUploadSyncState>[
   _$gEnterpriseServerUserAccountsUploadSyncStateFAILURE,
   _$gEnterpriseServerUserAccountsUploadSyncStatePENDING,
   _$gEnterpriseServerUserAccountsUploadSyncStateSUCCESS,
@@ -786,9 +774,8 @@ GEnterpriseUserAccountMembershipRole
 }
 
 final BuiltSet<GEnterpriseUserAccountMembershipRole>
-    _$gEnterpriseUserAccountMembershipRoleValues =
-    new BuiltSet<GEnterpriseUserAccountMembershipRole>(const <
-        GEnterpriseUserAccountMembershipRole>[
+    _$gEnterpriseUserAccountMembershipRoleValues = new BuiltSet<
+        GEnterpriseUserAccountMembershipRole>(const <GEnterpriseUserAccountMembershipRole>[
   _$gEnterpriseUserAccountMembershipRoleMEMBER,
   _$gEnterpriseUserAccountMembershipRoleOWNER,
 ]);
@@ -1050,9 +1037,8 @@ GIdentityProviderConfigurationState
 }
 
 final BuiltSet<GIdentityProviderConfigurationState>
-    _$gIdentityProviderConfigurationStateValues =
-    new BuiltSet<GIdentityProviderConfigurationState>(const <
-        GIdentityProviderConfigurationState>[
+    _$gIdentityProviderConfigurationStateValues = new BuiltSet<
+        GIdentityProviderConfigurationState>(const <GIdentityProviderConfigurationState>[
   _$gIdentityProviderConfigurationStateCONFIGURED,
   _$gIdentityProviderConfigurationStateENFORCED,
   _$gIdentityProviderConfigurationStateUNCONFIGURED,
@@ -1458,9 +1444,8 @@ GOauthApplicationCreateAuditEntryState
 }
 
 final BuiltSet<GOauthApplicationCreateAuditEntryState>
-    _$gOauthApplicationCreateAuditEntryStateValues =
-    new BuiltSet<GOauthApplicationCreateAuditEntryState>(const <
-        GOauthApplicationCreateAuditEntryState>[
+    _$gOauthApplicationCreateAuditEntryStateValues = new BuiltSet<
+        GOauthApplicationCreateAuditEntryState>(const <GOauthApplicationCreateAuditEntryState>[
   _$gOauthApplicationCreateAuditEntryStateACTIVE,
   _$gOauthApplicationCreateAuditEntryStatePENDING_DELETION,
   _$gOauthApplicationCreateAuditEntryStateSUSPENDED,
@@ -1549,9 +1534,8 @@ GOrgAddMemberAuditEntryPermission _$gOrgAddMemberAuditEntryPermissionValueOf(
 }
 
 final BuiltSet<GOrgAddMemberAuditEntryPermission>
-    _$gOrgAddMemberAuditEntryPermissionValues =
-    new BuiltSet<GOrgAddMemberAuditEntryPermission>(const <
-        GOrgAddMemberAuditEntryPermission>[
+    _$gOrgAddMemberAuditEntryPermissionValues = new BuiltSet<
+        GOrgAddMemberAuditEntryPermission>(const <GOrgAddMemberAuditEntryPermission>[
   _$gOrgAddMemberAuditEntryPermissionADMIN,
   _$gOrgAddMemberAuditEntryPermissionREAD,
 ]);
@@ -1590,9 +1574,8 @@ GOrgCreateAuditEntryBillingPlan _$gOrgCreateAuditEntryBillingPlanValueOf(
 }
 
 final BuiltSet<GOrgCreateAuditEntryBillingPlan>
-    _$gOrgCreateAuditEntryBillingPlanValues =
-    new BuiltSet<GOrgCreateAuditEntryBillingPlan>(const <
-        GOrgCreateAuditEntryBillingPlan>[
+    _$gOrgCreateAuditEntryBillingPlanValues = new BuiltSet<
+        GOrgCreateAuditEntryBillingPlan>(const <GOrgCreateAuditEntryBillingPlan>[
   _$gOrgCreateAuditEntryBillingPlanBUSINESS,
   _$gOrgCreateAuditEntryBillingPlanBUSINESS_PLUS,
   _$gOrgCreateAuditEntryBillingPlanFREE,
@@ -1628,9 +1611,8 @@ GOrgRemoveBillingManagerAuditEntryReason
 }
 
 final BuiltSet<GOrgRemoveBillingManagerAuditEntryReason>
-    _$gOrgRemoveBillingManagerAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveBillingManagerAuditEntryReason>(const <
-        GOrgRemoveBillingManagerAuditEntryReason>[
+    _$gOrgRemoveBillingManagerAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveBillingManagerAuditEntryReason>(const <GOrgRemoveBillingManagerAuditEntryReason>[
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
   _$gOrgRemoveBillingManagerAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
@@ -1671,9 +1653,8 @@ GOrgRemoveMemberAuditEntryMembershipType
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryMembershipType>
-    _$gOrgRemoveMemberAuditEntryMembershipTypeValues =
-    new BuiltSet<GOrgRemoveMemberAuditEntryMembershipType>(const <
-        GOrgRemoveMemberAuditEntryMembershipType>[
+    _$gOrgRemoveMemberAuditEntryMembershipTypeValues = new BuiltSet<
+        GOrgRemoveMemberAuditEntryMembershipType>(const <GOrgRemoveMemberAuditEntryMembershipType>[
   _$gOrgRemoveMemberAuditEntryMembershipTypeADMIN,
   _$gOrgRemoveMemberAuditEntryMembershipTypeBILLING_MANAGER,
   _$gOrgRemoveMemberAuditEntryMembershipTypeDIRECT_MEMBER,
@@ -1708,9 +1689,8 @@ GOrgRemoveMemberAuditEntryReason _$gOrgRemoveMemberAuditEntryReasonValueOf(
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryReason>
-    _$gOrgRemoveMemberAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveMemberAuditEntryReason>(const <
-        GOrgRemoveMemberAuditEntryReason>[
+    _$gOrgRemoveMemberAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveMemberAuditEntryReason>(const <GOrgRemoveMemberAuditEntryReason>[
   _$gOrgRemoveMemberAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveMemberAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
   _$gOrgRemoveMemberAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
@@ -1746,8 +1726,8 @@ GOrgRemoveOutsideCollaboratorAuditEntryMembershipType
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>
     _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeValues =
-    new BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>(const <
-        GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>[
+    new BuiltSet<
+        GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>(const <GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeBILLING_MANAGER,
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeOUTSIDE_COLLABORATOR,
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeUNAFFILIATED,
@@ -1775,9 +1755,8 @@ GOrgRemoveOutsideCollaboratorAuditEntryReason
 }
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryReason>
-    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues =
-    new BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryReason>(const <
-        GOrgRemoveOutsideCollaboratorAuditEntryReason>[
+    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues = new BuiltSet<
+        GOrgRemoveOutsideCollaboratorAuditEntryReason>(const <GOrgRemoveOutsideCollaboratorAuditEntryReason>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
 ]);
@@ -1814,8 +1793,8 @@ GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission
 
 final BuiltSet<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>
     _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionValues =
-    new BuiltSet<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>(const <
-        GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>[
+    new BuiltSet<
+        GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>(const <GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>[
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionADMIN,
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionNONE,
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionREAD,
@@ -1842,9 +1821,8 @@ GOrgUpdateMemberAuditEntryPermission
 }
 
 final BuiltSet<GOrgUpdateMemberAuditEntryPermission>
-    _$gOrgUpdateMemberAuditEntryPermissionValues =
-    new BuiltSet<GOrgUpdateMemberAuditEntryPermission>(const <
-        GOrgUpdateMemberAuditEntryPermission>[
+    _$gOrgUpdateMemberAuditEntryPermissionValues = new BuiltSet<
+        GOrgUpdateMemberAuditEntryPermission>(const <GOrgUpdateMemberAuditEntryPermission>[
   _$gOrgUpdateMemberAuditEntryPermissionADMIN,
   _$gOrgUpdateMemberAuditEntryPermissionREAD,
 ]);
@@ -1873,8 +1851,8 @@ GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility
 
 final BuiltSet<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>
     _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityValues =
-    new BuiltSet<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>(const <
-        GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>[
+    new BuiltSet<
+        GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>(const <GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>[
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityALL,
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityPUBLIC,
 ]);
@@ -1984,8 +1962,8 @@ GOrganizationMembersCanCreateRepositoriesSettingValue
 
 final BuiltSet<GOrganizationMembersCanCreateRepositoriesSettingValue>
     _$gOrganizationMembersCanCreateRepositoriesSettingValueValues =
-    new BuiltSet<GOrganizationMembersCanCreateRepositoriesSettingValue>(const <
-        GOrganizationMembersCanCreateRepositoriesSettingValue>[
+    new BuiltSet<
+        GOrganizationMembersCanCreateRepositoriesSettingValue>(const <GOrganizationMembersCanCreateRepositoriesSettingValue>[
   _$gOrganizationMembersCanCreateRepositoriesSettingValueALL,
   _$gOrganizationMembersCanCreateRepositoriesSettingValueDISABLED,
   _$gOrganizationMembersCanCreateRepositoriesSettingValuePRIVATE,
@@ -2636,9 +2614,8 @@ GPullRequestTimelineItemsItemType _$gPullRequestTimelineItemsItemTypeValueOf(
 }
 
 final BuiltSet<GPullRequestTimelineItemsItemType>
-    _$gPullRequestTimelineItemsItemTypeValues =
-    new BuiltSet<GPullRequestTimelineItemsItemType>(const <
-        GPullRequestTimelineItemsItemType>[
+    _$gPullRequestTimelineItemsItemTypeValues = new BuiltSet<
+        GPullRequestTimelineItemsItemType>(const <GPullRequestTimelineItemsItemType>[
   _$gPullRequestTimelineItemsItemTypeADDED_TO_PROJECT_EVENT,
   _$gPullRequestTimelineItemsItemTypeASSIGNED_EVENT,
   _$gPullRequestTimelineItemsItemTypeBASE_REF_CHANGED_EVENT,
@@ -2937,9 +2914,8 @@ GRepoAccessAuditEntryVisibility _$gRepoAccessAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoAccessAuditEntryVisibility>
-    _$gRepoAccessAuditEntryVisibilityValues =
-    new BuiltSet<GRepoAccessAuditEntryVisibility>(const <
-        GRepoAccessAuditEntryVisibility>[
+    _$gRepoAccessAuditEntryVisibilityValues = new BuiltSet<
+        GRepoAccessAuditEntryVisibility>(const <GRepoAccessAuditEntryVisibility>[
   _$gRepoAccessAuditEntryVisibilityINTERNAL,
   _$gRepoAccessAuditEntryVisibilityPRIVATE,
   _$gRepoAccessAuditEntryVisibilityPUBLIC,
@@ -2970,9 +2946,8 @@ GRepoAddMemberAuditEntryVisibility _$gRepoAddMemberAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoAddMemberAuditEntryVisibility>
-    _$gRepoAddMemberAuditEntryVisibilityValues =
-    new BuiltSet<GRepoAddMemberAuditEntryVisibility>(const <
-        GRepoAddMemberAuditEntryVisibility>[
+    _$gRepoAddMemberAuditEntryVisibilityValues = new BuiltSet<
+        GRepoAddMemberAuditEntryVisibility>(const <GRepoAddMemberAuditEntryVisibility>[
   _$gRepoAddMemberAuditEntryVisibilityINTERNAL,
   _$gRepoAddMemberAuditEntryVisibilityPRIVATE,
   _$gRepoAddMemberAuditEntryVisibilityPUBLIC,
@@ -3003,9 +2978,8 @@ GRepoArchivedAuditEntryVisibility _$gRepoArchivedAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoArchivedAuditEntryVisibility>
-    _$gRepoArchivedAuditEntryVisibilityValues =
-    new BuiltSet<GRepoArchivedAuditEntryVisibility>(const <
-        GRepoArchivedAuditEntryVisibility>[
+    _$gRepoArchivedAuditEntryVisibilityValues = new BuiltSet<
+        GRepoArchivedAuditEntryVisibility>(const <GRepoArchivedAuditEntryVisibility>[
   _$gRepoArchivedAuditEntryVisibilityINTERNAL,
   _$gRepoArchivedAuditEntryVisibilityPRIVATE,
   _$gRepoArchivedAuditEntryVisibilityPUBLIC,
@@ -3036,9 +3010,8 @@ GRepoChangeMergeSettingAuditEntryMergeType
 }
 
 final BuiltSet<GRepoChangeMergeSettingAuditEntryMergeType>
-    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues =
-    new BuiltSet<GRepoChangeMergeSettingAuditEntryMergeType>(const <
-        GRepoChangeMergeSettingAuditEntryMergeType>[
+    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues = new BuiltSet<
+        GRepoChangeMergeSettingAuditEntryMergeType>(const <GRepoChangeMergeSettingAuditEntryMergeType>[
   _$gRepoChangeMergeSettingAuditEntryMergeTypeMERGE,
   _$gRepoChangeMergeSettingAuditEntryMergeTypeREBASE,
   _$gRepoChangeMergeSettingAuditEntryMergeTypeSQUASH,
@@ -3067,9 +3040,8 @@ GRepoCreateAuditEntryVisibility _$gRepoCreateAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoCreateAuditEntryVisibility>
-    _$gRepoCreateAuditEntryVisibilityValues =
-    new BuiltSet<GRepoCreateAuditEntryVisibility>(const <
-        GRepoCreateAuditEntryVisibility>[
+    _$gRepoCreateAuditEntryVisibilityValues = new BuiltSet<
+        GRepoCreateAuditEntryVisibility>(const <GRepoCreateAuditEntryVisibility>[
   _$gRepoCreateAuditEntryVisibilityINTERNAL,
   _$gRepoCreateAuditEntryVisibilityPRIVATE,
   _$gRepoCreateAuditEntryVisibilityPUBLIC,
@@ -3100,9 +3072,8 @@ GRepoDestroyAuditEntryVisibility _$gRepoDestroyAuditEntryVisibilityValueOf(
 }
 
 final BuiltSet<GRepoDestroyAuditEntryVisibility>
-    _$gRepoDestroyAuditEntryVisibilityValues =
-    new BuiltSet<GRepoDestroyAuditEntryVisibility>(const <
-        GRepoDestroyAuditEntryVisibility>[
+    _$gRepoDestroyAuditEntryVisibilityValues = new BuiltSet<
+        GRepoDestroyAuditEntryVisibility>(const <GRepoDestroyAuditEntryVisibility>[
   _$gRepoDestroyAuditEntryVisibilityINTERNAL,
   _$gRepoDestroyAuditEntryVisibilityPRIVATE,
   _$gRepoDestroyAuditEntryVisibilityPUBLIC,
@@ -3133,9 +3104,8 @@ GRepoRemoveMemberAuditEntryVisibility
 }
 
 final BuiltSet<GRepoRemoveMemberAuditEntryVisibility>
-    _$gRepoRemoveMemberAuditEntryVisibilityValues =
-    new BuiltSet<GRepoRemoveMemberAuditEntryVisibility>(const <
-        GRepoRemoveMemberAuditEntryVisibility>[
+    _$gRepoRemoveMemberAuditEntryVisibilityValues = new BuiltSet<
+        GRepoRemoveMemberAuditEntryVisibility>(const <GRepoRemoveMemberAuditEntryVisibility>[
   _$gRepoRemoveMemberAuditEntryVisibilityINTERNAL,
   _$gRepoRemoveMemberAuditEntryVisibilityPRIVATE,
   _$gRepoRemoveMemberAuditEntryVisibilityPUBLIC,
@@ -3227,9 +3197,8 @@ GRepositoryInvitationOrderField _$gRepositoryInvitationOrderFieldValueOf(
 }
 
 final BuiltSet<GRepositoryInvitationOrderField>
-    _$gRepositoryInvitationOrderFieldValues =
-    new BuiltSet<GRepositoryInvitationOrderField>(const <
-        GRepositoryInvitationOrderField>[
+    _$gRepositoryInvitationOrderFieldValues = new BuiltSet<
+        GRepositoryInvitationOrderField>(const <GRepositoryInvitationOrderField>[
   _$gRepositoryInvitationOrderFieldCREATED_AT,
   _$gRepositoryInvitationOrderFieldINVITEE_LOGIN,
 ]);
@@ -3554,9 +3523,8 @@ GSecurityAdvisoryIdentifierType _$gSecurityAdvisoryIdentifierTypeValueOf(
 }
 
 final BuiltSet<GSecurityAdvisoryIdentifierType>
-    _$gSecurityAdvisoryIdentifierTypeValues =
-    new BuiltSet<GSecurityAdvisoryIdentifierType>(const <
-        GSecurityAdvisoryIdentifierType>[
+    _$gSecurityAdvisoryIdentifierTypeValues = new BuiltSet<
+        GSecurityAdvisoryIdentifierType>(const <GSecurityAdvisoryIdentifierType>[
   _$gSecurityAdvisoryIdentifierTypeCVE,
   _$gSecurityAdvisoryIdentifierTypeGHSA,
 ]);
@@ -3631,9 +3599,8 @@ GSecurityVulnerabilityOrderField _$gSecurityVulnerabilityOrderFieldValueOf(
 }
 
 final BuiltSet<GSecurityVulnerabilityOrderField>
-    _$gSecurityVulnerabilityOrderFieldValues =
-    new BuiltSet<GSecurityVulnerabilityOrderField>(const <
-        GSecurityVulnerabilityOrderField>[
+    _$gSecurityVulnerabilityOrderFieldValues = new BuiltSet<
+        GSecurityVulnerabilityOrderField>(const <GSecurityVulnerabilityOrderField>[
   _$gSecurityVulnerabilityOrderFieldUPDATED_AT,
 ]);
 
@@ -3789,9 +3756,8 @@ GTeamDiscussionCommentOrderField _$gTeamDiscussionCommentOrderFieldValueOf(
 }
 
 final BuiltSet<GTeamDiscussionCommentOrderField>
-    _$gTeamDiscussionCommentOrderFieldValues =
-    new BuiltSet<GTeamDiscussionCommentOrderField>(const <
-        GTeamDiscussionCommentOrderField>[
+    _$gTeamDiscussionCommentOrderFieldValues = new BuiltSet<
+        GTeamDiscussionCommentOrderField>(const <GTeamDiscussionCommentOrderField>[
   _$gTeamDiscussionCommentOrderFieldNUMBER,
 ]);
 
@@ -4861,8 +4827,8 @@ class _$GAddAssigneesToAssignableInputSerializer
           specifiedType: const FullType(String)),
       'assigneeIds',
       serializers.serialize(object.assigneeIds,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
     Object? value;
     value = object.clientMutationId;
@@ -4894,7 +4860,7 @@ class _$GAddAssigneesToAssignableInputSerializer
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'clientMutationId':
@@ -4984,8 +4950,8 @@ class _$GAddLabelsToLabelableInputSerializer
     final result = <Object?>[
       'labelIds',
       serializers.serialize(object.labelIds,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
       'labelableId',
       serializers.serialize(object.labelableId,
           specifiedType: const FullType(String)),
@@ -5020,7 +4986,7 @@ class _$GAddLabelsToLabelableInputSerializer
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'labelableId':
@@ -6235,8 +6201,8 @@ class _$GCommitAuthorSerializer implements StructuredSerializer<GCommitAuthor> {
       result
         ..add('emails')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.id;
     if (value != null) {
@@ -6263,7 +6229,7 @@ class _$GCommitAuthorSerializer implements StructuredSerializer<GCommitAuthor> {
         case 'emails':
           result.emails.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'id':
@@ -6562,8 +6528,8 @@ class _$GCreateBranchProtectionRuleInputSerializer
       result
         ..add('pushActorIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.requiredApprovingReviewCount;
     if (value != null) {
@@ -6576,8 +6542,8 @@ class _$GCreateBranchProtectionRuleInputSerializer
       result
         ..add('requiredStatusCheckContexts')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.requiresApprovingReviews;
     if (value != null) {
@@ -6633,8 +6599,8 @@ class _$GCreateBranchProtectionRuleInputSerializer
       result
         ..add('reviewDismissalActorIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -6670,7 +6636,7 @@ class _$GCreateBranchProtectionRuleInputSerializer
         case 'pushActorIds':
           result.pushActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'repositoryId':
@@ -6685,7 +6651,7 @@ class _$GCreateBranchProtectionRuleInputSerializer
           result.requiredStatusCheckContexts.replace(serializers.deserialize(
                   value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'requiresApprovingReviews':
@@ -6719,7 +6685,7 @@ class _$GCreateBranchProtectionRuleInputSerializer
         case 'reviewDismissalActorIds':
           result.reviewDismissalActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -6746,8 +6712,8 @@ class _$GCreateEnterpriseOrganizationInputSerializer
     final result = <Object?>[
       'adminLogins',
       serializers.serialize(object.adminLogins,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
       'billingEmail',
       serializers.serialize(object.billingEmail,
           specifiedType: const FullType(String)),
@@ -6787,7 +6753,7 @@ class _$GCreateEnterpriseOrganizationInputSerializer
         case 'adminLogins':
           result.adminLogins.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'billingEmail':
@@ -6841,8 +6807,8 @@ class _$GCreateIssueInputSerializer
       result
         ..add('assigneeIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.body;
     if (value != null) {
@@ -6863,8 +6829,8 @@ class _$GCreateIssueInputSerializer
       result
         ..add('labelIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.milestoneId;
     if (value != null) {
@@ -6878,8 +6844,8 @@ class _$GCreateIssueInputSerializer
       result
         ..add('projectIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -6899,7 +6865,7 @@ class _$GCreateIssueInputSerializer
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'body':
@@ -6913,7 +6879,7 @@ class _$GCreateIssueInputSerializer
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'milestoneId':
@@ -6923,7 +6889,7 @@ class _$GCreateIssueInputSerializer
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'repositoryId':
@@ -6982,8 +6948,8 @@ class _$GCreateProjectInputSerializer
       result
         ..add('repositoryIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.template;
     if (value != null) {
@@ -7026,7 +6992,7 @@ class _$GCreateProjectInputSerializer
         case 'repositoryIds':
           result.repositoryIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'template':
@@ -9471,8 +9437,8 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
       result
         ..add('labels')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.mentioned;
     if (value != null) {
@@ -9501,7 +9467,7 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
         ..add('states')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(GIssueState)])));
+                BuiltList, const [const FullType(GIssueState)])));
     }
     value = object.viewerSubscribed;
     if (value != null) {
@@ -9536,7 +9502,7 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
         case 'labels':
           result.labels.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'mentioned':
@@ -9554,7 +9520,7 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
         case 'states':
           result.states.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(GIssueState)]))!
+                      BuiltList, const [const FullType(GIssueState)]))!
               as BuiltList<Object?>);
           break;
         case 'viewerSubscribed':
@@ -11603,8 +11569,8 @@ class _$GRemoveAssigneesFromAssignableInputSerializer
           specifiedType: const FullType(String)),
       'assigneeIds',
       serializers.serialize(object.assigneeIds,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
     Object? value;
     value = object.clientMutationId;
@@ -11636,7 +11602,7 @@ class _$GRemoveAssigneesFromAssignableInputSerializer
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'clientMutationId':
@@ -11795,8 +11761,8 @@ class _$GRemoveLabelsFromLabelableInputSerializer
     final result = <Object?>[
       'labelIds',
       serializers.serialize(object.labelIds,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
       'labelableId',
       serializers.serialize(object.labelableId,
           specifiedType: const FullType(String)),
@@ -11831,7 +11797,7 @@ class _$GRemoveLabelsFromLabelableInputSerializer
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'labelableId':
@@ -12567,8 +12533,8 @@ class _$GRequestReviewsInputSerializer
       result
         ..add('teamIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.union;
     if (value != null) {
@@ -12582,8 +12548,8 @@ class _$GRequestReviewsInputSerializer
       result
         ..add('userIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -12611,7 +12577,7 @@ class _$GRequestReviewsInputSerializer
         case 'teamIds':
           result.teamIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'union':
@@ -12621,7 +12587,7 @@ class _$GRequestReviewsInputSerializer
         case 'userIds':
           result.userIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -14345,8 +14311,8 @@ class _$GUpdateBranchProtectionRuleInputSerializer
       result
         ..add('pushActorIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.requiredApprovingReviewCount;
     if (value != null) {
@@ -14359,8 +14325,8 @@ class _$GUpdateBranchProtectionRuleInputSerializer
       result
         ..add('requiredStatusCheckContexts')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.requiresApprovingReviews;
     if (value != null) {
@@ -14416,8 +14382,8 @@ class _$GUpdateBranchProtectionRuleInputSerializer
       result
         ..add('reviewDismissalActorIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -14457,7 +14423,7 @@ class _$GUpdateBranchProtectionRuleInputSerializer
         case 'pushActorIds':
           result.pushActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'requiredApprovingReviewCount':
@@ -14468,7 +14434,7 @@ class _$GUpdateBranchProtectionRuleInputSerializer
           result.requiredStatusCheckContexts.replace(serializers.deserialize(
                   value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'requiresApprovingReviews':
@@ -14502,7 +14468,7 @@ class _$GUpdateBranchProtectionRuleInputSerializer
         case 'reviewDismissalActorIds':
           result.reviewDismissalActorIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -15870,8 +15836,8 @@ class _$GUpdateIssueInputSerializer
       result
         ..add('assigneeIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.body;
     if (value != null) {
@@ -15892,8 +15858,8 @@ class _$GUpdateIssueInputSerializer
       result
         ..add('labelIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.milestoneId;
     if (value != null) {
@@ -15907,8 +15873,8 @@ class _$GUpdateIssueInputSerializer
       result
         ..add('projectIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.state;
     if (value != null) {
@@ -15942,7 +15908,7 @@ class _$GUpdateIssueInputSerializer
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'body':
@@ -15960,7 +15926,7 @@ class _$GUpdateIssueInputSerializer
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'milestoneId':
@@ -15970,7 +15936,7 @@ class _$GUpdateIssueInputSerializer
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'state':
@@ -16256,8 +16222,8 @@ class _$GUpdatePullRequestInputSerializer
       result
         ..add('assigneeIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.baseRefName;
     if (value != null) {
@@ -16285,8 +16251,8 @@ class _$GUpdatePullRequestInputSerializer
       result
         ..add('labelIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.maintainerCanModify;
     if (value != null) {
@@ -16307,8 +16273,8 @@ class _$GUpdatePullRequestInputSerializer
       result
         ..add('projectIds')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType.nullable(String)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.state;
     if (value != null) {
@@ -16342,7 +16308,7 @@ class _$GUpdatePullRequestInputSerializer
         case 'assigneeIds':
           result.assigneeIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'baseRefName':
@@ -16360,7 +16326,7 @@ class _$GUpdatePullRequestInputSerializer
         case 'labelIds':
           result.labelIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'maintainerCanModify':
@@ -16374,7 +16340,7 @@ class _$GUpdatePullRequestInputSerializer
         case 'projectIds':
           result.projectIds.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
         case 'pullRequestId':
@@ -16983,8 +16949,8 @@ class _$GUpdateTopicsInputSerializer
           specifiedType: const FullType(String)),
       'topicNames',
       serializers.serialize(object.topicNames,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType.nullable(String)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
     Object? value;
     value = object.clientMutationId;
@@ -17020,7 +16986,7 @@ class _$GUpdateTopicsInputSerializer
         case 'topicNames':
           result.topicNames.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType.nullable(String)]))!
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -17158,7 +17124,11 @@ class _$GAcceptEnterpriseAdministratorInvitationInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), invitationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, invitationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17268,8 +17238,12 @@ class _$GAcceptTopicSuggestionInput extends GAcceptTopicSuggestionInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), name.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17345,7 +17319,7 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
   @override
   final String assignableId;
   @override
-  final BuiltList<String?> assigneeIds;
+  final BuiltList<String> assigneeIds;
   @override
   final String? clientMutationId;
 
@@ -17384,8 +17358,12 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, assignableId.hashCode), assigneeIds.hashCode),
-        clientMutationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assignableId.hashCode);
+    _$hash = $jc(_$hash, assigneeIds.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17408,10 +17386,10 @@ class GAddAssigneesToAssignableInputBuilder
   String? get assignableId => _$this._assignableId;
   set assignableId(String? assignableId) => _$this._assignableId = assignableId;
 
-  ListBuilder<String?>? _assigneeIds;
-  ListBuilder<String?> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String?>();
-  set assigneeIds(ListBuilder<String?>? assigneeIds) =>
+  ListBuilder<String>? _assigneeIds;
+  ListBuilder<String> get assigneeIds =>
+      _$this._assigneeIds ??= new ListBuilder<String>();
+  set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
   String? _clientMutationId;
@@ -17510,8 +17488,12 @@ class _$GAddCommentInput extends GAddCommentInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-        subjectId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, subjectId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17585,7 +17567,7 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
   @override
   final String? clientMutationId;
   @override
-  final BuiltList<String?> labelIds;
+  final BuiltList<String> labelIds;
   @override
   final String labelableId;
 
@@ -17624,8 +17606,12 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), labelIds.hashCode),
-        labelableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, labelIds.hashCode);
+    _$hash = $jc(_$hash, labelableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17648,10 +17634,10 @@ class GAddLabelsToLabelableInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  ListBuilder<String?>? _labelIds;
-  ListBuilder<String?> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String?>();
-  set labelIds(ListBuilder<String?>? labelIds) => _$this._labelIds = labelIds;
+  ListBuilder<String>? _labelIds;
+  ListBuilder<String> get labelIds =>
+      _$this._labelIds ??= new ListBuilder<String>();
+  set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _labelableId;
   String? get labelableId => _$this._labelableId;
@@ -17754,10 +17740,13 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), contentId.hashCode),
-            note.hashCode),
-        projectColumnId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, contentId.hashCode);
+    _$hash = $jc(_$hash, note.hashCode);
+    _$hash = $jc(_$hash, projectColumnId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -17875,8 +17864,12 @@ class _$GAddProjectColumnInput extends GAddProjectColumnInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), name.hashCode),
-        projectId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, projectId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18009,20 +18002,17 @@ class _$GAddPullRequestReviewCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc($jc(0, body.hashCode),
-                                clientMutationId.hashCode),
-                            commitOID.hashCode),
-                        inReplyTo.hashCode),
-                    path.hashCode),
-                position.hashCode),
-            pullRequestId.hashCode),
-        pullRequestReviewId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, commitOID.hashCode);
+    _$hash = $jc(_$hash, inReplyTo.hashCode);
+    _$hash = $jc(_$hash, path.hashCode);
+    _$hash = $jc(_$hash, position.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18199,14 +18189,15 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                    comments.hashCode),
-                commitOID.hashCode),
-            event.hashCode),
-        pullRequestId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, comments.hashCode);
+    _$hash = $jc(_$hash, commitOID.hashCode);
+    _$hash = $jc(_$hash, event.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18359,8 +18350,12 @@ class _$GAddReactionInput extends GAddReactionInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), content.hashCode),
-        subjectId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, content.hashCode);
+    _$hash = $jc(_$hash, subjectId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18462,7 +18457,11 @@ class _$GAddStarInput extends GAddStarInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), starrableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, starrableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18560,7 +18559,11 @@ class _$GArchiveRepositoryInput extends GArchiveRepositoryInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18652,7 +18655,11 @@ class _$GAuditLogOrder extends GAuditLogOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18750,7 +18757,11 @@ class _$GCancelEnterpriseAdminInvitationInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), invitationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, invitationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -18866,14 +18877,15 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, clientMutationId.hashCode), emoji.hashCode),
-                    expiresAt.hashCode),
-                limitedAvailability.hashCode),
-            message.hashCode),
-        organizationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, emoji.hashCode);
+    _$hash = $jc(_$hash, expiresAt.hashCode);
+    _$hash = $jc(_$hash, limitedAvailability.hashCode);
+    _$hash = $jc(_$hash, message.hashCode);
+    _$hash = $jc(_$hash, organizationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19014,7 +19026,11 @@ class _$GClearLabelsFromLabelableInput extends GClearLabelsFromLabelableInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), labelableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, labelableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19140,16 +19156,16 @@ class _$GCloneProjectInput extends GCloneProjectInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                        includeWorkflows.hashCode),
-                    name.hashCode),
-                public.hashCode),
-            sourceId.hashCode),
-        targetOwnerId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, includeWorkflows.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, public.hashCode);
+    _$hash = $jc(_$hash, sourceId.hashCode);
+    _$hash = $jc(_$hash, targetOwnerId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19310,16 +19326,15 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc(0, clientMutationId.hashCode),
-                        description.hashCode),
-                    name.hashCode),
-                ownerId.hashCode),
-            repositoryId.hashCode),
-        visibility.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, visibility.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19449,7 +19464,11 @@ class _$GCloseIssueInput extends GCloseIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), issueId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, issueId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19547,7 +19566,11 @@ class _$GClosePullRequestInput extends GClosePullRequestInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), pullRequestId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19612,7 +19635,7 @@ class GClosePullRequestInputBuilder
 
 class _$GCommitAuthor extends GCommitAuthor {
   @override
-  final BuiltList<String?>? emails;
+  final BuiltList<String>? emails;
   @override
   final String? id;
 
@@ -19636,7 +19659,11 @@ class _$GCommitAuthor extends GCommitAuthor {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, emails.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, emails.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19652,10 +19679,10 @@ class GCommitAuthorBuilder
     implements Builder<GCommitAuthor, GCommitAuthorBuilder> {
   _$GCommitAuthor? _$v;
 
-  ListBuilder<String?>? _emails;
-  ListBuilder<String?> get emails =>
-      _$this._emails ??= new ListBuilder<String?>();
-  set emails(ListBuilder<String?>? emails) => _$this._emails = emails;
+  ListBuilder<String>? _emails;
+  ListBuilder<String> get emails =>
+      _$this._emails ??= new ListBuilder<String>();
+  set emails(ListBuilder<String>? emails) => _$this._emails = emails;
 
   String? _id;
   String? get id => _$this._id;
@@ -19744,7 +19771,11 @@ class _$GCommitContributionOrder extends GCommitContributionOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19841,7 +19872,11 @@ class _$GContributionOrder extends GContributionOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -19956,12 +19991,14 @@ class _$GConvertProjectCardNoteToIssueInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                projectCardId.hashCode),
-            repositoryId.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, projectCardId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -20060,13 +20097,13 @@ class _$GCreateBranchProtectionRuleInput
   @override
   final String pattern;
   @override
-  final BuiltList<String?>? pushActorIds;
+  final BuiltList<String>? pushActorIds;
   @override
   final String repositoryId;
   @override
   final int? requiredApprovingReviewCount;
   @override
-  final BuiltList<String?>? requiredStatusCheckContexts;
+  final BuiltList<String>? requiredStatusCheckContexts;
   @override
   final bool? requiresApprovingReviews;
   @override
@@ -20082,7 +20119,7 @@ class _$GCreateBranchProtectionRuleInput
   @override
   final bool? restrictsReviewDismissals;
   @override
-  final BuiltList<String?>? reviewDismissalActorIds;
+  final BuiltList<String>? reviewDismissalActorIds;
 
   factory _$GCreateBranchProtectionRuleInput(
           [void Function(GCreateBranchProtectionRuleInputBuilder)? updates]) =>
@@ -20145,43 +20182,25 @@ class _$GCreateBranchProtectionRuleInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    0,
-                                                                    clientMutationId
-                                                                        .hashCode),
-                                                                dismissesStaleReviews
-                                                                    .hashCode),
-                                                            isAdminEnforced
-                                                                .hashCode),
-                                                        pattern.hashCode),
-                                                    pushActorIds.hashCode),
-                                                repositoryId.hashCode),
-                                            requiredApprovingReviewCount
-                                                .hashCode),
-                                        requiredStatusCheckContexts.hashCode),
-                                    requiresApprovingReviews.hashCode),
-                                requiresCodeOwnerReviews.hashCode),
-                            requiresCommitSignatures.hashCode),
-                        requiresStatusChecks.hashCode),
-                    requiresStrictStatusChecks.hashCode),
-                restrictsPushes.hashCode),
-            restrictsReviewDismissals.hashCode),
-        reviewDismissalActorIds.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, dismissesStaleReviews.hashCode);
+    _$hash = $jc(_$hash, isAdminEnforced.hashCode);
+    _$hash = $jc(_$hash, pattern.hashCode);
+    _$hash = $jc(_$hash, pushActorIds.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, requiredApprovingReviewCount.hashCode);
+    _$hash = $jc(_$hash, requiredStatusCheckContexts.hashCode);
+    _$hash = $jc(_$hash, requiresApprovingReviews.hashCode);
+    _$hash = $jc(_$hash, requiresCodeOwnerReviews.hashCode);
+    _$hash = $jc(_$hash, requiresCommitSignatures.hashCode);
+    _$hash = $jc(_$hash, requiresStatusChecks.hashCode);
+    _$hash = $jc(_$hash, requiresStrictStatusChecks.hashCode);
+    _$hash = $jc(_$hash, restrictsPushes.hashCode);
+    _$hash = $jc(_$hash, restrictsReviewDismissals.hashCode);
+    _$hash = $jc(_$hash, reviewDismissalActorIds.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -20232,10 +20251,10 @@ class GCreateBranchProtectionRuleInputBuilder
   String? get pattern => _$this._pattern;
   set pattern(String? pattern) => _$this._pattern = pattern;
 
-  ListBuilder<String?>? _pushActorIds;
-  ListBuilder<String?> get pushActorIds =>
-      _$this._pushActorIds ??= new ListBuilder<String?>();
-  set pushActorIds(ListBuilder<String?>? pushActorIds) =>
+  ListBuilder<String>? _pushActorIds;
+  ListBuilder<String> get pushActorIds =>
+      _$this._pushActorIds ??= new ListBuilder<String>();
+  set pushActorIds(ListBuilder<String>? pushActorIds) =>
       _$this._pushActorIds = pushActorIds;
 
   String? _repositoryId;
@@ -20247,11 +20266,11 @@ class GCreateBranchProtectionRuleInputBuilder
   set requiredApprovingReviewCount(int? requiredApprovingReviewCount) =>
       _$this._requiredApprovingReviewCount = requiredApprovingReviewCount;
 
-  ListBuilder<String?>? _requiredStatusCheckContexts;
-  ListBuilder<String?> get requiredStatusCheckContexts =>
-      _$this._requiredStatusCheckContexts ??= new ListBuilder<String?>();
+  ListBuilder<String>? _requiredStatusCheckContexts;
+  ListBuilder<String> get requiredStatusCheckContexts =>
+      _$this._requiredStatusCheckContexts ??= new ListBuilder<String>();
   set requiredStatusCheckContexts(
-          ListBuilder<String?>? requiredStatusCheckContexts) =>
+          ListBuilder<String>? requiredStatusCheckContexts) =>
       _$this._requiredStatusCheckContexts = requiredStatusCheckContexts;
 
   bool? _requiresApprovingReviews;
@@ -20289,10 +20308,10 @@ class GCreateBranchProtectionRuleInputBuilder
   set restrictsReviewDismissals(bool? restrictsReviewDismissals) =>
       _$this._restrictsReviewDismissals = restrictsReviewDismissals;
 
-  ListBuilder<String?>? _reviewDismissalActorIds;
-  ListBuilder<String?> get reviewDismissalActorIds =>
-      _$this._reviewDismissalActorIds ??= new ListBuilder<String?>();
-  set reviewDismissalActorIds(ListBuilder<String?>? reviewDismissalActorIds) =>
+  ListBuilder<String>? _reviewDismissalActorIds;
+  ListBuilder<String> get reviewDismissalActorIds =>
+      _$this._reviewDismissalActorIds ??= new ListBuilder<String>();
+  set reviewDismissalActorIds(ListBuilder<String>? reviewDismissalActorIds) =>
       _$this._reviewDismissalActorIds = reviewDismissalActorIds;
 
   GCreateBranchProtectionRuleInputBuilder();
@@ -20385,7 +20404,7 @@ class GCreateBranchProtectionRuleInputBuilder
 class _$GCreateEnterpriseOrganizationInput
     extends GCreateEnterpriseOrganizationInput {
   @override
-  final BuiltList<String?> adminLogins;
+  final BuiltList<String> adminLogins;
   @override
   final String billingEmail;
   @override
@@ -20446,14 +20465,15 @@ class _$GCreateEnterpriseOrganizationInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, adminLogins.hashCode), billingEmail.hashCode),
-                    clientMutationId.hashCode),
-                enterpriseId.hashCode),
-            login.hashCode),
-        profileName.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, adminLogins.hashCode);
+    _$hash = $jc(_$hash, billingEmail.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, login.hashCode);
+    _$hash = $jc(_$hash, profileName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -20475,10 +20495,10 @@ class GCreateEnterpriseOrganizationInputBuilder
             GCreateEnterpriseOrganizationInputBuilder> {
   _$GCreateEnterpriseOrganizationInput? _$v;
 
-  ListBuilder<String?>? _adminLogins;
-  ListBuilder<String?> get adminLogins =>
-      _$this._adminLogins ??= new ListBuilder<String?>();
-  set adminLogins(ListBuilder<String?>? adminLogins) =>
+  ListBuilder<String>? _adminLogins;
+  ListBuilder<String> get adminLogins =>
+      _$this._adminLogins ??= new ListBuilder<String>();
+  set adminLogins(ListBuilder<String>? adminLogins) =>
       _$this._adminLogins = adminLogins;
 
   String? _billingEmail;
@@ -20566,17 +20586,17 @@ class GCreateEnterpriseOrganizationInputBuilder
 
 class _$GCreateIssueInput extends GCreateIssueInput {
   @override
-  final BuiltList<String?>? assigneeIds;
+  final BuiltList<String>? assigneeIds;
   @override
   final String? body;
   @override
   final String? clientMutationId;
   @override
-  final BuiltList<String?>? labelIds;
+  final BuiltList<String>? labelIds;
   @override
   final String? milestoneId;
   @override
-  final BuiltList<String?>? projectIds;
+  final BuiltList<String>? projectIds;
   @override
   final String repositoryId;
   @override
@@ -20625,18 +20645,17 @@ class _$GCreateIssueInput extends GCreateIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc($jc($jc(0, assigneeIds.hashCode), body.hashCode),
-                            clientMutationId.hashCode),
-                        labelIds.hashCode),
-                    milestoneId.hashCode),
-                projectIds.hashCode),
-            repositoryId.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assigneeIds.hashCode);
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, labelIds.hashCode);
+    _$hash = $jc(_$hash, milestoneId.hashCode);
+    _$hash = $jc(_$hash, projectIds.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -20658,10 +20677,10 @@ class GCreateIssueInputBuilder
     implements Builder<GCreateIssueInput, GCreateIssueInputBuilder> {
   _$GCreateIssueInput? _$v;
 
-  ListBuilder<String?>? _assigneeIds;
-  ListBuilder<String?> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String?>();
-  set assigneeIds(ListBuilder<String?>? assigneeIds) =>
+  ListBuilder<String>? _assigneeIds;
+  ListBuilder<String> get assigneeIds =>
+      _$this._assigneeIds ??= new ListBuilder<String>();
+  set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
   String? _body;
@@ -20673,19 +20692,19 @@ class GCreateIssueInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  ListBuilder<String?>? _labelIds;
-  ListBuilder<String?> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String?>();
-  set labelIds(ListBuilder<String?>? labelIds) => _$this._labelIds = labelIds;
+  ListBuilder<String>? _labelIds;
+  ListBuilder<String> get labelIds =>
+      _$this._labelIds ??= new ListBuilder<String>();
+  set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _milestoneId;
   String? get milestoneId => _$this._milestoneId;
   set milestoneId(String? milestoneId) => _$this._milestoneId = milestoneId;
 
-  ListBuilder<String?>? _projectIds;
-  ListBuilder<String?> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String?>();
-  set projectIds(ListBuilder<String?>? projectIds) =>
+  ListBuilder<String>? _projectIds;
+  ListBuilder<String> get projectIds =>
+      _$this._projectIds ??= new ListBuilder<String>();
+  set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
   String? _repositoryId;
@@ -20775,7 +20794,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
   @override
   final String ownerId;
   @override
-  final BuiltList<String?>? repositoryIds;
+  final BuiltList<String>? repositoryIds;
   @override
   final GProjectTemplate? template;
 
@@ -20819,14 +20838,15 @@ class _$GCreateProjectInput extends GCreateProjectInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                    name.hashCode),
-                ownerId.hashCode),
-            repositoryIds.hashCode),
-        template.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, repositoryIds.hashCode);
+    _$hash = $jc(_$hash, template.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -20863,10 +20883,10 @@ class GCreateProjectInputBuilder
   String? get ownerId => _$this._ownerId;
   set ownerId(String? ownerId) => _$this._ownerId = ownerId;
 
-  ListBuilder<String?>? _repositoryIds;
-  ListBuilder<String?> get repositoryIds =>
-      _$this._repositoryIds ??= new ListBuilder<String?>();
-  set repositoryIds(ListBuilder<String?>? repositoryIds) =>
+  ListBuilder<String>? _repositoryIds;
+  ListBuilder<String> get repositoryIds =>
+      _$this._repositoryIds ??= new ListBuilder<String>();
+  set repositoryIds(ListBuilder<String>? repositoryIds) =>
       _$this._repositoryIds = repositoryIds;
 
   GProjectTemplate? _template;
@@ -20995,16 +21015,16 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc($jc(0, baseRefName.hashCode), body.hashCode),
-                        clientMutationId.hashCode),
-                    headRefName.hashCode),
-                maintainerCanModify.hashCode),
-            repositoryId.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, baseRefName.hashCode);
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, headRefName.hashCode);
+    _$hash = $jc(_$hash, maintainerCanModify.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21151,10 +21171,13 @@ class _$GCreateRefInput extends GCreateRefInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), name.hashCode),
-            oid.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, oid.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21315,24 +21338,19 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, clientMutationId.hashCode),
-                                        description.hashCode),
-                                    hasIssuesEnabled.hashCode),
-                                hasWikiEnabled.hashCode),
-                            homepageUrl.hashCode),
-                        name.hashCode),
-                    ownerId.hashCode),
-                teamId.hashCode),
-            template.hashCode),
-        visibility.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, hasIssuesEnabled.hashCode);
+    _$hash = $jc(_$hash, hasWikiEnabled.hashCode);
+    _$hash = $jc(_$hash, homepageUrl.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, teamId.hashCode);
+    _$hash = $jc(_$hash, template.hashCode);
+    _$hash = $jc(_$hash, visibility.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21511,8 +21529,12 @@ class _$GCreateTeamDiscussionCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-        discussionId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, discussionId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21638,12 +21660,14 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                private.hashCode),
-            teamId.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, private.hashCode);
+    _$hash = $jc(_$hash, teamId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21755,7 +21779,10 @@ class _$GDate extends GDate {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21833,7 +21860,10 @@ class _$GDateTime extends GDateTime {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -21934,10 +21964,13 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), name.hashCode),
-            reason.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, reason.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22054,8 +22087,11 @@ class _$GDeleteBranchProtectionRuleInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(0, branchProtectionRuleId.hashCode), clientMutationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, branchProtectionRuleId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22156,7 +22192,11 @@ class _$GDeleteDeploymentInput extends GDeleteDeploymentInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22253,7 +22293,11 @@ class _$GDeleteIssueCommentInput extends GDeleteIssueCommentInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22350,7 +22394,11 @@ class _$GDeleteIssueInput extends GDeleteIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), issueId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, issueId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22447,7 +22495,11 @@ class _$GDeleteProjectCardInput extends GDeleteProjectCardInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, cardId.hashCode), clientMutationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, cardId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22545,7 +22597,11 @@ class _$GDeleteProjectColumnInput extends GDeleteProjectColumnInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), columnId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, columnId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22643,7 +22699,11 @@ class _$GDeleteProjectInput extends GDeleteProjectInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), projectId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, projectId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22744,7 +22804,11 @@ class _$GDeletePullRequestReviewCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22845,8 +22909,11 @@ class _$GDeletePullRequestReviewInput extends GDeletePullRequestReviewInput {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc(0, clientMutationId.hashCode), pullRequestReviewId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -22945,7 +23012,11 @@ class _$GDeleteRefInput extends GDeleteRefInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), refId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, refId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23045,7 +23116,11 @@ class _$GDeleteTeamDiscussionCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23145,7 +23220,11 @@ class _$GDeleteTeamDiscussionInput extends GDeleteTeamDiscussionInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23243,7 +23322,11 @@ class _$GDeploymentOrder extends GDeploymentOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23348,8 +23431,12 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), message.hashCode),
-        pullRequestReviewId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, message.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23467,8 +23554,12 @@ class _$GDraftPullRequestReviewComment extends GDraftPullRequestReviewComment {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, body.hashCode), path.hashCode), position.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, path.hashCode);
+    _$hash = $jc(_$hash, position.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23582,7 +23673,11 @@ class _$GEnterpriseAdministratorInvitationOrder
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23686,7 +23781,11 @@ class _$GEnterpriseMemberOrder extends GEnterpriseMemberOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23789,7 +23888,11 @@ class _$GEnterpriseServerInstallationOrder
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -23897,7 +24000,11 @@ class _$GEnterpriseServerUserAccountEmailOrder
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24004,7 +24111,11 @@ class _$GEnterpriseServerUserAccountOrder
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24112,7 +24223,11 @@ class _$GEnterpriseServerUserAccountsUploadOrder
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24213,7 +24328,11 @@ class _$GFollowUserInput extends GFollowUserInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), userId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24307,7 +24426,11 @@ class _$GGistOrder extends GGistOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24394,7 +24517,10 @@ class _$GGitObjectID extends GGitObjectID {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24473,7 +24599,10 @@ class _$GGitSSHRemote extends GGitSSHRemote {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24552,7 +24681,10 @@ class _$GGitTimestamp extends GGitTimestamp {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24631,7 +24763,10 @@ class _$GHTML extends GHTML {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24732,12 +24867,14 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, clientMutationId.hashCode), email.hashCode),
-                enterpriseId.hashCode),
-            invitee.hashCode),
-        role.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, invitee.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24828,7 +24965,7 @@ class _$GIssueFilters extends GIssueFilters {
   @override
   final String? createdBy;
   @override
-  final BuiltList<String?>? labels;
+  final BuiltList<String>? labels;
   @override
   final String? mentioned;
   @override
@@ -24836,7 +24973,7 @@ class _$GIssueFilters extends GIssueFilters {
   @override
   final GDateTime? since;
   @override
-  final BuiltList<GIssueState?>? states;
+  final BuiltList<GIssueState>? states;
   @override
   final bool? viewerSubscribed;
 
@@ -24877,18 +25014,17 @@ class _$GIssueFilters extends GIssueFilters {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc($jc($jc(0, assignee.hashCode), createdBy.hashCode),
-                            labels.hashCode),
-                        mentioned.hashCode),
-                    milestone.hashCode),
-                since.hashCode),
-            states.hashCode),
-        viewerSubscribed.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assignee.hashCode);
+    _$hash = $jc(_$hash, createdBy.hashCode);
+    _$hash = $jc(_$hash, labels.hashCode);
+    _$hash = $jc(_$hash, mentioned.hashCode);
+    _$hash = $jc(_$hash, milestone.hashCode);
+    _$hash = $jc(_$hash, since.hashCode);
+    _$hash = $jc(_$hash, states.hashCode);
+    _$hash = $jc(_$hash, viewerSubscribed.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -24918,10 +25054,10 @@ class GIssueFiltersBuilder
   String? get createdBy => _$this._createdBy;
   set createdBy(String? createdBy) => _$this._createdBy = createdBy;
 
-  ListBuilder<String?>? _labels;
-  ListBuilder<String?> get labels =>
-      _$this._labels ??= new ListBuilder<String?>();
-  set labels(ListBuilder<String?>? labels) => _$this._labels = labels;
+  ListBuilder<String>? _labels;
+  ListBuilder<String> get labels =>
+      _$this._labels ??= new ListBuilder<String>();
+  set labels(ListBuilder<String>? labels) => _$this._labels = labels;
 
   String? _mentioned;
   String? get mentioned => _$this._mentioned;
@@ -24935,10 +25071,10 @@ class GIssueFiltersBuilder
   GDateTimeBuilder get since => _$this._since ??= new GDateTimeBuilder();
   set since(GDateTimeBuilder? since) => _$this._since = since;
 
-  ListBuilder<GIssueState?>? _states;
-  ListBuilder<GIssueState?> get states =>
-      _$this._states ??= new ListBuilder<GIssueState?>();
-  set states(ListBuilder<GIssueState?>? states) => _$this._states = states;
+  ListBuilder<GIssueState>? _states;
+  ListBuilder<GIssueState> get states =>
+      _$this._states ??= new ListBuilder<GIssueState>();
+  set states(ListBuilder<GIssueState>? states) => _$this._states = states;
 
   bool? _viewerSubscribed;
   bool? get viewerSubscribed => _$this._viewerSubscribed;
@@ -25043,7 +25179,11 @@ class _$GIssueOrder extends GIssueOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25136,7 +25276,11 @@ class _$GLabelOrder extends GLabelOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25231,7 +25375,11 @@ class _$GLanguageOrder extends GLanguageOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25336,8 +25484,12 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), projectId.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, projectId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25448,8 +25600,12 @@ class _$GLockLockableInput extends GLockLockableInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), lockReason.hashCode),
-        lockableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, lockReason.hashCode);
+    _$hash = $jc(_$hash, lockableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25568,12 +25724,14 @@ class _$GMergeBranchInput extends GMergeBranchInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, base.hashCode), clientMutationId.hashCode),
-                commitMessage.hashCode),
-            head.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, base.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, commitMessage.hashCode);
+    _$hash = $jc(_$hash, head.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25712,14 +25870,15 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, clientMutationId.hashCode), commitBody.hashCode),
-                    commitHeadline.hashCode),
-                expectedHeadOid.hashCode),
-            mergeMethod.hashCode),
-        pullRequestId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, commitBody.hashCode);
+    _$hash = $jc(_$hash, commitHeadline.hashCode);
+    _$hash = $jc(_$hash, expectedHeadOid.hashCode);
+    _$hash = $jc(_$hash, mergeMethod.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25861,7 +26020,11 @@ class _$GMilestoneOrder extends GMilestoneOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -25970,10 +26133,13 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, afterCardId.hashCode), cardId.hashCode),
-            clientMutationId.hashCode),
-        columnId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, afterCardId.hashCode);
+    _$hash = $jc(_$hash, cardId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, columnId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26089,9 +26255,12 @@ class _$GMoveProjectColumnInput extends GMoveProjectColumnInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, afterColumnId.hashCode), clientMutationId.hashCode),
-        columnId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, afterColumnId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, columnId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26199,7 +26368,11 @@ class _$GOrganizationOrder extends GOrganizationOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26289,7 +26462,10 @@ class _$GPreciseDateTime extends GPreciseDateTime {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26376,7 +26552,11 @@ class _$GProjectOrder extends GProjectOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26473,7 +26653,11 @@ class _$GPullRequestOrder extends GPullRequestOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26569,7 +26753,11 @@ class _$GReactionOrder extends GReactionOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26662,7 +26850,11 @@ class _$GRefOrder extends GRefOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26769,7 +26961,11 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26880,8 +27076,12 @@ class _$GRegistryPackageMetadatum extends GRegistryPackageMetadatum {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, name.hashCode), Gupdate.hashCode), value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, Gupdate.hashCode);
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -26984,7 +27184,11 @@ class _$GReleaseOrder extends GReleaseOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27051,7 +27255,7 @@ class _$GRemoveAssigneesFromAssignableInput
   @override
   final String assignableId;
   @override
-  final BuiltList<String?> assigneeIds;
+  final BuiltList<String> assigneeIds;
   @override
   final String? clientMutationId;
 
@@ -27092,8 +27296,12 @@ class _$GRemoveAssigneesFromAssignableInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, assignableId.hashCode), assigneeIds.hashCode),
-        clientMutationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assignableId.hashCode);
+    _$hash = $jc(_$hash, assigneeIds.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27116,10 +27324,10 @@ class GRemoveAssigneesFromAssignableInputBuilder
   String? get assignableId => _$this._assignableId;
   set assignableId(String? assignableId) => _$this._assignableId = assignableId;
 
-  ListBuilder<String?>? _assigneeIds;
-  ListBuilder<String?> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String?>();
-  set assigneeIds(ListBuilder<String?>? assigneeIds) =>
+  ListBuilder<String>? _assigneeIds;
+  ListBuilder<String> get assigneeIds =>
+      _$this._assigneeIds ??= new ListBuilder<String>();
+  set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
   String? _clientMutationId;
@@ -27223,9 +27431,12 @@ class _$GRemoveEnterpriseAdminInput extends GRemoveEnterpriseAdminInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        login.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, login.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27343,9 +27554,12 @@ class _$GRemoveEnterpriseOrganizationInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        organizationId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, organizationId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27426,7 +27640,7 @@ class _$GRemoveLabelsFromLabelableInput
   @override
   final String? clientMutationId;
   @override
-  final BuiltList<String?> labelIds;
+  final BuiltList<String> labelIds;
   @override
   final String labelableId;
 
@@ -27465,8 +27679,12 @@ class _$GRemoveLabelsFromLabelableInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), labelIds.hashCode),
-        labelableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, labelIds.hashCode);
+    _$hash = $jc(_$hash, labelableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27490,10 +27708,10 @@ class GRemoveLabelsFromLabelableInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  ListBuilder<String?>? _labelIds;
-  ListBuilder<String?> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String?>();
-  set labelIds(ListBuilder<String?>? labelIds) => _$this._labelIds = labelIds;
+  ListBuilder<String>? _labelIds;
+  ListBuilder<String> get labelIds =>
+      _$this._labelIds ??= new ListBuilder<String>();
+  set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _labelableId;
   String? get labelableId => _$this._labelableId;
@@ -27595,9 +27813,12 @@ class _$GRemoveOutsideCollaboratorInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), organizationId.hashCode),
-        userId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, organizationId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27713,8 +27934,12 @@ class _$GRemoveReactionInput extends GRemoveReactionInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), content.hashCode),
-        subjectId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, content.hashCode);
+    _$hash = $jc(_$hash, subjectId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27818,7 +28043,11 @@ class _$GRemoveStarInput extends GRemoveStarInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), starrableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, starrableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -27914,7 +28143,11 @@ class _$GReopenIssueInput extends GReopenIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), issueId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, issueId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28012,7 +28245,11 @@ class _$GReopenPullRequestInput extends GReopenPullRequestInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), pullRequestId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28113,7 +28350,11 @@ class _$GRepositoryInvitationOrder extends GRepositoryInvitationOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28211,7 +28452,11 @@ class _$GRepositoryOrder extends GRepositoryOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28279,11 +28524,11 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
   @override
   final String pullRequestId;
   @override
-  final BuiltList<String?>? teamIds;
+  final BuiltList<String>? teamIds;
   @override
   final bool? union;
   @override
-  final BuiltList<String?>? userIds;
+  final BuiltList<String>? userIds;
 
   factory _$GRequestReviewsInput(
           [void Function(GRequestReviewsInputBuilder)? updates]) =>
@@ -28322,12 +28567,14 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, clientMutationId.hashCode), pullRequestId.hashCode),
-                teamIds.hashCode),
-            union.hashCode),
-        userIds.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jc(_$hash, teamIds.hashCode);
+    _$hash = $jc(_$hash, union.hashCode);
+    _$hash = $jc(_$hash, userIds.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28356,19 +28603,19 @@ class GRequestReviewsInputBuilder
   set pullRequestId(String? pullRequestId) =>
       _$this._pullRequestId = pullRequestId;
 
-  ListBuilder<String?>? _teamIds;
-  ListBuilder<String?> get teamIds =>
-      _$this._teamIds ??= new ListBuilder<String?>();
-  set teamIds(ListBuilder<String?>? teamIds) => _$this._teamIds = teamIds;
+  ListBuilder<String>? _teamIds;
+  ListBuilder<String> get teamIds =>
+      _$this._teamIds ??= new ListBuilder<String>();
+  set teamIds(ListBuilder<String>? teamIds) => _$this._teamIds = teamIds;
 
   bool? _union;
   bool? get union => _$this._union;
   set union(bool? union) => _$this._union = union;
 
-  ListBuilder<String?>? _userIds;
-  ListBuilder<String?> get userIds =>
-      _$this._userIds ??= new ListBuilder<String?>();
-  set userIds(ListBuilder<String?>? userIds) => _$this._userIds = userIds;
+  ListBuilder<String>? _userIds;
+  ListBuilder<String> get userIds =>
+      _$this._userIds ??= new ListBuilder<String>();
+  set userIds(ListBuilder<String>? userIds) => _$this._userIds = userIds;
 
   GRequestReviewsInputBuilder();
 
@@ -28464,7 +28711,11 @@ class _$GResolveReviewThreadInput extends GResolveReviewThreadInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), threadId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, threadId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28562,7 +28813,11 @@ class _$GSavedReplyOrder extends GSavedReplyOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28664,7 +28919,11 @@ class _$GSecurityAdvisoryIdentifierFilter
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28766,7 +29025,11 @@ class _$GSecurityAdvisoryOrder extends GSecurityAdvisoryOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28866,7 +29129,11 @@ class _$GSecurityVulnerabilityOrder extends GSecurityVulnerabilityOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -28967,7 +29234,11 @@ class _$GSponsorsTierOrder extends GSponsorsTierOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29064,7 +29335,11 @@ class _$GSponsorshipOrder extends GSponsorshipOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29158,7 +29433,11 @@ class _$GStarOrder extends GStarOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29268,12 +29547,14 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                event.hashCode),
-            pullRequestId.hashCode),
-        pullRequestReviewId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, event.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29398,7 +29679,11 @@ class _$GTeamDiscussionCommentOrder extends GTeamDiscussionCommentOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29499,7 +29784,11 @@ class _$GTeamDiscussionOrder extends GTeamDiscussionOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29596,7 +29885,11 @@ class _$GTeamMemberOrder extends GTeamMemberOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29690,7 +29983,11 @@ class _$GTeamOrder extends GTeamOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29788,7 +30085,11 @@ class _$GTeamRepositoryOrder extends GTeamRepositoryOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29893,8 +30194,12 @@ class _$GTransferIssueInput extends GTransferIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), issueId.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, issueId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -29990,7 +30295,10 @@ class _$GURI extends GURI {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30078,7 +30386,11 @@ class _$GUnarchiveRepositoryInput extends GUnarchiveRepositoryInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30176,7 +30488,11 @@ class _$GUnfollowUserInput extends GUnfollowUserInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), userId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30283,8 +30599,12 @@ class _$GUnlinkRepositoryFromProjectInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), projectId.hashCode),
-        repositoryId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, projectId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30392,7 +30712,11 @@ class _$GUnlockLockableInput extends GUnlockLockableInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), lockableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, lockableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30497,8 +30821,12 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, canonicalId.hashCode), clientMutationId.hashCode),
-        duplicateId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, canonicalId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, duplicateId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30606,7 +30934,11 @@ class _$GUnresolveReviewThreadInput extends GUnresolveReviewThreadInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, clientMutationId.hashCode), threadId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, threadId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30683,11 +31015,11 @@ class _$GUpdateBranchProtectionRuleInput
   @override
   final String? pattern;
   @override
-  final BuiltList<String?>? pushActorIds;
+  final BuiltList<String>? pushActorIds;
   @override
   final int? requiredApprovingReviewCount;
   @override
-  final BuiltList<String?>? requiredStatusCheckContexts;
+  final BuiltList<String>? requiredStatusCheckContexts;
   @override
   final bool? requiresApprovingReviews;
   @override
@@ -30703,7 +31035,7 @@ class _$GUpdateBranchProtectionRuleInput
   @override
   final bool? restrictsReviewDismissals;
   @override
-  final BuiltList<String?>? reviewDismissalActorIds;
+  final BuiltList<String>? reviewDismissalActorIds;
 
   factory _$GUpdateBranchProtectionRuleInput(
           [void Function(GUpdateBranchProtectionRuleInputBuilder)? updates]) =>
@@ -30764,44 +31096,25 @@ class _$GUpdateBranchProtectionRuleInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    0,
-                                                                    branchProtectionRuleId
-                                                                        .hashCode),
-                                                                clientMutationId
-                                                                    .hashCode),
-                                                            dismissesStaleReviews
-                                                                .hashCode),
-                                                        isAdminEnforced
-                                                            .hashCode),
-                                                    pattern.hashCode),
-                                                pushActorIds.hashCode),
-                                            requiredApprovingReviewCount
-                                                .hashCode),
-                                        requiredStatusCheckContexts.hashCode),
-                                    requiresApprovingReviews.hashCode),
-                                requiresCodeOwnerReviews.hashCode),
-                            requiresCommitSignatures.hashCode),
-                        requiresStatusChecks.hashCode),
-                    requiresStrictStatusChecks.hashCode),
-                restrictsPushes.hashCode),
-            restrictsReviewDismissals.hashCode),
-        reviewDismissalActorIds.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, branchProtectionRuleId.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, dismissesStaleReviews.hashCode);
+    _$hash = $jc(_$hash, isAdminEnforced.hashCode);
+    _$hash = $jc(_$hash, pattern.hashCode);
+    _$hash = $jc(_$hash, pushActorIds.hashCode);
+    _$hash = $jc(_$hash, requiredApprovingReviewCount.hashCode);
+    _$hash = $jc(_$hash, requiredStatusCheckContexts.hashCode);
+    _$hash = $jc(_$hash, requiresApprovingReviews.hashCode);
+    _$hash = $jc(_$hash, requiresCodeOwnerReviews.hashCode);
+    _$hash = $jc(_$hash, requiresCommitSignatures.hashCode);
+    _$hash = $jc(_$hash, requiresStatusChecks.hashCode);
+    _$hash = $jc(_$hash, requiresStrictStatusChecks.hashCode);
+    _$hash = $jc(_$hash, restrictsPushes.hashCode);
+    _$hash = $jc(_$hash, restrictsReviewDismissals.hashCode);
+    _$hash = $jc(_$hash, reviewDismissalActorIds.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -30857,10 +31170,10 @@ class GUpdateBranchProtectionRuleInputBuilder
   String? get pattern => _$this._pattern;
   set pattern(String? pattern) => _$this._pattern = pattern;
 
-  ListBuilder<String?>? _pushActorIds;
-  ListBuilder<String?> get pushActorIds =>
-      _$this._pushActorIds ??= new ListBuilder<String?>();
-  set pushActorIds(ListBuilder<String?>? pushActorIds) =>
+  ListBuilder<String>? _pushActorIds;
+  ListBuilder<String> get pushActorIds =>
+      _$this._pushActorIds ??= new ListBuilder<String>();
+  set pushActorIds(ListBuilder<String>? pushActorIds) =>
       _$this._pushActorIds = pushActorIds;
 
   int? _requiredApprovingReviewCount;
@@ -30868,11 +31181,11 @@ class GUpdateBranchProtectionRuleInputBuilder
   set requiredApprovingReviewCount(int? requiredApprovingReviewCount) =>
       _$this._requiredApprovingReviewCount = requiredApprovingReviewCount;
 
-  ListBuilder<String?>? _requiredStatusCheckContexts;
-  ListBuilder<String?> get requiredStatusCheckContexts =>
-      _$this._requiredStatusCheckContexts ??= new ListBuilder<String?>();
+  ListBuilder<String>? _requiredStatusCheckContexts;
+  ListBuilder<String> get requiredStatusCheckContexts =>
+      _$this._requiredStatusCheckContexts ??= new ListBuilder<String>();
   set requiredStatusCheckContexts(
-          ListBuilder<String?>? requiredStatusCheckContexts) =>
+          ListBuilder<String>? requiredStatusCheckContexts) =>
       _$this._requiredStatusCheckContexts = requiredStatusCheckContexts;
 
   bool? _requiresApprovingReviews;
@@ -30910,10 +31223,10 @@ class GUpdateBranchProtectionRuleInputBuilder
   set restrictsReviewDismissals(bool? restrictsReviewDismissals) =>
       _$this._restrictsReviewDismissals = restrictsReviewDismissals;
 
-  ListBuilder<String?>? _reviewDismissalActorIds;
-  ListBuilder<String?> get reviewDismissalActorIds =>
-      _$this._reviewDismissalActorIds ??= new ListBuilder<String?>();
-  set reviewDismissalActorIds(ListBuilder<String?>? reviewDismissalActorIds) =>
+  ListBuilder<String>? _reviewDismissalActorIds;
+  ListBuilder<String> get reviewDismissalActorIds =>
+      _$this._reviewDismissalActorIds ??= new ListBuilder<String>();
+  set reviewDismissalActorIds(ListBuilder<String>? reviewDismissalActorIds) =>
       _$this._reviewDismissalActorIds = reviewDismissalActorIds;
 
   GUpdateBranchProtectionRuleInputBuilder();
@@ -31059,8 +31372,12 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, capability.hashCode), clientMutationId.hashCode),
-        enterpriseId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, capability.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31194,10 +31511,13 @@ class _$GUpdateEnterpriseAdministratorRoleInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-            login.hashCode),
-        role.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, login.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31336,9 +31656,12 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31477,9 +31800,12 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31619,9 +31945,12 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31694,7 +32023,7 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
   _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
-                ._(
+            ._(
             clientMutationId: clientMutationId,
             enterpriseId: BuiltValueNullFieldError.checkNotNull(
                 enterpriseId,
@@ -31781,18 +32110,16 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc($jc(0, clientMutationId.hashCode),
-                            enterpriseId.hashCode),
-                        membersCanCreateInternalRepositories.hashCode),
-                    membersCanCreatePrivateRepositories.hashCode),
-                membersCanCreatePublicRepositories.hashCode),
-            membersCanCreateRepositoriesPolicyEnabled.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, membersCanCreateInternalRepositories.hashCode);
+    _$hash = $jc(_$hash, membersCanCreatePrivateRepositories.hashCode);
+    _$hash = $jc(_$hash, membersCanCreatePublicRepositories.hashCode);
+    _$hash = $jc(_$hash, membersCanCreateRepositoriesPolicyEnabled.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -31980,9 +32307,12 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32119,9 +32449,12 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32261,9 +32594,12 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32402,9 +32738,12 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32544,9 +32883,12 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32689,9 +33031,12 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32828,9 +33173,12 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -32964,16 +33312,15 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc(0, clientMutationId.hashCode),
-                        description.hashCode),
-                    enterpriseId.hashCode),
-                location.hashCode),
-            name.hashCode),
-        websiteUrl.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, websiteUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33115,9 +33462,12 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33246,9 +33596,12 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33386,9 +33739,12 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), enterpriseId.hashCode),
-        settingValue.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, enterpriseId.hashCode);
+    _$hash = $jc(_$hash, settingValue.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33514,8 +33870,12 @@ class _$GUpdateIssueCommentInput extends GUpdateIssueCommentInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, body.hashCode), clientMutationId.hashCode), id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33588,7 +33948,7 @@ class GUpdateIssueCommentInputBuilder
 
 class _$GUpdateIssueInput extends GUpdateIssueInput {
   @override
-  final BuiltList<String?>? assigneeIds;
+  final BuiltList<String>? assigneeIds;
   @override
   final String? body;
   @override
@@ -33596,11 +33956,11 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
   @override
   final String id;
   @override
-  final BuiltList<String?>? labelIds;
+  final BuiltList<String>? labelIds;
   @override
   final String? milestoneId;
   @override
-  final BuiltList<String?>? projectIds;
+  final BuiltList<String>? projectIds;
   @override
   final GIssueState? state;
   @override
@@ -33649,22 +34009,18 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, assigneeIds.hashCode),
-                                    body.hashCode),
-                                clientMutationId.hashCode),
-                            id.hashCode),
-                        labelIds.hashCode),
-                    milestoneId.hashCode),
-                projectIds.hashCode),
-            state.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assigneeIds.hashCode);
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, labelIds.hashCode);
+    _$hash = $jc(_$hash, milestoneId.hashCode);
+    _$hash = $jc(_$hash, projectIds.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33687,10 +34043,10 @@ class GUpdateIssueInputBuilder
     implements Builder<GUpdateIssueInput, GUpdateIssueInputBuilder> {
   _$GUpdateIssueInput? _$v;
 
-  ListBuilder<String?>? _assigneeIds;
-  ListBuilder<String?> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String?>();
-  set assigneeIds(ListBuilder<String?>? assigneeIds) =>
+  ListBuilder<String>? _assigneeIds;
+  ListBuilder<String> get assigneeIds =>
+      _$this._assigneeIds ??= new ListBuilder<String>();
+  set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
   String? _body;
@@ -33706,19 +34062,19 @@ class GUpdateIssueInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  ListBuilder<String?>? _labelIds;
-  ListBuilder<String?> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String?>();
-  set labelIds(ListBuilder<String?>? labelIds) => _$this._labelIds = labelIds;
+  ListBuilder<String>? _labelIds;
+  ListBuilder<String> get labelIds =>
+      _$this._labelIds ??= new ListBuilder<String>();
+  set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _milestoneId;
   String? get milestoneId => _$this._milestoneId;
   set milestoneId(String? milestoneId) => _$this._milestoneId = milestoneId;
 
-  ListBuilder<String?>? _projectIds;
-  ListBuilder<String?> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String?>();
-  set projectIds(ListBuilder<String?>? projectIds) =>
+  ListBuilder<String>? _projectIds;
+  ListBuilder<String> get projectIds =>
+      _$this._projectIds ??= new ListBuilder<String>();
+  set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
   GIssueState? _state;
@@ -33844,10 +34200,13 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), isArchived.hashCode),
-            note.hashCode),
-        projectCardId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, isArchived.hashCode);
+    _$hash = $jc(_$hash, note.hashCode);
+    _$hash = $jc(_$hash, projectCardId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -33968,8 +34327,12 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), name.hashCode),
-        projectColumnId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, projectColumnId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34096,14 +34459,15 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-                    name.hashCode),
-                projectId.hashCode),
-            public.hashCode),
-        state.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, projectId.hashCode);
+    _$hash = $jc(_$hash, public.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34195,7 +34559,7 @@ class GUpdateProjectInputBuilder
 
 class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
   @override
-  final BuiltList<String?>? assigneeIds;
+  final BuiltList<String>? assigneeIds;
   @override
   final String? baseRefName;
   @override
@@ -34203,13 +34567,13 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
   @override
   final String? clientMutationId;
   @override
-  final BuiltList<String?>? labelIds;
+  final BuiltList<String>? labelIds;
   @override
   final bool? maintainerCanModify;
   @override
   final String? milestoneId;
   @override
-  final BuiltList<String?>? projectIds;
+  final BuiltList<String>? projectIds;
   @override
   final String pullRequestId;
   @override
@@ -34266,26 +34630,20 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc($jc(0, assigneeIds.hashCode),
-                                            baseRefName.hashCode),
-                                        body.hashCode),
-                                    clientMutationId.hashCode),
-                                labelIds.hashCode),
-                            maintainerCanModify.hashCode),
-                        milestoneId.hashCode),
-                    projectIds.hashCode),
-                pullRequestId.hashCode),
-            state.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, assigneeIds.hashCode);
+    _$hash = $jc(_$hash, baseRefName.hashCode);
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, labelIds.hashCode);
+    _$hash = $jc(_$hash, maintainerCanModify.hashCode);
+    _$hash = $jc(_$hash, milestoneId.hashCode);
+    _$hash = $jc(_$hash, projectIds.hashCode);
+    _$hash = $jc(_$hash, pullRequestId.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34311,10 +34669,10 @@ class GUpdatePullRequestInputBuilder
         Builder<GUpdatePullRequestInput, GUpdatePullRequestInputBuilder> {
   _$GUpdatePullRequestInput? _$v;
 
-  ListBuilder<String?>? _assigneeIds;
-  ListBuilder<String?> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String?>();
-  set assigneeIds(ListBuilder<String?>? assigneeIds) =>
+  ListBuilder<String>? _assigneeIds;
+  ListBuilder<String> get assigneeIds =>
+      _$this._assigneeIds ??= new ListBuilder<String>();
+  set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
   String? _baseRefName;
@@ -34330,10 +34688,10 @@ class GUpdatePullRequestInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  ListBuilder<String?>? _labelIds;
-  ListBuilder<String?> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String?>();
-  set labelIds(ListBuilder<String?>? labelIds) => _$this._labelIds = labelIds;
+  ListBuilder<String>? _labelIds;
+  ListBuilder<String> get labelIds =>
+      _$this._labelIds ??= new ListBuilder<String>();
+  set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   bool? _maintainerCanModify;
   bool? get maintainerCanModify => _$this._maintainerCanModify;
@@ -34344,10 +34702,10 @@ class GUpdatePullRequestInputBuilder
   String? get milestoneId => _$this._milestoneId;
   set milestoneId(String? milestoneId) => _$this._milestoneId = milestoneId;
 
-  ListBuilder<String?>? _projectIds;
-  ListBuilder<String?> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String?>();
-  set projectIds(ListBuilder<String?>? projectIds) =>
+  ListBuilder<String>? _projectIds;
+  ListBuilder<String> get projectIds =>
+      _$this._projectIds ??= new ListBuilder<String>();
+  set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
   String? _pullRequestId;
@@ -34483,8 +34841,12 @@ class _$GUpdatePullRequestReviewCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-        pullRequestReviewCommentId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewCommentId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34603,8 +34965,12 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, body.hashCode), clientMutationId.hashCode),
-        pullRequestReviewId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, pullRequestReviewId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34722,10 +35088,13 @@ class _$GUpdateRefInput extends GUpdateRefInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, clientMutationId.hashCode), force.hashCode),
-            oid.hashCode),
-        refId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, force.hashCode);
+    _$hash = $jc(_$hash, oid.hashCode);
+    _$hash = $jc(_$hash, refId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -34879,22 +35248,18 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, clientMutationId.hashCode),
-                                    description.hashCode),
-                                hasIssuesEnabled.hashCode),
-                            hasProjectsEnabled.hashCode),
-                        hasWikiEnabled.hashCode),
-                    homepageUrl.hashCode),
-                name.hashCode),
-            repositoryId.hashCode),
-        template.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, hasIssuesEnabled.hashCode);
+    _$hash = $jc(_$hash, hasProjectsEnabled.hashCode);
+    _$hash = $jc(_$hash, hasWikiEnabled.hashCode);
+    _$hash = $jc(_$hash, homepageUrl.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, template.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35065,8 +35430,12 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, clientMutationId.hashCode), state.hashCode),
-        subscribableId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, subscribableId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35187,10 +35556,13 @@ class _$GUpdateTeamDiscussionCommentInput
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, body.hashCode), bodyVersion.hashCode),
-            clientMutationId.hashCode),
-        id.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, bodyVersion.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35323,14 +35695,15 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, body.hashCode), bodyVersion.hashCode),
-                    clientMutationId.hashCode),
-                id.hashCode),
-            pinned.hashCode),
-        title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, body.hashCode);
+    _$hash = $jc(_$hash, bodyVersion.hashCode);
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, pinned.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35427,7 +35800,7 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
   @override
   final String repositoryId;
   @override
-  final BuiltList<String?> topicNames;
+  final BuiltList<String> topicNames;
 
   factory _$GUpdateTopicsInput(
           [void Function(GUpdateTopicsInputBuilder)? updates]) =>
@@ -35464,9 +35837,12 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, clientMutationId.hashCode), repositoryId.hashCode),
-        topicNames.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, clientMutationId.hashCode);
+    _$hash = $jc(_$hash, repositoryId.hashCode);
+    _$hash = $jc(_$hash, topicNames.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35492,10 +35868,10 @@ class GUpdateTopicsInputBuilder
   String? get repositoryId => _$this._repositoryId;
   set repositoryId(String? repositoryId) => _$this._repositoryId = repositoryId;
 
-  ListBuilder<String?>? _topicNames;
-  ListBuilder<String?> get topicNames =>
-      _$this._topicNames ??= new ListBuilder<String?>();
-  set topicNames(ListBuilder<String?>? topicNames) =>
+  ListBuilder<String>? _topicNames;
+  ListBuilder<String> get topicNames =>
+      _$this._topicNames ??= new ListBuilder<String>();
+  set topicNames(ListBuilder<String>? topicNames) =>
       _$this._topicNames = topicNames;
 
   GUpdateTopicsInputBuilder();
@@ -35585,7 +35961,11 @@ class _$GUserStatusOrder extends GUserStatusOrder {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, direction.hashCode), field.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, direction.hashCode);
+    _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35675,7 +36055,10 @@ class _$GX509Certificate extends GX509Certificate {
 
   @override
   int get hashCode {
-    return $jf($jc(0, value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -35729,4 +36112,4 @@ class GX509CertificateBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

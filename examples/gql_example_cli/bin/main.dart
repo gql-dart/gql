@@ -95,7 +95,9 @@ Future<Null> main(List<String> arguments) async {
 
   pokemons?.forEach(
     (pokemon) {
-      print("${pokemon.id} | ${pokemon.name}");
+      if (pokemon != null) {
+        print("${pokemon.id} | ${pokemon.name}");
+      }
     },
   );
 

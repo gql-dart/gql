@@ -18,6 +18,7 @@ jobs:
           - gql_http_link
           - gql_websocket_link
           - gql_transform_link
+          - gql_tristate_value
     runs-on: ubuntu-latest
     container:
       image: dart:latest
@@ -25,8 +26,11 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
+        run: |
+          git config --system --add safe.directory /__w/gql/gql 
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
@@ -78,14 +82,19 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
+        run: |
+          git config --system --add safe.directory /__w/gql/ 
+          git config --system --add safe.directory /__w/gql/gql
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
           dart pub global activate multipack
       - name: Check pubspec
         run: |
+          git status
           multipack --only $PACKAGE pubspec clean
           multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
       - name: Override local dependencies
@@ -117,6 +126,7 @@ jobs:
       matrix:
         package:
           - end_to_end_test
+          - end_to_end_test_tristate
     runs-on: ubuntu-latest
     container:
       image: dart
@@ -124,8 +134,12 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
+        run: |
+          git config --system --add safe.directory /__w/gql/ 
+          git config --system --add safe.directory /__w/gql/gql
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Activate multipack
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
@@ -200,23 +214,3 @@ jobs:
             'Package has 1 warning' \
             'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
 
-  check_svg:
-    runs-on: macos-latest
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Install GraphViz
-        run: |
-          brew install graphviz
-          brew install dart-sdk
-      - name: Activate multipack
-        run: |
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Generate SVG
-        run: |
-          multipack info | dot -Tsvg -o docs/gql.svg
-          cat docs/gql.svg
-      - name: Check changes
-        run: |
-          git diff --exit-code docs/gql.svg

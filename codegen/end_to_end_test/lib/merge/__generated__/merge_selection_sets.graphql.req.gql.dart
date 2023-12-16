@@ -17,17 +17,27 @@ part 'merge_selection_sets.graphql.req.gql.g.dart';
 abstract class GHeroMerge implements Built<GHeroMerge, GHeroMergeBuilder> {
   GHeroMerge._();
 
-  factory GHeroMerge([Function(GHeroMergeBuilder b) updates]) = _$GHeroMerge;
+  factory GHeroMerge([void Function(GHeroMergeBuilder b) updates]) =
+      _$GHeroMerge;
 
   static void _initializeBuilder(GHeroMergeBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'HeroMerge');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'HeroMerge',
+    );
+
   _i3.GHeroMergeVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroMerge> get serializer => _$gHeroMergeSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GHeroMerge.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHeroMerge.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroMerge? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GHeroMerge.serializer, json);
+      _i4.serializers.deserializeWith(
+        GHeroMerge.serializer,
+        json,
+      );
 }

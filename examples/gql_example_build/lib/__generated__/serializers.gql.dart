@@ -48,6 +48,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GShapeData_shape__asRectangle,
   GShapeData_shape__asSquare,
   GShapeData_shape__base,
-  GShapeVars
+  GShapeVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

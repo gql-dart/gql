@@ -20,20 +20,28 @@ abstract class GHeroWithInlineFragments
   GHeroWithInlineFragments._();
 
   factory GHeroWithInlineFragments(
-          [Function(GHeroWithInlineFragmentsBuilder b) updates]) =
+          [void Function(GHeroWithInlineFragmentsBuilder b) updates]) =
       _$GHeroWithInlineFragments;
 
   static void _initializeBuilder(GHeroWithInlineFragmentsBuilder b) => b
     ..operation = _i1.Operation(
-        document: _i2.document, operationName: 'HeroWithInlineFragments');
+      document: _i2.document,
+      operationName: 'HeroWithInlineFragments',
+    );
+
   _i3.GHeroWithInlineFragmentsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroWithInlineFragments> get serializer =>
       _$gHeroWithInlineFragmentsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GHeroWithInlineFragments.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHeroWithInlineFragments.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithInlineFragments? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers
-          .deserializeWith(GHeroWithInlineFragments.serializer, json);
+      _i4.serializers.deserializeWith(
+        GHeroWithInlineFragments.serializer,
+        json,
+      );
 }

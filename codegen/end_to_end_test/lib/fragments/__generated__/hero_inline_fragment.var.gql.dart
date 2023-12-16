@@ -16,15 +16,21 @@ abstract class GHeroWithInlineFragmentsVars
   GHeroWithInlineFragmentsVars._();
 
   factory GHeroWithInlineFragmentsVars(
-          [Function(GHeroWithInlineFragmentsVarsBuilder b) updates]) =
+          [void Function(GHeroWithInlineFragmentsVarsBuilder b) updates]) =
       _$GHeroWithInlineFragmentsVars;
 
   bool get skipName;
   static Serializer<GHeroWithInlineFragmentsVars> get serializer =>
       _$gHeroWithInlineFragmentsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-      GHeroWithInlineFragmentsVars.serializer, this) as Map<String, dynamic>);
+        GHeroWithInlineFragmentsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithInlineFragmentsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GHeroWithInlineFragmentsVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroWithInlineFragmentsVars.serializer,
+        json,
+      );
 }

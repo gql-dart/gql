@@ -30,10 +30,13 @@ class AllPokemonScreen extends StatelessWidget {
 
           final data = GAllPokemonData.fromJson(snapshot.data!.data!);
 
+          final pokemons =
+              data!.pokemons!.whereType<GAllPokemonData_pokemons>().toList();
+
           return ListView.builder(
-            itemCount: data!.pokemons!.length,
+            itemCount: pokemons.length,
             itemBuilder: (context, index) => PokemonCard(
-              pokemon: data.pokemons![index],
+              pokemon: pokemons[index],
             ),
           );
         },

@@ -1,11 +1,16 @@
 import "package:gql/ast.dart" as ast;
 import "package:gql/cats/cats.dart";
 import "package:gql/language.dart" as lang;
+
 import "cats_base/cats_runner.dart";
 
-class IdentityTransformer extends ast.TransformingVisitor {}
+class IdentityTransformer extends ast.TransformingVisitor {
+  const IdentityTransformer();
+}
 
-class RecursiveVisitor extends ast.RecursiveVisitor {}
+class RecursiveVisitor extends ast.RecursiveVisitor {
+  const RecursiveVisitor();
+}
 
 class MyDriver extends CatDriver<ast.DocumentNode> {
   @override

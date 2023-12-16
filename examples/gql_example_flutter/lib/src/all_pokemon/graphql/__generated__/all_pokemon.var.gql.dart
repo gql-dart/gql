@@ -13,15 +13,21 @@ abstract class GAllPokemonVars
     implements Built<GAllPokemonVars, GAllPokemonVarsBuilder> {
   GAllPokemonVars._();
 
-  factory GAllPokemonVars([Function(GAllPokemonVarsBuilder b) updates]) =
+  factory GAllPokemonVars([void Function(GAllPokemonVarsBuilder b) updates]) =
       _$GAllPokemonVars;
 
   int get first;
   static Serializer<GAllPokemonVars> get serializer =>
       _$gAllPokemonVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAllPokemonVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAllPokemonVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GAllPokemonVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAllPokemonVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAllPokemonVars.serializer,
+        json,
+      );
 }

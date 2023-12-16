@@ -16,31 +16,42 @@ abstract class GHeroWithFragmentsDuplicationVars
   GHeroWithFragmentsDuplicationVars._();
 
   factory GHeroWithFragmentsDuplicationVars(
-          [Function(GHeroWithFragmentsDuplicationVarsBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsDuplicationVarsBuilder b) updates]) =
       _$GHeroWithFragmentsDuplicationVars;
 
   static Serializer<GHeroWithFragmentsDuplicationVars> get serializer =>
       _$gHeroWithFragmentsDuplicationVarsSerializer;
-  Map<String, dynamic> toJson() => (_i1.serializers
-          .serializeWith(GHeroWithFragmentsDuplicationVars.serializer, this)
-      as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroWithFragmentsDuplicationVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsDuplicationVars? fromJson(
           Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GHeroWithFragmentsDuplicationVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroWithFragmentsDuplicationVars.serializer,
+        json,
+      );
 }
 
 abstract class GheroDataVars
     implements Built<GheroDataVars, GheroDataVarsBuilder> {
   GheroDataVars._();
 
-  factory GheroDataVars([Function(GheroDataVarsBuilder b) updates]) =
+  factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
 
   static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GheroDataVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GheroDataVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GheroDataVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GheroDataVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GheroDataVars.serializer,
+        json,
+      );
 }

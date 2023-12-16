@@ -14,32 +14,44 @@ abstract class GHeroWithFragmentsVars
   GHeroWithFragmentsVars._();
 
   factory GHeroWithFragmentsVars(
-          [Function(GHeroWithFragmentsVarsBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
 
   int? get first;
   static Serializer<GHeroWithFragmentsVars> get serializer =>
       _$gHeroWithFragmentsVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroWithFragmentsVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroWithFragmentsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroWithFragmentsVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroWithFragmentsVars.serializer,
+        json,
+      );
 }
 
 abstract class GheroDataVars
     implements Built<GheroDataVars, GheroDataVarsBuilder> {
   GheroDataVars._();
 
-  factory GheroDataVars([Function(GheroDataVarsBuilder b) updates]) =
+  factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
 
   static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GheroDataVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GheroDataVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GheroDataVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GheroDataVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GheroDataVars.serializer,
+        json,
+      );
 }
 
 abstract class GcomparisonFieldsVars
@@ -47,15 +59,21 @@ abstract class GcomparisonFieldsVars
   GcomparisonFieldsVars._();
 
   factory GcomparisonFieldsVars(
-          [Function(GcomparisonFieldsVarsBuilder b) updates]) =
+          [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
 
   int? get first;
   static Serializer<GcomparisonFieldsVars> get serializer =>
       _$gcomparisonFieldsVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GcomparisonFieldsVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GcomparisonFieldsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GcomparisonFieldsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GcomparisonFieldsVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GcomparisonFieldsVars.serializer,
+        json,
+      );
 }

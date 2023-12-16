@@ -2,6 +2,8 @@ import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
+import "package:gql_code_builder/src/tristate_optionals.dart";
 
 import "../source.dart";
 
@@ -93,6 +95,7 @@ Reference _typeRef(
 ) {
   if (type is NamedTypeNode) {
     final ref = typeMap[type.name.value] ?? Reference(type.name.value);
+    assert(ref.symbol != null, "Symbol for ${ref} must not be null");
     return TypeReference(
       (b) => b
         ..url = ref.url
@@ -105,7 +108,7 @@ Reference _typeRef(
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
         ..isNullable = forceNullable || !type.isNonNull
-        ..types.add(_typeRef(type.type, typeMap, true)),
+        ..types.add(_typeRef(type.type, typeMap, false)),
     );
   }
   throw Exception("Unrecognized TypeNode type");
@@ -139,6 +142,7 @@ Method buildGetter({
   required TypeNode typeNode,
   required SourceNode schemaSource,
   Map<String, Reference> typeOverrides = const {},
+  Reference? typeRefAlias,
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
@@ -153,7 +157,9 @@ Method buildGetter({
 
   final typeMap = {
     ...defaultTypeMap,
-    if (typeRefPrefix != null)
+    if (typeRefAlias != null)
+      typeName: typeRefAlias
+    else if (typeRefPrefix != null)
       typeName: refer("${typeRefPrefix}_${nameNode.value}")
     else if (typeDef != null)
       typeName: refer(
@@ -177,6 +183,45 @@ Method buildGetter({
       ..type = MethodType.getter
       ..name = identifier(nameNode.value),
   );
+}
+
+/// like [buildGetter] but wraps the return type in a [Value] for nullable types
+/// in order to distinguish between `null` and absent values
+/// if [useTriStateValueForNullableTypes] is [TriStateValueConfig.onAllNullableFields]
+Method buildOptionalGetter({
+  required NameNode nameNode,
+  required TypeNode typeNode,
+  required SourceNode schemaSource,
+  Map<String, Reference> typeOverrides = const {},
+  String? typeRefPrefix,
+  bool built = true,
+  bool isOverride = false,
+  TriStateValueConfig useTriStateValueForNullableTypes =
+      TriStateValueConfig.never,
+}) {
+  final baseGetter = buildGetter(
+    nameNode: nameNode,
+    typeNode: typeNode,
+    schemaSource: schemaSource,
+    typeOverrides: typeOverrides,
+    typeRefPrefix: typeRefPrefix,
+    built: built,
+    isOverride: isOverride,
+  );
+
+  if (typeNode.isNonNull ||
+      useTriStateValueForNullableTypes == TriStateValueConfig.never) {
+    return baseGetter;
+  }
+
+  final optionalGetter = baseGetter.rebuild((b) => b
+    ..returns = TypeReference((b2) => b2
+      ..isNullable = false
+      ..url = valueTypeUrl
+      ..symbol = valueTypeSymbol
+      ..types.add((baseGetter.returns as TypeReference)
+          .rebuild((b3) => b3..isNullable = false))));
+  return optionalGetter;
 }
 
 Method buildSerializerGetter(String className) => Method(

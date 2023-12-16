@@ -17,6 +17,9 @@ targets:
         enabled: true
         options:
           schema: gql_example_build|lib/schema.graphql
+          when_extensions:
+            when: true
+            maybeWhen: true
       gql_build|var_builder:
         enabled: true
         options:

@@ -18,19 +18,28 @@ abstract class GReviewWithDate
     implements Built<GReviewWithDate, GReviewWithDateBuilder> {
   GReviewWithDate._();
 
-  factory GReviewWithDate([Function(GReviewWithDateBuilder b) updates]) =
+  factory GReviewWithDate([void Function(GReviewWithDateBuilder b) updates]) =
       _$GReviewWithDate;
 
   static void _initializeBuilder(GReviewWithDateBuilder b) => b
-    ..operation =
-        _i1.Operation(document: _i2.document, operationName: 'ReviewWithDate');
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'ReviewWithDate',
+    );
+
   _i3.GReviewWithDateVars get vars;
   _i1.Operation get operation;
   static Serializer<GReviewWithDate> get serializer =>
       _$gReviewWithDateSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GReviewWithDate.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GReviewWithDate.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GReviewWithDate? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GReviewWithDate.serializer, json);
+      _i4.serializers.deserializeWith(
+        GReviewWithDate.serializer,
+        json,
+      );
 }

@@ -13,14 +13,20 @@ abstract class GHeroMergeVars
     implements Built<GHeroMergeVars, GHeroMergeVarsBuilder> {
   GHeroMergeVars._();
 
-  factory GHeroMergeVars([Function(GHeroMergeVarsBuilder b) updates]) =
+  factory GHeroMergeVars([void Function(GHeroMergeVarsBuilder b) updates]) =
       _$GHeroMergeVars;
 
   static Serializer<GHeroMergeVars> get serializer =>
       _$gHeroMergeVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroMergeVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroMergeVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroMergeVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroMergeVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroMergeVars.serializer,
+        json,
+      );
 }

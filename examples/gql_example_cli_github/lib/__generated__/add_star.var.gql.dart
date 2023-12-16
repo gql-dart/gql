@@ -13,14 +13,20 @@ abstract class GAddStarVars
     implements Built<GAddStarVars, GAddStarVarsBuilder> {
   GAddStarVars._();
 
-  factory GAddStarVars([Function(GAddStarVarsBuilder b) updates]) =
+  factory GAddStarVars([void Function(GAddStarVarsBuilder b) updates]) =
       _$GAddStarVars;
 
   String get starrableId;
   static Serializer<GAddStarVars> get serializer => _$gAddStarVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GAddStarVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAddStarVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GAddStarVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GAddStarVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GAddStarVars.serializer,
+        json,
+      );
 }

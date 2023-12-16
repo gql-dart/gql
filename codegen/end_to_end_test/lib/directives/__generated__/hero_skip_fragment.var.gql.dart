@@ -14,31 +14,43 @@ abstract class GHeroSkipFragmentVars
   GHeroSkipFragmentVars._();
 
   factory GHeroSkipFragmentVars(
-          [Function(GHeroSkipFragmentVarsBuilder b) updates]) =
+          [void Function(GHeroSkipFragmentVarsBuilder b) updates]) =
       _$GHeroSkipFragmentVars;
 
   bool get skipDetails;
   static Serializer<GHeroSkipFragmentVars> get serializer =>
       _$gHeroSkipFragmentVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroSkipFragmentVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroSkipFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroSkipFragmentVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroSkipFragmentVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroSkipFragmentVars.serializer,
+        json,
+      );
 }
 
 abstract class GHeroDetailVars
     implements Built<GHeroDetailVars, GHeroDetailVarsBuilder> {
   GHeroDetailVars._();
 
-  factory GHeroDetailVars([Function(GHeroDetailVarsBuilder b) updates]) =
+  factory GHeroDetailVars([void Function(GHeroDetailVarsBuilder b) updates]) =
       _$GHeroDetailVars;
 
   static Serializer<GHeroDetailVars> get serializer =>
       _$gHeroDetailVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GHeroDetailVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroDetailVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroDetailVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GHeroDetailVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroDetailVars.serializer,
+        json,
+      );
 }

@@ -1,3 +1,23 @@
+## 1.0.1+1
+
+- add topics
+
+## 1.0.1
+
+- Support http 1.0.0
+
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
+## 0.4.6
+
+- add statusCode to HttpLinkServerException
+
+## 0.4.5
+
+- use HttpLinkResponseContext from gql_exec
+
 ## 0.4.4
 
 - compatibility with gql_link 0.5.0: add stacktraces to exceptions

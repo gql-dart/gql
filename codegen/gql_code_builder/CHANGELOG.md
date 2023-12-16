@@ -1,3 +1,34 @@
+## 0.9.1+1
+
+- fix generating the `Value` wrappers as nullable
+
+## 0.9.0
+
+- add TriStateValueConfig option in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
+  - absent
+  - null
+  - non-null value
+  in serialization 
+
+
+## 0.8.0
+
+- add experimental `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
+
+
+## 0.7.2
+
+- Add a const constructor to `_PrintVisitor` and `_SchemaBuilderVisitor`.
+
+## 0.7.1
+
+- experimental support for when/maybeWhen methods in inline spread fragments with type condition
+- fix issue with generating fragment classes with variables, see https://github.com/gql-dart/ferry/issues/484
+
+## 0.7.0
+
+- **Breaking Change**: properly generate nullable types for nullable elements in lists
+
 ## 0.6.0
 
 - add support for generating `possibleTypesMap`. 

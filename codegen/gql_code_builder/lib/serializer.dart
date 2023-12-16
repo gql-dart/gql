@@ -20,11 +20,13 @@ Library buildSerializerLibrary(
         ..directives.add(Directive.part(partDirectiveUrl))
         ..body.addAll([
           withCustomSerializers(
-            refer(r"_$serializers")
-                .assignFinal(
-                  "_serializersBuilder",
-                  refer("SerializersBuilder",
-                      "package:built_value/serializer.dart"),
+            declareFinal(
+              "_serializersBuilder",
+              type: refer(
+                  "SerializersBuilder", "package:built_value/serializer.dart"),
+            )
+                .assign(
+                  refer(r"_$serializers"),
                 )
                 .property("toBuilder")
                 .call([]),
@@ -45,11 +47,10 @@ Library buildSerializerLibrary(
                 ..sort((a, b) => a.symbol!.compareTo(b.symbol!)),
             )
           ]),
-          refer("_serializersBuilder")
-              .assignFinal(
-                "serializers",
-                refer("Serializers", "package:built_value/serializer.dart"),
-              )
+          declareFinal("serializers",
+                  type: refer(
+                      "Serializers", "package:built_value/serializer.dart"))
+              .assign(refer("_serializersBuilder"))
               .property("build")
               .call([]).statement,
         ]),

@@ -12,15 +12,21 @@ abstract class GFindPokemonVars
     implements Built<GFindPokemonVars, GFindPokemonVarsBuilder> {
   GFindPokemonVars._();
 
-  factory GFindPokemonVars([Function(GFindPokemonVarsBuilder b) updates]) =
+  factory GFindPokemonVars([void Function(GFindPokemonVarsBuilder b) updates]) =
       _$GFindPokemonVars;
 
   String get name;
   static Serializer<GFindPokemonVars> get serializer =>
       _$gFindPokemonVarsSerializer;
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GFindPokemonVars.serializer, this)
-          as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GFindPokemonVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GFindPokemonVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GFindPokemonVars.serializer, json);
+      _i1.serializers.deserializeWith(
+        GFindPokemonVars.serializer,
+        json,
+      );
 }

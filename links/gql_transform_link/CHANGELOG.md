@@ -1,3 +1,11 @@
+## 1.0.0+1
+
+- add topics
+
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
 ## 0.2.3
 
 - Upgrade `gql_link`

@@ -16,23 +16,29 @@ abstract class GHeroWithFragmentsDuplicationData
   GHeroWithFragmentsDuplicationData._();
 
   factory GHeroWithFragmentsDuplicationData(
-          [Function(GHeroWithFragmentsDuplicationDataBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsDuplicationDataBuilder b) updates]) =
       _$GHeroWithFragmentsDuplicationData;
 
   static void _initializeBuilder(GHeroWithFragmentsDuplicationDataBuilder b) =>
       b..G__typename = 'Query';
+
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GHeroWithFragmentsDuplicationData_hero? get hero;
   static Serializer<GHeroWithFragmentsDuplicationData> get serializer =>
       _$gHeroWithFragmentsDuplicationDataSerializer;
-  Map<String, dynamic> toJson() => (_i1.serializers
-          .serializeWith(GHeroWithFragmentsDuplicationData.serializer, this)
-      as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroWithFragmentsDuplicationData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsDuplicationData? fromJson(
           Map<String, dynamic> json) =>
-      _i1.serializers
-          .deserializeWith(GHeroWithFragmentsDuplicationData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GHeroWithFragmentsDuplicationData.serializer,
+        json,
+      );
 }
 
 abstract class GHeroWithFragmentsDuplicationData_hero
@@ -43,12 +49,13 @@ abstract class GHeroWithFragmentsDuplicationData_hero
   GHeroWithFragmentsDuplicationData_hero._();
 
   factory GHeroWithFragmentsDuplicationData_hero(
-          [Function(GHeroWithFragmentsDuplicationData_heroBuilder b) updates]) =
-      _$GHeroWithFragmentsDuplicationData_hero;
+      [void Function(GHeroWithFragmentsDuplicationData_heroBuilder b)
+          updates]) = _$GHeroWithFragmentsDuplicationData_hero;
 
   static void _initializeBuilder(
           GHeroWithFragmentsDuplicationData_heroBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -58,14 +65,19 @@ abstract class GHeroWithFragmentsDuplicationData_hero
   String get name;
   static Serializer<GHeroWithFragmentsDuplicationData_hero> get serializer =>
       _$gHeroWithFragmentsDuplicationDataHeroSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-          GHeroWithFragmentsDuplicationData_hero.serializer, this)
-      as Map<String, dynamic>);
+        GHeroWithFragmentsDuplicationData_hero.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GHeroWithFragmentsDuplicationData_hero? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-          GHeroWithFragmentsDuplicationData_hero.serializer, json);
+        GHeroWithFragmentsDuplicationData_hero.serializer,
+        json,
+      );
 }
 
 abstract class GheroData {
@@ -79,11 +91,12 @@ abstract class GheroDataData
     implements Built<GheroDataData, GheroDataDataBuilder>, GheroData {
   GheroDataData._();
 
-  factory GheroDataData([Function(GheroDataDataBuilder b) updates]) =
+  factory GheroDataData([void Function(GheroDataDataBuilder b) updates]) =
       _$GheroDataData;
 
   static void _initializeBuilder(GheroDataDataBuilder b) =>
       b..G__typename = 'Character';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -92,10 +105,16 @@ abstract class GheroDataData
   @override
   String get name;
   static Serializer<GheroDataData> get serializer => _$gheroDataDataSerializer;
+
   @override
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GheroDataData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GheroDataData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
   static GheroDataData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GheroDataData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GheroDataData.serializer,
+        json,
+      );
 }

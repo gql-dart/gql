@@ -18,15 +18,18 @@
 [github-forks-link]: https://github.com/gql-dart/gql/network/members
 
 [discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
-[discord-link]: https://discord.gg/NryjpVa
+[discord-link]: https://discord.gg/YBFCTXNbwY
 
 GQL WebSocket link to execute subscriptions as well as mutations & queries against a GraphQL backend. 
 This link support `autoReconnect` and will resubscribe after reconnecting.
 
+This package supports both the deprecated `graphql-ws` and the `graphql-transport-ws` protocol
+via the `WebSocketLink` and `TransportWebSocketLink` classes respectively.
+
 
 ## Usage
 
-A simple usage example:
+### `WebSocketLink` / `graphql-ws` protocol
 
 ```dart
 import "package:gql_link/gql_link.dart";
@@ -41,7 +44,24 @@ void main () {
 
 ```
 
-Make sure you have WebSocket transport supported on your GraphQL server.
+### `TransportWebSocketLink` / `graphql-transport-ws` protocol
+
+```dart
+import "package:gql_link/gql_link.dart";
+import "package:gql_websocket_link/gql_websocket_link.dart";
+
+void main () {
+  final link = Link.from([
+    // SomeLink(),
+    TransportWebSocketLink(
+      TransportWsClientOptions(
+          socketMaker: WebSocketMaker.url(() => "ws://<GRAPHQL_SERVER_ENDPOINT>/graphql")
+      ),
+    ),
+  ]);
+}
+
+```
 
 ## Features and bugs
 

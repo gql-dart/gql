@@ -100,7 +100,8 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                      statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -467,7 +468,8 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                      statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -545,14 +547,14 @@ void main() {
         responseType: dio.ResponseType.json,
         path: "/",
       );
-      final error = dio.DioError(
+      final error = dio.DioException(
           requestOptions: opts,
           response: dio.Response<String>(
             requestOptions: opts,
             data: "Not authenticated",
             statusCode: 401,
           ),
-          type: dio.DioErrorType.response);
+          type: dio.DioExceptionType.badResponse);
 
       when(
         client.post<dynamic>(
@@ -592,13 +594,13 @@ void main() {
 
       expect(exception.originalException != null, true);
 
-      final dioException = exception.originalException as dio.DioError;
+      final dioException = exception.originalException as dio.DioException;
       expect(dioException.response!.data, "Not authenticated");
       expect(dioException.response!.statusCode, 401);
-      expect(dioException.type, dio.DioErrorType.response);
+      expect(dioException.type, dio.DioExceptionType.badResponse);
 
       expect(exception.toString(),
-          "DioLinkServerException(originalException: DioError [DioErrorType.response]: , status: 401, response: Not authenticated");
+          "DioLinkServerException(originalException: DioException [bad response]: null, status: 401, response: Not authenticated");
     });
 
     test("throws HttpLinkServerException when no data and errors", () async {
@@ -825,7 +827,8 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                      statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,
@@ -869,7 +872,8 @@ void main() {
                   ResponseExtensions(null),
                 )
                 .withEntry(
-                  DioLinkResponseContext(statusCode: 200),
+                  HttpLinkResponseContext(
+                      statusCode: 200, rawHeaders: const {}),
                 ),
           ),
           emitsDone,

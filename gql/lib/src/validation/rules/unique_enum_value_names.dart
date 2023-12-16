@@ -24,6 +24,7 @@ class _Accumulator {
 }
 
 class UniqueEnumValueNames extends ValidatingVisitor {
+  const UniqueEnumValueNames();
   @override
   List<ValidationError> visitEnumTypeDefinitionNode(
     EnumTypeDefinitionNode node,

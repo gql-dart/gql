@@ -1,3 +1,15 @@
+## 2.0.0
+
+- BREAKING: graphql-transport-ws: closeReason is optional, add shouldRetry
+
+## 1.1.0
+
+- Support the `graphql-transport-ws` protocol. Thanks to Juan Manuel Castillo for the contribution.
+
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
 ## 0.3.4
 
 - add stackTrace to exceptions
