@@ -33,8 +33,6 @@ List<Spec> buildOperationDataClasses(
       op.selectionSet.selections,
       {});
 
-  print("${op.name?.value} ${fields}");
-
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
     selections: mergeSelections(
@@ -153,10 +151,7 @@ List<Spec> buildSelectionSetDataClasses({
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
-  final fields = collectFields(docSource, schemaSource,
-      getTypeDefinitionNode(schemaSource.flatDocument, type)!, selections, {});
 
-  print("${name} ${fields}");
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
