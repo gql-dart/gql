@@ -21,7 +21,7 @@ jobs:
           - gql_tristate_value
     runs-on: ubuntu-latest
     container:
-      image: dart:latest
+      image: dart
     name: Check ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
