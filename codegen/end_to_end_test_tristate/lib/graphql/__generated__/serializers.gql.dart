@@ -28,6 +28,29 @@ import 'package:end_to_end_test_tristate/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test_tristate/date_serializer.dart'
     show DateSerializer;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_include.data.gql.dart'
+    show GHeroIncludeData, GHeroIncludeData_hero;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_include.req.gql.dart'
+    show GHeroInclude;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_include.var.gql.dart'
+    show GHeroIncludeVars;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip.data.gql.dart'
+    show GHeroSkipData, GHeroSkipData_hero;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip.req.gql.dart'
+    show GHeroSkip;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip.var.gql.dart'
+    show GHeroSkipVars;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip_fragment.data.gql.dart'
+    show
+        GHeroDetailData,
+        GHeroDetailData_friends,
+        GHeroSkipFragmentData,
+        GHeroSkipFragmentData_hero,
+        GHeroSkipFragmentData_hero_friends;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip_fragment.req.gql.dart'
+    show GHeroSkipFragment;
+import 'package:end_to_end_test_tristate/directives/__generated__/hero_skip_fragment.var.gql.dart'
+    show GHeroDetailVars, GHeroSkipFragmentVars;
 import 'package:end_to_end_test_tristate/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
         GPostFragmentForUser1Data,
@@ -177,6 +200,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,
+  GHeroDetailData,
+  GHeroDetailData_friends,
+  GHeroDetailVars,
   GHeroForEpisode,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero__asDroid,
@@ -184,10 +210,23 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeData_hero__base,
   GHeroForEpisodeData_hero__base_friends,
   GHeroForEpisodeVars,
+  GHeroInclude,
+  GHeroIncludeData,
+  GHeroIncludeData_hero,
+  GHeroIncludeVars,
   GHeroNoVars,
   GHeroNoVarsData,
   GHeroNoVarsData_hero,
   GHeroNoVarsVars,
+  GHeroSkip,
+  GHeroSkipData,
+  GHeroSkipData_hero,
+  GHeroSkipFragment,
+  GHeroSkipFragmentData,
+  GHeroSkipFragmentData_hero,
+  GHeroSkipFragmentData_hero_friends,
+  GHeroSkipFragmentVars,
+  GHeroSkipVars,
   GHeroWith2Fragments,
   GHeroWith2FragmentsData,
   GHeroWith2FragmentsData_hero,
