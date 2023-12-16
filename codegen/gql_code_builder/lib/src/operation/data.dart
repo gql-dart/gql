@@ -25,14 +25,6 @@ List<Spec> buildOperationDataClasses(
 
   final fragmentMap = _fragmentMap(docSource);
 
-  final fields = collectFields(
-      docSource,
-      schemaSource,
-      getTypeDefinitionNode(schemaSource.flatDocument,
-          _operationType(schemaSource.flatDocument, op))!,
-      op.selectionSet.selections,
-      {});
-
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
     selections: mergeSelections(
