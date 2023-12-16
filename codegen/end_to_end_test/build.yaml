@@ -37,6 +37,7 @@ targets:
         enabled: true
         options:
           schema: end_to_end_test|lib/graphql/schema.graphql
+          reuse_fragments: false
           when_extensions:
             when: true
             maybeWhen: true
