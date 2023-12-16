@@ -151,7 +151,6 @@ List<Spec> buildSelectionSetDataClasses({
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
-
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
