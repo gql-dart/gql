@@ -123,6 +123,7 @@ jobs:
           multipack --only $PACKAGE exec dart analyze --fatal-warnings .
   builder_tests:
     strategy:
+      fail-fast: false
       matrix:
         package:
           - end_to_end_test
