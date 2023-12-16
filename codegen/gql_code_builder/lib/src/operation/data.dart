@@ -553,8 +553,10 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
           final groupForResponseKey =
               groupedFields.putIfAbsent(responseKey, () => []);
           final values = fragmentGroup.value
-              .map((e) => (fieldNode:
-                  e.fieldNode, isMaybeSkipped: isMaybeSkipped  || e.isMaybeSkipped))
+              .map((e) => (
+                    fieldNode: e.fieldNode,
+                    isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped
+                  ))
               .toList();
           //Append all items in fragmentGroup to groupForResponseKey.
           groupForResponseKey.addAll(values);
@@ -604,8 +606,10 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
         //Append all items in fragmentGroup to groupForResponseKey.
 
         final values = fragmentGroup.value
-            .map((e) => (fieldNode:
-                e.fieldNode, isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped))
+            .map((e) => (
+                  fieldNode: e.fieldNode,
+                  isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped
+                ))
             .toList();
 
         groupForResponseKey.addAll(values);
