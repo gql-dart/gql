@@ -499,33 +499,10 @@ TypeNode _getFieldTypeNode(
       .type;
 }
 
-class FieldNoteWithNullability {
-  final FieldNode field;
-  final bool isMaybeSkipped;
-
-  FieldNoteWithNullability(this.field, this.isMaybeSkipped);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FieldNoteWithNullability &&
-          runtimeType == other.runtimeType &&
-          field == other.field &&
-          isMaybeSkipped == other.isMaybeSkipped;
-
-  @override
-  int get hashCode => field.hashCode ^ isMaybeSkipped.hashCode;
-
-  @override
-  String toString() =>
-      "FieldNoteWithNullability{field: ${field.name.value}, forceNullable: $isMaybeSkipped}";
-
-  FieldNoteWithNullability merge(bool isMaybeSkipped) =>
-      FieldNoteWithNullability(field, this.isMaybeSkipped && isMaybeSkipped);
-}
+typedef FieldNodeWithNullability = ({FieldNode fieldNode, bool isMaybeSkipped});
 
 //https://spec.graphql.org/draft/#CollectFields()
-Map<String, List<FieldNoteWithNullability>> collectFields(
+Map<String, List<FieldNodeWithNullability>> collectFields(
   SourceNode document,
   SourceNode schema,
   TypeDefinitionNode objectType,
@@ -533,7 +510,7 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
   Set<String> visitedFragments,
 ) {
   //Initialize groupedFields to an empty ordered map of lists.
-  final groupedFields = <String, List<FieldNoteWithNullability>>{};
+  final groupedFields = <String, List<FieldNodeWithNullability>>{};
   //For each selection in selectionSet:
   for (final selection in selectionSet) {
     final isMaybeSkipped = selection.directives.any(
@@ -548,10 +525,7 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
         groupedFields
             .putIfAbsent(
                 selection.alias?.value ?? selection.name.value, () => [])
-            .add(FieldNoteWithNullability(selection, isMaybeSkipped));
-      } else {
-        print(
-            "Skipping field ${selection.name.value} because it's already present");
+            .add((fieldNode: selection, isMaybeSkipped: isMaybeSkipped));
       }
     }
     //If the selection is an inline fragment:
@@ -579,27 +553,21 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
           final groupForResponseKey =
               groupedFields.putIfAbsent(responseKey, () => []);
           final values = fragmentGroup.value
-              .map((e) => FieldNoteWithNullability(
-                  e.field, isMaybeSkipped || e.isMaybeSkipped))
+              .map((e) => (fieldNode:
+                  e.fieldNode, isMaybeSkipped: isMaybeSkipped  || e.isMaybeSkipped))
               .toList();
           //Append all items in fragmentGroup to groupForResponseKey.
           groupForResponseKey.addAll(values);
-        } else {
-          print(
-              "Skipping field ${fragmentGroup.key} because it's already present 2");
         }
       }
     }
 
     //If the selection is a fragment spread:
     else if (selection is FragmentSpreadNode) {
-      print("${selection.name.value} forceNullable: $isMaybeSkipped");
       //Let fragmentSpreadName be the name of selection.
       final fragmentSpreadName = selection.name.value;
       //If fragmentSpreadName is in visitedFragments, continue with the next selection in selectionSet.
       if (visitedFragments.contains(fragmentSpreadName)) {
-        print(
-            "Skipping fragment $fragmentSpreadName because it's already visited");
         continue;
       }
       //Add fragmentSpreadName to visitedFragments.
@@ -636,8 +604,8 @@ Map<String, List<FieldNoteWithNullability>> collectFields(
         //Append all items in fragmentGroup to groupForResponseKey.
 
         final values = fragmentGroup.value
-            .map((e) => FieldNoteWithNullability(
-                e.field, isMaybeSkipped || e.isMaybeSkipped))
+            .map((e) => (fieldNode:
+                e.fieldNode, isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped))
             .toList();
 
         groupForResponseKey.addAll(values);
