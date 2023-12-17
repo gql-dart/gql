@@ -1,11 +1,11 @@
 query HeroWithFragmentsDuplication {
     hero(episode: JEDI) {
         id
-        ...heroData
+        ...HeroWithFragmentsDuplicationFragment
     }
 }
 
-fragment heroData on Character {
+fragment HeroWithFragmentsDuplicationFragment on Character {
     id
     name
 }
