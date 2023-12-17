@@ -35,23 +35,28 @@ abstract class GHeroWithFragmentsDuplicationVars
       );
 }
 
-abstract class GheroDataVars
-    implements Built<GheroDataVars, GheroDataVarsBuilder> {
-  GheroDataVars._();
+abstract class GHeroWithFragmentsDuplicationFragmentVars
+    implements
+        Built<GHeroWithFragmentsDuplicationFragmentVars,
+            GHeroWithFragmentsDuplicationFragmentVarsBuilder> {
+  GHeroWithFragmentsDuplicationFragmentVars._();
 
-  factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
-      _$GheroDataVars;
+  factory GHeroWithFragmentsDuplicationFragmentVars(
+      [void Function(GHeroWithFragmentsDuplicationFragmentVarsBuilder b)
+          updates]) = _$GHeroWithFragmentsDuplicationFragmentVars;
 
-  static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
+  static Serializer<GHeroWithFragmentsDuplicationFragmentVars> get serializer =>
+      _$gHeroWithFragmentsDuplicationFragmentVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GheroDataVars.serializer,
+        GHeroWithFragmentsDuplicationFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GheroDataVars? fromJson(Map<String, dynamic> json) =>
+  static GHeroWithFragmentsDuplicationFragmentVars? fromJson(
+          Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GheroDataVars.serializer,
+        GHeroWithFragmentsDuplicationFragmentVars.serializer,
         json,
       );
 }

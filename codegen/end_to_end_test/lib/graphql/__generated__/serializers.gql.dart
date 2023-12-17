@@ -73,11 +73,14 @@ import 'package:end_to_end_test/fragments/__generated__/hero_inline_fragment.var
 import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.data.gql.dart'
     show
         GHeroWithFragmentsDuplicationData,
-        GHeroWithFragmentsDuplicationData_hero;
+        GHeroWithFragmentsDuplicationData_hero,
+        GHeroWithFragmentsDuplicationFragmentData;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.req.gql.dart'
     show GHeroWithFragmentsDuplication;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.var.gql.dart'
-    show GHeroWithFragmentsDuplicationVars;
+    show
+        GHeroWithFragmentsDuplicationFragmentVars,
+        GHeroWithFragmentsDuplicationVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
@@ -277,6 +280,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsDuplication,
   GHeroWithFragmentsDuplicationData,
   GHeroWithFragmentsDuplicationData_hero,
+  GHeroWithFragmentsDuplicationFragmentData,
+  GHeroWithFragmentsDuplicationFragmentVars,
   GHeroWithFragmentsDuplicationVars,
   GHeroWithFragmentsVars,
   GHeroWithInlineFragments,

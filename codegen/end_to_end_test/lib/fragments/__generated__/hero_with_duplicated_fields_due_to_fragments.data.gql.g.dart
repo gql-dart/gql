@@ -12,8 +12,9 @@ Serializer<GHeroWithFragmentsDuplicationData>
 Serializer<GHeroWithFragmentsDuplicationData_hero>
     _$gHeroWithFragmentsDuplicationDataHeroSerializer =
     new _$GHeroWithFragmentsDuplicationData_heroSerializer();
-Serializer<GheroDataData> _$gheroDataDataSerializer =
-    new _$GheroDataDataSerializer();
+Serializer<GHeroWithFragmentsDuplicationFragmentData>
+    _$gHeroWithFragmentsDuplicationFragmentDataSerializer =
+    new _$GHeroWithFragmentsDuplicationFragmentDataSerializer();
 
 class _$GHeroWithFragmentsDuplicationDataSerializer
     implements StructuredSerializer<GHeroWithFragmentsDuplicationData> {
@@ -133,14 +134,19 @@ class _$GHeroWithFragmentsDuplicationData_heroSerializer
   }
 }
 
-class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
+class _$GHeroWithFragmentsDuplicationFragmentDataSerializer
+    implements StructuredSerializer<GHeroWithFragmentsDuplicationFragmentData> {
   @override
-  final Iterable<Type> types = const [GheroDataData, _$GheroDataData];
+  final Iterable<Type> types = const [
+    GHeroWithFragmentsDuplicationFragmentData,
+    _$GHeroWithFragmentsDuplicationFragmentData
+  ];
   @override
-  final String wireName = 'GheroDataData';
+  final String wireName = 'GHeroWithFragmentsDuplicationFragmentData';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GheroDataData object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroWithFragmentsDuplicationFragmentData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -156,10 +162,10 @@ class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
   }
 
   @override
-  GheroDataData deserialize(
+  GHeroWithFragmentsDuplicationFragmentData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GheroDataDataBuilder();
+    final result = new GHeroWithFragmentsDuplicationFragmentDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -436,7 +442,8 @@ class GHeroWithFragmentsDuplicationData_heroBuilder
   }
 }
 
-class _$GheroDataData extends GheroDataData {
+class _$GHeroWithFragmentsDuplicationFragmentData
+    extends GHeroWithFragmentsDuplicationFragmentData {
   @override
   final String G__typename;
   @override
@@ -444,29 +451,37 @@ class _$GheroDataData extends GheroDataData {
   @override
   final String name;
 
-  factory _$GheroDataData([void Function(GheroDataDataBuilder)? updates]) =>
-      (new GheroDataDataBuilder()..update(updates))._build();
+  factory _$GHeroWithFragmentsDuplicationFragmentData(
+          [void Function(GHeroWithFragmentsDuplicationFragmentDataBuilder)?
+              updates]) =>
+      (new GHeroWithFragmentsDuplicationFragmentDataBuilder()..update(updates))
+          ._build();
 
-  _$GheroDataData._(
+  _$GHeroWithFragmentsDuplicationFragmentData._(
       {required this.G__typename, required this.id, required this.name})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GHeroWithFragmentsDuplicationFragmentData', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GheroDataData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GheroDataData', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'GheroDataData', 'name');
+        id, r'GHeroWithFragmentsDuplicationFragmentData', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GHeroWithFragmentsDuplicationFragmentData', 'name');
   }
 
   @override
-  GheroDataData rebuild(void Function(GheroDataDataBuilder) updates) =>
+  GHeroWithFragmentsDuplicationFragmentData rebuild(
+          void Function(GHeroWithFragmentsDuplicationFragmentDataBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GheroDataDataBuilder toBuilder() => new GheroDataDataBuilder()..replace(this);
+  GHeroWithFragmentsDuplicationFragmentDataBuilder toBuilder() =>
+      new GHeroWithFragmentsDuplicationFragmentDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GheroDataData &&
+    return other is GHeroWithFragmentsDuplicationFragmentData &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name;
@@ -484,7 +499,8 @@ class _$GheroDataData extends GheroDataData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GheroDataData')
+    return (newBuiltValueToStringHelper(
+            r'GHeroWithFragmentsDuplicationFragmentData')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name))
@@ -492,9 +508,11 @@ class _$GheroDataData extends GheroDataData {
   }
 }
 
-class GheroDataDataBuilder
-    implements Builder<GheroDataData, GheroDataDataBuilder> {
-  _$GheroDataData? _$v;
+class GHeroWithFragmentsDuplicationFragmentDataBuilder
+    implements
+        Builder<GHeroWithFragmentsDuplicationFragmentData,
+            GHeroWithFragmentsDuplicationFragmentDataBuilder> {
+  _$GHeroWithFragmentsDuplicationFragmentData? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -508,11 +526,11 @@ class GheroDataDataBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GheroDataDataBuilder() {
-    GheroDataData._initializeBuilder(this);
+  GHeroWithFragmentsDuplicationFragmentDataBuilder() {
+    GHeroWithFragmentsDuplicationFragmentData._initializeBuilder(this);
   }
 
-  GheroDataDataBuilder get _$this {
+  GHeroWithFragmentsDuplicationFragmentDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -524,28 +542,30 @@ class GheroDataDataBuilder
   }
 
   @override
-  void replace(GheroDataData other) {
+  void replace(GHeroWithFragmentsDuplicationFragmentData other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GheroDataData;
+    _$v = other as _$GHeroWithFragmentsDuplicationFragmentData;
   }
 
   @override
-  void update(void Function(GheroDataDataBuilder)? updates) {
+  void update(
+      void Function(GHeroWithFragmentsDuplicationFragmentDataBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GheroDataData build() => _build();
+  GHeroWithFragmentsDuplicationFragmentData build() => _build();
 
-  _$GheroDataData _build() {
+  _$GHeroWithFragmentsDuplicationFragmentData _build() {
     final _$result = _$v ??
-        new _$GheroDataData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroDataData', 'G__typename'),
+        new _$GHeroWithFragmentsDuplicationFragmentData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GHeroWithFragmentsDuplicationFragmentData', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GheroDataData', 'id'),
+                id, r'GHeroWithFragmentsDuplicationFragmentData', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroDataData', 'name'));
+                name, r'GHeroWithFragmentsDuplicationFragmentData', 'name'));
     replace(_$result);
     return _$result;
   }

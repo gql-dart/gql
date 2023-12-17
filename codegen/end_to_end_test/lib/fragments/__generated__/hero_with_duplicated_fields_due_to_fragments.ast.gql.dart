@@ -29,15 +29,15 @@ const HeroWithFragmentsDuplication = _i1.OperationDefinitionNode(
           selectionSet: null,
         ),
         _i1.FragmentSpreadNode(
-          name: _i1.NameNode(value: 'heroData'),
+          name: _i1.NameNode(value: 'HeroWithFragmentsDuplicationFragment'),
           directives: [],
         ),
       ]),
     )
   ]),
 );
-const heroData = _i1.FragmentDefinitionNode(
-  name: _i1.NameNode(value: 'heroData'),
+const HeroWithFragmentsDuplicationFragment = _i1.FragmentDefinitionNode(
+  name: _i1.NameNode(value: 'HeroWithFragmentsDuplicationFragment'),
   typeCondition: _i1.TypeConditionNode(
       on: _i1.NamedTypeNode(
     name: _i1.NameNode(value: 'Character'),
@@ -63,5 +63,5 @@ const heroData = _i1.FragmentDefinitionNode(
 );
 const document = _i1.DocumentNode(definitions: [
   HeroWithFragmentsDuplication,
-  heroData,
+  HeroWithFragmentsDuplicationFragment,
 ]);

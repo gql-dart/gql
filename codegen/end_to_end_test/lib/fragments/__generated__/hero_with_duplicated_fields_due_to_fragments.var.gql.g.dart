@@ -9,8 +9,9 @@ part of 'hero_with_duplicated_fields_due_to_fragments.var.gql.dart';
 Serializer<GHeroWithFragmentsDuplicationVars>
     _$gHeroWithFragmentsDuplicationVarsSerializer =
     new _$GHeroWithFragmentsDuplicationVarsSerializer();
-Serializer<GheroDataVars> _$gheroDataVarsSerializer =
-    new _$GheroDataVarsSerializer();
+Serializer<GHeroWithFragmentsDuplicationFragmentVars>
+    _$gHeroWithFragmentsDuplicationFragmentVarsSerializer =
+    new _$GHeroWithFragmentsDuplicationFragmentVarsSerializer();
 
 class _$GHeroWithFragmentsDuplicationVarsSerializer
     implements StructuredSerializer<GHeroWithFragmentsDuplicationVars> {
@@ -37,23 +38,28 @@ class _$GHeroWithFragmentsDuplicationVarsSerializer
   }
 }
 
-class _$GheroDataVarsSerializer implements StructuredSerializer<GheroDataVars> {
+class _$GHeroWithFragmentsDuplicationFragmentVarsSerializer
+    implements StructuredSerializer<GHeroWithFragmentsDuplicationFragmentVars> {
   @override
-  final Iterable<Type> types = const [GheroDataVars, _$GheroDataVars];
+  final Iterable<Type> types = const [
+    GHeroWithFragmentsDuplicationFragmentVars,
+    _$GHeroWithFragmentsDuplicationFragmentVars
+  ];
   @override
-  final String wireName = 'GheroDataVars';
+  final String wireName = 'GHeroWithFragmentsDuplicationFragmentVars';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GheroDataVars object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GHeroWithFragmentsDuplicationFragmentVars object,
       {FullType specifiedType = FullType.unspecified}) {
     return <Object?>[];
   }
 
   @override
-  GheroDataVars deserialize(
+  GHeroWithFragmentsDuplicationFragmentVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GheroDataVarsBuilder().build();
+    return new GHeroWithFragmentsDuplicationFragmentVarsBuilder().build();
   }
 }
 
@@ -123,58 +129,71 @@ class GHeroWithFragmentsDuplicationVarsBuilder
   }
 }
 
-class _$GheroDataVars extends GheroDataVars {
-  factory _$GheroDataVars([void Function(GheroDataVarsBuilder)? updates]) =>
-      (new GheroDataVarsBuilder()..update(updates))._build();
+class _$GHeroWithFragmentsDuplicationFragmentVars
+    extends GHeroWithFragmentsDuplicationFragmentVars {
+  factory _$GHeroWithFragmentsDuplicationFragmentVars(
+          [void Function(GHeroWithFragmentsDuplicationFragmentVarsBuilder)?
+              updates]) =>
+      (new GHeroWithFragmentsDuplicationFragmentVarsBuilder()..update(updates))
+          ._build();
 
-  _$GheroDataVars._() : super._();
+  _$GHeroWithFragmentsDuplicationFragmentVars._() : super._();
 
   @override
-  GheroDataVars rebuild(void Function(GheroDataVarsBuilder) updates) =>
+  GHeroWithFragmentsDuplicationFragmentVars rebuild(
+          void Function(GHeroWithFragmentsDuplicationFragmentVarsBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GheroDataVarsBuilder toBuilder() => new GheroDataVarsBuilder()..replace(this);
+  GHeroWithFragmentsDuplicationFragmentVarsBuilder toBuilder() =>
+      new GHeroWithFragmentsDuplicationFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GheroDataVars;
+    return other is GHeroWithFragmentsDuplicationFragmentVars;
   }
 
   @override
   int get hashCode {
-    return 172200517;
+    return 40544497;
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper(r'GheroDataVars').toString();
+    return newBuiltValueToStringHelper(
+            r'GHeroWithFragmentsDuplicationFragmentVars')
+        .toString();
   }
 }
 
-class GheroDataVarsBuilder
-    implements Builder<GheroDataVars, GheroDataVarsBuilder> {
-  _$GheroDataVars? _$v;
+class GHeroWithFragmentsDuplicationFragmentVarsBuilder
+    implements
+        Builder<GHeroWithFragmentsDuplicationFragmentVars,
+            GHeroWithFragmentsDuplicationFragmentVarsBuilder> {
+  _$GHeroWithFragmentsDuplicationFragmentVars? _$v;
 
-  GheroDataVarsBuilder();
+  GHeroWithFragmentsDuplicationFragmentVarsBuilder();
 
   @override
-  void replace(GheroDataVars other) {
+  void replace(GHeroWithFragmentsDuplicationFragmentVars other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GheroDataVars;
+    _$v = other as _$GHeroWithFragmentsDuplicationFragmentVars;
   }
 
   @override
-  void update(void Function(GheroDataVarsBuilder)? updates) {
+  void update(
+      void Function(GHeroWithFragmentsDuplicationFragmentVarsBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GheroDataVars build() => _build();
+  GHeroWithFragmentsDuplicationFragmentVars build() => _build();
 
-  _$GheroDataVars _build() {
-    final _$result = _$v ?? new _$GheroDataVars._();
+  _$GHeroWithFragmentsDuplicationFragmentVars _build() {
+    final _$result = _$v ?? new _$GHeroWithFragmentsDuplicationFragmentVars._();
     replace(_$result);
     return _$result;
   }
