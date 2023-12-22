@@ -84,3 +84,6 @@ TriStateValueConfig triStateOptionalsConfig(Map<String, dynamic> config) {
 
   return TriStateValueConfig.never;
 }
+
+bool varsCreateFactoriesConfig(Map<String, dynamic> config) =>
+    config["vars_create_factories"] as bool? ?? false;
