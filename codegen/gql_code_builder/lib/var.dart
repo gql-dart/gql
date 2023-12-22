@@ -38,20 +38,21 @@ Library buildVarLibrary(
             ),
             hasCustomSerializer: hasCustomSerializer,
             constructors: [
-              builtCreateConstructor(
-                name: "${op.name!.value}Vars",
-                getters: op.variableDefinitions.map<Method>(
-                  (node) => buildOptionalGetter(
-                    nameNode: node.variable.name,
-                    typeNode: node.type,
-                    schemaSource: schemaSource,
-                    typeOverrides: typeOverrides,
-                    useTriStateValueForNullableTypes:
-                        useTriStateValueForNullableTypes,
+              if (generateVarsCreateFactories)
+                builtCreateConstructor(
+                  name: "${op.name!.value}Vars",
+                  getters: op.variableDefinitions.map<Method>(
+                    (node) => buildOptionalGetter(
+                      nameNode: node.variable.name,
+                      typeNode: node.type,
+                      schemaSource: schemaSource,
+                      typeOverrides: typeOverrides,
+                      useTriStateValueForNullableTypes:
+                          useTriStateValueForNullableTypes,
+                    ),
                   ),
+                  schemaSource: schemaSource,
                 ),
-                schemaSource: schemaSource,
-              ),
             ],
             initializers: switch (useTriStateValueForNullableTypes) {
               TriStateValueConfig.onAllNullableFields =>
@@ -91,20 +92,21 @@ Library buildVarLibrary(
         ),
       ),
       constructors: [
-        builtCreateConstructor(
-          name: "${frag.name.value}Vars",
-          getters: varTypes.entries.map<Method>(
-            (entry) => buildOptionalGetter(
-              nameNode: entry.key,
-              typeNode: entry.value,
-              schemaSource: schemaSource,
-              typeOverrides: typeOverrides,
-              useTriStateValueForNullableTypes:
-                  useTriStateValueForNullableTypes,
+        if (generateVarsCreateFactories)
+          builtCreateConstructor(
+            name: "${frag.name.value}Vars",
+            getters: varTypes.entries.map<Method>(
+              (entry) => buildOptionalGetter(
+                nameNode: entry.key,
+                typeNode: entry.value,
+                schemaSource: schemaSource,
+                typeOverrides: typeOverrides,
+                useTriStateValueForNullableTypes:
+                    useTriStateValueForNullableTypes,
+              ),
             ),
+            schemaSource: schemaSource,
           ),
-          schemaSource: schemaSource,
-        ),
       ],
     );
   }).toList();
