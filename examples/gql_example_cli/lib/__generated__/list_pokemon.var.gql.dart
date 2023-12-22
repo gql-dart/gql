@@ -12,16 +12,18 @@ abstract class GListPokemonVars
     implements Built<GListPokemonVars, GListPokemonVarsBuilder> {
   GListPokemonVars._();
 
-  factory GListPokemonVars([Function(GListPokemonVarsBuilder b) updates]) =
+  factory GListPokemonVars([void Function(GListPokemonVarsBuilder b) updates]) =
       _$GListPokemonVars;
 
   int get count;
   static Serializer<GListPokemonVars> get serializer =>
       _$gListPokemonVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GListPokemonVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GListPokemonVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GListPokemonVars.serializer,

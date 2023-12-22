@@ -5,10 +5,11 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:end_to_end_test/custom_field.dart' as _i2;
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
     as _i1;
 import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
-    as _i2;
+    as _i3;
 
 part 'schema.schema.gql.g.dart';
 
@@ -22,7 +23,9 @@ class GEpisode extends EnumClass {
   static const GEpisode JEDI = _$gEpisodeJEDI;
 
   static Serializer<GEpisode> get serializer => _$gEpisodeSerializer;
+
   static BuiltSet<GEpisode> get values => _$gEpisodeValues;
+
   static GEpisode valueOf(String name) => _$gEpisodeValueOf(name);
 }
 
@@ -38,7 +41,9 @@ class GLengthUnit extends EnumClass {
   static const GLengthUnit FOOT = _$gLengthUnitFOOT;
 
   static Serializer<GLengthUnit> get serializer => _$gLengthUnitSerializer;
+
   static BuiltSet<GLengthUnit> get values => _$gLengthUnitValues;
+
   static GLengthUnit valueOf(String name) => _$gLengthUnitValueOf(name);
 }
 
@@ -46,7 +51,7 @@ abstract class GReviewInput
     implements Built<GReviewInput, GReviewInputBuilder> {
   GReviewInput._();
 
-  factory GReviewInput([Function(GReviewInputBuilder b) updates]) =
+  factory GReviewInput([void Function(GReviewInputBuilder b) updates]) =
       _$GReviewInput;
 
   int get stars;
@@ -54,10 +59,12 @@ abstract class GReviewInput
   GColorInput? get favorite_color;
   BuiltList<DateTime?>? get seenOn;
   static Serializer<GReviewInput> get serializer => _$gReviewInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReviewInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReviewInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReviewInput.serializer,
@@ -65,22 +72,97 @@ abstract class GReviewInput
       );
 }
 
+abstract class GCustomFieldInput
+    implements Built<GCustomFieldInput, GCustomFieldInputBuilder> {
+  GCustomFieldInput._();
+
+  factory GCustomFieldInput(
+          [void Function(GCustomFieldInputBuilder b) updates]) =
+      _$GCustomFieldInput;
+
+  String get id;
+  _i2.CustomField? get customField;
+  static Serializer<GCustomFieldInput> get serializer =>
+      _$gCustomFieldInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GCustomFieldInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCustomFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GCustomFieldInput.serializer,
+        json,
+      );
+}
+
 abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   GColorInput._();
 
-  factory GColorInput([Function(GColorInputBuilder b) updates]) = _$GColorInput;
+  factory GColorInput([void Function(GColorInputBuilder b) updates]) =
+      _$GColorInput;
 
   int get red;
   int get green;
   int get blue;
   static Serializer<GColorInput> get serializer => _$gColorInputSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GColorInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GColorInput? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GColorInput.serializer,
+        json,
+      );
+}
+
+abstract class GPostLikesInput
+    implements Built<GPostLikesInput, GPostLikesInputBuilder> {
+  GPostLikesInput._();
+
+  factory GPostLikesInput([void Function(GPostLikesInputBuilder b) updates]) =
+      _$GPostLikesInput;
+
+  String get id;
+  static Serializer<GPostLikesInput> get serializer =>
+      _$gPostLikesInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostLikesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GPostLikesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostLikesInput.serializer,
+        json,
+      );
+}
+
+abstract class GPostFavoritesInput
+    implements Built<GPostFavoritesInput, GPostFavoritesInputBuilder> {
+  GPostFavoritesInput._();
+
+  factory GPostFavoritesInput(
+          [void Function(GPostFavoritesInputBuilder b) updates]) =
+      _$GPostFavoritesInput;
+
+  String get id;
+  static Serializer<GPostFavoritesInput> get serializer =>
+      _$gPostFavoritesInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFavoritesInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GPostFavoritesInput? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostFavoritesInput.serializer,
         json,
       );
 }
@@ -94,8 +176,20 @@ abstract class GISODate implements Built<GISODate, GISODateBuilder> {
   String get value;
   @BuiltValueSerializer(custom: true)
   static Serializer<GISODate> get serializer =>
-      _i2.DefaultScalarSerializer<GISODate>(
+      _i3.DefaultScalarSerializer<GISODate>(
           (Object serialized) => GISODate((serialized as String?)));
+}
+
+abstract class GJson implements Built<GJson, GJsonBuilder> {
+  GJson._();
+
+  factory GJson([String? value]) =>
+      _$GJson((b) => value != null ? (b..value = value) : b);
+
+  String get value;
+  @BuiltValueSerializer(custom: true)
+  static Serializer<GJson> get serializer => _i3.DefaultScalarSerializer<GJson>(
+      (Object serialized) => GJson((serialized as String?)));
 }
 
 const Map<String, Set<String>> possibleTypesMap = {

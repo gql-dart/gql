@@ -31,11 +31,12 @@ abstract class GPokemonCardData
         _i1.GNestedFragment {
   GPokemonCardData._();
 
-  factory GPokemonCardData([Function(GPokemonCardDataBuilder b) updates]) =
+  factory GPokemonCardData([void Function(GPokemonCardDataBuilder b) updates]) =
       _$GPokemonCardData;
 
   static void _initializeBuilder(GPokemonCardDataBuilder b) =>
       b..G__typename = 'Pokemon';
+
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -49,11 +50,13 @@ abstract class GPokemonCardData
   String? get image;
   static Serializer<GPokemonCardData> get serializer =>
       _$gPokemonCardDataSerializer;
+
   @override
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GPokemonCardData.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPokemonCardData? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GPokemonCardData.serializer,

@@ -13,16 +13,19 @@ abstract class GHumanWithArgsVars
     implements Built<GHumanWithArgsVars, GHumanWithArgsVarsBuilder> {
   GHumanWithArgsVars._();
 
-  factory GHumanWithArgsVars([Function(GHumanWithArgsVarsBuilder b) updates]) =
+  factory GHumanWithArgsVars(
+          [void Function(GHumanWithArgsVarsBuilder b) updates]) =
       _$GHumanWithArgsVars;
 
   String get id;
   static Serializer<GHumanWithArgsVars> get serializer =>
       _$gHumanWithArgsVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHumanWithArgsVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHumanWithArgsVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHumanWithArgsVars.serializer,

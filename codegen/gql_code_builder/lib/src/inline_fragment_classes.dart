@@ -1,9 +1,11 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/when_extension_config.dart";
+import "package:gql_code_builder/src/when_extension.dart";
 
+import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
-import "../source.dart";
 
 /// Builds the following classes for inline fragments:
 ///   1. An abstract root class that will be implemented by each instantiable
@@ -12,7 +14,7 @@ import "../source.dart";
 ///   2. A "base" instantiable class that includes the common fields.
 ///   3. An instantiable class for each inline fragment that includes the
 ///      common fields and the fragment fields.
-List<Class> buildInlineFragmentClasses({
+List<Spec> buildInlineFragmentClasses({
   required String name,
   required List<Method> fieldGetters,
   required List<SelectionNode> selections,
@@ -20,79 +22,108 @@ List<Class> buildInlineFragmentClasses({
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Reference> dataClassAliasMap,
   required Map<String, SourceSelections> superclassSelections,
   required List<InlineFragmentNode> inlineFragments,
   required bool built,
-}) =>
-    [
-      Class(
-        (b) => b
-          ..abstract = true
-          ..name = builtClassName(name)
-          ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+}) {
+  final whenExtension = inlineFragmentWhenExtension(
+    baseTypeName: name,
+    inlineFragments: inlineFragments,
+    config: whenExtensionConfig,
+    dataClassAliasMap: dataClassAliasMap,
+  );
+  return [
+    Class(
+      (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..implements.addAll(
+          superclassSelections.keys
+              .where((superName) =>
+                  !dataClassAliasMap.containsKey(builtClassName(superName)))
+              .map<Reference>(
+                (superName) => refer(
+                  builtClassName(superName),
+                  (superclassSelections[superName]?.url ?? "") + "#data",
+                ),
               ),
+        )
+        ..methods.addAll([
+          ...fieldGetters,
+          if (built)
+            ..._inlineFragmentRootSerializationMethods(
+              name: builtClassName(name),
+              inlineFragments: inlineFragments,
+              dataClassAliasMap: dataClassAliasMap,
             ),
-          )
-          ..methods.addAll([
-            ...fieldGetters,
-            if (built)
-              ..._inlineFragmentRootSerializationMethods(
-                name: builtClassName(name),
-                inlineFragments: inlineFragments,
-              ),
-          ]),
+        ]),
+    ),
+    if (whenExtension != null) whenExtension,
+    ...buildSelectionSetDataClasses(
+      name: "${name}__base",
+      selections: mergeSelections(
+        [
+          ...selections.whereType<FieldNode>(),
+          ...selections.whereType<FragmentSpreadNode>(),
+        ],
+        fragmentMap,
       ),
-      ...buildSelectionSetDataClasses(
-        name: "${name}__base",
-        selections: mergeSelections(
-          [
-            ...selections.whereType<FieldNode>(),
-            ...selections.whereType<FragmentSpreadNode>(),
-          ],
-          fragmentMap,
-        ),
-        fragmentMap: fragmentMap,
-        schemaSource: schemaSource,
-        type: type,
-        typeOverrides: typeOverrides,
-        superclassSelections: {
-          name: SourceSelections(url: null, selections: selections)
-        },
-        built: built,
-      ),
+      fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
+      schemaSource: schemaSource,
+      type: type,
+      typeOverrides: typeOverrides,
+      superclassSelections: {
+        name: SourceSelections(url: null, selections: selections)
+      },
+      built: built,
+      whenExtensionConfig: whenExtensionConfig,
+    ),
 
-      /// TODO: Handle inline fragments without a type condition
-      /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
-      ...inlineFragments.where((frag) => frag.typeCondition != null).expand(
-            (inlineFragment) => buildSelectionSetDataClasses(
-              name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-              selections: mergeSelections(
-                [
-                  ...selections.whereType<FieldNode>(),
-                  ...selections.whereType<FragmentSpreadNode>(),
-                  ...inlineFragment.selectionSet.selections,
-                ],
-                fragmentMap,
-              ),
-              fragmentMap: fragmentMap,
-              schemaSource: schemaSource,
-              type: inlineFragment.typeCondition!.on.name.value,
-              typeOverrides: typeOverrides,
-              superclassSelections: {
-                name: SourceSelections(url: null, selections: selections)
-              },
-              built: built,
-            ),
+    /// TODO: Handle inline fragments without a type condition
+    /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
+    ...inlineFragments.where((frag) {
+      if (frag.typeCondition == null) {
+        return false;
+      }
+      final typeName =
+          builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
+      if (dataClassAliasMap.containsKey(typeName)) {
+        // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
+        return false;
+      }
+      return true;
+    }).expand(
+      (inlineFragment) => buildSelectionSetDataClasses(
+          name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
+          selections: mergeSelections(
+            [
+              ...selections.whereType<FieldNode>(),
+              ...selections.whereType<FragmentSpreadNode>(),
+              ...inlineFragment.selectionSet.selections,
+            ],
+            fragmentMap,
           ),
-    ];
+          fragmentMap: fragmentMap,
+          dataClassAliasMap: dataClassAliasMap,
+          schemaSource: schemaSource,
+          type: inlineFragment.typeCondition!.on.name.value,
+          typeOverrides: typeOverrides,
+          superclassSelections: {
+            name: SourceSelections(url: null, selections: selections)
+          },
+          built: built,
+          whenExtensionConfig: whenExtensionConfig),
+    ),
+  ];
+}
 
 List<Method> _inlineFragmentRootSerializationMethods({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
+  required Map<String, Reference> dataClassAliasMap,
 }) =>
     [
       buildSerializerGetter(name).rebuild(
@@ -108,11 +139,13 @@ List<Method> _inlineFragmentRootSerializationMethods({
               /// TODO: Handle inline fragments without a type condition
               /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
               {
-                for (var v in inlineFragments
+                for (final v in inlineFragments
                     .where((frag) => frag.typeCondition != null))
-                  "${v.typeCondition!.on.name.value}": refer(
-                    "${name}__as${v.typeCondition!.on.name.value}",
-                  )
+                  "${v.typeCondition!.on.name.value}": dataClassAliasMap[
+                          "${name}__as${v.typeCondition!.on.name.value}"] ??
+                      refer(
+                        "${name}__as${v.typeCondition!.on.name.value}",
+                      )
               },
             ),
           ]).code,

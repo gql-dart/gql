@@ -94,13 +94,6 @@ class _$GPokemonDetailData_pokemonSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.maxHP;
     if (value != null) {
       result
@@ -111,6 +104,13 @@ class _$GPokemonDetailData_pokemonSerializer
     if (value != null) {
       result
         ..add('image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -147,20 +147,20 @@ class _$GPokemonDetailData_pokemonSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'maxHP':
           result.maxHP = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'weight':
@@ -353,7 +353,11 @@ class _$GPokemonDetailData extends GPokemonDetailData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), pokemon.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, pokemon.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -435,13 +439,13 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
   @override
   final String G__typename;
   @override
-  final String id;
-  @override
-  final String? name;
-  @override
   final int? maxHP;
   @override
   final String? image;
+  @override
+  final String id;
+  @override
+  final String? name;
   @override
   final GPokemonDetailData_pokemon_weight? weight;
   @override
@@ -453,10 +457,10 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
 
   _$GPokemonDetailData_pokemon._(
       {required this.G__typename,
-      required this.id,
-      this.name,
       this.maxHP,
       this.image,
+      required this.id,
+      this.name,
       this.weight,
       this.height})
       : super._() {
@@ -480,36 +484,36 @@ class _$GPokemonDetailData_pokemon extends GPokemonDetailData_pokemon {
     if (identical(other, this)) return true;
     return other is GPokemonDetailData_pokemon &&
         G__typename == other.G__typename &&
-        id == other.id &&
-        name == other.name &&
         maxHP == other.maxHP &&
         image == other.image &&
+        id == other.id &&
+        name == other.name &&
         weight == other.weight &&
         height == other.height;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
-                        name.hashCode),
-                    maxHP.hashCode),
-                image.hashCode),
-            weight.hashCode),
-        height.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, maxHP.hashCode);
+    _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, weight.hashCode);
+    _$hash = $jc(_$hash, height.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GPokemonDetailData_pokemon')
           ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('name', name)
           ..add('maxHP', maxHP)
           ..add('image', image)
+          ..add('id', id)
+          ..add('name', name)
           ..add('weight', weight)
           ..add('height', height))
         .toString();
@@ -525,14 +529,6 @@ class GPokemonDetailData_pokemonBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   int? _maxHP;
   int? get maxHP => _$this._maxHP;
   set maxHP(int? maxHP) => _$this._maxHP = maxHP;
@@ -540,6 +536,14 @@ class GPokemonDetailData_pokemonBuilder
   String? _image;
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GPokemonDetailData_pokemon_weightBuilder? _weight;
   GPokemonDetailData_pokemon_weightBuilder get weight =>
@@ -561,10 +565,10 @@ class GPokemonDetailData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _id = $v.id;
-      _name = $v.name;
       _maxHP = $v.maxHP;
       _image = $v.image;
+      _id = $v.id;
+      _name = $v.name;
       _weight = $v.weight?.toBuilder();
       _height = $v.height?.toBuilder();
       _$v = null;
@@ -593,11 +597,11 @@ class GPokemonDetailData_pokemonBuilder
           new _$GPokemonDetailData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GPokemonDetailData_pokemon', 'G__typename'),
+              maxHP: maxHP,
+              image: image,
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GPokemonDetailData_pokemon', 'id'),
               name: name,
-              maxHP: maxHP,
-              image: image,
               weight: _weight?.build(),
               height: _height?.build());
     } catch (_) {
@@ -659,8 +663,12 @@ class _$GPokemonDetailData_pokemon_weight
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, G__typename.hashCode), minimum.hashCode), maximum.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, minimum.hashCode);
+    _$hash = $jc(_$hash, maximum.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -774,8 +782,12 @@ class _$GPokemonDetailData_pokemon_height
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, G__typename.hashCode), minimum.hashCode), maximum.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, minimum.hashCode);
+    _$hash = $jc(_$hash, maximum.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -848,4 +860,4 @@ class GPokemonDetailData_pokemon_heightBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

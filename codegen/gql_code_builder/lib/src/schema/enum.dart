@@ -1,8 +1,8 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/enum_fallback_config.dart";
 
-import "../../schema.dart";
 import "../common.dart";
 import "../utils/to_camel_case.dart";
 

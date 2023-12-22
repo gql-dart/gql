@@ -11,13 +11,16 @@ part 'shape.var.gql.g.dart';
 abstract class GShapeVars implements Built<GShapeVars, GShapeVarsBuilder> {
   GShapeVars._();
 
-  factory GShapeVars([Function(GShapeVarsBuilder b) updates]) = _$GShapeVars;
+  factory GShapeVars([void Function(GShapeVarsBuilder b) updates]) =
+      _$GShapeVars;
 
   static Serializer<GShapeVars> get serializer => _$gShapeVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GShapeVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GShapeVars.serializer,

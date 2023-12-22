@@ -18,7 +18,7 @@ abstract class GPokemonDetail
     implements Built<GPokemonDetail, GPokemonDetailBuilder> {
   GPokemonDetail._();
 
-  factory GPokemonDetail([Function(GPokemonDetailBuilder b) updates]) =
+  factory GPokemonDetail([void Function(GPokemonDetailBuilder b) updates]) =
       _$GPokemonDetail;
 
   static void _initializeBuilder(GPokemonDetailBuilder b) => b
@@ -26,14 +26,17 @@ abstract class GPokemonDetail
       document: _i2.document,
       operationName: 'PokemonDetail',
     );
+
   _i3.GPokemonDetailVars get vars;
   _i1.Operation get operation;
   static Serializer<GPokemonDetail> get serializer =>
       _$gPokemonDetailSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GPokemonDetail.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPokemonDetail? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GPokemonDetail.serializer,

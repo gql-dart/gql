@@ -32,14 +32,16 @@ class GEnum extends EnumClass {
   static const GEnum OFF = _$gEnumOFF;
 
   static Serializer<GEnum> get serializer => _$gEnumSerializer;
+
   static BuiltSet<GEnum> get values => _$gEnumValues;
+
   static GEnum valueOf(String name) => _$gEnumValueOf(name);
 }
 
 abstract class GInput implements Built<GInput, GInputBuilder> {
   GInput._();
 
-  factory GInput([Function(GInputBuilder b) updates]) = _$GInput;
+  factory GInput([void Function(GInputBuilder b) updates]) = _$GInput;
 
   String? get id;
   @BuiltValueField(wireName: 'bool')
@@ -61,10 +63,12 @@ abstract class GInput implements Built<GInput, GInputBuilder> {
   GEnum get enumRequired;
   GInput get inputRequired;
   static Serializer<GInput> get serializer => _$gInputSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GInput.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GInput.serializer,

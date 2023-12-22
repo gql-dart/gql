@@ -14,16 +14,18 @@ abstract class GReadRepositoriesVars
   GReadRepositoriesVars._();
 
   factory GReadRepositoriesVars(
-          [Function(GReadRepositoriesVarsBuilder b) updates]) =
+          [void Function(GReadRepositoriesVarsBuilder b) updates]) =
       _$GReadRepositoriesVars;
 
   int get nRepositories;
   static Serializer<GReadRepositoriesVars> get serializer =>
       _$gReadRepositoriesVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GReadRepositoriesVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GReadRepositoriesVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GReadRepositoriesVars.serializer,

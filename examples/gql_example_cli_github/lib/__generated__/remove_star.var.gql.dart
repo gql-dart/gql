@@ -13,16 +13,18 @@ abstract class GRemoveStarVars
     implements Built<GRemoveStarVars, GRemoveStarVarsBuilder> {
   GRemoveStarVars._();
 
-  factory GRemoveStarVars([Function(GRemoveStarVarsBuilder b) updates]) =
+  factory GRemoveStarVars([void Function(GRemoveStarVarsBuilder b) updates]) =
       _$GRemoveStarVars;
 
   String get starrableId;
   static Serializer<GRemoveStarVars> get serializer =>
       _$gRemoveStarVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GRemoveStarVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GRemoveStarVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GRemoveStarVars.serializer,

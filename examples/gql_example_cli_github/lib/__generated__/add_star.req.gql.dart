@@ -17,20 +17,23 @@ part 'add_star.req.gql.g.dart';
 abstract class GAddStar implements Built<GAddStar, GAddStarBuilder> {
   GAddStar._();
 
-  factory GAddStar([Function(GAddStarBuilder b) updates]) = _$GAddStar;
+  factory GAddStar([void Function(GAddStarBuilder b) updates]) = _$GAddStar;
 
   static void _initializeBuilder(GAddStarBuilder b) => b
     ..operation = _i1.Operation(
       document: _i2.document,
       operationName: 'AddStar',
     );
+
   _i3.GAddStarVars get vars;
   _i1.Operation get operation;
   static Serializer<GAddStar> get serializer => _$gAddStarSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GAddStar.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GAddStar? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GAddStar.serializer,

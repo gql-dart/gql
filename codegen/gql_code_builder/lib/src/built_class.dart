@@ -10,6 +10,9 @@ Class builtClass({
   Iterable<Method>? getters,
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
+  List<Method> methods = const [],
+  Map<String, Reference>? dataClassAliasMap,
+  bool hasCustomSerializer = false,
 }) {
   final className = builtClassName(name);
   return Class(
@@ -29,12 +32,16 @@ Class builtClass({
                 ],
               ),
           ),
-          ...superclassSelections.keys.map<Reference>(
-            (superName) => refer(
-              builtClassName(superName),
-              (superclassSelections[superName]?.url ?? "") + "#data",
-            ),
-          )
+          ...superclassSelections.keys
+              .where((superName) =>
+                  dataClassAliasMap?.containsKey(builtClassName(superName)) !=
+                  true)
+              .map<Reference>(
+                (superName) => refer(
+                  builtClassName(superName),
+                  (superclassSelections[superName]?.url ?? "") + "#data",
+                ),
+              )
         ],
       )
       ..constructors.addAll(
@@ -44,11 +51,13 @@ Class builtClass({
             (b) => b
               ..factory = true
               ..optionalParameters.add(
-                Parameter(
-                  (b) => b
-                    ..name = "updates"
-                    ..type = refer("Function(${className}Builder b)"),
-                ),
+                Parameter((b) => b
+                  ..name = "updates"
+                  ..type = FunctionType((b) => b
+                    ..requiredParameters.add(
+                      refer("${className}Builder b"),
+                    )
+                    ..returnType = refer("void"))),
               )
               ..redirect = refer("_\$${className}"),
           ),
@@ -75,15 +84,17 @@ Class builtClass({
               ).code,
           ),
         if (getters != null) ...getters,
-        // Serlialization methods
-        buildSerializerGetter(className).rebuild(
-          (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
-        ),
+        // Serialization methods
+        if (!hasCustomSerializer)
+          buildSerializerGetter(className).rebuild(
+            (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
+          ),
         buildToJsonGetter(
           className,
           isOverride: superclassSelections.isNotEmpty,
         ),
         buildFromJsonGetter(className),
+        ...methods
       ]),
   );
 }

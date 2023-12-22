@@ -1,3 +1,15 @@
+## 1.0.0+1
+
+- add topics
+
+## 1.0.0
+
+- Mark the package as stable with a `1.0.0` release.
+
+## 0.4.4
+
+- Add a const constructor to `_OperationTypeVisitor`.
+
 ## 0.4.3
 
 - add HttpLinkResponseContext, HttpLinkHeaders for consumation by gql_http_link and gql_dio_link and 

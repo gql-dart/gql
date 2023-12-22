@@ -31,8 +31,10 @@ class DioLinkServerException extends ServerException {
     required Response? parsedResponse,
     Object? originalException,
     StackTrace? originalStackTrace,
+    int? statusCode,
   }) : super(
           parsedResponse: parsedResponse,
+          statusCode: statusCode,
           originalException: originalException,
           originalStackTrace: originalStackTrace,
         );
@@ -60,7 +62,7 @@ class DioLinkUnkownException extends LinkException {
 @immutable
 class DioLinkTimeoutException extends LinkException {
   /// Either a CONNECT_TIMEOUT, RECEIVE_TIMEOUT, or SEND_TIMEOUT
-  final dio.DioErrorType type;
+  final dio.DioExceptionType type;
 
   const DioLinkTimeoutException({
     required this.type,

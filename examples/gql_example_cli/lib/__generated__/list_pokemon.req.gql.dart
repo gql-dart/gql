@@ -15,7 +15,7 @@ abstract class GListPokemon
     implements Built<GListPokemon, GListPokemonBuilder> {
   GListPokemon._();
 
-  factory GListPokemon([Function(GListPokemonBuilder b) updates]) =
+  factory GListPokemon([void Function(GListPokemonBuilder b) updates]) =
       _$GListPokemon;
 
   static void _initializeBuilder(GListPokemonBuilder b) => b
@@ -23,13 +23,16 @@ abstract class GListPokemon
       document: _i2.document,
       operationName: 'ListPokemon',
     );
+
   _i3.GListPokemonVars get vars;
   _i1.Operation get operation;
   static Serializer<GListPokemon> get serializer => _$gListPokemonSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GListPokemon.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GListPokemon? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GListPokemon.serializer,

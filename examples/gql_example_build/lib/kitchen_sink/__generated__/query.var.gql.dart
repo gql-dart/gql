@@ -14,7 +14,8 @@ abstract class GQueryOperationVars
   GQueryOperationVars._();
 
   factory GQueryOperationVars(
-      [Function(GQueryOperationVarsBuilder b) updates]) = _$GQueryOperationVars;
+          [void Function(GQueryOperationVarsBuilder b) updates]) =
+      _$GQueryOperationVars;
 
   String? get id;
   @BuiltValueField(wireName: 'bool')
@@ -37,10 +38,12 @@ abstract class GQueryOperationVars
   _i1.GInput get inputRequired;
   static Serializer<GQueryOperationVars> get serializer =>
       _$gQueryOperationVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GQueryOperationVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperationVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GQueryOperationVars.serializer,

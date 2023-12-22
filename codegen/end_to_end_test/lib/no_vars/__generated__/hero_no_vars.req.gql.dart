@@ -17,20 +17,24 @@ part 'hero_no_vars.req.gql.g.dart';
 abstract class GHeroNoVars implements Built<GHeroNoVars, GHeroNoVarsBuilder> {
   GHeroNoVars._();
 
-  factory GHeroNoVars([Function(GHeroNoVarsBuilder b) updates]) = _$GHeroNoVars;
+  factory GHeroNoVars([void Function(GHeroNoVarsBuilder b) updates]) =
+      _$GHeroNoVars;
 
   static void _initializeBuilder(GHeroNoVarsBuilder b) => b
     ..operation = _i1.Operation(
       document: _i2.document,
       operationName: 'HeroNoVars',
     );
+
   _i3.GHeroNoVarsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroNoVars> get serializer => _$gHeroNoVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GHeroNoVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GHeroNoVars? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GHeroNoVars.serializer,

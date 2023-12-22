@@ -1,22 +1,26 @@
 import "package:code_builder/code_builder.dart";
+import "package:collection/collection.dart";
 import "package:gql/ast.dart";
+import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "../../source.dart";
 import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
-List<Class> buildOperationDataClasses(
+List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  Map<String, SourceSelections> fragmentMap,
+  Map<String, Reference> dataClassAliasMap,
 ) {
   if (op.name == null) {
     throw Exception("Operations must be named");
   }
 
-  final fragmentMap = _fragmentMap(docSource);
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
     selections: mergeSelections(
@@ -30,17 +34,21 @@ List<Class> buildOperationDataClasses(
     ),
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
+    dataClassAliasMap: dataClassAliasMap,
     superclassSelections: {},
+    whenExtensionConfig: whenExtensionConfig,
   );
 }
 
-List<Class> buildFragmentDataClasses(
+List<Spec> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  Map<String, SourceSelections> fragmentMap,
+  Map<String, Reference> dataClassAliasMap,
 ) {
-  final fragmentMap = _fragmentMap(docSource);
   final selections = mergeSelections(
     frag.selectionSet.selections,
     fragmentMap,
@@ -54,8 +62,10 @@ List<Class> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {},
       built: false,
+      whenExtensionConfig: whenExtensionConfig,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -65,12 +75,14 @@ List<Class> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {
         frag.name.value: SourceSelections(
           url: docSource.url,
           selections: selections,
         )
       },
+      whenExtensionConfig: whenExtensionConfig,
     ),
   ];
 }
@@ -92,16 +104,6 @@ String _operationType(
       .value;
 }
 
-Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-      for (var def
-          in source.document.definitions.whereType<FragmentDefinitionNode>())
-        def.name.value: SourceSelections(
-          url: source.url,
-          selections: def.selectionSet.selections,
-        ),
-      for (var import in source.imports) ..._fragmentMap(import)
-    };
-
 /// Builds one or more data classes, with properties based on [selections].
 ///
 /// For each selection that is a field with nested selections, a descendent
@@ -111,15 +113,17 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
 /// and it will be built as an abstract class which will be implemented by any
 /// class that includes the fragment (or descendent) as a spread in its
 /// [selections].
-List<Class> buildSelectionSetDataClasses({
+List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Reference> dataClassAliasMap,
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -155,6 +159,8 @@ List<Class> buildSelectionSetDataClasses({
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
+        typeRefAlias:
+            dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
@@ -174,22 +180,27 @@ List<Class> buildSelectionSetDataClasses({
         type: type,
         typeOverrides: typeOverrides,
         fragmentMap: fragmentMap,
+        dataClassAliasMap: dataClassAliasMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
         built: built,
+        whenExtensionConfig: whenExtensionConfig,
       )
-    else if (!built)
+    else if (!built && dataClassAliasMap[name] == null)
       Class(
         (b) => b
           ..abstract = true
           ..name = builtClassName(name)
           ..implements.addAll(
-            superclassSelections.keys.map<Reference>(
-              (superName) => refer(
-                builtClassName(superName),
-                (superclassSelections[superName]?.url ?? "") + "#data",
-              ),
-            ),
+            superclassSelections.keys
+                .where((superName) =>
+                    !dataClassAliasMap.containsKey(builtClassName(superName)))
+                .map<Reference>(
+                  (superName) => refer(
+                    builtClassName(superName),
+                    (superclassSelections[superName]?.url ?? "") + "#data",
+                  ),
+                ),
           )
           ..methods.addAll([
             ...fieldGetters,
@@ -209,18 +220,23 @@ List<Class> buildSelectionSetDataClasses({
             "G__typename": literalString(type),
         },
         superclassSelections: superclassSelections,
+        dataClassAliasMap: dataClassAliasMap,
       ),
     // Build classes for each field that includes selections
     ...selections
         .whereType<FieldNode>()
         .where(
-          (field) => field.selectionSet != null,
+          (field) =>
+              field.selectionSet != null &&
+              !dataClassAliasMap.containsKey(builtClassName(
+                  "${name}_${field.alias?.value ?? field.name.value}")),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
             name: "${name}_${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet!.selections,
             fragmentMap: fragmentMap,
+            dataClassAliasMap: dataClassAliasMap,
             schemaSource: schemaSource,
             type: unwrapTypeNode(
               _getFieldTypeNode(
@@ -237,9 +253,59 @@ List<Class> buildSelectionSetDataClasses({
               field,
             ),
             built: inlineFragments.isNotEmpty ? false : built,
+            whenExtensionConfig: whenExtensionConfig,
           ),
         ),
   ];
+}
+
+/// Shrink merged fields nodes based on FragmentMap
+List<SelectionNode> shrinkSelections(
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final unmerged = [...selections];
+
+  for (final selection in selections) {
+    if (selection is FieldNode && selection.selectionSet != null) {
+      final index = unmerged.indexOf(selection);
+      unmerged[index] = FieldNode(
+        name: selection.name,
+        alias: selection.alias,
+        selectionSet: SelectionSetNode(
+          selections:
+              shrinkSelections(selection.selectionSet!.selections, fragmentMap),
+        ),
+      );
+    } else if (selection is InlineFragmentNode &&
+        selection.typeCondition != null) {
+      /// TODO: Handle inline fragments without a type condition
+      final index = unmerged.indexOf(selection);
+      unmerged[index] = InlineFragmentNode(
+        typeCondition: selection.typeCondition,
+        directives: selection.directives,
+        selectionSet: SelectionSetNode(
+          selections:
+              shrinkSelections(selection.selectionSet.selections, fragmentMap),
+        ),
+      );
+    }
+  }
+
+  for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
+    final fragment = fragmentMap[node.name.value]!;
+    final spreadIndex = unmerged.indexOf(node);
+    final duplicateIndexList = <int>[];
+    unmerged.forEachIndexed((selectionIndex, selection) {
+      if (selectionIndex > spreadIndex &&
+          fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
+        duplicateIndexList.add(selectionIndex);
+      }
+    });
+    duplicateIndexList.reversed.forEach(unmerged.removeAt);
+  }
+
+  return unmerged;
 }
 
 /// Deeply merges field nodes
@@ -273,6 +339,29 @@ List<SelectionNode> mergeSelections(
                       fragmentMap,
                     )));
               }
+            } else if (selection is InlineFragmentNode &&
+                selection.typeCondition != null) {
+              /// TODO: Handle inline fragments without a type condition
+              final key = selection.typeCondition!.on.name.value;
+              if (selectionMap.containsKey(key)) {
+                selectionMap[key] = InlineFragmentNode(
+                  typeCondition: selection.typeCondition,
+                  directives: selection.directives,
+                  selectionSet: SelectionSetNode(
+                    selections: mergeSelections(
+                      [
+                        ...(selectionMap[key] as InlineFragmentNode)
+                            .selectionSet
+                            .selections,
+                        ...selection.selectionSet.selections,
+                      ],
+                      fragmentMap,
+                    ),
+                  ),
+                );
+              } else {
+                selectionMap[key] = selection;
+              }
             } else {
               selectionMap[selection.hashCode.toString()] = selection;
             }
@@ -295,10 +384,17 @@ List<SelectionNode> _expandFragmentSpreads(
               "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
             );
           }
+
+          final fragmentSelections =
+              fragmentMap[selection.name.value]!.selections;
+
           return [
             if (retainFragmentSpreads) selection,
             ..._expandFragmentSpreads(
-              fragmentMap[selection.name.value]!.selections,
+              [
+                ...fragmentSelections.whereType<FieldNode>(),
+                ...fragmentSelections.whereType<FragmentSpreadNode>(),
+              ],
               fragmentMap,
               false,
             )

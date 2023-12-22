@@ -17,7 +17,7 @@ abstract class GQueryOperation
     implements Built<GQueryOperation, GQueryOperationBuilder> {
   GQueryOperation._();
 
-  factory GQueryOperation([Function(GQueryOperationBuilder b) updates]) =
+  factory GQueryOperation([void Function(GQueryOperationBuilder b) updates]) =
       _$GQueryOperation;
 
   static void _initializeBuilder(GQueryOperationBuilder b) => b
@@ -25,14 +25,17 @@ abstract class GQueryOperation
       document: _i2.document,
       operationName: 'QueryOperation',
     );
+
   _i3.GQueryOperationVars get vars;
   _i1.Operation get operation;
   static Serializer<GQueryOperation> get serializer =>
       _$gQueryOperationSerializer;
+
   Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GQueryOperation.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GQueryOperation? fromJson(Map<String, dynamic> json) =>
       _i4.serializers.deserializeWith(
         GQueryOperation.serializer,
