@@ -82,36 +82,6 @@ abstract class GheroName {
   Map<String, dynamic> toJson();
 }
 
-abstract class GheroNameData
-    implements Built<GheroNameData, GheroNameDataBuilder>, GheroName {
-  GheroNameData._();
-
-  factory GheroNameData([void Function(GheroNameDataBuilder b) updates]) =
-      _$GheroNameData;
-
-  static void _initializeBuilder(GheroNameDataBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get name;
-  static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GheroNameData.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GheroNameData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GheroNameData.serializer,
-        json,
-      );
-}
-
 abstract class GheroId {
   String get G__typename;
   String get id;

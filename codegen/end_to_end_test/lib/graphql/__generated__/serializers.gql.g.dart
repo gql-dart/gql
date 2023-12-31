@@ -10,7 +10,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAliasedHero.serializer)
       ..add(GAliasedHeroData.serializer)
       ..add(GAliasedHeroData_empireHero.serializer)
-      ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
       ..add(GColorInput.serializer)
       ..add(GCreateCustomField.serializer)
@@ -21,15 +20,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GCreateReviewData_createReview.serializer)
       ..add(GCreateReviewVars.serializer)
       ..add(GCustomFieldInput.serializer)
-      ..add(GDroidFragmentData.serializer)
       ..add(GDroidFragmentVars.serializer)
       ..add(GEpisode.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
-      ..add(GHeroForEpisodeData_hero__asDroid_friends.serializer)
       ..add(GHeroForEpisodeData_hero__base.serializer)
-      ..add(GHeroForEpisodeData_hero__base_friends.serializer)
       ..add(GHeroForEpisodeVars.serializer)
       ..add(GHeroNoVars.serializer)
       ..add(GHeroNoVarsData.serializer)
@@ -59,18 +55,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GLengthUnit.serializer)
       ..add(GPostFavoritesInput.serializer)
       ..add(GPostFragmentData.serializer)
-      ..add(GPostFragmentData_isFavorited.serializer)
-      ..add(GPostFragmentData_isLiked.serializer)
       ..add(GPostFragmentForUser1Data.serializer)
-      ..add(GPostFragmentForUser1Data_favoritedUsers.serializer)
       ..add(GPostFragmentForUser1Vars.serializer)
       ..add(GPostFragmentVars.serializer)
       ..add(GPostLikesInput.serializer)
       ..add(GPosts.serializer)
       ..add(GPostsData.serializer)
       ..add(GPostsData_posts.serializer)
-      ..add(GPostsData_posts_isFavorited.serializer)
-      ..add(GPostsData_posts_isLiked.serializer)
       ..add(GPostsVars.serializer)
       ..add(GPostsWithFixedVariable.serializer)
       ..add(GPostsWithFixedVariableData.serializer)
@@ -83,29 +74,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GReviewWithDateData_createReview.serializer)
       ..add(GReviewWithDateVars.serializer)
       ..add(GcomparisonFieldsData.serializer)
-      ..add(GcomparisonFieldsData_friendsConnection.serializer)
-      ..add(GcomparisonFieldsData_friendsConnection_edges.serializer)
-      ..add(GcomparisonFieldsData_friendsConnection_edges_node.serializer)
       ..add(GcomparisonFieldsVars.serializer)
       ..add(GdroidFieldsFragmentData.serializer)
       ..add(GdroidFieldsFragmentVars.serializer)
       ..add(GheroDataData.serializer)
       ..add(GheroDataVars.serializer)
-      ..add(GheroFieldsFragmentData__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__asHuman.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__base.serializer)
-      ..add(GheroFieldsFragmentData__base.serializer)
       ..add(GheroFieldsFragmentVars.serializer)
       ..add(GheroIdData.serializer)
       ..add(GheroIdVars.serializer)
-      ..add(GheroNameData.serializer)
       ..add(GheroNameVars.serializer)
       ..add(GhumanFieldsFragmentData.serializer)
-      ..add(GhumanFieldsFragmentData_friends__asDroid.serializer)
-      ..add(GhumanFieldsFragmentData_friends__asHuman.serializer)
-      ..add(GhumanFieldsFragmentData_friends__base.serializer)
       ..add(GhumanFieldsFragmentVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(DateTime)]),
@@ -114,24 +96,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(dynamic)]),
+          () => new ListBuilder<dynamic>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(dynamic)]),
+          () => new ListBuilder<dynamic>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
           () => new ListBuilder<GEpisode?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GHeroForEpisodeData_hero__asDroid_friends)
-          ]),
-          () => new ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GHeroForEpisodeData_hero__base_friends)
-          ]),
-          () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
@@ -148,13 +123,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(GPostsWithFixedVariableData_posts)
           ]),
           () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(
-                GcomparisonFieldsData_friendsConnection_edges)
-          ]),
-          () =>
-              new ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)

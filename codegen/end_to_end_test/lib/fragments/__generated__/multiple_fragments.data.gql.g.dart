@@ -11,8 +11,6 @@ Serializer<GHeroWith2FragmentsData> _$gHeroWith2FragmentsDataSerializer =
 Serializer<GHeroWith2FragmentsData_hero>
     _$gHeroWith2FragmentsDataHeroSerializer =
     new _$GHeroWith2FragmentsData_heroSerializer();
-Serializer<GheroNameData> _$gheroNameDataSerializer =
-    new _$GheroNameDataSerializer();
 Serializer<GheroIdData> _$gheroIdDataSerializer = new _$GheroIdDataSerializer();
 
 class _$GHeroWith2FragmentsDataSerializer
@@ -122,53 +120,6 @@ class _$GHeroWith2FragmentsData_heroSerializer
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GheroNameDataSerializer implements StructuredSerializer<GheroNameData> {
-  @override
-  final Iterable<Type> types = const [GheroNameData, _$GheroNameData];
-  @override
-  final String wireName = 'GheroNameData';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers, GheroNameData object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GheroNameData deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GheroNameDataBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -458,107 +409,6 @@ class GHeroWith2FragmentsData_heroBuilder
                 name, r'GHeroWith2FragmentsData_hero', 'name'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GHeroWith2FragmentsData_hero', 'id'));
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GheroNameData extends GheroNameData {
-  @override
-  final String G__typename;
-  @override
-  final String name;
-
-  factory _$GheroNameData([void Function(GheroNameDataBuilder)? updates]) =>
-      (new GheroNameDataBuilder()..update(updates))._build();
-
-  _$GheroNameData._({required this.G__typename, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GheroNameData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(name, r'GheroNameData', 'name');
-  }
-
-  @override
-  GheroNameData rebuild(void Function(GheroNameDataBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GheroNameDataBuilder toBuilder() => new GheroNameDataBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GheroNameData &&
-        G__typename == other.G__typename &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'GheroNameData')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GheroNameDataBuilder
-    implements Builder<GheroNameData, GheroNameDataBuilder> {
-  _$GheroNameData? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GheroNameDataBuilder() {
-    GheroNameData._initializeBuilder(this);
-  }
-
-  GheroNameDataBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GheroNameData other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GheroNameData;
-  }
-
-  @override
-  void update(void Function(GheroNameDataBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GheroNameData build() => _build();
-
-  _$GheroNameData _build() {
-    final _$result = _$v ??
-        new _$GheroNameData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroNameData', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroNameData', 'name'));
     replace(_$result);
     return _$result;
   }

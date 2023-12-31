@@ -237,7 +237,8 @@ abstract class GcomparisonFields implements GheroData {
   String get id;
   @override
   String get name;
-  GcomparisonFields_friendsConnection get friendsConnection;
+  GHeroWithFragmentsData_hero_friendsConnection_friendsConnection
+      get friendsConnection;
   @override
   Map<String, dynamic> toJson();
 }
@@ -245,13 +246,14 @@ abstract class GcomparisonFields implements GheroData {
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
   int? get totalCount;
-  BuiltList<GcomparisonFields_friendsConnection_edges?>? get edges;
+  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges_edges?>?
+      get edges;
   Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
-  GcomparisonFields_friendsConnection_edges_node? get node;
+  GHeroWithFragmentsData_hero_friendsConnection_edges_node_node? get node;
   Map<String, dynamic> toJson();
 }
 
@@ -287,7 +289,8 @@ abstract class GcomparisonFieldsData
   @override
   String get name;
   @override
-  GcomparisonFieldsData_friendsConnection get friendsConnection;
+  GHeroWithFragmentsData_hero_friendsConnection_friendsConnection
+      get friendsConnection;
   static Serializer<GcomparisonFieldsData> get serializer =>
       _$gcomparisonFieldsDataSerializer;
 
@@ -300,122 +303,6 @@ abstract class GcomparisonFieldsData
   static GcomparisonFieldsData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GcomparisonFieldsData.serializer,
-        json,
-      );
-}
-
-abstract class GcomparisonFieldsData_friendsConnection
-    implements
-        Built<GcomparisonFieldsData_friendsConnection,
-            GcomparisonFieldsData_friendsConnectionBuilder>,
-        GcomparisonFields_friendsConnection {
-  GcomparisonFieldsData_friendsConnection._();
-
-  factory GcomparisonFieldsData_friendsConnection(
-      [void Function(GcomparisonFieldsData_friendsConnectionBuilder b)
-          updates]) = _$GcomparisonFieldsData_friendsConnection;
-
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnectionBuilder b) =>
-      b..G__typename = 'FriendsConnection';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int? get totalCount;
-  @override
-  BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? get edges;
-  static Serializer<GcomparisonFieldsData_friendsConnection> get serializer =>
-      _$gcomparisonFieldsDataFriendsConnectionSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GcomparisonFieldsData_friendsConnection.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GcomparisonFieldsData_friendsConnection? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GcomparisonFieldsData_friendsConnection.serializer,
-        json,
-      );
-}
-
-abstract class GcomparisonFieldsData_friendsConnection_edges
-    implements
-        Built<GcomparisonFieldsData_friendsConnection_edges,
-            GcomparisonFieldsData_friendsConnection_edgesBuilder>,
-        GcomparisonFields_friendsConnection_edges {
-  GcomparisonFieldsData_friendsConnection_edges._();
-
-  factory GcomparisonFieldsData_friendsConnection_edges(
-      [void Function(GcomparisonFieldsData_friendsConnection_edgesBuilder b)
-          updates]) = _$GcomparisonFieldsData_friendsConnection_edges;
-
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnection_edgesBuilder b) =>
-      b..G__typename = 'FriendsEdge';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  GcomparisonFieldsData_friendsConnection_edges_node? get node;
-  static Serializer<GcomparisonFieldsData_friendsConnection_edges>
-      get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GcomparisonFieldsData_friendsConnection_edges.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GcomparisonFieldsData_friendsConnection_edges? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GcomparisonFieldsData_friendsConnection_edges.serializer,
-        json,
-      );
-}
-
-abstract class GcomparisonFieldsData_friendsConnection_edges_node
-    implements
-        Built<GcomparisonFieldsData_friendsConnection_edges_node,
-            GcomparisonFieldsData_friendsConnection_edges_nodeBuilder>,
-        GcomparisonFields_friendsConnection_edges_node,
-        GheroData {
-  GcomparisonFieldsData_friendsConnection_edges_node._();
-
-  factory GcomparisonFieldsData_friendsConnection_edges_node(
-      [void Function(
-              GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b)
-          updates]) = _$GcomparisonFieldsData_friendsConnection_edges_node;
-
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get name;
-  static Serializer<GcomparisonFieldsData_friendsConnection_edges_node>
-      get serializer =>
-          _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GcomparisonFieldsData_friendsConnection_edges_node.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GcomparisonFieldsData_friendsConnection_edges_node? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GcomparisonFieldsData_friendsConnection_edges_node.serializer,
         json,
       );
 }

@@ -72,35 +72,3 @@ abstract class GAliasedHeroData_empireHero
         json,
       );
 }
-
-abstract class GAliasedHeroData_jediHero
-    implements
-        Built<GAliasedHeroData_jediHero, GAliasedHeroData_jediHeroBuilder> {
-  GAliasedHeroData_jediHero._();
-
-  factory GAliasedHeroData_jediHero(
-          [void Function(GAliasedHeroData_jediHeroBuilder b) updates]) =
-      _$GAliasedHeroData_jediHero;
-
-  static void _initializeBuilder(GAliasedHeroData_jediHeroBuilder b) =>
-      b..G__typename = 'Character';
-
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  String get id;
-  String get name;
-  BuiltList<_i2.GEpisode?> get from;
-  static Serializer<GAliasedHeroData_jediHero> get serializer =>
-      _$gAliasedHeroDataJediHeroSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAliasedHeroData_jediHero.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GAliasedHeroData_jediHero? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GAliasedHeroData_jediHero.serializer,
-        json,
-      );
-}

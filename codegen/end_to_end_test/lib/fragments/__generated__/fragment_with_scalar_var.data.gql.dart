@@ -119,7 +119,8 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
 abstract class GPostFragmentForUser1 {
   String get G__typename;
   String get id;
-  GPostFragmentForUser1_favoritedUsers? get favoritedUsers;
+  GPostsWithFixedVariableData_posts_favoritedUsers_favoritedUsers?
+      get favoritedUsers;
   Map<String, dynamic> toJson();
 }
 
@@ -148,7 +149,8 @@ abstract class GPostFragmentForUser1Data
   @override
   String get id;
   @override
-  GPostFragmentForUser1Data_favoritedUsers? get favoritedUsers;
+  GPostsWithFixedVariableData_posts_favoritedUsers_favoritedUsers?
+      get favoritedUsers;
   static Serializer<GPostFragmentForUser1Data> get serializer =>
       _$gPostFragmentForUser1DataSerializer;
 
@@ -161,43 +163,6 @@ abstract class GPostFragmentForUser1Data
   static GPostFragmentForUser1Data? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostFragmentForUser1Data.serializer,
-        json,
-      );
-}
-
-abstract class GPostFragmentForUser1Data_favoritedUsers
-    implements
-        Built<GPostFragmentForUser1Data_favoritedUsers,
-            GPostFragmentForUser1Data_favoritedUsersBuilder>,
-        GPostFragmentForUser1_favoritedUsers {
-  GPostFragmentForUser1Data_favoritedUsers._();
-
-  factory GPostFragmentForUser1Data_favoritedUsers(
-      [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder b)
-          updates]) = _$GPostFragmentForUser1Data_favoritedUsers;
-
-  static void _initializeBuilder(
-          GPostFragmentForUser1Data_favoritedUsersBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int get totalCount;
-  static Serializer<GPostFragmentForUser1Data_favoritedUsers> get serializer =>
-      _$gPostFragmentForUser1DataFavoritedUsersSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPostFragmentForUser1Data_favoritedUsers.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GPostFragmentForUser1Data_favoritedUsers? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPostFragmentForUser1Data_favoritedUsers.serializer,
         json,
       );
 }
