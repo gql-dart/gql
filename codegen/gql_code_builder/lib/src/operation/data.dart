@@ -25,6 +25,22 @@ List<Spec> buildOperationDataClasses(
 
   final fragmentMap = _fragmentMap(docSource);
 
+  final collectedFields = collectFields(
+    docSource,
+    schemaSource,
+    getTypeDefinitionNode(
+      schemaSource.flatDocument,
+      _operationType(
+        schemaSource.document,
+        op,
+      ),
+    )!,
+    op.selectionSet.selections,
+    {},
+  );
+
+  final mergedFields = mergeWithSkipsOrIncludes(collectedFields);
+
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
     selections: mergeSelections(
@@ -143,6 +159,7 @@ List<Spec> buildSelectionSetDataClasses({
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
+
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
@@ -156,6 +173,19 @@ List<Spec> buildSelectionSetDataClasses({
       ).whereType<FieldNode>().toList(),
     );
   }
+
+  final fields = collectFields(docSource, schemaSource,
+      getTypeDefinitionNode(schemaSource.flatDocument, type)!, selections, {});
+
+  final mergedFields = mergeWithSkipsOrIncludes(fields);
+
+
+  if(fields.values.any((element) => element.any((element) => element.hasSkipOrInlcude))) {
+    print("has skip or include");
+    print("$name \n $fields \n\n $mergedFields");
+  }
+
+
 
   final superclassSelectionNodes = superclassSelections.values
       .expand((selections) => selections.selections)
@@ -485,34 +515,38 @@ TypeNode _getFieldTypeNode(
       .type;
 }
 
-typedef FieldNodeWithNullability = ({FieldNode fieldNode, bool isMaybeSkipped});
+typedef FieldNodeWithSkipOrInclude = ({FieldNode fieldNode, bool hasSkipOrInlcude});
 
 //https://spec.graphql.org/draft/#CollectFields()
-Map<String, List<FieldNodeWithNullability>> collectFields(
+Map<String, List<FieldNodeWithSkipOrInclude>> collectFields(
   SourceNode document,
   SourceNode schema,
   TypeDefinitionNode objectType,
   List<SelectionNode> selectionSet,
   Set<String> visitedFragments,
 ) {
+
+  if(visitedFragments.isEmpty || true) {
+    print("collectFields: ${document.url} ${selectionSet}");
+  }
+
   //Initialize groupedFields to an empty ordered map of lists.
-  final groupedFields = <String, List<FieldNodeWithNullability>>{};
+  final groupedFields = <String, List<FieldNodeWithSkipOrInclude>>{};
   //For each selection in selectionSet:
   for (final selection in selectionSet) {
-    final isMaybeSkipped = selection.directives.any(
+    final isSelectionSkipped = selection.directives.any(
       (directive) => const {"skip", "include"}.contains(directive.name.value),
     );
 
     //If the selection is a field:
     if (selection is FieldNode) {
-      //If the selection is not skipped or already present in groupedFields:
-      if (!groupedFields.containsKey(selection.name.value)) {
+
         //Append the field to groupedFields under the response name of the aliased field or the field name.
         groupedFields
             .putIfAbsent(
                 selection.alias?.value ?? selection.name.value, () => [])
-            .add((fieldNode: selection, isMaybeSkipped: isMaybeSkipped));
-      }
+            .add((fieldNode: selection, hasSkipOrInlcude: isSelectionSkipped));
+
     }
     //If the selection is an inline fragment:
     else if (selection is InlineFragmentNode) {
@@ -522,6 +556,7 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
       if (fragmentType != null &&
           !doesFragmentTypeApply(
               objectType, fragmentType, schema.flatDocument)) {
+        print("fragmentType is not null and DoesFragmentTypeApply(objectType, fragmentType) is false, continue with the next selection in selectionSet.");
         continue;
       }
       //Let fragmentSelectionSet be the top-level selection set of selection.
@@ -531,23 +566,15 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
           objectType, fragmentSelectionSet.selections, visitedFragments);
       //For each fragmentGroup in fragmentGroupedFieldSet:
       for (final fragmentGroup in fragmentGroupedFieldSet.entries) {
-        //If fragmentGroup is not already present in groupedFields:
-        if (!groupedFields.containsKey(fragmentGroup.key)) {
           //Let responseKey be the response key shared by all fields in fragmentGroup.
           final responseKey = fragmentGroup.key;
           //Let groupForResponseKey be the list in groupedFields for responseKey; if no such list exists, create it as an empty list.
           final groupForResponseKey =
               groupedFields.putIfAbsent(responseKey, () => []);
-          final values = fragmentGroup.value
-              .map((e) => (
-                    fieldNode: e.fieldNode,
-                    isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped
-                  ))
-              .toList();
           //Append all items in fragmentGroup to groupForResponseKey.
-          groupForResponseKey.addAll(values);
+          groupForResponseKey.addAll(fragmentGroup.value.map((e) => (fieldNode: e.fieldNode, hasSkipOrInlcude: isSelectionSkipped || e.hasSkipOrInlcude)));
         }
-      }
+
     }
 
     //If the selection is a fragment spread:
@@ -575,6 +602,7 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
       //If DoesFragmentTypeApply(objectType, fragmentType) is false, continue with the next selection in selectionSet.
       if (!doesFragmentTypeApply(
           objectType, fragmentType, schema.flatDocument)) {
+        print("DoesFragmentTypeApply(objectType, fragmentType) is false, continue with the next selection in selectionSet.");
         continue;
       }
       //Let fragmentSelectionSet be the top-level selection set of fragment.
@@ -590,21 +618,46 @@ Map<String, List<FieldNodeWithNullability>> collectFields(
         final groupForResponseKey =
             groupedFields.putIfAbsent(responseKey, () => []);
         //Append all items in fragmentGroup to groupForResponseKey.
-
-        final values = fragmentGroup.value
-            .map((e) => (
-                  fieldNode: e.fieldNode,
-                  isMaybeSkipped: isMaybeSkipped || e.isMaybeSkipped
-                ))
-            .toList();
-
-        groupForResponseKey.addAll(values);
+        groupForResponseKey.addAll(fragmentGroup.value.map((e) => (fieldNode: e.fieldNode, hasSkipOrInlcude: isSelectionSkipped || e.hasSkipOrInlcude)));
       }
     }
   }
   //Return groupedFields.
   return groupedFields;
 }
+
+/// detects field nodes with the same response key, and merges them into one
+/// considering skip and include directives;
+/// if a field node has skip or include directive on all of its selections,
+/// it is potentially skipped and must be made nullable
+Map<String, List<FieldNodeWithSkipOrInclude>> mergeWithSkipsOrIncludes(
+  Map<String, List<FieldNodeWithSkipOrInclude>> groupedFields,
+) {
+
+final result = <String, List<FieldNodeWithSkipOrInclude>>{};
+
+  for (final group in groupedFields.entries) {
+    final responseKey = group.key;
+    final fields = group.value;
+
+    //group fields by alias or name and merge them
+    final merged =
+    fields.groupFoldBy<String, FieldNodeWithSkipOrInclude>((element) => element.fieldNode.alias?.value ?? element.fieldNode.name.value, (previous, element) {
+      if(previous == null) {
+        return element;
+      }
+      if(element.hasSkipOrInlcude) {
+        print("gggggg \n previous: $previous, element: $element merge!");
+      }
+      return (fieldNode: element.fieldNode, hasSkipOrInlcude: previous.hasSkipOrInlcude && element.hasSkipOrInlcude);
+    });
+
+    result[responseKey] = merged.values.toList();
+
+}
+
+    return result;
+  }
 
 //https://spec.graphql.org/draft/#DoesFragmentTypeApply()
 bool doesFragmentTypeApply(TypeDefinitionNode objectType,
