@@ -169,6 +169,16 @@ Method buildGetter({
     typeMap,
   );
 
+  if(nameNode.value == "friends"){
+
+
+    print("i'm not your friend, buddy");
+    print("i'm not your buddy, guy");
+    print("i'm not your guy, friend");
+    print(typeMap);
+    print(returnType);
+  }
+
   return Method(
     (b) => b
       ..annotations = ListBuilder(<Expression>[

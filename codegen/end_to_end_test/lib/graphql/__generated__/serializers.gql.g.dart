@@ -127,16 +127,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<GheroDataData?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
-          ]),
-          () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
             const FullType.nullable(
                 GheroFieldsFragmentData__asHuman_friends__base)
           ]),
           () => new ListBuilder<
-              GheroFieldsFragmentData__asHuman_friends__base?>()))
+              GheroFieldsFragmentData__asHuman_friends__base?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
+          ]),
+          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -246,7 +246,7 @@ class _$GheroFieldsFragmentData__asHumanSerializer
         ..add('friends')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
+              const FullType.nullable(GheroFieldsFragment__asHuman_friends)
             ])));
     }
     return result;
@@ -283,8 +283,7 @@ class _$GheroFieldsFragmentData__asHumanSerializer
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GheroFieldsFragmentData__asHuman_friends)
+                const FullType.nullable(GheroFieldsFragment__asHuman_friends)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -1008,7 +1007,7 @@ class _$GheroFieldsFragmentData__asHuman
   @override
   final String? homePlanet;
   @override
-  final BuiltList<GheroFieldsFragmentData__asHuman_friends?>? friends;
+  final BuiltList<GheroFieldsFragment__asHuman_friends?>? friends;
 
   factory _$GheroFieldsFragmentData__asHuman(
           [void Function(GheroFieldsFragmentData__asHumanBuilder)? updates]) =>
@@ -1095,12 +1094,11 @@ class GheroFieldsFragmentData__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  ListBuilder<GheroFieldsFragmentData__asHuman_friends?>? _friends;
-  ListBuilder<GheroFieldsFragmentData__asHuman_friends?> get friends =>
+  ListBuilder<GheroFieldsFragment__asHuman_friends?>? _friends;
+  ListBuilder<GheroFieldsFragment__asHuman_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>();
-  set friends(
-          ListBuilder<GheroFieldsFragmentData__asHuman_friends?>? friends) =>
+          new ListBuilder<GheroFieldsFragment__asHuman_friends?>();
+  set friends(ListBuilder<GheroFieldsFragment__asHuman_friends?>? friends) =>
       _$this._friends = friends;
 
   GheroFieldsFragmentData__asHumanBuilder() {

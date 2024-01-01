@@ -25,7 +25,7 @@ abstract class GAliasedHeroData
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GAliasedHeroData_empireHero? get empireHero;
-  GAliasedHeroData_jediHero? get jediHero;
+  GAliasedHeroData_empireHero? get jediHero;
   static Serializer<GAliasedHeroData> get serializer =>
       _$gAliasedHeroDataSerializer;
 

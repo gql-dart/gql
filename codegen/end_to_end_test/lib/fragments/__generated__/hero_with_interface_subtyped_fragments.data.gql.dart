@@ -230,7 +230,7 @@ abstract class GheroFieldsFragmentData__asHuman
   @override
   String? get homePlanet;
   @override
-  BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
+  BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   static Serializer<GheroFieldsFragmentData__asHuman> get serializer =>
       _$gheroFieldsFragmentDataAsHumanSerializer;
 
@@ -405,7 +405,7 @@ abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
         GheroFieldsFragmentData__base,
         {
           'Human': GheroFieldsFragmentData__asHuman,
-          'Droid': GheroFieldsFragmentData__asDroid,
+          'Droid': GheroFieldsFragmentData__asHuman_friends__asDroid,
         },
       );
 
@@ -432,29 +432,6 @@ abstract class GhumanFieldsFragment_friends__base
     implements GhumanFieldsFragment_friends {
   @override
   String get G__typename;
-  @override
-  Map<String, dynamic> toJson();
-}
-
-abstract class GhumanFieldsFragment_friends__asDroid
-    implements GhumanFieldsFragment_friends, GdroidFieldsFragment {
-  @override
-  String get G__typename;
-  String get id;
-  String get name;
-  @override
-  String? get primaryFunction;
-  @override
-  Map<String, dynamic> toJson();
-}
-
-abstract class GhumanFieldsFragment_friends__asHuman
-    implements GhumanFieldsFragment_friends {
-  @override
-  String get G__typename;
-  String get id;
-  String get name;
-  String? get homePlanet;
   @override
   Map<String, dynamic> toJson();
 }
@@ -507,10 +484,10 @@ abstract class GhumanFieldsFragmentData_friends
   static Serializer<GhumanFieldsFragmentData_friends> get serializer =>
       _i2.InlineFragmentSerializer<GhumanFieldsFragmentData_friends>(
         'GhumanFieldsFragmentData_friends',
-        GhumanFieldsFragmentData_friends__base,
+        GheroFieldsFragmentData__asHuman_friends__base,
         {
           'Droid': GheroFieldsFragmentData__asHuman_friends__asDroid,
-          'Human': GhumanFieldsFragmentData_friends__asHuman,
+          'Human': GheroFieldsFragmentData__asHuman_friends__asHuman,
         },
       );
 

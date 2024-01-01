@@ -108,7 +108,7 @@ String _operationType(
       .value;
 }
 
-Map<BuiltSet<SelectionNode>, Class> _selectionSetClassMap = {};
+Map<BuiltSet<SelectionNode>, Class> selectionSetClassMap = {};
 
 Map<BuiltSet<SelectionNode>, Reference> selectionRefMap = {};
 
@@ -138,6 +138,8 @@ List<Spec> buildSelectionSetDataClasses({
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception("Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
+
+    print("$name: Adding fragment ${selection.name.value} to superclassSelections");
     superclassSelections["${selection.name.value}"] = SourceSelections(
       url: fragmentMap[selection.name.value]!.url,
       selections: mergeSelections(
@@ -147,7 +149,9 @@ List<Spec> buildSelectionSetDataClasses({
     );
   }
 
-  final superclassSelectionNodes = superclassSelections.values.expand((selections) => selections.selections).toSet();
+
+
+  final superclassSelectionNodes = superclassSelections.values.expand((selections) => selections.selections.toBuiltList()).toSet();
 
   // todo prefill selectionRefMap with superclassSelections here before fieldGetters which already use it
 
@@ -163,18 +167,30 @@ List<Spec> buildSelectionSetDataClasses({
         node.name.value,
       );
 
-      final fieldSelections = mergeSelections(
+      final fieldSelections = getSelectionSet(
         [
-          ...?node.selectionSet?.selections.whereType<FieldNode>(),
-          ...?node.selectionSet?.selections.whereType<FragmentSpreadNode>()
+          ...?node.selectionSet?.selections
         ],
         fragmentMap,
-      ).toBuiltSet();
+      );
 
-      final reused = selectionRefMap[fieldSelections];
+      final reused = checkReusedRefBySelections(
+        [
+          ...?node.selectionSet?.selections
+        ],
+        fragmentMap,
+      );
 
       if (reused != null) {
         print("Reusing getter for ${typeNode} ${name} $reused");
+      } else if(node.selectionSet?.selections.isNotEmpty ?? false){
+        // put in refmap to avoid generating it multiple times if used in multiple fields,
+        // but not in classmap to the class is built later
+        selectionRefMap[fieldSelections] = refer(
+          builtClassName("${name}_${nameNode.value}"),
+          docSource.url + "#data",
+        );
+        //selectionsToBuild[fieldSelections] = node;
       }
 
       return buildGetter(
@@ -182,8 +198,10 @@ List<Spec> buildSelectionSetDataClasses({
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
-        typeRefAlias:  selectionRefMap[fieldSelections], //TODO dataClassAliasMap[name],
-        typeRefPrefix: node.selectionSet != null ? _selectionSetClassMap[fieldSelections]?.name ?? builtClassName(name) : null,
+        typeRefAlias: selectionRefMap[fieldSelections],
+        //TODO dataClassAliasMap[name],
+        typeRefPrefix:
+            node.selectionSet != null ? selectionSetClassMap[fieldSelections]?.name ?? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
       );
@@ -192,12 +210,16 @@ List<Spec> buildSelectionSetDataClasses({
 
   final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
 
-  final mergedSelections = mergeSelections(
-    [
-      ...selections
-    ],
-    fragmentMap,
-  ).toBuiltSet();
+  final mergedSelections = getSelectionSet(selections, fragmentMap);
+
+  final group = superclassSelections.entries.groupListsBy((element) => getSelectionSet(selections, fragmentMap));
+
+  for (final entry in group.entries) {
+    if (entry.value.length > 1) {
+      print("/////////////// Found ${entry.value.length} entries with same selection set");
+      print(entry.value.map((e) => e.key).toList());
+    }
+  }
 
   return [
     if (inlineFragments.isNotEmpty)
@@ -240,9 +262,10 @@ List<Spec> buildSelectionSetDataClasses({
             ),
           ]),
       )
-    else if (_selectionSetClassMap.containsKey(mergedSelections))
+    else if (selectionSetClassMap.containsKey(mergedSelections))
       () {
-        print("Reusing $name => ${_selectionSetClassMap[mergedSelections]!.name} from ${selectionRefMap[mergedSelections]}}");
+        print(
+            "Reusing $name => ${selectionSetClassMap[mergedSelections]!.name} from ${selectionRefMap[mergedSelections]}}");
         return null;
       }()
     else
@@ -260,7 +283,7 @@ List<Spec> buildSelectionSetDataClasses({
           clazz.name,
           docSource.url + "#data",
         );
-        _selectionSetClassMap[mergedSelections] = clazz;
+        selectionSetClassMap[mergedSelections] = clazz;
         print("Built ${clazz.name} from ${docSource.url}");
         return clazz;
       }(),
@@ -486,3 +509,26 @@ TypeNode _getFieldTypeNode(
       )
       .type;
 }
+
+
+BuiltSet<SelectionNode> getSelectionSet(
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final mergedSelections = mergeSelections(
+    [
+      ...selections.whereType<FieldNode>(),
+      ...selections.whereType<FragmentSpreadNode>(),
+    ],
+    fragmentMap,
+  ).toBuiltSet();
+
+  return mergedSelections;
+}
+
+Reference? checkReusedRefBySelections(
+  List<SelectionNode> selections,
+  // fragmentMap
+    Map<String, SourceSelections> fragmentMap,
+)
+   => selectionRefMap[getSelectionSet(selections, fragmentMap)];
