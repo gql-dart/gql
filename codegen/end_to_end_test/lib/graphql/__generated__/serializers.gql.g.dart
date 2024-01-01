@@ -29,7 +29,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroForEpisodeVars.serializer)
       ..add(GHeroNoVars.serializer)
       ..add(GHeroNoVarsData.serializer)
-      ..add(GHeroNoVarsData_hero.serializer)
       ..add(GHeroNoVarsVars.serializer)
       ..add(GHeroWith2Fragments.serializer)
       ..add(GHeroWith2FragmentsData.serializer)
@@ -83,6 +82,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GheroFieldsFragmentData__asHuman_friends__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__asHuman.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__base.serializer)
+      ..add(GheroFieldsFragmentData__base.serializer)
       ..add(GheroFieldsFragmentVars.serializer)
       ..add(GheroIdData.serializer)
       ..add(GheroIdVars.serializer)
@@ -95,12 +95,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(dynamic)]),
-          () => new ListBuilder<dynamic>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(dynamic)]),
-          () => new ListBuilder<dynamic>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())
@@ -124,15 +118,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType.nullable(GheroDataData)]),
+          () => new ListBuilder<GheroDataData?>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType.nullable(GheroDataData)]),
+          () => new ListBuilder<GheroDataData?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
           ]),
           () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(GhumanFieldsFragmentData_friends)
+            const FullType.nullable(
+                GheroFieldsFragmentData__asHuman_friends__base)
           ]),
-          () => new ListBuilder<GhumanFieldsFragmentData_friends?>()))
+          () => new ListBuilder<
+              GheroFieldsFragmentData__asHuman_friends__base?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -119,8 +119,7 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
 abstract class GPostFragmentForUser1 {
   String get G__typename;
   String get id;
-  GPostsWithFixedVariableData_posts_favoritedUsers_favoritedUsers?
-      get favoritedUsers;
+  GPostsWithFixedVariableData_posts_favoritedUsers? get favoritedUsers;
   Map<String, dynamic> toJson();
 }
 
@@ -149,8 +148,7 @@ abstract class GPostFragmentForUser1Data
   @override
   String get id;
   @override
-  GPostsWithFixedVariableData_posts_favoritedUsers_favoritedUsers?
-      get favoritedUsers;
+  GPostsWithFixedVariableData_posts_favoritedUsers? get favoritedUsers;
   static Serializer<GPostFragmentForUser1Data> get serializer =>
       _$gPostFragmentForUser1DataSerializer;
 

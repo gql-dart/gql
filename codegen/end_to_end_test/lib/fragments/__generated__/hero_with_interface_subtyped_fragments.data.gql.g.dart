@@ -12,6 +12,9 @@ Serializer<GHeroWithInterfaceSubTypedFragmentsData>
 Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero>
     _$gHeroWithInterfaceSubTypedFragmentsDataHeroSerializer =
     new _$GHeroWithInterfaceSubTypedFragmentsData_heroSerializer();
+Serializer<GheroFieldsFragmentData__base>
+    _$gheroFieldsFragmentDataBaseSerializer =
+    new _$GheroFieldsFragmentData__baseSerializer();
 Serializer<GheroFieldsFragmentData__asHuman>
     _$gheroFieldsFragmentDataAsHumanSerializer =
     new _$GheroFieldsFragmentData__asHumanSerializer();
@@ -122,6 +125,64 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_heroSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GHeroWithInterfaceSubTypedFragmentsData_heroBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GheroFieldsFragmentData__baseSerializer
+    implements StructuredSerializer<GheroFieldsFragmentData__base> {
+  @override
+  final Iterable<Type> types = const [
+    GheroFieldsFragmentData__base,
+    _$GheroFieldsFragmentData__base
+  ];
+  @override
+  final String wireName = 'GheroFieldsFragmentData__base';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GheroFieldsFragmentData__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GheroFieldsFragmentData__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GheroFieldsFragmentData__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -457,7 +518,8 @@ class _$GhumanFieldsFragmentDataSerializer
         ..add('friends')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(GhumanFieldsFragmentData_friends)
+              const FullType.nullable(
+                  GheroFieldsFragmentData__asHuman_friends__base)
             ])));
     }
     return result;
@@ -486,7 +548,8 @@ class _$GhumanFieldsFragmentDataSerializer
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(GhumanFieldsFragmentData_friends)
+                const FullType.nullable(
+                    GheroFieldsFragmentData__asHuman_friends__base)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -807,6 +870,128 @@ class GHeroWithInterfaceSubTypedFragmentsData_heroBuilder
                 id, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'name'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GheroFieldsFragmentData__base extends GheroFieldsFragmentData__base {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String name;
+
+  factory _$GheroFieldsFragmentData__base(
+          [void Function(GheroFieldsFragmentData__baseBuilder)? updates]) =>
+      (new GheroFieldsFragmentData__baseBuilder()..update(updates))._build();
+
+  _$GheroFieldsFragmentData__base._(
+      {required this.G__typename, required this.id, required this.name})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GheroFieldsFragmentData__base', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GheroFieldsFragmentData__base', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GheroFieldsFragmentData__base', 'name');
+  }
+
+  @override
+  GheroFieldsFragmentData__base rebuild(
+          void Function(GheroFieldsFragmentData__baseBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GheroFieldsFragmentData__baseBuilder toBuilder() =>
+      new GheroFieldsFragmentData__baseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GheroFieldsFragmentData__base &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GheroFieldsFragmentData__base')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GheroFieldsFragmentData__baseBuilder
+    implements
+        Builder<GheroFieldsFragmentData__base,
+            GheroFieldsFragmentData__baseBuilder> {
+  _$GheroFieldsFragmentData__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GheroFieldsFragmentData__baseBuilder() {
+    GheroFieldsFragmentData__base._initializeBuilder(this);
+  }
+
+  GheroFieldsFragmentData__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GheroFieldsFragmentData__base other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GheroFieldsFragmentData__base;
+  }
+
+  @override
+  void update(void Function(GheroFieldsFragmentData__baseBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GheroFieldsFragmentData__base build() => _build();
+
+  _$GheroFieldsFragmentData__base _build() {
+    final _$result = _$v ??
+        new _$GheroFieldsFragmentData__base._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GheroFieldsFragmentData__base', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GheroFieldsFragmentData__base', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GheroFieldsFragmentData__base', 'name'));
     replace(_$result);
     return _$result;
   }
@@ -1388,7 +1573,7 @@ class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
   @override
   final String? homePlanet;
   @override
-  final BuiltList<GhumanFieldsFragmentData_friends?>? friends;
+  final BuiltList<GheroFieldsFragmentData__asHuman_friends__base?>? friends;
 
   factory _$GhumanFieldsFragmentData(
           [void Function(GhumanFieldsFragmentDataBuilder)? updates]) =>
@@ -1452,10 +1637,13 @@ class GhumanFieldsFragmentDataBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  ListBuilder<GhumanFieldsFragmentData_friends?>? _friends;
-  ListBuilder<GhumanFieldsFragmentData_friends?> get friends =>
-      _$this._friends ??= new ListBuilder<GhumanFieldsFragmentData_friends?>();
-  set friends(ListBuilder<GhumanFieldsFragmentData_friends?>? friends) =>
+  ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>? _friends;
+  ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?> get friends =>
+      _$this._friends ??=
+          new ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>();
+  set friends(
+          ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>?
+              friends) =>
       _$this._friends = friends;
 
   GhumanFieldsFragmentDataBuilder() {

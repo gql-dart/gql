@@ -52,6 +52,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentData__asHuman_friends__asDroid,
         GheroFieldsFragmentData__asHuman_friends__asHuman,
         GheroFieldsFragmentData__asHuman_friends__base,
+        GheroFieldsFragmentData__base,
         GhumanFieldsFragmentData;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
@@ -89,7 +90,7 @@ import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gq
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'
     show GDroidFragmentVars, GHeroForEpisodeVars;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.data.gql.dart'
-    show GHeroNoVarsData, GHeroNoVarsData_hero;
+    show GHeroNoVarsData;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart'
     show GHeroNoVars;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.var.gql.dart'
@@ -155,7 +156,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeVars,
   GHeroNoVars,
   GHeroNoVarsData,
-  GHeroNoVarsData_hero,
   GHeroNoVarsVars,
   GHeroWith2Fragments,
   GHeroWith2FragmentsData,
@@ -209,6 +209,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GheroFieldsFragmentData__asHuman_friends__asDroid,
   GheroFieldsFragmentData__asHuman_friends__asHuman,
   GheroFieldsFragmentData__asHuman_friends__base,
+  GheroFieldsFragmentData__base,
   GheroFieldsFragmentVars,
   GheroIdData,
   GheroIdVars,

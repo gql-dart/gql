@@ -100,8 +100,8 @@ class _$GHeroForEpisodeData_hero__baseSerializer
       result
         ..add('friends')
         ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(dynamic)])));
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(_i2.GheroDataData)])));
     }
     return result;
   }
@@ -128,9 +128,9 @@ class _$GHeroForEpisodeData_hero__baseSerializer
           break;
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(dynamic)]))!
-              as BuiltList<Object?>);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(_i2.GheroDataData)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -166,8 +166,8 @@ class _$GHeroForEpisodeData_hero__asDroidSerializer
       result
         ..add('friends')
         ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(dynamic)])));
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(_i2.GheroDataData)])));
     }
     value = object.primaryFunction;
     if (value != null) {
@@ -201,9 +201,9 @@ class _$GHeroForEpisodeData_hero__asDroidSerializer
           break;
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(dynamic)]))!
-              as BuiltList<Object?>);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(_i2.GheroDataData)
+              ]))! as BuiltList<Object?>);
           break;
         case 'primaryFunction':
           result.primaryFunction = serializers.deserialize(value,
@@ -323,7 +323,7 @@ class _$GHeroForEpisodeData_hero__base extends GHeroForEpisodeData_hero__base {
   @override
   final String name;
   @override
-  final BuiltList<dynamic>? friends;
+  final BuiltList<_i2.GheroDataData?>? friends;
 
   factory _$GHeroForEpisodeData_hero__base(
           [void Function(GHeroForEpisodeData_hero__baseBuilder)? updates]) =>
@@ -390,10 +390,11 @@ class GHeroForEpisodeData_hero__baseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<dynamic>? _friends;
-  ListBuilder<dynamic> get friends =>
-      _$this._friends ??= new ListBuilder<dynamic>();
-  set friends(ListBuilder<dynamic>? friends) => _$this._friends = friends;
+  ListBuilder<_i2.GheroDataData?>? _friends;
+  ListBuilder<_i2.GheroDataData?> get friends =>
+      _$this._friends ??= new ListBuilder<_i2.GheroDataData?>();
+  set friends(ListBuilder<_i2.GheroDataData?>? friends) =>
+      _$this._friends = friends;
 
   GHeroForEpisodeData_hero__baseBuilder() {
     GHeroForEpisodeData_hero__base._initializeBuilder(this);
@@ -457,7 +458,7 @@ class _$GHeroForEpisodeData_hero__asDroid
   @override
   final String name;
   @override
-  final BuiltList<dynamic>? friends;
+  final BuiltList<_i2.GheroDataData?>? friends;
   @override
   final String? primaryFunction;
 
@@ -533,10 +534,11 @@ class GHeroForEpisodeData_hero__asDroidBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<dynamic>? _friends;
-  ListBuilder<dynamic> get friends =>
-      _$this._friends ??= new ListBuilder<dynamic>();
-  set friends(ListBuilder<dynamic>? friends) => _$this._friends = friends;
+  ListBuilder<_i2.GheroDataData?>? _friends;
+  ListBuilder<_i2.GheroDataData?> get friends =>
+      _$this._friends ??= new ListBuilder<_i2.GheroDataData?>();
+  set friends(ListBuilder<_i2.GheroDataData?>? friends) =>
+      _$this._friends = friends;
 
   String? _primaryFunction;
   String? get primaryFunction => _$this._primaryFunction;

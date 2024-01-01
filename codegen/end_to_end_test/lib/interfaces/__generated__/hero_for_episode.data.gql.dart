@@ -5,10 +5,12 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart'
+    as _i2;
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
     as _i1;
 import 'package:gql_code_builder/src/serializers/inline_fragment_serializer.dart'
-    as _i2;
+    as _i3;
 
 part 'hero_for_episode.data.gql.g.dart';
 
@@ -41,58 +43,6 @@ abstract class GHeroForEpisodeData
       );
 }
 
-abstract class GHeroForEpisodeData_hero {
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  String get name;
-  BuiltList<GheroDataData_friends?>? get friends;
-  static Serializer<GHeroForEpisodeData_hero> get serializer =>
-      _i2.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
-        'GHeroForEpisodeData_hero',
-        GHeroForEpisodeData_hero__base,
-        {'Droid': GHeroForEpisodeData_hero__asDroid},
-      );
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHeroForEpisodeData_hero.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GHeroForEpisodeData_hero? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHeroForEpisodeData_hero.serializer,
-        json,
-      );
-}
-
-extension GHeroForEpisodeData_heroWhenExtension on GHeroForEpisodeData_hero {
-  _T when<_T>({
-    required _T Function(GHeroForEpisodeData_hero__asDroid) droid,
-    required _T Function() orElse,
-  }) {
-    switch (G__typename) {
-      case 'Droid':
-        return droid((this as GHeroForEpisodeData_hero__asDroid));
-      default:
-        return orElse();
-    }
-  }
-
-  _T maybeWhen<_T>({
-    _T Function(GHeroForEpisodeData_hero__asDroid)? droid,
-    required _T Function() orElse,
-  }) {
-    switch (G__typename) {
-      case 'Droid':
-        return droid != null
-            ? droid((this as GHeroForEpisodeData_hero__asDroid))
-            : orElse();
-      default:
-        return orElse();
-    }
-  }
-}
-
 abstract class GHeroForEpisodeData_hero__base
     implements
         Built<GHeroForEpisodeData_hero__base,
@@ -113,7 +63,7 @@ abstract class GHeroForEpisodeData_hero__base
   @override
   String get name;
   @override
-  BuiltList<GheroDataData_friends?>? get friends;
+  BuiltList<_i2.GheroDataData?>? get friends;
   static Serializer<GHeroForEpisodeData_hero__base> get serializer =>
       _$gHeroForEpisodeDataHeroBaseSerializer;
 
@@ -151,7 +101,7 @@ abstract class GHeroForEpisodeData_hero__asDroid
   @override
   String get name;
   @override
-  BuiltList<GheroDataData_friends?>? get friends;
+  BuiltList<_i2.GheroDataData?>? get friends;
   @override
   String? get primaryFunction;
   static Serializer<GHeroForEpisodeData_hero__asDroid> get serializer =>
@@ -167,6 +117,30 @@ abstract class GHeroForEpisodeData_hero__asDroid
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroForEpisodeData_hero__asDroid.serializer,
+        json,
+      );
+}
+
+abstract class GHeroForEpisodeData_hero {
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get name;
+  BuiltList<_i2.GheroDataData?>? get friends;
+  static Serializer<GHeroForEpisodeData_hero> get serializer =>
+      _i3.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
+        'GHeroForEpisodeData_hero',
+        GHeroForEpisodeData_hero__base,
+        {'Droid': GHeroForEpisodeData_hero__asDroid},
+      );
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GHeroForEpisodeData_hero.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GHeroForEpisodeData_hero? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GHeroForEpisodeData_hero.serializer,
         json,
       );
 }

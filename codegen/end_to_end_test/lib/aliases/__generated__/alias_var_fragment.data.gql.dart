@@ -5,6 +5,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
+    as _i2;
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
     as _i1;
 
@@ -52,9 +54,9 @@ abstract class GPostsData_posts
   @override
   String get id;
   @override
-  GPostsWithFixedVariableData_posts_favoritedUsers_isFavorited? get isFavorited;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isFavorited;
   @override
-  GPostsWithFixedVariableData_posts_favoritedUsers_isLiked? get isLiked;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isLiked;
   static Serializer<GPostsData_posts> get serializer =>
       _$gPostsDataPostsSerializer;
 
@@ -74,8 +76,8 @@ abstract class GPostsData_posts
 abstract class GPostFragment {
   String get G__typename;
   String get id;
-  GPostsWithFixedVariableData_posts_favoritedUsers_isFavorited? get isFavorited;
-  GPostsWithFixedVariableData_posts_favoritedUsers_isLiked? get isLiked;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isFavorited;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isLiked;
   Map<String, dynamic> toJson();
 }
 
@@ -110,9 +112,9 @@ abstract class GPostFragmentData
   @override
   String get id;
   @override
-  GPostsWithFixedVariableData_posts_favoritedUsers_isFavorited? get isFavorited;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isFavorited;
   @override
-  GPostsWithFixedVariableData_posts_favoritedUsers_isLiked? get isLiked;
+  _i2.GPostsWithFixedVariableData_posts_favoritedUsers? get isLiked;
   static Serializer<GPostFragmentData> get serializer =>
       _$gPostFragmentDataSerializer;
 

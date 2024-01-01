@@ -4,8 +4,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
     as _i1;
+import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
+    as _i2;
 
 part 'hero_no_vars.data.gql.g.dart';
 
@@ -21,48 +23,18 @@ abstract class GHeroNoVarsData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GHeroNoVarsData_hero? get hero;
+  _i1.GheroFieldsFragmentData__base? get hero;
   static Serializer<GHeroNoVarsData> get serializer =>
       _$gHeroNoVarsDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GHeroNoVarsData.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GHeroNoVarsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
+      _i2.serializers.deserializeWith(
         GHeroNoVarsData.serializer,
-        json,
-      );
-}
-
-abstract class GHeroNoVarsData_hero
-    implements Built<GHeroNoVarsData_hero, GHeroNoVarsData_heroBuilder> {
-  GHeroNoVarsData_hero._();
-
-  factory GHeroNoVarsData_hero(
-          [void Function(GHeroNoVarsData_heroBuilder b) updates]) =
-      _$GHeroNoVarsData_hero;
-
-  static void _initializeBuilder(GHeroNoVarsData_heroBuilder b) =>
-      b..G__typename = 'Character';
-
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  String get id;
-  String get name;
-  static Serializer<GHeroNoVarsData_hero> get serializer =>
-      _$gHeroNoVarsDataHeroSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHeroNoVarsData_hero.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GHeroNoVarsData_hero? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHeroNoVarsData_hero.serializer,
         json,
       );
 }

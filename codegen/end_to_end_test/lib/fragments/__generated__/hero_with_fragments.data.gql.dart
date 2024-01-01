@@ -237,8 +237,7 @@ abstract class GcomparisonFields implements GheroData {
   String get id;
   @override
   String get name;
-  GHeroWithFragmentsData_hero_friendsConnection_friendsConnection
-      get friendsConnection;
+  GHeroWithFragmentsData_hero_friendsConnection get friendsConnection;
   @override
   Map<String, dynamic> toJson();
 }
@@ -246,14 +245,13 @@ abstract class GcomparisonFields implements GheroData {
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
   int? get totalCount;
-  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges_edges?>?
-      get edges;
+  BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? get edges;
   Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node_node? get node;
+  GHeroWithFragmentsData_hero_friendsConnection_edges_node? get node;
   Map<String, dynamic> toJson();
 }
 
@@ -289,8 +287,7 @@ abstract class GcomparisonFieldsData
   @override
   String get name;
   @override
-  GHeroWithFragmentsData_hero_friendsConnection_friendsConnection
-      get friendsConnection;
+  GHeroWithFragmentsData_hero_friendsConnection get friendsConnection;
   static Serializer<GcomparisonFieldsData> get serializer =>
       _$gcomparisonFieldsDataSerializer;
 
