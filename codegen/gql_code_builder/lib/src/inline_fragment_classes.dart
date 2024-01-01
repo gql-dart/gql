@@ -1,3 +1,4 @@
+import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
@@ -19,6 +20,7 @@ List<Spec> buildInlineFragmentClasses({
   required List<Method> fieldGetters,
   required List<SelectionNode> selections,
   required SourceNode schemaSource,
+  required SourceNode docSource,
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
@@ -35,31 +37,7 @@ List<Spec> buildInlineFragmentClasses({
     dataClassAliasMap: dataClassAliasMap,
   );
   return [
-    Class(
-      (b) => b
-        ..abstract = true
-        ..name = builtClassName(name)
-        ..implements.addAll(
-          superclassSelections.keys
-              .where((superName) =>
-                  !dataClassAliasMap.containsKey(builtClassName(superName)))
-              .map<Reference>(
-                (superName) => refer(
-                  builtClassName(superName),
-                  (superclassSelections[superName]?.url ?? "") + "#data",
-                ),
-              ),
-        )
-        ..methods.addAll([
-          ...fieldGetters,
-          if (built)
-            ..._inlineFragmentRootSerializationMethods(
-              name: builtClassName(name),
-              inlineFragments: inlineFragments,
-              dataClassAliasMap: dataClassAliasMap,
-            ),
-        ]),
-    ),
+
     if (whenExtension != null) whenExtension,
     ...buildSelectionSetDataClasses(
       name: "${name}__base",
@@ -73,6 +51,7 @@ List<Spec> buildInlineFragmentClasses({
       fragmentMap: fragmentMap,
       dataClassAliasMap: dataClassAliasMap,
       schemaSource: schemaSource,
+      docSource: docSource,
       type: type,
       typeOverrides: typeOverrides,
       superclassSelections: {
@@ -109,6 +88,7 @@ List<Spec> buildInlineFragmentClasses({
           fragmentMap: fragmentMap,
           dataClassAliasMap: dataClassAliasMap,
           schemaSource: schemaSource,
+          docSource: docSource,
           type: inlineFragment.typeCondition!.on.name.value,
           typeOverrides: typeOverrides,
           superclassSelections: {
@@ -117,6 +97,32 @@ List<Spec> buildInlineFragmentClasses({
           built: built,
           whenExtensionConfig: whenExtensionConfig),
     ),
+    Class(
+          (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..implements.addAll(
+          superclassSelections.keys
+              .where((superName) =>
+          !dataClassAliasMap.containsKey(builtClassName(superName)))
+              .map<Reference>(
+                (superName) => refer(
+              builtClassName(superName),
+              (superclassSelections[superName]?.url ?? "") + "#data",
+            ),
+          ),
+        )
+        ..methods.addAll([
+          ...fieldGetters,
+          if (built)
+            ..._inlineFragmentRootSerializationMethods(
+              name: builtClassName(name),
+              inlineFragments: inlineFragments,
+              dataClassAliasMap: dataClassAliasMap,
+              fragmentMap: fragmentMap,
+            ),
+        ]),
+    ),
   ];
 }
 
@@ -124,6 +130,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
   required Map<String, Reference> dataClassAliasMap,
+  required Map<String, SourceSelections> fragmentMap,
 }) =>
     [
       buildSerializerGetter(name).rebuild(
@@ -141,8 +148,19 @@ List<Method> _inlineFragmentRootSerializationMethods({
               {
                 for (final v in inlineFragments
                     .where((frag) => frag.typeCondition != null))
-                  "${v.typeCondition!.on.name.value}": dataClassAliasMap[
-                          "${name}__as${v.typeCondition!.on.name.value}"] ??
+                  "${v.typeCondition!.on.name.value}":
+                  () {
+                  final ref = selectionRefMap[
+                        mergeSelections(
+                        [
+                          ...v.selectionSet.selections
+
+                        ], fragmentMap).toBuiltSet()
+                      ];
+                  print ("############# ref: $ref for ${v.typeCondition!.on.name.value} on $name");
+                return ref;
+                }()
+                      ??
                       refer(
                         "${name}__as${v.typeCondition!.on.name.value}",
                       )
