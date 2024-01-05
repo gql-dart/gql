@@ -1,0 +1,32 @@
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+
+# The query type, represents all of the entry points into our object graph
+type Query {
+  repro: Repro
+}
+
+type Repro {
+  id: ID!
+  name: String!
+  child: ChildRepro
+}
+
+union ChildRepro = ChildReproA | ChildReproB
+
+type ChildReproA {
+  id: ID!
+  name: String!
+  childs: [ChildRepro]
+}
+
+type ChildReproB {
+  id: ID!
+  count: Int!
+}
+
