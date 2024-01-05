@@ -7,6 +7,7 @@ import "package:gql_build/src/utils/add_introspection.dart" as introspection;
 import "package:gql_build/src/utils/reader.dart";
 import "package:gql_build/src/utils/writer.dart";
 import "package:gql_code_builder/data.dart";
+import 'package:gql_code_builder/src/operation/data.dart';
 import "package:path/path.dart";
 
 class DataBuilder implements Builder {
@@ -52,6 +53,10 @@ class DataBuilder implements Builder {
       whenExtensionConfig,
       dataClassConfig,
     );
+
+    print("Writing ${buildStep.inputId} to $generatedPartUrl");
+
+    print(selectionRefMap);
 
     return writeDocument(
       library,

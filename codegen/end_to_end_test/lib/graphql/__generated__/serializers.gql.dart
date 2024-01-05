@@ -41,19 +41,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
-    show
-        GheroFieldsFragmentData,
-        GheroFieldsFragmentData__asHuman_friends,
-        GhumanFieldsFragmentData_friends,
-        GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
-        GdroidFieldsFragmentData,
-        GheroFieldsFragmentData__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__asDroid,
-        GheroFieldsFragmentData__asHuman_friends__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__base,
-        GheroFieldsFragmentData__base,
-        GhumanFieldsFragmentData;
+    show GHeroWithInterfaceSubTypedFragmentsData, GHeroWithInterfaceSubTypedFragmentsData_hero, GdroidFieldsFragmentData, GheroFieldsFragmentData, GheroFieldsFragmentData__asDroid, GheroFieldsFragmentData__asHuman, GheroFieldsFragmentData__asHuman_friends, GheroFieldsFragmentData__asHuman_friends__asDroid, GheroFieldsFragmentData__asHuman_friends__asHuman, GheroFieldsFragmentData__asHuman_friends__base, GheroFieldsFragmentData__base, GheroFieldsFragment__asHuman_friends, GhumanFieldsFragmentData, GhumanFieldsFragmentData_friends, GhumanFieldsFragmentData_friends__asDroid, GhumanFieldsFragmentData_friends__asHuman, GhumanFieldsFragmentData_friends__base;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.var.gql.dart'
@@ -205,6 +193,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GdroidFieldsFragmentVars,
   GheroDataData,
   GheroDataVars,
+  GheroFieldsFragmentData__asDroid,
   GheroFieldsFragmentData__asHuman,
   GheroFieldsFragmentData__asHuman_friends__asDroid,
   GheroFieldsFragmentData__asHuman_friends__asHuman,
@@ -215,6 +204,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GheroIdVars,
   GheroNameVars,
   GhumanFieldsFragmentData,
+  GhumanFieldsFragmentData_friends__asDroid,
+  GhumanFieldsFragmentData_friends__asHuman,
+  GhumanFieldsFragmentData_friends__base,
   GhumanFieldsFragmentVars,
 ])
 final Serializers serializers = _serializersBuilder.build();
+

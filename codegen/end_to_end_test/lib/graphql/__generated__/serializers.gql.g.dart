@@ -78,6 +78,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GdroidFieldsFragmentVars.serializer)
       ..add(GheroDataData.serializer)
       ..add(GheroDataVars.serializer)
+      ..add(GheroFieldsFragmentData__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman_friends__asHuman.serializer)
@@ -88,6 +89,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GheroIdVars.serializer)
       ..add(GheroNameVars.serializer)
       ..add(GhumanFieldsFragmentData.serializer)
+      ..add(GhumanFieldsFragmentData_friends__asDroid.serializer)
+      ..add(GhumanFieldsFragmentData_friends__asHuman.serializer)
+      ..add(GhumanFieldsFragmentData_friends__base.serializer)
       ..add(GhumanFieldsFragmentVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(DateTime)]),
@@ -127,11 +131,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<GheroDataData?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(
-                GheroFieldsFragmentData__asHuman_friends__base)
+            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
           ]),
-          () => new ListBuilder<
-              GheroFieldsFragmentData__asHuman_friends__base?>())
+          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragment__asHuman_friends)

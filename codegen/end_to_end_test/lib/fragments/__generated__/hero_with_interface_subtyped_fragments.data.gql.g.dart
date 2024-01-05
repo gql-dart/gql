@@ -27,8 +27,20 @@ Serializer<GheroFieldsFragmentData__asHuman_friends__asDroid>
 Serializer<GheroFieldsFragmentData__asHuman_friends__asHuman>
     _$gheroFieldsFragmentDataAsHumanFriendsAsHumanSerializer =
     new _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer();
+Serializer<GheroFieldsFragmentData__asDroid>
+    _$gheroFieldsFragmentDataAsDroidSerializer =
+    new _$GheroFieldsFragmentData__asDroidSerializer();
 Serializer<GhumanFieldsFragmentData> _$ghumanFieldsFragmentDataSerializer =
     new _$GhumanFieldsFragmentDataSerializer();
+Serializer<GhumanFieldsFragmentData_friends__base>
+    _$ghumanFieldsFragmentDataFriendsBaseSerializer =
+    new _$GhumanFieldsFragmentData_friends__baseSerializer();
+Serializer<GhumanFieldsFragmentData_friends__asDroid>
+    _$ghumanFieldsFragmentDataFriendsAsDroidSerializer =
+    new _$GhumanFieldsFragmentData_friends__asDroidSerializer();
+Serializer<GhumanFieldsFragmentData_friends__asHuman>
+    _$ghumanFieldsFragmentDataFriendsAsHumanSerializer =
+    new _$GhumanFieldsFragmentData_friends__asHumanSerializer();
 Serializer<GdroidFieldsFragmentData> _$gdroidFieldsFragmentDataSerializer =
     new _$GdroidFieldsFragmentDataSerializer();
 
@@ -484,6 +496,75 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer
   }
 }
 
+class _$GheroFieldsFragmentData__asDroidSerializer
+    implements StructuredSerializer<GheroFieldsFragmentData__asDroid> {
+  @override
+  final Iterable<Type> types = const [
+    GheroFieldsFragmentData__asDroid,
+    _$GheroFieldsFragmentData__asDroid
+  ];
+  @override
+  final String wireName = 'GheroFieldsFragmentData__asDroid';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GheroFieldsFragmentData__asDroid object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.primaryFunction;
+    if (value != null) {
+      result
+        ..add('primaryFunction')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GheroFieldsFragmentData__asDroid deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GheroFieldsFragmentData__asDroidBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'primaryFunction':
+          result.primaryFunction = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GhumanFieldsFragmentDataSerializer
     implements StructuredSerializer<GhumanFieldsFragmentData> {
   @override
@@ -517,8 +598,7 @@ class _$GhumanFieldsFragmentDataSerializer
         ..add('friends')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType.nullable(
-                  GheroFieldsFragmentData__asHuman_friends__base)
+              const FullType.nullable(GheroFieldsFragment__asHuman_friends)
             ])));
     }
     return result;
@@ -547,9 +627,192 @@ class _$GhumanFieldsFragmentDataSerializer
         case 'friends':
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GheroFieldsFragmentData__asHuman_friends__base)
+                const FullType.nullable(GheroFieldsFragment__asHuman_friends)
               ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__baseSerializer
+    implements StructuredSerializer<GhumanFieldsFragmentData_friends__base> {
+  @override
+  final Iterable<Type> types = const [
+    GhumanFieldsFragmentData_friends__base,
+    _$GhumanFieldsFragmentData_friends__base
+  ];
+  @override
+  final String wireName = 'GhumanFieldsFragmentData_friends__base';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GhumanFieldsFragmentData_friends__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GhumanFieldsFragmentData_friends__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__asDroidSerializer
+    implements StructuredSerializer<GhumanFieldsFragmentData_friends__asDroid> {
+  @override
+  final Iterable<Type> types = const [
+    GhumanFieldsFragmentData_friends__asDroid,
+    _$GhumanFieldsFragmentData_friends__asDroid
+  ];
+  @override
+  final String wireName = 'GhumanFieldsFragmentData_friends__asDroid';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GhumanFieldsFragmentData_friends__asDroid object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.primaryFunction;
+    if (value != null) {
+      result
+        ..add('primaryFunction')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asDroid deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GhumanFieldsFragmentData_friends__asDroidBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'primaryFunction':
+          result.primaryFunction = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__asHumanSerializer
+    implements StructuredSerializer<GhumanFieldsFragmentData_friends__asHuman> {
+  @override
+  final Iterable<Type> types = const [
+    GhumanFieldsFragmentData_friends__asHuman,
+    _$GhumanFieldsFragmentData_friends__asHuman
+  ];
+  @override
+  final String wireName = 'GhumanFieldsFragmentData_friends__asHuman';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GhumanFieldsFragmentData_friends__asHuman object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.homePlanet;
+    if (value != null) {
+      result
+        ..add('homePlanet')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asHuman deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GhumanFieldsFragmentData_friends__asHumanBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'homePlanet':
+          result.homePlanet = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -1565,13 +1828,151 @@ class GheroFieldsFragmentData__asHuman_friends__asHumanBuilder
   }
 }
 
+class _$GheroFieldsFragmentData__asDroid
+    extends GheroFieldsFragmentData__asDroid {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String? primaryFunction;
+
+  factory _$GheroFieldsFragmentData__asDroid(
+          [void Function(GheroFieldsFragmentData__asDroidBuilder)? updates]) =>
+      (new GheroFieldsFragmentData__asDroidBuilder()..update(updates))._build();
+
+  _$GheroFieldsFragmentData__asDroid._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      this.primaryFunction})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GheroFieldsFragmentData__asDroid', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GheroFieldsFragmentData__asDroid', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GheroFieldsFragmentData__asDroid', 'name');
+  }
+
+  @override
+  GheroFieldsFragmentData__asDroid rebuild(
+          void Function(GheroFieldsFragmentData__asDroidBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GheroFieldsFragmentData__asDroidBuilder toBuilder() =>
+      new GheroFieldsFragmentData__asDroidBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GheroFieldsFragmentData__asDroid &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        primaryFunction == other.primaryFunction;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, primaryFunction.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GheroFieldsFragmentData__asDroid')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('primaryFunction', primaryFunction))
+        .toString();
+  }
+}
+
+class GheroFieldsFragmentData__asDroidBuilder
+    implements
+        Builder<GheroFieldsFragmentData__asDroid,
+            GheroFieldsFragmentData__asDroidBuilder> {
+  _$GheroFieldsFragmentData__asDroid? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _primaryFunction;
+  String? get primaryFunction => _$this._primaryFunction;
+  set primaryFunction(String? primaryFunction) =>
+      _$this._primaryFunction = primaryFunction;
+
+  GheroFieldsFragmentData__asDroidBuilder() {
+    GheroFieldsFragmentData__asDroid._initializeBuilder(this);
+  }
+
+  GheroFieldsFragmentData__asDroidBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _primaryFunction = $v.primaryFunction;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GheroFieldsFragmentData__asDroid other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GheroFieldsFragmentData__asDroid;
+  }
+
+  @override
+  void update(void Function(GheroFieldsFragmentData__asDroidBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GheroFieldsFragmentData__asDroid build() => _build();
+
+  _$GheroFieldsFragmentData__asDroid _build() {
+    final _$result = _$v ??
+        new _$GheroFieldsFragmentData__asDroid._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GheroFieldsFragmentData__asDroid', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GheroFieldsFragmentData__asDroid', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GheroFieldsFragmentData__asDroid', 'name'),
+            primaryFunction: primaryFunction);
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GhumanFieldsFragmentData extends GhumanFieldsFragmentData {
   @override
   final String G__typename;
   @override
   final String? homePlanet;
   @override
-  final BuiltList<GheroFieldsFragmentData__asHuman_friends__base?>? friends;
+  final BuiltList<GheroFieldsFragment__asHuman_friends?>? friends;
 
   factory _$GhumanFieldsFragmentData(
           [void Function(GhumanFieldsFragmentDataBuilder)? updates]) =>
@@ -1635,13 +2036,11 @@ class GhumanFieldsFragmentDataBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>? _friends;
-  ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?> get friends =>
+  ListBuilder<GheroFieldsFragment__asHuman_friends?>? _friends;
+  ListBuilder<GheroFieldsFragment__asHuman_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>();
-  set friends(
-          ListBuilder<GheroFieldsFragmentData__asHuman_friends__base?>?
-              friends) =>
+          new ListBuilder<GheroFieldsFragment__asHuman_friends?>();
+  set friends(ListBuilder<GheroFieldsFragment__asHuman_friends?>? friends) =>
       _$this._friends = friends;
 
   GhumanFieldsFragmentDataBuilder() {
@@ -1693,6 +2092,392 @@ class GhumanFieldsFragmentDataBuilder
       }
       rethrow;
     }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__base
+    extends GhumanFieldsFragmentData_friends__base {
+  @override
+  final String G__typename;
+
+  factory _$GhumanFieldsFragmentData_friends__base(
+          [void Function(GhumanFieldsFragmentData_friends__baseBuilder)?
+              updates]) =>
+      (new GhumanFieldsFragmentData_friends__baseBuilder()..update(updates))
+          ._build();
+
+  _$GhumanFieldsFragmentData_friends__base._({required this.G__typename})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GhumanFieldsFragmentData_friends__base', 'G__typename');
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__base rebuild(
+          void Function(GhumanFieldsFragmentData_friends__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GhumanFieldsFragmentData_friends__baseBuilder toBuilder() =>
+      new GhumanFieldsFragmentData_friends__baseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GhumanFieldsFragmentData_friends__base &&
+        G__typename == other.G__typename;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GhumanFieldsFragmentData_friends__base')
+          ..add('G__typename', G__typename))
+        .toString();
+  }
+}
+
+class GhumanFieldsFragmentData_friends__baseBuilder
+    implements
+        Builder<GhumanFieldsFragmentData_friends__base,
+            GhumanFieldsFragmentData_friends__baseBuilder> {
+  _$GhumanFieldsFragmentData_friends__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GhumanFieldsFragmentData_friends__baseBuilder() {
+    GhumanFieldsFragmentData_friends__base._initializeBuilder(this);
+  }
+
+  GhumanFieldsFragmentData_friends__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GhumanFieldsFragmentData_friends__base other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GhumanFieldsFragmentData_friends__base;
+  }
+
+  @override
+  void update(
+      void Function(GhumanFieldsFragmentData_friends__baseBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__base build() => _build();
+
+  _$GhumanFieldsFragmentData_friends__base _build() {
+    final _$result = _$v ??
+        new _$GhumanFieldsFragmentData_friends__base._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GhumanFieldsFragmentData_friends__base', 'G__typename'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__asDroid
+    extends GhumanFieldsFragmentData_friends__asDroid {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String? primaryFunction;
+
+  factory _$GhumanFieldsFragmentData_friends__asDroid(
+          [void Function(GhumanFieldsFragmentData_friends__asDroidBuilder)?
+              updates]) =>
+      (new GhumanFieldsFragmentData_friends__asDroidBuilder()..update(updates))
+          ._build();
+
+  _$GhumanFieldsFragmentData_friends__asDroid._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      this.primaryFunction})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GhumanFieldsFragmentData_friends__asDroid', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GhumanFieldsFragmentData_friends__asDroid', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GhumanFieldsFragmentData_friends__asDroid', 'name');
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asDroid rebuild(
+          void Function(GhumanFieldsFragmentData_friends__asDroidBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GhumanFieldsFragmentData_friends__asDroidBuilder toBuilder() =>
+      new GhumanFieldsFragmentData_friends__asDroidBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GhumanFieldsFragmentData_friends__asDroid &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        primaryFunction == other.primaryFunction;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, primaryFunction.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GhumanFieldsFragmentData_friends__asDroid')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('primaryFunction', primaryFunction))
+        .toString();
+  }
+}
+
+class GhumanFieldsFragmentData_friends__asDroidBuilder
+    implements
+        Builder<GhumanFieldsFragmentData_friends__asDroid,
+            GhumanFieldsFragmentData_friends__asDroidBuilder> {
+  _$GhumanFieldsFragmentData_friends__asDroid? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _primaryFunction;
+  String? get primaryFunction => _$this._primaryFunction;
+  set primaryFunction(String? primaryFunction) =>
+      _$this._primaryFunction = primaryFunction;
+
+  GhumanFieldsFragmentData_friends__asDroidBuilder() {
+    GhumanFieldsFragmentData_friends__asDroid._initializeBuilder(this);
+  }
+
+  GhumanFieldsFragmentData_friends__asDroidBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _primaryFunction = $v.primaryFunction;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GhumanFieldsFragmentData_friends__asDroid other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GhumanFieldsFragmentData_friends__asDroid;
+  }
+
+  @override
+  void update(
+      void Function(GhumanFieldsFragmentData_friends__asDroidBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asDroid build() => _build();
+
+  _$GhumanFieldsFragmentData_friends__asDroid _build() {
+    final _$result = _$v ??
+        new _$GhumanFieldsFragmentData_friends__asDroid._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GhumanFieldsFragmentData_friends__asDroid', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GhumanFieldsFragmentData_friends__asDroid', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GhumanFieldsFragmentData_friends__asDroid', 'name'),
+            primaryFunction: primaryFunction);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GhumanFieldsFragmentData_friends__asHuman
+    extends GhumanFieldsFragmentData_friends__asHuman {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String? homePlanet;
+
+  factory _$GhumanFieldsFragmentData_friends__asHuman(
+          [void Function(GhumanFieldsFragmentData_friends__asHumanBuilder)?
+              updates]) =>
+      (new GhumanFieldsFragmentData_friends__asHumanBuilder()..update(updates))
+          ._build();
+
+  _$GhumanFieldsFragmentData_friends__asHuman._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      this.homePlanet})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GhumanFieldsFragmentData_friends__asHuman', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GhumanFieldsFragmentData_friends__asHuman', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GhumanFieldsFragmentData_friends__asHuman', 'name');
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asHuman rebuild(
+          void Function(GhumanFieldsFragmentData_friends__asHumanBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GhumanFieldsFragmentData_friends__asHumanBuilder toBuilder() =>
+      new GhumanFieldsFragmentData_friends__asHumanBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GhumanFieldsFragmentData_friends__asHuman &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        homePlanet == other.homePlanet;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, homePlanet.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GhumanFieldsFragmentData_friends__asHuman')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('homePlanet', homePlanet))
+        .toString();
+  }
+}
+
+class GhumanFieldsFragmentData_friends__asHumanBuilder
+    implements
+        Builder<GhumanFieldsFragmentData_friends__asHuman,
+            GhumanFieldsFragmentData_friends__asHumanBuilder> {
+  _$GhumanFieldsFragmentData_friends__asHuman? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _homePlanet;
+  String? get homePlanet => _$this._homePlanet;
+  set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
+
+  GhumanFieldsFragmentData_friends__asHumanBuilder() {
+    GhumanFieldsFragmentData_friends__asHuman._initializeBuilder(this);
+  }
+
+  GhumanFieldsFragmentData_friends__asHumanBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _homePlanet = $v.homePlanet;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GhumanFieldsFragmentData_friends__asHuman other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GhumanFieldsFragmentData_friends__asHuman;
+  }
+
+  @override
+  void update(
+      void Function(GhumanFieldsFragmentData_friends__asHumanBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GhumanFieldsFragmentData_friends__asHuman build() => _build();
+
+  _$GhumanFieldsFragmentData_friends__asHuman _build() {
+    final _$result = _$v ??
+        new _$GhumanFieldsFragmentData_friends__asHuman._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GhumanFieldsFragmentData_friends__asHuman', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GhumanFieldsFragmentData_friends__asHuman', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GhumanFieldsFragmentData_friends__asHuman', 'name'),
+            homePlanet: homePlanet);
     replace(_$result);
     return _$result;
   }

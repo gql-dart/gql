@@ -11,7 +11,6 @@ import "./src/operation/data.dart";
 export "package:gql_code_builder/src/config/data_class_config.dart";
 export "package:gql_code_builder/src/config/when_extension_config.dart";
 
-
 Library buildDataLibrary(
   SourceNode docSource,
   SourceNode schemaSource,
@@ -207,4 +206,3 @@ void _dataClassAliasMapDFS({
     }
   }
 }
-

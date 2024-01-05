@@ -53,9 +53,12 @@ List<Spec> buildInlineFragmentClasses({
       docSource: docSource,
       type: type,
       typeOverrides: typeOverrides,
-      superclassSelections: {name: SourceSelections(url: null, selections: selections)},
+      superclassSelections: {
+        name: SourceSelections(url: null, selections: selections)
+      },
       built: built,
       whenExtensionConfig: whenExtensionConfig,
+      forceBuildBase: true,
     ),
 
     /// TODO: Handle inline fragments without a type condition
@@ -64,17 +67,18 @@ List<Spec> buildInlineFragmentClasses({
       if (frag.typeCondition == null) {
         return false;
       }
-      final typeName = builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
+      final typeName =
+          builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
       if (dataClassAliasMap.containsKey(typeName)) {
         // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
         return false;
       }
       // TODO this is never called, check if needed
-      if (checkReusedRefBySelections([...selections, ...frag.selectionSet.selections], fragmentMap) !=
-          null) {
-        print("____ !!! nope nope");
+      /*if (checkReusedRefBySelections([...selections, ...frag.selectionSet.selections], fragmentMap) case final ref?
+          ) {
+        print("ref $ref for ${frag.typeCondition!.on.name.value} on $name");
         return false;
-      }
+      }*/
       return true;
     }).expand(
       (inlineFragment) => buildSelectionSetDataClasses(
@@ -93,8 +97,11 @@ List<Spec> buildInlineFragmentClasses({
           docSource: docSource,
           type: inlineFragment.typeCondition!.on.name.value,
           typeOverrides: typeOverrides,
-          superclassSelections: {name: SourceSelections(url: null, selections: selections)},
+          superclassSelections: {
+            name: SourceSelections(url: null, selections: selections)
+          },
           built: built,
+          forceBuildBase: true,
           whenExtensionConfig: whenExtensionConfig),
     ),
     Class(
@@ -103,7 +110,8 @@ List<Spec> buildInlineFragmentClasses({
         ..name = builtClassName(name)
         ..implements.addAll(
           superclassSelections.keys
-              .where((superName) => !dataClassAliasMap.containsKey(builtClassName(superName)))
+              .where((superName) =>
+                  !dataClassAliasMap.containsKey(builtClassName(superName)))
               .map<Reference>(
                 (superName) => refer(
                   builtClassName(superName),
@@ -138,24 +146,26 @@ List<Method> _inlineFragmentRootSerializationMethods({
         (b) => b
           ..body = TypeReference((b) => b
             ..symbol = "InlineFragmentSerializer"
-            ..url = "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
+            ..url =
+                "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
             ..types.add(refer(name))).call([
             literalString(name),
-            checkReusedRefBySelections(selections, fragmentMap) ??
-                refer("${name}__base"),
+            refer("${name}__base"),
             literalMap(
               /// TODO: Handle inline fragments without a type condition
               /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
               {
-                for (final v in inlineFragments.where((frag) => frag.typeCondition != null))
+                for (final v in inlineFragments
+                    .where((frag) => frag.typeCondition != null))
                   "${v.typeCondition!.on.name.value}": () {
-                        final ref = checkReusedRefBySelections([
-                          ...selections,
-                          ...v.selectionSet.selections
-                        ], fragmentMap);
-                        print("############# ref: $ref for ${v.typeCondition!.on.name.value} on $name");
+                        final ref = checkReusedRefBySelections(
+                            [...selections, ...v.selectionSet.selections],
+                            fragmentMap);
+                        print(
+                            "############# ref: $ref for ${v.typeCondition!.on.name.value} on $name");
                         if (name == "GheroFieldsFragmentData") {
-                          print("!!!!!!!!! $ref for ${v.typeCondition!.on.name.value} on $name");
+                          print(
+                              "!!!!!!!!! $ref for ${v.typeCondition!.on.name.value} on $name");
                         }
                         return ref;
                       }() ??

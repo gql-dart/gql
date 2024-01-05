@@ -169,14 +169,14 @@ Method buildGetter({
     typeMap,
   );
 
-  if(nameNode.value == "friends"){
-
-
+  if (nameNode.value == "friends") {
     print("i'm not your friend, buddy");
     print("i'm not your buddy, guy");
     print("i'm not your guy, friend");
     print(typeMap);
     print(returnType);
+    print(typeNode);
+    print(unwrappedTypeNode);
   }
 
   return Method(

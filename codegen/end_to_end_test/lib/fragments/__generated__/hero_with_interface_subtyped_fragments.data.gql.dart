@@ -391,6 +391,47 @@ abstract class GheroFieldsFragmentData__asHuman_friends
       );
 }
 
+abstract class GheroFieldsFragmentData__asDroid
+    implements
+        Built<GheroFieldsFragmentData__asDroid,
+            GheroFieldsFragmentData__asDroidBuilder>,
+        GheroFieldsFragmentData,
+        GdroidFieldsFragment {
+  GheroFieldsFragmentData__asDroid._();
+
+  factory GheroFieldsFragmentData__asDroid(
+          [void Function(GheroFieldsFragmentData__asDroidBuilder b) updates]) =
+      _$GheroFieldsFragmentData__asDroid;
+
+  static void _initializeBuilder(GheroFieldsFragmentData__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
+  String get id;
+  @override
+  String get name;
+  @override
+  String? get primaryFunction;
+  static Serializer<GheroFieldsFragmentData__asDroid> get serializer =>
+      _$gheroFieldsFragmentDataAsDroidSerializer;
+
+  @override
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GheroFieldsFragmentData__asDroid.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GheroFieldsFragmentData__asDroid? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GheroFieldsFragmentData__asDroid.serializer,
+        json,
+      );
+}
+
 abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
   @override
   @BuiltValueField(wireName: '__typename')
@@ -424,7 +465,7 @@ abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
 abstract class GhumanFieldsFragment {
   String get G__typename;
   String? get homePlanet;
-  BuiltList<GheroFieldsFragmentData__asHuman_friends__base?>? get friends;
+  BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   Map<String, dynamic> toJson();
 }
 
@@ -432,6 +473,29 @@ abstract class GhumanFieldsFragment_friends__base
     implements GhumanFieldsFragment_friends {
   @override
   String get G__typename;
+  @override
+  Map<String, dynamic> toJson();
+}
+
+abstract class GhumanFieldsFragment_friends__asDroid
+    implements GhumanFieldsFragment_friends, GdroidFieldsFragment {
+  @override
+  String get G__typename;
+  String get id;
+  String get name;
+  @override
+  String? get primaryFunction;
+  @override
+  Map<String, dynamic> toJson();
+}
+
+abstract class GhumanFieldsFragment_friends__asHuman
+    implements GhumanFieldsFragment_friends {
+  @override
+  String get G__typename;
+  String get id;
+  String get name;
+  String? get homePlanet;
   @override
   Map<String, dynamic> toJson();
 }
@@ -459,7 +523,7 @@ abstract class GhumanFieldsFragmentData
   @override
   String? get homePlanet;
   @override
-  BuiltList<GheroFieldsFragmentData__asHuman_friends__base?>? get friends;
+  BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   static Serializer<GhumanFieldsFragmentData> get serializer =>
       _$ghumanFieldsFragmentDataSerializer;
 
@@ -476,6 +540,119 @@ abstract class GhumanFieldsFragmentData
       );
 }
 
+abstract class GhumanFieldsFragmentData_friends__base
+    implements
+        Built<GhumanFieldsFragmentData_friends__base,
+            GhumanFieldsFragmentData_friends__baseBuilder>,
+        GhumanFieldsFragmentData_friends {
+  GhumanFieldsFragmentData_friends__base._();
+
+  factory GhumanFieldsFragmentData_friends__base(
+      [void Function(GhumanFieldsFragmentData_friends__baseBuilder b)
+          updates]) = _$GhumanFieldsFragmentData_friends__base;
+
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__baseBuilder b) =>
+      b..G__typename = 'Character';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  static Serializer<GhumanFieldsFragmentData_friends__base> get serializer =>
+      _$ghumanFieldsFragmentDataFriendsBaseSerializer;
+
+  @override
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GhumanFieldsFragmentData_friends__base.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GhumanFieldsFragmentData_friends__base? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GhumanFieldsFragmentData_friends__base.serializer,
+        json,
+      );
+}
+
+abstract class GhumanFieldsFragmentData_friends__asDroid
+    implements
+        Built<GhumanFieldsFragmentData_friends__asDroid,
+            GhumanFieldsFragmentData_friends__asDroidBuilder>,
+        GhumanFieldsFragmentData_friends,
+        GdroidFieldsFragment {
+  GhumanFieldsFragmentData_friends__asDroid._();
+
+  factory GhumanFieldsFragmentData_friends__asDroid(
+      [void Function(GhumanFieldsFragmentData_friends__asDroidBuilder b)
+          updates]) = _$GhumanFieldsFragmentData_friends__asDroid;
+
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  String get name;
+  @override
+  String? get primaryFunction;
+  static Serializer<GhumanFieldsFragmentData_friends__asDroid> get serializer =>
+      _$ghumanFieldsFragmentDataFriendsAsDroidSerializer;
+
+  @override
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GhumanFieldsFragmentData_friends__asDroid.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GhumanFieldsFragmentData_friends__asDroid? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GhumanFieldsFragmentData_friends__asDroid.serializer,
+        json,
+      );
+}
+
+abstract class GhumanFieldsFragmentData_friends__asHuman
+    implements
+        Built<GhumanFieldsFragmentData_friends__asHuman,
+            GhumanFieldsFragmentData_friends__asHumanBuilder>,
+        GhumanFieldsFragmentData_friends {
+  GhumanFieldsFragmentData_friends__asHuman._();
+
+  factory GhumanFieldsFragmentData_friends__asHuman(
+      [void Function(GhumanFieldsFragmentData_friends__asHumanBuilder b)
+          updates]) = _$GhumanFieldsFragmentData_friends__asHuman;
+
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__asHumanBuilder b) =>
+      b..G__typename = 'Human';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  String get name;
+  String? get homePlanet;
+  static Serializer<GhumanFieldsFragmentData_friends__asHuman> get serializer =>
+      _$ghumanFieldsFragmentDataFriendsAsHumanSerializer;
+
+  @override
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GhumanFieldsFragmentData_friends__asHuman.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GhumanFieldsFragmentData_friends__asHuman? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GhumanFieldsFragmentData_friends__asHuman.serializer,
+        json,
+      );
+}
+
 abstract class GhumanFieldsFragmentData_friends
     implements GhumanFieldsFragment_friends {
   @override
@@ -484,7 +661,7 @@ abstract class GhumanFieldsFragmentData_friends
   static Serializer<GhumanFieldsFragmentData_friends> get serializer =>
       _i2.InlineFragmentSerializer<GhumanFieldsFragmentData_friends>(
         'GhumanFieldsFragmentData_friends',
-        GheroFieldsFragmentData__asHuman_friends__base,
+        GhumanFieldsFragmentData_friends__base,
         {
           'Droid': GheroFieldsFragmentData__asHuman_friends__asDroid,
           'Human': GheroFieldsFragmentData__asHuman_friends__asHuman,
