@@ -312,7 +312,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
-  GheroDataData? get node;
+  GcomparisonFieldsData_friendsConnection_edges_node? get node;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
       get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
 
@@ -326,6 +326,45 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GcomparisonFieldsData_friendsConnection_edges.serializer,
+        json,
+      );
+}
+
+abstract class GcomparisonFieldsData_friendsConnection_edges_node
+    implements
+        Built<GcomparisonFieldsData_friendsConnection_edges_node,
+            GcomparisonFieldsData_friendsConnection_edges_nodeBuilder>,
+        GheroData {
+  GcomparisonFieldsData_friendsConnection_edges_node._();
+
+  factory GcomparisonFieldsData_friendsConnection_edges_node(
+      [void Function(
+              GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b)
+          updates]) = _$GcomparisonFieldsData_friendsConnection_edges_node;
+
+  static void _initializeBuilder(
+          GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b) =>
+      b..G__typename = 'Character';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
+  String get name;
+  static Serializer<GcomparisonFieldsData_friendsConnection_edges_node>
+      get serializer =>
+          _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;
+
+  @override
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GcomparisonFieldsData_friendsConnection_edges_node.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GcomparisonFieldsData_friendsConnection_edges_node? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GcomparisonFieldsData_friendsConnection_edges_node.serializer,
         json,
       );
 }

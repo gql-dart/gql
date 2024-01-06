@@ -47,6 +47,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data
         GcomparisonFieldsData,
         GcomparisonFieldsData_friendsConnection,
         GcomparisonFieldsData_friendsConnection_edges,
+        GcomparisonFieldsData_friendsConnection_edges_node,
         GheroDataData;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.gql.dart'
     show GHeroWithFragments;
@@ -232,6 +233,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GcomparisonFieldsData,
   GcomparisonFieldsData_friendsConnection,
   GcomparisonFieldsData_friendsConnection_edges,
+  GcomparisonFieldsData_friendsConnection_edges_node,
   GcomparisonFieldsVars,
   GdroidFieldsFragmentData,
   GdroidFieldsFragmentVars,
