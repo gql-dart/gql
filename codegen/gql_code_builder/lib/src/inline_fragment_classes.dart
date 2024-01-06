@@ -118,10 +118,10 @@ List<Spec> buildInlineFragmentClasses({
         typeOverrides: typeOverrides,
         superclassSelections: {
           name: SourceSelections(url: null, selections: selections),
-          if (dataClassAliasMap.isNotEmpty)
+         /* if (dataClassAliasMap.isNotEmpty)
             ...Map.fromEntries(superclassSelections.entries.map((e) => MapEntry(
                 "${e.key}__as${inlineFragment.typeCondition!.on.name.value}",
-                e.value))),
+                e.value))), */
         },
         built: built,
         whenExtensionConfig: whenExtensionConfig,

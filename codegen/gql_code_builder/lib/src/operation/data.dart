@@ -1,3 +1,4 @@
+import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:collection/collection.dart";
 import "package:gql/ast.dart";
@@ -146,7 +147,7 @@ List<Spec> buildSelectionSetDataClasses({
   }
 
   final superclassSelectionNodes = superclassSelections.values
-      .expand((selections) => selections.selections)
+      .expand((selections) => selections.selections.toBuiltList())
       .toSet();
 
   final fieldGetters = selections.whereType<FieldNode>().map<Method>(
