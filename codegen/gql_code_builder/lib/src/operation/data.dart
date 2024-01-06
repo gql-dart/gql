@@ -15,6 +15,7 @@ List<Spec> buildOperationDataClasses(
   Map<String, Reference> typeOverrides,
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
   Map<String, SourceSelections> fragmentMap,
+  Map<String, Set<String>> possibleTypesMap,
   Map<String, Reference> dataClassAliasMap,
 ) {
   if (op.name == null) {
@@ -34,6 +35,7 @@ List<Spec> buildOperationDataClasses(
     ),
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
+    possibleTypesMap: possibleTypesMap,
     dataClassAliasMap: dataClassAliasMap,
     superclassSelections: {},
     whenExtensionConfig: whenExtensionConfig,
@@ -47,6 +49,7 @@ List<Spec> buildFragmentDataClasses(
   Map<String, Reference> typeOverrides,
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
   Map<String, SourceSelections> fragmentMap,
+  Map<String, Set<String>> possibleTypesMap,
   Map<String, Reference> dataClassAliasMap,
 ) {
   final selections = mergeSelections(
@@ -62,6 +65,7 @@ List<Spec> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      possibleTypesMap: possibleTypesMap,
       dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {},
       built: false,
@@ -75,6 +79,7 @@ List<Spec> buildFragmentDataClasses(
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
       fragmentMap: fragmentMap,
+      possibleTypesMap: possibleTypesMap,
       dataClassAliasMap: dataClassAliasMap,
       superclassSelections: {
         frag.name.value: SourceSelections(
@@ -120,6 +125,7 @@ List<Spec> buildSelectionSetDataClasses({
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Set<String>> possibleTypesMap,
   required Map<String, Reference> dataClassAliasMap,
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
@@ -180,6 +186,7 @@ List<Spec> buildSelectionSetDataClasses({
         type: type,
         typeOverrides: typeOverrides,
         fragmentMap: fragmentMap,
+        possibleTypesMap: possibleTypesMap,
         dataClassAliasMap: dataClassAliasMap,
         superclassSelections: superclassSelections,
         inlineFragments: inlineFragments,
@@ -236,6 +243,7 @@ List<Spec> buildSelectionSetDataClasses({
             name: "${name}_${field.alias?.value ?? field.name.value}",
             selections: field.selectionSet!.selections,
             fragmentMap: fragmentMap,
+            possibleTypesMap: possibleTypesMap,
             dataClassAliasMap: dataClassAliasMap,
             schemaSource: schemaSource,
             type: unwrapTypeNode(
@@ -292,20 +300,32 @@ List<SelectionNode> shrinkSelections(
     }
   }
 
+  final duplicateIndices = <int>{};
   for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
+    if (!fragmentMap.containsKey(node.name.value)) {
+      throw "Cannot find a fragment ${node.name.value} from current file.";
+    }
     final fragment = fragmentMap[node.name.value]!;
-    final spreadIndex = unmerged.indexOf(node);
-    final duplicateIndexList = <int>[];
+    final fragmentExpanded = {
+      ...fragment.selections,
+      ..._expandFragmentSpreads(fragment.selections, fragmentMap)
+    };
+    final fragmentSpreadIndex = unmerged.indexOf(node);
     unmerged.forEachIndexed((selectionIndex, selection) {
-      if (selectionIndex > spreadIndex &&
-          fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
-        duplicateIndexList.add(selectionIndex);
+      if (selectionIndex != fragmentSpreadIndex &&
+          !(selection is FieldNode && selection.name.value == "__typename") &&
+          fragmentExpanded.any((s) => s.hashCode == selection.hashCode)) {
+        duplicateIndices.add(selectionIndex);
       }
     });
-    duplicateIndexList.reversed.forEach(unmerged.removeAt);
   }
 
-  return unmerged;
+  return unmerged
+      .asMap()
+      .entries
+      .where((e) => !duplicateIndices.contains(e.key))
+      .map((e) => e.value)
+      .toList();
 }
 
 /// Deeply merges field nodes
