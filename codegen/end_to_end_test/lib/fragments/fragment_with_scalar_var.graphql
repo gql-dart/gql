@@ -5,6 +5,13 @@ fragment PostFragmentForUser1 on Post {
     }
 }
 
+fragment PostFragmentForUser2 on Post {
+    id
+    favoritedUsers(filter: {premium: true}) {
+        totalCount
+    }
+}
+
 query PostsWithFixedVariable($filter: Json) {
     posts(filter: $filter) {
         ...PostFragmentForUser1

@@ -11,6 +11,8 @@ Serializer<GPostsWithFixedVariableVars>
     new _$GPostsWithFixedVariableVarsSerializer();
 Serializer<GPostFragmentForUser1Vars> _$gPostFragmentForUser1VarsSerializer =
     new _$GPostFragmentForUser1VarsSerializer();
+Serializer<GPostFragmentForUser2Vars> _$gPostFragmentForUser2VarsSerializer =
+    new _$GPostFragmentForUser2VarsSerializer();
 
 class _$GPostsWithFixedVariableVarsSerializer
     implements StructuredSerializer<GPostsWithFixedVariableVars> {
@@ -83,6 +85,31 @@ class _$GPostFragmentForUser1VarsSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new GPostFragmentForUser1VarsBuilder().build();
+  }
+}
+
+class _$GPostFragmentForUser2VarsSerializer
+    implements StructuredSerializer<GPostFragmentForUser2Vars> {
+  @override
+  final Iterable<Type> types = const [
+    GPostFragmentForUser2Vars,
+    _$GPostFragmentForUser2Vars
+  ];
+  @override
+  final String wireName = 'GPostFragmentForUser2Vars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPostFragmentForUser2Vars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GPostFragmentForUser2Vars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GPostFragmentForUser2VarsBuilder().build();
   }
 }
 
@@ -239,6 +266,67 @@ class GPostFragmentForUser1VarsBuilder
 
   _$GPostFragmentForUser1Vars _build() {
     final _$result = _$v ?? new _$GPostFragmentForUser1Vars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GPostFragmentForUser2Vars extends GPostFragmentForUser2Vars {
+  factory _$GPostFragmentForUser2Vars(
+          [void Function(GPostFragmentForUser2VarsBuilder)? updates]) =>
+      (new GPostFragmentForUser2VarsBuilder()..update(updates))._build();
+
+  _$GPostFragmentForUser2Vars._() : super._();
+
+  @override
+  GPostFragmentForUser2Vars rebuild(
+          void Function(GPostFragmentForUser2VarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GPostFragmentForUser2VarsBuilder toBuilder() =>
+      new GPostFragmentForUser2VarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GPostFragmentForUser2Vars;
+  }
+
+  @override
+  int get hashCode {
+    return 560444928;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'GPostFragmentForUser2Vars').toString();
+  }
+}
+
+class GPostFragmentForUser2VarsBuilder
+    implements
+        Builder<GPostFragmentForUser2Vars, GPostFragmentForUser2VarsBuilder> {
+  _$GPostFragmentForUser2Vars? _$v;
+
+  GPostFragmentForUser2VarsBuilder();
+
+  @override
+  void replace(GPostFragmentForUser2Vars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GPostFragmentForUser2Vars;
+  }
+
+  @override
+  void update(void Function(GPostFragmentForUser2VarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GPostFragmentForUser2Vars build() => _build();
+
+  _$GPostFragmentForUser2Vars _build() {
+    final _$result = _$v ?? new _$GPostFragmentForUser2Vars._();
     replace(_$result);
     return _$result;
   }
