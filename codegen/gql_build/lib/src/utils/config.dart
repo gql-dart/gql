@@ -42,10 +42,6 @@ EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
       fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
     );
 
-DataClassConfig dataClassConfig(Map<String, dynamic> config) => DataClassConfig(
-      reuseFragments: config["reuse_fragments"] == true,
-    );
-
 InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig(
     Map<String, dynamic> config) {
   final whenYamlConfig = config["when_extensions"] as YamlMap?;

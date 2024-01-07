@@ -11,7 +11,6 @@ Class builtClass({
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
   List<Method> methods = const [],
-  Map<String, Reference>? dataClassAliasMap,
   bool hasCustomSerializer = false,
 }) {
   final className = builtClassName(name);
@@ -32,16 +31,12 @@ Class builtClass({
                 ],
               ),
           ),
-          ...superclassSelections.keys
-              .where((superName) =>
-                  dataClassAliasMap?.containsKey(builtClassName(superName)) !=
-                  true)
-              .map<Reference>(
-                (superName) => refer(
-                  builtClassName(superName),
-                  (superclassSelections[superName]?.url ?? "") + "#data",
-                ),
-              )
+          ...superclassSelections.keys.map<Reference>(
+            (superName) => refer(
+              builtClassName(superName),
+              (superclassSelections[superName]?.url ?? "") + "#data",
+            ),
+          )
         ],
       )
       ..constructors.addAll(
