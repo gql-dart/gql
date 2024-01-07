@@ -37,11 +37,15 @@ class _$GHeroWithFragmentsDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'hero',
-      serializers.serialize(object.hero,
-          specifiedType: const FullType(GcomparisonFieldsData)),
     ];
-
+    Object? value;
+    value = object.hero;
+    if (value != null) {
+      result
+        ..add('hero')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GcomparisonFieldsData)));
+    }
     return result;
   }
 
@@ -280,11 +284,15 @@ class _$GcomparisonFieldsData_friendsConnection_edgesSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'node',
-      serializers.serialize(object.node,
-          specifiedType: const FullType(GheroDataData)),
     ];
-
+    Object? value;
+    value = object.node;
+    if (value != null) {
+      result
+        ..add('node')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GheroDataData)));
+    }
     return result;
   }
 
@@ -319,18 +327,16 @@ class _$GHeroWithFragmentsData extends GHeroWithFragmentsData {
   @override
   final String G__typename;
   @override
-  final GcomparisonFieldsData hero;
+  final GcomparisonFieldsData? hero;
 
   factory _$GHeroWithFragmentsData(
           [void Function(GHeroWithFragmentsDataBuilder)? updates]) =>
       (new GHeroWithFragmentsDataBuilder()..update(updates))._build();
 
-  _$GHeroWithFragmentsData._({required this.G__typename, required this.hero})
+  _$GHeroWithFragmentsData._({required this.G__typename, this.hero})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GHeroWithFragmentsData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        hero, r'GHeroWithFragmentsData', 'hero');
   }
 
   @override
@@ -389,7 +395,7 @@ class GHeroWithFragmentsDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _hero = $v.hero.toBuilder();
+      _hero = $v.hero?.toBuilder();
       _$v = null;
     }
     return this;
@@ -416,12 +422,12 @@ class GHeroWithFragmentsDataBuilder
           new _$GHeroWithFragmentsData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GHeroWithFragmentsData', 'G__typename'),
-              hero: hero.build());
+              hero: _hero?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'hero';
-        hero.build();
+        _hero?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GHeroWithFragmentsData', _$failedField, e.toString());
@@ -832,7 +838,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges
   @override
   final String G__typename;
   @override
-  final GheroDataData node;
+  final GheroDataData? node;
 
   factory _$GcomparisonFieldsData_friendsConnection_edges(
           [void Function(GcomparisonFieldsData_friendsConnection_edgesBuilder)?
@@ -842,12 +848,10 @@ class _$GcomparisonFieldsData_friendsConnection_edges
           ._build();
 
   _$GcomparisonFieldsData_friendsConnection_edges._(
-      {required this.G__typename, required this.node})
+      {required this.G__typename, this.node})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GcomparisonFieldsData_friendsConnection_edges', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        node, r'GcomparisonFieldsData_friendsConnection_edges', 'node');
   }
 
   @override
@@ -909,7 +913,7 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _node = $v.node.toBuilder();
+      _node = $v.node?.toBuilder();
       _$v = null;
     }
     return this;
@@ -940,12 +944,12 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
                   G__typename,
                   r'GcomparisonFieldsData_friendsConnection_edges',
                   'G__typename'),
-              node: node.build());
+              node: _node?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'node';
-        node.build();
+        _node?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GcomparisonFieldsData_friendsConnection_edges',

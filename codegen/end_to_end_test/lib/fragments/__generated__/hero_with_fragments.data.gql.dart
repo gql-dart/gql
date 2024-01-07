@@ -23,7 +23,7 @@ abstract class GHeroWithFragmentsData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GcomparisonFieldsData get hero;
+  GcomparisonFieldsData? get hero;
   static Serializer<GHeroWithFragmentsData> get serializer =>
       _$gHeroWithFragmentsDataSerializer;
 
@@ -95,7 +95,7 @@ abstract class GcomparisonFields_friendsConnection {
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
-  GheroDataData get node;
+  GheroDataData? get node;
   Map<String, dynamic> toJson();
 }
 
@@ -196,7 +196,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   @override
-  GheroDataData get node;
+  GheroDataData? get node;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
       get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
 

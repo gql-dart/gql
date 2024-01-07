@@ -134,6 +134,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType.nullable(GPostFragmentData)]),
+          () => new ListBuilder<GPostFragmentData?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GPostFragmentForUser2Data)]),
+          () => new ListBuilder<GPostFragmentForUser2Data?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GcomparisonFieldsData_friendsConnection_edges)

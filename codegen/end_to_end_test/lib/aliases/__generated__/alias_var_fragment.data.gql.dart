@@ -2,6 +2,7 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test/graphql/__generated__/serializers.gql.dart'
@@ -20,7 +21,7 @@ abstract class GPostsData implements Built<GPostsData, GPostsDataBuilder> {
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GPostFragmentData get posts;
+  BuiltList<GPostFragmentData?>? get posts;
   static Serializer<GPostsData> get serializer => _$gPostsDataSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

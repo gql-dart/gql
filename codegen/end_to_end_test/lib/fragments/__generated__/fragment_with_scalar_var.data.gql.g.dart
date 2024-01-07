@@ -38,11 +38,16 @@ class _$GPostsWithFixedVariableDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'posts',
-      serializers.serialize(object.posts,
-          specifiedType: const FullType(GPostFragmentForUser2Data)),
     ];
-
+    Object? value;
+    value = object.posts;
+    if (value != null) {
+      result
+        ..add('posts')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(GPostFragmentForUser2Data)])));
+    }
     return result;
   }
 
@@ -64,8 +69,9 @@ class _$GPostsWithFixedVariableDataSerializer
           break;
         case 'posts':
           result.posts.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(GPostFragmentForUser2Data))!
-              as GPostFragmentForUser2Data);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(GPostFragmentForUser2Data)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -316,19 +322,16 @@ class _$GPostsWithFixedVariableData extends GPostsWithFixedVariableData {
   @override
   final String G__typename;
   @override
-  final GPostFragmentForUser2Data posts;
+  final BuiltList<GPostFragmentForUser2Data?>? posts;
 
   factory _$GPostsWithFixedVariableData(
           [void Function(GPostsWithFixedVariableDataBuilder)? updates]) =>
       (new GPostsWithFixedVariableDataBuilder()..update(updates))._build();
 
-  _$GPostsWithFixedVariableData._(
-      {required this.G__typename, required this.posts})
+  _$GPostsWithFixedVariableData._({required this.G__typename, this.posts})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GPostsWithFixedVariableData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        posts, r'GPostsWithFixedVariableData', 'posts');
   }
 
   @override
@@ -376,10 +379,11 @@ class GPostsWithFixedVariableDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentForUser2DataBuilder? _posts;
-  GPostFragmentForUser2DataBuilder get posts =>
-      _$this._posts ??= new GPostFragmentForUser2DataBuilder();
-  set posts(GPostFragmentForUser2DataBuilder? posts) => _$this._posts = posts;
+  ListBuilder<GPostFragmentForUser2Data?>? _posts;
+  ListBuilder<GPostFragmentForUser2Data?> get posts =>
+      _$this._posts ??= new ListBuilder<GPostFragmentForUser2Data?>();
+  set posts(ListBuilder<GPostFragmentForUser2Data?>? posts) =>
+      _$this._posts = posts;
 
   GPostsWithFixedVariableDataBuilder() {
     GPostsWithFixedVariableData._initializeBuilder(this);
@@ -389,7 +393,7 @@ class GPostsWithFixedVariableDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _posts = $v.posts.toBuilder();
+      _posts = $v.posts?.toBuilder();
       _$v = null;
     }
     return this;
@@ -416,12 +420,12 @@ class GPostsWithFixedVariableDataBuilder
           new _$GPostsWithFixedVariableData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GPostsWithFixedVariableData', 'G__typename'),
-              posts: posts.build());
+              posts: _posts?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'posts';
-        posts.build();
+        _posts?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GPostsWithFixedVariableData', _$failedField, e.toString());

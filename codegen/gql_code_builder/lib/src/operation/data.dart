@@ -163,6 +163,8 @@ List<Spec> buildSelectionSetDataClasses({
     );
   }
 
+  final canonicalSelections = BuiltSet.of(selections.withoutFragmentSpreads);
+
   final superclassSelectionNodes = superclassSelections.values
       .expand((selections) => selections.selections)
       .toSet();
@@ -230,7 +232,8 @@ List<Spec> buildSelectionSetDataClasses({
         fragmentRefMap: fragmentRefMap,
       )
     else if (!built)
-      Class(
+      () {
+      final clazz = Class(
         (b) => b
           ..abstract = true
           ..name = builtClassName(name)
@@ -250,7 +253,9 @@ List<Spec> buildSelectionSetDataClasses({
               isOverride: superclassSelections.isNotEmpty,
             ),
           ]),
-      )
+      );
+      return clazz;
+    }()
     else
       builtClass(
         name: name,

@@ -23,8 +23,8 @@ abstract class GTestQueryData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GUserFragmentData get currentUser;
-  GUserFragmentData get currentUser2;
+  GUserFragmentData? get currentUser;
+  GUserFragmentData? get currentUser2;
   static Serializer<GTestQueryData> get serializer =>
       _$gTestQueryDataSerializer;
 

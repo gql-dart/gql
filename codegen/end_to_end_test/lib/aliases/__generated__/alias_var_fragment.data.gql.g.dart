@@ -28,11 +28,16 @@ class _$GPostsDataSerializer implements StructuredSerializer<GPostsData> {
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'posts',
-      serializers.serialize(object.posts,
-          specifiedType: const FullType(GPostFragmentData)),
     ];
-
+    Object? value;
+    value = object.posts;
+    if (value != null) {
+      result
+        ..add('posts')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList,
+                const [const FullType.nullable(GPostFragmentData)])));
+    }
     return result;
   }
 
@@ -53,8 +58,9 @@ class _$GPostsDataSerializer implements StructuredSerializer<GPostsData> {
           break;
         case 'posts':
           result.posts.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(GPostFragmentData))!
-              as GPostFragmentData);
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(GPostFragmentData)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -245,15 +251,14 @@ class _$GPostsData extends GPostsData {
   @override
   final String G__typename;
   @override
-  final GPostFragmentData posts;
+  final BuiltList<GPostFragmentData?>? posts;
 
   factory _$GPostsData([void Function(GPostsDataBuilder)? updates]) =>
       (new GPostsDataBuilder()..update(updates))._build();
 
-  _$GPostsData._({required this.G__typename, required this.posts}) : super._() {
+  _$GPostsData._({required this.G__typename, this.posts}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GPostsData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(posts, r'GPostsData', 'posts');
   }
 
   @override
@@ -296,10 +301,10 @@ class GPostsDataBuilder implements Builder<GPostsData, GPostsDataBuilder> {
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentDataBuilder? _posts;
-  GPostFragmentDataBuilder get posts =>
-      _$this._posts ??= new GPostFragmentDataBuilder();
-  set posts(GPostFragmentDataBuilder? posts) => _$this._posts = posts;
+  ListBuilder<GPostFragmentData?>? _posts;
+  ListBuilder<GPostFragmentData?> get posts =>
+      _$this._posts ??= new ListBuilder<GPostFragmentData?>();
+  set posts(ListBuilder<GPostFragmentData?>? posts) => _$this._posts = posts;
 
   GPostsDataBuilder() {
     GPostsData._initializeBuilder(this);
@@ -309,7 +314,7 @@ class GPostsDataBuilder implements Builder<GPostsData, GPostsDataBuilder> {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _posts = $v.posts.toBuilder();
+      _posts = $v.posts?.toBuilder();
       _$v = null;
     }
     return this;
@@ -336,12 +341,12 @@ class GPostsDataBuilder implements Builder<GPostsData, GPostsDataBuilder> {
           new _$GPostsData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GPostsData', 'G__typename'),
-              posts: posts.build());
+              posts: _posts?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'posts';
-        posts.build();
+        _posts?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GPostsData', _$failedField, e.toString());

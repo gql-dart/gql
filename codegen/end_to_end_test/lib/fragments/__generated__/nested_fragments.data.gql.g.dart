@@ -30,14 +30,22 @@ class _$GTestQueryDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'currentUser',
-      serializers.serialize(object.currentUser,
-          specifiedType: const FullType(GUserFragmentData)),
-      'currentUser2',
-      serializers.serialize(object.currentUser2,
-          specifiedType: const FullType(GUserFragmentData)),
     ];
-
+    Object? value;
+    value = object.currentUser;
+    if (value != null) {
+      result
+        ..add('currentUser')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GUserFragmentData)));
+    }
+    value = object.currentUser2;
+    if (value != null) {
+      result
+        ..add('currentUser2')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GUserFragmentData)));
+    }
     return result;
   }
 
@@ -262,24 +270,18 @@ class _$GTestQueryData extends GTestQueryData {
   @override
   final String G__typename;
   @override
-  final GUserFragmentData currentUser;
+  final GUserFragmentData? currentUser;
   @override
-  final GUserFragmentData currentUser2;
+  final GUserFragmentData? currentUser2;
 
   factory _$GTestQueryData([void Function(GTestQueryDataBuilder)? updates]) =>
       (new GTestQueryDataBuilder()..update(updates))._build();
 
   _$GTestQueryData._(
-      {required this.G__typename,
-      required this.currentUser,
-      required this.currentUser2})
+      {required this.G__typename, this.currentUser, this.currentUser2})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GTestQueryData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        currentUser, r'GTestQueryData', 'currentUser');
-    BuiltValueNullFieldError.checkNotNull(
-        currentUser2, r'GTestQueryData', 'currentUser2');
   }
 
   @override
@@ -347,8 +349,8 @@ class GTestQueryDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _currentUser = $v.currentUser.toBuilder();
-      _currentUser2 = $v.currentUser2.toBuilder();
+      _currentUser = $v.currentUser?.toBuilder();
+      _currentUser2 = $v.currentUser2?.toBuilder();
       _$v = null;
     }
     return this;
@@ -375,15 +377,15 @@ class GTestQueryDataBuilder
           new _$GTestQueryData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GTestQueryData', 'G__typename'),
-              currentUser: currentUser.build(),
-              currentUser2: currentUser2.build());
+              currentUser: _currentUser?.build(),
+              currentUser2: _currentUser2?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'currentUser';
-        currentUser.build();
+        _currentUser?.build();
         _$failedField = 'currentUser2';
-        currentUser2.build();
+        _currentUser2?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GTestQueryData', _$failedField, e.toString());
