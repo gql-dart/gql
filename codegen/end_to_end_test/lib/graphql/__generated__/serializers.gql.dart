@@ -85,6 +85,16 @@ import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.g
     show GHeroWith2Fragments;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.gql.dart'
     show GHeroWith2FragmentsVars, GheroIdVars, GheroNameVars;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.data.gql.dart'
+    show
+        GTestQueryData,
+        GUserFragmentData,
+        GUserFragmentData_location,
+        GUserFragmentData_moderation;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.req.gql.dart'
+    show GTestQuery;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.var.gql.dart'
+    show GTestQueryVars, GUserFragmentVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
@@ -93,6 +103,7 @@ import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
         GISODate,
         GJson,
         GLengthUnit,
+        GModerationStatus,
         GPostFavoritesInput,
         GPostLikesInput,
         GReviewInput;
@@ -200,6 +211,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GISODate,
   GJson,
   GLengthUnit,
+  GModerationStatus,
   GPostFavoritesInput,
   GPostFragmentData,
   GPostFragmentData_isFavorited,
@@ -223,6 +235,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GReviewWithDateData,
   GReviewWithDateData_createReview,
   GReviewWithDateVars,
+  GTestQuery,
+  GTestQueryData,
+  GTestQueryVars,
+  GUserFragmentData,
+  GUserFragmentData_location,
+  GUserFragmentData_moderation,
+  GUserFragmentVars,
   GcomparisonFieldsData,
   GcomparisonFieldsData_friendsConnection,
   GcomparisonFieldsData_friendsConnection_edges,

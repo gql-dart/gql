@@ -214,6 +214,15 @@ const Query = _i1.ObjectTypeDefinitionNode(
         isNonNull: false,
       ),
     ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'currentUser'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'User'),
+        isNonNull: false,
+      ),
+    ),
   ],
 );
 const Mutation = _i1.ObjectTypeDefinitionNode(
@@ -1085,6 +1094,99 @@ const PostFavorites = _i1.ObjectTypeDefinitionNode(
     )
   ],
 );
+const User = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'User'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'id'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ID'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'location'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Location'),
+        isNonNull: false,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'moderation'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Moderation'),
+        isNonNull: false,
+      ),
+    ),
+  ],
+);
+const Location = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Location'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'lat'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Float'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'lng'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Float'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Moderation = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Moderation'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'moderationStatus'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ModerationStatus'),
+        isNonNull: true,
+      ),
+    )
+  ],
+);
+const ModerationStatus = _i1.EnumTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ModerationStatus'),
+  directives: [],
+  values: [
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'APPROVED'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'REJECTED'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'PENDING'),
+      directives: [],
+    ),
+  ],
+);
 const PostLikesInput = _i1.InputObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'PostLikesInput'),
   directives: [],
@@ -1171,6 +1273,10 @@ const document = _i1.DocumentNode(definitions: [
   Post,
   PostLikes,
   PostFavorites,
+  User,
+  Location,
+  Moderation,
+  ModerationStatus,
   PostLikesInput,
   PostFavoritesInput,
   SearchResult,

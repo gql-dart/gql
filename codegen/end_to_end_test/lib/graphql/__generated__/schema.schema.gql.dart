@@ -120,6 +120,24 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
       );
 }
 
+class GModerationStatus extends EnumClass {
+  const GModerationStatus._(String name) : super(name);
+
+  static const GModerationStatus APPROVED = _$gModerationStatusAPPROVED;
+
+  static const GModerationStatus REJECTED = _$gModerationStatusREJECTED;
+
+  static const GModerationStatus PENDING = _$gModerationStatusPENDING;
+
+  static Serializer<GModerationStatus> get serializer =>
+      _$gModerationStatusSerializer;
+
+  static BuiltSet<GModerationStatus> get values => _$gModerationStatusValues;
+
+  static GModerationStatus valueOf(String name) =>
+      _$gModerationStatusValueOf(name);
+}
+
 abstract class GPostLikesInput
     implements Built<GPostLikesInput, GPostLikesInputBuilder> {
   GPostLikesInput._();

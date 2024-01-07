@@ -19,6 +19,7 @@ type Query {
   human(id: ID!): Human
   starship(id: ID!): Starship
   posts(userId: ID!, filter: Json): [Post]
+  currentUser: User
 }
 
 # The mutation type, represents all updates we can make to our data
@@ -195,6 +196,28 @@ type PostLikes {
 type PostFavorites {
   totalCount: Int!
 }
+
+type User {
+  id: ID!
+  location: Location
+  moderation: Moderation
+}
+
+type Location {
+  lat: Float!
+  lng: Float!
+}
+
+type Moderation {
+  moderationStatus: ModerationStatus!
+}
+
+enum ModerationStatus {
+  APPROVED
+  REJECTED
+  PENDING
+}
+
 
 input PostLikesInput {
   id: ID!
