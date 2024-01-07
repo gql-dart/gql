@@ -24,6 +24,26 @@ import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
+import 'package:end_to_end_test/fragments/__generated__/fragment_activities.data.gql.dart'
+    show
+        GActivityBData_activity,
+        GActivityAData,
+        GActivityAData_activityData,
+        GActivityBData,
+        GActivityBData_activity__asActivityA,
+        GActivityBData_activity__asActivityA_activityData,
+        GActivityBData_activity__base,
+        GItemConnectionData,
+        GItemConnectionData_edges,
+        GItemData,
+        GItemEdgeData;
+import 'package:end_to_end_test/fragments/__generated__/fragment_activities.var.gql.dart'
+    show
+        GActivityAVars,
+        GActivityBVars,
+        GItemConnectionVars,
+        GItemEdgeVars,
+        GItemVars;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
         GPostFragmentForUser1Data,
@@ -158,12 +178,21 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
+  ..add(GActivityBData_activity.serializer)
   ..add(GHeroForEpisodeData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GActivityAData,
+  GActivityAData_activityData,
+  GActivityAVars,
+  GActivityBData,
+  GActivityBData_activity__asActivityA,
+  GActivityBData_activity__asActivityA_activityData,
+  GActivityBData_activity__base,
+  GActivityBVars,
   GAliasedHero,
   GAliasedHeroData,
   GAliasedHeroData_empireHero,
@@ -207,6 +236,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHumanWithArgsData_human,
   GHumanWithArgsVars,
   GISODate,
+  GItemConnectionData,
+  GItemConnectionData_edges,
+  GItemConnectionVars,
+  GItemData,
+  GItemEdgeData,
+  GItemEdgeVars,
+  GItemVars,
   GJson,
   GLengthUnit,
   GModerationStatus,

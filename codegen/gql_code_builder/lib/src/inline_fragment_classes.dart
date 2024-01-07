@@ -36,8 +36,7 @@ List<Spec> buildInlineFragmentClasses({
     config: whenExtensionConfig,
   );
 
-  List<SelectionNode> selectionsForInlineFragment(
-      InlineFragmentNode inlineFragment) {
+  List<SelectionNode> selectionsForInlineFragment(InlineFragmentNode inlineFragment) {
     final fragSelections = mergeSelections(
       [
         ...selections.whereType<FieldNode>(),
@@ -50,22 +49,19 @@ List<Spec> buildInlineFragmentClasses({
     return fragSelections;
   }
 
-  Reference? existingFragmentWithSameSelections(
-      String typeName, List<SelectionNode> fragmentSelections) {
+  Reference? existingFragmentWithSameSelections(String typeName, List<SelectionNode> fragmentSelections) {
     final existing = fragmentRefMap[(
       typeName,
       BuiltSet.of(
         fragmentSelections.withoutFragmentSpreads,
       )
     )];
-    print(
-        "existing: $existing on $typeName with selections: $fragmentSelections");
+    print("existing: $existing on $typeName with selections: $fragmentSelections");
     return existing;
   }
 
   List<Spec> buildSelectionSetClassesForInlineFragment(
-          InlineFragmentNode inlineFragment,
-          List<SelectionNode> fragmentSelections) =>
+          InlineFragmentNode inlineFragment, List<SelectionNode> fragmentSelections) =>
       buildSelectionSetDataClasses(
         name: _inlineFragmentName(name, inlineFragment),
         selections: fragmentSelections,
@@ -87,8 +83,7 @@ List<Spec> buildInlineFragmentClasses({
       ...selections.whereType<FragmentSpreadNode>(),
     ], fragmentMap, true);
 
-    final existingFragment =
-        existingFragmentWithSameSelections(type, baseSelections);
+    final existingFragment = existingFragmentWithSameSelections(type, baseSelections);
 
     if (existingFragment != null) {
       final existingFragmentName = existingFragment.symbol;
@@ -97,11 +92,17 @@ List<Spec> buildInlineFragmentClasses({
       print(
           "Found existing fragment $existingFragmentName with same selections as $targetName. Using $existingFragmentName instead.");
       print("adding typedef");
+      /* TODO : make the fragmentData class a subtype of this class so we can use it here?
+      return [
+        TypeDef((b) => b
+          ..name = targetName
+          ..definition = existingFragment),
 
-      return [];
+
+      ];
+       */
     } else {
-      print(
-          "&&&&&&& no existing fragment found for $name on $type with selections: $baseSelections");
+      print("&&&&&&& no existing fragment found for $name on $type with selections: $baseSelections");
     }
 
     return [
@@ -112,9 +113,7 @@ List<Spec> buildInlineFragmentClasses({
         schemaSource: schemaSource,
         type: type,
         typeOverrides: typeOverrides,
-        superclassSelections: {
-          name: SourceSelections(url: null, selections: selections)
-        },
+        superclassSelections: {name: SourceSelections(url: null, selections: selections)},
         built: built,
         whenExtensionConfig: whenExtensionConfig,
         fragmentRefMap: fragmentRefMap,
@@ -163,13 +162,11 @@ List<Spec> buildInlineFragmentClasses({
         )
         .expand(
       (fragmentWithSelections) {
-        final (:inlineFragment, selections: fragmentSelections) =
-            fragmentWithSelections;
+        final (:inlineFragment, selections: fragmentSelections) = fragmentWithSelections;
 
         final typeName = inlineFragment.typeCondition!.on.name.value;
 
-        final existingFragment =
-            existingFragmentWithSameSelections(typeName, fragmentSelections);
+        final existingFragment = existingFragmentWithSameSelections(typeName, fragmentSelections);
 
         if (existingFragment != null) {
           final existingFragmentName = existingFragment.symbol;
@@ -178,8 +175,10 @@ List<Spec> buildInlineFragmentClasses({
           print(
               "Found existing fragment $existingFragmentName with same selections as $targetName. Using $existingFragmentName instead.");
           print("adding typedef");
-
+          /* TODO : make the fragmentData class a subtype of this class so we can use it here?
           return [];
+
+           */
         }
 
         return buildSelectionSetClassesForInlineFragment(
@@ -191,8 +190,7 @@ List<Spec> buildInlineFragmentClasses({
   ];
 }
 
-String _inlineFragmentName(
-        String baseName, InlineFragmentNode inlineFragment) =>
+String _inlineFragmentName(String baseName, InlineFragmentNode inlineFragment) =>
     "${baseName}__as${inlineFragment.typeCondition!.on.name.value}";
 
 String _inlineFragmentBaseName(String baseName) => "${baseName}__base";
@@ -205,8 +203,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
   final toJson = buildToJsonGetter(name);
   final fromJson = buildFromJsonGetter(name);
 
-  final inlineSerializer =
-      _inlineFragmentSerializer(name, inlineFragments, fragmentRefMap);
+  final inlineSerializer = _inlineFragmentSerializer(name, inlineFragments, fragmentRefMap);
 
   return [
     inlineSerializer,
@@ -226,8 +223,7 @@ Method _inlineFragmentSerializer(
     (b) => b
       ..body = TypeReference((b) => b
         ..symbol = "InlineFragmentSerializer"
-        ..url =
-            "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
+        ..url = "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
         ..types.add(refer(name))).call([
         literalString(name),
         refer(_inlineFragmentBaseName(name)),
@@ -235,8 +231,7 @@ Method _inlineFragmentSerializer(
           /// TODO: Handle inline fragments without a type condition
           /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
           {
-            for (final v
-                in inlineFragments.where((frag) => frag.typeCondition != null))
+            for (final v in inlineFragments.where((frag) => frag.typeCondition != null))
               "${v.typeCondition!.on.name.value}": refer(
                 _inlineFragmentName(name, v),
               )

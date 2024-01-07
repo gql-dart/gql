@@ -1169,6 +1169,163 @@ const Moderation = _i1.ObjectTypeDefinitionNode(
     )
   ],
 );
+const ActivityA = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ActivityA'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'body'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'id'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ID'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'activityData'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ActivityUnion'),
+        isNonNull: false,
+      ),
+    ),
+  ],
+);
+const ActivityB = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ActivityB'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'items'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'after'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'String'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'first'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Int'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ItemConnection'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'activity'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ActivityUnion'),
+        isNonNull: false,
+      ),
+    ),
+  ],
+);
+const ActivityUnion = _i1.UnionTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ActivityUnion'),
+  directives: [],
+  types: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'ActivityA'),
+      isNonNull: false,
+    )
+  ],
+);
+const ItemConnection = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ItemConnection'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'count'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'edges'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'ItemEdge'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const ItemEdge = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ItemEdge'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'cursor'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: false,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'node'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Item'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Item = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Item'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'count'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: false,
+      ),
+    )
+  ],
+);
 const ModerationStatus = _i1.EnumTypeDefinitionNode(
   name: _i1.NameNode(value: 'ModerationStatus'),
   directives: [],
@@ -1276,6 +1433,12 @@ const document = _i1.DocumentNode(definitions: [
   User,
   Location,
   Moderation,
+  ActivityA,
+  ActivityB,
+  ActivityUnion,
+  ItemConnection,
+  ItemEdge,
+  Item,
   ModerationStatus,
   PostLikesInput,
   PostFavoritesInput,

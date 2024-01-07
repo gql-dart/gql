@@ -7,6 +7,14 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GActivityAData.serializer)
+      ..add(GActivityAData_activityData.serializer)
+      ..add(GActivityAVars.serializer)
+      ..add(GActivityBData.serializer)
+      ..add(GActivityBData_activity__asActivityA.serializer)
+      ..add(GActivityBData_activity__asActivityA_activityData.serializer)
+      ..add(GActivityBData_activity__base.serializer)
+      ..add(GActivityBVars.serializer)
       ..add(GAliasedHero.serializer)
       ..add(GAliasedHeroData.serializer)
       ..add(GAliasedHeroData_empireHero.serializer)
@@ -50,6 +58,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHumanWithArgsData_human.serializer)
       ..add(GHumanWithArgsVars.serializer)
       ..add(GISODate.serializer)
+      ..add(GItemConnectionData.serializer)
+      ..add(GItemConnectionData_edges.serializer)
+      ..add(GItemConnectionVars.serializer)
+      ..add(GItemData.serializer)
+      ..add(GItemEdgeData.serializer)
+      ..add(GItemEdgeVars.serializer)
+      ..add(GItemVars.serializer)
       ..add(GJson.serializer)
       ..add(GLengthUnit.serializer)
       ..add(GModerationStatus.serializer)
@@ -113,6 +128,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GItemConnectionData_edges)]),
+          () => new ListBuilder<GItemConnectionData_edges>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())

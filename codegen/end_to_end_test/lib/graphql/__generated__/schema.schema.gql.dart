@@ -215,6 +215,7 @@ const Map<String, Set<String>> possibleTypesMap = {
     'Human',
     'Droid',
   },
+  'ActivityUnion': {'ActivityA'},
   'SearchResult': {
     'Human',
     'Droid',
