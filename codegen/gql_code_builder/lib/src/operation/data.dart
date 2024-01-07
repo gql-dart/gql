@@ -49,7 +49,8 @@ List<Spec> buildFragmentDataClasses(
   Map<String, Set<String>> possibleTypesMap,
 ) {
   final fragmentMap = _fragmentMap(docSource);
-  final selections = mergeSelections(frag.selectionSet.selections, fragmentMap, true);
+  final selections =
+      mergeSelections(frag.selectionSet.selections, fragmentMap, true);
 
   final set = BuiltSet.of(selections.withoutFragmentSpreads);
 
@@ -129,7 +130,8 @@ String _operationType(
 }
 
 Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
-      for (final def in source.document.definitions.whereType<FragmentDefinitionNode>())
+      for (final def
+          in source.document.definitions.whereType<FragmentDefinitionNode>())
         def.name.value: SourceSelections(
           url: source.url,
           selections: def.selectionSet.selections,
@@ -160,7 +162,8 @@ List<Spec> buildSelectionSetDataClasses({
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
-      throw Exception("Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+      throw Exception(
+          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
     superclassSelections["${selection.name.value}"] = SourceSelections(
       url: fragmentMap[selection.name.value]!.url,
@@ -173,7 +176,9 @@ List<Spec> buildSelectionSetDataClasses({
 
   final canonicalSelections = BuiltSet.of(selections.withoutFragmentSpreads);
 
-  final superclassSelectionNodes = superclassSelections.values.expand((selections) => selections.selections).toSet();
+  final superclassSelectionNodes = superclassSelections.values
+      .expand((selections) => selections.selections)
+      .toSet();
 
   final fieldsThatAreSingleFragmentSpreads = <FieldNode>{};
 
@@ -199,10 +204,12 @@ List<Spec> buildSelectionSetDataClasses({
         ];
 
         if (node.name.value == "hero") {
-          print("mergedGetterSelections: $mergedGetterSelections from ${getterSelections.selections}");
+          print(
+              "mergedGetterSelections: $mergedGetterSelections from ${getterSelections.selections}");
         }
 
-        final withoutFragmentSpreads = mergedGetterSelections.withoutFragmentSpreads.toBuiltSet();
+        final withoutFragmentSpreads =
+            mergedGetterSelections.withoutFragmentSpreads.toBuiltSet();
 
         final fieldTypeDefNode = getTypeDefinitionNode(
           schemaSource.document,
@@ -210,10 +217,14 @@ List<Spec> buildSelectionSetDataClasses({
         );
 
         if (fieldTypeDefNode == null) {
-          throw Exception("Couldn't find type definition for ${unwrapTypeNode(typeNode).name.value}");
+          throw Exception(
+              "Couldn't find type definition for ${unwrapTypeNode(typeNode).name.value}");
         }
 
-        final hasMatchingFragment = fragmentRefMap[(fieldTypeDefNode.name.value, withoutFragmentSpreads)];
+        final hasMatchingFragment = fragmentRefMap[(
+          fieldTypeDefNode.name.value,
+          withoutFragmentSpreads
+        )];
 
         if (hasMatchingFragment != null) {
           fieldsThatAreSingleFragmentSpreads.add(node);
@@ -287,7 +298,8 @@ List<Spec> buildSelectionSetDataClasses({
         name: name,
         getters: fieldGetters,
         initializers: {
-          if (fieldGetters.any((getter) => getter.name == "G__typename")) "G__typename": literalString(type),
+          if (fieldGetters.any((getter) => getter.name == "G__typename"))
+            "G__typename": literalString(type),
         },
         superclassSelections: superclassSelections,
       ),
@@ -295,7 +307,9 @@ List<Spec> buildSelectionSetDataClasses({
     ...selections
         .whereType<FieldNode>()
         .where(
-          (field) => field.selectionSet != null && !fieldsThatAreSingleFragmentSpreads.contains(field),
+          (field) =>
+              field.selectionSet != null &&
+              !fieldsThatAreSingleFragmentSpreads.contains(field),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
@@ -326,7 +340,8 @@ List<Spec> buildSelectionSetDataClasses({
 }
 
 /// Deeply merges field nodes
-List<SelectionNode> mergeSelections(List<SelectionNode> selections, Map<String, SourceSelections> fragmentMap,
+List<SelectionNode> mergeSelections(List<SelectionNode> selections,
+        Map<String, SourceSelections> fragmentMap,
         [bool keepInlineFragments = true]) =>
     _expandFragmentSpreads(selections, fragmentMap, keepInlineFragments)
         .fold<Map<String, SelectionNode>>(
@@ -338,7 +353,8 @@ List<SelectionNode> mergeSelections(List<SelectionNode> selections, Map<String, 
                 selectionMap[key] = selection;
               } else {
                 final existingNode = selectionMap[key];
-                final existingSelections = existingNode is FieldNode && existingNode.selectionSet != null
+                final existingSelections = existingNode is FieldNode &&
+                        existingNode.selectionSet != null
                     ? existingNode.selectionSet!.selections
                     : <SelectionNode>[];
                 selectionMap[key] = FieldNode(
@@ -346,7 +362,10 @@ List<SelectionNode> mergeSelections(List<SelectionNode> selections, Map<String, 
                   alias: selection.alias,
                   selectionSet: SelectionSetNode(
                     selections: mergeSelections(
-                      [...existingSelections, ...selection.selectionSet!.selections],
+                      [
+                        ...existingSelections,
+                        ...selection.selectionSet!.selections
+                      ],
                       fragmentMap,
                       keepInlineFragments,
                     ),
@@ -380,7 +399,8 @@ List<SelectionNode> _expandFragmentSpreads(
             );
           }
 
-          final fragmentSelections = fragmentMap[selection.name.value]!.selections;
+          final fragmentSelections =
+              fragmentMap[selection.name.value]!.selections;
 
           return [
             if (retainFragmentSpreads) selection,
@@ -388,7 +408,8 @@ List<SelectionNode> _expandFragmentSpreads(
               [
                 ...fragmentSelections.whereType<FieldNode>(),
                 ...fragmentSelections.whereType<FragmentSpreadNode>(),
-                if (keepInlineFragments) ...fragmentSelections.whereType<InlineFragmentNode>(),
+                if (keepInlineFragments)
+                  ...fragmentSelections.whereType<InlineFragmentNode>(),
               ],
               fragmentMap,
               keepInlineFragments,
@@ -419,7 +440,9 @@ Map<String, SourceSelections> _fragmentSelectionsForField(
             "${entry.key}_${field.alias?.value ?? field.name.value}",
             SourceSelections(
               url: entry.value.url,
-              selections: selection.selectionSet!.selections.whereType<FieldNode>().toList(),
+              selections: selection.selectionSet!.selections
+                  .whereType<FieldNode>()
+                  .toList(),
             ),
           ),
         ),
@@ -443,7 +466,8 @@ TypeNode _getFieldTypeNode(
   } else if (node is InterfaceTypeDefinitionNode) {
     fields = node.fields;
   } else {
-    throw Exception("${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
+    throw Exception(
+        "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
   }
   return fields
       .firstWhere(
@@ -453,15 +477,18 @@ TypeNode _getFieldTypeNode(
 }
 
 extension IsSingleFragmentSpread on SelectionSetNode {
-  Iterable<FragmentSpreadNode> get fragmentSpreads => selections.whereType<FragmentSpreadNode>();
+  Iterable<FragmentSpreadNode> get fragmentSpreads =>
+      selections.whereType<FragmentSpreadNode>();
 
-  Iterable<InlineFragmentNode> get inlineFragments => selections.whereType<InlineFragmentNode>();
+  Iterable<InlineFragmentNode> get inlineFragments =>
+      selections.whereType<InlineFragmentNode>();
 
   Iterable<FieldNode> get fields => selections.whereType<FieldNode>();
 }
 
 extension WithoutFragmentSpreads on Iterable<SelectionNode> {
-  Iterable<SelectionNode> get withoutFragmentSpreads => where((selection) => selection is! FragmentSpreadNode).map((e) {
+  Iterable<SelectionNode> get withoutFragmentSpreads =>
+      where((selection) => selection is! FragmentSpreadNode).map((e) {
         if (e is FieldNode) {
           if (e.selectionSet == null) return e;
           return FieldNode(
@@ -470,7 +497,8 @@ extension WithoutFragmentSpreads on Iterable<SelectionNode> {
             arguments: e.arguments,
             directives: e.directives,
             selectionSet: SelectionSetNode(
-              selections: e.selectionSet!.selections.withoutFragmentSpreads.toList(),
+              selections:
+                  e.selectionSet!.selections.withoutFragmentSpreads.toList(),
             ),
           );
         }
@@ -479,7 +507,8 @@ extension WithoutFragmentSpreads on Iterable<SelectionNode> {
             typeCondition: e.typeCondition,
             directives: e.directives,
             selectionSet: SelectionSetNode(
-              selections: e.selectionSet.selections.withoutFragmentSpreads.toList(),
+              selections:
+                  e.selectionSet.selections.withoutFragmentSpreads.toList(),
             ),
           );
         }

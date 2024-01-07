@@ -35,10 +35,17 @@ class DataBuilder implements Builder {
     final doc = await readDocument(buildStep);
     final schema = await readDocument(buildStep, schemaId);
 
-    final generatedPartUrl = buildStep.inputId.changeExtension(generatedFileExtension(dataExtension)).uri.path;
+    final generatedPartUrl = buildStep.inputId
+        .changeExtension(generatedFileExtension(dataExtension))
+        .uri
+        .path;
 
-    final library = buildDataLibrary(addTypenames ? introspection.addTypenames(doc) : doc,
-        introspection.addTypenames(schema), basename(generatedPartUrl), typeOverrides, whenExtensionConfig);
+    final library = buildDataLibrary(
+        addTypenames ? introspection.addTypenames(doc) : doc,
+        introspection.addTypenames(schema),
+        basename(generatedPartUrl),
+        typeOverrides,
+        whenExtensionConfig);
 
     return writeDocument(
       library,

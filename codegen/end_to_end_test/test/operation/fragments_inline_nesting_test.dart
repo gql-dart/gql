@@ -11,7 +11,12 @@ void main() {
         "name": "Luke",
         "homePlanet": "Tattoine",
         "friends": [
-          {"__typename": "Droid", "id": "r2d2", "name": "R2-D2", "primaryFunction": "Astromech"},
+          {
+            "__typename": "Droid",
+            "id": "r2d2",
+            "name": "R2-D2",
+            "primaryFunction": "Astromech"
+          },
           {
             "__typename": "Human",
             "id": "han",
@@ -27,14 +32,16 @@ void main() {
       expect(gqlHuman?.name, equals("Luke"));
       expect(gqlHuman?.homePlanet, equals("Tattoine"));
 
-      final gqlHuman_droidFriends = gqlHuman?.friends?.whereType<GheroFieldsFragmentData__asHuman_friends__asDroid>();
+      final gqlHuman_droidFriends = gqlHuman?.friends
+          ?.whereType<GheroFieldsFragmentData__asHuman_friends__asDroid>();
 
       expect(gqlHuman_droidFriends?.first.G__typename, equals("Droid"));
       expect(gqlHuman_droidFriends?.first.id, equals("r2d2"));
       expect(gqlHuman_droidFriends?.first.name, equals("R2-D2"));
       expect(gqlHuman_droidFriends?.first.primaryFunction, equals("Astromech"));
 
-      final gqlHuman_humanFriends = gqlHuman?.friends?.whereType<GheroFieldsFragmentData__asHuman_friends__asHuman>();
+      final gqlHuman_humanFriends = gqlHuman?.friends
+          ?.whereType<GheroFieldsFragmentData__asHuman_friends__asHuman>();
 
       expect(gqlHuman_humanFriends?.first.id, equals("han"));
       expect(gqlHuman_humanFriends?.first.name, equals("Han Solo"));
@@ -70,7 +77,12 @@ void main() {
         "name": "Obiwan",
         "homePlanet": "Stewjon",
         "friends": [
-          {"__typename": "Droid", "id": "r2d2", "name": "R2-D2", "primaryFunction": "Astromech"},
+          {
+            "__typename": "Droid",
+            "id": "r2d2",
+            "name": "R2-D2",
+            "primaryFunction": "Astromech"
+          },
           {
             "__typename": "Human",
             "id": "luke",

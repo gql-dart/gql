@@ -7,9 +7,11 @@ import "package:gql_code_builder/src/utils/uncapitalize.dart";
 // static building blocks for the generated code
 final _genericTypeParam = TypeReference((b) => b..symbol = "_T");
 
-final _orElseFunctionType = FunctionType((b) => b..returnType = _genericTypeParam);
+final _orElseFunctionType =
+    FunctionType((b) => b..returnType = _genericTypeParam);
 
-String _getSchemaTypeName(InlineFragmentNode node) => node.typeCondition!.on.name.value;
+String _getSchemaTypeName(InlineFragmentNode node) =>
+    node.typeCondition!.on.name.value;
 
 final _orElseFunctionRef = refer("orElse");
 final _orElseInvocation = _orElseFunctionRef.call([]);
@@ -26,7 +28,8 @@ final _curlyBracketOpen = Code("{");
 
 final _curlyBracketClose = Code("}");
 
-Code _caseStatement(InlineFragmentNode inlineFragment) => Code("case '${_getSchemaTypeName(inlineFragment)}': ");
+Code _caseStatement(InlineFragmentNode inlineFragment) =>
+    Code("case '${_getSchemaTypeName(inlineFragment)}': ");
 
 /// returns an Extension that implements the `when` method and/or the `maybeWhen` method
 /// that makes it more convenient to use the union types or interfaces without resorting to
@@ -37,11 +40,13 @@ Extension? inlineFragmentWhenExtension(
     {required String baseTypeName,
     required List<InlineFragmentNode> inlineFragments,
     required InlineFragmentSpreadWhenExtensionConfig config}) {
-  final inlineFragmentsWithTypConditions =
-      inlineFragments.where((inlineFragment) => inlineFragment.typeCondition != null).toList();
+  final inlineFragmentsWithTypConditions = inlineFragments
+      .where((inlineFragment) => inlineFragment.typeCondition != null)
+      .toList();
 
   final nothingToDo = inlineFragmentsWithTypConditions.isEmpty ||
-      (!config.generateWhenExtensionMethod && !config.generateMaybeWhenExtensionMethod);
+      (!config.generateWhenExtensionMethod &&
+          !config.generateMaybeWhenExtensionMethod);
 
   if (nothingToDo) {
     return null;
@@ -54,7 +59,10 @@ Extension? inlineFragmentWhenExtension(
 
   /// a pool of parameter names which have already been used
   /// so we can avoid name clashes
-  final Set<String> usedParameterNames = {_orElseFunctionRef.symbol!, _genericTypeParam.symbol};
+  final Set<String> usedParameterNames = {
+    _orElseFunctionRef.symbol!,
+    _genericTypeParam.symbol
+  };
 
   final Map<InlineFragmentNode, String> parameterNamesPerInlineNode = {};
 
@@ -64,7 +72,8 @@ Extension? inlineFragmentWhenExtension(
   /// example: if the typeCondition is "Human", the parameter name will be "human"
   /// if the typeCondition is "Human" and "human" is already taken, the parameter name will be "ghuman"
   /// if the typeCondition is "orElse", the parameter name will be "gorElse" because "orElse" is reserved
-  String getParameterName(InlineFragmentNode node) => parameterNamesPerInlineNode.putIfAbsent(node, () {
+  String getParameterName(InlineFragmentNode node) =>
+      parameterNamesPerInlineNode.putIfAbsent(node, () {
         var name = identifier(uncapitalize(_getSchemaTypeName(node)));
 
         while (usedParameterNames.contains(name)) {
@@ -114,7 +123,8 @@ Extension? inlineFragmentWhenExtension(
                 ..name = getParameterName(inlineFragment)
                 ..type = FunctionType((b) => b
                   ..returnType = _genericTypeParam
-                  ..requiredParameters.add(Reference(getGeneratedTypeName(inlineFragment))))
+                  ..requiredParameters
+                      .add(Reference(getGeneratedTypeName(inlineFragment))))
                 ..named = true
                 ..required = true),
             ),
@@ -131,10 +141,11 @@ Extension? inlineFragmentWhenExtension(
           ..body = Block.of([
             _switchTypeName,
             _curlyBracketOpen,
-            ...inlineFragmentsWithTypConditions.map((inlineFragment) => Block.of([
-                  _caseStatement(inlineFragment),
-                  whenCaseBody(inlineFragment),
-                ])),
+            ...inlineFragmentsWithTypConditions
+                .map((inlineFragment) => Block.of([
+                      _caseStatement(inlineFragment),
+                      whenCaseBody(inlineFragment),
+                    ])),
             _defaultCallOrElse,
             _curlyBracketClose,
           ])),
@@ -172,10 +183,12 @@ Extension? inlineFragmentWhenExtension(
               [
                 _switchTypeName,
                 _curlyBracketOpen,
-                ...inlineFragments.where((element) => element.typeCondition != null).map((inlineFragment) => Block.of([
-                      _caseStatement(inlineFragment),
-                      maybeWhenCaseBody(inlineFragment),
-                    ])),
+                ...inlineFragments
+                    .where((element) => element.typeCondition != null)
+                    .map((inlineFragment) => Block.of([
+                          _caseStatement(inlineFragment),
+                          maybeWhenCaseBody(inlineFragment),
+                        ])),
                 _defaultCallOrElse,
                 _curlyBracketClose,
               ],

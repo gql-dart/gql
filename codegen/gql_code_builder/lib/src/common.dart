@@ -88,9 +88,11 @@ const defaultTypeMap = <String, Reference>{
   "Boolean": Reference("bool"),
 };
 
-Reference _typeRef(TypeNode type, Map<String, Reference> typeMap, Reference? fragmentRef) {
+Reference _typeRef(
+    TypeNode type, Map<String, Reference> typeMap, Reference? fragmentRef) {
   if (type is NamedTypeNode) {
-    final ref = fragmentRef ?? typeMap[type.name.value] ?? Reference(type.name.value);
+    final ref =
+        fragmentRef ?? typeMap[type.name.value] ?? Reference(type.name.value);
     assert(ref.symbol != null, "Symbol for ${ref} must not be null");
     return TypeReference(
       (b) => b
@@ -162,12 +164,7 @@ Method buildGetter({
     ...typeOverrides,
   };
 
-  final returnType =
-      _typeRef(
-        typeNode,
-        typeMap,
-        fragmentRef
-      );
+  final returnType = _typeRef(typeNode, typeMap, fragmentRef);
 
   return Method(
     (b) => b

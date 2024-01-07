@@ -18,7 +18,8 @@ Library buildDataLibrary(
   SourceNode schemaSource,
   String partUrl,
   Map<String, Reference> typeOverrides, [
-  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig = const InlineFragmentSpreadWhenExtensionConfig(
+  InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig =
+      const InlineFragmentSpreadWhenExtensionConfig(
     generateWhenExtensionMethod: false,
     generateMaybeWhenExtensionMethod: false,
   ),
