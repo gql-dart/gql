@@ -1,9 +1,7 @@
 import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
-import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/data.dart";
-import "package:gql_code_builder/src/config/when_extension_config.dart";
 
 import "../../source.dart";
 import "../built_class.dart";
@@ -68,7 +66,7 @@ List<Spec> buildFragmentDataClasses(
 
   fragmentRefMap[(fragmentType, set)] = refer(
     builtClassName("${frag.name.value}Data"),
-    (docSource.url ?? "") + "#data",
+    (docSource.url) + "#data",
   );
   //TODO
   /*for (final possibleType in possibleTypesMap[fragmentType] ?? <String>{}) {
@@ -173,8 +171,6 @@ List<Spec> buildSelectionSetDataClasses({
       ).whereType<FieldNode>().toList(),
     );
   }
-
-  final canonicalSelections = BuiltSet.of(selections.withoutFragmentSpreads);
 
   final superclassSelectionNodes = superclassSelections.values
       .expand((selections) => selections.selections)
