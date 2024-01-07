@@ -202,6 +202,9 @@ class FieldNode extends SelectionNode {
         arguments,
         directives,
       ];
+
+  @override
+  String toString() => "FieldNode(${(alias ?? name).value})";
 }
 
 class ArgumentNode extends Node {
