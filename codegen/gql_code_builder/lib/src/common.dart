@@ -138,6 +138,7 @@ Method buildGetter({
   required TypeNode typeNode,
   required SourceNode schemaSource,
   Map<String, Reference> typeOverrides = const {},
+  Reference? fragmentRef,
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
@@ -161,10 +162,10 @@ Method buildGetter({
     ...typeOverrides,
   };
 
-  final returnType = _typeRef(
-    typeNode,
-    typeMap,
-  );
+  final returnType = fragmentRef ?? _typeRef(
+          typeNode,
+          typeMap,
+        );
 
   return Method(
     (b) => b

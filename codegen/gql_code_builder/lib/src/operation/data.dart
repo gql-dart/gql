@@ -1,4 +1,6 @@
+import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
+import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
 
@@ -13,6 +15,7 @@ List<Spec> buildOperationDataClasses(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+    Map<BuiltSet<SelectionNode>, Reference> fragmentRefMap,
 ) {
   if (op.name == null) {
     throw Exception("Operations must be named");
@@ -34,6 +37,7 @@ List<Spec> buildOperationDataClasses(
     fragmentMap: fragmentMap,
     superclassSelections: {},
     whenExtensionConfig: whenExtensionConfig,
+    fragmentRefMap: fragmentRefMap,
   );
 }
 
@@ -43,12 +47,25 @@ List<Spec> buildFragmentDataClasses(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  Map<BuiltSet<SelectionNode>, Reference> fragmentRefMap,
 ) {
   final fragmentMap = _fragmentMap(docSource);
   final selections = mergeSelections(
     frag.selectionSet.selections,
     fragmentMap,
   );
+
+  final set = BuiltSet.of(selections.withoutFragmentSpreads);
+
+  if(fragmentRefMap.containsKey(set)){
+    print("***** warning: duplicated fragment found: ${frag.name.value} in ${docSource.url}, previous defintion with same data ${fragmentRefMap[set]}");
+  }
+
+  fragmentRefMap[set] = refer(
+    builtClassName("${frag.name.value}Data"),
+    (docSource.url ?? "") + "#data",
+  );
+
   return [
     // abstract class that will implemented by any class that uses the fragment
     ...buildSelectionSetDataClasses(
@@ -61,6 +78,7 @@ List<Spec> buildFragmentDataClasses(
       superclassSelections: {},
       built: false,
       whenExtensionConfig: whenExtensionConfig,
+        fragmentRefMap: fragmentRefMap,
     ),
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
@@ -77,6 +95,7 @@ List<Spec> buildFragmentDataClasses(
         )
       },
       whenExtensionConfig: whenExtensionConfig,
+        fragmentRefMap: fragmentRefMap,
     ),
   ];
 }
@@ -127,6 +146,7 @@ List<Spec> buildSelectionSetDataClasses({
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  required Map<BuiltSet<SelectionNode>, Reference> fragmentRefMap,
 }) {
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
@@ -146,6 +166,8 @@ List<Spec> buildSelectionSetDataClasses({
       .expand((selections) => selections.selections)
       .toSet();
 
+  final fieldsThatAreSingleFragmentSpreads = <FieldNode>{};
+
   final fieldGetters = selections.whereType<FieldNode>().map<Method>(
     (node) {
       final nameNode = node.alias ?? node.name;
@@ -157,11 +179,30 @@ List<Spec> buildSelectionSetDataClasses({
         typeDef,
         node.name.value,
       );
+
+      final getterSelections = node.selectionSet;
+
+      Reference? fragmentRef;
+
+      if(getterSelections != null){
+        final withoutFragmentSpreads = getterSelections.selections.withoutFragmentSpreads.toBuiltSet();
+
+        final hasMatchingFragment = fragmentRefMap[withoutFragmentSpreads];
+
+        if(hasMatchingFragment != null){
+          fieldsThatAreSingleFragmentSpreads.add(node);
+        }
+
+        fragmentRef = hasMatchingFragment;
+
+      }
+
       return buildGetter(
         nameNode: nameNode,
         typeNode: typeNode,
         schemaSource: schemaSource,
         typeOverrides: typeOverrides,
+        fragmentRef: fragmentRef,
         typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
         built: built,
         isOverride: superclassSelectionNodes.contains(node),
@@ -185,6 +226,7 @@ List<Spec> buildSelectionSetDataClasses({
         inlineFragments: inlineFragments,
         built: built,
         whenExtensionConfig: whenExtensionConfig,
+        fragmentRefMap: fragmentRefMap,
       )
     else if (!built)
       Class(
@@ -222,7 +264,7 @@ List<Spec> buildSelectionSetDataClasses({
     ...selections
         .whereType<FieldNode>()
         .where(
-          (field) => field.selectionSet != null,
+          (field) => field.selectionSet != null && !fieldsThatAreSingleFragmentSpreads.contains(field),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
@@ -246,6 +288,7 @@ List<Spec> buildSelectionSetDataClasses({
             ),
             built: inlineFragments.isNotEmpty ? false : built,
             whenExtensionConfig: whenExtensionConfig,
+              fragmentRefMap: fragmentRefMap,
           ),
         ),
   ];
@@ -379,3 +422,46 @@ TypeNode _getFieldTypeNode(
       )
       .type;
 }
+
+extension IsSingleFragmentSpread on SelectionSetNode {
+
+  Iterable<SelectionNode> get withoutTypeName => selections.where((selection) => selection is! FieldNode || selection.name.value != "__typename");
+
+  bool get isSingleFragmentSpread => withoutTypeName.length == 1 && withoutTypeName.first is FragmentSpreadNode;
+
+  Iterable<FragmentSpreadNode> get fragmentSpreads => selections.whereType<FragmentSpreadNode>();
+
+  Iterable<InlineFragmentNode> get inlineFragments => selections.whereType<InlineFragmentNode>();
+
+  Iterable<FieldNode> get fields => selections.whereType<FieldNode>();
+
+
+  }
+
+  extension WithoutFragmentSpreads on Iterable<SelectionNode> {
+    Iterable<SelectionNode> get withoutFragmentSpreads => where((selection) => selection is! FragmentSpreadNode)
+        .map((e) {
+      if(e is FieldNode){
+        if(e.selectionSet == null) return e;
+        return FieldNode(
+          name: e.name,
+          alias: e.alias,
+          arguments: e.arguments,
+          directives: e.directives,
+          selectionSet: SelectionSetNode(
+            selections: e.selectionSet!.selections.withoutFragmentSpreads.toList(),
+          ),
+        );
+      }
+      if(e is InlineFragmentNode){
+        return InlineFragmentNode(
+          typeCondition: e.typeCondition,
+          directives: e.directives,
+          selectionSet: SelectionSetNode(
+            selections: e.selectionSet.selections.withoutFragmentSpreads.toList(),
+          ),
+        );
+      }
+      return e;
+    });
+  }

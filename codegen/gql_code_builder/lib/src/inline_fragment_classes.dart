@@ -1,3 +1,4 @@
+import "package:built_collection/built_collection.dart";
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
@@ -26,6 +27,7 @@ List<Spec> buildInlineFragmentClasses({
   required List<InlineFragmentNode> inlineFragments,
   required bool built,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  required Map<BuiltSet<SelectionNode>, Reference> fragmentRefMap,
 }) {
   final whenExtension = inlineFragmentWhenExtension(
     baseTypeName: name,
@@ -73,6 +75,7 @@ List<Spec> buildInlineFragmentClasses({
       },
       built: built,
       whenExtensionConfig: whenExtensionConfig,
+      fragmentRefMap: fragmentRefMap,
     ),
 
     /// TODO: Handle inline fragments without a type condition
@@ -96,6 +99,7 @@ List<Spec> buildInlineFragmentClasses({
                 name: SourceSelections(url: null, selections: selections)
               },
               built: built,
+              fragmentRefMap: fragmentRefMap,
               whenExtensionConfig: whenExtensionConfig),
         ),
   ];
