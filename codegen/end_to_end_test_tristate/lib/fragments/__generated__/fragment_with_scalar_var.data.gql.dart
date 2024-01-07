@@ -24,7 +24,7 @@ abstract class GPostsWithFixedVariableData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GPostsWithFixedVariableData_posts?>? get posts;
+  BuiltList<GPostFragmentForUser1Data?>? get posts;
   static Serializer<GPostsWithFixedVariableData> get serializer =>
       _$gPostsWithFixedVariableDataSerializer;
 
@@ -36,82 +36,6 @@ abstract class GPostsWithFixedVariableData
   static GPostsWithFixedVariableData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPostsWithFixedVariableData.serializer,
-        json,
-      );
-}
-
-abstract class GPostsWithFixedVariableData_posts
-    implements
-        Built<GPostsWithFixedVariableData_posts,
-            GPostsWithFixedVariableData_postsBuilder>,
-        GPostFragmentForUser1 {
-  GPostsWithFixedVariableData_posts._();
-
-  factory GPostsWithFixedVariableData_posts(
-          [void Function(GPostsWithFixedVariableData_postsBuilder b) updates]) =
-      _$GPostsWithFixedVariableData_posts;
-
-  static void _initializeBuilder(GPostsWithFixedVariableData_postsBuilder b) =>
-      b..G__typename = 'Post';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get id;
-  @override
-  GPostsWithFixedVariableData_posts_favoritedUsers? get favoritedUsers;
-  static Serializer<GPostsWithFixedVariableData_posts> get serializer =>
-      _$gPostsWithFixedVariableDataPostsSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPostsWithFixedVariableData_posts.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GPostsWithFixedVariableData_posts? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPostsWithFixedVariableData_posts.serializer,
-        json,
-      );
-}
-
-abstract class GPostsWithFixedVariableData_posts_favoritedUsers
-    implements
-        Built<GPostsWithFixedVariableData_posts_favoritedUsers,
-            GPostsWithFixedVariableData_posts_favoritedUsersBuilder>,
-        GPostFragmentForUser1_favoritedUsers {
-  GPostsWithFixedVariableData_posts_favoritedUsers._();
-
-  factory GPostsWithFixedVariableData_posts_favoritedUsers(
-      [void Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder b)
-          updates]) = _$GPostsWithFixedVariableData_posts_favoritedUsers;
-
-  static void _initializeBuilder(
-          GPostsWithFixedVariableData_posts_favoritedUsersBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  int get totalCount;
-  static Serializer<GPostsWithFixedVariableData_posts_favoritedUsers>
-      get serializer =>
-          _$gPostsWithFixedVariableDataPostsFavoritedUsersSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPostsWithFixedVariableData_posts_favoritedUsers.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GPostsWithFixedVariableData_posts_favoritedUsers? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPostsWithFixedVariableData_posts_favoritedUsers.serializer,
         json,
       );
 }

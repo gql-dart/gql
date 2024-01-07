@@ -28,7 +28,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GHeroWithInterfaceSubTypedFragmentsData_hero? get hero;
+  GheroFieldsFragmentData? get hero;
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsDataSerializer;
 
@@ -41,45 +41,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GHeroWithInterfaceSubTypedFragmentsData.serializer,
-        json,
-      );
-}
-
-abstract class GHeroWithInterfaceSubTypedFragmentsData_hero
-    implements
-        Built<GHeroWithInterfaceSubTypedFragmentsData_hero,
-            GHeroWithInterfaceSubTypedFragmentsData_heroBuilder>,
-        GheroFieldsFragment {
-  GHeroWithInterfaceSubTypedFragmentsData_hero._();
-
-  factory GHeroWithInterfaceSubTypedFragmentsData_hero(
-      [void Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder b)
-          updates]) = _$GHeroWithInterfaceSubTypedFragmentsData_hero;
-
-  static void _initializeBuilder(
-          GHeroWithInterfaceSubTypedFragmentsData_heroBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get id;
-  @override
-  String get name;
-  static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero>
-      get serializer => _$gHeroWithInterfaceSubTypedFragmentsDataHeroSerializer;
-
-  @override
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHeroWithInterfaceSubTypedFragmentsData_hero.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GHeroWithInterfaceSubTypedFragmentsData_hero? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHeroWithInterfaceSubTypedFragmentsData_hero.serializer,
         json,
       );
 }

@@ -41,14 +41,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWith2FragmentsVars.serializer)
       ..add(GHeroWithFragments.serializer)
       ..add(GHeroWithFragmentsData.serializer)
-      ..add(GHeroWithFragmentsData_hero.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection_edges.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection_edges_node.serializer)
       ..add(GHeroWithFragmentsVars.serializer)
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
@@ -68,14 +63,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GPostLikesInput.serializer)
       ..add(GPosts.serializer)
       ..add(GPostsData.serializer)
-      ..add(GPostsData_posts.serializer)
-      ..add(GPostsData_posts_isFavorited.serializer)
-      ..add(GPostsData_posts_isLiked.serializer)
       ..add(GPostsVars.serializer)
       ..add(GPostsWithFixedVariable.serializer)
       ..add(GPostsWithFixedVariableData.serializer)
-      ..add(GPostsWithFixedVariableData_posts.serializer)
-      ..add(GPostsWithFixedVariableData_posts_favoritedUsers.serializer)
       ..add(GPostsWithFixedVariableVars.serializer)
       ..add(GReviewInput.serializer)
       ..add(GReviewWithDate.serializer)
@@ -85,7 +75,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GcomparisonFieldsData.serializer)
       ..add(GcomparisonFieldsData_friendsConnection.serializer)
       ..add(GcomparisonFieldsData_friendsConnection_edges.serializer)
-      ..add(GcomparisonFieldsData_friendsConnection_edges_node.serializer)
       ..add(GcomparisonFieldsVars.serializer)
       ..add(GdroidFieldsFragmentData.serializer)
       ..add(GdroidFieldsFragmentVars.serializer)
@@ -130,21 +119,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(
-                GHeroWithFragmentsData_hero_friendsConnection_edges)
-          ]),
-          () => new ListBuilder<
-              GHeroWithFragmentsData_hero_friendsConnection_edges?>())
-      ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType.nullable(GPostsData_posts)]),
-          () => new ListBuilder<GPostsData_posts?>())
+              BuiltList, const [const FullType.nullable(GPostFragmentData)]),
+          () => new ListBuilder<GPostFragmentData?>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GPostsWithFixedVariableData_posts)
-          ]),
-          () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
+          const FullType(BuiltList,
+              const [const FullType.nullable(GPostFragmentForUser1Data)]),
+          () => new ListBuilder<GPostFragmentForUser1Data?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
