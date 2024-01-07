@@ -162,10 +162,11 @@ Method buildGetter({
     ...typeOverrides,
   };
 
-  final returnType = fragmentRef ?? _typeRef(
-          typeNode,
-          typeMap,
-        );
+  final returnType = fragmentRef ??
+      _typeRef(
+        typeNode,
+        typeMap,
+      );
 
   return Method(
     (b) => b

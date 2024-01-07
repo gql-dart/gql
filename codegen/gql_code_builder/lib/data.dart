@@ -19,24 +19,21 @@ Library buildDataLibrary(
     generateMaybeWhenExtensionMethod: false,
   ),
 ]) {
-
   final fragmentRefMap = <BuiltSet<SelectionNode>, Reference>{};
-
 
   final fragmentDataClasses = docSource.document.definitions
       .whereType<FragmentDefinitionNode>()
       .expand(
         (frag) => buildFragmentDataClasses(
-      frag,
-      docSource,
-      schemaSource,
-      typeOverrides,
-      whenExtensionConfig, fragmentRefMap,
-    ),
-  )
+          frag,
+          docSource,
+          schemaSource,
+          typeOverrides,
+          whenExtensionConfig,
+          fragmentRefMap,
+        ),
+      )
       .toList();
-
-
 
   final operationDataClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
