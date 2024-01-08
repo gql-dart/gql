@@ -1,5 +1,5 @@
-# import 'package:end_to_end_test/graphql/issue_with_implementing_not_existing_classes/field2.graphql'
-# import 'package:end_to_end_test/graphql/issue_with_implementing_not_existing_classes/field1_1.graphql'
+# import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/field2.graphql'
+# import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/field1_1.graphql'
 
 fragment Connection on Connection {
   __typename
