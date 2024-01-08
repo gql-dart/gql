@@ -47,6 +47,9 @@ abstract class GheroFieldsFragmentVars
           [void Function(GheroFieldsFragmentVarsBuilder b) updates]) =
       _$GheroFieldsFragmentVars;
 
+  static Serializer<GheroFieldsFragmentVars> get serializer =>
+      _$gheroFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroFieldsFragmentVars.serializer,
         this,
@@ -57,10 +60,6 @@ abstract class GheroFieldsFragmentVars
         GheroFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GheroFieldsFragmentVars> get serializer =>
-      GheroFieldsFragmentVarsSerializer();
 }
 
 abstract class GhumanFieldsFragmentVars
@@ -72,6 +71,9 @@ abstract class GhumanFieldsFragmentVars
           [void Function(GhumanFieldsFragmentVarsBuilder b) updates]) =
       _$GhumanFieldsFragmentVars;
 
+  static Serializer<GhumanFieldsFragmentVars> get serializer =>
+      _$ghumanFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GhumanFieldsFragmentVars.serializer,
         this,
@@ -82,10 +84,6 @@ abstract class GhumanFieldsFragmentVars
         GhumanFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GhumanFieldsFragmentVars> get serializer =>
-      GhumanFieldsFragmentVarsSerializer();
 }
 
 abstract class GdroidFieldsFragmentVars
@@ -97,6 +95,9 @@ abstract class GdroidFieldsFragmentVars
           [void Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
       _$GdroidFieldsFragmentVars;
 
+  static Serializer<GdroidFieldsFragmentVars> get serializer =>
+      _$gdroidFieldsFragmentVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GdroidFieldsFragmentVars.serializer,
         this,
@@ -107,10 +108,6 @@ abstract class GdroidFieldsFragmentVars
         GdroidFieldsFragmentVars.serializer,
         json,
       );
-
-  @BuiltValueSerializer(custom: true, serializeNulls: true)
-  static Serializer<GdroidFieldsFragmentVars> get serializer =>
-      GdroidFieldsFragmentVarsSerializer();
 }
 
 final class GHeroWithInterfaceSubTypedFragmentsVarsSerializer

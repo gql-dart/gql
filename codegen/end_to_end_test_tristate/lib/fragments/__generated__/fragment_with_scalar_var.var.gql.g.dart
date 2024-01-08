@@ -6,6 +6,34 @@ part of 'fragment_with_scalar_var.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GPostFragmentForUser1Vars> _$gPostFragmentForUser1VarsSerializer =
+    new _$GPostFragmentForUser1VarsSerializer();
+
+class _$GPostFragmentForUser1VarsSerializer
+    implements StructuredSerializer<GPostFragmentForUser1Vars> {
+  @override
+  final Iterable<Type> types = const [
+    GPostFragmentForUser1Vars,
+    _$GPostFragmentForUser1Vars
+  ];
+  @override
+  final String wireName = 'GPostFragmentForUser1Vars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPostFragmentForUser1Vars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GPostFragmentForUser1Vars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GPostFragmentForUser1VarsBuilder().build();
+  }
+}
+
 class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
   @override
   final _i1.Value<_i2.GJson> filter;

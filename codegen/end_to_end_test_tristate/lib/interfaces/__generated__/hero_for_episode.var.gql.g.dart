@@ -6,6 +6,31 @@ part of 'hero_for_episode.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GDroidFragmentVars> _$gDroidFragmentVarsSerializer =
+    new _$GDroidFragmentVarsSerializer();
+
+class _$GDroidFragmentVarsSerializer
+    implements StructuredSerializer<GDroidFragmentVars> {
+  @override
+  final Iterable<Type> types = const [GDroidFragmentVars, _$GDroidFragmentVars];
+  @override
+  final String wireName = 'GDroidFragmentVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDroidFragmentVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GDroidFragmentVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GDroidFragmentVarsBuilder().build();
+  }
+}
+
 class _$GHeroForEpisodeVars extends GHeroForEpisodeVars {
   @override
   final _i1.GEpisode ep;
