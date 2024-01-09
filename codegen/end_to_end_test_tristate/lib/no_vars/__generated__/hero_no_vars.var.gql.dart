@@ -16,6 +16,8 @@ abstract class GHeroNoVarsVars
   factory GHeroNoVarsVars([void Function(GHeroNoVarsVarsBuilder b) updates]) =
       _$GHeroNoVarsVars;
 
+  factory GHeroNoVarsVars.create() => GHeroNoVarsVars();
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroNoVarsVars.serializer,
         this,

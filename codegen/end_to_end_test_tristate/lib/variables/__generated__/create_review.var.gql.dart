@@ -20,6 +20,14 @@ abstract class GCreateReviewVars
           [void Function(GCreateReviewVarsBuilder b) updates]) =
       _$GCreateReviewVars;
 
+  factory GCreateReviewVars.create({
+    required _i1.Value<_i2.GEpisode> episode,
+    required _i2.GReviewInput review,
+  }) =>
+      GCreateReviewVars((b) => b
+        ..episode = episode
+        ..review = review.toBuilder());
+
   static void _initializeBuilder(GCreateReviewVarsBuilder b) =>
       b..episode = const _i1.AbsentValue();
 

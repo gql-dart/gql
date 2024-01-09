@@ -18,6 +18,9 @@ abstract class GHeroWith2FragmentsVars
           [void Function(GHeroWith2FragmentsVarsBuilder b) updates]) =
       _$GHeroWith2FragmentsVars;
 
+  factory GHeroWith2FragmentsVars.create({required _i1.Value<int> first}) =>
+      GHeroWith2FragmentsVars((b) => b..first = first);
+
   static void _initializeBuilder(GHeroWith2FragmentsVarsBuilder b) =>
       b..first = const _i1.AbsentValue();
 
@@ -45,6 +48,8 @@ abstract class GheroNameVars
   factory GheroNameVars([void Function(GheroNameVarsBuilder b) updates]) =
       _$GheroNameVars;
 
+  factory GheroNameVars.create() => GheroNameVars();
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroNameVars.serializer,
         this,
@@ -65,6 +70,8 @@ abstract class GheroIdVars implements Built<GheroIdVars, GheroIdVarsBuilder> {
 
   factory GheroIdVars([void Function(GheroIdVarsBuilder b) updates]) =
       _$GheroIdVars;
+
+  factory GheroIdVars.create() => GheroIdVars();
 
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroIdVars.serializer,

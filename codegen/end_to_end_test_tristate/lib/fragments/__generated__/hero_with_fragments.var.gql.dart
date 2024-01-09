@@ -18,6 +18,9 @@ abstract class GHeroWithFragmentsVars
           [void Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
 
+  factory GHeroWithFragmentsVars.create({required _i1.Value<int> first}) =>
+      GHeroWithFragmentsVars((b) => b..first = first);
+
   static void _initializeBuilder(GHeroWithFragmentsVarsBuilder b) =>
       b..first = const _i1.AbsentValue();
 
@@ -45,6 +48,8 @@ abstract class GheroDataVars
   factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
 
+  factory GheroDataVars.create() => GheroDataVars();
+
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroDataVars.serializer,
         this,
@@ -67,6 +72,9 @@ abstract class GcomparisonFieldsVars
   factory GcomparisonFieldsVars(
           [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
+
+  factory GcomparisonFieldsVars.create({required _i1.Value<int> first}) =>
+      GcomparisonFieldsVars((b) => b..first = first);
 
   int? get first;
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
