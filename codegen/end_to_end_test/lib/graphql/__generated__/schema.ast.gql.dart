@@ -1149,6 +1149,94 @@ const Json = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Json'),
   directives: [],
 );
+const Connection = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Connection'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'field1'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Field1Edge'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'field2'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Field2'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Field1Edge = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Field1Edge'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'field11'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Field11'),
+        isNonNull: true,
+      ),
+    )
+  ],
+);
+const Field1 = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Field1'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'field11'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Field11'),
+        isNonNull: false,
+      ),
+    )
+  ],
+);
+const Field11 = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Field11'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'field111'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Field111'),
+        isNonNull: true,
+      ),
+    )
+  ],
+);
+const Field111 = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Field111'),
+  directives: [],
+  interfaces: [],
+  fields: [],
+);
+const Field2 = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Field2'),
+  directives: [],
+  interfaces: [],
+  fields: [],
+);
 const document = _i1.DocumentNode(definitions: [
   schema,
   Gextends,
@@ -1178,4 +1266,10 @@ const document = _i1.DocumentNode(definitions: [
   ISODate,
   CustomField,
   Json,
+  Connection,
+  Field1Edge,
+  Field1,
+  Field11,
+  Field111,
+  Field2,
 ]);

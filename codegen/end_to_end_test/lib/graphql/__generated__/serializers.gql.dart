@@ -112,6 +112,27 @@ import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gq
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'
     show GDroidFragmentVars, GHeroForEpisodeVars;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/connection.data.gql.dart'
+    show
+        GConnectionData,
+        GConnectionData_field1,
+        GConnectionData_field1_field11,
+        GConnectionData_field1_field11_field111,
+        GConnectionData_field2;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/connection.var.gql.dart'
+    show GConnectionVars;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field1.data.gql.dart'
+    show GField1Data;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field1.var.gql.dart'
+    show GField1Vars;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field11.data.gql.dart'
+    show GField11Data, GField11Data_field111;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field11.var.gql.dart'
+    show GField11Vars;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field2.data.gql.dart'
+    show GField2Data;
+import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/__generated__/field2.var.gql.dart'
+    show GField2Vars;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.data.gql.dart'
     show GHeroNoVarsData, GHeroNoVarsData_hero;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart'
@@ -163,6 +184,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
   GColorInput,
+  GConnectionData,
+  GConnectionData_field1,
+  GConnectionData_field1_field11,
+  GConnectionData_field1_field11_field111,
+  GConnectionData_field2,
+  GConnectionVars,
   GCreateCustomField,
   GCreateCustomFieldData,
   GCreateCustomFieldVars,
@@ -174,6 +201,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,
+  GField11Data,
+  GField11Data_field111,
+  GField11Vars,
+  GField1Data,
+  GField1Vars,
+  GField2Data,
+  GField2Vars,
   GHeroForEpisode,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero__asDroid,
