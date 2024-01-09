@@ -44,9 +44,6 @@ abstract class GDroidFragmentVars
           [void Function(GDroidFragmentVarsBuilder b) updates]) =
       _$GDroidFragmentVars;
 
-  static Serializer<GDroidFragmentVars> get serializer =>
-      _$gDroidFragmentVarsSerializer;
-
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GDroidFragmentVars.serializer,
         this,
@@ -57,6 +54,10 @@ abstract class GDroidFragmentVars
         GDroidFragmentVars.serializer,
         json,
       );
+
+  @BuiltValueSerializer(custom: true, serializeNulls: true)
+  static Serializer<GDroidFragmentVars> get serializer =>
+      GDroidFragmentVarsSerializer();
 }
 
 final class GHeroForEpisodeVarsSerializer

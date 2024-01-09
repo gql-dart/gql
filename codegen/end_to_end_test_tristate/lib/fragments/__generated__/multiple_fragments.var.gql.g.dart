@@ -6,49 +6,6 @@ part of 'multiple_fragments.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GheroNameVars> _$gheroNameVarsSerializer =
-    new _$GheroNameVarsSerializer();
-Serializer<GheroIdVars> _$gheroIdVarsSerializer = new _$GheroIdVarsSerializer();
-
-class _$GheroNameVarsSerializer implements StructuredSerializer<GheroNameVars> {
-  @override
-  final Iterable<Type> types = const [GheroNameVars, _$GheroNameVars];
-  @override
-  final String wireName = 'GheroNameVars';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers, GheroNameVars object,
-      {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
-  }
-
-  @override
-  GheroNameVars deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    return new GheroNameVarsBuilder().build();
-  }
-}
-
-class _$GheroIdVarsSerializer implements StructuredSerializer<GheroIdVars> {
-  @override
-  final Iterable<Type> types = const [GheroIdVars, _$GheroIdVars];
-  @override
-  final String wireName = 'GheroIdVars';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers, GheroIdVars object,
-      {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
-  }
-
-  @override
-  GheroIdVars deserialize(Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    return new GheroIdVarsBuilder().build();
-  }
-}
-
 class _$GHeroWith2FragmentsVars extends GHeroWith2FragmentsVars {
   @override
   final _i1.Value<int> first;

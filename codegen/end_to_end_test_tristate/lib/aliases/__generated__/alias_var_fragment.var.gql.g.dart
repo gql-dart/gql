@@ -6,51 +6,6 @@ part of 'alias_var_fragment.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GPostFragmentVars> _$gPostFragmentVarsSerializer =
-    new _$GPostFragmentVarsSerializer();
-
-class _$GPostFragmentVarsSerializer
-    implements StructuredSerializer<GPostFragmentVars> {
-  @override
-  final Iterable<Type> types = const [GPostFragmentVars, _$GPostFragmentVars];
-  @override
-  final String wireName = 'GPostFragmentVars';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers, GPostFragmentVars object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'userId',
-      serializers.serialize(object.userId,
-          specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GPostFragmentVars deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostFragmentVarsBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case 'userId':
-          result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$GPostsVars extends GPostsVars {
   @override
   final String userId;

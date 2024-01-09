@@ -50,9 +50,6 @@ abstract class GPostFragmentForUser1Vars
           [void Function(GPostFragmentForUser1VarsBuilder b) updates]) =
       _$GPostFragmentForUser1Vars;
 
-  static Serializer<GPostFragmentForUser1Vars> get serializer =>
-      _$gPostFragmentForUser1VarsSerializer;
-
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GPostFragmentForUser1Vars.serializer,
         this,
@@ -63,6 +60,10 @@ abstract class GPostFragmentForUser1Vars
         GPostFragmentForUser1Vars.serializer,
         json,
       );
+
+  @BuiltValueSerializer(custom: true, serializeNulls: true)
+  static Serializer<GPostFragmentForUser1Vars> get serializer =>
+      GPostFragmentForUser1VarsSerializer();
 }
 
 final class GPostsWithFixedVariableVarsSerializer

@@ -45,8 +45,6 @@ abstract class GheroDataVars
   factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
 
-  static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
-
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GheroDataVars.serializer,
         this,
@@ -57,6 +55,9 @@ abstract class GheroDataVars
         GheroDataVars.serializer,
         json,
       );
+
+  @BuiltValueSerializer(custom: true, serializeNulls: true)
+  static Serializer<GheroDataVars> get serializer => GheroDataVarsSerializer();
 }
 
 abstract class GcomparisonFieldsVars
@@ -68,9 +69,6 @@ abstract class GcomparisonFieldsVars
       _$GcomparisonFieldsVars;
 
   int? get first;
-  static Serializer<GcomparisonFieldsVars> get serializer =>
-      _$gcomparisonFieldsVarsSerializer;
-
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GcomparisonFieldsVars.serializer,
         this,
@@ -81,6 +79,10 @@ abstract class GcomparisonFieldsVars
         GcomparisonFieldsVars.serializer,
         json,
       );
+
+  @BuiltValueSerializer(custom: true, serializeNulls: true)
+  static Serializer<GcomparisonFieldsVars> get serializer =>
+      GcomparisonFieldsVarsSerializer();
 }
 
 final class GHeroWithFragmentsVarsSerializer

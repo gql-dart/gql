@@ -91,6 +91,11 @@ Library buildVarLibrary(
           typeOverrides: typeOverrides,
         ),
       ),
+      hasCustomSerializer: hasCustomSerializer,
+      methods: [
+        if (hasCustomSerializer)
+          nullAwareJsonSerializerField(frag, "G${frag.name.value}Vars"),
+      ],
       constructors: [
         if (generateVarsCreateFactories)
           builtCreateConstructor(

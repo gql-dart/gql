@@ -40,9 +40,6 @@ abstract class GPostFragmentVars
       _$GPostFragmentVars;
 
   String get userId;
-  static Serializer<GPostFragmentVars> get serializer =>
-      _$gPostFragmentVarsSerializer;
-
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentVars.serializer,
         this,
@@ -53,6 +50,10 @@ abstract class GPostFragmentVars
         GPostFragmentVars.serializer,
         json,
       );
+
+  @BuiltValueSerializer(custom: true, serializeNulls: true)
+  static Serializer<GPostFragmentVars> get serializer =>
+      GPostFragmentVarsSerializer();
 }
 
 final class GPostsVarsSerializer extends StructuredSerializer<GPostsVars> {
