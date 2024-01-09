@@ -1,0 +1,22 @@
+query ReproQuery {
+    repro {
+        id
+        name
+        child {
+            ...ChildFragment
+        }
+    }
+}
+
+fragment ChildFragment on ChildRepro {
+    ...on ChildReproA {
+        id
+        name
+        childs {
+            ... on ChildReproB {
+                id
+                count
+            }
+        }
+    }
+}

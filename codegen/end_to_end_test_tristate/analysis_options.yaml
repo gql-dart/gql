@@ -1,0 +1,7 @@
+
+analyzer:
+  errors:
+      # TODO: remove this once the wrongly generated @override
+      # for toJson() in some cases is fixed
+      override_on_non_overriding_member: ignore
+

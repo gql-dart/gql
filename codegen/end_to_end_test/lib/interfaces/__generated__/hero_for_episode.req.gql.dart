@@ -18,7 +18,7 @@ abstract class GHeroForEpisode
     implements Built<GHeroForEpisode, GHeroForEpisodeBuilder> {
   GHeroForEpisode._();
 
-  factory GHeroForEpisode([Function(GHeroForEpisodeBuilder b) updates]) =
+  factory GHeroForEpisode([void Function(GHeroForEpisodeBuilder b) updates]) =
       _$GHeroForEpisode;
 
   static void _initializeBuilder(GHeroForEpisodeBuilder b) => b

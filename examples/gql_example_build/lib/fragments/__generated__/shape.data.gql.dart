@@ -13,7 +13,8 @@ part 'shape.data.gql.g.dart';
 abstract class GShapeData implements Built<GShapeData, GShapeDataBuilder> {
   GShapeData._();
 
-  factory GShapeData([Function(GShapeDataBuilder b) updates]) = _$GShapeData;
+  factory GShapeData([void Function(GShapeDataBuilder b) updates]) =
+      _$GShapeData;
 
   static void _initializeBuilder(GShapeDataBuilder b) =>
       b..G__typename = 'Query';
@@ -104,7 +105,7 @@ abstract class GShapeData_shape__base
   GShapeData_shape__base._();
 
   factory GShapeData_shape__base(
-          [Function(GShapeData_shape__baseBuilder b) updates]) =
+          [void Function(GShapeData_shape__baseBuilder b) updates]) =
       _$GShapeData_shape__base;
 
   static void _initializeBuilder(GShapeData_shape__baseBuilder b) =>
@@ -138,7 +139,7 @@ abstract class GShapeData_shape__asSquare
   GShapeData_shape__asSquare._();
 
   factory GShapeData_shape__asSquare(
-          [Function(GShapeData_shape__asSquareBuilder b) updates]) =
+          [void Function(GShapeData_shape__asSquareBuilder b) updates]) =
       _$GShapeData_shape__asSquare;
 
   static void _initializeBuilder(GShapeData_shape__asSquareBuilder b) =>
@@ -174,7 +175,7 @@ abstract class GShapeData_shape__asRectangle
   GShapeData_shape__asRectangle._();
 
   factory GShapeData_shape__asRectangle(
-          [Function(GShapeData_shape__asRectangleBuilder b) updates]) =
+          [void Function(GShapeData_shape__asRectangleBuilder b) updates]) =
       _$GShapeData_shape__asRectangle;
 
   static void _initializeBuilder(GShapeData_shape__asRectangleBuilder b) =>

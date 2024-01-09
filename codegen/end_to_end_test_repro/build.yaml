@@ -1,0 +1,27 @@
+targets:
+  $default:
+    builders:
+      gql_build|ast_builder:
+        enabled: true
+      gql_build|req_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test_repro|lib/graphql/schema.graphql
+      gql_build|serializer_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test_repro|lib/graphql/schema.graphql
+      gql_build|schema_builder:
+        enabled: true
+      gql_build|data_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test_repro|lib/graphql/schema.graphql
+          reuse_fragments: true
+          when_extensions:
+            when: true
+            maybeWhen: true
+      gql_build|var_builder:
+        enabled: true
+        options:
+          schema: end_to_end_test_repro|lib/graphql/schema.graphql

@@ -14,7 +14,7 @@ abstract class GHeroWith2FragmentsVars
   GHeroWith2FragmentsVars._();
 
   factory GHeroWith2FragmentsVars(
-          [Function(GHeroWith2FragmentsVarsBuilder b) updates]) =
+          [void Function(GHeroWith2FragmentsVarsBuilder b) updates]) =
       _$GHeroWith2FragmentsVars;
 
   int? get first;
@@ -37,7 +37,7 @@ abstract class GheroNameVars
     implements Built<GheroNameVars, GheroNameVarsBuilder> {
   GheroNameVars._();
 
-  factory GheroNameVars([Function(GheroNameVarsBuilder b) updates]) =
+  factory GheroNameVars([void Function(GheroNameVarsBuilder b) updates]) =
       _$GheroNameVars;
 
   static Serializer<GheroNameVars> get serializer => _$gheroNameVarsSerializer;
@@ -57,7 +57,8 @@ abstract class GheroNameVars
 abstract class GheroIdVars implements Built<GheroIdVars, GheroIdVarsBuilder> {
   GheroIdVars._();
 
-  factory GheroIdVars([Function(GheroIdVarsBuilder b) updates]) = _$GheroIdVars;
+  factory GheroIdVars([void Function(GheroIdVarsBuilder b) updates]) =
+      _$GheroIdVars;
 
   static Serializer<GheroIdVars> get serializer => _$gheroIdVarsSerializer;
 

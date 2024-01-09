@@ -14,18 +14,21 @@ Future<void> writeDocument(
   BuildStep buildStep,
   String extension, [
   String? schemaUrl,
+  Allocator? allocator,
 ]) {
   if (library.body.isEmpty) return Future.value(null);
+
+  allocator ??= GqlAllocator(
+    buildStep.inputId.uri.toString(),
+    outputAssetId(buildStep.inputId, extension).uri.toString(),
+    schemaUrl,
+  );
 
   final generatedAsset = outputAssetId(buildStep.inputId, extension);
 
   final genSrc = _dartfmt.format("${library.accept(
     DartEmitter(
-      allocator: GqlAllocator(
-        buildStep.inputId.uri.toString(),
-        generatedAsset.uri.toString(),
-        schemaUrl,
-      ),
+      allocator: allocator,
       orderDirectives: true,
       useNullSafetySyntax: true,
     ),

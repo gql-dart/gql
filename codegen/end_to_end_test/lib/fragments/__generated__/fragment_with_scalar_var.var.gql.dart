@@ -17,7 +17,7 @@ abstract class GPostsWithFixedVariableVars
   GPostsWithFixedVariableVars._();
 
   factory GPostsWithFixedVariableVars(
-          [Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
       _$GPostsWithFixedVariableVars;
 
   _i1.GJson? get filter;
@@ -42,7 +42,7 @@ abstract class GPostFragmentForUser1Vars
   GPostFragmentForUser1Vars._();
 
   factory GPostFragmentForUser1Vars(
-          [Function(GPostFragmentForUser1VarsBuilder b) updates]) =
+          [void Function(GPostFragmentForUser1VarsBuilder b) updates]) =
       _$GPostFragmentForUser1Vars;
 
   static Serializer<GPostFragmentForUser1Vars> get serializer =>

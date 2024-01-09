@@ -1,0 +1,13 @@
+name: gql_tristate_value
+version: 1.0.0
+description: A wrapper class for representing a value that can be absent, present and null, or present and non-null.
+repository: https://github.com/gql-dart/gql
+environment: 
+  sdk: '>=3.0.0 <4.0.0'
+dev_dependencies: 
+  test: ^1.16.8
+  lints: ^3.0.0
+topics: 
+  - graphql
+  - gql
+  - codegen

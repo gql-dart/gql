@@ -18,6 +18,7 @@ jobs:
           - gql_http_link
           - gql_websocket_link
           - gql_transform_link
+          - gql_tristate_value
     runs-on: ubuntu-latest
     container:
       image: dart:latest
@@ -125,6 +126,7 @@ jobs:
       matrix:
         package:
           - end_to_end_test
+          - end_to_end_test_tristate
     runs-on: ubuntu-latest
     container:
       image: dart

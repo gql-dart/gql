@@ -145,14 +145,14 @@ Map<String, Reference> _dataClassAliasMap(
       aliasMap: aliasMap,
       possibleTypesMap: possibleTypesMap,
     );
-    _dataClassAliasMapDFS(
+    /*_dataClassAliasMapDFS(
       typeRefPrefix: builtClassName("${def.name.value}Data"),
       getAliasTypeName: (fragmentName) => "${builtClassName(fragmentName)}Data",
       selections: def.selectionSet.selections,
       fragmentMap: fragmentMap,
       aliasMap: aliasMap,
       possibleTypesMap: possibleTypesMap,
-    );
+    ); */
   }
 
   return aliasMap;

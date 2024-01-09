@@ -13,15 +13,17 @@ abstract class GPokemonCardVars
     implements Built<GPokemonCardVars, GPokemonCardVarsBuilder> {
   GPokemonCardVars._();
 
-  factory GPokemonCardVars([Function(GPokemonCardVarsBuilder b) updates]) =
+  factory GPokemonCardVars([void Function(GPokemonCardVarsBuilder b) updates]) =
       _$GPokemonCardVars;
 
   static Serializer<GPokemonCardVars> get serializer =>
       _$gPokemonCardVarsSerializer;
+
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPokemonCardVars.serializer,
         this,
       ) as Map<String, dynamic>);
+
   static GPokemonCardVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GPokemonCardVars.serializer,

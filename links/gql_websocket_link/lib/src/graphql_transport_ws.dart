@@ -95,12 +95,14 @@ class TransportWsEvent {
         received = null,
         message = null,
         event = null;
+
   const TransportWsEvent.opened(WebSocketChannel this.socket)
       : type = TransportWsEventType.opened,
         payload = null,
         received = null,
         message = null,
         event = null;
+
   const TransportWsEvent.connected(
     WebSocketChannel this.socket,
     this.payload,
@@ -116,6 +118,7 @@ class TransportWsEvent {
         socket = null,
         message = null,
         event = null;
+
   const TransportWsEvent.pong(
     this.payload, {
     required bool this.received,
@@ -130,12 +133,14 @@ class TransportWsEvent {
         received = null,
         socket = null,
         event = null;
+
   const TransportWsEvent.closed(Object this.event)
       : type = TransportWsEventType.closed,
         payload = null,
         received = null,
         message = null,
         socket = null;
+
   const TransportWsEvent.error(Object this.event)
       : type = TransportWsEventType.error,
         payload = null,
@@ -382,6 +387,17 @@ class TransportWsClientOptions {
   /// @default [randomizedExponentialBackoff]
   final Future<void> Function(int retries) retryWait;
 
+  /// Check if the close event or connection error is fatal. If you return `false`,
+  /// the client will fail immediately without additional retries; however, if you
+  /// return `true`, the client will keep retrying until the `retryAttempts` have
+  /// been exceeded.
+  /// The argument is whatever has been thrown during the connection phase.
+  /// Beware, the library classifies a few close events as fatal regardless of
+  /// what is returned here. They are listed in the documentation of the
+  /// `retryAttempts` option.
+  /// @default [shouldRetryDefault]
+  final bool Function(Object errOrCloseEvent) shouldRetry;
+
   /// Check if the close event or connection error is fatal. If you return `true`,
   /// the client will fail immediately without additional retries; however, if you
   /// return `false`, the client will keep retrying until the `retryAttempts` have
@@ -464,6 +480,7 @@ class TransportWsClientOptions {
     this.disablePong = false,
     this.retryAttempts = 0,
     this.retryWait = randomizedExponentialBackoff,
+    this.shouldRetry = shouldRetryDefault,
     this.isFatalConnectionProblem = isFatalConnectionProblemDefault,
     this.eventHandlers,
     this.generateID = generateUUID,
@@ -506,6 +523,29 @@ class TransportWsClientOptions {
         final v = c.group(0) == "x" ? r : (r & 0x3) | 0x8;
         return v.toRadixString(16);
       });
+
+  /// By default, connection should not retry on fatal errors
+  static bool shouldRetryDefault(Object errOrCloseEvent) {
+    if (errOrCloseEvent is LikeCloseEvent &&
+        (_isFatalInternalCloseCode(errOrCloseEvent.code) ||
+            const [
+              CloseCode.internalServerError,
+              CloseCode.internalClientError,
+              CloseCode.badRequest,
+              CloseCode.badResponse,
+              CloseCode.unauthorized,
+              // CloseCode.Forbidden, might grant access out after retry
+              CloseCode.subprotocolNotAcceptable,
+              // CloseCode.ConnectionInitialisationTimeout, might not time out after retry
+              // CloseCode.ConnectionAcknowledgementTimeout, might not time out after retry
+              CloseCode.subscriberAlreadyExists,
+              CloseCode.tooManyInitialisationRequests,
+              // 4499, // Terminated, probably because the socket froze, we want to retry
+            ].contains(errOrCloseEvent.code))) {
+      return false;
+    }
+    return true;
+  }
 }
 
 class _Connected {
@@ -588,28 +628,14 @@ class _ConnectionState {
   /// Checks the `connect` problem and evaluates if the client should retry.
   bool shouldRetryConnectOrThrow(Object errOrCloseEvent) {
     options.log?.call("shouldRetryConnectOrThrow $errOrCloseEvent");
-    // some close codes are worth reporting immediately
-    if (errOrCloseEvent is LikeCloseEvent &&
-        (_isFatalInternalCloseCode(errOrCloseEvent.code) ||
-            const [
-              CloseCode.internalServerError,
-              CloseCode.internalClientError,
-              CloseCode.badRequest,
-              CloseCode.badResponse,
-              CloseCode.unauthorized,
-              // CloseCode.Forbidden, might grant access out after retry
-              CloseCode.subprotocolNotAcceptable,
-              // CloseCode.ConnectionInitialisationTimeout, might not time out after retry
-              // CloseCode.ConnectionAcknowledgementTimeout, might not time out after retry
-              CloseCode.subscriberAlreadyExists,
-              CloseCode.tooManyInitialisationRequests,
-              // 4499, // Terminated, probably because the socket froze, we want to retry
-            ].contains(errOrCloseEvent.code))) {
-      throw errOrCloseEvent;
-    }
 
     // client was disposed, no retries should proceed regardless
     if (disposed) return false;
+
+    // some close codes are worth reporting immediately
+    if (!options.shouldRetry(errOrCloseEvent)) {
+      throw errOrCloseEvent;
+    }
 
     // normal closure (possibly all subscriptions have completed)
     // if no locks were acquired in the meantime, shouldnt try again
@@ -850,7 +876,7 @@ class _ConnectionState {
               ? "DONE"
               : LikeCloseEvent(
                   code: socket.closeCode!,
-                  reason: socket.closeReason!,
+                  reason: socket.closeReason,
                 ),
         ),
         onError: (Object err) => onError?.call(err),
@@ -929,7 +955,9 @@ class _Client extends TransportWsClient {
   _Client({required this.state});
 
   final _ConnectionState state;
+
   _Emitter get emitter => state.emitter;
+
   @override
   TransportWsClientOptions get options => state.options;
 
@@ -1066,6 +1094,7 @@ class _Emitter {
     void Function(TransportWsMessage) listener,
   ) onMessage;
   final void Function(String logMessage)? log;
+
   _Emitter({
     required this.listeners,
     required this.onMessage,
@@ -1153,7 +1182,7 @@ class LikeCloseEvent {
   final int code;
 
   /// Returns the WebSocket connection close reason provided by the server. */
-  final String reason;
+  final String? reason;
 
   final bool? wasClean;
 

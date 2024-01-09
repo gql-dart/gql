@@ -20,7 +20,7 @@
 [github-forks-link]: https://github.com/gql-dart/gql/network/members
 
 [discord-badge]: https://img.shields.io/discord/559455668810153989.svg?style=for-the-badge&logo=discord&logoColor=ffffff
-[discord-link]: https://discord.gg/NryjpVa
+[discord-link]: https://discord.gg/YBFCTXNbwY
 
 
 This is an effort to advance the Dart GraphQL ecosystem.

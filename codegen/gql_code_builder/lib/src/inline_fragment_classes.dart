@@ -3,9 +3,9 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
 import "package:gql_code_builder/src/when_extension.dart";
 
+import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
-import "../source.dart";
 
 /// Builds the following classes for inline fragments:
 ///   1. An abstract root class that will be implemented by each instantiable
@@ -118,10 +118,10 @@ List<Spec> buildInlineFragmentClasses({
         typeOverrides: typeOverrides,
         superclassSelections: {
           name: SourceSelections(url: null, selections: selections),
-          if (dataClassAliasMap.isNotEmpty)
+         /* if (dataClassAliasMap.isNotEmpty)
             ...Map.fromEntries(superclassSelections.entries.map((e) => MapEntry(
                 "${e.key}__as${inlineFragment.typeCondition!.on.name.value}",
-                e.value))),
+                e.value))), */
         },
         built: built,
         whenExtensionConfig: whenExtensionConfig,
