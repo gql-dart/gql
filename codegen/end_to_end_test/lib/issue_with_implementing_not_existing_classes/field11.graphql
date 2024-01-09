@@ -1,0 +1,6 @@
+fragment Field11 on Field11 {
+  __typename
+  field111 {
+    __typename
+  }
+}

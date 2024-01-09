@@ -219,18 +219,18 @@ type Connection {
 }
 
 type Field1Edge {
-  field1_1: Field1_1!
+  field11: Field11!
 }
 
 type Field1 {
-  field1_1: Field1_1
+  field11: Field11
 }
 
-type Field1_1 {
-  field1_1_1: Field1_1_1!
+type Field11 {
+  field111: Field111!
 }
 
-type Field1_1_1 {
+type Field111 {
 }
 
 type Field2 {
