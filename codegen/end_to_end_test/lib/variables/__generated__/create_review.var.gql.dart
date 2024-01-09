@@ -19,6 +19,14 @@ abstract class GCreateReviewVars
           [void Function(GCreateReviewVarsBuilder b) updates]) =
       _$GCreateReviewVars;
 
+  factory GCreateReviewVars.create({
+    required _i1.GEpisode? episode,
+    required _i1.GReviewInput review,
+  }) =>
+      GCreateReviewVars((b) => b
+        ..episode = episode
+        ..review = review.toBuilder());
+
   _i1.GEpisode? get episode;
   _i1.GReviewInput get review;
   static Serializer<GCreateReviewVars> get serializer =>

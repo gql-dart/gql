@@ -16,6 +16,8 @@ abstract class GHeroNoVarsVars
   factory GHeroNoVarsVars([void Function(GHeroNoVarsVarsBuilder b) updates]) =
       _$GHeroNoVarsVars;
 
+  factory GHeroNoVarsVars.create() => GHeroNoVarsVars();
+
   static Serializer<GHeroNoVarsVars> get serializer =>
       _$gHeroNoVarsVarsSerializer;
 

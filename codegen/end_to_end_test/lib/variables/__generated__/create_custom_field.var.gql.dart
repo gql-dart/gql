@@ -19,6 +19,10 @@ abstract class GCreateCustomFieldVars
           [void Function(GCreateCustomFieldVarsBuilder b) updates]) =
       _$GCreateCustomFieldVars;
 
+  factory GCreateCustomFieldVars.create(
+          {required _i1.GCustomFieldInput input}) =>
+      GCreateCustomFieldVars((b) => b..input = input.toBuilder());
+
   _i1.GCustomFieldInput get input;
   static Serializer<GCreateCustomFieldVars> get serializer =>
       _$gCreateCustomFieldVarsSerializer;
