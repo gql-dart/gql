@@ -73,7 +73,7 @@ abstract class GcomparisonFieldsVars
           [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
 
-  factory GcomparisonFieldsVars.create({required _i1.Value<int> first}) =>
+  factory GcomparisonFieldsVars.create({required int? first}) =>
       GcomparisonFieldsVars((b) => b..first = first);
 
   int? get first;

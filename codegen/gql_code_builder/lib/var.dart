@@ -106,8 +106,6 @@ Library buildVarLibrary(
                 typeNode: entry.value,
                 schemaSource: schemaSource,
                 typeOverrides: typeOverrides,
-                useTriStateValueForNullableTypes:
-                    useTriStateValueForNullableTypes,
               ),
             ),
             schemaSource: schemaSource,
