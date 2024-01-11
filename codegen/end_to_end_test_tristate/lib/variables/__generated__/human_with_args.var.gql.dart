@@ -17,6 +17,9 @@ abstract class GHumanWithArgsVars
           [void Function(GHumanWithArgsVarsBuilder b) updates]) =
       _$GHumanWithArgsVars;
 
+  factory GHumanWithArgsVars.create({required String id}) =>
+      GHumanWithArgsVars((b) => b..id = id);
+
   String get id;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHumanWithArgsVars.serializer,

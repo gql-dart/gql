@@ -18,6 +18,9 @@ abstract class GAliasedHeroVars
   factory GAliasedHeroVars([void Function(GAliasedHeroVarsBuilder b) updates]) =
       _$GAliasedHeroVars;
 
+  factory GAliasedHeroVars.create({required _i1.GEpisode ep}) =>
+      GAliasedHeroVars((b) => b..ep = ep);
+
   _i1.GEpisode get ep;
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GAliasedHeroVars.serializer,

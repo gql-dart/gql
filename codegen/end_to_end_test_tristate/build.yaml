@@ -52,6 +52,7 @@ targets:
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
           tristate_optionals: true
+          vars_create_factories: true
           type_overrides:
             Date:
               name: DateTime

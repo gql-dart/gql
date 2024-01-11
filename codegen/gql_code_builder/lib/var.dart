@@ -7,6 +7,7 @@ import "./source.dart";
 import "./src/built_class.dart";
 import "./src/common.dart";
 import "./src/frag_vars.dart";
+import "./src/required_vars_constructor.dart";
 
 export "./src/config/tristate_optionals_config.dart";
 
@@ -16,34 +17,53 @@ Library buildVarLibrary(
     String partUrl,
     Map<String, Reference> typeOverrides,
     Allocator allocator,
-    TriStateValueConfig useTriStateValueForNullableTypes) {
+    TriStateValueConfig useTriStateValueForNullableTypes,
+    bool generateVarsCreateFactories) {
   final hasCustomSerializer = useTriStateValueForNullableTypes ==
       TriStateValueConfig.onAllNullableFields;
 
   final operationVarClasses = docSource.document.definitions
       .whereType<OperationDefinitionNode>()
       .map((op) => builtClass(
-              name: "${op.name!.value}Vars",
-              getters: op.variableDefinitions.map<Method>(
-                (node) => buildOptionalGetter(
-                  nameNode: node.variable.name,
-                  typeNode: node.type,
-                  schemaSource: schemaSource,
-                  typeOverrides: typeOverrides,
-                  useTriStateValueForNullableTypes:
-                      useTriStateValueForNullableTypes,
-                ),
+            name: "${op.name!.value}Vars",
+            getters: op.variableDefinitions.map<Method>(
+              (node) => buildOptionalGetter(
+                nameNode: node.variable.name,
+                typeNode: node.type,
+                schemaSource: schemaSource,
+                typeOverrides: typeOverrides,
+                useTriStateValueForNullableTypes:
+                    useTriStateValueForNullableTypes,
               ),
-              hasCustomSerializer: hasCustomSerializer,
-              initializers: switch (useTriStateValueForNullableTypes) {
-                TriStateValueConfig.onAllNullableFields =>
-                  _varClassValueInitializers(op),
-                TriStateValueConfig.never => {},
-              },
-              methods: [
-                if (hasCustomSerializer)
-                  nullAwareJsonSerializerField(op, "G${op.name!.value}Vars"),
-              ]))
+            ),
+            hasCustomSerializer: hasCustomSerializer,
+            constructors: [
+              if (generateVarsCreateFactories)
+                builtCreateConstructor(
+                  name: "${op.name!.value}Vars",
+                  getters: op.variableDefinitions.map<Method>(
+                    (node) => buildOptionalGetter(
+                      nameNode: node.variable.name,
+                      typeNode: node.type,
+                      schemaSource: schemaSource,
+                      typeOverrides: typeOverrides,
+                      useTriStateValueForNullableTypes:
+                          useTriStateValueForNullableTypes,
+                    ),
+                  ),
+                  schemaSource: schemaSource,
+                ),
+            ],
+            initializers: switch (useTriStateValueForNullableTypes) {
+              TriStateValueConfig.onAllNullableFields =>
+                _varClassValueInitializers(op),
+              TriStateValueConfig.never => {},
+            },
+            methods: [
+              if (hasCustomSerializer)
+                nullAwareJsonSerializerField(op, "G${op.name!.value}Vars"),
+            ],
+          ))
       .toList();
 
   Map<String, FragmentDefinitionNode> _fragmentMap(SourceNode source) => {
@@ -75,6 +95,21 @@ Library buildVarLibrary(
       methods: [
         if (hasCustomSerializer)
           nullAwareJsonSerializerField(frag, "G${frag.name.value}Vars"),
+      ],
+      constructors: [
+        if (generateVarsCreateFactories)
+          builtCreateConstructor(
+            name: "${frag.name.value}Vars",
+            getters: varTypes.entries.map<Method>(
+              (entry) => buildOptionalGetter(
+                nameNode: entry.key,
+                typeNode: entry.value,
+                schemaSource: schemaSource,
+                typeOverrides: typeOverrides,
+              ),
+            ),
+            schemaSource: schemaSource,
+          ),
       ],
     );
   }).toList();

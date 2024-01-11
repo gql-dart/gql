@@ -19,6 +19,9 @@ abstract class GHeroForEpisodeVars
           [void Function(GHeroForEpisodeVarsBuilder b) updates]) =
       _$GHeroForEpisodeVars;
 
+  factory GHeroForEpisodeVars.create({required _i1.GEpisode ep}) =>
+      GHeroForEpisodeVars((b) => b..ep = ep);
+
   _i1.GEpisode get ep;
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GHeroForEpisodeVars.serializer,
@@ -43,6 +46,8 @@ abstract class GDroidFragmentVars
   factory GDroidFragmentVars(
           [void Function(GDroidFragmentVarsBuilder b) updates]) =
       _$GDroidFragmentVars;
+
+  factory GDroidFragmentVars.create() => GDroidFragmentVars();
 
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
         GDroidFragmentVars.serializer,

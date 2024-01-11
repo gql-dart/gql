@@ -20,6 +20,16 @@ abstract class GReviewWithDateVars
           [void Function(GReviewWithDateVarsBuilder b) updates]) =
       _$GReviewWithDateVars;
 
+  factory GReviewWithDateVars.create({
+    required _i1.Value<_i2.GEpisode> episode,
+    required _i2.GReviewInput review,
+    required _i1.Value<DateTime> createdAt,
+  }) =>
+      GReviewWithDateVars((b) => b
+        ..episode = episode
+        ..review = review.toBuilder()
+        ..createdAt = createdAt);
+
   static void _initializeBuilder(GReviewWithDateVarsBuilder b) => b
     ..episode = const _i1.AbsentValue()
     ..createdAt = const _i1.AbsentValue();

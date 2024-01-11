@@ -15,6 +15,9 @@ abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
   factory GPostsVars([void Function(GPostsVarsBuilder b) updates]) =
       _$GPostsVars;
 
+  factory GPostsVars.create({required String userId}) =>
+      GPostsVars((b) => b..userId = userId);
+
   String get userId;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsVars.serializer,
@@ -38,6 +41,9 @@ abstract class GPostFragmentVars
   factory GPostFragmentVars(
           [void Function(GPostFragmentVarsBuilder b) updates]) =
       _$GPostFragmentVars;
+
+  factory GPostFragmentVars.create({required String userId}) =>
+      GPostFragmentVars((b) => b..userId = userId);
 
   String get userId;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

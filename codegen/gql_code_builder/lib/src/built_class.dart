@@ -7,6 +7,7 @@ import "./utils/to_camel_case.dart";
 /// Generates a class that implements [Built], along with its serializers
 Class builtClass({
   required String name,
+  Iterable<Constructor>? constructors,
   Iterable<Method>? getters,
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
@@ -61,6 +62,7 @@ Class builtClass({
               )
               ..redirect = refer("_\$${className}"),
           ),
+          if (constructors != null && constructors.isNotEmpty) ...constructors
         ],
       )
       ..methods = ListBuilder(<Method>[
