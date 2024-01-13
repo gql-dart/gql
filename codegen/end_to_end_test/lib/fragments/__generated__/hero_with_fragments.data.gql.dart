@@ -15,7 +15,7 @@ abstract class GHeroWithFragmentsData
   GHeroWithFragmentsData._();
 
   factory GHeroWithFragmentsData(
-          [Function(GHeroWithFragmentsDataBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsDataBuilder b) updates]) =
       _$GHeroWithFragmentsData;
 
   static void _initializeBuilder(GHeroWithFragmentsDataBuilder b) =>
@@ -46,7 +46,7 @@ abstract class GHeroWithFragmentsData_hero
   GHeroWithFragmentsData_hero._();
 
   factory GHeroWithFragmentsData_hero(
-          [Function(GHeroWithFragmentsData_heroBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsData_heroBuilder b) updates]) =
       _$GHeroWithFragmentsData_hero;
 
   static void _initializeBuilder(GHeroWithFragmentsData_heroBuilder b) =>
@@ -85,7 +85,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
   GHeroWithFragmentsData_hero_friendsConnection._();
 
   factory GHeroWithFragmentsData_hero_friendsConnection(
-      [Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder b)
+      [void Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection;
 
   static void _initializeBuilder(
@@ -124,7 +124,8 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
   GHeroWithFragmentsData_hero_friendsConnection_edges._();
 
   factory GHeroWithFragmentsData_hero_friendsConnection_edges(
-      [Function(GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b)
+      [void Function(
+              GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges;
 
   static void _initializeBuilder(
@@ -163,7 +164,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
   GHeroWithFragmentsData_hero_friendsConnection_edges_node._();
 
   factory GHeroWithFragmentsData_hero_friendsConnection_edges_node(
-      [Function(
+      [void Function(
               GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges_node;
 
@@ -204,7 +205,7 @@ abstract class GheroDataData
     implements Built<GheroDataData, GheroDataDataBuilder>, GheroData {
   GheroDataData._();
 
-  factory GheroDataData([Function(GheroDataDataBuilder b) updates]) =
+  factory GheroDataData([void Function(GheroDataDataBuilder b) updates]) =
       _$GheroDataData;
 
   static void _initializeBuilder(GheroDataDataBuilder b) =>
@@ -272,7 +273,7 @@ abstract class GcomparisonFieldsData
   GcomparisonFieldsData._();
 
   factory GcomparisonFieldsData(
-          [Function(GcomparisonFieldsDataBuilder b) updates]) =
+          [void Function(GcomparisonFieldsDataBuilder b) updates]) =
       _$GcomparisonFieldsData;
 
   static void _initializeBuilder(GcomparisonFieldsDataBuilder b) =>
@@ -311,7 +312,7 @@ abstract class GcomparisonFieldsData_friendsConnection
   GcomparisonFieldsData_friendsConnection._();
 
   factory GcomparisonFieldsData_friendsConnection(
-      [Function(GcomparisonFieldsData_friendsConnectionBuilder b)
+      [void Function(GcomparisonFieldsData_friendsConnectionBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection;
 
   static void _initializeBuilder(
@@ -350,7 +351,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
   GcomparisonFieldsData_friendsConnection_edges._();
 
   factory GcomparisonFieldsData_friendsConnection_edges(
-      [Function(GcomparisonFieldsData_friendsConnection_edgesBuilder b)
+      [void Function(GcomparisonFieldsData_friendsConnection_edgesBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection_edges;
 
   static void _initializeBuilder(
@@ -388,7 +389,8 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
   GcomparisonFieldsData_friendsConnection_edges_node._();
 
   factory GcomparisonFieldsData_friendsConnection_edges_node(
-      [Function(GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b)
+      [void Function(
+              GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection_edges_node;
 
   static void _initializeBuilder(

@@ -15,11 +15,13 @@ class VarBuilder implements Builder {
   final AssetId schemaId;
   final Map<String, Reference> typeOverrides;
   final TriStateValueConfig triStateValueConfig;
+  final bool varsCreateFactoriesConfig;
 
   VarBuilder(
     this.schemaId,
     this.typeOverrides,
     this.triStateValueConfig,
+    this.varsCreateFactoriesConfig,
   );
 
   @override
@@ -51,6 +53,7 @@ class VarBuilder implements Builder {
       typeOverrides,
       allocator,
       triStateValueConfig,
+      varsCreateFactoriesConfig,
     );
 
     return writeDocument(

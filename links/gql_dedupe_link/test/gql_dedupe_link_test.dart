@@ -1,5 +1,6 @@
 import "dart:async";
 
+import "package:gql/ast.dart";
 import "package:gql/language.dart";
 import "package:gql_dedupe_link/gql_dedupe_link.dart";
 import "package:gql_exec/gql_exec.dart";
@@ -182,6 +183,76 @@ void main() {
       );
       expect(await return1, result1);
       expect(await return2, result1);
+    });
+
+    test(
+        "does not dedupe identical queries if shouldDedupe is false for request",
+        () async {
+      var count = 0;
+      final document = parseString(
+        """
+        query withVar(\$i: Int) {
+          take(i: \$i)
+        }
+      """,
+      );
+
+      final req1 = Request(
+        operation: Operation(
+          document: document,
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      final mockLink = MockLink();
+
+      when(
+        mockLink.request(req1, null),
+      ).thenAnswer((_) {
+        count++;
+        return Stream.fromIterable([
+          Response(
+            data: <String, dynamic>{"a": count},
+            response: <String, dynamic>{
+              "data": <String, dynamic>{"a": count}
+            },
+          )
+        ]);
+      });
+
+      final link = Link.from([
+        DedupeLink(
+          shouldDedupe: (req) =>
+              req.operation.getOperationType() != OperationType.query,
+        ),
+        mockLink,
+      ]);
+
+      final stream1 = link.request(req1);
+      final stream2 = link.request(req1);
+
+      final return1 = stream1.first;
+      final return2 = stream2.first;
+
+      verify(
+        mockLink.request(req1, null),
+      ).called(2);
+      expect(
+          await return1,
+          Response(
+            data: const <String, dynamic>{"a": 1},
+            response: const <String, dynamic>{
+              "data": <String, dynamic>{"a": 1}
+            },
+          ));
+      expect(
+          await return2,
+          Response(
+            data: const <String, dynamic>{"a": 2},
+            response: const <String, dynamic>{
+              "data": <String, dynamic>{"a": 2}
+            },
+          ));
     });
 
     test("does not dedup consequtive queries", () async {

@@ -16,8 +16,12 @@ abstract class GCreateCustomFieldVars
   GCreateCustomFieldVars._();
 
   factory GCreateCustomFieldVars(
-          [Function(GCreateCustomFieldVarsBuilder b) updates]) =
+          [void Function(GCreateCustomFieldVarsBuilder b) updates]) =
       _$GCreateCustomFieldVars;
+
+  factory GCreateCustomFieldVars.create(
+          {required _i1.GCustomFieldInput input}) =>
+      GCreateCustomFieldVars((b) => b..input = input.toBuilder());
 
   _i1.GCustomFieldInput get input;
   Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(

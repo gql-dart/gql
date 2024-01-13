@@ -50,6 +50,7 @@ targets:
         enabled: true
         options:
           schema: end_to_end_test|lib/graphql/schema.graphql
+          vars_create_factories: true
           type_overrides:
             Date:
               name: DateTime

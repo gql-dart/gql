@@ -47,7 +47,8 @@ Builder varBuilder(
           options.config["schema"] as String,
         ),
         typeOverrideMap(options.config["type_overrides"]),
-        triStateOptionalsConfig(options.config));
+        triStateOptionalsConfig(options.config),
+        varsCreateFactoriesConfig(options.config));
 
 /// Builds GraphQL schema types
 Builder schemaBuilder(

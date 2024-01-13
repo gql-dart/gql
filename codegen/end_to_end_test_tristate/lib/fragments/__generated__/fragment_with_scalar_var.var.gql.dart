@@ -18,8 +18,12 @@ abstract class GPostsWithFixedVariableVars
   GPostsWithFixedVariableVars._();
 
   factory GPostsWithFixedVariableVars(
-          [Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
+          [void Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
       _$GPostsWithFixedVariableVars;
+
+  factory GPostsWithFixedVariableVars.create(
+          {required _i1.Value<_i2.GJson> filter}) =>
+      GPostsWithFixedVariableVars((b) => b..filter = filter);
 
   static void _initializeBuilder(GPostsWithFixedVariableVarsBuilder b) =>
       b..filter = const _i1.AbsentValue();
@@ -47,8 +51,10 @@ abstract class GPostFragmentForUser1Vars
   GPostFragmentForUser1Vars._();
 
   factory GPostFragmentForUser1Vars(
-          [Function(GPostFragmentForUser1VarsBuilder b) updates]) =
+          [void Function(GPostFragmentForUser1VarsBuilder b) updates]) =
       _$GPostFragmentForUser1Vars;
+
+  factory GPostFragmentForUser1Vars.create() => GPostFragmentForUser1Vars();
 
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GPostFragmentForUser1Vars.serializer,

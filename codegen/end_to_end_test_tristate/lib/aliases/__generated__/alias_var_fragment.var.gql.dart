@@ -12,7 +12,11 @@ part 'alias_var_fragment.var.gql.g.dart';
 abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
   GPostsVars._();
 
-  factory GPostsVars([Function(GPostsVarsBuilder b) updates]) = _$GPostsVars;
+  factory GPostsVars([void Function(GPostsVarsBuilder b) updates]) =
+      _$GPostsVars;
+
+  factory GPostsVars.create({required String userId}) =>
+      GPostsVars((b) => b..userId = userId);
 
   String get userId;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -34,8 +38,12 @@ abstract class GPostFragmentVars
     implements Built<GPostFragmentVars, GPostFragmentVarsBuilder> {
   GPostFragmentVars._();
 
-  factory GPostFragmentVars([Function(GPostFragmentVarsBuilder b) updates]) =
+  factory GPostFragmentVars(
+          [void Function(GPostFragmentVarsBuilder b) updates]) =
       _$GPostFragmentVars;
+
+  factory GPostFragmentVars.create({required String userId}) =>
+      GPostFragmentVars((b) => b..userId = userId);
 
   String get userId;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

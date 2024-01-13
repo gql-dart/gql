@@ -17,7 +17,8 @@ part 'all_pokemon.req.gql.g.dart';
 abstract class GAllPokemon implements Built<GAllPokemon, GAllPokemonBuilder> {
   GAllPokemon._();
 
-  factory GAllPokemon([Function(GAllPokemonBuilder b) updates]) = _$GAllPokemon;
+  factory GAllPokemon([void Function(GAllPokemonBuilder b) updates]) =
+      _$GAllPokemon;
 
   static void _initializeBuilder(GAllPokemonBuilder b) => b
     ..operation = _i1.Operation(

@@ -12,7 +12,7 @@ abstract class GDimensionsVars
     implements Built<GDimensionsVars, GDimensionsVarsBuilder> {
   GDimensionsVars._();
 
-  factory GDimensionsVars([Function(GDimensionsVarsBuilder b) updates]) =
+  factory GDimensionsVars([void Function(GDimensionsVarsBuilder b) updates]) =
       _$GDimensionsVars;
 
   static Serializer<GDimensionsVars> get serializer =>

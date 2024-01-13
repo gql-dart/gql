@@ -23,7 +23,8 @@ abstract class GNestedFragmentData
   GNestedFragmentData._();
 
   factory GNestedFragmentData(
-      [Function(GNestedFragmentDataBuilder b) updates]) = _$GNestedFragmentData;
+          [void Function(GNestedFragmentDataBuilder b) updates]) =
+      _$GNestedFragmentData;
 
   static void _initializeBuilder(GNestedFragmentDataBuilder b) =>
       b..G__typename = 'Pokemon';

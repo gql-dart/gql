@@ -19,7 +19,7 @@ abstract class GAcceptEnterpriseAdministratorInvitationInput
   GAcceptEnterpriseAdministratorInvitationInput._();
 
   factory GAcceptEnterpriseAdministratorInvitationInput(
-      [Function(GAcceptEnterpriseAdministratorInvitationInputBuilder b)
+      [void Function(GAcceptEnterpriseAdministratorInvitationInputBuilder b)
           updates]) = _$GAcceptEnterpriseAdministratorInvitationInput;
 
   String? get clientMutationId;
@@ -47,7 +47,7 @@ abstract class GAcceptTopicSuggestionInput
   GAcceptTopicSuggestionInput._();
 
   factory GAcceptTopicSuggestionInput(
-          [Function(GAcceptTopicSuggestionInputBuilder b) updates]) =
+          [void Function(GAcceptTopicSuggestionInputBuilder b) updates]) =
       _$GAcceptTopicSuggestionInput;
 
   String? get clientMutationId;
@@ -100,7 +100,7 @@ abstract class GAddAssigneesToAssignableInput
   GAddAssigneesToAssignableInput._();
 
   factory GAddAssigneesToAssignableInput(
-          [Function(GAddAssigneesToAssignableInputBuilder b) updates]) =
+          [void Function(GAddAssigneesToAssignableInputBuilder b) updates]) =
       _$GAddAssigneesToAssignableInput;
 
   String get assignableId;
@@ -125,7 +125,7 @@ abstract class GAddCommentInput
     implements Built<GAddCommentInput, GAddCommentInputBuilder> {
   GAddCommentInput._();
 
-  factory GAddCommentInput([Function(GAddCommentInputBuilder b) updates]) =
+  factory GAddCommentInput([void Function(GAddCommentInputBuilder b) updates]) =
       _$GAddCommentInput;
 
   String get body;
@@ -152,7 +152,7 @@ abstract class GAddLabelsToLabelableInput
   GAddLabelsToLabelableInput._();
 
   factory GAddLabelsToLabelableInput(
-          [Function(GAddLabelsToLabelableInputBuilder b) updates]) =
+          [void Function(GAddLabelsToLabelableInputBuilder b) updates]) =
       _$GAddLabelsToLabelableInput;
 
   String? get clientMutationId;
@@ -178,7 +178,7 @@ abstract class GAddProjectCardInput
   GAddProjectCardInput._();
 
   factory GAddProjectCardInput(
-          [Function(GAddProjectCardInputBuilder b) updates]) =
+          [void Function(GAddProjectCardInputBuilder b) updates]) =
       _$GAddProjectCardInput;
 
   String? get clientMutationId;
@@ -205,7 +205,7 @@ abstract class GAddProjectColumnInput
   GAddProjectColumnInput._();
 
   factory GAddProjectColumnInput(
-          [Function(GAddProjectColumnInputBuilder b) updates]) =
+          [void Function(GAddProjectColumnInputBuilder b) updates]) =
       _$GAddProjectColumnInput;
 
   String? get clientMutationId;
@@ -233,7 +233,7 @@ abstract class GAddPullRequestReviewCommentInput
   GAddPullRequestReviewCommentInput._();
 
   factory GAddPullRequestReviewCommentInput(
-          [Function(GAddPullRequestReviewCommentInputBuilder b) updates]) =
+          [void Function(GAddPullRequestReviewCommentInputBuilder b) updates]) =
       _$GAddPullRequestReviewCommentInput;
 
   String get body;
@@ -266,7 +266,7 @@ abstract class GAddPullRequestReviewInput
   GAddPullRequestReviewInput._();
 
   factory GAddPullRequestReviewInput(
-          [Function(GAddPullRequestReviewInputBuilder b) updates]) =
+          [void Function(GAddPullRequestReviewInputBuilder b) updates]) =
       _$GAddPullRequestReviewInput;
 
   String? get body;
@@ -294,7 +294,8 @@ abstract class GAddReactionInput
     implements Built<GAddReactionInput, GAddReactionInputBuilder> {
   GAddReactionInput._();
 
-  factory GAddReactionInput([Function(GAddReactionInputBuilder b) updates]) =
+  factory GAddReactionInput(
+          [void Function(GAddReactionInputBuilder b) updates]) =
       _$GAddReactionInput;
 
   String? get clientMutationId;
@@ -319,7 +320,7 @@ abstract class GAddStarInput
     implements Built<GAddStarInput, GAddStarInputBuilder> {
   GAddStarInput._();
 
-  factory GAddStarInput([Function(GAddStarInputBuilder b) updates]) =
+  factory GAddStarInput([void Function(GAddStarInputBuilder b) updates]) =
       _$GAddStarInput;
 
   String? get clientMutationId;
@@ -343,7 +344,7 @@ abstract class GArchiveRepositoryInput
   GArchiveRepositoryInput._();
 
   factory GArchiveRepositoryInput(
-          [Function(GArchiveRepositoryInputBuilder b) updates]) =
+          [void Function(GArchiveRepositoryInputBuilder b) updates]) =
       _$GArchiveRepositoryInput;
 
   String? get clientMutationId;
@@ -367,7 +368,7 @@ abstract class GAuditLogOrder
     implements Built<GAuditLogOrder, GAuditLogOrderBuilder> {
   GAuditLogOrder._();
 
-  factory GAuditLogOrder([Function(GAuditLogOrderBuilder b) updates]) =
+  factory GAuditLogOrder([void Function(GAuditLogOrderBuilder b) updates]) =
       _$GAuditLogOrder;
 
   GOrderDirection? get direction;
@@ -409,8 +410,8 @@ abstract class GCancelEnterpriseAdminInvitationInput
   GCancelEnterpriseAdminInvitationInput._();
 
   factory GCancelEnterpriseAdminInvitationInput(
-          [Function(GCancelEnterpriseAdminInvitationInputBuilder b) updates]) =
-      _$GCancelEnterpriseAdminInvitationInput;
+      [void Function(GCancelEnterpriseAdminInvitationInputBuilder b)
+          updates]) = _$GCancelEnterpriseAdminInvitationInput;
 
   String? get clientMutationId;
   String get invitationId;
@@ -435,7 +436,7 @@ abstract class GChangeUserStatusInput
   GChangeUserStatusInput._();
 
   factory GChangeUserStatusInput(
-          [Function(GChangeUserStatusInputBuilder b) updates]) =
+          [void Function(GChangeUserStatusInputBuilder b) updates]) =
       _$GChangeUserStatusInput;
 
   String? get clientMutationId;
@@ -466,7 +467,7 @@ abstract class GClearLabelsFromLabelableInput
   GClearLabelsFromLabelableInput._();
 
   factory GClearLabelsFromLabelableInput(
-          [Function(GClearLabelsFromLabelableInputBuilder b) updates]) =
+          [void Function(GClearLabelsFromLabelableInputBuilder b) updates]) =
       _$GClearLabelsFromLabelableInput;
 
   String? get clientMutationId;
@@ -490,7 +491,8 @@ abstract class GCloneProjectInput
     implements Built<GCloneProjectInput, GCloneProjectInputBuilder> {
   GCloneProjectInput._();
 
-  factory GCloneProjectInput([Function(GCloneProjectInputBuilder b) updates]) =
+  factory GCloneProjectInput(
+          [void Function(GCloneProjectInputBuilder b) updates]) =
       _$GCloneProjectInput;
 
   String? get body;
@@ -522,7 +524,7 @@ abstract class GCloneTemplateRepositoryInput
   GCloneTemplateRepositoryInput._();
 
   factory GCloneTemplateRepositoryInput(
-          [Function(GCloneTemplateRepositoryInputBuilder b) updates]) =
+          [void Function(GCloneTemplateRepositoryInputBuilder b) updates]) =
       _$GCloneTemplateRepositoryInput;
 
   String? get clientMutationId;
@@ -550,7 +552,7 @@ abstract class GCloseIssueInput
     implements Built<GCloseIssueInput, GCloseIssueInputBuilder> {
   GCloseIssueInput._();
 
-  factory GCloseIssueInput([Function(GCloseIssueInputBuilder b) updates]) =
+  factory GCloseIssueInput([void Function(GCloseIssueInputBuilder b) updates]) =
       _$GCloseIssueInput;
 
   String? get clientMutationId;
@@ -575,7 +577,7 @@ abstract class GClosePullRequestInput
   GClosePullRequestInput._();
 
   factory GClosePullRequestInput(
-          [Function(GClosePullRequestInputBuilder b) updates]) =
+          [void Function(GClosePullRequestInputBuilder b) updates]) =
       _$GClosePullRequestInput;
 
   String? get clientMutationId;
@@ -687,7 +689,7 @@ abstract class GCommitAuthor
     implements Built<GCommitAuthor, GCommitAuthorBuilder> {
   GCommitAuthor._();
 
-  factory GCommitAuthor([Function(GCommitAuthorBuilder b) updates]) =
+  factory GCommitAuthor([void Function(GCommitAuthorBuilder b) updates]) =
       _$GCommitAuthor;
 
   BuiltList<String>? get emails;
@@ -712,7 +714,7 @@ abstract class GCommitContributionOrder
   GCommitContributionOrder._();
 
   factory GCommitContributionOrder(
-          [Function(GCommitContributionOrderBuilder b) updates]) =
+          [void Function(GCommitContributionOrderBuilder b) updates]) =
       _$GCommitContributionOrder;
 
   GOrderDirection get direction;
@@ -755,7 +757,8 @@ abstract class GContributionOrder
     implements Built<GContributionOrder, GContributionOrderBuilder> {
   GContributionOrder._();
 
-  factory GContributionOrder([Function(GContributionOrderBuilder b) updates]) =
+  factory GContributionOrder(
+          [void Function(GContributionOrderBuilder b) updates]) =
       _$GContributionOrder;
 
   GOrderDirection get direction;
@@ -798,8 +801,8 @@ abstract class GConvertProjectCardNoteToIssueInput
   GConvertProjectCardNoteToIssueInput._();
 
   factory GConvertProjectCardNoteToIssueInput(
-          [Function(GConvertProjectCardNoteToIssueInputBuilder b) updates]) =
-      _$GConvertProjectCardNoteToIssueInput;
+      [void Function(GConvertProjectCardNoteToIssueInputBuilder b)
+          updates]) = _$GConvertProjectCardNoteToIssueInput;
 
   String? get body;
   String? get clientMutationId;
@@ -829,7 +832,7 @@ abstract class GCreateBranchProtectionRuleInput
   GCreateBranchProtectionRuleInput._();
 
   factory GCreateBranchProtectionRuleInput(
-          [Function(GCreateBranchProtectionRuleInputBuilder b) updates]) =
+          [void Function(GCreateBranchProtectionRuleInputBuilder b) updates]) =
       _$GCreateBranchProtectionRuleInput;
 
   String? get clientMutationId;
@@ -871,8 +874,8 @@ abstract class GCreateEnterpriseOrganizationInput
   GCreateEnterpriseOrganizationInput._();
 
   factory GCreateEnterpriseOrganizationInput(
-          [Function(GCreateEnterpriseOrganizationInputBuilder b) updates]) =
-      _$GCreateEnterpriseOrganizationInput;
+      [void Function(GCreateEnterpriseOrganizationInputBuilder b)
+          updates]) = _$GCreateEnterpriseOrganizationInput;
 
   BuiltList<String> get adminLogins;
   String get billingEmail;
@@ -900,7 +903,8 @@ abstract class GCreateIssueInput
     implements Built<GCreateIssueInput, GCreateIssueInputBuilder> {
   GCreateIssueInput._();
 
-  factory GCreateIssueInput([Function(GCreateIssueInputBuilder b) updates]) =
+  factory GCreateIssueInput(
+          [void Function(GCreateIssueInputBuilder b) updates]) =
       _$GCreateIssueInput;
 
   BuiltList<String>? get assigneeIds;
@@ -931,7 +935,8 @@ abstract class GCreateProjectInput
   GCreateProjectInput._();
 
   factory GCreateProjectInput(
-      [Function(GCreateProjectInputBuilder b) updates]) = _$GCreateProjectInput;
+          [void Function(GCreateProjectInputBuilder b) updates]) =
+      _$GCreateProjectInput;
 
   String? get body;
   String? get clientMutationId;
@@ -959,7 +964,7 @@ abstract class GCreatePullRequestInput
   GCreatePullRequestInput._();
 
   factory GCreatePullRequestInput(
-          [Function(GCreatePullRequestInputBuilder b) updates]) =
+          [void Function(GCreatePullRequestInputBuilder b) updates]) =
       _$GCreatePullRequestInput;
 
   String get baseRefName;
@@ -988,7 +993,7 @@ abstract class GCreateRefInput
     implements Built<GCreateRefInput, GCreateRefInputBuilder> {
   GCreateRefInput._();
 
-  factory GCreateRefInput([Function(GCreateRefInputBuilder b) updates]) =
+  factory GCreateRefInput([void Function(GCreateRefInputBuilder b) updates]) =
       _$GCreateRefInput;
 
   String? get clientMutationId;
@@ -1015,7 +1020,7 @@ abstract class GCreateRepositoryInput
   GCreateRepositoryInput._();
 
   factory GCreateRepositoryInput(
-          [Function(GCreateRepositoryInputBuilder b) updates]) =
+          [void Function(GCreateRepositoryInputBuilder b) updates]) =
       _$GCreateRepositoryInput;
 
   String? get clientMutationId;
@@ -1050,7 +1055,7 @@ abstract class GCreateTeamDiscussionCommentInput
   GCreateTeamDiscussionCommentInput._();
 
   factory GCreateTeamDiscussionCommentInput(
-          [Function(GCreateTeamDiscussionCommentInputBuilder b) updates]) =
+          [void Function(GCreateTeamDiscussionCommentInputBuilder b) updates]) =
       _$GCreateTeamDiscussionCommentInput;
 
   String get body;
@@ -1078,7 +1083,7 @@ abstract class GCreateTeamDiscussionInput
   GCreateTeamDiscussionInput._();
 
   factory GCreateTeamDiscussionInput(
-          [Function(GCreateTeamDiscussionInputBuilder b) updates]) =
+          [void Function(GCreateTeamDiscussionInputBuilder b) updates]) =
       _$GCreateTeamDiscussionInput;
 
   String get body;
@@ -1133,7 +1138,7 @@ abstract class GDeclineTopicSuggestionInput
   GDeclineTopicSuggestionInput._();
 
   factory GDeclineTopicSuggestionInput(
-          [Function(GDeclineTopicSuggestionInputBuilder b) updates]) =
+          [void Function(GDeclineTopicSuggestionInputBuilder b) updates]) =
       _$GDeclineTopicSuggestionInput;
 
   String? get clientMutationId;
@@ -1187,7 +1192,7 @@ abstract class GDeleteBranchProtectionRuleInput
   GDeleteBranchProtectionRuleInput._();
 
   factory GDeleteBranchProtectionRuleInput(
-          [Function(GDeleteBranchProtectionRuleInputBuilder b) updates]) =
+          [void Function(GDeleteBranchProtectionRuleInputBuilder b) updates]) =
       _$GDeleteBranchProtectionRuleInput;
 
   String get branchProtectionRuleId;
@@ -1213,7 +1218,7 @@ abstract class GDeleteDeploymentInput
   GDeleteDeploymentInput._();
 
   factory GDeleteDeploymentInput(
-          [Function(GDeleteDeploymentInputBuilder b) updates]) =
+          [void Function(GDeleteDeploymentInputBuilder b) updates]) =
       _$GDeleteDeploymentInput;
 
   String? get clientMutationId;
@@ -1239,7 +1244,7 @@ abstract class GDeleteIssueCommentInput
   GDeleteIssueCommentInput._();
 
   factory GDeleteIssueCommentInput(
-          [Function(GDeleteIssueCommentInputBuilder b) updates]) =
+          [void Function(GDeleteIssueCommentInputBuilder b) updates]) =
       _$GDeleteIssueCommentInput;
 
   String? get clientMutationId;
@@ -1263,7 +1268,8 @@ abstract class GDeleteIssueInput
     implements Built<GDeleteIssueInput, GDeleteIssueInputBuilder> {
   GDeleteIssueInput._();
 
-  factory GDeleteIssueInput([Function(GDeleteIssueInputBuilder b) updates]) =
+  factory GDeleteIssueInput(
+          [void Function(GDeleteIssueInputBuilder b) updates]) =
       _$GDeleteIssueInput;
 
   String? get clientMutationId;
@@ -1288,7 +1294,7 @@ abstract class GDeleteProjectCardInput
   GDeleteProjectCardInput._();
 
   factory GDeleteProjectCardInput(
-          [Function(GDeleteProjectCardInputBuilder b) updates]) =
+          [void Function(GDeleteProjectCardInputBuilder b) updates]) =
       _$GDeleteProjectCardInput;
 
   String get cardId;
@@ -1314,7 +1320,7 @@ abstract class GDeleteProjectColumnInput
   GDeleteProjectColumnInput._();
 
   factory GDeleteProjectColumnInput(
-          [Function(GDeleteProjectColumnInputBuilder b) updates]) =
+          [void Function(GDeleteProjectColumnInputBuilder b) updates]) =
       _$GDeleteProjectColumnInput;
 
   String? get clientMutationId;
@@ -1339,7 +1345,8 @@ abstract class GDeleteProjectInput
   GDeleteProjectInput._();
 
   factory GDeleteProjectInput(
-      [Function(GDeleteProjectInputBuilder b) updates]) = _$GDeleteProjectInput;
+          [void Function(GDeleteProjectInputBuilder b) updates]) =
+      _$GDeleteProjectInput;
 
   String? get clientMutationId;
   String get projectId;
@@ -1365,8 +1372,8 @@ abstract class GDeletePullRequestReviewCommentInput
   GDeletePullRequestReviewCommentInput._();
 
   factory GDeletePullRequestReviewCommentInput(
-          [Function(GDeletePullRequestReviewCommentInputBuilder b) updates]) =
-      _$GDeletePullRequestReviewCommentInput;
+      [void Function(GDeletePullRequestReviewCommentInputBuilder b)
+          updates]) = _$GDeletePullRequestReviewCommentInput;
 
   String? get clientMutationId;
   String get id;
@@ -1393,7 +1400,7 @@ abstract class GDeletePullRequestReviewInput
   GDeletePullRequestReviewInput._();
 
   factory GDeletePullRequestReviewInput(
-          [Function(GDeletePullRequestReviewInputBuilder b) updates]) =
+          [void Function(GDeletePullRequestReviewInputBuilder b) updates]) =
       _$GDeletePullRequestReviewInput;
 
   String? get clientMutationId;
@@ -1417,7 +1424,7 @@ abstract class GDeleteRefInput
     implements Built<GDeleteRefInput, GDeleteRefInputBuilder> {
   GDeleteRefInput._();
 
-  factory GDeleteRefInput([Function(GDeleteRefInputBuilder b) updates]) =
+  factory GDeleteRefInput([void Function(GDeleteRefInputBuilder b) updates]) =
       _$GDeleteRefInput;
 
   String? get clientMutationId;
@@ -1444,7 +1451,7 @@ abstract class GDeleteTeamDiscussionCommentInput
   GDeleteTeamDiscussionCommentInput._();
 
   factory GDeleteTeamDiscussionCommentInput(
-          [Function(GDeleteTeamDiscussionCommentInputBuilder b) updates]) =
+          [void Function(GDeleteTeamDiscussionCommentInputBuilder b) updates]) =
       _$GDeleteTeamDiscussionCommentInput;
 
   String? get clientMutationId;
@@ -1471,7 +1478,7 @@ abstract class GDeleteTeamDiscussionInput
   GDeleteTeamDiscussionInput._();
 
   factory GDeleteTeamDiscussionInput(
-          [Function(GDeleteTeamDiscussionInputBuilder b) updates]) =
+          [void Function(GDeleteTeamDiscussionInputBuilder b) updates]) =
       _$GDeleteTeamDiscussionInput;
 
   String? get clientMutationId;
@@ -1495,7 +1502,7 @@ abstract class GDeploymentOrder
     implements Built<GDeploymentOrder, GDeploymentOrderBuilder> {
   GDeploymentOrder._();
 
-  factory GDeploymentOrder([Function(GDeploymentOrderBuilder b) updates]) =
+  factory GDeploymentOrder([void Function(GDeploymentOrderBuilder b) updates]) =
       _$GDeploymentOrder;
 
   GOrderDirection get direction;
@@ -1597,7 +1604,7 @@ abstract class GDismissPullRequestReviewInput
   GDismissPullRequestReviewInput._();
 
   factory GDismissPullRequestReviewInput(
-          [Function(GDismissPullRequestReviewInputBuilder b) updates]) =
+          [void Function(GDismissPullRequestReviewInputBuilder b) updates]) =
       _$GDismissPullRequestReviewInput;
 
   String? get clientMutationId;
@@ -1625,7 +1632,7 @@ abstract class GDraftPullRequestReviewComment
   GDraftPullRequestReviewComment._();
 
   factory GDraftPullRequestReviewComment(
-          [Function(GDraftPullRequestReviewCommentBuilder b) updates]) =
+          [void Function(GDraftPullRequestReviewCommentBuilder b) updates]) =
       _$GDraftPullRequestReviewComment;
 
   String get body;
@@ -1653,7 +1660,7 @@ abstract class GEnterpriseAdministratorInvitationOrder
   GEnterpriseAdministratorInvitationOrder._();
 
   factory GEnterpriseAdministratorInvitationOrder(
-      [Function(GEnterpriseAdministratorInvitationOrderBuilder b)
+      [void Function(GEnterpriseAdministratorInvitationOrderBuilder b)
           updates]) = _$GEnterpriseAdministratorInvitationOrder;
 
   GOrderDirection get direction;
@@ -1788,7 +1795,7 @@ abstract class GEnterpriseMemberOrder
   GEnterpriseMemberOrder._();
 
   factory GEnterpriseMemberOrder(
-          [Function(GEnterpriseMemberOrderBuilder b) updates]) =
+          [void Function(GEnterpriseMemberOrderBuilder b) updates]) =
       _$GEnterpriseMemberOrder;
 
   GOrderDirection get direction;
@@ -1886,8 +1893,8 @@ abstract class GEnterpriseServerInstallationOrder
   GEnterpriseServerInstallationOrder._();
 
   factory GEnterpriseServerInstallationOrder(
-          [Function(GEnterpriseServerInstallationOrderBuilder b) updates]) =
-      _$GEnterpriseServerInstallationOrder;
+      [void Function(GEnterpriseServerInstallationOrderBuilder b)
+          updates]) = _$GEnterpriseServerInstallationOrder;
 
   GOrderDirection get direction;
   GEnterpriseServerInstallationOrderField get field;
@@ -1936,8 +1943,8 @@ abstract class GEnterpriseServerUserAccountEmailOrder
   GEnterpriseServerUserAccountEmailOrder._();
 
   factory GEnterpriseServerUserAccountEmailOrder(
-          [Function(GEnterpriseServerUserAccountEmailOrderBuilder b) updates]) =
-      _$GEnterpriseServerUserAccountEmailOrder;
+      [void Function(GEnterpriseServerUserAccountEmailOrderBuilder b)
+          updates]) = _$GEnterpriseServerUserAccountEmailOrder;
 
   GOrderDirection get direction;
   GEnterpriseServerUserAccountEmailOrderField get field;
@@ -1981,7 +1988,7 @@ abstract class GEnterpriseServerUserAccountOrder
   GEnterpriseServerUserAccountOrder._();
 
   factory GEnterpriseServerUserAccountOrder(
-          [Function(GEnterpriseServerUserAccountOrderBuilder b) updates]) =
+          [void Function(GEnterpriseServerUserAccountOrderBuilder b) updates]) =
       _$GEnterpriseServerUserAccountOrder;
 
   GOrderDirection get direction;
@@ -2028,7 +2035,7 @@ abstract class GEnterpriseServerUserAccountsUploadOrder
   GEnterpriseServerUserAccountsUploadOrder._();
 
   factory GEnterpriseServerUserAccountsUploadOrder(
-      [Function(GEnterpriseServerUserAccountsUploadOrderBuilder b)
+      [void Function(GEnterpriseServerUserAccountsUploadOrderBuilder b)
           updates]) = _$GEnterpriseServerUserAccountsUploadOrder;
 
   GOrderDirection get direction;
@@ -2133,7 +2140,7 @@ abstract class GFollowUserInput
     implements Built<GFollowUserInput, GFollowUserInputBuilder> {
   GFollowUserInput._();
 
-  factory GFollowUserInput([Function(GFollowUserInputBuilder b) updates]) =
+  factory GFollowUserInput([void Function(GFollowUserInputBuilder b) updates]) =
       _$GFollowUserInput;
 
   String? get clientMutationId;
@@ -2190,7 +2197,8 @@ class GFundingPlatform extends EnumClass {
 abstract class GGistOrder implements Built<GGistOrder, GGistOrderBuilder> {
   GGistOrder._();
 
-  factory GGistOrder([Function(GGistOrderBuilder b) updates]) = _$GGistOrder;
+  factory GGistOrder([void Function(GGistOrderBuilder b) updates]) =
+      _$GGistOrder;
 
   GOrderDirection get direction;
   GGistOrderField get field;
@@ -2377,7 +2385,7 @@ abstract class GInviteEnterpriseAdminInput
   GInviteEnterpriseAdminInput._();
 
   factory GInviteEnterpriseAdminInput(
-          [Function(GInviteEnterpriseAdminInputBuilder b) updates]) =
+          [void Function(GInviteEnterpriseAdminInputBuilder b) updates]) =
       _$GInviteEnterpriseAdminInput;
 
   String? get clientMutationId;
@@ -2404,7 +2412,7 @@ abstract class GIssueFilters
     implements Built<GIssueFilters, GIssueFiltersBuilder> {
   GIssueFilters._();
 
-  factory GIssueFilters([Function(GIssueFiltersBuilder b) updates]) =
+  factory GIssueFilters([void Function(GIssueFiltersBuilder b) updates]) =
       _$GIssueFilters;
 
   String? get assignee;
@@ -2432,7 +2440,8 @@ abstract class GIssueFilters
 abstract class GIssueOrder implements Built<GIssueOrder, GIssueOrderBuilder> {
   GIssueOrder._();
 
-  factory GIssueOrder([Function(GIssueOrderBuilder b) updates]) = _$GIssueOrder;
+  factory GIssueOrder([void Function(GIssueOrderBuilder b) updates]) =
+      _$GIssueOrder;
 
   GOrderDirection get direction;
   GIssueOrderField get field;
@@ -2588,7 +2597,8 @@ class GIssueTimelineItemsItemType extends EnumClass {
 abstract class GLabelOrder implements Built<GLabelOrder, GLabelOrderBuilder> {
   GLabelOrder._();
 
-  factory GLabelOrder([Function(GLabelOrderBuilder b) updates]) = _$GLabelOrder;
+  factory GLabelOrder([void Function(GLabelOrderBuilder b) updates]) =
+      _$GLabelOrder;
 
   GOrderDirection get direction;
   GLabelOrderField get field;
@@ -2626,7 +2636,7 @@ abstract class GLanguageOrder
     implements Built<GLanguageOrder, GLanguageOrderBuilder> {
   GLanguageOrder._();
 
-  factory GLanguageOrder([Function(GLanguageOrderBuilder b) updates]) =
+  factory GLanguageOrder([void Function(GLanguageOrderBuilder b) updates]) =
       _$GLanguageOrder;
 
   GOrderDirection get direction;
@@ -2668,7 +2678,7 @@ abstract class GLinkRepositoryToProjectInput
   GLinkRepositoryToProjectInput._();
 
   factory GLinkRepositoryToProjectInput(
-          [Function(GLinkRepositoryToProjectInputBuilder b) updates]) =
+          [void Function(GLinkRepositoryToProjectInputBuilder b) updates]) =
       _$GLinkRepositoryToProjectInput;
 
   String? get clientMutationId;
@@ -2693,7 +2703,8 @@ abstract class GLockLockableInput
     implements Built<GLockLockableInput, GLockLockableInputBuilder> {
   GLockLockableInput._();
 
-  factory GLockLockableInput([Function(GLockLockableInputBuilder b) updates]) =
+  factory GLockLockableInput(
+          [void Function(GLockLockableInputBuilder b) updates]) =
       _$GLockLockableInput;
 
   String? get clientMutationId;
@@ -2736,7 +2747,8 @@ abstract class GMergeBranchInput
     implements Built<GMergeBranchInput, GMergeBranchInputBuilder> {
   GMergeBranchInput._();
 
-  factory GMergeBranchInput([Function(GMergeBranchInputBuilder b) updates]) =
+  factory GMergeBranchInput(
+          [void Function(GMergeBranchInputBuilder b) updates]) =
       _$GMergeBranchInput;
 
   String get base;
@@ -2764,7 +2776,7 @@ abstract class GMergePullRequestInput
   GMergePullRequestInput._();
 
   factory GMergePullRequestInput(
-          [Function(GMergePullRequestInputBuilder b) updates]) =
+          [void Function(GMergePullRequestInputBuilder b) updates]) =
       _$GMergePullRequestInput;
 
   String? get clientMutationId;
@@ -2809,7 +2821,7 @@ abstract class GMilestoneOrder
     implements Built<GMilestoneOrder, GMilestoneOrderBuilder> {
   GMilestoneOrder._();
 
-  factory GMilestoneOrder([Function(GMilestoneOrderBuilder b) updates]) =
+  factory GMilestoneOrder([void Function(GMilestoneOrderBuilder b) updates]) =
       _$GMilestoneOrder;
 
   GOrderDirection get direction;
@@ -2872,7 +2884,7 @@ abstract class GMoveProjectCardInput
   GMoveProjectCardInput._();
 
   factory GMoveProjectCardInput(
-          [Function(GMoveProjectCardInputBuilder b) updates]) =
+          [void Function(GMoveProjectCardInputBuilder b) updates]) =
       _$GMoveProjectCardInput;
 
   String? get afterCardId;
@@ -2899,7 +2911,7 @@ abstract class GMoveProjectColumnInput
   GMoveProjectColumnInput._();
 
   factory GMoveProjectColumnInput(
-          [Function(GMoveProjectColumnInputBuilder b) updates]) =
+          [void Function(GMoveProjectColumnInputBuilder b) updates]) =
       _$GMoveProjectColumnInput;
 
   String? get afterColumnId;
@@ -3328,7 +3340,8 @@ abstract class GOrganizationOrder
     implements Built<GOrganizationOrder, GOrganizationOrderBuilder> {
   GOrganizationOrder._();
 
-  factory GOrganizationOrder([Function(GOrganizationOrderBuilder b) updates]) =
+  factory GOrganizationOrder(
+          [void Function(GOrganizationOrderBuilder b) updates]) =
       _$GOrganizationOrder;
 
   GOrderDirection get direction;
@@ -3469,7 +3482,7 @@ abstract class GProjectOrder
     implements Built<GProjectOrder, GProjectOrderBuilder> {
   GProjectOrder._();
 
-  factory GProjectOrder([Function(GProjectOrderBuilder b) updates]) =
+  factory GProjectOrder([void Function(GProjectOrderBuilder b) updates]) =
       _$GProjectOrder;
 
   GOrderDirection get direction;
@@ -3565,7 +3578,8 @@ abstract class GPullRequestOrder
     implements Built<GPullRequestOrder, GPullRequestOrderBuilder> {
   GPullRequestOrder._();
 
-  factory GPullRequestOrder([Function(GPullRequestOrderBuilder b) updates]) =
+  factory GPullRequestOrder(
+          [void Function(GPullRequestOrderBuilder b) updates]) =
       _$GPullRequestOrder;
 
   GOrderDirection get direction;
@@ -3900,7 +3914,7 @@ abstract class GReactionOrder
     implements Built<GReactionOrder, GReactionOrderBuilder> {
   GReactionOrder._();
 
-  factory GReactionOrder([Function(GReactionOrderBuilder b) updates]) =
+  factory GReactionOrder([void Function(GReactionOrderBuilder b) updates]) =
       _$GReactionOrder;
 
   GOrderDirection get direction;
@@ -3938,7 +3952,7 @@ class GReactionOrderField extends EnumClass {
 abstract class GRefOrder implements Built<GRefOrder, GRefOrderBuilder> {
   GRefOrder._();
 
-  factory GRefOrder([Function(GRefOrderBuilder b) updates]) = _$GRefOrder;
+  factory GRefOrder([void Function(GRefOrderBuilder b) updates]) = _$GRefOrder;
 
   GOrderDirection get direction;
   GRefOrderField get field;
@@ -3978,7 +3992,7 @@ abstract class GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
   GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._();
 
   factory GRegenerateEnterpriseIdentityProviderRecoveryCodesInput(
-      [Function(
+      [void Function(
               GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder b)
           updates]) = _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput;
 
@@ -4038,7 +4052,7 @@ abstract class GRegistryPackageMetadatum
   GRegistryPackageMetadatum._();
 
   factory GRegistryPackageMetadatum(
-          [Function(GRegistryPackageMetadatumBuilder b) updates]) =
+          [void Function(GRegistryPackageMetadatumBuilder b) updates]) =
       _$GRegistryPackageMetadatum;
 
   String get name;
@@ -4091,7 +4105,7 @@ abstract class GReleaseOrder
     implements Built<GReleaseOrder, GReleaseOrderBuilder> {
   GReleaseOrder._();
 
-  factory GReleaseOrder([Function(GReleaseOrderBuilder b) updates]) =
+  factory GReleaseOrder([void Function(GReleaseOrderBuilder b) updates]) =
       _$GReleaseOrder;
 
   GOrderDirection get direction;
@@ -4133,8 +4147,8 @@ abstract class GRemoveAssigneesFromAssignableInput
   GRemoveAssigneesFromAssignableInput._();
 
   factory GRemoveAssigneesFromAssignableInput(
-          [Function(GRemoveAssigneesFromAssignableInputBuilder b) updates]) =
-      _$GRemoveAssigneesFromAssignableInput;
+      [void Function(GRemoveAssigneesFromAssignableInputBuilder b)
+          updates]) = _$GRemoveAssigneesFromAssignableInput;
 
   String get assignableId;
   BuiltList<String> get assigneeIds;
@@ -4161,7 +4175,7 @@ abstract class GRemoveEnterpriseAdminInput
   GRemoveEnterpriseAdminInput._();
 
   factory GRemoveEnterpriseAdminInput(
-          [Function(GRemoveEnterpriseAdminInputBuilder b) updates]) =
+          [void Function(GRemoveEnterpriseAdminInputBuilder b) updates]) =
       _$GRemoveEnterpriseAdminInput;
 
   String? get clientMutationId;
@@ -4189,8 +4203,8 @@ abstract class GRemoveEnterpriseOrganizationInput
   GRemoveEnterpriseOrganizationInput._();
 
   factory GRemoveEnterpriseOrganizationInput(
-          [Function(GRemoveEnterpriseOrganizationInputBuilder b) updates]) =
-      _$GRemoveEnterpriseOrganizationInput;
+      [void Function(GRemoveEnterpriseOrganizationInputBuilder b)
+          updates]) = _$GRemoveEnterpriseOrganizationInput;
 
   String? get clientMutationId;
   String get enterpriseId;
@@ -4218,7 +4232,7 @@ abstract class GRemoveLabelsFromLabelableInput
   GRemoveLabelsFromLabelableInput._();
 
   factory GRemoveLabelsFromLabelableInput(
-          [Function(GRemoveLabelsFromLabelableInputBuilder b) updates]) =
+          [void Function(GRemoveLabelsFromLabelableInputBuilder b) updates]) =
       _$GRemoveLabelsFromLabelableInput;
 
   String? get clientMutationId;
@@ -4246,7 +4260,7 @@ abstract class GRemoveOutsideCollaboratorInput
   GRemoveOutsideCollaboratorInput._();
 
   factory GRemoveOutsideCollaboratorInput(
-          [Function(GRemoveOutsideCollaboratorInputBuilder b) updates]) =
+          [void Function(GRemoveOutsideCollaboratorInputBuilder b) updates]) =
       _$GRemoveOutsideCollaboratorInput;
 
   String? get clientMutationId;
@@ -4272,7 +4286,7 @@ abstract class GRemoveReactionInput
   GRemoveReactionInput._();
 
   factory GRemoveReactionInput(
-          [Function(GRemoveReactionInputBuilder b) updates]) =
+          [void Function(GRemoveReactionInputBuilder b) updates]) =
       _$GRemoveReactionInput;
 
   String? get clientMutationId;
@@ -4297,7 +4311,7 @@ abstract class GRemoveStarInput
     implements Built<GRemoveStarInput, GRemoveStarInputBuilder> {
   GRemoveStarInput._();
 
-  factory GRemoveStarInput([Function(GRemoveStarInputBuilder b) updates]) =
+  factory GRemoveStarInput([void Function(GRemoveStarInputBuilder b) updates]) =
       _$GRemoveStarInput;
 
   String? get clientMutationId;
@@ -4321,7 +4335,8 @@ abstract class GReopenIssueInput
     implements Built<GReopenIssueInput, GReopenIssueInputBuilder> {
   GReopenIssueInput._();
 
-  factory GReopenIssueInput([Function(GReopenIssueInputBuilder b) updates]) =
+  factory GReopenIssueInput(
+          [void Function(GReopenIssueInputBuilder b) updates]) =
       _$GReopenIssueInput;
 
   String? get clientMutationId;
@@ -4346,7 +4361,7 @@ abstract class GReopenPullRequestInput
   GReopenPullRequestInput._();
 
   factory GReopenPullRequestInput(
-          [Function(GReopenPullRequestInputBuilder b) updates]) =
+          [void Function(GReopenPullRequestInputBuilder b) updates]) =
       _$GReopenPullRequestInput;
 
   String? get clientMutationId;
@@ -4575,7 +4590,7 @@ abstract class GRepositoryInvitationOrder
   GRepositoryInvitationOrder._();
 
   factory GRepositoryInvitationOrder(
-          [Function(GRepositoryInvitationOrderBuilder b) updates]) =
+          [void Function(GRepositoryInvitationOrderBuilder b) updates]) =
       _$GRepositoryInvitationOrder;
 
   GOrderDirection get direction;
@@ -4640,7 +4655,7 @@ abstract class GRepositoryOrder
     implements Built<GRepositoryOrder, GRepositoryOrderBuilder> {
   GRepositoryOrder._();
 
-  factory GRepositoryOrder([Function(GRepositoryOrderBuilder b) updates]) =
+  factory GRepositoryOrder([void Function(GRepositoryOrderBuilder b) updates]) =
       _$GRepositoryOrder;
 
   GOrderDirection get direction;
@@ -4750,7 +4765,7 @@ abstract class GRequestReviewsInput
   GRequestReviewsInput._();
 
   factory GRequestReviewsInput(
-          [Function(GRequestReviewsInputBuilder b) updates]) =
+          [void Function(GRequestReviewsInputBuilder b) updates]) =
       _$GRequestReviewsInput;
 
   String? get clientMutationId;
@@ -4779,7 +4794,7 @@ abstract class GResolveReviewThreadInput
   GResolveReviewThreadInput._();
 
   factory GResolveReviewThreadInput(
-          [Function(GResolveReviewThreadInputBuilder b) updates]) =
+          [void Function(GResolveReviewThreadInputBuilder b) updates]) =
       _$GResolveReviewThreadInput;
 
   String? get clientMutationId;
@@ -4849,7 +4864,7 @@ abstract class GSavedReplyOrder
     implements Built<GSavedReplyOrder, GSavedReplyOrderBuilder> {
   GSavedReplyOrder._();
 
-  factory GSavedReplyOrder([Function(GSavedReplyOrderBuilder b) updates]) =
+  factory GSavedReplyOrder([void Function(GSavedReplyOrderBuilder b) updates]) =
       _$GSavedReplyOrder;
 
   GOrderDirection get direction;
@@ -4937,7 +4952,7 @@ abstract class GSecurityAdvisoryIdentifierFilter
   GSecurityAdvisoryIdentifierFilter._();
 
   factory GSecurityAdvisoryIdentifierFilter(
-          [Function(GSecurityAdvisoryIdentifierFilterBuilder b) updates]) =
+          [void Function(GSecurityAdvisoryIdentifierFilterBuilder b) updates]) =
       _$GSecurityAdvisoryIdentifierFilter;
 
   GSecurityAdvisoryIdentifierType get type;
@@ -4982,7 +4997,7 @@ abstract class GSecurityAdvisoryOrder
   GSecurityAdvisoryOrder._();
 
   factory GSecurityAdvisoryOrder(
-          [Function(GSecurityAdvisoryOrderBuilder b) updates]) =
+          [void Function(GSecurityAdvisoryOrderBuilder b) updates]) =
       _$GSecurityAdvisoryOrder;
 
   GOrderDirection get direction;
@@ -5050,7 +5065,7 @@ abstract class GSecurityVulnerabilityOrder
   GSecurityVulnerabilityOrder._();
 
   factory GSecurityVulnerabilityOrder(
-          [Function(GSecurityVulnerabilityOrderBuilder b) updates]) =
+          [void Function(GSecurityVulnerabilityOrderBuilder b) updates]) =
       _$GSecurityVulnerabilityOrder;
 
   GOrderDirection get direction;
@@ -5090,7 +5105,8 @@ abstract class GSponsorsTierOrder
     implements Built<GSponsorsTierOrder, GSponsorsTierOrderBuilder> {
   GSponsorsTierOrder._();
 
-  factory GSponsorsTierOrder([Function(GSponsorsTierOrderBuilder b) updates]) =
+  factory GSponsorsTierOrder(
+          [void Function(GSponsorsTierOrderBuilder b) updates]) =
       _$GSponsorsTierOrder;
 
   GOrderDirection get direction;
@@ -5133,7 +5149,8 @@ abstract class GSponsorshipOrder
     implements Built<GSponsorshipOrder, GSponsorshipOrderBuilder> {
   GSponsorshipOrder._();
 
-  factory GSponsorshipOrder([Function(GSponsorshipOrderBuilder b) updates]) =
+  factory GSponsorshipOrder(
+          [void Function(GSponsorshipOrderBuilder b) updates]) =
       _$GSponsorshipOrder;
 
   GOrderDirection get direction;
@@ -5189,7 +5206,8 @@ class GSponsorshipPrivacy extends EnumClass {
 abstract class GStarOrder implements Built<GStarOrder, GStarOrderBuilder> {
   GStarOrder._();
 
-  factory GStarOrder([Function(GStarOrderBuilder b) updates]) = _$GStarOrder;
+  factory GStarOrder([void Function(GStarOrderBuilder b) updates]) =
+      _$GStarOrder;
 
   GOrderDirection get direction;
   GStarOrderField get field;
@@ -5247,7 +5265,7 @@ abstract class GSubmitPullRequestReviewInput
   GSubmitPullRequestReviewInput._();
 
   factory GSubmitPullRequestReviewInput(
-          [Function(GSubmitPullRequestReviewInputBuilder b) updates]) =
+          [void Function(GSubmitPullRequestReviewInputBuilder b) updates]) =
       _$GSubmitPullRequestReviewInput;
 
   String? get body;
@@ -5295,7 +5313,7 @@ abstract class GTeamDiscussionCommentOrder
   GTeamDiscussionCommentOrder._();
 
   factory GTeamDiscussionCommentOrder(
-          [Function(GTeamDiscussionCommentOrderBuilder b) updates]) =
+          [void Function(GTeamDiscussionCommentOrderBuilder b) updates]) =
       _$GTeamDiscussionCommentOrder;
 
   GOrderDirection get direction;
@@ -5336,7 +5354,7 @@ abstract class GTeamDiscussionOrder
   GTeamDiscussionOrder._();
 
   factory GTeamDiscussionOrder(
-          [Function(GTeamDiscussionOrderBuilder b) updates]) =
+          [void Function(GTeamDiscussionOrderBuilder b) updates]) =
       _$GTeamDiscussionOrder;
 
   GOrderDirection get direction;
@@ -5376,7 +5394,7 @@ abstract class GTeamMemberOrder
     implements Built<GTeamMemberOrder, GTeamMemberOrderBuilder> {
   GTeamMemberOrder._();
 
-  factory GTeamMemberOrder([Function(GTeamMemberOrderBuilder b) updates]) =
+  factory GTeamMemberOrder([void Function(GTeamMemberOrderBuilder b) updates]) =
       _$GTeamMemberOrder;
 
   GOrderDirection get direction;
@@ -5451,7 +5469,8 @@ class GTeamMembershipType extends EnumClass {
 abstract class GTeamOrder implements Built<GTeamOrder, GTeamOrderBuilder> {
   GTeamOrder._();
 
-  factory GTeamOrder([Function(GTeamOrderBuilder b) updates]) = _$GTeamOrder;
+  factory GTeamOrder([void Function(GTeamOrderBuilder b) updates]) =
+      _$GTeamOrder;
 
   GOrderDirection get direction;
   GTeamOrderField get field;
@@ -5501,7 +5520,7 @@ abstract class GTeamRepositoryOrder
   GTeamRepositoryOrder._();
 
   factory GTeamRepositoryOrder(
-          [Function(GTeamRepositoryOrderBuilder b) updates]) =
+          [void Function(GTeamRepositoryOrderBuilder b) updates]) =
       _$GTeamRepositoryOrder;
 
   GOrderDirection get direction;
@@ -5595,7 +5614,8 @@ abstract class GTransferIssueInput
   GTransferIssueInput._();
 
   factory GTransferIssueInput(
-      [Function(GTransferIssueInputBuilder b) updates]) = _$GTransferIssueInput;
+          [void Function(GTransferIssueInputBuilder b) updates]) =
+      _$GTransferIssueInput;
 
   String? get clientMutationId;
   String get issueId;
@@ -5633,7 +5653,7 @@ abstract class GUnarchiveRepositoryInput
   GUnarchiveRepositoryInput._();
 
   factory GUnarchiveRepositoryInput(
-          [Function(GUnarchiveRepositoryInputBuilder b) updates]) =
+          [void Function(GUnarchiveRepositoryInputBuilder b) updates]) =
       _$GUnarchiveRepositoryInput;
 
   String? get clientMutationId;
@@ -5657,7 +5677,8 @@ abstract class GUnfollowUserInput
     implements Built<GUnfollowUserInput, GUnfollowUserInputBuilder> {
   GUnfollowUserInput._();
 
-  factory GUnfollowUserInput([Function(GUnfollowUserInputBuilder b) updates]) =
+  factory GUnfollowUserInput(
+          [void Function(GUnfollowUserInputBuilder b) updates]) =
       _$GUnfollowUserInput;
 
   String? get clientMutationId;
@@ -5684,7 +5705,7 @@ abstract class GUnlinkRepositoryFromProjectInput
   GUnlinkRepositoryFromProjectInput._();
 
   factory GUnlinkRepositoryFromProjectInput(
-          [Function(GUnlinkRepositoryFromProjectInputBuilder b) updates]) =
+          [void Function(GUnlinkRepositoryFromProjectInputBuilder b) updates]) =
       _$GUnlinkRepositoryFromProjectInput;
 
   String? get clientMutationId;
@@ -5711,7 +5732,7 @@ abstract class GUnlockLockableInput
   GUnlockLockableInput._();
 
   factory GUnlockLockableInput(
-          [Function(GUnlockLockableInputBuilder b) updates]) =
+          [void Function(GUnlockLockableInputBuilder b) updates]) =
       _$GUnlockLockableInput;
 
   String? get clientMutationId;
@@ -5738,7 +5759,7 @@ abstract class GUnmarkIssueAsDuplicateInput
   GUnmarkIssueAsDuplicateInput._();
 
   factory GUnmarkIssueAsDuplicateInput(
-          [Function(GUnmarkIssueAsDuplicateInputBuilder b) updates]) =
+          [void Function(GUnmarkIssueAsDuplicateInputBuilder b) updates]) =
       _$GUnmarkIssueAsDuplicateInput;
 
   String get canonicalId;
@@ -5765,7 +5786,7 @@ abstract class GUnresolveReviewThreadInput
   GUnresolveReviewThreadInput._();
 
   factory GUnresolveReviewThreadInput(
-          [Function(GUnresolveReviewThreadInputBuilder b) updates]) =
+          [void Function(GUnresolveReviewThreadInputBuilder b) updates]) =
       _$GUnresolveReviewThreadInput;
 
   String? get clientMutationId;
@@ -5792,7 +5813,7 @@ abstract class GUpdateBranchProtectionRuleInput
   GUpdateBranchProtectionRuleInput._();
 
   factory GUpdateBranchProtectionRuleInput(
-          [Function(GUpdateBranchProtectionRuleInputBuilder b) updates]) =
+          [void Function(GUpdateBranchProtectionRuleInputBuilder b) updates]) =
       _$GUpdateBranchProtectionRuleInput;
 
   String get branchProtectionRuleId;
@@ -5834,7 +5855,8 @@ abstract class GUpdateEnterpriseActionExecutionCapabilitySettingInput
   GUpdateEnterpriseActionExecutionCapabilitySettingInput._();
 
   factory GUpdateEnterpriseActionExecutionCapabilitySettingInput(
-      [Function(GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder b)
+      [void Function(
+              GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseActionExecutionCapabilitySettingInput;
 
   GActionExecutionCapabilitySetting get capability;
@@ -5864,7 +5886,7 @@ abstract class GUpdateEnterpriseAdministratorRoleInput
   GUpdateEnterpriseAdministratorRoleInput._();
 
   factory GUpdateEnterpriseAdministratorRoleInput(
-      [Function(GUpdateEnterpriseAdministratorRoleInputBuilder b)
+      [void Function(GUpdateEnterpriseAdministratorRoleInputBuilder b)
           updates]) = _$GUpdateEnterpriseAdministratorRoleInput;
 
   String? get clientMutationId;
@@ -5894,7 +5916,7 @@ abstract class GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
   GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._();
 
   factory GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput(
-      [Function(
+      [void Function(
               GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
                   b)
           updates]) = _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput;
@@ -5926,7 +5948,7 @@ abstract class GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
   GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._();
 
   factory GUpdateEnterpriseDefaultRepositoryPermissionSettingInput(
-      [Function(
+      [void Function(
               GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput;
 
@@ -5957,7 +5979,7 @@ abstract class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
   GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput._();
 
   factory GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput(
-          [Function(
+          [void Function(
                   GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
                       b)
               updates]) =
@@ -5992,7 +6014,7 @@ abstract class GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
   GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._();
 
   factory GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput(
-      [Function(
+      [void Function(
               GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
                   b)
           updates]) = _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput;
@@ -6028,7 +6050,8 @@ abstract class GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
   GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._();
 
   factory GUpdateEnterpriseMembersCanDeleteIssuesSettingInput(
-      [Function(GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder b)
+      [void Function(
+              GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput;
 
   String? get clientMutationId;
@@ -6058,7 +6081,7 @@ abstract class GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
   GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._();
 
   factory GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput(
-      [Function(
+      [void Function(
               GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
                   b)
           updates]) = _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput;
@@ -6090,7 +6113,7 @@ abstract class GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
   GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._();
 
   factory GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput(
-      [Function(
+      [void Function(
               GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
                   b)
           updates]) = _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput;
@@ -6122,7 +6145,8 @@ abstract class GUpdateEnterpriseMembersCanMakePurchasesSettingInput
   GUpdateEnterpriseMembersCanMakePurchasesSettingInput._();
 
   factory GUpdateEnterpriseMembersCanMakePurchasesSettingInput(
-      [Function(GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder b)
+      [void Function(
+              GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput;
 
   String? get clientMutationId;
@@ -6152,7 +6176,7 @@ abstract class GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
   GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._();
 
   factory GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput(
-          [Function(
+          [void Function(
                   GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
                       b)
               updates]) =
@@ -6187,7 +6211,7 @@ abstract class GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
   GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._();
 
   factory GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput(
-          [Function(
+          [void Function(
                   GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
                       b)
               updates]) =
@@ -6222,7 +6246,7 @@ abstract class GUpdateEnterpriseOrganizationProjectsSettingInput
   GUpdateEnterpriseOrganizationProjectsSettingInput._();
 
   factory GUpdateEnterpriseOrganizationProjectsSettingInput(
-      [Function(GUpdateEnterpriseOrganizationProjectsSettingInputBuilder b)
+      [void Function(GUpdateEnterpriseOrganizationProjectsSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseOrganizationProjectsSettingInput;
 
   String? get clientMutationId;
@@ -6252,7 +6276,7 @@ abstract class GUpdateEnterpriseProfileInput
   GUpdateEnterpriseProfileInput._();
 
   factory GUpdateEnterpriseProfileInput(
-          [Function(GUpdateEnterpriseProfileInputBuilder b) updates]) =
+          [void Function(GUpdateEnterpriseProfileInputBuilder b) updates]) =
       _$GUpdateEnterpriseProfileInput;
 
   String? get clientMutationId;
@@ -6283,7 +6307,7 @@ abstract class GUpdateEnterpriseRepositoryProjectsSettingInput
   GUpdateEnterpriseRepositoryProjectsSettingInput._();
 
   factory GUpdateEnterpriseRepositoryProjectsSettingInput(
-      [Function(GUpdateEnterpriseRepositoryProjectsSettingInputBuilder b)
+      [void Function(GUpdateEnterpriseRepositoryProjectsSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseRepositoryProjectsSettingInput;
 
   String? get clientMutationId;
@@ -6313,7 +6337,7 @@ abstract class GUpdateEnterpriseTeamDiscussionsSettingInput
   GUpdateEnterpriseTeamDiscussionsSettingInput._();
 
   factory GUpdateEnterpriseTeamDiscussionsSettingInput(
-      [Function(GUpdateEnterpriseTeamDiscussionsSettingInputBuilder b)
+      [void Function(GUpdateEnterpriseTeamDiscussionsSettingInputBuilder b)
           updates]) = _$GUpdateEnterpriseTeamDiscussionsSettingInput;
 
   String? get clientMutationId;
@@ -6343,7 +6367,7 @@ abstract class GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
   GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._();
 
   factory GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput(
-          [Function(
+          [void Function(
                   GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
                       b)
               updates]) =
@@ -6376,7 +6400,7 @@ abstract class GUpdateIssueCommentInput
   GUpdateIssueCommentInput._();
 
   factory GUpdateIssueCommentInput(
-          [Function(GUpdateIssueCommentInputBuilder b) updates]) =
+          [void Function(GUpdateIssueCommentInputBuilder b) updates]) =
       _$GUpdateIssueCommentInput;
 
   String get body;
@@ -6401,7 +6425,8 @@ abstract class GUpdateIssueInput
     implements Built<GUpdateIssueInput, GUpdateIssueInputBuilder> {
   GUpdateIssueInput._();
 
-  factory GUpdateIssueInput([Function(GUpdateIssueInputBuilder b) updates]) =
+  factory GUpdateIssueInput(
+          [void Function(GUpdateIssueInputBuilder b) updates]) =
       _$GUpdateIssueInput;
 
   BuiltList<String>? get assigneeIds;
@@ -6433,7 +6458,7 @@ abstract class GUpdateProjectCardInput
   GUpdateProjectCardInput._();
 
   factory GUpdateProjectCardInput(
-          [Function(GUpdateProjectCardInputBuilder b) updates]) =
+          [void Function(GUpdateProjectCardInputBuilder b) updates]) =
       _$GUpdateProjectCardInput;
 
   String? get clientMutationId;
@@ -6461,7 +6486,7 @@ abstract class GUpdateProjectColumnInput
   GUpdateProjectColumnInput._();
 
   factory GUpdateProjectColumnInput(
-          [Function(GUpdateProjectColumnInputBuilder b) updates]) =
+          [void Function(GUpdateProjectColumnInputBuilder b) updates]) =
       _$GUpdateProjectColumnInput;
 
   String? get clientMutationId;
@@ -6487,7 +6512,8 @@ abstract class GUpdateProjectInput
   GUpdateProjectInput._();
 
   factory GUpdateProjectInput(
-      [Function(GUpdateProjectInputBuilder b) updates]) = _$GUpdateProjectInput;
+          [void Function(GUpdateProjectInputBuilder b) updates]) =
+      _$GUpdateProjectInput;
 
   String? get body;
   String? get clientMutationId;
@@ -6515,7 +6541,7 @@ abstract class GUpdatePullRequestInput
   GUpdatePullRequestInput._();
 
   factory GUpdatePullRequestInput(
-          [Function(GUpdatePullRequestInputBuilder b) updates]) =
+          [void Function(GUpdatePullRequestInputBuilder b) updates]) =
       _$GUpdatePullRequestInput;
 
   BuiltList<String>? get assigneeIds;
@@ -6551,8 +6577,8 @@ abstract class GUpdatePullRequestReviewCommentInput
   GUpdatePullRequestReviewCommentInput._();
 
   factory GUpdatePullRequestReviewCommentInput(
-          [Function(GUpdatePullRequestReviewCommentInputBuilder b) updates]) =
-      _$GUpdatePullRequestReviewCommentInput;
+      [void Function(GUpdatePullRequestReviewCommentInputBuilder b)
+          updates]) = _$GUpdatePullRequestReviewCommentInput;
 
   String get body;
   String? get clientMutationId;
@@ -6580,7 +6606,7 @@ abstract class GUpdatePullRequestReviewInput
   GUpdatePullRequestReviewInput._();
 
   factory GUpdatePullRequestReviewInput(
-          [Function(GUpdatePullRequestReviewInputBuilder b) updates]) =
+          [void Function(GUpdatePullRequestReviewInputBuilder b) updates]) =
       _$GUpdatePullRequestReviewInput;
 
   String get body;
@@ -6605,7 +6631,7 @@ abstract class GUpdateRefInput
     implements Built<GUpdateRefInput, GUpdateRefInputBuilder> {
   GUpdateRefInput._();
 
-  factory GUpdateRefInput([Function(GUpdateRefInputBuilder b) updates]) =
+  factory GUpdateRefInput([void Function(GUpdateRefInputBuilder b) updates]) =
       _$GUpdateRefInput;
 
   String? get clientMutationId;
@@ -6632,7 +6658,7 @@ abstract class GUpdateRepositoryInput
   GUpdateRepositoryInput._();
 
   factory GUpdateRepositoryInput(
-          [Function(GUpdateRepositoryInputBuilder b) updates]) =
+          [void Function(GUpdateRepositoryInputBuilder b) updates]) =
       _$GUpdateRepositoryInput;
 
   String? get clientMutationId;
@@ -6665,7 +6691,7 @@ abstract class GUpdateSubscriptionInput
   GUpdateSubscriptionInput._();
 
   factory GUpdateSubscriptionInput(
-          [Function(GUpdateSubscriptionInputBuilder b) updates]) =
+          [void Function(GUpdateSubscriptionInputBuilder b) updates]) =
       _$GUpdateSubscriptionInput;
 
   String? get clientMutationId;
@@ -6693,7 +6719,7 @@ abstract class GUpdateTeamDiscussionCommentInput
   GUpdateTeamDiscussionCommentInput._();
 
   factory GUpdateTeamDiscussionCommentInput(
-          [Function(GUpdateTeamDiscussionCommentInputBuilder b) updates]) =
+          [void Function(GUpdateTeamDiscussionCommentInputBuilder b) updates]) =
       _$GUpdateTeamDiscussionCommentInput;
 
   String get body;
@@ -6722,7 +6748,7 @@ abstract class GUpdateTeamDiscussionInput
   GUpdateTeamDiscussionInput._();
 
   factory GUpdateTeamDiscussionInput(
-          [Function(GUpdateTeamDiscussionInputBuilder b) updates]) =
+          [void Function(GUpdateTeamDiscussionInputBuilder b) updates]) =
       _$GUpdateTeamDiscussionInput;
 
   String? get body;
@@ -6750,7 +6776,8 @@ abstract class GUpdateTopicsInput
     implements Built<GUpdateTopicsInput, GUpdateTopicsInputBuilder> {
   GUpdateTopicsInput._();
 
-  factory GUpdateTopicsInput([Function(GUpdateTopicsInputBuilder b) updates]) =
+  factory GUpdateTopicsInput(
+          [void Function(GUpdateTopicsInputBuilder b) updates]) =
       _$GUpdateTopicsInput;
 
   String? get clientMutationId;
@@ -6797,7 +6824,7 @@ abstract class GUserStatusOrder
     implements Built<GUserStatusOrder, GUserStatusOrderBuilder> {
   GUserStatusOrder._();
 
-  factory GUserStatusOrder([Function(GUserStatusOrderBuilder b) updates]) =
+  factory GUserStatusOrder([void Function(GUserStatusOrderBuilder b) updates]) =
       _$GUserStatusOrder;
 
   GOrderDirection get direction;

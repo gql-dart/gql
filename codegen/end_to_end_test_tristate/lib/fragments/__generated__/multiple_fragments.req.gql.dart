@@ -19,7 +19,8 @@ abstract class GHeroWith2Fragments
   GHeroWith2Fragments._();
 
   factory GHeroWith2Fragments(
-      [Function(GHeroWith2FragmentsBuilder b) updates]) = _$GHeroWith2Fragments;
+          [void Function(GHeroWith2FragmentsBuilder b) updates]) =
+      _$GHeroWith2Fragments;
 
   static void _initializeBuilder(GHeroWith2FragmentsBuilder b) => b
     ..operation = _i1.Operation(

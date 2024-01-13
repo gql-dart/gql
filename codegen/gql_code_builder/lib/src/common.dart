@@ -91,6 +91,7 @@ const defaultTypeMap = <String, Reference>{
 Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
   if (type is NamedTypeNode) {
     final ref = typeMap[type.name.value] ?? Reference(type.name.value);
+    assert(ref.symbol != null, "Symbol for ${ref} must not be null");
     return TypeReference(
       (b) => b
         ..url = ref.url

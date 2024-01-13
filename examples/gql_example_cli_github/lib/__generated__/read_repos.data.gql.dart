@@ -17,7 +17,7 @@ abstract class GReadRepositoriesData
   GReadRepositoriesData._();
 
   factory GReadRepositoriesData(
-          [Function(GReadRepositoriesDataBuilder b) updates]) =
+          [void Function(GReadRepositoriesDataBuilder b) updates]) =
       _$GReadRepositoriesData;
 
   static void _initializeBuilder(GReadRepositoriesDataBuilder b) =>
@@ -48,7 +48,7 @@ abstract class GReadRepositoriesData_viewer
   GReadRepositoriesData_viewer._();
 
   factory GReadRepositoriesData_viewer(
-          [Function(GReadRepositoriesData_viewerBuilder b) updates]) =
+          [void Function(GReadRepositoriesData_viewerBuilder b) updates]) =
       _$GReadRepositoriesData_viewer;
 
   static void _initializeBuilder(GReadRepositoriesData_viewerBuilder b) =>
@@ -79,7 +79,7 @@ abstract class GReadRepositoriesData_viewer_repositories
   GReadRepositoriesData_viewer_repositories._();
 
   factory GReadRepositoriesData_viewer_repositories(
-      [Function(GReadRepositoriesData_viewer_repositoriesBuilder b)
+      [void Function(GReadRepositoriesData_viewer_repositoriesBuilder b)
           updates]) = _$GReadRepositoriesData_viewer_repositories;
 
   static void _initializeBuilder(
@@ -112,7 +112,7 @@ abstract class GReadRepositoriesData_viewer_repositories_nodes
   GReadRepositoriesData_viewer_repositories_nodes._();
 
   factory GReadRepositoriesData_viewer_repositories_nodes(
-      [Function(GReadRepositoriesData_viewer_repositories_nodesBuilder b)
+      [void Function(GReadRepositoriesData_viewer_repositories_nodesBuilder b)
           updates]) = _$GReadRepositoriesData_viewer_repositories_nodes;
 
   static void _initializeBuilder(

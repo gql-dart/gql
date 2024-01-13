@@ -18,7 +18,7 @@ abstract class GCreateReview
     implements Built<GCreateReview, GCreateReviewBuilder> {
   GCreateReview._();
 
-  factory GCreateReview([Function(GCreateReviewBuilder b) updates]) =
+  factory GCreateReview([void Function(GCreateReviewBuilder b) updates]) =
       _$GCreateReview;
 
   static void _initializeBuilder(GCreateReviewBuilder b) => b

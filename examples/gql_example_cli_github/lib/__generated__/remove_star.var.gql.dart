@@ -13,7 +13,7 @@ abstract class GRemoveStarVars
     implements Built<GRemoveStarVars, GRemoveStarVarsBuilder> {
   GRemoveStarVars._();
 
-  factory GRemoveStarVars([Function(GRemoveStarVarsBuilder b) updates]) =
+  factory GRemoveStarVars([void Function(GRemoveStarVarsBuilder b) updates]) =
       _$GRemoveStarVars;
 
   String get starrableId;

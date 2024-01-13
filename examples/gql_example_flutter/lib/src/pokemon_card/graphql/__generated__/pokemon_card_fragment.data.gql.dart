@@ -31,7 +31,7 @@ abstract class GPokemonCardData
         _i1.GNestedFragment {
   GPokemonCardData._();
 
-  factory GPokemonCardData([Function(GPokemonCardDataBuilder b) updates]) =
+  factory GPokemonCardData([void Function(GPokemonCardDataBuilder b) updates]) =
       _$GPokemonCardData;
 
   static void _initializeBuilder(GPokemonCardDataBuilder b) =>

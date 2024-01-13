@@ -13,7 +13,7 @@ abstract class GPokemonCardVars
     implements Built<GPokemonCardVars, GPokemonCardVarsBuilder> {
   GPokemonCardVars._();
 
-  factory GPokemonCardVars([Function(GPokemonCardVarsBuilder b) updates]) =
+  factory GPokemonCardVars([void Function(GPokemonCardVarsBuilder b) updates]) =
       _$GPokemonCardVars;
 
   static Serializer<GPokemonCardVars> get serializer =>
