@@ -1,4 +1,4 @@
-# 0.10.0
+## 0.10.0
 
 - Adding 'vars_create_factories' option to create factory initializers with required parameters (
   #434)
