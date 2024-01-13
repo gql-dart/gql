@@ -1,3 +1,7 @@
+# 0.11.0
+
+- Adding 'vars_create_factories' option to create factory initializers with required parameters (#434)
+
 # 0.10.0
 
 - add `tristate_optionals` option to `schema_builder` and `var_builder` in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
