@@ -1,3 +1,7 @@
+# 0.9.2
+
+- Adding 'vars_create_factories' option to create factory initializers with required parameters (#434)
+
 ## 0.9.1+1
 
 - fix generating the `Value` wrappers as nullable
