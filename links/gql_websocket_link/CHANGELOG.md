@@ -1,3 +1,7 @@
+## 2.0.1
+
+- support uuid 4.0.0
+
 ## 2.0.0
 
 - BREAKING: graphql-transport-ws: closeReason is optional, add shouldRetry
