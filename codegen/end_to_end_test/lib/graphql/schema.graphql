@@ -211,3 +211,28 @@ scalar ISODate
 scalar CustomField
 
 scalar Json
+
+### START - issue_with_implementing_not_existing_classes
+type Connection {
+  field1: [Field1Edge!]!
+  field2: Field2!
+}
+
+type Field1Edge {
+  field11: Field11!
+}
+
+type Field1 {
+  field11: Field11
+}
+
+type Field11 {
+  field111: Field111!
+}
+
+type Field111 {
+}
+
+type Field2 {
+}
+### END - issue_with_implementing_not_existing_classes

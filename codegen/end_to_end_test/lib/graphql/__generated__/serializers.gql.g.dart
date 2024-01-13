@@ -13,6 +13,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
       ..add(GColorInput.serializer)
+      ..add(GConnectionData.serializer)
+      ..add(GConnectionData_field1.serializer)
+      ..add(GConnectionData_field1_field11.serializer)
+      ..add(GConnectionData_field1_field11_field111.serializer)
+      ..add(GConnectionData_field2.serializer)
+      ..add(GConnectionVars.serializer)
       ..add(GCreateCustomField.serializer)
       ..add(GCreateCustomFieldData.serializer)
       ..add(GCreateCustomFieldVars.serializer)
@@ -24,6 +30,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GDroidFragmentData.serializer)
       ..add(GDroidFragmentVars.serializer)
       ..add(GEpisode.serializer)
+      ..add(GField11Data.serializer)
+      ..add(GField11Data_field111.serializer)
+      ..add(GField11Vars.serializer)
+      ..add(GField1Data.serializer)
+      ..add(GField1Vars.serializer)
+      ..add(GField2Data.serializer)
+      ..add(GField2Vars.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
@@ -111,6 +124,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GConnectionData_field1)]),
+          () => new ListBuilder<GConnectionData_field1>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())

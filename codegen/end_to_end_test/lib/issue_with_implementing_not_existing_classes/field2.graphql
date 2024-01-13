@@ -1,0 +1,3 @@
+fragment Field2 on Field2 {
+  __typename
+}

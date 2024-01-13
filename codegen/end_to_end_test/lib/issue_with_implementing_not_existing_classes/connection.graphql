@@ -1,0 +1,15 @@
+# import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/field2.graphql'
+# import 'package:end_to_end_test/issue_with_implementing_not_existing_classes/field11.graphql'
+
+fragment Connection on Connection {
+  __typename
+  field1 {
+    __typename
+    field11 {
+      ...Field11
+    }
+  }
+  field2 {
+    ...Field2
+  }
+}
