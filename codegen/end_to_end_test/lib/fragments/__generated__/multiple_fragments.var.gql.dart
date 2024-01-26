@@ -17,7 +17,7 @@ abstract class GHeroWith2FragmentsVars
           [void Function(GHeroWith2FragmentsVarsBuilder b) updates]) =
       _$GHeroWith2FragmentsVars;
 
-  factory GHeroWith2FragmentsVars.create({required int? first}) =>
+  factory GHeroWith2FragmentsVars.create({int? first}) =>
       GHeroWith2FragmentsVars((b) => b..first = first);
 
   int? get first;

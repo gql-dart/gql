@@ -20,9 +20,9 @@ abstract class GReviewWithDateVars
       _$GReviewWithDateVars;
 
   factory GReviewWithDateVars.create({
-    required _i1.GEpisode? episode,
+    _i1.GEpisode? episode,
     required _i1.GReviewInput review,
-    required DateTime? createdAt,
+    DateTime? createdAt,
   }) =>
       GReviewWithDateVars((b) => b
         ..episode = episode
