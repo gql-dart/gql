@@ -8,6 +8,7 @@ Constructor builtCreateConstructor({
   required String name,
   required Iterable<Method> getters,
   required SourceNode schemaSource,
+  Map<String, Reference> typeOverrides = const {},
 }) {
   final className = builtClassName(name);
 
@@ -21,15 +22,17 @@ Constructor builtCreateConstructor({
   );
 
   // Create parameters for the factory constructor
-  final factoryParameters = filteredGetters.map(
-    (g) => Parameter(
+  final factoryParameters = filteredGetters.map((g) {
+    final isNullable = (g.returns! as TypeReference).isNullable ?? false;
+
+    return Parameter(
       (b) => b
         ..name = g.name!
         ..named = true
-        ..required = true
+        ..required = !isNullable
         ..type = g.returns,
-    ),
-  );
+    );
+  });
 
   final assignments = filteredGetters.map((g) {
     final typeDefinitionNode = getTypeDefinitionNode(
@@ -37,9 +40,11 @@ Constructor builtCreateConstructor({
     final isBuiltType = typeDefinitionNode is InputObjectTypeDefinitionNode ||
         typeDefinitionNode is ScalarTypeDefinitionNode;
 
-    // Check if the type is nullable
+    final isTypeOverride = typeOverrides.values.contains(g.returns!);
     final isNullable = (g.returns! as TypeReference).isNullable ?? false;
-    final assignment = isBuiltType
+
+    // If the type is a built type and not a TypeOverride, we need to call toBuilder() on it.
+    final assignment = isBuiltType && !isTypeOverride
         ? "${g.name} = ${g.name}${isNullable ? '?' : ''}.toBuilder()"
         : "${g.name} = ${g.name}";
 
