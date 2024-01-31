@@ -50,6 +50,33 @@ final BuiltSet<GLengthUnit> _$gLengthUnitValues =
   _$gLengthUnitFOOT,
 ]);
 
+const GModerationStatus _$gModerationStatusAPPROVED =
+    const GModerationStatus._('APPROVED');
+const GModerationStatus _$gModerationStatusREJECTED =
+    const GModerationStatus._('REJECTED');
+const GModerationStatus _$gModerationStatusPENDING =
+    const GModerationStatus._('PENDING');
+
+GModerationStatus _$gModerationStatusValueOf(String name) {
+  switch (name) {
+    case 'APPROVED':
+      return _$gModerationStatusAPPROVED;
+    case 'REJECTED':
+      return _$gModerationStatusREJECTED;
+    case 'PENDING':
+      return _$gModerationStatusPENDING;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<GModerationStatus> _$gModerationStatusValues =
+    new BuiltSet<GModerationStatus>(const <GModerationStatus>[
+  _$gModerationStatusAPPROVED,
+  _$gModerationStatusREJECTED,
+  _$gModerationStatusPENDING,
+]);
+
 Serializer<GEpisode> _$gEpisodeSerializer = new _$GEpisodeSerializer();
 Serializer<GLengthUnit> _$gLengthUnitSerializer = new _$GLengthUnitSerializer();
 Serializer<GReviewInput> _$gReviewInputSerializer =
@@ -57,6 +84,8 @@ Serializer<GReviewInput> _$gReviewInputSerializer =
 Serializer<GCustomFieldInput> _$gCustomFieldInputSerializer =
     new _$GCustomFieldInputSerializer();
 Serializer<GColorInput> _$gColorInputSerializer = new _$GColorInputSerializer();
+Serializer<GModerationStatus> _$gModerationStatusSerializer =
+    new _$GModerationStatusSerializer();
 Serializer<GPostLikesInput> _$gPostLikesInputSerializer =
     new _$GPostLikesInputSerializer();
 Serializer<GPostFavoritesInput> _$gPostFavoritesInputSerializer =
@@ -282,6 +311,24 @@ class _$GColorInputSerializer implements StructuredSerializer<GColorInput> {
 
     return result.build();
   }
+}
+
+class _$GModerationStatusSerializer
+    implements PrimitiveSerializer<GModerationStatus> {
+  @override
+  final Iterable<Type> types = const <Type>[GModerationStatus];
+  @override
+  final String wireName = 'GModerationStatus';
+
+  @override
+  Object serialize(Serializers serializers, GModerationStatus object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      object.name;
+
+  @override
+  GModerationStatus deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      GModerationStatus.valueOf(serialized as String);
 }
 
 class _$GPostLikesInputSerializer

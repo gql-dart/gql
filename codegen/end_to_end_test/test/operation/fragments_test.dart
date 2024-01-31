@@ -12,7 +12,7 @@ void main() {
           ..hero.name = "Leia"
           ..hero.friendsConnection.totalCount = 1
           ..hero.friendsConnection.edges.add(
-                GHeroWithFragmentsData_hero_friendsConnection_edges(
+                GcomparisonFieldsData_friendsConnection_edges(
                   (b) => b
                     ..node.G__typename = "Human"
                     ..node.name = "Luke",
@@ -29,7 +29,7 @@ void main() {
           ..hero.name = "Leia"
           ..hero.friendsConnection.totalCount = 1
           ..hero.friendsConnection.edges.add(
-                GHeroWithFragmentsData_hero_friendsConnection_edges(
+                GcomparisonFieldsData_friendsConnection_edges(
                   (b) => b
                     ..node.G__typename = "Human"
                     ..node.name = "Luke",

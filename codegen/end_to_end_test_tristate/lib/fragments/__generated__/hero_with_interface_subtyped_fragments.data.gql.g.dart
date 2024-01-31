@@ -9,9 +9,6 @@ part of 'hero_with_interface_subtyped_fragments.data.gql.dart';
 Serializer<GHeroWithInterfaceSubTypedFragmentsData>
     _$gHeroWithInterfaceSubTypedFragmentsDataSerializer =
     new _$GHeroWithInterfaceSubTypedFragmentsDataSerializer();
-Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero>
-    _$gHeroWithInterfaceSubTypedFragmentsDataHeroSerializer =
-    new _$GHeroWithInterfaceSubTypedFragmentsData_heroSerializer();
 Serializer<GheroFieldsFragmentData__base>
     _$gheroFieldsFragmentDataBaseSerializer =
     new _$GheroFieldsFragmentData__baseSerializer();
@@ -69,8 +66,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsDataSerializer
       result
         ..add('hero')
         ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(GHeroWithInterfaceSubTypedFragmentsData_hero)));
+            specifiedType: const FullType(GheroFieldsFragmentData)));
     }
     return result;
   }
@@ -92,69 +88,9 @@ class _$GHeroWithInterfaceSubTypedFragmentsDataSerializer
               specifiedType: const FullType(String))! as String;
           break;
         case 'hero':
-          result.hero.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      GHeroWithInterfaceSubTypedFragmentsData_hero))!
-              as GHeroWithInterfaceSubTypedFragmentsData_hero);
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GHeroWithInterfaceSubTypedFragmentsData_heroSerializer
-    implements
-        StructuredSerializer<GHeroWithInterfaceSubTypedFragmentsData_hero> {
-  @override
-  final Iterable<Type> types = const [
-    GHeroWithInterfaceSubTypedFragmentsData_hero,
-    _$GHeroWithInterfaceSubTypedFragmentsData_hero
-  ];
-  @override
-  final String wireName = 'GHeroWithInterfaceSubTypedFragmentsData_hero';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GHeroWithInterfaceSubTypedFragmentsData_hero object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithInterfaceSubTypedFragmentsData_heroBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+          result.hero = serializers.deserialize(value,
+                  specifiedType: const FullType(GheroFieldsFragmentData))
+              as GheroFieldsFragmentData?;
           break;
       }
     }
@@ -884,7 +820,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData
   @override
   final String G__typename;
   @override
-  final GHeroWithInterfaceSubTypedFragmentsData_hero? hero;
+  final GheroFieldsFragmentData? hero;
 
   factory _$GHeroWithInterfaceSubTypedFragmentsData(
           [void Function(GHeroWithInterfaceSubTypedFragmentsDataBuilder)?
@@ -946,12 +882,9 @@ class GHeroWithInterfaceSubTypedFragmentsDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_heroBuilder? _hero;
-  GHeroWithInterfaceSubTypedFragmentsData_heroBuilder get hero =>
-      _$this._hero ??=
-          new GHeroWithInterfaceSubTypedFragmentsData_heroBuilder();
-  set hero(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder? hero) =>
-      _$this._hero = hero;
+  GheroFieldsFragmentData? _hero;
+  GheroFieldsFragmentData? get hero => _$this._hero;
+  set hero(GheroFieldsFragmentData? hero) => _$this._hero = hero;
 
   GHeroWithInterfaceSubTypedFragmentsDataBuilder() {
     GHeroWithInterfaceSubTypedFragmentsData._initializeBuilder(this);
@@ -961,7 +894,7 @@ class GHeroWithInterfaceSubTypedFragmentsDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _hero = $v.hero?.toBuilder();
+      _hero = $v.hero;
       _$v = null;
     }
     return this;
@@ -983,156 +916,11 @@ class GHeroWithInterfaceSubTypedFragmentsDataBuilder
   GHeroWithInterfaceSubTypedFragmentsData build() => _build();
 
   _$GHeroWithInterfaceSubTypedFragmentsData _build() {
-    _$GHeroWithInterfaceSubTypedFragmentsData _$result;
-    try {
-      _$result = _$v ??
-          new _$GHeroWithInterfaceSubTypedFragmentsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GHeroWithInterfaceSubTypedFragmentsData', 'G__typename'),
-              hero: _hero?.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'hero';
-        _hero?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'GHeroWithInterfaceSubTypedFragmentsData',
-            _$failedField,
-            e.toString());
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GHeroWithInterfaceSubTypedFragmentsData_hero
-    extends GHeroWithInterfaceSubTypedFragmentsData_hero {
-  @override
-  final String G__typename;
-  @override
-  final String id;
-  @override
-  final String name;
-
-  factory _$GHeroWithInterfaceSubTypedFragmentsData_hero(
-          [void Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder)?
-              updates]) =>
-      (new GHeroWithInterfaceSubTypedFragmentsData_heroBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GHeroWithInterfaceSubTypedFragmentsData_hero._(
-      {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'name');
-  }
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero rebuild(
-          void Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder)
-              updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_heroBuilder toBuilder() =>
-      new GHeroWithInterfaceSubTypedFragmentsData_heroBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GHeroWithInterfaceSubTypedFragmentsData_hero &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GHeroWithInterfaceSubTypedFragmentsData_hero')
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GHeroWithInterfaceSubTypedFragmentsData_heroBuilder
-    implements
-        Builder<GHeroWithInterfaceSubTypedFragmentsData_hero,
-            GHeroWithInterfaceSubTypedFragmentsData_heroBuilder> {
-  _$GHeroWithInterfaceSubTypedFragmentsData_hero? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GHeroWithInterfaceSubTypedFragmentsData_heroBuilder() {
-    GHeroWithInterfaceSubTypedFragmentsData_hero._initializeBuilder(this);
-  }
-
-  GHeroWithInterfaceSubTypedFragmentsData_heroBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GHeroWithInterfaceSubTypedFragmentsData_hero other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithInterfaceSubTypedFragmentsData_hero;
-  }
-
-  @override
-  void update(
-      void Function(GHeroWithInterfaceSubTypedFragmentsData_heroBuilder)?
-          updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero build() => _build();
-
-  _$GHeroWithInterfaceSubTypedFragmentsData_hero _build() {
     final _$result = _$v ??
-        new _$GHeroWithInterfaceSubTypedFragmentsData_hero._(
+        new _$GHeroWithInterfaceSubTypedFragmentsData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroWithInterfaceSubTypedFragmentsData_hero', 'name'));
+                r'GHeroWithInterfaceSubTypedFragmentsData', 'G__typename'),
+            hero: hero);
     replace(_$result);
     return _$result;
   }

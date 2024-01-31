@@ -7,6 +7,14 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GActivityAData.serializer)
+      ..add(GActivityAData_activityData.serializer)
+      ..add(GActivityAVars.serializer)
+      ..add(GActivityBData.serializer)
+      ..add(GActivityBData_activity__asActivityA.serializer)
+      ..add(GActivityBData_activity__asActivityA_activityData.serializer)
+      ..add(GActivityBData_activity__base.serializer)
+      ..add(GActivityBVars.serializer)
       ..add(GAliasedHero.serializer)
       ..add(GAliasedHeroData.serializer)
       ..add(GAliasedHeroData_empireHero.serializer)
@@ -41,22 +49,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWith2FragmentsVars.serializer)
       ..add(GHeroWithFragments.serializer)
       ..add(GHeroWithFragmentsData.serializer)
-      ..add(GHeroWithFragmentsData_hero.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection_edges.serializer)
-      ..add(GHeroWithFragmentsData_hero_friendsConnection_edges_node.serializer)
       ..add(GHeroWithFragmentsVars.serializer)
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
       ..add(GHumanWithArgsData_human.serializer)
       ..add(GHumanWithArgsVars.serializer)
       ..add(GISODate.serializer)
+      ..add(GItemConnectionData.serializer)
+      ..add(GItemConnectionData_edges.serializer)
+      ..add(GItemConnectionVars.serializer)
+      ..add(GItemData.serializer)
+      ..add(GItemEdgeData.serializer)
+      ..add(GItemEdgeVars.serializer)
+      ..add(GItemVars.serializer)
       ..add(GJson.serializer)
       ..add(GLengthUnit.serializer)
+      ..add(GModerationStatus.serializer)
       ..add(GPostFavoritesInput.serializer)
       ..add(GPostFragmentData.serializer)
       ..add(GPostFragmentData_isFavorited.serializer)
@@ -64,28 +75,32 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GPostFragmentForUser1Data.serializer)
       ..add(GPostFragmentForUser1Data_favoritedUsers.serializer)
       ..add(GPostFragmentForUser1Vars.serializer)
+      ..add(GPostFragmentForUser2Data.serializer)
+      ..add(GPostFragmentForUser2Data_favoritedUsers.serializer)
+      ..add(GPostFragmentForUser2Vars.serializer)
       ..add(GPostFragmentVars.serializer)
       ..add(GPostLikesInput.serializer)
       ..add(GPosts.serializer)
       ..add(GPostsData.serializer)
-      ..add(GPostsData_posts.serializer)
-      ..add(GPostsData_posts_isFavorited.serializer)
-      ..add(GPostsData_posts_isLiked.serializer)
       ..add(GPostsVars.serializer)
       ..add(GPostsWithFixedVariable.serializer)
       ..add(GPostsWithFixedVariableData.serializer)
-      ..add(GPostsWithFixedVariableData_posts.serializer)
-      ..add(GPostsWithFixedVariableData_posts_favoritedUsers.serializer)
       ..add(GPostsWithFixedVariableVars.serializer)
       ..add(GReviewInput.serializer)
       ..add(GReviewWithDate.serializer)
       ..add(GReviewWithDateData.serializer)
       ..add(GReviewWithDateData_createReview.serializer)
       ..add(GReviewWithDateVars.serializer)
+      ..add(GTestQuery.serializer)
+      ..add(GTestQueryData.serializer)
+      ..add(GTestQueryVars.serializer)
+      ..add(GUserFragmentData.serializer)
+      ..add(GUserFragmentData_location.serializer)
+      ..add(GUserFragmentData_moderation.serializer)
+      ..add(GUserFragmentVars.serializer)
       ..add(GcomparisonFieldsData.serializer)
       ..add(GcomparisonFieldsData_friendsConnection.serializer)
       ..add(GcomparisonFieldsData_friendsConnection_edges.serializer)
-      ..add(GcomparisonFieldsData_friendsConnection_edges_node.serializer)
       ..add(GcomparisonFieldsVars.serializer)
       ..add(GdroidFieldsFragmentData.serializer)
       ..add(GdroidFieldsFragmentVars.serializer)
@@ -114,6 +129,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GItemConnectionData_edges)]),
+          () => new ListBuilder<GItemConnectionData_edges>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())
       ..addBuilderFactory(
@@ -133,21 +152,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(
-                GHeroWithFragmentsData_hero_friendsConnection_edges)
-          ]),
-          () => new ListBuilder<
-              GHeroWithFragmentsData_hero_friendsConnection_edges?>())
-      ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType.nullable(GPostsData_posts)]),
-          () => new ListBuilder<GPostsData_posts?>())
+              BuiltList, const [const FullType.nullable(GPostFragmentData)]),
+          () => new ListBuilder<GPostFragmentData?>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GPostsWithFixedVariableData_posts)
-          ]),
-          () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
+          const FullType(BuiltList,
+              const [const FullType.nullable(GPostFragmentForUser2Data)]),
+          () => new ListBuilder<GPostFragmentForUser2Data?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(

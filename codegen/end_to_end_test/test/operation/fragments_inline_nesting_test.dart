@@ -94,5 +94,34 @@ void main() {
 
       expect(obiwan.toJson(), equals(json));
     });
+
+    test("complete data response class test", () {
+      var json = {
+        "__typename": "Query",
+        "hero": {
+          "__typename": "Human",
+          "id": "luke",
+          "name": "Luke",
+          "homePlanet": "Tattoine",
+          "friends": [
+            {
+              "__typename": "Droid",
+              "id": "r2d2",
+              "name": "R2-D2",
+              "primaryFunction": "Astromech",
+            },
+            {
+              "__typename": "Human",
+              "id": "han",
+              "name": "Han Solo",
+              "homePlanet": "Nerf",
+            },
+          ],
+        },
+      };
+      final response = GHeroWithInterfaceSubTypedFragmentsData.fromJson(json);
+
+      expect(response?.toJson(), json);
+    });
   });
 }

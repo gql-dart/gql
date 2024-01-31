@@ -6,10 +6,7 @@ import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.data.gq
         GPostFragmentData,
         GPostFragmentData_isFavorited,
         GPostFragmentData_isLiked,
-        GPostsData,
-        GPostsData_posts,
-        GPostsData_posts_isFavorited,
-        GPostsData_posts_isLiked;
+        GPostsData;
 import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.req.gql.dart'
     show GPosts;
 import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.var.gql.dart'
@@ -27,28 +24,46 @@ import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
+import 'package:end_to_end_test/fragments/__generated__/fragment_activities.data.gql.dart'
+    show
+        GActivityBData_activity,
+        GActivityAData,
+        GActivityAData_activityData,
+        GActivityBData,
+        GActivityBData_activity__asActivityA,
+        GActivityBData_activity__asActivityA_activityData,
+        GActivityBData_activity__base,
+        GItemConnectionData,
+        GItemConnectionData_edges,
+        GItemData,
+        GItemEdgeData;
+import 'package:end_to_end_test/fragments/__generated__/fragment_activities.var.gql.dart'
+    show
+        GActivityAVars,
+        GActivityBVars,
+        GItemConnectionVars,
+        GItemEdgeVars,
+        GItemVars;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
         GPostFragmentForUser1Data,
         GPostFragmentForUser1Data_favoritedUsers,
-        GPostsWithFixedVariableData,
-        GPostsWithFixedVariableData_posts,
-        GPostsWithFixedVariableData_posts_favoritedUsers;
+        GPostFragmentForUser2Data,
+        GPostFragmentForUser2Data_favoritedUsers,
+        GPostsWithFixedVariableData;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.req.gql.dart'
     show GPostsWithFixedVariable;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.var.gql.dart'
-    show GPostFragmentForUser1Vars, GPostsWithFixedVariableVars;
+    show
+        GPostFragmentForUser1Vars,
+        GPostFragmentForUser2Vars,
+        GPostsWithFixedVariableVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
-        GHeroWithFragmentsData_hero,
-        GHeroWithFragmentsData_hero_friendsConnection,
-        GHeroWithFragmentsData_hero_friendsConnection_edges,
-        GHeroWithFragmentsData_hero_friendsConnection_edges_node,
         GcomparisonFieldsData,
         GcomparisonFieldsData_friendsConnection,
         GcomparisonFieldsData_friendsConnection_edges,
-        GcomparisonFieldsData_friendsConnection_edges_node,
         GheroDataData;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.gql.dart'
     show GHeroWithFragments;
@@ -60,7 +75,6 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentData__asHuman_friends,
         GhumanFieldsFragmentData_friends,
         GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
         GdroidFieldsFragmentData,
         GheroFieldsFragmentData__asDroid,
         GheroFieldsFragmentData__asHuman,
@@ -90,6 +104,16 @@ import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.g
     show GHeroWith2Fragments;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.gql.dart'
     show GHeroWith2FragmentsVars, GheroIdVars, GheroNameVars;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.data.gql.dart'
+    show
+        GTestQueryData,
+        GUserFragmentData,
+        GUserFragmentData_location,
+        GUserFragmentData_moderation;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.req.gql.dart'
+    show GTestQuery;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments.var.gql.dart'
+    show GTestQueryVars, GUserFragmentVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
@@ -98,6 +122,7 @@ import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
         GISODate,
         GJson,
         GLengthUnit,
+        GModerationStatus,
         GPostFavoritesInput,
         GPostLikesInput,
         GReviewInput;
@@ -153,12 +178,21 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
+  ..add(GActivityBData_activity.serializer)
   ..add(GHeroForEpisodeData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GActivityAData,
+  GActivityAData_activityData,
+  GActivityAVars,
+  GActivityBData,
+  GActivityBData_activity__asActivityA,
+  GActivityBData_activity__asActivityA_activityData,
+  GActivityBData_activity__base,
+  GActivityBVars,
   GAliasedHero,
   GAliasedHeroData,
   GAliasedHeroData_empireHero,
@@ -193,22 +227,25 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWith2FragmentsVars,
   GHeroWithFragments,
   GHeroWithFragmentsData,
-  GHeroWithFragmentsData_hero,
-  GHeroWithFragmentsData_hero_friendsConnection,
-  GHeroWithFragmentsData_hero_friendsConnection_edges,
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node,
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
-  GHeroWithInterfaceSubTypedFragmentsData_hero,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
   GHumanWithArgsData_human,
   GHumanWithArgsVars,
   GISODate,
+  GItemConnectionData,
+  GItemConnectionData_edges,
+  GItemConnectionVars,
+  GItemData,
+  GItemEdgeData,
+  GItemEdgeVars,
+  GItemVars,
   GJson,
   GLengthUnit,
+  GModerationStatus,
   GPostFavoritesInput,
   GPostFragmentData,
   GPostFragmentData_isFavorited,
@@ -216,28 +253,32 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPostFragmentForUser1Data,
   GPostFragmentForUser1Data_favoritedUsers,
   GPostFragmentForUser1Vars,
+  GPostFragmentForUser2Data,
+  GPostFragmentForUser2Data_favoritedUsers,
+  GPostFragmentForUser2Vars,
   GPostFragmentVars,
   GPostLikesInput,
   GPosts,
   GPostsData,
-  GPostsData_posts,
-  GPostsData_posts_isFavorited,
-  GPostsData_posts_isLiked,
   GPostsVars,
   GPostsWithFixedVariable,
   GPostsWithFixedVariableData,
-  GPostsWithFixedVariableData_posts,
-  GPostsWithFixedVariableData_posts_favoritedUsers,
   GPostsWithFixedVariableVars,
   GReviewInput,
   GReviewWithDate,
   GReviewWithDateData,
   GReviewWithDateData_createReview,
   GReviewWithDateVars,
+  GTestQuery,
+  GTestQueryData,
+  GTestQueryVars,
+  GUserFragmentData,
+  GUserFragmentData_location,
+  GUserFragmentData_moderation,
+  GUserFragmentVars,
   GcomparisonFieldsData,
   GcomparisonFieldsData_friendsConnection,
   GcomparisonFieldsData_friendsConnection_edges,
-  GcomparisonFieldsData_friendsConnection_edges_node,
   GcomparisonFieldsVars,
   GdroidFieldsFragmentData,
   GdroidFieldsFragmentVars,

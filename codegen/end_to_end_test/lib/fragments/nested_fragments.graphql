@@ -1,0 +1,28 @@
+
+query TestQuery {
+  currentUser {
+    ...UserFragment
+  }
+
+  currentUser2: currentUser {
+     ...UserFragment
+     location {
+       lat
+       lng
+     }
+     moderation {
+       moderationStatus
+     }
+  }
+}
+
+fragment UserFragment on User {
+    id
+    location {
+      lat
+      lng
+    }
+    moderation {
+        moderationStatus
+    }
+}

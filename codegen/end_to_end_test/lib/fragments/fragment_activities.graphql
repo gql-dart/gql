@@ -1,0 +1,33 @@
+fragment ActivityA on ActivityA {
+    __typename
+    activityData {
+        __typename
+    }
+}
+
+fragment ActivityB on ActivityB {
+    __typename
+    activity {
+        __typename
+        ... on ActivityA {
+            ...ActivityA
+        }
+    }
+}
+
+fragment Item on Item {
+    __typename
+}
+
+
+fragment ItemConnection on ItemConnection {
+    __typename
+    count
+    edges {
+        ...ItemEdge
+    }
+}
+
+fragment ItemEdge on ItemEdge {
+    __typename
+}

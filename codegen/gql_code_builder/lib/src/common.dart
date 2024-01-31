@@ -88,9 +88,11 @@ const defaultTypeMap = <String, Reference>{
   "Boolean": Reference("bool"),
 };
 
-Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
+Reference _typeRef(
+    TypeNode type, Map<String, Reference> typeMap, Reference? fragmentRef) {
   if (type is NamedTypeNode) {
-    final ref = typeMap[type.name.value] ?? Reference(type.name.value);
+    final ref =
+        fragmentRef ?? typeMap[type.name.value] ?? Reference(type.name.value);
     assert(ref.symbol != null, "Symbol for ${ref} must not be null");
     return TypeReference(
       (b) => b
@@ -104,7 +106,7 @@ Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
         ..url = "package:built_collection/built_collection.dart"
         ..symbol = "BuiltList"
         ..isNullable = !type.isNonNull
-        ..types.add(_typeRef(type.type, typeMap)),
+        ..types.add(_typeRef(type.type, typeMap, fragmentRef)),
     );
   }
   throw Exception("Unrecognized TypeNode type");
@@ -138,7 +140,7 @@ Method buildGetter({
   required TypeNode typeNode,
   required SourceNode schemaSource,
   Map<String, Reference> typeOverrides = const {},
-  Reference? typeRefAlias,
+  Reference? fragmentRef,
   String? typeRefPrefix,
   bool built = true,
   bool isOverride = false,
@@ -152,9 +154,7 @@ Method buildGetter({
 
   final typeMap = {
     ...defaultTypeMap,
-    if (typeRefAlias != null)
-      typeName: typeRefAlias
-    else if (typeRefPrefix != null)
+    if (typeRefPrefix != null)
       typeName: refer("${typeRefPrefix}_${nameNode.value}")
     else if (typeDef != null)
       typeName: refer(
@@ -164,10 +164,7 @@ Method buildGetter({
     ...typeOverrides,
   };
 
-  final returnType = _typeRef(
-    typeNode,
-    typeMap,
-  );
+  final returnType = _typeRef(typeNode, typeMap, fragmentRef);
 
   return Method(
     (b) => b

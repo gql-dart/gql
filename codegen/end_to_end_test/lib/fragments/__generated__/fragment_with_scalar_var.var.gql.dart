@@ -64,3 +64,27 @@ abstract class GPostFragmentForUser1Vars
         json,
       );
 }
+
+abstract class GPostFragmentForUser2Vars
+    implements
+        Built<GPostFragmentForUser2Vars, GPostFragmentForUser2VarsBuilder> {
+  GPostFragmentForUser2Vars._();
+
+  factory GPostFragmentForUser2Vars(
+          [void Function(GPostFragmentForUser2VarsBuilder b) updates]) =
+      _$GPostFragmentForUser2Vars;
+
+  static Serializer<GPostFragmentForUser2Vars> get serializer =>
+      _$gPostFragmentForUser2VarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GPostFragmentForUser2Vars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GPostFragmentForUser2Vars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GPostFragmentForUser2Vars.serializer,
+        json,
+      );
+}

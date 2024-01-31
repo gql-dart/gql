@@ -6,10 +6,7 @@ import 'package:end_to_end_test_tristate/aliases/__generated__/alias_var_fragmen
         GPostFragmentData,
         GPostFragmentData_isFavorited,
         GPostFragmentData_isLiked,
-        GPostsData,
-        GPostsData_posts,
-        GPostsData_posts_isFavorited,
-        GPostsData_posts_isLiked;
+        GPostsData;
 import 'package:end_to_end_test_tristate/aliases/__generated__/alias_var_fragment.req.gql.dart'
     show GPosts;
 import 'package:end_to_end_test_tristate/aliases/__generated__/alias_var_fragment.var.gql.dart'
@@ -32,9 +29,7 @@ import 'package:end_to_end_test_tristate/fragments/__generated__/fragment_with_s
     show
         GPostFragmentForUser1Data,
         GPostFragmentForUser1Data_favoritedUsers,
-        GPostsWithFixedVariableData,
-        GPostsWithFixedVariableData_posts,
-        GPostsWithFixedVariableData_posts_favoritedUsers;
+        GPostsWithFixedVariableData;
 import 'package:end_to_end_test_tristate/fragments/__generated__/fragment_with_scalar_var.req.gql.dart'
     show GPostsWithFixedVariable;
 import 'package:end_to_end_test_tristate/fragments/__generated__/fragment_with_scalar_var.var.gql.dart'
@@ -42,14 +37,9 @@ import 'package:end_to_end_test_tristate/fragments/__generated__/fragment_with_s
 import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
-        GHeroWithFragmentsData_hero,
-        GHeroWithFragmentsData_hero_friendsConnection,
-        GHeroWithFragmentsData_hero_friendsConnection_edges,
-        GHeroWithFragmentsData_hero_friendsConnection_edges_node,
         GcomparisonFieldsData,
         GcomparisonFieldsData_friendsConnection,
         GcomparisonFieldsData_friendsConnection_edges,
-        GcomparisonFieldsData_friendsConnection_edges_node,
         GheroDataData;
 import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_fragments.req.gql.dart'
     show GHeroWithFragments;
@@ -61,7 +51,6 @@ import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_inter
         GheroFieldsFragmentData__asHuman_friends,
         GhumanFieldsFragmentData_friends,
         GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
         GdroidFieldsFragmentData,
         GheroFieldsFragmentData__asDroid,
         GheroFieldsFragmentData__asHuman,
@@ -194,14 +183,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWith2FragmentsVars,
   GHeroWithFragments,
   GHeroWithFragmentsData,
-  GHeroWithFragmentsData_hero,
-  GHeroWithFragmentsData_hero_friendsConnection,
-  GHeroWithFragmentsData_hero_friendsConnection_edges,
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node,
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
-  GHeroWithInterfaceSubTypedFragmentsData_hero,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
@@ -221,14 +205,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPostLikesInput,
   GPosts,
   GPostsData,
-  GPostsData_posts,
-  GPostsData_posts_isFavorited,
-  GPostsData_posts_isLiked,
   GPostsVars,
   GPostsWithFixedVariable,
   GPostsWithFixedVariableData,
-  GPostsWithFixedVariableData_posts,
-  GPostsWithFixedVariableData_posts_favoritedUsers,
   GPostsWithFixedVariableVars,
   GReviewInput,
   GReviewWithDate,
@@ -238,7 +217,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GcomparisonFieldsData,
   GcomparisonFieldsData_friendsConnection,
   GcomparisonFieldsData_friendsConnection_edges,
-  GcomparisonFieldsData_friendsConnection_edges_node,
   GcomparisonFieldsVars,
   GdroidFieldsFragmentData,
   GdroidFieldsFragmentVars,
