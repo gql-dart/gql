@@ -37,9 +37,16 @@ Constructor builtCreateConstructor({
   final assignments = filteredGetters.map((g) {
     final typeDefinitionNode = getTypeDefinitionNode(
         schemaSource.document, g.returns!.symbol!.replaceFirst("G", ""));
-    final isBuiltType = typeDefinitionNode is InputObjectTypeDefinitionNode ||
-        typeDefinitionNode is ScalarTypeDefinitionNode;
 
+    /// "$BuiltList" is a String "BuiltList<dynamic>" and
+    /// [g.returns!.symbol!] returns "BuiltList"
+    ///  so we cannot use equality operator here.
+    final isBuiltList = g.returns?.symbol != null
+        ? "$BuiltList".contains(g.returns!.symbol!)
+        : false;
+    final isBuiltType = typeDefinitionNode is InputObjectTypeDefinitionNode ||
+        typeDefinitionNode is ScalarTypeDefinitionNode ||
+        isBuiltList;
     final isTypeOverride = typeOverrides.values.contains(g.returns!);
     final isNullable = (g.returns! as TypeReference).isNullable ?? false;
 
