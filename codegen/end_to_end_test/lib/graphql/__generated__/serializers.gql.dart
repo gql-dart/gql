@@ -144,6 +144,12 @@ import 'package:end_to_end_test/variables/__generated__/human_with_args.req.gql.
     show GHumanWithArgs;
 import 'package:end_to_end_test/variables/__generated__/human_with_args.var.gql.dart'
     show GHumanWithArgsVars;
+import 'package:end_to_end_test/variables/__generated__/list_argument.data.gql.dart'
+    show GreviewsWithListArgumentData, GreviewsWithListArgumentData_reviews;
+import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.dart'
+    show GreviewsWithListArgument;
+import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart'
+    show GreviewsWithListArgumentVars;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 
@@ -259,5 +265,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GhumanFieldsFragmentData_friends__asHuman,
   GhumanFieldsFragmentData_friends__base,
   GhumanFieldsFragmentVars,
+  GreviewsWithListArgument,
+  GreviewsWithListArgumentData,
+  GreviewsWithListArgumentData_reviews,
+  GreviewsWithListArgumentVars,
 ])
 final Serializers serializers = _serializersBuilder.build();
