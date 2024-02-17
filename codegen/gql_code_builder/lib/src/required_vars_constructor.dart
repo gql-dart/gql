@@ -38,12 +38,17 @@ Constructor builtCreateConstructor({
     final typeDefinitionNode = getTypeDefinitionNode(
         schemaSource.document, g.returns!.symbol!.replaceFirst("G", ""));
 
+    final bool isFromBuiltCollectionPackage =
+        g.returns?.url?.contains("built_collection") ?? false;
+
     /// "$BuiltList" is a String "BuiltList<dynamic>" and
     /// [g.returns!.symbol!] returns "BuiltList"
     ///  so we cannot use equality operator here.
-    final isBuiltList = g.returns?.symbol != null
-        ? "$BuiltList".contains(g.returns!.symbol!)
-        : false;
+    final isBuiltList = (g.returns?.symbol != null
+            ? "$BuiltList".contains(g.returns!.symbol!)
+            : false) &&
+        isFromBuiltCollectionPackage;
+
     final isBuiltType = typeDefinitionNode is InputObjectTypeDefinitionNode ||
         typeDefinitionNode is ScalarTypeDefinitionNode ||
         isBuiltList;

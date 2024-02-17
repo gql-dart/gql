@@ -8,11 +8,10 @@ schema {
 
 directive @extends on OBJECT | INTERFACE
 
-
 # The query type, represents all of the entry points into our object graph
 type Query {
   hero(episode: Episode): Character
-  reviews(episode: Episode!): [Review]
+  reviews(episode: Episode!, stars: [Int!]): [Review]
   search(text: String): [SearchResult]
   character(id: ID!): Character
   droid(id: ID!): Droid
