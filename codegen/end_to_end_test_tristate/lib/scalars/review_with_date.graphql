@@ -1,7 +1,7 @@
 mutation ReviewWithDate(
   $episode: Episode
   $review: ReviewInput!
-  $createdAt: Date
+  $createdAt: DateTime
 ) {
   createReview(episode: $episode, review: $review, createdAt: $createdAt) {
     episode

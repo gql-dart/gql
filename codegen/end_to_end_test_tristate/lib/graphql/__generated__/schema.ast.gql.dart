@@ -247,7 +247,7 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
           name: _i1.NameNode(value: 'createdAt'),
           directives: [],
           type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'Date'),
+            name: _i1.NameNode(value: 'DateTime'),
             isNonNull: false,
           ),
           defaultValue: null,
@@ -790,7 +790,7 @@ const Review = _i1.ObjectTypeDefinitionNode(
       directives: [],
       args: [],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'Date'),
+        name: _i1.NameNode(value: 'DateTime'),
         isNonNull: false,
       ),
     ),
@@ -800,7 +800,7 @@ const Review = _i1.ObjectTypeDefinitionNode(
       args: [],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'Date'),
+          name: _i1.NameNode(value: 'DateTime'),
           isNonNull: true,
         ),
         isNonNull: true,
@@ -856,10 +856,19 @@ const ReviewInput = _i1.InputObjectTypeDefinitionNode(
       directives: [],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'Date'),
+          name: _i1.NameNode(value: 'DateTime'),
           isNonNull: false,
         ),
         isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'createdDay'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Date'),
+        isNonNull: true,
       ),
       defaultValue: null,
     ),
@@ -1133,6 +1142,10 @@ const SearchResult = _i1.UnionTypeDefinitionNode(
     ),
   ],
 );
+const DateTime = _i1.ScalarTypeDefinitionNode(
+  name: _i1.NameNode(value: 'DateTime'),
+  directives: [],
+);
 const Date = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Date'),
   directives: [],
@@ -1174,6 +1187,7 @@ const document = _i1.DocumentNode(definitions: [
   PostLikesInput,
   PostFavoritesInput,
   SearchResult,
+  DateTime,
   Date,
   ISODate,
   CustomField,

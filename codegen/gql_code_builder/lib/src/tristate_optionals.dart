@@ -181,13 +181,10 @@ String _generateFieldDeserializers(
         type = (type as TypeReference).types.first;
       }
       final fullType = _generateFullType(type as TypeReference, allocator);
-
-      /// remove the leading `G` from the type name
-      /// TODO refactor this
-      final originalSymbolName = type.symbol.substring(1);
-
-      final typeDefNode =
-          getTypeDefinitionNode(schemaSource.document, originalSymbolName);
+      final typeDefNode = getTypeDefinitionNode(
+        schemaSource.document,
+        _originalSymbolName(typeOverrides, type),
+      );
 
       //TODO this feels flaky, find a better way
       final isBuilder = type.url != null &&
@@ -198,7 +195,6 @@ String _generateFieldDeserializers(
       const fieldNameVariableName = "_\$fieldValue";
 
       final fieldNameExpr = CodeExpression(Code(fieldNameVariableName));
-
       var base = """
 case '${_getWireName(field)}':
   var ${fieldNameVariableName} = serializers.deserialize(
@@ -219,6 +215,26 @@ case '${_getWireName(field)}':
 break;
 """;
     }).join();
+
+String _originalSymbolName(
+    Map<String, Reference> typeOverrides, TypeReference type) {
+  String? originalSymbolName;
+
+  /// If symbol exists in [typeOverrides] then the original symbol from Schema file is the key of [typeOverrides].
+  /// And [type.symbol] is the type of the Dart class that handles Schema's scalar.
+  for (final entry in typeOverrides.entries) {
+    if (entry.value.symbol == type.symbol) {
+      originalSymbolName = entry.key;
+      break;
+    }
+  }
+
+  /// Removes the leading `G` from the type name.
+  /// It still can not work if you original type's symbol starts with the 'G' letter.
+  originalSymbolName ??=
+      type.symbol[0] == "G" ? type.symbol.substring(1) : type.symbol;
+  return originalSymbolName;
+}
 
 String _getWireName(Method m) {
   final wireNameExpr = m.annotations

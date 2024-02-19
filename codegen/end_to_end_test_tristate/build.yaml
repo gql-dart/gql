@@ -12,16 +12,21 @@ targets:
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
           custom_serializers:
-            - import: 'package:end_to_end_test_tristate/date_serializer.dart'
+            - import: "package:end_to_end_test_tristate/date_serializer.dart"
               name: DateSerializer
-            - import: 'package:end_to_end_test_tristate/custom_field_serializer.dart'
+            - import: "package:end_to_end_test_tristate/custom_field_serializer.dart"
               name: CustomFieldSerializer
+            - import: "package:end_to_end_test_tristate/custom_date_serializer.dart"
+              name: CustomDateSerializer
           type_overrides:
-            Date:
+            DateTime:
               name: DateTime
             CustomField:
               name: CustomField
-              import: 'package:end_to_end_test_tristate/custom_field.dart'
+              import: "package:end_to_end_test_tristate/custom_field.dart"
+            Date:
+              name: CustomDate
+              import: "package:end_to_end_test_tristate/custom_date.dart"
       gql_build|schema_builder:
         enabled: true
         options:
@@ -29,11 +34,14 @@ targets:
           enum_fallbacks:
             LengthUnit: METER
           type_overrides:
-            Date:
+            DateTime:
               name: DateTime
             CustomField:
               name: CustomField
-              import: 'package:end_to_end_test_tristate/custom_field.dart'
+              import: "package:end_to_end_test_tristate/custom_field.dart"
+            Date:
+              name: CustomDate
+              import: "package:end_to_end_test_tristate/custom_date.dart"
       gql_build|data_builder:
         enabled: true
         options:
@@ -42,11 +50,14 @@ targets:
             when: true
             maybeWhen: true
           type_overrides:
-            Date:
+            DateTime:
               name: DateTime
             CustomField:
               name: CustomField
-              import: 'package:end_to_end_test_tristate/custom_field.dart'
+              import: "package:end_to_end_test_tristate/custom_field.dart"
+            Date:
+              name: CustomDate
+              import: "package:end_to_end_test_tristate/custom_date.dart"
       gql_build|var_builder:
         enabled: true
         options:
@@ -54,8 +65,11 @@ targets:
           tristate_optionals: true
           vars_create_factories: true
           type_overrides:
-            Date:
+            DateTime:
               name: DateTime
             CustomField:
               name: CustomField
-              import: 'package:end_to_end_test_tristate/custom_field.dart'
+              import: "package:end_to_end_test_tristate/custom_field.dart"
+            Date:
+              name: CustomDate
+              import: "package:end_to_end_test_tristate/custom_date.dart"

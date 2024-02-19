@@ -29,7 +29,7 @@ const ReviewWithDate = _i1.OperationDefinitionNode(
     _i1.VariableDefinitionNode(
       variable: _i1.VariableNode(name: _i1.NameNode(value: 'createdAt')),
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'Date'),
+        name: _i1.NameNode(value: 'DateTime'),
         isNonNull: false,
       ),
       defaultValue: _i1.DefaultValueNode(value: null),

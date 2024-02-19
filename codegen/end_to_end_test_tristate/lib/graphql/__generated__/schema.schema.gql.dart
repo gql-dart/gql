@@ -5,11 +5,12 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test_tristate/custom_field.dart' as _i2;
+import 'package:end_to_end_test_tristate/custom_date.dart' as _i2;
+import 'package:end_to_end_test_tristate/custom_field.dart' as _i3;
 import 'package:end_to_end_test_tristate/graphql/__generated__/serializers.gql.dart'
-    as _i3;
-import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
     as _i4;
+import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
+    as _i5;
 import 'package:gql_tristate_value/gql_tristate_value.dart' as _i1;
 
 part 'schema.schema.gql.g.dart';
@@ -64,13 +65,14 @@ abstract class GReviewInput
   _i1.Value<String> get commentary;
   _i1.Value<GColorInput> get favorite_color;
   _i1.Value<BuiltList<DateTime?>> get seenOn;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  _i2.CustomDate get createdDay;
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GReviewInput.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GReviewInput? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i4.serializers.deserializeWith(
         GReviewInput.serializer,
         json,
       );
@@ -111,6 +113,9 @@ final class GReviewInputSerializer extends StructuredSerializer<GReviewInput> {
       result.add(serializers.serialize(_$value,
           specifiedType: const FullType(BuiltList, [FullType(DateTime)])));
     }
+    result.add('createdDay');
+    result.add(serializers.serialize(object.createdDay,
+        specifiedType: const FullType(_i2.CustomDate)));
     return result;
   }
 
@@ -148,6 +153,11 @@ final class GReviewInputSerializer extends StructuredSerializer<GReviewInput> {
               as BuiltList<DateTime>;
           builder.seenOn = _i1.PresentValue(_$fieldValue);
           break;
+        case 'createdDay':
+          var _$fieldValue = serializers.deserialize(value,
+              specifiedType: const FullType(_i2.CustomDate)) as _i2.CustomDate;
+          builder.createdDay = _$fieldValue;
+          break;
       }
     }
     return builder.build();
@@ -166,14 +176,14 @@ abstract class GCustomFieldInput
       b..customField = const _i1.AbsentValue();
 
   String get id;
-  _i1.Value<_i2.CustomField> get customField;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  _i1.Value<_i3.CustomField> get customField;
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GCustomFieldInput.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GCustomFieldInput? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i4.serializers.deserializeWith(
         GCustomFieldInput.serializer,
         json,
       );
@@ -202,7 +212,7 @@ final class GCustomFieldInputSerializer
     if (_$customFieldvalue case _i1.PresentValue(value: final _$value)) {
       result.add('customField');
       result.add(serializers.serialize(_$value,
-          specifiedType: const FullType(_i2.CustomField)));
+          specifiedType: const FullType(_i3.CustomField)));
     }
     return result;
   }
@@ -226,8 +236,8 @@ final class GCustomFieldInputSerializer
           break;
         case 'customField':
           var _$fieldValue = serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.CustomField))
-              as _i2.CustomField;
+                  specifiedType: const FullType(_i3.CustomField))
+              as _i3.CustomField;
           builder.customField = _i1.PresentValue(_$fieldValue);
           break;
       }
@@ -245,13 +255,13 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
   int get red;
   int get green;
   int get blue;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GColorInput.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GColorInput? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i4.serializers.deserializeWith(
         GColorInput.serializer,
         json,
       );
@@ -324,13 +334,13 @@ abstract class GPostLikesInput
       _$GPostLikesInput;
 
   String get id;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GPostLikesInput.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GPostLikesInput? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i4.serializers.deserializeWith(
         GPostLikesInput.serializer,
         json,
       );
@@ -390,13 +400,13 @@ abstract class GPostFavoritesInput
       _$GPostFavoritesInput;
 
   String get id;
-  Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
         GPostFavoritesInput.serializer,
         this,
       ) as Map<String, dynamic>);
 
   static GPostFavoritesInput? fromJson(Map<String, dynamic> json) =>
-      _i3.serializers.deserializeWith(
+      _i4.serializers.deserializeWith(
         GPostFavoritesInput.serializer,
         json,
       );
@@ -459,7 +469,7 @@ abstract class GISODate implements Built<GISODate, GISODateBuilder> {
   String get value;
   @BuiltValueSerializer(custom: true)
   static Serializer<GISODate> get serializer =>
-      _i4.DefaultScalarSerializer<GISODate>(
+      _i5.DefaultScalarSerializer<GISODate>(
           (Object serialized) => GISODate((serialized as String?)));
 }
 
@@ -471,7 +481,7 @@ abstract class GJson implements Built<GJson, GJsonBuilder> {
 
   String get value;
   @BuiltValueSerializer(custom: true)
-  static Serializer<GJson> get serializer => _i4.DefaultScalarSerializer<GJson>(
+  static Serializer<GJson> get serializer => _i5.DefaultScalarSerializer<GJson>(
       (Object serialized) => GJson((serialized as String?)));
 }
 
