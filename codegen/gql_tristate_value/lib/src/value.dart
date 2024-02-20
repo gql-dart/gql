@@ -59,6 +59,9 @@ class ValueOrAbsent<T extends Object> extends Value<T> {
 
   @override
   int get hashCode => value.hashCode;
+
+  @override
+  String toString() => '$runtimeType(value: $value)';
 }
 
 class PresentValue<T extends Object> extends Value<T> {
@@ -75,4 +78,7 @@ class PresentValue<T extends Object> extends Value<T> {
 
   @override
   int get hashCode => value.hashCode;
+
+  @override
+  String toString() => '$runtimeType(value: $value)';
 }
