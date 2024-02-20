@@ -23,14 +23,14 @@ void main() {
         expect(nullValue.requireValue, isNull);
       });
 
-      test('on $ValueOrAbsent with value returns value', () {
-        final present = Value.valueOrAbsent(42);
+      test('on ${Value.ofNullable} with value returns value', () {
+        final present = Value.ofNullable(42);
 
         expect(present.requireValue, equals(42));
       });
 
-      test('on $ValueOrAbsent with null throws', () {
-        final nullValue = Value<String>.valueOrAbsent(null);
+      test('on ${Value.ofNullable} with null throws', () {
+        final nullValue = Value<String>.ofNullable(null);
 
         expect(() => nullValue.requireValue, throwsA(isA<StateError>()));
       });
@@ -52,14 +52,14 @@ void main() {
         expect(present.valueOrNull, equals(42));
       });
 
-      test('on $ValueOrAbsent with value returns value', () {
-        final present = Value.valueOrAbsent(42);
+      test('on ${Value.ofNullable} with value returns value', () {
+        final present = Value.ofNullable(42);
 
         expect(present.valueOrNull, equals(42));
       });
 
-      test('on $ValueOrAbsent with null returns null', () {
-        final present = Value<String>.valueOrAbsent(null);
+      test('on ${Value.ofNullable} with null returns null', () {
+        final present = Value<String>.ofNullable(null);
 
         expect(present.valueOrNull, isNull);
       });
@@ -81,14 +81,14 @@ void main() {
         expect(present.isPresent, true);
       });
 
-      test('on $ValueOrAbsent with value returns true', () {
-        final present = Value.valueOrAbsent(42);
+      test('on ${Value.ofNullable}  with value returns true', () {
+        final present = Value.ofNullable(42);
 
         expect(present.isPresent, true);
       });
 
-      test('on $ValueOrAbsent with null returns false', () {
-        final present = Value<String>.valueOrAbsent(null);
+      test('on ${Value.ofNullable}  with null returns false', () {
+        final present = Value<String>.ofNullable(null);
 
         expect(present.isPresent, false);
       });
@@ -102,18 +102,6 @@ void main() {
         final present = Value.present(42);
 
         expect(present.toString(), 'PresentValue<int>(value: 42)');
-      });
-
-      test('on $ValueOrAbsent', () {
-        final present = Value.valueOrAbsent(42);
-
-        expect(present.toString(), 'ValueOrAbsent<int>(value: 42)');
-      });
-
-      test('on $ValueOrAbsent', () {
-        final present = Value<String>.valueOrAbsent(null);
-
-        expect(present.toString(), 'ValueOrAbsent<String>(value: null)');
       });
     },
   );
