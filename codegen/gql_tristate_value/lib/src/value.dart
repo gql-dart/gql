@@ -9,6 +9,10 @@ sealed class Value<T extends Object> {
   /// The value is absent. It will not be serialized.
   const factory Value.absent() = AbsentValue;
 
+  /// If the value is non-null, it will be serialized as the value.
+  /// The value is absent. It will not be serialized.
+  const factory Value.valueOrAbsent(T? value) = ValueOrAbsent;
+
   /// The value is present. It may still be be null.
   /// If the value is null, it will be serialized as null.
   /// If the value is non-null, it will be serialized as the value.
@@ -18,6 +22,8 @@ sealed class Value<T extends Object> {
   T? get requireValue => switch (this) {
         PresentValue(:final value) => value,
         AbsentValue() => throw StateError("Value is absent"),
+        ValueOrAbsent(:final value) =>
+          value ?? (throw StateError("Value is absent")),
       };
 
   /// return the value if present and non-null, otherwise null.
@@ -25,16 +31,34 @@ sealed class Value<T extends Object> {
   T? get valueOrNull => switch (this) {
         PresentValue(:final value) => value,
         AbsentValue() => null,
+        ValueOrAbsent(:final value) => value,
       };
 
   bool get isPresent => switch (this) {
         PresentValue() => true,
         AbsentValue() => false,
+        ValueOrAbsent(:final value) => value == null ? false : true,
       };
 }
 
 class AbsentValue extends Value<Never> {
   const AbsentValue() : super._();
+}
+
+class ValueOrAbsent<T extends Object> extends Value<T> {
+  final T? value;
+
+  const ValueOrAbsent(this.value) : super._();
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ValueOrAbsent<T> &&
+          runtimeType == other.runtimeType &&
+          value == other.value;
+
+  @override
+  int get hashCode => value.hashCode;
 }
 
 class PresentValue<T extends Object> extends Value<T> {
