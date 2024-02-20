@@ -16,9 +16,9 @@ sealed class Value<T extends Object> {
 
   /// If the value is non-null, it will be serialized as the value.
   /// If the value is null. It will not be serialized.
-  factory Value.ofNullable(T? value) {
+  factory Value.absentWhenNull(T? value) {
     if (value == null) {
-      return AbsentValue();
+      return const AbsentValue();
     }
     return Value.present(value);
   }
