@@ -13,6 +13,13 @@ void main() {
         ..favorite_color.red = 225);
     });
 
+    test('can be instantiated via create factory', () {
+      GReviewInput.create(
+          stars: 4,
+          commentary: "This was a great movie!",
+          favorite_color: GColorInput.create(red: 255, green: 123, blue: 225));
+    });
+
     test('can be serialized and deserialized', () {
       final input = GReviewInput((b) => b
         ..stars = 4
