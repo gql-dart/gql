@@ -54,6 +54,18 @@ abstract class GReviewInput
   factory GReviewInput([void Function(GReviewInputBuilder b) updates]) =
       _$GReviewInput;
 
+  factory GReviewInput.create({
+    required int stars,
+    String? commentary,
+    GColorInput? favorite_color,
+    BuiltList<DateTime?>? seenOn,
+  }) =>
+      GReviewInput((b) => b
+        ..stars = stars
+        ..commentary = commentary
+        ..favorite_color = favorite_color?.toBuilder()
+        ..seenOn = seenOn?.toBuilder());
+
   int get stars;
   String? get commentary;
   GColorInput? get favorite_color;
@@ -80,6 +92,14 @@ abstract class GCustomFieldInput
           [void Function(GCustomFieldInputBuilder b) updates]) =
       _$GCustomFieldInput;
 
+  factory GCustomFieldInput.create({
+    required String id,
+    _i2.CustomField? customField,
+  }) =>
+      GCustomFieldInput((b) => b
+        ..id = id
+        ..customField = customField);
+
   String get id;
   _i2.CustomField? get customField;
   static Serializer<GCustomFieldInput> get serializer =>
@@ -102,6 +122,16 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
 
   factory GColorInput([void Function(GColorInputBuilder b) updates]) =
       _$GColorInput;
+
+  factory GColorInput.create({
+    required int red,
+    required int green,
+    required int blue,
+  }) =>
+      GColorInput((b) => b
+        ..red = red
+        ..green = green
+        ..blue = blue);
 
   int get red;
   int get green;
@@ -127,6 +157,9 @@ abstract class GPostLikesInput
   factory GPostLikesInput([void Function(GPostLikesInputBuilder b) updates]) =
       _$GPostLikesInput;
 
+  factory GPostLikesInput.create({required String id}) =>
+      GPostLikesInput((b) => b..id = id);
+
   String get id;
   static Serializer<GPostLikesInput> get serializer =>
       _$gPostLikesInputSerializer;
@@ -150,6 +183,9 @@ abstract class GPostFavoritesInput
   factory GPostFavoritesInput(
           [void Function(GPostFavoritesInputBuilder b) updates]) =
       _$GPostFavoritesInput;
+
+  factory GPostFavoritesInput.create({required String id}) =>
+      GPostFavoritesInput((b) => b..id = id);
 
   String get id;
   static Serializer<GPostFavoritesInput> get serializer =>
