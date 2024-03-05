@@ -58,7 +58,8 @@ Builder schemaBuilder(
         typeOverrideMap(options.config["type_overrides"]),
         enumFallbackConfig(options.config),
         generatePossibleTypesConfig(options.config),
-        triStateOptionalsConfig(options.config));
+        triStateOptionalsConfig(options.config),
+        varsCreateFactoriesConfig(options.config));
 
 /// Builds an aggregate Serlializers object for [built_value]s
 ///
