@@ -13,9 +13,15 @@ Library buildSchemaLibrary(SourceNode schemaSource, String partUrl,
     Map<String, Reference> typeOverrides, EnumFallbackConfig enumFallbackConfig,
     {bool generatePossibleTypesMap = false,
     Allocator? allocator,
-    TriStateValueConfig triStateValueConfig = TriStateValueConfig.never}) {
-  final lib = buildSchema(schemaSource, typeOverrides, enumFallbackConfig,
-      allocator ?? Allocator(), triStateValueConfig) as Library;
+    TriStateValueConfig triStateValueConfig = TriStateValueConfig.never,
+    bool generateVarsCreateFactories = false}) {
+  final lib = buildSchema(
+      schemaSource,
+      typeOverrides,
+      enumFallbackConfig,
+      allocator ?? Allocator(),
+      triStateValueConfig,
+      generateVarsCreateFactories) as Library;
 
   final Code? possibleTypes;
   if (generatePossibleTypesMap && lib.body.isNotEmpty) {

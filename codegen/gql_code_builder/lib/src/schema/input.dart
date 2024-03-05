@@ -1,6 +1,7 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/tristate_optionals_config.dart";
+import "package:gql_code_builder/src/required_vars_constructor.dart";
 import "package:gql_code_builder/src/tristate_optionals.dart";
 
 import "../../source.dart";
@@ -12,6 +13,7 @@ List<Class> buildInputClasses(
   Map<String, Reference> typeOverrides,
   Allocator allocator,
   TriStateValueConfig triStateValueConfig,
+  bool generateVarsCreateFactories,
 ) =>
     schemaSource.document.definitions
         .whereType<InputObjectTypeDefinitionNode>()
@@ -21,6 +23,7 @@ List<Class> buildInputClasses(
         schemaSource,
         typeOverrides,
         triStateValueConfig,
+        generateVarsCreateFactories,
       );
       final serializer = nullAwareJsonSerializerClass(
           inputClass, allocator, schemaSource, typeOverrides);
@@ -32,6 +35,7 @@ Class buildInputClass(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   TriStateValueConfig triStateValueConfig,
+  bool generateVarsCreateFactories,
 ) =>
     builtClass(
       name: node.name.value,
@@ -46,6 +50,23 @@ Class buildInputClass(
       ),
       hasCustomSerializer:
           triStateValueConfig == TriStateValueConfig.onAllNullableFields,
+      constructors: [
+        if (generateVarsCreateFactories)
+          builtCreateConstructor(
+            name: node.name.value,
+            getters: node.fields.map<Method>(
+              (node) => buildOptionalGetter(
+                nameNode: node.name,
+                typeNode: node.type,
+                schemaSource: schemaSource,
+                typeOverrides: typeOverrides,
+                useTriStateValueForNullableTypes: triStateValueConfig,
+              ),
+            ),
+            schemaSource: schemaSource,
+            typeOverrides: typeOverrides,
+          ),
+      ],
       initializers: {
         if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
           ..._inputClassValueInitializers(node)
