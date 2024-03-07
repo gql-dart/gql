@@ -1,3 +1,7 @@
+## 0.11.0
+
+- Adding option to create factory initializers with required parameters also for inputs (#585)
+
 ## 0.10.0
 
 - Adding 'vars_create_factories' option to create factory initializers with required parameters (
