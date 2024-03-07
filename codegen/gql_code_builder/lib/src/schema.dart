@@ -15,6 +15,7 @@ Spec? buildSchema(
   EnumFallbackConfig enumFallbackConfig,
   Allocator allocator,
   TriStateValueConfig triStateValueConfig,
+  bool generateVarsCreateFactories,
 ) =>
     schemaSource.document
         .accept(
@@ -24,6 +25,7 @@ Spec? buildSchema(
             enumFallbackConfig,
             allocator,
             triStateValueConfig,
+            generateVarsCreateFactories,
           ),
         )
         ?.first;
@@ -36,8 +38,15 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final Allocator allocator;
   final TriStateValueConfig triStateValueConfig;
 
-  const _SchemaBuilderVisitor(this.schemaSource, this.typeOverrides,
-      this.enumFallbackConfig, this.allocator, this.triStateValueConfig);
+  final bool generateVarsCreateFactories;
+
+  const _SchemaBuilderVisitor(
+      this.schemaSource,
+      this.typeOverrides,
+      this.enumFallbackConfig,
+      this.allocator,
+      this.triStateValueConfig,
+      this.generateVarsCreateFactories);
 
   @override
   List<Spec> visitDocumentNode(
@@ -57,8 +66,8 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   List<Spec> visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) {
-    final inputClass =
-        buildInputClass(node, schemaSource, typeOverrides, triStateValueConfig);
+    final inputClass = buildInputClass(node, schemaSource, typeOverrides,
+        triStateValueConfig, generateVarsCreateFactories);
 
     return switch (triStateValueConfig) {
       TriStateValueConfig.never => [inputClass],

@@ -20,7 +20,7 @@ abstract class GPostsWithFixedVariableVars
           [void Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
       _$GPostsWithFixedVariableVars;
 
-  factory GPostsWithFixedVariableVars.create({required _i1.GJson? filter}) =>
+  factory GPostsWithFixedVariableVars.create({_i1.GJson? filter}) =>
       GPostsWithFixedVariableVars((b) => b..filter = filter?.toBuilder());
 
   _i1.GJson? get filter;

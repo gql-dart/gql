@@ -15,9 +15,14 @@ class SchemaBuilder implements Builder {
   final EnumFallbackConfig enumFallbackConfig;
   final bool generatePossibleTypesMap;
   final TriStateValueConfig triStateValueConfig;
+  final bool generateVarsCreateFactories;
 
-  SchemaBuilder(this.typeOverrides, this.enumFallbackConfig,
-      this.generatePossibleTypesMap, this.triStateValueConfig);
+  SchemaBuilder(
+      this.typeOverrides,
+      this.enumFallbackConfig,
+      this.generatePossibleTypesMap,
+      this.triStateValueConfig,
+      this.generateVarsCreateFactories);
 
   @override
   Map<String, List<String>> get buildExtensions => {
@@ -49,6 +54,7 @@ class SchemaBuilder implements Builder {
       generatePossibleTypesMap: generatePossibleTypesMap,
       allocator: allocator,
       triStateValueConfig: triStateValueConfig,
+      generateVarsCreateFactories: generateVarsCreateFactories,
     );
 
     return writeDocument(

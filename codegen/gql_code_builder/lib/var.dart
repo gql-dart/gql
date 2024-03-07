@@ -52,6 +52,7 @@ Library buildVarLibrary(
                     ),
                   ),
                   schemaSource: schemaSource,
+                  typeOverrides: typeOverrides,
                 ),
             ],
             initializers: switch (useTriStateValueForNullableTypes) {

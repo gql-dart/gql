@@ -55,6 +55,18 @@ abstract class GReviewInput
   factory GReviewInput([void Function(GReviewInputBuilder b) updates]) =
       _$GReviewInput;
 
+  factory GReviewInput.create({
+    required int stars,
+    required _i1.Value<String> commentary,
+    required _i1.Value<GColorInput> favorite_color,
+    required _i1.Value<BuiltList<DateTime?>> seenOn,
+  }) =>
+      GReviewInput((b) => b
+        ..stars = stars
+        ..commentary = commentary
+        ..favorite_color = favorite_color
+        ..seenOn = seenOn);
+
   static void _initializeBuilder(GReviewInputBuilder b) => b
     ..commentary = const _i1.AbsentValue()
     ..favorite_color = const _i1.AbsentValue()
@@ -162,6 +174,14 @@ abstract class GCustomFieldInput
           [void Function(GCustomFieldInputBuilder b) updates]) =
       _$GCustomFieldInput;
 
+  factory GCustomFieldInput.create({
+    required String id,
+    required _i1.Value<_i2.CustomField> customField,
+  }) =>
+      GCustomFieldInput((b) => b
+        ..id = id
+        ..customField = customField);
+
   static void _initializeBuilder(GCustomFieldInputBuilder b) =>
       b..customField = const _i1.AbsentValue();
 
@@ -241,6 +261,16 @@ abstract class GColorInput implements Built<GColorInput, GColorInputBuilder> {
 
   factory GColorInput([void Function(GColorInputBuilder b) updates]) =
       _$GColorInput;
+
+  factory GColorInput.create({
+    required int red,
+    required int green,
+    required int blue,
+  }) =>
+      GColorInput((b) => b
+        ..red = red
+        ..green = green
+        ..blue = blue);
 
   int get red;
   int get green;
@@ -323,6 +353,9 @@ abstract class GPostLikesInput
   factory GPostLikesInput([void Function(GPostLikesInputBuilder b) updates]) =
       _$GPostLikesInput;
 
+  factory GPostLikesInput.create({required String id}) =>
+      GPostLikesInput((b) => b..id = id);
+
   String get id;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(
         GPostLikesInput.serializer,
@@ -388,6 +421,9 @@ abstract class GPostFavoritesInput
   factory GPostFavoritesInput(
           [void Function(GPostFavoritesInputBuilder b) updates]) =
       _$GPostFavoritesInput;
+
+  factory GPostFavoritesInput.create({required String id}) =>
+      GPostFavoritesInput((b) => b..id = id);
 
   String get id;
   Map<String, dynamic> toJson() => (_i3.serializers.serializeWith(

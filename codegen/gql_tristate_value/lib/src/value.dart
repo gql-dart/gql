@@ -14,6 +14,15 @@ sealed class Value<T extends Object> {
   /// If the value is non-null, it will be serialized as the value.
   const factory Value.present(T? value) = PresentValue<T>;
 
+  /// If the value is non-null, it will be serialized as the value.
+  /// If the value is null. It will not be serialized.
+  factory Value.absentWhenNull(T? value) {
+    if (value == null) {
+      return const AbsentValue();
+    }
+    return Value.present(value);
+  }
+
   /// Returns the value if present (no matter if null or non-null), otherwise throws a [StateError].
   T? get requireValue => switch (this) {
         PresentValue(:final value) => value,
@@ -51,4 +60,7 @@ class PresentValue<T extends Object> extends Value<T> {
 
   @override
   int get hashCode => value.hashCode;
+
+  @override
+  String toString() => '$runtimeType(value: $value)';
 }

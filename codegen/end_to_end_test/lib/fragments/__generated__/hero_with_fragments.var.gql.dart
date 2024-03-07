@@ -17,7 +17,7 @@ abstract class GHeroWithFragmentsVars
           [void Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
 
-  factory GHeroWithFragmentsVars.create({required int? first}) =>
+  factory GHeroWithFragmentsVars.create({int? first}) =>
       GHeroWithFragmentsVars((b) => b..first = first);
 
   int? get first;
@@ -67,7 +67,7 @@ abstract class GcomparisonFieldsVars
           [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
 
-  factory GcomparisonFieldsVars.create({required int? first}) =>
+  factory GcomparisonFieldsVars.create({int? first}) =>
       GcomparisonFieldsVars((b) => b..first = first);
 
   int? get first;
