@@ -104,6 +104,8 @@ class _$GReviewInput extends GReviewInput {
   final _i1.Value<GColorInput> favorite_color;
   @override
   final _i1.Value<BuiltList<DateTime?>> seenOn;
+  @override
+  final _i2.CustomDate createdDay;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder)? updates]) =>
       (new GReviewInputBuilder()..update(updates))._build();
@@ -112,7 +114,8 @@ class _$GReviewInput extends GReviewInput {
       {required this.stars,
       required this.commentary,
       required this.favorite_color,
-      required this.seenOn})
+      required this.seenOn,
+      required this.createdDay})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(stars, r'GReviewInput', 'stars');
     BuiltValueNullFieldError.checkNotNull(
@@ -120,6 +123,8 @@ class _$GReviewInput extends GReviewInput {
     BuiltValueNullFieldError.checkNotNull(
         favorite_color, r'GReviewInput', 'favorite_color');
     BuiltValueNullFieldError.checkNotNull(seenOn, r'GReviewInput', 'seenOn');
+    BuiltValueNullFieldError.checkNotNull(
+        createdDay, r'GReviewInput', 'createdDay');
   }
 
   @override
@@ -136,7 +141,8 @@ class _$GReviewInput extends GReviewInput {
         stars == other.stars &&
         commentary == other.commentary &&
         favorite_color == other.favorite_color &&
-        seenOn == other.seenOn;
+        seenOn == other.seenOn &&
+        createdDay == other.createdDay;
   }
 
   @override
@@ -146,6 +152,7 @@ class _$GReviewInput extends GReviewInput {
     _$hash = $jc(_$hash, commentary.hashCode);
     _$hash = $jc(_$hash, favorite_color.hashCode);
     _$hash = $jc(_$hash, seenOn.hashCode);
+    _$hash = $jc(_$hash, createdDay.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -156,7 +163,8 @@ class _$GReviewInput extends GReviewInput {
           ..add('stars', stars)
           ..add('commentary', commentary)
           ..add('favorite_color', favorite_color)
-          ..add('seenOn', seenOn))
+          ..add('seenOn', seenOn)
+          ..add('createdDay', createdDay))
         .toString();
   }
 }
@@ -184,6 +192,10 @@ class GReviewInputBuilder
   set seenOn(_i1.Value<BuiltList<DateTime?>>? seenOn) =>
       _$this._seenOn = seenOn;
 
+  _i2.CustomDate? _createdDay;
+  _i2.CustomDate? get createdDay => _$this._createdDay;
+  set createdDay(_i2.CustomDate? createdDay) => _$this._createdDay = createdDay;
+
   GReviewInputBuilder() {
     GReviewInput._initializeBuilder(this);
   }
@@ -195,6 +207,7 @@ class GReviewInputBuilder
       _commentary = $v.commentary;
       _favorite_color = $v.favorite_color;
       _seenOn = $v.seenOn;
+      _createdDay = $v.createdDay;
       _$v = null;
     }
     return this;
@@ -224,7 +237,9 @@ class GReviewInputBuilder
             favorite_color: BuiltValueNullFieldError.checkNotNull(
                 favorite_color, r'GReviewInput', 'favorite_color'),
             seenOn: BuiltValueNullFieldError.checkNotNull(
-                seenOn, r'GReviewInput', 'seenOn'));
+                seenOn, r'GReviewInput', 'seenOn'),
+            createdDay: BuiltValueNullFieldError.checkNotNull(
+                createdDay, r'GReviewInput', 'createdDay'));
     replace(_$result);
     return _$result;
   }
@@ -234,7 +249,7 @@ class _$GCustomFieldInput extends GCustomFieldInput {
   @override
   final String id;
   @override
-  final _i1.Value<_i2.CustomField> customField;
+  final _i1.Value<_i3.CustomField> customField;
 
   factory _$GCustomFieldInput(
           [void Function(GCustomFieldInputBuilder)? updates]) =>
@@ -289,9 +304,9 @@ class GCustomFieldInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  _i1.Value<_i2.CustomField>? _customField;
-  _i1.Value<_i2.CustomField>? get customField => _$this._customField;
-  set customField(_i1.Value<_i2.CustomField>? customField) =>
+  _i1.Value<_i3.CustomField>? _customField;
+  _i1.Value<_i3.CustomField>? get customField => _$this._customField;
+  set customField(_i1.Value<_i3.CustomField>? customField) =>
       _$this._customField = customField;
 
   GCustomFieldInputBuilder() {

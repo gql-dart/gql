@@ -23,6 +23,9 @@ import 'package:end_to_end_test_tristate/aliases/__generated__/aliased_hero.req.
     show GAliasedHero;
 import 'package:end_to_end_test_tristate/aliases/__generated__/aliased_hero.var.gql.dart'
     show GAliasedHeroVars;
+import 'package:end_to_end_test_tristate/custom_date.dart';
+import 'package:end_to_end_test_tristate/custom_date_serializer.dart'
+    show CustomDateSerializer;
 import 'package:end_to_end_test_tristate/custom_field.dart';
 import 'package:end_to_end_test_tristate/custom_field_serializer.dart'
     show CustomFieldSerializer;
@@ -154,6 +157,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
+  ..add(CustomDateSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
