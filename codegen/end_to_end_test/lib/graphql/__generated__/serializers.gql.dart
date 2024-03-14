@@ -27,6 +27,29 @@ import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
+import 'package:end_to_end_test/directives/__generated__/hero_include.data.gql.dart'
+    show GHeroIncludeData, GHeroIncludeData_hero;
+import 'package:end_to_end_test/directives/__generated__/hero_include.req.gql.dart'
+    show GHeroInclude;
+import 'package:end_to_end_test/directives/__generated__/hero_include.var.gql.dart'
+    show GHeroIncludeVars;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.data.gql.dart'
+    show GHeroSkipData, GHeroSkipData_hero;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.req.gql.dart'
+    show GHeroSkip;
+import 'package:end_to_end_test/directives/__generated__/hero_skip.var.gql.dart'
+    show GHeroSkipVars;
+import 'package:end_to_end_test/directives/__generated__/hero_skip_fragment.data.gql.dart'
+    show
+        GHeroDetailData,
+        GHeroDetailData_friends,
+        GHeroSkipFragmentData,
+        GHeroSkipFragmentData_hero,
+        GHeroSkipFragmentData_hero_friends;
+import 'package:end_to_end_test/directives/__generated__/hero_skip_fragment.req.gql.dart'
+    show GHeroSkipFragment;
+import 'package:end_to_end_test/directives/__generated__/hero_skip_fragment.var.gql.dart'
+    show GHeroDetailVars, GHeroSkipFragmentVars;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
         GPostFragmentForUser1Data,
@@ -38,6 +61,26 @@ import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var
     show GPostsWithFixedVariable;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.var.gql.dart'
     show GPostFragmentForUser1Vars, GPostsWithFixedVariableVars;
+import 'package:end_to_end_test/fragments/__generated__/hero_inline_fragment.data.gql.dart'
+    show
+        GHeroWithInlineFragmentsData_hero,
+        GHeroWithInlineFragmentsData,
+        GHeroWithInlineFragmentsData_hero__base;
+import 'package:end_to_end_test/fragments/__generated__/hero_inline_fragment.req.gql.dart'
+    show GHeroWithInlineFragments;
+import 'package:end_to_end_test/fragments/__generated__/hero_inline_fragment.var.gql.dart'
+    show GHeroWithInlineFragmentsVars;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.data.gql.dart'
+    show
+        GHeroWithFragmentsDuplicationData,
+        GHeroWithFragmentsDuplicationData_hero,
+        GHeroWithFragmentsDuplicationFragmentData;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.req.gql.dart'
+    show GHeroWithFragmentsDuplication;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_duplicated_fields_due_to_fragments.var.gql.dart'
+    show
+        GHeroWithFragmentsDuplicationFragmentVars,
+        GHeroWithFragmentsDuplicationVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data.gql.dart'
     show
         GHeroWithFragmentsData,
@@ -114,6 +157,18 @@ import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gq
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'
     show GDroidFragmentVars, GHeroForEpisodeVars;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql.data.gql.dart'
+    show GHeroMergeData, GHeroMergeData_hero;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql.req.gql.dart'
+    show GHeroMerge;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql.var.gql.dart'
+    show GHeroMergeVars;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql_skip.data.gql.dart'
+    show GHeroMergeSkipData, GHeroMergeSkipData_hero;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql_skip.req.gql.dart'
+    show GHeroMergeSkip;
+import 'package:end_to_end_test/merge/__generated__/merge_selection_sets.graphql_skip.var.gql.dart'
+    show GHeroMergeSkipVars;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.data.gql.dart'
     show GHeroNoVarsData, GHeroNoVarsData_hero;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart'
@@ -160,6 +215,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
+  ..add(GHeroWithInlineFragmentsData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
@@ -182,6 +238,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,
+  GHeroDetailData,
+  GHeroDetailData_friends,
+  GHeroDetailVars,
   GHeroForEpisode,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero__asDroid,
@@ -189,10 +248,31 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroForEpisodeData_hero__base,
   GHeroForEpisodeData_hero__base_friends,
   GHeroForEpisodeVars,
+  GHeroInclude,
+  GHeroIncludeData,
+  GHeroIncludeData_hero,
+  GHeroIncludeVars,
+  GHeroMerge,
+  GHeroMergeData,
+  GHeroMergeData_hero,
+  GHeroMergeSkip,
+  GHeroMergeSkipData,
+  GHeroMergeSkipData_hero,
+  GHeroMergeSkipVars,
+  GHeroMergeVars,
   GHeroNoVars,
   GHeroNoVarsData,
   GHeroNoVarsData_hero,
   GHeroNoVarsVars,
+  GHeroSkip,
+  GHeroSkipData,
+  GHeroSkipData_hero,
+  GHeroSkipFragment,
+  GHeroSkipFragmentData,
+  GHeroSkipFragmentData_hero,
+  GHeroSkipFragmentData_hero_friends,
+  GHeroSkipFragmentVars,
+  GHeroSkipVars,
   GHeroWith2Fragments,
   GHeroWith2FragmentsData,
   GHeroWith2FragmentsData_hero,
@@ -203,7 +283,17 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsData_hero_friendsConnection,
   GHeroWithFragmentsData_hero_friendsConnection_edges,
   GHeroWithFragmentsData_hero_friendsConnection_edges_node,
+  GHeroWithFragmentsDuplication,
+  GHeroWithFragmentsDuplicationData,
+  GHeroWithFragmentsDuplicationData_hero,
+  GHeroWithFragmentsDuplicationFragmentData,
+  GHeroWithFragmentsDuplicationFragmentVars,
+  GHeroWithFragmentsDuplicationVars,
   GHeroWithFragmentsVars,
+  GHeroWithInlineFragments,
+  GHeroWithInlineFragmentsData,
+  GHeroWithInlineFragmentsData_hero__base,
+  GHeroWithInlineFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
   GHeroWithInterfaceSubTypedFragmentsData_hero,

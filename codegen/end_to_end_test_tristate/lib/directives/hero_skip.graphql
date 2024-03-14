@@ -1,0 +1,6 @@
+query HeroSkip($skipName: Boolean!) {
+  hero {
+    id
+    name @skip(if: $skipName)
+  }
+}

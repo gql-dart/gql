@@ -1,0 +1,9 @@
+query  HeroMerge {
+    hero {
+        id
+    }
+    hero {
+        name
+    }
+
+}
