@@ -184,7 +184,10 @@ class _PrintVisitor extends Visitor<String> {
       '"""',
       "\n",
       _indent(_tabs),
-      stringValueNode.value.replaceAll('"""', '\\"""'),
+      stringValueNode.value
+          .replaceAll('"""', '\\"""')
+          .replaceAll('\\', '\\\\')
+          .replaceAll('\n', '\\n'),
       "\n",
       _indent(_tabs),
       '"""',
