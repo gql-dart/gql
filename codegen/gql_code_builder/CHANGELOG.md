@@ -1,3 +1,9 @@
+## 0.12.0
+
+- Moving built-in Serializers to gql_code_builder_serializers package, so
+  so don't have to depend on gql_code_builder in dependencies, and can keep
+  it as dev-dependency (#456)
+
 ## 0.11.0
 
 - Adding option to create factory initializers with required parameters also for inputs (#585)
