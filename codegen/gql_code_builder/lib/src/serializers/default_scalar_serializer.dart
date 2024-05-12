@@ -1,22 +1,7 @@
-import "package:built_value/serializer.dart";
-
-class DefaultScalarSerializer<T> implements PrimitiveSerializer<T> {
-  final T Function(Object serialized) _deserialize;
-
-  DefaultScalarSerializer(this._deserialize);
-
-  @override
-  final types = <Type>[T];
-  @override
-  final wireName = T.toString();
-
-  @override
-  Object serialize(Serializers serializers, T scalar,
-          {FullType specifiedType = FullType.unspecified}) =>
-      (scalar as dynamic).value as Object;
-
-  @override
-  T deserialize(Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _deserialize(serialized);
-}
+// serializers have been implemented in this files originally,
+// but moved to a separate package later to avoid
+// direct dependencies on gql_code_builder in application code.
+// This file is kept for backwards compatibility and should be removed in
+// the next major version of gql_code_builder.
+export "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
+    show DefaultScalarSerializer;

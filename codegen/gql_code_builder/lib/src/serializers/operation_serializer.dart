@@ -1,19 +1,7 @@
-import "package:gql/language.dart";
-import "package:gql_exec/gql_exec.dart";
-
-import "./json_serializer.dart";
-
-class OperationSerializer extends JsonSerializer<Operation> {
-  @override
-  Operation fromJson(Map<String, dynamic> json) => Operation(
-        document: parseString(json["document"] as String),
-        operationName: json["operationName"] as String?,
-      );
-
-  @override
-  Map<String, dynamic> toJson(Operation operation) => <String, dynamic>{
-        "document": printNode(operation.document),
-        if (operation.operationName != null)
-          "operationName": operation.operationName,
-      };
-}
+// serializers have been implemented in this files originally,
+// but moved to a separate package later to avoid
+// direct dependencies on gql_code_builder in application code.
+// This file is kept for backwards compatibility and should be removed in
+// the next major version of gql_code_builder.
+export "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
+    show OperationSerializer;

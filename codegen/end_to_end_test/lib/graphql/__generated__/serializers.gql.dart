@@ -150,7 +150,7 @@ import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.da
     show GreviewsWithListArgument;
 import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart'
     show GreviewsWithListArgumentVars;
-import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
 
 part 'serializers.gql.g.dart';

@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 import 'package:end_to_end_test_tristate/custom_field.dart' as _i2;
 import 'package:end_to_end_test_tristate/graphql/__generated__/serializers.gql.dart'
     as _i3;
-import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     as _i4;
 import 'package:gql_tristate_value/gql_tristate_value.dart' as _i1;
 
