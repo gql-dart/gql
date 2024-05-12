@@ -8,9 +8,10 @@ jobs:
       matrix:
         package:
           - gql
+          - gql_exec
+          - gql_code_builder_serializers
           - gql_build
           - gql_code_builder
-          - gql_exec
           - gql_link
           - gql_dedupe_link
           - gql_dio_link
