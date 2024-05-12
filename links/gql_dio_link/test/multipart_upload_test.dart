@@ -62,9 +62,11 @@ void main() {
     }
   };
 
+  final testFileBytes = Uint8List.fromList([0, 1, 254, 255]);
+
   List<dio.MultipartFile> testFiles() => [
         dio.MultipartFile.fromBytes(
-          [0, 1, 254, 255],
+          testFileBytes,
           filename: "sample_upload.jpg",
           contentType: MediaType("image", "jpeg"),
         ),
@@ -135,7 +137,7 @@ void main() {
 
       final boundary = data.boundary;
 
-      final expected = [
+      final expected = Uint8List.fromList([
         ...utf8.encode(
           "--$boundary"
           '\r\ncontent-disposition: form-data; name="operations"\r\n\r\n'
@@ -155,10 +157,7 @@ void main() {
           "content-type: image/jpeg\r\n"
           "\r\n",
         ),
-        0,
-        1,
-        254,
-        255,
+        ...testFileBytes,
         ...utf8.encode(
           "\r\n--$boundary"
           "\r\ncontent-disposition: form-data;"
@@ -167,16 +166,18 @@ void main() {
           "just plain text"
           "\r\n--$boundary--\r\n",
         ),
-      ];
+      ]);
 
       //NOTE:
       //dio and http reverse the place of content-disposition:
       //and content-type:
       expect(
-        /*utf8.decode(*/ bodyBytes,
+        /*utf8.decode(*/
+        bodyBytes,
         /* allowMalformed: true),*/
         equals(
-          /*utf8.decode(*/ expected, /* allowMalformed: true),*/
+          /*utf8.decode(*/
+          expected, /* allowMalformed: true),*/
         ),
       );
     });
