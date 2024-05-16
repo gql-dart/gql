@@ -16,7 +16,11 @@ abstract class GHeroForEpisodeVars
   GHeroForEpisodeVars._();
 
   factory GHeroForEpisodeVars(
-      [Function(GHeroForEpisodeVarsBuilder b) updates]) = _$GHeroForEpisodeVars;
+          [void Function(GHeroForEpisodeVarsBuilder b) updates]) =
+      _$GHeroForEpisodeVars;
+
+  factory GHeroForEpisodeVars.create({required _i1.GEpisode ep}) =>
+      GHeroForEpisodeVars((b) => b..ep = ep);
 
   _i1.GEpisode get ep;
   static Serializer<GHeroForEpisodeVars> get serializer =>
@@ -38,8 +42,11 @@ abstract class GDroidFragmentVars
     implements Built<GDroidFragmentVars, GDroidFragmentVarsBuilder> {
   GDroidFragmentVars._();
 
-  factory GDroidFragmentVars([Function(GDroidFragmentVarsBuilder b) updates]) =
+  factory GDroidFragmentVars(
+          [void Function(GDroidFragmentVarsBuilder b) updates]) =
       _$GDroidFragmentVars;
+
+  factory GDroidFragmentVars.create() => GDroidFragmentVars();
 
   static Serializer<GDroidFragmentVars> get serializer =>
       _$gDroidFragmentVarsSerializer;

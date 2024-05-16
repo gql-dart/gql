@@ -13,7 +13,7 @@ abstract class GAddStarData
     implements Built<GAddStarData, GAddStarDataBuilder> {
   GAddStarData._();
 
-  factory GAddStarData([Function(GAddStarDataBuilder b) updates]) =
+  factory GAddStarData([void Function(GAddStarDataBuilder b) updates]) =
       _$GAddStarData;
 
   static void _initializeBuilder(GAddStarDataBuilder b) =>
@@ -41,7 +41,8 @@ abstract class GAddStarData_action
   GAddStarData_action._();
 
   factory GAddStarData_action(
-      [Function(GAddStarData_actionBuilder b) updates]) = _$GAddStarData_action;
+          [void Function(GAddStarData_actionBuilder b) updates]) =
+      _$GAddStarData_action;
 
   static void _initializeBuilder(GAddStarData_actionBuilder b) =>
       b..G__typename = 'AddStarPayload';
@@ -71,7 +72,7 @@ abstract class GAddStarData_action_starrable
   GAddStarData_action_starrable._();
 
   factory GAddStarData_action_starrable(
-          [Function(GAddStarData_action_starrableBuilder b) updates]) =
+          [void Function(GAddStarData_action_starrableBuilder b) updates]) =
       _$GAddStarData_action_starrable;
 
   static void _initializeBuilder(GAddStarData_action_starrableBuilder b) =>

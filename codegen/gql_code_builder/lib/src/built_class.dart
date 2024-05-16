@@ -7,11 +7,13 @@ import "./utils/to_camel_case.dart";
 /// Generates a class that implements [Built], along with its serializers
 Class builtClass({
   required String name,
+  Iterable<Constructor>? constructors,
   Iterable<Method>? getters,
   Map<String, Expression>? initializers,
   Map<String, SourceSelections> superclassSelections = const {},
   List<Method> methods = const [],
   Map<String, Reference>? dataClassAliasMap,
+  bool hasCustomSerializer = false,
 }) {
   final className = builtClassName(name);
   return Class(
@@ -50,14 +52,17 @@ Class builtClass({
             (b) => b
               ..factory = true
               ..optionalParameters.add(
-                Parameter(
-                  (b) => b
-                    ..name = "updates"
-                    ..type = refer("Function(${className}Builder b)"),
-                ),
+                Parameter((b) => b
+                  ..name = "updates"
+                  ..type = FunctionType((b) => b
+                    ..requiredParameters.add(
+                      refer("${className}Builder b"),
+                    )
+                    ..returnType = refer("void"))),
               )
               ..redirect = refer("_\$${className}"),
           ),
+          if (constructors != null && constructors.isNotEmpty) ...constructors
         ],
       )
       ..methods = ListBuilder(<Method>[
@@ -81,10 +86,11 @@ Class builtClass({
               ).code,
           ),
         if (getters != null) ...getters,
-        // Serlialization methods
-        buildSerializerGetter(className).rebuild(
-          (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
-        ),
+        // Serialization methods
+        if (!hasCustomSerializer)
+          buildSerializerGetter(className).rebuild(
+            (b) => b..body = Code("_\$${toCamelCase(className)}Serializer"),
+          ),
         buildToJsonGetter(
           className,
           isOverride: superclassSelections.isNotEmpty,

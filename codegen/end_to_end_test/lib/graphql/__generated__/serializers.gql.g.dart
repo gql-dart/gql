@@ -13,10 +13,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
       ..add(GColorInput.serializer)
+      ..add(GCreateCustomField.serializer)
+      ..add(GCreateCustomFieldData.serializer)
+      ..add(GCreateCustomFieldVars.serializer)
       ..add(GCreateReview.serializer)
       ..add(GCreateReviewData.serializer)
       ..add(GCreateReviewData_createReview.serializer)
       ..add(GCreateReviewVars.serializer)
+      ..add(GCustomFieldInput.serializer)
       ..add(GDroidFragmentData.serializer)
       ..add(GDroidFragmentVars.serializer)
       ..add(GEpisode.serializer)
@@ -103,12 +107,19 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GhumanFieldsFragmentData_friends__asHuman.serializer)
       ..add(GhumanFieldsFragmentData_friends__base.serializer)
       ..add(GhumanFieldsFragmentVars.serializer)
+      ..add(GreviewsWithListArgument.serializer)
+      ..add(GreviewsWithListArgumentData.serializer)
+      ..add(GreviewsWithListArgumentData_reviews.serializer)
+      ..add(GreviewsWithListArgumentVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(DateTime)]),
           () => new ListBuilder<DateTime>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => new ListBuilder<CustomField>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(int)]),
+          () => new ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())
@@ -160,7 +171,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)
           ]),
-          () => new ListBuilder<GhumanFieldsFragmentData_friends?>()))
+          () => new ListBuilder<GhumanFieldsFragmentData_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GreviewsWithListArgumentData_reviews)
+          ]),
+          () => new ListBuilder<GreviewsWithListArgumentData_reviews?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

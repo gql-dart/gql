@@ -72,3 +72,18 @@ Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
   }
   return {};
 }
+
+TriStateValueConfig triStateOptionalsConfig(Map<String, dynamic> config) {
+  final Object? configValue = config["tristate_optionals"];
+
+  if (configValue is bool) {
+    return configValue
+        ? TriStateValueConfig.onAllNullableFields
+        : TriStateValueConfig.never;
+  }
+
+  return TriStateValueConfig.never;
+}
+
+bool varsCreateFactoriesConfig(Map<String, dynamic> config) =>
+    config["vars_create_factories"] as bool? ?? false;

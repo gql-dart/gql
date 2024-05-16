@@ -75,7 +75,19 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stars'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -257,7 +269,26 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Review'),
         isNonNull: false,
       ),
-    )
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'createCustomField'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'input'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'CustomFieldInput'),
+            isNonNull: true,
+          ),
+          defaultValue: null,
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'CustomField'),
+        isNonNull: false,
+      ),
+    ),
   ],
 );
 const Subscription = _i1.ObjectTypeDefinitionNode(
@@ -846,6 +877,30 @@ const ReviewInput = _i1.InputObjectTypeDefinitionNode(
     ),
   ],
 );
+const CustomFieldInput = _i1.InputObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'CustomFieldInput'),
+  directives: [],
+  fields: [
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'id'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ID'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'customField'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'CustomField'),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+  ],
+);
 const ColorInput = _i1.InputObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'ColorInput'),
   directives: [],
@@ -1122,6 +1177,7 @@ const document = _i1.DocumentNode(definitions: [
   PageInfo,
   Review,
   ReviewInput,
+  CustomFieldInput,
   ColorInput,
   Starship,
   Post,

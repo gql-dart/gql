@@ -18,15 +18,13 @@ void main() {
   });
 
   group("Complex Args", () {
-    final args = GCreateReviewVars(
-      (b) => b
-        ..episode = GEpisode.EMPIRE
-        ..review.stars = 5
-        ..review.commentary = "this was amazing!!!"
-        ..review.favorite_color.blue = 255
-        ..review.favorite_color.green = 120
-        ..review.favorite_color.red = 80,
-    );
+    final args = GCreateReviewVars((b) => b
+      ..episode = GEpisode.EMPIRE
+      ..review.stars = 5
+      ..review.commentary = ("this was amazing!!!")
+      ..review.favorite_color.blue = 255
+      ..review.favorite_color.green = 120
+      ..review.favorite_color.red = 80);
 
     final json = {
       "episode": "EMPIRE",

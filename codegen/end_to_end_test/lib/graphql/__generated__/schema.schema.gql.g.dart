@@ -54,6 +54,8 @@ Serializer<GEpisode> _$gEpisodeSerializer = new _$GEpisodeSerializer();
 Serializer<GLengthUnit> _$gLengthUnitSerializer = new _$GLengthUnitSerializer();
 Serializer<GReviewInput> _$gReviewInputSerializer =
     new _$GReviewInputSerializer();
+Serializer<GCustomFieldInput> _$gCustomFieldInputSerializer =
+    new _$GCustomFieldInputSerializer();
 Serializer<GColorInput> _$gColorInputSerializer = new _$GColorInputSerializer();
 Serializer<GPostLikesInput> _$gPostLikesInputSerializer =
     new _$GPostLikesInputSerializer();
@@ -170,6 +172,59 @@ class _$GReviewInputSerializer implements StructuredSerializer<GReviewInput> {
                   specifiedType: const FullType(
                       BuiltList, const [const FullType.nullable(DateTime)]))!
               as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCustomFieldInputSerializer
+    implements StructuredSerializer<GCustomFieldInput> {
+  @override
+  final Iterable<Type> types = const [GCustomFieldInput, _$GCustomFieldInput];
+  @override
+  final String wireName = 'GCustomFieldInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCustomFieldInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.customField;
+    if (value != null) {
+      result
+        ..add('customField')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i2.CustomField)));
+    }
+    return result;
+  }
+
+  @override
+  GCustomFieldInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCustomFieldInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'customField':
+          result.customField = serializers.deserialize(value,
+                  specifiedType: const FullType(_i2.CustomField))
+              as _i2.CustomField?;
           break;
       }
     }
@@ -447,6 +502,104 @@ class GReviewInputBuilder
       }
       rethrow;
     }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCustomFieldInput extends GCustomFieldInput {
+  @override
+  final String id;
+  @override
+  final _i2.CustomField? customField;
+
+  factory _$GCustomFieldInput(
+          [void Function(GCustomFieldInputBuilder)? updates]) =>
+      (new GCustomFieldInputBuilder()..update(updates))._build();
+
+  _$GCustomFieldInput._({required this.id, this.customField}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GCustomFieldInput', 'id');
+  }
+
+  @override
+  GCustomFieldInput rebuild(void Function(GCustomFieldInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCustomFieldInputBuilder toBuilder() =>
+      new GCustomFieldInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCustomFieldInput &&
+        id == other.id &&
+        customField == other.customField;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, customField.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCustomFieldInput')
+          ..add('id', id)
+          ..add('customField', customField))
+        .toString();
+  }
+}
+
+class GCustomFieldInputBuilder
+    implements Builder<GCustomFieldInput, GCustomFieldInputBuilder> {
+  _$GCustomFieldInput? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  _i2.CustomField? _customField;
+  _i2.CustomField? get customField => _$this._customField;
+  set customField(_i2.CustomField? customField) =>
+      _$this._customField = customField;
+
+  GCustomFieldInputBuilder();
+
+  GCustomFieldInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _customField = $v.customField;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCustomFieldInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCustomFieldInput;
+  }
+
+  @override
+  void update(void Function(GCustomFieldInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCustomFieldInput build() => _build();
+
+  _$GCustomFieldInput _build() {
+    final _$result = _$v ??
+        new _$GCustomFieldInput._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GCustomFieldInput', 'id'),
+            customField: customField);
     replace(_$result);
     return _$result;
   }

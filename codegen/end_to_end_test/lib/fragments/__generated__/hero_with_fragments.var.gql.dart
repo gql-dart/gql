@@ -14,8 +14,11 @@ abstract class GHeroWithFragmentsVars
   GHeroWithFragmentsVars._();
 
   factory GHeroWithFragmentsVars(
-          [Function(GHeroWithFragmentsVarsBuilder b) updates]) =
+          [void Function(GHeroWithFragmentsVarsBuilder b) updates]) =
       _$GHeroWithFragmentsVars;
+
+  factory GHeroWithFragmentsVars.create({int? first}) =>
+      GHeroWithFragmentsVars((b) => b..first = first);
 
   int? get first;
   static Serializer<GHeroWithFragmentsVars> get serializer =>
@@ -37,8 +40,10 @@ abstract class GheroDataVars
     implements Built<GheroDataVars, GheroDataVarsBuilder> {
   GheroDataVars._();
 
-  factory GheroDataVars([Function(GheroDataVarsBuilder b) updates]) =
+  factory GheroDataVars([void Function(GheroDataVarsBuilder b) updates]) =
       _$GheroDataVars;
+
+  factory GheroDataVars.create() => GheroDataVars();
 
   static Serializer<GheroDataVars> get serializer => _$gheroDataVarsSerializer;
 
@@ -59,8 +64,11 @@ abstract class GcomparisonFieldsVars
   GcomparisonFieldsVars._();
 
   factory GcomparisonFieldsVars(
-          [Function(GcomparisonFieldsVarsBuilder b) updates]) =
+          [void Function(GcomparisonFieldsVarsBuilder b) updates]) =
       _$GcomparisonFieldsVars;
+
+  factory GcomparisonFieldsVars.create({int? first}) =>
+      GcomparisonFieldsVars((b) => b..first = first);
 
   int? get first;
   static Serializer<GcomparisonFieldsVars> get serializer =>

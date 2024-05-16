@@ -3,9 +3,9 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
 import "package:gql_code_builder/src/when_extension.dart";
 
+import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
-import "../source.dart";
 
 /// Builds the following classes for inline fragments:
 ///   1. An abstract root class that will be implemented by each instantiable
@@ -131,7 +131,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..body = TypeReference((b) => b
             ..symbol = "InlineFragmentSerializer"
             ..url =
-                "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
+                "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
             ..types.add(refer(name))).call([
             literalString(name),
             refer("${name}__base"),

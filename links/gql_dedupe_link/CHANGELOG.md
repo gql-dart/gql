@@ -1,3 +1,7 @@
+## 2.0.3+1
+
+- add topics
+
 ## 2.0.3
 
 - Upgrade `gql_link`

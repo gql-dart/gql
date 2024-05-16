@@ -93,6 +93,7 @@ import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.g
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
+        GCustomFieldInput,
         GEpisode,
         GISODate,
         GJson,
@@ -125,6 +126,12 @@ import 'package:end_to_end_test/scalars/__generated__/review_with_date.req.gql.d
     show GReviewWithDate;
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart'
     show GReviewWithDateVars;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.data.gql.dart'
+    show GCreateCustomFieldData;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.req.gql.dart'
+    show GCreateCustomField;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.var.gql.dart'
+    show GCreateCustomFieldVars;
 import 'package:end_to_end_test/variables/__generated__/create_review.data.gql.dart'
     show GCreateReviewData, GCreateReviewData_createReview;
 import 'package:end_to_end_test/variables/__generated__/create_review.req.gql.dart'
@@ -137,7 +144,13 @@ import 'package:end_to_end_test/variables/__generated__/human_with_args.req.gql.
     show GHumanWithArgs;
 import 'package:end_to_end_test/variables/__generated__/human_with_args.var.gql.dart'
     show GHumanWithArgsVars;
-import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
+import 'package:end_to_end_test/variables/__generated__/list_argument.data.gql.dart'
+    show GreviewsWithListArgumentData, GreviewsWithListArgumentData_reviews;
+import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.dart'
+    show GreviewsWithListArgument;
+import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart'
+    show GreviewsWithListArgumentVars;
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
 
 part 'serializers.gql.g.dart';
@@ -158,10 +171,14 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
   GColorInput,
+  GCreateCustomField,
+  GCreateCustomFieldData,
+  GCreateCustomFieldVars,
   GCreateReview,
   GCreateReviewData,
   GCreateReviewData_createReview,
   GCreateReviewVars,
+  GCustomFieldInput,
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,
@@ -248,5 +265,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GhumanFieldsFragmentData_friends__asHuman,
   GhumanFieldsFragmentData_friends__base,
   GhumanFieldsFragmentVars,
+  GreviewsWithListArgument,
+  GreviewsWithListArgumentData,
+  GreviewsWithListArgumentData_reviews,
+  GreviewsWithListArgumentVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

@@ -16,7 +16,18 @@ abstract class GReviewWithDateVars
   GReviewWithDateVars._();
 
   factory GReviewWithDateVars(
-      [Function(GReviewWithDateVarsBuilder b) updates]) = _$GReviewWithDateVars;
+          [void Function(GReviewWithDateVarsBuilder b) updates]) =
+      _$GReviewWithDateVars;
+
+  factory GReviewWithDateVars.create({
+    _i1.GEpisode? episode,
+    required _i1.GReviewInput review,
+    DateTime? createdAt,
+  }) =>
+      GReviewWithDateVars((b) => b
+        ..episode = episode
+        ..review = review.toBuilder()
+        ..createdAt = createdAt);
 
   _i1.GEpisode? get episode;
   _i1.GReviewInput get review;

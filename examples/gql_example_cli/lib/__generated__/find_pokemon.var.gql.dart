@@ -12,7 +12,7 @@ abstract class GFindPokemonVars
     implements Built<GFindPokemonVars, GFindPokemonVarsBuilder> {
   GFindPokemonVars._();
 
-  factory GFindPokemonVars([Function(GFindPokemonVarsBuilder b) updates]) =
+  factory GFindPokemonVars([void Function(GFindPokemonVarsBuilder b) updates]) =
       _$GFindPokemonVars;
 
   String get name;

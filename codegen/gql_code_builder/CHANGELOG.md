@@ -1,7 +1,35 @@
+## 0.12.0
+
+- Moving built-in Serializers to gql_code_builder_serializers package, so
+  so don't have to depend on gql_code_builder in dependencies, and can keep
+  it as dev-dependency (#456)
+
+## 0.11.0
+
+- Adding option to create factory initializers with required parameters also for inputs (#585)
+
+## 0.10.0
+
+- Adding 'vars_create_factories' option to create factory initializers with required parameters (
+  #434)
+
+## 0.9.1+1
+
+- fix generating the `Value` wrappers as nullable
+
+## 0.9.0
+
+- add TriStateValueConfig option in order to wrap nullable fields in input types in a `Value` class
+  in order distinguish between three cases:
+    - absent
+    - null
+    - non-null value
+      in serialization
+
 ## 0.8.0
 
-- add `DataClassConfig` option to reuse data classes when a selection set only consists of a single fragment spread
-
+- add experimental `DataClassConfig` option to reuse data classes when a selection set only consists
+  of a single fragment spread
 
 ## 0.7.2
 
@@ -10,7 +38,8 @@
 ## 0.7.1
 
 - experimental support for when/maybeWhen methods in inline spread fragments with type condition
-- fix issue with generating fragment classes with variables, see https://github.com/gql-dart/ferry/issues/484
+- fix issue with generating fragment classes with variables,
+  see https://github.com/gql-dart/ferry/issues/484
 
 ## 0.7.0
 
@@ -18,7 +47,7 @@
 
 ## 0.6.0
 
-- add support for generating `possibleTypesMap`. 
+- add support for generating `possibleTypesMap`.
 
 ## 0.5.1
 

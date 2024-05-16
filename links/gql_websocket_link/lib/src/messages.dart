@@ -165,7 +165,7 @@ class SubscriptionData extends GraphQLSocketMessage {
   int get hashCode => toJson().hashCode;
 
   @override
-  bool operator ==(dynamic other) =>
+  bool operator ==(Object other) =>
       other is SubscriptionData && jsonEncode(other) == jsonEncode(this);
 }
 

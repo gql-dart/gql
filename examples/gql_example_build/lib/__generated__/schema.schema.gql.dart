@@ -5,7 +5,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:gql_code_builder/src/serializers/default_scalar_serializer.dart'
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     as _i1;
 import 'package:gql_example_build/__generated__/serializers.gql.dart' as _i2;
 
@@ -41,7 +41,7 @@ class GEnum extends EnumClass {
 abstract class GInput implements Built<GInput, GInputBuilder> {
   GInput._();
 
-  factory GInput([Function(GInputBuilder b) updates]) = _$GInput;
+  factory GInput([void Function(GInputBuilder b) updates]) = _$GInput;
 
   String? get id;
   @BuiltValueField(wireName: 'bool')

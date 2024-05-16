@@ -13,8 +13,12 @@ abstract class GHumanWithArgsVars
     implements Built<GHumanWithArgsVars, GHumanWithArgsVarsBuilder> {
   GHumanWithArgsVars._();
 
-  factory GHumanWithArgsVars([Function(GHumanWithArgsVarsBuilder b) updates]) =
+  factory GHumanWithArgsVars(
+          [void Function(GHumanWithArgsVarsBuilder b) updates]) =
       _$GHumanWithArgsVars;
+
+  factory GHumanWithArgsVars.create({required String id}) =>
+      GHumanWithArgsVars((b) => b..id = id);
 
   String get id;
   static Serializer<GHumanWithArgsVars> get serializer =>
