@@ -23,9 +23,9 @@ class PokemonCard extends StatelessWidget {
                 width: 200,
               ),
               Text(pokemon.name ?? '',
-                  style: Theme.of(context).textTheme.headline6),
+                  style: Theme.of(context).textTheme.titleLarge),
               Text('HP: ${pokemon.maxHP}',
-                  style: Theme.of(context).textTheme.subtitle1)
+                  style: Theme.of(context).textTheme.titleMedium)
             ],
           ),
         ),

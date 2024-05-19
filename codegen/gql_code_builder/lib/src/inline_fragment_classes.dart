@@ -131,7 +131,7 @@ List<Method> _inlineFragmentRootSerializationMethods({
           ..body = TypeReference((b) => b
             ..symbol = "InlineFragmentSerializer"
             ..url =
-                "package:gql_code_builder/src/serializers/inline_fragment_serializer.dart"
+                "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
             ..types.add(refer(name))).call([
             literalString(name),
             refer("${name}__base"),

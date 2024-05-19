@@ -97,7 +97,7 @@ ListBuilder<Method> _buildMethods(
             ..body = TypeReference((b) => b
               ..symbol = "DefaultScalarSerializer"
               ..url =
-                  "package:gql_code_builder/src/serializers/default_scalar_serializer.dart"
+                  "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
               ..types.add(refer(scalarName))).call([
               Method(
                 (b) => b

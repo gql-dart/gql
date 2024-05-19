@@ -47,7 +47,7 @@ class PokemonDetailScreen extends StatelessWidget {
               ),
               Text(
                 'Height',
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Text('min: ${data.pokemon!.height!.minimum}'),
               Text('max: ${data.pokemon!.height!.maximum}'),
@@ -56,7 +56,7 @@ class PokemonDetailScreen extends StatelessWidget {
               ),
               Text(
                 'Weight',
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Text('min: ${data.pokemon!.weight!.minimum}'),
               Text('max: ${data.pokemon!.weight!.maximum}'),

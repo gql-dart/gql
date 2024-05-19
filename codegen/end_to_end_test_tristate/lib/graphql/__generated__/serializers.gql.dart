@@ -145,7 +145,7 @@ import 'package:end_to_end_test_tristate/variables/__generated__/human_with_args
     show GHumanWithArgs;
 import 'package:end_to_end_test_tristate/variables/__generated__/human_with_args.var.gql.dart'
     show GHumanWithArgsVars;
-import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
 
 part 'serializers.gql.g.dart';
