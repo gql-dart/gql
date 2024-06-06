@@ -1111,6 +1111,7 @@ void _testLinks(
           return IOWebSocketChannel(webSocket);
         },
         reconnectInterval: Duration(milliseconds: 500),
+        autoReconnect: true
       );
       //
       link.request(request).listen(print, onError: print);
