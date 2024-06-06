@@ -12,6 +12,7 @@ dependencies:
   rxdart: '>=0.26.0 <0.28.0'
   uuid: '>=3.0.0 <5.0.0'
   web_socket_channel: ^3.0.0
+  web_socket: ^0.1.5
 dev_dependencies: 
   gql_pedantic: ^1.0.2
   mockito: ^5.0.0

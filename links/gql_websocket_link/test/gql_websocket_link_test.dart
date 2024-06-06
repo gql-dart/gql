@@ -1089,7 +1089,7 @@ void _testLinks(
                                 ConnectionAck(),
                               ),
                             );
-                            webSocket.close(3001);
+                            webSocket.close(websocket_status.normalClosure);
                           }
                           messageCount++;
                         },
