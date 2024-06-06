@@ -1089,7 +1089,7 @@ void _testLinks(
                                 ConnectionAck(),
                               ),
                             );
-                            webSocket.close(websocket_status.goingAway);
+                            webSocket.close(websocket_status.normalClosure);
                           }
                           messageCount++;
                         },
@@ -1161,7 +1161,7 @@ void _testLinks(
                         expect(map["type"], startMessageType);
                         subId = map["id"] as String?;
                         // disconnect
-                        webSocket.close(websocket_status.goingAway);
+                        webSocket.close(websocket_status.normalClosure);
                       }
                       messageCount++;
                     },
