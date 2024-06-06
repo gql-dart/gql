@@ -156,6 +156,8 @@ void _testLinks(
       link = makeLink(null, channelGenerator: () => channel);
       //
       link.request(request).listen(print);
+
+      await server.close();
     },
   );
 
@@ -204,6 +206,8 @@ void _testLinks(
       );
       //
       link.request(request).listen(print);
+
+      await server.close();
     },
   );
 
@@ -254,6 +258,8 @@ void _testLinks(
       );
       //
       link.request(request).listen(print);
+
+      await server.close();
     },
   );
 
@@ -341,6 +347,8 @@ void _testLinks(
           },
         ),
       );
+
+      await server.close();
     },
   );
 
@@ -465,6 +473,8 @@ void _testLinks(
               count: maxCall,
             ),
           );
+
+      await server.close();
     },
   );
 
@@ -567,6 +577,8 @@ void _testLinks(
           },
         ),
       );
+
+      await server.close();
     },
   );
 
@@ -703,6 +715,8 @@ void _testLinks(
               count: maxCall,
             ),
           );
+
+      await server.close();
     },
   );
 
@@ -757,6 +771,7 @@ void _testLinks(
     webSocket = await WebSocket.connect("ws://localhost:${server.port}");
     channel = IOWebSocketChannel(webSocket);
     link = makeLink(null, channelGenerator: () => channel);
+    await server.close();
     expect(
       link.request(request).first,
       throwsA(isA<WebSocketLinkParserException>()),
@@ -812,6 +827,7 @@ void _testLinks(
     webSocket = await WebSocket.connect("ws://localhost:${server.port}");
     channel = IOWebSocketChannel(webSocket);
     link = makeLink(null, channelGenerator: () => channel);
+    await server.close();
     expect(
       link.request(request).first,
       throwsA(isA<WebSocketLinkServerException>()),
@@ -822,7 +838,7 @@ void _testLinks(
     HttpServer server;
     WebSocket webSocket;
     IOWebSocketChannel channel;
-    Link link;
+    late Link link;
     Request request;
 
     request = Request(
@@ -836,10 +852,16 @@ void _testLinks(
     server.transform(WebSocketTransformer());
 
     webSocket = await WebSocket.connect("ws://localhost:${server.port}");
-    // Close the socket to cause network error.
-    await webSocket.close();
     channel = IOWebSocketChannel(webSocket);
-    link = makeLink(null, channelGenerator: () => channel);
+    channel.stream.listen(null, onError: (err) {});
+
+    await webSocket.close();
+    link = makeLink(
+      null,
+      channelGenerator: () => channel,
+      autoReconnect: false,
+    );
+    await server.close();
     expect(
       link.request(request).first,
       throwsA(isA<WebSocketLinkServerException>()),
@@ -908,6 +930,8 @@ void _testLinks(
     channel = IOWebSocketChannel(webSocket);
     link = makeLink(null, channelGenerator: () => channel);
     responseSub = link.request(request).listen(print);
+
+    await server.close();
   });
 
   test(
