@@ -1,3 +1,8 @@
+## 1.1.0
+
+- improve JSON decoding performance by taking advantage
+  Darts hidden _JsonUtf8Decoder obtained by fusing `Utf8Decoder` and `JsonDecoder`
+
 ## 1.0.1+1
 
 - add topics
