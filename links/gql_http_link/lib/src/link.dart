@@ -39,17 +39,23 @@ class HttpLink extends Link {
   /// the decoded map will be then passes to the `RequestSerializer`.
   /// It is recommended for performance to decode the response using `compute` function.
   /// ```
-  /// httpResponseDecoder : (http.Response httpResponse) async => await compute(jsonDecode, httpResponse.body) as Map<String, dynamic>,
+  /// httpResponseDecoder : (http.Response httpResponse) => Isolate.run(() =>
+  ///             const Utf8Decoder()
+  ///                 .fuse(const JsonDecoder())
+  ///                 .convert(response.bodyBytes) as Map<String, dynamic>?))
   /// ```
   HttpResponseDecoder httpResponseDecoder;
 
-  static Map<String, dynamic>? _defaultHttpResponseDecoder(
+  // use the hidden _JsonUtf8Decoder obtained by fusing
+  // Utf8Decoder and JsonDecoder
+  // see https://github.com/dart-lang/sdk/blob/5b2ea0c7a227d91c691d2ff8cbbeb5f7f86afdb9/sdk/lib/_internal/vm/lib/convert_patch.dart#L40
+  static final Converter _defaultHttpResponseDecoder =
+      const Utf8Decoder().fuse<Object?>(const JsonDecoder());
+
+  static Map<String, dynamic>? _defaultHttpResponseDecode(
           http.Response httpResponse) =>
-      json.decode(
-        utf8.decode(
-          httpResponse.bodyBytes,
-        ),
-      ) as Map<String, dynamic>?;
+      _defaultHttpResponseDecoder.convert(httpResponse.bodyBytes)
+          as Map<String, dynamic>?;
 
   http.Client? _httpClient;
 
@@ -65,7 +71,7 @@ class HttpLink extends Link {
     http.Client? httpClient,
     this.serializer = const RequestSerializer(),
     this.parser = const ResponseParser(),
-    this.httpResponseDecoder = _defaultHttpResponseDecoder,
+    this.httpResponseDecoder = _defaultHttpResponseDecode,
     this.followRedirects = false,
   }) : uri = Uri.parse(uri) {
     _httpClient = httpClient ?? http.Client();
