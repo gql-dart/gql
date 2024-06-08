@@ -1103,17 +1103,11 @@ void _testLinks(
             ),
           );
 
-      link = makeLink(
-        null,
-        channelGenerator: () async {
-          final webSocket =
-              await WebSocket.connect("ws://localhost:${server.port}");
-          return IOWebSocketChannel(webSocket);
-        },
-        reconnectInterval: Duration(milliseconds: 500),
-        autoReconnect: true
-      );
-      //
+      link = makeLink(null, channelGenerator: () async {
+        final webSocket =
+            await WebSocket.connect("ws://localhost:${server.port}");
+        return IOWebSocketChannel(webSocket);
+      }, reconnectInterval: Duration(milliseconds: 500), autoReconnect: true);
       link.request(request).listen(print, onError: print);
     },
   );
