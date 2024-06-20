@@ -4,6 +4,7 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/src/common.dart";
 import "package:gql_code_builder/src/config/data_class_config.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
+import "package:gql_code_builder/src/utils/possible_types.dart";
 
 import "./source.dart";
 import "./src/operation/data.dart";
@@ -26,8 +27,11 @@ Library buildDataLibrary(
   ),
 ]) {
   final fragmentMap = _fragmentMap(docSource);
+  final possibleTypesMap = dataClassConfig.reuseFragments
+      ? _possibleTypesMap(schemaSource)
+      : <String, Set<String>>{};
   final dataClassAliasMap = dataClassConfig.reuseFragments
-      ? _dataClassAliasMap(docSource, fragmentMap)
+      ? _dataClassAliasMap(docSource, fragmentMap, possibleTypesMap)
       : <String, Reference>{};
 
   final operationDataClasses = docSource.document.definitions
@@ -40,6 +44,7 @@ Library buildDataLibrary(
           typeOverrides,
           whenExtensionConfig,
           fragmentMap,
+          possibleTypesMap,
           dataClassAliasMap,
         ),
       )
@@ -55,6 +60,7 @@ Library buildDataLibrary(
           typeOverrides,
           whenExtensionConfig,
           fragmentMap,
+          possibleTypesMap,
           dataClassAliasMap,
         ),
       )
@@ -80,16 +86,40 @@ Map<String, SourceSelections> _fragmentMap(SourceNode source) => {
       for (final import in source.imports) ..._fragmentMap(import)
     };
 
+Map<String, Set<String>> _possibleTypesMap(SourceNode source,
+    [Set<String>? visitedSource, Map<String, Set<String>>? possibleTypesMap]) {
+  visitedSource ??= {};
+  possibleTypesMap ??= {};
+
+  source.imports.forEach((s) {
+    if (!visitedSource!.contains(source.url)) {
+      visitedSource.add(source.url);
+      _possibleTypesMap(s, visitedSource, possibleTypesMap);
+    }
+  });
+
+  source.document.possibleTypesMap().forEach((key, value) {
+    possibleTypesMap![key] ??= {};
+    possibleTypesMap[key]!.addAll(value);
+  });
+
+  return possibleTypesMap;
+}
+
 Map<String, Reference> _dataClassAliasMap(
-    SourceNode source, Map<String, SourceSelections> fragmentMap,
-    [Map<String, Reference>? aliasMap, Set<String>? visitedSource]) {
+    SourceNode source,
+    Map<String, SourceSelections> fragmentMap,
+    Map<String, Set<String>> possibleTypesMap,
+    [Map<String, Reference>? aliasMap,
+    Set<String>? visitedSource]) {
   aliasMap ??= {};
   visitedSource ??= {};
 
   source.imports.forEach((s) {
     if (!visitedSource!.contains(source.url)) {
       visitedSource.add(source.url);
-      _dataClassAliasMap(s, fragmentMap, aliasMap);
+      _dataClassAliasMap(
+          s, fragmentMap, possibleTypesMap, aliasMap, visitedSource);
     }
   });
 
@@ -101,6 +131,7 @@ Map<String, Reference> _dataClassAliasMap(
       selections: def.selectionSet.selections,
       fragmentMap: fragmentMap,
       aliasMap: aliasMap,
+      possibleTypesMap: possibleTypesMap,
     );
   }
 
@@ -112,6 +143,7 @@ Map<String, Reference> _dataClassAliasMap(
       selections: def.selectionSet.selections,
       fragmentMap: fragmentMap,
       aliasMap: aliasMap,
+      possibleTypesMap: possibleTypesMap,
     );
     _dataClassAliasMapDFS(
       typeRefPrefix: builtClassName("${def.name.value}Data"),
@@ -119,6 +151,7 @@ Map<String, Reference> _dataClassAliasMap(
       selections: def.selectionSet.selections,
       fragmentMap: fragmentMap,
       aliasMap: aliasMap,
+      possibleTypesMap: possibleTypesMap,
     );
   }
 
@@ -131,17 +164,20 @@ void _dataClassAliasMapDFS({
   required List<SelectionNode> selections,
   required Map<String, SourceSelections> fragmentMap,
   required Map<String, Reference> aliasMap,
+  required Map<String, Set<String>> possibleTypesMap,
+  bool shouldAlwaysGenerate = false,
 }) {
   if (selections.isEmpty) return;
 
-  // flatten selections to extract untouched fragments while visiting children.
+  // shrink selections to extract untouched fragments while visiting children.
   final shrunkenSelections =
       shrinkSelections(mergeSelections(selections, fragmentMap), fragmentMap);
 
   // alias single fragment and finish
   final selectionsWithoutTypename = shrunkenSelections
       .where((s) => !(s is FieldNode && s.name.value == "__typename"));
-  if (selectionsWithoutTypename.length == 1 &&
+  if (!shouldAlwaysGenerate &&
+      selectionsWithoutTypename.length == 1 &&
       selectionsWithoutTypename.first is FragmentSpreadNode) {
     final node = selectionsWithoutTypename.first as FragmentSpreadNode;
     final fragment = fragmentMap[node.name.value];
@@ -149,7 +185,6 @@ void _dataClassAliasMapDFS({
     aliasMap[typeRefPrefix] =
         refer(fragmentTypeName, "${fragment!.url ?? ""}#data");
     // print("alias $typeRefPrefix => $fragmentTypeName");
-    return;
   }
 
   for (final node in selectionsWithoutTypename) {
@@ -179,20 +214,36 @@ void _dataClassAliasMapDFS({
         selections: exclusiveFragmentSelections,
         fragmentMap: fragmentMap,
         aliasMap: aliasMap,
+        possibleTypesMap: possibleTypesMap,
       );
     } else if (node is InlineFragmentNode) {
+      /// TODO: Handle inline fragments without a type condition
       if (node.typeCondition != null) {
-        /// TODO: Handle inline fragments without a type condition
+        final currentType = node.typeCondition!.on.name.value;
+        final interfaces = possibleTypesMap.entries
+            .where((e) => e.value.contains(currentType))
+            .map((e) => e.key)
+            .toSet();
+
+        final selectionsIncludingInterfaces = [
+          ...selections.where((s) => !(s is InlineFragmentNode)),
+          // spread all interfaces which current type is belongs to
+          ...selections
+              .whereType<InlineFragmentNode>()
+              .where((s) =>
+                  s == node ||
+                  interfaces.contains(s.typeCondition?.on.name.value))
+              .expand((s) => s.selectionSet.selections),
+        ];
+
         _dataClassAliasMapDFS(
-          typeRefPrefix:
-              "${typeRefPrefix}__as${node.typeCondition!.on.name.value}",
+          typeRefPrefix: "${typeRefPrefix}__as${currentType}",
           getAliasTypeName: getAliasTypeName,
-          selections: [
-            ...selections.where((s) => s != node),
-            ...node.selectionSet.selections,
-          ],
+          selections: selectionsIncludingInterfaces,
           fragmentMap: fragmentMap,
           aliasMap: aliasMap,
+          possibleTypesMap: possibleTypesMap,
+          shouldAlwaysGenerate: true,
         );
       }
     } else if (node is FieldNode && node.selectionSet != null) {
@@ -202,6 +253,7 @@ void _dataClassAliasMapDFS({
         selections: node.selectionSet!.selections,
         fragmentMap: fragmentMap,
         aliasMap: aliasMap,
+        possibleTypesMap: possibleTypesMap,
       );
     }
   }
