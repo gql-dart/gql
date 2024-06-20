@@ -169,6 +169,8 @@ class SelectionSetNode extends Node {
 
 abstract class SelectionNode extends Node {
   const SelectionNode(FileSpan? span) : super(span);
+
+  List<DirectiveNode> get directives;
 }
 
 class FieldNode extends SelectionNode {
@@ -178,6 +180,7 @@ class FieldNode extends SelectionNode {
 
   final List<ArgumentNode> arguments;
 
+  @override
   final List<DirectiveNode> directives;
 
   final SelectionSetNode? selectionSet;
@@ -228,6 +231,7 @@ class ArgumentNode extends Node {
 class FragmentSpreadNode extends SelectionNode {
   final NameNode name;
 
+  @override
   final List<DirectiveNode> directives;
 
   const FragmentSpreadNode({
@@ -249,6 +253,7 @@ class FragmentSpreadNode extends SelectionNode {
 class InlineFragmentNode extends SelectionNode {
   final TypeConditionNode? typeCondition;
 
+  @override
   final List<DirectiveNode> directives;
 
   final SelectionSetNode selectionSet;
