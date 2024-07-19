@@ -89,8 +89,8 @@ Map<NameNode, TypeNode> _varTypesForField({
   );
   return {
     for (final arg in field.arguments)
-      if (arg.value is VariableNode)
-        arg.name: fieldDef.args
+      if (arg.value case VariableNode(:final name))
+        name: fieldDef.args
             .firstWhere((inputVal) => inputVal.name == arg.name)
             .type
       else if (arg.value is ObjectValueNode)

@@ -27,6 +27,10 @@ import 'package:end_to_end_test/custom_field.dart';
 import 'package:end_to_end_test/custom_field_serializer.dart'
     show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
+import 'package:end_to_end_test/fragments/__generated__/fragment_with_different_name_in_vars.data.gql.dart'
+    show GDifferentNameData, GDifferentNameData_friendsConnection;
+import 'package:end_to_end_test/fragments/__generated__/fragment_with_different_name_in_vars.var.gql.dart'
+    show GDifferentNameVars;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
         GPostFragmentForUser1Data,
@@ -179,6 +183,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateReviewData_createReview,
   GCreateReviewVars,
   GCustomFieldInput,
+  GDifferentNameData,
+  GDifferentNameData_friendsConnection,
+  GDifferentNameVars,
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,

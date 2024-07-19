@@ -62,4 +62,9 @@ void main() {
       expect(leia.toJson(), equals(json));
     });
   });
+
+  test("fragment with vars with different names than args", () {
+
+    final frag = GFragmentDiff
+  });
 }

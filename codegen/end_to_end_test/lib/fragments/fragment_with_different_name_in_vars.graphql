@@ -1,0 +1,12 @@
+fragment DifferentName on Character {
+    id
+    friendsConnection(first: $start) {
+        totalCount
+    }
+}
+
+query DifferentNameQuery {
+    hero(episode: JEDI) {
+        ...DifferentName
+    }
+}
