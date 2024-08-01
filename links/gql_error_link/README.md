@@ -28,7 +28,7 @@ An example using `ErrorLink` to act on auth exceptions.
 
 _Note that this example is very inefficient because it not only updates token
 on every request, it does so only after the request has failed first.
-A more feature complete example of an auth link can be found [here](../gql_example_http_auth_link)._
+A more feature complete example of an auth link can be found [here](../../examples/gql_example_http_auth_link)._
 
 ```dart
 import "package:gql/language.dart";
