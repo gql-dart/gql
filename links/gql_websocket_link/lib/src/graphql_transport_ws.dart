@@ -817,9 +817,15 @@ class _ConnectionState {
             if (!isOpen) return;
 
             // wait for next or error message (result) to be processed before process complete message
+            int waitTimeOut = 0;
             while (message is CompleteMessage &&
                 nextOrErrorMsgWaitMap.containsKey(message.id)) {
               await Future.delayed(const Duration(milliseconds: 100));
+              waitTimeOut++;
+              // if next or error message is not arrived or processed in 60 seconds, break the loop
+              if (waitTimeOut >= 600) {
+                break;
+              }
             }
 
             emitter.emit(TransportWsEvent.message(message));
@@ -998,11 +1004,16 @@ class _Client extends TransportWsClient {
           final socket = _c.socket;
           final release = _c.release;
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
-
+          // print("isolate debug name: ${Isolate.current.debugName}");
+          // print(payload.operation.toString());
+          // print(payload.variables.toString());
+          // print(payload.context.toString());
+          // print("graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
           // if done while waiting for connect, release the connection lock right away
           final _subscribeMsg = await options.graphQLSocketMessageEncoder(
             SubscribeMessage(id, options.serializer.serializeRequest(payload)),
           );
+          // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
           if (done) return release();
 
           final unlisten = emitter.onMessage(id, (message) {
