@@ -625,7 +625,7 @@ class _ConnectionState {
   // TODO: WebSocketChannel should have a `state` getter and `onStateChange` stream
   bool isOpen = false;
 
-  Map<String, Object?> nextOrErrorMsgWaitMap = {};
+  Map<String, Completer<void>> nextOrErrorMsgWaitMap = {};
 
   /// Checks the `connect` problem and evaluates if the client should retry.
   bool shouldRetryConnectOrThrow(Object errOrCloseEvent) {
@@ -817,14 +817,24 @@ class _ConnectionState {
             if (!isOpen) return;
 
             // wait for next or error message (result) to be processed before process complete message
-            int waitTimeOut = 0;
-            while (message is CompleteMessage &&
+            if (message is CompleteMessage &&
                 nextOrErrorMsgWaitMap.containsKey(message.id)) {
-              await Future.delayed(const Duration(milliseconds: 100));
-              waitTimeOut++;
-              // if next or error message is not arrived or processed in 60 seconds, break the loop
-              if (waitTimeOut >= 600) {
-                break;
+              final completer = nextOrErrorMsgWaitMap[message.id];
+
+              if (completer != null) {
+                if (completer.isCompleted) {
+                  nextOrErrorMsgWaitMap.remove(message.id);
+                } else {
+                  final timer = Timer(const Duration(seconds: 60), () {
+                    // Timeout => let's return an error
+                    if (!completer.isCompleted) {
+                      completer.complete();
+                    }
+                  });
+
+                  await completer.future;
+                  timer.cancel();
+                }
               }
             }
 
@@ -1019,11 +1029,19 @@ class _Client extends TransportWsClient {
           final unlisten = emitter.onMessage(id, (message) {
             if (message is NextMessage) {
               sink.add(message.payload);
+              final completer = state.nextOrErrorMsgWaitMap[id];
+              if (completer != null && !completer.isCompleted) {
+                completer.complete();
+              }
               state.nextOrErrorMsgWaitMap.remove(id);
             } else if (message is ErrorMessage) {
               errored = true;
               done = true;
               sink.addError(message.payload);
+              final completer = state.nextOrErrorMsgWaitMap[id];
+              if (completer != null && !completer.isCompleted) {
+                completer.complete();
+              }
               state.nextOrErrorMsgWaitMap.remove(id);
               releaser();
             } else if (message is CompleteMessage) {
@@ -1034,7 +1052,7 @@ class _Client extends TransportWsClient {
 
           socket.sink.add(_subscribeMsg);
 
-          state.nextOrErrorMsgWaitMap[id] = null;
+          state.nextOrErrorMsgWaitMap[id] = Completer();
 
           releaser = () async {
             final _completeMsg =
