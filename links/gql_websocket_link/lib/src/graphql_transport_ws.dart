@@ -936,12 +936,11 @@ class _ConnectionState {
     // if (socket.readyState == WebSocketImpl.CLOSING) await throwOnClose;
 
     final _releaseComp = Completer<void>();
-    final void Function() release = _releaseComp.complete;
     final released = _releaseComp.future;
 
     return _Connection(
       socket: socket,
-      release: release,
+      release: _releaseComp,
       waitForReleaseOrThrowOnClose: Future.any([
         // wait for
         released.then((_) {
@@ -1024,7 +1023,9 @@ class _Client extends TransportWsClient {
             SubscribeMessage(id, options.serializer.serializeRequest(payload)),
           );
           // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
-          if (done) return release();
+          if (done) {
+            if (!release.isCompleted) release.complete();
+          }
 
           final unlisten = emitter.onMessage(id, (message) {
             if (message is NextMessage) {
@@ -1063,7 +1064,7 @@ class _Client extends TransportWsClient {
             }
             state.locks--;
             done = true;
-            release();
+            if (!release.isCompleted) release.complete();
           };
 
           // either the releaser will be called, connection completed and
@@ -1120,7 +1121,7 @@ class _Client extends TransportWsClient {
 
 class _Connection {
   final WebSocketChannel socket;
-  final void Function() release;
+  final Completer<void> release;
   final Future<void> waitForReleaseOrThrowOnClose;
 
   _Connection({
