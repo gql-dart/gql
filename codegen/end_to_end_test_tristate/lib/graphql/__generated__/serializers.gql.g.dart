@@ -24,6 +24,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GDroidFragmentData.serializer)
       ..add(GDroidFragmentVars.serializer)
       ..add(GEpisode.serializer)
+      ..add(GHeroDetailData.serializer)
+      ..add(GHeroDetailData_friends.serializer)
+      ..add(GHeroDetailVars.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
@@ -31,10 +34,23 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroForEpisodeData_hero__base.serializer)
       ..add(GHeroForEpisodeData_hero__base_friends.serializer)
       ..add(GHeroForEpisodeVars.serializer)
+      ..add(GHeroInclude.serializer)
+      ..add(GHeroIncludeData.serializer)
+      ..add(GHeroIncludeData_hero.serializer)
+      ..add(GHeroIncludeVars.serializer)
       ..add(GHeroNoVars.serializer)
       ..add(GHeroNoVarsData.serializer)
       ..add(GHeroNoVarsData_hero.serializer)
       ..add(GHeroNoVarsVars.serializer)
+      ..add(GHeroSkip.serializer)
+      ..add(GHeroSkipData.serializer)
+      ..add(GHeroSkipData_hero.serializer)
+      ..add(GHeroSkipFragment.serializer)
+      ..add(GHeroSkipFragmentData.serializer)
+      ..add(GHeroSkipFragmentData_hero.serializer)
+      ..add(GHeroSkipFragmentData_hero_friends.serializer)
+      ..add(GHeroSkipFragmentVars.serializer)
+      ..add(GHeroSkipVars.serializer)
       ..add(GHeroWith2Fragments.serializer)
       ..add(GHeroWith2FragmentsData.serializer)
       ..add(GHeroWith2FragmentsData_hero.serializer)
@@ -120,6 +136,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
           () => new ListBuilder<GEpisode?>())
       ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GHeroDetailData_friends)]),
+          () => new ListBuilder<GHeroDetailData_friends?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GHeroForEpisodeData_hero__asDroid_friends)
           ]),
@@ -129,6 +149,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(GHeroForEpisodeData_hero__base_friends)
           ]),
           () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GHeroSkipFragmentData_hero_friends)
+          ]),
+          () => new ListBuilder<GHeroSkipFragmentData_hero_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(

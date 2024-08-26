@@ -1,0 +1,6 @@
+query HeroInclude($includeId: Boolean!) {
+  hero {
+    id @include(if: $includeId)
+    name
+  }
+}
