@@ -22,6 +22,7 @@ List<Spec> buildInlineFragmentClasses({
   required String type,
   required Map<String, Reference> typeOverrides,
   required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Set<String>> possibleTypesMap,
   required Map<String, Reference> dataClassAliasMap,
   required Map<String, SourceSelections> superclassSelections,
   required List<InlineFragmentNode> inlineFragments,
@@ -32,6 +33,7 @@ List<Spec> buildInlineFragmentClasses({
     baseTypeName: name,
     inlineFragments: inlineFragments,
     config: whenExtensionConfig,
+    possibleTypesMap: possibleTypesMap,
     dataClassAliasMap: dataClassAliasMap,
   );
   return [
@@ -71,6 +73,7 @@ List<Spec> buildInlineFragmentClasses({
         fragmentMap,
       ),
       fragmentMap: fragmentMap,
+      possibleTypesMap: possibleTypesMap,
       dataClassAliasMap: dataClassAliasMap,
       schemaSource: schemaSource,
       type: type,
@@ -94,28 +97,35 @@ List<Spec> buildInlineFragmentClasses({
         // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
         return false;
       }
+      // is it okay to inlcude interfaces?
       return true;
     }).expand(
       (inlineFragment) => buildSelectionSetDataClasses(
-          name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-          selections: mergeSelections(
-            [
-              ...selections.whereType<FieldNode>(),
-              ...selections.whereType<FragmentSpreadNode>(),
-              ...inlineFragment.selectionSet.selections,
-            ],
-            fragmentMap,
-          ),
-          fragmentMap: fragmentMap,
-          dataClassAliasMap: dataClassAliasMap,
-          schemaSource: schemaSource,
-          type: inlineFragment.typeCondition!.on.name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: {
-            name: SourceSelections(url: null, selections: selections)
-          },
-          built: built,
-          whenExtensionConfig: whenExtensionConfig),
+        name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
+        selections: mergeSelections(
+          [
+            ...selections.whereType<FieldNode>(),
+            ...selections.whereType<FragmentSpreadNode>(),
+            ...inlineFragment.selectionSet.selections,
+          ],
+          fragmentMap,
+        ),
+        fragmentMap: fragmentMap,
+        possibleTypesMap: possibleTypesMap,
+        dataClassAliasMap: dataClassAliasMap,
+        schemaSource: schemaSource,
+        type: inlineFragment.typeCondition!.on.name.value,
+        typeOverrides: typeOverrides,
+        superclassSelections: {
+          name: SourceSelections(url: null, selections: selections),
+          if (dataClassAliasMap.isNotEmpty)
+            ...Map.fromEntries(superclassSelections.entries.map((e) => MapEntry(
+                "${e.key}__as${inlineFragment.typeCondition!.on.name.value}",
+                e.value))),
+        },
+        built: built,
+        whenExtensionConfig: whenExtensionConfig,
+      ),
     ),
   ];
 }
