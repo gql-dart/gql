@@ -853,7 +853,12 @@ class _ConnectionState {
             retrying = false; // future lazy connects are not retries
             retries = 0; // reset the retries on connect
             final _completer = Completer<void>();
-            errorOrClosed(_completer.completeError);
+
+            errorOrClosed((error) {
+              if (_completer.isCompleted) return;
+              _completer.completeError(error);
+            });
+
             connected(_Connected(
               socket,
               _completer.future,
@@ -974,7 +979,12 @@ class _Client extends TransportWsClient {
 
     bool done = false;
     bool errored = false;
+    bool released = false;
+
     Function() releaser = () {
+      if (released) return;
+      released = true;
+
       // for handling completions before connect
       state.locks--;
       done = true;
@@ -1018,8 +1028,15 @@ class _Client extends TransportWsClient {
               // if not completed already and socket is open, send complete message to server on release
               socket.sink.add(_completeMsg);
             }
-            state.locks--;
+
             done = true;
+
+            // Its possible for a CompleteMessage to be received during the await above
+            // and this code be run twice causing a double release issue.
+            if (released) return;
+            released = true;
+
+            state.locks--;
             release();
           };
 
