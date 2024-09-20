@@ -853,7 +853,12 @@ class _ConnectionState {
             retrying = false; // future lazy connects are not retries
             retries = 0; // reset the retries on connect
             final _completer = Completer<void>();
-            errorOrClosed(_completer.completeError);
+
+            errorOrClosed((error) {
+              if (_completer.isCompleted) return;
+              _completer.completeError(error);
+            });
+
             connected(_Connected(
               socket,
               _completer.future,
