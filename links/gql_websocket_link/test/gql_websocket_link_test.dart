@@ -971,7 +971,6 @@ void _testLinks(
       link.request(request).listen(
         expectAsync1(
           (response) {
-            print(response);
             expect(
               response.data,
               responseData1,
@@ -1239,9 +1238,16 @@ void _testLinks(
     server.transform(WebSocketTransformer());
 
     webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+    channel = IOWebSocketChannel(webSocket);
+    channel.stream.asBroadcastStream().listen(
+          null,
+          onError: (Object err) {
+            print(err);
+          },
+          onDone: () => print("done"),
+        );
     // Close the socket to cause network error.
     await webSocket.close();
-    channel = IOWebSocketChannel(webSocket);
     link = makeLink(null, channelGenerator: () => channel);
     expect(
       link.request(request).first,
