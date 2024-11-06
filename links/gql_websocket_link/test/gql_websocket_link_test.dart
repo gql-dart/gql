@@ -1472,7 +1472,15 @@ void _testLinks(
         ),
       );
 
+      final completer = Completer<void>();
+      final timer = Timer(const Duration(seconds: 5), () {
+        if (!completer.isCompleted) {
+          completer.completeError("Timeout");
+        }
+      });
+
       server = await HttpServer.bind("localhost", 0);
+      var connectCount = 0;
       server.transform(WebSocketTransformer()).take(2).listen(
             expectAsync1(
               (webSocket) async {
@@ -1491,6 +1499,10 @@ void _testLinks(
                               ),
                             );
                             webSocket.close(websocket_status.goingAway);
+                            connectCount++;
+                            if (connectCount == 2) {
+                              completer.complete();
+                            }
                           }
                           messageCount++;
                         },
@@ -1515,6 +1527,8 @@ void _testLinks(
       );
       //
       link.request(request).listen(print, onError: print);
+      await completer.future;
+      timer.cancel();
     },
   );
 
