@@ -40,9 +40,15 @@ Extension? inlineFragmentWhenExtension(
     {required String baseTypeName,
     required List<InlineFragmentNode> inlineFragments,
     required InlineFragmentSpreadWhenExtensionConfig config,
+    required Map<String, Set<String>> possibleTypesMap,
     required Map<String, Reference> dataClassAliasMap}) {
   final inlineFragmentsWithTypConditions = inlineFragments
-      .where((inlineFragment) => inlineFragment.typeCondition != null)
+      .where((inlineFragment) =>
+          inlineFragment.typeCondition != null
+          // except interfaces on when extension
+          &&
+          !possibleTypesMap
+              .containsKey(inlineFragment.typeCondition!.on.name.value))
       .toList();
 
   final nothingToDo = inlineFragmentsWithTypConditions.isEmpty ||
@@ -187,8 +193,7 @@ Extension? inlineFragmentWhenExtension(
               [
                 _switchTypeName,
                 _curlyBracketOpen,
-                ...inlineFragments
-                    .where((element) => element.typeCondition != null)
+                ...inlineFragmentsWithTypConditions
                     .map((inlineFragment) => Block.of([
                           _caseStatement(inlineFragment),
                           maybeWhenCaseBody(inlineFragment),
