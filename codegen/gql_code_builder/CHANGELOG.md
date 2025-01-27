@@ -1,3 +1,12 @@
+## 0.13.1
+
+- support analyzer 7.0.0
+
+## 0.13.0
+
+- allow importing an externally generated schema
+
+
 ## 0.12.0
 
 - Moving built-in Serializers to gql_code_builder_serializers package, so
