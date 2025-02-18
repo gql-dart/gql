@@ -1,0 +1,8 @@
+query  HeroMergeSkip($withName: Boolean!) {
+    hero {
+        id
+    }
+    hero @include(if: $withName) {
+        name
+    }
+}

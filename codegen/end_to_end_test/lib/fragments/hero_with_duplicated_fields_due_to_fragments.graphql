@@ -1,0 +1,12 @@
+query HeroWithFragmentsDuplication {
+    hero(episode: JEDI) {
+        id
+        ...HeroWithFragmentsDuplicationFragment
+    }
+}
+
+fragment HeroWithFragmentsDuplicationFragment on Character {
+    id
+    name
+}
+
