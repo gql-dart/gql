@@ -1,0 +1,34 @@
+name: gql
+
+packages:
+  - "gql"
+  - "codegen/**"
+  - "gql_pedantic"
+  - "codegen/**"
+  - "links/**"
+  - "examples/**"
+
+scripts:
+  analyze:
+    run: dart analyze .
+    description: Analyze the entire monorepo
+
+  test:
+    run: dart test
+    description: Run tests for the entire monorepo
+    exec:
+      concurrency: 1
+    packageFilters:
+      dirExists: test
+      ignore: "*example*"
+
+  format:
+    run: dart format --set-exit-if-changed .
+    description: Format the entire monorepo
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    runPubGetInParallel: false
+
+sdkPath: auto
