@@ -153,7 +153,33 @@ and to build a community around this vendor-neutral implementation.
 
 Community contributions are welcome.
 
-### `multipack`
+### Melos
+
+This repository uses [Melos](https://melos.invertase.dev) for managing the monorepo. To get started:
+
+1. Install Melos:
+```bash
+dart pub global activate melos
+```
+
+2. Bootstrap the workspace:
+```bash
+melos bootstrap
+```
+
+Available Scripts:
+- `melos run analyze` - Analyze the entire monorepo
+- `melos run test` - Run tests for all packages (excluding examples)
+- `melos run format` - Format the entire monorepo
+
+The workspace is configured with:
+- Automatic discovery of packages in `gql`, `codegen`, `links`, and `examples` directories
+- Test concurrency set to 1 to avoid conflicts
+- Example packages excluded from test runs
+
+See [melos.yaml](melos.yaml) for the complete configuration.
+
+### `multipack` (Deprecated)
 This repo uses [`multipack`](https://github.com/gql-dart/multipack). To activate it run the following command.
 ```bash
 pub global activate multipack
