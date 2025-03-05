@@ -153,57 +153,139 @@ and to build a community around this vendor-neutral implementation.
 
 Community contributions are welcome.
 
-### Melos
+# Release Process
 
-This repository uses [Melos](https://melos.invertase.dev) for managing the monorepo. To get started:
+This repository uses [Melos](https://melos.invertase.dev) to manage the monorepo and handle releases. The release process is partially automated through GitHub Actions.
+
+## Repository Structure
+
+The repository is organized into several package categories:
+
+- Core packages:
+  - `gql`: Core GraphQL package
+  - `gql_tristate_value`
+  - `gql_code_builder_serializers`
+  - `gql_code_builder`
+
+- Execution packages:
+  - `gql_exec`
+  - `gql_link`
+
+- Link implementations:
+  - `gql_http_link`
+  - `gql_dio_link`
+  - `gql_websocket_link`
+  - `gql_dedupe_link`
+  - `gql_error_link`
+  - `gql_transform_link`
+
+- Build packages:
+  - `gql_build`
+
+## Local Development
+
+To get started with local development:
 
 1. Install Melos:
-```bash
-dart pub global activate melos
-```
+   ```bash
+   dart pub global activate melos && dart pub get
+   ```
 
 2. Bootstrap the workspace:
+   ```bash
+   melos bootstrap
+   ```
+
+3. Run tests:
+   ```bash
+   melos test
+   ```
+
+## Release Process
+
+### Automated Publishing
+
+The publish workflow is automated via GitHub Actions and triggers when:
+- Changes are pushed to the `master` or `release` branches AND include changes to any `pubspec.yaml` file
+- Manually triggered through GitHub Actions UI
+
+The automated process:
+1. Validates all packages (formatting, analysis, and tests)
+2. Publishes packages in dependency order:
+   - Core packages first
+   - Execution packages second
+   - Link implementation packages third
+   - Build packages last
+
+### Manual Release Steps
+
+To create a new release manually:
+
+1. Ensure you're on the branch you want to release from (`master` or `release`)
+
+2. Version the packages using one of the following commands:
+   ```bash
+   # For a patch release
+   melos run bump-patch
+
+   # For a minor release
+   melos run bump-minor
+
+   # For a major release
+   melos run bump-major
+
+   # For an alpha release
+   melos run bump-alpha
+
+   # To graduate from prerelease(alpha) to stable
+   melos run graduate
+   ```
+
+3. Push the changes and tags:
+   ```bash
+   git push && git push --tags
+   ```
+
+4. The GitHub Action will automatically handle publishing to pub.dev if changes include pubspec.yaml files
+
+### Versioning Rules
+
+- Use `bump-patch` for backward-compatible bug fixes
+- Use `bump-minor` for backward-compatible features
+- Use `bump-major` for breaking changes
+- Use `bump-alpha` for prerelease versions
+- Use `graduate` to promote prerelease versions to stable
+
+## Available Melos Commands
+
+- `melos bootstrap`: Set up the workspace
+- `melos clean`: Clean all packages
+- `melos test`: Run tests for all packages
+- `melos format`: Format all packages
+- `melos analyze`: Run static analysis
+- `melos build`: Run build_runner for all packages
+- `melos publish`: Publish packages to pub.dev
+
+## Troubleshooting
+
+If the automated publish fails:
+
+1. Check the GitHub Actions logs for specific errors
+2. Ensure all tests are passing locally: `melos test`
+3. Verify that version numbers in `pubspec.yaml` files are correct
+4. Check that all dependencies are properly versioned
+
+For manual publishing (if needed, requires pub dev authentication):
 ```bash
-melos bootstrap
+melos publish --no-dry-run --yes --scope="package_name"
 ```
 
-Available Scripts:
-- `melos run analyze` - Analyze the entire monorepo
-- `melos run test` - Run tests for all packages (excluding examples)
-- `melos run format` - Format the entire monorepo
+## Notes
 
-The workspace is configured with:
-- Automatic discovery of packages in `gql`, `codegen`, `links`, and `examples` directories
-- Test concurrency set to 1 to avoid conflicts
-- Example packages excluded from test runs
-
-See [melos.yaml](melos.yaml) for the complete configuration.
-
-### `multipack` (Deprecated)
-This repo uses [`multipack`](https://github.com/gql-dart/multipack). To activate it run the following command.
-```bash
-pub global activate multipack
-```
-
-`multipack` provides a simple way of running commands in multiple packages at once. It builds a directed graph of packages
-to run commands in topological order.
-
-Link all local packages by running
-```bash
-multipack pubspec override
-```
-
-Get all packages by running
-```bash
-multipack pub get
-```
-
-Clean up the pubspec file before publishing
-```bash
-multipack pubspec clean
-```
-
-See more usage examples in [.github/workflows/dart.yml](.github/workflows/dart.yml).
+- The publish workflow publishes packages in a specific order to handle dependencies correctly
+- All packages are versioned together to maintain consistency
+- The workflow automatically handles pub.dev credentials through GitHub Secrets
+- Changes to `pubspec.yaml` files automatically trigger the publish workflow
 
 ## Features and bugs
 
