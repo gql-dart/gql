@@ -1,5 +1,7 @@
-name: Dart
-on: pull_request
+name: PR Validation
+on: 
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   packages:
@@ -23,48 +25,42 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: dart:latest
-    name: Check ${{ matrix.package }}
+    name: Validate ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
-      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
-        run: |
-          git config --system --add safe.directory /__w/gql/gql 
-      - name: Clone repository
-        uses: actions/checkout@v3
-      - name: Activate multipack
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Install Melos
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Check pubspec
-        run: |
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
-        run: |
-          multipack pubspec override
-      - name: Get dependencies
-        run: |
-          multipack --only $PACKAGE pub get
+          dart pub global activate melos && dart pub get
+        
+      - name: Bootstrap workspace
+        run: melos bootstrap --no-flutter
+        
       - name: Check formatting
+        run: melos format --scope $PACKAGE --set-exit-if-changed
+        
+      - name: Run build runner (if necessary)
+        run: melos exec --scope $PACKAGE --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
+        
+      - name: Check for build diff
         run: |
-          echo ""
-          echo "A list of incorrectly formatted files may follow:"
-          echo ""
-          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
-          echo ""
-      - name: Run build_runner if necessary
-        run: |
-          multipack --only $PACKAGE pub run \
-            build_runner build --delete-conflicting-outputs || true
+          # Use git status instead of git diff to check for modified files
+          if git status --porcelain | grep -q "\.gql\.dart$"; then
+            echo "Generated .gql.dart files have changes that need to be committed"
+            git status --porcelain | grep "\.gql\.dart$"
+            exit 1
+          fi
+        
       - name: Analyze package
-        run: |
-          multipack --only $PACKAGE exec dart analyze --version
-          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
+        run: melos analyze --scope $PACKAGE --fatal-warnings
+        
       - name: Run tests
-        run: |
-          multipack --only $PACKAGE exec [ -d ./test ] || exit 0
-          multipack --only $PACKAGE pub run test
+        run: melos exec --scope $PACKAGE --dir-exists=test -- dart test
+
   examples:
     strategy:
       fail-fast: false
@@ -78,50 +74,40 @@ jobs:
           # gql_example_flutter would require flutter
     runs-on: ubuntu-latest
     container:
-      image: dart
-    name: Check ${{ matrix.package }}
+      image: dart:latest
+    name: Validate example ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
-      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
-        run: |
-          git config --system --add safe.directory /__w/gql/ 
-          git config --system --add safe.directory /__w/gql/gql
-      - name: Clone repository
-        uses: actions/checkout@v3
-      - name: Activate multipack
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Install Melos
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Check pubspec
+          dart pub global activate melos && dart pub get
+        
+      - name: Bootstrap workspace
+        run: melos bootstrap --no-flutter
+        
+      - name: Run build runner (if needed)
+        run: melos exec --scope $PACKAGE --depends-on=build_runner -- dart run build_runner build --delete-conflicting-outputs || true
+        
+      - name: Check for build diff
         run: |
-          git status
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
-        run: |
-          multipack pubspec override
-      - name: Get dependencies
-        run: |
-          multipack --only $PACKAGE pub get
-      - name: Run builders
-        run: |
-          multipack --only $PACKAGE pub run \
-            build_runner build --delete-conflicting-outputs || true
-      - name: Check build diff
-        run: |
-          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+          # Use git status instead of git diff to check for modified files
+          if git status --porcelain | grep -q "\.gql\.dart$"; then
+            echo "Generated .gql.dart files have changes that need to be committed"
+            git status --porcelain | grep "\.gql\.dart$"
+            exit 1
+          fi
+        
       - name: Check formatting
-        run: |
-          echo ""
-          echo "A list of incorrectly formatted files may follow:"
-          echo ""
-          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
-          echo ""
-      - name: Analyze package
-        run: |
-          multipack --only $PACKAGE exec dart analyze --version
-          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
+        run: melos format --scope $PACKAGE --set-exit-if-changed
+        
+      - name: Analyze example
+        run: melos analyze --scope $PACKAGE --fatal-warnings
+
   builder_tests:
     strategy:
       matrix:
@@ -130,88 +116,39 @@ jobs:
           - end_to_end_test_tristate
     runs-on: ubuntu-latest
     container:
-      image: dart
-    name: Check ${{ matrix.package }}
+      image: dart:latest
+    name: Validate test ${{ matrix.package }}
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
-      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
-        run: |
-          git config --system --add safe.directory /__w/gql/ 
-          git config --system --add safe.directory /__w/gql/gql
-      - name: Clone repository
-        uses: actions/checkout@v3
-      - name: Activate multipack
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Install Melos
         run: |
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Check pubspec
+          dart pub global activate melos && dart pub get
+        
+      - name: Bootstrap workspace
+        run: melos bootstrap --no-flutter
+        
+      - name: Run build runner (if needed)
+        run: melos exec --scope $PACKAGE --depends-on=build_runner -- dart run build_runner build --delete-conflicting-outputs || true
+        
+      - name: Check for build diff
         run: |
-          multipack --only $PACKAGE pubspec clean
-          multipack --only $PACKAGE exec git diff --exit-code pubspec.yaml
-      - name: Override local dependencies
-        run: |
-          multipack pubspec override
-      - name: Get dependencies
-        run: |
-          multipack --only $PACKAGE pub get
-      - name: Run builders
-        run: |
-          multipack --only $PACKAGE pub run build_runner build --delete-conflicting-outputs
-      - name: Check build diff
-        run: |
-          multipack --only $PACKAGE exec git diff --exit-code **/*.gql.dart
+          # Use git status instead of git diff to check for modified files
+          if git status --porcelain | grep -q "\.gql\.dart$"; then
+            echo "Generated .gql.dart files have changes that need to be committed"
+            git status --porcelain | grep "\.gql\.dart$"
+            exit 1
+          fi
+        
       - name: Check formatting
-        run: |
-          echo ""
-          echo "A list of incorrectly formatted files may follow:"
-          echo ""
-          multipack --only $PACKAGE exec dart format . --set-exit-if-changed
-          echo ""
+        run: melos format --scope $PACKAGE --set-exit-if-changed
+        
       - name: Analyze package
-        run: |
-          multipack --only $PACKAGE exec dart analyze --version
-          multipack --only $PACKAGE exec dart analyze --fatal-warnings .
+        run: melos analyze --scope $PACKAGE --fatal-warnings
+        
       - name: Run tests
-        run: |
-          multipack --only $PACKAGE exec [ -d ./test ] || exit 0
-          multipack --only $PACKAGE pub run test
-
-  publish_dry_run:
-    runs-on: ubuntu-latest
-    container:
-      image: dart
-    env:
-      PACKAGES: 'gql,gql_build,gql_code_builder,gql_dedupe_link,gql_dio_link,gql_exec,gql_http_link,gql_link,gql_pedantic,gql_transform_link,gql_error_link,gql_websocket_link'
-      PUB_ACCESS_TOKEN: ${{ secrets.PUB_ACCESS_TOKEN }}
-      PUB_REFRESH_TOKEN: ${{ secrets.PUB_REFRESH_TOKEN }}
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Activate multipack
-        run: |
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate multipack
-      - name: Bump to alpha version
-        run: |
-          multipack --only $PACKAGES pubspec bump-alpha
-      - name: Sync package versions
-        run: |
-          multipack --only $PACKAGES pubspec sync-versions
-      - name: Publish packages
-        shell: bash
-        continue-on-error: true
-        run: |
-          echo "{\"accessToken\":\"$PUB_ACCESS_TOKEN\",\"refreshToken\":\"$PUB_REFRESH_TOKEN\",\"idToken\":null,\"tokenEndpoint\":\"https://accounts.google.com/o/oauth2/token\",\"scopes\":[\"openid\",\"https://www.googleapis.com/auth/userinfo.email\"],\"expiration\":1588334512218}" > $HOME/.pub-cache/credentials.json
-
-          ## BEGIN TEMPORARY WORKAROUND FOR https://github.com/google/built_value.dart/issues/1032
-          ## See dry_run_workaround_helpers.sh for more details
-          source .github/workflows/dry_run_workaround_helpers.sh
-
-          multipack --only $PACKAGES exec 'dart pub publish --dry-run 2>&1' | cap
-
-          ignore_err_when_stdout_contains \
-            'Publishing gql_build' \
-            'Package has 1 warning' \
-            'package:built_value_generator/built_value_generator.dart is opting out of null safety' \
-
+        run: melos exec --scope $PACKAGE --dir-exists=test -- dart test

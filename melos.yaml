@@ -1,0 +1,120 @@
+name: gql
+
+packages:
+  - "gql"
+  - "codegen/*"
+  - "gql_pedantic"
+  - "links/*"
+  - "examples/*"
+ignore:
+  - "examples/gql_example_flutter"
+
+categories:
+  packages:
+    - "gql"
+    - "gql_pedantic"
+    - "codegen/gql_build"
+    - "codegen/gql_code_builder"
+    - "codegen/gql_code_builder_serializers"
+    - "codegen/gql_tristate_value"
+    - "links/gql_exec"
+    - "links/gql_link"
+    - "links/gql_dedupe_link"
+    - "links/gql_dio_link"
+    - "links/gql_error_link"
+    - "links/gql_http_link"
+    - "links/gql_websocket_link"
+    - "links/gql_transform_link"
+  builders:
+    - "codegen/end_to_end_test"
+    - "codegen/end_to_end_test_tristate"
+  examples:
+    - "examples/gql_example_cli"
+    - "examples/gql_example_cli_github"
+    - "examples/gql_example_build"
+    - "examples/gql_example_http_auth_link"
+    - "examples/gql_example_dio_link"
+
+scripts:
+  test:
+    run: dart test
+    description: Run tests for the entire monorepo
+    exec:
+      concurrency: 1
+    packageFilters:
+      dirExists: test
+      ignore: "*example*"
+
+  publish:
+    description: Publish all packages to pub.dev
+    run: melos publish --no-private
+    packageFilters:
+      ignore:
+        - "*example*"
+        - "end_to_end_test"
+        - "end_to_end_test_tristate"
+
+  clean:
+    description: Clean all packages
+    run: melos clean
+
+  build:
+    run: melos exec -c 1 -- "dart run build_runner build --delete-conflicting-outputs"
+    description: Build all packages with build_runner
+    packageFilters:
+      dependsOn: build_runner
+
+  bump-alpha:
+    description: Bump all packages to next alpha version
+    run: |
+      melos version --prerelease \
+        --preid=alpha \
+        --no-private \
+        --yes
+
+  # Major version bump for all non-private packages
+  bump-major:
+    description: Bump all packages to next major version
+    run: |
+      melos version \
+        --no-private \
+        --yes \
+        $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):major"')
+
+  # Minor version bump for all non-private packages
+  bump-minor:
+    description: Bump all packages to next minor version
+    run: |
+      melos version \
+        --no-private \
+        --yes \
+        $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):minor"')
+
+  # Patch version bump for all non-private packages
+  bump-patch:
+    description: Bump all packages to next patch version
+    run: |
+      melos version \
+        --no-private \
+        --yes \
+        $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):patch"')
+
+  # Graduate from prerelease to stable
+  graduate:
+    description: Graduate prerelease versions to stable
+    run: |
+      melos version \
+        --graduate \
+        --no-private \
+        --yes
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    runPubGetInParallel: false
+  version:
+    # Makes version command update all dependencies
+    updateDependencies: true
+    linkToCommits: false
+
+sdkPath: auto

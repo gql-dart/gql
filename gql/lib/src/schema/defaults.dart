@@ -10,7 +10,7 @@
 // * The implementation of GraphQLSchema as a "view" of an AST makes
 //   adding default definitions feel awkward and un-integrated
 
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, unused_element_parameter
 
 /// This module defines some (but not all) of the schema definitions
 /// that are provided by default for all schemas:

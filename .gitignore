@@ -17,3 +17,4 @@ doc/api/
 **/*.iml
 
 **/test/**/*.mocks.dart
+pubspec_overrides.yaml
