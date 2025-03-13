@@ -60,6 +60,12 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__base
   @override
   String get name;
 
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
+
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => null;
+
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__base> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsDataHeroBaseSerializer;
 
@@ -82,12 +88,8 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero implements GheroFiel
   String get id;
   String get name;
 
-  // Helper methods for type-safe casting
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman =>
-      G__typename == 'Human' ? this as GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman : null;
-
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid =>
-      G__typename == 'Droid' ? this as GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid : null;
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman;
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid;
 
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero> get serializer =>
       _i2.InlineFragmentSerializer<GHeroWithInterfaceSubTypedFragmentsData_hero>(
@@ -136,6 +138,13 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
   @override
   BuiltList<GhumanFieldsFragmentData_friends?>? get friends;
 
+  // Add these method implementations
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => this;
+
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => null;
+
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsDataHeroAsHumanSerializer;
 
@@ -177,6 +186,13 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid
   String get name;
   @override
   String? get primaryFunction;
+
+  // Add these method implementations
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
+
+  @override
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => this;
 
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsDataHeroAsDroidSerializer;
