@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'serializers.gql.dart';
+part of 'serializers_mod.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -48,9 +48,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWithFragmentsVars.serializer)
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__base.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)

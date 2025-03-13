@@ -128,7 +128,7 @@ import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.da
 import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart' show GreviewsWithListArgumentVars;
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart' show OperationSerializer;
 
-part 'serializers.gql.g.dart';
+part 'serializers_mod.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
