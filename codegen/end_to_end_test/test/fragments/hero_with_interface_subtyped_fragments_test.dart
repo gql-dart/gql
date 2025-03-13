@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart';
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments_mod.data.gql.dart';
 
 void main() {
   group('hero with interface subtyped fragments', () {
@@ -23,13 +23,25 @@ void main() {
         ..name = 'Leia Organa'
         ..homePlanet = 'Alderaan');
 
-      // Create the main hero (Luke)
+      // Create raw JSON data for our hero that includes all fields
+      final Map<String, dynamic> heroJson = {
+        '__typename': 'Human',
+        'id': 'human-1',
+        'name': 'Luke Skywalker',
+        'homePlanet': 'Tatooine',
+        'friends': [
+          {'__typename': 'Droid', 'id': 'droid-1', 'name': 'R2-D2', 'primaryFunction': 'Astromech'},
+          {'__typename': 'Human', 'id': 'human-2', 'name': 'Leia Organa', 'homePlanet': 'Alderaan'}
+        ]
+      };
+
+      // Deserialize directly to the correct concrete type
+      final humanHero = GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.fromJson(heroJson)!;
+
+      // Create the query data with our hero
       heroData = GHeroWithInterfaceSubTypedFragmentsData((b) => b
         ..G__typename = 'Query'
-        ..hero = (GHeroWithInterfaceSubTypedFragmentsData_heroBuilder()
-          ..G__typename = 'Human'
-          ..id = 'human-1'
-          ..name = 'Luke Skywalker'));
+        ..hero = humanHero);
     });
 
     test('when extension correctly retrieves hero name', () {
