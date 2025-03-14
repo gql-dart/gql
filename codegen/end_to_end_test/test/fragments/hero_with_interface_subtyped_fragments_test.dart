@@ -1,5 +1,5 @@
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart';
 import 'package:test/test.dart';
-import 'package:end_to_end_test/fragments/reference/hero_with_interface_subtyped_fragments_mod.data.dart';
 
 void main() {
   group('hero with interface subtyped fragments', () {
@@ -36,12 +36,12 @@ void main() {
       };
 
       // Deserialize directly to the correct concrete type
-      final humanHero = GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.fromJson(heroJson)!;
+      final humanHero = GHeroWithInterfaceSubTypedFragmentsData_hero.fromJson(heroJson)!;
 
       // Create the query data with our hero
       heroData = GHeroWithInterfaceSubTypedFragmentsData((b) => b
         ..G__typename = 'Query'
-        ..hero = humanHero);
+        ..hero = humanHero.toBuilder());
     });
 
     test('when extension correctly retrieves hero name', () {
