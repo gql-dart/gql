@@ -10,15 +10,22 @@ import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.data.gq
         GPostsData_posts,
         GPostsData_posts_isFavorited,
         GPostsData_posts_isLiked;
-import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.req.gql.dart' show GPosts;
+import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.req.gql.dart'
+    show GPosts;
 import 'package:end_to_end_test/aliases/__generated__/alias_var_fragment.var.gql.dart'
     show GPostFragmentVars, GPostsVars;
 import 'package:end_to_end_test/aliases/__generated__/aliased_hero.data.gql.dart'
-    show GAliasedHeroData, GAliasedHeroData_empireHero, GAliasedHeroData_jediHero;
-import 'package:end_to_end_test/aliases/__generated__/aliased_hero.req.gql.dart' show GAliasedHero;
-import 'package:end_to_end_test/aliases/__generated__/aliased_hero.var.gql.dart' show GAliasedHeroVars;
+    show
+        GAliasedHeroData,
+        GAliasedHeroData_empireHero,
+        GAliasedHeroData_jediHero;
+import 'package:end_to_end_test/aliases/__generated__/aliased_hero.req.gql.dart'
+    show GAliasedHero;
+import 'package:end_to_end_test/aliases/__generated__/aliased_hero.var.gql.dart'
+    show GAliasedHeroVars;
 import 'package:end_to_end_test/custom_field.dart';
-import 'package:end_to_end_test/custom_field_serializer.dart' show CustomFieldSerializer;
+import 'package:end_to_end_test/custom_field_serializer.dart'
+    show CustomFieldSerializer;
 import 'package:end_to_end_test/date_serializer.dart' show DateSerializer;
 import 'package:end_to_end_test/fragments/__generated__/fragment_with_scalar_var.data.gql.dart'
     show
@@ -43,19 +50,17 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data
         GcomparisonFieldsData_friendsConnection_edges,
         GcomparisonFieldsData_friendsConnection_edges_node,
         GheroDataData;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.gql.dart' show GHeroWithFragments;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.gql.dart'
+    show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments_mod.data.gql.dart'
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
     show
         GheroFieldsFragmentData,
         GheroFieldsFragmentData__asHuman_friends,
         GhumanFieldsFragmentData_friends,
         GHeroWithInterfaceSubTypedFragmentsData,
         GHeroWithInterfaceSubTypedFragmentsData_hero,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__base,
         GdroidFieldsFragmentData,
         GheroFieldsFragmentData__asDroid,
         GheroFieldsFragmentData__asHuman,
@@ -76,8 +81,13 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GheroFieldsFragmentVars,
         GhumanFieldsFragmentVars;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.data.gql.dart'
-    show GHeroWith2FragmentsData, GHeroWith2FragmentsData_hero, GheroIdData, GheroNameData;
-import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.gql.dart' show GHeroWith2Fragments;
+    show
+        GHeroWith2FragmentsData,
+        GHeroWith2FragmentsData_hero,
+        GheroIdData,
+        GheroNameData;
+import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.gql.dart'
+    show GHeroWith2Fragments;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.gql.dart'
     show GHeroWith2FragmentsVars, GheroIdVars, GheroNameVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
@@ -100,33 +110,48 @@ import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.g
         GHeroForEpisodeData_hero__asDroid_friends,
         GHeroForEpisodeData_hero__base,
         GHeroForEpisodeData_hero__base_friends;
-import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gql.dart' show GHeroForEpisode;
+import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gql.dart'
+    show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'
     show GDroidFragmentVars, GHeroForEpisodeVars;
 import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.data.gql.dart'
     show GHeroNoVarsData, GHeroNoVarsData_hero;
-import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart' show GHeroNoVars;
-import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.var.gql.dart' show GHeroNoVarsVars;
+import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.req.gql.dart'
+    show GHeroNoVars;
+import 'package:end_to_end_test/no_vars/__generated__/hero_no_vars.var.gql.dart'
+    show GHeroNoVarsVars;
 import 'package:end_to_end_test/scalars/__generated__/review_with_date.data.gql.dart'
     show GReviewWithDateData, GReviewWithDateData_createReview;
-import 'package:end_to_end_test/scalars/__generated__/review_with_date.req.gql.dart' show GReviewWithDate;
-import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart' show GReviewWithDateVars;
-import 'package:end_to_end_test/variables/__generated__/create_custom_field.data.gql.dart' show GCreateCustomFieldData;
-import 'package:end_to_end_test/variables/__generated__/create_custom_field.req.gql.dart' show GCreateCustomField;
-import 'package:end_to_end_test/variables/__generated__/create_custom_field.var.gql.dart' show GCreateCustomFieldVars;
+import 'package:end_to_end_test/scalars/__generated__/review_with_date.req.gql.dart'
+    show GReviewWithDate;
+import 'package:end_to_end_test/scalars/__generated__/review_with_date.var.gql.dart'
+    show GReviewWithDateVars;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.data.gql.dart'
+    show GCreateCustomFieldData;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.req.gql.dart'
+    show GCreateCustomField;
+import 'package:end_to_end_test/variables/__generated__/create_custom_field.var.gql.dart'
+    show GCreateCustomFieldVars;
 import 'package:end_to_end_test/variables/__generated__/create_review.data.gql.dart'
     show GCreateReviewData, GCreateReviewData_createReview;
-import 'package:end_to_end_test/variables/__generated__/create_review.req.gql.dart' show GCreateReview;
-import 'package:end_to_end_test/variables/__generated__/create_review.var.gql.dart' show GCreateReviewVars;
+import 'package:end_to_end_test/variables/__generated__/create_review.req.gql.dart'
+    show GCreateReview;
+import 'package:end_to_end_test/variables/__generated__/create_review.var.gql.dart'
+    show GCreateReviewVars;
 import 'package:end_to_end_test/variables/__generated__/human_with_args.data.gql.dart'
     show GHumanWithArgsData, GHumanWithArgsData_human;
-import 'package:end_to_end_test/variables/__generated__/human_with_args.req.gql.dart' show GHumanWithArgs;
-import 'package:end_to_end_test/variables/__generated__/human_with_args.var.gql.dart' show GHumanWithArgsVars;
+import 'package:end_to_end_test/variables/__generated__/human_with_args.req.gql.dart'
+    show GHumanWithArgs;
+import 'package:end_to_end_test/variables/__generated__/human_with_args.var.gql.dart'
+    show GHumanWithArgsVars;
 import 'package:end_to_end_test/variables/__generated__/list_argument.data.gql.dart'
     show GreviewsWithListArgumentData, GreviewsWithListArgumentData_reviews;
-import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.dart' show GreviewsWithListArgument;
-import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart' show GreviewsWithListArgumentVars;
-import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart' show OperationSerializer;
+import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.dart'
+    show GreviewsWithListArgument;
+import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart'
+    show GreviewsWithListArgumentVars;
+import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
+    show OperationSerializer;
 
 part 'serializers.gql.g.dart';
 
@@ -135,7 +160,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
-  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
@@ -183,9 +207,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
   GHeroWithInterfaceSubTypedFragmentsData_hero,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__base,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,

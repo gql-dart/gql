@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hero_with_interface_subtyped_fragments_mod.data.gql.dart';
+part of 'hero_with_interface_subtyped_fragments_mod.data.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -5,10 +5,10 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:end_to_end_test/graphql/__generated__/serializers_mod.gql.dart' as _i1;
+import 'package:end_to_end_test/graphql/reference/serializers_mod.dart' as _i1;
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart' as _i2;
 
-part 'hero_with_interface_subtyped_fragments_mod.data.gql.g.dart';
+part 'hero_with_interface_subtyped_fragments_mod.data.g.dart';
 
 abstract class GHeroWithInterfaceSubTypedFragmentsData
     implements Built<GHeroWithInterfaceSubTypedFragmentsData, GHeroWithInterfaceSubTypedFragmentsDataBuilder> {

@@ -46,7 +46,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.data
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.gql.dart' show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments_mod.data.gql.dart'
+import 'package:end_to_end_test/fragments/reference/hero_with_interface_subtyped_fragments_mod.data.dart'
     show
         GheroFieldsFragmentData,
         GheroFieldsFragmentData__asHuman_friends,
@@ -128,7 +128,7 @@ import 'package:end_to_end_test/variables/__generated__/list_argument.req.gql.da
 import 'package:end_to_end_test/variables/__generated__/list_argument.var.gql.dart' show GreviewsWithListArgumentVars;
 import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart' show OperationSerializer;
 
-part 'serializers_mod.gql.g.dart';
+part 'serializers_mod.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())

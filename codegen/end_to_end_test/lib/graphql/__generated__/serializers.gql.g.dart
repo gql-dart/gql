@@ -49,8 +49,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
@@ -169,11 +167,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
           ]),
           () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GhumanFieldsFragmentData_friends)
-          ]),
-          () => new ListBuilder<GhumanFieldsFragmentData_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)

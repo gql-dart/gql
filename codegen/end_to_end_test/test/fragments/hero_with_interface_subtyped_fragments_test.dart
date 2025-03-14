@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments_mod.data.gql.dart';
+import 'package:end_to_end_test/fragments/reference/hero_with_interface_subtyped_fragments_mod.data.dart';
 
 void main() {
   group('hero with interface subtyped fragments', () {
