@@ -125,6 +125,16 @@ List<Spec> buildSelectionSetDataClasses({
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
+  print(
+      "BUILDING CLASS: $name (type: $type) | inlineFragments: ${selections.whereType<InlineFragmentNode>().length}");
+
+  // For classes with "__base" suffix, check if we're in a recursive pattern
+  if (name.endsWith("__base") && name.contains("__base__base")) {
+    print(
+        "NESTED BASE DETECTED: $name contains multiple __base suffixes, returning empty list");
+    return [];
+  }
+
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
@@ -312,64 +322,69 @@ List<SelectionNode> shrinkSelections(
 List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
-) =>
-    _expandFragmentSpreads(selections, fragmentMap)
-        .fold<Map<String, SelectionNode>>(
-          {},
-          (selectionMap, selection) {
-            if (selection is FieldNode) {
-              final key = selection.alias?.value ?? selection.name.value;
-              if (selection.selectionSet == null) {
-                selectionMap[key] = selection;
-              } else {
-                final existingNode = selectionMap[key];
-                final existingSelections = existingNode is FieldNode &&
-                        existingNode.selectionSet != null
-                    ? existingNode.selectionSet!.selections
-                    : <SelectionNode>[];
-                selectionMap[key] = FieldNode(
-                    name: selection.name,
-                    alias: selection.alias,
-                    selectionSet: SelectionSetNode(
-                        selections: mergeSelections(
-                      [
-                        ...existingSelections,
-                        ...selection.selectionSet!.selections
-                      ],
-                      fragmentMap,
-                    )));
-              }
-            } else if (selection is InlineFragmentNode &&
-                selection.typeCondition != null) {
-              /// TODO: Handle inline fragments without a type condition
-              final key = selection.typeCondition!.on.name.value;
-              if (selectionMap.containsKey(key)) {
-                selectionMap[key] = InlineFragmentNode(
-                  typeCondition: selection.typeCondition,
-                  directives: selection.directives,
-                  selectionSet: SelectionSetNode(
-                    selections: mergeSelections(
-                      [
-                        ...(selectionMap[key] as InlineFragmentNode)
-                            .selectionSet
-                            .selections,
-                        ...selection.selectionSet.selections,
-                      ],
-                      fragmentMap,
-                    ),
-                  ),
-                );
-              } else {
-                selectionMap[key] = selection;
-              }
+) {
+  // Add debug print
+  print("MERGING SELECTIONS: ${selections.length} selections");
+  print("  Types: ${selections.map((s) => s.runtimeType).toSet().join(', ')}");
+
+  return _expandFragmentSpreads(selections, fragmentMap)
+      .fold<Map<String, SelectionNode>>(
+        {},
+        (selectionMap, selection) {
+          if (selection is FieldNode) {
+            final key = selection.alias?.value ?? selection.name.value;
+            if (selection.selectionSet == null) {
+              selectionMap[key] = selection;
             } else {
-              selectionMap[selection.hashCode.toString()] = selection;
+              final existingNode = selectionMap[key];
+              final existingSelections =
+                  existingNode is FieldNode && existingNode.selectionSet != null
+                      ? existingNode.selectionSet!.selections
+                      : <SelectionNode>[];
+              selectionMap[key] = FieldNode(
+                  name: selection.name,
+                  alias: selection.alias,
+                  selectionSet: SelectionSetNode(
+                      selections: mergeSelections(
+                    [
+                      ...existingSelections,
+                      ...selection.selectionSet!.selections
+                    ],
+                    fragmentMap,
+                  )));
             }
-            return selectionMap;
-          },
-        )
-        .values
-        .toList();
+          } else if (selection is InlineFragmentNode &&
+              selection.typeCondition != null) {
+            /// TODO: Handle inline fragments without a type condition
+            final key = selection.typeCondition!.on.name.value;
+            if (selectionMap.containsKey(key)) {
+              selectionMap[key] = InlineFragmentNode(
+                typeCondition: selection.typeCondition,
+                directives: selection.directives,
+                selectionSet: SelectionSetNode(
+                  selections: mergeSelections(
+                    [
+                      ...(selectionMap[key] as InlineFragmentNode)
+                          .selectionSet
+                          .selections,
+                      ...selection.selectionSet.selections,
+                    ],
+                    fragmentMap,
+                  ),
+                ),
+              );
+            } else {
+              selectionMap[key] = selection;
+            }
+          } else {
+            selectionMap[selection.hashCode.toString()] = selection;
+          }
+          return selectionMap;
+        },
+      )
+      .values
+      .toList();
+}
 
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
@@ -394,6 +409,7 @@ List<SelectionNode> _expandFragmentSpreads(
               [
                 ...fragmentSelections.whereType<FieldNode>(),
                 ...fragmentSelections.whereType<FragmentSpreadNode>(),
+                ...fragmentSelections.whereType<InlineFragmentNode>(),
               ],
               fragmentMap,
               false,

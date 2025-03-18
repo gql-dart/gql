@@ -189,8 +189,6 @@ abstract class GHeroForEpisodeData_hero__asDroid
   String get name;
   @override
   BuiltList<GHeroForEpisodeData_hero__asDroid_friends?>? get friends;
-  @override
-  String? get primaryFunction;
   static Serializer<GHeroForEpisodeData_hero__asDroid> get serializer =>
       _$gHeroForEpisodeDataHeroAsDroidSerializer;
 

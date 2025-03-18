@@ -28,12 +28,22 @@ List<Spec> buildInlineFragmentClasses({
   required bool built,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
+  print(
+      "BUILDING INLINE FRAGMENTS: $name | inlineFragments: ${inlineFragments.length}");
+  print(
+      "  Fragments: ${inlineFragments.map((f) => f.typeCondition?.on.name.value).toList()}");
+
   final whenExtension = inlineFragmentWhenExtension(
     baseTypeName: name,
     inlineFragments: inlineFragments,
     config: whenExtensionConfig,
     dataClassAliasMap: dataClassAliasMap,
   );
+
+  // IMPORTANT FIX: Filter out inline fragments for the base class to prevent recursion
+  final baseClassSelections =
+      selections.where((s) => s is! InlineFragmentNode).toList();
+
   return [
     Class(
       (b) => b
@@ -63,13 +73,7 @@ List<Spec> buildInlineFragmentClasses({
     if (whenExtension != null) whenExtension,
     ...buildSelectionSetDataClasses(
       name: "${name}__base",
-      selections: mergeSelections(
-        [
-          ...selections.whereType<FieldNode>(),
-          ...selections.whereType<FragmentSpreadNode>(),
-        ],
-        fragmentMap,
-      ),
+      selections: baseClassSelections,
       fragmentMap: fragmentMap,
       dataClassAliasMap: dataClassAliasMap,
       schemaSource: schemaSource,
@@ -98,14 +102,11 @@ List<Spec> buildInlineFragmentClasses({
     }).expand(
       (inlineFragment) => buildSelectionSetDataClasses(
           name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-          selections: mergeSelections(
-            [
-              ...selections.whereType<FieldNode>(),
-              ...selections.whereType<FragmentSpreadNode>(),
-              ...inlineFragment.selectionSet.selections,
-            ],
-            fragmentMap,
-          ),
+          selections: [
+            ...baseClassSelections,
+            ...inlineFragment.selectionSet.selections
+                .where((s) => s is! InlineFragmentNode),
+          ],
           fragmentMap: fragmentMap,
           dataClassAliasMap: dataClassAliasMap,
           schemaSource: schemaSource,

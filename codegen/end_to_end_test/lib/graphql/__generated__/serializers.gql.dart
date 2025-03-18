@@ -56,17 +56,16 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
     show
+        GHeroWithInterfaceSubTypedFragmentsData_hero,
         GheroFieldsFragmentData,
-        GheroFieldsFragmentData__asHuman_friends,
         GhumanFieldsFragmentData_friends,
         GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
+        GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
+        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
+        GHeroWithInterfaceSubTypedFragmentsData_hero__base,
         GdroidFieldsFragmentData,
         GheroFieldsFragmentData__asDroid,
         GheroFieldsFragmentData__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__asDroid,
-        GheroFieldsFragmentData__asHuman_friends__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__base,
         GheroFieldsFragmentData__base,
         GhumanFieldsFragmentData,
         GhumanFieldsFragmentData_friends__asDroid,
@@ -160,8 +159,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
+  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
   ..add(GheroFieldsFragmentData.serializer)
-  ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
@@ -206,7 +205,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
-  GHeroWithInterfaceSubTypedFragmentsData_hero,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__base,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
@@ -251,9 +252,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GheroDataVars,
   GheroFieldsFragmentData__asDroid,
   GheroFieldsFragmentData__asHuman,
-  GheroFieldsFragmentData__asHuman_friends__asDroid,
-  GheroFieldsFragmentData__asHuman_friends__asHuman,
-  GheroFieldsFragmentData__asHuman_friends__base,
   GheroFieldsFragmentData__base,
   GheroFieldsFragmentVars,
   GheroIdData,

@@ -48,7 +48,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWithFragmentsVars.serializer)
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__base.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
@@ -93,9 +95,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GheroDataVars.serializer)
       ..add(GheroFieldsFragmentData__asDroid.serializer)
       ..add(GheroFieldsFragmentData__asHuman.serializer)
-      ..add(GheroFieldsFragmentData__asHuman_friends__asDroid.serializer)
-      ..add(GheroFieldsFragmentData__asHuman_friends__asHuman.serializer)
-      ..add(GheroFieldsFragmentData__asHuman_friends__base.serializer)
       ..add(GheroFieldsFragmentData__base.serializer)
       ..add(GheroFieldsFragmentVars.serializer)
       ..add(GheroIdData.serializer)
@@ -164,14 +163,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
               new ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
-          ]),
-          () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)
           ]),
           () => new ListBuilder<GhumanFieldsFragmentData_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GhumanFieldsFragment_friends)]),
+          () => new ListBuilder<GhumanFieldsFragment_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GhumanFieldsFragment_friends)]),
+          () => new ListBuilder<GhumanFieldsFragment_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GreviewsWithListArgumentData_reviews)
