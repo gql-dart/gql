@@ -77,7 +77,7 @@ String visualizeAST(Node node, [String indent = ""]) {
     result += "\n" + visualizeAST(node.selectionSet, indent + "  ");
   } else if (node is ArgumentNode) {
     result += " | name: ${node.name.value}";
-    result += " | value: " + visualizeValueNode(node.value as ValueNode);
+    result += " | value: " + visualizeValueNode(node.value);
   } else if (node is DirectiveNode) {
     result += " | name: ${node.name.value}";
     if (node.arguments.isNotEmpty) {
@@ -290,7 +290,7 @@ String nodeTypeLabel(Node node) {
   } else if (node is VariableDefinitionNode) {
     return "Variable: ${node.variable.name.value} Type: ${visualizeTypeNode(node.type)}";
   } else if (node is ArgumentNode) {
-    return "Arg: ${node.name.value} = ${visualizeValueNode(node.value as ValueNode)}";
+    return "Arg: ${node.name.value} = ${visualizeValueNode(node.value)}";
   }
 
   return node.runtimeType.toString();

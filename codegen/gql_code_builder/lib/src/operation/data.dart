@@ -150,7 +150,6 @@ List<Spec> buildSelectionSetDataClasses({
   // If this is a nested selection like __asHuman_friends, we need to add corresponding fragment interfaces
   if (name.contains("_") && name.contains("__as")) {
     final parts = name.split("_");
-    final baseClassName = parts.first;
     final fieldName = parts.last;
     final typeNamePart = name.split("__as").last.split("_").first;
 
