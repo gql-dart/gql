@@ -186,6 +186,9 @@ List<Spec> buildSelectionSetDataClasses({
   // Parameter for nested selections
   String? parentFragmentPath,
 }) {
+  print(
+      "BUILDING CLASS: $name | implements: ${superclassSelections.keys.join(', ')}");
+
   // Ensure __typename is present in selections
   final enhancedSelections = ensureTypenameField(selections);
 
@@ -246,6 +249,13 @@ List<Spec> buildSelectionSetDataClasses({
       .expand((selections) => selections.selections)
       .toSet();
 
+  print(
+      "Processing fields for $name with ${selections.whereType<FieldNode>().length} fields");
+
+  // Insert debug print here
+  print(
+      "  Superclass fields for $name: ${superclassSelectionNodes.whereType<FieldNode>().map((n) => n.alias?.value ?? n.name.value).toList()}");
+
   // Track fields we've already processed to avoid duplicates - use fieldName as key
   final processedFieldsMap = <String, Method>{};
 
@@ -256,6 +266,11 @@ List<Spec> buildSelectionSetDataClasses({
         (node) {
           final nameNode = node.alias ?? node.name;
           final fieldName = nameNode.value;
+
+          // Insert debug print here
+          if ((nameNode.value) == "__typename") {
+            print("  Found __typename field in selections for $name");
+          }
 
           // Skip fields we've already processed
           if (processedFieldsMap.containsKey(fieldName)) {
@@ -361,6 +376,13 @@ List<Spec> buildSelectionSetDataClasses({
 
   // Add the type cast methods to field getters
   fieldGetters.addAll(typeCastMethods);
+
+  for (final method in fieldGetters) {
+    if (method.name == "G__typename") {
+      print(
+          "  Added G__typename getter to $name | override: ${method.annotations.any((a) => a.toString().contains('override'))}");
+    }
+  }
 
   // Get all inline fragments in the selections
   final inlineFragments =
