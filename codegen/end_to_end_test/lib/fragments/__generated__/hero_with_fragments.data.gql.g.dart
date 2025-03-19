@@ -114,7 +114,7 @@ class _$GHeroWithFragmentsData_heroSerializer
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GHeroWithFragmentsData_hero_friendsConnection)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -148,7 +148,7 @@ class _$GHeroWithFragmentsData_heroSerializer
                       GHeroWithFragmentsData_hero_friendsConnection))!
               as GHeroWithFragmentsData_hero_friendsConnection);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -175,7 +175,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
       GHeroWithFragmentsData_hero_friendsConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -222,7 +222,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
                     GHeroWithFragmentsData_hero_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -250,7 +250,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edgesSerializer
       GHeroWithFragmentsData_hero_friendsConnection_edges object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -285,7 +285,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edgesSerializer
                       GHeroWithFragmentsData_hero_friendsConnection_edges_node))!
               as GHeroWithFragmentsData_hero_friendsConnection_edges_node);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -314,7 +314,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       GHeroWithFragmentsData_hero_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -335,7 +335,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -358,7 +358,7 @@ class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -382,7 +382,7 @@ class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -416,7 +416,7 @@ class _$GcomparisonFieldsDataSerializer
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GcomparisonFieldsData_friendsConnection)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -450,7 +450,7 @@ class _$GcomparisonFieldsDataSerializer
                       const FullType(GcomparisonFieldsData_friendsConnection))!
               as GcomparisonFieldsData_friendsConnection);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -476,7 +476,7 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
       Serializers serializers, GcomparisonFieldsData_friendsConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -523,7 +523,7 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
                     GcomparisonFieldsData_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -550,7 +550,7 @@ class _$GcomparisonFieldsData_friendsConnection_edgesSerializer
       GcomparisonFieldsData_friendsConnection_edges object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -584,7 +584,7 @@ class _$GcomparisonFieldsData_friendsConnection_edgesSerializer
                       GcomparisonFieldsData_friendsConnection_edges_node))!
               as GcomparisonFieldsData_friendsConnection_edges_node);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -612,7 +612,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       GcomparisonFieldsData_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -633,7 +633,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -858,7 +858,9 @@ class GHeroWithFragmentsData_heroBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithFragmentsData_heroBuilder();
+  GHeroWithFragmentsData_heroBuilder() {
+    GHeroWithFragmentsData_hero._initializeBuilder(this);
+  }
 
   GHeroWithFragmentsData_heroBuilder get _$this {
     final $v = _$v;
@@ -1001,7 +1003,9 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithFragmentsData_hero_friendsConnectionBuilder();
+  GHeroWithFragmentsData_hero_friendsConnectionBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection._initializeBuilder(this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnectionBuilder get _$this {
     final $v = _$v;
@@ -1139,7 +1143,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder();
+  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection_edges._initializeBuilder(
+        this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder get _$this {
     final $v = _$v;
@@ -1263,7 +1270,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder();
+  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder() {
+    GHeroWithFragmentsData_hero_friendsConnection_edges_node._initializeBuilder(
+        this);
+  }
 
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;
@@ -1364,7 +1374,9 @@ class GheroDataDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroDataDataBuilder();
+  GheroDataDataBuilder() {
+    GheroDataData._initializeBuilder(this);
+  }
 
   GheroDataDataBuilder get _$this {
     final $v = _$v;
@@ -1496,7 +1508,9 @@ class GcomparisonFieldsDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GcomparisonFieldsDataBuilder();
+  GcomparisonFieldsDataBuilder() {
+    GcomparisonFieldsData._initializeBuilder(this);
+  }
 
   GcomparisonFieldsDataBuilder get _$this {
     final $v = _$v;
@@ -1636,7 +1650,9 @@ class GcomparisonFieldsData_friendsConnectionBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GcomparisonFieldsData_friendsConnectionBuilder();
+  GcomparisonFieldsData_friendsConnectionBuilder() {
+    GcomparisonFieldsData_friendsConnection._initializeBuilder(this);
+  }
 
   GcomparisonFieldsData_friendsConnectionBuilder get _$this {
     final $v = _$v;
@@ -1766,7 +1782,9 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GcomparisonFieldsData_friendsConnection_edgesBuilder();
+  GcomparisonFieldsData_friendsConnection_edgesBuilder() {
+    GcomparisonFieldsData_friendsConnection_edges._initializeBuilder(this);
+  }
 
   GcomparisonFieldsData_friendsConnection_edgesBuilder get _$this {
     final $v = _$v;
@@ -1888,7 +1906,9 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GcomparisonFieldsData_friendsConnection_edges_nodeBuilder();
+  GcomparisonFieldsData_friendsConnection_edges_nodeBuilder() {
+    GcomparisonFieldsData_friendsConnection_edges_node._initializeBuilder(this);
+  }
 
   GcomparisonFieldsData_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;

@@ -89,7 +89,7 @@ class _$GPostsData_postsSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -137,7 +137,7 @@ class _$GPostsData_postsSerializer
                   specifiedType: const FullType(GPostsData_posts_isLiked))!
               as GPostsData_posts_isLiked);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -166,7 +166,7 @@ class _$GPostsData_posts_isFavoritedSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -190,7 +190,7 @@ class _$GPostsData_posts_isFavoritedSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -219,7 +219,7 @@ class _$GPostsData_posts_isLikedSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -243,7 +243,7 @@ class _$GPostsData_posts_isLikedSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -267,7 +267,7 @@ class _$GPostFragmentDataSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -315,7 +315,7 @@ class _$GPostFragmentDataSerializer
                   specifiedType: const FullType(GPostFragmentData_isLiked))!
               as GPostFragmentData_isLiked);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -344,7 +344,7 @@ class _$GPostFragmentData_isFavoritedSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -368,7 +368,7 @@ class _$GPostFragmentData_isFavoritedSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -397,7 +397,7 @@ class _$GPostFragmentData_isLikedSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -421,7 +421,7 @@ class _$GPostFragmentData_isLikedSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -632,7 +632,9 @@ class GPostsData_postsBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostsData_postsBuilder();
+  GPostsData_postsBuilder() {
+    GPostsData_posts._initializeBuilder(this);
+  }
 
   GPostsData_postsBuilder get _$this {
     final $v = _$v;
@@ -757,7 +759,9 @@ class GPostsData_posts_isFavoritedBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostsData_posts_isFavoritedBuilder();
+  GPostsData_posts_isFavoritedBuilder() {
+    GPostsData_posts_isFavorited._initializeBuilder(this);
+  }
 
   GPostsData_posts_isFavoritedBuilder get _$this {
     final $v = _$v;
@@ -862,7 +866,9 @@ class GPostsData_posts_isLikedBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostsData_posts_isLikedBuilder();
+  GPostsData_posts_isLikedBuilder() {
+    GPostsData_posts_isLiked._initializeBuilder(this);
+  }
 
   GPostsData_posts_isLikedBuilder get _$this {
     final $v = _$v;
@@ -989,7 +995,9 @@ class GPostFragmentDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentDataBuilder();
+  GPostFragmentDataBuilder() {
+    GPostFragmentData._initializeBuilder(this);
+  }
 
   GPostFragmentDataBuilder get _$this {
     final $v = _$v;
@@ -1114,7 +1122,9 @@ class GPostFragmentData_isFavoritedBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentData_isFavoritedBuilder();
+  GPostFragmentData_isFavoritedBuilder() {
+    GPostFragmentData_isFavorited._initializeBuilder(this);
+  }
 
   GPostFragmentData_isFavoritedBuilder get _$this {
     final $v = _$v;
@@ -1219,7 +1229,9 @@ class GPostFragmentData_isLikedBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentData_isLikedBuilder();
+  GPostFragmentData_isLikedBuilder() {
+    GPostFragmentData_isLiked._initializeBuilder(this);
+  }
 
   GPostFragmentData_isLikedBuilder get _$this {
     final $v = _$v;

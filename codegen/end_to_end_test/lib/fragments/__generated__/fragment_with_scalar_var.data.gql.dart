@@ -51,10 +51,16 @@ abstract class GPostsWithFixedVariableData_posts
           [void Function(GPostsWithFixedVariableData_postsBuilder b) updates]) =
       _$GPostsWithFixedVariableData_posts;
 
+  static void _initializeBuilder(GPostsWithFixedVariableData_postsBuilder b) =>
+      b..G__typename = 'Post';
+
   @override
   String get id;
   @override
   GPostsWithFixedVariableData_posts_favoritedUsers? get favoritedUsers;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GPostsWithFixedVariableData_posts> get serializer =>
       _$gPostsWithFixedVariableDataPostsSerializer;
 
@@ -83,8 +89,15 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
       [void Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder b)
           updates]) = _$GPostsWithFixedVariableData_posts_favoritedUsers;
 
+  static void _initializeBuilder(
+          GPostsWithFixedVariableData_posts_favoritedUsersBuilder b) =>
+      b..G__typename = 'PostLikes';
+
   @override
   int get totalCount;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GPostsWithFixedVariableData_posts_favoritedUsers>
       get serializer =>
           _$gPostsWithFixedVariableDataPostsFavoritedUsersSerializer;
@@ -126,10 +139,16 @@ abstract class GPostFragmentForUser1Data
           [void Function(GPostFragmentForUser1DataBuilder b) updates]) =
       _$GPostFragmentForUser1Data;
 
+  static void _initializeBuilder(GPostFragmentForUser1DataBuilder b) =>
+      b..G__typename = 'Post';
+
   @override
   String get id;
   @override
   GPostFragmentForUser1Data_favoritedUsers? get favoritedUsers;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GPostFragmentForUser1Data> get serializer =>
       _$gPostFragmentForUser1DataSerializer;
 
@@ -157,8 +176,15 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
       [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder b)
           updates]) = _$GPostFragmentForUser1Data_favoritedUsers;
 
+  static void _initializeBuilder(
+          GPostFragmentForUser1Data_favoritedUsersBuilder b) =>
+      b..G__typename = 'PostLikes';
+
   @override
   int get totalCount;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GPostFragmentForUser1Data_favoritedUsers> get serializer =>
       _$gPostFragmentForUser1DataFavoritedUsersSerializer;
 

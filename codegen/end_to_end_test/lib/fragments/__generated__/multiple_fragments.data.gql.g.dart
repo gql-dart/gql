@@ -92,7 +92,7 @@ class _$GHeroWith2FragmentsData_heroSerializer
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -120,7 +120,7 @@ class _$GHeroWith2FragmentsData_heroSerializer
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -143,7 +143,7 @@ class _$GheroNameDataSerializer implements StructuredSerializer<GheroNameData> {
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -167,7 +167,7 @@ class _$GheroNameDataSerializer implements StructuredSerializer<GheroNameData> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -190,7 +190,7 @@ class _$GheroIdDataSerializer implements StructuredSerializer<GheroIdData> {
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -213,7 +213,7 @@ class _$GheroIdDataSerializer implements StructuredSerializer<GheroIdData> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -420,7 +420,9 @@ class GHeroWith2FragmentsData_heroBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWith2FragmentsData_heroBuilder();
+  GHeroWith2FragmentsData_heroBuilder() {
+    GHeroWith2FragmentsData_hero._initializeBuilder(this);
+  }
 
   GHeroWith2FragmentsData_heroBuilder get _$this {
     final $v = _$v;
@@ -522,7 +524,9 @@ class GheroNameDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroNameDataBuilder();
+  GheroNameDataBuilder() {
+    GheroNameData._initializeBuilder(this);
+  }
 
   GheroNameDataBuilder get _$this {
     final $v = _$v;
@@ -619,7 +623,9 @@ class GheroIdDataBuilder implements Builder<GheroIdData, GheroIdDataBuilder> {
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroIdDataBuilder();
+  GheroIdDataBuilder() {
+    GheroIdData._initializeBuilder(this);
+  }
 
   GheroIdDataBuilder get _$this {
     final $v = _$v;

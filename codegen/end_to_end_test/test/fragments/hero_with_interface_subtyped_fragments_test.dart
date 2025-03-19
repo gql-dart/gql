@@ -30,18 +30,29 @@ void main() {
         'name': 'Luke Skywalker',
         'homePlanet': 'Tatooine',
         'friends': [
-          {'__typename': 'Droid', 'id': 'droid-1', 'name': 'R2-D2', 'primaryFunction': 'Astromech'},
-          {'__typename': 'Human', 'id': 'human-2', 'name': 'Leia Organa', 'homePlanet': 'Alderaan'}
+          {
+            '__typename': 'Droid',
+            'id': 'droid-1',
+            'name': 'R2-D2',
+            'primaryFunction': 'Astromech'
+          },
+          {
+            '__typename': 'Human',
+            'id': 'human-2',
+            'name': 'Leia Organa',
+            'homePlanet': 'Alderaan'
+          }
         ]
       };
 
       // Deserialize directly to the correct concrete type
-      final humanHero = GHeroWithInterfaceSubTypedFragmentsData_hero.fromJson(heroJson)!;
+      final humanHero =
+          GHeroWithInterfaceSubTypedFragmentsData_hero.fromJson(heroJson)!;
 
       // Create the query data with our hero
       heroData = GHeroWithInterfaceSubTypedFragmentsData((b) => b
         ..G__typename = 'Query'
-        ..hero = humanHero.toBuilder());
+        ..hero = humanHero);
     });
 
     test('when extension correctly retrieves hero name', () {

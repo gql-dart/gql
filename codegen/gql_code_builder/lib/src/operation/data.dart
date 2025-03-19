@@ -8,6 +8,28 @@ import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
+// Helper function to ensure __typename is present in selections
+List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
+  // Check if __typename is already in the selections
+  final bool hasTypename = selections
+      .whereType<FieldNode>()
+      .any((node) => (node.alias?.value ?? node.name.value) == "__typename");
+
+  if (!hasTypename) {
+    // Add __typename field if not present
+    return [
+      ...selections,
+      FieldNode(
+        name: NameNode(value: "__typename"),
+        selectionSet: null,
+        arguments: const [],
+        directives: const [],
+      ),
+    ];
+  }
+  return selections;
+}
+
 List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
@@ -21,12 +43,17 @@ List<Spec> buildOperationDataClasses(
     throw Exception("Operations must be named");
   }
 
+  final selections = mergeSelections(
+    op.selectionSet.selections,
+    fragmentMap,
+  );
+
+  // Ensure __typename is present in the selections
+  final enhancedSelections = ensureTypenameField(selections);
+
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
-    selections: mergeSelections(
-      op.selectionSet.selections,
-      fragmentMap,
-    ),
+    selections: enhancedSelections,
     schemaSource: schemaSource,
     type: _operationType(
       schemaSource.document,
@@ -53,11 +80,15 @@ List<Spec> buildFragmentDataClasses(
     frag.selectionSet.selections,
     fragmentMap,
   );
+
+  // Ensure __typename is present in the selections
+  final enhancedSelections = ensureTypenameField(selections);
+
   return [
     // abstract class that will implemented by any class that uses the fragment
     ...buildSelectionSetDataClasses(
       name: frag.name.value,
-      selections: selections,
+      selections: enhancedSelections,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
@@ -70,7 +101,7 @@ List<Spec> buildFragmentDataClasses(
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
       name: "${frag.name.value}Data",
-      selections: selections,
+      selections: enhancedSelections,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
@@ -79,7 +110,7 @@ List<Spec> buildFragmentDataClasses(
       superclassSelections: {
         frag.name.value: SourceSelections(
           url: docSource.url,
-          selections: selections,
+          selections: enhancedSelections,
         )
       },
       whenExtensionConfig: whenExtensionConfig,
@@ -103,6 +134,18 @@ String _operationType(
       .name
       .value;
 }
+
+// Helper to create a G__typename getter
+Method createTypenameGetter(String type, {bool isOverride = false}) =>
+    Method((b) => b
+      ..annotations.addAll([
+        if (isOverride) refer("override"),
+        refer("BuiltValueField", "package:built_value/built_value.dart")
+            .call([], {"wireName": literalString("__typename")}),
+      ])
+      ..returns = refer("String")
+      ..type = MethodType.getter
+      ..name = "G__typename");
 
 /// Builds one or more data classes, with properties based on [selections].
 ///
@@ -134,6 +177,9 @@ List<Spec> buildSelectionSetDataClasses({
 }) {
   print(
       "BUILDING CLASS: $name (type: $type) | inlineFragments: ${selections.whereType<InlineFragmentNode>().length}");
+
+  // CRITICAL FIX: Always ensure __typename is in our selections
+  final enhancedSelections = ensureTypenameField(selections);
 
   // For classes with "__base" suffix, check if we're in a recursive pattern
   if (name.endsWith("__base") && name.contains("__base__base")) {
@@ -208,12 +254,15 @@ List<Spec> buildSelectionSetDataClasses({
         (node) {
           final nameNode = node.alias ?? node.name;
 
-          // Skip duplicate fields, especially __typename
+          // Skip duplicate fields, but make sure we keep __typename
+          // FIXED: We want to process __typename even if it's in a superclass
           if (processedFields.contains(nameNode.value) ||
               (nameNode.value == "__typename" &&
                   superclassSelectionNodes.any((s) =>
                       s is FieldNode &&
-                      (s.alias?.value ?? s.name.value) == "__typename"))) {
+                      (s.alias?.value ?? s.name.value) == "__typename") &&
+                  built)) {
+            // Only skip in built classes, keep in interfaces
             return null;
           }
           processedFields.add(nameNode.value);
@@ -243,6 +292,16 @@ List<Spec> buildSelectionSetDataClasses({
       .where((method) => method != null)
       .cast<Method>()
       .toList();
+
+  // CRITICAL FIX: Ensure G__typename getter is present
+  // Don't add to processed fields to ensure it's always included
+  if (!fieldGetters.any((getter) => getter.name == "G__typename")) {
+    // Check if it should be an override (if in superclass)
+    final bool isOverride = superclassSelectionNodes.any((s) =>
+        s is FieldNode && (s.alias?.value ?? s.name.value) == "__typename");
+
+    fieldGetters.add(createTypenameGetter(type, isOverride: isOverride));
+  }
 
   final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
 
@@ -305,7 +364,7 @@ List<Spec> buildSelectionSetDataClasses({
       ...buildInlineFragmentClasses(
         name: name,
         fieldGetters: fieldGetters,
-        selections: selections,
+        selections: enhancedSelections, // Pass already enhanced selections
         schemaSource: schemaSource,
         type: type,
         typeOverrides: typeOverrides,
@@ -347,8 +406,8 @@ List<Spec> buildSelectionSetDataClasses({
         name: name,
         getters: fieldGetters,
         initializers: {
-          if (fieldGetters.any((getter) => getter.name == "G__typename"))
-            "G__typename": literalString(type),
+          // CRITICAL FIX: Always add G__typename initializer
+          "G__typename": literalString(type),
         },
         superclassSelections: nestedSuperclassSelections,
         dataClassAliasMap: dataClassAliasMap,
@@ -368,6 +427,11 @@ List<Spec> buildSelectionSetDataClasses({
         final String fieldName =
             "${name}_${field.alias?.value ?? field.name.value}";
 
+        // IMPORTANT: Ensure __typename is included in nested field selections
+        final fieldSelections = field.selectionSet != null
+            ? ensureTypenameField(field.selectionSet!.selections)
+            : <SelectionNode>[];
+
         // Track current fragment path to properly set up nested interfaces
         String currentFragmentPath = parentFragmentPath ?? name;
         if (name.contains("__as")) {
@@ -381,12 +445,9 @@ List<Spec> buildSelectionSetDataClasses({
         // If the field is within a fragment's selections,
         // track nested fragments properly
         if (field.selectionSet != null &&
-            field.selectionSet!.selections
-                .whereType<InlineFragmentNode>()
-                .isNotEmpty) {
-          fieldParentInlineFragments = field.selectionSet!.selections
-              .whereType<InlineFragmentNode>()
-              .toList();
+            fieldSelections.whereType<InlineFragmentNode>().isNotEmpty) {
+          fieldParentInlineFragments =
+              fieldSelections.whereType<InlineFragmentNode>().toList();
 
           // Create type map for the field's inline fragments
           fieldTypeMap = {};
@@ -401,7 +462,8 @@ List<Spec> buildSelectionSetDataClasses({
 
         return buildSelectionSetDataClasses(
           name: fieldName,
-          selections: field.selectionSet!.selections,
+          selections:
+              fieldSelections, // Use enhanced selections with __typename
           fragmentMap: fragmentMap,
           dataClassAliasMap: dataClassAliasMap,
           schemaSource: schemaSource,
@@ -435,6 +497,9 @@ List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
+  // ADDITIONAL FIX: Make sure we have __typename
+  final enhancedSelections = ensureTypenameField(selections);
+
   final unmerged = [...selections];
 
   for (final selection in selections) {
@@ -488,7 +553,10 @@ List<SelectionNode> mergeSelections(
   print("MERGING SELECTIONS: ${selections.length} selections");
   print("  Types: ${selections.map((s) => s.runtimeType).toSet().join(', ')}");
 
-  return _expandFragmentSpreads(selections, fragmentMap)
+  // IMPORTANT FIX: Make sure __typename is in all selections
+  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+
+  return _expandFragmentSpreads(enhancedSelectionsWithTypename, fragmentMap)
       .fold<Map<String, SelectionNode>>(
         {},
         (selectionMap, selection) {
@@ -548,17 +616,19 @@ List<SelectionNode> mergeSelections(
 }
 
 /// Enhanced fragment spread processor that recursively processes fields with selection sets
-/// Enhanced fragment spread processor that recursively processes fields with selection sets
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
   Set<String> visitedFragments = const {},
 ]) {
+  // IMPORTANT FIX: Make sure __typename is present
+  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+
   final result = <SelectionNode>[];
   final newVisitedFragments = {...visitedFragments};
 
-  for (final selection in selections) {
+  for (final selection in enhancedSelectionsWithTypename) {
     if (selection is FragmentSpreadNode) {
       if (!fragmentMap.containsKey(selection.name.value)) {
         throw Exception(

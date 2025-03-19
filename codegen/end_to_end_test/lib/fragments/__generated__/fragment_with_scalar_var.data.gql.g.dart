@@ -99,7 +99,7 @@ class _$GPostsWithFixedVariableData_postsSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -137,7 +137,7 @@ class _$GPostsWithFixedVariableData_postsSerializer
                       GPostsWithFixedVariableData_posts_favoritedUsers))!
               as GPostsWithFixedVariableData_posts_favoritedUsers);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -167,7 +167,7 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -192,7 +192,7 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -220,7 +220,7 @@ class _$GPostFragmentForUser1DataSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -258,7 +258,7 @@ class _$GPostFragmentForUser1DataSerializer
                       const FullType(GPostFragmentForUser1Data_favoritedUsers))!
               as GPostFragmentForUser1Data_favoritedUsers);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -287,7 +287,7 @@ class _$GPostFragmentForUser1Data_favoritedUsersSerializer
       'totalCount',
       serializers.serialize(object.totalCount,
           specifiedType: const FullType(int)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -311,7 +311,7 @@ class _$GPostFragmentForUser1Data_favoritedUsersSerializer
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -525,7 +525,9 @@ class GPostsWithFixedVariableData_postsBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostsWithFixedVariableData_postsBuilder();
+  GPostsWithFixedVariableData_postsBuilder() {
+    GPostsWithFixedVariableData_posts._initializeBuilder(this);
+  }
 
   GPostsWithFixedVariableData_postsBuilder get _$this {
     final $v = _$v;
@@ -655,7 +657,9 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostsWithFixedVariableData_posts_favoritedUsersBuilder();
+  GPostsWithFixedVariableData_posts_favoritedUsersBuilder() {
+    GPostsWithFixedVariableData_posts_favoritedUsers._initializeBuilder(this);
+  }
 
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder get _$this {
     final $v = _$v;
@@ -779,7 +783,9 @@ class GPostFragmentForUser1DataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentForUser1DataBuilder();
+  GPostFragmentForUser1DataBuilder() {
+    GPostFragmentForUser1Data._initializeBuilder(this);
+  }
 
   GPostFragmentForUser1DataBuilder get _$this {
     final $v = _$v;
@@ -905,7 +911,9 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GPostFragmentForUser1Data_favoritedUsersBuilder();
+  GPostFragmentForUser1Data_favoritedUsersBuilder() {
+    GPostFragmentForUser1Data_favoritedUsers._initializeBuilder(this);
+  }
 
   GPostFragmentForUser1Data_favoritedUsersBuilder get _$this {
     final $v = _$v;

@@ -165,7 +165,7 @@ class _$GHeroForEpisodeData_hero__base_friendsSerializer
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -189,7 +189,7 @@ class _$GHeroForEpisodeData_hero__base_friendsSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -296,7 +296,7 @@ class _$GHeroForEpisodeData_hero__asDroid_friendsSerializer
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -320,7 +320,7 @@ class _$GHeroForEpisodeData_hero__asDroid_friendsSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -343,7 +343,7 @@ class _$GDroidFragmentDataSerializer
       Serializers serializers, GDroidFragmentData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -374,7 +374,7 @@ class _$GDroidFragmentDataSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -566,7 +566,9 @@ class GHeroForEpisodeData_hero__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroForEpisodeData_hero__baseBuilder();
+  GHeroForEpisodeData_hero__baseBuilder() {
+    GHeroForEpisodeData_hero__base._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__baseBuilder get _$this {
     final $v = _$v;
@@ -692,7 +694,9 @@ class GHeroForEpisodeData_hero__base_friendsBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroForEpisodeData_hero__base_friendsBuilder();
+  GHeroForEpisodeData_hero__base_friendsBuilder() {
+    GHeroForEpisodeData_hero__base_friends._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__base_friendsBuilder get _$this {
     final $v = _$v;
@@ -827,7 +831,9 @@ class GHeroForEpisodeData_hero__asDroidBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroForEpisodeData_hero__asDroidBuilder();
+  GHeroForEpisodeData_hero__asDroidBuilder() {
+    GHeroForEpisodeData_hero__asDroid._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__asDroidBuilder get _$this {
     final $v = _$v;
@@ -956,7 +962,9 @@ class GHeroForEpisodeData_hero__asDroid_friendsBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroForEpisodeData_hero__asDroid_friendsBuilder();
+  GHeroForEpisodeData_hero__asDroid_friendsBuilder() {
+    GHeroForEpisodeData_hero__asDroid_friends._initializeBuilder(this);
+  }
 
   GHeroForEpisodeData_hero__asDroid_friendsBuilder get _$this {
     final $v = _$v;
@@ -1060,7 +1068,9 @@ class GDroidFragmentDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GDroidFragmentDataBuilder();
+  GDroidFragmentDataBuilder() {
+    GDroidFragmentData._initializeBuilder(this);
+  }
 
   GDroidFragmentDataBuilder get _$this {
     final $v = _$v;

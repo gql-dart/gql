@@ -52,6 +52,9 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero
   @override
   String get name;
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid;
@@ -135,10 +138,17 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__base
               GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsData_hero__base;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder b) =>
+      b..G__typename = 'Character';
+
   @override
   String get id;
   @override
   String get name;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
 
@@ -178,6 +188,10 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
               GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder b) =>
+      b..G__typename = 'Human';
+
   @override
   String get id;
   @override
@@ -186,6 +200,9 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
   String? get homePlanet;
   BuiltList<GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>?
       get friends;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => this;
 
@@ -214,6 +231,9 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends
     implements
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends {
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid;
@@ -312,6 +332,14 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__ba
               updates]) =
       _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseBuilder
+              b) =>
+      b..G__typename = 'Character';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid => null;
@@ -358,10 +386,18 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
               updates]) =
       _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder
+              b) =>
+      b..G__typename = 'Droid';
+
   String get id;
   String get name;
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid => this;
@@ -407,9 +443,17 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
               updates]) =
       _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder
+              b) =>
+      b..G__typename = 'Human';
+
   String get id;
   String get name;
   String? get homePlanet;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid => null;
@@ -453,12 +497,19 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid
               GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder b)
           updates]) = _$GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid;
 
+  static void _initializeBuilder(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
   @override
   String get id;
   @override
   String get name;
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
 
@@ -531,6 +582,8 @@ extension GheroFieldsFragmentWhenExtension on GheroFieldsFragment {
 
 abstract class GheroFieldsFragment__base implements GheroFieldsFragment {
   @override
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
@@ -546,6 +599,8 @@ abstract class GheroFieldsFragment__base implements GheroFieldsFragment {
 
 abstract class GheroFieldsFragment__asHuman
     implements GheroFieldsFragment, GhumanFieldsFragment {
+  @override
+  String get G__typename;
   @override
   String get id;
   @override
@@ -565,6 +620,8 @@ abstract class GheroFieldsFragment__asHuman
 
 abstract class GheroFieldsFragment__asHuman_friends
     implements GhumanFieldsFragment_friends {
+  @override
+  String get G__typename;
   @override
   GheroFieldsFragment__asHuman_friends__asDroid? get asDroid;
   @override
@@ -611,6 +668,8 @@ extension GheroFieldsFragment__asHuman_friendsWhenExtension
 abstract class GheroFieldsFragment__asHuman_friends__base
     implements GheroFieldsFragment__asHuman_friends {
   @override
+  String get G__typename;
+  @override
   GheroFieldsFragment__asHuman_friends__asDroid? get asDroid => null;
 
   @override
@@ -625,6 +684,8 @@ abstract class GheroFieldsFragment__asHuman_friends__asDroid
         GhumanFieldsFragment_friends__asDroid,
         GheroFieldsFragment__asHuman_friends,
         GdroidFieldsFragment {
+  @override
+  String get G__typename;
   String get id;
   String get name;
   @override
@@ -643,6 +704,8 @@ abstract class GheroFieldsFragment__asHuman_friends__asHuman
     implements
         GhumanFieldsFragment_friends__asHuman,
         GheroFieldsFragment__asHuman_friends {
+  @override
+  String get G__typename;
   String get id;
   String get name;
   String? get homePlanet;
@@ -658,6 +721,8 @@ abstract class GheroFieldsFragment__asHuman_friends__asHuman
 
 abstract class GheroFieldsFragment__asDroid
     implements GheroFieldsFragment, GdroidFieldsFragment {
+  @override
+  String get G__typename;
   @override
   String get id;
   @override
@@ -679,6 +744,9 @@ abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
   String get id;
   @override
   String get name;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman;
   @override
@@ -752,10 +820,16 @@ abstract class GheroFieldsFragmentData__base
           [void Function(GheroFieldsFragmentData__baseBuilder b) updates]) =
       _$GheroFieldsFragmentData__base;
 
+  static void _initializeBuilder(GheroFieldsFragmentData__baseBuilder b) =>
+      b..G__typename = 'Character';
+
   @override
   String get id;
   @override
   String get name;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => null;
 
@@ -791,6 +865,9 @@ abstract class GheroFieldsFragmentData__asHuman
           [void Function(GheroFieldsFragmentData__asHumanBuilder b) updates]) =
       _$GheroFieldsFragmentData__asHuman;
 
+  static void _initializeBuilder(GheroFieldsFragmentData__asHumanBuilder b) =>
+      b..G__typename = 'Human';
+
   @override
   String get id;
   @override
@@ -798,6 +875,9 @@ abstract class GheroFieldsFragmentData__asHuman
   @override
   String? get homePlanet;
   BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => this;
 
@@ -825,6 +905,9 @@ abstract class GheroFieldsFragmentData__asHuman_friends
     implements
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends {
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid;
   @override
@@ -904,6 +987,13 @@ abstract class GheroFieldsFragmentData__asHuman_friends__base
       [void Function(GheroFieldsFragmentData__asHuman_friends__baseBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__base;
 
+  static void _initializeBuilder(
+          GheroFieldsFragmentData__asHuman_friends__baseBuilder b) =>
+      b..G__typename = 'Character';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => null;
 
@@ -941,10 +1031,17 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
       [void Function(GheroFieldsFragmentData__asHuman_friends__asDroidBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__asDroid;
 
+  static void _initializeBuilder(
+          GheroFieldsFragmentData__asHuman_friends__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
   String get id;
   String get name;
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => this;
 
@@ -982,9 +1079,16 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
       [void Function(GheroFieldsFragmentData__asHuman_friends__asHumanBuilder b)
           updates]) = _$GheroFieldsFragmentData__asHuman_friends__asHuman;
 
+  static void _initializeBuilder(
+          GheroFieldsFragmentData__asHuman_friends__asHumanBuilder b) =>
+      b..G__typename = 'Human';
+
   String get id;
   String get name;
   String? get homePlanet;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => null;
 
@@ -1022,12 +1126,18 @@ abstract class GheroFieldsFragmentData__asDroid
           [void Function(GheroFieldsFragmentData__asDroidBuilder b) updates]) =
       _$GheroFieldsFragmentData__asDroid;
 
+  static void _initializeBuilder(GheroFieldsFragmentData__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
   @override
   String get id;
   @override
   String get name;
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => null;
 
@@ -1106,6 +1216,8 @@ extension GhumanFieldsFragment_friendsWhenExtension
 abstract class GhumanFieldsFragment_friends__base
     implements GhumanFieldsFragment_friends {
   @override
+  String get G__typename;
+  @override
   GhumanFieldsFragment_friends__asDroid? get asDroid => null;
 
   @override
@@ -1117,6 +1229,8 @@ abstract class GhumanFieldsFragment_friends__base
 
 abstract class GhumanFieldsFragment_friends__asDroid
     implements GhumanFieldsFragment_friends, GdroidFieldsFragment {
+  @override
+  String get G__typename;
   String get id;
   String get name;
   @override
@@ -1133,6 +1247,8 @@ abstract class GhumanFieldsFragment_friends__asDroid
 
 abstract class GhumanFieldsFragment_friends__asHuman
     implements GhumanFieldsFragment_friends {
+  @override
+  String get G__typename;
   String get id;
   String get name;
   String? get homePlanet;
@@ -1156,10 +1272,16 @@ abstract class GhumanFieldsFragmentData
           [void Function(GhumanFieldsFragmentDataBuilder b) updates]) =
       _$GhumanFieldsFragmentData;
 
+  static void _initializeBuilder(GhumanFieldsFragmentDataBuilder b) =>
+      b..G__typename = 'Human';
+
   @override
   String? get homePlanet;
   @override
   BuiltList<GhumanFieldsFragmentData_friends?>? get friends;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GhumanFieldsFragmentData> get serializer =>
       _$ghumanFieldsFragmentDataSerializer;
 
@@ -1178,6 +1300,9 @@ abstract class GhumanFieldsFragmentData
 
 abstract class GhumanFieldsFragmentData_friends
     implements GhumanFieldsFragment_friends {
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid;
   @override
@@ -1253,6 +1378,13 @@ abstract class GhumanFieldsFragmentData_friends__base
       [void Function(GhumanFieldsFragmentData_friends__baseBuilder b)
           updates]) = _$GhumanFieldsFragmentData_friends__base;
 
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__baseBuilder b) =>
+      b..G__typename = 'Character';
+
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid => null;
 
@@ -1289,10 +1421,17 @@ abstract class GhumanFieldsFragmentData_friends__asDroid
       [void Function(GhumanFieldsFragmentData_friends__asDroidBuilder b)
           updates]) = _$GhumanFieldsFragmentData_friends__asDroid;
 
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__asDroidBuilder b) =>
+      b..G__typename = 'Droid';
+
   String get id;
   String get name;
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid => this;
 
@@ -1328,9 +1467,16 @@ abstract class GhumanFieldsFragmentData_friends__asHuman
       [void Function(GhumanFieldsFragmentData_friends__asHumanBuilder b)
           updates]) = _$GhumanFieldsFragmentData_friends__asHuman;
 
+  static void _initializeBuilder(
+          GhumanFieldsFragmentData_friends__asHumanBuilder b) =>
+      b..G__typename = 'Human';
+
   String get id;
   String get name;
   String? get homePlanet;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid => null;
 
@@ -1370,8 +1516,14 @@ abstract class GdroidFieldsFragmentData
           [void Function(GdroidFieldsFragmentDataBuilder b) updates]) =
       _$GdroidFieldsFragmentData;
 
+  static void _initializeBuilder(GdroidFieldsFragmentDataBuilder b) =>
+      b..G__typename = 'Droid';
+
   @override
   String? get primaryFunction;
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   static Serializer<GdroidFieldsFragmentData> get serializer =>
       _$gdroidFieldsFragmentDataSerializer;
 

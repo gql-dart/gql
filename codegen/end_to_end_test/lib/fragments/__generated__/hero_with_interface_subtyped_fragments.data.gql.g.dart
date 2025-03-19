@@ -142,7 +142,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__baseSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -171,7 +171,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__baseSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -204,7 +204,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -261,7 +261,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanSerializer
                     GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends)
               ]))! as BuiltList<Object?>);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -292,7 +292,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseSeria
           object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -313,7 +313,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseSeria
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -348,7 +348,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidSe
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -388,7 +388,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidSe
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -423,7 +423,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanSe
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -463,7 +463,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanSe
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -496,7 +496,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -536,7 +536,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -566,7 +566,7 @@ class _$GheroFieldsFragmentData__baseSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -594,7 +594,7 @@ class _$GheroFieldsFragmentData__baseSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -624,7 +624,7 @@ class _$GheroFieldsFragmentData__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -679,7 +679,7 @@ class _$GheroFieldsFragmentData__asHumanSerializer
                     GheroFieldsFragmentData__asHuman_friends)
               ]))! as BuiltList<Object?>);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -706,7 +706,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__baseSerializer
       GheroFieldsFragmentData__asHuman_friends__base object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -726,7 +726,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__baseSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -758,7 +758,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asDroidSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -798,7 +798,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asDroidSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -830,7 +830,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -870,7 +870,7 @@ class _$GheroFieldsFragmentData__asHuman_friends__asHumanSerializer
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -900,7 +900,7 @@ class _$GheroFieldsFragmentData__asDroidSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -939,7 +939,7 @@ class _$GheroFieldsFragmentData__asDroidSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -965,7 +965,7 @@ class _$GhumanFieldsFragmentDataSerializer
       Serializers serializers, GhumanFieldsFragmentData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -1011,7 +1011,7 @@ class _$GhumanFieldsFragmentDataSerializer
                 const FullType.nullable(GhumanFieldsFragmentData_friends)
               ]))! as BuiltList<Object?>);
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -1037,7 +1037,7 @@ class _$GhumanFieldsFragmentData_friends__baseSerializer
       Serializers serializers, GhumanFieldsFragmentData_friends__base object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -1057,7 +1057,7 @@ class _$GhumanFieldsFragmentData_friends__baseSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -1087,7 +1087,7 @@ class _$GhumanFieldsFragmentData_friends__asDroidSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -1126,7 +1126,7 @@ class _$GhumanFieldsFragmentData_friends__asDroidSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -1156,7 +1156,7 @@ class _$GhumanFieldsFragmentData_friends__asHumanSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -1195,7 +1195,7 @@ class _$GhumanFieldsFragmentData_friends__asHumanSerializer
           result.homePlanet = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -1221,7 +1221,7 @@ class _$GdroidFieldsFragmentDataSerializer
       Serializers serializers, GdroidFieldsFragmentData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'G__typename',
+      '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -1252,7 +1252,7 @@ class _$GdroidFieldsFragmentDataSerializer
           result.primaryFunction = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'G__typename':
+        case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
@@ -1463,7 +1463,9 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__base._initializeBuilder(this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__baseBuilder get _$this {
     final $v = _$v;
@@ -1628,7 +1630,10 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman._initializeBuilder(
+        this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHumanBuilder get _$this {
     final $v = _$v;
@@ -1768,7 +1773,10 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base
+        ._initializeBuilder(this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__baseBuilder
       get _$this {
@@ -1925,7 +1933,10 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuil
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid
+        ._initializeBuilder(this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder
       get _$this {
@@ -2093,7 +2104,10 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuil
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman
+        ._initializeBuilder(this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder
       get _$this {
@@ -2255,7 +2269,10 @@ class GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder();
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder() {
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid._initializeBuilder(
+        this);
+  }
 
   GHeroWithInterfaceSubTypedFragmentsData_hero__asDroidBuilder get _$this {
     final $v = _$v;
@@ -2384,7 +2401,9 @@ class GheroFieldsFragmentData__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__baseBuilder();
+  GheroFieldsFragmentData__baseBuilder() {
+    GheroFieldsFragmentData__base._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__baseBuilder get _$this {
     final $v = _$v;
@@ -2531,7 +2550,9 @@ class GheroFieldsFragmentData__asHumanBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__asHumanBuilder();
+  GheroFieldsFragmentData__asHumanBuilder() {
+    GheroFieldsFragmentData__asHuman._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__asHumanBuilder get _$this {
     final $v = _$v;
@@ -2653,7 +2674,9 @@ class GheroFieldsFragmentData__asHuman_friends__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__asHuman_friends__baseBuilder();
+  GheroFieldsFragmentData__asHuman_friends__baseBuilder() {
+    GheroFieldsFragmentData__asHuman_friends__base._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__asHuman_friends__baseBuilder get _$this {
     final $v = _$v;
@@ -2793,7 +2816,9 @@ class GheroFieldsFragmentData__asHuman_friends__asDroidBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__asHuman_friends__asDroidBuilder();
+  GheroFieldsFragmentData__asHuman_friends__asDroidBuilder() {
+    GheroFieldsFragmentData__asHuman_friends__asDroid._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__asHuman_friends__asDroidBuilder get _$this {
     final $v = _$v;
@@ -2940,7 +2965,9 @@ class GheroFieldsFragmentData__asHuman_friends__asHumanBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__asHuman_friends__asHumanBuilder();
+  GheroFieldsFragmentData__asHuman_friends__asHumanBuilder() {
+    GheroFieldsFragmentData__asHuman_friends__asHuman._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__asHuman_friends__asHumanBuilder get _$this {
     final $v = _$v;
@@ -3080,7 +3107,9 @@ class GheroFieldsFragmentData__asDroidBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GheroFieldsFragmentData__asDroidBuilder();
+  GheroFieldsFragmentData__asDroidBuilder() {
+    GheroFieldsFragmentData__asDroid._initializeBuilder(this);
+  }
 
   GheroFieldsFragmentData__asDroidBuilder get _$this {
     final $v = _$v;
@@ -3199,7 +3228,9 @@ class GhumanFieldsFragmentDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GhumanFieldsFragmentDataBuilder();
+  GhumanFieldsFragmentDataBuilder() {
+    GhumanFieldsFragmentData._initializeBuilder(this);
+  }
 
   GhumanFieldsFragmentDataBuilder get _$this {
     final $v = _$v;
@@ -3312,7 +3343,9 @@ class GhumanFieldsFragmentData_friends__baseBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GhumanFieldsFragmentData_friends__baseBuilder();
+  GhumanFieldsFragmentData_friends__baseBuilder() {
+    GhumanFieldsFragmentData_friends__base._initializeBuilder(this);
+  }
 
   GhumanFieldsFragmentData_friends__baseBuilder get _$this {
     final $v = _$v;
@@ -3445,7 +3478,9 @@ class GhumanFieldsFragmentData_friends__asDroidBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GhumanFieldsFragmentData_friends__asDroidBuilder();
+  GhumanFieldsFragmentData_friends__asDroidBuilder() {
+    GhumanFieldsFragmentData_friends__asDroid._initializeBuilder(this);
+  }
 
   GhumanFieldsFragmentData_friends__asDroidBuilder get _$this {
     final $v = _$v;
@@ -3586,7 +3621,9 @@ class GhumanFieldsFragmentData_friends__asHumanBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GhumanFieldsFragmentData_friends__asHumanBuilder();
+  GhumanFieldsFragmentData_friends__asHumanBuilder() {
+    GhumanFieldsFragmentData_friends__asHuman._initializeBuilder(this);
+  }
 
   GhumanFieldsFragmentData_friends__asHumanBuilder get _$this {
     final $v = _$v;
@@ -3697,7 +3734,9 @@ class GdroidFieldsFragmentDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GdroidFieldsFragmentDataBuilder();
+  GdroidFieldsFragmentDataBuilder() {
+    GdroidFieldsFragmentData._initializeBuilder(this);
+  }
 
   GdroidFieldsFragmentDataBuilder get _$this {
     final $v = _$v;
