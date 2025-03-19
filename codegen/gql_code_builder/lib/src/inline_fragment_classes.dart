@@ -60,6 +60,7 @@ List<Spec> buildInlineFragmentClasses({
     final methodName = "as$typeName";
 
     return Method((b) => b
+      ..annotations.add(refer("override"))
       ..type = MethodType.getter
       ..returns = TypeReference((tr) => tr
         ..symbol = typeMap[typeName]
@@ -123,32 +124,63 @@ List<Spec> buildInlineFragmentClasses({
       final typeName =
           builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
       if (dataClassAliasMap.containsKey(typeName)) {
-        // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
         return false;
       }
       return true;
     }).expand(
-      (inlineFragment) => buildSelectionSetDataClasses(
-          name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-          selections: [
-            ...baseClassSelections,
-            ...inlineFragment.selectionSet.selections
-                .where((s) => s is! InlineFragmentNode),
-          ],
-          fragmentMap: fragmentMap,
-          dataClassAliasMap: dataClassAliasMap,
-          schemaSource: schemaSource,
-          type: inlineFragment.typeCondition!.on.name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: {
-            name: SourceSelections(url: null, selections: selections)
-          },
-          built: built,
-          whenExtensionConfig: whenExtensionConfig,
-          // Add fragment type name for helper methods
-          fragmentTypeName: inlineFragment.typeCondition!.on.name.value,
-          parentInlineFragments: inlineFragments,
-          typeMap: typeMap), // Pass the type map for consistent types
+      (inlineFragment) {
+        final fragmentTypeName = inlineFragment.typeCondition!.on.name.value;
+        final fragmentClassName = "${name}__as$fragmentTypeName";
+
+        // Properly build superclass hierarchy for specialized types
+        final expandedSuperclassSelections = {...superclassSelections};
+
+        // Always add any additional type-specific implementations
+        for (final superName in superclassSelections.keys.toList()) {
+          final specializedName = "${superName}__as$fragmentTypeName";
+
+          // Check if there's a specialized version for this fragment
+          final hasSpecializedInterface = inlineFragments.any((f) =>
+              f.typeCondition != null &&
+              f.typeCondition!.on.name.value == fragmentTypeName);
+
+          // If the specialized interface exists, add it to the list
+          if (hasSpecializedInterface && superName != name) {
+            // IMPORTANT: For fragment interfaces, we want type-specific variants
+            // like GheroFieldsFragment__asHuman instead of GheroFieldsFragment
+            expandedSuperclassSelections[specializedName] =
+                superclassSelections[superName]!;
+
+            // Only remove the base fragment interface if it's not our direct parent
+            if (superName != name) {
+              expandedSuperclassSelections.remove(superName);
+            }
+          }
+        }
+
+        // CRITICAL: We must ALWAYS keep our direct parent interface
+        expandedSuperclassSelections[name] =
+            SourceSelections(url: null, selections: selections);
+
+        return buildSelectionSetDataClasses(
+            name: fragmentClassName,
+            selections: [
+              ...baseClassSelections,
+              ...inlineFragment.selectionSet.selections
+                  .where((s) => s is! InlineFragmentNode),
+            ],
+            fragmentMap: fragmentMap,
+            dataClassAliasMap: dataClassAliasMap,
+            schemaSource: schemaSource,
+            type: fragmentTypeName,
+            typeOverrides: typeOverrides,
+            superclassSelections: expandedSuperclassSelections,
+            built: built,
+            whenExtensionConfig: whenExtensionConfig,
+            fragmentTypeName: fragmentTypeName,
+            parentInlineFragments: inlineFragments,
+            typeMap: typeMap);
+      },
     ),
   ];
 }

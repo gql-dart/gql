@@ -46,6 +46,7 @@ abstract class GHeroForEpisodeData_hero {
   String get G__typename;
   String get name;
   BuiltList<GHeroForEpisodeData_hero_friends?>? get friends;
+  @override
   GHeroForEpisodeData_hero__asDroid? get asDroid;
   static Serializer<GHeroForEpisodeData_hero> get serializer =>
       _i2.InlineFragmentSerializer<GHeroForEpisodeData_hero>(
