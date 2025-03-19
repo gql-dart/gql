@@ -43,12 +43,6 @@ abstract class GPostsData_posts
   factory GPostsData_posts([void Function(GPostsData_postsBuilder b) updates]) =
       _$GPostsData_posts;
 
-  static void _initializeBuilder(GPostsData_postsBuilder b) =>
-      b..G__typename = 'Post';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -82,12 +76,6 @@ abstract class GPostsData_posts_isFavorited
           [void Function(GPostsData_posts_isFavoritedBuilder b) updates]) =
       _$GPostsData_posts_isFavorited;
 
-  static void _initializeBuilder(GPostsData_posts_isFavoritedBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostsData_posts_isFavorited> get serializer =>
@@ -116,12 +104,6 @@ abstract class GPostsData_posts_isLiked
           [void Function(GPostsData_posts_isLikedBuilder b) updates]) =
       _$GPostsData_posts_isLiked;
 
-  static void _initializeBuilder(GPostsData_posts_isLikedBuilder b) =>
-      b..G__typename = 'PostFavorites';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostsData_posts_isLiked> get serializer =>
@@ -170,12 +152,6 @@ abstract class GPostFragmentData
           [void Function(GPostFragmentDataBuilder b) updates]) =
       _$GPostFragmentData;
 
-  static void _initializeBuilder(GPostFragmentDataBuilder b) =>
-      b..G__typename = 'Post';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -209,12 +185,6 @@ abstract class GPostFragmentData_isFavorited
           [void Function(GPostFragmentData_isFavoritedBuilder b) updates]) =
       _$GPostFragmentData_isFavorited;
 
-  static void _initializeBuilder(GPostFragmentData_isFavoritedBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostFragmentData_isFavorited> get serializer =>
@@ -243,12 +213,6 @@ abstract class GPostFragmentData_isLiked
           [void Function(GPostFragmentData_isLikedBuilder b) updates]) =
       _$GPostFragmentData_isLiked;
 
-  static void _initializeBuilder(GPostFragmentData_isLikedBuilder b) =>
-      b..G__typename = 'PostFavorites';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostFragmentData_isLiked> get serializer =>

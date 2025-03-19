@@ -105,18 +105,12 @@ abstract class GHeroForEpisodeData_hero__base
           [void Function(GHeroForEpisodeData_hero__baseBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__base;
 
-  static void _initializeBuilder(GHeroForEpisodeData_hero__baseBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   @override
   BuiltList<GHeroForEpisodeData_hero__base_friends?>? get friends;
   @override
-  HeroForEpisodeData_hero__asDroid? get asDroid => null;
+  GHeroForEpisodeData_hero__asDroid? get asDroid => null;
 
   static Serializer<GHeroForEpisodeData_hero__base> get serializer =>
       _$gHeroForEpisodeDataHeroBaseSerializer;
@@ -145,13 +139,6 @@ abstract class GHeroForEpisodeData_hero__base_friends
       [void Function(GHeroForEpisodeData_hero__base_friendsBuilder b)
           updates]) = _$GHeroForEpisodeData_hero__base_friends;
 
-  static void _initializeBuilder(
-          GHeroForEpisodeData_hero__base_friendsBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   static Serializer<GHeroForEpisodeData_hero__base_friends> get serializer =>
@@ -183,28 +170,14 @@ abstract class GHeroForEpisodeData_hero__asDroid
           [void Function(GHeroForEpisodeData_hero__asDroidBuilder b) updates]) =
       _$GHeroForEpisodeData_hero__asDroid;
 
-  static void _initializeBuilder(GHeroForEpisodeData_hero__asDroidBuilder b) =>
-      b..G__typename = 'Droid';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   @override
   BuiltList<GHeroForEpisodeData_hero__asDroid_friends?>? get friends;
   @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
   String? get primaryFunction;
   @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String? get primaryFunction;
-  @override
-  HeroForEpisodeData_hero__asDroid? get asDroid => this;
+  GHeroForEpisodeData_hero__asDroid? get asDroid => this;
 
   static Serializer<GHeroForEpisodeData_hero__asDroid> get serializer =>
       _$gHeroForEpisodeDataHeroAsDroidSerializer;
@@ -234,13 +207,6 @@ abstract class GHeroForEpisodeData_hero__asDroid_friends
       [void Function(GHeroForEpisodeData_hero__asDroid_friendsBuilder b)
           updates]) = _$GHeroForEpisodeData_hero__asDroid_friends;
 
-  static void _initializeBuilder(
-          GHeroForEpisodeData_hero__asDroid_friendsBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   static Serializer<GHeroForEpisodeData_hero__asDroid_friends> get serializer =>
@@ -282,12 +248,6 @@ abstract class GDroidFragmentData
           [void Function(GDroidFragmentDataBuilder b) updates]) =
       _$GDroidFragmentData;
 
-  static void _initializeBuilder(GDroidFragmentDataBuilder b) =>
-      b..G__typename = 'Droid';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String? get primaryFunction;
   static Serializer<GDroidFragmentData> get serializer =>

@@ -49,12 +49,6 @@ abstract class GHeroWithFragmentsData_hero
           [void Function(GHeroWithFragmentsData_heroBuilder b) updates]) =
       _$GHeroWithFragmentsData_hero;
 
-  static void _initializeBuilder(GHeroWithFragmentsData_heroBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -88,13 +82,6 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
       [void Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection;
 
-  static void _initializeBuilder(
-          GHeroWithFragmentsData_hero_friendsConnectionBuilder b) =>
-      b..G__typename = 'FriendsConnection';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int? get totalCount;
   @override
@@ -128,13 +115,6 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
               GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges;
 
-  static void _initializeBuilder(
-          GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder b) =>
-      b..G__typename = 'FriendsEdge';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithFragmentsData_hero_friendsConnection_edges_node? get node;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges>
@@ -159,8 +139,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
     implements
         Built<GHeroWithFragmentsData_hero_friendsConnection_edges_node,
             GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder>,
-        GcomparisonFields_friendsConnection_edges_node,
-        GheroData {
+        GcomparisonFields_friendsConnection_edges_node {
   GHeroWithFragmentsData_hero_friendsConnection_edges_node._();
 
   factory GHeroWithFragmentsData_hero_friendsConnection_edges_node(
@@ -168,15 +147,6 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
               GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b)
           updates]) = _$GHeroWithFragmentsData_hero_friendsConnection_edges_node;
 
-  static void _initializeBuilder(
-          GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get name;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges_node>
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesNodeSerializer;
@@ -208,12 +178,6 @@ abstract class GheroDataData
   factory GheroDataData([void Function(GheroDataDataBuilder b) updates]) =
       _$GheroDataData;
 
-  static void _initializeBuilder(GheroDataDataBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   static Serializer<GheroDataData> get serializer => _$gheroDataDataSerializer;
@@ -232,8 +196,6 @@ abstract class GheroDataData
 }
 
 abstract class GcomparisonFields implements GheroData {
-  @override
-  String get G__typename;
   String get id;
   @override
   String get name;
@@ -255,13 +217,8 @@ abstract class GcomparisonFields_friendsConnection_edges {
   Map<String, dynamic> toJson();
 }
 
-abstract class GcomparisonFields_friendsConnection_edges_node
-    implements GheroData {
-  @override
+abstract class GcomparisonFields_friendsConnection_edges_node {
   String get G__typename;
-  @override
-  String get name;
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -276,12 +233,6 @@ abstract class GcomparisonFieldsData
           [void Function(GcomparisonFieldsDataBuilder b) updates]) =
       _$GcomparisonFieldsData;
 
-  static void _initializeBuilder(GcomparisonFieldsDataBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -315,13 +266,6 @@ abstract class GcomparisonFieldsData_friendsConnection
       [void Function(GcomparisonFieldsData_friendsConnectionBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection;
 
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnectionBuilder b) =>
-      b..G__typename = 'FriendsConnection';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int? get totalCount;
   @override
@@ -354,13 +298,6 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
       [void Function(GcomparisonFieldsData_friendsConnection_edgesBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection_edges;
 
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnection_edgesBuilder b) =>
-      b..G__typename = 'FriendsEdge';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GcomparisonFieldsData_friendsConnection_edges_node? get node;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
@@ -384,8 +321,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
     implements
         Built<GcomparisonFieldsData_friendsConnection_edges_node,
             GcomparisonFieldsData_friendsConnection_edges_nodeBuilder>,
-        GcomparisonFields_friendsConnection_edges_node,
-        GheroData {
+        GcomparisonFields_friendsConnection_edges_node {
   GcomparisonFieldsData_friendsConnection_edges_node._();
 
   factory GcomparisonFieldsData_friendsConnection_edges_node(
@@ -393,15 +329,6 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
               GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b)
           updates]) = _$GcomparisonFieldsData_friendsConnection_edges_node;
 
-  static void _initializeBuilder(
-          GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  @override
-  String get name;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges_node>
       get serializer =>
           _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;

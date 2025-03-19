@@ -51,12 +51,6 @@ abstract class GPostsWithFixedVariableData_posts
           [void Function(GPostsWithFixedVariableData_postsBuilder b) updates]) =
       _$GPostsWithFixedVariableData_posts;
 
-  static void _initializeBuilder(GPostsWithFixedVariableData_postsBuilder b) =>
-      b..G__typename = 'Post';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -89,13 +83,6 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
       [void Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder b)
           updates]) = _$GPostsWithFixedVariableData_posts_favoritedUsers;
 
-  static void _initializeBuilder(
-          GPostsWithFixedVariableData_posts_favoritedUsersBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostsWithFixedVariableData_posts_favoritedUsers>
@@ -139,12 +126,6 @@ abstract class GPostFragmentForUser1Data
           [void Function(GPostFragmentForUser1DataBuilder b) updates]) =
       _$GPostFragmentForUser1Data;
 
-  static void _initializeBuilder(GPostFragmentForUser1DataBuilder b) =>
-      b..G__typename = 'Post';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   @override
@@ -176,13 +157,6 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
       [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder b)
           updates]) = _$GPostFragmentForUser1Data_favoritedUsers;
 
-  static void _initializeBuilder(
-          GPostFragmentForUser1Data_favoritedUsersBuilder b) =>
-      b..G__typename = 'PostLikes';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   int get totalCount;
   static Serializer<GPostFragmentForUser1Data_favoritedUsers> get serializer =>

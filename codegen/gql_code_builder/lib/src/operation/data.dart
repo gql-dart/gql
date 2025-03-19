@@ -128,6 +128,7 @@ List<Spec> buildSelectionSetDataClasses({
   bool isBaseClass = false,
   String? fragmentTypeName,
   List<InlineFragmentNode>? parentInlineFragments,
+  Map<String, String>? typeMap,
 }) {
   print(
       "BUILDING CLASS: $name (type: $type) | inlineFragments: ${selections.whereType<InlineFragmentNode>().length}");
@@ -157,44 +158,66 @@ List<Spec> buildSelectionSetDataClasses({
       .expand((selections) => selections.selections)
       .toSet();
 
-  final fieldGetters = selections.whereType<FieldNode>().map<Method>(
-    (node) {
-      final nameNode = node.alias ?? node.name;
-      final typeDef = getTypeDefinitionNode(
-        schemaSource.document,
-        type,
-      )!;
-      final typeNode = _getFieldTypeNode(
-        typeDef,
-        node.name.value,
-      );
-      return buildGetter(
-        nameNode: nameNode,
-        typeNode: typeNode,
-        schemaSource: schemaSource,
-        typeOverrides: typeOverrides,
-        typeRefAlias:
-            dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
-        typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
-        built: built,
-        isOverride: superclassSelectionNodes.contains(node),
-      );
-    },
-  ).toList();
+  // Track fields we've already processed to avoid duplicates
+  final processedFields = <String>{};
+
+  final fieldGetters = selections
+      .whereType<FieldNode>()
+      .map<Method?>(
+        (node) {
+          final nameNode = node.alias ?? node.name;
+
+          // Skip duplicate fields, especially __typename
+          if (processedFields.contains(nameNode.value) ||
+              (nameNode.value == "__typename" &&
+                  superclassSelectionNodes.any((s) =>
+                      s is FieldNode &&
+                      (s.alias?.value ?? s.name.value) == "__typename"))) {
+            return null;
+          }
+          processedFields.add(nameNode.value);
+
+          final typeDef = getTypeDefinitionNode(
+            schemaSource.document,
+            type,
+          )!;
+          final typeNode = _getFieldTypeNode(
+            typeDef,
+            node.name.value,
+          );
+          return buildGetter(
+            nameNode: nameNode,
+            typeNode: typeNode,
+            schemaSource: schemaSource,
+            typeOverrides: typeOverrides,
+            typeRefAlias:
+                dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
+            typeRefPrefix:
+                node.selectionSet != null ? builtClassName(name) : null,
+            built: built,
+            isOverride: superclassSelectionNodes.contains(node),
+          );
+        },
+      )
+      .where((method) => method != null)
+      .cast<Method>()
+      .toList();
 
   final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
 
-  // Generate helper methods for asHuman/asDroid getters if this is a base class
+  // Generate helper methods for asHuman/asDroid getters with the correct type prefixes
   List<Method> typeCastMethods = [];
   if (isBaseClass &&
       parentInlineFragments != null &&
-      parentInlineFragments.isNotEmpty) {
+      parentInlineFragments.isNotEmpty &&
+      typeMap != null) {
     typeCastMethods = parentInlineFragments
         .where((frag) => frag.typeCondition != null)
         .map((frag) {
       final typeName = frag.typeCondition!.on.name.value;
       final methodName = "as$typeName";
-      final returnTypeName = name.replaceAll("__base", "__as$typeName");
+      // Always use full class name with G prefix
+      final returnTypeName = typeMap[typeName]!;
 
       return Method((b) => b
         ..annotations.add(refer("override"))
@@ -211,14 +234,15 @@ List<Spec> buildSelectionSetDataClasses({
   // Generate implementation for asHuman/asDroid getters for specific fragment types
   if (fragmentTypeName != null &&
       parentInlineFragments != null &&
-      parentInlineFragments.isNotEmpty) {
+      parentInlineFragments.isNotEmpty &&
+      typeMap != null) {
     typeCastMethods = parentInlineFragments
         .where((frag) => frag.typeCondition != null)
         .map((frag) {
       final typeName = frag.typeCondition!.on.name.value;
       final methodName = "as$typeName";
-      final returnTypeName =
-          name.substring(0, name.lastIndexOf("__as")) + "__as$typeName";
+      // Always use full class name with G prefix
+      final returnTypeName = typeMap[typeName]!;
 
       return Method((b) => b
         ..annotations.add(refer("override"))
@@ -298,14 +322,15 @@ List<Spec> buildSelectionSetDataClasses({
         )
         .expand(
       (field) {
-        // Preserve the fragment context in the field name if we're in a fragment
-        final String fieldName =
-            "${name}_${field.alias?.value ?? field.name.value}";
-        // Pass parent inline fragments to nested fields if we're in a fragment
+        // Preserve the fragment context in the field name
+        final fieldName = "${name}_${field.alias?.value ?? field.name.value}";
+
+        // Pass parent inline fragments to nested fields
         List<InlineFragmentNode>? fieldParentInlineFragments;
+        Map<String, String>? fieldTypeMap;
 
         // If the field is within a fragment's selections,
-        // track that in the nested fields to generate proper class names
+        // track nested fragments properly
         if (field.selectionSet != null &&
             field.selectionSet!.selections
                 .whereType<InlineFragmentNode>()
@@ -313,6 +338,16 @@ List<Spec> buildSelectionSetDataClasses({
           fieldParentInlineFragments = field.selectionSet!.selections
               .whereType<InlineFragmentNode>()
               .toList();
+
+          // Create type map for the field's inline fragments
+          fieldTypeMap = {};
+          for (final frag in fieldParentInlineFragments) {
+            if (frag.typeCondition != null) {
+              final typeName = frag.typeCondition!.on.name.value;
+              fieldTypeMap[typeName] =
+                  builtClassName("${fieldName}__as$typeName");
+            }
+          }
         }
 
         return buildSelectionSetDataClasses(
@@ -338,6 +373,7 @@ List<Spec> buildSelectionSetDataClasses({
           built: inlineFragments.isNotEmpty ? false : built,
           whenExtensionConfig: whenExtensionConfig,
           parentInlineFragments: fieldParentInlineFragments,
+          typeMap: fieldTypeMap,
         );
       },
     ),
@@ -462,12 +498,15 @@ List<SelectionNode> mergeSelections(
 }
 
 /// Enhanced fragment spread processor that recursively processes fields with selection sets
+/// Enhanced fragment spread processor that recursively processes fields with selection sets
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
+  Set<String> visitedFragments = const {},
 ]) {
   final result = <SelectionNode>[];
+  final newVisitedFragments = {...visitedFragments};
 
   for (final selection in selections) {
     if (selection is FragmentSpreadNode) {
@@ -476,6 +515,13 @@ List<SelectionNode> _expandFragmentSpreads(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
         );
       }
+
+      // Check for recursive fragments
+      if (newVisitedFragments.contains(selection.name.value)) {
+        // Skip this fragment to avoid infinite recursion
+        continue;
+      }
+      newVisitedFragments.add(selection.name.value);
 
       final fragmentSelections = fragmentMap[selection.name.value]!.selections;
 
@@ -488,11 +534,16 @@ List<SelectionNode> _expandFragmentSpreads(
         fragmentSelections,
         fragmentMap,
         false,
+        newVisitedFragments,
       ));
     } else if (selection is FieldNode && selection.selectionSet != null) {
       // Process fields with selections - recursively expand any fragments they contain
       final expandedSelections = _expandFragmentSpreads(
-          selection.selectionSet!.selections, fragmentMap, true);
+        selection.selectionSet!.selections,
+        fragmentMap,
+        true,
+        newVisitedFragments,
+      );
 
       // Create a new field node with the expanded selections
       result.add(FieldNode(
@@ -505,7 +556,11 @@ List<SelectionNode> _expandFragmentSpreads(
     } else if (selection is InlineFragmentNode) {
       // Process inline fragments - recursively expand any nested fragments
       final expandedSelections = _expandFragmentSpreads(
-          selection.selectionSet.selections, fragmentMap, true);
+        selection.selectionSet.selections,
+        fragmentMap,
+        true,
+        newVisitedFragments,
+      );
 
       // Create a new inline fragment node with the expanded selections
       result.add(InlineFragmentNode(

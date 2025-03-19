@@ -33,6 +33,15 @@ List<Spec> buildInlineFragmentClasses({
   print(
       "  Fragments: ${inlineFragments.map((f) => f.typeCondition?.on.name.value).toList()}");
 
+  // Create consistent type mapping for all fragments
+  final typeMap = <String, String>{};
+  for (final frag in inlineFragments) {
+    if (frag.typeCondition != null) {
+      final typeName = frag.typeCondition!.on.name.value;
+      typeMap[typeName] = builtClassName("${name}__as$typeName");
+    }
+  }
+
   final whenExtension = inlineFragmentWhenExtension(
     baseTypeName: name,
     inlineFragments: inlineFragments,
@@ -44,7 +53,7 @@ List<Spec> buildInlineFragmentClasses({
   final baseClassSelections =
       selections.where((s) => s is! InlineFragmentNode).toList();
 
-  // Add helper methods for type checking/casting
+  // Add helper methods for type checking/casting with correct prefix
   final typeCheckMethods =
       inlineFragments.where((frag) => frag.typeCondition != null).map((frag) {
     final typeName = frag.typeCondition!.on.name.value;
@@ -53,7 +62,7 @@ List<Spec> buildInlineFragmentClasses({
     return Method((b) => b
       ..type = MethodType.getter
       ..returns = TypeReference((tr) => tr
-        ..symbol = "${builtClassName(name)}__as$typeName"
+        ..symbol = typeMap[typeName]
         ..isNullable = true)
       ..name = methodName);
   }).toList();
@@ -102,6 +111,7 @@ List<Spec> buildInlineFragmentClasses({
       // Add parameter to indicate this is a base class
       isBaseClass: true,
       parentInlineFragments: inlineFragments,
+      typeMap: typeMap, // Pass the type map for consistent types
     ),
 
     /// TODO: Handle inline fragments without a type condition
@@ -137,7 +147,8 @@ List<Spec> buildInlineFragmentClasses({
           whenExtensionConfig: whenExtensionConfig,
           // Add fragment type name for helper methods
           fragmentTypeName: inlineFragment.typeCondition!.on.name.value,
-          parentInlineFragments: inlineFragments),
+          parentInlineFragments: inlineFragments,
+          typeMap: typeMap), // Pass the type map for consistent types
     ),
   ];
 }

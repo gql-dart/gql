@@ -106,9 +106,6 @@ class _$GHeroWithFragmentsData_heroSerializer
       Serializers serializers, GHeroWithFragmentsData_hero object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
@@ -117,6 +114,9 @@ class _$GHeroWithFragmentsData_heroSerializer
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GHeroWithFragmentsData_hero_friendsConnection)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -134,10 +134,6 @@ class _$GHeroWithFragmentsData_heroSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -151,6 +147,10 @@ class _$GHeroWithFragmentsData_heroSerializer
                   specifiedType: const FullType(
                       GHeroWithFragmentsData_hero_friendsConnection))!
               as GHeroWithFragmentsData_hero_friendsConnection);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -175,7 +175,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
       GHeroWithFragmentsData_hero_friendsConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -211,10 +211,6 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'totalCount':
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
@@ -225,6 +221,10 @@ class _$GHeroWithFragmentsData_hero_friendsConnectionSerializer
                 const FullType.nullable(
                     GHeroWithFragmentsData_hero_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -250,7 +250,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edgesSerializer
       GHeroWithFragmentsData_hero_friendsConnection_edges object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -279,15 +279,15 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edgesSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'node':
           result.node.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       GHeroWithFragmentsData_hero_friendsConnection_edges_node))!
               as GHeroWithFragmentsData_hero_friendsConnection_edges_node);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -314,11 +314,9 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       GHeroWithFragmentsData_hero_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -337,12 +335,8 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
+        case 'G__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -362,11 +356,11 @@ class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
   Iterable<Object?> serialize(Serializers serializers, GheroDataData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -384,12 +378,12 @@ class _$GheroDataDataSerializer implements StructuredSerializer<GheroDataData> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -414,9 +408,6 @@ class _$GcomparisonFieldsDataSerializer
       Serializers serializers, GcomparisonFieldsData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
@@ -425,6 +416,9 @@ class _$GcomparisonFieldsDataSerializer
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GcomparisonFieldsData_friendsConnection)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -442,10 +436,6 @@ class _$GcomparisonFieldsDataSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -459,6 +449,10 @@ class _$GcomparisonFieldsDataSerializer
                   specifiedType:
                       const FullType(GcomparisonFieldsData_friendsConnection))!
               as GcomparisonFieldsData_friendsConnection);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -482,7 +476,7 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
       Serializers serializers, GcomparisonFieldsData_friendsConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -518,10 +512,6 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'totalCount':
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
@@ -532,6 +522,10 @@ class _$GcomparisonFieldsData_friendsConnectionSerializer
                 const FullType.nullable(
                     GcomparisonFieldsData_friendsConnection_edges)
               ]))! as BuiltList<Object?>);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -556,7 +550,7 @@ class _$GcomparisonFieldsData_friendsConnection_edgesSerializer
       GcomparisonFieldsData_friendsConnection_edges object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
     ];
@@ -584,15 +578,15 @@ class _$GcomparisonFieldsData_friendsConnection_edgesSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'node':
           result.node.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       GcomparisonFieldsData_friendsConnection_edges_node))!
               as GcomparisonFieldsData_friendsConnection_edges_node);
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -618,11 +612,9 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       GcomparisonFieldsData_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
+      'G__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -641,12 +633,8 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
+        case 'G__typename':
           result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -774,32 +762,32 @@ class GHeroWithFragmentsDataBuilder
 
 class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   @override
-  final String G__typename;
-  @override
   final String id;
   @override
   final String name;
   @override
   final GHeroWithFragmentsData_hero_friendsConnection friendsConnection;
+  @override
+  final String G__typename;
 
   factory _$GHeroWithFragmentsData_hero(
           [void Function(GHeroWithFragmentsData_heroBuilder)? updates]) =>
       (new GHeroWithFragmentsData_heroBuilder()..update(updates))._build();
 
   _$GHeroWithFragmentsData_hero._(
-      {required this.G__typename,
-      required this.id,
+      {required this.id,
       required this.name,
-      required this.friendsConnection})
+      required this.friendsConnection,
+      required this.G__typename})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWithFragmentsData_hero', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GHeroWithFragmentsData_hero', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GHeroWithFragmentsData_hero', 'name');
     BuiltValueNullFieldError.checkNotNull(
         friendsConnection, r'GHeroWithFragmentsData_hero', 'friendsConnection');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GHeroWithFragmentsData_hero', 'G__typename');
   }
 
   @override
@@ -815,19 +803,19 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWithFragmentsData_hero &&
-        G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
-        friendsConnection == other.friendsConnection;
+        friendsConnection == other.friendsConnection &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, friendsConnection.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -835,10 +823,10 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GHeroWithFragmentsData_hero')
-          ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
-          ..add('friendsConnection', friendsConnection))
+          ..add('friendsConnection', friendsConnection)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -848,10 +836,6 @@ class GHeroWithFragmentsData_heroBuilder
         Builder<GHeroWithFragmentsData_hero,
             GHeroWithFragmentsData_heroBuilder> {
   _$GHeroWithFragmentsData_hero? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   String? _id;
   String? get id => _$this._id;
@@ -870,17 +854,19 @@ class GHeroWithFragmentsData_heroBuilder
               friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
 
-  GHeroWithFragmentsData_heroBuilder() {
-    GHeroWithFragmentsData_hero._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GHeroWithFragmentsData_heroBuilder();
 
   GHeroWithFragmentsData_heroBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
       _friendsConnection = $v.friendsConnection.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -905,13 +891,13 @@ class GHeroWithFragmentsData_heroBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GHeroWithFragmentsData_hero', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'GHeroWithFragmentsData_hero', 'name'),
-              friendsConnection: friendsConnection.build());
+              friendsConnection: friendsConnection.build(),
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -931,11 +917,11 @@ class GHeroWithFragmentsData_heroBuilder
 class _$GHeroWithFragmentsData_hero_friendsConnection
     extends GHeroWithFragmentsData_hero_friendsConnection {
   @override
-  final String G__typename;
-  @override
   final int? totalCount;
   @override
   final BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? edges;
+  @override
+  final String G__typename;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection(
           [void Function(GHeroWithFragmentsData_hero_friendsConnectionBuilder)?
@@ -945,7 +931,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
           ._build();
 
   _$GHeroWithFragmentsData_hero_friendsConnection._(
-      {required this.G__typename, this.totalCount, this.edges})
+      {this.totalCount, this.edges, required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GHeroWithFragmentsData_hero_friendsConnection', 'G__typename');
@@ -965,17 +951,17 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWithFragmentsData_hero_friendsConnection &&
-        G__typename == other.G__typename &&
         totalCount == other.totalCount &&
-        edges == other.edges;
+        edges == other.edges &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jc(_$hash, edges.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -984,9 +970,9 @@ class _$GHeroWithFragmentsData_hero_friendsConnection
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GHeroWithFragmentsData_hero_friendsConnection')
-          ..add('G__typename', G__typename)
           ..add('totalCount', totalCount)
-          ..add('edges', edges))
+          ..add('edges', edges)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -996,10 +982,6 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
         Builder<GHeroWithFragmentsData_hero_friendsConnection,
             GHeroWithFragmentsData_hero_friendsConnectionBuilder> {
   _$GHeroWithFragmentsData_hero_friendsConnection? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   int? _totalCount;
   int? get totalCount => _$this._totalCount;
@@ -1015,16 +997,18 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
               edges) =>
       _$this._edges = edges;
 
-  GHeroWithFragmentsData_hero_friendsConnectionBuilder() {
-    GHeroWithFragmentsData_hero_friendsConnection._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GHeroWithFragmentsData_hero_friendsConnectionBuilder();
 
   GHeroWithFragmentsData_hero_friendsConnectionBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _totalCount = $v.totalCount;
       _edges = $v.edges?.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1051,12 +1035,12 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero_friendsConnection._(
+              totalCount: totalCount,
+              edges: _edges?.build(),
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
                   r'GHeroWithFragmentsData_hero_friendsConnection',
-                  'G__typename'),
-              totalCount: totalCount,
-              edges: _edges?.build());
+                  'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -1078,9 +1062,9 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
 class _$GHeroWithFragmentsData_hero_friendsConnection_edges
     extends GHeroWithFragmentsData_hero_friendsConnection_edges {
   @override
-  final String G__typename;
-  @override
   final GHeroWithFragmentsData_hero_friendsConnection_edges_node? node;
+  @override
+  final String G__typename;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection_edges(
           [void Function(
@@ -1091,7 +1075,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges
           ._build();
 
   _$GHeroWithFragmentsData_hero_friendsConnection_edges._(
-      {required this.G__typename, this.node})
+      {this.node, required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GHeroWithFragmentsData_hero_friendsConnection_edges', 'G__typename');
@@ -1113,15 +1097,15 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWithFragmentsData_hero_friendsConnection_edges &&
-        G__typename == other.G__typename &&
-        node == other.node;
+        node == other.node &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, node.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1130,8 +1114,8 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GHeroWithFragmentsData_hero_friendsConnection_edges')
-          ..add('G__typename', G__typename)
-          ..add('node', node))
+          ..add('node', node)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1142,10 +1126,6 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
             GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder> {
   _$GHeroWithFragmentsData_hero_friendsConnection_edges? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder? _node;
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder get node =>
       _$this._node ??=
@@ -1155,16 +1135,17 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
               node) =>
       _$this._node = node;
 
-  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder() {
-    GHeroWithFragmentsData_hero_friendsConnection_edges._initializeBuilder(
-        this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder();
 
   GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _node = $v.node?.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1191,11 +1172,11 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero_friendsConnection_edges._(
+              node: _node?.build(),
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
                   r'GHeroWithFragmentsData_hero_friendsConnection_edges',
-                  'G__typename'),
-              node: _node?.build());
+                  'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -1218,8 +1199,6 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
     extends GHeroWithFragmentsData_hero_friendsConnection_edges_node {
   @override
   final String G__typename;
-  @override
-  final String name;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection_edges_node(
           [void Function(
@@ -1230,14 +1209,12 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
           ._build();
 
   _$GHeroWithFragmentsData_hero_friendsConnection_edges_node._(
-      {required this.G__typename, required this.name})
+      {required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
         r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
         'G__typename');
-    BuiltValueNullFieldError.checkNotNull(name,
-        r'GHeroWithFragmentsData_hero_friendsConnection_edges_node', 'name');
   }
 
   @override
@@ -1256,15 +1233,13 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWithFragmentsData_hero_friendsConnection_edges_node &&
-        G__typename == other.G__typename &&
-        name == other.name;
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1273,8 +1248,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GHeroWithFragmentsData_hero_friendsConnection_edges_node')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1289,20 +1263,12 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder() {
-    GHeroWithFragmentsData_hero_friendsConnection_edges_node._initializeBuilder(
-        this);
-  }
+  GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder();
 
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -1331,11 +1297,7 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
-                'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
-                'name'));
+                'G__typename'));
     replace(_$result);
     return _$result;
   }
@@ -1343,18 +1305,18 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
 
 class _$GheroDataData extends GheroDataData {
   @override
-  final String G__typename;
-  @override
   final String name;
+  @override
+  final String G__typename;
 
   factory _$GheroDataData([void Function(GheroDataDataBuilder)? updates]) =>
       (new GheroDataDataBuilder()..update(updates))._build();
 
-  _$GheroDataData._({required this.G__typename, required this.name})
+  _$GheroDataData._({required this.name, required this.G__typename})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GheroDataData', 'name');
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GheroDataData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(name, r'GheroDataData', 'name');
   }
 
   @override
@@ -1368,15 +1330,15 @@ class _$GheroDataData extends GheroDataData {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GheroDataData &&
-        G__typename == other.G__typename &&
-        name == other.name;
+        name == other.name &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1384,8 +1346,8 @@ class _$GheroDataData extends GheroDataData {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GheroDataData')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1394,23 +1356,21 @@ class GheroDataDataBuilder
     implements Builder<GheroDataData, GheroDataDataBuilder> {
   _$GheroDataData? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GheroDataDataBuilder() {
-    GheroDataData._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GheroDataDataBuilder();
 
   GheroDataDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _name = $v.name;
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1433,10 +1393,10 @@ class GheroDataDataBuilder
   _$GheroDataData _build() {
     final _$result = _$v ??
         new _$GheroDataData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroDataData', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroDataData', 'name'));
+                name, r'GheroDataData', 'name'),
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GheroDataData', 'G__typename'));
     replace(_$result);
     return _$result;
   }
@@ -1444,31 +1404,31 @@ class GheroDataDataBuilder
 
 class _$GcomparisonFieldsData extends GcomparisonFieldsData {
   @override
-  final String G__typename;
-  @override
   final String id;
   @override
   final String name;
   @override
   final GcomparisonFieldsData_friendsConnection friendsConnection;
+  @override
+  final String G__typename;
 
   factory _$GcomparisonFieldsData(
           [void Function(GcomparisonFieldsDataBuilder)? updates]) =>
       (new GcomparisonFieldsDataBuilder()..update(updates))._build();
 
   _$GcomparisonFieldsData._(
-      {required this.G__typename,
-      required this.id,
+      {required this.id,
       required this.name,
-      required this.friendsConnection})
+      required this.friendsConnection,
+      required this.G__typename})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GcomparisonFieldsData', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(id, r'GcomparisonFieldsData', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GcomparisonFieldsData', 'name');
     BuiltValueNullFieldError.checkNotNull(
         friendsConnection, r'GcomparisonFieldsData', 'friendsConnection');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GcomparisonFieldsData', 'G__typename');
   }
 
   @override
@@ -1484,19 +1444,19 @@ class _$GcomparisonFieldsData extends GcomparisonFieldsData {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GcomparisonFieldsData &&
-        G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
-        friendsConnection == other.friendsConnection;
+        friendsConnection == other.friendsConnection &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, friendsConnection.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1504,10 +1464,10 @@ class _$GcomparisonFieldsData extends GcomparisonFieldsData {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GcomparisonFieldsData')
-          ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
-          ..add('friendsConnection', friendsConnection))
+          ..add('friendsConnection', friendsConnection)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1515,10 +1475,6 @@ class _$GcomparisonFieldsData extends GcomparisonFieldsData {
 class GcomparisonFieldsDataBuilder
     implements Builder<GcomparisonFieldsData, GcomparisonFieldsDataBuilder> {
   _$GcomparisonFieldsData? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   String? _id;
   String? get id => _$this._id;
@@ -1536,17 +1492,19 @@ class GcomparisonFieldsDataBuilder
           GcomparisonFieldsData_friendsConnectionBuilder? friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
 
-  GcomparisonFieldsDataBuilder() {
-    GcomparisonFieldsData._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GcomparisonFieldsDataBuilder();
 
   GcomparisonFieldsDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
       _friendsConnection = $v.friendsConnection.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1571,13 +1529,13 @@ class GcomparisonFieldsDataBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GcomparisonFieldsData', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GcomparisonFieldsData', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'GcomparisonFieldsData', 'name'),
-              friendsConnection: friendsConnection.build());
+              friendsConnection: friendsConnection.build(),
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, r'GcomparisonFieldsData', 'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -1597,11 +1555,11 @@ class GcomparisonFieldsDataBuilder
 class _$GcomparisonFieldsData_friendsConnection
     extends GcomparisonFieldsData_friendsConnection {
   @override
-  final String G__typename;
-  @override
   final int? totalCount;
   @override
   final BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? edges;
+  @override
+  final String G__typename;
 
   factory _$GcomparisonFieldsData_friendsConnection(
           [void Function(GcomparisonFieldsData_friendsConnectionBuilder)?
@@ -1610,7 +1568,7 @@ class _$GcomparisonFieldsData_friendsConnection
           ._build();
 
   _$GcomparisonFieldsData_friendsConnection._(
-      {required this.G__typename, this.totalCount, this.edges})
+      {this.totalCount, this.edges, required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GcomparisonFieldsData_friendsConnection', 'G__typename');
@@ -1630,17 +1588,17 @@ class _$GcomparisonFieldsData_friendsConnection
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GcomparisonFieldsData_friendsConnection &&
-        G__typename == other.G__typename &&
         totalCount == other.totalCount &&
-        edges == other.edges;
+        edges == other.edges &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jc(_$hash, edges.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1649,9 +1607,9 @@ class _$GcomparisonFieldsData_friendsConnection
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GcomparisonFieldsData_friendsConnection')
-          ..add('G__typename', G__typename)
           ..add('totalCount', totalCount)
-          ..add('edges', edges))
+          ..add('edges', edges)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1661,10 +1619,6 @@ class GcomparisonFieldsData_friendsConnectionBuilder
         Builder<GcomparisonFieldsData_friendsConnection,
             GcomparisonFieldsData_friendsConnectionBuilder> {
   _$GcomparisonFieldsData_friendsConnection? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   int? _totalCount;
   int? get totalCount => _$this._totalCount;
@@ -1678,16 +1632,18 @@ class GcomparisonFieldsData_friendsConnectionBuilder
           ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>? edges) =>
       _$this._edges = edges;
 
-  GcomparisonFieldsData_friendsConnectionBuilder() {
-    GcomparisonFieldsData_friendsConnection._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GcomparisonFieldsData_friendsConnectionBuilder();
 
   GcomparisonFieldsData_friendsConnectionBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _totalCount = $v.totalCount;
       _edges = $v.edges?.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1713,10 +1669,10 @@ class GcomparisonFieldsData_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData_friendsConnection._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GcomparisonFieldsData_friendsConnection', 'G__typename'),
               totalCount: totalCount,
-              edges: _edges?.build());
+              edges: _edges?.build(),
+              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                  r'GcomparisonFieldsData_friendsConnection', 'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -1738,9 +1694,9 @@ class GcomparisonFieldsData_friendsConnectionBuilder
 class _$GcomparisonFieldsData_friendsConnection_edges
     extends GcomparisonFieldsData_friendsConnection_edges {
   @override
-  final String G__typename;
-  @override
   final GcomparisonFieldsData_friendsConnection_edges_node? node;
+  @override
+  final String G__typename;
 
   factory _$GcomparisonFieldsData_friendsConnection_edges(
           [void Function(GcomparisonFieldsData_friendsConnection_edgesBuilder)?
@@ -1750,7 +1706,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges
           ._build();
 
   _$GcomparisonFieldsData_friendsConnection_edges._(
-      {required this.G__typename, this.node})
+      {this.node, required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GcomparisonFieldsData_friendsConnection_edges', 'G__typename');
@@ -1770,15 +1726,15 @@ class _$GcomparisonFieldsData_friendsConnection_edges
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GcomparisonFieldsData_friendsConnection_edges &&
-        G__typename == other.G__typename &&
-        node == other.node;
+        node == other.node &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, node.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1787,8 +1743,8 @@ class _$GcomparisonFieldsData_friendsConnection_edges
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GcomparisonFieldsData_friendsConnection_edges')
-          ..add('G__typename', G__typename)
-          ..add('node', node))
+          ..add('node', node)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1799,10 +1755,6 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
             GcomparisonFieldsData_friendsConnection_edgesBuilder> {
   _$GcomparisonFieldsData_friendsConnection_edges? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   GcomparisonFieldsData_friendsConnection_edges_nodeBuilder? _node;
   GcomparisonFieldsData_friendsConnection_edges_nodeBuilder get node =>
       _$this._node ??=
@@ -1810,15 +1762,17 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
   set node(GcomparisonFieldsData_friendsConnection_edges_nodeBuilder? node) =>
       _$this._node = node;
 
-  GcomparisonFieldsData_friendsConnection_edgesBuilder() {
-    GcomparisonFieldsData_friendsConnection_edges._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GcomparisonFieldsData_friendsConnection_edgesBuilder();
 
   GcomparisonFieldsData_friendsConnection_edgesBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _node = $v.node?.toBuilder();
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -1845,11 +1799,11 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData_friendsConnection_edges._(
+              node: _node?.build(),
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
                   r'GcomparisonFieldsData_friendsConnection_edges',
-                  'G__typename'),
-              node: _node?.build());
+                  'G__typename'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -1872,8 +1826,6 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
     extends GcomparisonFieldsData_friendsConnection_edges_node {
   @override
   final String G__typename;
-  @override
-  final String name;
 
   factory _$GcomparisonFieldsData_friendsConnection_edges_node(
           [void Function(
@@ -1884,12 +1836,10 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
           ._build();
 
   _$GcomparisonFieldsData_friendsConnection_edges_node._(
-      {required this.G__typename, required this.name})
+      {required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GcomparisonFieldsData_friendsConnection_edges_node', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GcomparisonFieldsData_friendsConnection_edges_node', 'name');
   }
 
   @override
@@ -1908,15 +1858,13 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GcomparisonFieldsData_friendsConnection_edges_node &&
-        G__typename == other.G__typename &&
-        name == other.name;
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1925,8 +1873,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GcomparisonFieldsData_friendsConnection_edges_node')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -1941,19 +1888,12 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GcomparisonFieldsData_friendsConnection_edges_nodeBuilder() {
-    GcomparisonFieldsData_friendsConnection_edges_node._initializeBuilder(this);
-  }
+  GcomparisonFieldsData_friendsConnection_edges_nodeBuilder();
 
   GcomparisonFieldsData_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -1981,9 +1921,7 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GcomparisonFieldsData_friendsConnection_edges_node',
-                'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(name,
-                r'GcomparisonFieldsData_friendsConnection_edges_node', 'name'));
+                'G__typename'));
     replace(_$result);
     return _$result;
   }

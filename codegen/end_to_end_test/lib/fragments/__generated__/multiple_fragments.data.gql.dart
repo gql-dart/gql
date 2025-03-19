@@ -50,12 +50,6 @@ abstract class GHeroWith2FragmentsData_hero
           [void Function(GHeroWith2FragmentsData_heroBuilder b) updates]) =
       _$GHeroWith2FragmentsData_hero;
 
-  static void _initializeBuilder(GHeroWith2FragmentsData_heroBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   @override
@@ -89,12 +83,6 @@ abstract class GheroNameData
   factory GheroNameData([void Function(GheroNameDataBuilder b) updates]) =
       _$GheroNameData;
 
-  static void _initializeBuilder(GheroNameDataBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get name;
   static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
@@ -125,12 +113,6 @@ abstract class GheroIdData
   factory GheroIdData([void Function(GheroIdDataBuilder b) updates]) =
       _$GheroIdData;
 
-  static void _initializeBuilder(GheroIdDataBuilder b) =>
-      b..G__typename = 'Character';
-
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   String get id;
   static Serializer<GheroIdData> get serializer => _$gheroIdDataSerializer;

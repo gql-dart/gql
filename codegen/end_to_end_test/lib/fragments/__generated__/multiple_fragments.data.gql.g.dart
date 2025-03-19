@@ -88,13 +88,13 @@ class _$GHeroWith2FragmentsData_heroSerializer
       Serializers serializers, GHeroWith2FragmentsData_hero object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -112,16 +112,16 @@ class _$GHeroWith2FragmentsData_heroSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -141,11 +141,11 @@ class _$GheroNameDataSerializer implements StructuredSerializer<GheroNameData> {
   Iterable<Object?> serialize(Serializers serializers, GheroNameData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -163,12 +163,12 @@ class _$GheroNameDataSerializer implements StructuredSerializer<GheroNameData> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -188,11 +188,11 @@ class _$GheroIdDataSerializer implements StructuredSerializer<GheroIdData> {
   Iterable<Object?> serialize(Serializers serializers, GheroIdData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'G__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -209,12 +209,12 @@ class _$GheroIdDataSerializer implements StructuredSerializer<GheroIdData> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'id':
           result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'G__typename':
+          result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -343,25 +343,25 @@ class GHeroWith2FragmentsDataBuilder
 
 class _$GHeroWith2FragmentsData_hero extends GHeroWith2FragmentsData_hero {
   @override
-  final String G__typename;
-  @override
   final String name;
   @override
   final String id;
+  @override
+  final String G__typename;
 
   factory _$GHeroWith2FragmentsData_hero(
           [void Function(GHeroWith2FragmentsData_heroBuilder)? updates]) =>
       (new GHeroWith2FragmentsData_heroBuilder()..update(updates))._build();
 
   _$GHeroWith2FragmentsData_hero._(
-      {required this.G__typename, required this.name, required this.id})
+      {required this.name, required this.id, required this.G__typename})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GHeroWith2FragmentsData_hero', 'name');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GHeroWith2FragmentsData_hero', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename');
   }
 
   @override
@@ -377,17 +377,17 @@ class _$GHeroWith2FragmentsData_hero extends GHeroWith2FragmentsData_hero {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWith2FragmentsData_hero &&
-        G__typename == other.G__typename &&
         name == other.name &&
-        id == other.id;
+        id == other.id &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -395,9 +395,9 @@ class _$GHeroWith2FragmentsData_hero extends GHeroWith2FragmentsData_hero {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GHeroWith2FragmentsData_hero')
-          ..add('G__typename', G__typename)
           ..add('name', name)
-          ..add('id', id))
+          ..add('id', id)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -408,10 +408,6 @@ class GHeroWith2FragmentsData_heroBuilder
             GHeroWith2FragmentsData_heroBuilder> {
   _$GHeroWith2FragmentsData_hero? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
@@ -420,16 +416,18 @@ class GHeroWith2FragmentsData_heroBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  GHeroWith2FragmentsData_heroBuilder() {
-    GHeroWith2FragmentsData_hero._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GHeroWith2FragmentsData_heroBuilder();
 
   GHeroWith2FragmentsData_heroBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _name = $v.name;
       _id = $v.id;
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -452,12 +450,12 @@ class GHeroWith2FragmentsData_heroBuilder
   _$GHeroWith2FragmentsData_hero _build() {
     final _$result = _$v ??
         new _$GHeroWith2FragmentsData_hero._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GHeroWith2FragmentsData_hero', 'name'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWith2FragmentsData_hero', 'id'));
+                id, r'GHeroWith2FragmentsData_hero', 'id'),
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename'));
     replace(_$result);
     return _$result;
   }
@@ -465,18 +463,18 @@ class GHeroWith2FragmentsData_heroBuilder
 
 class _$GheroNameData extends GheroNameData {
   @override
-  final String G__typename;
-  @override
   final String name;
+  @override
+  final String G__typename;
 
   factory _$GheroNameData([void Function(GheroNameDataBuilder)? updates]) =>
       (new GheroNameDataBuilder()..update(updates))._build();
 
-  _$GheroNameData._({required this.G__typename, required this.name})
+  _$GheroNameData._({required this.name, required this.G__typename})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GheroNameData', 'name');
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GheroNameData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(name, r'GheroNameData', 'name');
   }
 
   @override
@@ -490,15 +488,15 @@ class _$GheroNameData extends GheroNameData {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GheroNameData &&
-        G__typename == other.G__typename &&
-        name == other.name;
+        name == other.name &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -506,8 +504,8 @@ class _$GheroNameData extends GheroNameData {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GheroNameData')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -516,23 +514,21 @@ class GheroNameDataBuilder
     implements Builder<GheroNameData, GheroNameDataBuilder> {
   _$GheroNameData? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GheroNameDataBuilder() {
-    GheroNameData._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GheroNameDataBuilder();
 
   GheroNameDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _name = $v.name;
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -555,10 +551,10 @@ class GheroNameDataBuilder
   _$GheroNameData _build() {
     final _$result = _$v ??
         new _$GheroNameData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroNameData', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroNameData', 'name'));
+                name, r'GheroNameData', 'name'),
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GheroNameData', 'G__typename'));
     replace(_$result);
     return _$result;
   }
@@ -566,17 +562,17 @@ class GheroNameDataBuilder
 
 class _$GheroIdData extends GheroIdData {
   @override
-  final String G__typename;
-  @override
   final String id;
+  @override
+  final String G__typename;
 
   factory _$GheroIdData([void Function(GheroIdDataBuilder)? updates]) =>
       (new GheroIdDataBuilder()..update(updates))._build();
 
-  _$GheroIdData._({required this.G__typename, required this.id}) : super._() {
+  _$GheroIdData._({required this.id, required this.G__typename}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GheroIdData', 'id');
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GheroIdData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GheroIdData', 'id');
   }
 
   @override
@@ -590,15 +586,15 @@ class _$GheroIdData extends GheroIdData {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GheroIdData &&
-        G__typename == other.G__typename &&
-        id == other.id;
+        id == other.id &&
+        G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -606,8 +602,8 @@ class _$GheroIdData extends GheroIdData {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GheroIdData')
-          ..add('G__typename', G__typename)
-          ..add('id', id))
+          ..add('id', id)
+          ..add('G__typename', G__typename))
         .toString();
   }
 }
@@ -615,23 +611,21 @@ class _$GheroIdData extends GheroIdData {
 class GheroIdDataBuilder implements Builder<GheroIdData, GheroIdDataBuilder> {
   _$GheroIdData? _$v;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  GheroIdDataBuilder() {
-    GheroIdData._initializeBuilder(this);
-  }
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GheroIdDataBuilder();
 
   GheroIdDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _G__typename = $v.G__typename;
       _id = $v.id;
+      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -654,10 +648,9 @@ class GheroIdDataBuilder implements Builder<GheroIdData, GheroIdDataBuilder> {
   _$GheroIdData _build() {
     final _$result = _$v ??
         new _$GheroIdData._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'GheroIdData', 'id'),
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroIdData', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GheroIdData', 'id'));
+                G__typename, r'GheroIdData', 'G__typename'));
     replace(_$result);
     return _$result;
   }
