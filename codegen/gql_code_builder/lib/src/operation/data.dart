@@ -31,8 +31,7 @@ List<Spec> buildOperationDataClasses(
     fragmentMap,
   );
 
-  // Ensure __typename is present in the selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
@@ -48,28 +47,6 @@ List<Spec> buildOperationDataClasses(
     superclassSelections: {},
     whenExtensionConfig: whenExtensionConfig,
   );
-}
-
-/// Ensures __typename is present in the provided selections
-List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
-  // Check if __typename is already in the selections
-  final bool hasTypename = selections
-      .whereType<FieldNode>()
-      .any((node) => (node.alias?.value ?? node.name.value) == "__typename");
-
-  if (!hasTypename) {
-    // Add __typename field if not present
-    return [
-      ...selections,
-      FieldNode(
-        name: NameNode(value: "__typename"),
-        selectionSet: null,
-        arguments: const [],
-        directives: const [],
-      ),
-    ];
-  }
-  return selections;
 }
 
 /// Builds data classes for GraphQL fragments.
@@ -91,8 +68,7 @@ List<Spec> buildFragmentDataClasses(
     fragmentMap,
   );
 
-  // Ensure __typename is present in the selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   return [
     // abstract class that will implemented by any class that uses the fragment
@@ -146,18 +122,6 @@ String _operationType(
       .value;
 }
 
-/// Helper to create a G__typename getter
-Method createTypenameGetter(String type, {bool isOverride = false}) =>
-    Method((b) => b
-      ..annotations.addAll([
-        if (isOverride) refer("override"),
-        refer("BuiltValueField", "package:built_value/built_value.dart")
-            .call([], {"wireName": literalString("__typename")}),
-      ])
-      ..returns = refer("String")
-      ..type = MethodType.getter
-      ..name = "G__typename");
-
 /// Builds data classes for a GraphQL selection set.
 ///
 /// This is the core function for generating data classes. For a set of GraphQL
@@ -189,8 +153,7 @@ List<Spec> buildSelectionSetDataClasses({
   print(
       "BUILDING CLASS: $name | implements: ${superclassSelections.keys.join(', ')}");
 
-  // Ensure __typename is present in selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   // For nested fields, check if they should implement fragment interfaces
   final Map<String, SourceSelections> nestedSuperclassSelections = {
@@ -311,17 +274,6 @@ List<Spec> buildSelectionSetDataClasses({
       .where((method) => method != null)
       .cast<Method>()
       .toList();
-
-  // CRITICAL FIX: Ensure G__typename getter is present and not duplicated
-  if (!processedFieldsMap.containsKey("__typename")) {
-    // Check if it should be an override (if in superclass)
-    final bool isOverride = superclassSelectionNodes.any((s) =>
-        s is FieldNode && (s.alias?.value ?? s.name.value) == "__typename");
-
-    final typenameGetter = createTypenameGetter(type, isOverride: isOverride);
-    fieldGetters.add(typenameGetter);
-    processedFieldsMap["__typename"] = typenameGetter;
-  }
 
   // Generate helper methods for type checking/casting
   List<Method> typeCastMethods = [];
@@ -495,7 +447,7 @@ List<Spec> buildSelectionSetDataClasses({
 
       return buildSelectionSetDataClasses(
         name: fieldName,
-        selections: ensureTypenameField(fieldSelections),
+        selections: fieldSelections,
         fragmentMap: fragmentMap,
         dataClassAliasMap: dataClassAliasMap,
         schemaSource: schemaSource,
@@ -534,7 +486,7 @@ List<SelectionNode> shrinkSelections(
   Map<String, SourceSelections> fragmentMap,
 ) {
   // Ensure __typename is present
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   final unmerged = [...enhancedSelections];
 
@@ -593,7 +545,7 @@ List<SelectionNode> mergeSelections(
   Map<String, SourceSelections> fragmentMap,
 ) {
   // Ensure __typename is present
-  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+  final enhancedSelectionsWithTypename = selections;
 
   // Expand fragment spreads
   final expandedSelections =
@@ -675,7 +627,7 @@ List<SelectionNode> _expandFragmentSpreads(
   String fragmentPath = "", // Track path to detect recursive fragments
 ]) {
   // Ensure __typename is present
-  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+  final enhancedSelectionsWithTypename = selections;
 
   final result = <SelectionNode>[];
   final newVisitedFragments = {...visitedFragments};
