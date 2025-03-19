@@ -159,7 +159,8 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
     implements
         Built<GHeroWithFragmentsData_hero_friendsConnection_edges_node,
             GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder>,
-        GcomparisonFields_friendsConnection_edges_node {
+        GcomparisonFields_friendsConnection_edges_node,
+        GheroData {
   GHeroWithFragmentsData_hero_friendsConnection_edges_node._();
 
   factory GHeroWithFragmentsData_hero_friendsConnection_edges_node(
@@ -171,6 +172,8 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
           GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder b) =>
       b..G__typename = 'Character';
 
+  @override
+  String get name;
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -252,8 +255,13 @@ abstract class GcomparisonFields_friendsConnection_edges {
   Map<String, dynamic> toJson();
 }
 
-abstract class GcomparisonFields_friendsConnection_edges_node {
+abstract class GcomparisonFields_friendsConnection_edges_node
+    implements GheroData {
+  @override
   String get G__typename;
+  @override
+  String get name;
+  @override
   Map<String, dynamic> toJson();
 }
 
@@ -376,7 +384,8 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
     implements
         Built<GcomparisonFieldsData_friendsConnection_edges_node,
             GcomparisonFieldsData_friendsConnection_edges_nodeBuilder>,
-        GcomparisonFields_friendsConnection_edges_node {
+        GcomparisonFields_friendsConnection_edges_node,
+        GheroData {
   GcomparisonFieldsData_friendsConnection_edges_node._();
 
   factory GcomparisonFieldsData_friendsConnection_edges_node(
@@ -388,6 +397,8 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
           GcomparisonFieldsData_friendsConnection_edges_nodeBuilder b) =>
       b..G__typename = 'Character';
 
+  @override
+  String get name;
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;

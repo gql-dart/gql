@@ -7,6 +7,7 @@ import "../../source.dart";
 import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
+import "../utils/fragment_debug.dart";
 
 // Helper function to ensure __typename is present in selections
 List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
@@ -147,6 +148,15 @@ Method createTypenameGetter(String type, {bool isOverride = false}) =>
       ..type = MethodType.getter
       ..name = "G__typename");
 
+// Add this debugging to the buildSelectionSetDataClasses function
+void debugFieldGetters(String name, List<Method> fieldGetters) {
+  FragmentDebugger.enterScope("fieldGetters for $name");
+  for (final getter in fieldGetters) {
+    FragmentDebugger.log("- ${getter.name}: ${getter.returns}");
+  }
+  FragmentDebugger.exitScope("fieldGetters for $name");
+}
+
 /// Builds one or more data classes, with properties based on [selections].
 ///
 /// For each selection that is a field with nested selections, a descendent
@@ -175,18 +185,22 @@ List<Spec> buildSelectionSetDataClasses({
   // Track parent fragment path for nested selections
   String? parentFragmentPath,
 }) {
-  print(
-      "BUILDING CLASS: $name (type: $type) | inlineFragments: ${selections.whereType<InlineFragmentNode>().length}");
+// Add this near the beginning of buildSelectionSetDataClasses
+  FragmentDebugger.enterScope("buildSelectionSetDataClasses: $name");
+  FragmentDebugger.log("Type: $type, Built: $built, isBaseClass: $isBaseClass");
+  FragmentDebugger.dumpSelections("Input selections", selections);
+
+  if (superclassSelections.isNotEmpty) {
+    FragmentDebugger.log(
+        "Superclass selections count: ${superclassSelections.length}");
+    for (final entry in superclassSelections.entries) {
+      FragmentDebugger.log(
+          "Superclass: ${entry.key} with ${entry.value.selections.length} selections");
+    }
+  }
 
   // CRITICAL FIX: Always ensure __typename is in our selections
   final enhancedSelections = ensureTypenameField(selections);
-
-  // For classes with "__base" suffix, check if we're in a recursive pattern
-  if (name.endsWith("__base") && name.contains("__base__base")) {
-    print(
-        "NESTED BASE DETECTED: $name contains multiple __base suffixes, returning empty list");
-    return [];
-  }
 
   // For nested fields, check if they should implement fragment interfaces
   final Map<String, SourceSelections> nestedSuperclassSelections = {
@@ -359,6 +373,10 @@ List<Spec> buildSelectionSetDataClasses({
   // Add the type cast methods to field getters
   fieldGetters.addAll(typeCastMethods);
 
+  // At the end of buildSelectionSetDataClasses before returning
+  debugFieldGetters(name, fieldGetters);
+  FragmentDebugger.exitScope("buildSelectionSetDataClasses: $name");
+
   return [
     if (inlineFragments.isNotEmpty)
       ...buildInlineFragmentClasses(
@@ -497,9 +515,6 @@ List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  // ADDITIONAL FIX: Make sure we have __typename
-  final enhancedSelections = ensureTypenameField(selections);
-
   final unmerged = [...selections];
 
   for (final selection in selections) {
@@ -544,24 +559,41 @@ List<SelectionNode> shrinkSelections(
   return unmerged;
 }
 
-/// Deeply merges field nodes
+// Replace the mergeSelections method with this version
 List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  // Add debug print
-  print("MERGING SELECTIONS: ${selections.length} selections");
-  print("  Types: ${selections.map((s) => s.runtimeType).toSet().join(', ')}");
+  // Debug: Log entry point and selections
+  FragmentDebugger.enterScope("mergeSelections");
+  FragmentDebugger.log("Input selections count: ${selections.length}");
 
   // IMPORTANT FIX: Make sure __typename is in all selections
   final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+  FragmentDebugger.log(
+      "After ensuring __typename: ${enhancedSelectionsWithTypename.length} selections");
 
-  return _expandFragmentSpreads(enhancedSelectionsWithTypename, fragmentMap)
+  // Debug: Show what's going into the expansion
+  FragmentDebugger.dumpSelections(
+      "Pre-expansion", enhancedSelectionsWithTypename);
+
+  // Expand fragment spreads
+  final expandedSelections =
+      _expandFragmentSpreads(enhancedSelectionsWithTypename, fragmentMap);
+
+  // Debug: Compare before and after expansion
+  FragmentDebugger.dumpExpandedFragments("After fragment expansion",
+      enhancedSelectionsWithTypename, expandedSelections);
+
+  // Perform the merge
+  final result = expandedSelections
       .fold<Map<String, SelectionNode>>(
         {},
         (selectionMap, selection) {
           if (selection is FieldNode) {
             final key = selection.alias?.value ?? selection.name.value;
+            FragmentDebugger.log("Processing field: $key");
+
             if (selection.selectionSet == null) {
               selectionMap[key] = selection;
             } else {
@@ -570,6 +602,14 @@ List<SelectionNode> mergeSelections(
                   existingNode is FieldNode && existingNode.selectionSet != null
                       ? existingNode.selectionSet!.selections
                       : <SelectionNode>[];
+
+              FragmentDebugger.log(
+                  "Field $key has nested selections: ${selection.selectionSet!.selections.length}");
+              if (existingSelections.isNotEmpty) {
+                FragmentDebugger.log(
+                    "Field $key already has ${existingSelections.length} selections");
+              }
+
               selectionMap[key] = FieldNode(
                   name: selection.name,
                   alias: selection.alias,
@@ -586,7 +626,11 @@ List<SelectionNode> mergeSelections(
               selection.typeCondition != null) {
             /// TODO: Handle inline fragments without a type condition
             final key = selection.typeCondition!.on.name.value;
+            FragmentDebugger.log("Processing inline fragment for type: $key");
+
             if (selectionMap.containsKey(key)) {
+              FragmentDebugger.log(
+                  "Merging with existing inline fragment for $key");
               selectionMap[key] = InlineFragmentNode(
                 typeCondition: selection.typeCondition,
                 directives: selection.directives,
@@ -613,15 +657,31 @@ List<SelectionNode> mergeSelections(
       )
       .values
       .toList();
+
+  // Debug: Log the result
+  FragmentDebugger.dumpMergeResult("mergeSelections result", result);
+  FragmentDebugger.exitScope("mergeSelections");
+
+  return result;
 }
 
-/// Enhanced fragment spread processor that recursively processes fields with selection sets
+// Replace the _expandFragmentSpreads method with this version
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
   Set<String> visitedFragments = const {},
+  String fragmentPath = "", // Add a path parameter to track context
 ]) {
+  // Debug logging
+  FragmentDebugger.enterScope("_expandFragmentSpreads");
+  FragmentDebugger.log(
+      "Input selections: ${selections.length}, retainFragmentSpreads: $retainFragmentSpreads");
+  if (visitedFragments.isNotEmpty) {
+    FragmentDebugger.log(
+        "Already visited fragments: ${visitedFragments.join(', ')}");
+  }
+
   // IMPORTANT FIX: Make sure __typename is present
   final enhancedSelectionsWithTypename = ensureTypenameField(selections);
 
@@ -630,40 +690,67 @@ List<SelectionNode> _expandFragmentSpreads(
 
   for (final selection in enhancedSelectionsWithTypename) {
     if (selection is FragmentSpreadNode) {
-      if (!fragmentMap.containsKey(selection.name.value)) {
+      final fragmentName = selection.name.value;
+      FragmentDebugger.log("Processing fragment spread: $fragmentName");
+
+      if (!fragmentMap.containsKey(fragmentName)) {
+        FragmentDebugger.log(
+            "ERROR: Fragment $fragmentName not found in fragmentMap!");
         throw Exception(
-          "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
+          "Couldn't find fragment definition for fragment spread '$fragmentName'",
         );
       }
 
+      // Create context-aware fragment identifier using the path
+      final contextualFragmentId = "$fragmentPath/$fragmentName";
+
       // Check for recursive fragments
-      if (newVisitedFragments.contains(selection.name.value)) {
+      if (newVisitedFragments.contains(contextualFragmentId)) {
+        FragmentDebugger.log(
+            "Skipping recursive fragment: $contextualFragmentId");
         // Skip this fragment to avoid infinite recursion
         continue;
       }
-      newVisitedFragments.add(selection.name.value);
+      newVisitedFragments.add(contextualFragmentId);
 
-      final fragmentSelections = fragmentMap[selection.name.value]!.selections;
+      final fragmentSelections = fragmentMap[fragmentName]!.selections;
+      FragmentDebugger.log(
+          "Fragment $fragmentName has ${fragmentSelections.length} selections");
+      FragmentDebugger.dumpSelections(
+          "Fragment $fragmentName selections", fragmentSelections);
 
       if (retainFragmentSpreads) {
+        FragmentDebugger.log("Retaining fragment spread for $fragmentName");
         result.add(selection);
       }
 
       // Recursively process the fragment selections
-      result.addAll(_expandFragmentSpreads(
+      final expandedFragmentSelections = _expandFragmentSpreads(
         fragmentSelections,
         fragmentMap,
         false,
         newVisitedFragments,
-      ));
+        "$fragmentPath/$fragmentName", // Track path for nested context
+      );
+
+      FragmentDebugger.log(
+          "Adding ${expandedFragmentSelections.length} expanded selections from $fragmentName");
+      result.addAll(expandedFragmentSelections);
     } else if (selection is FieldNode && selection.selectionSet != null) {
+      final fieldName = selection.alias?.value ?? selection.name.value;
+      FragmentDebugger.log("Processing field with selection set: $fieldName");
+
       // Process fields with selections - recursively expand any fragments they contain
       final expandedSelections = _expandFragmentSpreads(
         selection.selectionSet!.selections,
         fragmentMap,
         true,
         newVisitedFragments,
+        "$fragmentPath/field:$fieldName", // Track field path for nested context
       );
+
+      FragmentDebugger.log(
+          "Field $fieldName yielded ${expandedSelections.length} expanded selections");
 
       // Create a new field node with the expanded selections
       result.add(FieldNode(
@@ -674,13 +761,21 @@ List<SelectionNode> _expandFragmentSpreads(
         selectionSet: SelectionSetNode(selections: expandedSelections),
       ));
     } else if (selection is InlineFragmentNode) {
+      final typeName =
+          selection.typeCondition?.on.name.value ?? "no-type-condition";
+      FragmentDebugger.log("Processing inline fragment for type: $typeName");
+
       // Process inline fragments - recursively expand any nested fragments
       final expandedSelections = _expandFragmentSpreads(
         selection.selectionSet.selections,
         fragmentMap,
         true,
         newVisitedFragments,
+        "$fragmentPath/inline:$typeName", // Track inline fragment path
       );
+
+      FragmentDebugger.log(
+          "Inline fragment for $typeName yielded ${expandedSelections.length} expanded selections");
 
       // Create a new inline fragment node with the expanded selections
       result.add(InlineFragmentNode(
@@ -689,10 +784,18 @@ List<SelectionNode> _expandFragmentSpreads(
         selectionSet: SelectionSetNode(selections: expandedSelections),
       ));
     } else {
+      if (selection is FieldNode) {
+        FragmentDebugger.log("Adding simple field: ${selection.name.value}");
+      } else {
+        FragmentDebugger.log(
+            "Adding other selection type: ${selection.runtimeType}");
+      }
       result.add(selection);
     }
   }
 
+  FragmentDebugger.log("Final result count: ${result.length} selections");
+  FragmentDebugger.exitScope("_expandFragmentSpreads");
   return result;
 }
 

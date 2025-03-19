@@ -314,6 +314,8 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       GHeroWithFragmentsData_hero_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -335,6 +337,10 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -612,6 +618,8 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       GcomparisonFieldsData_friendsConnection_edges_node object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
@@ -633,6 +641,10 @@ class _$GcomparisonFieldsData_friendsConnection_edges_nodeSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -1205,6 +1217,8 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
 class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
     extends GHeroWithFragmentsData_hero_friendsConnection_edges_node {
   @override
+  final String name;
+  @override
   final String G__typename;
 
   factory _$GHeroWithFragmentsData_hero_friendsConnection_edges_node(
@@ -1216,8 +1230,10 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
           ._build();
 
   _$GHeroWithFragmentsData_hero_friendsConnection_edges_node._(
-      {required this.G__typename})
+      {required this.name, required this.G__typename})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(name,
+        r'GHeroWithFragmentsData_hero_friendsConnection_edges_node', 'name');
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
         r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
@@ -1240,12 +1256,14 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GHeroWithFragmentsData_hero_friendsConnection_edges_node &&
+        name == other.name &&
         G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1255,6 +1273,7 @@ class _$GHeroWithFragmentsData_hero_friendsConnection_edges_node
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GHeroWithFragmentsData_hero_friendsConnection_edges_node')
+          ..add('name', name)
           ..add('G__typename', G__typename))
         .toString();
   }
@@ -1265,6 +1284,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
         Builder<GHeroWithFragmentsData_hero_friendsConnection_edges_node,
             GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder> {
   _$GHeroWithFragmentsData_hero_friendsConnection_edges_node? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1278,6 +1301,7 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _name = $v.name;
       _G__typename = $v.G__typename;
       _$v = null;
     }
@@ -1304,6 +1328,10 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   _$GHeroWithFragmentsData_hero_friendsConnection_edges_node _build() {
     final _$result = _$v ??
         new _$GHeroWithFragmentsData_hero_friendsConnection_edges_node._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name,
+                r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
+                'name'),
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
@@ -1843,6 +1871,8 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
 class _$GcomparisonFieldsData_friendsConnection_edges_node
     extends GcomparisonFieldsData_friendsConnection_edges_node {
   @override
+  final String name;
+  @override
   final String G__typename;
 
   factory _$GcomparisonFieldsData_friendsConnection_edges_node(
@@ -1854,8 +1884,10 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
           ._build();
 
   _$GcomparisonFieldsData_friendsConnection_edges_node._(
-      {required this.G__typename})
+      {required this.name, required this.G__typename})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GcomparisonFieldsData_friendsConnection_edges_node', 'name');
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GcomparisonFieldsData_friendsConnection_edges_node', 'G__typename');
   }
@@ -1876,12 +1908,14 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GcomparisonFieldsData_friendsConnection_edges_node &&
+        name == other.name &&
         G__typename == other.G__typename;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1891,6 +1925,7 @@ class _$GcomparisonFieldsData_friendsConnection_edges_node
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GcomparisonFieldsData_friendsConnection_edges_node')
+          ..add('name', name)
           ..add('G__typename', G__typename))
         .toString();
   }
@@ -1901,6 +1936,10 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
         Builder<GcomparisonFieldsData_friendsConnection_edges_node,
             GcomparisonFieldsData_friendsConnection_edges_nodeBuilder> {
   _$GcomparisonFieldsData_friendsConnection_edges_node? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1913,6 +1952,7 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   GcomparisonFieldsData_friendsConnection_edges_nodeBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _name = $v.name;
       _G__typename = $v.G__typename;
       _$v = null;
     }
@@ -1938,6 +1978,8 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   _$GcomparisonFieldsData_friendsConnection_edges_node _build() {
     final _$result = _$v ??
         new _$GcomparisonFieldsData_friendsConnection_edges_node._(
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GcomparisonFieldsData_friendsConnection_edges_node', 'name'),
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GcomparisonFieldsData_friendsConnection_edges_node',
