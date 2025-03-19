@@ -44,6 +44,20 @@ List<Spec> buildInlineFragmentClasses({
   final baseClassSelections =
       selections.where((s) => s is! InlineFragmentNode).toList();
 
+  // Add helper methods for type checking/casting
+  final typeCheckMethods =
+      inlineFragments.where((frag) => frag.typeCondition != null).map((frag) {
+    final typeName = frag.typeCondition!.on.name.value;
+    final methodName = "as$typeName";
+
+    return Method((b) => b
+      ..type = MethodType.getter
+      ..returns = TypeReference((tr) => tr
+        ..symbol = "${builtClassName(name)}__as$typeName"
+        ..isNullable = true)
+      ..name = methodName);
+  }).toList();
+
   return [
     Class(
       (b) => b
@@ -62,6 +76,7 @@ List<Spec> buildInlineFragmentClasses({
         )
         ..methods.addAll([
           ...fieldGetters,
+          ...typeCheckMethods, // Add the type check methods to the interface
           if (built)
             ..._inlineFragmentRootSerializationMethods(
               name: builtClassName(name),
@@ -84,6 +99,9 @@ List<Spec> buildInlineFragmentClasses({
       },
       built: built,
       whenExtensionConfig: whenExtensionConfig,
+      // Add parameter to indicate this is a base class
+      isBaseClass: true,
+      parentInlineFragments: inlineFragments,
     ),
 
     /// TODO: Handle inline fragments without a type condition
@@ -116,7 +134,10 @@ List<Spec> buildInlineFragmentClasses({
             name: SourceSelections(url: null, selections: selections)
           },
           built: built,
-          whenExtensionConfig: whenExtensionConfig),
+          whenExtensionConfig: whenExtensionConfig,
+          // Add fragment type name for helper methods
+          fragmentTypeName: inlineFragment.typeCondition!.on.name.value,
+          parentInlineFragments: inlineFragments),
     ),
   ];
 }
