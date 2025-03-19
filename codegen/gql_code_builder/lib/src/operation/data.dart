@@ -129,6 +129,8 @@ List<Spec> buildSelectionSetDataClasses({
   String? fragmentTypeName,
   List<InlineFragmentNode>? parentInlineFragments,
   Map<String, String>? typeMap,
+  // Track parent fragment path for nested selections
+  String? parentFragmentPath,
 }) {
   print(
       "BUILDING CLASS: $name (type: $type) | inlineFragments: ${selections.whereType<InlineFragmentNode>().length}");
@@ -140,12 +142,52 @@ List<Spec> buildSelectionSetDataClasses({
     return [];
   }
 
+  // For nested fields, check if they should implement fragment interfaces
+  final Map<String, SourceSelections> nestedSuperclassSelections = {
+    ...superclassSelections
+  };
+
+  // If this is a nested selection like __asHuman_friends, we need to add corresponding fragment interfaces
+  if (name.contains("_") && name.contains("__as")) {
+    final parts = name.split("_");
+    final baseClassName = parts.first;
+    final fieldName = parts.last;
+    final typeNamePart = name.split("__as").last.split("_").first;
+
+    // Check if there are corresponding fragment interfaces for this nested field
+    for (final superName in superclassSelections.keys.toList()) {
+      if (superName.contains("__as$typeNamePart")) {
+        // This is a parent fragment with the same type condition
+        final baseFragmentName = superName.split("__as").first;
+        final potentialNestedInterface =
+            "${baseFragmentName}__as${typeNamePart}_$fieldName";
+
+        // Check if the interface exists in our fragments
+        bool hasNestedInterface = false;
+        for (final entry in fragmentMap.entries) {
+          if (entry.key.contains(fieldName) &&
+              entry.value.selections.isNotEmpty) {
+            hasNestedInterface = true;
+            break;
+          }
+        }
+
+        if (hasNestedInterface) {
+          // Add the nested interface
+          nestedSuperclassSelections[potentialNestedInterface] =
+              SourceSelections(url: null, selections: []);
+          print("ADDING NESTED INTERFACE: $potentialNestedInterface to $name");
+        }
+      }
+    }
+  }
+
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
-    superclassSelections["${selection.name.value}"] = SourceSelections(
+    nestedSuperclassSelections["${selection.name.value}"] = SourceSelections(
       url: fragmentMap[selection.name.value]!.url,
       selections: mergeSelections(
         fragmentMap[selection.name.value]!.selections,
@@ -154,7 +196,7 @@ List<Spec> buildSelectionSetDataClasses({
     );
   }
 
-  final superclassSelectionNodes = superclassSelections.values
+  final superclassSelectionNodes = nestedSuperclassSelections.values
       .expand((selections) => selections.selections)
       .toSet();
 
@@ -270,7 +312,7 @@ List<Spec> buildSelectionSetDataClasses({
         typeOverrides: typeOverrides,
         fragmentMap: fragmentMap,
         dataClassAliasMap: dataClassAliasMap,
-        superclassSelections: superclassSelections,
+        superclassSelections: nestedSuperclassSelections,
         inlineFragments: inlineFragments,
         built: built,
         whenExtensionConfig: whenExtensionConfig,
@@ -281,13 +323,14 @@ List<Spec> buildSelectionSetDataClasses({
           ..abstract = true
           ..name = builtClassName(name)
           ..implements.addAll(
-            superclassSelections.keys
+            nestedSuperclassSelections.keys
                 .where((superName) =>
                     !dataClassAliasMap.containsKey(builtClassName(superName)))
                 .map<Reference>(
                   (superName) => refer(
                     builtClassName(superName),
-                    (superclassSelections[superName]?.url ?? "") + "#data",
+                    (nestedSuperclassSelections[superName]?.url ?? "") +
+                        "#data",
                   ),
                 ),
           )
@@ -296,7 +339,7 @@ List<Spec> buildSelectionSetDataClasses({
             buildToJsonGetter(
               builtClassName(name),
               implemented: false,
-              isOverride: superclassSelections.isNotEmpty,
+              isOverride: nestedSuperclassSelections.isNotEmpty,
             ),
           ]),
       )
@@ -308,7 +351,7 @@ List<Spec> buildSelectionSetDataClasses({
           if (fieldGetters.any((getter) => getter.name == "G__typename"))
             "G__typename": literalString(type),
         },
-        superclassSelections: superclassSelections,
+        superclassSelections: nestedSuperclassSelections,
         dataClassAliasMap: dataClassAliasMap,
       ),
     // Build classes for each field that includes selections
@@ -323,7 +366,14 @@ List<Spec> buildSelectionSetDataClasses({
         .expand(
       (field) {
         // Preserve the fragment context in the field name
-        final fieldName = "${name}_${field.alias?.value ?? field.name.value}";
+        final String fieldName =
+            "${name}_${field.alias?.value ?? field.name.value}";
+
+        // Track current fragment path to properly set up nested interfaces
+        String currentFragmentPath = parentFragmentPath ?? name;
+        if (name.contains("__as")) {
+          currentFragmentPath = name;
+        }
 
         // Pass parent inline fragments to nested fields
         List<InlineFragmentNode>? fieldParentInlineFragments;
@@ -367,13 +417,14 @@ List<Spec> buildSelectionSetDataClasses({
           ).name.value,
           typeOverrides: typeOverrides,
           superclassSelections: _fragmentSelectionsForField(
-            superclassSelections,
+            nestedSuperclassSelections,
             field,
           ),
           built: inlineFragments.isNotEmpty ? false : built,
           whenExtensionConfig: whenExtensionConfig,
           parentInlineFragments: fieldParentInlineFragments,
           typeMap: fieldTypeMap,
+          parentFragmentPath: currentFragmentPath,
         );
       },
     ),
@@ -579,31 +630,92 @@ List<SelectionNode> _expandFragmentSpreads(
 Map<String, SourceSelections> _fragmentSelectionsForField(
   Map<String, SourceSelections> fragmentMap,
   FieldNode field,
-) =>
-    Map.fromEntries(
-      fragmentMap.entries.expand(
-        (entry) => entry.value.selections.whereType<FieldNode>().where(
-          (selection) {
-            if (selection.selectionSet == null) return false;
+) {
+  final result = <String, SourceSelections>{};
 
-            final selectionKey = selection.alias?.value ?? selection.name.value;
-            final fieldKey = field.alias?.value ?? field.name.value;
+  for (final entry in fragmentMap.entries) {
+    final superName = entry.key;
+    final sourceSelections = entry.value;
 
-            return selectionKey == fieldKey;
-          },
-        ).map(
-          (selection) => MapEntry(
-            "${entry.key}_${field.alias?.value ?? field.name.value}",
-            SourceSelections(
-              url: entry.value.url,
-              selections: selection.selectionSet!.selections
-                  .whereType<FieldNode>()
-                  .toList(),
-            ),
-          ),
-        ),
-      ),
-    );
+    // Process regular field selections
+    for (final selection
+        in sourceSelections.selections.whereType<FieldNode>()) {
+      if (selection.selectionSet == null) continue;
+
+      final selectionKey = selection.alias?.value ?? selection.name.value;
+      final fieldKey = field.alias?.value ?? field.name.value;
+
+      if (selectionKey == fieldKey) {
+        // Create nested fragment selection
+        final nestedName = "${superName}_${fieldKey}";
+        result[nestedName] = SourceSelections(
+          url: sourceSelections.url,
+          selections: selection.selectionSet!.selections
+              .whereType<FieldNode>()
+              .toList(),
+        );
+      }
+    }
+
+    // Look for specialized variants if this is an asType field
+    if (superName.contains("__as")) {
+      final baseFragmentName = superName.split("__as").first;
+      final typeName = superName.split("__as").last.split("_").first;
+      final fieldKey = field.alias?.value ?? field.name.value;
+
+      // Check if there's a specialized nested interface
+      final potentialNestedName =
+          "${baseFragmentName}__as${typeName}_${fieldKey}";
+
+      // Add as a potential interface that might need to be implemented
+      // Even if we don't have selections for it yet
+      if (!result.containsKey(potentialNestedName)) {
+        result[potentialNestedName] = SourceSelections(
+          url: sourceSelections.url,
+          selections: [], // Empty selections since this is just for interface implementation
+        );
+      }
+    }
+  }
+
+  return result;
+}
+
+// Helper function to identify all fragment interfaces that should be implemented
+List<String> identifyFragmentInterfaces(
+    String className,
+    Map<String, SourceSelections> superclassSelections,
+    Map<String, SourceSelections> fragmentMap) {
+  final interfaces = <String>[];
+
+  // Check for class name patterns:
+  // 1. If it's a pattern like GheroFieldsFragmentData__asHuman_friends
+  if (className.contains("__as") && className.contains("_")) {
+    final parts = className.split("_");
+    final basePart = parts.first; // GheroFieldsFragmentData__asHuman
+    final fieldPart = parts.last; // friends
+
+    if (basePart.contains("__as")) {
+      final baseFragmentName =
+          basePart.split("__as").first; // GheroFieldsFragmentData
+      final typePart = basePart.split("__as").last; // Human
+
+      // Look for interfaces like GheroFieldsFragment__asHuman_friends
+      for (final entry in fragmentMap.entries) {
+        final fragmentName = entry.key;
+        // Check if there's a base fragment (without Data)
+        if (baseFragmentName.endsWith("Data") &&
+            fragmentName ==
+                baseFragmentName.substring(0, baseFragmentName.length - 4)) {
+          // Add the potential interface
+          interfaces.add("${fragmentName}__as${typePart}_${fieldPart}");
+        }
+      }
+    }
+  }
+
+  return interfaces;
+}
 
 TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
