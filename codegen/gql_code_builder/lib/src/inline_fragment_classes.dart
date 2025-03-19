@@ -1,7 +1,6 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
-import "package:gql_code_builder/src/utils/fragment_debug.dart";
 import "package:gql_code_builder/src/when_extension.dart";
 
 import "../source.dart";
@@ -33,12 +32,6 @@ List<Spec> buildInlineFragmentClasses({
   required bool built,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
-  FragmentDebugger.enterScope("buildInlineFragmentClasses");
-  FragmentDebugger.log(
-      "Building classes for: $name | fragments: ${inlineFragments.length}");
-  FragmentDebugger.log(
-      "Fragment types: ${inlineFragments.map((f) => f.typeCondition?.on.name.value).toList()}");
-
   // Create a mapping of GraphQL type names to generated Dart class names
   final typeMap = <String, String>{};
   for (final frag in inlineFragments) {
@@ -199,8 +192,6 @@ List<Spec> buildInlineFragmentClasses({
       },
     ),
   ];
-
-  FragmentDebugger.exitScope("buildInlineFragmentClasses");
 
   return result;
 }
