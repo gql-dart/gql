@@ -1,19 +1,24 @@
 import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 import "package:gql_code_builder/src/config/when_extension_config.dart";
+import "package:gql_code_builder/src/utils/fragment_debug.dart";
 import "package:gql_code_builder/src/when_extension.dart";
 
 import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
 
-/// Builds the following classes for inline fragments:
-///   1. An abstract root class that will be implemented by each instantiable
-///      class. This includes a `built_value` serializer that instantiates
-///      the appropriate concrete class based on the `__typename` field.
-///   2. A "base" instantiable class that includes the common fields.
-///   3. An instantiable class for each inline fragment that includes the
-///      common fields and the fragment fields.
+/// Builds a set of classes to represent GraphQL inline fragments in Dart.
+///
+/// For a GraphQL query with inline fragments (like `... on Human { name }`),
+/// this function generates:
+///
+/// 1. An abstract root class that all concrete classes implement
+/// 2. A "base" class containing common fields shared across all types
+/// 3. Type-specific classes for each inline fragment type condition
+///
+/// The resulting classes work with built_value for serialization and include
+/// helper methods for safely accessing type-specific fields.
 List<Spec> buildInlineFragmentClasses({
   required String name,
   required List<Method> fieldGetters,
@@ -28,12 +33,13 @@ List<Spec> buildInlineFragmentClasses({
   required bool built,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
-  print(
-      "BUILDING INLINE FRAGMENTS: $name | inlineFragments: ${inlineFragments.length}");
-  print(
-      "  Fragments: ${inlineFragments.map((f) => f.typeCondition?.on.name.value).toList()}");
+  FragmentDebugger.enterScope("buildInlineFragmentClasses");
+  FragmentDebugger.log(
+      "Building classes for: $name | fragments: ${inlineFragments.length}");
+  FragmentDebugger.log(
+      "Fragment types: ${inlineFragments.map((f) => f.typeCondition?.on.name.value).toList()}");
 
-  // Create consistent type mapping for all fragments
+  // Create a mapping of GraphQL type names to generated Dart class names
   final typeMap = <String, String>{};
   for (final frag in inlineFragments) {
     if (frag.typeCondition != null) {
@@ -42,6 +48,7 @@ List<Spec> buildInlineFragmentClasses({
     }
   }
 
+  // Generate the "when" extension for pattern matching on concrete types if configured
   final whenExtension = inlineFragmentWhenExtension(
     baseTypeName: name,
     inlineFragments: inlineFragments,
@@ -49,11 +56,11 @@ List<Spec> buildInlineFragmentClasses({
     dataClassAliasMap: dataClassAliasMap,
   );
 
-  // IMPORTANT FIX: Filter out inline fragments for the base class to prevent recursion
+  // IMPORTANT: Filter out inline fragments for the base class to prevent recursion
   final baseClassSelections =
       selections.where((s) => s is! InlineFragmentNode).toList();
 
-  // Add helper methods for type checking/casting with correct prefix
+  // Build helper methods for type checking/casting
   final typeCheckMethods =
       inlineFragments.where((frag) => frag.typeCondition != null).map((frag) {
     final typeName = frag.typeCondition!.on.name.value;
@@ -68,7 +75,10 @@ List<Spec> buildInlineFragmentClasses({
       ..name = methodName);
   }).toList();
 
-  return [
+  // Preserve the exact order and structure of the original implementation to avoid
+  // any unexpected changes in method override hierarchies
+  final List<Spec> result = [
+    // 1. Abstract root class that all concrete classes implement
     Class(
       (b) => b
         ..abstract = true
@@ -86,7 +96,7 @@ List<Spec> buildInlineFragmentClasses({
         )
         ..methods.addAll([
           ...fieldGetters,
-          ...typeCheckMethods, // Add the type check methods to the interface
+          ...typeCheckMethods,
           if (built)
             ..._inlineFragmentRootSerializationMethods(
               name: builtClassName(name),
@@ -95,7 +105,11 @@ List<Spec> buildInlineFragmentClasses({
             ),
         ]),
     ),
+
+    // 2. Optional when extension for pattern matching
     if (whenExtension != null) whenExtension,
+
+    // 3. Base class with fields common to all types, using the original structure
     ...buildSelectionSetDataClasses(
       name: "${name}__base",
       selections: baseClassSelections,
@@ -109,14 +123,13 @@ List<Spec> buildInlineFragmentClasses({
       },
       built: built,
       whenExtensionConfig: whenExtensionConfig,
-      // Add parameter to indicate this is a base class
+      // Keep the original parameters exactly as they were
       isBaseClass: true,
       parentInlineFragments: inlineFragments,
-      typeMap: typeMap, // Pass the type map for consistent types
+      typeMap: typeMap,
     ),
 
-    /// TODO: Handle inline fragments without a type condition
-    /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
+    // 4. Type-specific classes for each inline fragment - maintain precise logic of original
     ...inlineFragments.where((frag) {
       if (frag.typeCondition == null) {
         return false;
@@ -132,42 +145,45 @@ List<Spec> buildInlineFragmentClasses({
         final fragmentTypeName = inlineFragment.typeCondition!.on.name.value;
         final fragmentClassName = "${name}__as$fragmentTypeName";
 
-        // Properly build superclass hierarchy for specialized types
+        // Use the exact same logic for building superclass hierarchies as the original
         final expandedSuperclassSelections = {...superclassSelections};
 
-        // Always add any additional type-specific implementations
+        // Maintain the exact logic from the original implementation
         for (final superName in superclassSelections.keys.toList()) {
           final specializedName = "${superName}__as$fragmentTypeName";
 
-          // Check if there's a specialized version for this fragment
+          // Check if specialized interface exists using original logic
           final hasSpecializedInterface = inlineFragments.any((f) =>
               f.typeCondition != null &&
               f.typeCondition!.on.name.value == fragmentTypeName);
 
-          // If the specialized interface exists, add it to the list
+          // Apply exactly the same logic for interface implementation
           if (hasSpecializedInterface && superName != name) {
-            // IMPORTANT: For fragment interfaces, we want type-specific variants
-            // like GheroFieldsFragment__asHuman instead of GheroFieldsFragment
             expandedSuperclassSelections[specializedName] =
                 superclassSelections[superName]!;
 
-            // Only remove the base fragment interface if it's not our direct parent
             if (superName != name) {
               expandedSuperclassSelections.remove(superName);
             }
           }
         }
 
-        // CRITICAL: We must ALWAYS keep our direct parent interface
+        // CRITICAL: Preserve the direct parent interface
         expandedSuperclassSelections[name] =
             SourceSelections(url: null, selections: selections);
 
+        // Extract fragment-specific selections exactly as in original
+        final fragmentSpecificSelections = inlineFragment
+            .selectionSet.selections
+            .where((s) => s is! InlineFragmentNode)
+            .toList();
+
+        // Call buildSelectionSetDataClasses with exact same parameters as original
         return buildSelectionSetDataClasses(
             name: fragmentClassName,
             selections: [
               ...baseClassSelections,
-              ...inlineFragment.selectionSet.selections
-                  .where((s) => s is! InlineFragmentNode),
+              ...fragmentSpecificSelections,
             ],
             fragmentMap: fragmentMap,
             dataClassAliasMap: dataClassAliasMap,
@@ -183,8 +199,19 @@ List<Spec> buildInlineFragmentClasses({
       },
     ),
   ];
+
+  FragmentDebugger.exitScope("buildInlineFragmentClasses");
+
+  return result;
 }
 
+/// Generates serialization methods for the root fragment class.
+///
+/// Creates methods for built_value serialization that properly handle
+/// polymorphic types based on __typename:
+/// - serializer getter: Uses InlineFragmentSerializer
+/// - toJson: Converts to JSON map
+/// - fromJson: Creates instance from JSON map
 List<Method> _inlineFragmentRootSerializationMethods({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
