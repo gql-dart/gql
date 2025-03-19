@@ -452,7 +452,7 @@ List<Spec> buildSelectionSetDataClasses({
 
       return buildSelectionSetDataClasses(
         name: fieldName,
-        selections: fieldSelections, // Use enhanced selections with __typename
+        selections: fieldSelections,
         fragmentMap: fragmentMap,
         dataClassAliasMap: dataClassAliasMap,
         schemaSource: schemaSource,
