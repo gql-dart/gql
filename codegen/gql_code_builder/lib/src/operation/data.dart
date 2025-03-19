@@ -31,7 +31,6 @@ List<Spec> buildOperationDataClasses(
     fragmentMap,
   );
 
-  // Ensure __typename is present in the selections
   final enhancedSelections = selections;
 
   return buildSelectionSetDataClasses(
@@ -69,7 +68,6 @@ List<Spec> buildFragmentDataClasses(
     fragmentMap,
   );
 
-  // Ensure __typename is present in the selections
   final enhancedSelections = selections;
 
   return [
@@ -124,21 +122,6 @@ String _operationType(
       .value;
 }
 
-/// Helper to create a G__typename getter method for a class.
-///
-/// The __typename field is critical for proper serialization/deserialization
-/// of polymorphic types in GraphQL.
-Method createTypenameGetter(String type, {bool isOverride = false}) =>
-    Method((b) => b
-      ..annotations.addAll([
-        if (isOverride) refer("override"),
-        refer("BuiltValueField", "package:built_value/built_value.dart")
-            .call([], {"wireName": literalString("__typename")}),
-      ])
-      ..returns = refer("String")
-      ..type = MethodType.getter
-      ..name = "G__typename");
-
 /// Builds data classes for a GraphQL selection set.
 ///
 /// This is the core function for generating data classes. For a set of GraphQL
@@ -167,7 +150,6 @@ List<Spec> buildSelectionSetDataClasses({
   // Parameter for nested selections
   String? parentFragmentPath,
 }) {
-  // CRITICAL: Always ensure __typename is in our selections
   final enhancedSelections = selections;
 
   // For nested fields, check if they should implement fragment interfaces
@@ -237,17 +219,6 @@ List<Spec> buildSelectionSetDataClasses({
         (node) {
           final nameNode = node.alias ?? node.name;
 
-          // Skip duplicate fields, but ensure we keep __typename
-          // (We want to process __typename even if it's in a superclass)
-          if (processedFields.contains(nameNode.value) ||
-              (nameNode.value == "__typename" &&
-                  superclassSelectionNodes.any((s) =>
-                      s is FieldNode &&
-                      (s.alias?.value ?? s.name.value) == "__typename") &&
-                  built)) {
-            // Only skip in built classes, keep in interfaces
-            return null;
-          }
           processedFields.add(nameNode.value);
 
           final typeDef = getTypeDefinitionNode(
@@ -275,15 +246,6 @@ List<Spec> buildSelectionSetDataClasses({
       .where((method) => method != null)
       .cast<Method>()
       .toList();
-
-  // CRITICAL: Ensure G__typename getter is present
-  if (!fieldGetters.any((getter) => getter.name == "G__typename")) {
-    // Check if it should be an override (if in superclass)
-    final bool isOverride = superclassSelectionNodes.any((s) =>
-        s is FieldNode && (s.alias?.value ?? s.name.value) == "__typename");
-
-    fieldGetters.add(createTypenameGetter(type, isOverride: isOverride));
-  }
 
   // Get all inline fragments in the selections
   final inlineFragments =
@@ -394,7 +356,6 @@ List<Spec> buildSelectionSetDataClasses({
       name: name,
       getters: fieldGetters,
       initializers: {
-        // CRITICAL: Always add G__typename initializer
         "G__typename": literalString(type),
       },
       superclassSelections: nestedSuperclassSelections,
@@ -417,7 +378,6 @@ List<Spec> buildSelectionSetDataClasses({
       final String fieldName =
           "${name}_${field.alias?.value ?? field.name.value}";
 
-      // IMPORTANT: Ensure __typename is included in nested field selections
       final fieldSelections = field.selectionSet != null
           ? field.selectionSet!.selections
           : <SelectionNode>[];
@@ -490,7 +450,6 @@ List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  // Make sure we have __typename
   final enhancedSelections = selections;
 
   final unmerged = [...enhancedSelections];
@@ -630,7 +589,6 @@ List<SelectionNode> _expandFragmentSpreads(
   Set<String> visitedFragments = const {},
   String fragmentPath = "", // Track path to detect recursive fragments
 ]) {
-  // IMPORTANT: Make sure __typename is present
   final enhancedSelectionsWithTypename = selections;
 
   final result = <SelectionNode>[];
@@ -824,7 +782,6 @@ TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
   String field,
 ) {
-  // Special case for __typename on union types
   if (node is UnionTypeDefinitionNode && field == "__typename") {
     return NamedTypeNode(
       isNonNull: true,
