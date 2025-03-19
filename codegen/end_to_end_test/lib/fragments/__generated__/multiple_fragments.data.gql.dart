@@ -54,12 +54,12 @@ abstract class GHeroWith2FragmentsData_hero
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get name;
   @override
   String get id;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GHeroWith2FragmentsData_hero> get serializer =>
       _$gHeroWith2FragmentsDataHeroSerializer;
 
@@ -93,10 +93,10 @@ abstract class GheroNameData
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
 
   @override
@@ -129,10 +129,10 @@ abstract class GheroIdData
       b..G__typename = 'Character';
 
   @override
-  String get id;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get id;
   static Serializer<GheroIdData> get serializer => _$gheroIdDataSerializer;
 
   @override

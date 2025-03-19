@@ -97,11 +97,11 @@ class _$GPostsWithFixedVariableData_postsSerializer
       Serializers serializers, GPostsWithFixedVariableData_posts object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.favoritedUsers;
@@ -127,6 +127,10 @@ class _$GPostsWithFixedVariableData_postsSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -136,10 +140,6 @@ class _$GPostsWithFixedVariableData_postsSerializer
                   specifiedType: const FullType(
                       GPostsWithFixedVariableData_posts_favoritedUsers))!
               as GPostsWithFixedVariableData_posts_favoritedUsers);
-          break;
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -164,12 +164,12 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer
       GPostsWithFixedVariableData_posts_favoritedUsers object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'totalCount',
-      serializers.serialize(object.totalCount,
-          specifiedType: const FullType(int)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'totalCount',
+      serializers.serialize(object.totalCount,
+          specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -188,13 +188,13 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'totalCount':
-          result.totalCount = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
         case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'totalCount':
+          result.totalCount = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -218,11 +218,11 @@ class _$GPostFragmentForUser1DataSerializer
       Serializers serializers, GPostFragmentForUser1Data object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.favoritedUsers;
@@ -248,6 +248,10 @@ class _$GPostFragmentForUser1DataSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -257,10 +261,6 @@ class _$GPostFragmentForUser1DataSerializer
                   specifiedType:
                       const FullType(GPostFragmentForUser1Data_favoritedUsers))!
               as GPostFragmentForUser1Data_favoritedUsers);
-          break;
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -284,12 +284,12 @@ class _$GPostFragmentForUser1Data_favoritedUsersSerializer
       Serializers serializers, GPostFragmentForUser1Data_favoritedUsers object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'totalCount',
-      serializers.serialize(object.totalCount,
-          specifiedType: const FullType(int)),
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'totalCount',
+      serializers.serialize(object.totalCount,
+          specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -307,13 +307,13 @@ class _$GPostFragmentForUser1Data_favoritedUsersSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'totalCount':
-          result.totalCount = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
         case '__typename':
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'totalCount':
+          result.totalCount = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -444,11 +444,11 @@ class GPostsWithFixedVariableDataBuilder
 class _$GPostsWithFixedVariableData_posts
     extends GPostsWithFixedVariableData_posts {
   @override
+  final String G__typename;
+  @override
   final String id;
   @override
   final GPostsWithFixedVariableData_posts_favoritedUsers? favoritedUsers;
-  @override
-  final String G__typename;
 
   factory _$GPostsWithFixedVariableData_posts(
           [void Function(GPostsWithFixedVariableData_postsBuilder)? updates]) =>
@@ -456,12 +456,12 @@ class _$GPostsWithFixedVariableData_posts
           ._build();
 
   _$GPostsWithFixedVariableData_posts._(
-      {required this.id, this.favoritedUsers, required this.G__typename})
+      {required this.G__typename, required this.id, this.favoritedUsers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GPostsWithFixedVariableData_posts', 'id');
-    BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GPostsWithFixedVariableData_posts', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GPostsWithFixedVariableData_posts', 'id');
   }
 
   @override
@@ -477,17 +477,17 @@ class _$GPostsWithFixedVariableData_posts
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPostsWithFixedVariableData_posts &&
+        G__typename == other.G__typename &&
         id == other.id &&
-        favoritedUsers == other.favoritedUsers &&
-        G__typename == other.G__typename;
+        favoritedUsers == other.favoritedUsers;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, favoritedUsers.hashCode);
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -495,9 +495,9 @@ class _$GPostsWithFixedVariableData_posts
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GPostsWithFixedVariableData_posts')
+          ..add('G__typename', G__typename)
           ..add('id', id)
-          ..add('favoritedUsers', favoritedUsers)
-          ..add('G__typename', G__typename))
+          ..add('favoritedUsers', favoritedUsers))
         .toString();
   }
 }
@@ -507,6 +507,10 @@ class GPostsWithFixedVariableData_postsBuilder
         Builder<GPostsWithFixedVariableData_posts,
             GPostsWithFixedVariableData_postsBuilder> {
   _$GPostsWithFixedVariableData_posts? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   String? _id;
   String? get id => _$this._id;
@@ -521,10 +525,6 @@ class GPostsWithFixedVariableData_postsBuilder
               favoritedUsers) =>
       _$this._favoritedUsers = favoritedUsers;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   GPostsWithFixedVariableData_postsBuilder() {
     GPostsWithFixedVariableData_posts._initializeBuilder(this);
   }
@@ -532,9 +532,9 @@ class GPostsWithFixedVariableData_postsBuilder
   GPostsWithFixedVariableData_postsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _G__typename = $v.G__typename;
       _id = $v.id;
       _favoritedUsers = $v.favoritedUsers?.toBuilder();
-      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -560,11 +560,11 @@ class GPostsWithFixedVariableData_postsBuilder
     try {
       _$result = _$v ??
           new _$GPostsWithFixedVariableData_posts._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                  r'GPostsWithFixedVariableData_posts', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GPostsWithFixedVariableData_posts', 'id'),
-              favoritedUsers: _favoritedUsers?.build(),
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GPostsWithFixedVariableData_posts', 'G__typename'));
+              favoritedUsers: _favoritedUsers?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -584,9 +584,9 @@ class GPostsWithFixedVariableData_postsBuilder
 class _$GPostsWithFixedVariableData_posts_favoritedUsers
     extends GPostsWithFixedVariableData_posts_favoritedUsers {
   @override
-  final int totalCount;
-  @override
   final String G__typename;
+  @override
+  final int totalCount;
 
   factory _$GPostsWithFixedVariableData_posts_favoritedUsers(
           [void Function(
@@ -597,12 +597,12 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsers
           ._build();
 
   _$GPostsWithFixedVariableData_posts_favoritedUsers._(
-      {required this.totalCount, required this.G__typename})
+      {required this.G__typename, required this.totalCount})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(totalCount,
-        r'GPostsWithFixedVariableData_posts_favoritedUsers', 'totalCount');
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GPostsWithFixedVariableData_posts_favoritedUsers', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(totalCount,
+        r'GPostsWithFixedVariableData_posts_favoritedUsers', 'totalCount');
   }
 
   @override
@@ -620,15 +620,15 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsers
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPostsWithFixedVariableData_posts_favoritedUsers &&
-        totalCount == other.totalCount &&
-        G__typename == other.G__typename;
+        G__typename == other.G__typename &&
+        totalCount == other.totalCount;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -637,8 +637,8 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsers
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GPostsWithFixedVariableData_posts_favoritedUsers')
-          ..add('totalCount', totalCount)
-          ..add('G__typename', G__typename))
+          ..add('G__typename', G__typename)
+          ..add('totalCount', totalCount))
         .toString();
   }
 }
@@ -649,13 +649,13 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
             GPostsWithFixedVariableData_posts_favoritedUsersBuilder> {
   _$GPostsWithFixedVariableData_posts_favoritedUsers? _$v;
 
-  int? _totalCount;
-  int? get totalCount => _$this._totalCount;
-  set totalCount(int? totalCount) => _$this._totalCount = totalCount;
-
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  int? _totalCount;
+  int? get totalCount => _$this._totalCount;
+  set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder() {
     GPostsWithFixedVariableData_posts_favoritedUsers._initializeBuilder(this);
@@ -664,8 +664,8 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _totalCount = $v.totalCount;
       _G__typename = $v.G__typename;
+      _totalCount = $v.totalCount;
       _$v = null;
     }
     return this;
@@ -690,14 +690,14 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
   _$GPostsWithFixedVariableData_posts_favoritedUsers _build() {
     final _$result = _$v ??
         new _$GPostsWithFixedVariableData_posts_favoritedUsers._(
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount,
-                r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'totalCount'),
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'G__typename'));
+                'G__typename'),
+            totalCount: BuiltValueNullFieldError.checkNotNull(
+                totalCount,
+                r'GPostsWithFixedVariableData_posts_favoritedUsers',
+                'totalCount'));
     replace(_$result);
     return _$result;
   }
@@ -705,23 +705,23 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
 
 class _$GPostFragmentForUser1Data extends GPostFragmentForUser1Data {
   @override
+  final String G__typename;
+  @override
   final String id;
   @override
   final GPostFragmentForUser1Data_favoritedUsers? favoritedUsers;
-  @override
-  final String G__typename;
 
   factory _$GPostFragmentForUser1Data(
           [void Function(GPostFragmentForUser1DataBuilder)? updates]) =>
       (new GPostFragmentForUser1DataBuilder()..update(updates))._build();
 
   _$GPostFragmentForUser1Data._(
-      {required this.id, this.favoritedUsers, required this.G__typename})
+      {required this.G__typename, required this.id, this.favoritedUsers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GPostFragmentForUser1Data', 'id');
-    BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GPostFragmentForUser1Data', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GPostFragmentForUser1Data', 'id');
   }
 
   @override
@@ -737,17 +737,17 @@ class _$GPostFragmentForUser1Data extends GPostFragmentForUser1Data {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPostFragmentForUser1Data &&
+        G__typename == other.G__typename &&
         id == other.id &&
-        favoritedUsers == other.favoritedUsers &&
-        G__typename == other.G__typename;
+        favoritedUsers == other.favoritedUsers;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, favoritedUsers.hashCode);
-    _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -755,9 +755,9 @@ class _$GPostFragmentForUser1Data extends GPostFragmentForUser1Data {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GPostFragmentForUser1Data')
+          ..add('G__typename', G__typename)
           ..add('id', id)
-          ..add('favoritedUsers', favoritedUsers)
-          ..add('G__typename', G__typename))
+          ..add('favoritedUsers', favoritedUsers))
         .toString();
   }
 }
@@ -766,6 +766,10 @@ class GPostFragmentForUser1DataBuilder
     implements
         Builder<GPostFragmentForUser1Data, GPostFragmentForUser1DataBuilder> {
   _$GPostFragmentForUser1Data? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
   String? _id;
   String? get id => _$this._id;
@@ -779,10 +783,6 @@ class GPostFragmentForUser1DataBuilder
           GPostFragmentForUser1Data_favoritedUsersBuilder? favoritedUsers) =>
       _$this._favoritedUsers = favoritedUsers;
 
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
   GPostFragmentForUser1DataBuilder() {
     GPostFragmentForUser1Data._initializeBuilder(this);
   }
@@ -790,9 +790,9 @@ class GPostFragmentForUser1DataBuilder
   GPostFragmentForUser1DataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _G__typename = $v.G__typename;
       _id = $v.id;
       _favoritedUsers = $v.favoritedUsers?.toBuilder();
-      _G__typename = $v.G__typename;
       _$v = null;
     }
     return this;
@@ -817,11 +817,11 @@ class GPostFragmentForUser1DataBuilder
     try {
       _$result = _$v ??
           new _$GPostFragmentForUser1Data._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, r'GPostFragmentForUser1Data', 'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'GPostFragmentForUser1Data', 'id'),
-              favoritedUsers: _favoritedUsers?.build(),
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostFragmentForUser1Data', 'G__typename'));
+              favoritedUsers: _favoritedUsers?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -841,9 +841,9 @@ class GPostFragmentForUser1DataBuilder
 class _$GPostFragmentForUser1Data_favoritedUsers
     extends GPostFragmentForUser1Data_favoritedUsers {
   @override
-  final int totalCount;
-  @override
   final String G__typename;
+  @override
+  final int totalCount;
 
   factory _$GPostFragmentForUser1Data_favoritedUsers(
           [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder)?
@@ -852,12 +852,12 @@ class _$GPostFragmentForUser1Data_favoritedUsers
           ._build();
 
   _$GPostFragmentForUser1Data_favoritedUsers._(
-      {required this.totalCount, required this.G__typename})
+      {required this.G__typename, required this.totalCount})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        totalCount, r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount');
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        totalCount, r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount');
   }
 
   @override
@@ -874,15 +874,15 @@ class _$GPostFragmentForUser1Data_favoritedUsers
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GPostFragmentForUser1Data_favoritedUsers &&
-        totalCount == other.totalCount &&
-        G__typename == other.G__typename;
+        G__typename == other.G__typename &&
+        totalCount == other.totalCount;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, totalCount.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -891,8 +891,8 @@ class _$GPostFragmentForUser1Data_favoritedUsers
   String toString() {
     return (newBuiltValueToStringHelper(
             r'GPostFragmentForUser1Data_favoritedUsers')
-          ..add('totalCount', totalCount)
-          ..add('G__typename', G__typename))
+          ..add('G__typename', G__typename)
+          ..add('totalCount', totalCount))
         .toString();
   }
 }
@@ -903,13 +903,13 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
             GPostFragmentForUser1Data_favoritedUsersBuilder> {
   _$GPostFragmentForUser1Data_favoritedUsers? _$v;
 
-  int? _totalCount;
-  int? get totalCount => _$this._totalCount;
-  set totalCount(int? totalCount) => _$this._totalCount = totalCount;
-
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  int? _totalCount;
+  int? get totalCount => _$this._totalCount;
+  set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
   GPostFragmentForUser1Data_favoritedUsersBuilder() {
     GPostFragmentForUser1Data_favoritedUsers._initializeBuilder(this);
@@ -918,8 +918,8 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
   GPostFragmentForUser1Data_favoritedUsersBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _totalCount = $v.totalCount;
       _G__typename = $v.G__typename;
+      _totalCount = $v.totalCount;
       _$v = null;
     }
     return this;
@@ -943,10 +943,10 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
   _$GPostFragmentForUser1Data_favoritedUsers _build() {
     final _$result = _$v ??
         new _$GPostFragmentForUser1Data_favoritedUsers._(
-            totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'),
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'));
+                r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'),
+            totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
+                r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'));
     replace(_$result);
     return _$result;
   }

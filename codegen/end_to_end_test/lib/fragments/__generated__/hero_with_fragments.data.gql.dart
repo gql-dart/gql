@@ -53,14 +53,14 @@ abstract class GHeroWithFragmentsData_hero
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   GHeroWithFragmentsData_hero_friendsConnection get friendsConnection;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GHeroWithFragmentsData_hero> get serializer =>
       _$gHeroWithFragmentsDataHeroSerializer;
 
@@ -93,12 +93,12 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
       b..G__typename = 'FriendsConnection';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   int? get totalCount;
   @override
   BuiltList<GHeroWithFragmentsData_hero_friendsConnection_edges?>? get edges;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection>
       get serializer => _$gHeroWithFragmentsDataHeroFriendsConnectionSerializer;
 
@@ -133,10 +133,10 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
       b..G__typename = 'FriendsEdge';
 
   @override
-  GHeroWithFragmentsData_hero_friendsConnection_edges_node? get node;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  GHeroWithFragmentsData_hero_friendsConnection_edges_node? get node;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges>
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesSerializer;
@@ -173,10 +173,10 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection_edges_node>
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesNodeSerializer;
@@ -212,10 +212,10 @@ abstract class GheroDataData
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GheroDataData> get serializer => _$gheroDataDataSerializer;
 
   @override
@@ -280,14 +280,14 @@ abstract class GcomparisonFieldsData
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   GcomparisonFieldsData_friendsConnection get friendsConnection;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GcomparisonFieldsData> get serializer =>
       _$gcomparisonFieldsDataSerializer;
 
@@ -320,12 +320,12 @@ abstract class GcomparisonFieldsData_friendsConnection
       b..G__typename = 'FriendsConnection';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   int? get totalCount;
   @override
   BuiltList<GcomparisonFieldsData_friendsConnection_edges?>? get edges;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GcomparisonFieldsData_friendsConnection> get serializer =>
       _$gcomparisonFieldsDataFriendsConnectionSerializer;
 
@@ -359,10 +359,10 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
       b..G__typename = 'FriendsEdge';
 
   @override
-  GcomparisonFieldsData_friendsConnection_edges_node? get node;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  GcomparisonFieldsData_friendsConnection_edges_node? get node;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
       get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
 
@@ -398,10 +398,10 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GcomparisonFieldsData_friendsConnection_edges_node>
       get serializer =>
           _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;

@@ -47,14 +47,14 @@ abstract class GPostsData_posts
       b..G__typename = 'Post';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   GPostsData_posts_isFavorited? get isFavorited;
   @override
   GPostsData_posts_isLiked? get isLiked;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GPostsData_posts> get serializer =>
       _$gPostsDataPostsSerializer;
 
@@ -86,10 +86,10 @@ abstract class GPostsData_posts_isFavorited
       b..G__typename = 'PostLikes';
 
   @override
-  int get totalCount;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  int get totalCount;
   static Serializer<GPostsData_posts_isFavorited> get serializer =>
       _$gPostsDataPostsIsFavoritedSerializer;
 
@@ -120,10 +120,10 @@ abstract class GPostsData_posts_isLiked
       b..G__typename = 'PostFavorites';
 
   @override
-  int get totalCount;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  int get totalCount;
   static Serializer<GPostsData_posts_isLiked> get serializer =>
       _$gPostsDataPostsIsLikedSerializer;
 
@@ -174,14 +174,14 @@ abstract class GPostFragmentData
       b..G__typename = 'Post';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   GPostFragmentData_isFavorited? get isFavorited;
   @override
   GPostFragmentData_isLiked? get isLiked;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GPostFragmentData> get serializer =>
       _$gPostFragmentDataSerializer;
 
@@ -213,10 +213,10 @@ abstract class GPostFragmentData_isFavorited
       b..G__typename = 'PostLikes';
 
   @override
-  int get totalCount;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  int get totalCount;
   static Serializer<GPostFragmentData_isFavorited> get serializer =>
       _$gPostFragmentDataIsFavoritedSerializer;
 
@@ -247,10 +247,10 @@ abstract class GPostFragmentData_isLiked
       b..G__typename = 'PostFavorites';
 
   @override
-  int get totalCount;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  int get totalCount;
   static Serializer<GPostFragmentData_isLiked> get serializer =>
       _$gPostFragmentDataIsLikedSerializer;
 

@@ -110,12 +110,12 @@ abstract class GHeroForEpisodeData_hero__base
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get name;
   @override
   BuiltList<GHeroForEpisodeData_hero__base_friends?>? get friends;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroForEpisodeData_hero__asDroid? get asDroid => null;
 
@@ -151,10 +151,10 @@ abstract class GHeroForEpisodeData_hero__base_friends
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GHeroForEpisodeData_hero__base_friends> get serializer =>
       _$gHeroForEpisodeDataHeroBaseFriendsSerializer;
 
@@ -188,14 +188,14 @@ abstract class GHeroForEpisodeData_hero__asDroid
       b..G__typename = 'Droid';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get name;
   @override
   BuiltList<GHeroForEpisodeData_hero__asDroid_friends?>? get friends;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroForEpisodeData_hero__asDroid? get asDroid => this;
 
@@ -232,10 +232,10 @@ abstract class GHeroForEpisodeData_hero__asDroid_friends
       b..G__typename = 'Character';
 
   @override
-  String get name;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String get name;
   static Serializer<GHeroForEpisodeData_hero__asDroid_friends> get serializer =>
       _$gHeroForEpisodeDataHeroAsDroidFriendsSerializer;
 
@@ -279,10 +279,10 @@ abstract class GDroidFragmentData
       b..G__typename = 'Droid';
 
   @override
-  String? get primaryFunction;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String? get primaryFunction;
   static Serializer<GDroidFragmentData> get serializer =>
       _$gDroidFragmentDataSerializer;
 

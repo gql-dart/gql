@@ -48,12 +48,12 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData
 abstract class GHeroWithInterfaceSubTypedFragmentsData_hero
     implements GheroFieldsFragment {
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman;
   @override
@@ -143,12 +143,12 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__base
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
 
@@ -193,16 +193,17 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
       b..G__typename = 'Human';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   String? get homePlanet;
+  @override
   BuiltList<GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>?
       get friends;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => this;
 
@@ -391,13 +392,13 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
               b) =>
       b..G__typename = 'Droid';
 
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   String get id;
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid => this;
@@ -448,12 +449,12 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
               b) =>
       b..G__typename = 'Human';
 
-  String get id;
-  String get name;
-  String? get homePlanet;
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
+  String get name;
+  String? get homePlanet;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
       get asDroid => null;
@@ -502,14 +503,14 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid
       b..G__typename = 'Droid';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
 
@@ -607,6 +608,7 @@ abstract class GheroFieldsFragment__asHuman
   String get name;
   @override
   String? get homePlanet;
+  @override
   BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   @override
   GheroFieldsFragment__asHuman? get asHuman => this;
@@ -741,12 +743,12 @@ abstract class GheroFieldsFragment__asDroid
 
 abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman;
   @override
@@ -824,12 +826,12 @@ abstract class GheroFieldsFragmentData__base
       b..G__typename = 'Character';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => null;
 
@@ -869,15 +871,16 @@ abstract class GheroFieldsFragmentData__asHuman
       b..G__typename = 'Human';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   String? get homePlanet;
-  BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
   @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
+  BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => this;
 
@@ -1035,13 +1038,13 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
           GheroFieldsFragmentData__asHuman_friends__asDroidBuilder b) =>
       b..G__typename = 'Droid';
 
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   String get id;
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => this;
 
@@ -1083,12 +1086,12 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
           GheroFieldsFragmentData__asHuman_friends__asHumanBuilder b) =>
       b..G__typename = 'Human';
 
-  String get id;
-  String get name;
-  String? get homePlanet;
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
+  String get name;
+  String? get homePlanet;
   @override
   GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => null;
 
@@ -1130,14 +1133,14 @@ abstract class GheroFieldsFragmentData__asDroid
       b..G__typename = 'Droid';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String get id;
   @override
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GheroFieldsFragmentData__asHuman? get asHuman => null;
 
@@ -1276,12 +1279,12 @@ abstract class GhumanFieldsFragmentData
       b..G__typename = 'Human';
 
   @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @override
   String? get homePlanet;
   @override
   BuiltList<GhumanFieldsFragmentData_friends?>? get friends;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   static Serializer<GhumanFieldsFragmentData> get serializer =>
       _$ghumanFieldsFragmentDataSerializer;
 
@@ -1425,13 +1428,13 @@ abstract class GhumanFieldsFragmentData_friends__asDroid
           GhumanFieldsFragmentData_friends__asDroidBuilder b) =>
       b..G__typename = 'Droid';
 
+  @override
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
   String get id;
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid => this;
 
@@ -1471,12 +1474,12 @@ abstract class GhumanFieldsFragmentData_friends__asHuman
           GhumanFieldsFragmentData_friends__asHumanBuilder b) =>
       b..G__typename = 'Human';
 
-  String get id;
-  String get name;
-  String? get homePlanet;
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
+  String get name;
+  String? get homePlanet;
   @override
   GhumanFieldsFragmentData_friends__asDroid? get asDroid => null;
 
@@ -1520,10 +1523,10 @@ abstract class GdroidFieldsFragmentData
       b..G__typename = 'Droid';
 
   @override
-  String? get primaryFunction;
-  @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  @override
+  String? get primaryFunction;
   static Serializer<GdroidFieldsFragmentData> get serializer =>
       _$gdroidFieldsFragmentDataSerializer;
 
