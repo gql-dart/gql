@@ -8,32 +8,6 @@ import "../built_class.dart";
 import "../common.dart";
 import "../inline_fragment_classes.dart";
 
-/// Helper function to ensure __typename is present in GraphQL selections.
-///
-/// This is critically important for polymorphic type handling through interfaces
-/// and union types. The __typename field allows determining the concrete type
-/// during deserialization.
-List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
-  // Check if __typename is already in the selections
-  final bool hasTypename = selections
-      .whereType<FieldNode>()
-      .any((node) => (node.alias?.value ?? node.name.value) == "__typename");
-
-  if (!hasTypename) {
-    // Add __typename field if not present
-    return [
-      ...selections,
-      FieldNode(
-        name: NameNode(value: "__typename"),
-        selectionSet: null,
-        arguments: const [],
-        directives: const [],
-      ),
-    ];
-  }
-  return selections;
-}
-
 /// Builds data classes for GraphQL operation (query/mutation/subscription).
 ///
 /// Generates Dart classes that mirror the structure of the GraphQL operation
@@ -58,7 +32,7 @@ List<Spec> buildOperationDataClasses(
   );
 
   // Ensure __typename is present in the selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
@@ -96,7 +70,7 @@ List<Spec> buildFragmentDataClasses(
   );
 
   // Ensure __typename is present in the selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   return [
     // abstract class that will implemented by any class that uses the fragment
@@ -194,7 +168,7 @@ List<Spec> buildSelectionSetDataClasses({
   String? parentFragmentPath,
 }) {
   // CRITICAL: Always ensure __typename is in our selections
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   // For nested fields, check if they should implement fragment interfaces
   final Map<String, SourceSelections> nestedSuperclassSelections = {
@@ -445,7 +419,7 @@ List<Spec> buildSelectionSetDataClasses({
 
       // IMPORTANT: Ensure __typename is included in nested field selections
       final fieldSelections = field.selectionSet != null
-          ? ensureTypenameField(field.selectionSet!.selections)
+          ? field.selectionSet!.selections
           : <SelectionNode>[];
 
       // Track current fragment path to properly set up nested interfaces
@@ -517,7 +491,7 @@ List<SelectionNode> shrinkSelections(
   Map<String, SourceSelections> fragmentMap,
 ) {
   // Make sure we have __typename
-  final enhancedSelections = ensureTypenameField(selections);
+  final enhancedSelections = selections;
 
   final unmerged = [...enhancedSelections];
 
@@ -575,7 +549,7 @@ List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+  final enhancedSelectionsWithTypename = selections;
 
   // Expand fragment spreads
   final expandedSelections =
@@ -657,7 +631,7 @@ List<SelectionNode> _expandFragmentSpreads(
   String fragmentPath = "", // Track path to detect recursive fragments
 ]) {
   // IMPORTANT: Make sure __typename is present
-  final enhancedSelectionsWithTypename = ensureTypenameField(selections);
+  final enhancedSelectionsWithTypename = selections;
 
   final result = <SelectionNode>[];
   final newVisitedFragments = {...visitedFragments};
