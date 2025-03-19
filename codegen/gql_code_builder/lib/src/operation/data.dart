@@ -9,7 +9,11 @@ import "../common.dart";
 import "../inline_fragment_classes.dart";
 import "../utils/fragment_debug.dart";
 
-// Helper function to ensure __typename is present in selections
+/// Helper function to ensure __typename is present in GraphQL selections.
+///
+/// This is critically important for polymorphic type handling through interfaces
+/// and union types. The __typename field allows determining the concrete type
+/// during deserialization.
 List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
   // Check if __typename is already in the selections
   final bool hasTypename = selections
@@ -31,6 +35,11 @@ List<SelectionNode> ensureTypenameField(List<SelectionNode> selections) {
   return selections;
 }
 
+/// Builds data classes for GraphQL operation (query/mutation/subscription).
+///
+/// Generates Dart classes that mirror the structure of the GraphQL operation
+/// result, with properties for each selected field and nested objects for
+/// nested selections.
 List<Spec> buildOperationDataClasses(
   OperationDefinitionNode op,
   SourceNode docSource,
@@ -68,6 +77,11 @@ List<Spec> buildOperationDataClasses(
   );
 }
 
+/// Builds data classes for GraphQL fragments.
+///
+/// For each fragment, builds both:
+/// 1. An abstract interface class that defines the fragment's shape
+/// 2. A concrete implementation class that can hold fragment data directly
 List<Spec> buildFragmentDataClasses(
   FragmentDefinitionNode frag,
   SourceNode docSource,
@@ -119,6 +133,7 @@ List<Spec> buildFragmentDataClasses(
   ];
 }
 
+/// Determines the root operation type (Query, Mutation, Subscription) from schema.
 String _operationType(
   DocumentNode schema,
   OperationDefinitionNode op,
@@ -136,7 +151,10 @@ String _operationType(
       .value;
 }
 
-// Helper to create a G__typename getter
+/// Helper to create a G__typename getter method for a class.
+///
+/// The __typename field is critical for proper serialization/deserialization
+/// of polymorphic types in GraphQL.
 Method createTypenameGetter(String type, {bool isOverride = false}) =>
     Method((b) => b
       ..annotations.addAll([
@@ -148,7 +166,7 @@ Method createTypenameGetter(String type, {bool isOverride = false}) =>
       ..type = MethodType.getter
       ..name = "G__typename");
 
-// Add this debugging to the buildSelectionSetDataClasses function
+/// Debug helper for displaying field getter information
 void debugFieldGetters(String name, List<Method> fieldGetters) {
   FragmentDebugger.enterScope("fieldGetters for $name");
   for (final getter in fieldGetters) {
@@ -157,15 +175,15 @@ void debugFieldGetters(String name, List<Method> fieldGetters) {
   FragmentDebugger.exitScope("fieldGetters for $name");
 }
 
-/// Builds one or more data classes, with properties based on [selections].
+/// Builds data classes for a GraphQL selection set.
 ///
-/// For each selection that is a field with nested selections, a descendent
-/// data class will also be created.
+/// This is the core function for generating data classes. For a set of GraphQL
+/// selections, it creates:
+/// 1. A class representing those selections
+/// 2. Classes for any nested selection sets
+/// 3. Classes for any inline fragments (different object types) in the selections
 ///
-/// If this class is for a fragment definition or descendent, set [built] == `false`,
-/// and it will be built as an abstract class which will be implemented by any
-/// class that includes the fragment (or descendent) as a spread in its
-/// [selections].
+/// When built=false, creates abstract classes (interfaces) instead of concrete classes.
 List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
@@ -177,15 +195,15 @@ List<Spec> buildSelectionSetDataClasses({
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
-  // New parameters to track fragment context
+  // Parameters for type-specific fragments
   bool isBaseClass = false,
   String? fragmentTypeName,
   List<InlineFragmentNode>? parentInlineFragments,
   Map<String, String>? typeMap,
-  // Track parent fragment path for nested selections
+  // Parameter for nested selections
   String? parentFragmentPath,
 }) {
-// Add this near the beginning of buildSelectionSetDataClasses
+  // Debug start
   FragmentDebugger.enterScope("buildSelectionSetDataClasses: $name");
   FragmentDebugger.log("Type: $type, Built: $built, isBaseClass: $isBaseClass");
   FragmentDebugger.dumpSelections("Input selections", selections);
@@ -199,7 +217,7 @@ List<Spec> buildSelectionSetDataClasses({
     }
   }
 
-  // CRITICAL FIX: Always ensure __typename is in our selections
+  // CRITICAL: Always ensure __typename is in our selections
   final enhancedSelections = ensureTypenameField(selections);
 
   // For nested fields, check if they should implement fragment interfaces
@@ -235,13 +253,15 @@ List<Spec> buildSelectionSetDataClasses({
           // Add the nested interface
           nestedSuperclassSelections[potentialNestedInterface] =
               SourceSelections(url: null, selections: []);
-          print("ADDING NESTED INTERFACE: $potentialNestedInterface to $name");
+          FragmentDebugger.log(
+              "ADDING NESTED INTERFACE: $potentialNestedInterface to $name");
         }
       }
     }
   }
 
-  for (final selection in selections.whereType<FragmentSpreadNode>()) {
+  // Add fragment spreads to superclass selections
+  for (final selection in enhancedSelections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
@@ -262,14 +282,15 @@ List<Spec> buildSelectionSetDataClasses({
   // Track fields we've already processed to avoid duplicates
   final processedFields = <String>{};
 
-  final fieldGetters = selections
+  // Build getter methods for fields, avoiding duplicates
+  final fieldGetters = enhancedSelections
       .whereType<FieldNode>()
       .map<Method?>(
         (node) {
           final nameNode = node.alias ?? node.name;
 
-          // Skip duplicate fields, but make sure we keep __typename
-          // FIXED: We want to process __typename even if it's in a superclass
+          // Skip duplicate fields, but ensure we keep __typename
+          // (We want to process __typename even if it's in a superclass)
           if (processedFields.contains(nameNode.value) ||
               (nameNode.value == "__typename" &&
                   superclassSelectionNodes.any((s) =>
@@ -307,8 +328,7 @@ List<Spec> buildSelectionSetDataClasses({
       .cast<Method>()
       .toList();
 
-  // CRITICAL FIX: Ensure G__typename getter is present
-  // Don't add to processed fields to ensure it's always included
+  // CRITICAL: Ensure G__typename getter is present
   if (!fieldGetters.any((getter) => getter.name == "G__typename")) {
     // Check if it should be an override (if in superclass)
     final bool isOverride = superclassSelectionNodes.any((s) =>
@@ -317,7 +337,9 @@ List<Spec> buildSelectionSetDataClasses({
     fieldGetters.add(createTypenameGetter(type, isOverride: isOverride));
   }
 
-  final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
+  // Get all inline fragments in the selections
+  final inlineFragments =
+      enhancedSelections.whereType<InlineFragmentNode>().toList();
 
   // Generate helper methods for asHuman/asDroid getters with the correct type prefixes
   List<Method> typeCastMethods = [];
@@ -373,151 +395,164 @@ List<Spec> buildSelectionSetDataClasses({
   // Add the type cast methods to field getters
   fieldGetters.addAll(typeCastMethods);
 
-  // At the end of buildSelectionSetDataClasses before returning
+  // Debug field getters
   debugFieldGetters(name, fieldGetters);
   FragmentDebugger.exitScope("buildSelectionSetDataClasses: $name");
 
-  return [
-    if (inlineFragments.isNotEmpty)
-      ...buildInlineFragmentClasses(
-        name: name,
-        fieldGetters: fieldGetters,
-        selections: enhancedSelections, // Pass already enhanced selections
-        schemaSource: schemaSource,
-        type: type,
-        typeOverrides: typeOverrides,
-        fragmentMap: fragmentMap,
-        dataClassAliasMap: dataClassAliasMap,
-        superclassSelections: nestedSuperclassSelections,
-        inlineFragments: inlineFragments,
-        built: built,
-        whenExtensionConfig: whenExtensionConfig,
-      )
-    else if (!built && dataClassAliasMap[name] == null)
-      Class(
-        (b) => b
-          ..abstract = true
-          ..name = builtClassName(name)
-          ..implements.addAll(
-            nestedSuperclassSelections.keys
-                .where((superName) =>
-                    !dataClassAliasMap.containsKey(builtClassName(superName)))
-                .map<Reference>(
-                  (superName) => refer(
-                    builtClassName(superName),
-                    (nestedSuperclassSelections[superName]?.url ?? "") +
-                        "#data",
-                  ),
+  // Create the resulting set of specs with the exact same structure and order as the original
+  final result = <Spec>[];
+
+  if (inlineFragments.isNotEmpty) {
+    // If there are inline fragments, use buildInlineFragmentClasses
+    result.addAll(buildInlineFragmentClasses(
+      name: name,
+      fieldGetters: fieldGetters,
+      selections: enhancedSelections,
+      schemaSource: schemaSource,
+      type: type,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
+      superclassSelections: nestedSuperclassSelections,
+      inlineFragments: inlineFragments,
+      built: built,
+      whenExtensionConfig: whenExtensionConfig,
+    ));
+  } else if (!built && dataClassAliasMap[name] == null) {
+    // For abstract (non-built) classes without an alias, create interface
+    result.add(Class(
+      (b) => b
+        ..abstract = true
+        ..name = builtClassName(name)
+        ..implements.addAll(
+          nestedSuperclassSelections.keys
+              .where((superName) =>
+                  !dataClassAliasMap.containsKey(builtClassName(superName)))
+              .map<Reference>(
+                (superName) => refer(
+                  builtClassName(superName),
+                  (nestedSuperclassSelections[superName]?.url ?? "") + "#data",
                 ),
-          )
-          ..methods.addAll([
-            ...fieldGetters,
-            buildToJsonGetter(
-              builtClassName(name),
-              implemented: false,
-              isOverride: nestedSuperclassSelections.isNotEmpty,
-            ),
-          ]),
-      )
-    else
-      builtClass(
-        name: name,
-        getters: fieldGetters,
-        initializers: {
-          // CRITICAL FIX: Always add G__typename initializer
-          "G__typename": literalString(type),
-        },
-        superclassSelections: nestedSuperclassSelections,
-        dataClassAliasMap: dataClassAliasMap,
-      ),
-    // Build classes for each field that includes selections
-    ...selections
-        .whereType<FieldNode>()
-        .where(
-          (field) =>
-              field.selectionSet != null &&
-              !dataClassAliasMap.containsKey(builtClassName(
-                  "${name}_${field.alias?.value ?? field.name.value}")),
+              ),
         )
-        .expand(
-      (field) {
-        // Preserve the fragment context in the field name
-        final String fieldName =
-            "${name}_${field.alias?.value ?? field.name.value}";
+        ..methods.addAll([
+          ...fieldGetters,
+          buildToJsonGetter(
+            builtClassName(name),
+            implemented: false,
+            isOverride: nestedSuperclassSelections.isNotEmpty,
+          ),
+        ]),
+    ));
+  } else {
+    // Otherwise, create a regular built_value class
+    result.add(builtClass(
+      name: name,
+      getters: fieldGetters,
+      initializers: {
+        // CRITICAL: Always add G__typename initializer
+        "G__typename": literalString(type),
+      },
+      superclassSelections: nestedSuperclassSelections,
+      dataClassAliasMap: dataClassAliasMap,
+    ));
+  }
 
-        // IMPORTANT: Ensure __typename is included in nested field selections
-        final fieldSelections = field.selectionSet != null
-            ? ensureTypenameField(field.selectionSet!.selections)
-            : <SelectionNode>[];
+  // Build classes for each field that includes selections (exactly as in original)
+  result.addAll(enhancedSelections
+      .whereType<FieldNode>()
+      .where(
+        (field) =>
+            field.selectionSet != null &&
+            !dataClassAliasMap.containsKey(builtClassName(
+                "${name}_${field.alias?.value ?? field.name.value}")),
+      )
+      .expand(
+    (field) {
+      // Preserve the fragment context in the field name
+      final String fieldName =
+          "${name}_${field.alias?.value ?? field.name.value}";
 
-        // Track current fragment path to properly set up nested interfaces
-        String currentFragmentPath = parentFragmentPath ?? name;
-        if (name.contains("__as")) {
-          currentFragmentPath = name;
-        }
+      // IMPORTANT: Ensure __typename is included in nested field selections
+      final fieldSelections = field.selectionSet != null
+          ? ensureTypenameField(field.selectionSet!.selections)
+          : <SelectionNode>[];
 
-        // Pass parent inline fragments to nested fields
-        List<InlineFragmentNode>? fieldParentInlineFragments;
-        Map<String, String>? fieldTypeMap;
+      // Track current fragment path to properly set up nested interfaces
+      String currentFragmentPath = parentFragmentPath ?? name;
+      if (name.contains("__as")) {
+        currentFragmentPath = name;
+      }
 
-        // If the field is within a fragment's selections,
-        // track nested fragments properly
-        if (field.selectionSet != null &&
-            fieldSelections.whereType<InlineFragmentNode>().isNotEmpty) {
-          fieldParentInlineFragments =
-              fieldSelections.whereType<InlineFragmentNode>().toList();
+      // Pass parent inline fragments to nested fields
+      List<InlineFragmentNode>? fieldParentInlineFragments;
+      Map<String, String>? fieldTypeMap;
 
-          // Create type map for the field's inline fragments
-          fieldTypeMap = {};
-          for (final frag in fieldParentInlineFragments) {
-            if (frag.typeCondition != null) {
-              final typeName = frag.typeCondition!.on.name.value;
-              fieldTypeMap[typeName] =
-                  builtClassName("${fieldName}__as$typeName");
-            }
+      // If the field is within a fragment's selections,
+      // track nested fragments properly
+      if (field.selectionSet != null &&
+          fieldSelections.whereType<InlineFragmentNode>().isNotEmpty) {
+        fieldParentInlineFragments =
+            fieldSelections.whereType<InlineFragmentNode>().toList();
+
+        // Create type map for the field's inline fragments
+        fieldTypeMap = {};
+        for (final frag in fieldParentInlineFragments) {
+          if (frag.typeCondition != null) {
+            final typeName = frag.typeCondition!.on.name.value;
+            fieldTypeMap[typeName] =
+                builtClassName("${fieldName}__as$typeName");
           }
         }
+      }
 
-        return buildSelectionSetDataClasses(
-          name: fieldName,
-          selections:
-              fieldSelections, // Use enhanced selections with __typename
-          fragmentMap: fragmentMap,
-          dataClassAliasMap: dataClassAliasMap,
-          schemaSource: schemaSource,
-          type: unwrapTypeNode(
-            _getFieldTypeNode(
-              getTypeDefinitionNode(
-                schemaSource.document,
-                type,
-              )!,
-              field.name.value,
-            ),
-          ).name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: _fragmentSelectionsForField(
-            nestedSuperclassSelections,
-            field,
+      return buildSelectionSetDataClasses(
+        name: fieldName,
+        selections: fieldSelections, // Use enhanced selections with __typename
+        fragmentMap: fragmentMap,
+        dataClassAliasMap: dataClassAliasMap,
+        schemaSource: schemaSource,
+        type: unwrapTypeNode(
+          _getFieldTypeNode(
+            getTypeDefinitionNode(
+              schemaSource.document,
+              type,
+            )!,
+            field.name.value,
           ),
-          built: inlineFragments.isNotEmpty ? false : built,
-          whenExtensionConfig: whenExtensionConfig,
-          parentInlineFragments: fieldParentInlineFragments,
-          typeMap: fieldTypeMap,
-          parentFragmentPath: currentFragmentPath,
-        );
-      },
-    ),
-  ];
+        ).name.value,
+        typeOverrides: typeOverrides,
+        superclassSelections: _fragmentSelectionsForField(
+          nestedSuperclassSelections,
+          field,
+        ),
+        built: inlineFragments.isNotEmpty ? false : built,
+        whenExtensionConfig: whenExtensionConfig,
+        parentInlineFragments: fieldParentInlineFragments,
+        typeMap: fieldTypeMap,
+        parentFragmentPath: currentFragmentPath,
+      );
+    },
+  ));
+
+  return result;
 }
 
-/// Shrink merged fields nodes based on FragmentMap
+/// Remove redundant selections when using fragments.
+///
+/// When a fragment spread is used, fields that are already in that fragment
+/// don't need to be duplicated in the selection set.
 List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  final unmerged = [...selections];
+  // Make sure we have __typename
+  final enhancedSelections = ensureTypenameField(selections);
 
-  for (final selection in selections) {
+  final unmerged = [...enhancedSelections];
+
+  // First, handle recursive structures (fields with selections and inline fragments)
+  for (final selection in enhancedSelections) {
     if (selection is FieldNode && selection.selectionSet != null) {
       final index = unmerged.indexOf(selection);
       unmerged[index] = FieldNode(
@@ -530,7 +565,6 @@ List<SelectionNode> shrinkSelections(
       );
     } else if (selection is InlineFragmentNode &&
         selection.typeCondition != null) {
-      /// TODO: Handle inline fragments without a type condition
       final index = unmerged.indexOf(selection);
       unmerged[index] = InlineFragmentNode(
         typeCondition: selection.typeCondition,
@@ -543,6 +577,7 @@ List<SelectionNode> shrinkSelections(
     }
   }
 
+  // Remove fields that are already included in spread fragments
   for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
     final fragment = fragmentMap[node.name.value]!;
     final spreadIndex = unmerged.indexOf(node);
@@ -559,16 +594,22 @@ List<SelectionNode> shrinkSelections(
   return unmerged;
 }
 
-// Replace the mergeSelections method with this version
+/// Merge selections from multiple sources, combining fields and fragments.
+///
+/// This function:
+/// 1. Ensures __typename is present
+/// 2. Expands fragment spreads to include their fields
+/// 3. Merges fields with the same name but different selections
+/// 4. Merges inline fragments with the same type condition
 List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  // Debug: Log entry point and selections
+  // Debug logging
   FragmentDebugger.enterScope("mergeSelections");
   FragmentDebugger.log("Input selections count: ${selections.length}");
 
-  // IMPORTANT FIX: Make sure __typename is in all selections
+  // IMPORTANT: Make sure __typename is in all selections
   final enhancedSelectionsWithTypename = ensureTypenameField(selections);
   FragmentDebugger.log(
       "After ensuring __typename: ${enhancedSelectionsWithTypename.length} selections");
@@ -624,7 +665,6 @@ List<SelectionNode> mergeSelections(
             }
           } else if (selection is InlineFragmentNode &&
               selection.typeCondition != null) {
-            /// TODO: Handle inline fragments without a type condition
             final key = selection.typeCondition!.on.name.value;
             FragmentDebugger.log("Processing inline fragment for type: $key");
 
@@ -665,13 +705,16 @@ List<SelectionNode> mergeSelections(
   return result;
 }
 
-// Replace the _expandFragmentSpreads method with this version
+/// Recursively expands fragment spreads into their component selections.
+///
+/// This replaces fragment spreads (e.g., "...MyFragment") with the fields
+/// from those fragments, handling nested fragments recursively.
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
   Set<String> visitedFragments = const {},
-  String fragmentPath = "", // Add a path parameter to track context
+  String fragmentPath = "", // Track path to detect recursive fragments
 ]) {
   // Debug logging
   FragmentDebugger.enterScope("_expandFragmentSpreads");
@@ -682,7 +725,7 @@ List<SelectionNode> _expandFragmentSpreads(
         "Already visited fragments: ${visitedFragments.join(', ')}");
   }
 
-  // IMPORTANT FIX: Make sure __typename is present
+  // IMPORTANT: Make sure __typename is present
   final enhancedSelectionsWithTypename = ensureTypenameField(selections);
 
   final result = <SelectionNode>[];
@@ -746,7 +789,7 @@ List<SelectionNode> _expandFragmentSpreads(
         fragmentMap,
         true,
         newVisitedFragments,
-        "$fragmentPath/field:$fieldName", // Track field path for nested context
+        "$fragmentPath/field:$fieldName", // Track field path
       );
 
       FragmentDebugger.log(
@@ -799,6 +842,10 @@ List<SelectionNode> _expandFragmentSpreads(
   return result;
 }
 
+/// Builds field selections for superclasses of a nested field.
+///
+/// When a field in a class implements a fragment interface, we need to determine
+/// which interfaces its nested fields should implement.
 Map<String, SourceSelections> _fragmentSelectionsForField(
   Map<String, SourceSelections> fragmentMap,
   FieldNode field,
@@ -853,7 +900,10 @@ Map<String, SourceSelections> _fragmentSelectionsForField(
   return result;
 }
 
-// Helper function to identify all fragment interfaces that should be implemented
+/// Helper function to identify all fragment interfaces that should be implemented.
+///
+/// Analyses a class name to determine which fragment interfaces it should implement,
+/// especially for nested field types within fragments.
 List<String> identifyFragmentInterfaces(
     String className,
     Map<String, SourceSelections> superclassSelections,
@@ -889,10 +939,15 @@ List<String> identifyFragmentInterfaces(
   return interfaces;
 }
 
+/// Gets the GraphQL type definition of a field.
+///
+/// For a field name within a type, retrieves the field's type definition
+/// from the schema.
 TypeNode _getFieldTypeNode(
   TypeDefinitionNode node,
   String field,
 ) {
+  // Special case for __typename on union types
   if (node is UnionTypeDefinitionNode && field == "__typename") {
     return NamedTypeNode(
       isNonNull: true,
@@ -900,6 +955,7 @@ TypeNode _getFieldTypeNode(
     );
   }
 
+  // Handle object and interface types
   List<FieldDefinitionNode> fields;
   if (node is ObjectTypeDefinitionNode) {
     fields = node.fields;
@@ -909,6 +965,7 @@ TypeNode _getFieldTypeNode(
     throw Exception(
         "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
   }
+
   return fields
       .firstWhere(
         (fieldNode) => fieldNode.name.value == field,
