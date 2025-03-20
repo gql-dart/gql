@@ -53,21 +53,6 @@ List<Spec> buildInlineFragmentClasses({
   final baseClassSelections =
       selections.where((s) => s is! InlineFragmentNode).toList();
 
-  // Build helper methods for type checking/casting
-  final typeCheckMethods =
-      inlineFragments.where((frag) => frag.typeCondition != null).map((frag) {
-    final typeName = frag.typeCondition!.on.name.value;
-    final methodName = "as$typeName";
-
-    return Method((b) => b
-      ..annotations.add(refer("override"))
-      ..type = MethodType.getter
-      ..returns = TypeReference((tr) => tr
-        ..symbol = typeMap[typeName]
-        ..isNullable = true)
-      ..name = methodName);
-  }).toList();
-
   // Preserve the exact order and structure of the original implementation to avoid
   // any unexpected changes in method override hierarchies
   final List<Spec> result = [
@@ -89,7 +74,6 @@ List<Spec> buildInlineFragmentClasses({
         )
         ..methods.addAll([
           ...fieldGetters,
-          ...typeCheckMethods,
           if (built)
             ..._inlineFragmentRootSerializationMethods(
               name: builtClassName(name),

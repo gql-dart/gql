@@ -260,60 +260,6 @@ List<Spec> buildSelectionSetDataClasses({
       .cast<Method>()
       .toList();
 
-  // Generate helper methods for type checking/casting
-  List<Method> typeCastMethods = [];
-  if (isBaseClass &&
-      parentInlineFragments != null &&
-      parentInlineFragments.isNotEmpty &&
-      typeMap != null) {
-    typeCastMethods = parentInlineFragments
-        .where((frag) => frag.typeCondition != null)
-        .map((frag) {
-      final typeName = frag.typeCondition!.on.name.value;
-      final methodName = "as$typeName";
-      // Always use full class name with G prefix
-      final returnTypeName = typeMap[typeName]!;
-
-      return Method((b) => b
-        ..annotations.add(refer("override"))
-        ..type = MethodType.getter
-        ..returns = TypeReference((tr) => tr
-          ..symbol = returnTypeName
-          ..isNullable = true)
-        ..name = methodName
-        ..lambda = true
-        ..body = Code("null"));
-    }).toList();
-  }
-
-  // Generate implementation for asHuman/asDroid getters for specific fragment types
-  if (fragmentTypeName != null &&
-      parentInlineFragments != null &&
-      parentInlineFragments.isNotEmpty &&
-      typeMap != null) {
-    typeCastMethods = parentInlineFragments
-        .where((frag) => frag.typeCondition != null)
-        .map((frag) {
-      final typeName = frag.typeCondition!.on.name.value;
-      final methodName = "as$typeName";
-      // Always use full class name with G prefix
-      final returnTypeName = typeMap[typeName]!;
-
-      return Method((b) => b
-        ..annotations.add(refer("override"))
-        ..type = MethodType.getter
-        ..returns = TypeReference((tr) => tr
-          ..symbol = returnTypeName
-          ..isNullable = true)
-        ..name = methodName
-        ..lambda = true
-        ..body = Code(typeName == fragmentTypeName ? "this" : "null"));
-    }).toList();
-  }
-
-  // Add the type cast methods to field getters
-  fieldGetters.addAll(typeCastMethods);
-
   // Get all inline fragments in the selections
   final inlineFragments =
       enhancedSelections.whereType<InlineFragmentNode>().toList();

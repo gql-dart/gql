@@ -54,10 +54,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero
   String get id;
   @override
   String get name;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid;
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero>
       get serializer => _i2.InlineFragmentSerializer<
               GHeroWithInterfaceSubTypedFragmentsData_hero>(
@@ -149,12 +145,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__base
   String get id;
   @override
   String get name;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => null;
-
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__base>
       get serializer =>
           _$gHeroWithInterfaceSubTypedFragmentsDataHeroBaseSerializer;
@@ -204,12 +194,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
   @override
   BuiltList<GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>?
       get friends;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => this;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => null;
-
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman>
       get serializer =>
           _$gHeroWithInterfaceSubTypedFragmentsDataHeroAsHumanSerializer;
@@ -235,12 +219,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
-      get asDroid;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman?
-      get asHuman;
   static Serializer<
           GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends>
       get serializer => _i2.InlineFragmentSerializer<
@@ -341,14 +319,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__ba
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
-      get asDroid => null;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman?
-      get asHuman => null;
-
   static Serializer<
           GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base>
       get serializer =>
@@ -399,14 +369,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
-      get asDroid => this;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman?
-      get asHuman => null;
-
   static Serializer<
           GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid>
       get serializer =>
@@ -455,14 +417,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
   String get id;
   String get name;
   String? get homePlanet;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid?
-      get asDroid => null;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman?
-      get asHuman => this;
-
   static Serializer<
           GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman>
       get serializer =>
@@ -511,12 +465,6 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman? get asHuman => null;
-
-  @override
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid? get asDroid => this;
-
   static Serializer<GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid>
       get serializer =>
           _$gHeroWithInterfaceSubTypedFragmentsDataHeroAsDroidSerializer;
@@ -539,10 +487,6 @@ abstract class GheroFieldsFragment {
   String get G__typename;
   String get id;
   String get name;
-  @override
-  GheroFieldsFragment__asHuman? get asHuman;
-  @override
-  GheroFieldsFragment__asDroid? get asDroid;
 }
 
 extension GheroFieldsFragmentWhenExtension on GheroFieldsFragment {
@@ -589,12 +533,6 @@ abstract class GheroFieldsFragment__base implements GheroFieldsFragment {
   @override
   String get name;
   @override
-  GheroFieldsFragment__asHuman? get asHuman => null;
-
-  @override
-  GheroFieldsFragment__asDroid? get asDroid => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -611,12 +549,6 @@ abstract class GheroFieldsFragment__asHuman
   @override
   BuiltList<GheroFieldsFragment__asHuman_friends?>? get friends;
   @override
-  GheroFieldsFragment__asHuman? get asHuman => this;
-
-  @override
-  GheroFieldsFragment__asDroid? get asDroid => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -624,10 +556,6 @@ abstract class GheroFieldsFragment__asHuman_friends
     implements GhumanFieldsFragment_friends {
   @override
   String get G__typename;
-  @override
-  GheroFieldsFragment__asHuman_friends__asDroid? get asDroid;
-  @override
-  GheroFieldsFragment__asHuman_friends__asHuman? get asHuman;
 }
 
 extension GheroFieldsFragment__asHuman_friendsWhenExtension
@@ -672,12 +600,6 @@ abstract class GheroFieldsFragment__asHuman_friends__base
   @override
   String get G__typename;
   @override
-  GheroFieldsFragment__asHuman_friends__asDroid? get asDroid => null;
-
-  @override
-  GheroFieldsFragment__asHuman_friends__asHuman? get asHuman => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -693,12 +615,6 @@ abstract class GheroFieldsFragment__asHuman_friends__asDroid
   @override
   String? get primaryFunction;
   @override
-  GheroFieldsFragment__asHuman_friends__asDroid? get asDroid => this;
-
-  @override
-  GheroFieldsFragment__asHuman_friends__asHuman? get asHuman => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -711,12 +627,6 @@ abstract class GheroFieldsFragment__asHuman_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  @override
-  GheroFieldsFragment__asHuman_friends__asDroid? get asDroid => null;
-
-  @override
-  GheroFieldsFragment__asHuman_friends__asHuman? get asHuman => this;
-
   @override
   Map<String, dynamic> toJson();
 }
@@ -732,12 +642,6 @@ abstract class GheroFieldsFragment__asDroid
   @override
   String? get primaryFunction;
   @override
-  GheroFieldsFragment__asHuman? get asHuman => null;
-
-  @override
-  GheroFieldsFragment__asDroid? get asDroid => this;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -749,10 +653,6 @@ abstract class GheroFieldsFragmentData implements GheroFieldsFragment {
   String get id;
   @override
   String get name;
-  @override
-  GheroFieldsFragmentData__asHuman? get asHuman;
-  @override
-  GheroFieldsFragmentData__asDroid? get asDroid;
   static Serializer<GheroFieldsFragmentData> get serializer =>
       _i2.InlineFragmentSerializer<GheroFieldsFragmentData>(
         'GheroFieldsFragmentData',
@@ -832,12 +732,6 @@ abstract class GheroFieldsFragmentData__base
   String get id;
   @override
   String get name;
-  @override
-  GheroFieldsFragmentData__asHuman? get asHuman => null;
-
-  @override
-  GheroFieldsFragmentData__asDroid? get asDroid => null;
-
   static Serializer<GheroFieldsFragmentData__base> get serializer =>
       _$gheroFieldsFragmentDataBaseSerializer;
 
@@ -881,12 +775,6 @@ abstract class GheroFieldsFragmentData__asHuman
   String? get homePlanet;
   @override
   BuiltList<GheroFieldsFragmentData__asHuman_friends?>? get friends;
-  @override
-  GheroFieldsFragmentData__asHuman? get asHuman => this;
-
-  @override
-  GheroFieldsFragmentData__asDroid? get asDroid => null;
-
   static Serializer<GheroFieldsFragmentData__asHuman> get serializer =>
       _$gheroFieldsFragmentDataAsHumanSerializer;
 
@@ -911,10 +799,6 @@ abstract class GheroFieldsFragmentData__asHuman_friends
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid;
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asHuman? get asHuman;
   static Serializer<GheroFieldsFragmentData__asHuman_friends> get serializer =>
       _i2.InlineFragmentSerializer<GheroFieldsFragmentData__asHuman_friends>(
         'GheroFieldsFragmentData__asHuman_friends',
@@ -997,12 +881,6 @@ abstract class GheroFieldsFragmentData__asHuman_friends__base
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => null;
-
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asHuman? get asHuman => null;
-
   static Serializer<GheroFieldsFragmentData__asHuman_friends__base>
       get serializer => _$gheroFieldsFragmentDataAsHumanFriendsBaseSerializer;
 
@@ -1045,12 +923,6 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => this;
-
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asHuman? get asHuman => null;
-
   static Serializer<GheroFieldsFragmentData__asHuman_friends__asDroid>
       get serializer =>
           _$gheroFieldsFragmentDataAsHumanFriendsAsDroidSerializer;
@@ -1092,12 +964,6 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asDroid? get asDroid => null;
-
-  @override
-  GheroFieldsFragmentData__asHuman_friends__asHuman? get asHuman => this;
-
   static Serializer<GheroFieldsFragmentData__asHuman_friends__asHuman>
       get serializer =>
           _$gheroFieldsFragmentDataAsHumanFriendsAsHumanSerializer;
@@ -1141,12 +1007,6 @@ abstract class GheroFieldsFragmentData__asDroid
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  GheroFieldsFragmentData__asHuman? get asHuman => null;
-
-  @override
-  GheroFieldsFragmentData__asDroid? get asDroid => this;
-
   static Serializer<GheroFieldsFragmentData__asDroid> get serializer =>
       _$gheroFieldsFragmentDataAsDroidSerializer;
 
@@ -1173,10 +1033,6 @@ abstract class GhumanFieldsFragment {
 
 abstract class GhumanFieldsFragment_friends {
   String get G__typename;
-  @override
-  GhumanFieldsFragment_friends__asDroid? get asDroid;
-  @override
-  GhumanFieldsFragment_friends__asHuman? get asHuman;
 }
 
 extension GhumanFieldsFragment_friendsWhenExtension
@@ -1221,12 +1077,6 @@ abstract class GhumanFieldsFragment_friends__base
   @override
   String get G__typename;
   @override
-  GhumanFieldsFragment_friends__asDroid? get asDroid => null;
-
-  @override
-  GhumanFieldsFragment_friends__asHuman? get asHuman => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -1239,12 +1089,6 @@ abstract class GhumanFieldsFragment_friends__asDroid
   @override
   String? get primaryFunction;
   @override
-  GhumanFieldsFragment_friends__asDroid? get asDroid => this;
-
-  @override
-  GhumanFieldsFragment_friends__asHuman? get asHuman => null;
-
-  @override
   Map<String, dynamic> toJson();
 }
 
@@ -1255,12 +1099,6 @@ abstract class GhumanFieldsFragment_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  @override
-  GhumanFieldsFragment_friends__asDroid? get asDroid => null;
-
-  @override
-  GhumanFieldsFragment_friends__asHuman? get asHuman => this;
-
   @override
   Map<String, dynamic> toJson();
 }
@@ -1306,10 +1144,6 @@ abstract class GhumanFieldsFragmentData_friends
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GhumanFieldsFragmentData_friends__asDroid? get asDroid;
-  @override
-  GhumanFieldsFragmentData_friends__asHuman? get asHuman;
   static Serializer<GhumanFieldsFragmentData_friends> get serializer =>
       _i2.InlineFragmentSerializer<GhumanFieldsFragmentData_friends>(
         'GhumanFieldsFragmentData_friends',
@@ -1388,12 +1222,6 @@ abstract class GhumanFieldsFragmentData_friends__base
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  @override
-  GhumanFieldsFragmentData_friends__asDroid? get asDroid => null;
-
-  @override
-  GhumanFieldsFragmentData_friends__asHuman? get asHuman => null;
-
   static Serializer<GhumanFieldsFragmentData_friends__base> get serializer =>
       _$ghumanFieldsFragmentDataFriendsBaseSerializer;
 
@@ -1435,12 +1263,6 @@ abstract class GhumanFieldsFragmentData_friends__asDroid
   String get name;
   @override
   String? get primaryFunction;
-  @override
-  GhumanFieldsFragmentData_friends__asDroid? get asDroid => this;
-
-  @override
-  GhumanFieldsFragmentData_friends__asHuman? get asHuman => null;
-
   static Serializer<GhumanFieldsFragmentData_friends__asDroid> get serializer =>
       _$ghumanFieldsFragmentDataFriendsAsDroidSerializer;
 
@@ -1480,12 +1302,6 @@ abstract class GhumanFieldsFragmentData_friends__asHuman
   String get id;
   String get name;
   String? get homePlanet;
-  @override
-  GhumanFieldsFragmentData_friends__asDroid? get asDroid => null;
-
-  @override
-  GhumanFieldsFragmentData_friends__asHuman? get asHuman => this;
-
   static Serializer<GhumanFieldsFragmentData_friends__asHuman> get serializer =>
       _$ghumanFieldsFragmentDataFriendsAsHumanSerializer;
 
