@@ -31,11 +31,9 @@ List<Spec> buildOperationDataClasses(
     fragmentMap,
   );
 
-  final enhancedSelections = selections;
-
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
-    selections: enhancedSelections,
+    selections: selections,
     schemaSource: schemaSource,
     type: _operationType(
       schemaSource.document,
@@ -68,13 +66,11 @@ List<Spec> buildFragmentDataClasses(
     fragmentMap,
   );
 
-  final enhancedSelections = selections;
-
   return [
     // abstract class that will implemented by any class that uses the fragment
     ...buildSelectionSetDataClasses(
       name: frag.name.value,
-      selections: enhancedSelections,
+      selections: selections,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
@@ -87,7 +83,7 @@ List<Spec> buildFragmentDataClasses(
     // concrete built_value data class for fragment
     ...buildSelectionSetDataClasses(
       name: "${frag.name.value}Data",
-      selections: enhancedSelections,
+      selections: selections,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
@@ -96,7 +92,7 @@ List<Spec> buildFragmentDataClasses(
       superclassSelections: {
         frag.name.value: SourceSelections(
           url: docSource.url,
-          selections: enhancedSelections,
+          selections: selections,
         )
       },
       whenExtensionConfig: whenExtensionConfig,
@@ -150,8 +146,6 @@ List<Spec> buildSelectionSetDataClasses({
   // Parameter for nested selections
   String? parentFragmentPath,
 }) {
-  final enhancedSelections = selections;
-
   // For nested fields, check if they should implement fragment interfaces
   final Map<String, SourceSelections> nestedSuperclassSelections = {
     ...superclassSelections
@@ -191,7 +185,7 @@ List<Spec> buildSelectionSetDataClasses({
   }
 
   // Add fragment spreads to superclass selections
-  for (final selection in enhancedSelections.whereType<FragmentSpreadNode>()) {
+  for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
@@ -213,7 +207,7 @@ List<Spec> buildSelectionSetDataClasses({
   final processedFieldsMap = <String, Method>{};
 
   // Build getter methods for fields, avoiding duplicates
-  final fieldGetters = enhancedSelections
+  final fieldGetters = selections
       .whereType<FieldNode>()
       .map<Method?>(
         (node) {
@@ -261,8 +255,7 @@ List<Spec> buildSelectionSetDataClasses({
       .toList();
 
   // Get all inline fragments in the selections
-  final inlineFragments =
-      enhancedSelections.whereType<InlineFragmentNode>().toList();
+  final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
 
   // Create the resulting list of specs
   final List<Spec> result = [];
@@ -272,7 +265,7 @@ List<Spec> buildSelectionSetDataClasses({
     result.addAll(buildInlineFragmentClasses(
       name: name,
       fieldGetters: fieldGetters,
-      selections: enhancedSelections,
+      selections: selections,
       schemaSource: schemaSource,
       type: type,
       typeOverrides: typeOverrides,
@@ -323,7 +316,7 @@ List<Spec> buildSelectionSetDataClasses({
   }
 
   // Build classes for each field that includes selections
-  result.addAll(enhancedSelections
+  result.addAll(selections
       .whereType<FieldNode>()
       .where(
         (field) =>
@@ -409,12 +402,10 @@ List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  final enhancedSelections = selections;
-
-  final unmerged = [...enhancedSelections];
+  final unmerged = [...selections];
 
   // First, handle recursive structures (fields with selections and inline fragments)
-  for (final selection in enhancedSelections) {
+  for (final selection in selections) {
     if (selection is FieldNode && selection.selectionSet != null) {
       final index = unmerged.indexOf(selection);
       unmerged[index] = FieldNode(
@@ -467,11 +458,8 @@ List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  final enhancedSelectionsWithTypename = selections;
-
   // Expand fragment spreads
-  final expandedSelections =
-      _expandFragmentSpreads(enhancedSelectionsWithTypename, fragmentMap);
+  final expandedSelections = _expandFragmentSpreads(selections, fragmentMap);
 
   // Perform the merge
   final result = expandedSelections
@@ -548,12 +536,10 @@ List<SelectionNode> _expandFragmentSpreads(
   Set<String> visitedFragments = const {},
   String fragmentPath = "", // Track path to detect recursive fragments
 ]) {
-  final enhancedSelectionsWithTypename = selections;
-
   final result = <SelectionNode>[];
   final newVisitedFragments = {...visitedFragments};
 
-  for (final selection in enhancedSelectionsWithTypename) {
+  for (final selection in selections) {
     if (selection is FragmentSpreadNode) {
       final fragmentName = selection.name.value;
 
