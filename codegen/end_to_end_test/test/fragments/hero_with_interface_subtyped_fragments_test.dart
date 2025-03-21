@@ -5,54 +5,38 @@ void main() {
   group('hero with interface subtyped fragments', () {
     // Create shared test data
     late GHeroWithInterfaceSubTypedFragmentsData heroData;
-    late GhumanFieldsFragmentData_friends__asDroid r2d2Friend;
-    late GhumanFieldsFragmentData_friends__asHuman leiaFriend;
+    late GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman humanHero;
 
     setUp(() {
-      // Create a droid friend
-      r2d2Friend = GhumanFieldsFragmentData_friends__asDroid((b) => b
-        ..G__typename = 'Droid'
-        ..id = 'droid-1'
-        ..name = 'R2-D2'
-        ..primaryFunction = 'Astromech');
-
-      // Create a human friend
-      leiaFriend = GhumanFieldsFragmentData_friends__asHuman((b) => b
-        ..G__typename = 'Human'
-        ..id = 'human-2'
-        ..name = 'Leia Organa'
-        ..homePlanet = 'Alderaan');
-
       // Create raw JSON data for our hero that includes all fields
-      final Map<String, dynamic> heroJson = {
-        '__typename': 'Human',
-        'id': 'human-1',
-        'name': 'Luke Skywalker',
-        'homePlanet': 'Tatooine',
-        'friends': [
-          {
-            '__typename': 'Droid',
-            'id': 'droid-1',
-            'name': 'R2-D2',
-            'primaryFunction': 'Astromech'
-          },
-          {
-            '__typename': 'Human',
-            'id': 'human-2',
-            'name': 'Leia Organa',
-            'homePlanet': 'Alderaan'
-          }
-        ]
+      final Map<String, dynamic> queryJson = {
+        '__typename': 'Query',
+        'hero': {
+          '__typename': 'Human',
+          'id': 'human-1',
+          'name': 'Luke Skywalker',
+          'homePlanet': 'Tatooine',
+          'friends': [
+            {
+              '__typename': 'Droid',
+              'id': 'droid-1',
+              'name': 'R2-D2',
+              'primaryFunction': 'Astromech'
+            },
+            {
+              '__typename': 'Human',
+              'id': 'human-2',
+              'name': 'Leia Organa',
+              'homePlanet': 'Alderaan'
+            }
+          ]
+        }
       };
 
-      // Deserialize directly to the correct concrete type
-      final humanHero =
-          GHeroWithInterfaceSubTypedFragmentsData_hero.fromJson(heroJson)!;
-
-      // Create the query data with our hero
-      heroData = GHeroWithInterfaceSubTypedFragmentsData((b) => b
-        ..G__typename = 'Query'
-        ..hero = humanHero);
+      // Deserialize the entire query response
+      heroData = GHeroWithInterfaceSubTypedFragmentsData.fromJson(queryJson)!;
+      humanHero = heroData.hero!
+          as GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman;
     });
 
     test('when extension correctly retrieves hero name', () {
@@ -65,8 +49,8 @@ void main() {
     });
 
     test('when extension correctly retrieves friends information', () {
-      final friendNames = [r2d2Friend, leiaFriend]
-          .map((friend) => friend.when(
+      final friendNames = humanHero.friends!
+          .map((friend) => friend!.when(
                 droid: (droid) => '${droid.name} (${droid.primaryFunction})',
                 human: (human) => '${human.name} (${human.homePlanet})',
                 orElse: () => 'Unknown friend',
