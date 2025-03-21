@@ -494,6 +494,7 @@ List<SelectionNode> mergeSelections(
               selection.typeCondition != null) {
             final key = selection.typeCondition!.on.name.value;
 
+            /// TODO: Handle inline fragments without a type condition
             if (selectionMap.containsKey(key)) {
               selectionMap[key] = InlineFragmentNode(
                 typeCondition: selection.typeCondition,
