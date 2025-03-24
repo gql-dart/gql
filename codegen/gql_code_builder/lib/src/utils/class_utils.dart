@@ -16,6 +16,12 @@ import "type_utils.dart";
 ///
 /// Example: For a query, creates the main response class, handling
 /// inline fragments when needed.
+/// Builds output classes from GraphQL selections.
+///
+/// Creates the main classes needed to represent GraphQL selections based on the
+/// presence of inline fragments, configuration options, and selection types.
+///
+/// Returns a list of Spec objects representing the generated classes.
 List<Spec> buildOutputClasses(
   String name,
   List<SelectionNode> selections,
@@ -30,11 +36,8 @@ List<Spec> buildOutputClasses(
   Map<String, SourceSelections> fragmentMap,
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 ) {
-  final List<Spec> result = [];
-
   if (inlineFragments.isNotEmpty) {
-    // Using existing buildInlineFragmentClasses method
-    result.addAll(buildInlineFragmentClasses(
+    return _buildClassesWithInlineFragments(
       name: name,
       fieldGetters: fieldGetters,
       selections: selections,
@@ -47,23 +50,81 @@ List<Spec> buildOutputClasses(
       inlineFragments: inlineFragments,
       built: built,
       whenExtensionConfig: whenExtensionConfig,
-    ));
+    );
   } else if (!built && dataClassAliasMap[name] == null) {
-    // For abstract (non-built) classes without an alias, create interface
-    result.add(Class(
+    return [
+      _buildInterfaceClass(
+        name: name,
+        nestedSuperclassSelections: nestedSuperclassSelections,
+        fieldGetters: fieldGetters,
+        dataClassAliasMap: dataClassAliasMap,
+      )
+    ];
+  } else {
+    return [
+      _buildRegularBuiltClass(
+        name: name,
+        fieldGetters: fieldGetters,
+        nestedSuperclassSelections: nestedSuperclassSelections,
+        dataClassAliasMap: dataClassAliasMap,
+        type: type,
+      )
+    ];
+  }
+}
+
+/// Builds classes for a schema that uses inline fragments.
+///
+/// Delegates to the `buildInlineFragmentClasses` function to handle the complex
+/// task of generating appropriate classes for inline fragments.
+List<Spec> _buildClassesWithInlineFragments({
+  required String name,
+  required List<Method> fieldGetters,
+  required List<SelectionNode> selections,
+  required SourceNode schemaSource,
+  required String type,
+  required Map<String, Reference> typeOverrides,
+  required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Reference> dataClassAliasMap,
+  required Map<String, SourceSelections> superclassSelections,
+  required List<InlineFragmentNode> inlineFragments,
+  required bool built,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+}) =>
+    buildInlineFragmentClasses(
+      name: name,
+      fieldGetters: fieldGetters,
+      selections: selections,
+      schemaSource: schemaSource,
+      type: type,
+      typeOverrides: typeOverrides,
+      fragmentMap: fragmentMap,
+      dataClassAliasMap: dataClassAliasMap,
+      superclassSelections: superclassSelections,
+      inlineFragments: inlineFragments,
+      built: built,
+      whenExtensionConfig: whenExtensionConfig,
+    );
+
+/// Builds an interface class for abstract representations.
+///
+/// Creates an abstract class that defines the interface for GraphQL types
+/// without providing a concrete implementation.
+Class _buildInterfaceClass({
+  required String name,
+  required Map<String, SourceSelections> nestedSuperclassSelections,
+  required List<Method> fieldGetters,
+  required Map<String, Reference> dataClassAliasMap,
+}) =>
+    Class(
       (b) => b
         ..abstract = true
         ..name = builtClassName(name)
         ..implements.addAll(
-          nestedSuperclassSelections.keys
-              .where((superName) =>
-                  !dataClassAliasMap.containsKey(builtClassName(superName)))
-              .map<Reference>(
-                (superName) => refer(
-                  builtClassName(superName),
-                  (nestedSuperclassSelections[superName]?.url ?? "") + "#data",
-                ),
-              ),
+          _getImplementedInterfaces(
+            nestedSuperclassSelections: nestedSuperclassSelections,
+            dataClassAliasMap: dataClassAliasMap,
+          ),
         )
         ..methods.addAll([
           ...fieldGetters,
@@ -73,10 +134,20 @@ List<Spec> buildOutputClasses(
             isOverride: nestedSuperclassSelections.isNotEmpty,
           ),
         ]),
-    ));
-  } else {
-    // Otherwise, create a regular built_value class
-    result.add(builtClass(
+    );
+
+/// Builds a regular built_value class.
+///
+/// Creates a concrete implementation class with all the necessary
+/// methods and initializers for GraphQL data types.
+Class _buildRegularBuiltClass({
+  required String name,
+  required List<Method> fieldGetters,
+  required Map<String, SourceSelections> nestedSuperclassSelections,
+  required Map<String, Reference> dataClassAliasMap,
+  required String type,
+}) =>
+    builtClass(
       name: name,
       getters: fieldGetters,
       initializers: {
@@ -84,11 +155,26 @@ List<Spec> buildOutputClasses(
       },
       superclassSelections: nestedSuperclassSelections,
       dataClassAliasMap: dataClassAliasMap,
-    ));
-  }
+    );
 
-  return result;
-}
+/// Gets the list of interfaces that a class implements.
+///
+/// Filters out any interfaces that have been aliased to prevent
+/// duplicate implementation declarations.
+List<Reference> _getImplementedInterfaces({
+  required Map<String, SourceSelections> nestedSuperclassSelections,
+  required Map<String, Reference> dataClassAliasMap,
+}) =>
+    nestedSuperclassSelections.keys
+        .where((superName) =>
+            !dataClassAliasMap.containsKey(builtClassName(superName)))
+        .map<Reference>(
+          (superName) => refer(
+            builtClassName(superName),
+            (nestedSuperclassSelections[superName]?.url ?? "") + "#data",
+          ),
+        )
+        .toList();
 
 /// Builds classes for nested field selections.
 ///
