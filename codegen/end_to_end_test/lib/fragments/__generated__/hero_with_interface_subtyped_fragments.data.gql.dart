@@ -214,8 +214,8 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman
 
 abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends
     implements
-        GheroFieldsFragment__asHuman_friends,
-        GhumanFieldsFragment_friends {
+        GhumanFieldsFragment_friends,
+        GheroFieldsFragment__asHuman_friends {
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -344,8 +344,8 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
         Built<
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid,
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder>,
-        GheroFieldsFragment__asHuman_friends__asDroid,
         GhumanFieldsFragment_friends__asDroid,
+        GheroFieldsFragment__asHuman_friends__asDroid,
         GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends,
         GdroidFieldsFragment {
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid._();
@@ -394,8 +394,8 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
         Built<
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman,
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder>,
-        GheroFieldsFragment__asHuman_friends__asHuman,
         GhumanFieldsFragment_friends__asHuman,
+        GheroFieldsFragment__asHuman_friends__asHuman,
         GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends {
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman._();
 
@@ -794,8 +794,8 @@ abstract class GheroFieldsFragmentData__asHuman
 
 abstract class GheroFieldsFragmentData__asHuman_friends
     implements
-        GheroFieldsFragment__asHuman_friends,
-        GhumanFieldsFragment_friends {
+        GhumanFieldsFragment_friends,
+        GheroFieldsFragment__asHuman_friends {
   @override
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -902,8 +902,8 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
     implements
         Built<GheroFieldsFragmentData__asHuman_friends__asDroid,
             GheroFieldsFragmentData__asHuman_friends__asDroidBuilder>,
-        GheroFieldsFragment__asHuman_friends__asDroid,
         GhumanFieldsFragment_friends__asDroid,
+        GheroFieldsFragment__asHuman_friends__asDroid,
         GheroFieldsFragmentData__asHuman_friends,
         GdroidFieldsFragment {
   GheroFieldsFragmentData__asHuman_friends__asDroid._();
@@ -945,8 +945,8 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
     implements
         Built<GheroFieldsFragmentData__asHuman_friends__asHuman,
             GheroFieldsFragmentData__asHuman_friends__asHumanBuilder>,
-        GheroFieldsFragment__asHuman_friends__asHuman,
         GhumanFieldsFragment_friends__asHuman,
+        GheroFieldsFragment__asHuman_friends__asHuman,
         GheroFieldsFragmentData__asHuman_friends {
   GheroFieldsFragmentData__asHuman_friends__asHuman._();
 
