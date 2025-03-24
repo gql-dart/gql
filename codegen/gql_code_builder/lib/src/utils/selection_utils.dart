@@ -10,144 +10,218 @@ import "../common.dart";
 /// 2. Expands fragment spreads to include their fields
 /// 3. Merges fields with the same name but different selections
 /// 4. Merges inline fragments with the same type condition
-///
-/// Example: Merging selections from multiple fragments that select
-/// overlapping fields with different subselections.
 List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  // Expand fragment spreads
+  // Expand fragment spreads first
   final expandedSelections = _expandFragmentSpreads(selections, fragmentMap);
 
-  // Perform the merge
-  final result = expandedSelections
-      .fold<Map<String, SelectionNode>>(
-        {},
-        (selectionMap, selection) {
-          if (selection is FieldNode) {
-            final key = selection.alias?.value ?? selection.name.value;
+  // Create a map to merge duplicate selections
+  final selectionMap = <String, SelectionNode>{};
 
-            if (selection.selectionSet == null) {
-              selectionMap[key] = selection;
-            } else {
-              final existingNode = selectionMap[key];
-              final existingSelections =
-                  existingNode is FieldNode && existingNode.selectionSet != null
-                      ? existingNode.selectionSet!.selections
-                      : <SelectionNode>[];
+  // Process each expanded selection and handle merging
+  for (final selection in expandedSelections) {
+    if (selection is FieldNode) {
+      _processFieldNode(selection, selectionMap, fragmentMap);
+    } else if (selection is InlineFragmentNode &&
+        selection.typeCondition != null) {
+      _processInlineFragment(selection, selectionMap, fragmentMap);
+    } else {
+      // Handle other selection types
+      selectionMap[selection.hashCode.toString()] = selection;
+    }
+  }
 
-              selectionMap[key] = FieldNode(
-                  name: selection.name,
-                  alias: selection.alias,
-                  selectionSet: SelectionSetNode(
-                      selections: mergeSelections(
-                    [
-                      ...existingSelections,
-                      ...selection.selectionSet!.selections
-                    ],
-                    fragmentMap,
-                  )));
-            }
-          } else if (selection is InlineFragmentNode &&
-              selection.typeCondition != null) {
-            final key = selection.typeCondition!.on.name.value;
+  return selectionMap.values.toList();
+}
 
-            /// TODO: Handle inline fragments without a type condition
-            if (selectionMap.containsKey(key)) {
-              selectionMap[key] = InlineFragmentNode(
-                typeCondition: selection.typeCondition,
-                directives: selection.directives,
-                selectionSet: SelectionSetNode(
-                  selections: mergeSelections(
-                    [
-                      ...(selectionMap[key] as InlineFragmentNode)
-                          .selectionSet
-                          .selections,
-                      ...selection.selectionSet.selections,
-                    ],
-                    fragmentMap,
-                  ),
-                ),
-              );
-            } else {
-              selectionMap[key] = selection;
-            }
-          } else {
-            selectionMap[selection.hashCode.toString()] = selection;
-          }
-          return selectionMap;
-        },
-      )
-      .values
-      .toList();
+/// Process a field node during selection merging.
+///
+/// Handles fields, including those with nested selections, and ensures
+/// that fields with the same name have their selections merged.
+void _processFieldNode(
+  FieldNode selection,
+  Map<String, SelectionNode> selectionMap,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final key = selection.alias?.value ?? selection.name.value;
 
-  return result;
+  if (selection.selectionSet == null) {
+    // Simple field with no selections
+    selectionMap[key] = selection;
+  } else {
+    // Field with selections - merge if exists
+    final existingNode = selectionMap[key];
+
+    if (existingNode is FieldNode && existingNode.selectionSet != null) {
+      // Merge with existing field node
+      selectionMap[key] = _mergeFieldNodes(
+        existingNode,
+        selection,
+        fragmentMap,
+      );
+    } else {
+      // New field node
+      selectionMap[key] = selection;
+    }
+  }
+}
+
+/// Merges two field nodes with the same name.
+///
+/// Creates a new field node that combines the selections from both input nodes.
+FieldNode _mergeFieldNodes(
+  FieldNode existing,
+  FieldNode incoming,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final existingSelections = existing.selectionSet?.selections ?? [];
+  final incomingSelections = incoming.selectionSet?.selections ?? [];
+
+  return FieldNode(
+    name: incoming.name,
+    alias: incoming.alias,
+    arguments: incoming.arguments,
+    directives: incoming.directives,
+    selectionSet: SelectionSetNode(
+      selections: mergeSelections(
+        [...existingSelections, ...incomingSelections],
+        fragmentMap,
+      ),
+    ),
+  );
+}
+
+/// Process an inline fragment during selection merging.
+///
+/// Handles inline fragments with type conditions, merging those with
+/// the same type condition.
+void _processInlineFragment(
+  InlineFragmentNode selection,
+  Map<String, SelectionNode> selectionMap,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  final typeCondition = selection.typeCondition!;
+  final key = typeCondition.on.name.value;
+
+  if (selectionMap.containsKey(key)) {
+    // Merge with existing inline fragment of same type
+    final existing = selectionMap[key] as InlineFragmentNode;
+
+    selectionMap[key] = InlineFragmentNode(
+      typeCondition: typeCondition,
+      directives: selection.directives,
+      selectionSet: SelectionSetNode(
+        selections: mergeSelections(
+          [
+            ...existing.selectionSet.selections,
+            ...selection.selectionSet.selections,
+          ],
+          fragmentMap,
+        ),
+      ),
+    );
+  } else {
+    // New inline fragment
+    selectionMap[key] = selection;
+  }
 }
 
 /// Remove redundant selections when using fragments.
 ///
 /// When a fragment spread is used, fields that are already in that fragment
 /// don't need to be duplicated in the selection set.
-///
-/// Example: If a fragment selects "name" and "id", and the parent selection
-/// also selects "name", the "name" field can be removed from the parent.
 List<SelectionNode> shrinkSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
 ) {
+  // Clone the selections to avoid modifying the original
   final unmerged = [...selections];
 
   // First, handle recursive structures (fields with selections and inline fragments)
-  for (final selection in selections) {
+  _processNestedSelections(unmerged, fragmentMap);
+
+  // Remove fields covered by fragment spreads
+  _removeDuplicateFields(unmerged, fragmentMap);
+
+  return unmerged;
+}
+
+/// Processes nested selections in fields and inline fragments.
+///
+/// Recursively processes selections within fields and inline fragments
+/// to ensure they are properly shrunk.
+void _processNestedSelections(
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  for (int i = 0; i < selections.length; i++) {
+    final selection = selections[i];
+
     if (selection is FieldNode && selection.selectionSet != null) {
-      final index = unmerged.indexOf(selection);
-      unmerged[index] = FieldNode(
+      // Process field with selections
+      selections[i] = FieldNode(
         name: selection.name,
         alias: selection.alias,
+        arguments: selection.arguments,
+        directives: selection.directives,
         selectionSet: SelectionSetNode(
-          selections:
-              shrinkSelections(selection.selectionSet!.selections, fragmentMap),
+          selections: shrinkSelections(
+            selection.selectionSet!.selections,
+            fragmentMap,
+          ),
         ),
       );
-    } else if (selection is InlineFragmentNode &&
-        selection.typeCondition != null) {
-      final index = unmerged.indexOf(selection);
-      unmerged[index] = InlineFragmentNode(
+    } else if (selection is InlineFragmentNode) {
+      // Process inline fragment
+      selections[i] = InlineFragmentNode(
         typeCondition: selection.typeCondition,
         directives: selection.directives,
         selectionSet: SelectionSetNode(
-          selections:
-              shrinkSelections(selection.selectionSet.selections, fragmentMap),
+          selections: shrinkSelections(
+            selection.selectionSet.selections,
+            fragmentMap,
+          ),
         ),
       );
     }
   }
+}
 
-  // Remove fields that are already included in spread fragments
-  for (final node in unmerged.whereType<FragmentSpreadNode>().toList()) {
+/// Removes fields that are already covered by fragment spreads.
+///
+/// Identifies and removes fields that are redundant because they are
+/// already included in fragment spreads earlier in the selection list.
+void _removeDuplicateFields(
+  List<SelectionNode> selections,
+  Map<String, SourceSelections> fragmentMap,
+) {
+  // Find all fragment spreads
+  final spreadNodes = selections.whereType<FragmentSpreadNode>().toList();
+
+  for (final node in spreadNodes) {
     final fragment = fragmentMap[node.name.value]!;
-    final spreadIndex = unmerged.indexOf(node);
-    final duplicateIndexList = <int>[];
-    unmerged.forEachIndexed((selectionIndex, selection) {
+    final spreadIndex = selections.indexOf(node);
+    final duplicateIndices = <int>[];
+
+    // Find selections that appear after the spread and are duplicated in the fragment
+    selections.forEachIndexed((selectionIndex, selection) {
       if (selectionIndex > spreadIndex &&
           fragment.selections.any((s) => s.hashCode == selection.hashCode)) {
-        duplicateIndexList.add(selectionIndex);
+        duplicateIndices.add(selectionIndex);
       }
     });
-    duplicateIndexList.reversed.forEach(unmerged.removeAt);
-  }
 
-  return unmerged;
+    // Remove duplicates in reverse order to avoid index shifting
+    duplicateIndices.reversed.forEach(selections.removeAt);
+  }
 }
 
 /// Recursively expands fragment spreads into their component selections.
 ///
 /// This replaces fragment spreads (e.g., "...MyFragment") with the fields
 /// from those fragments, handling nested fragments recursively.
-///
-/// Example: Converting "...UserFragment" into the actual fields like
-/// "id", "name", etc.
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
@@ -160,83 +234,145 @@ List<SelectionNode> _expandFragmentSpreads(
 
   for (final selection in selections) {
     if (selection is FragmentSpreadNode) {
-      final fragmentName = selection.name.value;
-
-      if (!fragmentMap.containsKey(fragmentName)) {
-        throw Exception(
-          "Couldn't find fragment definition for fragment spread '$fragmentName'",
-        );
-      }
-
-      // Create context-aware fragment identifier using the path
-      final contextualFragmentId = "$fragmentPath/$fragmentName";
-
-      // Check for recursive fragments
-      if (newVisitedFragments.contains(contextualFragmentId)) {
-        // Skip this fragment to avoid infinite recursion
-        continue;
-      }
-      newVisitedFragments.add(contextualFragmentId);
-
-      final fragmentSelections = fragmentMap[fragmentName]!.selections;
-
-      if (retainFragmentSpreads) {
-        result.add(selection);
-      }
-
-      // Recursively process the fragment selections
-      final expandedFragmentSelections = _expandFragmentSpreads(
-        fragmentSelections,
+      _processFragmentSpread(
+        selection,
         fragmentMap,
-        false,
+        result,
         newVisitedFragments,
-        "$fragmentPath/$fragmentName", // Track path for nested context
+        retainFragmentSpreads,
+        fragmentPath,
       );
-
-      result.addAll(expandedFragmentSelections);
     } else if (selection is FieldNode && selection.selectionSet != null) {
-      final fieldName = selection.alias?.value ?? selection.name.value;
-
-      // Process fields with selections - recursively expand any fragments they contain
-      final expandedSelections = _expandFragmentSpreads(
-        selection.selectionSet!.selections,
+      _processFieldWithSelections(
+        selection,
         fragmentMap,
-        true,
+        result,
         newVisitedFragments,
-        "$fragmentPath/field:$fieldName", // Track field path
+        fragmentPath,
       );
-
-      // Create a new field node with the expanded selections
-      result.add(FieldNode(
-        name: selection.name,
-        alias: selection.alias,
-        arguments: selection.arguments,
-        directives: selection.directives,
-        selectionSet: SelectionSetNode(selections: expandedSelections),
-      ));
     } else if (selection is InlineFragmentNode) {
-      final typeName =
-          selection.typeCondition?.on.name.value ?? "no-type-condition";
-
-      // Process inline fragments - recursively expand any nested fragments
-      final expandedSelections = _expandFragmentSpreads(
-        selection.selectionSet.selections,
+      _processInlineFragmentExpansion(
+        selection,
         fragmentMap,
-        true,
+        result,
         newVisitedFragments,
-        "$fragmentPath/inline:$typeName", // Track inline fragment path
+        fragmentPath,
       );
-
-      // Create a new inline fragment node with the expanded selections
-      result.add(InlineFragmentNode(
-        typeCondition: selection.typeCondition,
-        directives: selection.directives,
-        selectionSet: SelectionSetNode(selections: expandedSelections),
-      ));
     } else {
       result.add(selection);
     }
   }
 
   return result;
+}
+
+/// Processes a fragment spread node during expansion.
+///
+/// Handles the expansion of a fragment spread, adding its fields
+/// to the result list and managing recursive fragment detection.
+void _processFragmentSpread(
+  FragmentSpreadNode selection,
+  Map<String, SourceSelections> fragmentMap,
+  List<SelectionNode> result,
+  Set<String> newVisitedFragments,
+  bool retainFragmentSpreads,
+  String fragmentPath,
+) {
+  final fragmentName = selection.name.value;
+
+  if (!fragmentMap.containsKey(fragmentName)) {
+    throw Exception(
+        "Couldn't find fragment definition for fragment spread '$fragmentName'");
+  }
+
+  // Create context-aware fragment identifier using the path
+  final contextualFragmentId = "$fragmentPath/$fragmentName";
+
+  // Check for recursive fragments
+  if (newVisitedFragments.contains(contextualFragmentId)) {
+    // Skip this fragment to avoid infinite recursion
+    return;
+  }
+
+  newVisitedFragments.add(contextualFragmentId);
+
+  final fragmentSelections = fragmentMap[fragmentName]!.selections;
+
+  if (retainFragmentSpreads) {
+    result.add(selection);
+  }
+
+  // Recursively process the fragment selections
+  final expandedFragmentSelections = _expandFragmentSpreads(
+    fragmentSelections,
+    fragmentMap,
+    false,
+    newVisitedFragments,
+    "$fragmentPath/$fragmentName", // Track path for nested context
+  );
+
+  result.addAll(expandedFragmentSelections);
+}
+
+/// Processes a field with selections during expansion.
+///
+/// Handles fields that have their own selection sets, recursively
+/// expanding any fragments they contain.
+void _processFieldWithSelections(
+  FieldNode selection,
+  Map<String, SourceSelections> fragmentMap,
+  List<SelectionNode> result,
+  Set<String> newVisitedFragments,
+  String fragmentPath,
+) {
+  final fieldName = selection.alias?.value ?? selection.name.value;
+
+  // Process fields with selections - recursively expand any fragments they contain
+  final expandedSelections = _expandFragmentSpreads(
+    selection.selectionSet!.selections,
+    fragmentMap,
+    true,
+    newVisitedFragments,
+    "$fragmentPath/field:$fieldName", // Track field path
+  );
+
+  // Create a new field node with the expanded selections
+  result.add(FieldNode(
+    name: selection.name,
+    alias: selection.alias,
+    arguments: selection.arguments,
+    directives: selection.directives,
+    selectionSet: SelectionSetNode(selections: expandedSelections),
+  ));
+}
+
+/// Processes an inline fragment during expansion.
+///
+/// Handles inline fragments, recursively expanding any nested
+/// fragments they contain.
+void _processInlineFragmentExpansion(
+  InlineFragmentNode selection,
+  Map<String, SourceSelections> fragmentMap,
+  List<SelectionNode> result,
+  Set<String> newVisitedFragments,
+  String fragmentPath,
+) {
+  final typeName =
+      selection.typeCondition?.on.name.value ?? "no-type-condition";
+
+  // Process inline fragments - recursively expand any nested fragments
+  final expandedSelections = _expandFragmentSpreads(
+    selection.selectionSet.selections,
+    fragmentMap,
+    true,
+    newVisitedFragments,
+    "$fragmentPath/inline:$typeName", // Track inline fragment path
+  );
+
+  // Create a new inline fragment node with the expanded selections
+  result.add(InlineFragmentNode(
+    typeCondition: selection.typeCondition,
+    directives: selection.directives,
+    selectionSet: SelectionSetNode(selections: expandedSelections),
+  ));
 }
