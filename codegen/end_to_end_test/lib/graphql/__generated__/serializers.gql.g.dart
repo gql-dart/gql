@@ -71,6 +71,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
           .serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__base.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
+      ..add(GHeroWithoutFragments.serializer)
+      ..add(GHeroWithoutFragmentsData.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__asDroid.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__asHuman.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__base.serializer)
+      ..add(GHeroWithoutFragmentsData_hero__base.serializer)
+      ..add(GHeroWithoutFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
       ..add(GHumanWithArgsData_human.serializer)
@@ -211,6 +220,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<
               GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GHeroWithoutFragmentsData_hero__asHuman_friends)
+          ]),
+          () => new ListBuilder<
+              GHeroWithoutFragmentsData_hero__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(GPostsData_posts)]),
