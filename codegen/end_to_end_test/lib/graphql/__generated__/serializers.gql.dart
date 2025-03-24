@@ -97,6 +97,35 @@ import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.g
     show GHeroWith2Fragments;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.gql.dart'
     show GHeroWith2FragmentsVars, GheroIdVars, GheroNameVars;
+import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.data.gql.dart'
+    show
+        GSearchResultsQueryData_search,
+        GCharacterBasicData,
+        GCharacterDetailsData,
+        GCharacterDetailsData_friends,
+        GCharacterDetailsData_friends_friendsConnection,
+        GCharacterDetailsData_friends_friendsConnection_friends,
+        GFriendInfoData,
+        GFriendInfoData_friendsConnection,
+        GFriendInfoData_friendsConnection_friends,
+        GSearchResultsQueryData,
+        GSearchResultsQueryData_search__asDroid,
+        GSearchResultsQueryData_search__asDroid_friends,
+        GSearchResultsQueryData_search__asDroid_friends_friendsConnection,
+        GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends,
+        GSearchResultsQueryData_search__asHuman,
+        GSearchResultsQueryData_search__asHuman_friends,
+        GSearchResultsQueryData_search__asHuman_friends_friendsConnection,
+        GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends,
+        GSearchResultsQueryData_search__base;
+import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.req.gql.dart'
+    show GSearchResultsQuery;
+import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.var.gql.dart'
+    show
+        GCharacterBasicVars,
+        GCharacterDetailsVars,
+        GFriendInfoVars,
+        GSearchResultsQueryVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
@@ -170,6 +199,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
   ..add(
       GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer)
+  ..add(GSearchResultsQueryData_search.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
@@ -180,6 +210,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAliasedHeroData_empireHero,
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
+  GCharacterBasicData,
+  GCharacterBasicVars,
+  GCharacterDetailsData,
+  GCharacterDetailsData_friends,
+  GCharacterDetailsData_friends_friendsConnection,
+  GCharacterDetailsData_friends_friendsConnection_friends,
+  GCharacterDetailsVars,
   GColorInput,
   GCreateCustomField,
   GCreateCustomFieldData,
@@ -192,6 +229,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GDroidFragmentData,
   GDroidFragmentVars,
   GEpisode,
+  GFriendInfoData,
+  GFriendInfoData_friendsConnection,
+  GFriendInfoData_friendsConnection_friends,
+  GFriendInfoVars,
   GHeroForEpisode,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero__asDroid,
@@ -255,6 +296,18 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GReviewWithDateData,
   GReviewWithDateData_createReview,
   GReviewWithDateVars,
+  GSearchResultsQuery,
+  GSearchResultsQueryData,
+  GSearchResultsQueryData_search__asDroid,
+  GSearchResultsQueryData_search__asDroid_friends,
+  GSearchResultsQueryData_search__asDroid_friends_friendsConnection,
+  GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends,
+  GSearchResultsQueryData_search__asHuman,
+  GSearchResultsQueryData_search__asHuman_friends,
+  GSearchResultsQueryData_search__asHuman_friends_friendsConnection,
+  GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends,
+  GSearchResultsQueryData_search__base,
+  GSearchResultsQueryVars,
   GcomparisonFieldsData,
   GcomparisonFieldsData_friendsConnection,
   GcomparisonFieldsData_friendsConnection_edges,
