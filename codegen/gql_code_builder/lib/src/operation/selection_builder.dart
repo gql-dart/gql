@@ -30,12 +30,10 @@ List<Spec> buildSelectionSetDataClasses({
   required Map<String, SourceSelections> superclassSelections,
   bool built = true,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
-  // Parameters for type-specific fragments
   bool isBaseClass = false,
   String? fragmentTypeName,
   List<InlineFragmentNode>? parentInlineFragments,
   Map<String, String>? typeMap,
-  // Parameter for nested selections
   String? parentFragmentPath,
 }) {
   // Process superclass selections and fragment spreads

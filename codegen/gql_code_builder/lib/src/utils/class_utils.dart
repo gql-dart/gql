@@ -183,6 +183,7 @@ List<Reference> _getImplementedInterfaces({
 ///
 /// Example: For a field "friends" that has subfields, creates a class
 /// to represent the "friends" data.
+/// Builds classes for nested field selections with deduplication.
 List<Spec> buildNestedFieldClasses(
   String name,
   List<SelectionNode> selections,
@@ -196,78 +197,137 @@ List<Spec> buildNestedFieldClasses(
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
   List<InlineFragmentNode> inlineFragments,
   String? parentFragmentPath,
-) =>
-    selections
-        .whereType<FieldNode>()
-        .where(
-          (field) =>
-              field.selectionSet != null &&
-              !dataClassAliasMap.containsKey(builtClassName(
-                  "${name}_${field.alias?.value ?? field.name.value}")),
-        )
-        .expand(
-      (field) {
-        // Preserve the fragment context in the field name
-        final String fieldName =
-            "${name}_${field.alias?.value ?? field.name.value}";
+) {
+  // Track fragment sources to detect shared structures
+  final fragmentSources = <String, String>{};
+  final fragmentDeduplicationMap = <String, String>{};
 
-        final fieldSelections = field.selectionSet != null
-            ? field.selectionSet!.selections
-            : <SelectionNode>[];
+  // First pass: gather information about fragment usage
+  for (final selection in selections.whereType<FragmentSpreadNode>()) {
+    final fragmentName = selection.name.value;
+    fragmentSources[fragmentName] = name;
+  }
 
-        // Track current fragment path to properly set up nested interfaces
-        String currentFragmentPath = parentFragmentPath ?? name;
-        if (name.contains("__as")) {
-          currentFragmentPath = name;
-        }
+  // Process field selections
+  final result = <Spec>[];
+  for (final field in selections.whereType<FieldNode>()) {
+    if (field.selectionSet == null ||
+        dataClassAliasMap.containsKey(builtClassName(
+            "${name}_${field.alias?.value ?? field.name.value}"))) {
+      continue;
+    }
 
-        // Pass parent inline fragments to nested fields
-        List<InlineFragmentNode>? fieldParentInlineFragments;
-        Map<String, String>? fieldTypeMap;
+    final fieldName = field.alias?.value ?? field.name.value;
+    final fieldClassName = "${name}_$fieldName";
 
-        // If the field is within a fragment's selections,
-        // track nested fragments properly
-        if (field.selectionSet != null &&
-            fieldSelections.whereType<InlineFragmentNode>().isNotEmpty) {
-          fieldParentInlineFragments =
-              fieldSelections.whereType<InlineFragmentNode>().toList();
+    // Check if this field comes from a fragment spread
+    final String? sourceFragment = _findSourceFragment(field, fragmentMap);
+    if (sourceFragment != null && fragmentSources.containsKey(sourceFragment)) {
+      // This field comes from a fragment used elsewhere - deduplicate
+      final originalClassName =
+          "${fragmentSources[sourceFragment]!}_$fieldName";
 
-          // Create type map for the field's inline fragments
-          fieldTypeMap = {};
-          for (final frag in fieldParentInlineFragments) {
-            if (frag.typeCondition != null) {
-              final typeName = frag.typeCondition!.on.name.value;
-              fieldTypeMap[typeName] =
-                  builtClassName("${fieldName}__as$typeName");
-            }
-          }
-        }
+      if (fieldClassName != originalClassName) {
+        // Add to deduplication map
+        fragmentDeduplicationMap[fieldClassName] = originalClassName;
 
-        return buildSelectionSetDataClasses(
-          name: fieldName,
-          selections: fieldSelections,
-          fragmentMap: fragmentMap,
-          dataClassAliasMap: dataClassAliasMap,
-          schemaSource: schemaSource,
-          type: unwrapTypeNode(
-            getFieldTypeNode(
-              getTypeDefinitionNode(
-                schemaSource.document,
-                type,
-              )!,
-              field.name.value,
-            ),
-          ).name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: fragmentSelectionsForField(
-            nestedSuperclassSelections,
-            field,
-          ),
-          built: inlineFragments.isNotEmpty ? false : built,
-          whenExtensionConfig: whenExtensionConfig,
-          parentInlineFragments: fieldParentInlineFragments,
-          typeMap: fieldTypeMap,
-          parentFragmentPath: currentFragmentPath,
-        );
-      },
-    ).toList();
+        // Add alias to dataClassAliasMap
+        dataClassAliasMap[builtClassName(fieldClassName)] =
+            refer(builtClassName(originalClassName));
+
+        // Skip generating duplicate class
+        continue;
+      }
+    }
+
+    // Process this field normally
+    result.addAll(_buildNestedFieldClass(
+        name: name,
+        field: field,
+        fragmentMap: fragmentMap,
+        dataClassAliasMap: dataClassAliasMap,
+        schemaSource: schemaSource,
+        type: type,
+        typeOverrides: typeOverrides,
+        nestedSuperclassSelections: nestedSuperclassSelections,
+        built: built,
+        whenExtensionConfig: whenExtensionConfig,
+        inlineFragments: inlineFragments,
+        parentFragmentPath: parentFragmentPath,
+        fragmentDeduplicationMap: fragmentDeduplicationMap));
+  }
+
+  return result;
+}
+
+/// Finds the source fragment for a field, if any.
+String? _findSourceFragment(
+    FieldNode field, Map<String, SourceSelections> fragmentMap) {
+  for (final entry in fragmentMap.entries) {
+    if (entry.value.selections.any((s) =>
+        s is FieldNode &&
+        s.name.value == field.name.value &&
+        s.selectionSet?.selections.isNotEmpty == true)) {
+      return entry.key;
+    }
+  }
+  return null;
+}
+
+/// Builds nested field class with deduplication awareness
+List<Spec> _buildNestedFieldClass(
+    {required String name,
+    required FieldNode field,
+    required Map<String, SourceSelections> fragmentMap,
+    required Map<String, Reference> dataClassAliasMap,
+    required SourceNode schemaSource,
+    required String type,
+    required Map<String, Reference> typeOverrides,
+    required Map<String, SourceSelections> nestedSuperclassSelections,
+    required bool built,
+    required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+    required List<InlineFragmentNode> inlineFragments,
+    required String? parentFragmentPath,
+    required Map<String, String> fragmentDeduplicationMap}) {
+  final fieldName = field.alias?.value ?? field.name.value;
+  final fieldClassName = "${name}_$fieldName";
+
+  // Check if this is an alias target and skip if it is
+  if (fragmentDeduplicationMap.containsValue(fieldClassName)) {
+    return [];
+  }
+
+  final fieldSelections = field.selectionSet?.selections ?? [];
+
+  // Track current fragment path to properly set up nested interfaces
+  String currentFragmentPath = parentFragmentPath ?? name;
+  if (name.contains("__as")) {
+    currentFragmentPath = name;
+  }
+
+  // Apply normal processing logic
+  return buildSelectionSetDataClasses(
+    name: fieldClassName,
+    selections: fieldSelections,
+    fragmentMap: fragmentMap,
+    dataClassAliasMap: dataClassAliasMap,
+    schemaSource: schemaSource,
+    type: unwrapTypeNode(
+      getFieldTypeNode(
+        getTypeDefinitionNode(
+          schemaSource.document,
+          type,
+        )!,
+        field.name.value,
+      ),
+    ).name.value,
+    typeOverrides: typeOverrides,
+    superclassSelections: fragmentSelectionsForField(
+      nestedSuperclassSelections,
+      field,
+    ),
+    built: inlineFragments.isNotEmpty ? false : built,
+    whenExtensionConfig: whenExtensionConfig,
+    parentFragmentPath: currentFragmentPath,
+  );
+}
