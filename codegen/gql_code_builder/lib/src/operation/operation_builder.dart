@@ -47,6 +47,7 @@ List<Spec> buildOperationDataClasses(
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
     selections: selections,
+    docSource: docSource,
     schemaSource: schemaSource,
     type: determineOperationType(
       schemaSource.document,

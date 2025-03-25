@@ -22,6 +22,7 @@ import "../utils/field_utils.dart";
 List<Spec> buildSelectionSetDataClasses({
   required String name,
   required List<SelectionNode> selections,
+  required SourceNode docSource,
   required SourceNode schemaSource,
   required String type,
   required Map<String, Reference> typeOverrides,
@@ -74,6 +75,7 @@ List<Spec> buildSelectionSetDataClasses({
     dataClassAliasMap,
     nestedSuperclassSelections,
     type,
+    docSource,
     schemaSource,
     typeOverrides,
     fragmentMap,
@@ -86,6 +88,7 @@ List<Spec> buildSelectionSetDataClasses({
     selections,
     fragmentMap,
     dataClassAliasMap,
+    docSource,
     schemaSource,
     type,
     typeOverrides,

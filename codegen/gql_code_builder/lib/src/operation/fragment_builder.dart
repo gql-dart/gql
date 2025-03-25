@@ -43,6 +43,7 @@ List<Spec> buildFragmentDataClasses(
     ...buildSelectionSetDataClasses(
       name: frag.name.value,
       selections: selections,
+      docSource: docSource,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
@@ -56,6 +57,7 @@ List<Spec> buildFragmentDataClasses(
     ...buildSelectionSetDataClasses(
       name: "${frag.name.value}Data",
       selections: selections,
+      docSource: docSource,
       schemaSource: schemaSource,
       type: frag.typeCondition.on.name.value,
       typeOverrides: typeOverrides,
