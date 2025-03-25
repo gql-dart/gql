@@ -3,6 +3,7 @@ import "package:gql/ast.dart";
 import "package:gql_code_builder/source.dart";
 import "package:gql_code_builder/src/common.dart";
 
+import "fragment_utils.dart";
 import "selection_utils.dart"; // For mergeSelections
 import "type_utils.dart";
 
@@ -71,8 +72,8 @@ List<Method> buildFieldGetters(
 /// Creates a map of superclass selections based on the current selections and
 /// any fragment spreads. Handles nested fragment interfaces appropriately.
 Map<String, SourceSelections> processSuperclassSelections(
-  String name,
   List<SelectionNode> selections,
+  DocumentNode document,
   Map<String, SourceSelections> superclassSelections,
   Map<String, SourceSelections> fragmentMap,
 ) {
@@ -81,13 +82,16 @@ Map<String, SourceSelections> processSuperclassSelections(
   };
 
   // Handle nested interfaces for fields with type conditions
-  if (_isNestedTypeFragment(name)) {
-    _processNestedTypeInterfaces(
-      name,
-      superclassSelections,
-      nestedSuperclassSelections,
-      fragmentMap,
-    );
+  for (final selection in selections) {
+    if (isNestedTypeFragment(selection, document)) {
+      _processNestedTypeInterfaces(
+        selection,
+        document,
+        superclassSelections,
+        nestedSuperclassSelections,
+        fragmentMap,
+      );
+    }
   }
 
   // Process fragment spreads
@@ -97,7 +101,7 @@ Map<String, SourceSelections> processSuperclassSelections(
           "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
     }
 
-    nestedSuperclassSelections["${selection.name.value}"] = SourceSelections(
+    nestedSuperclassSelections[selection.name.value] = SourceSelections(
       url: fragmentMap[selection.name.value]!.url,
       selections: mergeSelections(
         fragmentMap[selection.name.value]!.selections,
@@ -109,48 +113,40 @@ Map<String, SourceSelections> processSuperclassSelections(
   return nestedSuperclassSelections;
 }
 
-/// Checks if a class name represents a nested type fragment.
-///
-/// Determines if the current class is a specialized nested selection.
-bool _isNestedTypeFragment(String name) =>
-    name.contains("_") && name.contains("__as");
-
 /// Processes nested type interfaces to maintain inheritance hierarchy.
 ///
 /// For nested interfaces like "__asHuman_friends", this adds the appropriate
 /// superclass relationships based on type conditions.
 void _processNestedTypeInterfaces(
-  String name,
+  SelectionNode selection,
+  DocumentNode document,
   Map<String, SourceSelections> superclassSelections,
   Map<String, SourceSelections> nestedSuperclassSelections,
   Map<String, SourceSelections> fragmentMap,
 ) {
-  final parts = name.split("_");
-  final fieldName = parts.last;
-  final typeNamePart = name.split("__as").last.split("_").first;
+  final typeName = getNestedFragmentTypeName(selection, document);
+  if (typeName == null) return;
 
   // Check for corresponding fragment interfaces for this nested field
   for (final superName in superclassSelections.keys.toList()) {
-    if (superName.contains("__as$typeNamePart")) {
-      // Parent fragment with same type condition
+    if (superName.contains("__as$typeName")) {
+      // Found a parent fragment with same type condition
       final baseFragmentName = superName.split("__as").first;
-      final potentialNestedInterface =
-          "${baseFragmentName}__as${typeNamePart}_$fieldName";
 
-      // Check if interface exists
-      bool hasNestedInterface = false;
-      for (final entry in fragmentMap.entries) {
-        if (entry.key.contains(fieldName) &&
-            entry.value.selections.isNotEmpty) {
-          hasNestedInterface = true;
-          break;
+      if (selection is FieldNode) {
+        final fieldName = selection.alias?.value ?? selection.name.value;
+        final potentialNestedInterface =
+            "${baseFragmentName}__as${typeName}_$fieldName";
+
+        // Check if interface exists in fragment map
+        final bool hasNestedInterface = fragmentMap.entries.any((entry) =>
+            entry.key.contains(fieldName) && entry.value.selections.isNotEmpty);
+
+        if (hasNestedInterface) {
+          // Add nested interface
+          nestedSuperclassSelections[potentialNestedInterface] =
+              SourceSelections(url: null, selections: []);
         }
-      }
-
-      if (hasNestedInterface) {
-        // Add nested interface
-        nestedSuperclassSelections[potentialNestedInterface] =
-            SourceSelections(url: null, selections: []);
       }
     }
   }

@@ -39,8 +39,8 @@ List<Spec> buildSelectionSetDataClasses({
 }) {
   // Process superclass selections and fragment spreads
   final nestedSuperclassSelections = processSuperclassSelections(
-    name,
     selections,
+    docSource.document,
     superclassSelections,
     fragmentMap,
   );
