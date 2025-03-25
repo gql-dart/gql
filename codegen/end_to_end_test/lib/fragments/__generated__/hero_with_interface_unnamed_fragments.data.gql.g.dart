@@ -1,45 +1,48 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hero_with_interface_untyped_fragments.data.gql.dart';
+part of 'hero_with_interface_unnamed_fragments.data.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GHeroWithoutFragmentsData> _$gHeroWithoutFragmentsDataSerializer =
-    new _$GHeroWithoutFragmentsDataSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__base>
-    _$gHeroWithoutFragmentsDataHeroBaseSerializer =
-    new _$GHeroWithoutFragmentsData_hero__baseSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__asHuman>
-    _$gHeroWithoutFragmentsDataHeroAsHumanSerializer =
-    new _$GHeroWithoutFragmentsData_hero__asHumanSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__asHuman_friends__base>
-    _$gHeroWithoutFragmentsDataHeroAsHumanFriendsBaseSerializer =
-    new _$GHeroWithoutFragmentsData_hero__asHuman_friends__baseSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman>
-    _$gHeroWithoutFragmentsDataHeroAsHumanFriendsAsHumanSerializer =
-    new _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid>
-    _$gHeroWithoutFragmentsDataHeroAsHumanFriendsAsDroidSerializer =
-    new _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidSerializer();
-Serializer<GHeroWithoutFragmentsData_hero__asDroid>
-    _$gHeroWithoutFragmentsDataHeroAsDroidSerializer =
-    new _$GHeroWithoutFragmentsData_hero__asDroidSerializer();
+Serializer<GHeroWithInterfaceUnnamedFragmentsData>
+    _$gHeroWithInterfaceUnnamedFragmentsDataSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsDataSerializer();
+Serializer<GHeroWithInterfaceUnnamedFragmentsData_hero__base>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroBaseSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__baseSerializer();
+Serializer<GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanSerializer();
+Serializer<GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsBaseSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseSerializer();
+Serializer<
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsAsHumanSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanSerializer();
+Serializer<
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsAsDroidSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidSerializer();
+Serializer<GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid>
+    _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsDroidSerializer =
+    new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidSerializer();
 
-class _$GHeroWithoutFragmentsDataSerializer
-    implements StructuredSerializer<GHeroWithoutFragmentsData> {
+class _$GHeroWithInterfaceUnnamedFragmentsDataSerializer
+    implements StructuredSerializer<GHeroWithInterfaceUnnamedFragmentsData> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData,
-    _$GHeroWithoutFragmentsData
+    GHeroWithInterfaceUnnamedFragmentsData,
+    _$GHeroWithInterfaceUnnamedFragmentsData
   ];
   @override
-  final String wireName = 'GHeroWithoutFragmentsData';
+  final String wireName = 'GHeroWithInterfaceUnnamedFragmentsData';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GHeroWithoutFragmentsData object,
+      Serializers serializers, GHeroWithInterfaceUnnamedFragmentsData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -52,16 +55,17 @@ class _$GHeroWithoutFragmentsDataSerializer
       result
         ..add('hero')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GHeroWithoutFragmentsData_hero)));
+            specifiedType:
+                const FullType(GHeroWithInterfaceUnnamedFragmentsData_hero)));
     }
     return result;
   }
 
   @override
-  GHeroWithoutFragmentsData deserialize(
+  GHeroWithInterfaceUnnamedFragmentsData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithoutFragmentsDataBuilder();
+    final result = new GHeroWithInterfaceUnnamedFragmentsDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -75,8 +79,9 @@ class _$GHeroWithoutFragmentsDataSerializer
           break;
         case 'hero':
           result.hero = serializers.deserialize(value,
-                  specifiedType: const FullType(GHeroWithoutFragmentsData_hero))
-              as GHeroWithoutFragmentsData_hero?;
+                  specifiedType: const FullType(
+                      GHeroWithInterfaceUnnamedFragmentsData_hero))
+              as GHeroWithInterfaceUnnamedFragmentsData_hero?;
           break;
       }
     }
@@ -85,19 +90,21 @@ class _$GHeroWithoutFragmentsDataSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__baseSerializer
-    implements StructuredSerializer<GHeroWithoutFragmentsData_hero__base> {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__baseSerializer
+    implements
+        StructuredSerializer<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__base> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__base,
-    _$GHeroWithoutFragmentsData_hero__base
+    GHeroWithInterfaceUnnamedFragmentsData_hero__base,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__base
   ];
   @override
-  final String wireName = 'GHeroWithoutFragmentsData_hero__base';
+  final String wireName = 'GHeroWithInterfaceUnnamedFragmentsData_hero__base';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers, GHeroWithoutFragmentsData_hero__base object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__base object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -113,10 +120,11 @@ class _$GHeroWithoutFragmentsData_hero__baseSerializer
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__base deserialize(
+  GHeroWithInterfaceUnnamedFragmentsData_hero__base deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithoutFragmentsData_hero__baseBuilder();
+    final result =
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -143,19 +151,22 @@ class _$GHeroWithoutFragmentsData_hero__baseSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHumanSerializer
-    implements StructuredSerializer<GHeroWithoutFragmentsData_hero__asHuman> {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanSerializer
+    implements
+        StructuredSerializer<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__asHuman,
-    _$GHeroWithoutFragmentsData_hero__asHuman
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman
   ];
   @override
-  final String wireName = 'GHeroWithoutFragmentsData_hero__asHuman';
+  final String wireName =
+      'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers, GHeroWithoutFragmentsData_hero__asHuman object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -181,17 +192,18 @@ class _$GHeroWithoutFragmentsData_hero__asHumanSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
               const FullType.nullable(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends)
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends)
             ])));
     }
     return result;
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman deserialize(
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithoutFragmentsData_hero__asHumanBuilder();
+    final result =
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -219,7 +231,7 @@ class _$GHeroWithoutFragmentsData_hero__asHumanSerializer
           result.friends.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType.nullable(
-                    GHeroWithoutFragmentsData_hero__asHuman_friends)
+                    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -229,22 +241,22 @@ class _$GHeroWithoutFragmentsData_hero__asHumanSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__baseSerializer
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseSerializer
     implements
         StructuredSerializer<
-            GHeroWithoutFragmentsData_hero__asHuman_friends__base> {
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__asHuman_friends__base,
-    _$GHeroWithoutFragmentsData_hero__asHuman_friends__base
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
   ];
   @override
   final String wireName =
-      'GHeroWithoutFragmentsData_hero__asHuman_friends__base';
+      'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GHeroWithoutFragmentsData_hero__asHuman_friends__base object,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -256,11 +268,11 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__baseSerializer
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__base deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder();
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -279,22 +291,24 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__baseSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanSerializer
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanSerializer
     implements
         StructuredSerializer<
-            GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman> {
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman,
-    _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
   ];
   @override
   final String wireName =
-      'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman';
+      'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman object,
+  Iterable<Object?> serialize(
+      Serializers serializers,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+          object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -317,11 +331,11 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanSerializer
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder();
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -352,92 +366,24 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidSerializer
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidSerializer
     implements
         StructuredSerializer<
-            GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid> {
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid> {
   @override
   final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid,
-    _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
   ];
   @override
   final String wireName =
-      'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-    ];
-    Object? value;
-    value = object.primaryFunction;
-    if (value != null) {
-      result
-        ..add('primaryFunction')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    return result;
-  }
-
-  @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'primaryFunction':
-          result.primaryFunction = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GHeroWithoutFragmentsData_hero__asDroidSerializer
-    implements StructuredSerializer<GHeroWithoutFragmentsData_hero__asDroid> {
-  @override
-  final Iterable<Type> types = const [
-    GHeroWithoutFragmentsData_hero__asDroid,
-    _$GHeroWithoutFragmentsData_hero__asDroid
-  ];
-  @override
-  final String wireName = 'GHeroWithoutFragmentsData_hero__asDroid';
+      'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GHeroWithoutFragmentsData_hero__asDroid object,
+      Serializers serializers,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+          object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -460,10 +406,11 @@ class _$GHeroWithoutFragmentsData_hero__asDroidSerializer
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asDroid deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithoutFragmentsData_hero__asDroidBuilder();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -494,35 +441,113 @@ class _$GHeroWithoutFragmentsData_hero__asDroidSerializer
   }
 }
 
-class _$GHeroWithoutFragmentsData extends GHeroWithoutFragmentsData {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidSerializer
+    implements
+        StructuredSerializer<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid> {
   @override
-  final String G__typename;
+  final Iterable<Type> types = const [
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid,
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid
+  ];
   @override
-  final GHeroWithoutFragmentsData_hero? hero;
+  final String wireName =
+      'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid';
 
-  factory _$GHeroWithoutFragmentsData(
-          [void Function(GHeroWithoutFragmentsDataBuilder)? updates]) =>
-      (new GHeroWithoutFragmentsDataBuilder()..update(updates))._build();
-
-  _$GHeroWithoutFragmentsData._({required this.G__typename, this.hero})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWithoutFragmentsData', 'G__typename');
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.primaryFunction;
+    if (value != null) {
+      result
+        ..add('primaryFunction')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
   }
 
   @override
-  GHeroWithoutFragmentsData rebuild(
-          void Function(GHeroWithoutFragmentsDataBuilder) updates) =>
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'primaryFunction':
+          result.primaryFunction = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GHeroWithInterfaceUnnamedFragmentsData
+    extends GHeroWithInterfaceUnnamedFragmentsData {
+  @override
+  final String G__typename;
+  @override
+  final GHeroWithInterfaceUnnamedFragmentsData_hero? hero;
+
+  factory _$GHeroWithInterfaceUnnamedFragmentsData(
+          [void Function(GHeroWithInterfaceUnnamedFragmentsDataBuilder)?
+              updates]) =>
+      (new GHeroWithInterfaceUnnamedFragmentsDataBuilder()..update(updates))
+          ._build();
+
+  _$GHeroWithInterfaceUnnamedFragmentsData._(
+      {required this.G__typename, this.hero})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GHeroWithInterfaceUnnamedFragmentsData', 'G__typename');
+  }
+
+  @override
+  GHeroWithInterfaceUnnamedFragmentsData rebuild(
+          void Function(GHeroWithInterfaceUnnamedFragmentsDataBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsDataBuilder toBuilder() =>
-      new GHeroWithoutFragmentsDataBuilder()..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsDataBuilder toBuilder() =>
+      new GHeroWithInterfaceUnnamedFragmentsDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData &&
+    return other is GHeroWithInterfaceUnnamedFragmentsData &&
         G__typename == other.G__typename &&
         hero == other.hero;
   }
@@ -538,31 +563,34 @@ class _$GHeroWithoutFragmentsData extends GHeroWithoutFragmentsData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GHeroWithoutFragmentsData')
+    return (newBuiltValueToStringHelper(
+            r'GHeroWithInterfaceUnnamedFragmentsData')
           ..add('G__typename', G__typename)
           ..add('hero', hero))
         .toString();
   }
 }
 
-class GHeroWithoutFragmentsDataBuilder
+class GHeroWithInterfaceUnnamedFragmentsDataBuilder
     implements
-        Builder<GHeroWithoutFragmentsData, GHeroWithoutFragmentsDataBuilder> {
-  _$GHeroWithoutFragmentsData? _$v;
+        Builder<GHeroWithInterfaceUnnamedFragmentsData,
+            GHeroWithInterfaceUnnamedFragmentsDataBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithoutFragmentsData_hero? _hero;
-  GHeroWithoutFragmentsData_hero? get hero => _$this._hero;
-  set hero(GHeroWithoutFragmentsData_hero? hero) => _$this._hero = hero;
+  GHeroWithInterfaceUnnamedFragmentsData_hero? _hero;
+  GHeroWithInterfaceUnnamedFragmentsData_hero? get hero => _$this._hero;
+  set hero(GHeroWithInterfaceUnnamedFragmentsData_hero? hero) =>
+      _$this._hero = hero;
 
-  GHeroWithoutFragmentsDataBuilder() {
-    GHeroWithoutFragmentsData._initializeBuilder(this);
+  GHeroWithInterfaceUnnamedFragmentsDataBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData._initializeBuilder(this);
   }
 
-  GHeroWithoutFragmentsDataBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -573,32 +601,33 @@ class GHeroWithoutFragmentsDataBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData other) {
+  void replace(GHeroWithInterfaceUnnamedFragmentsData other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData;
+    _$v = other as _$GHeroWithInterfaceUnnamedFragmentsData;
   }
 
   @override
-  void update(void Function(GHeroWithoutFragmentsDataBuilder)? updates) {
+  void update(
+      void Function(GHeroWithInterfaceUnnamedFragmentsDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData build() => _build();
 
-  _$GHeroWithoutFragmentsData _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GHeroWithoutFragmentsData', 'G__typename'),
+        new _$GHeroWithInterfaceUnnamedFragmentsData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GHeroWithInterfaceUnnamedFragmentsData', 'G__typename'),
             hero: hero);
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__base
-    extends GHeroWithoutFragmentsData_hero__base {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__base
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__base {
   @override
   final String G__typename;
   @override
@@ -606,36 +635,41 @@ class _$GHeroWithoutFragmentsData_hero__base
   @override
   final String name;
 
-  factory _$GHeroWithoutFragmentsData_hero__base(
-          [void Function(GHeroWithoutFragmentsData_hero__baseBuilder)?
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__base(
+          [void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__baseBuilder()..update(updates))
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder()
+            ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__base._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__base._(
       {required this.G__typename, required this.id, required this.name})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWithoutFragmentsData_hero__base', 'G__typename');
+        id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithoutFragmentsData_hero__base', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroWithoutFragmentsData_hero__base', 'name');
+        name, r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'name');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__base rebuild(
-          void Function(GHeroWithoutFragmentsData_hero__baseBuilder) updates) =>
+  GHeroWithInterfaceUnnamedFragmentsData_hero__base rebuild(
+          void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__baseBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__baseBuilder()..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder toBuilder() =>
+      new GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__base &&
+    return other is GHeroWithInterfaceUnnamedFragmentsData_hero__base &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name;
@@ -653,7 +687,8 @@ class _$GHeroWithoutFragmentsData_hero__base
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GHeroWithoutFragmentsData_hero__base')
+    return (newBuiltValueToStringHelper(
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__base')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name))
@@ -661,11 +696,11 @@ class _$GHeroWithoutFragmentsData_hero__base
   }
 }
 
-class GHeroWithoutFragmentsData_hero__baseBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__base,
-            GHeroWithoutFragmentsData_hero__baseBuilder> {
-  _$GHeroWithoutFragmentsData_hero__base? _$v;
+        Builder<GHeroWithInterfaceUnnamedFragmentsData_hero__base,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__base? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -679,11 +714,11 @@ class GHeroWithoutFragmentsData_hero__baseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GHeroWithoutFragmentsData_hero__baseBuilder() {
-    GHeroWithoutFragmentsData_hero__base._initializeBuilder(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__base._initializeBuilder(this);
   }
 
-  GHeroWithoutFragmentsData_hero__baseBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -695,36 +730,39 @@ class GHeroWithoutFragmentsData_hero__baseBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__base other) {
+  void replace(GHeroWithInterfaceUnnamedFragmentsData_hero__base other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__base;
+    _$v = other as _$GHeroWithInterfaceUnnamedFragmentsData_hero__base;
   }
 
   @override
   void update(
-      void Function(GHeroWithoutFragmentsData_hero__baseBuilder)? updates) {
+      void Function(GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__base build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__base build() => _build();
 
-  _$GHeroWithoutFragmentsData_hero__base _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__base _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData_hero__base._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroWithoutFragmentsData_hero__base', 'G__typename'),
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__base._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__base',
+                'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWithoutFragmentsData_hero__base', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroWithoutFragmentsData_hero__base', 'name'));
+                id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'name'));
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman
-    extends GHeroWithoutFragmentsData_hero__asHuman {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman {
   @override
   final String G__typename;
   @override
@@ -734,43 +772,48 @@ class _$GHeroWithoutFragmentsData_hero__asHuman
   @override
   final String? homePlanet;
   @override
-  final BuiltList<GHeroWithoutFragmentsData_hero__asHuman_friends?>? friends;
+  final BuiltList<
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>? friends;
 
-  factory _$GHeroWithoutFragmentsData_hero__asHuman(
-          [void Function(GHeroWithoutFragmentsData_hero__asHumanBuilder)?
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman(
+          [void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__asHumanBuilder()..update(updates))
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder()
+            ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman._(
       {required this.G__typename,
       required this.id,
       required this.name,
       this.homePlanet,
       this.friends})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWithoutFragmentsData_hero__asHuman', 'G__typename');
+        id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithoutFragmentsData_hero__asHuman', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroWithoutFragmentsData_hero__asHuman', 'name');
+        name, r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman', 'name');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman rebuild(
-          void Function(GHeroWithoutFragmentsData_hero__asHumanBuilder)
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman rebuild(
+          void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__asHumanBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__asHumanBuilder()..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder toBuilder() =>
+      new GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__asHuman &&
+    return other is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
@@ -793,7 +836,7 @@ class _$GHeroWithoutFragmentsData_hero__asHuman
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GHeroWithoutFragmentsData_hero__asHuman')
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -803,11 +846,11 @@ class _$GHeroWithoutFragmentsData_hero__asHuman
   }
 }
 
-class GHeroWithoutFragmentsData_hero__asHumanBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__asHuman,
-            GHeroWithoutFragmentsData_hero__asHumanBuilder> {
-  _$GHeroWithoutFragmentsData_hero__asHuman? _$v;
+        Builder<GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -825,20 +868,23 @@ class GHeroWithoutFragmentsData_hero__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  ListBuilder<GHeroWithoutFragmentsData_hero__asHuman_friends?>? _friends;
-  ListBuilder<GHeroWithoutFragmentsData_hero__asHuman_friends?> get friends =>
-      _$this._friends ??=
-          new ListBuilder<GHeroWithoutFragmentsData_hero__asHuman_friends?>();
+  ListBuilder<GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>?
+      _friends;
+  ListBuilder<GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>
+      get friends => _$this._friends ??= new ListBuilder<
+          GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>();
   set friends(
-          ListBuilder<GHeroWithoutFragmentsData_hero__asHuman_friends?>?
+          ListBuilder<
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>?
               friends) =>
       _$this._friends = friends;
 
-  GHeroWithoutFragmentsData_hero__asHumanBuilder() {
-    GHeroWithoutFragmentsData_hero__asHuman._initializeBuilder(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman._initializeBuilder(
+        this);
   }
 
-  GHeroWithoutFragmentsData_hero__asHumanBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -852,31 +898,39 @@ class GHeroWithoutFragmentsData_hero__asHumanBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__asHuman other) {
+  void replace(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__asHuman;
+    _$v = other as _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman;
   }
 
   @override
   void update(
-      void Function(GHeroWithoutFragmentsData_hero__asHumanBuilder)? updates) {
+      void Function(
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman build() => _build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman _build() {
-    _$GHeroWithoutFragmentsData_hero__asHuman _$result;
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman _build() {
+    _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman _$result;
     try {
       _$result = _$v ??
-          new _$GHeroWithoutFragmentsData_hero__asHuman._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GHeroWithoutFragmentsData_hero__asHuman', 'G__typename'),
+          new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
+                  'G__typename'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GHeroWithoutFragmentsData_hero__asHuman', 'id'),
+                  id,
+                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
+                  'id'),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GHeroWithoutFragmentsData_hero__asHuman', 'name'),
+                  name,
+                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
+                  'name'),
               homePlanet: homePlanet,
               friends: _friends?.build());
     } catch (_) {
@@ -886,7 +940,7 @@ class GHeroWithoutFragmentsData_hero__asHumanBuilder
         _friends?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GHeroWithoutFragmentsData_hero__asHuman',
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
             _$failedField,
             e.toString());
       }
@@ -897,44 +951,46 @@ class GHeroWithoutFragmentsData_hero__asHumanBuilder
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__base
-    extends GHeroWithoutFragmentsData_hero__asHuman_friends__base {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base {
   @override
   final String G__typename;
 
-  factory _$GHeroWithoutFragmentsData_hero__asHuman_friends__base(
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base(
           [void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder)?
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder()
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder()
             ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__base._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base._(
       {required this.G__typename})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
-        r'GHeroWithoutFragmentsData_hero__asHuman_friends__base',
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base',
         'G__typename');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__base rebuild(
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base rebuild(
           void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder)
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder()
-        ..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder
+      toBuilder() =>
+          new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__asHuman_friends__base &&
+    return other
+            is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base &&
         G__typename == other.G__typename;
   }
 
@@ -949,28 +1005,30 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__base
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GHeroWithoutFragmentsData_hero__asHuman_friends__base')
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base')
           ..add('G__typename', G__typename))
         .toString();
   }
 }
 
-class GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__asHuman_friends__base,
-            GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder> {
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__base? _$v;
+        Builder<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder() {
-    GHeroWithoutFragmentsData_hero__asHuman_friends__base._initializeBuilder(
-        this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+        ._initializeBuilder(this);
   }
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -980,36 +1038,42 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__asHuman_friends__base other) {
+  void replace(
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+          other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__asHuman_friends__base;
+    _$v = other
+        as _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base;
   }
 
   @override
   void update(
       void Function(
-              GHeroWithoutFragmentsData_hero__asHuman_friends__baseBuilder)?
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__base build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base build() =>
+      _build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__base _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+      _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData_hero__asHuman_friends__base._(
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+            ._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__base',
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base',
                 'G__typename'));
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
-    extends GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman {
   @override
   final String G__typename;
   @override
@@ -1019,15 +1083,15 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
   @override
   final String? homePlanet;
 
-  factory _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman(
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman(
           [void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder)?
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder()
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder()
             ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman._(
       {required this.G__typename,
       required this.id,
       required this.name,
@@ -1035,30 +1099,36 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
-        r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman',
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
         'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman', 'id');
-    BuiltValueNullFieldError.checkNotNull(name,
-        r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman', 'name');
+        id,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
+        'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
+        'name');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman rebuild(
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman rebuild(
           void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder)
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder()
-        ..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder
+      toBuilder() =>
+          new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman &&
+    return other
+            is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
@@ -1079,7 +1149,7 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman')
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -1088,11 +1158,12 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman
   }
 }
 
-class GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman,
-            GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder> {
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman? _$v;
+        Builder<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1110,12 +1181,13 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder
   String? get homePlanet => _$this._homePlanet;
   set homePlanet(String? homePlanet) => _$this._homePlanet = homePlanet;
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder() {
-    GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman._initializeBuilder(
-        this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+        ._initializeBuilder(this);
   }
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -1128,36 +1200,39 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman other) {
+  void replace(
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+          other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman;
+    _$v = other
+        as _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman;
   }
 
   @override
   void update(
       void Function(
-              GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder)?
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+      build() => _build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+      _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman._(
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman',
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
                 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman',
-                'id'),
+            id: BuiltValueNullFieldError.checkNotNull(id,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman',
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
                 'name'),
             homePlanet: homePlanet);
     replace(_$result);
@@ -1165,8 +1240,8 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asHumanBuilder
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
-    extends GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid {
   @override
   final String G__typename;
   @override
@@ -1176,15 +1251,15 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
   @override
   final String? primaryFunction;
 
-  factory _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid(
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid(
           [void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder)?
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder()
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder()
             ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid._(
       {required this.G__typename,
       required this.id,
       required this.name,
@@ -1192,30 +1267,36 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
-        r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid',
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
         'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid', 'id');
-    BuiltValueNullFieldError.checkNotNull(name,
-        r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid', 'name');
+        id,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
+        'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
+        'name');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid rebuild(
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid rebuild(
           void Function(
-                  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder)
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder()
-        ..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder
+      toBuilder() =>
+          new GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid &&
+    return other
+            is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
@@ -1236,7 +1317,7 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid')
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -1245,11 +1326,12 @@ class _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid
   }
 }
 
-class GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid,
-            GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder> {
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid? _$v;
+        Builder<
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1268,12 +1350,13 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder
   set primaryFunction(String? primaryFunction) =>
       _$this._primaryFunction = primaryFunction;
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder() {
-    GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid._initializeBuilder(
-        this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+        ._initializeBuilder(this);
   }
 
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -1286,36 +1369,39 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid other) {
+  void replace(
+      GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+          other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid;
+    _$v = other
+        as _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid;
   }
 
   @override
   void update(
       void Function(
-              GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder)?
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+      build() => _build();
 
-  _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+      _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid._(
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid',
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
                 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid',
-                'id'),
+            id: BuiltValueNullFieldError.checkNotNull(id,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name,
-                r'GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid',
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
                 'name'),
             primaryFunction: primaryFunction);
     replace(_$result);
@@ -1323,8 +1409,8 @@ class GHeroWithoutFragmentsData_hero__asHuman_friends__asDroidBuilder
   }
 }
 
-class _$GHeroWithoutFragmentsData_hero__asDroid
-    extends GHeroWithoutFragmentsData_hero__asDroid {
+class _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid
+    extends GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid {
   @override
   final String G__typename;
   @override
@@ -1334,40 +1420,44 @@ class _$GHeroWithoutFragmentsData_hero__asDroid
   @override
   final String? primaryFunction;
 
-  factory _$GHeroWithoutFragmentsData_hero__asDroid(
-          [void Function(GHeroWithoutFragmentsData_hero__asDroidBuilder)?
+  factory _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid(
+          [void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder)?
               updates]) =>
-      (new GHeroWithoutFragmentsData_hero__asDroidBuilder()..update(updates))
+      (new GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder()
+            ..update(updates))
           ._build();
 
-  _$GHeroWithoutFragmentsData_hero__asDroid._(
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid._(
       {required this.G__typename,
       required this.id,
       required this.name,
       this.primaryFunction})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroWithoutFragmentsData_hero__asDroid', 'G__typename');
+        id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GHeroWithoutFragmentsData_hero__asDroid', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroWithoutFragmentsData_hero__asDroid', 'name');
+        name, r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'name');
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asDroid rebuild(
-          void Function(GHeroWithoutFragmentsData_hero__asDroidBuilder)
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid rebuild(
+          void Function(
+                  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroWithoutFragmentsData_hero__asDroidBuilder toBuilder() =>
-      new GHeroWithoutFragmentsData_hero__asDroidBuilder()..replace(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder toBuilder() =>
+      new GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GHeroWithoutFragmentsData_hero__asDroid &&
+    return other is GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
@@ -1388,7 +1478,7 @@ class _$GHeroWithoutFragmentsData_hero__asDroid
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GHeroWithoutFragmentsData_hero__asDroid')
+            r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
@@ -1397,11 +1487,11 @@ class _$GHeroWithoutFragmentsData_hero__asDroid
   }
 }
 
-class GHeroWithoutFragmentsData_hero__asDroidBuilder
+class GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder
     implements
-        Builder<GHeroWithoutFragmentsData_hero__asDroid,
-            GHeroWithoutFragmentsData_hero__asDroidBuilder> {
-  _$GHeroWithoutFragmentsData_hero__asDroid? _$v;
+        Builder<GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid,
+            GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder> {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1420,11 +1510,12 @@ class GHeroWithoutFragmentsData_hero__asDroidBuilder
   set primaryFunction(String? primaryFunction) =>
       _$this._primaryFunction = primaryFunction;
 
-  GHeroWithoutFragmentsData_hero__asDroidBuilder() {
-    GHeroWithoutFragmentsData_hero__asDroid._initializeBuilder(this);
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder() {
+    GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid._initializeBuilder(
+        this);
   }
 
-  GHeroWithoutFragmentsData_hero__asDroidBuilder get _$this {
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -1437,29 +1528,35 @@ class GHeroWithoutFragmentsData_hero__asDroidBuilder
   }
 
   @override
-  void replace(GHeroWithoutFragmentsData_hero__asDroid other) {
+  void replace(GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GHeroWithoutFragmentsData_hero__asDroid;
+    _$v = other as _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid;
   }
 
   @override
   void update(
-      void Function(GHeroWithoutFragmentsData_hero__asDroidBuilder)? updates) {
+      void Function(
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GHeroWithoutFragmentsData_hero__asDroid build() => _build();
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid build() => _build();
 
-  _$GHeroWithoutFragmentsData_hero__asDroid _build() {
+  _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid _build() {
     final _$result = _$v ??
-        new _$GHeroWithoutFragmentsData_hero__asDroid._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroWithoutFragmentsData_hero__asDroid', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWithoutFragmentsData_hero__asDroid', 'id'),
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(id,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroWithoutFragmentsData_hero__asDroid', 'name'),
+                name,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid',
+                'name'),
             primaryFunction: primaryFunction);
     replace(_$result);
     return _$result;

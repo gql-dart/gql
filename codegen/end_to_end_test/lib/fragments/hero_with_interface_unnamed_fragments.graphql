@@ -1,4 +1,4 @@
-query HeroWithoutFragments($episode: Episode!) {
+query HeroWithInterfaceUnnamedFragments($episode: Episode!) {
   hero(episode: $episode) {
     id
     name

@@ -4,9 +4,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:gql/ast.dart' as _i1;
 
-const HeroWithoutFragments = _i1.OperationDefinitionNode(
+const HeroWithInterfaceUnnamedFragments = _i1.OperationDefinitionNode(
   type: _i1.OperationType.query,
-  name: _i1.NameNode(value: 'HeroWithoutFragments'),
+  name: _i1.NameNode(value: 'HeroWithInterfaceUnnamedFragments'),
   variableDefinitions: [
     _i1.VariableDefinitionNode(
       variable: _i1.VariableNode(name: _i1.NameNode(value: 'episode')),
@@ -153,4 +153,5 @@ const HeroWithoutFragments = _i1.OperationDefinitionNode(
     )
   ]),
 );
-const document = _i1.DocumentNode(definitions: [HeroWithoutFragments]);
+const document =
+    _i1.DocumentNode(definitions: [HeroWithInterfaceUnnamedFragments]);

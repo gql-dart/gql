@@ -71,15 +71,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
           .serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__base.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
-      ..add(GHeroWithoutFragments.serializer)
-      ..add(GHeroWithoutFragmentsData.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__asDroid.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__asHuman.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__asHuman_friends__base.serializer)
-      ..add(GHeroWithoutFragmentsData_hero__base.serializer)
-      ..add(GHeroWithoutFragmentsVars.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragments.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman.serializer)
+      ..add(
+          GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+              .serializer)
+      ..add(
+          GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+              .serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+          .serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__base.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
       ..add(GHumanWithArgsData_human.serializer)
@@ -223,10 +228,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
-                GHeroWithoutFragmentsData_hero__asHuman_friends)
+                GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends)
           ]),
           () => new ListBuilder<
-              GHeroWithoutFragmentsData_hero__asHuman_friends?>())
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(GPostsData_posts)]),

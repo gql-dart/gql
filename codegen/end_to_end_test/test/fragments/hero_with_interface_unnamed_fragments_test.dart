@@ -1,11 +1,11 @@
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_untyped_fragments.data.gql.dart';
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.data.gql.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('hero with interface subtyped fragments', () {
     // Create shared test data
-    late GHeroWithoutFragmentsData heroData;
-    late GHeroWithoutFragmentsData_hero__asHuman humanHero;
+    late GHeroWithInterfaceUnnamedFragmentsData heroData;
+    late GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman humanHero;
 
     setUp(() {
       // Create raw JSON data for our hero that includes all fields
@@ -34,8 +34,9 @@ void main() {
       };
 
       // Deserialize the entire query response
-      heroData = GHeroWithoutFragmentsData.fromJson(queryJson)!;
-      humanHero = heroData.hero! as GHeroWithoutFragmentsData_hero__asHuman;
+      heroData = GHeroWithInterfaceUnnamedFragmentsData.fromJson(queryJson)!;
+      humanHero = heroData.hero!
+          as GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman;
     });
 
     test('when extension correctly retrieves hero name', () {
@@ -86,18 +87,20 @@ void main() {
       // But we can at least verify that the correct aliases are being used
       // by checking instance types
       expect(
-        heroData.hero is GHeroWithoutFragmentsData_hero,
+        heroData.hero is GHeroWithInterfaceUnnamedFragmentsData_hero,
         isTrue,
       );
 
       // Verify friends use the same structure regardless of parent type
-      if (heroData.hero is GHeroWithoutFragmentsData_hero__asHuman) {
-        final humanHero =
-            heroData.hero as GHeroWithoutFragmentsData_hero__asHuman;
+      if (heroData.hero
+          is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman) {
+        final humanHero = heroData.hero
+            as GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman;
         if (humanHero.friends != null && humanHero.friends!.isNotEmpty) {
           for (final friend in humanHero.friends!) {
             expect(
-              friend is GHeroWithoutFragmentsData_hero__asHuman_friends,
+              friend
+                  is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends,
               isTrue,
             );
           }
@@ -111,8 +114,8 @@ void main() {
       expect(heroData.hero!.name, equals('Luke Skywalker'));
 
       // Access base fields through a concrete type
-      final humanHero =
-          heroData.hero! as GHeroWithoutFragmentsData_hero__asHuman;
+      final humanHero = heroData.hero!
+          as GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman;
       expect(humanHero.id, equals('human-1'));
       expect(humanHero.name, equals('Luke Skywalker'));
     });
@@ -122,17 +125,19 @@ void main() {
       final json = heroData.toJson();
 
       // Deserialize back
-      final deserialized = GHeroWithoutFragmentsData.fromJson(json);
+      final deserialized =
+          GHeroWithInterfaceUnnamedFragmentsData.fromJson(json);
 
       // Verify type information is preserved
       expect(
-        deserialized!.hero is GHeroWithoutFragmentsData_hero__asHuman,
+        deserialized!.hero
+            is GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
         isTrue,
       );
 
       // Verify fields are preserved
-      final deserializedHumanHero =
-          deserialized.hero! as GHeroWithoutFragmentsData_hero__asHuman;
+      final deserializedHumanHero = deserialized.hero!
+          as GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman;
       expect(deserializedHumanHero.homePlanet, equals('Tatooine'));
     });
   });

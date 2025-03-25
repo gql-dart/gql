@@ -87,21 +87,21 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GdroidFieldsFragmentVars,
         GheroFieldsFragmentVars,
         GhumanFieldsFragmentVars;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_untyped_fragments.data.gql.dart'
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.data.gql.dart'
     show
-        GHeroWithoutFragmentsData_hero,
-        GHeroWithoutFragmentsData_hero__asHuman_friends,
-        GHeroWithoutFragmentsData,
-        GHeroWithoutFragmentsData_hero__asDroid,
-        GHeroWithoutFragmentsData_hero__asHuman,
-        GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid,
-        GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman,
-        GHeroWithoutFragmentsData_hero__asHuman_friends__base,
-        GHeroWithoutFragmentsData_hero__base;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_untyped_fragments.req.gql.dart'
-    show GHeroWithoutFragments;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_untyped_fragments.var.gql.dart'
-    show GHeroWithoutFragmentsVars;
+        GHeroWithInterfaceUnnamedFragmentsData_hero,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends,
+        GHeroWithInterfaceUnnamedFragmentsData,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base,
+        GHeroWithInterfaceUnnamedFragmentsData_hero__base;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.req.gql.dart'
+    show GHeroWithInterfaceUnnamedFragments;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.var.gql.dart'
+    show GHeroWithInterfaceUnnamedFragmentsVars;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.data.gql.dart'
     show
         GHeroWith2FragmentsData,
@@ -214,8 +214,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
   ..add(
       GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer)
-  ..add(GHeroWithoutFragmentsData_hero.serializer)
-  ..add(GHeroWithoutFragmentsData_hero__asHuman_friends.serializer)
+  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero.serializer)
+  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends.serializer)
   ..add(GSearchResultsQueryData_search.serializer)
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
@@ -281,15 +281,15 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base,
   GHeroWithInterfaceSubTypedFragmentsData_hero__base,
   GHeroWithInterfaceSubTypedFragmentsVars,
-  GHeroWithoutFragments,
-  GHeroWithoutFragmentsData,
-  GHeroWithoutFragmentsData_hero__asDroid,
-  GHeroWithoutFragmentsData_hero__asHuman,
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asDroid,
-  GHeroWithoutFragmentsData_hero__asHuman_friends__asHuman,
-  GHeroWithoutFragmentsData_hero__asHuman_friends__base,
-  GHeroWithoutFragmentsData_hero__base,
-  GHeroWithoutFragmentsVars,
+  GHeroWithInterfaceUnnamedFragments,
+  GHeroWithInterfaceUnnamedFragmentsData,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base,
+  GHeroWithInterfaceUnnamedFragmentsData_hero__base,
+  GHeroWithInterfaceUnnamedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,
   GHumanWithArgsData_human,
