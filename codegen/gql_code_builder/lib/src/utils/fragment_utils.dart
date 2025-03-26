@@ -1,5 +1,6 @@
 import "package:gql/ast.dart";
 
+import "../../source.dart";
 import "../common.dart";
 
 /// Determines if a selection represents a nested type fragment by examining
@@ -132,3 +133,47 @@ String? getInlineFragmentTypeName(InlineFragmentNode fragment) =>
 /// Gets the generated class name for a specific inline fragment type
 String getInlineFragmentClassName(String baseName, String typeName) =>
     builtClassName("${baseName}__as$typeName");
+
+String determineFragmentPath({
+  required String name,
+  required String? parentFragmentPath,
+  required SourceNode docSource,
+  required String? fragmentTypeName,
+}) {
+  // If we have a fragmentTypeName, this selection is part of a type condition
+  if (fragmentTypeName != null) {
+    return name;
+  }
+
+  // Check for inline fragments in the document that match this name
+  final hasInlineFragment = docSource.document.definitions.any((def) {
+    if (def is OperationDefinitionNode) {
+      return _hasInlineFragmentForName(def.selectionSet, name);
+    }
+    if (def is FragmentDefinitionNode) {
+      return _hasInlineFragmentForName(def.selectionSet, name);
+    }
+    return false;
+  });
+
+  return hasInlineFragment ? name : (parentFragmentPath ?? name);
+}
+
+bool _hasInlineFragmentForName(SelectionSetNode selectionSet, String name) {
+  for (final selection in selectionSet.selections) {
+    if (selection is InlineFragmentNode && selection.typeCondition != null) {
+      final typeName = selection.typeCondition!.on.name.value;
+      if (name.contains(typeName)) {
+        return true;
+      }
+    }
+
+    // Check nested selections
+    if (selection is FieldNode && selection.selectionSet != null) {
+      if (_hasInlineFragmentForName(selection.selectionSet!, name)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

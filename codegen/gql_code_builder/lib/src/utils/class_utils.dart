@@ -8,6 +8,7 @@ import "package:gql_code_builder/src/inline_fragment_classes.dart";
 
 import "../operation/data.dart";
 import "field_utils.dart";
+import "fragment_utils.dart";
 import "type_utils.dart";
 
 /// Builds output classes from selections.
@@ -202,6 +203,7 @@ List<Spec> buildNestedFieldClasses(
   InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
   List<InlineFragmentNode> inlineFragments,
   String? parentFragmentPath,
+  String? fragmentTypeName,
 ) {
   // Track fragment sources to detect shared structures
   final fragmentSources = <String, String>{};
@@ -281,21 +283,23 @@ String? _findSourceFragment(
 }
 
 /// Builds nested field class with deduplication awareness
-List<Spec> _buildNestedFieldClass(
-    {required String name,
-    required FieldNode field,
-    required Map<String, SourceSelections> fragmentMap,
-    required Map<String, Reference> dataClassAliasMap,
-    required SourceNode docSource,
-    required SourceNode schemaSource,
-    required String type,
-    required Map<String, Reference> typeOverrides,
-    required Map<String, SourceSelections> nestedSuperclassSelections,
-    required bool built,
-    required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
-    required List<InlineFragmentNode> inlineFragments,
-    required String? parentFragmentPath,
-    required Map<String, String> fragmentDeduplicationMap}) {
+List<Spec> _buildNestedFieldClass({
+  required String name,
+  required FieldNode field,
+  required Map<String, SourceSelections> fragmentMap,
+  required Map<String, Reference> dataClassAliasMap,
+  required SourceNode docSource,
+  required SourceNode schemaSource,
+  required String type,
+  required Map<String, Reference> typeOverrides,
+  required Map<String, SourceSelections> nestedSuperclassSelections,
+  required bool built,
+  required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
+  required List<InlineFragmentNode> inlineFragments,
+  required String? parentFragmentPath,
+  required Map<String, String> fragmentDeduplicationMap,
+  String? fragmentTypeName,
+}) {
   final fieldName = field.alias?.value ?? field.name.value;
   final fieldClassName = "${name}_$fieldName";
 
@@ -307,10 +311,11 @@ List<Spec> _buildNestedFieldClass(
   final fieldSelections = field.selectionSet?.selections ?? [];
 
   // Track current fragment path to properly set up nested interfaces
-  String currentFragmentPath = parentFragmentPath ?? name;
-  if (name.contains("__as")) {
-    currentFragmentPath = name;
-  }
+  final currentFragmentPath = determineFragmentPath(
+      name: name,
+      parentFragmentPath: parentFragmentPath,
+      docSource: docSource,
+      fragmentTypeName: fragmentTypeName);
 
   // Apply normal processing logic
   return buildSelectionSetDataClasses(

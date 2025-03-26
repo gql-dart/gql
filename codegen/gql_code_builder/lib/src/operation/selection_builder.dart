@@ -97,6 +97,7 @@ List<Spec> buildSelectionSetDataClasses({
     whenExtensionConfig,
     inlineFragments,
     parentFragmentPath,
+    fragmentTypeName,
   ));
 
   return result;
