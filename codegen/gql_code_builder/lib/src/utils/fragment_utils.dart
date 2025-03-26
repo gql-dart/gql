@@ -1,5 +1,7 @@
 import "package:gql/ast.dart";
 
+import "../common.dart";
+
 /// Determines if a selection represents a nested type fragment by examining
 /// its AST structure rather than name patterns.
 ///
@@ -85,3 +87,48 @@ String? getNestedFragmentTypeName(
   final inlineFragment = getContainingInlineFragment(selection, document);
   return inlineFragment?.typeCondition?.on.name.value;
 }
+
+/// Validates that all fragment type conditions reference valid types in the schema.
+/// Throws an Exception if any type is not found in the schema.
+void validateFragmentTypes(
+    List<InlineFragmentNode> inlineFragments, DocumentNode schema) {
+  for (final fragment in inlineFragments) {
+    if (fragment.typeCondition != null) {
+      final typeName = fragment.typeCondition!.on.name.value;
+      final typeDef = getTypeDefinitionNode(schema, typeName);
+      if (typeDef == null) {
+        throw Exception(
+            "Could not find type definition for $typeName in schema");
+      }
+    }
+  }
+}
+
+/// Creates a mapping of GraphQL type names to their generated Dart class names
+/// for a set of inline fragments.
+///
+/// @param baseName The base name of the parent type/operation
+/// @param inlineFragments The list of inline fragments to process
+/// @returns A map where keys are GraphQL type names (e.g. "Human") and
+///         values are the generated Dart class names (e.g. "GQueryData__asHuman")
+Map<String, String> buildInlineFragmentTypeMap(
+  String baseName,
+  List<InlineFragmentNode> inlineFragments,
+) {
+  final typeMap = <String, String>{};
+  for (final frag in inlineFragments) {
+    if (frag.typeCondition != null) {
+      final typeName = frag.typeCondition!.on.name.value;
+      typeMap[typeName] = builtClassName("${baseName}__as$typeName");
+    }
+  }
+  return typeMap;
+}
+
+/// Gets the concrete type name (the type condition) from an inline fragment
+String? getInlineFragmentTypeName(InlineFragmentNode fragment) =>
+    fragment.typeCondition?.on.name.value;
+
+/// Gets the generated class name for a specific inline fragment type
+String getInlineFragmentClassName(String baseName, String typeName) =>
+    builtClassName("${baseName}__as$typeName");

@@ -6,6 +6,7 @@ import "package:gql_code_builder/src/when_extension.dart";
 import "../source.dart";
 import "./common.dart";
 import "./operation/data.dart";
+import "utils/fragment_utils.dart";
 
 /// Builds a set of classes to represent GraphQL inline fragments in Dart.
 ///
@@ -54,36 +55,39 @@ List<Spec> buildInlineFragmentClasses({
   required bool built,
   required InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig,
 }) {
-  // Create a mapping of GraphQL type names to generated Dart class names
-  final typeMap = _buildTypeMap(name, inlineFragments);
+  // Validate all fragment types exist in schema
+  validateFragmentTypes(inlineFragments, schemaSource.document);
 
-  // Generate the "when" extension for pattern matching on concrete types if configured
-  final whenExtension = _buildWhenExtension(
-    name: name,
-    inlineFragments: inlineFragments,
-    config: whenExtensionConfig,
-    dataClassAliasMap: dataClassAliasMap,
-  );
+  // Create mapping of GraphQL type names to generated class names
+  final typeMap = buildInlineFragmentTypeMap(name, inlineFragments);
 
   // Filter out inline fragments for the base class
   final baseClassSelections =
       selections.where((s) => s is! InlineFragmentNode).toList();
 
   final List<Spec> result = [
-    // 1. Abstract root class that all concrete classes implement
+    // Abstract root class that all concrete classes implement
     _buildRootClass(
       name: name,
       fieldGetters: fieldGetters,
       superclassSelections: superclassSelections,
       dataClassAliasMap: dataClassAliasMap,
       inlineFragments: inlineFragments,
+      typeMap: typeMap,
       built: built,
     ),
 
-    // 2. Optional when extension for pattern matching
-    if (whenExtension != null) whenExtension,
+    // Optional when extension for pattern matching on concrete types
+    if (whenExtensionConfig.generateWhenExtensionMethod ||
+        whenExtensionConfig.generateMaybeWhenExtensionMethod)
+      _buildWhenExtension(
+        name: name,
+        inlineFragments: inlineFragments,
+        config: whenExtensionConfig,
+        dataClassAliasMap: dataClassAliasMap,
+      )!,
 
-    // 3. Base class with fields common to all types
+    // Base class with fields common to all types
     ..._buildBaseClass(
       name: name,
       baseClassSelections: baseClassSelections,
@@ -101,7 +105,7 @@ List<Spec> buildInlineFragmentClasses({
       whenExtensionConfig: whenExtensionConfig,
     ),
 
-    // 4. Type-specific classes for each inline fragment
+    // Type-specific classes for each inline fragment
     ..._buildTypeSpecificClasses(
       name: name,
       baseClassSelections: baseClassSelections,
@@ -123,22 +127,6 @@ List<Spec> buildInlineFragmentClasses({
   return result;
 }
 
-/// Creates a mapping of GraphQL type names to generated Dart class names.
-///
-/// For example, if we have an inline fragment `... on Human { name }`,
-/// this will create a mapping from "Human" to "GQueryName__asHuman".
-Map<String, String> _buildTypeMap(
-    String name, List<InlineFragmentNode> inlineFragments) {
-  final typeMap = <String, String>{};
-  for (final frag in inlineFragments) {
-    if (frag.typeCondition != null) {
-      final typeName = frag.typeCondition!.on.name.value;
-      typeMap[typeName] = builtClassName("${name}__as$typeName");
-    }
-  }
-  return typeMap;
-}
-
 /// Builds the abstract root class that all concrete fragment classes implement.
 ///
 /// This class defines the interface that all concrete implementations must satisfy
@@ -149,6 +137,7 @@ Class _buildRootClass({
   required Map<String, SourceSelections> superclassSelections,
   required Map<String, Reference> dataClassAliasMap,
   required List<InlineFragmentNode> inlineFragments,
+  required Map<String, String> typeMap,
   required bool built,
 }) =>
     Class(
@@ -172,21 +161,16 @@ Class _buildRootClass({
             ..._buildRootSerializationMethods(
               name: builtClassName(name),
               inlineFragments: inlineFragments,
+              typeMap: typeMap,
               dataClassAliasMap: dataClassAliasMap,
             ),
         ]),
     );
 
-/// Generates serialization methods for the root fragment class.
-///
-/// Creates methods for built_value serialization that properly handle
-/// polymorphic types based on __typename:
-/// - serializer getter: Uses InlineFragmentSerializer
-/// - toJson: Converts to JSON map
-/// - fromJson: Creates instance from JSON map
 List<Method> _buildRootSerializationMethods({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
+  required Map<String, String> typeMap,
   required Map<String, Reference> dataClassAliasMap,
 }) =>
     [
@@ -201,13 +185,9 @@ List<Method> _buildRootSerializationMethods({
             refer("${name}__base"),
             literalMap(
               {
-                for (final v in inlineFragments
-                    .where((frag) => frag.typeCondition != null))
-                  "${v.typeCondition!.on.name.value}": dataClassAliasMap[
-                          "${name}__as${v.typeCondition!.on.name.value}"] ??
-                      refer(
-                        "${name}__as${v.typeCondition!.on.name.value}",
-                      )
+                for (final entry in typeMap.entries)
+                  entry.key:
+                      dataClassAliasMap[entry.value] ?? refer(entry.value)
               },
             ),
           ]).code,
@@ -216,10 +196,6 @@ List<Method> _buildRootSerializationMethods({
       buildFromJsonGetter(name),
     ];
 
-/// Builds the "when" extension for pattern matching on concrete types.
-///
-/// Generates methods that allow safely handling different concrete implementations
-/// without manual type checking or casting.
 Extension? _buildWhenExtension({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
