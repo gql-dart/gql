@@ -67,6 +67,7 @@ List<SelectionNode>? _findParentSelections(
   return null;
 }
 
+// In fragment_utils.dart
 /// Gets the inline fragment that contains this selection, if any
 InlineFragmentNode? getContainingInlineFragment(
   SelectionNode selection,
@@ -79,6 +80,22 @@ InlineFragmentNode? getContainingInlineFragment(
       .whereType<InlineFragmentNode>()
       .firstWhere((fragment) => fragment.typeCondition != null);
 }
+
+/// Gets the name of a named fragment
+String getNamedFragmentName(FragmentDefinitionNode fragment) =>
+    fragment.name.value;
+
+/// Gets the type condition name for a named fragment
+String getNamedFragmentTypeName(FragmentDefinitionNode fragment) =>
+    fragment.typeCondition.on.name.value;
+
+/// Gets the concrete type name (the type condition) from an inline fragment
+String? getInlineFragmentTypeName(InlineFragmentNode fragment) =>
+    fragment.typeCondition?.on.name.value;
+
+/// Gets the generated class name for a specific inline fragment type
+String getInlineFragmentClassName(String baseName, String typeName) =>
+    builtClassName("${baseName}__as$typeName");
 
 /// Gets the type condition name for a nested fragment
 String? getNestedFragmentTypeName(
@@ -125,14 +142,6 @@ Map<String, String> buildInlineFragmentTypeMap(
   }
   return typeMap;
 }
-
-/// Gets the concrete type name (the type condition) from an inline fragment
-String? getInlineFragmentTypeName(InlineFragmentNode fragment) =>
-    fragment.typeCondition?.on.name.value;
-
-/// Gets the generated class name for a specific inline fragment type
-String getInlineFragmentClassName(String baseName, String typeName) =>
-    builtClassName("${baseName}__as$typeName");
 
 String determineFragmentPath({
   required String name,
