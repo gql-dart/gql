@@ -165,7 +165,7 @@ Map<String, SourceSelections> fragmentSelectionsForField(
   final result = <String, SourceSelections>{};
   final fieldKey = field.alias?.value ?? field.name.value;
 
-  // Process regular field selections
+  // Process fragments from fragmentMap - these are named fragments
   for (final entry in fragmentMap.entries) {
     final superName = entry.key;
     final sourceSelections = entry.value;
@@ -178,7 +178,7 @@ Map<String, SourceSelections> fragmentSelectionsForField(
       final selectionKey = selection.alias?.value ?? selection.name.value;
 
       if (selectionKey == fieldKey) {
-        // Create nested fragment selection
+        // Create nested fragment selection for named fragments
         final nestedName = "${superName}_${fieldKey}";
         result[nestedName] = SourceSelections(
           url: sourceSelections.url,
@@ -190,22 +190,29 @@ Map<String, SourceSelections> fragmentSelectionsForField(
     }
   }
 
-  // Process specialized type fragments (e.g., __asHuman)
-  for (final superName
-      in fragmentMap.keys.where((name) => name.contains("__as"))) {
-    final baseFragmentName = superName.split("__as").first;
-    final typeName = superName.split("__as").last.split("_").first;
+  // Only process specialized type fragments from fragmentMap that are from named fragments
+  // This ensures we don't accidentally create interfaces for inline fragments
+  for (final entry in fragmentMap.entries) {
+    final superName = entry.key;
+    final sourceSelections = entry.value;
 
-    // Check if there's a specialized nested interface
-    final potentialNestedName =
-        "${baseFragmentName}__as${typeName}_${fieldKey}";
+    // Skip if this is from an inline fragment (they don't have URLs)
+    if (sourceSelections.url == null) continue;
 
-    // Add as a potential interface for implementation
-    if (!result.containsKey(potentialNestedName)) {
-      result[potentialNestedName] = SourceSelections(
-        url: fragmentMap[superName]?.url,
-        selections: [], // Empty selections since this is just for interface implementation
-      );
+    if (superName.contains("__as")) {
+      final baseFragmentName = superName.split("__as").first;
+      final typeName = superName.split("__as").last.split("_").first;
+
+      // Check for nested interface from named fragment
+      final potentialNestedName =
+          "${baseFragmentName}__as${typeName}_${fieldKey}";
+
+      if (fragmentMap.containsKey(superName)) {
+        result[potentialNestedName] = SourceSelections(
+          url: sourceSelections.url,
+          selections: [], // Empty since this is just for interface implementation
+        );
+      }
     }
   }
 
