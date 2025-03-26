@@ -2,7 +2,6 @@ import "package:collection/collection.dart";
 import "package:gql/ast.dart";
 
 import "../common.dart";
-import "gql_tracer.dart";
 
 /// Merge selections from multiple sources, combining fields and fragments.
 ///
@@ -14,35 +13,28 @@ import "gql_tracer.dart";
 List<SelectionNode> mergeSelections(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap,
-) =>
-    GqlTracer.traceOperation("mergeSelections", () {
-      GqlTracer.dumpSelections(selections, label: "INPUT");
+) {
+  // Expand fragment spreads first
+  final expandedSelections = _expandFragmentSpreads(selections, fragmentMap);
 
-      // Expand fragment spreads first
-      final expandedSelections =
-          _expandFragmentSpreads(selections, fragmentMap);
-      GqlTracer.dumpSelections(expandedSelections, label: "AFTER_EXPANSION");
+  // Create a map to merge duplicate selections
+  final selectionMap = <String, SelectionNode>{};
 
-      // Create a map to merge duplicate selections
-      final selectionMap = <String, SelectionNode>{};
+  // Process each expanded selection and handle merging
+  for (final selection in expandedSelections) {
+    if (selection is FieldNode) {
+      _processFieldNode(selection, selectionMap, fragmentMap);
+    } else if (selection is InlineFragmentNode &&
+        selection.typeCondition != null) {
+      _processInlineFragment(selection, selectionMap, fragmentMap);
+    } else {
+      // Handle other selection types
+      selectionMap[selection.hashCode.toString()] = selection;
+    }
+  }
 
-      // Process each expanded selection and handle merging
-      for (final selection in expandedSelections) {
-        if (selection is FieldNode) {
-          _processFieldNode(selection, selectionMap, fragmentMap);
-        } else if (selection is InlineFragmentNode &&
-            selection.typeCondition != null) {
-          _processInlineFragment(selection, selectionMap, fragmentMap);
-        } else {
-          // Handle other selection types
-          selectionMap[selection.hashCode.toString()] = selection;
-        }
-      }
-
-      final result = selectionMap.values.toList();
-      GqlTracer.dumpSelections(result, label: "RESULT");
-      return result;
-    });
+  return selectionMap.values.toList();
+}
 
 /// Process a field node during selection merging.
 ///
@@ -230,137 +222,49 @@ void _removeDuplicateFields(
 ///
 /// This replaces fragment spreads (e.g., "...MyFragment") with the fields
 /// from those fragments, handling nested fragments recursively.
-/// Recursively expands fragment spreads into their component selections.
-///
-/// This replaces fragment spreads (e.g., "...MyFragment") with the fields
-/// from those fragments, handling nested fragments recursively.
 List<SelectionNode> _expandFragmentSpreads(
   List<SelectionNode> selections,
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
   Set<String> visitedFragments = const {},
   String fragmentPath = "", // Track path to detect recursive fragments
-]) =>
-    GqlTracer.traceOperation("_expandFragmentSpreads", () {
-      GqlTracer.trace("Fragment path: $fragmentPath");
-      GqlTracer.trace('Visited fragments: ${visitedFragments.join(', ')}');
-      GqlTracer.dumpSelections(selections, label: "SELECTIONS_TO_EXPAND");
+]) {
+  final result = <SelectionNode>[];
+  final newVisitedFragments = {...visitedFragments};
 
-      final result = <SelectionNode>[];
-      final newVisitedFragments = {...visitedFragments};
+  for (final selection in selections) {
+    if (selection is FragmentSpreadNode) {
+      _processFragmentSpread(
+        selection,
+        fragmentMap,
+        result,
+        newVisitedFragments,
+        retainFragmentSpreads,
+        fragmentPath,
+      );
+    } else if (selection is FieldNode && selection.selectionSet != null) {
+      _processFieldWithSelections(
+        selection,
+        fragmentMap,
+        result,
+        newVisitedFragments,
+        fragmentPath,
+      );
+    } else if (selection is InlineFragmentNode) {
+      _processInlineFragmentExpansion(
+        selection,
+        fragmentMap,
+        result,
+        newVisitedFragments,
+        fragmentPath,
+      );
+    } else {
+      result.add(selection);
+    }
+  }
 
-      for (final selection in selections) {
-        if (selection is FragmentSpreadNode) {
-          final fragmentName = selection.name.value;
-          GqlTracer.trace("Processing fragment spread", info: fragmentName);
-
-          if (!fragmentMap.containsKey(fragmentName)) {
-            GqlTracer.trace("ERROR: Fragment not found", info: fragmentName);
-            throw Exception(
-                "Couldn't find fragment definition for fragment spread '$fragmentName'");
-          }
-
-          // Use tracer to detect cycles
-          if (!GqlTracer.beginFragmentExpansion(fragmentName)) {
-            GqlTracer.trace("Skipping fragment due to cycle",
-                info: fragmentName);
-            // Still add the fragment spread if retain is true
-            if (retainFragmentSpreads) {
-              result.add(selection);
-            }
-            continue;
-          }
-
-          try {
-            // Create context-aware fragment identifier using the path
-            final contextualFragmentId = "$fragmentPath/$fragmentName";
-
-            // Check for recursive fragments
-            if (newVisitedFragments.contains(contextualFragmentId)) {
-              GqlTracer.trace("Detected recursive fragment",
-                  info: "$contextualFragmentId already in visited set");
-              // Skip this fragment to avoid infinite recursion
-              if (retainFragmentSpreads) {
-                result.add(selection);
-              }
-              continue;
-            }
-
-            newVisitedFragments.add(contextualFragmentId);
-
-            final fragmentSelections = fragmentMap[fragmentName]!.selections;
-
-            if (retainFragmentSpreads) {
-              result.add(selection);
-            }
-
-            // Recursively process the fragment selections
-            final expandedFragmentSelections = _expandFragmentSpreads(
-              fragmentSelections,
-              fragmentMap,
-              false,
-              newVisitedFragments,
-              "$fragmentPath/$fragmentName", // Track path for nested context
-            );
-
-            GqlTracer.trace("Adding expanded selections",
-                info: "${expandedFragmentSelections.length} items");
-            result.addAll(expandedFragmentSelections);
-          } finally {
-            GqlTracer.endFragmentExpansion(fragmentName);
-          }
-        } else if (selection is FieldNode && selection.selectionSet != null) {
-          final fieldName = selection.alias?.value ?? selection.name.value;
-          GqlTracer.trace("Processing field with selections", info: fieldName);
-
-          // Process fields with selections - recursively expand any fragments they contain
-          final expandedSelections = _expandFragmentSpreads(
-            selection.selectionSet!.selections,
-            fragmentMap,
-            true,
-            newVisitedFragments,
-            "$fragmentPath/field:$fieldName", // Track field path
-          );
-
-          // Create a new field node with the expanded selections
-          result.add(FieldNode(
-            name: selection.name,
-            alias: selection.alias,
-            arguments: selection.arguments,
-            directives: selection.directives,
-            selectionSet: SelectionSetNode(selections: expandedSelections),
-          ));
-        } else if (selection is InlineFragmentNode) {
-          final typeName =
-              selection.typeCondition?.on.name.value ?? "no-type-condition";
-          GqlTracer.trace("Processing inline fragment",
-              info: "...on $typeName");
-
-          // Process inline fragments - recursively expand any nested fragments
-          final expandedSelections = _expandFragmentSpreads(
-            selection.selectionSet.selections,
-            fragmentMap,
-            true,
-            newVisitedFragments,
-            "$fragmentPath/inline:$typeName", // Track inline fragment path
-          );
-
-          // Create a new inline fragment node with the expanded selections
-          result.add(InlineFragmentNode(
-            typeCondition: selection.typeCondition,
-            directives: selection.directives,
-            selectionSet: SelectionSetNode(selections: expandedSelections),
-          ));
-        } else {
-          GqlTracer.trace("Adding simple selection",
-              info: selection.runtimeType.toString());
-          result.add(selection);
-        }
-      }
-
-      GqlTracer.dumpSelections(result, label: "EXPANDED_RESULT");
-      return result;
-    });
+  return result;
+}
 
 /// Processes a fragment spread node during expansion.
 ///
