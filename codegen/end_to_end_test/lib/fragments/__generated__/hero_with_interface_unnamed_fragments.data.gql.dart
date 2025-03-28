@@ -143,7 +143,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__base
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroBaseSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__base.serializer,
         this,
@@ -187,7 +186,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman.serializer,
         this,
@@ -308,7 +306,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__bas
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsBaseSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
             .serializer,
@@ -354,7 +351,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asH
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsAsHumanSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
             .serializer,
@@ -400,7 +396,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asD
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsHumanFriendsAsDroidSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
             .serializer,
@@ -443,7 +438,6 @@ abstract class GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid
       get serializer =>
           _$gHeroWithInterfaceUnnamedFragmentsDataHeroAsDroidSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid.serializer,
         this,
