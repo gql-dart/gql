@@ -131,14 +131,7 @@ Class _buildInterfaceClass({
             dataClassAliasMap: dataClassAliasMap,
           ),
         )
-        ..methods.addAll([
-          ...fieldGetters,
-          buildToJsonGetter(
-            builtClassName(name),
-            implemented: false,
-            isOverride: nestedSuperclassSelections.isNotEmpty,
-          ),
-        ]),
+        ..methods.addAll([...fieldGetters]),
     );
 
 /// Builds a regular built_value class.

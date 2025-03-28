@@ -132,23 +132,45 @@ void _processNestedTypeInterfaces(
   final typeName = getInlineFragmentTypeName(containingFragment);
   if (typeName == null) return;
 
-  // Check for corresponding fragment interfaces for this nested field
+  final fieldName = selection.alias?.value ?? selection.name.value;
+
+  // First, find the base interface name without any type conditions
+  String? baseInterfaceName;
+  for (final superName in superclassSelections.keys) {
+    if (!superName.contains("__as")) {
+      baseInterfaceName = superName;
+      break;
+    }
+  }
+
+  if (baseInterfaceName == null) return;
+
+  // For each specialized interface
   for (final superName in superclassSelections.keys.toList()) {
-    if (superName.contains("__as$typeName")) {
-      // Found a parent fragment with same type condition
-      final baseFragmentName = superName.split("__as").first;
-      final fieldName = selection.alias?.value ?? selection.name.value;
-      final potentialNestedInterface =
-          "${baseFragmentName}__as${typeName}_$fieldName";
+    if (superName.contains("__as")) {
+      // Extract the specialized type name
+      final specializationType = superName.split("__as").last.split("_").first;
+
+      // Create consistent nested interface name using base interface
+      final nestedInterfaceName =
+          "${baseInterfaceName}_${fieldName}_$specializationType";
 
       // Check if interface exists in fragment map
       final bool hasNestedInterface = fragmentMap.entries.any((entry) =>
           entry.key.contains(fieldName) && entry.value.selections.isNotEmpty);
 
       if (hasNestedInterface) {
-        // Add nested interface
-        nestedSuperclassSelections[potentialNestedInterface] =
+        // Add nested interface with consistent naming
+        nestedSuperclassSelections[nestedInterfaceName] =
             SourceSelections(url: null, selections: []);
+
+        // Also add the specialized version for compatibility
+        final specializedNestedName =
+            "${baseInterfaceName}_${specializationType}_${fieldName}";
+        if (specializedNestedName != nestedInterfaceName) {
+          nestedSuperclassSelections[specializedNestedName] =
+              SourceSelections(url: null, selections: []);
+        }
       }
     }
   }
