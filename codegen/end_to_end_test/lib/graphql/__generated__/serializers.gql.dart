@@ -54,31 +54,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.req.
     show GHeroWithFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
-    show
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends,
-        GheroFieldsFragmentData,
-        GheroFieldsFragmentData__asHuman_friends,
-        GhumanFieldsFragmentData_friends,
-        GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base,
-        GHeroWithInterfaceSubTypedFragmentsData_hero__base,
-        GdroidFieldsFragmentData,
-        GheroFieldsFragmentData__asDroid,
-        GheroFieldsFragmentData__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__asDroid,
-        GheroFieldsFragmentData__asHuman_friends__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__base,
-        GheroFieldsFragmentData__base,
-        GhumanFieldsFragmentData,
-        GhumanFieldsFragmentData_friends__asDroid,
-        GhumanFieldsFragmentData_friends__asHuman,
-        GhumanFieldsFragmentData_friends__base;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart';
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subtyped_fragments.var.gql.dart'
@@ -87,17 +63,7 @@ import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_subt
         GdroidFieldsFragmentVars,
         GheroFieldsFragmentVars,
         GhumanFieldsFragmentVars;
-import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.data.gql.dart'
-    show
-        GHeroWithInterfaceUnnamedFragmentsData_hero,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends,
-        GHeroWithInterfaceUnnamedFragmentsData,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base,
-        GHeroWithInterfaceUnnamedFragmentsData_hero__base;
+import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.data.gql.dart';
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.req.gql.dart'
     show GHeroWithInterfaceUnnamedFragments;
 import 'package:end_to_end_test/fragments/__generated__/hero_with_interface_unnamed_fragments.var.gql.dart'
@@ -112,27 +78,7 @@ import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.req.g
     show GHeroWith2Fragments;
 import 'package:end_to_end_test/fragments/__generated__/multiple_fragments.var.gql.dart'
     show GHeroWith2FragmentsVars, GheroIdVars, GheroNameVars;
-import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.data.gql.dart'
-    show
-        GSearchResultsQueryData_search,
-        GCharacterBasicData,
-        GCharacterDetailsData,
-        GCharacterDetailsData_friends,
-        GCharacterDetailsData_friends_friendsConnection,
-        GCharacterDetailsData_friends_friendsConnection_friends,
-        GFriendInfoData,
-        GFriendInfoData_friendsConnection,
-        GFriendInfoData_friendsConnection_friends,
-        GSearchResultsQueryData,
-        GSearchResultsQueryData_search__asDroid,
-        GSearchResultsQueryData_search__asDroid_friends,
-        GSearchResultsQueryData_search__asDroid_friends_friendsConnection,
-        GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends,
-        GSearchResultsQueryData_search__asHuman,
-        GSearchResultsQueryData_search__asHuman_friends,
-        GSearchResultsQueryData_search__asHuman_friends_friendsConnection,
-        GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends,
-        GSearchResultsQueryData_search__base;
+import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.data.gql.dart';
 import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.req.gql.dart'
     show GSearchResultsQuery;
 import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragments.var.gql.dart'
@@ -152,15 +98,7 @@ import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
         GPostFavoritesInput,
         GPostLikesInput,
         GReviewInput;
-import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart'
-    show
-        GHeroForEpisodeData_hero,
-        GDroidFragmentData,
-        GHeroForEpisodeData,
-        GHeroForEpisodeData_hero__asDroid,
-        GHeroForEpisodeData_hero__asDroid_friends,
-        GHeroForEpisodeData_hero__base,
-        GHeroForEpisodeData_hero__base_friends;
+import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.data.gql.dart';
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.req.gql.dart'
     show GHeroForEpisode;
 import 'package:end_to_end_test/interfaces/__generated__/hero_for_episode.var.gql.dart'
