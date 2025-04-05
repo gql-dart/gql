@@ -70,6 +70,7 @@ scripts:
       melos version --prerelease \
         --preid=alpha \
         --no-private \
+        --no-git-tag-version \
         --yes
 
   # Major version bump for all non-private packages
@@ -79,6 +80,7 @@ scripts:
       melos version \
         --no-private \
         --yes \
+        --no-git-tag-version \
         $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):major"')
 
   # Minor version bump for all non-private packages
@@ -88,6 +90,7 @@ scripts:
       melos version \
         --no-private \
         --yes \
+        --no-git-tag-version \
         $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):minor"')
 
   # Patch version bump for all non-private packages
@@ -97,6 +100,7 @@ scripts:
       melos version \
         --no-private \
         --yes \
+        --no-git-tag-version \
         $(melos list --no-private --json | jq -r '.[] | "--manual-version=\(.name):patch"')
 
   # Graduate from prerelease to stable
