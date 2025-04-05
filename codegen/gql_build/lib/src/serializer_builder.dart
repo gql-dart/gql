@@ -42,14 +42,6 @@ class SerializerBuilder implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final allocator = PickAllocator(
-      doNotPick: ["package:built_value/serializer.dart"],
-      include: [
-        "package:built_collection/built_collection.dart",
-        ...typeOverrides.values.map((ref) => ref.url).whereType<String>()
-      ],
-    );
-
     /// BuiltValue classes with serializers. These will be added automatically
     /// using `@SerializersFor`.
     final builtClasses =
@@ -88,6 +80,26 @@ class SerializerBuilder implements Builder {
           )
           .forEach(nonBuiltClasses.add);
     }
+
+    // Collect URIs for non-built classes to ensure they can be imported if needed
+    final nonBuiltClassUris = nonBuiltClasses
+        .map((c) => c.source.uri.toString())
+        .whereType<String>()
+        .toSet();
+
+    // Initialize allocator *after* collecting all necessary URIs
+    final allocator = PickAllocator(
+      doNotPick: ["package:built_value/serializer.dart"],
+      // Convert the set of includes to a list
+      include: {
+        // Ensure built_collection is included for ListBuilder serializers
+        "package:built_collection/built_collection.dart",
+        // Include user-defined type overrides
+        ...typeOverrides.values.map((ref) => ref.url).whereType<String>(),
+        // Include sources of non-built classes used in built_value classes
+        ...nonBuiltClassUris,
+      }.toList(), // Convert the Set to a List
+    );
 
     final Set<Expression> additionalSerializers = {
       // GraphQL Operation serializer

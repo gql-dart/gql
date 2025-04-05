@@ -64,7 +64,6 @@ abstract class GPostsWithFixedVariableData_posts
   static Serializer<GPostsWithFixedVariableData_posts> get serializer =>
       _$gPostsWithFixedVariableDataPostsSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsWithFixedVariableData_posts.serializer,
         this,
@@ -102,7 +101,6 @@ abstract class GPostsWithFixedVariableData_posts_favoritedUsers
       get serializer =>
           _$gPostsWithFixedVariableDataPostsFavoritedUsersSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsWithFixedVariableData_posts_favoritedUsers.serializer,
         this,
@@ -120,13 +118,11 @@ abstract class GPostFragmentForUser1 {
   String get G__typename;
   String get id;
   GPostFragmentForUser1_favoritedUsers? get favoritedUsers;
-  Map<String, dynamic> toJson();
 }
 
 abstract class GPostFragmentForUser1_favoritedUsers {
   String get G__typename;
   int get totalCount;
-  Map<String, dynamic> toJson();
 }
 
 abstract class GPostFragmentForUser1Data
@@ -152,7 +148,6 @@ abstract class GPostFragmentForUser1Data
   static Serializer<GPostFragmentForUser1Data> get serializer =>
       _$gPostFragmentForUser1DataSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentForUser1Data.serializer,
         this,
@@ -188,7 +183,6 @@ abstract class GPostFragmentForUser1Data_favoritedUsers
   static Serializer<GPostFragmentForUser1Data_favoritedUsers> get serializer =>
       _$gPostFragmentForUser1DataFavoritedUsersSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentForUser1Data_favoritedUsers.serializer,
         this,
