@@ -551,10 +551,12 @@ class TransportWsClientOptions {
 class _Connected {
   final WebSocketChannel socket;
   final Future<void> throwOnClose;
+  final Future<LikeCloseEvent?> likeCloseEvent;
 
   _Connected(
     this.socket,
     this.throwOnClose,
+    this.likeCloseEvent,
   );
 }
 
@@ -879,9 +881,26 @@ class _ConnectionState {
             retries = 0; // reset the retries on connect
             final _completer = Completer<void>();
             errorOrClosed(_completer.completeError);
+            // workground for dart linux bug: complete error not being caught by try..catch block
+            final _likeCloseEventCompleter = Completer<LikeCloseEvent?>();
             connected(_Connected(
               socket,
-              _completer.future,
+              _completer.future.catchError((err) {
+                // workground for dart linux bug: complete error not being caught by try..catch block
+                // if the connection is closed, the error is not fatal
+                if (err is LikeCloseEvent) {
+                  if (!_likeCloseEventCompleter.isCompleted) {
+                    _likeCloseEventCompleter.complete(err);
+                  }
+                  return;
+                }
+                throw err;
+              }).whenComplete(() {
+                if (!_likeCloseEventCompleter.isCompleted) {
+                  _likeCloseEventCompleter.complete(null);
+                }
+              }),
+              _likeCloseEventCompleter.future,
             ));
           } catch (err) {
             // stop reading messages as soon as reading breaks once
@@ -930,6 +949,7 @@ class _ConnectionState {
 
     final socket = _connection.socket;
     final throwOnClose = _connection.throwOnClose;
+    final likeCloseEvent = _connection.likeCloseEvent;
 
     // if the provided socket is in a closing state, wait for the throw on close
     // TODO: WebSocketChannel should have a `state` getter
@@ -972,6 +992,7 @@ class _ConnectionState {
         // or
         throwOnClose,
       ]),
+      waitForLikeCloseEvent: likeCloseEvent,
     );
   }
 }
@@ -1013,6 +1034,7 @@ class _Client extends TransportWsClient {
           final socket = _c.socket;
           final release = _c.release;
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
+          final waitForLikeCloseEvent = _c.waitForLikeCloseEvent;
           // print("isolate debug name: ${Isolate.current.debugName}");
           // print(payload.operation.toString());
           // print(payload.variables.toString());
@@ -1072,6 +1094,12 @@ class _Client extends TransportWsClient {
           // whatever happens though, we want to stop listening for messages
           await waitForReleaseOrThrowOnClose.whenComplete(unlisten);
 
+          // workground for dart linux bug: complete error not being caught by try..catch block
+          final likeCloseEvent = await waitForLikeCloseEvent;
+          if (likeCloseEvent != null) {
+            throw likeCloseEvent;
+          }
+
           return; // completed, shouldnt try again
         } catch (errOrCloseEvent) {
           if (!state.shouldRetryConnectOrThrow(errOrCloseEvent)) return;
@@ -1123,11 +1151,13 @@ class _Connection {
   final WebSocketChannel socket;
   final Completer<void> release;
   final Future<void> waitForReleaseOrThrowOnClose;
+  final Future<LikeCloseEvent?> waitForLikeCloseEvent;
 
   _Connection({
     required this.socket,
     required this.release,
     required this.waitForReleaseOrThrowOnClose,
+    required this.waitForLikeCloseEvent,
   });
 }
 
