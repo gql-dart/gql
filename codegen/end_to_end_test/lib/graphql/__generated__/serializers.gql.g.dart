@@ -12,6 +12,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAliasedHeroData_empireHero.serializer)
       ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
+      ..add(GCharacterBasicData.serializer)
+      ..add(GCharacterBasicVars.serializer)
+      ..add(GCharacterDetailsData.serializer)
+      ..add(GCharacterDetailsData_friends.serializer)
+      ..add(GCharacterDetailsData_friends_friendsConnection.serializer)
+      ..add(GCharacterDetailsData_friends_friendsConnection_friends.serializer)
+      ..add(GCharacterDetailsVars.serializer)
       ..add(GColorInput.serializer)
       ..add(GCreateCustomField.serializer)
       ..add(GCreateCustomFieldData.serializer)
@@ -24,6 +31,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GDroidFragmentData.serializer)
       ..add(GDroidFragmentVars.serializer)
       ..add(GEpisode.serializer)
+      ..add(GFriendInfoData.serializer)
+      ..add(GFriendInfoData_friendsConnection.serializer)
+      ..add(GFriendInfoData_friendsConnection_friends.serializer)
+      ..add(GFriendInfoVars.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
@@ -48,8 +59,32 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GHeroWithFragmentsVars.serializer)
       ..add(GHeroWithInterfaceSubTypedFragments.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsData.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman.serializer)
+      ..add(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid
+              .serializer)
+      ..add(
+          GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman
+              .serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base
+          .serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero__base.serializer)
       ..add(GHeroWithInterfaceSubTypedFragmentsVars.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragments.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman.serializer)
+      ..add(
+          GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+              .serializer)
+      ..add(
+          GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+              .serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
+          .serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__base.serializer)
+      ..add(GHeroWithInterfaceUnnamedFragmentsVars.serializer)
       ..add(GHumanWithArgs.serializer)
       ..add(GHumanWithArgsData.serializer)
       ..add(GHumanWithArgsData_human.serializer)
@@ -82,6 +117,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GReviewWithDateData.serializer)
       ..add(GReviewWithDateData_createReview.serializer)
       ..add(GReviewWithDateVars.serializer)
+      ..add(GSearchResultsQuery.serializer)
+      ..add(GSearchResultsQueryData.serializer)
+      ..add(GSearchResultsQueryData_search__asDroid.serializer)
+      ..add(GSearchResultsQueryData_search__asDroid_friends.serializer)
+      ..add(GSearchResultsQueryData_search__asDroid_friends_friendsConnection
+          .serializer)
+      ..add(
+          GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
+              .serializer)
+      ..add(GSearchResultsQueryData_search__asHuman.serializer)
+      ..add(GSearchResultsQueryData_search__asHuman_friends.serializer)
+      ..add(GSearchResultsQueryData_search__asHuman_friends_friendsConnection
+          .serializer)
+      ..add(
+          GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
+              .serializer)
+      ..add(GSearchResultsQueryData_search__base.serializer)
+      ..add(GSearchResultsQueryVars.serializer)
       ..add(GcomparisonFieldsData.serializer)
       ..add(GcomparisonFieldsData_friendsConnection.serializer)
       ..add(GcomparisonFieldsData_friendsConnection_edges.serializer)
@@ -124,11 +177,30 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
           () => new ListBuilder<DateTime?>())
       ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GCharacterDetailsData_friends)]),
+          () => new ListBuilder<GCharacterDetailsData_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
+          () => new ListBuilder<GEpisode?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GCharacterDetailsData_friends_friendsConnection_friends)
+          ]),
+          () => new ListBuilder<
+              GCharacterDetailsData_friends_friendsConnection_friends?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
           () => new ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
           () => new ListBuilder<GEpisode?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GFriendInfoData_friendsConnection_friends)
+          ]),
+          () => new ListBuilder<GFriendInfoData_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GHeroForEpisodeData_hero__asDroid_friends)
@@ -147,6 +219,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<
               GHeroWithFragmentsData_hero_friendsConnection_edges?>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends)
+          ]),
+          () => new ListBuilder<
+              GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends)
+          ]),
+          () => new ListBuilder<
+              GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(GPostsData_posts)]),
           () => new ListBuilder<GPostsData_posts?>())
@@ -155,6 +241,44 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(GPostsWithFixedVariableData_posts)
           ]),
           () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType.nullable(GSearchResultsQueryData_search)]),
+          () => new ListBuilder<GSearchResultsQueryData_search?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GSearchResultsQueryData_search__asDroid_friends)
+          ]),
+          () => new ListBuilder<
+              GSearchResultsQueryData_search__asDroid_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
+          () => new ListBuilder<GEpisode?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends)
+          ]),
+          () => new ListBuilder<
+              GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GSearchResultsQueryData_search__asHuman_friends)
+          ]),
+          () => new ListBuilder<
+              GSearchResultsQueryData_search__asHuman_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
+          () => new ListBuilder<GEpisode?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends)
+          ]),
+          () => new ListBuilder<
+              GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
@@ -167,6 +291,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
           ]),
           () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
+          ]),
+          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
+          ]),
+          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)
