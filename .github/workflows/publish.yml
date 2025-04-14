@@ -29,6 +29,9 @@ jobs:
       - name: Bootstrap workspace
         run: melos bootstrap --no-flutter
 
+      - name: Codegen
+        run: melos exec --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
+
       - name: Validate packages
         run: melos format && melos analyze && melos test
 
