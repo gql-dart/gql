@@ -1,3 +1,8 @@
+## 3.0.0
+
+- skip deduplication for mutations by default
+- `gql` promoted to runtime dependency
+
 ## 2.0.3+1
 
 - add topics

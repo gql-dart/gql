@@ -2,6 +2,7 @@
 library gql_dedupe_link;
 
 import "package:async/async.dart";
+import "package:gql/ast.dart";
 import "package:gql_exec/gql_exec.dart";
 import "package:gql_link/gql_link.dart";
 
@@ -10,7 +11,10 @@ class DedupeLink extends Link {
   final bool Function(Request request) _shouldDedupe;
   final Map<Request, StreamSplitter<Response>> _inFlight = {};
 
-  static bool _defaultShouldDedupe(Request request) => true;
+  static bool _defaultShouldDedupe(Request request) {
+    final type = request.operation.getOperationType();
+    return type == null || type != OperationType.mutation;
+  }
 
   DedupeLink({
     bool Function(Request request) shouldDedupe = _defaultShouldDedupe,

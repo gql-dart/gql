@@ -185,6 +185,64 @@ void main() {
       expect(await return2, result1);
     });
 
+    test("does not dedupe identical mutations", () async {
+      final document = parseString(
+        """
+        mutation withVar(\$i: Int) {
+          take(i: \$i)
+        }
+      """,
+      );
+
+      final req1 = Request(
+        operation: Operation(
+          document: document,
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      final req2 = Request(
+        operation: Operation(
+          document: document,
+        ),
+        variables: const <String, dynamic>{"i": 12},
+      );
+
+      const result1Data = <String, dynamic>{"a": 1};
+      final result1 = Response(
+        data: result1Data,
+        response: const <String, dynamic>{"data": result1Data},
+      );
+
+      final mockLink = MockLink();
+
+      when(
+        mockLink.request(req1, null),
+      ).thenAnswer(
+        (_) => Stream.fromIterable([result1]),
+      );
+
+      when(
+        mockLink.request(req2, null),
+      ).thenAnswer(
+        (_) => Stream.fromIterable([result1]),
+      );
+
+      final link = Link.from([
+        DedupeLink(),
+        mockLink,
+      ]);
+
+      final stream1 = link.request(req1);
+      final stream2 = link.request(req2);
+
+      verify(
+        mockLink.request(req1, null),
+      ).called(2);
+      expect(await stream1.first, result1);
+      expect(await stream2.first, result1);
+    });
+
     test(
         "does not dedupe identical queries if shouldDedupe is false for request",
         () async {
