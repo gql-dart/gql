@@ -971,7 +971,6 @@ void _testLinks(
       link.request(request).listen(
         expectAsync1(
           (response) {
-            print(response);
             expect(
               response.data,
               responseData1,
@@ -1239,9 +1238,16 @@ void _testLinks(
     server.transform(WebSocketTransformer());
 
     webSocket = await WebSocket.connect("ws://localhost:${server.port}");
+    channel = IOWebSocketChannel(webSocket);
+    channel.stream.asBroadcastStream().listen(
+          null,
+          onError: (Object err) {
+            print(err);
+          },
+          onDone: () => print("done"),
+        );
     // Close the socket to cause network error.
     await webSocket.close();
-    channel = IOWebSocketChannel(webSocket);
     link = makeLink(null, channelGenerator: () => channel);
     expect(
       link.request(request).first,
@@ -1466,7 +1472,15 @@ void _testLinks(
         ),
       );
 
+      final completer = Completer<void>();
+      final timer = Timer(const Duration(seconds: 5), () {
+        if (!completer.isCompleted) {
+          completer.completeError("Timeout");
+        }
+      });
+
       server = await HttpServer.bind("localhost", 0);
+      var connectCount = 0;
       server.transform(WebSocketTransformer()).take(2).listen(
             expectAsync1(
               (webSocket) async {
@@ -1485,6 +1499,10 @@ void _testLinks(
                               ),
                             );
                             webSocket.close(websocket_status.goingAway);
+                            connectCount++;
+                            if (connectCount == 2) {
+                              completer.complete();
+                            }
                           }
                           messageCount++;
                         },
@@ -1509,6 +1527,8 @@ void _testLinks(
       );
       //
       link.request(request).listen(print, onError: print);
+      await completer.future;
+      timer.cancel();
     },
   );
 
