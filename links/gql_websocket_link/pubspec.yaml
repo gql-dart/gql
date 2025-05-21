@@ -1,5 +1,5 @@
 name: gql_websocket_link
-version: 2.1.0
+version: 3.0.0
 description: GQL Websocket Link
 repository: https://github.com/gql-dart/gql
 publish_to: none
