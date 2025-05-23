@@ -1,3 +1,7 @@
+## 3.0.0
+
+- BREAKING: graphql-transport-ws: streaming operations and single result operations are now multiplexed on a single connection, user has to manually resubscribe subscription when connection is broken
+
 ## 2.0.1
 
 - support uuid 4.0.0
