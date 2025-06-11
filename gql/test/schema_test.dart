@@ -22,7 +22,7 @@ void main() {
       );
     });
 
-    test("Can dereference an object interace", () {
+    test("Can dereference an object interface", () {
       final droid = schema.getType("Droid") as ObjectTypeDefinition;
       expect(
         droid.interfaces[0]!.name,
