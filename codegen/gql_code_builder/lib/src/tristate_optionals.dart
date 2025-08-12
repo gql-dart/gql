@@ -186,11 +186,8 @@ String _generateFieldDeserializers(
       final typeDefNode =
           getTypeDefinitionNode(schemaSource.document, originalSymbolName);
 
-      //TODO this feels flaky, find a better way
-      final isBuilder = type.url != null &&
-          !isWrappedValue &&
-          (typeDefNode is! ScalarTypeDefinitionNode &&
-              typeDefNode is! EnumTypeDefinitionNode);
+      // Check if this is a built type that needs .replace() method
+      final isBuilder = !isWrappedValue && _isBuiltType(type, typeDefNode);
 
       const fieldNameVariableName = "_\$fieldValue";
 
@@ -294,4 +291,27 @@ bool _isValue(Reference ref) {
   if (ref is! TypeReference) return false;
 
   return ref.symbol == valueTypeRef.symbol && ref.url == valueTypeRef.url;
+}
+
+bool _isBuiltType(TypeReference type, TypeDefinitionNode? typeDefNode) {
+  // Built collection types (BuiltList, BuiltMap, etc.)
+  final bool isFromBuiltCollectionPackage =
+      type.url?.contains("built_collection") ?? false;
+  if (isFromBuiltCollectionPackage) {
+    return true;
+  }
+
+  // Built value types (generated classes that implement Built)
+  if (typeDefNode != null &&
+      (typeDefNode is InputObjectTypeDefinitionNode ||
+          typeDefNode is ScalarTypeDefinitionNode)) {
+    return true;
+  }
+
+  // Types with Builder suffix pattern
+  if (type.symbol.endsWith("Builder")) {
+    return true;
+  }
+
+  return false;
 }
