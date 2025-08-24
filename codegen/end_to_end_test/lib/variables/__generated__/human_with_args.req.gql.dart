@@ -21,22 +21,25 @@ abstract class GHumanWithArgs
   factory GHumanWithArgs([void Function(GHumanWithArgsBuilder b) updates]) =
       _$GHumanWithArgs;
 
-  static void _initializeBuilder(GHumanWithArgsBuilder b) =>
-      b
-        ..operation = _i1.Operation(
-          document: _i2.document,
-          operationName: 'HumanWithArgs',
-        );
+  static void _initializeBuilder(GHumanWithArgsBuilder b) => b
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'HumanWithArgs',
+    );
 
   _i3.GHumanWithArgsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHumanWithArgs> get serializer =>
       _$gHumanWithArgsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GHumanWithArgs.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHumanWithArgs.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GHumanWithArgs? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GHumanWithArgs.serializer, json);
+      _i4.serializers.deserializeWith(
+        GHumanWithArgs.serializer,
+        json,
+      );
 }

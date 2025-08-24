@@ -13,58 +13,58 @@ part 'hero_with_interface_subtyped_fragments.var.gql.g.dart';
 
 abstract class GHeroWithInterfaceSubTypedFragmentsVars
     implements
-        Built<
-          GHeroWithInterfaceSubTypedFragmentsVars,
-          GHeroWithInterfaceSubTypedFragmentsVarsBuilder
-        > {
+        Built<GHeroWithInterfaceSubTypedFragmentsVars,
+            GHeroWithInterfaceSubTypedFragmentsVarsBuilder> {
   GHeroWithInterfaceSubTypedFragmentsVars._();
 
-  factory GHeroWithInterfaceSubTypedFragmentsVars([
-    void Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder b) updates,
-  ]) = _$GHeroWithInterfaceSubTypedFragmentsVars;
+  factory GHeroWithInterfaceSubTypedFragmentsVars(
+      [void Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder b)
+          updates]) = _$GHeroWithInterfaceSubTypedFragmentsVars;
 
-  factory GHeroWithInterfaceSubTypedFragmentsVars.create({
-    required _i1.GEpisode episode,
-  }) => GHeroWithInterfaceSubTypedFragmentsVars((b) => b..episode = episode);
+  factory GHeroWithInterfaceSubTypedFragmentsVars.create(
+          {required _i1.GEpisode episode}) =>
+      GHeroWithInterfaceSubTypedFragmentsVars((b) => b..episode = episode);
 
   _i1.GEpisode get episode;
   static Serializer<GHeroWithInterfaceSubTypedFragmentsVars> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(
-            GHeroWithInterfaceSubTypedFragmentsVars.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GHeroWithInterfaceSubTypedFragmentsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GHeroWithInterfaceSubTypedFragmentsVars? fromJson(
-    Map<String, dynamic> json,
-  ) => _i2.serializers.deserializeWith(
-    GHeroWithInterfaceSubTypedFragmentsVars.serializer,
-    json,
-  );
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GHeroWithInterfaceSubTypedFragmentsVars.serializer,
+        json,
+      );
 }
 
 abstract class GheroFieldsFragmentVars
     implements Built<GheroFieldsFragmentVars, GheroFieldsFragmentVarsBuilder> {
   GheroFieldsFragmentVars._();
 
-  factory GheroFieldsFragmentVars([
-    void Function(GheroFieldsFragmentVarsBuilder b) updates,
-  ]) = _$GheroFieldsFragmentVars;
+  factory GheroFieldsFragmentVars(
+          [void Function(GheroFieldsFragmentVarsBuilder b) updates]) =
+      _$GheroFieldsFragmentVars;
 
   factory GheroFieldsFragmentVars.create() => GheroFieldsFragmentVars();
 
   static Serializer<GheroFieldsFragmentVars> get serializer =>
       _$gheroFieldsFragmentVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GheroFieldsFragmentVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GheroFieldsFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GheroFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(GheroFieldsFragmentVars.serializer, json);
+      _i2.serializers.deserializeWith(
+        GheroFieldsFragmentVars.serializer,
+        json,
+      );
 }
 
 abstract class GhumanFieldsFragmentVars
@@ -72,22 +72,25 @@ abstract class GhumanFieldsFragmentVars
         Built<GhumanFieldsFragmentVars, GhumanFieldsFragmentVarsBuilder> {
   GhumanFieldsFragmentVars._();
 
-  factory GhumanFieldsFragmentVars([
-    void Function(GhumanFieldsFragmentVarsBuilder b) updates,
-  ]) = _$GhumanFieldsFragmentVars;
+  factory GhumanFieldsFragmentVars(
+          [void Function(GhumanFieldsFragmentVarsBuilder b) updates]) =
+      _$GhumanFieldsFragmentVars;
 
   factory GhumanFieldsFragmentVars.create() => GhumanFieldsFragmentVars();
 
   static Serializer<GhumanFieldsFragmentVars> get serializer =>
       _$ghumanFieldsFragmentVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GhumanFieldsFragmentVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GhumanFieldsFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GhumanFieldsFragmentVars? fromJson(Map<String, dynamic> json) => _i2
-      .serializers
-      .deserializeWith(GhumanFieldsFragmentVars.serializer, json);
+  static GhumanFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GhumanFieldsFragmentVars.serializer,
+        json,
+      );
 }
 
 abstract class GdroidFieldsFragmentVars
@@ -95,20 +98,23 @@ abstract class GdroidFieldsFragmentVars
         Built<GdroidFieldsFragmentVars, GdroidFieldsFragmentVarsBuilder> {
   GdroidFieldsFragmentVars._();
 
-  factory GdroidFieldsFragmentVars([
-    void Function(GdroidFieldsFragmentVarsBuilder b) updates,
-  ]) = _$GdroidFieldsFragmentVars;
+  factory GdroidFieldsFragmentVars(
+          [void Function(GdroidFieldsFragmentVarsBuilder b) updates]) =
+      _$GdroidFieldsFragmentVars;
 
   factory GdroidFieldsFragmentVars.create() => GdroidFieldsFragmentVars();
 
   static Serializer<GdroidFieldsFragmentVars> get serializer =>
       _$gdroidFieldsFragmentVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GdroidFieldsFragmentVars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GdroidFieldsFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GdroidFieldsFragmentVars? fromJson(Map<String, dynamic> json) => _i2
-      .serializers
-      .deserializeWith(GdroidFieldsFragmentVars.serializer, json);
+  static GdroidFieldsFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GdroidFieldsFragmentVars.serializer,
+        json,
+      );
 }

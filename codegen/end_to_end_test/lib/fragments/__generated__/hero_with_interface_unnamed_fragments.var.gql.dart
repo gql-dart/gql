@@ -13,35 +13,31 @@ part 'hero_with_interface_unnamed_fragments.var.gql.g.dart';
 
 abstract class GHeroWithInterfaceUnnamedFragmentsVars
     implements
-        Built<
-          GHeroWithInterfaceUnnamedFragmentsVars,
-          GHeroWithInterfaceUnnamedFragmentsVarsBuilder
-        > {
+        Built<GHeroWithInterfaceUnnamedFragmentsVars,
+            GHeroWithInterfaceUnnamedFragmentsVarsBuilder> {
   GHeroWithInterfaceUnnamedFragmentsVars._();
 
-  factory GHeroWithInterfaceUnnamedFragmentsVars([
-    void Function(GHeroWithInterfaceUnnamedFragmentsVarsBuilder b) updates,
-  ]) = _$GHeroWithInterfaceUnnamedFragmentsVars;
+  factory GHeroWithInterfaceUnnamedFragmentsVars(
+      [void Function(GHeroWithInterfaceUnnamedFragmentsVarsBuilder b)
+          updates]) = _$GHeroWithInterfaceUnnamedFragmentsVars;
 
-  factory GHeroWithInterfaceUnnamedFragmentsVars.create({
-    required _i1.GEpisode episode,
-  }) => GHeroWithInterfaceUnnamedFragmentsVars((b) => b..episode = episode);
+  factory GHeroWithInterfaceUnnamedFragmentsVars.create(
+          {required _i1.GEpisode episode}) =>
+      GHeroWithInterfaceUnnamedFragmentsVars((b) => b..episode = episode);
 
   _i1.GEpisode get episode;
   static Serializer<GHeroWithInterfaceUnnamedFragmentsVars> get serializer =>
       _$gHeroWithInterfaceUnnamedFragmentsVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(
-            GHeroWithInterfaceUnnamedFragmentsVars.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GHeroWithInterfaceUnnamedFragmentsVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GHeroWithInterfaceUnnamedFragmentsVars? fromJson(
-    Map<String, dynamic> json,
-  ) => _i2.serializers.deserializeWith(
-    GHeroWithInterfaceUnnamedFragmentsVars.serializer,
-    json,
-  );
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GHeroWithInterfaceUnnamedFragmentsVars.serializer,
+        json,
+      );
 }

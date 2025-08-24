@@ -24,12 +24,16 @@ abstract class GPostsData implements Built<GPostsData, GPostsDataBuilder> {
   BuiltList<GPostsData_posts?>? get posts;
   static Serializer<GPostsData> get serializer => _$gPostsDataSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPostsData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostsData.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GPostsData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GPostsData.serializer,
+        json,
+      );
 }
 
 abstract class GPostsData_posts
@@ -54,26 +58,28 @@ abstract class GPostsData_posts
   static Serializer<GPostsData_posts> get serializer =>
       _$gPostsDataPostsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPostsData_posts.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostsData_posts.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostsData_posts? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GPostsData_posts.serializer, json);
+      _i1.serializers.deserializeWith(
+        GPostsData_posts.serializer,
+        json,
+      );
 }
 
 abstract class GPostsData_posts_isFavorited
     implements
-        Built<
-          GPostsData_posts_isFavorited,
-          GPostsData_posts_isFavoritedBuilder
-        >,
+        Built<GPostsData_posts_isFavorited,
+            GPostsData_posts_isFavoritedBuilder>,
         GPostFragment_isFavorited {
   GPostsData_posts_isFavorited._();
 
-  factory GPostsData_posts_isFavorited([
-    void Function(GPostsData_posts_isFavoritedBuilder b) updates,
-  ]) = _$GPostsData_posts_isFavorited;
+  factory GPostsData_posts_isFavorited(
+          [void Function(GPostsData_posts_isFavoritedBuilder b) updates]) =
+      _$GPostsData_posts_isFavorited;
 
   static void _initializeBuilder(GPostsData_posts_isFavoritedBuilder b) =>
       b..G__typename = 'PostLikes';
@@ -86,12 +92,10 @@ abstract class GPostsData_posts_isFavorited
   static Serializer<GPostsData_posts_isFavorited> get serializer =>
       _$gPostsDataPostsIsFavoritedSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(
-            GPostsData_posts_isFavorited.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostsData_posts_isFavorited.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostsData_posts_isFavorited? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -106,9 +110,9 @@ abstract class GPostsData_posts_isLiked
         GPostFragment_isLiked {
   GPostsData_posts_isLiked._();
 
-  factory GPostsData_posts_isLiked([
-    void Function(GPostsData_posts_isLikedBuilder b) updates,
-  ]) = _$GPostsData_posts_isLiked;
+  factory GPostsData_posts_isLiked(
+          [void Function(GPostsData_posts_isLikedBuilder b) updates]) =
+      _$GPostsData_posts_isLiked;
 
   static void _initializeBuilder(GPostsData_posts_isLikedBuilder b) =>
       b..G__typename = 'PostFavorites';
@@ -121,13 +125,16 @@ abstract class GPostsData_posts_isLiked
   static Serializer<GPostsData_posts_isLiked> get serializer =>
       _$gPostsDataPostsIsLikedSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPostsData_posts_isLiked.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostsData_posts_isLiked.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GPostsData_posts_isLiked? fromJson(Map<String, dynamic> json) => _i1
-      .serializers
-      .deserializeWith(GPostsData_posts_isLiked.serializer, json);
+  static GPostsData_posts_isLiked? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostsData_posts_isLiked.serializer,
+        json,
+      );
 }
 
 abstract class GPostFragment {
@@ -153,9 +160,9 @@ abstract class GPostFragmentData
         GPostFragment {
   GPostFragmentData._();
 
-  factory GPostFragmentData([
-    void Function(GPostFragmentDataBuilder b) updates,
-  ]) = _$GPostFragmentData;
+  factory GPostFragmentData(
+          [void Function(GPostFragmentDataBuilder b) updates]) =
+      _$GPostFragmentData;
 
   static void _initializeBuilder(GPostFragmentDataBuilder b) =>
       b..G__typename = 'Post';
@@ -172,26 +179,28 @@ abstract class GPostFragmentData
   static Serializer<GPostFragmentData> get serializer =>
       _$gPostFragmentDataSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPostFragmentData.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFragmentData.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostFragmentData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GPostFragmentData.serializer, json);
+      _i1.serializers.deserializeWith(
+        GPostFragmentData.serializer,
+        json,
+      );
 }
 
 abstract class GPostFragmentData_isFavorited
     implements
-        Built<
-          GPostFragmentData_isFavorited,
-          GPostFragmentData_isFavoritedBuilder
-        >,
+        Built<GPostFragmentData_isFavorited,
+            GPostFragmentData_isFavoritedBuilder>,
         GPostFragment_isFavorited {
   GPostFragmentData_isFavorited._();
 
-  factory GPostFragmentData_isFavorited([
-    void Function(GPostFragmentData_isFavoritedBuilder b) updates,
-  ]) = _$GPostFragmentData_isFavorited;
+  factory GPostFragmentData_isFavorited(
+          [void Function(GPostFragmentData_isFavoritedBuilder b) updates]) =
+      _$GPostFragmentData_isFavorited;
 
   static void _initializeBuilder(GPostFragmentData_isFavoritedBuilder b) =>
       b..G__typename = 'PostLikes';
@@ -204,12 +213,10 @@ abstract class GPostFragmentData_isFavorited
   static Serializer<GPostFragmentData_isFavorited> get serializer =>
       _$gPostFragmentDataIsFavoritedSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(
-            GPostFragmentData_isFavorited.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFragmentData_isFavorited.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostFragmentData_isFavorited? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -224,9 +231,9 @@ abstract class GPostFragmentData_isLiked
         GPostFragment_isLiked {
   GPostFragmentData_isLiked._();
 
-  factory GPostFragmentData_isLiked([
-    void Function(GPostFragmentData_isLikedBuilder b) updates,
-  ]) = _$GPostFragmentData_isLiked;
+  factory GPostFragmentData_isLiked(
+          [void Function(GPostFragmentData_isLikedBuilder b) updates]) =
+      _$GPostFragmentData_isLiked;
 
   static void _initializeBuilder(GPostFragmentData_isLikedBuilder b) =>
       b..G__typename = 'PostFavorites';
@@ -239,11 +246,14 @@ abstract class GPostFragmentData_isLiked
   static Serializer<GPostFragmentData_isLiked> get serializer =>
       _$gPostFragmentDataIsLikedSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GPostFragmentData_isLiked.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GPostFragmentData_isLiked.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GPostFragmentData_isLiked? fromJson(Map<String, dynamic> json) => _i1
-      .serializers
-      .deserializeWith(GPostFragmentData_isLiked.serializer, json);
+  static GPostFragmentData_isLiked? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GPostFragmentData_isLiked.serializer,
+        json,
+      );
 }

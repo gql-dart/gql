@@ -21,21 +21,24 @@ abstract class GCreateReview
   factory GCreateReview([void Function(GCreateReviewBuilder b) updates]) =
       _$GCreateReview;
 
-  static void _initializeBuilder(GCreateReviewBuilder b) =>
-      b
-        ..operation = _i1.Operation(
-          document: _i2.document,
-          operationName: 'CreateReview',
-        );
+  static void _initializeBuilder(GCreateReviewBuilder b) => b
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'CreateReview',
+    );
 
   _i3.GCreateReviewVars get vars;
   _i1.Operation get operation;
   static Serializer<GCreateReview> get serializer => _$gCreateReviewSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GCreateReview.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GCreateReview.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GCreateReview? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GCreateReview.serializer, json);
+      _i4.serializers.deserializeWith(
+        GCreateReview.serializer,
+        json,
+      );
 }

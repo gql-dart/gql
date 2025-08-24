@@ -18,26 +18,29 @@ abstract class GPostsWithFixedVariable
     implements Built<GPostsWithFixedVariable, GPostsWithFixedVariableBuilder> {
   GPostsWithFixedVariable._();
 
-  factory GPostsWithFixedVariable([
-    void Function(GPostsWithFixedVariableBuilder b) updates,
-  ]) = _$GPostsWithFixedVariable;
+  factory GPostsWithFixedVariable(
+          [void Function(GPostsWithFixedVariableBuilder b) updates]) =
+      _$GPostsWithFixedVariable;
 
-  static void _initializeBuilder(GPostsWithFixedVariableBuilder b) =>
-      b
-        ..operation = _i1.Operation(
-          document: _i2.document,
-          operationName: 'PostsWithFixedVariable',
-        );
+  static void _initializeBuilder(GPostsWithFixedVariableBuilder b) => b
+    ..operation = _i1.Operation(
+      document: _i2.document,
+      operationName: 'PostsWithFixedVariable',
+    );
 
   _i3.GPostsWithFixedVariableVars get vars;
   _i1.Operation get operation;
   static Serializer<GPostsWithFixedVariable> get serializer =>
       _$gPostsWithFixedVariableSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(GPostsWithFixedVariable.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GPostsWithFixedVariable.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GPostsWithFixedVariable? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(GPostsWithFixedVariable.serializer, json);
+      _i4.serializers.deserializeWith(
+        GPostsWithFixedVariable.serializer,
+        json,
+      );
 }
