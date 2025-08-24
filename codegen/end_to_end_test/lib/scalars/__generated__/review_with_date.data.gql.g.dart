@@ -7,10 +7,10 @@ part of 'review_with_date.data.gql.dart';
 // **************************************************************************
 
 Serializer<GReviewWithDateData> _$gReviewWithDateDataSerializer =
-    new _$GReviewWithDateDataSerializer();
+    _$GReviewWithDateDataSerializer();
 Serializer<GReviewWithDateData_createReview>
     _$gReviewWithDateDataCreateReviewSerializer =
-    new _$GReviewWithDateData_createReviewSerializer();
+    _$GReviewWithDateData_createReviewSerializer();
 
 class _$GReviewWithDateDataSerializer
     implements StructuredSerializer<GReviewWithDateData> {
@@ -46,7 +46,7 @@ class _$GReviewWithDateDataSerializer
   GReviewWithDateData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReviewWithDateDataBuilder();
+    final result = GReviewWithDateDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -129,7 +129,7 @@ class _$GReviewWithDateData_createReviewSerializer
   GReviewWithDateData_createReview deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReviewWithDateData_createReviewBuilder();
+    final result = GReviewWithDateData_createReviewBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -184,14 +184,10 @@ class _$GReviewWithDateData extends GReviewWithDateData {
 
   factory _$GReviewWithDateData(
           [void Function(GReviewWithDateDataBuilder)? updates]) =>
-      (new GReviewWithDateDataBuilder()..update(updates))._build();
+      (GReviewWithDateDataBuilder()..update(updates))._build();
 
   _$GReviewWithDateData._({required this.G__typename, this.createReview})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GReviewWithDateData', 'G__typename');
-  }
-
+      : super._();
   @override
   GReviewWithDateData rebuild(
           void Function(GReviewWithDateDataBuilder) updates) =>
@@ -199,7 +195,7 @@ class _$GReviewWithDateData extends GReviewWithDateData {
 
   @override
   GReviewWithDateDataBuilder toBuilder() =>
-      new GReviewWithDateDataBuilder()..replace(this);
+      GReviewWithDateDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -237,7 +233,7 @@ class GReviewWithDateDataBuilder
 
   GReviewWithDateData_createReviewBuilder? _createReview;
   GReviewWithDateData_createReviewBuilder get createReview =>
-      _$this._createReview ??= new GReviewWithDateData_createReviewBuilder();
+      _$this._createReview ??= GReviewWithDateData_createReviewBuilder();
   set createReview(GReviewWithDateData_createReviewBuilder? createReview) =>
       _$this._createReview = createReview;
 
@@ -257,7 +253,6 @@ class GReviewWithDateDataBuilder
 
   @override
   void replace(GReviewWithDateData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReviewWithDateData;
   }
 
@@ -273,7 +268,7 @@ class GReviewWithDateDataBuilder
     _$GReviewWithDateData _$result;
     try {
       _$result = _$v ??
-          new _$GReviewWithDateData._(
+          _$GReviewWithDateData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GReviewWithDateData', 'G__typename'),
             createReview: _createReview?.build(),
@@ -284,7 +279,7 @@ class GReviewWithDateDataBuilder
         _$failedField = 'createReview';
         _createReview?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GReviewWithDateData', _$failedField, e.toString());
       }
       rethrow;
@@ -313,7 +308,7 @@ class _$GReviewWithDateData_createReview
 
   factory _$GReviewWithDateData_createReview(
           [void Function(GReviewWithDateData_createReviewBuilder)? updates]) =>
-      (new GReviewWithDateData_createReviewBuilder()..update(updates))._build();
+      (GReviewWithDateData_createReviewBuilder()..update(updates))._build();
 
   _$GReviewWithDateData_createReview._(
       {required this.G__typename,
@@ -323,17 +318,7 @@ class _$GReviewWithDateData_createReview
       this.createdAt,
       required this.seenOn,
       required this.custom})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GReviewWithDateData_createReview', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        stars, r'GReviewWithDateData_createReview', 'stars');
-    BuiltValueNullFieldError.checkNotNull(
-        seenOn, r'GReviewWithDateData_createReview', 'seenOn');
-    BuiltValueNullFieldError.checkNotNull(
-        custom, r'GReviewWithDateData_createReview', 'custom');
-  }
-
+      : super._();
   @override
   GReviewWithDateData_createReview rebuild(
           void Function(GReviewWithDateData_createReviewBuilder) updates) =>
@@ -341,7 +326,7 @@ class _$GReviewWithDateData_createReview
 
   @override
   GReviewWithDateData_createReviewBuilder toBuilder() =>
-      new GReviewWithDateData_createReviewBuilder()..replace(this);
+      GReviewWithDateData_createReviewBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -412,12 +397,12 @@ class GReviewWithDateData_createReviewBuilder
 
   ListBuilder<DateTime>? _seenOn;
   ListBuilder<DateTime> get seenOn =>
-      _$this._seenOn ??= new ListBuilder<DateTime>();
+      _$this._seenOn ??= ListBuilder<DateTime>();
   set seenOn(ListBuilder<DateTime>? seenOn) => _$this._seenOn = seenOn;
 
   ListBuilder<_i3.CustomField>? _custom;
   ListBuilder<_i3.CustomField> get custom =>
-      _$this._custom ??= new ListBuilder<_i3.CustomField>();
+      _$this._custom ??= ListBuilder<_i3.CustomField>();
   set custom(ListBuilder<_i3.CustomField>? custom) => _$this._custom = custom;
 
   GReviewWithDateData_createReviewBuilder() {
@@ -441,7 +426,6 @@ class GReviewWithDateData_createReviewBuilder
 
   @override
   void replace(GReviewWithDateData_createReview other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReviewWithDateData_createReview;
   }
 
@@ -457,7 +441,7 @@ class GReviewWithDateData_createReviewBuilder
     _$GReviewWithDateData_createReview _$result;
     try {
       _$result = _$v ??
-          new _$GReviewWithDateData_createReview._(
+          _$GReviewWithDateData_createReview._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GReviewWithDateData_createReview', 'G__typename'),
             episode: episode,
@@ -476,7 +460,7 @@ class GReviewWithDateData_createReviewBuilder
         _$failedField = 'custom';
         custom.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GReviewWithDateData_createReview', _$failedField, e.toString());
       }
       rethrow;

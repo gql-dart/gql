@@ -7,13 +7,13 @@ part of 'nested_duplicate_fragments.var.gql.dart';
 // **************************************************************************
 
 Serializer<GSearchResultsQueryVars> _$gSearchResultsQueryVarsSerializer =
-    new _$GSearchResultsQueryVarsSerializer();
+    _$GSearchResultsQueryVarsSerializer();
 Serializer<GCharacterDetailsVars> _$gCharacterDetailsVarsSerializer =
-    new _$GCharacterDetailsVarsSerializer();
+    _$GCharacterDetailsVarsSerializer();
 Serializer<GFriendInfoVars> _$gFriendInfoVarsSerializer =
-    new _$GFriendInfoVarsSerializer();
+    _$GFriendInfoVarsSerializer();
 Serializer<GCharacterBasicVars> _$gCharacterBasicVarsSerializer =
-    new _$GCharacterBasicVarsSerializer();
+    _$GCharacterBasicVarsSerializer();
 
 class _$GSearchResultsQueryVarsSerializer
     implements StructuredSerializer<GSearchResultsQueryVars> {
@@ -36,7 +36,7 @@ class _$GSearchResultsQueryVarsSerializer
   GSearchResultsQueryVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GSearchResultsQueryVarsBuilder().build();
+    return GSearchResultsQueryVarsBuilder().build();
   }
 }
 
@@ -61,7 +61,7 @@ class _$GCharacterDetailsVarsSerializer
   GCharacterDetailsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GCharacterDetailsVarsBuilder().build();
+    return GCharacterDetailsVarsBuilder().build();
   }
 }
 
@@ -82,7 +82,7 @@ class _$GFriendInfoVarsSerializer
   GFriendInfoVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GFriendInfoVarsBuilder().build();
+    return GFriendInfoVarsBuilder().build();
   }
 }
 
@@ -107,17 +107,16 @@ class _$GCharacterBasicVarsSerializer
   GCharacterBasicVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GCharacterBasicVarsBuilder().build();
+    return GCharacterBasicVarsBuilder().build();
   }
 }
 
 class _$GSearchResultsQueryVars extends GSearchResultsQueryVars {
   factory _$GSearchResultsQueryVars(
           [void Function(GSearchResultsQueryVarsBuilder)? updates]) =>
-      (new GSearchResultsQueryVarsBuilder()..update(updates))._build();
+      (GSearchResultsQueryVarsBuilder()..update(updates))._build();
 
   _$GSearchResultsQueryVars._() : super._();
-
   @override
   GSearchResultsQueryVars rebuild(
           void Function(GSearchResultsQueryVarsBuilder) updates) =>
@@ -125,7 +124,7 @@ class _$GSearchResultsQueryVars extends GSearchResultsQueryVars {
 
   @override
   GSearchResultsQueryVarsBuilder toBuilder() =>
-      new GSearchResultsQueryVarsBuilder()..replace(this);
+      GSearchResultsQueryVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -153,7 +152,6 @@ class GSearchResultsQueryVarsBuilder
 
   @override
   void replace(GSearchResultsQueryVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryVars;
   }
 
@@ -166,7 +164,7 @@ class GSearchResultsQueryVarsBuilder
   GSearchResultsQueryVars build() => _build();
 
   _$GSearchResultsQueryVars _build() {
-    final _$result = _$v ?? new _$GSearchResultsQueryVars._();
+    final _$result = _$v ?? _$GSearchResultsQueryVars._();
     replace(_$result);
     return _$result;
   }
@@ -175,10 +173,9 @@ class GSearchResultsQueryVarsBuilder
 class _$GCharacterDetailsVars extends GCharacterDetailsVars {
   factory _$GCharacterDetailsVars(
           [void Function(GCharacterDetailsVarsBuilder)? updates]) =>
-      (new GCharacterDetailsVarsBuilder()..update(updates))._build();
+      (GCharacterDetailsVarsBuilder()..update(updates))._build();
 
   _$GCharacterDetailsVars._() : super._();
-
   @override
   GCharacterDetailsVars rebuild(
           void Function(GCharacterDetailsVarsBuilder) updates) =>
@@ -186,7 +183,7 @@ class _$GCharacterDetailsVars extends GCharacterDetailsVars {
 
   @override
   GCharacterDetailsVarsBuilder toBuilder() =>
-      new GCharacterDetailsVarsBuilder()..replace(this);
+      GCharacterDetailsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -213,7 +210,6 @@ class GCharacterDetailsVarsBuilder
 
   @override
   void replace(GCharacterDetailsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterDetailsVars;
   }
 
@@ -226,7 +222,7 @@ class GCharacterDetailsVarsBuilder
   GCharacterDetailsVars build() => _build();
 
   _$GCharacterDetailsVars _build() {
-    final _$result = _$v ?? new _$GCharacterDetailsVars._();
+    final _$result = _$v ?? _$GCharacterDetailsVars._();
     replace(_$result);
     return _$result;
   }
@@ -234,17 +230,15 @@ class GCharacterDetailsVarsBuilder
 
 class _$GFriendInfoVars extends GFriendInfoVars {
   factory _$GFriendInfoVars([void Function(GFriendInfoVarsBuilder)? updates]) =>
-      (new GFriendInfoVarsBuilder()..update(updates))._build();
+      (GFriendInfoVarsBuilder()..update(updates))._build();
 
   _$GFriendInfoVars._() : super._();
-
   @override
   GFriendInfoVars rebuild(void Function(GFriendInfoVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GFriendInfoVarsBuilder toBuilder() =>
-      new GFriendInfoVarsBuilder()..replace(this);
+  GFriendInfoVarsBuilder toBuilder() => GFriendInfoVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -271,7 +265,6 @@ class GFriendInfoVarsBuilder
 
   @override
   void replace(GFriendInfoVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFriendInfoVars;
   }
 
@@ -284,7 +277,7 @@ class GFriendInfoVarsBuilder
   GFriendInfoVars build() => _build();
 
   _$GFriendInfoVars _build() {
-    final _$result = _$v ?? new _$GFriendInfoVars._();
+    final _$result = _$v ?? _$GFriendInfoVars._();
     replace(_$result);
     return _$result;
   }
@@ -293,10 +286,9 @@ class GFriendInfoVarsBuilder
 class _$GCharacterBasicVars extends GCharacterBasicVars {
   factory _$GCharacterBasicVars(
           [void Function(GCharacterBasicVarsBuilder)? updates]) =>
-      (new GCharacterBasicVarsBuilder()..update(updates))._build();
+      (GCharacterBasicVarsBuilder()..update(updates))._build();
 
   _$GCharacterBasicVars._() : super._();
-
   @override
   GCharacterBasicVars rebuild(
           void Function(GCharacterBasicVarsBuilder) updates) =>
@@ -304,7 +296,7 @@ class _$GCharacterBasicVars extends GCharacterBasicVars {
 
   @override
   GCharacterBasicVarsBuilder toBuilder() =>
-      new GCharacterBasicVarsBuilder()..replace(this);
+      GCharacterBasicVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -331,7 +323,6 @@ class GCharacterBasicVarsBuilder
 
   @override
   void replace(GCharacterBasicVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterBasicVars;
   }
 
@@ -344,7 +335,7 @@ class GCharacterBasicVarsBuilder
   GCharacterBasicVars build() => _build();
 
   _$GCharacterBasicVars _build() {
-    final _$result = _$v ?? new _$GCharacterBasicVars._();
+    final _$result = _$v ?? _$GCharacterBasicVars._();
     replace(_$result);
     return _$result;
   }

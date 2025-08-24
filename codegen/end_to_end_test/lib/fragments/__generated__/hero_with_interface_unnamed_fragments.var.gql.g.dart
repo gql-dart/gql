@@ -8,7 +8,7 @@ part of 'hero_with_interface_unnamed_fragments.var.gql.dart';
 
 Serializer<GHeroWithInterfaceUnnamedFragmentsVars>
     _$gHeroWithInterfaceUnnamedFragmentsVarsSerializer =
-    new _$GHeroWithInterfaceUnnamedFragmentsVarsSerializer();
+    _$GHeroWithInterfaceUnnamedFragmentsVarsSerializer();
 
 class _$GHeroWithInterfaceUnnamedFragmentsVarsSerializer
     implements StructuredSerializer<GHeroWithInterfaceUnnamedFragmentsVars> {
@@ -37,7 +37,7 @@ class _$GHeroWithInterfaceUnnamedFragmentsVarsSerializer
   GHeroWithInterfaceUnnamedFragmentsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithInterfaceUnnamedFragmentsVarsBuilder();
+    final result = GHeroWithInterfaceUnnamedFragmentsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -64,15 +64,11 @@ class _$GHeroWithInterfaceUnnamedFragmentsVars
   factory _$GHeroWithInterfaceUnnamedFragmentsVars(
           [void Function(GHeroWithInterfaceUnnamedFragmentsVarsBuilder)?
               updates]) =>
-      (new GHeroWithInterfaceUnnamedFragmentsVarsBuilder()..update(updates))
+      (GHeroWithInterfaceUnnamedFragmentsVarsBuilder()..update(updates))
           ._build();
 
   _$GHeroWithInterfaceUnnamedFragmentsVars._({required this.episode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        episode, r'GHeroWithInterfaceUnnamedFragmentsVars', 'episode');
-  }
-
+      : super._();
   @override
   GHeroWithInterfaceUnnamedFragmentsVars rebuild(
           void Function(GHeroWithInterfaceUnnamedFragmentsVarsBuilder)
@@ -81,7 +77,7 @@ class _$GHeroWithInterfaceUnnamedFragmentsVars
 
   @override
   GHeroWithInterfaceUnnamedFragmentsVarsBuilder toBuilder() =>
-      new GHeroWithInterfaceUnnamedFragmentsVarsBuilder()..replace(this);
+      GHeroWithInterfaceUnnamedFragmentsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -130,7 +126,6 @@ class GHeroWithInterfaceUnnamedFragmentsVarsBuilder
 
   @override
   void replace(GHeroWithInterfaceUnnamedFragmentsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithInterfaceUnnamedFragmentsVars;
   }
 
@@ -145,7 +140,7 @@ class GHeroWithInterfaceUnnamedFragmentsVarsBuilder
 
   _$GHeroWithInterfaceUnnamedFragmentsVars _build() {
     final _$result = _$v ??
-        new _$GHeroWithInterfaceUnnamedFragmentsVars._(
+        _$GHeroWithInterfaceUnnamedFragmentsVars._(
           episode: BuiltValueNullFieldError.checkNotNull(
               episode, r'GHeroWithInterfaceUnnamedFragmentsVars', 'episode'),
         );

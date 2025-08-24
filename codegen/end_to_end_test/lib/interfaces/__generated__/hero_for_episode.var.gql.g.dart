@@ -7,9 +7,9 @@ part of 'hero_for_episode.var.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroForEpisodeVars> _$gHeroForEpisodeVarsSerializer =
-    new _$GHeroForEpisodeVarsSerializer();
+    _$GHeroForEpisodeVarsSerializer();
 Serializer<GDroidFragmentVars> _$gDroidFragmentVarsSerializer =
-    new _$GDroidFragmentVarsSerializer();
+    _$GDroidFragmentVarsSerializer();
 
 class _$GHeroForEpisodeVarsSerializer
     implements StructuredSerializer<GHeroForEpisodeVars> {
@@ -38,7 +38,7 @@ class _$GHeroForEpisodeVarsSerializer
   GHeroForEpisodeVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroForEpisodeVarsBuilder();
+    final result = GHeroForEpisodeVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -75,7 +75,7 @@ class _$GDroidFragmentVarsSerializer
   GDroidFragmentVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GDroidFragmentVarsBuilder().build();
+    return GDroidFragmentVarsBuilder().build();
   }
 }
 
@@ -85,12 +85,9 @@ class _$GHeroForEpisodeVars extends GHeroForEpisodeVars {
 
   factory _$GHeroForEpisodeVars(
           [void Function(GHeroForEpisodeVarsBuilder)? updates]) =>
-      (new GHeroForEpisodeVarsBuilder()..update(updates))._build();
+      (GHeroForEpisodeVarsBuilder()..update(updates))._build();
 
-  _$GHeroForEpisodeVars._({required this.ep}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(ep, r'GHeroForEpisodeVars', 'ep');
-  }
-
+  _$GHeroForEpisodeVars._({required this.ep}) : super._();
   @override
   GHeroForEpisodeVars rebuild(
           void Function(GHeroForEpisodeVarsBuilder) updates) =>
@@ -98,7 +95,7 @@ class _$GHeroForEpisodeVars extends GHeroForEpisodeVars {
 
   @override
   GHeroForEpisodeVarsBuilder toBuilder() =>
-      new GHeroForEpisodeVarsBuilder()..replace(this);
+      GHeroForEpisodeVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -142,7 +139,6 @@ class GHeroForEpisodeVarsBuilder
 
   @override
   void replace(GHeroForEpisodeVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroForEpisodeVars;
   }
 
@@ -156,7 +152,7 @@ class GHeroForEpisodeVarsBuilder
 
   _$GHeroForEpisodeVars _build() {
     final _$result = _$v ??
-        new _$GHeroForEpisodeVars._(
+        _$GHeroForEpisodeVars._(
           ep: BuiltValueNullFieldError.checkNotNull(
               ep, r'GHeroForEpisodeVars', 'ep'),
         );
@@ -168,10 +164,9 @@ class GHeroForEpisodeVarsBuilder
 class _$GDroidFragmentVars extends GDroidFragmentVars {
   factory _$GDroidFragmentVars(
           [void Function(GDroidFragmentVarsBuilder)? updates]) =>
-      (new GDroidFragmentVarsBuilder()..update(updates))._build();
+      (GDroidFragmentVarsBuilder()..update(updates))._build();
 
   _$GDroidFragmentVars._() : super._();
-
   @override
   GDroidFragmentVars rebuild(
           void Function(GDroidFragmentVarsBuilder) updates) =>
@@ -179,7 +174,7 @@ class _$GDroidFragmentVars extends GDroidFragmentVars {
 
   @override
   GDroidFragmentVarsBuilder toBuilder() =>
-      new GDroidFragmentVarsBuilder()..replace(this);
+      GDroidFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -206,7 +201,6 @@ class GDroidFragmentVarsBuilder
 
   @override
   void replace(GDroidFragmentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDroidFragmentVars;
   }
 
@@ -219,7 +213,7 @@ class GDroidFragmentVarsBuilder
   GDroidFragmentVars build() => _build();
 
   _$GDroidFragmentVars _build() {
-    final _$result = _$v ?? new _$GDroidFragmentVars._();
+    final _$result = _$v ?? _$GDroidFragmentVars._();
     replace(_$result);
     return _$result;
   }

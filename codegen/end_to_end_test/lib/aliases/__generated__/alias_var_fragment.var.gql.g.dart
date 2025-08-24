@@ -6,9 +6,9 @@ part of 'alias_var_fragment.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GPostsVars> _$gPostsVarsSerializer = new _$GPostsVarsSerializer();
+Serializer<GPostsVars> _$gPostsVarsSerializer = _$GPostsVarsSerializer();
 Serializer<GPostFragmentVars> _$gPostFragmentVarsSerializer =
-    new _$GPostFragmentVarsSerializer();
+    _$GPostFragmentVarsSerializer();
 
 class _$GPostsVarsSerializer implements StructuredSerializer<GPostsVars> {
   @override
@@ -31,7 +31,7 @@ class _$GPostsVarsSerializer implements StructuredSerializer<GPostsVars> {
   @override
   GPostsVars deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsVarsBuilder();
+    final result = GPostsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -73,7 +73,7 @@ class _$GPostFragmentVarsSerializer
   GPostFragmentVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostFragmentVarsBuilder();
+    final result = GPostFragmentVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -97,18 +97,15 @@ class _$GPostsVars extends GPostsVars {
   final String userId;
 
   factory _$GPostsVars([void Function(GPostsVarsBuilder)? updates]) =>
-      (new GPostsVarsBuilder()..update(updates))._build();
+      (GPostsVarsBuilder()..update(updates))._build();
 
-  _$GPostsVars._({required this.userId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(userId, r'GPostsVars', 'userId');
-  }
-
+  _$GPostsVars._({required this.userId}) : super._();
   @override
   GPostsVars rebuild(void Function(GPostsVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GPostsVarsBuilder toBuilder() => new GPostsVarsBuilder()..replace(this);
+  GPostsVarsBuilder toBuilder() => GPostsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -151,7 +148,6 @@ class GPostsVarsBuilder implements Builder<GPostsVars, GPostsVarsBuilder> {
 
   @override
   void replace(GPostsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsVars;
   }
 
@@ -165,7 +161,7 @@ class GPostsVarsBuilder implements Builder<GPostsVars, GPostsVarsBuilder> {
 
   _$GPostsVars _build() {
     final _$result = _$v ??
-        new _$GPostsVars._(
+        _$GPostsVars._(
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'GPostsVars', 'userId'),
         );
@@ -180,20 +176,16 @@ class _$GPostFragmentVars extends GPostFragmentVars {
 
   factory _$GPostFragmentVars(
           [void Function(GPostFragmentVarsBuilder)? updates]) =>
-      (new GPostFragmentVarsBuilder()..update(updates))._build();
+      (GPostFragmentVarsBuilder()..update(updates))._build();
 
-  _$GPostFragmentVars._({required this.userId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'GPostFragmentVars', 'userId');
-  }
-
+  _$GPostFragmentVars._({required this.userId}) : super._();
   @override
   GPostFragmentVars rebuild(void Function(GPostFragmentVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GPostFragmentVarsBuilder toBuilder() =>
-      new GPostFragmentVarsBuilder()..replace(this);
+      GPostFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -238,7 +230,6 @@ class GPostFragmentVarsBuilder
 
   @override
   void replace(GPostFragmentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFragmentVars;
   }
 
@@ -252,7 +243,7 @@ class GPostFragmentVarsBuilder
 
   _$GPostFragmentVars _build() {
     final _$result = _$v ??
-        new _$GPostFragmentVars._(
+        _$GPostFragmentVars._(
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'GPostFragmentVars', 'userId'),
         );

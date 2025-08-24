@@ -6,7 +6,7 @@ part of 'shape.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GShapeVars> _$gShapeVarsSerializer = new _$GShapeVarsSerializer();
+Serializer<GShapeVars> _$gShapeVarsSerializer = _$GShapeVarsSerializer();
 
 class _$GShapeVarsSerializer implements StructuredSerializer<GShapeVars> {
   @override
@@ -23,22 +23,21 @@ class _$GShapeVarsSerializer implements StructuredSerializer<GShapeVars> {
   @override
   GShapeVars deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GShapeVarsBuilder().build();
+    return GShapeVarsBuilder().build();
   }
 }
 
 class _$GShapeVars extends GShapeVars {
   factory _$GShapeVars([void Function(GShapeVarsBuilder)? updates]) =>
-      (new GShapeVarsBuilder()..update(updates))._build();
+      (GShapeVarsBuilder()..update(updates))._build();
 
   _$GShapeVars._() : super._();
-
   @override
   GShapeVars rebuild(void Function(GShapeVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GShapeVarsBuilder toBuilder() => new GShapeVarsBuilder()..replace(this);
+  GShapeVarsBuilder toBuilder() => GShapeVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,7 +63,6 @@ class GShapeVarsBuilder implements Builder<GShapeVars, GShapeVarsBuilder> {
 
   @override
   void replace(GShapeVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeVars;
   }
 
@@ -77,7 +75,7 @@ class GShapeVarsBuilder implements Builder<GShapeVars, GShapeVarsBuilder> {
   GShapeVars build() => _build();
 
   _$GShapeVars _build() {
-    final _$result = _$v ?? new _$GShapeVars._();
+    final _$result = _$v ?? _$GShapeVars._();
     replace(_$result);
     return _$result;
   }

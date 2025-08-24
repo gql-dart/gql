@@ -7,9 +7,9 @@ part of 'human_with_args.data.gql.dart';
 // **************************************************************************
 
 Serializer<GHumanWithArgsData> _$gHumanWithArgsDataSerializer =
-    new _$GHumanWithArgsDataSerializer();
+    _$GHumanWithArgsDataSerializer();
 Serializer<GHumanWithArgsData_human> _$gHumanWithArgsDataHumanSerializer =
-    new _$GHumanWithArgsData_humanSerializer();
+    _$GHumanWithArgsData_humanSerializer();
 
 class _$GHumanWithArgsDataSerializer
     implements StructuredSerializer<GHumanWithArgsData> {
@@ -42,7 +42,7 @@ class _$GHumanWithArgsDataSerializer
   GHumanWithArgsData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHumanWithArgsDataBuilder();
+    final result = GHumanWithArgsDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -102,7 +102,7 @@ class _$GHumanWithArgsData_humanSerializer
   GHumanWithArgsData_human deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHumanWithArgsData_humanBuilder();
+    final result = GHumanWithArgsData_humanBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -137,13 +137,9 @@ class _$GHumanWithArgsData extends GHumanWithArgsData {
 
   factory _$GHumanWithArgsData(
           [void Function(GHumanWithArgsDataBuilder)? updates]) =>
-      (new GHumanWithArgsDataBuilder()..update(updates))._build();
+      (GHumanWithArgsDataBuilder()..update(updates))._build();
 
-  _$GHumanWithArgsData._({required this.G__typename, this.human}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHumanWithArgsData', 'G__typename');
-  }
-
+  _$GHumanWithArgsData._({required this.G__typename, this.human}) : super._();
   @override
   GHumanWithArgsData rebuild(
           void Function(GHumanWithArgsDataBuilder) updates) =>
@@ -151,7 +147,7 @@ class _$GHumanWithArgsData extends GHumanWithArgsData {
 
   @override
   GHumanWithArgsDataBuilder toBuilder() =>
-      new GHumanWithArgsDataBuilder()..replace(this);
+      GHumanWithArgsDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -189,7 +185,7 @@ class GHumanWithArgsDataBuilder
 
   GHumanWithArgsData_humanBuilder? _human;
   GHumanWithArgsData_humanBuilder get human =>
-      _$this._human ??= new GHumanWithArgsData_humanBuilder();
+      _$this._human ??= GHumanWithArgsData_humanBuilder();
   set human(GHumanWithArgsData_humanBuilder? human) => _$this._human = human;
 
   GHumanWithArgsDataBuilder() {
@@ -208,7 +204,6 @@ class GHumanWithArgsDataBuilder
 
   @override
   void replace(GHumanWithArgsData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHumanWithArgsData;
   }
 
@@ -224,7 +219,7 @@ class GHumanWithArgsDataBuilder
     _$GHumanWithArgsData _$result;
     try {
       _$result = _$v ??
-          new _$GHumanWithArgsData._(
+          _$GHumanWithArgsData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GHumanWithArgsData', 'G__typename'),
             human: _human?.build(),
@@ -235,7 +230,7 @@ class GHumanWithArgsDataBuilder
         _$failedField = 'human';
         _human?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GHumanWithArgsData', _$failedField, e.toString());
       }
       rethrow;
@@ -255,17 +250,11 @@ class _$GHumanWithArgsData_human extends GHumanWithArgsData_human {
 
   factory _$GHumanWithArgsData_human(
           [void Function(GHumanWithArgsData_humanBuilder)? updates]) =>
-      (new GHumanWithArgsData_humanBuilder()..update(updates))._build();
+      (GHumanWithArgsData_humanBuilder()..update(updates))._build();
 
   _$GHumanWithArgsData_human._(
       {required this.G__typename, required this.name, this.height})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHumanWithArgsData_human', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHumanWithArgsData_human', 'name');
-  }
-
+      : super._();
   @override
   GHumanWithArgsData_human rebuild(
           void Function(GHumanWithArgsData_humanBuilder) updates) =>
@@ -273,7 +262,7 @@ class _$GHumanWithArgsData_human extends GHumanWithArgsData_human {
 
   @override
   GHumanWithArgsData_humanBuilder toBuilder() =>
-      new GHumanWithArgsData_humanBuilder()..replace(this);
+      GHumanWithArgsData_humanBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -338,7 +327,6 @@ class GHumanWithArgsData_humanBuilder
 
   @override
   void replace(GHumanWithArgsData_human other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHumanWithArgsData_human;
   }
 
@@ -352,7 +340,7 @@ class GHumanWithArgsData_humanBuilder
 
   _$GHumanWithArgsData_human _build() {
     final _$result = _$v ??
-        new _$GHumanWithArgsData_human._(
+        _$GHumanWithArgsData_human._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GHumanWithArgsData_human', 'G__typename'),
           name: BuiltValueNullFieldError.checkNotNull(

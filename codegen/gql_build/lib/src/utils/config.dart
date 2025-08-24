@@ -91,8 +91,6 @@ bool varsCreateFactoriesConfig(Map<String, dynamic> config) =>
     config["vars_create_factories"] as bool? ?? false;
 
 DartFormatter dartFormatter(Map<String, dynamic> config) {
-  print("Config format: ${config["format"]}");
-
   final pageWidth =
       config["format"]?["page_width"] as int? ?? DartFormatter.defaultPageWidth;
 
@@ -101,9 +99,6 @@ DartFormatter dartFormatter(Map<String, dynamic> config) {
   final Version parsedVersion = languageVersion != null
       ? Version.parse(languageVersion)
       : DartFormatter.latestLanguageVersion;
-
-  print("Using Dart language version: $parsedVersion");
-  print("Using Dart formatter page width: $pageWidth");
 
   return DartFormatter(
     languageVersion: parsedVersion,

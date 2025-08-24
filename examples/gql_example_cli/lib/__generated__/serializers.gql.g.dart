@@ -6,7 +6,7 @@ part of 'serializers.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(GDimensionsData.serializer)
       ..add(GDimensionsVars.serializer)
       ..add(GFindPokemon.serializer)
@@ -22,7 +22,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType.nullable(GListPokemonData_pokemons)]),
-          () => new ListBuilder<GListPokemonData_pokemons?>()))
+          () => ListBuilder<GListPokemonData_pokemons?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

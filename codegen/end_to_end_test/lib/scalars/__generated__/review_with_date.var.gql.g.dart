@@ -7,7 +7,7 @@ part of 'review_with_date.var.gql.dart';
 // **************************************************************************
 
 Serializer<GReviewWithDateVars> _$gReviewWithDateVarsSerializer =
-    new _$GReviewWithDateVarsSerializer();
+    _$GReviewWithDateVarsSerializer();
 
 class _$GReviewWithDateVarsSerializer
     implements StructuredSerializer<GReviewWithDateVars> {
@@ -50,7 +50,7 @@ class _$GReviewWithDateVarsSerializer
   GReviewWithDateVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReviewWithDateVarsBuilder();
+    final result = GReviewWithDateVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -88,14 +88,10 @@ class _$GReviewWithDateVars extends GReviewWithDateVars {
 
   factory _$GReviewWithDateVars(
           [void Function(GReviewWithDateVarsBuilder)? updates]) =>
-      (new GReviewWithDateVarsBuilder()..update(updates))._build();
+      (GReviewWithDateVarsBuilder()..update(updates))._build();
 
   _$GReviewWithDateVars._({this.episode, required this.review, this.createdAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        review, r'GReviewWithDateVars', 'review');
-  }
-
+      : super._();
   @override
   GReviewWithDateVars rebuild(
           void Function(GReviewWithDateVarsBuilder) updates) =>
@@ -103,7 +99,7 @@ class _$GReviewWithDateVars extends GReviewWithDateVars {
 
   @override
   GReviewWithDateVarsBuilder toBuilder() =>
-      new GReviewWithDateVarsBuilder()..replace(this);
+      GReviewWithDateVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -144,7 +140,7 @@ class GReviewWithDateVarsBuilder
 
   _i1.GReviewInputBuilder? _review;
   _i1.GReviewInputBuilder get review =>
-      _$this._review ??= new _i1.GReviewInputBuilder();
+      _$this._review ??= _i1.GReviewInputBuilder();
   set review(_i1.GReviewInputBuilder? review) => _$this._review = review;
 
   DateTime? _createdAt;
@@ -166,7 +162,6 @@ class GReviewWithDateVarsBuilder
 
   @override
   void replace(GReviewWithDateVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReviewWithDateVars;
   }
 
@@ -182,7 +177,7 @@ class GReviewWithDateVarsBuilder
     _$GReviewWithDateVars _$result;
     try {
       _$result = _$v ??
-          new _$GReviewWithDateVars._(
+          _$GReviewWithDateVars._(
             episode: episode,
             review: review.build(),
             createdAt: createdAt,
@@ -193,7 +188,7 @@ class GReviewWithDateVarsBuilder
         _$failedField = 'review';
         review.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GReviewWithDateVars', _$failedField, e.toString());
       }
       rethrow;

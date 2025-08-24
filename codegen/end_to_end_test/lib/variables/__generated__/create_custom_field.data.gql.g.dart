@@ -7,7 +7,7 @@ part of 'create_custom_field.data.gql.dart';
 // **************************************************************************
 
 Serializer<GCreateCustomFieldData> _$gCreateCustomFieldDataSerializer =
-    new _$GCreateCustomFieldDataSerializer();
+    _$GCreateCustomFieldDataSerializer();
 
 class _$GCreateCustomFieldDataSerializer
     implements StructuredSerializer<GCreateCustomFieldData> {
@@ -43,7 +43,7 @@ class _$GCreateCustomFieldDataSerializer
   GCreateCustomFieldData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateCustomFieldDataBuilder();
+    final result = GCreateCustomFieldDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -75,15 +75,11 @@ class _$GCreateCustomFieldData extends GCreateCustomFieldData {
 
   factory _$GCreateCustomFieldData(
           [void Function(GCreateCustomFieldDataBuilder)? updates]) =>
-      (new GCreateCustomFieldDataBuilder()..update(updates))._build();
+      (GCreateCustomFieldDataBuilder()..update(updates))._build();
 
   _$GCreateCustomFieldData._(
       {required this.G__typename, this.createCustomField})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCreateCustomFieldData', 'G__typename');
-  }
-
+      : super._();
   @override
   GCreateCustomFieldData rebuild(
           void Function(GCreateCustomFieldDataBuilder) updates) =>
@@ -91,7 +87,7 @@ class _$GCreateCustomFieldData extends GCreateCustomFieldData {
 
   @override
   GCreateCustomFieldDataBuilder toBuilder() =>
-      new GCreateCustomFieldDataBuilder()..replace(this);
+      GCreateCustomFieldDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -148,7 +144,6 @@ class GCreateCustomFieldDataBuilder
 
   @override
   void replace(GCreateCustomFieldData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateCustomFieldData;
   }
 
@@ -162,7 +157,7 @@ class GCreateCustomFieldDataBuilder
 
   _$GCreateCustomFieldData _build() {
     final _$result = _$v ??
-        new _$GCreateCustomFieldData._(
+        _$GCreateCustomFieldData._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GCreateCustomFieldData', 'G__typename'),
           createCustomField: createCustomField,

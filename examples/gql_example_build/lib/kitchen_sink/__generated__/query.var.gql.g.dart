@@ -7,7 +7,7 @@ part of 'query.var.gql.dart';
 // **************************************************************************
 
 Serializer<GQueryOperationVars> _$gQueryOperationVarsSerializer =
-    new _$GQueryOperationVarsSerializer();
+    _$GQueryOperationVarsSerializer();
 
 class _$GQueryOperationVarsSerializer
     implements StructuredSerializer<GQueryOperationVars> {
@@ -112,7 +112,7 @@ class _$GQueryOperationVarsSerializer
   GQueryOperationVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationVarsBuilder();
+    final result = GQueryOperationVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -227,7 +227,7 @@ class _$GQueryOperationVars extends GQueryOperationVars {
 
   factory _$GQueryOperationVars(
           [void Function(GQueryOperationVarsBuilder)? updates]) =>
-      (new GQueryOperationVarsBuilder()..update(updates))._build();
+      (GQueryOperationVarsBuilder()..update(updates))._build();
 
   _$GQueryOperationVars._(
       {this.id,
@@ -246,25 +246,7 @@ class _$GQueryOperationVars extends GQueryOperationVars {
       required this.scalarRequired,
       required this.enumRequired,
       required this.inputRequired})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        idRequired, r'GQueryOperationVars', 'idRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        boolRequired, r'GQueryOperationVars', 'boolRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        intRequired, r'GQueryOperationVars', 'intRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        floatRequired, r'GQueryOperationVars', 'floatRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        stringRequired, r'GQueryOperationVars', 'stringRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        scalarRequired, r'GQueryOperationVars', 'scalarRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        enumRequired, r'GQueryOperationVars', 'enumRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        inputRequired, r'GQueryOperationVars', 'inputRequired');
-  }
-
+      : super._();
   @override
   GQueryOperationVars rebuild(
           void Function(GQueryOperationVarsBuilder) updates) =>
@@ -272,7 +254,7 @@ class _$GQueryOperationVars extends GQueryOperationVars {
 
   @override
   GQueryOperationVarsBuilder toBuilder() =>
-      new GQueryOperationVarsBuilder()..replace(this);
+      GQueryOperationVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -367,7 +349,7 @@ class GQueryOperationVarsBuilder
   set string(String? string) => _$this._string = string;
 
   _i1.GScalarBuilder? _scalar;
-  _i1.GScalarBuilder get scalar => _$this._scalar ??= new _i1.GScalarBuilder();
+  _i1.GScalarBuilder get scalar => _$this._scalar ??= _i1.GScalarBuilder();
   set scalar(_i1.GScalarBuilder? scalar) => _$this._scalar = scalar;
 
   _i1.GEnum? _Genum;
@@ -375,7 +357,7 @@ class GQueryOperationVarsBuilder
   set Genum(_i1.GEnum? Genum) => _$this._Genum = Genum;
 
   _i1.GInputBuilder? _input;
-  _i1.GInputBuilder get input => _$this._input ??= new _i1.GInputBuilder();
+  _i1.GInputBuilder get input => _$this._input ??= _i1.GInputBuilder();
   set input(_i1.GInputBuilder? input) => _$this._input = input;
 
   String? _idRequired;
@@ -402,7 +384,7 @@ class GQueryOperationVarsBuilder
 
   _i1.GScalarBuilder? _scalarRequired;
   _i1.GScalarBuilder get scalarRequired =>
-      _$this._scalarRequired ??= new _i1.GScalarBuilder();
+      _$this._scalarRequired ??= _i1.GScalarBuilder();
   set scalarRequired(_i1.GScalarBuilder? scalarRequired) =>
       _$this._scalarRequired = scalarRequired;
 
@@ -413,7 +395,7 @@ class GQueryOperationVarsBuilder
 
   _i1.GInputBuilder? _inputRequired;
   _i1.GInputBuilder get inputRequired =>
-      _$this._inputRequired ??= new _i1.GInputBuilder();
+      _$this._inputRequired ??= _i1.GInputBuilder();
   set inputRequired(_i1.GInputBuilder? inputRequired) =>
       _$this._inputRequired = inputRequired;
 
@@ -445,7 +427,6 @@ class GQueryOperationVarsBuilder
 
   @override
   void replace(GQueryOperationVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationVars;
   }
 
@@ -461,7 +442,7 @@ class GQueryOperationVarsBuilder
     _$GQueryOperationVars _$result;
     try {
       _$result = _$v ??
-          new _$GQueryOperationVars._(
+          _$GQueryOperationVars._(
             id: id,
             Gbool: Gbool,
             Gint: Gint,
@@ -500,7 +481,7 @@ class GQueryOperationVarsBuilder
         _$failedField = 'inputRequired';
         inputRequired.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GQueryOperationVars', _$failedField, e.toString());
       }
       rethrow;

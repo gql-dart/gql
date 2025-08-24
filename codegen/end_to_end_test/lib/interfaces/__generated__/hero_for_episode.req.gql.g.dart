@@ -7,7 +7,7 @@ part of 'hero_for_episode.req.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroForEpisode> _$gHeroForEpisodeSerializer =
-    new _$GHeroForEpisodeSerializer();
+    _$GHeroForEpisodeSerializer();
 
 class _$GHeroForEpisodeSerializer
     implements StructuredSerializer<GHeroForEpisode> {
@@ -35,7 +35,7 @@ class _$GHeroForEpisodeSerializer
   GHeroForEpisode deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroForEpisodeBuilder();
+    final result = GHeroForEpisodeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -66,22 +66,16 @@ class _$GHeroForEpisode extends GHeroForEpisode {
   final _i1.Operation operation;
 
   factory _$GHeroForEpisode([void Function(GHeroForEpisodeBuilder)? updates]) =>
-      (new GHeroForEpisodeBuilder()..update(updates))._build();
+      (GHeroForEpisodeBuilder()..update(updates))._build();
 
   _$GHeroForEpisode._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GHeroForEpisode', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GHeroForEpisode', 'operation');
-  }
-
+      : super._();
   @override
   GHeroForEpisode rebuild(void Function(GHeroForEpisodeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroForEpisodeBuilder toBuilder() =>
-      new GHeroForEpisodeBuilder()..replace(this);
+  GHeroForEpisodeBuilder toBuilder() => GHeroForEpisodeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -115,7 +109,7 @@ class GHeroForEpisodeBuilder
 
   _i3.GHeroForEpisodeVarsBuilder? _vars;
   _i3.GHeroForEpisodeVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GHeroForEpisodeVarsBuilder();
+      _$this._vars ??= _i3.GHeroForEpisodeVarsBuilder();
   set vars(_i3.GHeroForEpisodeVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -138,7 +132,6 @@ class GHeroForEpisodeBuilder
 
   @override
   void replace(GHeroForEpisode other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroForEpisode;
   }
 
@@ -154,7 +147,7 @@ class GHeroForEpisodeBuilder
     _$GHeroForEpisode _$result;
     try {
       _$result = _$v ??
-          new _$GHeroForEpisode._(
+          _$GHeroForEpisode._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GHeroForEpisode', 'operation'),
@@ -165,7 +158,7 @@ class GHeroForEpisodeBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GHeroForEpisode', _$failedField, e.toString());
       }
       rethrow;

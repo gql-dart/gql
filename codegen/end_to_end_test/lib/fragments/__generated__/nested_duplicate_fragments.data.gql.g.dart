@@ -7,57 +7,57 @@ part of 'nested_duplicate_fragments.data.gql.dart';
 // **************************************************************************
 
 Serializer<GSearchResultsQueryData> _$gSearchResultsQueryDataSerializer =
-    new _$GSearchResultsQueryDataSerializer();
+    _$GSearchResultsQueryDataSerializer();
 Serializer<GSearchResultsQueryData_search__base>
     _$gSearchResultsQueryDataSearchBaseSerializer =
-    new _$GSearchResultsQueryData_search__baseSerializer();
+    _$GSearchResultsQueryData_search__baseSerializer();
 Serializer<GSearchResultsQueryData_search__asHuman>
     _$gSearchResultsQueryDataSearchAsHumanSerializer =
-    new _$GSearchResultsQueryData_search__asHumanSerializer();
+    _$GSearchResultsQueryData_search__asHumanSerializer();
 Serializer<GSearchResultsQueryData_search__asHuman_friends>
     _$gSearchResultsQueryDataSearchAsHumanFriendsSerializer =
-    new _$GSearchResultsQueryData_search__asHuman_friendsSerializer();
+    _$GSearchResultsQueryData_search__asHuman_friendsSerializer();
 Serializer<GSearchResultsQueryData_search__asHuman_friends_friendsConnection>
     _$gSearchResultsQueryDataSearchAsHumanFriendsFriendsConnectionSerializer =
-    new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnectionSerializer();
+    _$GSearchResultsQueryData_search__asHuman_friends_friendsConnectionSerializer();
 Serializer<
         GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends>
     _$gSearchResultsQueryDataSearchAsHumanFriendsFriendsConnectionFriendsSerializer =
-    new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsSerializer();
+    _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsSerializer();
 Serializer<GSearchResultsQueryData_search__asDroid>
     _$gSearchResultsQueryDataSearchAsDroidSerializer =
-    new _$GSearchResultsQueryData_search__asDroidSerializer();
+    _$GSearchResultsQueryData_search__asDroidSerializer();
 Serializer<GSearchResultsQueryData_search__asDroid_friends>
     _$gSearchResultsQueryDataSearchAsDroidFriendsSerializer =
-    new _$GSearchResultsQueryData_search__asDroid_friendsSerializer();
+    _$GSearchResultsQueryData_search__asDroid_friendsSerializer();
 Serializer<GSearchResultsQueryData_search__asDroid_friends_friendsConnection>
     _$gSearchResultsQueryDataSearchAsDroidFriendsFriendsConnectionSerializer =
-    new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnectionSerializer();
+    _$GSearchResultsQueryData_search__asDroid_friends_friendsConnectionSerializer();
 Serializer<
         GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends>
     _$gSearchResultsQueryDataSearchAsDroidFriendsFriendsConnectionFriendsSerializer =
-    new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsSerializer();
+    _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsSerializer();
 Serializer<GCharacterDetailsData> _$gCharacterDetailsDataSerializer =
-    new _$GCharacterDetailsDataSerializer();
+    _$GCharacterDetailsDataSerializer();
 Serializer<GCharacterDetailsData_friends>
     _$gCharacterDetailsDataFriendsSerializer =
-    new _$GCharacterDetailsData_friendsSerializer();
+    _$GCharacterDetailsData_friendsSerializer();
 Serializer<GCharacterDetailsData_friends_friendsConnection>
     _$gCharacterDetailsDataFriendsFriendsConnectionSerializer =
-    new _$GCharacterDetailsData_friends_friendsConnectionSerializer();
+    _$GCharacterDetailsData_friends_friendsConnectionSerializer();
 Serializer<GCharacterDetailsData_friends_friendsConnection_friends>
     _$gCharacterDetailsDataFriendsFriendsConnectionFriendsSerializer =
-    new _$GCharacterDetailsData_friends_friendsConnection_friendsSerializer();
+    _$GCharacterDetailsData_friends_friendsConnection_friendsSerializer();
 Serializer<GFriendInfoData> _$gFriendInfoDataSerializer =
-    new _$GFriendInfoDataSerializer();
+    _$GFriendInfoDataSerializer();
 Serializer<GFriendInfoData_friendsConnection>
     _$gFriendInfoDataFriendsConnectionSerializer =
-    new _$GFriendInfoData_friendsConnectionSerializer();
+    _$GFriendInfoData_friendsConnectionSerializer();
 Serializer<GFriendInfoData_friendsConnection_friends>
     _$gFriendInfoDataFriendsConnectionFriendsSerializer =
-    new _$GFriendInfoData_friendsConnection_friendsSerializer();
+    _$GFriendInfoData_friendsConnection_friendsSerializer();
 Serializer<GCharacterBasicData> _$gCharacterBasicDataSerializer =
-    new _$GCharacterBasicDataSerializer();
+    _$GCharacterBasicDataSerializer();
 
 class _$GSearchResultsQueryDataSerializer
     implements StructuredSerializer<GSearchResultsQueryData> {
@@ -95,7 +95,7 @@ class _$GSearchResultsQueryDataSerializer
   GSearchResultsQueryData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryDataBuilder();
+    final result = GSearchResultsQueryDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -147,7 +147,7 @@ class _$GSearchResultsQueryData_search__baseSerializer
   GSearchResultsQueryData_search__base deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryData_search__baseBuilder();
+    final result = GSearchResultsQueryData_search__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -211,7 +211,7 @@ class _$GSearchResultsQueryData_search__asHumanSerializer
   GSearchResultsQueryData_search__asHuman deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryData_search__asHumanBuilder();
+    final result = GSearchResultsQueryData_search__asHumanBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -287,7 +287,7 @@ class _$GSearchResultsQueryData_search__asHuman_friendsSerializer
   GSearchResultsQueryData_search__asHuman_friends deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryData_search__asHuman_friendsBuilder();
+    final result = GSearchResultsQueryData_search__asHuman_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -361,7 +361,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnectionSeriali
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder();
+        GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -424,7 +424,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friend
       deserialize(Serializers serializers, Iterable<Object?> serialized,
           {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder();
+        GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -496,7 +496,7 @@ class _$GSearchResultsQueryData_search__asDroidSerializer
   GSearchResultsQueryData_search__asDroid deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryData_search__asDroidBuilder();
+    final result = GSearchResultsQueryData_search__asDroidBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -572,7 +572,7 @@ class _$GSearchResultsQueryData_search__asDroid_friendsSerializer
   GSearchResultsQueryData_search__asDroid_friends deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryData_search__asDroid_friendsBuilder();
+    final result = GSearchResultsQueryData_search__asDroid_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -646,7 +646,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnectionSeriali
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder();
+        GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -709,7 +709,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friend
       deserialize(Serializers serializers, Iterable<Object?> serialized,
           {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder();
+        GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -780,7 +780,7 @@ class _$GCharacterDetailsDataSerializer
   GCharacterDetailsData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCharacterDetailsDataBuilder();
+    final result = GCharacterDetailsDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -854,7 +854,7 @@ class _$GCharacterDetailsData_friendsSerializer
   GCharacterDetailsData_friends deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCharacterDetailsData_friendsBuilder();
+    final result = GCharacterDetailsData_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -925,7 +925,7 @@ class _$GCharacterDetailsData_friends_friendsConnectionSerializer
   GCharacterDetailsData_friends_friendsConnection deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCharacterDetailsData_friends_friendsConnectionBuilder();
+    final result = GCharacterDetailsData_friends_friendsConnectionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -986,7 +986,7 @@ class _$GCharacterDetailsData_friends_friendsConnection_friendsSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GCharacterDetailsData_friends_friendsConnection_friendsBuilder();
+        GCharacterDetailsData_friends_friendsConnection_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1043,7 +1043,7 @@ class _$GFriendInfoDataSerializer
   GFriendInfoData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFriendInfoDataBuilder();
+    final result = GFriendInfoDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1112,7 +1112,7 @@ class _$GFriendInfoData_friendsConnectionSerializer
   GFriendInfoData_friendsConnection deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFriendInfoData_friendsConnectionBuilder();
+    final result = GFriendInfoData_friendsConnectionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1169,7 +1169,7 @@ class _$GFriendInfoData_friendsConnection_friendsSerializer
   GFriendInfoData_friendsConnection_friends deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFriendInfoData_friendsConnection_friendsBuilder();
+    final result = GFriendInfoData_friendsConnection_friendsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1227,7 +1227,7 @@ class _$GCharacterBasicDataSerializer
   GCharacterBasicData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCharacterBasicDataBuilder();
+    final result = GCharacterBasicDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1262,14 +1262,10 @@ class _$GSearchResultsQueryData extends GSearchResultsQueryData {
 
   factory _$GSearchResultsQueryData(
           [void Function(GSearchResultsQueryDataBuilder)? updates]) =>
-      (new GSearchResultsQueryDataBuilder()..update(updates))._build();
+      (GSearchResultsQueryDataBuilder()..update(updates))._build();
 
   _$GSearchResultsQueryData._({required this.G__typename, this.search})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GSearchResultsQueryData', 'G__typename');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData rebuild(
           void Function(GSearchResultsQueryDataBuilder) updates) =>
@@ -1277,7 +1273,7 @@ class _$GSearchResultsQueryData extends GSearchResultsQueryData {
 
   @override
   GSearchResultsQueryDataBuilder toBuilder() =>
-      new GSearchResultsQueryDataBuilder()..replace(this);
+      GSearchResultsQueryDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1316,7 +1312,7 @@ class GSearchResultsQueryDataBuilder
 
   ListBuilder<GSearchResultsQueryData_search?>? _search;
   ListBuilder<GSearchResultsQueryData_search?> get search =>
-      _$this._search ??= new ListBuilder<GSearchResultsQueryData_search?>();
+      _$this._search ??= ListBuilder<GSearchResultsQueryData_search?>();
   set search(ListBuilder<GSearchResultsQueryData_search?>? search) =>
       _$this._search = search;
 
@@ -1336,7 +1332,6 @@ class GSearchResultsQueryDataBuilder
 
   @override
   void replace(GSearchResultsQueryData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData;
   }
 
@@ -1352,7 +1347,7 @@ class GSearchResultsQueryDataBuilder
     _$GSearchResultsQueryData _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData._(
+          _$GSearchResultsQueryData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GSearchResultsQueryData', 'G__typename'),
             search: _search?.build(),
@@ -1363,7 +1358,7 @@ class GSearchResultsQueryDataBuilder
         _$failedField = 'search';
         _search?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData', _$failedField, e.toString());
       }
       rethrow;
@@ -1381,15 +1376,10 @@ class _$GSearchResultsQueryData_search__base
   factory _$GSearchResultsQueryData_search__base(
           [void Function(GSearchResultsQueryData_search__baseBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__baseBuilder()..update(updates))
-          ._build();
+      (GSearchResultsQueryData_search__baseBuilder()..update(updates))._build();
 
   _$GSearchResultsQueryData_search__base._({required this.G__typename})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GSearchResultsQueryData_search__base', 'G__typename');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__base rebuild(
           void Function(GSearchResultsQueryData_search__baseBuilder) updates) =>
@@ -1397,7 +1387,7 @@ class _$GSearchResultsQueryData_search__base
 
   @override
   GSearchResultsQueryData_search__baseBuilder toBuilder() =>
-      new GSearchResultsQueryData_search__baseBuilder()..replace(this);
+      GSearchResultsQueryData_search__baseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1447,7 +1437,6 @@ class GSearchResultsQueryData_search__baseBuilder
 
   @override
   void replace(GSearchResultsQueryData_search__base other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData_search__base;
   }
 
@@ -1462,7 +1451,7 @@ class GSearchResultsQueryData_search__baseBuilder
 
   _$GSearchResultsQueryData_search__base _build() {
     final _$result = _$v ??
-        new _$GSearchResultsQueryData_search__base._(
+        _$GSearchResultsQueryData_search__base._(
           G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
               r'GSearchResultsQueryData_search__base', 'G__typename'),
         );
@@ -1487,7 +1476,7 @@ class _$GSearchResultsQueryData_search__asHuman
   factory _$GSearchResultsQueryData_search__asHuman(
           [void Function(GSearchResultsQueryData_search__asHumanBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asHumanBuilder()..update(updates))
+      (GSearchResultsQueryData_search__asHumanBuilder()..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asHuman._(
@@ -1496,17 +1485,7 @@ class _$GSearchResultsQueryData_search__asHuman
       required this.name,
       this.friends,
       required this.appearsIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GSearchResultsQueryData_search__asHuman', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GSearchResultsQueryData_search__asHuman', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GSearchResultsQueryData_search__asHuman', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        appearsIn, r'GSearchResultsQueryData_search__asHuman', 'appearsIn');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asHuman rebuild(
           void Function(GSearchResultsQueryData_search__asHumanBuilder)
@@ -1515,7 +1494,7 @@ class _$GSearchResultsQueryData_search__asHuman
 
   @override
   GSearchResultsQueryData_search__asHumanBuilder toBuilder() =>
-      new GSearchResultsQueryData_search__asHumanBuilder()..replace(this);
+      GSearchResultsQueryData_search__asHumanBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1574,7 +1553,7 @@ class GSearchResultsQueryData_search__asHumanBuilder
   ListBuilder<GSearchResultsQueryData_search__asHuman_friends?>? _friends;
   ListBuilder<GSearchResultsQueryData_search__asHuman_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GSearchResultsQueryData_search__asHuman_friends?>();
+          ListBuilder<GSearchResultsQueryData_search__asHuman_friends?>();
   set friends(
           ListBuilder<GSearchResultsQueryData_search__asHuman_friends?>?
               friends) =>
@@ -1582,7 +1561,7 @@ class GSearchResultsQueryData_search__asHumanBuilder
 
   ListBuilder<_i3.GEpisode?>? _appearsIn;
   ListBuilder<_i3.GEpisode?> get appearsIn =>
-      _$this._appearsIn ??= new ListBuilder<_i3.GEpisode?>();
+      _$this._appearsIn ??= ListBuilder<_i3.GEpisode?>();
   set appearsIn(ListBuilder<_i3.GEpisode?>? appearsIn) =>
       _$this._appearsIn = appearsIn;
 
@@ -1605,7 +1584,6 @@ class GSearchResultsQueryData_search__asHumanBuilder
 
   @override
   void replace(GSearchResultsQueryData_search__asHuman other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData_search__asHuman;
   }
 
@@ -1622,7 +1600,7 @@ class GSearchResultsQueryData_search__asHumanBuilder
     _$GSearchResultsQueryData_search__asHuman _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asHuman._(
+          _$GSearchResultsQueryData_search__asHuman._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GSearchResultsQueryData_search__asHuman', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -1640,7 +1618,7 @@ class GSearchResultsQueryData_search__asHumanBuilder
         _$failedField = 'appearsIn';
         appearsIn.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asHuman',
             _$failedField,
             e.toString());
@@ -1668,7 +1646,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends
           [void Function(
                   GSearchResultsQueryData_search__asHuman_friendsBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asHuman_friendsBuilder()
+      (GSearchResultsQueryData_search__asHuman_friendsBuilder()
             ..update(updates))
           ._build();
 
@@ -1677,19 +1655,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends
       required this.id,
       required this.name,
       required this.friendsConnection})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GSearchResultsQueryData_search__asHuman_friends', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GSearchResultsQueryData_search__asHuman_friends', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GSearchResultsQueryData_search__asHuman_friends', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        friendsConnection,
-        r'GSearchResultsQueryData_search__asHuman_friends',
-        'friendsConnection');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asHuman_friends rebuild(
           void Function(GSearchResultsQueryData_search__asHuman_friendsBuilder)
@@ -1698,8 +1664,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends
 
   @override
   GSearchResultsQueryData_search__asHuman_friendsBuilder toBuilder() =>
-      new GSearchResultsQueryData_search__asHuman_friendsBuilder()
-        ..replace(this);
+      GSearchResultsQueryData_search__asHuman_friendsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1756,7 +1721,7 @@ class GSearchResultsQueryData_search__asHuman_friendsBuilder
       _friendsConnection;
   GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
       get friendsConnection => _$this._friendsConnection ??=
-          new GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder();
+          GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder();
   set friendsConnection(
           GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder?
               friendsConnection) =>
@@ -1780,7 +1745,6 @@ class GSearchResultsQueryData_search__asHuman_friendsBuilder
 
   @override
   void replace(GSearchResultsQueryData_search__asHuman_friends other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData_search__asHuman_friends;
   }
 
@@ -1798,7 +1762,7 @@ class GSearchResultsQueryData_search__asHuman_friendsBuilder
     _$GSearchResultsQueryData_search__asHuman_friends _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asHuman_friends._(
+          _$GSearchResultsQueryData_search__asHuman_friends._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GSearchResultsQueryData_search__asHuman_friends',
@@ -1815,7 +1779,7 @@ class GSearchResultsQueryData_search__asHuman_friendsBuilder
         _$failedField = 'friendsConnection';
         friendsConnection.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asHuman_friends',
             _$failedField,
             e.toString());
@@ -1840,19 +1804,13 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection
           [void Function(
                   GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder()
+      (GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder()
             ..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection._(
       {required this.G__typename, this.friends})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection',
-        'G__typename');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asHuman_friends_friendsConnection rebuild(
           void Function(
@@ -1863,7 +1821,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection
   @override
   GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
       toBuilder() =>
-          new GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder()
+          GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder()
             ..replace(this);
 
   @override
@@ -1910,7 +1868,7 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
       _friends;
   ListBuilder<
           GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends?>
-      get friends => _$this._friends ??= new ListBuilder<
+      get friends => _$this._friends ??= ListBuilder<
           GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends?>();
   set friends(
           ListBuilder<
@@ -1937,7 +1895,6 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
   @override
   void replace(
       GSearchResultsQueryData_search__asHuman_friends_friendsConnection other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection;
   }
@@ -1959,8 +1916,7 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
         _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection
-              ._(
+          _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection',
@@ -1973,7 +1929,7 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
         _$failedField = 'friends';
         _friends?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection',
             _$failedField,
             e.toString());
@@ -1998,27 +1954,13 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friend
           [void Function(
                   GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder()
+      (GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder()
             ..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-        'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id,
-        r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-        'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name,
-        r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-        'name');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends rebuild(
           void Function(
@@ -2029,7 +1971,7 @@ class _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friend
   @override
   GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder
       toBuilder() =>
-          new GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder()
+          GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsBuilder()
             ..replace(this);
 
   @override
@@ -2104,7 +2046,6 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsB
   void replace(
       GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
           other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends;
   }
@@ -2124,7 +2065,7 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsB
   _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
       _build() {
     final _$result = _$v ??
-        new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
+        _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
             ._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename,
@@ -2160,7 +2101,7 @@ class _$GSearchResultsQueryData_search__asDroid
   factory _$GSearchResultsQueryData_search__asDroid(
           [void Function(GSearchResultsQueryData_search__asDroidBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asDroidBuilder()..update(updates))
+      (GSearchResultsQueryData_search__asDroidBuilder()..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asDroid._(
@@ -2169,17 +2110,7 @@ class _$GSearchResultsQueryData_search__asDroid
       required this.name,
       this.friends,
       required this.appearsIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GSearchResultsQueryData_search__asDroid', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GSearchResultsQueryData_search__asDroid', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GSearchResultsQueryData_search__asDroid', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        appearsIn, r'GSearchResultsQueryData_search__asDroid', 'appearsIn');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asDroid rebuild(
           void Function(GSearchResultsQueryData_search__asDroidBuilder)
@@ -2188,7 +2119,7 @@ class _$GSearchResultsQueryData_search__asDroid
 
   @override
   GSearchResultsQueryData_search__asDroidBuilder toBuilder() =>
-      new GSearchResultsQueryData_search__asDroidBuilder()..replace(this);
+      GSearchResultsQueryData_search__asDroidBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -2247,7 +2178,7 @@ class GSearchResultsQueryData_search__asDroidBuilder
   ListBuilder<GSearchResultsQueryData_search__asDroid_friends?>? _friends;
   ListBuilder<GSearchResultsQueryData_search__asDroid_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GSearchResultsQueryData_search__asDroid_friends?>();
+          ListBuilder<GSearchResultsQueryData_search__asDroid_friends?>();
   set friends(
           ListBuilder<GSearchResultsQueryData_search__asDroid_friends?>?
               friends) =>
@@ -2255,7 +2186,7 @@ class GSearchResultsQueryData_search__asDroidBuilder
 
   ListBuilder<_i3.GEpisode?>? _appearsIn;
   ListBuilder<_i3.GEpisode?> get appearsIn =>
-      _$this._appearsIn ??= new ListBuilder<_i3.GEpisode?>();
+      _$this._appearsIn ??= ListBuilder<_i3.GEpisode?>();
   set appearsIn(ListBuilder<_i3.GEpisode?>? appearsIn) =>
       _$this._appearsIn = appearsIn;
 
@@ -2278,7 +2209,6 @@ class GSearchResultsQueryData_search__asDroidBuilder
 
   @override
   void replace(GSearchResultsQueryData_search__asDroid other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData_search__asDroid;
   }
 
@@ -2295,7 +2225,7 @@ class GSearchResultsQueryData_search__asDroidBuilder
     _$GSearchResultsQueryData_search__asDroid _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asDroid._(
+          _$GSearchResultsQueryData_search__asDroid._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GSearchResultsQueryData_search__asDroid', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -2313,7 +2243,7 @@ class GSearchResultsQueryData_search__asDroidBuilder
         _$failedField = 'appearsIn';
         appearsIn.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asDroid',
             _$failedField,
             e.toString());
@@ -2341,7 +2271,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends
           [void Function(
                   GSearchResultsQueryData_search__asDroid_friendsBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asDroid_friendsBuilder()
+      (GSearchResultsQueryData_search__asDroid_friendsBuilder()
             ..update(updates))
           ._build();
 
@@ -2350,19 +2280,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends
       required this.id,
       required this.name,
       required this.friendsConnection})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GSearchResultsQueryData_search__asDroid_friends', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GSearchResultsQueryData_search__asDroid_friends', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GSearchResultsQueryData_search__asDroid_friends', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        friendsConnection,
-        r'GSearchResultsQueryData_search__asDroid_friends',
-        'friendsConnection');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asDroid_friends rebuild(
           void Function(GSearchResultsQueryData_search__asDroid_friendsBuilder)
@@ -2371,8 +2289,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends
 
   @override
   GSearchResultsQueryData_search__asDroid_friendsBuilder toBuilder() =>
-      new GSearchResultsQueryData_search__asDroid_friendsBuilder()
-        ..replace(this);
+      GSearchResultsQueryData_search__asDroid_friendsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -2429,7 +2346,7 @@ class GSearchResultsQueryData_search__asDroid_friendsBuilder
       _friendsConnection;
   GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
       get friendsConnection => _$this._friendsConnection ??=
-          new GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder();
+          GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder();
   set friendsConnection(
           GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder?
               friendsConnection) =>
@@ -2453,7 +2370,6 @@ class GSearchResultsQueryData_search__asDroid_friendsBuilder
 
   @override
   void replace(GSearchResultsQueryData_search__asDroid_friends other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQueryData_search__asDroid_friends;
   }
 
@@ -2471,7 +2387,7 @@ class GSearchResultsQueryData_search__asDroid_friendsBuilder
     _$GSearchResultsQueryData_search__asDroid_friends _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asDroid_friends._(
+          _$GSearchResultsQueryData_search__asDroid_friends._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GSearchResultsQueryData_search__asDroid_friends',
@@ -2488,7 +2404,7 @@ class GSearchResultsQueryData_search__asDroid_friendsBuilder
         _$failedField = 'friendsConnection';
         friendsConnection.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asDroid_friends',
             _$failedField,
             e.toString());
@@ -2513,19 +2429,13 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection
           [void Function(
                   GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder()
+      (GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder()
             ..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection._(
       {required this.G__typename, this.friends})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection',
-        'G__typename');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asDroid_friends_friendsConnection rebuild(
           void Function(
@@ -2536,7 +2446,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection
   @override
   GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
       toBuilder() =>
-          new GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder()
+          GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder()
             ..replace(this);
 
   @override
@@ -2583,7 +2493,7 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
       _friends;
   ListBuilder<
           GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends?>
-      get friends => _$this._friends ??= new ListBuilder<
+      get friends => _$this._friends ??= ListBuilder<
           GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends?>();
   set friends(
           ListBuilder<
@@ -2610,7 +2520,6 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
   @override
   void replace(
       GSearchResultsQueryData_search__asDroid_friends_friendsConnection other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection;
   }
@@ -2632,8 +2541,7 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
         _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection
-              ._(
+          _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection',
@@ -2646,7 +2554,7 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
         _$failedField = 'friends';
         _friends?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection',
             _$failedField,
             e.toString());
@@ -2671,27 +2579,13 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friend
           [void Function(
                   GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder)?
               updates]) =>
-      (new GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder()
+      (GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder()
             ..update(updates))
           ._build();
 
   _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-        'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id,
-        r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-        'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name,
-        r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-        'name');
-  }
-
+      : super._();
   @override
   GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends rebuild(
           void Function(
@@ -2702,7 +2596,7 @@ class _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friend
   @override
   GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder
       toBuilder() =>
-          new GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder()
+          GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsBuilder()
             ..replace(this);
 
   @override
@@ -2777,7 +2671,6 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsB
   void replace(
       GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
           other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends;
   }
@@ -2797,7 +2690,7 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsB
   _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
       _build() {
     final _$result = _$v ??
-        new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
+        _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
             ._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename,
@@ -2831,7 +2724,7 @@ class _$GCharacterDetailsData extends GCharacterDetailsData {
 
   factory _$GCharacterDetailsData(
           [void Function(GCharacterDetailsDataBuilder)? updates]) =>
-      (new GCharacterDetailsDataBuilder()..update(updates))._build();
+      (GCharacterDetailsDataBuilder()..update(updates))._build();
 
   _$GCharacterDetailsData._(
       {required this.G__typename,
@@ -2839,16 +2732,7 @@ class _$GCharacterDetailsData extends GCharacterDetailsData {
       required this.name,
       this.friends,
       required this.appearsIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCharacterDetailsData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GCharacterDetailsData', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GCharacterDetailsData', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        appearsIn, r'GCharacterDetailsData', 'appearsIn');
-  }
-
+      : super._();
   @override
   GCharacterDetailsData rebuild(
           void Function(GCharacterDetailsDataBuilder) updates) =>
@@ -2856,7 +2740,7 @@ class _$GCharacterDetailsData extends GCharacterDetailsData {
 
   @override
   GCharacterDetailsDataBuilder toBuilder() =>
-      new GCharacterDetailsDataBuilder()..replace(this);
+      GCharacterDetailsDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -2911,13 +2795,13 @@ class GCharacterDetailsDataBuilder
 
   ListBuilder<GCharacterDetailsData_friends?>? _friends;
   ListBuilder<GCharacterDetailsData_friends?> get friends =>
-      _$this._friends ??= new ListBuilder<GCharacterDetailsData_friends?>();
+      _$this._friends ??= ListBuilder<GCharacterDetailsData_friends?>();
   set friends(ListBuilder<GCharacterDetailsData_friends?>? friends) =>
       _$this._friends = friends;
 
   ListBuilder<_i3.GEpisode?>? _appearsIn;
   ListBuilder<_i3.GEpisode?> get appearsIn =>
-      _$this._appearsIn ??= new ListBuilder<_i3.GEpisode?>();
+      _$this._appearsIn ??= ListBuilder<_i3.GEpisode?>();
   set appearsIn(ListBuilder<_i3.GEpisode?>? appearsIn) =>
       _$this._appearsIn = appearsIn;
 
@@ -2940,7 +2824,6 @@ class GCharacterDetailsDataBuilder
 
   @override
   void replace(GCharacterDetailsData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterDetailsData;
   }
 
@@ -2956,7 +2839,7 @@ class GCharacterDetailsDataBuilder
     _$GCharacterDetailsData _$result;
     try {
       _$result = _$v ??
-          new _$GCharacterDetailsData._(
+          _$GCharacterDetailsData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GCharacterDetailsData', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -2974,7 +2857,7 @@ class GCharacterDetailsDataBuilder
         _$failedField = 'appearsIn';
         appearsIn.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCharacterDetailsData', _$failedField, e.toString());
       }
       rethrow;
@@ -2996,24 +2879,14 @@ class _$GCharacterDetailsData_friends extends GCharacterDetailsData_friends {
 
   factory _$GCharacterDetailsData_friends(
           [void Function(GCharacterDetailsData_friendsBuilder)? updates]) =>
-      (new GCharacterDetailsData_friendsBuilder()..update(updates))._build();
+      (GCharacterDetailsData_friendsBuilder()..update(updates))._build();
 
   _$GCharacterDetailsData_friends._(
       {required this.G__typename,
       required this.id,
       required this.name,
       required this.friendsConnection})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCharacterDetailsData_friends', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GCharacterDetailsData_friends', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GCharacterDetailsData_friends', 'name');
-    BuiltValueNullFieldError.checkNotNull(friendsConnection,
-        r'GCharacterDetailsData_friends', 'friendsConnection');
-  }
-
+      : super._();
   @override
   GCharacterDetailsData_friends rebuild(
           void Function(GCharacterDetailsData_friendsBuilder) updates) =>
@@ -3021,7 +2894,7 @@ class _$GCharacterDetailsData_friends extends GCharacterDetailsData_friends {
 
   @override
   GCharacterDetailsData_friendsBuilder toBuilder() =>
-      new GCharacterDetailsData_friendsBuilder()..replace(this);
+      GCharacterDetailsData_friendsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3076,7 +2949,7 @@ class GCharacterDetailsData_friendsBuilder
   GCharacterDetailsData_friends_friendsConnectionBuilder? _friendsConnection;
   GCharacterDetailsData_friends_friendsConnectionBuilder
       get friendsConnection => _$this._friendsConnection ??=
-          new GCharacterDetailsData_friends_friendsConnectionBuilder();
+          GCharacterDetailsData_friends_friendsConnectionBuilder();
   set friendsConnection(
           GCharacterDetailsData_friends_friendsConnectionBuilder?
               friendsConnection) =>
@@ -3100,7 +2973,6 @@ class GCharacterDetailsData_friendsBuilder
 
   @override
   void replace(GCharacterDetailsData_friends other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterDetailsData_friends;
   }
 
@@ -3116,7 +2988,7 @@ class GCharacterDetailsData_friendsBuilder
     _$GCharacterDetailsData_friends _$result;
     try {
       _$result = _$v ??
-          new _$GCharacterDetailsData_friends._(
+          _$GCharacterDetailsData_friends._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GCharacterDetailsData_friends', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -3131,7 +3003,7 @@ class GCharacterDetailsData_friendsBuilder
         _$failedField = 'friendsConnection';
         friendsConnection.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCharacterDetailsData_friends', _$failedField, e.toString());
       }
       rethrow;
@@ -3153,17 +3025,13 @@ class _$GCharacterDetailsData_friends_friendsConnection
           [void Function(
                   GCharacterDetailsData_friends_friendsConnectionBuilder)?
               updates]) =>
-      (new GCharacterDetailsData_friends_friendsConnectionBuilder()
+      (GCharacterDetailsData_friends_friendsConnectionBuilder()
             ..update(updates))
           ._build();
 
   _$GCharacterDetailsData_friends_friendsConnection._(
       {required this.G__typename, this.friends})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GCharacterDetailsData_friends_friendsConnection', 'G__typename');
-  }
-
+      : super._();
   @override
   GCharacterDetailsData_friends_friendsConnection rebuild(
           void Function(GCharacterDetailsData_friends_friendsConnectionBuilder)
@@ -3172,8 +3040,7 @@ class _$GCharacterDetailsData_friends_friendsConnection
 
   @override
   GCharacterDetailsData_friends_friendsConnectionBuilder toBuilder() =>
-      new GCharacterDetailsData_friends_friendsConnectionBuilder()
-        ..replace(this);
+      GCharacterDetailsData_friends_friendsConnectionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3215,7 +3082,7 @@ class GCharacterDetailsData_friends_friendsConnectionBuilder
   ListBuilder<GCharacterDetailsData_friends_friendsConnection_friends?>?
       _friends;
   ListBuilder<GCharacterDetailsData_friends_friendsConnection_friends?>
-      get friends => _$this._friends ??= new ListBuilder<
+      get friends => _$this._friends ??= ListBuilder<
           GCharacterDetailsData_friends_friendsConnection_friends?>();
   set friends(
           ListBuilder<GCharacterDetailsData_friends_friendsConnection_friends?>?
@@ -3238,7 +3105,6 @@ class GCharacterDetailsData_friends_friendsConnectionBuilder
 
   @override
   void replace(GCharacterDetailsData_friends_friendsConnection other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterDetailsData_friends_friendsConnection;
   }
 
@@ -3256,7 +3122,7 @@ class GCharacterDetailsData_friends_friendsConnectionBuilder
     _$GCharacterDetailsData_friends_friendsConnection _$result;
     try {
       _$result = _$v ??
-          new _$GCharacterDetailsData_friends_friendsConnection._(
+          _$GCharacterDetailsData_friends_friendsConnection._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
                 r'GCharacterDetailsData_friends_friendsConnection',
@@ -3269,7 +3135,7 @@ class GCharacterDetailsData_friends_friendsConnectionBuilder
         _$failedField = 'friends';
         _friends?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCharacterDetailsData_friends_friendsConnection',
             _$failedField,
             e.toString());
@@ -3294,23 +3160,13 @@ class _$GCharacterDetailsData_friends_friendsConnection_friends
           [void Function(
                   GCharacterDetailsData_friends_friendsConnection_friendsBuilder)?
               updates]) =>
-      (new GCharacterDetailsData_friends_friendsConnection_friendsBuilder()
+      (GCharacterDetailsData_friends_friendsConnection_friendsBuilder()
             ..update(updates))
           ._build();
 
   _$GCharacterDetailsData_friends_friendsConnection_friends._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GCharacterDetailsData_friends_friendsConnection_friends',
-        'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GCharacterDetailsData_friends_friendsConnection_friends', 'id');
-    BuiltValueNullFieldError.checkNotNull(name,
-        r'GCharacterDetailsData_friends_friendsConnection_friends', 'name');
-  }
-
+      : super._();
   @override
   GCharacterDetailsData_friends_friendsConnection_friends rebuild(
           void Function(
@@ -3320,7 +3176,7 @@ class _$GCharacterDetailsData_friends_friendsConnection_friends
 
   @override
   GCharacterDetailsData_friends_friendsConnection_friendsBuilder toBuilder() =>
-      new GCharacterDetailsData_friends_friendsConnection_friendsBuilder()
+      GCharacterDetailsData_friends_friendsConnection_friendsBuilder()
         ..replace(this);
 
   @override
@@ -3389,7 +3245,6 @@ class GCharacterDetailsData_friends_friendsConnection_friendsBuilder
 
   @override
   void replace(GCharacterDetailsData_friends_friendsConnection_friends other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterDetailsData_friends_friendsConnection_friends;
   }
 
@@ -3406,7 +3261,7 @@ class GCharacterDetailsData_friends_friendsConnection_friendsBuilder
 
   _$GCharacterDetailsData_friends_friendsConnection_friends _build() {
     final _$result = _$v ??
-        new _$GCharacterDetailsData_friends_friendsConnection_friends._(
+        _$GCharacterDetailsData_friends_friendsConnection_friends._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename,
               r'GCharacterDetailsData_friends_friendsConnection_friends',
@@ -3434,29 +3289,20 @@ class _$GFriendInfoData extends GFriendInfoData {
   final GFriendInfoData_friendsConnection friendsConnection;
 
   factory _$GFriendInfoData([void Function(GFriendInfoDataBuilder)? updates]) =>
-      (new GFriendInfoDataBuilder()..update(updates))._build();
+      (GFriendInfoDataBuilder()..update(updates))._build();
 
   _$GFriendInfoData._(
       {required this.G__typename,
       required this.id,
       required this.name,
       required this.friendsConnection})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GFriendInfoData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GFriendInfoData', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'GFriendInfoData', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        friendsConnection, r'GFriendInfoData', 'friendsConnection');
-  }
-
+      : super._();
   @override
   GFriendInfoData rebuild(void Function(GFriendInfoDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GFriendInfoDataBuilder toBuilder() =>
-      new GFriendInfoDataBuilder()..replace(this);
+  GFriendInfoDataBuilder toBuilder() => GFriendInfoDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3508,8 +3354,7 @@ class GFriendInfoDataBuilder
 
   GFriendInfoData_friendsConnectionBuilder? _friendsConnection;
   GFriendInfoData_friendsConnectionBuilder get friendsConnection =>
-      _$this._friendsConnection ??=
-          new GFriendInfoData_friendsConnectionBuilder();
+      _$this._friendsConnection ??= GFriendInfoData_friendsConnectionBuilder();
   set friendsConnection(
           GFriendInfoData_friendsConnectionBuilder? friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
@@ -3532,7 +3377,6 @@ class GFriendInfoDataBuilder
 
   @override
   void replace(GFriendInfoData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFriendInfoData;
   }
 
@@ -3548,7 +3392,7 @@ class GFriendInfoDataBuilder
     _$GFriendInfoData _$result;
     try {
       _$result = _$v ??
-          new _$GFriendInfoData._(
+          _$GFriendInfoData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GFriendInfoData', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -3563,7 +3407,7 @@ class GFriendInfoDataBuilder
         _$failedField = 'friendsConnection';
         friendsConnection.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GFriendInfoData', _$failedField, e.toString());
       }
       rethrow;
@@ -3582,16 +3426,11 @@ class _$GFriendInfoData_friendsConnection
 
   factory _$GFriendInfoData_friendsConnection(
           [void Function(GFriendInfoData_friendsConnectionBuilder)? updates]) =>
-      (new GFriendInfoData_friendsConnectionBuilder()..update(updates))
-          ._build();
+      (GFriendInfoData_friendsConnectionBuilder()..update(updates))._build();
 
   _$GFriendInfoData_friendsConnection._(
       {required this.G__typename, this.friends})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GFriendInfoData_friendsConnection', 'G__typename');
-  }
-
+      : super._();
   @override
   GFriendInfoData_friendsConnection rebuild(
           void Function(GFriendInfoData_friendsConnectionBuilder) updates) =>
@@ -3599,7 +3438,7 @@ class _$GFriendInfoData_friendsConnection
 
   @override
   GFriendInfoData_friendsConnectionBuilder toBuilder() =>
-      new GFriendInfoData_friendsConnectionBuilder()..replace(this);
+      GFriendInfoData_friendsConnectionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3640,7 +3479,7 @@ class GFriendInfoData_friendsConnectionBuilder
   ListBuilder<GFriendInfoData_friendsConnection_friends?>? _friends;
   ListBuilder<GFriendInfoData_friendsConnection_friends?> get friends =>
       _$this._friends ??=
-          new ListBuilder<GFriendInfoData_friendsConnection_friends?>();
+          ListBuilder<GFriendInfoData_friendsConnection_friends?>();
   set friends(
           ListBuilder<GFriendInfoData_friendsConnection_friends?>? friends) =>
       _$this._friends = friends;
@@ -3661,7 +3500,6 @@ class GFriendInfoData_friendsConnectionBuilder
 
   @override
   void replace(GFriendInfoData_friendsConnection other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFriendInfoData_friendsConnection;
   }
 
@@ -3678,7 +3516,7 @@ class GFriendInfoData_friendsConnectionBuilder
     _$GFriendInfoData_friendsConnection _$result;
     try {
       _$result = _$v ??
-          new _$GFriendInfoData_friendsConnection._(
+          _$GFriendInfoData_friendsConnection._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GFriendInfoData_friendsConnection', 'G__typename'),
             friends: _friends?.build(),
@@ -3689,7 +3527,7 @@ class GFriendInfoData_friendsConnectionBuilder
         _$failedField = 'friends';
         _friends?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GFriendInfoData_friendsConnection', _$failedField, e.toString());
       }
       rethrow;
@@ -3711,20 +3549,12 @@ class _$GFriendInfoData_friendsConnection_friends
   factory _$GFriendInfoData_friendsConnection_friends(
           [void Function(GFriendInfoData_friendsConnection_friendsBuilder)?
               updates]) =>
-      (new GFriendInfoData_friendsConnection_friendsBuilder()..update(updates))
+      (GFriendInfoData_friendsConnection_friendsBuilder()..update(updates))
           ._build();
 
   _$GFriendInfoData_friendsConnection_friends._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GFriendInfoData_friendsConnection_friends', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GFriendInfoData_friendsConnection_friends', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GFriendInfoData_friendsConnection_friends', 'name');
-  }
-
+      : super._();
   @override
   GFriendInfoData_friendsConnection_friends rebuild(
           void Function(GFriendInfoData_friendsConnection_friendsBuilder)
@@ -3733,7 +3563,7 @@ class _$GFriendInfoData_friendsConnection_friends
 
   @override
   GFriendInfoData_friendsConnection_friendsBuilder toBuilder() =>
-      new GFriendInfoData_friendsConnection_friendsBuilder()..replace(this);
+      GFriendInfoData_friendsConnection_friendsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3800,7 +3630,6 @@ class GFriendInfoData_friendsConnection_friendsBuilder
 
   @override
   void replace(GFriendInfoData_friendsConnection_friends other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFriendInfoData_friendsConnection_friends;
   }
 
@@ -3816,7 +3645,7 @@ class GFriendInfoData_friendsConnection_friendsBuilder
 
   _$GFriendInfoData_friendsConnection_friends _build() {
     final _$result = _$v ??
-        new _$GFriendInfoData_friendsConnection_friends._(
+        _$GFriendInfoData_friendsConnection_friends._(
           G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
               r'GFriendInfoData_friendsConnection_friends', 'G__typename'),
           id: BuiltValueNullFieldError.checkNotNull(
@@ -3839,17 +3668,11 @@ class _$GCharacterBasicData extends GCharacterBasicData {
 
   factory _$GCharacterBasicData(
           [void Function(GCharacterBasicDataBuilder)? updates]) =>
-      (new GCharacterBasicDataBuilder()..update(updates))._build();
+      (GCharacterBasicDataBuilder()..update(updates))._build();
 
   _$GCharacterBasicData._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCharacterBasicData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GCharacterBasicData', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'GCharacterBasicData', 'name');
-  }
-
+      : super._();
   @override
   GCharacterBasicData rebuild(
           void Function(GCharacterBasicDataBuilder) updates) =>
@@ -3857,7 +3680,7 @@ class _$GCharacterBasicData extends GCharacterBasicData {
 
   @override
   GCharacterBasicDataBuilder toBuilder() =>
-      new GCharacterBasicDataBuilder()..replace(this);
+      GCharacterBasicDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -3921,7 +3744,6 @@ class GCharacterBasicDataBuilder
 
   @override
   void replace(GCharacterBasicData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCharacterBasicData;
   }
 
@@ -3935,7 +3757,7 @@ class GCharacterBasicDataBuilder
 
   _$GCharacterBasicData _build() {
     final _$result = _$v ??
-        new _$GCharacterBasicData._(
+        _$GCharacterBasicData._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GCharacterBasicData', 'G__typename'),
           id: BuiltValueNullFieldError.checkNotNull(

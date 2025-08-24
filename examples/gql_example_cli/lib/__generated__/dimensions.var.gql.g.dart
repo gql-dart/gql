@@ -7,7 +7,7 @@ part of 'dimensions.var.gql.dart';
 // **************************************************************************
 
 Serializer<GDimensionsVars> _$gDimensionsVarsSerializer =
-    new _$GDimensionsVarsSerializer();
+    _$GDimensionsVarsSerializer();
 
 class _$GDimensionsVarsSerializer
     implements StructuredSerializer<GDimensionsVars> {
@@ -26,23 +26,21 @@ class _$GDimensionsVarsSerializer
   GDimensionsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GDimensionsVarsBuilder().build();
+    return GDimensionsVarsBuilder().build();
   }
 }
 
 class _$GDimensionsVars extends GDimensionsVars {
   factory _$GDimensionsVars([void Function(GDimensionsVarsBuilder)? updates]) =>
-      (new GDimensionsVarsBuilder()..update(updates))._build();
+      (GDimensionsVarsBuilder()..update(updates))._build();
 
   _$GDimensionsVars._() : super._();
-
   @override
   GDimensionsVars rebuild(void Function(GDimensionsVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GDimensionsVarsBuilder toBuilder() =>
-      new GDimensionsVarsBuilder()..replace(this);
+  GDimensionsVarsBuilder toBuilder() => GDimensionsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +67,6 @@ class GDimensionsVarsBuilder
 
   @override
   void replace(GDimensionsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDimensionsVars;
   }
 
@@ -82,7 +79,7 @@ class GDimensionsVarsBuilder
   GDimensionsVars build() => _build();
 
   _$GDimensionsVars _build() {
-    final _$result = _$v ?? new _$GDimensionsVars._();
+    final _$result = _$v ?? _$GDimensionsVars._();
     replace(_$result);
     return _$result;
   }
