@@ -11,7 +11,6 @@ import "../common.dart";
 List<Class> buildInputClasses(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
-  Allocator allocator,
   TriStateValueConfig triStateValueConfig,
   bool generateVarsCreateFactories,
 ) =>
@@ -25,8 +24,8 @@ List<Class> buildInputClasses(
         triStateValueConfig,
         generateVarsCreateFactories,
       );
-      final serializer = nullAwareJsonSerializerClass(
-          inputClass, allocator, schemaSource, typeOverrides);
+      final serializer =
+          nullAwareJsonSerializerClass(inputClass, schemaSource, typeOverrides);
       return [inputClass, serializer];
     }).toList();
 

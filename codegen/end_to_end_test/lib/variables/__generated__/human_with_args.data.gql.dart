@@ -13,9 +13,9 @@ abstract class GHumanWithArgsData
     implements Built<GHumanWithArgsData, GHumanWithArgsDataBuilder> {
   GHumanWithArgsData._();
 
-  factory GHumanWithArgsData(
-          [void Function(GHumanWithArgsDataBuilder b) updates]) =
-      _$GHumanWithArgsData;
+  factory GHumanWithArgsData([
+    void Function(GHumanWithArgsDataBuilder b) updates,
+  ]) = _$GHumanWithArgsData;
 
   static void _initializeBuilder(GHumanWithArgsDataBuilder b) =>
       b..G__typename = 'Query';
@@ -26,16 +26,12 @@ abstract class GHumanWithArgsData
   static Serializer<GHumanWithArgsData> get serializer =>
       _$gHumanWithArgsDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHumanWithArgsData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GHumanWithArgsData.serializer, this)
+          as Map<String, dynamic>);
 
   static GHumanWithArgsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHumanWithArgsData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GHumanWithArgsData.serializer, json);
 }
 
 abstract class GHumanWithArgsData_human
@@ -43,9 +39,9 @@ abstract class GHumanWithArgsData_human
         Built<GHumanWithArgsData_human, GHumanWithArgsData_humanBuilder> {
   GHumanWithArgsData_human._();
 
-  factory GHumanWithArgsData_human(
-          [void Function(GHumanWithArgsData_humanBuilder b) updates]) =
-      _$GHumanWithArgsData_human;
+  factory GHumanWithArgsData_human([
+    void Function(GHumanWithArgsData_humanBuilder b) updates,
+  ]) = _$GHumanWithArgsData_human;
 
   static void _initializeBuilder(GHumanWithArgsData_humanBuilder b) =>
       b..G__typename = 'Human';
@@ -57,14 +53,11 @@ abstract class GHumanWithArgsData_human
   static Serializer<GHumanWithArgsData_human> get serializer =>
       _$gHumanWithArgsDataHumanSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHumanWithArgsData_human.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GHumanWithArgsData_human.serializer, this)
+          as Map<String, dynamic>);
 
-  static GHumanWithArgsData_human? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHumanWithArgsData_human.serializer,
-        json,
-      );
+  static GHumanWithArgsData_human? fromJson(Map<String, dynamic> json) => _i1
+      .serializers
+      .deserializeWith(GHumanWithArgsData_human.serializer, json);
 }

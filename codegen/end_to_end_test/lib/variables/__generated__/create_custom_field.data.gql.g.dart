@@ -163,9 +163,10 @@ class GCreateCustomFieldDataBuilder
   _$GCreateCustomFieldData _build() {
     final _$result = _$v ??
         new _$GCreateCustomFieldData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GCreateCustomFieldData', 'G__typename'),
-            createCustomField: createCustomField);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GCreateCustomFieldData', 'G__typename'),
+          createCustomField: createCustomField,
+        );
     replace(_$result);
     return _$result;
   }

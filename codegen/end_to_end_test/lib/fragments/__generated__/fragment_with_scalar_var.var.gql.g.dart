@@ -165,8 +165,10 @@ class GPostsWithFixedVariableVarsBuilder
   _$GPostsWithFixedVariableVars _build() {
     _$GPostsWithFixedVariableVars _$result;
     try {
-      _$result =
-          _$v ?? new _$GPostsWithFixedVariableVars._(filter: _filter?.build());
+      _$result = _$v ??
+          new _$GPostsWithFixedVariableVars._(
+            filter: _filter?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

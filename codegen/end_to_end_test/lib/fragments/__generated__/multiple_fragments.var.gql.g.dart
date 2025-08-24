@@ -175,7 +175,10 @@ class GHeroWith2FragmentsVarsBuilder
   GHeroWith2FragmentsVars build() => _build();
 
   _$GHeroWith2FragmentsVars _build() {
-    final _$result = _$v ?? new _$GHeroWith2FragmentsVars._(first: first);
+    final _$result = _$v ??
+        new _$GHeroWith2FragmentsVars._(
+          first: first,
+        );
     replace(_$result);
     return _$result;
   }

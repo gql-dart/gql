@@ -753,9 +753,10 @@ class GHeroWithFragmentsDataBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GHeroWithFragmentsData', 'G__typename'),
-              hero: _hero?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHeroWithFragmentsData', 'G__typename'),
+            hero: _hero?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -905,13 +906,14 @@ class GHeroWithFragmentsData_heroBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GHeroWithFragmentsData_hero', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GHeroWithFragmentsData_hero', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GHeroWithFragmentsData_hero', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GHeroWithFragmentsData_hero', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1051,12 +1053,13 @@ class GHeroWithFragmentsData_hero_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero_friendsConnection._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GHeroWithFragmentsData_hero_friendsConnection',
-                  'G__typename'),
-              totalCount: totalCount,
-              edges: _edges?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GHeroWithFragmentsData_hero_friendsConnection',
+                'G__typename'),
+            totalCount: totalCount,
+            edges: _edges?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1191,11 +1194,12 @@ class GHeroWithFragmentsData_hero_friendsConnection_edgesBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragmentsData_hero_friendsConnection_edges._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GHeroWithFragmentsData_hero_friendsConnection_edges',
-                  'G__typename'),
-              node: _node?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GHeroWithFragmentsData_hero_friendsConnection_edges',
+                'G__typename'),
+            node: _node?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1328,14 +1332,15 @@ class GHeroWithFragmentsData_hero_friendsConnection_edges_nodeBuilder
   _$GHeroWithFragmentsData_hero_friendsConnection_edges_node _build() {
     final _$result = _$v ??
         new _$GHeroWithFragmentsData_hero_friendsConnection_edges_node._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
-                'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
-                'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
+              'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GHeroWithFragmentsData_hero_friendsConnection_edges_node',
+              'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1433,10 +1438,11 @@ class GheroDataDataBuilder
   _$GheroDataData _build() {
     final _$result = _$v ??
         new _$GheroDataData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroDataData', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroDataData', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GheroDataData', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GheroDataData', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1571,13 +1577,14 @@ class GcomparisonFieldsDataBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GcomparisonFieldsData', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GcomparisonFieldsData', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GcomparisonFieldsData', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GcomparisonFieldsData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GcomparisonFieldsData', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GcomparisonFieldsData', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1713,10 +1720,11 @@ class GcomparisonFieldsData_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData_friendsConnection._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GcomparisonFieldsData_friendsConnection', 'G__typename'),
-              totalCount: totalCount,
-              edges: _edges?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GcomparisonFieldsData_friendsConnection', 'G__typename'),
+            totalCount: totalCount,
+            edges: _edges?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1845,11 +1853,12 @@ class GcomparisonFieldsData_friendsConnection_edgesBuilder
     try {
       _$result = _$v ??
           new _$GcomparisonFieldsData_friendsConnection_edges._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GcomparisonFieldsData_friendsConnection_edges',
-                  'G__typename'),
-              node: _node?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GcomparisonFieldsData_friendsConnection_edges',
+                'G__typename'),
+            node: _node?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1978,12 +1987,13 @@ class GcomparisonFieldsData_friendsConnection_edges_nodeBuilder
   _$GcomparisonFieldsData_friendsConnection_edges_node _build() {
     final _$result = _$v ??
         new _$GcomparisonFieldsData_friendsConnection_edges_node._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GcomparisonFieldsData_friendsConnection_edges_node',
-                'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(name,
-                r'GcomparisonFieldsData_friendsConnection_edges_node', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GcomparisonFieldsData_friendsConnection_edges_node',
+              'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(name,
+              r'GcomparisonFieldsData_friendsConnection_edges_node', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

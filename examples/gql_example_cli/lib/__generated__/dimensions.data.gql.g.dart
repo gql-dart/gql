@@ -175,10 +175,11 @@ class GDimensionsDataBuilder
   _$GDimensionsData _build() {
     final _$result = _$v ??
         new _$GDimensionsData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GDimensionsData', 'G__typename'),
-            minimum: minimum,
-            maximum: maximum);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GDimensionsData', 'G__typename'),
+          minimum: minimum,
+          maximum: maximum,
+        );
     replace(_$result);
     return _$result;
   }

@@ -31,7 +31,6 @@ Method nullAwareJsonSerializerField(Node op, String className) =>
 /// to add the serializer to the generated class
 Class nullAwareJsonSerializerClass(
   Class base,
-  Allocator allocator,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
 ) =>
@@ -72,8 +71,7 @@ Class nullAwareJsonSerializerClass(
             ..named = true
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
-          ..body =
-              _serializerBody(base, allocator, schemaSource, typeOverrides)),
+          ..body = _serializerBody(base, schemaSource, typeOverrides)),
         Method((b) => b
           ..name = "deserialize"
           ..returns = refer(base.name)
@@ -89,12 +87,11 @@ Class nullAwareJsonSerializerClass(
             ..named = true
             ..type = refer("FullType", "package:built_value/serializer.dart")
             ..defaultTo = Code("FullType.unspecified")))
-          ..body =
-              _deserializerBody(base, allocator, schemaSource, typeOverrides)),
+          ..body = _deserializerBody(base, schemaSource, typeOverrides)),
       ]));
 
-Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
-    Map<String, Reference> typeOverrides) {
+Code _serializerBody(
+    Class base, SourceNode schemaSource, Map<String, Reference> typeOverrides) {
   final vars = <Code>[];
 
   final fields = base.methods
@@ -116,16 +113,16 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
       final _valueVarName = "_\$${field.name}value";
 
       statements.add(Code("final $_valueVarName = object.${field.name};"));
-      statements.add(Code(
-          "if ($_valueVarName case ${allocator.allocate(presentValueTypeRef)}(value: final _\$value) ) {"));
+      statements.add(Code.scope((allocate) =>
+          "if ($_valueVarName case ${allocate(presentValueTypeRef)}(value: final _\$value) ) {"));
       statements.add(Code("result.add('${_getWireName(field)}');"));
-      statements.add(Code(
-          "result.add(serializers.serialize(_\$value, specifiedType: const ${_generateFullType(realType, allocator)}));"));
+      statements.add(Code.scope((allocate) =>
+          "result.add(serializers.serialize(_\$value, specifiedType: const ${_generateFullType(realType, allocate)}));"));
       statements.add(Code("}"));
     } else {
       statements.add(Code("result.add('${_getWireName(field)}');"));
-      statements.add(Code(
-          "result.add(serializers.serialize(object.${field.name}, specifiedType: const ${_generateFullType(field.returns as TypeReference, allocator)}));"));
+      statements.add(Code.scope((allocate) =>
+          "result.add(serializers.serialize(object.${field.name}, specifiedType: const ${_generateFullType(field.returns as TypeReference, allocate)}));"));
     }
     vars.add(Block.of(statements));
   }
@@ -139,16 +136,16 @@ Code _serializerBody(Class base, Allocator allocator, SourceNode schemaSource,
   return body;
 }
 
-Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
-    Map<String, Reference> typeOverrides) {
+Code _deserializerBody(
+    Class base, SourceNode schemaSource, Map<String, Reference> typeOverrides) {
   final fields = base.methods
       .where((field) => field.type == MethodType.getter && !field.static)
       .toList();
 
   return switch (fields) {
     [] => Code("return ${base.name}();"),
-    final nonEmptyFieldsList => Code("""
-      final builder =  ${base.name}Builder();  
+    final nonEmptyFieldsList => Code.scope((allocate) => """
+      final builder =  ${base.name}Builder();
       final iterator = serialized.iterator;
       while (iterator.moveNext()) {
         final key = iterator.current as String;
@@ -156,11 +153,11 @@ Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
         final Object? value = iterator.current;
         switch (key) {
           ${_generateFieldDeserializers(
-        nonEmptyFieldsList,
-        allocator,
-        schemaSource,
-        typeOverrides,
-      )}
+          nonEmptyFieldsList,
+          allocate,
+          schemaSource,
+          typeOverrides,
+        )}
         }
       }
       return builder.build();
@@ -170,7 +167,7 @@ Code _deserializerBody(Class base, Allocator allocator, SourceNode schemaSource,
 
 String _generateFieldDeserializers(
   List<Method> fields,
-  Allocator allocator,
+  String Function(Reference) allocate,
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
 ) =>
@@ -180,7 +177,7 @@ String _generateFieldDeserializers(
       if (isWrappedValue) {
         type = (type as TypeReference).types.first;
       }
-      final fullType = _generateFullType(type as TypeReference, allocator);
+      final fullType = _generateFullType(type as TypeReference, allocate);
 
       /// remove the leading `G` from the type name
       /// TODO refactor this
@@ -202,7 +199,7 @@ String _generateFieldDeserializers(
       var base = """
 case '${_getWireName(field)}':
   var ${fieldNameVariableName} = serializers.deserialize(
-      value, specifiedType: const $fullType) as ${_generateTypeCast(type, allocator)};""";
+      value, specifiedType: const $fullType) as ${_generateTypeCast(type, allocate)};""";
 
       if (isBuilder) {
         base += """
@@ -210,7 +207,7 @@ case '${_getWireName(field)}':
       """;
       } else {
         base += """
-        builder.${field.name} = ${isWrappedValue ? newPresentValueConstructorInvocation(fieldNameExpr, allocator) : fieldNameVariableName};
+        builder.${field.name} = ${isWrappedValue ? newPresentValueConstructorInvocation(fieldNameExpr, allocate) : fieldNameVariableName};
       """;
       }
 
@@ -244,20 +241,21 @@ String _getWireName(Method m) {
   return parseLiteralString(wireNameExpr);
 }
 
-Code _generateFullType(TypeReference ref, Allocator allocator) {
+Code _generateFullType(TypeReference ref, String Function(Reference) allocate) {
   if (ref.types.isEmpty) {
-    return Code("FullType(${allocator.allocate(ref)})");
+    return Code("FullType(${allocate(ref)})");
   } else {
     return Code(
-        "FullType(${allocator.allocate(ref)}, [${ref.types.map((t) => _generateFullType(t as TypeReference, allocator)).join(",")}])");
+        "FullType(${allocate(ref)}, [${ref.types.map((t) => _generateFullType(t as TypeReference, allocate)).join(",")}])");
   }
 }
 
-String _generateTypeCast(TypeReference ref, Allocator allocator) {
+String _generateTypeCast(
+    TypeReference ref, String Function(Reference) allocate) {
   if (ref.types.isEmpty) {
-    return allocator.allocate(ref);
+    return allocate(ref);
   } else {
-    return "${allocator.allocate(ref)}<${ref.types.map((t) => _generateTypeCast(t as TypeReference, allocator)).join(",")}>";
+    return "${allocate(ref)}<${ref.types.map((t) => _generateTypeCast(t as TypeReference, allocate)).join(",")}>";
   }
 }
 
@@ -286,8 +284,8 @@ Expression absentValueConstructorInvocation() =>
     absentValueTypeRef.constInstance(const []);
 
 String newPresentValueConstructorInvocation(
-    Expression value, Allocator allocator) {
-  final prefixedRef = allocator.allocate(presentValueTypeRef);
+    Expression value, String Function(Reference) allocate) {
+  final prefixedRef = allocate(presentValueTypeRef);
 
   return "$prefixedRef(${value.code})";
 }

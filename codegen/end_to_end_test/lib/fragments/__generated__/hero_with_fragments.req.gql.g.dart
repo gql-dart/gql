@@ -158,9 +158,10 @@ class GHeroWithFragmentsBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithFragments._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHeroWithFragments', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroWithFragments', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

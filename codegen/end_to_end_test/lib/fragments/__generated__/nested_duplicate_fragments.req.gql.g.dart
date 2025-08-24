@@ -161,9 +161,10 @@ class GSearchResultsQueryBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQuery._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GSearchResultsQuery', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GSearchResultsQuery', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

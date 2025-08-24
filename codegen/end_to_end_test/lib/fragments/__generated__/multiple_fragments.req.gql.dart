@@ -18,29 +18,26 @@ abstract class GHeroWith2Fragments
     implements Built<GHeroWith2Fragments, GHeroWith2FragmentsBuilder> {
   GHeroWith2Fragments._();
 
-  factory GHeroWith2Fragments(
-          [void Function(GHeroWith2FragmentsBuilder b) updates]) =
-      _$GHeroWith2Fragments;
+  factory GHeroWith2Fragments([
+    void Function(GHeroWith2FragmentsBuilder b) updates,
+  ]) = _$GHeroWith2Fragments;
 
-  static void _initializeBuilder(GHeroWith2FragmentsBuilder b) => b
-    ..operation = _i1.Operation(
-      document: _i2.document,
-      operationName: 'HeroWith2Fragments',
-    );
+  static void _initializeBuilder(GHeroWith2FragmentsBuilder b) =>
+      b
+        ..operation = _i1.Operation(
+          document: _i2.document,
+          operationName: 'HeroWith2Fragments',
+        );
 
   _i3.GHeroWith2FragmentsVars get vars;
   _i1.Operation get operation;
   static Serializer<GHeroWith2Fragments> get serializer =>
       _$gHeroWith2FragmentsSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GHeroWith2Fragments.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GHeroWith2Fragments.serializer, this)
+          as Map<String, dynamic>);
 
   static GHeroWith2Fragments? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GHeroWith2Fragments.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GHeroWith2Fragments.serializer, json);
 }

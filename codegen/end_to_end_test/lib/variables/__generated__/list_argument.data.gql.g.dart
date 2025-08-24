@@ -232,9 +232,10 @@ class GreviewsWithListArgumentDataBuilder
     try {
       _$result = _$v ??
           new _$GreviewsWithListArgumentData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GreviewsWithListArgumentData', 'G__typename'),
-              reviews: _reviews?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GreviewsWithListArgumentData', 'G__typename'),
+            reviews: _reviews?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -352,9 +353,10 @@ class GreviewsWithListArgumentData_reviewsBuilder
   _$GreviewsWithListArgumentData_reviews _build() {
     final _$result = _$v ??
         new _$GreviewsWithListArgumentData_reviews._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GreviewsWithListArgumentData_reviews', 'G__typename'),
-            episode: episode);
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GreviewsWithListArgumentData_reviews', 'G__typename'),
+          episode: episode,
+        );
     replace(_$result);
     return _$result;
   }

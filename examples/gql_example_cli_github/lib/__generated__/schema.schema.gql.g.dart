@@ -17187,11 +17187,10 @@ class GAcceptEnterpriseAdministratorInvitationInputBuilder
   _$GAcceptEnterpriseAdministratorInvitationInput _build() {
     final _$result = _$v ??
         new _$GAcceptEnterpriseAdministratorInvitationInput._(
-            clientMutationId: clientMutationId,
-            invitationId: BuiltValueNullFieldError.checkNotNull(
-                invitationId,
-                r'GAcceptEnterpriseAdministratorInvitationInput',
-                'invitationId'));
+          clientMutationId: clientMutationId,
+          invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
+              r'GAcceptEnterpriseAdministratorInvitationInput', 'invitationId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -17305,11 +17304,12 @@ class GAcceptTopicSuggestionInputBuilder
   _$GAcceptTopicSuggestionInput _build() {
     final _$result = _$v ??
         new _$GAcceptTopicSuggestionInput._(
-            clientMutationId: clientMutationId,
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GAcceptTopicSuggestionInput', 'name'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GAcceptTopicSuggestionInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAcceptTopicSuggestionInput', 'name'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GAcceptTopicSuggestionInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -17429,10 +17429,11 @@ class GAddAssigneesToAssignableInputBuilder
     try {
       _$result = _$v ??
           new _$GAddAssigneesToAssignableInput._(
-              assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
-                  r'GAddAssigneesToAssignableInput', 'assignableId'),
-              assigneeIds: assigneeIds.build(),
-              clientMutationId: clientMutationId);
+            assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
+                r'GAddAssigneesToAssignableInput', 'assignableId'),
+            assigneeIds: assigneeIds.build(),
+            clientMutationId: clientMutationId,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -17553,11 +17554,12 @@ class GAddCommentInputBuilder
   _$GAddCommentInput _build() {
     final _$result = _$v ??
         new _$GAddCommentInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GAddCommentInput', 'body'),
-            clientMutationId: clientMutationId,
-            subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, r'GAddCommentInput', 'subjectId'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GAddCommentInput', 'body'),
+          clientMutationId: clientMutationId,
+          subjectId: BuiltValueNullFieldError.checkNotNull(
+              subjectId, r'GAddCommentInput', 'subjectId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -17675,10 +17677,11 @@ class GAddLabelsToLabelableInputBuilder
     try {
       _$result = _$v ??
           new _$GAddLabelsToLabelableInput._(
-              clientMutationId: clientMutationId,
-              labelIds: labelIds.build(),
-              labelableId: BuiltValueNullFieldError.checkNotNull(
-                  labelableId, r'GAddLabelsToLabelableInput', 'labelableId'));
+            clientMutationId: clientMutationId,
+            labelIds: labelIds.build(),
+            labelableId: BuiltValueNullFieldError.checkNotNull(
+                labelableId, r'GAddLabelsToLabelableInput', 'labelableId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -17813,11 +17816,12 @@ class GAddProjectCardInputBuilder
   _$GAddProjectCardInput _build() {
     final _$result = _$v ??
         new _$GAddProjectCardInput._(
-            clientMutationId: clientMutationId,
-            contentId: contentId,
-            note: note,
-            projectColumnId: BuiltValueNullFieldError.checkNotNull(
-                projectColumnId, r'GAddProjectCardInput', 'projectColumnId'));
+          clientMutationId: clientMutationId,
+          contentId: contentId,
+          note: note,
+          projectColumnId: BuiltValueNullFieldError.checkNotNull(
+              projectColumnId, r'GAddProjectCardInput', 'projectColumnId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -17929,11 +17933,12 @@ class GAddProjectColumnInputBuilder
   _$GAddProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GAddProjectColumnInput._(
-            clientMutationId: clientMutationId,
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GAddProjectColumnInput', 'name'),
-            projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, r'GAddProjectColumnInput', 'projectId'));
+          clientMutationId: clientMutationId,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAddProjectColumnInput', 'name'),
+          projectId: BuiltValueNullFieldError.checkNotNull(
+              projectId, r'GAddProjectColumnInput', 'projectId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -18111,15 +18116,16 @@ class GAddPullRequestReviewCommentInputBuilder
     try {
       _$result = _$v ??
           new _$GAddPullRequestReviewCommentInput._(
-              body: BuiltValueNullFieldError.checkNotNull(
-                  body, r'GAddPullRequestReviewCommentInput', 'body'),
-              clientMutationId: clientMutationId,
-              commitOID: _commitOID?.build(),
-              inReplyTo: inReplyTo,
-              path: path,
-              position: position,
-              pullRequestId: pullRequestId,
-              pullRequestReviewId: pullRequestReviewId);
+            body: BuiltValueNullFieldError.checkNotNull(
+                body, r'GAddPullRequestReviewCommentInput', 'body'),
+            clientMutationId: clientMutationId,
+            commitOID: _commitOID?.build(),
+            inReplyTo: inReplyTo,
+            path: path,
+            position: position,
+            pullRequestId: pullRequestId,
+            pullRequestReviewId: pullRequestReviewId,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -18283,15 +18289,14 @@ class GAddPullRequestReviewInputBuilder
     try {
       _$result = _$v ??
           new _$GAddPullRequestReviewInput._(
-              body: body,
-              clientMutationId: clientMutationId,
-              comments: _comments?.build(),
-              commitOID: _commitOID?.build(),
-              event: event,
-              pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId,
-                  r'GAddPullRequestReviewInput',
-                  'pullRequestId'));
+            body: body,
+            clientMutationId: clientMutationId,
+            comments: _comments?.build(),
+            commitOID: _commitOID?.build(),
+            event: event,
+            pullRequestId: BuiltValueNullFieldError.checkNotNull(
+                pullRequestId, r'GAddPullRequestReviewInput', 'pullRequestId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -18415,11 +18420,12 @@ class GAddReactionInputBuilder
   _$GAddReactionInput _build() {
     final _$result = _$v ??
         new _$GAddReactionInput._(
-            clientMutationId: clientMutationId,
-            content: BuiltValueNullFieldError.checkNotNull(
-                content, r'GAddReactionInput', 'content'),
-            subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, r'GAddReactionInput', 'subjectId'));
+          clientMutationId: clientMutationId,
+          content: BuiltValueNullFieldError.checkNotNull(
+              content, r'GAddReactionInput', 'content'),
+          subjectId: BuiltValueNullFieldError.checkNotNull(
+              subjectId, r'GAddReactionInput', 'subjectId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -18515,9 +18521,10 @@ class GAddStarInputBuilder
   _$GAddStarInput _build() {
     final _$result = _$v ??
         new _$GAddStarInput._(
-            clientMutationId: clientMutationId,
-            starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, r'GAddStarInput', 'starrableId'));
+          clientMutationId: clientMutationId,
+          starrableId: BuiltValueNullFieldError.checkNotNull(
+              starrableId, r'GAddStarInput', 'starrableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -18618,9 +18625,10 @@ class GArchiveRepositoryInputBuilder
   _$GArchiveRepositoryInput _build() {
     final _$result = _$v ??
         new _$GArchiveRepositoryInput._(
-            clientMutationId: clientMutationId,
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GArchiveRepositoryInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GArchiveRepositoryInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -18710,8 +18718,11 @@ class GAuditLogOrderBuilder
   GAuditLogOrder build() => _build();
 
   _$GAuditLogOrder _build() {
-    final _$result =
-        _$v ?? new _$GAuditLogOrder._(direction: direction, field: field);
+    final _$result = _$v ??
+        new _$GAuditLogOrder._(
+          direction: direction,
+          field: field,
+        );
     replace(_$result);
     return _$result;
   }
@@ -18819,9 +18830,10 @@ class GCancelEnterpriseAdminInvitationInputBuilder
   _$GCancelEnterpriseAdminInvitationInput _build() {
     final _$result = _$v ??
         new _$GCancelEnterpriseAdminInvitationInput._(
-            clientMutationId: clientMutationId,
-            invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
-                r'GCancelEnterpriseAdminInvitationInput', 'invitationId'));
+          clientMutationId: clientMutationId,
+          invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
+              r'GCancelEnterpriseAdminInvitationInput', 'invitationId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -18968,12 +18980,13 @@ class GChangeUserStatusInputBuilder
     try {
       _$result = _$v ??
           new _$GChangeUserStatusInput._(
-              clientMutationId: clientMutationId,
-              emoji: emoji,
-              expiresAt: _expiresAt?.build(),
-              limitedAvailability: limitedAvailability,
-              message: message,
-              organizationId: organizationId);
+            clientMutationId: clientMutationId,
+            emoji: emoji,
+            expiresAt: _expiresAt?.build(),
+            limitedAvailability: limitedAvailability,
+            message: message,
+            organizationId: organizationId,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -19086,9 +19099,10 @@ class GClearLabelsFromLabelableInputBuilder
   _$GClearLabelsFromLabelableInput _build() {
     final _$result = _$v ??
         new _$GClearLabelsFromLabelableInput._(
-            clientMutationId: clientMutationId,
-            labelableId: BuiltValueNullFieldError.checkNotNull(
-                labelableId, r'GClearLabelsFromLabelableInput', 'labelableId'));
+          clientMutationId: clientMutationId,
+          labelableId: BuiltValueNullFieldError.checkNotNull(
+              labelableId, r'GClearLabelsFromLabelableInput', 'labelableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19251,17 +19265,18 @@ class GCloneProjectInputBuilder
   _$GCloneProjectInput _build() {
     final _$result = _$v ??
         new _$GCloneProjectInput._(
-            body: body,
-            clientMutationId: clientMutationId,
-            includeWorkflows: BuiltValueNullFieldError.checkNotNull(
-                includeWorkflows, r'GCloneProjectInput', 'includeWorkflows'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GCloneProjectInput', 'name'),
-            public: public,
-            sourceId: BuiltValueNullFieldError.checkNotNull(
-                sourceId, r'GCloneProjectInput', 'sourceId'),
-            targetOwnerId: BuiltValueNullFieldError.checkNotNull(
-                targetOwnerId, r'GCloneProjectInput', 'targetOwnerId'));
+          body: body,
+          clientMutationId: clientMutationId,
+          includeWorkflows: BuiltValueNullFieldError.checkNotNull(
+              includeWorkflows, r'GCloneProjectInput', 'includeWorkflows'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GCloneProjectInput', 'name'),
+          public: public,
+          sourceId: BuiltValueNullFieldError.checkNotNull(
+              sourceId, r'GCloneProjectInput', 'sourceId'),
+          targetOwnerId: BuiltValueNullFieldError.checkNotNull(
+              targetOwnerId, r'GCloneProjectInput', 'targetOwnerId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19415,16 +19430,17 @@ class GCloneTemplateRepositoryInputBuilder
   _$GCloneTemplateRepositoryInput _build() {
     final _$result = _$v ??
         new _$GCloneTemplateRepositoryInput._(
-            clientMutationId: clientMutationId,
-            description: description,
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GCloneTemplateRepositoryInput', 'name'),
-            ownerId: BuiltValueNullFieldError.checkNotNull(
-                ownerId, r'GCloneTemplateRepositoryInput', 'ownerId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GCloneTemplateRepositoryInput', 'repositoryId'),
-            visibility: BuiltValueNullFieldError.checkNotNull(
-                visibility, r'GCloneTemplateRepositoryInput', 'visibility'));
+          clientMutationId: clientMutationId,
+          description: description,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GCloneTemplateRepositoryInput', 'name'),
+          ownerId: BuiltValueNullFieldError.checkNotNull(
+              ownerId, r'GCloneTemplateRepositoryInput', 'ownerId'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GCloneTemplateRepositoryInput', 'repositoryId'),
+          visibility: BuiltValueNullFieldError.checkNotNull(
+              visibility, r'GCloneTemplateRepositoryInput', 'visibility'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19522,9 +19538,10 @@ class GCloseIssueInputBuilder
   _$GCloseIssueInput _build() {
     final _$result = _$v ??
         new _$GCloseIssueInput._(
-            clientMutationId: clientMutationId,
-            issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, r'GCloseIssueInput', 'issueId'));
+          clientMutationId: clientMutationId,
+          issueId: BuiltValueNullFieldError.checkNotNull(
+              issueId, r'GCloseIssueInput', 'issueId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19625,9 +19642,10 @@ class GClosePullRequestInputBuilder
   _$GClosePullRequestInput _build() {
     final _$result = _$v ??
         new _$GClosePullRequestInput._(
-            clientMutationId: clientMutationId,
-            pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestId, r'GClosePullRequestInput', 'pullRequestId'));
+          clientMutationId: clientMutationId,
+          pullRequestId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestId, r'GClosePullRequestInput', 'pullRequestId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19717,7 +19735,11 @@ class GCommitAuthorBuilder
   _$GCommitAuthor _build() {
     _$GCommitAuthor _$result;
     try {
-      _$result = _$v ?? new _$GCommitAuthor._(emails: _emails?.build(), id: id);
+      _$result = _$v ??
+          new _$GCommitAuthor._(
+            emails: _emails?.build(),
+            id: id,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -19829,10 +19851,11 @@ class GCommitContributionOrderBuilder
   _$GCommitContributionOrder _build() {
     final _$result = _$v ??
         new _$GCommitContributionOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GCommitContributionOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GCommitContributionOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GCommitContributionOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GCommitContributionOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -19929,9 +19952,10 @@ class GContributionOrderBuilder
   _$GContributionOrder _build() {
     final _$result = _$v ??
         new _$GContributionOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GContributionOrder', 'direction'),
-            field: field);
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GContributionOrder', 'direction'),
+          field: field,
+        );
     replace(_$result);
     return _$result;
   }
@@ -20074,13 +20098,14 @@ class GConvertProjectCardNoteToIssueInputBuilder
   _$GConvertProjectCardNoteToIssueInput _build() {
     final _$result = _$v ??
         new _$GConvertProjectCardNoteToIssueInput._(
-            body: body,
-            clientMutationId: clientMutationId,
-            projectCardId: BuiltValueNullFieldError.checkNotNull(projectCardId,
-                r'GConvertProjectCardNoteToIssueInput', 'projectCardId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                r'GConvertProjectCardNoteToIssueInput', 'repositoryId'),
-            title: title);
+          body: body,
+          clientMutationId: clientMutationId,
+          projectCardId: BuiltValueNullFieldError.checkNotNull(projectCardId,
+              r'GConvertProjectCardNoteToIssueInput', 'projectCardId'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
+              r'GConvertProjectCardNoteToIssueInput', 'repositoryId'),
+          title: title,
+        );
     replace(_$result);
     return _$result;
   }
@@ -20360,25 +20385,25 @@ class GCreateBranchProtectionRuleInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateBranchProtectionRuleInput._(
-              clientMutationId: clientMutationId,
-              dismissesStaleReviews: dismissesStaleReviews,
-              isAdminEnforced: isAdminEnforced,
-              pattern: BuiltValueNullFieldError.checkNotNull(
-                  pattern, r'GCreateBranchProtectionRuleInput', 'pattern'),
-              pushActorIds: _pushActorIds?.build(),
-              repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                  r'GCreateBranchProtectionRuleInput', 'repositoryId'),
-              requiredApprovingReviewCount: requiredApprovingReviewCount,
-              requiredStatusCheckContexts:
-                  _requiredStatusCheckContexts?.build(),
-              requiresApprovingReviews: requiresApprovingReviews,
-              requiresCodeOwnerReviews: requiresCodeOwnerReviews,
-              requiresCommitSignatures: requiresCommitSignatures,
-              requiresStatusChecks: requiresStatusChecks,
-              requiresStrictStatusChecks: requiresStrictStatusChecks,
-              restrictsPushes: restrictsPushes,
-              restrictsReviewDismissals: restrictsReviewDismissals,
-              reviewDismissalActorIds: _reviewDismissalActorIds?.build());
+            clientMutationId: clientMutationId,
+            dismissesStaleReviews: dismissesStaleReviews,
+            isAdminEnforced: isAdminEnforced,
+            pattern: BuiltValueNullFieldError.checkNotNull(
+                pattern, r'GCreateBranchProtectionRuleInput', 'pattern'),
+            pushActorIds: _pushActorIds?.build(),
+            repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
+                r'GCreateBranchProtectionRuleInput', 'repositoryId'),
+            requiredApprovingReviewCount: requiredApprovingReviewCount,
+            requiredStatusCheckContexts: _requiredStatusCheckContexts?.build(),
+            requiresApprovingReviews: requiresApprovingReviews,
+            requiresCodeOwnerReviews: requiresCodeOwnerReviews,
+            requiresCommitSignatures: requiresCommitSignatures,
+            requiresStatusChecks: requiresStatusChecks,
+            requiresStrictStatusChecks: requiresStrictStatusChecks,
+            restrictsPushes: restrictsPushes,
+            restrictsReviewDismissals: restrictsReviewDismissals,
+            reviewDismissalActorIds: _reviewDismissalActorIds?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -20558,16 +20583,17 @@ class GCreateEnterpriseOrganizationInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateEnterpriseOrganizationInput._(
-              adminLogins: adminLogins.build(),
-              billingEmail: BuiltValueNullFieldError.checkNotNull(billingEmail,
-                  r'GCreateEnterpriseOrganizationInput', 'billingEmail'),
-              clientMutationId: clientMutationId,
-              enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                  r'GCreateEnterpriseOrganizationInput', 'enterpriseId'),
-              login: BuiltValueNullFieldError.checkNotNull(
-                  login, r'GCreateEnterpriseOrganizationInput', 'login'),
-              profileName: BuiltValueNullFieldError.checkNotNull(profileName,
-                  r'GCreateEnterpriseOrganizationInput', 'profileName'));
+            adminLogins: adminLogins.build(),
+            billingEmail: BuiltValueNullFieldError.checkNotNull(billingEmail,
+                r'GCreateEnterpriseOrganizationInput', 'billingEmail'),
+            clientMutationId: clientMutationId,
+            enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
+                r'GCreateEnterpriseOrganizationInput', 'enterpriseId'),
+            login: BuiltValueNullFieldError.checkNotNull(
+                login, r'GCreateEnterpriseOrganizationInput', 'login'),
+            profileName: BuiltValueNullFieldError.checkNotNull(profileName,
+                r'GCreateEnterpriseOrganizationInput', 'profileName'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -20752,16 +20778,17 @@ class GCreateIssueInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateIssueInput._(
-              assigneeIds: _assigneeIds?.build(),
-              body: body,
-              clientMutationId: clientMutationId,
-              labelIds: _labelIds?.build(),
-              milestoneId: milestoneId,
-              projectIds: _projectIds?.build(),
-              repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, r'GCreateIssueInput', 'repositoryId'),
-              title: BuiltValueNullFieldError.checkNotNull(
-                  title, r'GCreateIssueInput', 'title'));
+            assigneeIds: _assigneeIds?.build(),
+            body: body,
+            clientMutationId: clientMutationId,
+            labelIds: _labelIds?.build(),
+            milestoneId: milestoneId,
+            projectIds: _projectIds?.build(),
+            repositoryId: BuiltValueNullFieldError.checkNotNull(
+                repositoryId, r'GCreateIssueInput', 'repositoryId'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'GCreateIssueInput', 'title'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -20928,14 +20955,15 @@ class GCreateProjectInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateProjectInput._(
-              body: body,
-              clientMutationId: clientMutationId,
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GCreateProjectInput', 'name'),
-              ownerId: BuiltValueNullFieldError.checkNotNull(
-                  ownerId, r'GCreateProjectInput', 'ownerId'),
-              repositoryIds: _repositoryIds?.build(),
-              template: template);
+            body: body,
+            clientMutationId: clientMutationId,
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateProjectInput', 'name'),
+            ownerId: BuiltValueNullFieldError.checkNotNull(
+                ownerId, r'GCreateProjectInput', 'ownerId'),
+            repositoryIds: _repositoryIds?.build(),
+            template: template,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -21110,17 +21138,18 @@ class GCreatePullRequestInputBuilder
   _$GCreatePullRequestInput _build() {
     final _$result = _$v ??
         new _$GCreatePullRequestInput._(
-            baseRefName: BuiltValueNullFieldError.checkNotNull(
-                baseRefName, r'GCreatePullRequestInput', 'baseRefName'),
-            body: body,
-            clientMutationId: clientMutationId,
-            headRefName: BuiltValueNullFieldError.checkNotNull(
-                headRefName, r'GCreatePullRequestInput', 'headRefName'),
-            maintainerCanModify: maintainerCanModify,
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GCreatePullRequestInput', 'repositoryId'),
-            title: BuiltValueNullFieldError.checkNotNull(
-                title, r'GCreatePullRequestInput', 'title'));
+          baseRefName: BuiltValueNullFieldError.checkNotNull(
+              baseRefName, r'GCreatePullRequestInput', 'baseRefName'),
+          body: body,
+          clientMutationId: clientMutationId,
+          headRefName: BuiltValueNullFieldError.checkNotNull(
+              headRefName, r'GCreatePullRequestInput', 'headRefName'),
+          maintainerCanModify: maintainerCanModify,
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GCreatePullRequestInput', 'repositoryId'),
+          title: BuiltValueNullFieldError.checkNotNull(
+              title, r'GCreatePullRequestInput', 'title'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -21245,12 +21274,13 @@ class GCreateRefInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateRefInput._(
-              clientMutationId: clientMutationId,
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GCreateRefInput', 'name'),
-              oid: oid.build(),
-              repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, r'GCreateRefInput', 'repositoryId'));
+            clientMutationId: clientMutationId,
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateRefInput', 'name'),
+            oid: oid.build(),
+            repositoryId: BuiltValueNullFieldError.checkNotNull(
+                repositoryId, r'GCreateRefInput', 'repositoryId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -21458,18 +21488,19 @@ class GCreateRepositoryInputBuilder
     try {
       _$result = _$v ??
           new _$GCreateRepositoryInput._(
-              clientMutationId: clientMutationId,
-              description: description,
-              hasIssuesEnabled: hasIssuesEnabled,
-              hasWikiEnabled: hasWikiEnabled,
-              homepageUrl: _homepageUrl?.build(),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GCreateRepositoryInput', 'name'),
-              ownerId: ownerId,
-              teamId: teamId,
-              template: template,
-              visibility: BuiltValueNullFieldError.checkNotNull(
-                  visibility, r'GCreateRepositoryInput', 'visibility'));
+            clientMutationId: clientMutationId,
+            description: description,
+            hasIssuesEnabled: hasIssuesEnabled,
+            hasWikiEnabled: hasWikiEnabled,
+            homepageUrl: _homepageUrl?.build(),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateRepositoryInput', 'name'),
+            ownerId: ownerId,
+            teamId: teamId,
+            template: template,
+            visibility: BuiltValueNullFieldError.checkNotNull(
+                visibility, r'GCreateRepositoryInput', 'visibility'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -21597,11 +21628,12 @@ class GCreateTeamDiscussionCommentInputBuilder
   _$GCreateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GCreateTeamDiscussionCommentInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GCreateTeamDiscussionCommentInput', 'body'),
-            clientMutationId: clientMutationId,
-            discussionId: BuiltValueNullFieldError.checkNotNull(discussionId,
-                r'GCreateTeamDiscussionCommentInput', 'discussionId'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GCreateTeamDiscussionCommentInput', 'body'),
+          clientMutationId: clientMutationId,
+          discussionId: BuiltValueNullFieldError.checkNotNull(discussionId,
+              r'GCreateTeamDiscussionCommentInput', 'discussionId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -21740,14 +21772,15 @@ class GCreateTeamDiscussionInputBuilder
   _$GCreateTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GCreateTeamDiscussionInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GCreateTeamDiscussionInput', 'body'),
-            clientMutationId: clientMutationId,
-            private: private,
-            teamId: BuiltValueNullFieldError.checkNotNull(
-                teamId, r'GCreateTeamDiscussionInput', 'teamId'),
-            title: BuiltValueNullFieldError.checkNotNull(
-                title, r'GCreateTeamDiscussionInput', 'title'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GCreateTeamDiscussionInput', 'body'),
+          clientMutationId: clientMutationId,
+          private: private,
+          teamId: BuiltValueNullFieldError.checkNotNull(
+              teamId, r'GCreateTeamDiscussionInput', 'teamId'),
+          title: BuiltValueNullFieldError.checkNotNull(
+              title, r'GCreateTeamDiscussionInput', 'title'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -21827,8 +21860,9 @@ class GDateBuilder implements Builder<GDate, GDateBuilder> {
   _$GDate _build() {
     final _$result = _$v ??
         new _$GDate._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GDate', 'value'));
+          value:
+              BuiltValueNullFieldError.checkNotNull(value, r'GDate', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -21908,8 +21942,9 @@ class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
   _$GDateTime _build() {
     final _$result = _$v ??
         new _$GDateTime._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GDateTime', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GDateTime', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22038,13 +22073,14 @@ class GDeclineTopicSuggestionInputBuilder
   _$GDeclineTopicSuggestionInput _build() {
     final _$result = _$v ??
         new _$GDeclineTopicSuggestionInput._(
-            clientMutationId: clientMutationId,
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GDeclineTopicSuggestionInput', 'name'),
-            reason: BuiltValueNullFieldError.checkNotNull(
-                reason, r'GDeclineTopicSuggestionInput', 'reason'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GDeclineTopicSuggestionInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GDeclineTopicSuggestionInput', 'name'),
+          reason: BuiltValueNullFieldError.checkNotNull(
+              reason, r'GDeclineTopicSuggestionInput', 'reason'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GDeclineTopicSuggestionInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22148,11 +22184,12 @@ class GDeleteBranchProtectionRuleInputBuilder
   _$GDeleteBranchProtectionRuleInput _build() {
     final _$result = _$v ??
         new _$GDeleteBranchProtectionRuleInput._(
-            branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
-                branchProtectionRuleId,
-                r'GDeleteBranchProtectionRuleInput',
-                'branchProtectionRuleId'),
-            clientMutationId: clientMutationId);
+          branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
+              branchProtectionRuleId,
+              r'GDeleteBranchProtectionRuleInput',
+              'branchProtectionRuleId'),
+          clientMutationId: clientMutationId,
+        );
     replace(_$result);
     return _$result;
   }
@@ -22250,9 +22287,10 @@ class GDeleteDeploymentInputBuilder
   _$GDeleteDeploymentInput _build() {
     final _$result = _$v ??
         new _$GDeleteDeploymentInput._(
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDeleteDeploymentInput', 'id'));
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GDeleteDeploymentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22352,9 +22390,10 @@ class GDeleteIssueCommentInputBuilder
   _$GDeleteIssueCommentInput _build() {
     final _$result = _$v ??
         new _$GDeleteIssueCommentInput._(
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDeleteIssueCommentInput', 'id'));
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GDeleteIssueCommentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22452,9 +22491,10 @@ class GDeleteIssueInputBuilder
   _$GDeleteIssueInput _build() {
     final _$result = _$v ??
         new _$GDeleteIssueInput._(
-            clientMutationId: clientMutationId,
-            issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, r'GDeleteIssueInput', 'issueId'));
+          clientMutationId: clientMutationId,
+          issueId: BuiltValueNullFieldError.checkNotNull(
+              issueId, r'GDeleteIssueInput', 'issueId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22554,9 +22594,10 @@ class GDeleteProjectCardInputBuilder
   _$GDeleteProjectCardInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectCardInput._(
-            cardId: BuiltValueNullFieldError.checkNotNull(
-                cardId, r'GDeleteProjectCardInput', 'cardId'),
-            clientMutationId: clientMutationId);
+          cardId: BuiltValueNullFieldError.checkNotNull(
+              cardId, r'GDeleteProjectCardInput', 'cardId'),
+          clientMutationId: clientMutationId,
+        );
     replace(_$result);
     return _$result;
   }
@@ -22656,9 +22697,10 @@ class GDeleteProjectColumnInputBuilder
   _$GDeleteProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectColumnInput._(
-            clientMutationId: clientMutationId,
-            columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, r'GDeleteProjectColumnInput', 'columnId'));
+          clientMutationId: clientMutationId,
+          columnId: BuiltValueNullFieldError.checkNotNull(
+              columnId, r'GDeleteProjectColumnInput', 'columnId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22757,9 +22799,10 @@ class GDeleteProjectInputBuilder
   _$GDeleteProjectInput _build() {
     final _$result = _$v ??
         new _$GDeleteProjectInput._(
-            clientMutationId: clientMutationId,
-            projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, r'GDeleteProjectInput', 'projectId'));
+          clientMutationId: clientMutationId,
+          projectId: BuiltValueNullFieldError.checkNotNull(
+              projectId, r'GDeleteProjectInput', 'projectId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22865,9 +22908,10 @@ class GDeletePullRequestReviewCommentInputBuilder
   _$GDeletePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
         new _$GDeletePullRequestReviewCommentInput._(
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDeletePullRequestReviewCommentInput', 'id'));
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GDeletePullRequestReviewCommentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -22970,11 +23014,12 @@ class GDeletePullRequestReviewInputBuilder
   _$GDeletePullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GDeletePullRequestReviewInput._(
-            clientMutationId: clientMutationId,
-            pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestReviewId,
-                r'GDeletePullRequestReviewInput',
-                'pullRequestReviewId'));
+          clientMutationId: clientMutationId,
+          pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestReviewId,
+              r'GDeletePullRequestReviewInput',
+              'pullRequestReviewId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23070,9 +23115,10 @@ class GDeleteRefInputBuilder
   _$GDeleteRefInput _build() {
     final _$result = _$v ??
         new _$GDeleteRefInput._(
-            clientMutationId: clientMutationId,
-            refId: BuiltValueNullFieldError.checkNotNull(
-                refId, r'GDeleteRefInput', 'refId'));
+          clientMutationId: clientMutationId,
+          refId: BuiltValueNullFieldError.checkNotNull(
+              refId, r'GDeleteRefInput', 'refId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23177,9 +23223,10 @@ class GDeleteTeamDiscussionCommentInputBuilder
   _$GDeleteTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GDeleteTeamDiscussionCommentInput._(
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDeleteTeamDiscussionCommentInput', 'id'));
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GDeleteTeamDiscussionCommentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23279,9 +23326,10 @@ class GDeleteTeamDiscussionInputBuilder
   _$GDeleteTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GDeleteTeamDiscussionInput._(
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDeleteTeamDiscussionInput', 'id'));
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GDeleteTeamDiscussionInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23379,10 +23427,11 @@ class GDeploymentOrderBuilder
   _$GDeploymentOrder _build() {
     final _$result = _$v ??
         new _$GDeploymentOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GDeploymentOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GDeploymentOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GDeploymentOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GDeploymentOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23499,13 +23548,14 @@ class GDismissPullRequestReviewInputBuilder
   _$GDismissPullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GDismissPullRequestReviewInput._(
-            clientMutationId: clientMutationId,
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'GDismissPullRequestReviewInput', 'message'),
-            pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestReviewId,
-                r'GDismissPullRequestReviewInput',
-                'pullRequestReviewId'));
+          clientMutationId: clientMutationId,
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'GDismissPullRequestReviewInput', 'message'),
+          pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestReviewId,
+              r'GDismissPullRequestReviewInput',
+              'pullRequestReviewId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23620,12 +23670,13 @@ class GDraftPullRequestReviewCommentBuilder
   _$GDraftPullRequestReviewComment _build() {
     final _$result = _$v ??
         new _$GDraftPullRequestReviewComment._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GDraftPullRequestReviewComment', 'body'),
-            path: BuiltValueNullFieldError.checkNotNull(
-                path, r'GDraftPullRequestReviewComment', 'path'),
-            position: BuiltValueNullFieldError.checkNotNull(
-                position, r'GDraftPullRequestReviewComment', 'position'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GDraftPullRequestReviewComment', 'body'),
+          path: BuiltValueNullFieldError.checkNotNull(
+              path, r'GDraftPullRequestReviewComment', 'path'),
+          position: BuiltValueNullFieldError.checkNotNull(
+              position, r'GDraftPullRequestReviewComment', 'position'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23735,10 +23786,11 @@ class GEnterpriseAdministratorInvitationOrderBuilder
   _$GEnterpriseAdministratorInvitationOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseAdministratorInvitationOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(direction,
-                r'GEnterpriseAdministratorInvitationOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseAdministratorInvitationOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(direction,
+              r'GEnterpriseAdministratorInvitationOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseAdministratorInvitationOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23838,10 +23890,11 @@ class GEnterpriseMemberOrderBuilder
   _$GEnterpriseMemberOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseMemberOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GEnterpriseMemberOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseMemberOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GEnterpriseMemberOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseMemberOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -23949,10 +24002,11 @@ class GEnterpriseServerInstallationOrderBuilder
   _$GEnterpriseServerInstallationOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerInstallationOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GEnterpriseServerInstallationOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseServerInstallationOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GEnterpriseServerInstallationOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseServerInstallationOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24062,10 +24116,11 @@ class GEnterpriseServerUserAccountEmailOrderBuilder
   _$GEnterpriseServerUserAccountEmailOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountEmailOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(direction,
-                r'GEnterpriseServerUserAccountEmailOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseServerUserAccountEmailOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(direction,
+              r'GEnterpriseServerUserAccountEmailOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseServerUserAccountEmailOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24172,10 +24227,11 @@ class GEnterpriseServerUserAccountOrderBuilder
   _$GEnterpriseServerUserAccountOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GEnterpriseServerUserAccountOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseServerUserAccountOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GEnterpriseServerUserAccountOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseServerUserAccountOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24285,10 +24341,11 @@ class GEnterpriseServerUserAccountsUploadOrderBuilder
   _$GEnterpriseServerUserAccountsUploadOrder _build() {
     final _$result = _$v ??
         new _$GEnterpriseServerUserAccountsUploadOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(direction,
-                r'GEnterpriseServerUserAccountsUploadOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GEnterpriseServerUserAccountsUploadOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(direction,
+              r'GEnterpriseServerUserAccountsUploadOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GEnterpriseServerUserAccountsUploadOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24386,9 +24443,10 @@ class GFollowUserInputBuilder
   _$GFollowUserInput _build() {
     final _$result = _$v ??
         new _$GFollowUserInput._(
-            clientMutationId: clientMutationId,
-            userId: BuiltValueNullFieldError.checkNotNull(
-                userId, r'GFollowUserInput', 'userId'));
+          clientMutationId: clientMutationId,
+          userId: BuiltValueNullFieldError.checkNotNull(
+              userId, r'GFollowUserInput', 'userId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24482,10 +24540,11 @@ class GGistOrderBuilder implements Builder<GGistOrder, GGistOrderBuilder> {
   _$GGistOrder _build() {
     final _$result = _$v ??
         new _$GGistOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GGistOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GGistOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GGistOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GGistOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24566,8 +24625,9 @@ class GGitObjectIDBuilder
   _$GGitObjectID _build() {
     final _$result = _$v ??
         new _$GGitObjectID._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GGitObjectID', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GGitObjectID', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24648,8 +24708,9 @@ class GGitSSHRemoteBuilder
   _$GGitSSHRemote _build() {
     final _$result = _$v ??
         new _$GGitSSHRemote._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GGitSSHRemote', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GGitSSHRemote', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24730,8 +24791,9 @@ class GGitTimestampBuilder
   _$GGitTimestamp _build() {
     final _$result = _$v ??
         new _$GGitTimestamp._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GGitTimestamp', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GGitTimestamp', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24811,8 +24873,9 @@ class GHTMLBuilder implements Builder<GHTML, GHTMLBuilder> {
   _$GHTML _build() {
     final _$result = _$v ??
         new _$GHTML._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GHTML', 'value'));
+          value:
+              BuiltValueNullFieldError.checkNotNull(value, r'GHTML', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -24948,12 +25011,13 @@ class GInviteEnterpriseAdminInputBuilder
   _$GInviteEnterpriseAdminInput _build() {
     final _$result = _$v ??
         new _$GInviteEnterpriseAdminInput._(
-            clientMutationId: clientMutationId,
-            email: email,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, r'GInviteEnterpriseAdminInput', 'enterpriseId'),
-            invitee: invitee,
-            role: role);
+          clientMutationId: clientMutationId,
+          email: email,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId, r'GInviteEnterpriseAdminInput', 'enterpriseId'),
+          invitee: invitee,
+          role: role,
+        );
     replace(_$result);
     return _$result;
   }
@@ -25118,14 +25182,15 @@ class GIssueFiltersBuilder
     try {
       _$result = _$v ??
           new _$GIssueFilters._(
-              assignee: assignee,
-              createdBy: createdBy,
-              labels: _labels?.build(),
-              mentioned: mentioned,
-              milestone: milestone,
-              since: _since?.build(),
-              states: _states?.build(),
-              viewerSubscribed: viewerSubscribed);
+            assignee: assignee,
+            createdBy: createdBy,
+            labels: _labels?.build(),
+            mentioned: mentioned,
+            milestone: milestone,
+            since: _since?.build(),
+            states: _states?.build(),
+            viewerSubscribed: viewerSubscribed,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -25235,10 +25300,11 @@ class GIssueOrderBuilder implements Builder<GIssueOrder, GIssueOrderBuilder> {
   _$GIssueOrder _build() {
     final _$result = _$v ??
         new _$GIssueOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GIssueOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GIssueOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GIssueOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GIssueOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25332,10 +25398,11 @@ class GLabelOrderBuilder implements Builder<GLabelOrder, GLabelOrderBuilder> {
   _$GLabelOrder _build() {
     final _$result = _$v ??
         new _$GLabelOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GLabelOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GLabelOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GLabelOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GLabelOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25432,10 +25499,11 @@ class GLanguageOrderBuilder
   _$GLanguageOrder _build() {
     final _$result = _$v ??
         new _$GLanguageOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GLanguageOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GLanguageOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GLanguageOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GLanguageOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25551,11 +25619,12 @@ class GLinkRepositoryToProjectInputBuilder
   _$GLinkRepositoryToProjectInput _build() {
     final _$result = _$v ??
         new _$GLinkRepositoryToProjectInput._(
-            clientMutationId: clientMutationId,
-            projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, r'GLinkRepositoryToProjectInput', 'projectId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                r'GLinkRepositoryToProjectInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          projectId: BuiltValueNullFieldError.checkNotNull(
+              projectId, r'GLinkRepositoryToProjectInput', 'projectId'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GLinkRepositoryToProjectInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25665,10 +25734,11 @@ class GLockLockableInputBuilder
   _$GLockLockableInput _build() {
     final _$result = _$v ??
         new _$GLockLockableInput._(
-            clientMutationId: clientMutationId,
-            lockReason: lockReason,
-            lockableId: BuiltValueNullFieldError.checkNotNull(
-                lockableId, r'GLockLockableInput', 'lockableId'));
+          clientMutationId: clientMutationId,
+          lockReason: lockReason,
+          lockableId: BuiltValueNullFieldError.checkNotNull(
+              lockableId, r'GLockLockableInput', 'lockableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25804,14 +25874,15 @@ class GMergeBranchInputBuilder
   _$GMergeBranchInput _build() {
     final _$result = _$v ??
         new _$GMergeBranchInput._(
-            base: BuiltValueNullFieldError.checkNotNull(
-                base, r'GMergeBranchInput', 'base'),
-            clientMutationId: clientMutationId,
-            commitMessage: commitMessage,
-            head: BuiltValueNullFieldError.checkNotNull(
-                head, r'GMergeBranchInput', 'head'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GMergeBranchInput', 'repositoryId'));
+          base: BuiltValueNullFieldError.checkNotNull(
+              base, r'GMergeBranchInput', 'base'),
+          clientMutationId: clientMutationId,
+          commitMessage: commitMessage,
+          head: BuiltValueNullFieldError.checkNotNull(
+              head, r'GMergeBranchInput', 'head'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GMergeBranchInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -25963,13 +26034,14 @@ class GMergePullRequestInputBuilder
     try {
       _$result = _$v ??
           new _$GMergePullRequestInput._(
-              clientMutationId: clientMutationId,
-              commitBody: commitBody,
-              commitHeadline: commitHeadline,
-              expectedHeadOid: _expectedHeadOid?.build(),
-              mergeMethod: mergeMethod,
-              pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, r'GMergePullRequestInput', 'pullRequestId'));
+            clientMutationId: clientMutationId,
+            commitBody: commitBody,
+            commitHeadline: commitHeadline,
+            expectedHeadOid: _expectedHeadOid?.build(),
+            mergeMethod: mergeMethod,
+            pullRequestId: BuiltValueNullFieldError.checkNotNull(
+                pullRequestId, r'GMergePullRequestInput', 'pullRequestId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -26077,10 +26149,11 @@ class GMilestoneOrderBuilder
   _$GMilestoneOrder _build() {
     final _$result = _$v ??
         new _$GMilestoneOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GMilestoneOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GMilestoneOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GMilestoneOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GMilestoneOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26205,12 +26278,13 @@ class GMoveProjectCardInputBuilder
   _$GMoveProjectCardInput _build() {
     final _$result = _$v ??
         new _$GMoveProjectCardInput._(
-            afterCardId: afterCardId,
-            cardId: BuiltValueNullFieldError.checkNotNull(
-                cardId, r'GMoveProjectCardInput', 'cardId'),
-            clientMutationId: clientMutationId,
-            columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, r'GMoveProjectCardInput', 'columnId'));
+          afterCardId: afterCardId,
+          cardId: BuiltValueNullFieldError.checkNotNull(
+              cardId, r'GMoveProjectCardInput', 'cardId'),
+          clientMutationId: clientMutationId,
+          columnId: BuiltValueNullFieldError.checkNotNull(
+              columnId, r'GMoveProjectCardInput', 'columnId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26322,10 +26396,11 @@ class GMoveProjectColumnInputBuilder
   _$GMoveProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GMoveProjectColumnInput._(
-            afterColumnId: afterColumnId,
-            clientMutationId: clientMutationId,
-            columnId: BuiltValueNullFieldError.checkNotNull(
-                columnId, r'GMoveProjectColumnInput', 'columnId'));
+          afterColumnId: afterColumnId,
+          clientMutationId: clientMutationId,
+          columnId: BuiltValueNullFieldError.checkNotNull(
+              columnId, r'GMoveProjectColumnInput', 'columnId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26425,10 +26500,11 @@ class GOrganizationOrderBuilder
   _$GOrganizationOrder _build() {
     final _$result = _$v ??
         new _$GOrganizationOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GOrganizationOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GOrganizationOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GOrganizationOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GOrganizationOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26512,8 +26588,9 @@ class GPreciseDateTimeBuilder
   _$GPreciseDateTime _build() {
     final _$result = _$v ??
         new _$GPreciseDateTime._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GPreciseDateTime', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GPreciseDateTime', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26609,10 +26686,11 @@ class GProjectOrderBuilder
   _$GProjectOrder _build() {
     final _$result = _$v ??
         new _$GProjectOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GProjectOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GProjectOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GProjectOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GProjectOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26710,10 +26788,11 @@ class GPullRequestOrderBuilder
   _$GPullRequestOrder _build() {
     final _$result = _$v ??
         new _$GPullRequestOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GPullRequestOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GPullRequestOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GPullRequestOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GPullRequestOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26810,10 +26889,11 @@ class GReactionOrderBuilder
   _$GReactionOrder _build() {
     final _$result = _$v ??
         new _$GReactionOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GReactionOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GReactionOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GReactionOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GReactionOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -26906,10 +26986,11 @@ class GRefOrderBuilder implements Builder<GRefOrder, GRefOrderBuilder> {
   _$GRefOrder _build() {
     final _$result = _$v ??
         new _$GRefOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GRefOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GRefOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GRefOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GRefOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27025,11 +27106,12 @@ class GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder
   _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput _build() {
     final _$result = _$v ??
         new _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
-                'enterpriseId'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
+              'enterpriseId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27141,11 +27223,12 @@ class GRegistryPackageMetadatumBuilder
   _$GRegistryPackageMetadatum _build() {
     final _$result = _$v ??
         new _$GRegistryPackageMetadatum._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GRegistryPackageMetadatum', 'name'),
-            Gupdate: Gupdate,
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GRegistryPackageMetadatum', 'value'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GRegistryPackageMetadatum', 'name'),
+          Gupdate: Gupdate,
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GRegistryPackageMetadatum', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27241,10 +27324,11 @@ class GReleaseOrderBuilder
   _$GReleaseOrder _build() {
     final _$result = _$v ??
         new _$GReleaseOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GReleaseOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GReleaseOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GReleaseOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GReleaseOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27368,10 +27452,11 @@ class GRemoveAssigneesFromAssignableInputBuilder
     try {
       _$result = _$v ??
           new _$GRemoveAssigneesFromAssignableInput._(
-              assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
-                  r'GRemoveAssigneesFromAssignableInput', 'assignableId'),
-              assigneeIds: assigneeIds.build(),
-              clientMutationId: clientMutationId);
+            assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
+                r'GRemoveAssigneesFromAssignableInput', 'assignableId'),
+            assigneeIds: assigneeIds.build(),
+            clientMutationId: clientMutationId,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -27498,11 +27583,12 @@ class GRemoveEnterpriseAdminInputBuilder
   _$GRemoveEnterpriseAdminInput _build() {
     final _$result = _$v ??
         new _$GRemoveEnterpriseAdminInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId'),
-            login: BuiltValueNullFieldError.checkNotNull(
-                login, r'GRemoveEnterpriseAdminInput', 'login'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId'),
+          login: BuiltValueNullFieldError.checkNotNull(
+              login, r'GRemoveEnterpriseAdminInput', 'login'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27623,13 +27709,12 @@ class GRemoveEnterpriseOrganizationInputBuilder
   _$GRemoveEnterpriseOrganizationInput _build() {
     final _$result = _$v ??
         new _$GRemoveEnterpriseOrganizationInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                r'GRemoveEnterpriseOrganizationInput', 'enterpriseId'),
-            organizationId: BuiltValueNullFieldError.checkNotNull(
-                organizationId,
-                r'GRemoveEnterpriseOrganizationInput',
-                'organizationId'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
+              r'GRemoveEnterpriseOrganizationInput', 'enterpriseId'),
+          organizationId: BuiltValueNullFieldError.checkNotNull(organizationId,
+              r'GRemoveEnterpriseOrganizationInput', 'organizationId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27749,10 +27834,11 @@ class GRemoveLabelsFromLabelableInputBuilder
     try {
       _$result = _$v ??
           new _$GRemoveLabelsFromLabelableInput._(
-              clientMutationId: clientMutationId,
-              labelIds: labelIds.build(),
-              labelableId: BuiltValueNullFieldError.checkNotNull(labelableId,
-                  r'GRemoveLabelsFromLabelableInput', 'labelableId'));
+            clientMutationId: clientMutationId,
+            labelIds: labelIds.build(),
+            labelableId: BuiltValueNullFieldError.checkNotNull(
+                labelableId, r'GRemoveLabelsFromLabelableInput', 'labelableId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -27881,13 +27967,12 @@ class GRemoveOutsideCollaboratorInputBuilder
   _$GRemoveOutsideCollaboratorInput _build() {
     final _$result = _$v ??
         new _$GRemoveOutsideCollaboratorInput._(
-            clientMutationId: clientMutationId,
-            organizationId: BuiltValueNullFieldError.checkNotNull(
-                organizationId,
-                r'GRemoveOutsideCollaboratorInput',
-                'organizationId'),
-            userId: BuiltValueNullFieldError.checkNotNull(
-                userId, r'GRemoveOutsideCollaboratorInput', 'userId'));
+          clientMutationId: clientMutationId,
+          organizationId: BuiltValueNullFieldError.checkNotNull(organizationId,
+              r'GRemoveOutsideCollaboratorInput', 'organizationId'),
+          userId: BuiltValueNullFieldError.checkNotNull(
+              userId, r'GRemoveOutsideCollaboratorInput', 'userId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -27999,11 +28084,12 @@ class GRemoveReactionInputBuilder
   _$GRemoveReactionInput _build() {
     final _$result = _$v ??
         new _$GRemoveReactionInput._(
-            clientMutationId: clientMutationId,
-            content: BuiltValueNullFieldError.checkNotNull(
-                content, r'GRemoveReactionInput', 'content'),
-            subjectId: BuiltValueNullFieldError.checkNotNull(
-                subjectId, r'GRemoveReactionInput', 'subjectId'));
+          clientMutationId: clientMutationId,
+          content: BuiltValueNullFieldError.checkNotNull(
+              content, r'GRemoveReactionInput', 'content'),
+          subjectId: BuiltValueNullFieldError.checkNotNull(
+              subjectId, r'GRemoveReactionInput', 'subjectId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28101,9 +28187,10 @@ class GRemoveStarInputBuilder
   _$GRemoveStarInput _build() {
     final _$result = _$v ??
         new _$GRemoveStarInput._(
-            clientMutationId: clientMutationId,
-            starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, r'GRemoveStarInput', 'starrableId'));
+          clientMutationId: clientMutationId,
+          starrableId: BuiltValueNullFieldError.checkNotNull(
+              starrableId, r'GRemoveStarInput', 'starrableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28201,9 +28288,10 @@ class GReopenIssueInputBuilder
   _$GReopenIssueInput _build() {
     final _$result = _$v ??
         new _$GReopenIssueInput._(
-            clientMutationId: clientMutationId,
-            issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, r'GReopenIssueInput', 'issueId'));
+          clientMutationId: clientMutationId,
+          issueId: BuiltValueNullFieldError.checkNotNull(
+              issueId, r'GReopenIssueInput', 'issueId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28305,9 +28393,10 @@ class GReopenPullRequestInputBuilder
   _$GReopenPullRequestInput _build() {
     final _$result = _$v ??
         new _$GReopenPullRequestInput._(
-            clientMutationId: clientMutationId,
-            pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestId, r'GReopenPullRequestInput', 'pullRequestId'));
+          clientMutationId: clientMutationId,
+          pullRequestId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestId, r'GReopenPullRequestInput', 'pullRequestId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28408,10 +28497,11 @@ class GRepositoryInvitationOrderBuilder
   _$GRepositoryInvitationOrder _build() {
     final _$result = _$v ??
         new _$GRepositoryInvitationOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GRepositoryInvitationOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GRepositoryInvitationOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GRepositoryInvitationOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GRepositoryInvitationOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28509,10 +28599,11 @@ class GRepositoryOrderBuilder
   _$GRepositoryOrder _build() {
     final _$result = _$v ??
         new _$GRepositoryOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GRepositoryOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GRepositoryOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GRepositoryOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GRepositoryOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28651,12 +28742,13 @@ class GRequestReviewsInputBuilder
     try {
       _$result = _$v ??
           new _$GRequestReviewsInput._(
-              clientMutationId: clientMutationId,
-              pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, r'GRequestReviewsInput', 'pullRequestId'),
-              teamIds: _teamIds?.build(),
-              union: union,
-              userIds: _userIds?.build());
+            clientMutationId: clientMutationId,
+            pullRequestId: BuiltValueNullFieldError.checkNotNull(
+                pullRequestId, r'GRequestReviewsInput', 'pullRequestId'),
+            teamIds: _teamIds?.build(),
+            union: union,
+            userIds: _userIds?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -28770,9 +28862,10 @@ class GResolveReviewThreadInputBuilder
   _$GResolveReviewThreadInput _build() {
     final _$result = _$v ??
         new _$GResolveReviewThreadInput._(
-            clientMutationId: clientMutationId,
-            threadId: BuiltValueNullFieldError.checkNotNull(
-                threadId, r'GResolveReviewThreadInput', 'threadId'));
+          clientMutationId: clientMutationId,
+          threadId: BuiltValueNullFieldError.checkNotNull(
+              threadId, r'GResolveReviewThreadInput', 'threadId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28870,10 +28963,11 @@ class GSavedReplyOrderBuilder
   _$GSavedReplyOrder _build() {
     final _$result = _$v ??
         new _$GSavedReplyOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GSavedReplyOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GSavedReplyOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GSavedReplyOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GSavedReplyOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -28979,10 +29073,11 @@ class GSecurityAdvisoryIdentifierFilterBuilder
   _$GSecurityAdvisoryIdentifierFilter _build() {
     final _$result = _$v ??
         new _$GSecurityAdvisoryIdentifierFilter._(
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'GSecurityAdvisoryIdentifierFilter', 'type'),
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GSecurityAdvisoryIdentifierFilter', 'value'));
+          type: BuiltValueNullFieldError.checkNotNull(
+              type, r'GSecurityAdvisoryIdentifierFilter', 'type'),
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GSecurityAdvisoryIdentifierFilter', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29082,10 +29177,11 @@ class GSecurityAdvisoryOrderBuilder
   _$GSecurityAdvisoryOrder _build() {
     final _$result = _$v ??
         new _$GSecurityAdvisoryOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GSecurityAdvisoryOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GSecurityAdvisoryOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GSecurityAdvisoryOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GSecurityAdvisoryOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29188,10 +29284,11 @@ class GSecurityVulnerabilityOrderBuilder
   _$GSecurityVulnerabilityOrder _build() {
     final _$result = _$v ??
         new _$GSecurityVulnerabilityOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GSecurityVulnerabilityOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GSecurityVulnerabilityOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GSecurityVulnerabilityOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GSecurityVulnerabilityOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29291,10 +29388,11 @@ class GSponsorsTierOrderBuilder
   _$GSponsorsTierOrder _build() {
     final _$result = _$v ??
         new _$GSponsorsTierOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GSponsorsTierOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GSponsorsTierOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GSponsorsTierOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GSponsorsTierOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29392,10 +29490,11 @@ class GSponsorshipOrderBuilder
   _$GSponsorshipOrder _build() {
     final _$result = _$v ??
         new _$GSponsorshipOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GSponsorshipOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GSponsorshipOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GSponsorshipOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GSponsorshipOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29489,10 +29588,11 @@ class GStarOrderBuilder implements Builder<GStarOrder, GStarOrderBuilder> {
   _$GStarOrder _build() {
     final _$result = _$v ??
         new _$GStarOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GStarOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GStarOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GStarOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GStarOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29630,12 +29730,13 @@ class GSubmitPullRequestReviewInputBuilder
   _$GSubmitPullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GSubmitPullRequestReviewInput._(
-            body: body,
-            clientMutationId: clientMutationId,
-            event: BuiltValueNullFieldError.checkNotNull(
-                event, r'GSubmitPullRequestReviewInput', 'event'),
-            pullRequestId: pullRequestId,
-            pullRequestReviewId: pullRequestReviewId);
+          body: body,
+          clientMutationId: clientMutationId,
+          event: BuiltValueNullFieldError.checkNotNull(
+              event, r'GSubmitPullRequestReviewInput', 'event'),
+          pullRequestId: pullRequestId,
+          pullRequestReviewId: pullRequestReviewId,
+        );
     replace(_$result);
     return _$result;
   }
@@ -29738,10 +29839,11 @@ class GTeamDiscussionCommentOrderBuilder
   _$GTeamDiscussionCommentOrder _build() {
     final _$result = _$v ??
         new _$GTeamDiscussionCommentOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GTeamDiscussionCommentOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GTeamDiscussionCommentOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GTeamDiscussionCommentOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GTeamDiscussionCommentOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29841,10 +29943,11 @@ class GTeamDiscussionOrderBuilder
   _$GTeamDiscussionOrder _build() {
     final _$result = _$v ??
         new _$GTeamDiscussionOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GTeamDiscussionOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GTeamDiscussionOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GTeamDiscussionOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GTeamDiscussionOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -29942,10 +30045,11 @@ class GTeamMemberOrderBuilder
   _$GTeamMemberOrder _build() {
     final _$result = _$v ??
         new _$GTeamMemberOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GTeamMemberOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GTeamMemberOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GTeamMemberOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GTeamMemberOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30039,10 +30143,11 @@ class GTeamOrderBuilder implements Builder<GTeamOrder, GTeamOrderBuilder> {
   _$GTeamOrder _build() {
     final _$result = _$v ??
         new _$GTeamOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GTeamOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GTeamOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GTeamOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GTeamOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30142,10 +30247,11 @@ class GTeamRepositoryOrderBuilder
   _$GTeamRepositoryOrder _build() {
     final _$result = _$v ??
         new _$GTeamRepositoryOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GTeamRepositoryOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GTeamRepositoryOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GTeamRepositoryOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GTeamRepositoryOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30259,11 +30365,12 @@ class GTransferIssueInputBuilder
   _$GTransferIssueInput _build() {
     final _$result = _$v ??
         new _$GTransferIssueInput._(
-            clientMutationId: clientMutationId,
-            issueId: BuiltValueNullFieldError.checkNotNull(
-                issueId, r'GTransferIssueInput', 'issueId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GTransferIssueInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          issueId: BuiltValueNullFieldError.checkNotNull(
+              issueId, r'GTransferIssueInput', 'issueId'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GTransferIssueInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30343,8 +30450,8 @@ class GURIBuilder implements Builder<GURI, GURIBuilder> {
   _$GURI _build() {
     final _$result = _$v ??
         new _$GURI._(
-            value:
-                BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30445,9 +30552,10 @@ class GUnarchiveRepositoryInputBuilder
   _$GUnarchiveRepositoryInput _build() {
     final _$result = _$v ??
         new _$GUnarchiveRepositoryInput._(
-            clientMutationId: clientMutationId,
-            repositoryId: BuiltValueNullFieldError.checkNotNull(
-                repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          repositoryId: BuiltValueNullFieldError.checkNotNull(
+              repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30546,9 +30654,10 @@ class GUnfollowUserInputBuilder
   _$GUnfollowUserInput _build() {
     final _$result = _$v ??
         new _$GUnfollowUserInput._(
-            clientMutationId: clientMutationId,
-            userId: BuiltValueNullFieldError.checkNotNull(
-                userId, r'GUnfollowUserInput', 'userId'));
+          clientMutationId: clientMutationId,
+          userId: BuiltValueNullFieldError.checkNotNull(
+              userId, r'GUnfollowUserInput', 'userId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30667,11 +30776,12 @@ class GUnlinkRepositoryFromProjectInputBuilder
   _$GUnlinkRepositoryFromProjectInput _build() {
     final _$result = _$v ??
         new _$GUnlinkRepositoryFromProjectInput._(
-            clientMutationId: clientMutationId,
-            projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId'),
-            repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
-                r'GUnlinkRepositoryFromProjectInput', 'repositoryId'));
+          clientMutationId: clientMutationId,
+          projectId: BuiltValueNullFieldError.checkNotNull(
+              projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId'),
+          repositoryId: BuiltValueNullFieldError.checkNotNull(repositoryId,
+              r'GUnlinkRepositoryFromProjectInput', 'repositoryId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30770,9 +30880,10 @@ class GUnlockLockableInputBuilder
   _$GUnlockLockableInput _build() {
     final _$result = _$v ??
         new _$GUnlockLockableInput._(
-            clientMutationId: clientMutationId,
-            lockableId: BuiltValueNullFieldError.checkNotNull(
-                lockableId, r'GUnlockLockableInput', 'lockableId'));
+          clientMutationId: clientMutationId,
+          lockableId: BuiltValueNullFieldError.checkNotNull(
+              lockableId, r'GUnlockLockableInput', 'lockableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30888,11 +30999,12 @@ class GUnmarkIssueAsDuplicateInputBuilder
   _$GUnmarkIssueAsDuplicateInput _build() {
     final _$result = _$v ??
         new _$GUnmarkIssueAsDuplicateInput._(
-            canonicalId: BuiltValueNullFieldError.checkNotNull(
-                canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId'),
-            clientMutationId: clientMutationId,
-            duplicateId: BuiltValueNullFieldError.checkNotNull(
-                duplicateId, r'GUnmarkIssueAsDuplicateInput', 'duplicateId'));
+          canonicalId: BuiltValueNullFieldError.checkNotNull(
+              canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId'),
+          clientMutationId: clientMutationId,
+          duplicateId: BuiltValueNullFieldError.checkNotNull(
+              duplicateId, r'GUnmarkIssueAsDuplicateInput', 'duplicateId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -30994,9 +31106,10 @@ class GUnresolveReviewThreadInputBuilder
   _$GUnresolveReviewThreadInput _build() {
     final _$result = _$v ??
         new _$GUnresolveReviewThreadInput._(
-            clientMutationId: clientMutationId,
-            threadId: BuiltValueNullFieldError.checkNotNull(
-                threadId, r'GUnresolveReviewThreadInput', 'threadId'));
+          clientMutationId: clientMutationId,
+          threadId: BuiltValueNullFieldError.checkNotNull(
+              threadId, r'GUnresolveReviewThreadInput', 'threadId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -31275,26 +31388,26 @@ class GUpdateBranchProtectionRuleInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdateBranchProtectionRuleInput._(
-              branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
-                  branchProtectionRuleId,
-                  r'GUpdateBranchProtectionRuleInput',
-                  'branchProtectionRuleId'),
-              clientMutationId: clientMutationId,
-              dismissesStaleReviews: dismissesStaleReviews,
-              isAdminEnforced: isAdminEnforced,
-              pattern: pattern,
-              pushActorIds: _pushActorIds?.build(),
-              requiredApprovingReviewCount: requiredApprovingReviewCount,
-              requiredStatusCheckContexts:
-                  _requiredStatusCheckContexts?.build(),
-              requiresApprovingReviews: requiresApprovingReviews,
-              requiresCodeOwnerReviews: requiresCodeOwnerReviews,
-              requiresCommitSignatures: requiresCommitSignatures,
-              requiresStatusChecks: requiresStatusChecks,
-              requiresStrictStatusChecks: requiresStrictStatusChecks,
-              restrictsPushes: restrictsPushes,
-              restrictsReviewDismissals: restrictsReviewDismissals,
-              reviewDismissalActorIds: _reviewDismissalActorIds?.build());
+            branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
+                branchProtectionRuleId,
+                r'GUpdateBranchProtectionRuleInput',
+                'branchProtectionRuleId'),
+            clientMutationId: clientMutationId,
+            dismissesStaleReviews: dismissesStaleReviews,
+            isAdminEnforced: isAdminEnforced,
+            pattern: pattern,
+            pushActorIds: _pushActorIds?.build(),
+            requiredApprovingReviewCount: requiredApprovingReviewCount,
+            requiredStatusCheckContexts: _requiredStatusCheckContexts?.build(),
+            requiresApprovingReviews: requiresApprovingReviews,
+            requiresCodeOwnerReviews: requiresCodeOwnerReviews,
+            requiresCommitSignatures: requiresCommitSignatures,
+            requiresStatusChecks: requiresStatusChecks,
+            requiresStrictStatusChecks: requiresStrictStatusChecks,
+            restrictsPushes: restrictsPushes,
+            restrictsReviewDismissals: restrictsReviewDismissals,
+            reviewDismissalActorIds: _reviewDismissalActorIds?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -31444,15 +31557,16 @@ class GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder
   _$GUpdateEnterpriseActionExecutionCapabilitySettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseActionExecutionCapabilitySettingInput._(
-            capability: BuiltValueNullFieldError.checkNotNull(
-                capability,
-                r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
-                'capability'),
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
-                'enterpriseId'));
+          capability: BuiltValueNullFieldError.checkNotNull(
+              capability,
+              r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+              'capability'),
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
+              'enterpriseId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -31587,13 +31701,14 @@ class GUpdateEnterpriseAdministratorRoleInputBuilder
   _$GUpdateEnterpriseAdministratorRoleInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseAdministratorRoleInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
-                r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId'),
-            login: BuiltValueNullFieldError.checkNotNull(
-                login, r'GUpdateEnterpriseAdministratorRoleInput', 'login'),
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, r'GUpdateEnterpriseAdministratorRoleInput', 'role'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
+              r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId'),
+          login: BuiltValueNullFieldError.checkNotNull(
+              login, r'GUpdateEnterpriseAdministratorRoleInput', 'login'),
+          role: BuiltValueNullFieldError.checkNotNull(
+              role, r'GUpdateEnterpriseAdministratorRoleInput', 'role'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -31731,15 +31846,16 @@ class GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
   _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -31874,15 +31990,16 @@ class GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder
   _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32024,15 +32141,16 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
             ._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32237,20 +32355,21 @@ class GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
   _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
-                'enterpriseId'),
-            membersCanCreateInternalRepositories:
-                membersCanCreateInternalRepositories,
-            membersCanCreatePrivateRepositories:
-                membersCanCreatePrivateRepositories,
-            membersCanCreatePublicRepositories:
-                membersCanCreatePublicRepositories,
-            membersCanCreateRepositoriesPolicyEnabled:
-                membersCanCreateRepositoriesPolicyEnabled,
-            settingValue: settingValue);
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
+              'enterpriseId'),
+          membersCanCreateInternalRepositories:
+              membersCanCreateInternalRepositories,
+          membersCanCreatePrivateRepositories:
+              membersCanCreatePrivateRepositories,
+          membersCanCreatePublicRepositories:
+              membersCanCreatePublicRepositories,
+          membersCanCreateRepositoriesPolicyEnabled:
+              membersCanCreateRepositoriesPolicyEnabled,
+          settingValue: settingValue,
+        );
     replace(_$result);
     return _$result;
   }
@@ -32379,15 +32498,16 @@ class GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder
   _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32523,15 +32643,16 @@ class GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
   _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32669,15 +32790,16 @@ class GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
   _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32812,15 +32934,16 @@ class GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder
   _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -32960,15 +33083,16 @@ class GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
   _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33108,15 +33232,16 @@ class GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
   _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33245,15 +33370,16 @@ class GUpdateEnterpriseOrganizationProjectsSettingInputBuilder
   _$GUpdateEnterpriseOrganizationProjectsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseOrganizationProjectsSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseOrganizationProjectsSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseOrganizationProjectsSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseOrganizationProjectsSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseOrganizationProjectsSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33400,13 +33526,14 @@ class GUpdateEnterpriseProfileInputBuilder
   _$GUpdateEnterpriseProfileInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseProfileInput._(
-            clientMutationId: clientMutationId,
-            description: description,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId, r'GUpdateEnterpriseProfileInput', 'enterpriseId'),
-            location: location,
-            name: name,
-            websiteUrl: websiteUrl);
+          clientMutationId: clientMutationId,
+          description: description,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId, r'GUpdateEnterpriseProfileInput', 'enterpriseId'),
+          location: location,
+          name: name,
+          websiteUrl: websiteUrl,
+        );
     replace(_$result);
     return _$result;
   }
@@ -33534,15 +33661,16 @@ class GUpdateEnterpriseRepositoryProjectsSettingInputBuilder
   _$GUpdateEnterpriseRepositoryProjectsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseRepositoryProjectsSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseRepositoryProjectsSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseRepositoryProjectsSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseRepositoryProjectsSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseRepositoryProjectsSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33668,15 +33796,12 @@ class GUpdateEnterpriseTeamDiscussionsSettingInputBuilder
   _$GUpdateEnterpriseTeamDiscussionsSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseTeamDiscussionsSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseTeamDiscussionsSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
+              r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(settingValue,
+              r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33815,15 +33940,16 @@ class GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
   _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput _build() {
     final _$result = _$v ??
         new _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._(
-            clientMutationId: clientMutationId,
-            enterpriseId: BuiltValueNullFieldError.checkNotNull(
-                enterpriseId,
-                r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
-                'enterpriseId'),
-            settingValue: BuiltValueNullFieldError.checkNotNull(
-                settingValue,
-                r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
-                'settingValue'));
+          clientMutationId: clientMutationId,
+          enterpriseId: BuiltValueNullFieldError.checkNotNull(
+              enterpriseId,
+              r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+              'enterpriseId'),
+          settingValue: BuiltValueNullFieldError.checkNotNull(
+              settingValue,
+              r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
+              'settingValue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -33936,11 +34062,12 @@ class GUpdateIssueCommentInputBuilder
   _$GUpdateIssueCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdateIssueCommentInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GUpdateIssueCommentInput', 'body'),
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GUpdateIssueCommentInput', 'id'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GUpdateIssueCommentInput', 'body'),
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GUpdateIssueCommentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -34123,16 +34250,17 @@ class GUpdateIssueInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdateIssueInput._(
-              assigneeIds: _assigneeIds?.build(),
-              body: body,
-              clientMutationId: clientMutationId,
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GUpdateIssueInput', 'id'),
-              labelIds: _labelIds?.build(),
-              milestoneId: milestoneId,
-              projectIds: _projectIds?.build(),
-              state: state,
-              title: title);
+            assigneeIds: _assigneeIds?.build(),
+            body: body,
+            clientMutationId: clientMutationId,
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GUpdateIssueInput', 'id'),
+            labelIds: _labelIds?.build(),
+            milestoneId: milestoneId,
+            projectIds: _projectIds?.build(),
+            state: state,
+            title: title,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -34274,11 +34402,12 @@ class GUpdateProjectCardInputBuilder
   _$GUpdateProjectCardInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectCardInput._(
-            clientMutationId: clientMutationId,
-            isArchived: isArchived,
-            note: note,
-            projectCardId: BuiltValueNullFieldError.checkNotNull(
-                projectCardId, r'GUpdateProjectCardInput', 'projectCardId'));
+          clientMutationId: clientMutationId,
+          isArchived: isArchived,
+          note: note,
+          projectCardId: BuiltValueNullFieldError.checkNotNull(
+              projectCardId, r'GUpdateProjectCardInput', 'projectCardId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -34394,13 +34523,12 @@ class GUpdateProjectColumnInputBuilder
   _$GUpdateProjectColumnInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectColumnInput._(
-            clientMutationId: clientMutationId,
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GUpdateProjectColumnInput', 'name'),
-            projectColumnId: BuiltValueNullFieldError.checkNotNull(
-                projectColumnId,
-                r'GUpdateProjectColumnInput',
-                'projectColumnId'));
+          clientMutationId: clientMutationId,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GUpdateProjectColumnInput', 'name'),
+          projectColumnId: BuiltValueNullFieldError.checkNotNull(
+              projectColumnId, r'GUpdateProjectColumnInput', 'projectColumnId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -34545,13 +34673,14 @@ class GUpdateProjectInputBuilder
   _$GUpdateProjectInput _build() {
     final _$result = _$v ??
         new _$GUpdateProjectInput._(
-            body: body,
-            clientMutationId: clientMutationId,
-            name: name,
-            projectId: BuiltValueNullFieldError.checkNotNull(
-                projectId, r'GUpdateProjectInput', 'projectId'),
-            public: public,
-            state: state);
+          body: body,
+          clientMutationId: clientMutationId,
+          name: name,
+          projectId: BuiltValueNullFieldError.checkNotNull(
+              projectId, r'GUpdateProjectInput', 'projectId'),
+          public: public,
+          state: state,
+        );
     replace(_$result);
     return _$result;
   }
@@ -34761,18 +34890,19 @@ class GUpdatePullRequestInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdatePullRequestInput._(
-              assigneeIds: _assigneeIds?.build(),
-              baseRefName: baseRefName,
-              body: body,
-              clientMutationId: clientMutationId,
-              labelIds: _labelIds?.build(),
-              maintainerCanModify: maintainerCanModify,
-              milestoneId: milestoneId,
-              projectIds: _projectIds?.build(),
-              pullRequestId: BuiltValueNullFieldError.checkNotNull(
-                  pullRequestId, r'GUpdatePullRequestInput', 'pullRequestId'),
-              state: state,
-              title: title);
+            assigneeIds: _assigneeIds?.build(),
+            baseRefName: baseRefName,
+            body: body,
+            clientMutationId: clientMutationId,
+            labelIds: _labelIds?.build(),
+            maintainerCanModify: maintainerCanModify,
+            milestoneId: milestoneId,
+            projectIds: _projectIds?.build(),
+            pullRequestId: BuiltValueNullFieldError.checkNotNull(
+                pullRequestId, r'GUpdatePullRequestInput', 'pullRequestId'),
+            state: state,
+            title: title,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -34910,13 +35040,14 @@ class GUpdatePullRequestReviewCommentInputBuilder
   _$GUpdatePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdatePullRequestReviewCommentInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GUpdatePullRequestReviewCommentInput', 'body'),
-            clientMutationId: clientMutationId,
-            pullRequestReviewCommentId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestReviewCommentId,
-                r'GUpdatePullRequestReviewCommentInput',
-                'pullRequestReviewCommentId'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GUpdatePullRequestReviewCommentInput', 'body'),
+          clientMutationId: clientMutationId,
+          pullRequestReviewCommentId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestReviewCommentId,
+              r'GUpdatePullRequestReviewCommentInput',
+              'pullRequestReviewCommentId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -35033,13 +35164,14 @@ class GUpdatePullRequestReviewInputBuilder
   _$GUpdatePullRequestReviewInput _build() {
     final _$result = _$v ??
         new _$GUpdatePullRequestReviewInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GUpdatePullRequestReviewInput', 'body'),
-            clientMutationId: clientMutationId,
-            pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
-                pullRequestReviewId,
-                r'GUpdatePullRequestReviewInput',
-                'pullRequestReviewId'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GUpdatePullRequestReviewInput', 'body'),
+          clientMutationId: clientMutationId,
+          pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
+              pullRequestReviewId,
+              r'GUpdatePullRequestReviewInput',
+              'pullRequestReviewId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -35162,11 +35294,12 @@ class GUpdateRefInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdateRefInput._(
-              clientMutationId: clientMutationId,
-              force: force,
-              oid: oid.build(),
-              refId: BuiltValueNullFieldError.checkNotNull(
-                  refId, r'GUpdateRefInput', 'refId'));
+            clientMutationId: clientMutationId,
+            force: force,
+            oid: oid.build(),
+            refId: BuiltValueNullFieldError.checkNotNull(
+                refId, r'GUpdateRefInput', 'refId'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -35361,16 +35494,17 @@ class GUpdateRepositoryInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdateRepositoryInput._(
-              clientMutationId: clientMutationId,
-              description: description,
-              hasIssuesEnabled: hasIssuesEnabled,
-              hasProjectsEnabled: hasProjectsEnabled,
-              hasWikiEnabled: hasWikiEnabled,
-              homepageUrl: _homepageUrl?.build(),
-              name: name,
-              repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, r'GUpdateRepositoryInput', 'repositoryId'),
-              template: template);
+            clientMutationId: clientMutationId,
+            description: description,
+            hasIssuesEnabled: hasIssuesEnabled,
+            hasProjectsEnabled: hasProjectsEnabled,
+            hasWikiEnabled: hasWikiEnabled,
+            homepageUrl: _homepageUrl?.build(),
+            name: name,
+            repositoryId: BuiltValueNullFieldError.checkNotNull(
+                repositoryId, r'GUpdateRepositoryInput', 'repositoryId'),
+            template: template,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -35497,11 +35631,12 @@ class GUpdateSubscriptionInputBuilder
   _$GUpdateSubscriptionInput _build() {
     final _$result = _$v ??
         new _$GUpdateSubscriptionInput._(
-            clientMutationId: clientMutationId,
-            state: BuiltValueNullFieldError.checkNotNull(
-                state, r'GUpdateSubscriptionInput', 'state'),
-            subscribableId: BuiltValueNullFieldError.checkNotNull(
-                subscribableId, r'GUpdateSubscriptionInput', 'subscribableId'));
+          clientMutationId: clientMutationId,
+          state: BuiltValueNullFieldError.checkNotNull(
+              state, r'GUpdateSubscriptionInput', 'state'),
+          subscribableId: BuiltValueNullFieldError.checkNotNull(
+              subscribableId, r'GUpdateSubscriptionInput', 'subscribableId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -35631,12 +35766,13 @@ class GUpdateTeamDiscussionCommentInputBuilder
   _$GUpdateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
         new _$GUpdateTeamDiscussionCommentInput._(
-            body: BuiltValueNullFieldError.checkNotNull(
-                body, r'GUpdateTeamDiscussionCommentInput', 'body'),
-            bodyVersion: bodyVersion,
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GUpdateTeamDiscussionCommentInput', 'id'));
+          body: BuiltValueNullFieldError.checkNotNull(
+              body, r'GUpdateTeamDiscussionCommentInput', 'body'),
+          bodyVersion: bodyVersion,
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GUpdateTeamDiscussionCommentInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -35782,13 +35918,14 @@ class GUpdateTeamDiscussionInputBuilder
   _$GUpdateTeamDiscussionInput _build() {
     final _$result = _$v ??
         new _$GUpdateTeamDiscussionInput._(
-            body: body,
-            bodyVersion: bodyVersion,
-            clientMutationId: clientMutationId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GUpdateTeamDiscussionInput', 'id'),
-            pinned: pinned,
-            title: title);
+          body: body,
+          bodyVersion: bodyVersion,
+          clientMutationId: clientMutationId,
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GUpdateTeamDiscussionInput', 'id'),
+          pinned: pinned,
+          title: title,
+        );
     replace(_$result);
     return _$result;
   }
@@ -35906,10 +36043,11 @@ class GUpdateTopicsInputBuilder
     try {
       _$result = _$v ??
           new _$GUpdateTopicsInput._(
-              clientMutationId: clientMutationId,
-              repositoryId: BuiltValueNullFieldError.checkNotNull(
-                  repositoryId, r'GUpdateTopicsInput', 'repositoryId'),
-              topicNames: topicNames.build());
+            clientMutationId: clientMutationId,
+            repositoryId: BuiltValueNullFieldError.checkNotNull(
+                repositoryId, r'GUpdateTopicsInput', 'repositoryId'),
+            topicNames: topicNames.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -36018,10 +36156,11 @@ class GUserStatusOrderBuilder
   _$GUserStatusOrder _build() {
     final _$result = _$v ??
         new _$GUserStatusOrder._(
-            direction: BuiltValueNullFieldError.checkNotNull(
-                direction, r'GUserStatusOrder', 'direction'),
-            field: BuiltValueNullFieldError.checkNotNull(
-                field, r'GUserStatusOrder', 'field'));
+          direction: BuiltValueNullFieldError.checkNotNull(
+              direction, r'GUserStatusOrder', 'direction'),
+          field: BuiltValueNullFieldError.checkNotNull(
+              field, r'GUserStatusOrder', 'field'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -36105,8 +36244,9 @@ class GX509CertificateBuilder
   _$GX509Certificate _build() {
     final _$result = _$v ??
         new _$GX509Certificate._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GX509Certificate', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GX509Certificate', 'value'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -137,8 +137,9 @@ class GReadRepositoriesVarsBuilder
   _$GReadRepositoriesVars _build() {
     final _$result = _$v ??
         new _$GReadRepositoriesVars._(
-            nRepositories: BuiltValueNullFieldError.checkNotNull(
-                nRepositories, r'GReadRepositoriesVars', 'nRepositories'));
+          nRepositories: BuiltValueNullFieldError.checkNotNull(
+              nRepositories, r'GReadRepositoriesVars', 'nRepositories'),
+        );
     replace(_$result);
     return _$result;
   }

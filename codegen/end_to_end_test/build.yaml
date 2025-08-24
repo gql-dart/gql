@@ -3,6 +3,10 @@ targets:
     builders:
       gql_build|ast_builder:
         enabled: true
+        options:
+          format:
+            page_width: 80
+            language_version: '3.7.0'
       gql_build|req_builder:
         enabled: true
         options:

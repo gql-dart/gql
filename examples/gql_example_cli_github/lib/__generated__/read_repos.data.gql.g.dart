@@ -364,9 +364,10 @@ class GReadRepositoriesDataBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GReadRepositoriesData', 'G__typename'),
-              viewer: viewer.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GReadRepositoriesData', 'G__typename'),
+            viewer: viewer.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -488,9 +489,10 @@ class GReadRepositoriesData_viewerBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GReadRepositoriesData_viewer', 'G__typename'),
-              repositories: repositories.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GReadRepositoriesData_viewer', 'G__typename'),
+            repositories: repositories.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -618,9 +620,10 @@ class GReadRepositoriesData_viewer_repositoriesBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GReadRepositoriesData_viewer_repositories', 'G__typename'),
-              nodes: _nodes?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GReadRepositoriesData_viewer_repositories', 'G__typename'),
+            nodes: _nodes?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -793,19 +796,20 @@ class GReadRepositoriesData_viewer_repositories_nodesBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositoriesData_viewer_repositories_nodes._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GReadRepositoriesData_viewer_repositories_nodes',
-                  'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GReadRepositoriesData_viewer_repositories_nodes', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(name,
-                  r'GReadRepositoriesData_viewer_repositories_nodes', 'name'),
-              viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
-                  viewerHasStarred,
-                  r'GReadRepositoriesData_viewer_repositories_nodes',
-                  'viewerHasStarred'),
-              createdAt: createdAt.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GReadRepositoriesData_viewer_repositories_nodes',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GReadRepositoriesData_viewer_repositories_nodes', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GReadRepositoriesData_viewer_repositories_nodes', 'name'),
+            viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+                viewerHasStarred,
+                r'GReadRepositoriesData_viewer_repositories_nodes',
+                'viewerHasStarred'),
+            createdAt: createdAt.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

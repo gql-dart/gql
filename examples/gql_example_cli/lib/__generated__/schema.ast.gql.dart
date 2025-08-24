@@ -47,10 +47,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'number'),
@@ -308,7 +305,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -348,11 +345,13 @@ const Query = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
-const document = _i1.DocumentNode(definitions: [
-  Attack,
-  Pokemon,
-  PokemonAttack,
-  PokemonDimension,
-  PokemonEvolutionRequirement,
-  Query,
-]);
+const document = _i1.DocumentNode(
+  definitions: [
+    Attack,
+    Pokemon,
+    PokemonAttack,
+    PokemonDimension,
+    PokemonEvolutionRequirement,
+    Query,
+  ],
+);

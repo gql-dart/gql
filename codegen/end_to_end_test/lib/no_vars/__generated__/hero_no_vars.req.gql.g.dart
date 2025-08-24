@@ -149,9 +149,10 @@ class GHeroNoVarsBuilder implements Builder<GHeroNoVars, GHeroNoVarsBuilder> {
     try {
       _$result = _$v ??
           new _$GHeroNoVars._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHeroNoVars', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroNoVars', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

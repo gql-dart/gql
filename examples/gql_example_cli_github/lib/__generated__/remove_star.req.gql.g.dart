@@ -149,9 +149,10 @@ class GRemoveStarBuilder implements Builder<GRemoveStar, GRemoveStarBuilder> {
     try {
       _$result = _$v ??
           new _$GRemoveStar._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GRemoveStar', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GRemoveStar', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

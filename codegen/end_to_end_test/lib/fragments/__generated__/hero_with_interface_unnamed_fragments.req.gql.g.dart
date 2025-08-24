@@ -173,9 +173,10 @@ class GHeroWithInterfaceUnnamedFragmentsBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithInterfaceUnnamedFragments._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(operation,
-                  r'GHeroWithInterfaceUnnamedFragments', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroWithInterfaceUnnamedFragments', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

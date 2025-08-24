@@ -15,26 +15,22 @@ abstract class GCreateCustomFieldVars
     implements Built<GCreateCustomFieldVars, GCreateCustomFieldVarsBuilder> {
   GCreateCustomFieldVars._();
 
-  factory GCreateCustomFieldVars(
-          [void Function(GCreateCustomFieldVarsBuilder b) updates]) =
-      _$GCreateCustomFieldVars;
+  factory GCreateCustomFieldVars([
+    void Function(GCreateCustomFieldVarsBuilder b) updates,
+  ]) = _$GCreateCustomFieldVars;
 
-  factory GCreateCustomFieldVars.create(
-          {required _i1.GCustomFieldInput input}) =>
-      GCreateCustomFieldVars((b) => b..input = input.toBuilder());
+  factory GCreateCustomFieldVars.create({
+    required _i1.GCustomFieldInput input,
+  }) => GCreateCustomFieldVars((b) => b..input = input.toBuilder());
 
   _i1.GCustomFieldInput get input;
   static Serializer<GCreateCustomFieldVars> get serializer =>
       _$gCreateCustomFieldVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
-        GCreateCustomFieldVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GCreateCustomFieldVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GCreateCustomFieldVars? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(
-        GCreateCustomFieldVars.serializer,
-        json,
-      );
+      _i2.serializers.deserializeWith(GCreateCustomFieldVars.serializer, json);
 }

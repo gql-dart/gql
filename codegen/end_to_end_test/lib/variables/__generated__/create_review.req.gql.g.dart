@@ -152,9 +152,10 @@ class GCreateReviewBuilder
     try {
       _$result = _$v ??
           new _$GCreateReview._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GCreateReview', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GCreateReview', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

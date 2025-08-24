@@ -173,9 +173,10 @@ class GHeroWithInterfaceSubTypedFragmentsBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithInterfaceSubTypedFragments._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(operation,
-                  r'GHeroWithInterfaceSubTypedFragments', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroWithInterfaceSubTypedFragments', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

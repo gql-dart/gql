@@ -19,29 +19,27 @@ abstract class GreviewsWithListArgument
         Built<GreviewsWithListArgument, GreviewsWithListArgumentBuilder> {
   GreviewsWithListArgument._();
 
-  factory GreviewsWithListArgument(
-          [void Function(GreviewsWithListArgumentBuilder b) updates]) =
-      _$GreviewsWithListArgument;
+  factory GreviewsWithListArgument([
+    void Function(GreviewsWithListArgumentBuilder b) updates,
+  ]) = _$GreviewsWithListArgument;
 
-  static void _initializeBuilder(GreviewsWithListArgumentBuilder b) => b
-    ..operation = _i1.Operation(
-      document: _i2.document,
-      operationName: 'reviewsWithListArgument',
-    );
+  static void _initializeBuilder(GreviewsWithListArgumentBuilder b) =>
+      b
+        ..operation = _i1.Operation(
+          document: _i2.document,
+          operationName: 'reviewsWithListArgument',
+        );
 
   _i3.GreviewsWithListArgumentVars get vars;
   _i1.Operation get operation;
   static Serializer<GreviewsWithListArgument> get serializer =>
       _$greviewsWithListArgumentSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GreviewsWithListArgument.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GreviewsWithListArgument.serializer, this)
+          as Map<String, dynamic>);
 
-  static GreviewsWithListArgument? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GreviewsWithListArgument.serializer,
-        json,
-      );
+  static GreviewsWithListArgument? fromJson(Map<String, dynamic> json) => _i4
+      .serializers
+      .deserializeWith(GreviewsWithListArgument.serializer, json);
 }

@@ -306,9 +306,10 @@ import 'package:gql_example_cli_github/__generated__/schema.schema.gql.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
-  ..add(OperationSerializer())
-  ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder =
+    _$serializers.toBuilder()
+      ..add(OperationSerializer())
+      ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAcceptEnterpriseAdministratorInvitationInput,
   GAcceptTopicSuggestionInput,

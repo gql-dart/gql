@@ -322,9 +322,10 @@ class GHeroWith2FragmentsDataBuilder
     try {
       _$result = _$v ??
           new _$GHeroWith2FragmentsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GHeroWith2FragmentsData', 'G__typename'),
-              hero: _hero?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHeroWith2FragmentsData', 'G__typename'),
+            hero: _hero?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -452,12 +453,13 @@ class GHeroWith2FragmentsData_heroBuilder
   _$GHeroWith2FragmentsData_hero _build() {
     final _$result = _$v ??
         new _$GHeroWith2FragmentsData_hero._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroWith2FragmentsData_hero', 'name'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWith2FragmentsData_hero', 'id'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GHeroWith2FragmentsData_hero', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GHeroWith2FragmentsData_hero', 'name'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GHeroWith2FragmentsData_hero', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -555,10 +557,11 @@ class GheroNameDataBuilder
   _$GheroNameData _build() {
     final _$result = _$v ??
         new _$GheroNameData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroNameData', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GheroNameData', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GheroNameData', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GheroNameData', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -654,10 +657,10 @@ class GheroIdDataBuilder implements Builder<GheroIdData, GheroIdDataBuilder> {
   _$GheroIdData _build() {
     final _$result = _$v ??
         new _$GheroIdData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GheroIdData', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GheroIdData', 'id'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GheroIdData', 'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(id, r'GheroIdData', 'id'),
+        );
     replace(_$result);
     return _$result;
   }

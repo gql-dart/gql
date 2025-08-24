@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:build/build.dart";
+import "package:dart_style/dart_style.dart";
 import "package:gql_code_builder/req.dart";
 import "package:path/path.dart";
 
@@ -10,9 +11,11 @@ import "./utils/writer.dart";
 
 class ReqBuilder implements Builder {
   final AssetId schemaId;
+  final DartFormatter formatter;
 
   ReqBuilder(
     this.schemaId,
+    this.formatter,
   );
 
   @override
@@ -38,6 +41,7 @@ class ReqBuilder implements Builder {
       library,
       buildStep,
       reqExtension,
+      formatter,
       outputAssetId(schemaId, schemaExtension).uri.toString(),
     );
   }

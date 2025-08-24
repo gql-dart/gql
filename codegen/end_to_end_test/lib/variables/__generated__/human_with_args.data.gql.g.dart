@@ -225,9 +225,10 @@ class GHumanWithArgsDataBuilder
     try {
       _$result = _$v ??
           new _$GHumanWithArgsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GHumanWithArgsData', 'G__typename'),
-              human: _human?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHumanWithArgsData', 'G__typename'),
+            human: _human?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -352,11 +353,12 @@ class GHumanWithArgsData_humanBuilder
   _$GHumanWithArgsData_human _build() {
     final _$result = _$v ??
         new _$GHumanWithArgsData_human._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GHumanWithArgsData_human', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHumanWithArgsData_human', 'name'),
-            height: height);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GHumanWithArgsData_human', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GHumanWithArgsData_human', 'name'),
+          height: height,
+        );
     replace(_$result);
     return _$result;
   }

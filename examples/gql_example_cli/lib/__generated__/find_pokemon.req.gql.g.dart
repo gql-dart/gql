@@ -152,9 +152,10 @@ class GFindPokemonBuilder
     try {
       _$result = _$v ??
           new _$GFindPokemon._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GFindPokemon', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GFindPokemon', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

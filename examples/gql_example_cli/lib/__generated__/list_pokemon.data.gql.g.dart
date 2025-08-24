@@ -226,9 +226,10 @@ class GListPokemonDataBuilder
     try {
       _$result = _$v ??
           new _$GListPokemonData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GListPokemonData', 'G__typename'),
-              pokemons: _pokemons?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GListPokemonData', 'G__typename'),
+            pokemons: _pokemons?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -353,11 +354,12 @@ class GListPokemonData_pokemonsBuilder
   _$GListPokemonData_pokemons _build() {
     final _$result = _$v ??
         new _$GListPokemonData_pokemons._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GListPokemonData_pokemons', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GListPokemonData_pokemons', 'id'),
-            name: name);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GListPokemonData_pokemons', 'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GListPokemonData_pokemons', 'id'),
+          name: name,
+        );
     replace(_$result);
     return _$result;
   }

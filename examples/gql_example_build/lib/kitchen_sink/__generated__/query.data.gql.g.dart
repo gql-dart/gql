@@ -479,9 +479,10 @@ class GQueryOperationDataBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperationData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GQueryOperationData', 'G__typename'),
-              field: _field?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GQueryOperationData', 'G__typename'),
+            field: _field?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -789,32 +790,31 @@ class GQueryOperationData_fieldBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperationData_field._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GQueryOperationData_field', 'G__typename'),
-              id: id,
-              Gbool: Gbool,
-              Gint: Gint,
-              float: float,
-              string: string,
-              scalar: _scalar?.build(),
-              Genum: Genum,
-              field: _field?.build(),
-              idRequired: BuiltValueNullFieldError.checkNotNull(
-                  idRequired, r'GQueryOperationData_field', 'idRequired'),
-              boolRequired: BuiltValueNullFieldError.checkNotNull(
-                  boolRequired, r'GQueryOperationData_field', 'boolRequired'),
-              intRequired: BuiltValueNullFieldError.checkNotNull(
-                  intRequired, r'GQueryOperationData_field', 'intRequired'),
-              floatRequired: BuiltValueNullFieldError.checkNotNull(
-                  floatRequired, r'GQueryOperationData_field', 'floatRequired'),
-              stringRequired: BuiltValueNullFieldError.checkNotNull(
-                  stringRequired,
-                  r'GQueryOperationData_field',
-                  'stringRequired'),
-              scalarRequired: scalarRequired.build(),
-              enumRequired: BuiltValueNullFieldError.checkNotNull(
-                  enumRequired, r'GQueryOperationData_field', 'enumRequired'),
-              fieldRequired: fieldRequired.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GQueryOperationData_field', 'G__typename'),
+            id: id,
+            Gbool: Gbool,
+            Gint: Gint,
+            float: float,
+            string: string,
+            scalar: _scalar?.build(),
+            Genum: Genum,
+            field: _field?.build(),
+            idRequired: BuiltValueNullFieldError.checkNotNull(
+                idRequired, r'GQueryOperationData_field', 'idRequired'),
+            boolRequired: BuiltValueNullFieldError.checkNotNull(
+                boolRequired, r'GQueryOperationData_field', 'boolRequired'),
+            intRequired: BuiltValueNullFieldError.checkNotNull(
+                intRequired, r'GQueryOperationData_field', 'intRequired'),
+            floatRequired: BuiltValueNullFieldError.checkNotNull(
+                floatRequired, r'GQueryOperationData_field', 'floatRequired'),
+            stringRequired: BuiltValueNullFieldError.checkNotNull(
+                stringRequired, r'GQueryOperationData_field', 'stringRequired'),
+            scalarRequired: scalarRequired.build(),
+            enumRequired: BuiltValueNullFieldError.checkNotNull(
+                enumRequired, r'GQueryOperationData_field', 'enumRequired'),
+            fieldRequired: fieldRequired.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -937,9 +937,10 @@ class GQueryOperationData_field_fieldBuilder
   _$GQueryOperationData_field_field _build() {
     final _$result = _$v ??
         new _$GQueryOperationData_field_field._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GQueryOperationData_field_field', 'G__typename'),
-            id: id);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GQueryOperationData_field_field', 'G__typename'),
+          id: id,
+        );
     replace(_$result);
     return _$result;
   }
@@ -1048,9 +1049,10 @@ class GQueryOperationData_field_fieldRequiredBuilder
   _$GQueryOperationData_field_fieldRequired _build() {
     final _$result = _$v ??
         new _$GQueryOperationData_field_fieldRequired._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GQueryOperationData_field_fieldRequired', 'G__typename'),
-            id: id);
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GQueryOperationData_field_fieldRequired', 'G__typename'),
+          id: id,
+        );
     replace(_$result);
     return _$result;
   }

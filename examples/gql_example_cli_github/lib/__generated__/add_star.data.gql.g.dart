@@ -271,9 +271,10 @@ class GAddStarDataBuilder
     try {
       _$result = _$v ??
           new _$GAddStarData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GAddStarData', 'G__typename'),
-              action: _action?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GAddStarData', 'G__typename'),
+            action: _action?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -388,9 +389,10 @@ class GAddStarData_actionBuilder
     try {
       _$result = _$v ??
           new _$GAddStarData_action._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GAddStarData_action', 'G__typename'),
-              starrable: _starrable?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GAddStarData_action', 'G__typename'),
+            starrable: _starrable?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -507,12 +509,13 @@ class GAddStarData_action_starrableBuilder
   _$GAddStarData_action_starrable _build() {
     final _$result = _$v ??
         new _$GAddStarData_action_starrable._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GAddStarData_action_starrable', 'G__typename'),
-            viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
-                viewerHasStarred,
-                r'GAddStarData_action_starrable',
-                'viewerHasStarred'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAddStarData_action_starrable', 'G__typename'),
+          viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+              viewerHasStarred,
+              r'GAddStarData_action_starrable',
+              'viewerHasStarred'),
+        );
     replace(_$result);
     return _$result;
   }

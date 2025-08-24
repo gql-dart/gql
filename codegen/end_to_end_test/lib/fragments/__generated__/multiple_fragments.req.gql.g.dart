@@ -161,9 +161,10 @@ class GHeroWith2FragmentsBuilder
     try {
       _$result = _$v ??
           new _$GHeroWith2Fragments._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHeroWith2Fragments', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroWith2Fragments', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

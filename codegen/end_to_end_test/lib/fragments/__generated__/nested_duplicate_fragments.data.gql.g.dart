@@ -1353,9 +1353,10 @@ class GSearchResultsQueryDataBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQueryData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GSearchResultsQueryData', 'G__typename'),
-              search: _search?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GSearchResultsQueryData', 'G__typename'),
+            search: _search?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1462,8 +1463,9 @@ class GSearchResultsQueryData_search__baseBuilder
   _$GSearchResultsQueryData_search__base _build() {
     final _$result = _$v ??
         new _$GSearchResultsQueryData_search__base._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GSearchResultsQueryData_search__base', 'G__typename'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GSearchResultsQueryData_search__base', 'G__typename'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1621,14 +1623,15 @@ class GSearchResultsQueryData_search__asHumanBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asHuman._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GSearchResultsQueryData_search__asHuman', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GSearchResultsQueryData_search__asHuman', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GSearchResultsQueryData_search__asHuman', 'name'),
-              friends: _friends?.build(),
-              appearsIn: appearsIn.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GSearchResultsQueryData_search__asHuman', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GSearchResultsQueryData_search__asHuman', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GSearchResultsQueryData_search__asHuman', 'name'),
+            friends: _friends?.build(),
+            appearsIn: appearsIn.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1796,15 +1799,16 @@ class GSearchResultsQueryData_search__asHuman_friendsBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asHuman_friends._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GSearchResultsQueryData_search__asHuman_friends',
-                  'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GSearchResultsQueryData_search__asHuman_friends', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(name,
-                  r'GSearchResultsQueryData_search__asHuman_friends', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GSearchResultsQueryData_search__asHuman_friends',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GSearchResultsQueryData_search__asHuman_friends', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GSearchResultsQueryData_search__asHuman_friends', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1957,11 +1961,12 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnectionBuilder
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection
               ._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection',
-                  'G__typename'),
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection',
+                'G__typename'),
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -2121,18 +2126,19 @@ class GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friendsB
     final _$result = _$v ??
         new _$GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
             ._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id,
-                r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-                'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
-                'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id,
+              r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
+              'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends',
+              'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -2290,14 +2296,15 @@ class GSearchResultsQueryData_search__asDroidBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asDroid._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GSearchResultsQueryData_search__asDroid', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GSearchResultsQueryData_search__asDroid', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GSearchResultsQueryData_search__asDroid', 'name'),
-              friends: _friends?.build(),
-              appearsIn: appearsIn.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GSearchResultsQueryData_search__asDroid', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GSearchResultsQueryData_search__asDroid', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GSearchResultsQueryData_search__asDroid', 'name'),
+            friends: _friends?.build(),
+            appearsIn: appearsIn.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -2465,15 +2472,16 @@ class GSearchResultsQueryData_search__asDroid_friendsBuilder
     try {
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asDroid_friends._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GSearchResultsQueryData_search__asDroid_friends',
-                  'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GSearchResultsQueryData_search__asDroid_friends', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(name,
-                  r'GSearchResultsQueryData_search__asDroid_friends', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GSearchResultsQueryData_search__asDroid_friends',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GSearchResultsQueryData_search__asDroid_friends', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GSearchResultsQueryData_search__asDroid_friends', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -2626,11 +2634,12 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnectionBuilder
       _$result = _$v ??
           new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection
               ._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection',
-                  'G__typename'),
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection',
+                'G__typename'),
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -2790,18 +2799,19 @@ class GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friendsB
     final _$result = _$v ??
         new _$GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
             ._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id,
-                r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-                'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
-                'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id,
+              r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
+              'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends',
+              'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -2947,14 +2957,15 @@ class GCharacterDetailsDataBuilder
     try {
       _$result = _$v ??
           new _$GCharacterDetailsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GCharacterDetailsData', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GCharacterDetailsData', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GCharacterDetailsData', 'name'),
-              friends: _friends?.build(),
-              appearsIn: appearsIn.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GCharacterDetailsData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GCharacterDetailsData', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCharacterDetailsData', 'name'),
+            friends: _friends?.build(),
+            appearsIn: appearsIn.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -3106,13 +3117,14 @@ class GCharacterDetailsData_friendsBuilder
     try {
       _$result = _$v ??
           new _$GCharacterDetailsData_friends._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GCharacterDetailsData_friends', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GCharacterDetailsData_friends', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GCharacterDetailsData_friends', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GCharacterDetailsData_friends', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GCharacterDetailsData_friends', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCharacterDetailsData_friends', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -3245,11 +3257,12 @@ class GCharacterDetailsData_friends_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GCharacterDetailsData_friends_friendsConnection._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GCharacterDetailsData_friends_friendsConnection',
-                  'G__typename'),
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GCharacterDetailsData_friends_friendsConnection',
+                'G__typename'),
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -3394,18 +3407,17 @@ class GCharacterDetailsData_friends_friendsConnection_friendsBuilder
   _$GCharacterDetailsData_friends_friendsConnection_friends _build() {
     final _$result = _$v ??
         new _$GCharacterDetailsData_friends_friendsConnection_friends._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GCharacterDetailsData_friends_friendsConnection_friends',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id,
-                r'GCharacterDetailsData_friends_friendsConnection_friends',
-                'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GCharacterDetailsData_friends_friendsConnection_friends',
-                'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GCharacterDetailsData_friends_friendsConnection_friends',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(id,
+              r'GCharacterDetailsData_friends_friendsConnection_friends', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GCharacterDetailsData_friends_friendsConnection_friends',
+              'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -3537,13 +3549,14 @@ class GFriendInfoDataBuilder
     try {
       _$result = _$v ??
           new _$GFriendInfoData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GFriendInfoData', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GFriendInfoData', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GFriendInfoData', 'name'),
-              friendsConnection: friendsConnection.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GFriendInfoData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GFriendInfoData', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GFriendInfoData', 'name'),
+            friendsConnection: friendsConnection.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -3666,9 +3679,10 @@ class GFriendInfoData_friendsConnectionBuilder
     try {
       _$result = _$v ??
           new _$GFriendInfoData_friendsConnection._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GFriendInfoData_friendsConnection', 'G__typename'),
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GFriendInfoData_friendsConnection', 'G__typename'),
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -3803,12 +3817,13 @@ class GFriendInfoData_friendsConnection_friendsBuilder
   _$GFriendInfoData_friendsConnection_friends _build() {
     final _$result = _$v ??
         new _$GFriendInfoData_friendsConnection_friends._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GFriendInfoData_friendsConnection_friends', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GFriendInfoData_friendsConnection_friends', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GFriendInfoData_friendsConnection_friends', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GFriendInfoData_friendsConnection_friends', 'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GFriendInfoData_friendsConnection_friends', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GFriendInfoData_friendsConnection_friends', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -3921,12 +3936,13 @@ class GCharacterBasicDataBuilder
   _$GCharacterBasicData _build() {
     final _$result = _$v ??
         new _$GCharacterBasicData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GCharacterBasicData', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GCharacterBasicData', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GCharacterBasicData', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GCharacterBasicData', 'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GCharacterBasicData', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GCharacterBasicData', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

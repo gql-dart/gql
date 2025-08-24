@@ -155,9 +155,10 @@ class GReviewWithDateBuilder
     try {
       _$result = _$v ??
           new _$GReviewWithDate._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GReviewWithDate', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GReviewWithDate', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

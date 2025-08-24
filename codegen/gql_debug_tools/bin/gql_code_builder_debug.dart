@@ -76,7 +76,8 @@ void main(List<String> args) async {
 
   // Format and output the generated code
   final emitter = DartEmitter(useNullSafetySyntax: true);
-  final formatter = DartFormatter();
+  final formatter =
+      DartFormatter(languageVersion: DartFormatter.latestLanguageVersion);
   final code = formatter.format("${library.accept(emitter)}");
 
   if (writeOutput) {

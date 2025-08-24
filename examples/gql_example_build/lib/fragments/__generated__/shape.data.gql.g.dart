@@ -360,9 +360,10 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
   _$GShapeData _build() {
     final _$result = _$v ??
         new _$GShapeData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData', 'G__typename'),
-            shape: shape);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData', 'G__typename'),
+          shape: shape,
+        );
     replace(_$result);
     return _$result;
   }
@@ -462,9 +463,10 @@ class GShapeData_shape__baseBuilder
   _$GShapeData_shape__base _build() {
     final _$result = _$v ??
         new _$GShapeData_shape__base._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__base', 'G__typename'),
-            area: area);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__base', 'G__typename'),
+          area: area,
+        );
     replace(_$result);
     return _$result;
   }
@@ -576,10 +578,11 @@ class GShapeData_shape__asSquareBuilder
   _$GShapeData_shape__asSquare _build() {
     final _$result = _$v ??
         new _$GShapeData_shape__asSquare._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__asSquare', 'G__typename'),
-            area: area,
-            sideLength: sideLength);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__asSquare', 'G__typename'),
+          area: area,
+          sideLength: sideLength,
+        );
     replace(_$result);
     return _$result;
   }
@@ -705,11 +708,12 @@ class GShapeData_shape__asRectangleBuilder
   _$GShapeData_shape__asRectangle _build() {
     final _$result = _$v ??
         new _$GShapeData_shape__asRectangle._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__asRectangle', 'G__typename'),
-            area: area,
-            sideLengthA: sideLengthA,
-            sideLengthB: sideLengthB);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__asRectangle', 'G__typename'),
+          area: area,
+          sideLengthA: sideLengthA,
+          sideLengthB: sideLengthB,
+        );
     replace(_$result);
     return _$result;
   }

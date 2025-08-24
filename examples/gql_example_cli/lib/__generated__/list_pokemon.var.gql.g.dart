@@ -128,8 +128,9 @@ class GListPokemonVarsBuilder
   _$GListPokemonVars _build() {
     final _$result = _$v ??
         new _$GListPokemonVars._(
-            count: BuiltValueNullFieldError.checkNotNull(
-                count, r'GListPokemonVars', 'count'));
+          count: BuiltValueNullFieldError.checkNotNull(
+              count, r'GListPokemonVars', 'count'),
+        );
     replace(_$result);
     return _$result;
   }

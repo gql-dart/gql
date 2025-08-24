@@ -166,9 +166,10 @@ class GreviewsWithListArgumentVarsBuilder
     try {
       _$result = _$v ??
           new _$GreviewsWithListArgumentVars._(
-              episode: BuiltValueNullFieldError.checkNotNull(
-                  episode, r'GreviewsWithListArgumentVars', 'episode'),
-              stars: _stars?.build());
+            episode: BuiltValueNullFieldError.checkNotNull(
+                episode, r'GreviewsWithListArgumentVars', 'episode'),
+            stars: _stars?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

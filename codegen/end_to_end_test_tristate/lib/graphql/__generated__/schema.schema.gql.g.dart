@@ -19,12 +19,11 @@ GEpisode _$gEpisodeValueOf(String name) {
     case 'JEDI':
       return _$gEpisodeJEDI;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<GEpisode> _$gEpisodeValues =
-    new BuiltSet<GEpisode>(const <GEpisode>[
+final BuiltSet<GEpisode> _$gEpisodeValues = BuiltSet<GEpisode>(const <GEpisode>[
   _$gEpisodeNEWHOPE,
   _$gEpisodeEMPIRE,
   _$gEpisodeJEDI,
@@ -45,13 +44,13 @@ GLengthUnit _$gLengthUnitValueOf(String name) {
 }
 
 final BuiltSet<GLengthUnit> _$gLengthUnitValues =
-    new BuiltSet<GLengthUnit>(const <GLengthUnit>[
+    BuiltSet<GLengthUnit>(const <GLengthUnit>[
   _$gLengthUnitMETER,
   _$gLengthUnitFOOT,
 ]);
 
-Serializer<GEpisode> _$gEpisodeSerializer = new _$GEpisodeSerializer();
-Serializer<GLengthUnit> _$gLengthUnitSerializer = new _$GLengthUnitSerializer();
+Serializer<GEpisode> _$gEpisodeSerializer = _$GEpisodeSerializer();
+Serializer<GLengthUnit> _$gLengthUnitSerializer = _$GLengthUnitSerializer();
 
 class _$GEpisodeSerializer implements PrimitiveSerializer<GEpisode> {
   @override
@@ -106,28 +105,20 @@ class _$GReviewInput extends GReviewInput {
   final _i1.Value<BuiltList<DateTime?>> seenOn;
 
   factory _$GReviewInput([void Function(GReviewInputBuilder)? updates]) =>
-      (new GReviewInputBuilder()..update(updates))._build();
+      (GReviewInputBuilder()..update(updates))._build();
 
   _$GReviewInput._(
       {required this.stars,
       required this.commentary,
       required this.favorite_color,
       required this.seenOn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(stars, r'GReviewInput', 'stars');
-    BuiltValueNullFieldError.checkNotNull(
-        commentary, r'GReviewInput', 'commentary');
-    BuiltValueNullFieldError.checkNotNull(
-        favorite_color, r'GReviewInput', 'favorite_color');
-    BuiltValueNullFieldError.checkNotNull(seenOn, r'GReviewInput', 'seenOn');
-  }
-
+      : super._();
   @override
   GReviewInput rebuild(void Function(GReviewInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GReviewInputBuilder toBuilder() => new GReviewInputBuilder()..replace(this);
+  GReviewInputBuilder toBuilder() => GReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -202,7 +193,6 @@ class GReviewInputBuilder
 
   @override
   void replace(GReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReviewInput;
   }
 
@@ -216,15 +206,16 @@ class GReviewInputBuilder
 
   _$GReviewInput _build() {
     final _$result = _$v ??
-        new _$GReviewInput._(
-            stars: BuiltValueNullFieldError.checkNotNull(
-                stars, r'GReviewInput', 'stars'),
-            commentary: BuiltValueNullFieldError.checkNotNull(
-                commentary, r'GReviewInput', 'commentary'),
-            favorite_color: BuiltValueNullFieldError.checkNotNull(
-                favorite_color, r'GReviewInput', 'favorite_color'),
-            seenOn: BuiltValueNullFieldError.checkNotNull(
-                seenOn, r'GReviewInput', 'seenOn'));
+        _$GReviewInput._(
+          stars: BuiltValueNullFieldError.checkNotNull(
+              stars, r'GReviewInput', 'stars'),
+          commentary: BuiltValueNullFieldError.checkNotNull(
+              commentary, r'GReviewInput', 'commentary'),
+          favorite_color: BuiltValueNullFieldError.checkNotNull(
+              favorite_color, r'GReviewInput', 'favorite_color'),
+          seenOn: BuiltValueNullFieldError.checkNotNull(
+              seenOn, r'GReviewInput', 'seenOn'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -234,26 +225,21 @@ class _$GCustomFieldInput extends GCustomFieldInput {
   @override
   final String id;
   @override
-  final _i1.Value<_i2.CustomField> customField;
+  final _i1.Value<_i3.CustomField> customField;
 
   factory _$GCustomFieldInput(
           [void Function(GCustomFieldInputBuilder)? updates]) =>
-      (new GCustomFieldInputBuilder()..update(updates))._build();
+      (GCustomFieldInputBuilder()..update(updates))._build();
 
   _$GCustomFieldInput._({required this.id, required this.customField})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GCustomFieldInput', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        customField, r'GCustomFieldInput', 'customField');
-  }
-
+      : super._();
   @override
   GCustomFieldInput rebuild(void Function(GCustomFieldInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCustomFieldInputBuilder toBuilder() =>
-      new GCustomFieldInputBuilder()..replace(this);
+      GCustomFieldInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -289,9 +275,9 @@ class GCustomFieldInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  _i1.Value<_i2.CustomField>? _customField;
-  _i1.Value<_i2.CustomField>? get customField => _$this._customField;
-  set customField(_i1.Value<_i2.CustomField>? customField) =>
+  _i1.Value<_i3.CustomField>? _customField;
+  _i1.Value<_i3.CustomField>? get customField => _$this._customField;
+  set customField(_i1.Value<_i3.CustomField>? customField) =>
       _$this._customField = customField;
 
   GCustomFieldInputBuilder() {
@@ -310,7 +296,6 @@ class GCustomFieldInputBuilder
 
   @override
   void replace(GCustomFieldInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCustomFieldInput;
   }
 
@@ -324,11 +309,12 @@ class GCustomFieldInputBuilder
 
   _$GCustomFieldInput _build() {
     final _$result = _$v ??
-        new _$GCustomFieldInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GCustomFieldInput', 'id'),
-            customField: BuiltValueNullFieldError.checkNotNull(
-                customField, r'GCustomFieldInput', 'customField'));
+        _$GCustomFieldInput._(
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GCustomFieldInput', 'id'),
+          customField: BuiltValueNullFieldError.checkNotNull(
+              customField, r'GCustomFieldInput', 'customField'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -343,21 +329,16 @@ class _$GColorInput extends GColorInput {
   final int blue;
 
   factory _$GColorInput([void Function(GColorInputBuilder)? updates]) =>
-      (new GColorInputBuilder()..update(updates))._build();
+      (GColorInputBuilder()..update(updates))._build();
 
   _$GColorInput._({required this.red, required this.green, required this.blue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(red, r'GColorInput', 'red');
-    BuiltValueNullFieldError.checkNotNull(green, r'GColorInput', 'green');
-    BuiltValueNullFieldError.checkNotNull(blue, r'GColorInput', 'blue');
-  }
-
+      : super._();
   @override
   GColorInput rebuild(void Function(GColorInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GColorInputBuilder toBuilder() => new GColorInputBuilder()..replace(this);
+  GColorInputBuilder toBuilder() => GColorInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -418,7 +399,6 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
 
   @override
   void replace(GColorInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GColorInput;
   }
 
@@ -432,13 +412,14 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
 
   _$GColorInput _build() {
     final _$result = _$v ??
-        new _$GColorInput._(
-            red: BuiltValueNullFieldError.checkNotNull(
-                red, r'GColorInput', 'red'),
-            green: BuiltValueNullFieldError.checkNotNull(
-                green, r'GColorInput', 'green'),
-            blue: BuiltValueNullFieldError.checkNotNull(
-                blue, r'GColorInput', 'blue'));
+        _$GColorInput._(
+          red:
+              BuiltValueNullFieldError.checkNotNull(red, r'GColorInput', 'red'),
+          green: BuiltValueNullFieldError.checkNotNull(
+              green, r'GColorInput', 'green'),
+          blue: BuiltValueNullFieldError.checkNotNull(
+              blue, r'GColorInput', 'blue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -449,19 +430,15 @@ class _$GPostLikesInput extends GPostLikesInput {
   final String id;
 
   factory _$GPostLikesInput([void Function(GPostLikesInputBuilder)? updates]) =>
-      (new GPostLikesInputBuilder()..update(updates))._build();
+      (GPostLikesInputBuilder()..update(updates))._build();
 
-  _$GPostLikesInput._({required this.id}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GPostLikesInput', 'id');
-  }
-
+  _$GPostLikesInput._({required this.id}) : super._();
   @override
   GPostLikesInput rebuild(void Function(GPostLikesInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GPostLikesInputBuilder toBuilder() =>
-      new GPostLikesInputBuilder()..replace(this);
+  GPostLikesInputBuilder toBuilder() => GPostLikesInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -505,7 +482,6 @@ class GPostLikesInputBuilder
 
   @override
   void replace(GPostLikesInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostLikesInput;
   }
 
@@ -519,9 +495,10 @@ class GPostLikesInputBuilder
 
   _$GPostLikesInput _build() {
     final _$result = _$v ??
-        new _$GPostLikesInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GPostLikesInput', 'id'));
+        _$GPostLikesInput._(
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GPostLikesInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -533,12 +510,9 @@ class _$GPostFavoritesInput extends GPostFavoritesInput {
 
   factory _$GPostFavoritesInput(
           [void Function(GPostFavoritesInputBuilder)? updates]) =>
-      (new GPostFavoritesInputBuilder()..update(updates))._build();
+      (GPostFavoritesInputBuilder()..update(updates))._build();
 
-  _$GPostFavoritesInput._({required this.id}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GPostFavoritesInput', 'id');
-  }
-
+  _$GPostFavoritesInput._({required this.id}) : super._();
   @override
   GPostFavoritesInput rebuild(
           void Function(GPostFavoritesInputBuilder) updates) =>
@@ -546,7 +520,7 @@ class _$GPostFavoritesInput extends GPostFavoritesInput {
 
   @override
   GPostFavoritesInputBuilder toBuilder() =>
-      new GPostFavoritesInputBuilder()..replace(this);
+      GPostFavoritesInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -590,7 +564,6 @@ class GPostFavoritesInputBuilder
 
   @override
   void replace(GPostFavoritesInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFavoritesInput;
   }
 
@@ -604,9 +577,10 @@ class GPostFavoritesInputBuilder
 
   _$GPostFavoritesInput _build() {
     final _$result = _$v ??
-        new _$GPostFavoritesInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GPostFavoritesInput', 'id'));
+        _$GPostFavoritesInput._(
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GPostFavoritesInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -617,18 +591,15 @@ class _$GISODate extends GISODate {
   final String value;
 
   factory _$GISODate([void Function(GISODateBuilder)? updates]) =>
-      (new GISODateBuilder()..update(updates))._build();
+      (GISODateBuilder()..update(updates))._build();
 
-  _$GISODate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GISODate', 'value');
-  }
-
+  _$GISODate._({required this.value}) : super._();
   @override
   GISODate rebuild(void Function(GISODateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GISODateBuilder toBuilder() => new GISODateBuilder()..replace(this);
+  GISODateBuilder toBuilder() => GISODateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -671,7 +642,6 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
 
   @override
   void replace(GISODate other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GISODate;
   }
 
@@ -685,9 +655,10 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
 
   _$GISODate _build() {
     final _$result = _$v ??
-        new _$GISODate._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GISODate', 'value'));
+        _$GISODate._(
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GISODate', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -698,18 +669,15 @@ class _$GJson extends GJson {
   final String value;
 
   factory _$GJson([void Function(GJsonBuilder)? updates]) =>
-      (new GJsonBuilder()..update(updates))._build();
+      (GJsonBuilder()..update(updates))._build();
 
-  _$GJson._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GJson', 'value');
-  }
-
+  _$GJson._({required this.value}) : super._();
   @override
   GJson rebuild(void Function(GJsonBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GJsonBuilder toBuilder() => new GJsonBuilder()..replace(this);
+  GJsonBuilder toBuilder() => GJsonBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -752,7 +720,6 @@ class GJsonBuilder implements Builder<GJson, GJsonBuilder> {
 
   @override
   void replace(GJson other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GJson;
   }
 
@@ -766,9 +733,10 @@ class GJsonBuilder implements Builder<GJson, GJsonBuilder> {
 
   _$GJson _build() {
     final _$result = _$v ??
-        new _$GJson._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GJson', 'value'));
+        _$GJson._(
+          value:
+              BuiltValueNullFieldError.checkNotNull(value, r'GJson', 'value'),
+        );
     replace(_$result);
     return _$result;
   }

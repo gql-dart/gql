@@ -158,9 +158,10 @@ class GCreateCustomFieldBuilder
     try {
       _$result = _$v ??
           new _$GCreateCustomField._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GCreateCustomField', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GCreateCustomField', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

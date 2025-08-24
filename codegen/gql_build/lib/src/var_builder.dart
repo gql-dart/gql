@@ -2,6 +2,7 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
+import "package:dart_style/dart_style.dart";
 import "package:gql_build/src/allocators/gql_allocator.dart";
 import "package:gql_code_builder/var.dart";
 import "package:path/path.dart";
@@ -16,12 +17,14 @@ class VarBuilder implements Builder {
   final Map<String, Reference> typeOverrides;
   final TriStateValueConfig triStateValueConfig;
   final bool varsCreateFactoriesConfig;
+  final DartFormatter formatter;
 
   VarBuilder(
     this.schemaId,
     this.typeOverrides,
     this.triStateValueConfig,
     this.varsCreateFactoriesConfig,
+    this.formatter,
   );
 
   @override
@@ -51,7 +54,6 @@ class VarBuilder implements Builder {
       addTypenames(schema),
       basename(generatedPartUrl),
       typeOverrides,
-      allocator,
       triStateValueConfig,
       varsCreateFactoriesConfig,
     );
@@ -60,6 +62,7 @@ class VarBuilder implements Builder {
       library,
       buildStep,
       varExtension,
+      formatter,
       schemaUrl,
       allocator,
     );

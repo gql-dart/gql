@@ -129,8 +129,9 @@ class GRemoveStarVarsBuilder
   _$GRemoveStarVars _build() {
     final _$result = _$v ??
         new _$GRemoveStarVars._(
-            starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, r'GRemoveStarVars', 'starrableId'));
+          starrableId: BuiltValueNullFieldError.checkNotNull(
+              starrableId, r'GRemoveStarVars', 'starrableId'),
+        );
     replace(_$result);
     return _$result;
   }

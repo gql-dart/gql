@@ -12,13 +12,9 @@ class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
 
   factory _$GPostsWithFixedVariableVars(
           [void Function(GPostsWithFixedVariableVarsBuilder)? updates]) =>
-      (new GPostsWithFixedVariableVarsBuilder()..update(updates))._build();
+      (GPostsWithFixedVariableVarsBuilder()..update(updates))._build();
 
-  _$GPostsWithFixedVariableVars._({required this.filter}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        filter, r'GPostsWithFixedVariableVars', 'filter');
-  }
-
+  _$GPostsWithFixedVariableVars._({required this.filter}) : super._();
   @override
   GPostsWithFixedVariableVars rebuild(
           void Function(GPostsWithFixedVariableVarsBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
 
   @override
   GPostsWithFixedVariableVarsBuilder toBuilder() =>
-      new GPostsWithFixedVariableVarsBuilder()..replace(this);
+      GPostsWithFixedVariableVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +71,6 @@ class GPostsWithFixedVariableVarsBuilder
 
   @override
   void replace(GPostsWithFixedVariableVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariableVars;
   }
 
@@ -89,9 +84,10 @@ class GPostsWithFixedVariableVarsBuilder
 
   _$GPostsWithFixedVariableVars _build() {
     final _$result = _$v ??
-        new _$GPostsWithFixedVariableVars._(
-            filter: BuiltValueNullFieldError.checkNotNull(
-                filter, r'GPostsWithFixedVariableVars', 'filter'));
+        _$GPostsWithFixedVariableVars._(
+          filter: BuiltValueNullFieldError.checkNotNull(
+              filter, r'GPostsWithFixedVariableVars', 'filter'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -100,10 +96,9 @@ class GPostsWithFixedVariableVarsBuilder
 class _$GPostFragmentForUser1Vars extends GPostFragmentForUser1Vars {
   factory _$GPostFragmentForUser1Vars(
           [void Function(GPostFragmentForUser1VarsBuilder)? updates]) =>
-      (new GPostFragmentForUser1VarsBuilder()..update(updates))._build();
+      (GPostFragmentForUser1VarsBuilder()..update(updates))._build();
 
   _$GPostFragmentForUser1Vars._() : super._();
-
   @override
   GPostFragmentForUser1Vars rebuild(
           void Function(GPostFragmentForUser1VarsBuilder) updates) =>
@@ -111,7 +106,7 @@ class _$GPostFragmentForUser1Vars extends GPostFragmentForUser1Vars {
 
   @override
   GPostFragmentForUser1VarsBuilder toBuilder() =>
-      new GPostFragmentForUser1VarsBuilder()..replace(this);
+      GPostFragmentForUser1VarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -139,7 +134,6 @@ class GPostFragmentForUser1VarsBuilder
 
   @override
   void replace(GPostFragmentForUser1Vars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFragmentForUser1Vars;
   }
 
@@ -152,7 +146,7 @@ class GPostFragmentForUser1VarsBuilder
   GPostFragmentForUser1Vars build() => _build();
 
   _$GPostFragmentForUser1Vars _build() {
-    final _$result = _$v ?? new _$GPostFragmentForUser1Vars._();
+    final _$result = _$v ?? _$GPostFragmentForUser1Vars._();
     replace(_$result);
     return _$result;
   }

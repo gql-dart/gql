@@ -17,64 +17,69 @@ const FindPokemon = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
   ],
   directives: [],
-  selectionSet: _i1.SelectionSetNode(selections: [
-    _i1.FieldNode(
-      name: _i1.NameNode(value: 'pokemon'),
-      alias: null,
-      arguments: [
-        _i1.ArgumentNode(
-          name: _i1.NameNode(value: 'name'),
-          value: _i1.VariableNode(name: _i1.NameNode(value: 'name')),
-        )
-      ],
-      directives: [],
-      selectionSet: _i1.SelectionSetNode(selections: [
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'name'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'weight'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: _i1.SelectionSetNode(selections: [
-            _i1.FragmentSpreadNode(
-              name: _i1.NameNode(value: 'Dimensions'),
+  selectionSet: _i1.SelectionSetNode(
+    selections: [
+      _i1.FieldNode(
+        name: _i1.NameNode(value: 'pokemon'),
+        alias: null,
+        arguments: [
+          _i1.ArgumentNode(
+            name: _i1.NameNode(value: 'name'),
+            value: _i1.VariableNode(name: _i1.NameNode(value: 'name')),
+          ),
+        ],
+        directives: [],
+        selectionSet: _i1.SelectionSetNode(
+          selections: [
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
               directives: [],
-            )
-          ]),
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'height'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: _i1.SelectionSetNode(selections: [
-            _i1.FragmentSpreadNode(
-              name: _i1.NameNode(value: 'Dimensions'),
+              selectionSet: null,
+            ),
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
               directives: [],
-            )
-          ]),
+              selectionSet: null,
+            ),
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'weight'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: _i1.SelectionSetNode(
+                selections: [
+                  _i1.FragmentSpreadNode(
+                    name: _i1.NameNode(value: 'Dimensions'),
+                    directives: [],
+                  ),
+                ],
+              ),
+            ),
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'height'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: _i1.SelectionSetNode(
+                selections: [
+                  _i1.FragmentSpreadNode(
+                    name: _i1.NameNode(value: 'Dimensions'),
+                    directives: [],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-      ]),
-    )
-  ]),
+      ),
+    ],
+  ),
 );
-const document = _i1.DocumentNode(definitions: [
-  FindPokemon,
-  _i2.Dimensions,
-]);
+const document = _i1.DocumentNode(definitions: [FindPokemon, _i2.Dimensions]);

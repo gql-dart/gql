@@ -129,8 +129,9 @@ class GHumanWithArgsVarsBuilder
   _$GHumanWithArgsVars _build() {
     final _$result = _$v ??
         new _$GHumanWithArgsVars._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHumanWithArgsVars', 'id'));
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GHumanWithArgsVars', 'id'),
+        );
     replace(_$result);
     return _$result;
   }

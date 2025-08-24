@@ -18,29 +18,26 @@ abstract class GCreateCustomField
     implements Built<GCreateCustomField, GCreateCustomFieldBuilder> {
   GCreateCustomField._();
 
-  factory GCreateCustomField(
-          [void Function(GCreateCustomFieldBuilder b) updates]) =
-      _$GCreateCustomField;
+  factory GCreateCustomField([
+    void Function(GCreateCustomFieldBuilder b) updates,
+  ]) = _$GCreateCustomField;
 
-  static void _initializeBuilder(GCreateCustomFieldBuilder b) => b
-    ..operation = _i1.Operation(
-      document: _i2.document,
-      operationName: 'CreateCustomField',
-    );
+  static void _initializeBuilder(GCreateCustomFieldBuilder b) =>
+      b
+        ..operation = _i1.Operation(
+          document: _i2.document,
+          operationName: 'CreateCustomField',
+        );
 
   _i3.GCreateCustomFieldVars get vars;
   _i1.Operation get operation;
   static Serializer<GCreateCustomField> get serializer =>
       _$gCreateCustomFieldSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GCreateCustomField.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GCreateCustomField.serializer, this)
+          as Map<String, dynamic>);
 
   static GCreateCustomField? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GCreateCustomField.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GCreateCustomField.serializer, json);
 }

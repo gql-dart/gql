@@ -1,3 +1,9 @@
+## 0.15.0
+
+- **BREAKING**: Remove allocator parameter from public APIs - allocation is now deferred using Code.scope
+- Use Code.scope pattern for deferred type allocation
+- Improves separation of concerns between code generation and import management
+
 ## 0.14.0
 
 - Fixes Interface Fragment Inheritance (#484)

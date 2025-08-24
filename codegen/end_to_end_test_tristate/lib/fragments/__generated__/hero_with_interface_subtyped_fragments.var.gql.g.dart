@@ -14,15 +14,11 @@ class _$GHeroWithInterfaceSubTypedFragmentsVars
   factory _$GHeroWithInterfaceSubTypedFragmentsVars(
           [void Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder)?
               updates]) =>
-      (new GHeroWithInterfaceSubTypedFragmentsVarsBuilder()..update(updates))
+      (GHeroWithInterfaceSubTypedFragmentsVarsBuilder()..update(updates))
           ._build();
 
   _$GHeroWithInterfaceSubTypedFragmentsVars._({required this.episode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        episode, r'GHeroWithInterfaceSubTypedFragmentsVars', 'episode');
-  }
-
+      : super._();
   @override
   GHeroWithInterfaceSubTypedFragmentsVars rebuild(
           void Function(GHeroWithInterfaceSubTypedFragmentsVarsBuilder)
@@ -31,7 +27,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsVars
 
   @override
   GHeroWithInterfaceSubTypedFragmentsVarsBuilder toBuilder() =>
-      new GHeroWithInterfaceSubTypedFragmentsVarsBuilder()..replace(this);
+      GHeroWithInterfaceSubTypedFragmentsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,7 +76,6 @@ class GHeroWithInterfaceSubTypedFragmentsVarsBuilder
 
   @override
   void replace(GHeroWithInterfaceSubTypedFragmentsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithInterfaceSubTypedFragmentsVars;
   }
 
@@ -95,9 +90,10 @@ class GHeroWithInterfaceSubTypedFragmentsVarsBuilder
 
   _$GHeroWithInterfaceSubTypedFragmentsVars _build() {
     final _$result = _$v ??
-        new _$GHeroWithInterfaceSubTypedFragmentsVars._(
-            episode: BuiltValueNullFieldError.checkNotNull(episode,
-                r'GHeroWithInterfaceSubTypedFragmentsVars', 'episode'));
+        _$GHeroWithInterfaceSubTypedFragmentsVars._(
+          episode: BuiltValueNullFieldError.checkNotNull(
+              episode, r'GHeroWithInterfaceSubTypedFragmentsVars', 'episode'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -106,10 +102,9 @@ class GHeroWithInterfaceSubTypedFragmentsVarsBuilder
 class _$GheroFieldsFragmentVars extends GheroFieldsFragmentVars {
   factory _$GheroFieldsFragmentVars(
           [void Function(GheroFieldsFragmentVarsBuilder)? updates]) =>
-      (new GheroFieldsFragmentVarsBuilder()..update(updates))._build();
+      (GheroFieldsFragmentVarsBuilder()..update(updates))._build();
 
   _$GheroFieldsFragmentVars._() : super._();
-
   @override
   GheroFieldsFragmentVars rebuild(
           void Function(GheroFieldsFragmentVarsBuilder) updates) =>
@@ -117,7 +112,7 @@ class _$GheroFieldsFragmentVars extends GheroFieldsFragmentVars {
 
   @override
   GheroFieldsFragmentVarsBuilder toBuilder() =>
-      new GheroFieldsFragmentVarsBuilder()..replace(this);
+      GheroFieldsFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -145,7 +140,6 @@ class GheroFieldsFragmentVarsBuilder
 
   @override
   void replace(GheroFieldsFragmentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GheroFieldsFragmentVars;
   }
 
@@ -158,7 +152,7 @@ class GheroFieldsFragmentVarsBuilder
   GheroFieldsFragmentVars build() => _build();
 
   _$GheroFieldsFragmentVars _build() {
-    final _$result = _$v ?? new _$GheroFieldsFragmentVars._();
+    final _$result = _$v ?? _$GheroFieldsFragmentVars._();
     replace(_$result);
     return _$result;
   }
@@ -167,10 +161,9 @@ class GheroFieldsFragmentVarsBuilder
 class _$GhumanFieldsFragmentVars extends GhumanFieldsFragmentVars {
   factory _$GhumanFieldsFragmentVars(
           [void Function(GhumanFieldsFragmentVarsBuilder)? updates]) =>
-      (new GhumanFieldsFragmentVarsBuilder()..update(updates))._build();
+      (GhumanFieldsFragmentVarsBuilder()..update(updates))._build();
 
   _$GhumanFieldsFragmentVars._() : super._();
-
   @override
   GhumanFieldsFragmentVars rebuild(
           void Function(GhumanFieldsFragmentVarsBuilder) updates) =>
@@ -178,7 +171,7 @@ class _$GhumanFieldsFragmentVars extends GhumanFieldsFragmentVars {
 
   @override
   GhumanFieldsFragmentVarsBuilder toBuilder() =>
-      new GhumanFieldsFragmentVarsBuilder()..replace(this);
+      GhumanFieldsFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -206,7 +199,6 @@ class GhumanFieldsFragmentVarsBuilder
 
   @override
   void replace(GhumanFieldsFragmentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GhumanFieldsFragmentVars;
   }
 
@@ -219,7 +211,7 @@ class GhumanFieldsFragmentVarsBuilder
   GhumanFieldsFragmentVars build() => _build();
 
   _$GhumanFieldsFragmentVars _build() {
-    final _$result = _$v ?? new _$GhumanFieldsFragmentVars._();
+    final _$result = _$v ?? _$GhumanFieldsFragmentVars._();
     replace(_$result);
     return _$result;
   }
@@ -228,10 +220,9 @@ class GhumanFieldsFragmentVarsBuilder
 class _$GdroidFieldsFragmentVars extends GdroidFieldsFragmentVars {
   factory _$GdroidFieldsFragmentVars(
           [void Function(GdroidFieldsFragmentVarsBuilder)? updates]) =>
-      (new GdroidFieldsFragmentVarsBuilder()..update(updates))._build();
+      (GdroidFieldsFragmentVarsBuilder()..update(updates))._build();
 
   _$GdroidFieldsFragmentVars._() : super._();
-
   @override
   GdroidFieldsFragmentVars rebuild(
           void Function(GdroidFieldsFragmentVarsBuilder) updates) =>
@@ -239,7 +230,7 @@ class _$GdroidFieldsFragmentVars extends GdroidFieldsFragmentVars {
 
   @override
   GdroidFieldsFragmentVarsBuilder toBuilder() =>
-      new GdroidFieldsFragmentVarsBuilder()..replace(this);
+      GdroidFieldsFragmentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -267,7 +258,6 @@ class GdroidFieldsFragmentVarsBuilder
 
   @override
   void replace(GdroidFieldsFragmentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GdroidFieldsFragmentVars;
   }
 
@@ -280,7 +270,7 @@ class GdroidFieldsFragmentVarsBuilder
   GdroidFieldsFragmentVars build() => _build();
 
   _$GdroidFieldsFragmentVars _build() {
-    final _$result = _$v ?? new _$GdroidFieldsFragmentVars._();
+    final _$result = _$v ?? _$GdroidFieldsFragmentVars._();
     replace(_$result);
     return _$result;
   }

@@ -155,9 +155,10 @@ class GHeroForEpisodeBuilder
     try {
       _$result = _$v ??
           new _$GHeroForEpisode._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHeroForEpisode', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHeroForEpisode', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

@@ -164,9 +164,10 @@ class GPostsWithFixedVariableBuilder
     try {
       _$result = _$v ??
           new _$GPostsWithFixedVariable._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GPostsWithFixedVariable', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GPostsWithFixedVariable', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

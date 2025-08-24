@@ -524,9 +524,10 @@ class GPostsDataBuilder implements Builder<GPostsData, GPostsDataBuilder> {
     try {
       _$result = _$v ??
           new _$GPostsData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostsData', 'G__typename'),
-              posts: _posts?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostsData', 'G__typename'),
+            posts: _posts?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -667,12 +668,13 @@ class GPostsData_postsBuilder
     try {
       _$result = _$v ??
           new _$GPostsData_posts._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostsData_posts', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostsData_posts', 'id'),
-              isFavorited: _isFavorited?.build(),
-              isLiked: _isLiked?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostsData_posts', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostsData_posts', 'id'),
+            isFavorited: _isFavorited?.build(),
+            isLiked: _isLiked?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -790,10 +792,11 @@ class GPostsData_posts_isFavoritedBuilder
   _$GPostsData_posts_isFavorited _build() {
     final _$result = _$v ??
         new _$GPostsData_posts_isFavorited._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GPostsData_posts_isFavorited', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount, r'GPostsData_posts_isFavorited', 'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GPostsData_posts_isFavorited', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount, r'GPostsData_posts_isFavorited', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -897,10 +900,11 @@ class GPostsData_posts_isLikedBuilder
   _$GPostsData_posts_isLiked _build() {
     final _$result = _$v ??
         new _$GPostsData_posts_isLiked._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GPostsData_posts_isLiked', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount, r'GPostsData_posts_isLiked', 'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GPostsData_posts_isLiked', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount, r'GPostsData_posts_isLiked', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1030,12 +1034,13 @@ class GPostFragmentDataBuilder
     try {
       _$result = _$v ??
           new _$GPostFragmentData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostFragmentData', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostFragmentData', 'id'),
-              isFavorited: _isFavorited?.build(),
-              isLiked: _isLiked?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostFragmentData', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostFragmentData', 'id'),
+            isFavorited: _isFavorited?.build(),
+            isLiked: _isLiked?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1153,10 +1158,11 @@ class GPostFragmentData_isFavoritedBuilder
   _$GPostFragmentData_isFavorited _build() {
     final _$result = _$v ??
         new _$GPostFragmentData_isFavorited._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GPostFragmentData_isFavorited', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount, r'GPostFragmentData_isFavorited', 'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GPostFragmentData_isFavorited', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount, r'GPostFragmentData_isFavorited', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1260,10 +1266,11 @@ class GPostFragmentData_isLikedBuilder
   _$GPostFragmentData_isLiked _build() {
     final _$result = _$v ??
         new _$GPostFragmentData_isLiked._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GPostFragmentData_isLiked', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount, r'GPostFragmentData_isLiked', 'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GPostFragmentData_isLiked', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount, r'GPostFragmentData_isLiked', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -155,9 +155,10 @@ class GHumanWithArgsBuilder
     try {
       _$result = _$v ??
           new _$GHumanWithArgs._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GHumanWithArgs', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GHumanWithArgs', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

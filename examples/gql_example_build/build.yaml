@@ -3,20 +3,37 @@ targets:
     builders:
       gql_build|ast_builder:
         enabled: true
+        options:
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|req_builder:
         enabled: true
         options:
           schema: gql_example_build|lib/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|serializer_builder:
         enabled: true
         options:
           schema: gql_example_build|lib/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|schema_builder:
         enabled: true
+        options:
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|data_builder:
         enabled: true
         options:
           schema: gql_example_build|lib/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
           when_extensions:
             when: true
             maybeWhen: true
@@ -24,3 +41,6 @@ targets:
         enabled: true
         options:
           schema: gql_example_build|lib/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'

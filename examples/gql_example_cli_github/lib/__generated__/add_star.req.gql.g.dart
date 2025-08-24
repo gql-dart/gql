@@ -148,9 +148,10 @@ class GAddStarBuilder implements Builder<GAddStar, GAddStarBuilder> {
     try {
       _$result = _$v ??
           new _$GAddStar._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAddStar', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GAddStar', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

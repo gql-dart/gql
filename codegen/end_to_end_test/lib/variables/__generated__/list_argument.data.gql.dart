@@ -14,13 +14,15 @@ part 'list_argument.data.gql.g.dart';
 
 abstract class GreviewsWithListArgumentData
     implements
-        Built<GreviewsWithListArgumentData,
-            GreviewsWithListArgumentDataBuilder> {
+        Built<
+          GreviewsWithListArgumentData,
+          GreviewsWithListArgumentDataBuilder
+        > {
   GreviewsWithListArgumentData._();
 
-  factory GreviewsWithListArgumentData(
-          [void Function(GreviewsWithListArgumentDataBuilder b) updates]) =
-      _$GreviewsWithListArgumentData;
+  factory GreviewsWithListArgumentData([
+    void Function(GreviewsWithListArgumentDataBuilder b) updates,
+  ]) = _$GreviewsWithListArgumentData;
 
   static void _initializeBuilder(GreviewsWithListArgumentDataBuilder b) =>
       b..G__typename = 'Query';
@@ -31,10 +33,12 @@ abstract class GreviewsWithListArgumentData
   static Serializer<GreviewsWithListArgumentData> get serializer =>
       _$greviewsWithListArgumentDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GreviewsWithListArgumentData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GreviewsWithListArgumentData.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GreviewsWithListArgumentData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -45,17 +49,19 @@ abstract class GreviewsWithListArgumentData
 
 abstract class GreviewsWithListArgumentData_reviews
     implements
-        Built<GreviewsWithListArgumentData_reviews,
-            GreviewsWithListArgumentData_reviewsBuilder> {
+        Built<
+          GreviewsWithListArgumentData_reviews,
+          GreviewsWithListArgumentData_reviewsBuilder
+        > {
   GreviewsWithListArgumentData_reviews._();
 
-  factory GreviewsWithListArgumentData_reviews(
-      [void Function(GreviewsWithListArgumentData_reviewsBuilder b)
-          updates]) = _$GreviewsWithListArgumentData_reviews;
+  factory GreviewsWithListArgumentData_reviews([
+    void Function(GreviewsWithListArgumentData_reviewsBuilder b) updates,
+  ]) = _$GreviewsWithListArgumentData_reviews;
 
   static void _initializeBuilder(
-          GreviewsWithListArgumentData_reviewsBuilder b) =>
-      b..G__typename = 'Review';
+    GreviewsWithListArgumentData_reviewsBuilder b,
+  ) => b..G__typename = 'Review';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
@@ -63,15 +69,17 @@ abstract class GreviewsWithListArgumentData_reviews
   static Serializer<GreviewsWithListArgumentData_reviews> get serializer =>
       _$greviewsWithListArgumentDataReviewsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GreviewsWithListArgumentData_reviews.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GreviewsWithListArgumentData_reviews.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GreviewsWithListArgumentData_reviews? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GreviewsWithListArgumentData_reviews.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i1.serializers.deserializeWith(
+    GreviewsWithListArgumentData_reviews.serializer,
+    json,
+  );
 }

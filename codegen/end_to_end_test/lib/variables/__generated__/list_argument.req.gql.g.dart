@@ -165,9 +165,10 @@ class GreviewsWithListArgumentBuilder
     try {
       _$result = _$v ??
           new _$GreviewsWithListArgument._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GreviewsWithListArgument', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GreviewsWithListArgument', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

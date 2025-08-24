@@ -119,7 +119,6 @@ abstract class GShapeData_shape__base
   static Serializer<GShapeData_shape__base> get serializer =>
       _$gShapeDataShapeBaseSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__base.serializer,
         this,
@@ -154,7 +153,6 @@ abstract class GShapeData_shape__asSquare
   static Serializer<GShapeData_shape__asSquare> get serializer =>
       _$gShapeDataShapeAsSquareSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__asSquare.serializer,
         this,
@@ -191,7 +189,6 @@ abstract class GShapeData_shape__asRectangle
   static Serializer<GShapeData_shape__asRectangle> get serializer =>
       _$gShapeDataShapeAsRectangleSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GShapeData_shape__asRectangle.serializer,
         this,

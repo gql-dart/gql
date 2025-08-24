@@ -462,28 +462,29 @@ class GQueryOperationVarsBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperationVars._(
-              id: id,
-              Gbool: Gbool,
-              Gint: Gint,
-              float: float,
-              string: string,
-              scalar: _scalar?.build(),
-              Genum: Genum,
-              input: _input?.build(),
-              idRequired: BuiltValueNullFieldError.checkNotNull(
-                  idRequired, r'GQueryOperationVars', 'idRequired'),
-              boolRequired: BuiltValueNullFieldError.checkNotNull(
-                  boolRequired, r'GQueryOperationVars', 'boolRequired'),
-              intRequired: BuiltValueNullFieldError.checkNotNull(
-                  intRequired, r'GQueryOperationVars', 'intRequired'),
-              floatRequired: BuiltValueNullFieldError.checkNotNull(
-                  floatRequired, r'GQueryOperationVars', 'floatRequired'),
-              stringRequired: BuiltValueNullFieldError.checkNotNull(
-                  stringRequired, r'GQueryOperationVars', 'stringRequired'),
-              scalarRequired: scalarRequired.build(),
-              enumRequired: BuiltValueNullFieldError.checkNotNull(
-                  enumRequired, r'GQueryOperationVars', 'enumRequired'),
-              inputRequired: inputRequired.build());
+            id: id,
+            Gbool: Gbool,
+            Gint: Gint,
+            float: float,
+            string: string,
+            scalar: _scalar?.build(),
+            Genum: Genum,
+            input: _input?.build(),
+            idRequired: BuiltValueNullFieldError.checkNotNull(
+                idRequired, r'GQueryOperationVars', 'idRequired'),
+            boolRequired: BuiltValueNullFieldError.checkNotNull(
+                boolRequired, r'GQueryOperationVars', 'boolRequired'),
+            intRequired: BuiltValueNullFieldError.checkNotNull(
+                intRequired, r'GQueryOperationVars', 'intRequired'),
+            floatRequired: BuiltValueNullFieldError.checkNotNull(
+                floatRequired, r'GQueryOperationVars', 'floatRequired'),
+            stringRequired: BuiltValueNullFieldError.checkNotNull(
+                stringRequired, r'GQueryOperationVars', 'stringRequired'),
+            scalarRequired: scalarRequired.build(),
+            enumRequired: BuiltValueNullFieldError.checkNotNull(
+                enumRequired, r'GQueryOperationVars', 'enumRequired'),
+            inputRequired: inputRequired.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

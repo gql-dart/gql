@@ -146,8 +146,9 @@ class GHeroWithInterfaceUnnamedFragmentsVarsBuilder
   _$GHeroWithInterfaceUnnamedFragmentsVars _build() {
     final _$result = _$v ??
         new _$GHeroWithInterfaceUnnamedFragmentsVars._(
-            episode: BuiltValueNullFieldError.checkNotNull(
-                episode, r'GHeroWithInterfaceUnnamedFragmentsVars', 'episode'));
+          episode: BuiltValueNullFieldError.checkNotNull(
+              episode, r'GHeroWithInterfaceUnnamedFragmentsVars', 'episode'),
+        );
     replace(_$result);
     return _$result;
   }

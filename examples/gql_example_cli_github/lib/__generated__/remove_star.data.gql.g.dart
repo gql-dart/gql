@@ -274,9 +274,10 @@ class GRemoveStarDataBuilder
     try {
       _$result = _$v ??
           new _$GRemoveStarData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GRemoveStarData', 'G__typename'),
-              action: _action?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GRemoveStarData', 'G__typename'),
+            action: _action?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -391,9 +392,10 @@ class GRemoveStarData_actionBuilder
     try {
       _$result = _$v ??
           new _$GRemoveStarData_action._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GRemoveStarData_action', 'G__typename'),
-              starrable: _starrable?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GRemoveStarData_action', 'G__typename'),
+            starrable: _starrable?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -511,12 +513,13 @@ class GRemoveStarData_action_starrableBuilder
   _$GRemoveStarData_action_starrable _build() {
     final _$result = _$v ??
         new _$GRemoveStarData_action_starrable._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GRemoveStarData_action_starrable', 'G__typename'),
-            viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
-                viewerHasStarred,
-                r'GRemoveStarData_action_starrable',
-                'viewerHasStarred'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GRemoveStarData_action_starrable', 'G__typename'),
+          viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+              viewerHasStarred,
+              r'GRemoveStarData_action_starrable',
+              'viewerHasStarred'),
+        );
     replace(_$result);
     return _$result;
   }

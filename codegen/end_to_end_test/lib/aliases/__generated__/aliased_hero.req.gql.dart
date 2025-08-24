@@ -21,24 +21,21 @@ abstract class GAliasedHero
   factory GAliasedHero([void Function(GAliasedHeroBuilder b) updates]) =
       _$GAliasedHero;
 
-  static void _initializeBuilder(GAliasedHeroBuilder b) => b
-    ..operation = _i1.Operation(
-      document: _i2.document,
-      operationName: 'AliasedHero',
-    );
+  static void _initializeBuilder(GAliasedHeroBuilder b) =>
+      b
+        ..operation = _i1.Operation(
+          document: _i2.document,
+          operationName: 'AliasedHero',
+        );
 
   _i3.GAliasedHeroVars get vars;
   _i1.Operation get operation;
   static Serializer<GAliasedHero> get serializer => _$gAliasedHeroSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GAliasedHero.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GAliasedHero.serializer, this)
+          as Map<String, dynamic>);
 
   static GAliasedHero? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GAliasedHero.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GAliasedHero.serializer, json);
 }

@@ -3,14 +3,24 @@ targets:
     builders:
       gql_build|ast_builder:
         enabled: true
+        options:
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|req_builder:
         enabled: true
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
       gql_build|serializer_builder:
         enabled: true
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
           custom_serializers:
             - import: 'package:end_to_end_test_tristate/date_serializer.dart'
               name: DateSerializer
@@ -24,7 +34,11 @@ targets:
               import: 'package:end_to_end_test_tristate/custom_field.dart'
       gql_build|schema_builder:
         enabled: true
+
         options:
+          format:
+            page_width: 80
+            language_version: '3.6.0'
           vars_create_factories: true
           tristate_optionals: true
           enum_fallbacks:
@@ -39,6 +53,9 @@ targets:
         enabled: true
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
           when_extensions:
             when: true
             maybeWhen: true
@@ -52,6 +69,9 @@ targets:
         enabled: true
         options:
           schema: end_to_end_test_tristate|lib/graphql/schema.graphql
+          format:
+            page_width: 80
+            language_version: '3.6.0'
           tristate_optionals: true
           vars_create_factories: true
           type_overrides:

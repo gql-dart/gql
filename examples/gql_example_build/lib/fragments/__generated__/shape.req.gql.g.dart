@@ -148,9 +148,10 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
     try {
       _$result = _$v ??
           new _$GShape._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GShape', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GShape', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

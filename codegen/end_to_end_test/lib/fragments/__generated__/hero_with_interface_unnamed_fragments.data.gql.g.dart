@@ -618,9 +618,10 @@ class GHeroWithInterfaceUnnamedFragmentsDataBuilder
   _$GHeroWithInterfaceUnnamedFragmentsData _build() {
     final _$result = _$v ??
         new _$GHeroWithInterfaceUnnamedFragmentsData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData', 'G__typename'),
-            hero: hero);
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData', 'G__typename'),
+          hero: hero,
+        );
     replace(_$result);
     return _$result;
   }
@@ -748,14 +749,15 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__baseBuilder
   _$GHeroWithInterfaceUnnamedFragmentsData_hero__base _build() {
     final _$result = _$v ??
         new _$GHeroWithInterfaceUnnamedFragmentsData_hero__base._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__base',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(name,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__base',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__base', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -919,20 +921,19 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__asHumanBuilder
     try {
       _$result = _$v ??
           new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
-                  'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id,
-                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
-                  'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name,
-                  r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
-                  'name'),
-              homePlanet: homePlanet,
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(id,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name,
+                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman',
+                'name'),
+            homePlanet: homePlanet,
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -1063,10 +1064,11 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__baseBuilder
     final _$result = _$v ??
         new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base
             ._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base',
-                'G__typename'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__base',
+              'G__typename'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1223,18 +1225,22 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHumanBuild
   _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
       _build() {
     final _$result = _$v ??
-        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(id,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
-                'name'),
-            homePlanet: homePlanet);
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman
+            ._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
+              'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asHuman',
+              'name'),
+          homePlanet: homePlanet,
+        );
     replace(_$result);
     return _$result;
   }
@@ -1392,18 +1398,22 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroidBuild
   _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
       _build() {
     final _$result = _$v ??
-        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(id,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
-                'name'),
-            primaryFunction: primaryFunction);
+        new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid
+            ._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(
+              id,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
+              'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends__asDroid',
+              'name'),
+          primaryFunction: primaryFunction,
+        );
     replace(_$result);
     return _$result;
   }
@@ -1547,17 +1557,16 @@ class GHeroWithInterfaceUnnamedFragmentsData_hero__asDroidBuilder
   _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid _build() {
     final _$result = _$v ??
         new _$GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid',
-                'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(id,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid',
-                'name'),
-            primaryFunction: primaryFunction);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid',
+              'G__typename'),
+          id: BuiltValueNullFieldError.checkNotNull(id,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name,
+              r'GHeroWithInterfaceUnnamedFragmentsData_hero__asDroid', 'name'),
+          primaryFunction: primaryFunction,
+        );
     replace(_$result);
     return _$result;
   }

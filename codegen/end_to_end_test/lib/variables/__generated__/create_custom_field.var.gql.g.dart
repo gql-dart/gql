@@ -137,7 +137,10 @@ class GCreateCustomFieldVarsBuilder
   _$GCreateCustomFieldVars _build() {
     _$GCreateCustomFieldVars _$result;
     try {
-      _$result = _$v ?? new _$GCreateCustomFieldVars._(input: input.build());
+      _$result = _$v ??
+          new _$GCreateCustomFieldVars._(
+            input: input.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

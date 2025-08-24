@@ -18,29 +18,26 @@ abstract class GSearchResultsQuery
     implements Built<GSearchResultsQuery, GSearchResultsQueryBuilder> {
   GSearchResultsQuery._();
 
-  factory GSearchResultsQuery(
-          [void Function(GSearchResultsQueryBuilder b) updates]) =
-      _$GSearchResultsQuery;
+  factory GSearchResultsQuery([
+    void Function(GSearchResultsQueryBuilder b) updates,
+  ]) = _$GSearchResultsQuery;
 
-  static void _initializeBuilder(GSearchResultsQueryBuilder b) => b
-    ..operation = _i1.Operation(
-      document: _i2.document,
-      operationName: 'SearchResultsQuery',
-    );
+  static void _initializeBuilder(GSearchResultsQueryBuilder b) =>
+      b
+        ..operation = _i1.Operation(
+          document: _i2.document,
+          operationName: 'SearchResultsQuery',
+        );
 
   _i3.GSearchResultsQueryVars get vars;
   _i1.Operation get operation;
   static Serializer<GSearchResultsQuery> get serializer =>
       _$gSearchResultsQuerySerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GSearchResultsQuery.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(GSearchResultsQuery.serializer, this)
+          as Map<String, dynamic>);
 
   static GSearchResultsQuery? fromJson(Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GSearchResultsQuery.serializer,
-        json,
-      );
+      _i4.serializers.deserializeWith(GSearchResultsQuery.serializer, json);
 }

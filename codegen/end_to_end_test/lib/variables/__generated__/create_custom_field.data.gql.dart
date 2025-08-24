@@ -14,9 +14,9 @@ abstract class GCreateCustomFieldData
     implements Built<GCreateCustomFieldData, GCreateCustomFieldDataBuilder> {
   GCreateCustomFieldData._();
 
-  factory GCreateCustomFieldData(
-          [void Function(GCreateCustomFieldDataBuilder b) updates]) =
-      _$GCreateCustomFieldData;
+  factory GCreateCustomFieldData([
+    void Function(GCreateCustomFieldDataBuilder b) updates,
+  ]) = _$GCreateCustomFieldData;
 
   static void _initializeBuilder(GCreateCustomFieldDataBuilder b) =>
       b..G__typename = 'Mutation';
@@ -27,14 +27,10 @@ abstract class GCreateCustomFieldData
   static Serializer<GCreateCustomFieldData> get serializer =>
       _$gCreateCustomFieldDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
-        GCreateCustomFieldData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GCreateCustomFieldData.serializer, this)
+          as Map<String, dynamic>);
 
   static GCreateCustomFieldData? fromJson(Map<String, dynamic> json) =>
-      _i2.serializers.deserializeWith(
-        GCreateCustomFieldData.serializer,
-        json,
-      );
+      _i2.serializers.deserializeWith(GCreateCustomFieldData.serializer, json);
 }

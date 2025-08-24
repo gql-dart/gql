@@ -295,8 +295,9 @@ class GScalarBuilder implements Builder<GScalar, GScalarBuilder> {
   _$GScalar _build() {
     final _$result = _$v ??
         new _$GScalar._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GScalar', 'value'));
+          value:
+              BuiltValueNullFieldError.checkNotNull(value, r'GScalar', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -567,28 +568,29 @@ class GInputBuilder implements Builder<GInput, GInputBuilder> {
     try {
       _$result = _$v ??
           new _$GInput._(
-              id: id,
-              Gbool: Gbool,
-              Gint: Gint,
-              float: float,
-              string: string,
-              scalar: _scalar?.build(),
-              Genum: Genum,
-              input: _input?.build(),
-              idRequired: BuiltValueNullFieldError.checkNotNull(
-                  idRequired, r'GInput', 'idRequired'),
-              boolRequired: BuiltValueNullFieldError.checkNotNull(
-                  boolRequired, r'GInput', 'boolRequired'),
-              intRequired: BuiltValueNullFieldError.checkNotNull(
-                  intRequired, r'GInput', 'intRequired'),
-              floatRequired: BuiltValueNullFieldError.checkNotNull(
-                  floatRequired, r'GInput', 'floatRequired'),
-              stringRequired: BuiltValueNullFieldError.checkNotNull(
-                  stringRequired, r'GInput', 'stringRequired'),
-              scalarRequired: scalarRequired.build(),
-              enumRequired: BuiltValueNullFieldError.checkNotNull(
-                  enumRequired, r'GInput', 'enumRequired'),
-              inputRequired: inputRequired.build());
+            id: id,
+            Gbool: Gbool,
+            Gint: Gint,
+            float: float,
+            string: string,
+            scalar: _scalar?.build(),
+            Genum: Genum,
+            input: _input?.build(),
+            idRequired: BuiltValueNullFieldError.checkNotNull(
+                idRequired, r'GInput', 'idRequired'),
+            boolRequired: BuiltValueNullFieldError.checkNotNull(
+                boolRequired, r'GInput', 'boolRequired'),
+            intRequired: BuiltValueNullFieldError.checkNotNull(
+                intRequired, r'GInput', 'intRequired'),
+            floatRequired: BuiltValueNullFieldError.checkNotNull(
+                floatRequired, r'GInput', 'floatRequired'),
+            stringRequired: BuiltValueNullFieldError.checkNotNull(
+                stringRequired, r'GInput', 'stringRequired'),
+            scalarRequired: scalarRequired.build(),
+            enumRequired: BuiltValueNullFieldError.checkNotNull(
+                enumRequired, r'GInput', 'enumRequired'),
+            inputRequired: inputRequired.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

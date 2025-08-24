@@ -16,13 +16,15 @@ part 'hero_with_interface_unnamed_fragments.req.gql.g.dart';
 
 abstract class GHeroWithInterfaceUnnamedFragments
     implements
-        Built<GHeroWithInterfaceUnnamedFragments,
-            GHeroWithInterfaceUnnamedFragmentsBuilder> {
+        Built<
+          GHeroWithInterfaceUnnamedFragments,
+          GHeroWithInterfaceUnnamedFragmentsBuilder
+        > {
   GHeroWithInterfaceUnnamedFragments._();
 
-  factory GHeroWithInterfaceUnnamedFragments(
-      [void Function(GHeroWithInterfaceUnnamedFragmentsBuilder b)
-          updates]) = _$GHeroWithInterfaceUnnamedFragments;
+  factory GHeroWithInterfaceUnnamedFragments([
+    void Function(GHeroWithInterfaceUnnamedFragmentsBuilder b) updates,
+  ]) = _$GHeroWithInterfaceUnnamedFragments;
 
   static void _initializeBuilder(GHeroWithInterfaceUnnamedFragmentsBuilder b) =>
       b
@@ -36,15 +38,17 @@ abstract class GHeroWithInterfaceUnnamedFragments
   static Serializer<GHeroWithInterfaceUnnamedFragments> get serializer =>
       _$gHeroWithInterfaceUnnamedFragmentsSerializer;
 
-  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
-        GHeroWithInterfaceUnnamedFragments.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i4.serializers.serializeWith(
+            GHeroWithInterfaceUnnamedFragments.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GHeroWithInterfaceUnnamedFragments? fromJson(
-          Map<String, dynamic> json) =>
-      _i4.serializers.deserializeWith(
-        GHeroWithInterfaceUnnamedFragments.serializer,
-        json,
-      );
+    Map<String, dynamic> json,
+  ) => _i4.serializers.deserializeWith(
+    GHeroWithInterfaceUnnamedFragments.serializer,
+    json,
+  );
 }

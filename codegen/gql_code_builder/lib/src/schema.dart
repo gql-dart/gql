@@ -13,7 +13,6 @@ Spec? buildSchema(
   SourceNode schemaSource,
   Map<String, Reference> typeOverrides,
   EnumFallbackConfig enumFallbackConfig,
-  Allocator allocator,
   TriStateValueConfig triStateValueConfig,
   bool generateVarsCreateFactories,
 ) =>
@@ -23,7 +22,6 @@ Spec? buildSchema(
             schemaSource,
             typeOverrides,
             enumFallbackConfig,
-            allocator,
             triStateValueConfig,
             generateVarsCreateFactories,
           ),
@@ -35,7 +33,6 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final Map<String, Reference> typeOverrides;
   final EnumFallbackConfig enumFallbackConfig;
 
-  final Allocator allocator;
   final TriStateValueConfig triStateValueConfig;
 
   final bool generateVarsCreateFactories;
@@ -44,7 +41,6 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
       this.schemaSource,
       this.typeOverrides,
       this.enumFallbackConfig,
-      this.allocator,
       this.triStateValueConfig,
       this.generateVarsCreateFactories);
 
@@ -73,8 +69,7 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
       TriStateValueConfig.never => [inputClass],
       TriStateValueConfig.onAllNullableFields => [
           inputClass,
-          nullAwareJsonSerializerClass(
-              inputClass, allocator, schemaSource, typeOverrides)
+          nullAwareJsonSerializerClass(inputClass, schemaSource, typeOverrides)
         ],
     };
   }

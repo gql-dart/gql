@@ -127,8 +127,9 @@ class GAddStarVarsBuilder
   _$GAddStarVars _build() {
     final _$result = _$v ??
         new _$GAddStarVars._(
-            starrableId: BuiltValueNullFieldError.checkNotNull(
-                starrableId, r'GAddStarVars', 'starrableId'));
+          starrableId: BuiltValueNullFieldError.checkNotNull(
+              starrableId, r'GAddStarVars', 'starrableId'),
+        );
     replace(_$result);
     return _$result;
   }

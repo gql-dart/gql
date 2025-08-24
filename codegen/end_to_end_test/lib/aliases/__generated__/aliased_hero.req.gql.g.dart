@@ -152,9 +152,10 @@ class GAliasedHeroBuilder
     try {
       _$result = _$v ??
           new _$GAliasedHero._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAliasedHero', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GAliasedHero', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

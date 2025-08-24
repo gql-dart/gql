@@ -127,8 +127,9 @@ class GFindPokemonVarsBuilder
   _$GFindPokemonVars _build() {
     final _$result = _$v ??
         new _$GFindPokemonVars._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GFindPokemonVars', 'name'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GFindPokemonVars', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

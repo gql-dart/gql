@@ -484,11 +484,12 @@ class GReviewInputBuilder
     try {
       _$result = _$v ??
           new _$GReviewInput._(
-              stars: BuiltValueNullFieldError.checkNotNull(
-                  stars, r'GReviewInput', 'stars'),
-              commentary: commentary,
-              favorite_color: _favorite_color?.build(),
-              seenOn: _seenOn?.build());
+            stars: BuiltValueNullFieldError.checkNotNull(
+                stars, r'GReviewInput', 'stars'),
+            commentary: commentary,
+            favorite_color: _favorite_color?.build(),
+            seenOn: _seenOn?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -597,9 +598,10 @@ class GCustomFieldInputBuilder
   _$GCustomFieldInput _build() {
     final _$result = _$v ??
         new _$GCustomFieldInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GCustomFieldInput', 'id'),
-            customField: customField);
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GCustomFieldInput', 'id'),
+          customField: customField,
+        );
     replace(_$result);
     return _$result;
   }
@@ -704,12 +706,13 @@ class GColorInputBuilder implements Builder<GColorInput, GColorInputBuilder> {
   _$GColorInput _build() {
     final _$result = _$v ??
         new _$GColorInput._(
-            red: BuiltValueNullFieldError.checkNotNull(
-                red, r'GColorInput', 'red'),
-            green: BuiltValueNullFieldError.checkNotNull(
-                green, r'GColorInput', 'green'),
-            blue: BuiltValueNullFieldError.checkNotNull(
-                blue, r'GColorInput', 'blue'));
+          red:
+              BuiltValueNullFieldError.checkNotNull(red, r'GColorInput', 'red'),
+          green: BuiltValueNullFieldError.checkNotNull(
+              green, r'GColorInput', 'green'),
+          blue: BuiltValueNullFieldError.checkNotNull(
+              blue, r'GColorInput', 'blue'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -791,8 +794,9 @@ class GPostLikesInputBuilder
   _$GPostLikesInput _build() {
     final _$result = _$v ??
         new _$GPostLikesInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GPostLikesInput', 'id'));
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GPostLikesInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -876,8 +880,9 @@ class GPostFavoritesInputBuilder
   _$GPostFavoritesInput _build() {
     final _$result = _$v ??
         new _$GPostFavoritesInput._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GPostFavoritesInput', 'id'));
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'GPostFavoritesInput', 'id'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -957,8 +962,9 @@ class GISODateBuilder implements Builder<GISODate, GISODateBuilder> {
   _$GISODate _build() {
     final _$result = _$v ??
         new _$GISODate._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GISODate', 'value'));
+          value: BuiltValueNullFieldError.checkNotNull(
+              value, r'GISODate', 'value'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1038,8 +1044,9 @@ class GJsonBuilder implements Builder<GJson, GJsonBuilder> {
   _$GJson _build() {
     final _$result = _$v ??
         new _$GJson._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GJson', 'value'));
+          value:
+              BuiltValueNullFieldError.checkNotNull(value, r'GJson', 'value'),
+        );
     replace(_$result);
     return _$result;
   }

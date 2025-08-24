@@ -155,9 +155,10 @@ class GQueryOperationBuilder
     try {
       _$result = _$v ??
           new _$GQueryOperation._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GQueryOperation', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GQueryOperation', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

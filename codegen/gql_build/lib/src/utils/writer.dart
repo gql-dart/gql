@@ -7,12 +7,11 @@ import "package:dart_style/dart_style.dart";
 import "../allocators/gql_allocator.dart";
 import "../config.dart";
 
-final DartFormatter _dartfmt = DartFormatter();
-
 Future<void> writeDocument(
   Library library,
   BuildStep buildStep,
-  String extension, [
+  String extension,
+  DartFormatter dartfmt, [
   String? schemaUrl,
   Allocator? allocator,
 ]) {
@@ -26,7 +25,7 @@ Future<void> writeDocument(
 
   final generatedAsset = outputAssetId(buildStep.inputId, extension);
 
-  final genSrc = _dartfmt.format("${library.accept(
+  final genSrc = dartfmt.format("${library.accept(
     DartEmitter(
       allocator: allocator,
       orderDirectives: true,

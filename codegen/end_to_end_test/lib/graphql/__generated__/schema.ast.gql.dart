@@ -33,10 +33,7 @@ const schema = _i1.SchemaDefinitionNode(
 const Gextends = _i1.DirectiveDefinitionNode(
   name: _i1.NameNode(value: 'extends'),
   args: [],
-  locations: [
-    _i1.DirectiveLocation.object,
-    _i1.DirectiveLocation.interface,
-  ],
+  locations: [_i1.DirectiveLocation.object, _i1.DirectiveLocation.interface],
   repeatable: false,
 );
 const Query = _i1.ObjectTypeDefinitionNode(
@@ -56,7 +53,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Character'),
@@ -109,7 +106,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
@@ -131,7 +128,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Character'),
@@ -150,7 +147,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Droid'),
@@ -169,7 +166,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Human'),
@@ -188,7 +185,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Starship'),
@@ -282,7 +279,7 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
             isNonNull: true,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'CustomField'),
@@ -308,13 +305,13 @@ const Subscription = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Review'),
         isNonNull: false,
       ),
-    )
+    ),
   ],
 );
 const Episode = _i1.EnumTypeDefinitionNode(
@@ -344,10 +341,7 @@ const Character = _i1.InterfaceTypeDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'name'),
@@ -430,20 +424,14 @@ const Human = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Human'),
   directives: [],
   interfaces: [
-    _i1.NamedTypeNode(
-      name: _i1.NameNode(value: 'Character'),
-      isNonNull: false,
-    )
+    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Character'), isNonNull: false),
   ],
   fields: [
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'name'),
@@ -475,7 +463,7 @@ const Human = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: _i1.EnumValueNode(name: _i1.NameNode(value: 'METER')),
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Float'),
@@ -570,20 +558,14 @@ const Droid = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Droid'),
   directives: [],
   interfaces: [
-    _i1.NamedTypeNode(
-      name: _i1.NameNode(value: 'Character'),
-      isNonNull: false,
-    )
+    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Character'), isNonNull: false),
   ],
   fields: [
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'name'),
@@ -715,10 +697,7 @@ const FriendsEdge = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'cursor'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'node'),
@@ -884,10 +863,7 @@ const CustomFieldInput = _i1.InputObjectTypeDefinitionNode(
     _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
@@ -943,10 +919,7 @@ const Starship = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'name'),
@@ -969,7 +942,7 @@ const Starship = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: _i1.EnumValueNode(name: _i1.NameNode(value: 'METER')),
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Float'),
@@ -1002,10 +975,7 @@ const Post = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
       args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'body'),
@@ -1056,7 +1026,7 @@ const Post = _i1.ObjectTypeDefinitionNode(
             isNonNull: false,
           ),
           defaultValue: null,
-        )
+        ),
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'PostFavorites'),
@@ -1078,7 +1048,7 @@ const PostLikes = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Int'),
         isNonNull: true,
       ),
-    )
+    ),
   ],
 );
 const PostFavorites = _i1.ObjectTypeDefinitionNode(
@@ -1094,7 +1064,7 @@ const PostFavorites = _i1.ObjectTypeDefinitionNode(
         name: _i1.NameNode(value: 'Int'),
         isNonNull: true,
       ),
-    )
+    ),
   ],
 );
 const PostLikesInput = _i1.InputObjectTypeDefinitionNode(
@@ -1104,12 +1074,9 @@ const PostLikesInput = _i1.InputObjectTypeDefinitionNode(
     _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: null,
-    )
+    ),
   ],
 );
 const PostFavoritesInput = _i1.InputObjectTypeDefinitionNode(
@@ -1119,30 +1086,18 @@ const PostFavoritesInput = _i1.InputObjectTypeDefinitionNode(
     _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'id'),
       directives: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ID'),
-        isNonNull: true,
-      ),
+      type: _i1.NamedTypeNode(name: _i1.NameNode(value: 'ID'), isNonNull: true),
       defaultValue: null,
-    )
+    ),
   ],
 );
 const SearchResult = _i1.UnionTypeDefinitionNode(
   name: _i1.NameNode(value: 'SearchResult'),
   directives: [],
   types: [
-    _i1.NamedTypeNode(
-      name: _i1.NameNode(value: 'Human'),
-      isNonNull: false,
-    ),
-    _i1.NamedTypeNode(
-      name: _i1.NameNode(value: 'Droid'),
-      isNonNull: false,
-    ),
-    _i1.NamedTypeNode(
-      name: _i1.NameNode(value: 'Starship'),
-      isNonNull: false,
-    ),
+    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Human'), isNonNull: false),
+    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Droid'), isNonNull: false),
+    _i1.NamedTypeNode(name: _i1.NameNode(value: 'Starship'), isNonNull: false),
   ],
 );
 const Date = _i1.ScalarTypeDefinitionNode(
@@ -1161,33 +1116,35 @@ const Json = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'Json'),
   directives: [],
 );
-const document = _i1.DocumentNode(definitions: [
-  schema,
-  Gextends,
-  Query,
-  Mutation,
-  Subscription,
-  Episode,
-  Character,
-  LengthUnit,
-  Human,
-  Droid,
-  FriendsConnection,
-  FriendsEdge,
-  PageInfo,
-  Review,
-  ReviewInput,
-  CustomFieldInput,
-  ColorInput,
-  Starship,
-  Post,
-  PostLikes,
-  PostFavorites,
-  PostLikesInput,
-  PostFavoritesInput,
-  SearchResult,
-  Date,
-  ISODate,
-  CustomField,
-  Json,
-]);
+const document = _i1.DocumentNode(
+  definitions: [
+    schema,
+    Gextends,
+    Query,
+    Mutation,
+    Subscription,
+    Episode,
+    Character,
+    LengthUnit,
+    Human,
+    Droid,
+    FriendsConnection,
+    FriendsEdge,
+    PageInfo,
+    Review,
+    ReviewInput,
+    CustomFieldInput,
+    ColorInput,
+    Starship,
+    Post,
+    PostLikes,
+    PostFavorites,
+    PostLikesInput,
+    PostFavoritesInput,
+    SearchResult,
+    Date,
+    ISODate,
+    CustomField,
+    Json,
+  ],
+);

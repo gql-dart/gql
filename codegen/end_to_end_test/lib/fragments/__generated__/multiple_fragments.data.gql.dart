@@ -13,9 +13,9 @@ abstract class GHeroWith2FragmentsData
     implements Built<GHeroWith2FragmentsData, GHeroWith2FragmentsDataBuilder> {
   GHeroWith2FragmentsData._();
 
-  factory GHeroWith2FragmentsData(
-          [void Function(GHeroWith2FragmentsDataBuilder b) updates]) =
-      _$GHeroWith2FragmentsData;
+  factory GHeroWith2FragmentsData([
+    void Function(GHeroWith2FragmentsDataBuilder b) updates,
+  ]) = _$GHeroWith2FragmentsData;
 
   static void _initializeBuilder(GHeroWith2FragmentsDataBuilder b) =>
       b..G__typename = 'Query';
@@ -26,29 +26,27 @@ abstract class GHeroWith2FragmentsData
   static Serializer<GHeroWith2FragmentsData> get serializer =>
       _$gHeroWith2FragmentsDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHeroWith2FragmentsData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GHeroWith2FragmentsData.serializer, this)
+          as Map<String, dynamic>);
 
   static GHeroWith2FragmentsData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GHeroWith2FragmentsData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GHeroWith2FragmentsData.serializer, json);
 }
 
 abstract class GHeroWith2FragmentsData_hero
     implements
-        Built<GHeroWith2FragmentsData_hero,
-            GHeroWith2FragmentsData_heroBuilder>,
+        Built<
+          GHeroWith2FragmentsData_hero,
+          GHeroWith2FragmentsData_heroBuilder
+        >,
         GheroName,
         GheroId {
   GHeroWith2FragmentsData_hero._();
 
-  factory GHeroWith2FragmentsData_hero(
-          [void Function(GHeroWith2FragmentsData_heroBuilder b) updates]) =
-      _$GHeroWith2FragmentsData_hero;
+  factory GHeroWith2FragmentsData_hero([
+    void Function(GHeroWith2FragmentsData_heroBuilder b) updates,
+  ]) = _$GHeroWith2FragmentsData_hero;
 
   static void _initializeBuilder(GHeroWith2FragmentsData_heroBuilder b) =>
       b..G__typename = 'Character';
@@ -63,10 +61,12 @@ abstract class GHeroWith2FragmentsData_hero
   static Serializer<GHeroWith2FragmentsData_hero> get serializer =>
       _$gHeroWith2FragmentsDataHeroSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GHeroWith2FragmentsData_hero.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(
+            GHeroWith2FragmentsData_hero.serializer,
+            this,
+          )
+          as Map<String, dynamic>);
 
   static GHeroWith2FragmentsData_hero? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
@@ -97,16 +97,12 @@ abstract class GheroNameData
   String get name;
   static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GheroNameData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GheroNameData.serializer, this)
+          as Map<String, dynamic>);
 
   static GheroNameData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GheroNameData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GheroNameData.serializer, json);
 }
 
 abstract class GheroId {
@@ -131,14 +127,10 @@ abstract class GheroIdData
   String get id;
   static Serializer<GheroIdData> get serializer => _$gheroIdDataSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GheroIdData.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GheroIdData.serializer, this)
+          as Map<String, dynamic>);
 
   static GheroIdData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GheroIdData.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GheroIdData.serializer, json);
 }

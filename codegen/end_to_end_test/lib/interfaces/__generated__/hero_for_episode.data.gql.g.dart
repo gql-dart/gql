@@ -478,9 +478,10 @@ class GHeroForEpisodeDataBuilder
   _$GHeroForEpisodeData _build() {
     final _$result = _$v ??
         new _$GHeroForEpisodeData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GHeroForEpisodeData', 'G__typename'),
-            hero: hero);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GHeroForEpisodeData', 'G__typename'),
+          hero: hero,
+        );
     replace(_$result);
     return _$result;
   }
@@ -600,11 +601,12 @@ class GHeroForEpisodeData_hero__baseBuilder
     try {
       _$result = _$v ??
           new _$GHeroForEpisodeData_hero__base._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GHeroForEpisodeData_hero__base', 'G__typename'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GHeroForEpisodeData_hero__base', 'name'),
-              friends: _friends?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GHeroForEpisodeData_hero__base', 'G__typename'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GHeroForEpisodeData_hero__base', 'name'),
+            friends: _friends?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -726,10 +728,11 @@ class GHeroForEpisodeData_hero__base_friendsBuilder
   _$GHeroForEpisodeData_hero__base_friends _build() {
     final _$result = _$v ??
         new _$GHeroForEpisodeData_hero__base_friends._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroForEpisodeData_hero__base_friends', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroForEpisodeData_hero__base_friends', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GHeroForEpisodeData_hero__base_friends', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GHeroForEpisodeData_hero__base_friends', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -867,12 +870,13 @@ class GHeroForEpisodeData_hero__asDroidBuilder
     try {
       _$result = _$v ??
           new _$GHeroForEpisodeData_hero__asDroid._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GHeroForEpisodeData_hero__asDroid', 'G__typename'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GHeroForEpisodeData_hero__asDroid', 'name'),
-              friends: _friends?.build(),
-              primaryFunction: primaryFunction);
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GHeroForEpisodeData_hero__asDroid', 'G__typename'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GHeroForEpisodeData_hero__asDroid', 'name'),
+            friends: _friends?.build(),
+            primaryFunction: primaryFunction,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -995,10 +999,11 @@ class GHeroForEpisodeData_hero__asDroid_friendsBuilder
   _$GHeroForEpisodeData_hero__asDroid_friends _build() {
     final _$result = _$v ??
         new _$GHeroForEpisodeData_hero__asDroid_friends._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GHeroForEpisodeData_hero__asDroid_friends', 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GHeroForEpisodeData_hero__asDroid_friends', 'name'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GHeroForEpisodeData_hero__asDroid_friends', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GHeroForEpisodeData_hero__asDroid_friends', 'name'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -1099,9 +1104,10 @@ class GDroidFragmentDataBuilder
   _$GDroidFragmentData _build() {
     final _$result = _$v ??
         new _$GDroidFragmentData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GDroidFragmentData', 'G__typename'),
-            primaryFunction: primaryFunction);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GDroidFragmentData', 'G__typename'),
+          primaryFunction: primaryFunction,
+        );
     replace(_$result);
     return _$result;
   }

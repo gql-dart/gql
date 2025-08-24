@@ -148,9 +148,10 @@ class GPostsBuilder implements Builder<GPosts, GPostsBuilder> {
     try {
       _$result = _$v ??
           new _$GPosts._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GPosts', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GPosts', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

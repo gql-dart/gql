@@ -25,7 +25,8 @@ class SerializerBuilder implements Builder {
     this.typeOverrides,
   );
 
-  static final _formatter = DartFormatter();
+  static final _formatter =
+      DartFormatter(languageVersion: DartFormatter.latestLanguageVersion);
   static final _generatedFiles = Glob("lib/**.gql.dart");
 
   // create a path for the serializers output in same directory as schema

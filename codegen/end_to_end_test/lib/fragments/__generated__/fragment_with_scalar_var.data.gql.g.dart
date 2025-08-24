@@ -422,9 +422,10 @@ class GPostsWithFixedVariableDataBuilder
     try {
       _$result = _$v ??
           new _$GPostsWithFixedVariableData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostsWithFixedVariableData', 'G__typename'),
-              posts: _posts?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostsWithFixedVariableData', 'G__typename'),
+            posts: _posts?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -560,11 +561,12 @@ class GPostsWithFixedVariableData_postsBuilder
     try {
       _$result = _$v ??
           new _$GPostsWithFixedVariableData_posts._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GPostsWithFixedVariableData_posts', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostsWithFixedVariableData_posts', 'id'),
-              favoritedUsers: _favoritedUsers?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GPostsWithFixedVariableData_posts', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostsWithFixedVariableData_posts', 'id'),
+            favoritedUsers: _favoritedUsers?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -690,14 +692,15 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
   _$GPostsWithFixedVariableData_posts_favoritedUsers _build() {
     final _$result = _$v ??
         new _$GPostsWithFixedVariableData_posts_favoritedUsers._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount,
-                r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GPostsWithFixedVariableData_posts_favoritedUsers',
+              'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount,
+              r'GPostsWithFixedVariableData_posts_favoritedUsers',
+              'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -817,11 +820,12 @@ class GPostFragmentForUser1DataBuilder
     try {
       _$result = _$v ??
           new _$GPostFragmentForUser1Data._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostFragmentForUser1Data', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostFragmentForUser1Data', 'id'),
-              favoritedUsers: _favoritedUsers?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostFragmentForUser1Data', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostFragmentForUser1Data', 'id'),
+            favoritedUsers: _favoritedUsers?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -943,10 +947,11 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
   _$GPostFragmentForUser1Data_favoritedUsers _build() {
     final _$result = _$v ??
         new _$GPostFragmentForUser1Data_favoritedUsers._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'));
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
+              r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }

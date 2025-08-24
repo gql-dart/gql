@@ -152,9 +152,10 @@ class GListPokemonBuilder
     try {
       _$result = _$v ??
           new _$GListPokemon._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GListPokemon', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GListPokemon', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

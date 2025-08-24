@@ -392,9 +392,10 @@ class GFindPokemonDataBuilder
     try {
       _$result = _$v ??
           new _$GFindPokemonData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GFindPokemonData', 'G__typename'),
-              pokemon: _pokemon?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GFindPokemonData', 'G__typename'),
+            pokemon: _pokemon?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -549,13 +550,14 @@ class GFindPokemonData_pokemonBuilder
     try {
       _$result = _$v ??
           new _$GFindPokemonData_pokemon._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GFindPokemonData_pokemon', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GFindPokemonData_pokemon', 'id'),
-              name: name,
-              weight: _weight?.build(),
-              height: _height?.build());
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GFindPokemonData_pokemon', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GFindPokemonData_pokemon', 'id'),
+            name: name,
+            weight: _weight?.build(),
+            height: _height?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -682,10 +684,11 @@ class GFindPokemonData_pokemon_weightBuilder
   _$GFindPokemonData_pokemon_weight _build() {
     final _$result = _$v ??
         new _$GFindPokemonData_pokemon_weight._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GFindPokemonData_pokemon_weight', 'G__typename'),
-            minimum: minimum,
-            maximum: maximum);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GFindPokemonData_pokemon_weight', 'G__typename'),
+          minimum: minimum,
+          maximum: maximum,
+        );
     replace(_$result);
     return _$result;
   }
@@ -799,10 +802,11 @@ class GFindPokemonData_pokemon_heightBuilder
   _$GFindPokemonData_pokemon_height _build() {
     final _$result = _$v ??
         new _$GFindPokemonData_pokemon_height._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GFindPokemonData_pokemon_height', 'G__typename'),
-            minimum: minimum,
-            maximum: maximum);
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GFindPokemonData_pokemon_height', 'G__typename'),
+          minimum: minimum,
+          maximum: maximum,
+        );
     replace(_$result);
     return _$result;
   }

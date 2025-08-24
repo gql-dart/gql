@@ -156,9 +156,10 @@ class GReadRepositoriesBuilder
     try {
       _$result = _$v ??
           new _$GReadRepositories._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GReadRepositories', 'operation'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GReadRepositories', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

@@ -166,8 +166,9 @@ class GPostsVarsBuilder implements Builder<GPostsVars, GPostsVarsBuilder> {
   _$GPostsVars _build() {
     final _$result = _$v ??
         new _$GPostsVars._(
-            userId: BuiltValueNullFieldError.checkNotNull(
-                userId, r'GPostsVars', 'userId'));
+          userId: BuiltValueNullFieldError.checkNotNull(
+              userId, r'GPostsVars', 'userId'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -252,8 +253,9 @@ class GPostFragmentVarsBuilder
   _$GPostFragmentVars _build() {
     final _$result = _$v ??
         new _$GPostFragmentVars._(
-            userId: BuiltValueNullFieldError.checkNotNull(
-                userId, r'GPostFragmentVars', 'userId'));
+          userId: BuiltValueNullFieldError.checkNotNull(
+              userId, r'GPostFragmentVars', 'userId'),
+        );
     replace(_$result);
     return _$result;
   }

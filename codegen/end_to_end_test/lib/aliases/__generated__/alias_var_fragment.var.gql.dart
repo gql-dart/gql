@@ -21,25 +21,21 @@ abstract class GPostsVars implements Built<GPostsVars, GPostsVarsBuilder> {
   String get userId;
   static Serializer<GPostsVars> get serializer => _$gPostsVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPostsVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GPostsVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GPostsVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPostsVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GPostsVars.serializer, json);
 }
 
 abstract class GPostFragmentVars
     implements Built<GPostFragmentVars, GPostFragmentVarsBuilder> {
   GPostFragmentVars._();
 
-  factory GPostFragmentVars(
-          [void Function(GPostFragmentVarsBuilder b) updates]) =
-      _$GPostFragmentVars;
+  factory GPostFragmentVars([
+    void Function(GPostFragmentVarsBuilder b) updates,
+  ]) = _$GPostFragmentVars;
 
   factory GPostFragmentVars.create({required String userId}) =>
       GPostFragmentVars((b) => b..userId = userId);
@@ -48,14 +44,10 @@ abstract class GPostFragmentVars
   static Serializer<GPostFragmentVars> get serializer =>
       _$gPostFragmentVarsSerializer;
 
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GPostFragmentVars.serializer,
-        this,
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GPostFragmentVars.serializer, this)
+          as Map<String, dynamic>);
 
   static GPostFragmentVars? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GPostFragmentVars.serializer,
-        json,
-      );
+      _i1.serializers.deserializeWith(GPostFragmentVars.serializer, json);
 }

@@ -227,8 +227,9 @@ class GHeroWithInterfaceSubTypedFragmentsVarsBuilder
   _$GHeroWithInterfaceSubTypedFragmentsVars _build() {
     final _$result = _$v ??
         new _$GHeroWithInterfaceSubTypedFragmentsVars._(
-            episode: BuiltValueNullFieldError.checkNotNull(episode,
-                r'GHeroWithInterfaceSubTypedFragmentsVars', 'episode'));
+          episode: BuiltValueNullFieldError.checkNotNull(
+              episode, r'GHeroWithInterfaceSubTypedFragmentsVars', 'episode'),
+        );
     replace(_$result);
     return _$result;
   }

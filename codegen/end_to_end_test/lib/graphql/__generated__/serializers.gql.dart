@@ -144,21 +144,26 @@ import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
-  ..add(OperationSerializer())
-  ..add(DateSerializer())
-  ..add(CustomFieldSerializer())
-  ..add(GHeroForEpisodeData_hero.serializer)
-  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
-  ..add(
-      GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer)
-  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero.serializer)
-  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends.serializer)
-  ..add(GSearchResultsQueryData_search.serializer)
-  ..add(GheroFieldsFragmentData.serializer)
-  ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
-  ..add(GhumanFieldsFragmentData_friends.serializer)
-  ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder =
+    _$serializers.toBuilder()
+      ..add(OperationSerializer())
+      ..add(DateSerializer())
+      ..add(CustomFieldSerializer())
+      ..add(GHeroForEpisodeData_hero.serializer)
+      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
+      ..add(
+        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends
+            .serializer,
+      )
+      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero.serializer)
+      ..add(
+        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends.serializer,
+      )
+      ..add(GSearchResultsQueryData_search.serializer)
+      ..add(GheroFieldsFragmentData.serializer)
+      ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
+      ..add(GhumanFieldsFragmentData_friends.serializer)
+      ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAliasedHero,
   GAliasedHeroData,
