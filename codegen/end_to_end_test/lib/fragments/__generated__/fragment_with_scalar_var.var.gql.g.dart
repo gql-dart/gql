@@ -8,9 +8,9 @@ part of 'fragment_with_scalar_var.var.gql.dart';
 
 Serializer<GPostsWithFixedVariableVars>
     _$gPostsWithFixedVariableVarsSerializer =
-    new _$GPostsWithFixedVariableVarsSerializer();
+    _$GPostsWithFixedVariableVarsSerializer();
 Serializer<GPostFragmentForUser1Vars> _$gPostFragmentForUser1VarsSerializer =
-    new _$GPostFragmentForUser1VarsSerializer();
+    _$GPostFragmentForUser1VarsSerializer();
 
 class _$GPostsWithFixedVariableVarsSerializer
     implements StructuredSerializer<GPostsWithFixedVariableVars> {
@@ -42,7 +42,7 @@ class _$GPostsWithFixedVariableVarsSerializer
   GPostsWithFixedVariableVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsWithFixedVariableVarsBuilder();
+    final result = GPostsWithFixedVariableVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -82,7 +82,7 @@ class _$GPostFragmentForUser1VarsSerializer
   GPostFragmentForUser1Vars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GPostFragmentForUser1VarsBuilder().build();
+    return GPostFragmentForUser1VarsBuilder().build();
   }
 }
 
@@ -92,10 +92,9 @@ class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
 
   factory _$GPostsWithFixedVariableVars(
           [void Function(GPostsWithFixedVariableVarsBuilder)? updates]) =>
-      (new GPostsWithFixedVariableVarsBuilder()..update(updates))._build();
+      (GPostsWithFixedVariableVarsBuilder()..update(updates))._build();
 
   _$GPostsWithFixedVariableVars._({this.filter}) : super._();
-
   @override
   GPostsWithFixedVariableVars rebuild(
           void Function(GPostsWithFixedVariableVarsBuilder) updates) =>
@@ -103,7 +102,7 @@ class _$GPostsWithFixedVariableVars extends GPostsWithFixedVariableVars {
 
   @override
   GPostsWithFixedVariableVarsBuilder toBuilder() =>
-      new GPostsWithFixedVariableVarsBuilder()..replace(this);
+      GPostsWithFixedVariableVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -134,7 +133,7 @@ class GPostsWithFixedVariableVarsBuilder
   _$GPostsWithFixedVariableVars? _$v;
 
   _i1.GJsonBuilder? _filter;
-  _i1.GJsonBuilder get filter => _$this._filter ??= new _i1.GJsonBuilder();
+  _i1.GJsonBuilder get filter => _$this._filter ??= _i1.GJsonBuilder();
   set filter(_i1.GJsonBuilder? filter) => _$this._filter = filter;
 
   GPostsWithFixedVariableVarsBuilder();
@@ -150,7 +149,6 @@ class GPostsWithFixedVariableVarsBuilder
 
   @override
   void replace(GPostsWithFixedVariableVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariableVars;
   }
 
@@ -166,7 +164,7 @@ class GPostsWithFixedVariableVarsBuilder
     _$GPostsWithFixedVariableVars _$result;
     try {
       _$result = _$v ??
-          new _$GPostsWithFixedVariableVars._(
+          _$GPostsWithFixedVariableVars._(
             filter: _filter?.build(),
           );
     } catch (_) {
@@ -175,7 +173,7 @@ class GPostsWithFixedVariableVarsBuilder
         _$failedField = 'filter';
         _filter?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPostsWithFixedVariableVars', _$failedField, e.toString());
       }
       rethrow;
@@ -188,10 +186,9 @@ class GPostsWithFixedVariableVarsBuilder
 class _$GPostFragmentForUser1Vars extends GPostFragmentForUser1Vars {
   factory _$GPostFragmentForUser1Vars(
           [void Function(GPostFragmentForUser1VarsBuilder)? updates]) =>
-      (new GPostFragmentForUser1VarsBuilder()..update(updates))._build();
+      (GPostFragmentForUser1VarsBuilder()..update(updates))._build();
 
   _$GPostFragmentForUser1Vars._() : super._();
-
   @override
   GPostFragmentForUser1Vars rebuild(
           void Function(GPostFragmentForUser1VarsBuilder) updates) =>
@@ -199,7 +196,7 @@ class _$GPostFragmentForUser1Vars extends GPostFragmentForUser1Vars {
 
   @override
   GPostFragmentForUser1VarsBuilder toBuilder() =>
-      new GPostFragmentForUser1VarsBuilder()..replace(this);
+      GPostFragmentForUser1VarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -227,7 +224,6 @@ class GPostFragmentForUser1VarsBuilder
 
   @override
   void replace(GPostFragmentForUser1Vars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFragmentForUser1Vars;
   }
 
@@ -240,7 +236,7 @@ class GPostFragmentForUser1VarsBuilder
   GPostFragmentForUser1Vars build() => _build();
 
   _$GPostFragmentForUser1Vars _build() {
-    final _$result = _$v ?? new _$GPostFragmentForUser1Vars._();
+    final _$result = _$v ?? _$GPostFragmentForUser1Vars._();
     replace(_$result);
     return _$result;
   }

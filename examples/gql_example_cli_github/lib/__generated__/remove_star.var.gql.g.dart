@@ -7,7 +7,7 @@ part of 'remove_star.var.gql.dart';
 // **************************************************************************
 
 Serializer<GRemoveStarVars> _$gRemoveStarVarsSerializer =
-    new _$GRemoveStarVarsSerializer();
+    _$GRemoveStarVarsSerializer();
 
 class _$GRemoveStarVarsSerializer
     implements StructuredSerializer<GRemoveStarVars> {
@@ -32,7 +32,7 @@ class _$GRemoveStarVarsSerializer
   GRemoveStarVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarVarsBuilder();
+    final result = GRemoveStarVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -56,20 +56,15 @@ class _$GRemoveStarVars extends GRemoveStarVars {
   final String starrableId;
 
   factory _$GRemoveStarVars([void Function(GRemoveStarVarsBuilder)? updates]) =>
-      (new GRemoveStarVarsBuilder()..update(updates))._build();
+      (GRemoveStarVarsBuilder()..update(updates))._build();
 
-  _$GRemoveStarVars._({required this.starrableId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        starrableId, r'GRemoveStarVars', 'starrableId');
-  }
-
+  _$GRemoveStarVars._({required this.starrableId}) : super._();
   @override
   GRemoveStarVars rebuild(void Function(GRemoveStarVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GRemoveStarVarsBuilder toBuilder() =>
-      new GRemoveStarVarsBuilder()..replace(this);
+  GRemoveStarVarsBuilder toBuilder() => GRemoveStarVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -114,7 +109,6 @@ class GRemoveStarVarsBuilder
 
   @override
   void replace(GRemoveStarVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarVars;
   }
 
@@ -128,7 +122,7 @@ class GRemoveStarVarsBuilder
 
   _$GRemoveStarVars _build() {
     final _$result = _$v ??
-        new _$GRemoveStarVars._(
+        _$GRemoveStarVars._(
           starrableId: BuiltValueNullFieldError.checkNotNull(
               starrableId, r'GRemoveStarVars', 'starrableId'),
         );

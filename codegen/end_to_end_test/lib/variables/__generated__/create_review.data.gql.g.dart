@@ -7,10 +7,10 @@ part of 'create_review.data.gql.dart';
 // **************************************************************************
 
 Serializer<GCreateReviewData> _$gCreateReviewDataSerializer =
-    new _$GCreateReviewDataSerializer();
+    _$GCreateReviewDataSerializer();
 Serializer<GCreateReviewData_createReview>
     _$gCreateReviewDataCreateReviewSerializer =
-    new _$GCreateReviewData_createReviewSerializer();
+    _$GCreateReviewData_createReviewSerializer();
 
 class _$GCreateReviewDataSerializer
     implements StructuredSerializer<GCreateReviewData> {
@@ -42,7 +42,7 @@ class _$GCreateReviewDataSerializer
   GCreateReviewData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateReviewDataBuilder();
+    final result = GCreateReviewDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -110,7 +110,7 @@ class _$GCreateReviewData_createReviewSerializer
   GCreateReviewData_createReview deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateReviewData_createReviewBuilder();
+    final result = GCreateReviewData_createReviewBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -149,21 +149,17 @@ class _$GCreateReviewData extends GCreateReviewData {
 
   factory _$GCreateReviewData(
           [void Function(GCreateReviewDataBuilder)? updates]) =>
-      (new GCreateReviewDataBuilder()..update(updates))._build();
+      (GCreateReviewDataBuilder()..update(updates))._build();
 
   _$GCreateReviewData._({required this.G__typename, this.createReview})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCreateReviewData', 'G__typename');
-  }
-
+      : super._();
   @override
   GCreateReviewData rebuild(void Function(GCreateReviewDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCreateReviewDataBuilder toBuilder() =>
-      new GCreateReviewDataBuilder()..replace(this);
+      GCreateReviewDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -201,7 +197,7 @@ class GCreateReviewDataBuilder
 
   GCreateReviewData_createReviewBuilder? _createReview;
   GCreateReviewData_createReviewBuilder get createReview =>
-      _$this._createReview ??= new GCreateReviewData_createReviewBuilder();
+      _$this._createReview ??= GCreateReviewData_createReviewBuilder();
   set createReview(GCreateReviewData_createReviewBuilder? createReview) =>
       _$this._createReview = createReview;
 
@@ -221,7 +217,6 @@ class GCreateReviewDataBuilder
 
   @override
   void replace(GCreateReviewData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateReviewData;
   }
 
@@ -237,7 +232,7 @@ class GCreateReviewDataBuilder
     _$GCreateReviewData _$result;
     try {
       _$result = _$v ??
-          new _$GCreateReviewData._(
+          _$GCreateReviewData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GCreateReviewData', 'G__typename'),
             createReview: _createReview?.build(),
@@ -248,7 +243,7 @@ class GCreateReviewDataBuilder
         _$failedField = 'createReview';
         _createReview?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateReviewData', _$failedField, e.toString());
       }
       rethrow;
@@ -270,20 +265,14 @@ class _$GCreateReviewData_createReview extends GCreateReviewData_createReview {
 
   factory _$GCreateReviewData_createReview(
           [void Function(GCreateReviewData_createReviewBuilder)? updates]) =>
-      (new GCreateReviewData_createReviewBuilder()..update(updates))._build();
+      (GCreateReviewData_createReviewBuilder()..update(updates))._build();
 
   _$GCreateReviewData_createReview._(
       {required this.G__typename,
       this.episode,
       required this.stars,
       this.commentary})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GCreateReviewData_createReview', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        stars, r'GCreateReviewData_createReview', 'stars');
-  }
-
+      : super._();
   @override
   GCreateReviewData_createReview rebuild(
           void Function(GCreateReviewData_createReviewBuilder) updates) =>
@@ -291,7 +280,7 @@ class _$GCreateReviewData_createReview extends GCreateReviewData_createReview {
 
   @override
   GCreateReviewData_createReviewBuilder toBuilder() =>
-      new GCreateReviewData_createReviewBuilder()..replace(this);
+      GCreateReviewData_createReviewBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -365,7 +354,6 @@ class GCreateReviewData_createReviewBuilder
 
   @override
   void replace(GCreateReviewData_createReview other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateReviewData_createReview;
   }
 
@@ -379,7 +367,7 @@ class GCreateReviewData_createReviewBuilder
 
   _$GCreateReviewData_createReview _build() {
     final _$result = _$v ??
-        new _$GCreateReviewData_createReview._(
+        _$GCreateReviewData_createReview._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GCreateReviewData_createReview', 'G__typename'),
           episode: episode,

@@ -6,7 +6,7 @@ part of 'serializers.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(GAliasedHero.serializer)
       ..add(GAliasedHeroData.serializer)
       ..add(GAliasedHeroData_empireHero.serializer)
@@ -166,151 +166,148 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GreviewsWithListArgumentVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(DateTime)]),
-          () => new ListBuilder<DateTime>())
+          () => ListBuilder<DateTime>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
-          () => new ListBuilder<CustomField>())
+          () => ListBuilder<CustomField>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
-          () => new ListBuilder<int>())
+          () => ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(DateTime)]),
-          () => new ListBuilder<DateTime?>())
+          () => ListBuilder<DateTime?>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType.nullable(GCharacterDetailsData_friends)]),
-          () => new ListBuilder<GCharacterDetailsData_friends?>())
+          () => ListBuilder<GCharacterDetailsData_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
+          () => ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GCharacterDetailsData_friends_friendsConnection_friends)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GCharacterDetailsData_friends_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
+          () => ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
+          () => ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GFriendInfoData_friendsConnection_friends)
           ]),
-          () => new ListBuilder<GFriendInfoData_friendsConnection_friends?>())
+          () => ListBuilder<GFriendInfoData_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GHeroForEpisodeData_hero__asDroid_friends)
           ]),
-          () => new ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>())
+          () => ListBuilder<GHeroForEpisodeData_hero__asDroid_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GHeroForEpisodeData_hero__base_friends)
           ]),
-          () => new ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
+          () => ListBuilder<GHeroForEpisodeData_hero__base_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GHeroWithFragmentsData_hero_friendsConnection_edges)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GHeroWithFragmentsData_hero_friendsConnection_edges?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(GPostsData_posts)]),
-          () => new ListBuilder<GPostsData_posts?>())
+          () => ListBuilder<GPostsData_posts?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GPostsWithFixedVariableData_posts)
           ]),
-          () => new ListBuilder<GPostsWithFixedVariableData_posts?>())
+          () => ListBuilder<GPostsWithFixedVariableData_posts?>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType.nullable(GSearchResultsQueryData_search)]),
-          () => new ListBuilder<GSearchResultsQueryData_search?>())
+          () => ListBuilder<GSearchResultsQueryData_search?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GSearchResultsQueryData_search__asDroid_friends)
           ]),
-          () => new ListBuilder<
-              GSearchResultsQueryData_search__asDroid_friends?>())
+          () => ListBuilder<GSearchResultsQueryData_search__asDroid_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
+          () => ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GSearchResultsQueryData_search__asHuman_friends)
           ]),
-          () => new ListBuilder<
-              GSearchResultsQueryData_search__asHuman_friends?>())
+          () => ListBuilder<GSearchResultsQueryData_search__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType.nullable(GEpisode)]),
-          () => new ListBuilder<GEpisode?>())
+          () => ListBuilder<GEpisode?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
                 GcomparisonFieldsData_friendsConnection_edges)
           ]),
-          () =>
-              new ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>())
+          () => ListBuilder<GcomparisonFieldsData_friendsConnection_edges?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragmentData__asHuman_friends)
           ]),
-          () => new ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
+          () => ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragment__asHuman_friends)
           ]),
-          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>())
+          () => ListBuilder<GheroFieldsFragment__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GheroFieldsFragment__asHuman_friends)
           ]),
-          () => new ListBuilder<GheroFieldsFragment__asHuman_friends?>())
+          () => ListBuilder<GheroFieldsFragment__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)
           ]),
-          () => new ListBuilder<GhumanFieldsFragmentData_friends?>())
+          () => ListBuilder<GhumanFieldsFragmentData_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(GreviewsWithListArgumentData_reviews)
           ]),
-          () => new ListBuilder<GreviewsWithListArgumentData_reviews?>()))
+          () => ListBuilder<GreviewsWithListArgumentData_reviews?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -7,7 +7,7 @@ part of 'hero_with_fragments.req.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroWithFragments> _$gHeroWithFragmentsSerializer =
-    new _$GHeroWithFragmentsSerializer();
+    _$GHeroWithFragmentsSerializer();
 
 class _$GHeroWithFragmentsSerializer
     implements StructuredSerializer<GHeroWithFragments> {
@@ -36,7 +36,7 @@ class _$GHeroWithFragmentsSerializer
   GHeroWithFragments deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithFragmentsBuilder();
+    final result = GHeroWithFragmentsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -68,15 +68,10 @@ class _$GHeroWithFragments extends GHeroWithFragments {
 
   factory _$GHeroWithFragments(
           [void Function(GHeroWithFragmentsBuilder)? updates]) =>
-      (new GHeroWithFragmentsBuilder()..update(updates))._build();
+      (GHeroWithFragmentsBuilder()..update(updates))._build();
 
   _$GHeroWithFragments._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GHeroWithFragments', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GHeroWithFragments', 'operation');
-  }
-
+      : super._();
   @override
   GHeroWithFragments rebuild(
           void Function(GHeroWithFragmentsBuilder) updates) =>
@@ -84,7 +79,7 @@ class _$GHeroWithFragments extends GHeroWithFragments {
 
   @override
   GHeroWithFragmentsBuilder toBuilder() =>
-      new GHeroWithFragmentsBuilder()..replace(this);
+      GHeroWithFragmentsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -118,7 +113,7 @@ class GHeroWithFragmentsBuilder
 
   _i3.GHeroWithFragmentsVarsBuilder? _vars;
   _i3.GHeroWithFragmentsVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GHeroWithFragmentsVarsBuilder();
+      _$this._vars ??= _i3.GHeroWithFragmentsVarsBuilder();
   set vars(_i3.GHeroWithFragmentsVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -141,7 +136,6 @@ class GHeroWithFragmentsBuilder
 
   @override
   void replace(GHeroWithFragments other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithFragments;
   }
 
@@ -157,7 +151,7 @@ class GHeroWithFragmentsBuilder
     _$GHeroWithFragments _$result;
     try {
       _$result = _$v ??
-          new _$GHeroWithFragments._(
+          _$GHeroWithFragments._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GHeroWithFragments', 'operation'),
@@ -168,7 +162,7 @@ class GHeroWithFragmentsBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GHeroWithFragments', _$failedField, e.toString());
       }
       rethrow;

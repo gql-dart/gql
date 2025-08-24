@@ -7,7 +7,7 @@ part of 'fragment_with_scalar_var.req.gql.dart';
 // **************************************************************************
 
 Serializer<GPostsWithFixedVariable> _$gPostsWithFixedVariableSerializer =
-    new _$GPostsWithFixedVariableSerializer();
+    _$GPostsWithFixedVariableSerializer();
 
 class _$GPostsWithFixedVariableSerializer
     implements StructuredSerializer<GPostsWithFixedVariable> {
@@ -39,7 +39,7 @@ class _$GPostsWithFixedVariableSerializer
   GPostsWithFixedVariable deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsWithFixedVariableBuilder();
+    final result = GPostsWithFixedVariableBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -72,16 +72,10 @@ class _$GPostsWithFixedVariable extends GPostsWithFixedVariable {
 
   factory _$GPostsWithFixedVariable(
           [void Function(GPostsWithFixedVariableBuilder)? updates]) =>
-      (new GPostsWithFixedVariableBuilder()..update(updates))._build();
+      (GPostsWithFixedVariableBuilder()..update(updates))._build();
 
   _$GPostsWithFixedVariable._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        vars, r'GPostsWithFixedVariable', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GPostsWithFixedVariable', 'operation');
-  }
-
+      : super._();
   @override
   GPostsWithFixedVariable rebuild(
           void Function(GPostsWithFixedVariableBuilder) updates) =>
@@ -89,7 +83,7 @@ class _$GPostsWithFixedVariable extends GPostsWithFixedVariable {
 
   @override
   GPostsWithFixedVariableBuilder toBuilder() =>
-      new GPostsWithFixedVariableBuilder()..replace(this);
+      GPostsWithFixedVariableBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -124,7 +118,7 @@ class GPostsWithFixedVariableBuilder
 
   _i3.GPostsWithFixedVariableVarsBuilder? _vars;
   _i3.GPostsWithFixedVariableVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GPostsWithFixedVariableVarsBuilder();
+      _$this._vars ??= _i3.GPostsWithFixedVariableVarsBuilder();
   set vars(_i3.GPostsWithFixedVariableVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -147,7 +141,6 @@ class GPostsWithFixedVariableBuilder
 
   @override
   void replace(GPostsWithFixedVariable other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariable;
   }
 
@@ -163,7 +156,7 @@ class GPostsWithFixedVariableBuilder
     _$GPostsWithFixedVariable _$result;
     try {
       _$result = _$v ??
-          new _$GPostsWithFixedVariable._(
+          _$GPostsWithFixedVariable._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GPostsWithFixedVariable', 'operation'),
@@ -174,7 +167,7 @@ class GPostsWithFixedVariableBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPostsWithFixedVariable', _$failedField, e.toString());
       }
       rethrow;

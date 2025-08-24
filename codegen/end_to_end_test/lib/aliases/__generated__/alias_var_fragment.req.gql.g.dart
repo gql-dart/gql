@@ -6,7 +6,7 @@ part of 'alias_var_fragment.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GPosts> _$gPostsSerializer = new _$GPostsSerializer();
+Serializer<GPosts> _$gPostsSerializer = _$GPostsSerializer();
 
 class _$GPostsSerializer implements StructuredSerializer<GPosts> {
   @override
@@ -32,7 +32,7 @@ class _$GPostsSerializer implements StructuredSerializer<GPosts> {
   @override
   GPosts deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsBuilder();
+    final result = GPostsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -63,19 +63,15 @@ class _$GPosts extends GPosts {
   final _i1.Operation operation;
 
   factory _$GPosts([void Function(GPostsBuilder)? updates]) =>
-      (new GPostsBuilder()..update(updates))._build();
+      (GPostsBuilder()..update(updates))._build();
 
-  _$GPosts._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GPosts', 'vars');
-    BuiltValueNullFieldError.checkNotNull(operation, r'GPosts', 'operation');
-  }
-
+  _$GPosts._({required this.vars, required this.operation}) : super._();
   @override
   GPosts rebuild(void Function(GPostsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GPostsBuilder toBuilder() => new GPostsBuilder()..replace(this);
+  GPostsBuilder toBuilder() => GPostsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,8 +103,7 @@ class GPostsBuilder implements Builder<GPosts, GPostsBuilder> {
   _$GPosts? _$v;
 
   _i3.GPostsVarsBuilder? _vars;
-  _i3.GPostsVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GPostsVarsBuilder();
+  _i3.GPostsVarsBuilder get vars => _$this._vars ??= _i3.GPostsVarsBuilder();
   set vars(_i3.GPostsVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -131,7 +126,6 @@ class GPostsBuilder implements Builder<GPosts, GPostsBuilder> {
 
   @override
   void replace(GPosts other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPosts;
   }
 
@@ -147,7 +141,7 @@ class GPostsBuilder implements Builder<GPosts, GPostsBuilder> {
     _$GPosts _$result;
     try {
       _$result = _$v ??
-          new _$GPosts._(
+          _$GPosts._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GPosts', 'operation'),
@@ -158,7 +152,7 @@ class GPostsBuilder implements Builder<GPosts, GPostsBuilder> {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPosts', _$failedField, e.toString());
       }
       rethrow;

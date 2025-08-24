@@ -8,10 +8,10 @@ part of 'list_argument.data.gql.dart';
 
 Serializer<GreviewsWithListArgumentData>
     _$greviewsWithListArgumentDataSerializer =
-    new _$GreviewsWithListArgumentDataSerializer();
+    _$GreviewsWithListArgumentDataSerializer();
 Serializer<GreviewsWithListArgumentData_reviews>
     _$greviewsWithListArgumentDataReviewsSerializer =
-    new _$GreviewsWithListArgumentData_reviewsSerializer();
+    _$GreviewsWithListArgumentData_reviewsSerializer();
 
 class _$GreviewsWithListArgumentDataSerializer
     implements StructuredSerializer<GreviewsWithListArgumentData> {
@@ -49,7 +49,7 @@ class _$GreviewsWithListArgumentDataSerializer
   GreviewsWithListArgumentData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GreviewsWithListArgumentDataBuilder();
+    final result = GreviewsWithListArgumentDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -108,7 +108,7 @@ class _$GreviewsWithListArgumentData_reviewsSerializer
   GreviewsWithListArgumentData_reviews deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GreviewsWithListArgumentData_reviewsBuilder();
+    final result = GreviewsWithListArgumentData_reviewsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -139,14 +139,10 @@ class _$GreviewsWithListArgumentData extends GreviewsWithListArgumentData {
 
   factory _$GreviewsWithListArgumentData(
           [void Function(GreviewsWithListArgumentDataBuilder)? updates]) =>
-      (new GreviewsWithListArgumentDataBuilder()..update(updates))._build();
+      (GreviewsWithListArgumentDataBuilder()..update(updates))._build();
 
   _$GreviewsWithListArgumentData._({required this.G__typename, this.reviews})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GreviewsWithListArgumentData', 'G__typename');
-  }
-
+      : super._();
   @override
   GreviewsWithListArgumentData rebuild(
           void Function(GreviewsWithListArgumentDataBuilder) updates) =>
@@ -154,7 +150,7 @@ class _$GreviewsWithListArgumentData extends GreviewsWithListArgumentData {
 
   @override
   GreviewsWithListArgumentDataBuilder toBuilder() =>
-      new GreviewsWithListArgumentDataBuilder()..replace(this);
+      GreviewsWithListArgumentDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -194,8 +190,7 @@ class GreviewsWithListArgumentDataBuilder
 
   ListBuilder<GreviewsWithListArgumentData_reviews?>? _reviews;
   ListBuilder<GreviewsWithListArgumentData_reviews?> get reviews =>
-      _$this._reviews ??=
-          new ListBuilder<GreviewsWithListArgumentData_reviews?>();
+      _$this._reviews ??= ListBuilder<GreviewsWithListArgumentData_reviews?>();
   set reviews(ListBuilder<GreviewsWithListArgumentData_reviews?>? reviews) =>
       _$this._reviews = reviews;
 
@@ -215,7 +210,6 @@ class GreviewsWithListArgumentDataBuilder
 
   @override
   void replace(GreviewsWithListArgumentData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GreviewsWithListArgumentData;
   }
 
@@ -231,7 +225,7 @@ class GreviewsWithListArgumentDataBuilder
     _$GreviewsWithListArgumentData _$result;
     try {
       _$result = _$v ??
-          new _$GreviewsWithListArgumentData._(
+          _$GreviewsWithListArgumentData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GreviewsWithListArgumentData', 'G__typename'),
             reviews: _reviews?.build(),
@@ -242,7 +236,7 @@ class GreviewsWithListArgumentDataBuilder
         _$failedField = 'reviews';
         _reviews?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GreviewsWithListArgumentData', _$failedField, e.toString());
       }
       rethrow;
@@ -262,16 +256,11 @@ class _$GreviewsWithListArgumentData_reviews
   factory _$GreviewsWithListArgumentData_reviews(
           [void Function(GreviewsWithListArgumentData_reviewsBuilder)?
               updates]) =>
-      (new GreviewsWithListArgumentData_reviewsBuilder()..update(updates))
-          ._build();
+      (GreviewsWithListArgumentData_reviewsBuilder()..update(updates))._build();
 
   _$GreviewsWithListArgumentData_reviews._(
       {required this.G__typename, this.episode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GreviewsWithListArgumentData_reviews', 'G__typename');
-  }
-
+      : super._();
   @override
   GreviewsWithListArgumentData_reviews rebuild(
           void Function(GreviewsWithListArgumentData_reviewsBuilder) updates) =>
@@ -279,7 +268,7 @@ class _$GreviewsWithListArgumentData_reviews
 
   @override
   GreviewsWithListArgumentData_reviewsBuilder toBuilder() =>
-      new GreviewsWithListArgumentData_reviewsBuilder()..replace(this);
+      GreviewsWithListArgumentData_reviewsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -337,7 +326,6 @@ class GreviewsWithListArgumentData_reviewsBuilder
 
   @override
   void replace(GreviewsWithListArgumentData_reviews other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GreviewsWithListArgumentData_reviews;
   }
 
@@ -352,7 +340,7 @@ class GreviewsWithListArgumentData_reviewsBuilder
 
   _$GreviewsWithListArgumentData_reviews _build() {
     final _$result = _$v ??
-        new _$GreviewsWithListArgumentData_reviews._(
+        _$GreviewsWithListArgumentData_reviews._(
           G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
               r'GreviewsWithListArgumentData_reviews', 'G__typename'),
           episode: episode,

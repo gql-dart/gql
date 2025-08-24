@@ -7,15 +7,15 @@ part of 'query.data.gql.dart';
 // **************************************************************************
 
 Serializer<GQueryOperationData> _$gQueryOperationDataSerializer =
-    new _$GQueryOperationDataSerializer();
+    _$GQueryOperationDataSerializer();
 Serializer<GQueryOperationData_field> _$gQueryOperationDataFieldSerializer =
-    new _$GQueryOperationData_fieldSerializer();
+    _$GQueryOperationData_fieldSerializer();
 Serializer<GQueryOperationData_field_field>
     _$gQueryOperationDataFieldFieldSerializer =
-    new _$GQueryOperationData_field_fieldSerializer();
+    _$GQueryOperationData_field_fieldSerializer();
 Serializer<GQueryOperationData_field_fieldRequired>
     _$gQueryOperationDataFieldFieldRequiredSerializer =
-    new _$GQueryOperationData_field_fieldRequiredSerializer();
+    _$GQueryOperationData_field_fieldRequiredSerializer();
 
 class _$GQueryOperationDataSerializer
     implements StructuredSerializer<GQueryOperationData> {
@@ -51,7 +51,7 @@ class _$GQueryOperationDataSerializer
   GQueryOperationData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationDataBuilder();
+    final result = GQueryOperationDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -182,7 +182,7 @@ class _$GQueryOperationData_fieldSerializer
   GQueryOperationData_field deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationData_fieldBuilder();
+    final result = GQueryOperationData_fieldBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -303,7 +303,7 @@ class _$GQueryOperationData_field_fieldSerializer
   GQueryOperationData_field_field deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationData_field_fieldBuilder();
+    final result = GQueryOperationData_field_fieldBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -360,7 +360,7 @@ class _$GQueryOperationData_field_fieldRequiredSerializer
   GQueryOperationData_field_fieldRequired deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationData_field_fieldRequiredBuilder();
+    final result = GQueryOperationData_field_fieldRequiredBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -391,13 +391,9 @@ class _$GQueryOperationData extends GQueryOperationData {
 
   factory _$GQueryOperationData(
           [void Function(GQueryOperationDataBuilder)? updates]) =>
-      (new GQueryOperationDataBuilder()..update(updates))._build();
+      (GQueryOperationDataBuilder()..update(updates))._build();
 
-  _$GQueryOperationData._({required this.G__typename, this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GQueryOperationData', 'G__typename');
-  }
-
+  _$GQueryOperationData._({required this.G__typename, this.field}) : super._();
   @override
   GQueryOperationData rebuild(
           void Function(GQueryOperationDataBuilder) updates) =>
@@ -405,7 +401,7 @@ class _$GQueryOperationData extends GQueryOperationData {
 
   @override
   GQueryOperationDataBuilder toBuilder() =>
-      new GQueryOperationDataBuilder()..replace(this);
+      GQueryOperationDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -443,7 +439,7 @@ class GQueryOperationDataBuilder
 
   GQueryOperationData_fieldBuilder? _field;
   GQueryOperationData_fieldBuilder get field =>
-      _$this._field ??= new GQueryOperationData_fieldBuilder();
+      _$this._field ??= GQueryOperationData_fieldBuilder();
   set field(GQueryOperationData_fieldBuilder? field) => _$this._field = field;
 
   GQueryOperationDataBuilder() {
@@ -462,7 +458,6 @@ class GQueryOperationDataBuilder
 
   @override
   void replace(GQueryOperationData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData;
   }
 
@@ -478,7 +473,7 @@ class GQueryOperationDataBuilder
     _$GQueryOperationData _$result;
     try {
       _$result = _$v ??
-          new _$GQueryOperationData._(
+          _$GQueryOperationData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GQueryOperationData', 'G__typename'),
             field: _field?.build(),
@@ -489,7 +484,7 @@ class GQueryOperationDataBuilder
         _$failedField = 'field';
         _field?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GQueryOperationData', _$failedField, e.toString());
       }
       rethrow;
@@ -537,7 +532,7 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
 
   factory _$GQueryOperationData_field(
           [void Function(GQueryOperationData_fieldBuilder)? updates]) =>
-      (new GQueryOperationData_fieldBuilder()..update(updates))._build();
+      (GQueryOperationData_fieldBuilder()..update(updates))._build();
 
   _$GQueryOperationData_field._(
       {required this.G__typename,
@@ -557,27 +552,7 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
       required this.scalarRequired,
       required this.enumRequired,
       required this.fieldRequired})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GQueryOperationData_field', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        idRequired, r'GQueryOperationData_field', 'idRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        boolRequired, r'GQueryOperationData_field', 'boolRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        intRequired, r'GQueryOperationData_field', 'intRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        floatRequired, r'GQueryOperationData_field', 'floatRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        stringRequired, r'GQueryOperationData_field', 'stringRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        scalarRequired, r'GQueryOperationData_field', 'scalarRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        enumRequired, r'GQueryOperationData_field', 'enumRequired');
-    BuiltValueNullFieldError.checkNotNull(
-        fieldRequired, r'GQueryOperationData_field', 'fieldRequired');
-  }
-
+      : super._();
   @override
   GQueryOperationData_field rebuild(
           void Function(GQueryOperationData_fieldBuilder) updates) =>
@@ -585,7 +560,7 @@ class _$GQueryOperationData_field extends GQueryOperationData_field {
 
   @override
   GQueryOperationData_fieldBuilder toBuilder() =>
-      new GQueryOperationData_fieldBuilder()..replace(this);
+      GQueryOperationData_fieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -688,7 +663,7 @@ class GQueryOperationData_fieldBuilder
   set string(String? string) => _$this._string = string;
 
   _i2.GScalarBuilder? _scalar;
-  _i2.GScalarBuilder get scalar => _$this._scalar ??= new _i2.GScalarBuilder();
+  _i2.GScalarBuilder get scalar => _$this._scalar ??= _i2.GScalarBuilder();
   set scalar(_i2.GScalarBuilder? scalar) => _$this._scalar = scalar;
 
   _i2.GEnum? _Genum;
@@ -697,7 +672,7 @@ class GQueryOperationData_fieldBuilder
 
   GQueryOperationData_field_fieldBuilder? _field;
   GQueryOperationData_field_fieldBuilder get field =>
-      _$this._field ??= new GQueryOperationData_field_fieldBuilder();
+      _$this._field ??= GQueryOperationData_field_fieldBuilder();
   set field(GQueryOperationData_field_fieldBuilder? field) =>
       _$this._field = field;
 
@@ -725,7 +700,7 @@ class GQueryOperationData_fieldBuilder
 
   _i2.GScalarBuilder? _scalarRequired;
   _i2.GScalarBuilder get scalarRequired =>
-      _$this._scalarRequired ??= new _i2.GScalarBuilder();
+      _$this._scalarRequired ??= _i2.GScalarBuilder();
   set scalarRequired(_i2.GScalarBuilder? scalarRequired) =>
       _$this._scalarRequired = scalarRequired;
 
@@ -737,7 +712,7 @@ class GQueryOperationData_fieldBuilder
   GQueryOperationData_field_fieldRequiredBuilder? _fieldRequired;
   GQueryOperationData_field_fieldRequiredBuilder get fieldRequired =>
       _$this._fieldRequired ??=
-          new GQueryOperationData_field_fieldRequiredBuilder();
+          GQueryOperationData_field_fieldRequiredBuilder();
   set fieldRequired(
           GQueryOperationData_field_fieldRequiredBuilder? fieldRequired) =>
       _$this._fieldRequired = fieldRequired;
@@ -773,7 +748,6 @@ class GQueryOperationData_fieldBuilder
 
   @override
   void replace(GQueryOperationData_field other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field;
   }
 
@@ -789,7 +763,7 @@ class GQueryOperationData_fieldBuilder
     _$GQueryOperationData_field _$result;
     try {
       _$result = _$v ??
-          new _$GQueryOperationData_field._(
+          _$GQueryOperationData_field._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GQueryOperationData_field', 'G__typename'),
             id: id,
@@ -830,7 +804,7 @@ class GQueryOperationData_fieldBuilder
         _$failedField = 'fieldRequired';
         fieldRequired.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GQueryOperationData_field', _$failedField, e.toString());
       }
       rethrow;
@@ -849,14 +823,10 @@ class _$GQueryOperationData_field_field
 
   factory _$GQueryOperationData_field_field(
           [void Function(GQueryOperationData_field_fieldBuilder)? updates]) =>
-      (new GQueryOperationData_field_fieldBuilder()..update(updates))._build();
+      (GQueryOperationData_field_fieldBuilder()..update(updates))._build();
 
   _$GQueryOperationData_field_field._({required this.G__typename, this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GQueryOperationData_field_field', 'G__typename');
-  }
-
+      : super._();
   @override
   GQueryOperationData_field_field rebuild(
           void Function(GQueryOperationData_field_fieldBuilder) updates) =>
@@ -864,7 +834,7 @@ class _$GQueryOperationData_field_field
 
   @override
   GQueryOperationData_field_fieldBuilder toBuilder() =>
-      new GQueryOperationData_field_fieldBuilder()..replace(this);
+      GQueryOperationData_field_fieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -922,7 +892,6 @@ class GQueryOperationData_field_fieldBuilder
 
   @override
   void replace(GQueryOperationData_field_field other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field_field;
   }
 
@@ -936,7 +905,7 @@ class GQueryOperationData_field_fieldBuilder
 
   _$GQueryOperationData_field_field _build() {
     final _$result = _$v ??
-        new _$GQueryOperationData_field_field._(
+        _$GQueryOperationData_field_field._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GQueryOperationData_field_field', 'G__typename'),
           id: id,
@@ -956,16 +925,12 @@ class _$GQueryOperationData_field_fieldRequired
   factory _$GQueryOperationData_field_fieldRequired(
           [void Function(GQueryOperationData_field_fieldRequiredBuilder)?
               updates]) =>
-      (new GQueryOperationData_field_fieldRequiredBuilder()..update(updates))
+      (GQueryOperationData_field_fieldRequiredBuilder()..update(updates))
           ._build();
 
   _$GQueryOperationData_field_fieldRequired._(
       {required this.G__typename, this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GQueryOperationData_field_fieldRequired', 'G__typename');
-  }
-
+      : super._();
   @override
   GQueryOperationData_field_fieldRequired rebuild(
           void Function(GQueryOperationData_field_fieldRequiredBuilder)
@@ -974,7 +939,7 @@ class _$GQueryOperationData_field_fieldRequired
 
   @override
   GQueryOperationData_field_fieldRequiredBuilder toBuilder() =>
-      new GQueryOperationData_field_fieldRequiredBuilder()..replace(this);
+      GQueryOperationData_field_fieldRequiredBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1033,7 +998,6 @@ class GQueryOperationData_field_fieldRequiredBuilder
 
   @override
   void replace(GQueryOperationData_field_fieldRequired other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperationData_field_fieldRequired;
   }
 
@@ -1048,7 +1012,7 @@ class GQueryOperationData_field_fieldRequiredBuilder
 
   _$GQueryOperationData_field_fieldRequired _build() {
     final _$result = _$v ??
-        new _$GQueryOperationData_field_fieldRequired._(
+        _$GQueryOperationData_field_fieldRequired._(
           G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
               r'GQueryOperationData_field_fieldRequired', 'G__typename'),
           id: id,

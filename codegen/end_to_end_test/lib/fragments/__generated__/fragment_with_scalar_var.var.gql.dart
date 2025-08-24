@@ -16,9 +16,9 @@ abstract class GPostsWithFixedVariableVars
         Built<GPostsWithFixedVariableVars, GPostsWithFixedVariableVarsBuilder> {
   GPostsWithFixedVariableVars._();
 
-  factory GPostsWithFixedVariableVars([
-    void Function(GPostsWithFixedVariableVarsBuilder b) updates,
-  ]) = _$GPostsWithFixedVariableVars;
+  factory GPostsWithFixedVariableVars(
+          [void Function(GPostsWithFixedVariableVarsBuilder b) updates]) =
+      _$GPostsWithFixedVariableVars;
 
   factory GPostsWithFixedVariableVars.create({_i1.GJson? filter}) =>
       GPostsWithFixedVariableVars((b) => b..filter = filter?.toBuilder());
@@ -27,16 +27,16 @@ abstract class GPostsWithFixedVariableVars
   static Serializer<GPostsWithFixedVariableVars> get serializer =>
       _$gPostsWithFixedVariableVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(
-            GPostsWithFixedVariableVars.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GPostsWithFixedVariableVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GPostsWithFixedVariableVars? fromJson(Map<String, dynamic> json) => _i2
-      .serializers
-      .deserializeWith(GPostsWithFixedVariableVars.serializer, json);
+  static GPostsWithFixedVariableVars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GPostsWithFixedVariableVars.serializer,
+        json,
+      );
 }
 
 abstract class GPostFragmentForUser1Vars
@@ -44,20 +44,23 @@ abstract class GPostFragmentForUser1Vars
         Built<GPostFragmentForUser1Vars, GPostFragmentForUser1VarsBuilder> {
   GPostFragmentForUser1Vars._();
 
-  factory GPostFragmentForUser1Vars([
-    void Function(GPostFragmentForUser1VarsBuilder b) updates,
-  ]) = _$GPostFragmentForUser1Vars;
+  factory GPostFragmentForUser1Vars(
+          [void Function(GPostFragmentForUser1VarsBuilder b) updates]) =
+      _$GPostFragmentForUser1Vars;
 
   factory GPostFragmentForUser1Vars.create() => GPostFragmentForUser1Vars();
 
   static Serializer<GPostFragmentForUser1Vars> get serializer =>
       _$gPostFragmentForUser1VarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(GPostFragmentForUser1Vars.serializer, this)
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GPostFragmentForUser1Vars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
-  static GPostFragmentForUser1Vars? fromJson(Map<String, dynamic> json) => _i2
-      .serializers
-      .deserializeWith(GPostFragmentForUser1Vars.serializer, json);
+  static GPostFragmentForUser1Vars? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GPostFragmentForUser1Vars.serializer,
+        json,
+      );
 }

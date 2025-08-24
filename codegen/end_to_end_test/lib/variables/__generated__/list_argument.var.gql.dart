@@ -14,37 +14,31 @@ part 'list_argument.var.gql.g.dart';
 
 abstract class GreviewsWithListArgumentVars
     implements
-        Built<
-          GreviewsWithListArgumentVars,
-          GreviewsWithListArgumentVarsBuilder
-        > {
+        Built<GreviewsWithListArgumentVars,
+            GreviewsWithListArgumentVarsBuilder> {
   GreviewsWithListArgumentVars._();
 
-  factory GreviewsWithListArgumentVars([
-    void Function(GreviewsWithListArgumentVarsBuilder b) updates,
-  ]) = _$GreviewsWithListArgumentVars;
+  factory GreviewsWithListArgumentVars(
+          [void Function(GreviewsWithListArgumentVarsBuilder b) updates]) =
+      _$GreviewsWithListArgumentVars;
 
   factory GreviewsWithListArgumentVars.create({
     required _i1.GEpisode episode,
     BuiltList<int>? stars,
-  }) => GreviewsWithListArgumentVars(
-    (b) =>
-        b
-          ..episode = episode
-          ..stars = stars?.toBuilder(),
-  );
+  }) =>
+      GreviewsWithListArgumentVars((b) => b
+        ..episode = episode
+        ..stars = stars?.toBuilder());
 
   _i1.GEpisode get episode;
   BuiltList<int>? get stars;
   static Serializer<GreviewsWithListArgumentVars> get serializer =>
       _$greviewsWithListArgumentVarsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i2.serializers.serializeWith(
-            GreviewsWithListArgumentVars.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GreviewsWithListArgumentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GreviewsWithListArgumentVars? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(

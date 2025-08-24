@@ -31,12 +31,12 @@ GActionExecutionCapabilitySetting _$gActionExecutionCapabilitySettingValueOf(
     case 'NO_POLICY':
       return _$gActionExecutionCapabilitySettingNO_POLICY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GActionExecutionCapabilitySetting>
-    _$gActionExecutionCapabilitySettingValues = new BuiltSet<
+    _$gActionExecutionCapabilitySettingValues = BuiltSet<
         GActionExecutionCapabilitySetting>(const <GActionExecutionCapabilitySetting>[
   _$gActionExecutionCapabilitySettingALL_ACTIONS,
   _$gActionExecutionCapabilitySettingDISABLED,
@@ -52,12 +52,12 @@ GAuditLogOrderField _$gAuditLogOrderFieldValueOf(String name) {
     case 'CREATED_AT':
       return _$gAuditLogOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GAuditLogOrderField> _$gAuditLogOrderFieldValues =
-    new BuiltSet<GAuditLogOrderField>(const <GAuditLogOrderField>[
+    BuiltSet<GAuditLogOrderField>(const <GAuditLogOrderField>[
   _$gAuditLogOrderFieldCREATED_AT,
 ]);
 
@@ -77,12 +77,12 @@ GCollaboratorAffiliation _$gCollaboratorAffiliationValueOf(String name) {
     case 'OUTSIDE':
       return _$gCollaboratorAffiliationOUTSIDE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GCollaboratorAffiliation> _$gCollaboratorAffiliationValues =
-    new BuiltSet<GCollaboratorAffiliation>(const <GCollaboratorAffiliation>[
+    BuiltSet<GCollaboratorAffiliation>(const <GCollaboratorAffiliation>[
   _$gCollaboratorAffiliationALL,
   _$gCollaboratorAffiliationDIRECT,
   _$gCollaboratorAffiliationOUTSIDE,
@@ -121,12 +121,12 @@ GCommentAuthorAssociation _$gCommentAuthorAssociationValueOf(String name) {
     case 'OWNER':
       return _$gCommentAuthorAssociationOWNER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GCommentAuthorAssociation> _$gCommentAuthorAssociationValues =
-    new BuiltSet<GCommentAuthorAssociation>(const <GCommentAuthorAssociation>[
+    BuiltSet<GCommentAuthorAssociation>(const <GCommentAuthorAssociation>[
   _$gCommentAuthorAssociationCOLLABORATOR,
   _$gCommentAuthorAssociationCONTRIBUTOR,
   _$gCommentAuthorAssociationFIRST_TIMER,
@@ -170,12 +170,12 @@ GCommentCannotUpdateReason _$gCommentCannotUpdateReasonValueOf(String name) {
     case 'VERIFIED_EMAIL_REQUIRED':
       return _$gCommentCannotUpdateReasonVERIFIED_EMAIL_REQUIRED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GCommentCannotUpdateReason> _$gCommentCannotUpdateReasonValues =
-    new BuiltSet<GCommentCannotUpdateReason>(const <GCommentCannotUpdateReason>[
+    BuiltSet<GCommentCannotUpdateReason>(const <GCommentCannotUpdateReason>[
   _$gCommentCannotUpdateReasonARCHIVED,
   _$gCommentCannotUpdateReasonDENIED,
   _$gCommentCannotUpdateReasonINSUFFICIENT_ACCESS,
@@ -199,12 +199,12 @@ GCommitContributionOrderField _$gCommitContributionOrderFieldValueOf(
     case 'OCCURRED_AT':
       return _$gCommitContributionOrderFieldOCCURRED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GCommitContributionOrderField>
-    _$gCommitContributionOrderFieldValues = new BuiltSet<
+    _$gCommitContributionOrderFieldValues = BuiltSet<
         GCommitContributionOrderField>(const <GCommitContributionOrderField>[
   _$gCommitContributionOrderFieldCOMMIT_COUNT,
   _$gCommitContributionOrderFieldOCCURRED_AT,
@@ -218,12 +218,12 @@ GContributionOrderField _$gContributionOrderFieldValueOf(String name) {
     case 'OCCURRED_AT':
       return _$gContributionOrderFieldOCCURRED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GContributionOrderField> _$gContributionOrderFieldValues =
-    new BuiltSet<GContributionOrderField>(const <GContributionOrderField>[
+    BuiltSet<GContributionOrderField>(const <GContributionOrderField>[
   _$gContributionOrderFieldOCCURRED_AT,
 ]);
 
@@ -252,12 +252,12 @@ GDefaultRepositoryPermissionField _$gDefaultRepositoryPermissionFieldValueOf(
     case 'WRITE':
       return _$gDefaultRepositoryPermissionFieldWRITE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GDefaultRepositoryPermissionField>
-    _$gDefaultRepositoryPermissionFieldValues = new BuiltSet<
+    _$gDefaultRepositoryPermissionFieldValues = BuiltSet<
         GDefaultRepositoryPermissionField>(const <GDefaultRepositoryPermissionField>[
   _$gDefaultRepositoryPermissionFieldADMIN,
   _$gDefaultRepositoryPermissionFieldNONE,
@@ -273,12 +273,12 @@ GDeploymentOrderField _$gDeploymentOrderFieldValueOf(String name) {
     case 'CREATED_AT':
       return _$gDeploymentOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GDeploymentOrderField> _$gDeploymentOrderFieldValues =
-    new BuiltSet<GDeploymentOrderField>(const <GDeploymentOrderField>[
+    BuiltSet<GDeploymentOrderField>(const <GDeploymentOrderField>[
   _$gDeploymentOrderFieldCREATED_AT,
 ]);
 
@@ -322,12 +322,12 @@ GDeploymentState _$gDeploymentStateValueOf(String name) {
     case 'QUEUED':
       return _$gDeploymentStateQUEUED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GDeploymentState> _$gDeploymentStateValues =
-    new BuiltSet<GDeploymentState>(const <GDeploymentState>[
+    BuiltSet<GDeploymentState>(const <GDeploymentState>[
   _$gDeploymentStateABANDONED,
   _$gDeploymentStateACTIVE,
   _$gDeploymentStateDESTROYED,
@@ -371,12 +371,12 @@ GDeploymentStatusState _$gDeploymentStatusStateValueOf(String name) {
     case 'SUCCESS':
       return _$gDeploymentStatusStateSUCCESS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GDeploymentStatusState> _$gDeploymentStatusStateValues =
-    new BuiltSet<GDeploymentStatusState>(const <GDeploymentStatusState>[
+    BuiltSet<GDeploymentStatusState>(const <GDeploymentStatusState>[
   _$gDeploymentStatusStateERROR,
   _$gDeploymentStatusStateFAILURE,
   _$gDeploymentStatusStateINACTIVE,
@@ -396,12 +396,12 @@ GEnterpriseAdministratorInvitationOrderField
     case 'CREATED_AT':
       return _$gEnterpriseAdministratorInvitationOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseAdministratorInvitationOrderField>
-    _$gEnterpriseAdministratorInvitationOrderFieldValues = new BuiltSet<
+    _$gEnterpriseAdministratorInvitationOrderFieldValues = BuiltSet<
         GEnterpriseAdministratorInvitationOrderField>(const <GEnterpriseAdministratorInvitationOrderField>[
   _$gEnterpriseAdministratorInvitationOrderFieldCREATED_AT,
 ]);
@@ -420,13 +420,13 @@ GEnterpriseAdministratorRole _$gEnterpriseAdministratorRoleValueOf(
     case 'OWNER':
       return _$gEnterpriseAdministratorRoleOWNER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseAdministratorRole>
-    _$gEnterpriseAdministratorRoleValues = new BuiltSet<
-        GEnterpriseAdministratorRole>(const <GEnterpriseAdministratorRole>[
+    _$gEnterpriseAdministratorRoleValues =
+    BuiltSet<GEnterpriseAdministratorRole>(const <GEnterpriseAdministratorRole>[
   _$gEnterpriseAdministratorRoleBILLING_MANAGER,
   _$gEnterpriseAdministratorRoleOWNER,
 ]);
@@ -461,12 +461,12 @@ GEnterpriseDefaultRepositoryPermissionSettingValue
     case 'WRITE':
       return _$gEnterpriseDefaultRepositoryPermissionSettingValueWRITE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseDefaultRepositoryPermissionSettingValue>
-    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues = new BuiltSet<
+    _$gEnterpriseDefaultRepositoryPermissionSettingValueValues = BuiltSet<
         GEnterpriseDefaultRepositoryPermissionSettingValue>(const <GEnterpriseDefaultRepositoryPermissionSettingValue>[
   _$gEnterpriseDefaultRepositoryPermissionSettingValueADMIN,
   _$gEnterpriseDefaultRepositoryPermissionSettingValueNONE,
@@ -495,12 +495,12 @@ GEnterpriseEnabledDisabledSettingValue
     case 'NO_POLICY':
       return _$gEnterpriseEnabledDisabledSettingValueNO_POLICY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseEnabledDisabledSettingValue>
-    _$gEnterpriseEnabledDisabledSettingValueValues = new BuiltSet<
+    _$gEnterpriseEnabledDisabledSettingValueValues = BuiltSet<
         GEnterpriseEnabledDisabledSettingValue>(const <GEnterpriseEnabledDisabledSettingValue>[
   _$gEnterpriseEnabledDisabledSettingValueDISABLED,
   _$gEnterpriseEnabledDisabledSettingValueENABLED,
@@ -520,12 +520,12 @@ GEnterpriseEnabledSettingValue _$gEnterpriseEnabledSettingValueValueOf(
     case 'NO_POLICY':
       return _$gEnterpriseEnabledSettingValueNO_POLICY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseEnabledSettingValue>
-    _$gEnterpriseEnabledSettingValueValues = new BuiltSet<
+    _$gEnterpriseEnabledSettingValueValues = BuiltSet<
         GEnterpriseEnabledSettingValue>(const <GEnterpriseEnabledSettingValue>[
   _$gEnterpriseEnabledSettingValueENABLED,
   _$gEnterpriseEnabledSettingValueNO_POLICY,
@@ -543,13 +543,13 @@ GEnterpriseMemberOrderField _$gEnterpriseMemberOrderFieldValueOf(String name) {
     case 'LOGIN':
       return _$gEnterpriseMemberOrderFieldLOGIN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseMemberOrderField>
-    _$gEnterpriseMemberOrderFieldValues = new BuiltSet<
-        GEnterpriseMemberOrderField>(const <GEnterpriseMemberOrderField>[
+    _$gEnterpriseMemberOrderFieldValues =
+    BuiltSet<GEnterpriseMemberOrderField>(const <GEnterpriseMemberOrderField>[
   _$gEnterpriseMemberOrderFieldCREATED_AT,
   _$gEnterpriseMemberOrderFieldLOGIN,
 ]);
@@ -584,12 +584,12 @@ GEnterpriseMembersCanCreateRepositoriesSettingValue
     case 'PUBLIC':
       return _$gEnterpriseMembersCanCreateRepositoriesSettingValuePUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseMembersCanCreateRepositoriesSettingValue>
-    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues = new BuiltSet<
+    _$gEnterpriseMembersCanCreateRepositoriesSettingValueValues = BuiltSet<
         GEnterpriseMembersCanCreateRepositoriesSettingValue>(const <GEnterpriseMembersCanCreateRepositoriesSettingValue>[
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueALL,
   _$gEnterpriseMembersCanCreateRepositoriesSettingValueDISABLED,
@@ -613,12 +613,12 @@ GEnterpriseMembersCanMakePurchasesSettingValue
     case 'ENABLED':
       return _$gEnterpriseMembersCanMakePurchasesSettingValueENABLED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseMembersCanMakePurchasesSettingValue>
-    _$gEnterpriseMembersCanMakePurchasesSettingValueValues = new BuiltSet<
+    _$gEnterpriseMembersCanMakePurchasesSettingValueValues = BuiltSet<
         GEnterpriseMembersCanMakePurchasesSettingValue>(const <GEnterpriseMembersCanMakePurchasesSettingValue>[
   _$gEnterpriseMembersCanMakePurchasesSettingValueDISABLED,
   _$gEnterpriseMembersCanMakePurchasesSettingValueENABLED,
@@ -644,12 +644,12 @@ GEnterpriseServerInstallationOrderField
     case 'HOST_NAME':
       return _$gEnterpriseServerInstallationOrderFieldHOST_NAME;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseServerInstallationOrderField>
-    _$gEnterpriseServerInstallationOrderFieldValues = new BuiltSet<
+    _$gEnterpriseServerInstallationOrderFieldValues = BuiltSet<
         GEnterpriseServerInstallationOrderField>(const <GEnterpriseServerInstallationOrderField>[
   _$gEnterpriseServerInstallationOrderFieldCREATED_AT,
   _$gEnterpriseServerInstallationOrderFieldCUSTOMER_NAME,
@@ -666,12 +666,12 @@ GEnterpriseServerUserAccountEmailOrderField
     case 'EMAIL':
       return _$gEnterpriseServerUserAccountEmailOrderFieldEMAIL;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseServerUserAccountEmailOrderField>
-    _$gEnterpriseServerUserAccountEmailOrderFieldValues = new BuiltSet<
+    _$gEnterpriseServerUserAccountEmailOrderFieldValues = BuiltSet<
         GEnterpriseServerUserAccountEmailOrderField>(const <GEnterpriseServerUserAccountEmailOrderField>[
   _$gEnterpriseServerUserAccountEmailOrderFieldEMAIL,
 ]);
@@ -691,12 +691,12 @@ GEnterpriseServerUserAccountOrderField
     case 'REMOTE_CREATED_AT':
       return _$gEnterpriseServerUserAccountOrderFieldREMOTE_CREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseServerUserAccountOrderField>
-    _$gEnterpriseServerUserAccountOrderFieldValues = new BuiltSet<
+    _$gEnterpriseServerUserAccountOrderFieldValues = BuiltSet<
         GEnterpriseServerUserAccountOrderField>(const <GEnterpriseServerUserAccountOrderField>[
   _$gEnterpriseServerUserAccountOrderFieldLOGIN,
   _$gEnterpriseServerUserAccountOrderFieldREMOTE_CREATED_AT,
@@ -712,12 +712,12 @@ GEnterpriseServerUserAccountsUploadOrderField
     case 'CREATED_AT':
       return _$gEnterpriseServerUserAccountsUploadOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadOrderField>
-    _$gEnterpriseServerUserAccountsUploadOrderFieldValues = new BuiltSet<
+    _$gEnterpriseServerUserAccountsUploadOrderFieldValues = BuiltSet<
         GEnterpriseServerUserAccountsUploadOrderField>(const <GEnterpriseServerUserAccountsUploadOrderField>[
   _$gEnterpriseServerUserAccountsUploadOrderFieldCREATED_AT,
 ]);
@@ -742,12 +742,12 @@ GEnterpriseServerUserAccountsUploadSyncState
     case 'SUCCESS':
       return _$gEnterpriseServerUserAccountsUploadSyncStateSUCCESS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseServerUserAccountsUploadSyncState>
-    _$gEnterpriseServerUserAccountsUploadSyncStateValues = new BuiltSet<
+    _$gEnterpriseServerUserAccountsUploadSyncStateValues = BuiltSet<
         GEnterpriseServerUserAccountsUploadSyncState>(const <GEnterpriseServerUserAccountsUploadSyncState>[
   _$gEnterpriseServerUserAccountsUploadSyncStateFAILURE,
   _$gEnterpriseServerUserAccountsUploadSyncStatePENDING,
@@ -769,12 +769,12 @@ GEnterpriseUserAccountMembershipRole
     case 'OWNER':
       return _$gEnterpriseUserAccountMembershipRoleOWNER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseUserAccountMembershipRole>
-    _$gEnterpriseUserAccountMembershipRoleValues = new BuiltSet<
+    _$gEnterpriseUserAccountMembershipRoleValues = BuiltSet<
         GEnterpriseUserAccountMembershipRole>(const <GEnterpriseUserAccountMembershipRole>[
   _$gEnterpriseUserAccountMembershipRoleMEMBER,
   _$gEnterpriseUserAccountMembershipRoleOWNER,
@@ -792,12 +792,12 @@ GEnterpriseUserDeployment _$gEnterpriseUserDeploymentValueOf(String name) {
     case 'SERVER':
       return _$gEnterpriseUserDeploymentSERVER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GEnterpriseUserDeployment> _$gEnterpriseUserDeploymentValues =
-    new BuiltSet<GEnterpriseUserDeployment>(const <GEnterpriseUserDeployment>[
+    BuiltSet<GEnterpriseUserDeployment>(const <GEnterpriseUserDeployment>[
   _$gEnterpriseUserDeploymentCLOUD,
   _$gEnterpriseUserDeploymentSERVER,
 ]);
@@ -846,12 +846,12 @@ GFundingPlatform _$gFundingPlatformValueOf(String name) {
     case 'TIDELIFT':
       return _$gFundingPlatformTIDELIFT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GFundingPlatform> _$gFundingPlatformValues =
-    new BuiltSet<GFundingPlatform>(const <GFundingPlatform>[
+    BuiltSet<GFundingPlatform>(const <GFundingPlatform>[
   _$gFundingPlatformCOMMUNITY_BRIDGE,
   _$gFundingPlatformCUSTOM,
   _$gFundingPlatformGITHUB,
@@ -880,12 +880,12 @@ GGistOrderField _$gGistOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gGistOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GGistOrderField> _$gGistOrderFieldValues =
-    new BuiltSet<GGistOrderField>(const <GGistOrderField>[
+    BuiltSet<GGistOrderField>(const <GGistOrderField>[
   _$gGistOrderFieldCREATED_AT,
   _$gGistOrderFieldPUSHED_AT,
   _$gGistOrderFieldUPDATED_AT,
@@ -904,12 +904,12 @@ GGistPrivacy _$gGistPrivacyValueOf(String name) {
     case 'SECRET':
       return _$gGistPrivacySECRET;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GGistPrivacy> _$gGistPrivacyValues =
-    new BuiltSet<GGistPrivacy>(const <GGistPrivacy>[
+    BuiltSet<GGistPrivacy>(const <GGistPrivacy>[
   _$gGistPrivacyALL,
   _$gGistPrivacyPUBLIC,
   _$gGistPrivacySECRET,
@@ -987,12 +987,12 @@ GGitSignatureState _$gGitSignatureStateValueOf(String name) {
     case 'VALID':
       return _$gGitSignatureStateVALID;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GGitSignatureState> _$gGitSignatureStateValues =
-    new BuiltSet<GGitSignatureState>(const <GGitSignatureState>[
+    BuiltSet<GGitSignatureState>(const <GGitSignatureState>[
   _$gGitSignatureStateBAD_CERT,
   _$gGitSignatureStateBAD_EMAIL,
   _$gGitSignatureStateEXPIRED_KEY,
@@ -1032,12 +1032,12 @@ GIdentityProviderConfigurationState
     case 'UNCONFIGURED':
       return _$gIdentityProviderConfigurationStateUNCONFIGURED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GIdentityProviderConfigurationState>
-    _$gIdentityProviderConfigurationStateValues = new BuiltSet<
+    _$gIdentityProviderConfigurationStateValues = BuiltSet<
         GIdentityProviderConfigurationState>(const <GIdentityProviderConfigurationState>[
   _$gIdentityProviderConfigurationStateCONFIGURED,
   _$gIdentityProviderConfigurationStateENFORCED,
@@ -1060,12 +1060,12 @@ GIssueOrderField _$gIssueOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gIssueOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GIssueOrderField> _$gIssueOrderFieldValues =
-    new BuiltSet<GIssueOrderField>(const <GIssueOrderField>[
+    BuiltSet<GIssueOrderField>(const <GIssueOrderField>[
   _$gIssueOrderFieldCOMMENTS,
   _$gIssueOrderFieldCREATED_AT,
   _$gIssueOrderFieldUPDATED_AT,
@@ -1081,12 +1081,12 @@ GIssueState _$gIssueStateValueOf(String name) {
     case 'OPEN':
       return _$gIssueStateOPEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GIssueState> _$gIssueStateValues =
-    new BuiltSet<GIssueState>(const <GIssueState>[
+    BuiltSet<GIssueState>(const <GIssueState>[
   _$gIssueStateCLOSED,
   _$gIssueStateOPEN,
 ]);
@@ -1233,13 +1233,13 @@ GIssueTimelineItemsItemType _$gIssueTimelineItemsItemTypeValueOf(String name) {
     case 'USER_BLOCKED_EVENT':
       return _$gIssueTimelineItemsItemTypeUSER_BLOCKED_EVENT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GIssueTimelineItemsItemType>
-    _$gIssueTimelineItemsItemTypeValues = new BuiltSet<
-        GIssueTimelineItemsItemType>(const <GIssueTimelineItemsItemType>[
+    _$gIssueTimelineItemsItemTypeValues =
+    BuiltSet<GIssueTimelineItemsItemType>(const <GIssueTimelineItemsItemType>[
   _$gIssueTimelineItemsItemTypeADDED_TO_PROJECT_EVENT,
   _$gIssueTimelineItemsItemTypeASSIGNED_EVENT,
   _$gIssueTimelineItemsItemTypeCLOSED_EVENT,
@@ -1284,12 +1284,12 @@ GLabelOrderField _$gLabelOrderFieldValueOf(String name) {
     case 'NAME':
       return _$gLabelOrderFieldNAME;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GLabelOrderField> _$gLabelOrderFieldValues =
-    new BuiltSet<GLabelOrderField>(const <GLabelOrderField>[
+    BuiltSet<GLabelOrderField>(const <GLabelOrderField>[
   _$gLabelOrderFieldCREATED_AT,
   _$gLabelOrderFieldNAME,
 ]);
@@ -1302,12 +1302,12 @@ GLanguageOrderField _$gLanguageOrderFieldValueOf(String name) {
     case 'SIZE':
       return _$gLanguageOrderFieldSIZE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GLanguageOrderField> _$gLanguageOrderFieldValues =
-    new BuiltSet<GLanguageOrderField>(const <GLanguageOrderField>[
+    BuiltSet<GLanguageOrderField>(const <GLanguageOrderField>[
   _$gLanguageOrderFieldSIZE,
 ]);
 
@@ -1327,12 +1327,12 @@ GLockReason _$gLockReasonValueOf(String name) {
     case 'TOO_HEATED':
       return _$gLockReasonTOO_HEATED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GLockReason> _$gLockReasonValues =
-    new BuiltSet<GLockReason>(const <GLockReason>[
+    BuiltSet<GLockReason>(const <GLockReason>[
   _$gLockReasonOFF_TOPIC,
   _$gLockReasonRESOLVED,
   _$gLockReasonSPAM,
@@ -1355,12 +1355,12 @@ GMergeableState _$gMergeableStateValueOf(String name) {
     case 'UNKNOWN':
       return _$gMergeableStateUNKNOWN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GMergeableState> _$gMergeableStateValues =
-    new BuiltSet<GMergeableState>(const <GMergeableState>[
+    BuiltSet<GMergeableState>(const <GMergeableState>[
   _$gMergeableStateCONFLICTING,
   _$gMergeableStateMERGEABLE,
   _$gMergeableStateUNKNOWN,
@@ -1386,12 +1386,12 @@ GMilestoneOrderField _$gMilestoneOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gMilestoneOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GMilestoneOrderField> _$gMilestoneOrderFieldValues =
-    new BuiltSet<GMilestoneOrderField>(const <GMilestoneOrderField>[
+    BuiltSet<GMilestoneOrderField>(const <GMilestoneOrderField>[
   _$gMilestoneOrderFieldCREATED_AT,
   _$gMilestoneOrderFieldDUE_DATE,
   _$gMilestoneOrderFieldNUMBER,
@@ -1409,12 +1409,12 @@ GMilestoneState _$gMilestoneStateValueOf(String name) {
     case 'OPEN':
       return _$gMilestoneStateOPEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GMilestoneState> _$gMilestoneStateValues =
-    new BuiltSet<GMilestoneState>(const <GMilestoneState>[
+    BuiltSet<GMilestoneState>(const <GMilestoneState>[
   _$gMilestoneStateCLOSED,
   _$gMilestoneStateOPEN,
 ]);
@@ -1439,12 +1439,12 @@ GOauthApplicationCreateAuditEntryState
     case 'SUSPENDED':
       return _$gOauthApplicationCreateAuditEntryStateSUSPENDED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOauthApplicationCreateAuditEntryState>
-    _$gOauthApplicationCreateAuditEntryStateValues = new BuiltSet<
+    _$gOauthApplicationCreateAuditEntryStateValues = BuiltSet<
         GOauthApplicationCreateAuditEntryState>(const <GOauthApplicationCreateAuditEntryState>[
   _$gOauthApplicationCreateAuditEntryStateACTIVE,
   _$gOauthApplicationCreateAuditEntryStatePENDING_DELETION,
@@ -1479,12 +1479,12 @@ GOperationType _$gOperationTypeValueOf(String name) {
     case 'TRANSFER':
       return _$gOperationTypeTRANSFER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOperationType> _$gOperationTypeValues =
-    new BuiltSet<GOperationType>(const <GOperationType>[
+    BuiltSet<GOperationType>(const <GOperationType>[
   _$gOperationTypeACCESS,
   _$gOperationTypeAUTHENTICATION,
   _$gOperationTypeCREATE,
@@ -1504,12 +1504,12 @@ GOrderDirection _$gOrderDirectionValueOf(String name) {
     case 'DESC':
       return _$gOrderDirectionDESC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrderDirection> _$gOrderDirectionValues =
-    new BuiltSet<GOrderDirection>(const <GOrderDirection>[
+    BuiltSet<GOrderDirection>(const <GOrderDirection>[
   _$gOrderDirectionASC,
   _$gOrderDirectionDESC,
 ]);
@@ -1529,12 +1529,12 @@ GOrgAddMemberAuditEntryPermission _$gOrgAddMemberAuditEntryPermissionValueOf(
     case 'READ':
       return _$gOrgAddMemberAuditEntryPermissionREAD;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgAddMemberAuditEntryPermission>
-    _$gOrgAddMemberAuditEntryPermissionValues = new BuiltSet<
+    _$gOrgAddMemberAuditEntryPermissionValues = BuiltSet<
         GOrgAddMemberAuditEntryPermission>(const <GOrgAddMemberAuditEntryPermission>[
   _$gOrgAddMemberAuditEntryPermissionADMIN,
   _$gOrgAddMemberAuditEntryPermissionREAD,
@@ -1569,12 +1569,12 @@ GOrgCreateAuditEntryBillingPlan _$gOrgCreateAuditEntryBillingPlanValueOf(
     case 'UNLIMITED':
       return _$gOrgCreateAuditEntryBillingPlanUNLIMITED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgCreateAuditEntryBillingPlan>
-    _$gOrgCreateAuditEntryBillingPlanValues = new BuiltSet<
+    _$gOrgCreateAuditEntryBillingPlanValues = BuiltSet<
         GOrgCreateAuditEntryBillingPlan>(const <GOrgCreateAuditEntryBillingPlan>[
   _$gOrgCreateAuditEntryBillingPlanBUSINESS,
   _$gOrgCreateAuditEntryBillingPlanBUSINESS_PLUS,
@@ -1606,12 +1606,12 @@ GOrgRemoveBillingManagerAuditEntryReason
     case 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE':
       return _$gOrgRemoveBillingManagerAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgRemoveBillingManagerAuditEntryReason>
-    _$gOrgRemoveBillingManagerAuditEntryReasonValues = new BuiltSet<
+    _$gOrgRemoveBillingManagerAuditEntryReasonValues = BuiltSet<
         GOrgRemoveBillingManagerAuditEntryReason>(const <GOrgRemoveBillingManagerAuditEntryReason>[
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveBillingManagerAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
@@ -1648,12 +1648,12 @@ GOrgRemoveMemberAuditEntryMembershipType
     case 'UNAFFILIATED':
       return _$gOrgRemoveMemberAuditEntryMembershipTypeUNAFFILIATED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryMembershipType>
-    _$gOrgRemoveMemberAuditEntryMembershipTypeValues = new BuiltSet<
+    _$gOrgRemoveMemberAuditEntryMembershipTypeValues = BuiltSet<
         GOrgRemoveMemberAuditEntryMembershipType>(const <GOrgRemoveMemberAuditEntryMembershipType>[
   _$gOrgRemoveMemberAuditEntryMembershipTypeADMIN,
   _$gOrgRemoveMemberAuditEntryMembershipTypeBILLING_MANAGER,
@@ -1684,12 +1684,12 @@ GOrgRemoveMemberAuditEntryReason _$gOrgRemoveMemberAuditEntryReasonValueOf(
     case 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE':
       return _$gOrgRemoveMemberAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgRemoveMemberAuditEntryReason>
-    _$gOrgRemoveMemberAuditEntryReasonValues = new BuiltSet<
+    _$gOrgRemoveMemberAuditEntryReasonValues = BuiltSet<
         GOrgRemoveMemberAuditEntryReason>(const <GOrgRemoveMemberAuditEntryReason>[
   _$gOrgRemoveMemberAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveMemberAuditEntryReasonSAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY,
@@ -1720,13 +1720,12 @@ GOrgRemoveOutsideCollaboratorAuditEntryMembershipType
     case 'UNAFFILIATED':
       return _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeUNAFFILIATED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>
-    _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeValues =
-    new BuiltSet<
+    _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeValues = BuiltSet<
         GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>(const <GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeBILLING_MANAGER,
   _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeOUTSIDE_COLLABORATOR,
@@ -1750,12 +1749,12 @@ GOrgRemoveOutsideCollaboratorAuditEntryReason
     case 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE':
       return _$gOrgRemoveOutsideCollaboratorAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgRemoveOutsideCollaboratorAuditEntryReason>
-    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues = new BuiltSet<
+    _$gOrgRemoveOutsideCollaboratorAuditEntryReasonValues = BuiltSet<
         GOrgRemoveOutsideCollaboratorAuditEntryReason>(const <GOrgRemoveOutsideCollaboratorAuditEntryReason>[
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonSAML_EXTERNAL_IDENTITY_MISSING,
   _$gOrgRemoveOutsideCollaboratorAuditEntryReasonTWO_FACTOR_REQUIREMENT_NON_COMPLIANCE,
@@ -1787,13 +1786,13 @@ GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission
     case 'WRITE':
       return _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionWRITE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>
     _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionValues =
-    new BuiltSet<
+    BuiltSet<
         GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>(const <GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>[
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionADMIN,
   _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionNONE,
@@ -1816,12 +1815,12 @@ GOrgUpdateMemberAuditEntryPermission
     case 'READ':
       return _$gOrgUpdateMemberAuditEntryPermissionREAD;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgUpdateMemberAuditEntryPermission>
-    _$gOrgUpdateMemberAuditEntryPermissionValues = new BuiltSet<
+    _$gOrgUpdateMemberAuditEntryPermissionValues = BuiltSet<
         GOrgUpdateMemberAuditEntryPermission>(const <GOrgUpdateMemberAuditEntryPermission>[
   _$gOrgUpdateMemberAuditEntryPermissionADMIN,
   _$gOrgUpdateMemberAuditEntryPermissionREAD,
@@ -1845,13 +1844,13 @@ GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility
     case 'PUBLIC':
       return _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>
     _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityValues =
-    new BuiltSet<
+    BuiltSet<
         GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>(const <GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>[
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityALL,
   _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilityPUBLIC,
@@ -1877,13 +1876,13 @@ GOrganizationInvitationRole _$gOrganizationInvitationRoleValueOf(String name) {
     case 'REINSTATE':
       return _$gOrganizationInvitationRoleREINSTATE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrganizationInvitationRole>
-    _$gOrganizationInvitationRoleValues = new BuiltSet<
-        GOrganizationInvitationRole>(const <GOrganizationInvitationRole>[
+    _$gOrganizationInvitationRoleValues =
+    BuiltSet<GOrganizationInvitationRole>(const <GOrganizationInvitationRole>[
   _$gOrganizationInvitationRoleADMIN,
   _$gOrganizationInvitationRoleBILLING_MANAGER,
   _$gOrganizationInvitationRoleDIRECT_MEMBER,
@@ -1902,13 +1901,13 @@ GOrganizationInvitationType _$gOrganizationInvitationTypeValueOf(String name) {
     case 'USER':
       return _$gOrganizationInvitationTypeUSER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrganizationInvitationType>
-    _$gOrganizationInvitationTypeValues = new BuiltSet<
-        GOrganizationInvitationType>(const <GOrganizationInvitationType>[
+    _$gOrganizationInvitationTypeValues =
+    BuiltSet<GOrganizationInvitationType>(const <GOrganizationInvitationType>[
   _$gOrganizationInvitationTypeEMAIL,
   _$gOrganizationInvitationTypeUSER,
 ]);
@@ -1925,12 +1924,12 @@ GOrganizationMemberRole _$gOrganizationMemberRoleValueOf(String name) {
     case 'MEMBER':
       return _$gOrganizationMemberRoleMEMBER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrganizationMemberRole> _$gOrganizationMemberRoleValues =
-    new BuiltSet<GOrganizationMemberRole>(const <GOrganizationMemberRole>[
+    BuiltSet<GOrganizationMemberRole>(const <GOrganizationMemberRole>[
   _$gOrganizationMemberRoleADMIN,
   _$gOrganizationMemberRoleMEMBER,
 ]);
@@ -1956,13 +1955,12 @@ GOrganizationMembersCanCreateRepositoriesSettingValue
     case 'PRIVATE':
       return _$gOrganizationMembersCanCreateRepositoriesSettingValuePRIVATE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrganizationMembersCanCreateRepositoriesSettingValue>
-    _$gOrganizationMembersCanCreateRepositoriesSettingValueValues =
-    new BuiltSet<
+    _$gOrganizationMembersCanCreateRepositoriesSettingValueValues = BuiltSet<
         GOrganizationMembersCanCreateRepositoriesSettingValue>(const <GOrganizationMembersCanCreateRepositoriesSettingValue>[
   _$gOrganizationMembersCanCreateRepositoriesSettingValueALL,
   _$gOrganizationMembersCanCreateRepositoriesSettingValueDISABLED,
@@ -1981,12 +1979,12 @@ GOrganizationOrderField _$gOrganizationOrderFieldValueOf(String name) {
     case 'LOGIN':
       return _$gOrganizationOrderFieldLOGIN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GOrganizationOrderField> _$gOrganizationOrderFieldValues =
-    new BuiltSet<GOrganizationOrderField>(const <GOrganizationOrderField>[
+    BuiltSet<GOrganizationOrderField>(const <GOrganizationOrderField>[
   _$gOrganizationOrderFieldCREATED_AT,
   _$gOrganizationOrderFieldLOGIN,
 ]);
@@ -2027,12 +2025,12 @@ GPinnableItemType _$gPinnableItemTypeValueOf(String name) {
     case 'USER':
       return _$gPinnableItemTypeUSER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPinnableItemType> _$gPinnableItemTypeValues =
-    new BuiltSet<GPinnableItemType>(const <GPinnableItemType>[
+    BuiltSet<GPinnableItemType>(const <GPinnableItemType>[
   _$gPinnableItemTypeGIST,
   _$gPinnableItemTypeISSUE,
   _$gPinnableItemTypeORGANIZATION,
@@ -2055,12 +2053,12 @@ GProjectCardArchivedState _$gProjectCardArchivedStateValueOf(String name) {
     case 'NOT_ARCHIVED':
       return _$gProjectCardArchivedStateNOT_ARCHIVED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectCardArchivedState> _$gProjectCardArchivedStateValues =
-    new BuiltSet<GProjectCardArchivedState>(const <GProjectCardArchivedState>[
+    BuiltSet<GProjectCardArchivedState>(const <GProjectCardArchivedState>[
   _$gProjectCardArchivedStateARCHIVED,
   _$gProjectCardArchivedStateNOT_ARCHIVED,
 ]);
@@ -2081,12 +2079,12 @@ GProjectCardState _$gProjectCardStateValueOf(String name) {
     case 'REDACTED':
       return _$gProjectCardStateREDACTED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectCardState> _$gProjectCardStateValues =
-    new BuiltSet<GProjectCardState>(const <GProjectCardState>[
+    BuiltSet<GProjectCardState>(const <GProjectCardState>[
   _$gProjectCardStateCONTENT_ONLY,
   _$gProjectCardStateNOTE_ONLY,
   _$gProjectCardStateREDACTED,
@@ -2108,12 +2106,12 @@ GProjectColumnPurpose _$gProjectColumnPurposeValueOf(String name) {
     case 'TODO':
       return _$gProjectColumnPurposeTODO;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectColumnPurpose> _$gProjectColumnPurposeValues =
-    new BuiltSet<GProjectColumnPurpose>(const <GProjectColumnPurpose>[
+    BuiltSet<GProjectColumnPurpose>(const <GProjectColumnPurpose>[
   _$gProjectColumnPurposeDONE,
   _$gProjectColumnPurposeIN_PROGRESS,
   _$gProjectColumnPurposeTODO,
@@ -2135,12 +2133,12 @@ GProjectOrderField _$gProjectOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gProjectOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectOrderField> _$gProjectOrderFieldValues =
-    new BuiltSet<GProjectOrderField>(const <GProjectOrderField>[
+    BuiltSet<GProjectOrderField>(const <GProjectOrderField>[
   _$gProjectOrderFieldCREATED_AT,
   _$gProjectOrderFieldNAME,
   _$gProjectOrderFieldUPDATED_AT,
@@ -2156,12 +2154,12 @@ GProjectState _$gProjectStateValueOf(String name) {
     case 'OPEN':
       return _$gProjectStateOPEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectState> _$gProjectStateValues =
-    new BuiltSet<GProjectState>(const <GProjectState>[
+    BuiltSet<GProjectState>(const <GProjectState>[
   _$gProjectStateCLOSED,
   _$gProjectStateOPEN,
 ]);
@@ -2186,12 +2184,12 @@ GProjectTemplate _$gProjectTemplateValueOf(String name) {
     case 'BUG_TRIAGE':
       return _$gProjectTemplateBUG_TRIAGE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GProjectTemplate> _$gProjectTemplateValues =
-    new BuiltSet<GProjectTemplate>(const <GProjectTemplate>[
+    BuiltSet<GProjectTemplate>(const <GProjectTemplate>[
   _$gProjectTemplateAUTOMATED_KANBAN_V2,
   _$gProjectTemplateAUTOMATED_REVIEWS_KANBAN,
   _$gProjectTemplateBASIC_KANBAN,
@@ -2214,12 +2212,12 @@ GPullRequestMergeMethod _$gPullRequestMergeMethodValueOf(String name) {
     case 'SQUASH':
       return _$gPullRequestMergeMethodSQUASH;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestMergeMethod> _$gPullRequestMergeMethodValues =
-    new BuiltSet<GPullRequestMergeMethod>(const <GPullRequestMergeMethod>[
+    BuiltSet<GPullRequestMergeMethod>(const <GPullRequestMergeMethod>[
   _$gPullRequestMergeMethodMERGE,
   _$gPullRequestMergeMethodREBASE,
   _$gPullRequestMergeMethodSQUASH,
@@ -2237,12 +2235,12 @@ GPullRequestOrderField _$gPullRequestOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gPullRequestOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestOrderField> _$gPullRequestOrderFieldValues =
-    new BuiltSet<GPullRequestOrderField>(const <GPullRequestOrderField>[
+    BuiltSet<GPullRequestOrderField>(const <GPullRequestOrderField>[
   _$gPullRequestOrderFieldCREATED_AT,
   _$gPullRequestOrderFieldUPDATED_AT,
 ]);
@@ -2260,12 +2258,12 @@ GPullRequestReviewCommentState _$gPullRequestReviewCommentStateValueOf(
     case 'SUBMITTED':
       return _$gPullRequestReviewCommentStateSUBMITTED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestReviewCommentState>
-    _$gPullRequestReviewCommentStateValues = new BuiltSet<
+    _$gPullRequestReviewCommentStateValues = BuiltSet<
         GPullRequestReviewCommentState>(const <GPullRequestReviewCommentState>[
   _$gPullRequestReviewCommentStatePENDING,
   _$gPullRequestReviewCommentStateSUBMITTED,
@@ -2291,12 +2289,12 @@ GPullRequestReviewEvent _$gPullRequestReviewEventValueOf(String name) {
     case 'REQUEST_CHANGES':
       return _$gPullRequestReviewEventREQUEST_CHANGES;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestReviewEvent> _$gPullRequestReviewEventValues =
-    new BuiltSet<GPullRequestReviewEvent>(const <GPullRequestReviewEvent>[
+    BuiltSet<GPullRequestReviewEvent>(const <GPullRequestReviewEvent>[
   _$gPullRequestReviewEventAPPROVE,
   _$gPullRequestReviewEventCOMMENT,
   _$gPullRequestReviewEventDISMISS,
@@ -2327,12 +2325,12 @@ GPullRequestReviewState _$gPullRequestReviewStateValueOf(String name) {
     case 'PENDING':
       return _$gPullRequestReviewStatePENDING;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestReviewState> _$gPullRequestReviewStateValues =
-    new BuiltSet<GPullRequestReviewState>(const <GPullRequestReviewState>[
+    BuiltSet<GPullRequestReviewState>(const <GPullRequestReviewState>[
   _$gPullRequestReviewStateAPPROVED,
   _$gPullRequestReviewStateCHANGES_REQUESTED,
   _$gPullRequestReviewStateCOMMENTED,
@@ -2356,12 +2354,12 @@ GPullRequestState _$gPullRequestStateValueOf(String name) {
     case 'OPEN':
       return _$gPullRequestStateOPEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestState> _$gPullRequestStateValues =
-    new BuiltSet<GPullRequestState>(const <GPullRequestState>[
+    BuiltSet<GPullRequestState>(const <GPullRequestState>[
   _$gPullRequestStateCLOSED,
   _$gPullRequestStateMERGED,
   _$gPullRequestStateOPEN,
@@ -2609,12 +2607,12 @@ GPullRequestTimelineItemsItemType _$gPullRequestTimelineItemsItemTypeValueOf(
     case 'USER_BLOCKED_EVENT':
       return _$gPullRequestTimelineItemsItemTypeUSER_BLOCKED_EVENT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestTimelineItemsItemType>
-    _$gPullRequestTimelineItemsItemTypeValues = new BuiltSet<
+    _$gPullRequestTimelineItemsItemTypeValues = BuiltSet<
         GPullRequestTimelineItemsItemType>(const <GPullRequestTimelineItemsItemType>[
   _$gPullRequestTimelineItemsItemTypeADDED_TO_PROJECT_EVENT,
   _$gPullRequestTimelineItemsItemTypeASSIGNED_EVENT,
@@ -2677,12 +2675,12 @@ GPullRequestUpdateState _$gPullRequestUpdateStateValueOf(String name) {
     case 'OPEN':
       return _$gPullRequestUpdateStateOPEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GPullRequestUpdateState> _$gPullRequestUpdateStateValues =
-    new BuiltSet<GPullRequestUpdateState>(const <GPullRequestUpdateState>[
+    BuiltSet<GPullRequestUpdateState>(const <GPullRequestUpdateState>[
   _$gPullRequestUpdateStateCLOSED,
   _$gPullRequestUpdateStateOPEN,
 ]);
@@ -2723,12 +2721,12 @@ GReactionContent _$gReactionContentValueOf(String name) {
     case 'THUMBS_UP':
       return _$gReactionContentTHUMBS_UP;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GReactionContent> _$gReactionContentValues =
-    new BuiltSet<GReactionContent>(const <GReactionContent>[
+    BuiltSet<GReactionContent>(const <GReactionContent>[
   _$gReactionContentCONFUSED,
   _$gReactionContentEYES,
   _$gReactionContentHEART,
@@ -2747,12 +2745,12 @@ GReactionOrderField _$gReactionOrderFieldValueOf(String name) {
     case 'CREATED_AT':
       return _$gReactionOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GReactionOrderField> _$gReactionOrderFieldValues =
-    new BuiltSet<GReactionOrderField>(const <GReactionOrderField>[
+    BuiltSet<GReactionOrderField>(const <GReactionOrderField>[
   _$gReactionOrderFieldCREATED_AT,
 ]);
 
@@ -2768,12 +2766,12 @@ GRefOrderField _$gRefOrderFieldValueOf(String name) {
     case 'TAG_COMMIT_DATE':
       return _$gRefOrderFieldTAG_COMMIT_DATE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRefOrderField> _$gRefOrderFieldValues =
-    new BuiltSet<GRefOrderField>(const <GRefOrderField>[
+    BuiltSet<GRefOrderField>(const <GRefOrderField>[
   _$gRefOrderFieldALPHABETICAL,
   _$gRefOrderFieldTAG_COMMIT_DATE,
 ]);
@@ -2807,12 +2805,12 @@ GRegistryPackageDependencyType _$gRegistryPackageDependencyTypeValueOf(
     case 'TEST':
       return _$gRegistryPackageDependencyTypeTEST;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRegistryPackageDependencyType>
-    _$gRegistryPackageDependencyTypeValues = new BuiltSet<
+    _$gRegistryPackageDependencyTypeValues = BuiltSet<
         GRegistryPackageDependencyType>(const <GRegistryPackageDependencyType>[
   _$gRegistryPackageDependencyTypeBUNDLED,
   _$gRegistryPackageDependencyTypeDEFAULT,
@@ -2854,12 +2852,12 @@ GRegistryPackageType _$gRegistryPackageTypeValueOf(String name) {
     case 'RUBYGEMS':
       return _$gRegistryPackageTypeRUBYGEMS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRegistryPackageType> _$gRegistryPackageTypeValues =
-    new BuiltSet<GRegistryPackageType>(const <GRegistryPackageType>[
+    BuiltSet<GRegistryPackageType>(const <GRegistryPackageType>[
   _$gRegistryPackageTypeDEBIAN,
   _$gRegistryPackageTypeDOCKER,
   _$gRegistryPackageTypeMAVEN,
@@ -2881,12 +2879,12 @@ GReleaseOrderField _$gReleaseOrderFieldValueOf(String name) {
     case 'NAME':
       return _$gReleaseOrderFieldNAME;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GReleaseOrderField> _$gReleaseOrderFieldValues =
-    new BuiltSet<GReleaseOrderField>(const <GReleaseOrderField>[
+    BuiltSet<GReleaseOrderField>(const <GReleaseOrderField>[
   _$gReleaseOrderFieldCREATED_AT,
   _$gReleaseOrderFieldNAME,
 ]);
@@ -2909,12 +2907,12 @@ GRepoAccessAuditEntryVisibility _$gRepoAccessAuditEntryVisibilityValueOf(
     case 'PUBLIC':
       return _$gRepoAccessAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoAccessAuditEntryVisibility>
-    _$gRepoAccessAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoAccessAuditEntryVisibilityValues = BuiltSet<
         GRepoAccessAuditEntryVisibility>(const <GRepoAccessAuditEntryVisibility>[
   _$gRepoAccessAuditEntryVisibilityINTERNAL,
   _$gRepoAccessAuditEntryVisibilityPRIVATE,
@@ -2941,12 +2939,12 @@ GRepoAddMemberAuditEntryVisibility _$gRepoAddMemberAuditEntryVisibilityValueOf(
     case 'PUBLIC':
       return _$gRepoAddMemberAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoAddMemberAuditEntryVisibility>
-    _$gRepoAddMemberAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoAddMemberAuditEntryVisibilityValues = BuiltSet<
         GRepoAddMemberAuditEntryVisibility>(const <GRepoAddMemberAuditEntryVisibility>[
   _$gRepoAddMemberAuditEntryVisibilityINTERNAL,
   _$gRepoAddMemberAuditEntryVisibilityPRIVATE,
@@ -2973,12 +2971,12 @@ GRepoArchivedAuditEntryVisibility _$gRepoArchivedAuditEntryVisibilityValueOf(
     case 'PUBLIC':
       return _$gRepoArchivedAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoArchivedAuditEntryVisibility>
-    _$gRepoArchivedAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoArchivedAuditEntryVisibilityValues = BuiltSet<
         GRepoArchivedAuditEntryVisibility>(const <GRepoArchivedAuditEntryVisibility>[
   _$gRepoArchivedAuditEntryVisibilityINTERNAL,
   _$gRepoArchivedAuditEntryVisibilityPRIVATE,
@@ -3005,12 +3003,12 @@ GRepoChangeMergeSettingAuditEntryMergeType
     case 'SQUASH':
       return _$gRepoChangeMergeSettingAuditEntryMergeTypeSQUASH;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoChangeMergeSettingAuditEntryMergeType>
-    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues = new BuiltSet<
+    _$gRepoChangeMergeSettingAuditEntryMergeTypeValues = BuiltSet<
         GRepoChangeMergeSettingAuditEntryMergeType>(const <GRepoChangeMergeSettingAuditEntryMergeType>[
   _$gRepoChangeMergeSettingAuditEntryMergeTypeMERGE,
   _$gRepoChangeMergeSettingAuditEntryMergeTypeREBASE,
@@ -3035,12 +3033,12 @@ GRepoCreateAuditEntryVisibility _$gRepoCreateAuditEntryVisibilityValueOf(
     case 'PUBLIC':
       return _$gRepoCreateAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoCreateAuditEntryVisibility>
-    _$gRepoCreateAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoCreateAuditEntryVisibilityValues = BuiltSet<
         GRepoCreateAuditEntryVisibility>(const <GRepoCreateAuditEntryVisibility>[
   _$gRepoCreateAuditEntryVisibilityINTERNAL,
   _$gRepoCreateAuditEntryVisibilityPRIVATE,
@@ -3067,12 +3065,12 @@ GRepoDestroyAuditEntryVisibility _$gRepoDestroyAuditEntryVisibilityValueOf(
     case 'PUBLIC':
       return _$gRepoDestroyAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoDestroyAuditEntryVisibility>
-    _$gRepoDestroyAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoDestroyAuditEntryVisibilityValues = BuiltSet<
         GRepoDestroyAuditEntryVisibility>(const <GRepoDestroyAuditEntryVisibility>[
   _$gRepoDestroyAuditEntryVisibilityINTERNAL,
   _$gRepoDestroyAuditEntryVisibilityPRIVATE,
@@ -3099,12 +3097,12 @@ GRepoRemoveMemberAuditEntryVisibility
     case 'PUBLIC':
       return _$gRepoRemoveMemberAuditEntryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepoRemoveMemberAuditEntryVisibility>
-    _$gRepoRemoveMemberAuditEntryVisibilityValues = new BuiltSet<
+    _$gRepoRemoveMemberAuditEntryVisibilityValues = BuiltSet<
         GRepoRemoveMemberAuditEntryVisibility>(const <GRepoRemoveMemberAuditEntryVisibility>[
   _$gRepoRemoveMemberAuditEntryVisibilityINTERNAL,
   _$gRepoRemoveMemberAuditEntryVisibilityPRIVATE,
@@ -3127,12 +3125,12 @@ GRepositoryAffiliation _$gRepositoryAffiliationValueOf(String name) {
     case 'OWNER':
       return _$gRepositoryAffiliationOWNER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryAffiliation> _$gRepositoryAffiliationValues =
-    new BuiltSet<GRepositoryAffiliation>(const <GRepositoryAffiliation>[
+    BuiltSet<GRepositoryAffiliation>(const <GRepositoryAffiliation>[
   _$gRepositoryAffiliationCOLLABORATOR,
   _$gRepositoryAffiliationORGANIZATION_MEMBER,
   _$gRepositoryAffiliationOWNER,
@@ -3163,13 +3161,13 @@ GRepositoryContributionType _$gRepositoryContributionTypeValueOf(String name) {
     case 'REPOSITORY':
       return _$gRepositoryContributionTypeREPOSITORY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryContributionType>
-    _$gRepositoryContributionTypeValues = new BuiltSet<
-        GRepositoryContributionType>(const <GRepositoryContributionType>[
+    _$gRepositoryContributionTypeValues =
+    BuiltSet<GRepositoryContributionType>(const <GRepositoryContributionType>[
   _$gRepositoryContributionTypeCOMMIT,
   _$gRepositoryContributionTypeISSUE,
   _$gRepositoryContributionTypePULL_REQUEST,
@@ -3192,12 +3190,12 @@ GRepositoryInvitationOrderField _$gRepositoryInvitationOrderFieldValueOf(
     case 'INVITEE_LOGIN':
       return _$gRepositoryInvitationOrderFieldINVITEE_LOGIN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryInvitationOrderField>
-    _$gRepositoryInvitationOrderFieldValues = new BuiltSet<
+    _$gRepositoryInvitationOrderFieldValues = BuiltSet<
         GRepositoryInvitationOrderField>(const <GRepositoryInvitationOrderField>[
   _$gRepositoryInvitationOrderFieldCREATED_AT,
   _$gRepositoryInvitationOrderFieldINVITEE_LOGIN,
@@ -3223,12 +3221,12 @@ GRepositoryLockReason _$gRepositoryLockReasonValueOf(String name) {
     case 'RENAME':
       return _$gRepositoryLockReasonRENAME;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryLockReason> _$gRepositoryLockReasonValues =
-    new BuiltSet<GRepositoryLockReason>(const <GRepositoryLockReason>[
+    BuiltSet<GRepositoryLockReason>(const <GRepositoryLockReason>[
   _$gRepositoryLockReasonBILLING,
   _$gRepositoryLockReasonMIGRATING,
   _$gRepositoryLockReasonMOVING,
@@ -3259,12 +3257,12 @@ GRepositoryOrderField _$gRepositoryOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gRepositoryOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryOrderField> _$gRepositoryOrderFieldValues =
-    new BuiltSet<GRepositoryOrderField>(const <GRepositoryOrderField>[
+    BuiltSet<GRepositoryOrderField>(const <GRepositoryOrderField>[
   _$gRepositoryOrderFieldCREATED_AT,
   _$gRepositoryOrderFieldNAME,
   _$gRepositoryOrderFieldPUSHED_AT,
@@ -3296,12 +3294,12 @@ GRepositoryPermission _$gRepositoryPermissionValueOf(String name) {
     case 'WRITE':
       return _$gRepositoryPermissionWRITE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryPermission> _$gRepositoryPermissionValues =
-    new BuiltSet<GRepositoryPermission>(const <GRepositoryPermission>[
+    BuiltSet<GRepositoryPermission>(const <GRepositoryPermission>[
   _$gRepositoryPermissionADMIN,
   _$gRepositoryPermissionMAINTAIN,
   _$gRepositoryPermissionREAD,
@@ -3321,12 +3319,12 @@ GRepositoryPrivacy _$gRepositoryPrivacyValueOf(String name) {
     case 'PUBLIC':
       return _$gRepositoryPrivacyPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryPrivacy> _$gRepositoryPrivacyValues =
-    new BuiltSet<GRepositoryPrivacy>(const <GRepositoryPrivacy>[
+    BuiltSet<GRepositoryPrivacy>(const <GRepositoryPrivacy>[
   _$gRepositoryPrivacyPRIVATE,
   _$gRepositoryPrivacyPUBLIC,
 ]);
@@ -3347,12 +3345,12 @@ GRepositoryVisibility _$gRepositoryVisibilityValueOf(String name) {
     case 'PUBLIC':
       return _$gRepositoryVisibilityPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GRepositoryVisibility> _$gRepositoryVisibilityValues =
-    new BuiltSet<GRepositoryVisibility>(const <GRepositoryVisibility>[
+    BuiltSet<GRepositoryVisibility>(const <GRepositoryVisibility>[
   _$gRepositoryVisibilityINTERNAL,
   _$gRepositoryVisibilityPRIVATE,
   _$gRepositoryVisibilityPUBLIC,
@@ -3378,12 +3376,12 @@ GSamlDigestAlgorithm _$gSamlDigestAlgorithmValueOf(String name) {
     case 'SHA512':
       return _$gSamlDigestAlgorithmSHA512;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSamlDigestAlgorithm> _$gSamlDigestAlgorithmValues =
-    new BuiltSet<GSamlDigestAlgorithm>(const <GSamlDigestAlgorithm>[
+    BuiltSet<GSamlDigestAlgorithm>(const <GSamlDigestAlgorithm>[
   _$gSamlDigestAlgorithmSHA1,
   _$gSamlDigestAlgorithmSHA256,
   _$gSamlDigestAlgorithmSHA384,
@@ -3410,12 +3408,12 @@ GSamlSignatureAlgorithm _$gSamlSignatureAlgorithmValueOf(String name) {
     case 'RSA_SHA512':
       return _$gSamlSignatureAlgorithmRSA_SHA512;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSamlSignatureAlgorithm> _$gSamlSignatureAlgorithmValues =
-    new BuiltSet<GSamlSignatureAlgorithm>(const <GSamlSignatureAlgorithm>[
+    BuiltSet<GSamlSignatureAlgorithm>(const <GSamlSignatureAlgorithm>[
   _$gSamlSignatureAlgorithmRSA_SHA1,
   _$gSamlSignatureAlgorithmRSA_SHA256,
   _$gSamlSignatureAlgorithmRSA_SHA384,
@@ -3430,12 +3428,12 @@ GSavedReplyOrderField _$gSavedReplyOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gSavedReplyOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSavedReplyOrderField> _$gSavedReplyOrderFieldValues =
-    new BuiltSet<GSavedReplyOrderField>(const <GSavedReplyOrderField>[
+    BuiltSet<GSavedReplyOrderField>(const <GSavedReplyOrderField>[
   _$gSavedReplyOrderFieldUPDATED_AT,
 ]);
 
@@ -3452,12 +3450,12 @@ GSearchType _$gSearchTypeValueOf(String name) {
     case 'USER':
       return _$gSearchTypeUSER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSearchType> _$gSearchTypeValues =
-    new BuiltSet<GSearchType>(const <GSearchType>[
+    BuiltSet<GSearchType>(const <GSearchType>[
   _$gSearchTypeISSUE,
   _$gSearchTypeREPOSITORY,
   _$gSearchTypeUSER,
@@ -3491,12 +3489,12 @@ GSecurityAdvisoryEcosystem _$gSecurityAdvisoryEcosystemValueOf(String name) {
     case 'RUBYGEMS':
       return _$gSecurityAdvisoryEcosystemRUBYGEMS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSecurityAdvisoryEcosystem> _$gSecurityAdvisoryEcosystemValues =
-    new BuiltSet<GSecurityAdvisoryEcosystem>(const <GSecurityAdvisoryEcosystem>[
+    BuiltSet<GSecurityAdvisoryEcosystem>(const <GSecurityAdvisoryEcosystem>[
   _$gSecurityAdvisoryEcosystemCOMPOSER,
   _$gSecurityAdvisoryEcosystemMAVEN,
   _$gSecurityAdvisoryEcosystemNPM,
@@ -3518,12 +3516,12 @@ GSecurityAdvisoryIdentifierType _$gSecurityAdvisoryIdentifierTypeValueOf(
     case 'GHSA':
       return _$gSecurityAdvisoryIdentifierTypeGHSA;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSecurityAdvisoryIdentifierType>
-    _$gSecurityAdvisoryIdentifierTypeValues = new BuiltSet<
+    _$gSecurityAdvisoryIdentifierTypeValues = BuiltSet<
         GSecurityAdvisoryIdentifierType>(const <GSecurityAdvisoryIdentifierType>[
   _$gSecurityAdvisoryIdentifierTypeCVE,
   _$gSecurityAdvisoryIdentifierTypeGHSA,
@@ -3541,13 +3539,13 @@ GSecurityAdvisoryOrderField _$gSecurityAdvisoryOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gSecurityAdvisoryOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSecurityAdvisoryOrderField>
-    _$gSecurityAdvisoryOrderFieldValues = new BuiltSet<
-        GSecurityAdvisoryOrderField>(const <GSecurityAdvisoryOrderField>[
+    _$gSecurityAdvisoryOrderFieldValues =
+    BuiltSet<GSecurityAdvisoryOrderField>(const <GSecurityAdvisoryOrderField>[
   _$gSecurityAdvisoryOrderFieldPUBLISHED_AT,
   _$gSecurityAdvisoryOrderFieldUPDATED_AT,
 ]);
@@ -3572,12 +3570,12 @@ GSecurityAdvisorySeverity _$gSecurityAdvisorySeverityValueOf(String name) {
     case 'MODERATE':
       return _$gSecurityAdvisorySeverityMODERATE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSecurityAdvisorySeverity> _$gSecurityAdvisorySeverityValues =
-    new BuiltSet<GSecurityAdvisorySeverity>(const <GSecurityAdvisorySeverity>[
+    BuiltSet<GSecurityAdvisorySeverity>(const <GSecurityAdvisorySeverity>[
   _$gSecurityAdvisorySeverityCRITICAL,
   _$gSecurityAdvisorySeverityHIGH,
   _$gSecurityAdvisorySeverityLOW,
@@ -3594,12 +3592,12 @@ GSecurityVulnerabilityOrderField _$gSecurityVulnerabilityOrderFieldValueOf(
     case 'UPDATED_AT':
       return _$gSecurityVulnerabilityOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSecurityVulnerabilityOrderField>
-    _$gSecurityVulnerabilityOrderFieldValues = new BuiltSet<
+    _$gSecurityVulnerabilityOrderFieldValues = BuiltSet<
         GSecurityVulnerabilityOrderField>(const <GSecurityVulnerabilityOrderField>[
   _$gSecurityVulnerabilityOrderFieldUPDATED_AT,
 ]);
@@ -3616,12 +3614,12 @@ GSponsorsTierOrderField _$gSponsorsTierOrderFieldValueOf(String name) {
     case 'MONTHLY_PRICE_IN_CENTS':
       return _$gSponsorsTierOrderFieldMONTHLY_PRICE_IN_CENTS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSponsorsTierOrderField> _$gSponsorsTierOrderFieldValues =
-    new BuiltSet<GSponsorsTierOrderField>(const <GSponsorsTierOrderField>[
+    BuiltSet<GSponsorsTierOrderField>(const <GSponsorsTierOrderField>[
   _$gSponsorsTierOrderFieldCREATED_AT,
   _$gSponsorsTierOrderFieldMONTHLY_PRICE_IN_CENTS,
 ]);
@@ -3634,12 +3632,12 @@ GSponsorshipOrderField _$gSponsorshipOrderFieldValueOf(String name) {
     case 'CREATED_AT':
       return _$gSponsorshipOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSponsorshipOrderField> _$gSponsorshipOrderFieldValues =
-    new BuiltSet<GSponsorshipOrderField>(const <GSponsorshipOrderField>[
+    BuiltSet<GSponsorshipOrderField>(const <GSponsorshipOrderField>[
   _$gSponsorshipOrderFieldCREATED_AT,
 ]);
 
@@ -3655,12 +3653,12 @@ GSponsorshipPrivacy _$gSponsorshipPrivacyValueOf(String name) {
     case 'PUBLIC':
       return _$gSponsorshipPrivacyPUBLIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSponsorshipPrivacy> _$gSponsorshipPrivacyValues =
-    new BuiltSet<GSponsorshipPrivacy>(const <GSponsorshipPrivacy>[
+    BuiltSet<GSponsorshipPrivacy>(const <GSponsorshipPrivacy>[
   _$gSponsorshipPrivacyPRIVATE,
   _$gSponsorshipPrivacyPUBLIC,
 ]);
@@ -3673,12 +3671,12 @@ GStarOrderField _$gStarOrderFieldValueOf(String name) {
     case 'STARRED_AT':
       return _$gStarOrderFieldSTARRED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GStarOrderField> _$gStarOrderFieldValues =
-    new BuiltSet<GStarOrderField>(const <GStarOrderField>[
+    BuiltSet<GStarOrderField>(const <GStarOrderField>[
   _$gStarOrderFieldSTARRED_AT,
 ]);
 
@@ -3701,12 +3699,12 @@ GStatusState _$gStatusStateValueOf(String name) {
     case 'SUCCESS':
       return _$gStatusStateSUCCESS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GStatusState> _$gStatusStateValues =
-    new BuiltSet<GStatusState>(const <GStatusState>[
+    BuiltSet<GStatusState>(const <GStatusState>[
   _$gStatusStateERROR,
   _$gStatusStateEXPECTED,
   _$gStatusStateFAILURE,
@@ -3730,12 +3728,12 @@ GSubscriptionState _$gSubscriptionStateValueOf(String name) {
     case 'UNSUBSCRIBED':
       return _$gSubscriptionStateUNSUBSCRIBED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GSubscriptionState> _$gSubscriptionStateValues =
-    new BuiltSet<GSubscriptionState>(const <GSubscriptionState>[
+    BuiltSet<GSubscriptionState>(const <GSubscriptionState>[
   _$gSubscriptionStateIGNORED,
   _$gSubscriptionStateSUBSCRIBED,
   _$gSubscriptionStateUNSUBSCRIBED,
@@ -3751,12 +3749,12 @@ GTeamDiscussionCommentOrderField _$gTeamDiscussionCommentOrderFieldValueOf(
     case 'NUMBER':
       return _$gTeamDiscussionCommentOrderFieldNUMBER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamDiscussionCommentOrderField>
-    _$gTeamDiscussionCommentOrderFieldValues = new BuiltSet<
+    _$gTeamDiscussionCommentOrderFieldValues = BuiltSet<
         GTeamDiscussionCommentOrderField>(const <GTeamDiscussionCommentOrderField>[
   _$gTeamDiscussionCommentOrderFieldNUMBER,
 ]);
@@ -3769,12 +3767,12 @@ GTeamDiscussionOrderField _$gTeamDiscussionOrderFieldValueOf(String name) {
     case 'CREATED_AT':
       return _$gTeamDiscussionOrderFieldCREATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamDiscussionOrderField> _$gTeamDiscussionOrderFieldValues =
-    new BuiltSet<GTeamDiscussionOrderField>(const <GTeamDiscussionOrderField>[
+    BuiltSet<GTeamDiscussionOrderField>(const <GTeamDiscussionOrderField>[
   _$gTeamDiscussionOrderFieldCREATED_AT,
 ]);
 
@@ -3790,12 +3788,12 @@ GTeamMemberOrderField _$gTeamMemberOrderFieldValueOf(String name) {
     case 'LOGIN':
       return _$gTeamMemberOrderFieldLOGIN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamMemberOrderField> _$gTeamMemberOrderFieldValues =
-    new BuiltSet<GTeamMemberOrderField>(const <GTeamMemberOrderField>[
+    BuiltSet<GTeamMemberOrderField>(const <GTeamMemberOrderField>[
   _$gTeamMemberOrderFieldCREATED_AT,
   _$gTeamMemberOrderFieldLOGIN,
 ]);
@@ -3812,12 +3810,12 @@ GTeamMemberRole _$gTeamMemberRoleValueOf(String name) {
     case 'MEMBER':
       return _$gTeamMemberRoleMEMBER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamMemberRole> _$gTeamMemberRoleValues =
-    new BuiltSet<GTeamMemberRole>(const <GTeamMemberRole>[
+    BuiltSet<GTeamMemberRole>(const <GTeamMemberRole>[
   _$gTeamMemberRoleMAINTAINER,
   _$gTeamMemberRoleMEMBER,
 ]);
@@ -3838,12 +3836,12 @@ GTeamMembershipType _$gTeamMembershipTypeValueOf(String name) {
     case 'IMMEDIATE':
       return _$gTeamMembershipTypeIMMEDIATE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamMembershipType> _$gTeamMembershipTypeValues =
-    new BuiltSet<GTeamMembershipType>(const <GTeamMembershipType>[
+    BuiltSet<GTeamMembershipType>(const <GTeamMembershipType>[
   _$gTeamMembershipTypeALL,
   _$gTeamMembershipTypeCHILD_TEAM,
   _$gTeamMembershipTypeIMMEDIATE,
@@ -3856,12 +3854,12 @@ GTeamOrderField _$gTeamOrderFieldValueOf(String name) {
     case 'NAME':
       return _$gTeamOrderFieldNAME;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamOrderField> _$gTeamOrderFieldValues =
-    new BuiltSet<GTeamOrderField>(const <GTeamOrderField>[
+    BuiltSet<GTeamOrderField>(const <GTeamOrderField>[
   _$gTeamOrderFieldNAME,
 ]);
 
@@ -3875,12 +3873,12 @@ GTeamPrivacy _$gTeamPrivacyValueOf(String name) {
     case 'VISIBLE':
       return _$gTeamPrivacyVISIBLE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamPrivacy> _$gTeamPrivacyValues =
-    new BuiltSet<GTeamPrivacy>(const <GTeamPrivacy>[
+    BuiltSet<GTeamPrivacy>(const <GTeamPrivacy>[
   _$gTeamPrivacySECRET,
   _$gTeamPrivacyVISIBLE,
 ]);
@@ -3913,12 +3911,12 @@ GTeamRepositoryOrderField _$gTeamRepositoryOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gTeamRepositoryOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamRepositoryOrderField> _$gTeamRepositoryOrderFieldValues =
-    new BuiltSet<GTeamRepositoryOrderField>(const <GTeamRepositoryOrderField>[
+    BuiltSet<GTeamRepositoryOrderField>(const <GTeamRepositoryOrderField>[
   _$gTeamRepositoryOrderFieldCREATED_AT,
   _$gTeamRepositoryOrderFieldNAME,
   _$gTeamRepositoryOrderFieldPERMISSION,
@@ -3937,12 +3935,12 @@ GTeamRole _$gTeamRoleValueOf(String name) {
     case 'MEMBER':
       return _$gTeamRoleMEMBER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTeamRole> _$gTeamRoleValues =
-    new BuiltSet<GTeamRole>(const <GTeamRole>[
+    BuiltSet<GTeamRole>(const <GTeamRole>[
   _$gTeamRoleADMIN,
   _$gTeamRoleMEMBER,
 ]);
@@ -3971,12 +3969,12 @@ GTopicSuggestionDeclineReason _$gTopicSuggestionDeclineReasonValueOf(
     case 'TOO_SPECIFIC':
       return _$gTopicSuggestionDeclineReasonTOO_SPECIFIC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GTopicSuggestionDeclineReason>
-    _$gTopicSuggestionDeclineReasonValues = new BuiltSet<
+    _$gTopicSuggestionDeclineReasonValues = BuiltSet<
         GTopicSuggestionDeclineReason>(const <GTopicSuggestionDeclineReason>[
   _$gTopicSuggestionDeclineReasonNOT_RELEVANT,
   _$gTopicSuggestionDeclineReasonPERSONAL_PREFERENCE,
@@ -4008,12 +4006,12 @@ GUserBlockDuration _$gUserBlockDurationValueOf(String name) {
     case 'THREE_DAYS':
       return _$gUserBlockDurationTHREE_DAYS;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GUserBlockDuration> _$gUserBlockDurationValues =
-    new BuiltSet<GUserBlockDuration>(const <GUserBlockDuration>[
+    BuiltSet<GUserBlockDuration>(const <GUserBlockDuration>[
   _$gUserBlockDurationONE_DAY,
   _$gUserBlockDurationONE_MONTH,
   _$gUserBlockDurationONE_WEEK,
@@ -4029,642 +4027,639 @@ GUserStatusOrderField _$gUserStatusOrderFieldValueOf(String name) {
     case 'UPDATED_AT':
       return _$gUserStatusOrderFieldUPDATED_AT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GUserStatusOrderField> _$gUserStatusOrderFieldValues =
-    new BuiltSet<GUserStatusOrderField>(const <GUserStatusOrderField>[
+    BuiltSet<GUserStatusOrderField>(const <GUserStatusOrderField>[
   _$gUserStatusOrderFieldUPDATED_AT,
 ]);
 
 Serializer<GAcceptEnterpriseAdministratorInvitationInput>
     _$gAcceptEnterpriseAdministratorInvitationInputSerializer =
-    new _$GAcceptEnterpriseAdministratorInvitationInputSerializer();
+    _$GAcceptEnterpriseAdministratorInvitationInputSerializer();
 Serializer<GAcceptTopicSuggestionInput>
     _$gAcceptTopicSuggestionInputSerializer =
-    new _$GAcceptTopicSuggestionInputSerializer();
+    _$GAcceptTopicSuggestionInputSerializer();
 Serializer<GActionExecutionCapabilitySetting>
     _$gActionExecutionCapabilitySettingSerializer =
-    new _$GActionExecutionCapabilitySettingSerializer();
+    _$GActionExecutionCapabilitySettingSerializer();
 Serializer<GAddAssigneesToAssignableInput>
     _$gAddAssigneesToAssignableInputSerializer =
-    new _$GAddAssigneesToAssignableInputSerializer();
+    _$GAddAssigneesToAssignableInputSerializer();
 Serializer<GAddCommentInput> _$gAddCommentInputSerializer =
-    new _$GAddCommentInputSerializer();
+    _$GAddCommentInputSerializer();
 Serializer<GAddLabelsToLabelableInput> _$gAddLabelsToLabelableInputSerializer =
-    new _$GAddLabelsToLabelableInputSerializer();
+    _$GAddLabelsToLabelableInputSerializer();
 Serializer<GAddProjectCardInput> _$gAddProjectCardInputSerializer =
-    new _$GAddProjectCardInputSerializer();
+    _$GAddProjectCardInputSerializer();
 Serializer<GAddProjectColumnInput> _$gAddProjectColumnInputSerializer =
-    new _$GAddProjectColumnInputSerializer();
+    _$GAddProjectColumnInputSerializer();
 Serializer<GAddPullRequestReviewCommentInput>
     _$gAddPullRequestReviewCommentInputSerializer =
-    new _$GAddPullRequestReviewCommentInputSerializer();
+    _$GAddPullRequestReviewCommentInputSerializer();
 Serializer<GAddPullRequestReviewInput> _$gAddPullRequestReviewInputSerializer =
-    new _$GAddPullRequestReviewInputSerializer();
+    _$GAddPullRequestReviewInputSerializer();
 Serializer<GAddReactionInput> _$gAddReactionInputSerializer =
-    new _$GAddReactionInputSerializer();
+    _$GAddReactionInputSerializer();
 Serializer<GAddStarInput> _$gAddStarInputSerializer =
-    new _$GAddStarInputSerializer();
+    _$GAddStarInputSerializer();
 Serializer<GArchiveRepositoryInput> _$gArchiveRepositoryInputSerializer =
-    new _$GArchiveRepositoryInputSerializer();
+    _$GArchiveRepositoryInputSerializer();
 Serializer<GAuditLogOrder> _$gAuditLogOrderSerializer =
-    new _$GAuditLogOrderSerializer();
+    _$GAuditLogOrderSerializer();
 Serializer<GAuditLogOrderField> _$gAuditLogOrderFieldSerializer =
-    new _$GAuditLogOrderFieldSerializer();
+    _$GAuditLogOrderFieldSerializer();
 Serializer<GCancelEnterpriseAdminInvitationInput>
     _$gCancelEnterpriseAdminInvitationInputSerializer =
-    new _$GCancelEnterpriseAdminInvitationInputSerializer();
+    _$GCancelEnterpriseAdminInvitationInputSerializer();
 Serializer<GChangeUserStatusInput> _$gChangeUserStatusInputSerializer =
-    new _$GChangeUserStatusInputSerializer();
+    _$GChangeUserStatusInputSerializer();
 Serializer<GClearLabelsFromLabelableInput>
     _$gClearLabelsFromLabelableInputSerializer =
-    new _$GClearLabelsFromLabelableInputSerializer();
+    _$GClearLabelsFromLabelableInputSerializer();
 Serializer<GCloneProjectInput> _$gCloneProjectInputSerializer =
-    new _$GCloneProjectInputSerializer();
+    _$GCloneProjectInputSerializer();
 Serializer<GCloneTemplateRepositoryInput>
     _$gCloneTemplateRepositoryInputSerializer =
-    new _$GCloneTemplateRepositoryInputSerializer();
+    _$GCloneTemplateRepositoryInputSerializer();
 Serializer<GCloseIssueInput> _$gCloseIssueInputSerializer =
-    new _$GCloseIssueInputSerializer();
+    _$GCloseIssueInputSerializer();
 Serializer<GClosePullRequestInput> _$gClosePullRequestInputSerializer =
-    new _$GClosePullRequestInputSerializer();
+    _$GClosePullRequestInputSerializer();
 Serializer<GCollaboratorAffiliation> _$gCollaboratorAffiliationSerializer =
-    new _$GCollaboratorAffiliationSerializer();
+    _$GCollaboratorAffiliationSerializer();
 Serializer<GCommentAuthorAssociation> _$gCommentAuthorAssociationSerializer =
-    new _$GCommentAuthorAssociationSerializer();
+    _$GCommentAuthorAssociationSerializer();
 Serializer<GCommentCannotUpdateReason> _$gCommentCannotUpdateReasonSerializer =
-    new _$GCommentCannotUpdateReasonSerializer();
+    _$GCommentCannotUpdateReasonSerializer();
 Serializer<GCommitAuthor> _$gCommitAuthorSerializer =
-    new _$GCommitAuthorSerializer();
+    _$GCommitAuthorSerializer();
 Serializer<GCommitContributionOrder> _$gCommitContributionOrderSerializer =
-    new _$GCommitContributionOrderSerializer();
+    _$GCommitContributionOrderSerializer();
 Serializer<GCommitContributionOrderField>
     _$gCommitContributionOrderFieldSerializer =
-    new _$GCommitContributionOrderFieldSerializer();
+    _$GCommitContributionOrderFieldSerializer();
 Serializer<GContributionOrder> _$gContributionOrderSerializer =
-    new _$GContributionOrderSerializer();
+    _$GContributionOrderSerializer();
 Serializer<GContributionOrderField> _$gContributionOrderFieldSerializer =
-    new _$GContributionOrderFieldSerializer();
+    _$GContributionOrderFieldSerializer();
 Serializer<GConvertProjectCardNoteToIssueInput>
     _$gConvertProjectCardNoteToIssueInputSerializer =
-    new _$GConvertProjectCardNoteToIssueInputSerializer();
+    _$GConvertProjectCardNoteToIssueInputSerializer();
 Serializer<GCreateBranchProtectionRuleInput>
     _$gCreateBranchProtectionRuleInputSerializer =
-    new _$GCreateBranchProtectionRuleInputSerializer();
+    _$GCreateBranchProtectionRuleInputSerializer();
 Serializer<GCreateEnterpriseOrganizationInput>
     _$gCreateEnterpriseOrganizationInputSerializer =
-    new _$GCreateEnterpriseOrganizationInputSerializer();
+    _$GCreateEnterpriseOrganizationInputSerializer();
 Serializer<GCreateIssueInput> _$gCreateIssueInputSerializer =
-    new _$GCreateIssueInputSerializer();
+    _$GCreateIssueInputSerializer();
 Serializer<GCreateProjectInput> _$gCreateProjectInputSerializer =
-    new _$GCreateProjectInputSerializer();
+    _$GCreateProjectInputSerializer();
 Serializer<GCreatePullRequestInput> _$gCreatePullRequestInputSerializer =
-    new _$GCreatePullRequestInputSerializer();
+    _$GCreatePullRequestInputSerializer();
 Serializer<GCreateRefInput> _$gCreateRefInputSerializer =
-    new _$GCreateRefInputSerializer();
+    _$GCreateRefInputSerializer();
 Serializer<GCreateRepositoryInput> _$gCreateRepositoryInputSerializer =
-    new _$GCreateRepositoryInputSerializer();
+    _$GCreateRepositoryInputSerializer();
 Serializer<GCreateTeamDiscussionCommentInput>
     _$gCreateTeamDiscussionCommentInputSerializer =
-    new _$GCreateTeamDiscussionCommentInputSerializer();
+    _$GCreateTeamDiscussionCommentInputSerializer();
 Serializer<GCreateTeamDiscussionInput> _$gCreateTeamDiscussionInputSerializer =
-    new _$GCreateTeamDiscussionInputSerializer();
+    _$GCreateTeamDiscussionInputSerializer();
 Serializer<GDeclineTopicSuggestionInput>
     _$gDeclineTopicSuggestionInputSerializer =
-    new _$GDeclineTopicSuggestionInputSerializer();
+    _$GDeclineTopicSuggestionInputSerializer();
 Serializer<GDefaultRepositoryPermissionField>
     _$gDefaultRepositoryPermissionFieldSerializer =
-    new _$GDefaultRepositoryPermissionFieldSerializer();
+    _$GDefaultRepositoryPermissionFieldSerializer();
 Serializer<GDeleteBranchProtectionRuleInput>
     _$gDeleteBranchProtectionRuleInputSerializer =
-    new _$GDeleteBranchProtectionRuleInputSerializer();
+    _$GDeleteBranchProtectionRuleInputSerializer();
 Serializer<GDeleteDeploymentInput> _$gDeleteDeploymentInputSerializer =
-    new _$GDeleteDeploymentInputSerializer();
+    _$GDeleteDeploymentInputSerializer();
 Serializer<GDeleteIssueCommentInput> _$gDeleteIssueCommentInputSerializer =
-    new _$GDeleteIssueCommentInputSerializer();
+    _$GDeleteIssueCommentInputSerializer();
 Serializer<GDeleteIssueInput> _$gDeleteIssueInputSerializer =
-    new _$GDeleteIssueInputSerializer();
+    _$GDeleteIssueInputSerializer();
 Serializer<GDeleteProjectCardInput> _$gDeleteProjectCardInputSerializer =
-    new _$GDeleteProjectCardInputSerializer();
+    _$GDeleteProjectCardInputSerializer();
 Serializer<GDeleteProjectColumnInput> _$gDeleteProjectColumnInputSerializer =
-    new _$GDeleteProjectColumnInputSerializer();
+    _$GDeleteProjectColumnInputSerializer();
 Serializer<GDeleteProjectInput> _$gDeleteProjectInputSerializer =
-    new _$GDeleteProjectInputSerializer();
+    _$GDeleteProjectInputSerializer();
 Serializer<GDeletePullRequestReviewCommentInput>
     _$gDeletePullRequestReviewCommentInputSerializer =
-    new _$GDeletePullRequestReviewCommentInputSerializer();
+    _$GDeletePullRequestReviewCommentInputSerializer();
 Serializer<GDeletePullRequestReviewInput>
     _$gDeletePullRequestReviewInputSerializer =
-    new _$GDeletePullRequestReviewInputSerializer();
+    _$GDeletePullRequestReviewInputSerializer();
 Serializer<GDeleteRefInput> _$gDeleteRefInputSerializer =
-    new _$GDeleteRefInputSerializer();
+    _$GDeleteRefInputSerializer();
 Serializer<GDeleteTeamDiscussionCommentInput>
     _$gDeleteTeamDiscussionCommentInputSerializer =
-    new _$GDeleteTeamDiscussionCommentInputSerializer();
+    _$GDeleteTeamDiscussionCommentInputSerializer();
 Serializer<GDeleteTeamDiscussionInput> _$gDeleteTeamDiscussionInputSerializer =
-    new _$GDeleteTeamDiscussionInputSerializer();
+    _$GDeleteTeamDiscussionInputSerializer();
 Serializer<GDeploymentOrder> _$gDeploymentOrderSerializer =
-    new _$GDeploymentOrderSerializer();
+    _$GDeploymentOrderSerializer();
 Serializer<GDeploymentOrderField> _$gDeploymentOrderFieldSerializer =
-    new _$GDeploymentOrderFieldSerializer();
+    _$GDeploymentOrderFieldSerializer();
 Serializer<GDeploymentState> _$gDeploymentStateSerializer =
-    new _$GDeploymentStateSerializer();
+    _$GDeploymentStateSerializer();
 Serializer<GDeploymentStatusState> _$gDeploymentStatusStateSerializer =
-    new _$GDeploymentStatusStateSerializer();
+    _$GDeploymentStatusStateSerializer();
 Serializer<GDismissPullRequestReviewInput>
     _$gDismissPullRequestReviewInputSerializer =
-    new _$GDismissPullRequestReviewInputSerializer();
+    _$GDismissPullRequestReviewInputSerializer();
 Serializer<GDraftPullRequestReviewComment>
     _$gDraftPullRequestReviewCommentSerializer =
-    new _$GDraftPullRequestReviewCommentSerializer();
+    _$GDraftPullRequestReviewCommentSerializer();
 Serializer<GEnterpriseAdministratorInvitationOrder>
     _$gEnterpriseAdministratorInvitationOrderSerializer =
-    new _$GEnterpriseAdministratorInvitationOrderSerializer();
+    _$GEnterpriseAdministratorInvitationOrderSerializer();
 Serializer<GEnterpriseAdministratorInvitationOrderField>
     _$gEnterpriseAdministratorInvitationOrderFieldSerializer =
-    new _$GEnterpriseAdministratorInvitationOrderFieldSerializer();
+    _$GEnterpriseAdministratorInvitationOrderFieldSerializer();
 Serializer<GEnterpriseAdministratorRole>
     _$gEnterpriseAdministratorRoleSerializer =
-    new _$GEnterpriseAdministratorRoleSerializer();
+    _$GEnterpriseAdministratorRoleSerializer();
 Serializer<GEnterpriseDefaultRepositoryPermissionSettingValue>
     _$gEnterpriseDefaultRepositoryPermissionSettingValueSerializer =
-    new _$GEnterpriseDefaultRepositoryPermissionSettingValueSerializer();
+    _$GEnterpriseDefaultRepositoryPermissionSettingValueSerializer();
 Serializer<GEnterpriseEnabledDisabledSettingValue>
     _$gEnterpriseEnabledDisabledSettingValueSerializer =
-    new _$GEnterpriseEnabledDisabledSettingValueSerializer();
+    _$GEnterpriseEnabledDisabledSettingValueSerializer();
 Serializer<GEnterpriseEnabledSettingValue>
     _$gEnterpriseEnabledSettingValueSerializer =
-    new _$GEnterpriseEnabledSettingValueSerializer();
+    _$GEnterpriseEnabledSettingValueSerializer();
 Serializer<GEnterpriseMemberOrder> _$gEnterpriseMemberOrderSerializer =
-    new _$GEnterpriseMemberOrderSerializer();
+    _$GEnterpriseMemberOrderSerializer();
 Serializer<GEnterpriseMemberOrderField>
     _$gEnterpriseMemberOrderFieldSerializer =
-    new _$GEnterpriseMemberOrderFieldSerializer();
+    _$GEnterpriseMemberOrderFieldSerializer();
 Serializer<GEnterpriseMembersCanCreateRepositoriesSettingValue>
     _$gEnterpriseMembersCanCreateRepositoriesSettingValueSerializer =
-    new _$GEnterpriseMembersCanCreateRepositoriesSettingValueSerializer();
+    _$GEnterpriseMembersCanCreateRepositoriesSettingValueSerializer();
 Serializer<GEnterpriseMembersCanMakePurchasesSettingValue>
     _$gEnterpriseMembersCanMakePurchasesSettingValueSerializer =
-    new _$GEnterpriseMembersCanMakePurchasesSettingValueSerializer();
+    _$GEnterpriseMembersCanMakePurchasesSettingValueSerializer();
 Serializer<GEnterpriseServerInstallationOrder>
     _$gEnterpriseServerInstallationOrderSerializer =
-    new _$GEnterpriseServerInstallationOrderSerializer();
+    _$GEnterpriseServerInstallationOrderSerializer();
 Serializer<GEnterpriseServerInstallationOrderField>
     _$gEnterpriseServerInstallationOrderFieldSerializer =
-    new _$GEnterpriseServerInstallationOrderFieldSerializer();
+    _$GEnterpriseServerInstallationOrderFieldSerializer();
 Serializer<GEnterpriseServerUserAccountEmailOrder>
     _$gEnterpriseServerUserAccountEmailOrderSerializer =
-    new _$GEnterpriseServerUserAccountEmailOrderSerializer();
+    _$GEnterpriseServerUserAccountEmailOrderSerializer();
 Serializer<GEnterpriseServerUserAccountEmailOrderField>
     _$gEnterpriseServerUserAccountEmailOrderFieldSerializer =
-    new _$GEnterpriseServerUserAccountEmailOrderFieldSerializer();
+    _$GEnterpriseServerUserAccountEmailOrderFieldSerializer();
 Serializer<GEnterpriseServerUserAccountOrder>
     _$gEnterpriseServerUserAccountOrderSerializer =
-    new _$GEnterpriseServerUserAccountOrderSerializer();
+    _$GEnterpriseServerUserAccountOrderSerializer();
 Serializer<GEnterpriseServerUserAccountOrderField>
     _$gEnterpriseServerUserAccountOrderFieldSerializer =
-    new _$GEnterpriseServerUserAccountOrderFieldSerializer();
+    _$GEnterpriseServerUserAccountOrderFieldSerializer();
 Serializer<GEnterpriseServerUserAccountsUploadOrder>
     _$gEnterpriseServerUserAccountsUploadOrderSerializer =
-    new _$GEnterpriseServerUserAccountsUploadOrderSerializer();
+    _$GEnterpriseServerUserAccountsUploadOrderSerializer();
 Serializer<GEnterpriseServerUserAccountsUploadOrderField>
     _$gEnterpriseServerUserAccountsUploadOrderFieldSerializer =
-    new _$GEnterpriseServerUserAccountsUploadOrderFieldSerializer();
+    _$GEnterpriseServerUserAccountsUploadOrderFieldSerializer();
 Serializer<GEnterpriseServerUserAccountsUploadSyncState>
     _$gEnterpriseServerUserAccountsUploadSyncStateSerializer =
-    new _$GEnterpriseServerUserAccountsUploadSyncStateSerializer();
+    _$GEnterpriseServerUserAccountsUploadSyncStateSerializer();
 Serializer<GEnterpriseUserAccountMembershipRole>
     _$gEnterpriseUserAccountMembershipRoleSerializer =
-    new _$GEnterpriseUserAccountMembershipRoleSerializer();
+    _$GEnterpriseUserAccountMembershipRoleSerializer();
 Serializer<GEnterpriseUserDeployment> _$gEnterpriseUserDeploymentSerializer =
-    new _$GEnterpriseUserDeploymentSerializer();
+    _$GEnterpriseUserDeploymentSerializer();
 Serializer<GFollowUserInput> _$gFollowUserInputSerializer =
-    new _$GFollowUserInputSerializer();
+    _$GFollowUserInputSerializer();
 Serializer<GFundingPlatform> _$gFundingPlatformSerializer =
-    new _$GFundingPlatformSerializer();
-Serializer<GGistOrder> _$gGistOrderSerializer = new _$GGistOrderSerializer();
+    _$GFundingPlatformSerializer();
+Serializer<GGistOrder> _$gGistOrderSerializer = _$GGistOrderSerializer();
 Serializer<GGistOrderField> _$gGistOrderFieldSerializer =
-    new _$GGistOrderFieldSerializer();
-Serializer<GGistPrivacy> _$gGistPrivacySerializer =
-    new _$GGistPrivacySerializer();
+    _$GGistOrderFieldSerializer();
+Serializer<GGistPrivacy> _$gGistPrivacySerializer = _$GGistPrivacySerializer();
 Serializer<GGitSignatureState> _$gGitSignatureStateSerializer =
-    new _$GGitSignatureStateSerializer();
+    _$GGitSignatureStateSerializer();
 Serializer<GIdentityProviderConfigurationState>
     _$gIdentityProviderConfigurationStateSerializer =
-    new _$GIdentityProviderConfigurationStateSerializer();
+    _$GIdentityProviderConfigurationStateSerializer();
 Serializer<GInviteEnterpriseAdminInput>
     _$gInviteEnterpriseAdminInputSerializer =
-    new _$GInviteEnterpriseAdminInputSerializer();
+    _$GInviteEnterpriseAdminInputSerializer();
 Serializer<GIssueFilters> _$gIssueFiltersSerializer =
-    new _$GIssueFiltersSerializer();
-Serializer<GIssueOrder> _$gIssueOrderSerializer = new _$GIssueOrderSerializer();
+    _$GIssueFiltersSerializer();
+Serializer<GIssueOrder> _$gIssueOrderSerializer = _$GIssueOrderSerializer();
 Serializer<GIssueOrderField> _$gIssueOrderFieldSerializer =
-    new _$GIssueOrderFieldSerializer();
-Serializer<GIssueState> _$gIssueStateSerializer = new _$GIssueStateSerializer();
+    _$GIssueOrderFieldSerializer();
+Serializer<GIssueState> _$gIssueStateSerializer = _$GIssueStateSerializer();
 Serializer<GIssueTimelineItemsItemType>
     _$gIssueTimelineItemsItemTypeSerializer =
-    new _$GIssueTimelineItemsItemTypeSerializer();
-Serializer<GLabelOrder> _$gLabelOrderSerializer = new _$GLabelOrderSerializer();
+    _$GIssueTimelineItemsItemTypeSerializer();
+Serializer<GLabelOrder> _$gLabelOrderSerializer = _$GLabelOrderSerializer();
 Serializer<GLabelOrderField> _$gLabelOrderFieldSerializer =
-    new _$GLabelOrderFieldSerializer();
+    _$GLabelOrderFieldSerializer();
 Serializer<GLanguageOrder> _$gLanguageOrderSerializer =
-    new _$GLanguageOrderSerializer();
+    _$GLanguageOrderSerializer();
 Serializer<GLanguageOrderField> _$gLanguageOrderFieldSerializer =
-    new _$GLanguageOrderFieldSerializer();
+    _$GLanguageOrderFieldSerializer();
 Serializer<GLinkRepositoryToProjectInput>
     _$gLinkRepositoryToProjectInputSerializer =
-    new _$GLinkRepositoryToProjectInputSerializer();
+    _$GLinkRepositoryToProjectInputSerializer();
 Serializer<GLockLockableInput> _$gLockLockableInputSerializer =
-    new _$GLockLockableInputSerializer();
-Serializer<GLockReason> _$gLockReasonSerializer = new _$GLockReasonSerializer();
+    _$GLockLockableInputSerializer();
+Serializer<GLockReason> _$gLockReasonSerializer = _$GLockReasonSerializer();
 Serializer<GMergeBranchInput> _$gMergeBranchInputSerializer =
-    new _$GMergeBranchInputSerializer();
+    _$GMergeBranchInputSerializer();
 Serializer<GMergePullRequestInput> _$gMergePullRequestInputSerializer =
-    new _$GMergePullRequestInputSerializer();
+    _$GMergePullRequestInputSerializer();
 Serializer<GMergeableState> _$gMergeableStateSerializer =
-    new _$GMergeableStateSerializer();
+    _$GMergeableStateSerializer();
 Serializer<GMilestoneOrder> _$gMilestoneOrderSerializer =
-    new _$GMilestoneOrderSerializer();
+    _$GMilestoneOrderSerializer();
 Serializer<GMilestoneOrderField> _$gMilestoneOrderFieldSerializer =
-    new _$GMilestoneOrderFieldSerializer();
+    _$GMilestoneOrderFieldSerializer();
 Serializer<GMilestoneState> _$gMilestoneStateSerializer =
-    new _$GMilestoneStateSerializer();
+    _$GMilestoneStateSerializer();
 Serializer<GMoveProjectCardInput> _$gMoveProjectCardInputSerializer =
-    new _$GMoveProjectCardInputSerializer();
+    _$GMoveProjectCardInputSerializer();
 Serializer<GMoveProjectColumnInput> _$gMoveProjectColumnInputSerializer =
-    new _$GMoveProjectColumnInputSerializer();
+    _$GMoveProjectColumnInputSerializer();
 Serializer<GOauthApplicationCreateAuditEntryState>
     _$gOauthApplicationCreateAuditEntryStateSerializer =
-    new _$GOauthApplicationCreateAuditEntryStateSerializer();
+    _$GOauthApplicationCreateAuditEntryStateSerializer();
 Serializer<GOperationType> _$gOperationTypeSerializer =
-    new _$GOperationTypeSerializer();
+    _$GOperationTypeSerializer();
 Serializer<GOrderDirection> _$gOrderDirectionSerializer =
-    new _$GOrderDirectionSerializer();
+    _$GOrderDirectionSerializer();
 Serializer<GOrgAddMemberAuditEntryPermission>
     _$gOrgAddMemberAuditEntryPermissionSerializer =
-    new _$GOrgAddMemberAuditEntryPermissionSerializer();
+    _$GOrgAddMemberAuditEntryPermissionSerializer();
 Serializer<GOrgCreateAuditEntryBillingPlan>
     _$gOrgCreateAuditEntryBillingPlanSerializer =
-    new _$GOrgCreateAuditEntryBillingPlanSerializer();
+    _$GOrgCreateAuditEntryBillingPlanSerializer();
 Serializer<GOrgRemoveBillingManagerAuditEntryReason>
     _$gOrgRemoveBillingManagerAuditEntryReasonSerializer =
-    new _$GOrgRemoveBillingManagerAuditEntryReasonSerializer();
+    _$GOrgRemoveBillingManagerAuditEntryReasonSerializer();
 Serializer<GOrgRemoveMemberAuditEntryMembershipType>
     _$gOrgRemoveMemberAuditEntryMembershipTypeSerializer =
-    new _$GOrgRemoveMemberAuditEntryMembershipTypeSerializer();
+    _$GOrgRemoveMemberAuditEntryMembershipTypeSerializer();
 Serializer<GOrgRemoveMemberAuditEntryReason>
     _$gOrgRemoveMemberAuditEntryReasonSerializer =
-    new _$GOrgRemoveMemberAuditEntryReasonSerializer();
+    _$GOrgRemoveMemberAuditEntryReasonSerializer();
 Serializer<GOrgRemoveOutsideCollaboratorAuditEntryMembershipType>
     _$gOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeSerializer =
-    new _$GOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeSerializer();
+    _$GOrgRemoveOutsideCollaboratorAuditEntryMembershipTypeSerializer();
 Serializer<GOrgRemoveOutsideCollaboratorAuditEntryReason>
     _$gOrgRemoveOutsideCollaboratorAuditEntryReasonSerializer =
-    new _$GOrgRemoveOutsideCollaboratorAuditEntryReasonSerializer();
+    _$GOrgRemoveOutsideCollaboratorAuditEntryReasonSerializer();
 Serializer<GOrgUpdateDefaultRepositoryPermissionAuditEntryPermission>
     _$gOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionSerializer =
-    new _$GOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionSerializer();
+    _$GOrgUpdateDefaultRepositoryPermissionAuditEntryPermissionSerializer();
 Serializer<GOrgUpdateMemberAuditEntryPermission>
     _$gOrgUpdateMemberAuditEntryPermissionSerializer =
-    new _$GOrgUpdateMemberAuditEntryPermissionSerializer();
+    _$GOrgUpdateMemberAuditEntryPermissionSerializer();
 Serializer<GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>
     _$gOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilitySerializer =
-    new _$GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilitySerializer();
+    _$GOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibilitySerializer();
 Serializer<GOrganizationInvitationRole>
     _$gOrganizationInvitationRoleSerializer =
-    new _$GOrganizationInvitationRoleSerializer();
+    _$GOrganizationInvitationRoleSerializer();
 Serializer<GOrganizationInvitationType>
     _$gOrganizationInvitationTypeSerializer =
-    new _$GOrganizationInvitationTypeSerializer();
+    _$GOrganizationInvitationTypeSerializer();
 Serializer<GOrganizationMemberRole> _$gOrganizationMemberRoleSerializer =
-    new _$GOrganizationMemberRoleSerializer();
+    _$GOrganizationMemberRoleSerializer();
 Serializer<GOrganizationMembersCanCreateRepositoriesSettingValue>
     _$gOrganizationMembersCanCreateRepositoriesSettingValueSerializer =
-    new _$GOrganizationMembersCanCreateRepositoriesSettingValueSerializer();
+    _$GOrganizationMembersCanCreateRepositoriesSettingValueSerializer();
 Serializer<GOrganizationOrder> _$gOrganizationOrderSerializer =
-    new _$GOrganizationOrderSerializer();
+    _$GOrganizationOrderSerializer();
 Serializer<GOrganizationOrderField> _$gOrganizationOrderFieldSerializer =
-    new _$GOrganizationOrderFieldSerializer();
+    _$GOrganizationOrderFieldSerializer();
 Serializer<GPinnableItemType> _$gPinnableItemTypeSerializer =
-    new _$GPinnableItemTypeSerializer();
+    _$GPinnableItemTypeSerializer();
 Serializer<GProjectCardArchivedState> _$gProjectCardArchivedStateSerializer =
-    new _$GProjectCardArchivedStateSerializer();
+    _$GProjectCardArchivedStateSerializer();
 Serializer<GProjectCardState> _$gProjectCardStateSerializer =
-    new _$GProjectCardStateSerializer();
+    _$GProjectCardStateSerializer();
 Serializer<GProjectColumnPurpose> _$gProjectColumnPurposeSerializer =
-    new _$GProjectColumnPurposeSerializer();
+    _$GProjectColumnPurposeSerializer();
 Serializer<GProjectOrder> _$gProjectOrderSerializer =
-    new _$GProjectOrderSerializer();
+    _$GProjectOrderSerializer();
 Serializer<GProjectOrderField> _$gProjectOrderFieldSerializer =
-    new _$GProjectOrderFieldSerializer();
+    _$GProjectOrderFieldSerializer();
 Serializer<GProjectState> _$gProjectStateSerializer =
-    new _$GProjectStateSerializer();
+    _$GProjectStateSerializer();
 Serializer<GProjectTemplate> _$gProjectTemplateSerializer =
-    new _$GProjectTemplateSerializer();
+    _$GProjectTemplateSerializer();
 Serializer<GPullRequestMergeMethod> _$gPullRequestMergeMethodSerializer =
-    new _$GPullRequestMergeMethodSerializer();
+    _$GPullRequestMergeMethodSerializer();
 Serializer<GPullRequestOrder> _$gPullRequestOrderSerializer =
-    new _$GPullRequestOrderSerializer();
+    _$GPullRequestOrderSerializer();
 Serializer<GPullRequestOrderField> _$gPullRequestOrderFieldSerializer =
-    new _$GPullRequestOrderFieldSerializer();
+    _$GPullRequestOrderFieldSerializer();
 Serializer<GPullRequestReviewCommentState>
     _$gPullRequestReviewCommentStateSerializer =
-    new _$GPullRequestReviewCommentStateSerializer();
+    _$GPullRequestReviewCommentStateSerializer();
 Serializer<GPullRequestReviewEvent> _$gPullRequestReviewEventSerializer =
-    new _$GPullRequestReviewEventSerializer();
+    _$GPullRequestReviewEventSerializer();
 Serializer<GPullRequestReviewState> _$gPullRequestReviewStateSerializer =
-    new _$GPullRequestReviewStateSerializer();
+    _$GPullRequestReviewStateSerializer();
 Serializer<GPullRequestState> _$gPullRequestStateSerializer =
-    new _$GPullRequestStateSerializer();
+    _$GPullRequestStateSerializer();
 Serializer<GPullRequestTimelineItemsItemType>
     _$gPullRequestTimelineItemsItemTypeSerializer =
-    new _$GPullRequestTimelineItemsItemTypeSerializer();
+    _$GPullRequestTimelineItemsItemTypeSerializer();
 Serializer<GPullRequestUpdateState> _$gPullRequestUpdateStateSerializer =
-    new _$GPullRequestUpdateStateSerializer();
+    _$GPullRequestUpdateStateSerializer();
 Serializer<GReactionContent> _$gReactionContentSerializer =
-    new _$GReactionContentSerializer();
+    _$GReactionContentSerializer();
 Serializer<GReactionOrder> _$gReactionOrderSerializer =
-    new _$GReactionOrderSerializer();
+    _$GReactionOrderSerializer();
 Serializer<GReactionOrderField> _$gReactionOrderFieldSerializer =
-    new _$GReactionOrderFieldSerializer();
-Serializer<GRefOrder> _$gRefOrderSerializer = new _$GRefOrderSerializer();
+    _$GReactionOrderFieldSerializer();
+Serializer<GRefOrder> _$gRefOrderSerializer = _$GRefOrderSerializer();
 Serializer<GRefOrderField> _$gRefOrderFieldSerializer =
-    new _$GRefOrderFieldSerializer();
+    _$GRefOrderFieldSerializer();
 Serializer<GRegenerateEnterpriseIdentityProviderRecoveryCodesInput>
     _$gRegenerateEnterpriseIdentityProviderRecoveryCodesInputSerializer =
-    new _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInputSerializer();
+    _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInputSerializer();
 Serializer<GRegistryPackageDependencyType>
     _$gRegistryPackageDependencyTypeSerializer =
-    new _$GRegistryPackageDependencyTypeSerializer();
+    _$GRegistryPackageDependencyTypeSerializer();
 Serializer<GRegistryPackageMetadatum> _$gRegistryPackageMetadatumSerializer =
-    new _$GRegistryPackageMetadatumSerializer();
+    _$GRegistryPackageMetadatumSerializer();
 Serializer<GRegistryPackageType> _$gRegistryPackageTypeSerializer =
-    new _$GRegistryPackageTypeSerializer();
+    _$GRegistryPackageTypeSerializer();
 Serializer<GReleaseOrder> _$gReleaseOrderSerializer =
-    new _$GReleaseOrderSerializer();
+    _$GReleaseOrderSerializer();
 Serializer<GReleaseOrderField> _$gReleaseOrderFieldSerializer =
-    new _$GReleaseOrderFieldSerializer();
+    _$GReleaseOrderFieldSerializer();
 Serializer<GRemoveAssigneesFromAssignableInput>
     _$gRemoveAssigneesFromAssignableInputSerializer =
-    new _$GRemoveAssigneesFromAssignableInputSerializer();
+    _$GRemoveAssigneesFromAssignableInputSerializer();
 Serializer<GRemoveEnterpriseAdminInput>
     _$gRemoveEnterpriseAdminInputSerializer =
-    new _$GRemoveEnterpriseAdminInputSerializer();
+    _$GRemoveEnterpriseAdminInputSerializer();
 Serializer<GRemoveEnterpriseOrganizationInput>
     _$gRemoveEnterpriseOrganizationInputSerializer =
-    new _$GRemoveEnterpriseOrganizationInputSerializer();
+    _$GRemoveEnterpriseOrganizationInputSerializer();
 Serializer<GRemoveLabelsFromLabelableInput>
     _$gRemoveLabelsFromLabelableInputSerializer =
-    new _$GRemoveLabelsFromLabelableInputSerializer();
+    _$GRemoveLabelsFromLabelableInputSerializer();
 Serializer<GRemoveOutsideCollaboratorInput>
     _$gRemoveOutsideCollaboratorInputSerializer =
-    new _$GRemoveOutsideCollaboratorInputSerializer();
+    _$GRemoveOutsideCollaboratorInputSerializer();
 Serializer<GRemoveReactionInput> _$gRemoveReactionInputSerializer =
-    new _$GRemoveReactionInputSerializer();
+    _$GRemoveReactionInputSerializer();
 Serializer<GRemoveStarInput> _$gRemoveStarInputSerializer =
-    new _$GRemoveStarInputSerializer();
+    _$GRemoveStarInputSerializer();
 Serializer<GReopenIssueInput> _$gReopenIssueInputSerializer =
-    new _$GReopenIssueInputSerializer();
+    _$GReopenIssueInputSerializer();
 Serializer<GReopenPullRequestInput> _$gReopenPullRequestInputSerializer =
-    new _$GReopenPullRequestInputSerializer();
+    _$GReopenPullRequestInputSerializer();
 Serializer<GRepoAccessAuditEntryVisibility>
     _$gRepoAccessAuditEntryVisibilitySerializer =
-    new _$GRepoAccessAuditEntryVisibilitySerializer();
+    _$GRepoAccessAuditEntryVisibilitySerializer();
 Serializer<GRepoAddMemberAuditEntryVisibility>
     _$gRepoAddMemberAuditEntryVisibilitySerializer =
-    new _$GRepoAddMemberAuditEntryVisibilitySerializer();
+    _$GRepoAddMemberAuditEntryVisibilitySerializer();
 Serializer<GRepoArchivedAuditEntryVisibility>
     _$gRepoArchivedAuditEntryVisibilitySerializer =
-    new _$GRepoArchivedAuditEntryVisibilitySerializer();
+    _$GRepoArchivedAuditEntryVisibilitySerializer();
 Serializer<GRepoChangeMergeSettingAuditEntryMergeType>
     _$gRepoChangeMergeSettingAuditEntryMergeTypeSerializer =
-    new _$GRepoChangeMergeSettingAuditEntryMergeTypeSerializer();
+    _$GRepoChangeMergeSettingAuditEntryMergeTypeSerializer();
 Serializer<GRepoCreateAuditEntryVisibility>
     _$gRepoCreateAuditEntryVisibilitySerializer =
-    new _$GRepoCreateAuditEntryVisibilitySerializer();
+    _$GRepoCreateAuditEntryVisibilitySerializer();
 Serializer<GRepoDestroyAuditEntryVisibility>
     _$gRepoDestroyAuditEntryVisibilitySerializer =
-    new _$GRepoDestroyAuditEntryVisibilitySerializer();
+    _$GRepoDestroyAuditEntryVisibilitySerializer();
 Serializer<GRepoRemoveMemberAuditEntryVisibility>
     _$gRepoRemoveMemberAuditEntryVisibilitySerializer =
-    new _$GRepoRemoveMemberAuditEntryVisibilitySerializer();
+    _$GRepoRemoveMemberAuditEntryVisibilitySerializer();
 Serializer<GRepositoryAffiliation> _$gRepositoryAffiliationSerializer =
-    new _$GRepositoryAffiliationSerializer();
+    _$GRepositoryAffiliationSerializer();
 Serializer<GRepositoryContributionType>
     _$gRepositoryContributionTypeSerializer =
-    new _$GRepositoryContributionTypeSerializer();
+    _$GRepositoryContributionTypeSerializer();
 Serializer<GRepositoryInvitationOrder> _$gRepositoryInvitationOrderSerializer =
-    new _$GRepositoryInvitationOrderSerializer();
+    _$GRepositoryInvitationOrderSerializer();
 Serializer<GRepositoryInvitationOrderField>
     _$gRepositoryInvitationOrderFieldSerializer =
-    new _$GRepositoryInvitationOrderFieldSerializer();
+    _$GRepositoryInvitationOrderFieldSerializer();
 Serializer<GRepositoryLockReason> _$gRepositoryLockReasonSerializer =
-    new _$GRepositoryLockReasonSerializer();
+    _$GRepositoryLockReasonSerializer();
 Serializer<GRepositoryOrder> _$gRepositoryOrderSerializer =
-    new _$GRepositoryOrderSerializer();
+    _$GRepositoryOrderSerializer();
 Serializer<GRepositoryOrderField> _$gRepositoryOrderFieldSerializer =
-    new _$GRepositoryOrderFieldSerializer();
+    _$GRepositoryOrderFieldSerializer();
 Serializer<GRepositoryPermission> _$gRepositoryPermissionSerializer =
-    new _$GRepositoryPermissionSerializer();
+    _$GRepositoryPermissionSerializer();
 Serializer<GRepositoryPrivacy> _$gRepositoryPrivacySerializer =
-    new _$GRepositoryPrivacySerializer();
+    _$GRepositoryPrivacySerializer();
 Serializer<GRepositoryVisibility> _$gRepositoryVisibilitySerializer =
-    new _$GRepositoryVisibilitySerializer();
+    _$GRepositoryVisibilitySerializer();
 Serializer<GRequestReviewsInput> _$gRequestReviewsInputSerializer =
-    new _$GRequestReviewsInputSerializer();
+    _$GRequestReviewsInputSerializer();
 Serializer<GResolveReviewThreadInput> _$gResolveReviewThreadInputSerializer =
-    new _$GResolveReviewThreadInputSerializer();
+    _$GResolveReviewThreadInputSerializer();
 Serializer<GSamlDigestAlgorithm> _$gSamlDigestAlgorithmSerializer =
-    new _$GSamlDigestAlgorithmSerializer();
+    _$GSamlDigestAlgorithmSerializer();
 Serializer<GSamlSignatureAlgorithm> _$gSamlSignatureAlgorithmSerializer =
-    new _$GSamlSignatureAlgorithmSerializer();
+    _$GSamlSignatureAlgorithmSerializer();
 Serializer<GSavedReplyOrder> _$gSavedReplyOrderSerializer =
-    new _$GSavedReplyOrderSerializer();
+    _$GSavedReplyOrderSerializer();
 Serializer<GSavedReplyOrderField> _$gSavedReplyOrderFieldSerializer =
-    new _$GSavedReplyOrderFieldSerializer();
-Serializer<GSearchType> _$gSearchTypeSerializer = new _$GSearchTypeSerializer();
+    _$GSavedReplyOrderFieldSerializer();
+Serializer<GSearchType> _$gSearchTypeSerializer = _$GSearchTypeSerializer();
 Serializer<GSecurityAdvisoryEcosystem> _$gSecurityAdvisoryEcosystemSerializer =
-    new _$GSecurityAdvisoryEcosystemSerializer();
+    _$GSecurityAdvisoryEcosystemSerializer();
 Serializer<GSecurityAdvisoryIdentifierFilter>
     _$gSecurityAdvisoryIdentifierFilterSerializer =
-    new _$GSecurityAdvisoryIdentifierFilterSerializer();
+    _$GSecurityAdvisoryIdentifierFilterSerializer();
 Serializer<GSecurityAdvisoryIdentifierType>
     _$gSecurityAdvisoryIdentifierTypeSerializer =
-    new _$GSecurityAdvisoryIdentifierTypeSerializer();
+    _$GSecurityAdvisoryIdentifierTypeSerializer();
 Serializer<GSecurityAdvisoryOrder> _$gSecurityAdvisoryOrderSerializer =
-    new _$GSecurityAdvisoryOrderSerializer();
+    _$GSecurityAdvisoryOrderSerializer();
 Serializer<GSecurityAdvisoryOrderField>
     _$gSecurityAdvisoryOrderFieldSerializer =
-    new _$GSecurityAdvisoryOrderFieldSerializer();
+    _$GSecurityAdvisoryOrderFieldSerializer();
 Serializer<GSecurityAdvisorySeverity> _$gSecurityAdvisorySeveritySerializer =
-    new _$GSecurityAdvisorySeveritySerializer();
+    _$GSecurityAdvisorySeveritySerializer();
 Serializer<GSecurityVulnerabilityOrder>
     _$gSecurityVulnerabilityOrderSerializer =
-    new _$GSecurityVulnerabilityOrderSerializer();
+    _$GSecurityVulnerabilityOrderSerializer();
 Serializer<GSecurityVulnerabilityOrderField>
     _$gSecurityVulnerabilityOrderFieldSerializer =
-    new _$GSecurityVulnerabilityOrderFieldSerializer();
+    _$GSecurityVulnerabilityOrderFieldSerializer();
 Serializer<GSponsorsTierOrder> _$gSponsorsTierOrderSerializer =
-    new _$GSponsorsTierOrderSerializer();
+    _$GSponsorsTierOrderSerializer();
 Serializer<GSponsorsTierOrderField> _$gSponsorsTierOrderFieldSerializer =
-    new _$GSponsorsTierOrderFieldSerializer();
+    _$GSponsorsTierOrderFieldSerializer();
 Serializer<GSponsorshipOrder> _$gSponsorshipOrderSerializer =
-    new _$GSponsorshipOrderSerializer();
+    _$GSponsorshipOrderSerializer();
 Serializer<GSponsorshipOrderField> _$gSponsorshipOrderFieldSerializer =
-    new _$GSponsorshipOrderFieldSerializer();
+    _$GSponsorshipOrderFieldSerializer();
 Serializer<GSponsorshipPrivacy> _$gSponsorshipPrivacySerializer =
-    new _$GSponsorshipPrivacySerializer();
-Serializer<GStarOrder> _$gStarOrderSerializer = new _$GStarOrderSerializer();
+    _$GSponsorshipPrivacySerializer();
+Serializer<GStarOrder> _$gStarOrderSerializer = _$GStarOrderSerializer();
 Serializer<GStarOrderField> _$gStarOrderFieldSerializer =
-    new _$GStarOrderFieldSerializer();
-Serializer<GStatusState> _$gStatusStateSerializer =
-    new _$GStatusStateSerializer();
+    _$GStarOrderFieldSerializer();
+Serializer<GStatusState> _$gStatusStateSerializer = _$GStatusStateSerializer();
 Serializer<GSubmitPullRequestReviewInput>
     _$gSubmitPullRequestReviewInputSerializer =
-    new _$GSubmitPullRequestReviewInputSerializer();
+    _$GSubmitPullRequestReviewInputSerializer();
 Serializer<GSubscriptionState> _$gSubscriptionStateSerializer =
-    new _$GSubscriptionStateSerializer();
+    _$GSubscriptionStateSerializer();
 Serializer<GTeamDiscussionCommentOrder>
     _$gTeamDiscussionCommentOrderSerializer =
-    new _$GTeamDiscussionCommentOrderSerializer();
+    _$GTeamDiscussionCommentOrderSerializer();
 Serializer<GTeamDiscussionCommentOrderField>
     _$gTeamDiscussionCommentOrderFieldSerializer =
-    new _$GTeamDiscussionCommentOrderFieldSerializer();
+    _$GTeamDiscussionCommentOrderFieldSerializer();
 Serializer<GTeamDiscussionOrder> _$gTeamDiscussionOrderSerializer =
-    new _$GTeamDiscussionOrderSerializer();
+    _$GTeamDiscussionOrderSerializer();
 Serializer<GTeamDiscussionOrderField> _$gTeamDiscussionOrderFieldSerializer =
-    new _$GTeamDiscussionOrderFieldSerializer();
+    _$GTeamDiscussionOrderFieldSerializer();
 Serializer<GTeamMemberOrder> _$gTeamMemberOrderSerializer =
-    new _$GTeamMemberOrderSerializer();
+    _$GTeamMemberOrderSerializer();
 Serializer<GTeamMemberOrderField> _$gTeamMemberOrderFieldSerializer =
-    new _$GTeamMemberOrderFieldSerializer();
+    _$GTeamMemberOrderFieldSerializer();
 Serializer<GTeamMemberRole> _$gTeamMemberRoleSerializer =
-    new _$GTeamMemberRoleSerializer();
+    _$GTeamMemberRoleSerializer();
 Serializer<GTeamMembershipType> _$gTeamMembershipTypeSerializer =
-    new _$GTeamMembershipTypeSerializer();
-Serializer<GTeamOrder> _$gTeamOrderSerializer = new _$GTeamOrderSerializer();
+    _$GTeamMembershipTypeSerializer();
+Serializer<GTeamOrder> _$gTeamOrderSerializer = _$GTeamOrderSerializer();
 Serializer<GTeamOrderField> _$gTeamOrderFieldSerializer =
-    new _$GTeamOrderFieldSerializer();
-Serializer<GTeamPrivacy> _$gTeamPrivacySerializer =
-    new _$GTeamPrivacySerializer();
+    _$GTeamOrderFieldSerializer();
+Serializer<GTeamPrivacy> _$gTeamPrivacySerializer = _$GTeamPrivacySerializer();
 Serializer<GTeamRepositoryOrder> _$gTeamRepositoryOrderSerializer =
-    new _$GTeamRepositoryOrderSerializer();
+    _$GTeamRepositoryOrderSerializer();
 Serializer<GTeamRepositoryOrderField> _$gTeamRepositoryOrderFieldSerializer =
-    new _$GTeamRepositoryOrderFieldSerializer();
-Serializer<GTeamRole> _$gTeamRoleSerializer = new _$GTeamRoleSerializer();
+    _$GTeamRepositoryOrderFieldSerializer();
+Serializer<GTeamRole> _$gTeamRoleSerializer = _$GTeamRoleSerializer();
 Serializer<GTopicSuggestionDeclineReason>
     _$gTopicSuggestionDeclineReasonSerializer =
-    new _$GTopicSuggestionDeclineReasonSerializer();
+    _$GTopicSuggestionDeclineReasonSerializer();
 Serializer<GTransferIssueInput> _$gTransferIssueInputSerializer =
-    new _$GTransferIssueInputSerializer();
+    _$GTransferIssueInputSerializer();
 Serializer<GUnarchiveRepositoryInput> _$gUnarchiveRepositoryInputSerializer =
-    new _$GUnarchiveRepositoryInputSerializer();
+    _$GUnarchiveRepositoryInputSerializer();
 Serializer<GUnfollowUserInput> _$gUnfollowUserInputSerializer =
-    new _$GUnfollowUserInputSerializer();
+    _$GUnfollowUserInputSerializer();
 Serializer<GUnlinkRepositoryFromProjectInput>
     _$gUnlinkRepositoryFromProjectInputSerializer =
-    new _$GUnlinkRepositoryFromProjectInputSerializer();
+    _$GUnlinkRepositoryFromProjectInputSerializer();
 Serializer<GUnlockLockableInput> _$gUnlockLockableInputSerializer =
-    new _$GUnlockLockableInputSerializer();
+    _$GUnlockLockableInputSerializer();
 Serializer<GUnmarkIssueAsDuplicateInput>
     _$gUnmarkIssueAsDuplicateInputSerializer =
-    new _$GUnmarkIssueAsDuplicateInputSerializer();
+    _$GUnmarkIssueAsDuplicateInputSerializer();
 Serializer<GUnresolveReviewThreadInput>
     _$gUnresolveReviewThreadInputSerializer =
-    new _$GUnresolveReviewThreadInputSerializer();
+    _$GUnresolveReviewThreadInputSerializer();
 Serializer<GUpdateBranchProtectionRuleInput>
     _$gUpdateBranchProtectionRuleInputSerializer =
-    new _$GUpdateBranchProtectionRuleInputSerializer();
+    _$GUpdateBranchProtectionRuleInputSerializer();
 Serializer<GUpdateEnterpriseActionExecutionCapabilitySettingInput>
     _$gUpdateEnterpriseActionExecutionCapabilitySettingInputSerializer =
-    new _$GUpdateEnterpriseActionExecutionCapabilitySettingInputSerializer();
+    _$GUpdateEnterpriseActionExecutionCapabilitySettingInputSerializer();
 Serializer<GUpdateEnterpriseAdministratorRoleInput>
     _$gUpdateEnterpriseAdministratorRoleInputSerializer =
-    new _$GUpdateEnterpriseAdministratorRoleInputSerializer();
+    _$GUpdateEnterpriseAdministratorRoleInputSerializer();
 Serializer<GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput>
     _$gUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputSerializer =
-    new _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputSerializer();
+    _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputSerializer();
 Serializer<GUpdateEnterpriseDefaultRepositoryPermissionSettingInput>
     _$gUpdateEnterpriseDefaultRepositoryPermissionSettingInputSerializer =
-    new _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInputSerializer();
+    _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput>
     _$gUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput>
     _$gUpdateEnterpriseMembersCanCreateRepositoriesSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanDeleteIssuesSettingInput>
     _$gUpdateEnterpriseMembersCanDeleteIssuesSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput>
     _$gUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput>
     _$gUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanMakePurchasesSettingInput>
     _$gUpdateEnterpriseMembersCanMakePurchasesSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanMakePurchasesSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanMakePurchasesSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput>
     _$gUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputSerializer();
 Serializer<GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput>
     _$gUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputSerializer =
-    new _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputSerializer();
+    _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputSerializer();
 Serializer<GUpdateEnterpriseOrganizationProjectsSettingInput>
     _$gUpdateEnterpriseOrganizationProjectsSettingInputSerializer =
-    new _$GUpdateEnterpriseOrganizationProjectsSettingInputSerializer();
+    _$GUpdateEnterpriseOrganizationProjectsSettingInputSerializer();
 Serializer<GUpdateEnterpriseProfileInput>
     _$gUpdateEnterpriseProfileInputSerializer =
-    new _$GUpdateEnterpriseProfileInputSerializer();
+    _$GUpdateEnterpriseProfileInputSerializer();
 Serializer<GUpdateEnterpriseRepositoryProjectsSettingInput>
     _$gUpdateEnterpriseRepositoryProjectsSettingInputSerializer =
-    new _$GUpdateEnterpriseRepositoryProjectsSettingInputSerializer();
+    _$GUpdateEnterpriseRepositoryProjectsSettingInputSerializer();
 Serializer<GUpdateEnterpriseTeamDiscussionsSettingInput>
     _$gUpdateEnterpriseTeamDiscussionsSettingInputSerializer =
-    new _$GUpdateEnterpriseTeamDiscussionsSettingInputSerializer();
+    _$GUpdateEnterpriseTeamDiscussionsSettingInputSerializer();
 Serializer<GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput>
     _$gUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputSerializer =
-    new _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputSerializer();
+    _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputSerializer();
 Serializer<GUpdateIssueCommentInput> _$gUpdateIssueCommentInputSerializer =
-    new _$GUpdateIssueCommentInputSerializer();
+    _$GUpdateIssueCommentInputSerializer();
 Serializer<GUpdateIssueInput> _$gUpdateIssueInputSerializer =
-    new _$GUpdateIssueInputSerializer();
+    _$GUpdateIssueInputSerializer();
 Serializer<GUpdateProjectCardInput> _$gUpdateProjectCardInputSerializer =
-    new _$GUpdateProjectCardInputSerializer();
+    _$GUpdateProjectCardInputSerializer();
 Serializer<GUpdateProjectColumnInput> _$gUpdateProjectColumnInputSerializer =
-    new _$GUpdateProjectColumnInputSerializer();
+    _$GUpdateProjectColumnInputSerializer();
 Serializer<GUpdateProjectInput> _$gUpdateProjectInputSerializer =
-    new _$GUpdateProjectInputSerializer();
+    _$GUpdateProjectInputSerializer();
 Serializer<GUpdatePullRequestInput> _$gUpdatePullRequestInputSerializer =
-    new _$GUpdatePullRequestInputSerializer();
+    _$GUpdatePullRequestInputSerializer();
 Serializer<GUpdatePullRequestReviewCommentInput>
     _$gUpdatePullRequestReviewCommentInputSerializer =
-    new _$GUpdatePullRequestReviewCommentInputSerializer();
+    _$GUpdatePullRequestReviewCommentInputSerializer();
 Serializer<GUpdatePullRequestReviewInput>
     _$gUpdatePullRequestReviewInputSerializer =
-    new _$GUpdatePullRequestReviewInputSerializer();
+    _$GUpdatePullRequestReviewInputSerializer();
 Serializer<GUpdateRefInput> _$gUpdateRefInputSerializer =
-    new _$GUpdateRefInputSerializer();
+    _$GUpdateRefInputSerializer();
 Serializer<GUpdateRepositoryInput> _$gUpdateRepositoryInputSerializer =
-    new _$GUpdateRepositoryInputSerializer();
+    _$GUpdateRepositoryInputSerializer();
 Serializer<GUpdateSubscriptionInput> _$gUpdateSubscriptionInputSerializer =
-    new _$GUpdateSubscriptionInputSerializer();
+    _$GUpdateSubscriptionInputSerializer();
 Serializer<GUpdateTeamDiscussionCommentInput>
     _$gUpdateTeamDiscussionCommentInputSerializer =
-    new _$GUpdateTeamDiscussionCommentInputSerializer();
+    _$GUpdateTeamDiscussionCommentInputSerializer();
 Serializer<GUpdateTeamDiscussionInput> _$gUpdateTeamDiscussionInputSerializer =
-    new _$GUpdateTeamDiscussionInputSerializer();
+    _$GUpdateTeamDiscussionInputSerializer();
 Serializer<GUpdateTopicsInput> _$gUpdateTopicsInputSerializer =
-    new _$GUpdateTopicsInputSerializer();
+    _$GUpdateTopicsInputSerializer();
 Serializer<GUserBlockDuration> _$gUserBlockDurationSerializer =
-    new _$GUserBlockDurationSerializer();
+    _$GUserBlockDurationSerializer();
 Serializer<GUserStatusOrder> _$gUserStatusOrderSerializer =
-    new _$GUserStatusOrderSerializer();
+    _$GUserStatusOrderSerializer();
 Serializer<GUserStatusOrderField> _$gUserStatusOrderFieldSerializer =
-    new _$GUserStatusOrderFieldSerializer();
+    _$GUserStatusOrderFieldSerializer();
 
 class _$GAcceptEnterpriseAdministratorInvitationInputSerializer
     implements
@@ -4701,7 +4696,7 @@ class _$GAcceptEnterpriseAdministratorInvitationInputSerializer
   GAcceptEnterpriseAdministratorInvitationInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAcceptEnterpriseAdministratorInvitationInputBuilder();
+    final result = GAcceptEnterpriseAdministratorInvitationInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -4760,7 +4755,7 @@ class _$GAcceptTopicSuggestionInputSerializer
   GAcceptTopicSuggestionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAcceptTopicSuggestionInputBuilder();
+    final result = GAcceptTopicSuggestionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -4845,7 +4840,7 @@ class _$GAddAssigneesToAssignableInputSerializer
   GAddAssigneesToAssignableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddAssigneesToAssignableInputBuilder();
+    final result = GAddAssigneesToAssignableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -4906,7 +4901,7 @@ class _$GAddCommentInputSerializer
   GAddCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddCommentInputBuilder();
+    final result = GAddCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -4971,7 +4966,7 @@ class _$GAddLabelsToLabelableInputSerializer
   GAddLabelsToLabelableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddLabelsToLabelableInputBuilder();
+    final result = GAddLabelsToLabelableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5048,7 +5043,7 @@ class _$GAddProjectCardInputSerializer
   GAddProjectCardInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddProjectCardInputBuilder();
+    final result = GAddProjectCardInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5115,7 +5110,7 @@ class _$GAddProjectColumnInputSerializer
   GAddProjectColumnInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddProjectColumnInputBuilder();
+    final result = GAddProjectColumnInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5216,7 +5211,7 @@ class _$GAddPullRequestReviewCommentInputSerializer
   GAddPullRequestReviewCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddPullRequestReviewCommentInputBuilder();
+    final result = GAddPullRequestReviewCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5327,7 +5322,7 @@ class _$GAddPullRequestReviewInputSerializer
   GAddPullRequestReviewInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddPullRequestReviewInputBuilder();
+    final result = GAddPullRequestReviewInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5402,7 +5397,7 @@ class _$GAddReactionInputSerializer
   GAddReactionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddReactionInputBuilder();
+    final result = GAddReactionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5459,7 +5454,7 @@ class _$GAddStarInputSerializer implements StructuredSerializer<GAddStarInput> {
   GAddStarInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddStarInputBuilder();
+    final result = GAddStarInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5516,7 +5511,7 @@ class _$GArchiveRepositoryInputSerializer
   GArchiveRepositoryInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GArchiveRepositoryInputBuilder();
+    final result = GArchiveRepositoryInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5572,7 +5567,7 @@ class _$GAuditLogOrderSerializer
   GAuditLogOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAuditLogOrderBuilder();
+    final result = GAuditLogOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5649,7 +5644,7 @@ class _$GCancelEnterpriseAdminInvitationInputSerializer
   GCancelEnterpriseAdminInvitationInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCancelEnterpriseAdminInvitationInputBuilder();
+    final result = GCancelEnterpriseAdminInvitationInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5737,7 +5732,7 @@ class _$GChangeUserStatusInputSerializer
   GChangeUserStatusInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GChangeUserStatusInputBuilder();
+    final result = GChangeUserStatusInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5810,7 +5805,7 @@ class _$GClearLabelsFromLabelableInputSerializer
   GClearLabelsFromLabelableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GClearLabelsFromLabelableInputBuilder();
+    final result = GClearLabelsFromLabelableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5886,7 +5881,7 @@ class _$GCloneProjectInputSerializer
   GCloneProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCloneProjectInputBuilder();
+    final result = GCloneProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5978,7 +5973,7 @@ class _$GCloneTemplateRepositoryInputSerializer
   GCloneTemplateRepositoryInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCloneTemplateRepositoryInputBuilder();
+    final result = GCloneTemplateRepositoryInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6048,7 +6043,7 @@ class _$GCloseIssueInputSerializer
   GCloseIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCloseIssueInputBuilder();
+    final result = GCloseIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6105,7 +6100,7 @@ class _$GClosePullRequestInputSerializer
   GClosePullRequestInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GClosePullRequestInputBuilder();
+    final result = GClosePullRequestInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6218,7 +6213,7 @@ class _$GCommitAuthorSerializer implements StructuredSerializer<GCommitAuthor> {
   GCommitAuthor deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCommitAuthorBuilder();
+    final result = GCommitAuthorBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6273,7 +6268,7 @@ class _$GCommitContributionOrderSerializer
   GCommitContributionOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCommitContributionOrderBuilder();
+    final result = GCommitContributionOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6349,7 +6344,7 @@ class _$GContributionOrderSerializer
   GContributionOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GContributionOrderBuilder();
+    final result = GContributionOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6444,7 +6439,7 @@ class _$GConvertProjectCardNoteToIssueInputSerializer
   GConvertProjectCardNoteToIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GConvertProjectCardNoteToIssueInputBuilder();
+    final result = GConvertProjectCardNoteToIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6609,7 +6604,7 @@ class _$GCreateBranchProtectionRuleInputSerializer
   GCreateBranchProtectionRuleInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateBranchProtectionRuleInputBuilder();
+    final result = GCreateBranchProtectionRuleInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6742,7 +6737,7 @@ class _$GCreateEnterpriseOrganizationInputSerializer
   GCreateEnterpriseOrganizationInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateEnterpriseOrganizationInputBuilder();
+    final result = GCreateEnterpriseOrganizationInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6854,7 +6849,7 @@ class _$GCreateIssueInputSerializer
   GCreateIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateIssueInputBuilder();
+    final result = GCreateIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -6965,7 +6960,7 @@ class _$GCreateProjectInputSerializer
   GCreateProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateProjectInputBuilder();
+    final result = GCreateProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7064,7 +7059,7 @@ class _$GCreatePullRequestInputSerializer
   GCreatePullRequestInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreatePullRequestInputBuilder();
+    final result = GCreatePullRequestInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7142,7 +7137,7 @@ class _$GCreateRefInputSerializer
   GCreateRefInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateRefInputBuilder();
+    final result = GCreateRefInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7258,7 +7253,7 @@ class _$GCreateRepositoryInputSerializer
   GCreateRepositoryInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateRepositoryInputBuilder();
+    final result = GCreateRepositoryInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7350,7 +7345,7 @@ class _$GCreateTeamDiscussionCommentInputSerializer
   GCreateTeamDiscussionCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateTeamDiscussionCommentInputBuilder();
+    final result = GCreateTeamDiscussionCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7423,7 +7418,7 @@ class _$GCreateTeamDiscussionInputSerializer
   GCreateTeamDiscussionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateTeamDiscussionInputBuilder();
+    final result = GCreateTeamDiscussionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7497,7 +7492,7 @@ class _$GDeclineTopicSuggestionInputSerializer
   GDeclineTopicSuggestionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeclineTopicSuggestionInputBuilder();
+    final result = GDeclineTopicSuggestionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7583,7 +7578,7 @@ class _$GDeleteBranchProtectionRuleInputSerializer
   GDeleteBranchProtectionRuleInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteBranchProtectionRuleInputBuilder();
+    final result = GDeleteBranchProtectionRuleInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7639,7 +7634,7 @@ class _$GDeleteDeploymentInputSerializer
   GDeleteDeploymentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteDeploymentInputBuilder();
+    final result = GDeleteDeploymentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7695,7 +7690,7 @@ class _$GDeleteIssueCommentInputSerializer
   GDeleteIssueCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteIssueCommentInputBuilder();
+    final result = GDeleteIssueCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7748,7 +7743,7 @@ class _$GDeleteIssueInputSerializer
   GDeleteIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteIssueInputBuilder();
+    final result = GDeleteIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7805,7 +7800,7 @@ class _$GDeleteProjectCardInputSerializer
   GDeleteProjectCardInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteProjectCardInputBuilder();
+    final result = GDeleteProjectCardInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7862,7 +7857,7 @@ class _$GDeleteProjectColumnInputSerializer
   GDeleteProjectColumnInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteProjectColumnInputBuilder();
+    final result = GDeleteProjectColumnInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7919,7 +7914,7 @@ class _$GDeleteProjectInputSerializer
   GDeleteProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteProjectInputBuilder();
+    final result = GDeleteProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -7975,7 +7970,7 @@ class _$GDeletePullRequestReviewCommentInputSerializer
   GDeletePullRequestReviewCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeletePullRequestReviewCommentInputBuilder();
+    final result = GDeletePullRequestReviewCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8032,7 +8027,7 @@ class _$GDeletePullRequestReviewInputSerializer
   GDeletePullRequestReviewInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeletePullRequestReviewInputBuilder();
+    final result = GDeletePullRequestReviewInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8085,7 +8080,7 @@ class _$GDeleteRefInputSerializer
   GDeleteRefInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteRefInputBuilder();
+    final result = GDeleteRefInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8141,7 +8136,7 @@ class _$GDeleteTeamDiscussionCommentInputSerializer
   GDeleteTeamDiscussionCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteTeamDiscussionCommentInputBuilder();
+    final result = GDeleteTeamDiscussionCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8197,7 +8192,7 @@ class _$GDeleteTeamDiscussionInputSerializer
   GDeleteTeamDiscussionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeleteTeamDiscussionInputBuilder();
+    final result = GDeleteTeamDiscussionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8246,7 +8241,7 @@ class _$GDeploymentOrderSerializer
   GDeploymentOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDeploymentOrderBuilder();
+    final result = GDeploymentOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8362,7 +8357,7 @@ class _$GDismissPullRequestReviewInputSerializer
   GDismissPullRequestReviewInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDismissPullRequestReviewInputBuilder();
+    final result = GDismissPullRequestReviewInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8420,7 +8415,7 @@ class _$GDraftPullRequestReviewCommentSerializer
   GDraftPullRequestReviewComment deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDraftPullRequestReviewCommentBuilder();
+    final result = GDraftPullRequestReviewCommentBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8478,7 +8473,7 @@ class _$GEnterpriseAdministratorInvitationOrderSerializer
   GEnterpriseAdministratorInvitationOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseAdministratorInvitationOrderBuilder();
+    final result = GEnterpriseAdministratorInvitationOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8644,7 +8639,7 @@ class _$GEnterpriseMemberOrderSerializer
   GEnterpriseMemberOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseMemberOrderBuilder();
+    final result = GEnterpriseMemberOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8768,7 +8763,7 @@ class _$GEnterpriseServerInstallationOrderSerializer
   GEnterpriseServerInstallationOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseServerInstallationOrderBuilder();
+    final result = GEnterpriseServerInstallationOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8847,7 +8842,7 @@ class _$GEnterpriseServerUserAccountEmailOrderSerializer
   GEnterpriseServerUserAccountEmailOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseServerUserAccountEmailOrderBuilder();
+    final result = GEnterpriseServerUserAccountEmailOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -8927,7 +8922,7 @@ class _$GEnterpriseServerUserAccountOrderSerializer
   GEnterpriseServerUserAccountOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseServerUserAccountOrderBuilder();
+    final result = GEnterpriseServerUserAccountOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9006,7 +9001,7 @@ class _$GEnterpriseServerUserAccountsUploadOrderSerializer
   GEnterpriseServerUserAccountsUploadOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GEnterpriseServerUserAccountsUploadOrderBuilder();
+    final result = GEnterpriseServerUserAccountsUploadOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9151,7 +9146,7 @@ class _$GFollowUserInputSerializer
   GFollowUserInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFollowUserInputBuilder();
+    final result = GFollowUserInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9216,7 +9211,7 @@ class _$GGistOrderSerializer implements StructuredSerializer<GGistOrder> {
   @override
   GGistOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GGistOrderBuilder();
+    final result = GGistOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9371,7 +9366,7 @@ class _$GInviteEnterpriseAdminInputSerializer
   GInviteEnterpriseAdminInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GInviteEnterpriseAdminInputBuilder();
+    final result = GInviteEnterpriseAdminInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9483,7 +9478,7 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
   GIssueFilters deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GIssueFiltersBuilder();
+    final result = GIssueFiltersBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9558,7 +9553,7 @@ class _$GIssueOrderSerializer implements StructuredSerializer<GIssueOrder> {
   @override
   GIssueOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GIssueOrderBuilder();
+    final result = GIssueOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9661,7 +9656,7 @@ class _$GLabelOrderSerializer implements StructuredSerializer<GLabelOrder> {
   @override
   GLabelOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GLabelOrderBuilder();
+    final result = GLabelOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9730,7 +9725,7 @@ class _$GLanguageOrderSerializer
   GLanguageOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GLanguageOrderBuilder();
+    final result = GLanguageOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9810,7 +9805,7 @@ class _$GLinkRepositoryToProjectInputSerializer
   GLinkRepositoryToProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GLinkRepositoryToProjectInputBuilder();
+    final result = GLinkRepositoryToProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9875,7 +9870,7 @@ class _$GLockLockableInputSerializer
   GLockLockableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GLockLockableInputBuilder();
+    final result = GLockLockableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -9960,7 +9955,7 @@ class _$GMergeBranchInputSerializer
   GMergeBranchInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GMergeBranchInputBuilder();
+    final result = GMergeBranchInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10057,7 +10052,7 @@ class _$GMergePullRequestInputSerializer
   GMergePullRequestInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GMergePullRequestInputBuilder();
+    final result = GMergePullRequestInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10141,7 +10136,7 @@ class _$GMilestoneOrderSerializer
   GMilestoneOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GMilestoneOrderBuilder();
+    final result = GMilestoneOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10246,7 +10241,7 @@ class _$GMoveProjectCardInputSerializer
   GMoveProjectCardInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GMoveProjectCardInputBuilder();
+    final result = GMoveProjectCardInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10318,7 +10313,7 @@ class _$GMoveProjectColumnInputSerializer
   GMoveProjectColumnInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GMoveProjectColumnInputBuilder();
+    final result = GMoveProjectColumnInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10743,7 +10738,7 @@ class _$GOrganizationOrderSerializer
   GOrganizationOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOrganizationOrderBuilder();
+    final result = GOrganizationOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -10885,7 +10880,7 @@ class _$GProjectOrderSerializer implements StructuredSerializer<GProjectOrder> {
   GProjectOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GProjectOrderBuilder();
+    final result = GProjectOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11008,7 +11003,7 @@ class _$GPullRequestOrderSerializer
   GPullRequestOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPullRequestOrderBuilder();
+    final result = GPullRequestOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11210,7 +11205,7 @@ class _$GReactionOrderSerializer
   GReactionOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReactionOrderBuilder();
+    final result = GReactionOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11277,7 +11272,7 @@ class _$GRefOrderSerializer implements StructuredSerializer<GRefOrder> {
   @override
   GRefOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRefOrderBuilder();
+    final result = GRefOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11357,7 +11352,7 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder();
+        GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11436,7 +11431,7 @@ class _$GRegistryPackageMetadatumSerializer
   GRegistryPackageMetadatum deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRegistryPackageMetadatumBuilder();
+    final result = GRegistryPackageMetadatumBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11506,7 +11501,7 @@ class _$GReleaseOrderSerializer implements StructuredSerializer<GReleaseOrder> {
   GReleaseOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReleaseOrderBuilder();
+    final result = GReleaseOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11587,7 +11582,7 @@ class _$GRemoveAssigneesFromAssignableInputSerializer
   GRemoveAssigneesFromAssignableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveAssigneesFromAssignableInputBuilder();
+    final result = GRemoveAssigneesFromAssignableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11653,7 +11648,7 @@ class _$GRemoveEnterpriseAdminInputSerializer
   GRemoveEnterpriseAdminInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveEnterpriseAdminInputBuilder();
+    final result = GRemoveEnterpriseAdminInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11717,7 +11712,7 @@ class _$GRemoveEnterpriseOrganizationInputSerializer
   GRemoveEnterpriseOrganizationInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveEnterpriseOrganizationInputBuilder();
+    final result = GRemoveEnterpriseOrganizationInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11782,7 +11777,7 @@ class _$GRemoveLabelsFromLabelableInputSerializer
   GRemoveLabelsFromLabelableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveLabelsFromLabelableInputBuilder();
+    final result = GRemoveLabelsFromLabelableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11848,7 +11843,7 @@ class _$GRemoveOutsideCollaboratorInputSerializer
   GRemoveOutsideCollaboratorInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveOutsideCollaboratorInputBuilder();
+    final result = GRemoveOutsideCollaboratorInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11912,7 +11907,7 @@ class _$GRemoveReactionInputSerializer
   GRemoveReactionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveReactionInputBuilder();
+    final result = GRemoveReactionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -11970,7 +11965,7 @@ class _$GRemoveStarInputSerializer
   GRemoveStarInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarInputBuilder();
+    final result = GRemoveStarInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12023,7 +12018,7 @@ class _$GReopenIssueInputSerializer
   GReopenIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReopenIssueInputBuilder();
+    final result = GReopenIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12080,7 +12075,7 @@ class _$GReopenPullRequestInputSerializer
   GReopenPullRequestInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReopenPullRequestInputBuilder();
+    final result = GReopenPullRequestInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12314,7 +12309,7 @@ class _$GRepositoryInvitationOrderSerializer
   GRepositoryInvitationOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRepositoryInvitationOrderBuilder();
+    final result = GRepositoryInvitationOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12404,7 +12399,7 @@ class _$GRepositoryOrderSerializer
   GRepositoryOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRepositoryOrderBuilder();
+    final result = GRepositoryOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12558,7 +12553,7 @@ class _$GRequestReviewsInputSerializer
   GRequestReviewsInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRequestReviewsInputBuilder();
+    final result = GRequestReviewsInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12631,7 +12626,7 @@ class _$GResolveReviewThreadInputSerializer
   GResolveReviewThreadInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GResolveReviewThreadInputBuilder();
+    final result = GResolveReviewThreadInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12717,7 +12712,7 @@ class _$GSavedReplyOrderSerializer
   GSavedReplyOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSavedReplyOrderBuilder();
+    final result = GSavedReplyOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12826,7 +12821,7 @@ class _$GSecurityAdvisoryIdentifierFilterSerializer
   GSecurityAdvisoryIdentifierFilter deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSecurityAdvisoryIdentifierFilterBuilder();
+    final result = GSecurityAdvisoryIdentifierFilterBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12901,7 +12896,7 @@ class _$GSecurityAdvisoryOrderSerializer
   GSecurityAdvisoryOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSecurityAdvisoryOrderBuilder();
+    final result = GSecurityAdvisoryOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -12994,7 +12989,7 @@ class _$GSecurityVulnerabilityOrderSerializer
   GSecurityVulnerabilityOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSecurityVulnerabilityOrderBuilder();
+    final result = GSecurityVulnerabilityOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13067,7 +13062,7 @@ class _$GSponsorsTierOrderSerializer
   GSponsorsTierOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSponsorsTierOrderBuilder();
+    final result = GSponsorsTierOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13137,7 +13132,7 @@ class _$GSponsorshipOrderSerializer
   GSponsorshipOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSponsorshipOrderBuilder();
+    final result = GSponsorshipOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13222,7 +13217,7 @@ class _$GStarOrderSerializer implements StructuredSerializer<GStarOrder> {
   @override
   GStarOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GStarOrderBuilder();
+    final result = GStarOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13337,7 +13332,7 @@ class _$GSubmitPullRequestReviewInputSerializer
   GSubmitPullRequestReviewInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSubmitPullRequestReviewInputBuilder();
+    final result = GSubmitPullRequestReviewInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13421,7 +13416,7 @@ class _$GTeamDiscussionCommentOrderSerializer
   GTeamDiscussionCommentOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTeamDiscussionCommentOrderBuilder();
+    final result = GTeamDiscussionCommentOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13497,7 +13492,7 @@ class _$GTeamDiscussionOrderSerializer
   GTeamDiscussionOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTeamDiscussionOrderBuilder();
+    final result = GTeamDiscussionOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13567,7 +13562,7 @@ class _$GTeamMemberOrderSerializer
   GTeamMemberOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTeamMemberOrderBuilder();
+    final result = GTeamMemberOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13670,7 +13665,7 @@ class _$GTeamOrderSerializer implements StructuredSerializer<GTeamOrder> {
   @override
   GTeamOrder deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTeamOrderBuilder();
+    final result = GTeamOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13760,7 +13755,7 @@ class _$GTeamRepositoryOrderSerializer
   GTeamRepositoryOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTeamRepositoryOrderBuilder();
+    final result = GTeamRepositoryOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13878,7 +13873,7 @@ class _$GTransferIssueInputSerializer
   GTransferIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GTransferIssueInputBuilder();
+    final result = GTransferIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13939,7 +13934,7 @@ class _$GUnarchiveRepositoryInputSerializer
   GUnarchiveRepositoryInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnarchiveRepositoryInputBuilder();
+    final result = GUnarchiveRepositoryInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -13993,7 +13988,7 @@ class _$GUnfollowUserInputSerializer
   GUnfollowUserInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnfollowUserInputBuilder();
+    final result = GUnfollowUserInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14053,7 +14048,7 @@ class _$GUnlinkRepositoryFromProjectInputSerializer
   GUnlinkRepositoryFromProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnlinkRepositoryFromProjectInputBuilder();
+    final result = GUnlinkRepositoryFromProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14114,7 +14109,7 @@ class _$GUnlockLockableInputSerializer
   GUnlockLockableInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnlockLockableInputBuilder();
+    final result = GUnlockLockableInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14174,7 +14169,7 @@ class _$GUnmarkIssueAsDuplicateInputSerializer
   GUnmarkIssueAsDuplicateInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnmarkIssueAsDuplicateInputBuilder();
+    final result = GUnmarkIssueAsDuplicateInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14235,7 +14230,7 @@ class _$GUnresolveReviewThreadInputSerializer
   GUnresolveReviewThreadInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUnresolveReviewThreadInputBuilder();
+    final result = GUnresolveReviewThreadInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14392,7 +14387,7 @@ class _$GUpdateBranchProtectionRuleInputSerializer
   GUpdateBranchProtectionRuleInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateBranchProtectionRuleInputBuilder();
+    final result = GUpdateBranchProtectionRuleInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14519,7 +14514,7 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder();
+        GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14588,7 +14583,7 @@ class _$GUpdateEnterpriseAdministratorRoleInputSerializer
   GUpdateEnterpriseAdministratorRoleInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateEnterpriseAdministratorRoleInputBuilder();
+    final result = GUpdateEnterpriseAdministratorRoleInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14662,7 +14657,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder();
+        GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14733,7 +14728,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder();
+        GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14804,7 +14799,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputSeriali
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder();
+        GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14907,7 +14902,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder();
+        GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -14992,8 +14987,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInputSerializer
   GUpdateEnterpriseMembersCanDeleteIssuesSettingInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder();
+    final result = GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15064,7 +15058,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder();
+        GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15135,7 +15129,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder();
+        GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15206,7 +15200,7 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder();
+        GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15277,7 +15271,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder();
+        GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15348,7 +15342,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder();
+        GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15417,8 +15411,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInputSerializer
   GUpdateEnterpriseOrganizationProjectsSettingInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GUpdateEnterpriseOrganizationProjectsSettingInputBuilder();
+    final result = GUpdateEnterpriseOrganizationProjectsSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15509,7 +15502,7 @@ class _$GUpdateEnterpriseProfileInputSerializer
   GUpdateEnterpriseProfileInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateEnterpriseProfileInputBuilder();
+    final result = GUpdateEnterpriseProfileInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15587,7 +15580,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInputSerializer
   GUpdateEnterpriseRepositoryProjectsSettingInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateEnterpriseRepositoryProjectsSettingInputBuilder();
+    final result = GUpdateEnterpriseRepositoryProjectsSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15655,7 +15648,7 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInputSerializer
   GUpdateEnterpriseTeamDiscussionsSettingInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateEnterpriseTeamDiscussionsSettingInputBuilder();
+    final result = GUpdateEnterpriseTeamDiscussionsSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15725,7 +15718,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder();
+        GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15789,7 +15782,7 @@ class _$GUpdateIssueCommentInputSerializer
   GUpdateIssueCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateIssueCommentInputBuilder();
+    final result = GUpdateIssueCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -15897,7 +15890,7 @@ class _$GUpdateIssueInputSerializer
   GUpdateIssueInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateIssueInputBuilder();
+    final result = GUpdateIssueInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16002,7 +15995,7 @@ class _$GUpdateProjectCardInputSerializer
   GUpdateProjectCardInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateProjectCardInputBuilder();
+    final result = GUpdateProjectCardInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16069,7 +16062,7 @@ class _$GUpdateProjectColumnInputSerializer
   GUpdateProjectColumnInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateProjectColumnInputBuilder();
+    final result = GUpdateProjectColumnInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16158,7 +16151,7 @@ class _$GUpdateProjectInputSerializer
   GUpdateProjectInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateProjectInputBuilder();
+    final result = GUpdateProjectInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16297,7 +16290,7 @@ class _$GUpdatePullRequestInputSerializer
   GUpdatePullRequestInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdatePullRequestInputBuilder();
+    final result = GUpdatePullRequestInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16399,7 +16392,7 @@ class _$GUpdatePullRequestReviewCommentInputSerializer
   GUpdatePullRequestReviewCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdatePullRequestReviewCommentInputBuilder();
+    final result = GUpdatePullRequestReviewCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16462,7 +16455,7 @@ class _$GUpdatePullRequestReviewInputSerializer
   GUpdatePullRequestReviewInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdatePullRequestReviewInputBuilder();
+    final result = GUpdatePullRequestReviewInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16529,7 +16522,7 @@ class _$GUpdateRefInputSerializer
   GUpdateRefInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateRefInputBuilder();
+    final result = GUpdateRefInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16643,7 +16636,7 @@ class _$GUpdateRepositoryInputSerializer
   GUpdateRepositoryInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateRepositoryInputBuilder();
+    final result = GUpdateRepositoryInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16731,7 +16724,7 @@ class _$GUpdateSubscriptionInputSerializer
   GUpdateSubscriptionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateSubscriptionInputBuilder();
+    final result = GUpdateSubscriptionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16801,7 +16794,7 @@ class _$GUpdateTeamDiscussionCommentInputSerializer
   GUpdateTeamDiscussionCommentInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateTeamDiscussionCommentInputBuilder();
+    final result = GUpdateTeamDiscussionCommentInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16893,7 +16886,7 @@ class _$GUpdateTeamDiscussionInputSerializer
   GUpdateTeamDiscussionInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateTeamDiscussionInputBuilder();
+    final result = GUpdateTeamDiscussionInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -16967,7 +16960,7 @@ class _$GUpdateTopicsInputSerializer
   GUpdateTopicsInput deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUpdateTopicsInputBuilder();
+    final result = GUpdateTopicsInputBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -17040,7 +17033,7 @@ class _$GUserStatusOrderSerializer
   GUserStatusOrder deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GUserStatusOrderBuilder();
+    final result = GUserStatusOrderBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -17093,17 +17086,12 @@ class _$GAcceptEnterpriseAdministratorInvitationInput
   factory _$GAcceptEnterpriseAdministratorInvitationInput(
           [void Function(GAcceptEnterpriseAdministratorInvitationInputBuilder)?
               updates]) =>
-      (new GAcceptEnterpriseAdministratorInvitationInputBuilder()
-            ..update(updates))
+      (GAcceptEnterpriseAdministratorInvitationInputBuilder()..update(updates))
           ._build();
 
   _$GAcceptEnterpriseAdministratorInvitationInput._(
       {this.clientMutationId, required this.invitationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(invitationId,
-        r'GAcceptEnterpriseAdministratorInvitationInput', 'invitationId');
-  }
-
+      : super._();
   @override
   GAcceptEnterpriseAdministratorInvitationInput rebuild(
           void Function(GAcceptEnterpriseAdministratorInvitationInputBuilder)
@@ -17112,7 +17100,7 @@ class _$GAcceptEnterpriseAdministratorInvitationInput
 
   @override
   GAcceptEnterpriseAdministratorInvitationInputBuilder toBuilder() =>
-      new GAcceptEnterpriseAdministratorInvitationInputBuilder()..replace(this);
+      GAcceptEnterpriseAdministratorInvitationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17170,7 +17158,6 @@ class GAcceptEnterpriseAdministratorInvitationInputBuilder
 
   @override
   void replace(GAcceptEnterpriseAdministratorInvitationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAcceptEnterpriseAdministratorInvitationInput;
   }
 
@@ -17186,7 +17173,7 @@ class GAcceptEnterpriseAdministratorInvitationInputBuilder
 
   _$GAcceptEnterpriseAdministratorInvitationInput _build() {
     final _$result = _$v ??
-        new _$GAcceptEnterpriseAdministratorInvitationInput._(
+        _$GAcceptEnterpriseAdministratorInvitationInput._(
           clientMutationId: clientMutationId,
           invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
               r'GAcceptEnterpriseAdministratorInvitationInput', 'invitationId'),
@@ -17206,17 +17193,11 @@ class _$GAcceptTopicSuggestionInput extends GAcceptTopicSuggestionInput {
 
   factory _$GAcceptTopicSuggestionInput(
           [void Function(GAcceptTopicSuggestionInputBuilder)? updates]) =>
-      (new GAcceptTopicSuggestionInputBuilder()..update(updates))._build();
+      (GAcceptTopicSuggestionInputBuilder()..update(updates))._build();
 
   _$GAcceptTopicSuggestionInput._(
       {this.clientMutationId, required this.name, required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GAcceptTopicSuggestionInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GAcceptTopicSuggestionInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GAcceptTopicSuggestionInput rebuild(
           void Function(GAcceptTopicSuggestionInputBuilder) updates) =>
@@ -17224,7 +17205,7 @@ class _$GAcceptTopicSuggestionInput extends GAcceptTopicSuggestionInput {
 
   @override
   GAcceptTopicSuggestionInputBuilder toBuilder() =>
-      new GAcceptTopicSuggestionInputBuilder()..replace(this);
+      GAcceptTopicSuggestionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17289,7 +17270,6 @@ class GAcceptTopicSuggestionInputBuilder
 
   @override
   void replace(GAcceptTopicSuggestionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAcceptTopicSuggestionInput;
   }
 
@@ -17303,7 +17283,7 @@ class GAcceptTopicSuggestionInputBuilder
 
   _$GAcceptTopicSuggestionInput _build() {
     final _$result = _$v ??
-        new _$GAcceptTopicSuggestionInput._(
+        _$GAcceptTopicSuggestionInput._(
           clientMutationId: clientMutationId,
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GAcceptTopicSuggestionInput', 'name'),
@@ -17325,19 +17305,13 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
 
   factory _$GAddAssigneesToAssignableInput(
           [void Function(GAddAssigneesToAssignableInputBuilder)? updates]) =>
-      (new GAddAssigneesToAssignableInputBuilder()..update(updates))._build();
+      (GAddAssigneesToAssignableInputBuilder()..update(updates))._build();
 
   _$GAddAssigneesToAssignableInput._(
       {required this.assignableId,
       required this.assigneeIds,
       this.clientMutationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        assignableId, r'GAddAssigneesToAssignableInput', 'assignableId');
-    BuiltValueNullFieldError.checkNotNull(
-        assigneeIds, r'GAddAssigneesToAssignableInput', 'assigneeIds');
-  }
-
+      : super._();
   @override
   GAddAssigneesToAssignableInput rebuild(
           void Function(GAddAssigneesToAssignableInputBuilder) updates) =>
@@ -17345,7 +17319,7 @@ class _$GAddAssigneesToAssignableInput extends GAddAssigneesToAssignableInput {
 
   @override
   GAddAssigneesToAssignableInputBuilder toBuilder() =>
-      new GAddAssigneesToAssignableInputBuilder()..replace(this);
+      GAddAssigneesToAssignableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17388,7 +17362,7 @@ class GAddAssigneesToAssignableInputBuilder
 
   ListBuilder<String>? _assigneeIds;
   ListBuilder<String> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String>();
+      _$this._assigneeIds ??= ListBuilder<String>();
   set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
@@ -17412,7 +17386,6 @@ class GAddAssigneesToAssignableInputBuilder
 
   @override
   void replace(GAddAssigneesToAssignableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddAssigneesToAssignableInput;
   }
 
@@ -17428,7 +17401,7 @@ class GAddAssigneesToAssignableInputBuilder
     _$GAddAssigneesToAssignableInput _$result;
     try {
       _$result = _$v ??
-          new _$GAddAssigneesToAssignableInput._(
+          _$GAddAssigneesToAssignableInput._(
             assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
                 r'GAddAssigneesToAssignableInput', 'assignableId'),
             assigneeIds: assigneeIds.build(),
@@ -17440,7 +17413,7 @@ class GAddAssigneesToAssignableInputBuilder
         _$failedField = 'assigneeIds';
         assigneeIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddAssigneesToAssignableInput', _$failedField, e.toString());
       }
       rethrow;
@@ -17460,23 +17433,18 @@ class _$GAddCommentInput extends GAddCommentInput {
 
   factory _$GAddCommentInput(
           [void Function(GAddCommentInputBuilder)? updates]) =>
-      (new GAddCommentInputBuilder()..update(updates))._build();
+      (GAddCommentInputBuilder()..update(updates))._build();
 
   _$GAddCommentInput._(
       {required this.body, this.clientMutationId, required this.subjectId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(body, r'GAddCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        subjectId, r'GAddCommentInput', 'subjectId');
-  }
-
+      : super._();
   @override
   GAddCommentInput rebuild(void Function(GAddCommentInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GAddCommentInputBuilder toBuilder() =>
-      new GAddCommentInputBuilder()..replace(this);
+      GAddCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17539,7 +17507,6 @@ class GAddCommentInputBuilder
 
   @override
   void replace(GAddCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddCommentInput;
   }
 
@@ -17553,7 +17520,7 @@ class GAddCommentInputBuilder
 
   _$GAddCommentInput _build() {
     final _$result = _$v ??
-        new _$GAddCommentInput._(
+        _$GAddCommentInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GAddCommentInput', 'body'),
           clientMutationId: clientMutationId,
@@ -17575,19 +17542,13 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
 
   factory _$GAddLabelsToLabelableInput(
           [void Function(GAddLabelsToLabelableInputBuilder)? updates]) =>
-      (new GAddLabelsToLabelableInputBuilder()..update(updates))._build();
+      (GAddLabelsToLabelableInputBuilder()..update(updates))._build();
 
   _$GAddLabelsToLabelableInput._(
       {this.clientMutationId,
       required this.labelIds,
       required this.labelableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        labelIds, r'GAddLabelsToLabelableInput', 'labelIds');
-    BuiltValueNullFieldError.checkNotNull(
-        labelableId, r'GAddLabelsToLabelableInput', 'labelableId');
-  }
-
+      : super._();
   @override
   GAddLabelsToLabelableInput rebuild(
           void Function(GAddLabelsToLabelableInputBuilder) updates) =>
@@ -17595,7 +17556,7 @@ class _$GAddLabelsToLabelableInput extends GAddLabelsToLabelableInput {
 
   @override
   GAddLabelsToLabelableInputBuilder toBuilder() =>
-      new GAddLabelsToLabelableInputBuilder()..replace(this);
+      GAddLabelsToLabelableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17638,7 +17599,7 @@ class GAddLabelsToLabelableInputBuilder
 
   ListBuilder<String>? _labelIds;
   ListBuilder<String> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String>();
+      _$this._labelIds ??= ListBuilder<String>();
   set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _labelableId;
@@ -17660,7 +17621,6 @@ class GAddLabelsToLabelableInputBuilder
 
   @override
   void replace(GAddLabelsToLabelableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddLabelsToLabelableInput;
   }
 
@@ -17676,7 +17636,7 @@ class GAddLabelsToLabelableInputBuilder
     _$GAddLabelsToLabelableInput _$result;
     try {
       _$result = _$v ??
-          new _$GAddLabelsToLabelableInput._(
+          _$GAddLabelsToLabelableInput._(
             clientMutationId: clientMutationId,
             labelIds: labelIds.build(),
             labelableId: BuiltValueNullFieldError.checkNotNull(
@@ -17688,7 +17648,7 @@ class GAddLabelsToLabelableInputBuilder
         _$failedField = 'labelIds';
         labelIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddLabelsToLabelableInput', _$failedField, e.toString());
       }
       rethrow;
@@ -17710,18 +17670,14 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
 
   factory _$GAddProjectCardInput(
           [void Function(GAddProjectCardInputBuilder)? updates]) =>
-      (new GAddProjectCardInputBuilder()..update(updates))._build();
+      (GAddProjectCardInputBuilder()..update(updates))._build();
 
   _$GAddProjectCardInput._(
       {this.clientMutationId,
       this.contentId,
       this.note,
       required this.projectColumnId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectColumnId, r'GAddProjectCardInput', 'projectColumnId');
-  }
-
+      : super._();
   @override
   GAddProjectCardInput rebuild(
           void Function(GAddProjectCardInputBuilder) updates) =>
@@ -17729,7 +17685,7 @@ class _$GAddProjectCardInput extends GAddProjectCardInput {
 
   @override
   GAddProjectCardInputBuilder toBuilder() =>
-      new GAddProjectCardInputBuilder()..replace(this);
+      GAddProjectCardInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17801,7 +17757,6 @@ class GAddProjectCardInputBuilder
 
   @override
   void replace(GAddProjectCardInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddProjectCardInput;
   }
 
@@ -17815,7 +17770,7 @@ class GAddProjectCardInputBuilder
 
   _$GAddProjectCardInput _build() {
     final _$result = _$v ??
-        new _$GAddProjectCardInput._(
+        _$GAddProjectCardInput._(
           clientMutationId: clientMutationId,
           contentId: contentId,
           note: note,
@@ -17837,17 +17792,11 @@ class _$GAddProjectColumnInput extends GAddProjectColumnInput {
 
   factory _$GAddProjectColumnInput(
           [void Function(GAddProjectColumnInputBuilder)? updates]) =>
-      (new GAddProjectColumnInputBuilder()..update(updates))._build();
+      (GAddProjectColumnInputBuilder()..update(updates))._build();
 
   _$GAddProjectColumnInput._(
       {this.clientMutationId, required this.name, required this.projectId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GAddProjectColumnInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'GAddProjectColumnInput', 'projectId');
-  }
-
+      : super._();
   @override
   GAddProjectColumnInput rebuild(
           void Function(GAddProjectColumnInputBuilder) updates) =>
@@ -17855,7 +17804,7 @@ class _$GAddProjectColumnInput extends GAddProjectColumnInput {
 
   @override
   GAddProjectColumnInputBuilder toBuilder() =>
-      new GAddProjectColumnInputBuilder()..replace(this);
+      GAddProjectColumnInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -17918,7 +17867,6 @@ class GAddProjectColumnInputBuilder
 
   @override
   void replace(GAddProjectColumnInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddProjectColumnInput;
   }
 
@@ -17932,7 +17880,7 @@ class GAddProjectColumnInputBuilder
 
   _$GAddProjectColumnInput _build() {
     final _$result = _$v ??
-        new _$GAddProjectColumnInput._(
+        _$GAddProjectColumnInput._(
           clientMutationId: clientMutationId,
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GAddProjectColumnInput', 'name'),
@@ -17965,8 +17913,7 @@ class _$GAddPullRequestReviewCommentInput
 
   factory _$GAddPullRequestReviewCommentInput(
           [void Function(GAddPullRequestReviewCommentInputBuilder)? updates]) =>
-      (new GAddPullRequestReviewCommentInputBuilder()..update(updates))
-          ._build();
+      (GAddPullRequestReviewCommentInputBuilder()..update(updates))._build();
 
   _$GAddPullRequestReviewCommentInput._(
       {required this.body,
@@ -17977,11 +17924,7 @@ class _$GAddPullRequestReviewCommentInput
       this.position,
       this.pullRequestId,
       this.pullRequestReviewId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GAddPullRequestReviewCommentInput', 'body');
-  }
-
+      : super._();
   @override
   GAddPullRequestReviewCommentInput rebuild(
           void Function(GAddPullRequestReviewCommentInputBuilder) updates) =>
@@ -17989,7 +17932,7 @@ class _$GAddPullRequestReviewCommentInput
 
   @override
   GAddPullRequestReviewCommentInputBuilder toBuilder() =>
-      new GAddPullRequestReviewCommentInputBuilder()..replace(this);
+      GAddPullRequestReviewCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18052,7 +17995,7 @@ class GAddPullRequestReviewCommentInputBuilder
 
   GGitObjectIDBuilder? _commitOID;
   GGitObjectIDBuilder get commitOID =>
-      _$this._commitOID ??= new GGitObjectIDBuilder();
+      _$this._commitOID ??= GGitObjectIDBuilder();
   set commitOID(GGitObjectIDBuilder? commitOID) =>
       _$this._commitOID = commitOID;
 
@@ -18098,7 +18041,6 @@ class GAddPullRequestReviewCommentInputBuilder
 
   @override
   void replace(GAddPullRequestReviewCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddPullRequestReviewCommentInput;
   }
 
@@ -18115,7 +18057,7 @@ class GAddPullRequestReviewCommentInputBuilder
     _$GAddPullRequestReviewCommentInput _$result;
     try {
       _$result = _$v ??
-          new _$GAddPullRequestReviewCommentInput._(
+          _$GAddPullRequestReviewCommentInput._(
             body: BuiltValueNullFieldError.checkNotNull(
                 body, r'GAddPullRequestReviewCommentInput', 'body'),
             clientMutationId: clientMutationId,
@@ -18132,7 +18074,7 @@ class GAddPullRequestReviewCommentInputBuilder
         _$failedField = 'commitOID';
         _commitOID?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddPullRequestReviewCommentInput', _$failedField, e.toString());
       }
       rethrow;
@@ -18158,7 +18100,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
 
   factory _$GAddPullRequestReviewInput(
           [void Function(GAddPullRequestReviewInputBuilder)? updates]) =>
-      (new GAddPullRequestReviewInputBuilder()..update(updates))._build();
+      (GAddPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GAddPullRequestReviewInput._(
       {this.body,
@@ -18167,11 +18109,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
       this.commitOID,
       this.event,
       required this.pullRequestId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GAddPullRequestReviewInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GAddPullRequestReviewInput rebuild(
           void Function(GAddPullRequestReviewInputBuilder) updates) =>
@@ -18179,7 +18117,7 @@ class _$GAddPullRequestReviewInput extends GAddPullRequestReviewInput {
 
   @override
   GAddPullRequestReviewInputBuilder toBuilder() =>
-      new GAddPullRequestReviewInputBuilder()..replace(this);
+      GAddPullRequestReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18235,13 +18173,13 @@ class GAddPullRequestReviewInputBuilder
 
   ListBuilder<GDraftPullRequestReviewComment?>? _comments;
   ListBuilder<GDraftPullRequestReviewComment?> get comments =>
-      _$this._comments ??= new ListBuilder<GDraftPullRequestReviewComment?>();
+      _$this._comments ??= ListBuilder<GDraftPullRequestReviewComment?>();
   set comments(ListBuilder<GDraftPullRequestReviewComment?>? comments) =>
       _$this._comments = comments;
 
   GGitObjectIDBuilder? _commitOID;
   GGitObjectIDBuilder get commitOID =>
-      _$this._commitOID ??= new GGitObjectIDBuilder();
+      _$this._commitOID ??= GGitObjectIDBuilder();
   set commitOID(GGitObjectIDBuilder? commitOID) =>
       _$this._commitOID = commitOID;
 
@@ -18272,7 +18210,6 @@ class GAddPullRequestReviewInputBuilder
 
   @override
   void replace(GAddPullRequestReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddPullRequestReviewInput;
   }
 
@@ -18288,7 +18225,7 @@ class GAddPullRequestReviewInputBuilder
     _$GAddPullRequestReviewInput _$result;
     try {
       _$result = _$v ??
-          new _$GAddPullRequestReviewInput._(
+          _$GAddPullRequestReviewInput._(
             body: body,
             clientMutationId: clientMutationId,
             comments: _comments?.build(),
@@ -18305,7 +18242,7 @@ class GAddPullRequestReviewInputBuilder
         _$failedField = 'commitOID';
         _commitOID?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddPullRequestReviewInput', _$failedField, e.toString());
       }
       rethrow;
@@ -18325,24 +18262,18 @@ class _$GAddReactionInput extends GAddReactionInput {
 
   factory _$GAddReactionInput(
           [void Function(GAddReactionInputBuilder)? updates]) =>
-      (new GAddReactionInputBuilder()..update(updates))._build();
+      (GAddReactionInputBuilder()..update(updates))._build();
 
   _$GAddReactionInput._(
       {this.clientMutationId, required this.content, required this.subjectId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        content, r'GAddReactionInput', 'content');
-    BuiltValueNullFieldError.checkNotNull(
-        subjectId, r'GAddReactionInput', 'subjectId');
-  }
-
+      : super._();
   @override
   GAddReactionInput rebuild(void Function(GAddReactionInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GAddReactionInputBuilder toBuilder() =>
-      new GAddReactionInputBuilder()..replace(this);
+      GAddReactionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18405,7 +18336,6 @@ class GAddReactionInputBuilder
 
   @override
   void replace(GAddReactionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddReactionInput;
   }
 
@@ -18419,7 +18349,7 @@ class GAddReactionInputBuilder
 
   _$GAddReactionInput _build() {
     final _$result = _$v ??
-        new _$GAddReactionInput._(
+        _$GAddReactionInput._(
           clientMutationId: clientMutationId,
           content: BuiltValueNullFieldError.checkNotNull(
               content, r'GAddReactionInput', 'content'),
@@ -18438,20 +18368,16 @@ class _$GAddStarInput extends GAddStarInput {
   final String starrableId;
 
   factory _$GAddStarInput([void Function(GAddStarInputBuilder)? updates]) =>
-      (new GAddStarInputBuilder()..update(updates))._build();
+      (GAddStarInputBuilder()..update(updates))._build();
 
   _$GAddStarInput._({this.clientMutationId, required this.starrableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        starrableId, r'GAddStarInput', 'starrableId');
-  }
-
+      : super._();
   @override
   GAddStarInput rebuild(void Function(GAddStarInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAddStarInputBuilder toBuilder() => new GAddStarInputBuilder()..replace(this);
+  GAddStarInputBuilder toBuilder() => GAddStarInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18506,7 +18432,6 @@ class GAddStarInputBuilder
 
   @override
   void replace(GAddStarInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarInput;
   }
 
@@ -18520,7 +18445,7 @@ class GAddStarInputBuilder
 
   _$GAddStarInput _build() {
     final _$result = _$v ??
-        new _$GAddStarInput._(
+        _$GAddStarInput._(
           clientMutationId: clientMutationId,
           starrableId: BuiltValueNullFieldError.checkNotNull(
               starrableId, r'GAddStarInput', 'starrableId'),
@@ -18538,15 +18463,11 @@ class _$GArchiveRepositoryInput extends GArchiveRepositoryInput {
 
   factory _$GArchiveRepositoryInput(
           [void Function(GArchiveRepositoryInputBuilder)? updates]) =>
-      (new GArchiveRepositoryInputBuilder()..update(updates))._build();
+      (GArchiveRepositoryInputBuilder()..update(updates))._build();
 
   _$GArchiveRepositoryInput._(
       {this.clientMutationId, required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GArchiveRepositoryInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GArchiveRepositoryInput rebuild(
           void Function(GArchiveRepositoryInputBuilder) updates) =>
@@ -18554,7 +18475,7 @@ class _$GArchiveRepositoryInput extends GArchiveRepositoryInput {
 
   @override
   GArchiveRepositoryInputBuilder toBuilder() =>
-      new GArchiveRepositoryInputBuilder()..replace(this);
+      GArchiveRepositoryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18610,7 +18531,6 @@ class GArchiveRepositoryInputBuilder
 
   @override
   void replace(GArchiveRepositoryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GArchiveRepositoryInput;
   }
 
@@ -18624,7 +18544,7 @@ class GArchiveRepositoryInputBuilder
 
   _$GArchiveRepositoryInput _build() {
     final _$result = _$v ??
-        new _$GArchiveRepositoryInput._(
+        _$GArchiveRepositoryInput._(
           clientMutationId: clientMutationId,
           repositoryId: BuiltValueNullFieldError.checkNotNull(
               repositoryId, r'GArchiveRepositoryInput', 'repositoryId'),
@@ -18641,17 +18561,15 @@ class _$GAuditLogOrder extends GAuditLogOrder {
   final GAuditLogOrderField? field;
 
   factory _$GAuditLogOrder([void Function(GAuditLogOrderBuilder)? updates]) =>
-      (new GAuditLogOrderBuilder()..update(updates))._build();
+      (GAuditLogOrderBuilder()..update(updates))._build();
 
   _$GAuditLogOrder._({this.direction, this.field}) : super._();
-
   @override
   GAuditLogOrder rebuild(void Function(GAuditLogOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAuditLogOrderBuilder toBuilder() =>
-      new GAuditLogOrderBuilder()..replace(this);
+  GAuditLogOrderBuilder toBuilder() => GAuditLogOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18705,7 +18623,6 @@ class GAuditLogOrderBuilder
 
   @override
   void replace(GAuditLogOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAuditLogOrder;
   }
 
@@ -18719,7 +18636,7 @@ class GAuditLogOrderBuilder
 
   _$GAuditLogOrder _build() {
     final _$result = _$v ??
-        new _$GAuditLogOrder._(
+        _$GAuditLogOrder._(
           direction: direction,
           field: field,
         );
@@ -18738,16 +18655,12 @@ class _$GCancelEnterpriseAdminInvitationInput
   factory _$GCancelEnterpriseAdminInvitationInput(
           [void Function(GCancelEnterpriseAdminInvitationInputBuilder)?
               updates]) =>
-      (new GCancelEnterpriseAdminInvitationInputBuilder()..update(updates))
+      (GCancelEnterpriseAdminInvitationInputBuilder()..update(updates))
           ._build();
 
   _$GCancelEnterpriseAdminInvitationInput._(
       {this.clientMutationId, required this.invitationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        invitationId, r'GCancelEnterpriseAdminInvitationInput', 'invitationId');
-  }
-
+      : super._();
   @override
   GCancelEnterpriseAdminInvitationInput rebuild(
           void Function(GCancelEnterpriseAdminInvitationInputBuilder)
@@ -18756,7 +18669,7 @@ class _$GCancelEnterpriseAdminInvitationInput
 
   @override
   GCancelEnterpriseAdminInvitationInputBuilder toBuilder() =>
-      new GCancelEnterpriseAdminInvitationInputBuilder()..replace(this);
+      GCancelEnterpriseAdminInvitationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18814,7 +18727,6 @@ class GCancelEnterpriseAdminInvitationInputBuilder
 
   @override
   void replace(GCancelEnterpriseAdminInvitationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCancelEnterpriseAdminInvitationInput;
   }
 
@@ -18829,7 +18741,7 @@ class GCancelEnterpriseAdminInvitationInputBuilder
 
   _$GCancelEnterpriseAdminInvitationInput _build() {
     final _$result = _$v ??
-        new _$GCancelEnterpriseAdminInvitationInput._(
+        _$GCancelEnterpriseAdminInvitationInput._(
           clientMutationId: clientMutationId,
           invitationId: BuiltValueNullFieldError.checkNotNull(invitationId,
               r'GCancelEnterpriseAdminInvitationInput', 'invitationId'),
@@ -18855,7 +18767,7 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
 
   factory _$GChangeUserStatusInput(
           [void Function(GChangeUserStatusInputBuilder)? updates]) =>
-      (new GChangeUserStatusInputBuilder()..update(updates))._build();
+      (GChangeUserStatusInputBuilder()..update(updates))._build();
 
   _$GChangeUserStatusInput._(
       {this.clientMutationId,
@@ -18865,7 +18777,6 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
       this.message,
       this.organizationId})
       : super._();
-
   @override
   GChangeUserStatusInput rebuild(
           void Function(GChangeUserStatusInputBuilder) updates) =>
@@ -18873,7 +18784,7 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
 
   @override
   GChangeUserStatusInputBuilder toBuilder() =>
-      new GChangeUserStatusInputBuilder()..replace(this);
+      GChangeUserStatusInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -18927,8 +18838,7 @@ class GChangeUserStatusInputBuilder
   set emoji(String? emoji) => _$this._emoji = emoji;
 
   GDateTimeBuilder? _expiresAt;
-  GDateTimeBuilder get expiresAt =>
-      _$this._expiresAt ??= new GDateTimeBuilder();
+  GDateTimeBuilder get expiresAt => _$this._expiresAt ??= GDateTimeBuilder();
   set expiresAt(GDateTimeBuilder? expiresAt) => _$this._expiresAt = expiresAt;
 
   bool? _limitedAvailability;
@@ -18963,7 +18873,6 @@ class GChangeUserStatusInputBuilder
 
   @override
   void replace(GChangeUserStatusInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GChangeUserStatusInput;
   }
 
@@ -18979,7 +18888,7 @@ class GChangeUserStatusInputBuilder
     _$GChangeUserStatusInput _$result;
     try {
       _$result = _$v ??
-          new _$GChangeUserStatusInput._(
+          _$GChangeUserStatusInput._(
             clientMutationId: clientMutationId,
             emoji: emoji,
             expiresAt: _expiresAt?.build(),
@@ -18993,7 +18902,7 @@ class GChangeUserStatusInputBuilder
         _$failedField = 'expiresAt';
         _expiresAt?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GChangeUserStatusInput', _$failedField, e.toString());
       }
       rethrow;
@@ -19011,15 +18920,11 @@ class _$GClearLabelsFromLabelableInput extends GClearLabelsFromLabelableInput {
 
   factory _$GClearLabelsFromLabelableInput(
           [void Function(GClearLabelsFromLabelableInputBuilder)? updates]) =>
-      (new GClearLabelsFromLabelableInputBuilder()..update(updates))._build();
+      (GClearLabelsFromLabelableInputBuilder()..update(updates))._build();
 
   _$GClearLabelsFromLabelableInput._(
       {this.clientMutationId, required this.labelableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        labelableId, r'GClearLabelsFromLabelableInput', 'labelableId');
-  }
-
+      : super._();
   @override
   GClearLabelsFromLabelableInput rebuild(
           void Function(GClearLabelsFromLabelableInputBuilder) updates) =>
@@ -19027,7 +18932,7 @@ class _$GClearLabelsFromLabelableInput extends GClearLabelsFromLabelableInput {
 
   @override
   GClearLabelsFromLabelableInputBuilder toBuilder() =>
-      new GClearLabelsFromLabelableInputBuilder()..replace(this);
+      GClearLabelsFromLabelableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19084,7 +18989,6 @@ class GClearLabelsFromLabelableInputBuilder
 
   @override
   void replace(GClearLabelsFromLabelableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GClearLabelsFromLabelableInput;
   }
 
@@ -19098,7 +19002,7 @@ class GClearLabelsFromLabelableInputBuilder
 
   _$GClearLabelsFromLabelableInput _build() {
     final _$result = _$v ??
-        new _$GClearLabelsFromLabelableInput._(
+        _$GClearLabelsFromLabelableInput._(
           clientMutationId: clientMutationId,
           labelableId: BuiltValueNullFieldError.checkNotNull(
               labelableId, r'GClearLabelsFromLabelableInput', 'labelableId'),
@@ -19126,7 +19030,7 @@ class _$GCloneProjectInput extends GCloneProjectInput {
 
   factory _$GCloneProjectInput(
           [void Function(GCloneProjectInputBuilder)? updates]) =>
-      (new GCloneProjectInputBuilder()..update(updates))._build();
+      (GCloneProjectInputBuilder()..update(updates))._build();
 
   _$GCloneProjectInput._(
       {this.body,
@@ -19136,16 +19040,7 @@ class _$GCloneProjectInput extends GCloneProjectInput {
       this.public,
       required this.sourceId,
       required this.targetOwnerId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        includeWorkflows, r'GCloneProjectInput', 'includeWorkflows');
-    BuiltValueNullFieldError.checkNotNull(name, r'GCloneProjectInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        sourceId, r'GCloneProjectInput', 'sourceId');
-    BuiltValueNullFieldError.checkNotNull(
-        targetOwnerId, r'GCloneProjectInput', 'targetOwnerId');
-  }
-
+      : super._();
   @override
   GCloneProjectInput rebuild(
           void Function(GCloneProjectInputBuilder) updates) =>
@@ -19153,7 +19048,7 @@ class _$GCloneProjectInput extends GCloneProjectInput {
 
   @override
   GCloneProjectInputBuilder toBuilder() =>
-      new GCloneProjectInputBuilder()..replace(this);
+      GCloneProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19250,7 +19145,6 @@ class GCloneProjectInputBuilder
 
   @override
   void replace(GCloneProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCloneProjectInput;
   }
 
@@ -19264,7 +19158,7 @@ class GCloneProjectInputBuilder
 
   _$GCloneProjectInput _build() {
     final _$result = _$v ??
-        new _$GCloneProjectInput._(
+        _$GCloneProjectInput._(
           body: body,
           clientMutationId: clientMutationId,
           includeWorkflows: BuiltValueNullFieldError.checkNotNull(
@@ -19298,7 +19192,7 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
 
   factory _$GCloneTemplateRepositoryInput(
           [void Function(GCloneTemplateRepositoryInputBuilder)? updates]) =>
-      (new GCloneTemplateRepositoryInputBuilder()..update(updates))._build();
+      (GCloneTemplateRepositoryInputBuilder()..update(updates))._build();
 
   _$GCloneTemplateRepositoryInput._(
       {this.clientMutationId,
@@ -19307,17 +19201,7 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
       required this.ownerId,
       required this.repositoryId,
       required this.visibility})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GCloneTemplateRepositoryInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        ownerId, r'GCloneTemplateRepositoryInput', 'ownerId');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GCloneTemplateRepositoryInput', 'repositoryId');
-    BuiltValueNullFieldError.checkNotNull(
-        visibility, r'GCloneTemplateRepositoryInput', 'visibility');
-  }
-
+      : super._();
   @override
   GCloneTemplateRepositoryInput rebuild(
           void Function(GCloneTemplateRepositoryInputBuilder) updates) =>
@@ -19325,7 +19209,7 @@ class _$GCloneTemplateRepositoryInput extends GCloneTemplateRepositoryInput {
 
   @override
   GCloneTemplateRepositoryInputBuilder toBuilder() =>
-      new GCloneTemplateRepositoryInputBuilder()..replace(this);
+      GCloneTemplateRepositoryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19415,7 +19299,6 @@ class GCloneTemplateRepositoryInputBuilder
 
   @override
   void replace(GCloneTemplateRepositoryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCloneTemplateRepositoryInput;
   }
 
@@ -19429,7 +19312,7 @@ class GCloneTemplateRepositoryInputBuilder
 
   _$GCloneTemplateRepositoryInput _build() {
     final _$result = _$v ??
-        new _$GCloneTemplateRepositoryInput._(
+        _$GCloneTemplateRepositoryInput._(
           clientMutationId: clientMutationId,
           description: description,
           name: BuiltValueNullFieldError.checkNotNull(
@@ -19454,21 +19337,17 @@ class _$GCloseIssueInput extends GCloseIssueInput {
 
   factory _$GCloseIssueInput(
           [void Function(GCloseIssueInputBuilder)? updates]) =>
-      (new GCloseIssueInputBuilder()..update(updates))._build();
+      (GCloseIssueInputBuilder()..update(updates))._build();
 
   _$GCloseIssueInput._({this.clientMutationId, required this.issueId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issueId, r'GCloseIssueInput', 'issueId');
-  }
-
+      : super._();
   @override
   GCloseIssueInput rebuild(void Function(GCloseIssueInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCloseIssueInputBuilder toBuilder() =>
-      new GCloseIssueInputBuilder()..replace(this);
+      GCloseIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19523,7 +19402,6 @@ class GCloseIssueInputBuilder
 
   @override
   void replace(GCloseIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCloseIssueInput;
   }
 
@@ -19537,7 +19415,7 @@ class GCloseIssueInputBuilder
 
   _$GCloseIssueInput _build() {
     final _$result = _$v ??
-        new _$GCloseIssueInput._(
+        _$GCloseIssueInput._(
           clientMutationId: clientMutationId,
           issueId: BuiltValueNullFieldError.checkNotNull(
               issueId, r'GCloseIssueInput', 'issueId'),
@@ -19555,15 +19433,11 @@ class _$GClosePullRequestInput extends GClosePullRequestInput {
 
   factory _$GClosePullRequestInput(
           [void Function(GClosePullRequestInputBuilder)? updates]) =>
-      (new GClosePullRequestInputBuilder()..update(updates))._build();
+      (GClosePullRequestInputBuilder()..update(updates))._build();
 
   _$GClosePullRequestInput._(
       {this.clientMutationId, required this.pullRequestId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GClosePullRequestInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GClosePullRequestInput rebuild(
           void Function(GClosePullRequestInputBuilder) updates) =>
@@ -19571,7 +19445,7 @@ class _$GClosePullRequestInput extends GClosePullRequestInput {
 
   @override
   GClosePullRequestInputBuilder toBuilder() =>
-      new GClosePullRequestInputBuilder()..replace(this);
+      GClosePullRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19627,7 +19501,6 @@ class GClosePullRequestInputBuilder
 
   @override
   void replace(GClosePullRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GClosePullRequestInput;
   }
 
@@ -19641,7 +19514,7 @@ class GClosePullRequestInputBuilder
 
   _$GClosePullRequestInput _build() {
     final _$result = _$v ??
-        new _$GClosePullRequestInput._(
+        _$GClosePullRequestInput._(
           clientMutationId: clientMutationId,
           pullRequestId: BuiltValueNullFieldError.checkNotNull(
               pullRequestId, r'GClosePullRequestInput', 'pullRequestId'),
@@ -19658,16 +19531,15 @@ class _$GCommitAuthor extends GCommitAuthor {
   final String? id;
 
   factory _$GCommitAuthor([void Function(GCommitAuthorBuilder)? updates]) =>
-      (new GCommitAuthorBuilder()..update(updates))._build();
+      (GCommitAuthorBuilder()..update(updates))._build();
 
   _$GCommitAuthor._({this.emails, this.id}) : super._();
-
   @override
   GCommitAuthor rebuild(void Function(GCommitAuthorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GCommitAuthorBuilder toBuilder() => new GCommitAuthorBuilder()..replace(this);
+  GCommitAuthorBuilder toBuilder() => GCommitAuthorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19698,8 +19570,7 @@ class GCommitAuthorBuilder
   _$GCommitAuthor? _$v;
 
   ListBuilder<String>? _emails;
-  ListBuilder<String> get emails =>
-      _$this._emails ??= new ListBuilder<String>();
+  ListBuilder<String> get emails => _$this._emails ??= ListBuilder<String>();
   set emails(ListBuilder<String>? emails) => _$this._emails = emails;
 
   String? _id;
@@ -19720,7 +19591,6 @@ class GCommitAuthorBuilder
 
   @override
   void replace(GCommitAuthor other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCommitAuthor;
   }
 
@@ -19736,7 +19606,7 @@ class GCommitAuthorBuilder
     _$GCommitAuthor _$result;
     try {
       _$result = _$v ??
-          new _$GCommitAuthor._(
+          _$GCommitAuthor._(
             emails: _emails?.build(),
             id: id,
           );
@@ -19746,7 +19616,7 @@ class GCommitAuthorBuilder
         _$failedField = 'emails';
         _emails?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCommitAuthor', _$failedField, e.toString());
       }
       rethrow;
@@ -19764,16 +19634,10 @@ class _$GCommitContributionOrder extends GCommitContributionOrder {
 
   factory _$GCommitContributionOrder(
           [void Function(GCommitContributionOrderBuilder)? updates]) =>
-      (new GCommitContributionOrderBuilder()..update(updates))._build();
+      (GCommitContributionOrderBuilder()..update(updates))._build();
 
   _$GCommitContributionOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GCommitContributionOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GCommitContributionOrder', 'field');
-  }
-
+      : super._();
   @override
   GCommitContributionOrder rebuild(
           void Function(GCommitContributionOrderBuilder) updates) =>
@@ -19781,7 +19645,7 @@ class _$GCommitContributionOrder extends GCommitContributionOrder {
 
   @override
   GCommitContributionOrderBuilder toBuilder() =>
-      new GCommitContributionOrderBuilder()..replace(this);
+      GCommitContributionOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19836,7 +19700,6 @@ class GCommitContributionOrderBuilder
 
   @override
   void replace(GCommitContributionOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCommitContributionOrder;
   }
 
@@ -19850,7 +19713,7 @@ class GCommitContributionOrderBuilder
 
   _$GCommitContributionOrder _build() {
     final _$result = _$v ??
-        new _$GCommitContributionOrder._(
+        _$GCommitContributionOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GCommitContributionOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -19869,13 +19732,9 @@ class _$GContributionOrder extends GContributionOrder {
 
   factory _$GContributionOrder(
           [void Function(GContributionOrderBuilder)? updates]) =>
-      (new GContributionOrderBuilder()..update(updates))._build();
+      (GContributionOrderBuilder()..update(updates))._build();
 
-  _$GContributionOrder._({required this.direction, this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GContributionOrder', 'direction');
-  }
-
+  _$GContributionOrder._({required this.direction, this.field}) : super._();
   @override
   GContributionOrder rebuild(
           void Function(GContributionOrderBuilder) updates) =>
@@ -19883,7 +19742,7 @@ class _$GContributionOrder extends GContributionOrder {
 
   @override
   GContributionOrderBuilder toBuilder() =>
-      new GContributionOrderBuilder()..replace(this);
+      GContributionOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -19937,7 +19796,6 @@ class GContributionOrderBuilder
 
   @override
   void replace(GContributionOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GContributionOrder;
   }
 
@@ -19951,7 +19809,7 @@ class GContributionOrderBuilder
 
   _$GContributionOrder _build() {
     final _$result = _$v ??
-        new _$GContributionOrder._(
+        _$GContributionOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GContributionOrder', 'direction'),
           field: field,
@@ -19977,8 +19835,7 @@ class _$GConvertProjectCardNoteToIssueInput
   factory _$GConvertProjectCardNoteToIssueInput(
           [void Function(GConvertProjectCardNoteToIssueInputBuilder)?
               updates]) =>
-      (new GConvertProjectCardNoteToIssueInputBuilder()..update(updates))
-          ._build();
+      (GConvertProjectCardNoteToIssueInputBuilder()..update(updates))._build();
 
   _$GConvertProjectCardNoteToIssueInput._(
       {this.body,
@@ -19986,13 +19843,7 @@ class _$GConvertProjectCardNoteToIssueInput
       required this.projectCardId,
       required this.repositoryId,
       this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectCardId, r'GConvertProjectCardNoteToIssueInput', 'projectCardId');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GConvertProjectCardNoteToIssueInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GConvertProjectCardNoteToIssueInput rebuild(
           void Function(GConvertProjectCardNoteToIssueInputBuilder) updates) =>
@@ -20000,7 +19851,7 @@ class _$GConvertProjectCardNoteToIssueInput
 
   @override
   GConvertProjectCardNoteToIssueInputBuilder toBuilder() =>
-      new GConvertProjectCardNoteToIssueInputBuilder()..replace(this);
+      GConvertProjectCardNoteToIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -20082,7 +19933,6 @@ class GConvertProjectCardNoteToIssueInputBuilder
 
   @override
   void replace(GConvertProjectCardNoteToIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GConvertProjectCardNoteToIssueInput;
   }
 
@@ -20097,7 +19947,7 @@ class GConvertProjectCardNoteToIssueInputBuilder
 
   _$GConvertProjectCardNoteToIssueInput _build() {
     final _$result = _$v ??
-        new _$GConvertProjectCardNoteToIssueInput._(
+        _$GConvertProjectCardNoteToIssueInput._(
           body: body,
           clientMutationId: clientMutationId,
           projectCardId: BuiltValueNullFieldError.checkNotNull(projectCardId,
@@ -20148,7 +19998,7 @@ class _$GCreateBranchProtectionRuleInput
 
   factory _$GCreateBranchProtectionRuleInput(
           [void Function(GCreateBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GCreateBranchProtectionRuleInputBuilder()..update(updates))._build();
+      (GCreateBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GCreateBranchProtectionRuleInput._(
       {this.clientMutationId,
@@ -20167,13 +20017,7 @@ class _$GCreateBranchProtectionRuleInput
       this.restrictsPushes,
       this.restrictsReviewDismissals,
       this.reviewDismissalActorIds})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pattern, r'GCreateBranchProtectionRuleInput', 'pattern');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GCreateBranchProtectionRuleInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GCreateBranchProtectionRuleInput rebuild(
           void Function(GCreateBranchProtectionRuleInputBuilder) updates) =>
@@ -20181,7 +20025,7 @@ class _$GCreateBranchProtectionRuleInput
 
   @override
   GCreateBranchProtectionRuleInputBuilder toBuilder() =>
-      new GCreateBranchProtectionRuleInputBuilder()..replace(this);
+      GCreateBranchProtectionRuleInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -20278,7 +20122,7 @@ class GCreateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _pushActorIds;
   ListBuilder<String> get pushActorIds =>
-      _$this._pushActorIds ??= new ListBuilder<String>();
+      _$this._pushActorIds ??= ListBuilder<String>();
   set pushActorIds(ListBuilder<String>? pushActorIds) =>
       _$this._pushActorIds = pushActorIds;
 
@@ -20293,7 +20137,7 @@ class GCreateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _requiredStatusCheckContexts;
   ListBuilder<String> get requiredStatusCheckContexts =>
-      _$this._requiredStatusCheckContexts ??= new ListBuilder<String>();
+      _$this._requiredStatusCheckContexts ??= ListBuilder<String>();
   set requiredStatusCheckContexts(
           ListBuilder<String>? requiredStatusCheckContexts) =>
       _$this._requiredStatusCheckContexts = requiredStatusCheckContexts;
@@ -20335,7 +20179,7 @@ class GCreateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _reviewDismissalActorIds;
   ListBuilder<String> get reviewDismissalActorIds =>
-      _$this._reviewDismissalActorIds ??= new ListBuilder<String>();
+      _$this._reviewDismissalActorIds ??= ListBuilder<String>();
   set reviewDismissalActorIds(ListBuilder<String>? reviewDismissalActorIds) =>
       _$this._reviewDismissalActorIds = reviewDismissalActorIds;
 
@@ -20368,7 +20212,6 @@ class GCreateBranchProtectionRuleInputBuilder
 
   @override
   void replace(GCreateBranchProtectionRuleInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateBranchProtectionRuleInput;
   }
 
@@ -20384,7 +20227,7 @@ class GCreateBranchProtectionRuleInputBuilder
     _$GCreateBranchProtectionRuleInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateBranchProtectionRuleInput._(
+          _$GCreateBranchProtectionRuleInput._(
             clientMutationId: clientMutationId,
             dismissesStaleReviews: dismissesStaleReviews,
             isAdminEnforced: isAdminEnforced,
@@ -20416,7 +20259,7 @@ class GCreateBranchProtectionRuleInputBuilder
         _$failedField = 'reviewDismissalActorIds';
         _reviewDismissalActorIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateBranchProtectionRuleInput', _$failedField, e.toString());
       }
       rethrow;
@@ -20444,8 +20287,7 @@ class _$GCreateEnterpriseOrganizationInput
   factory _$GCreateEnterpriseOrganizationInput(
           [void Function(GCreateEnterpriseOrganizationInputBuilder)?
               updates]) =>
-      (new GCreateEnterpriseOrganizationInputBuilder()..update(updates))
-          ._build();
+      (GCreateEnterpriseOrganizationInputBuilder()..update(updates))._build();
 
   _$GCreateEnterpriseOrganizationInput._(
       {required this.adminLogins,
@@ -20454,19 +20296,7 @@ class _$GCreateEnterpriseOrganizationInput
       required this.enterpriseId,
       required this.login,
       required this.profileName})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        adminLogins, r'GCreateEnterpriseOrganizationInput', 'adminLogins');
-    BuiltValueNullFieldError.checkNotNull(
-        billingEmail, r'GCreateEnterpriseOrganizationInput', 'billingEmail');
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, r'GCreateEnterpriseOrganizationInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        login, r'GCreateEnterpriseOrganizationInput', 'login');
-    BuiltValueNullFieldError.checkNotNull(
-        profileName, r'GCreateEnterpriseOrganizationInput', 'profileName');
-  }
-
+      : super._();
   @override
   GCreateEnterpriseOrganizationInput rebuild(
           void Function(GCreateEnterpriseOrganizationInputBuilder) updates) =>
@@ -20474,7 +20304,7 @@ class _$GCreateEnterpriseOrganizationInput
 
   @override
   GCreateEnterpriseOrganizationInputBuilder toBuilder() =>
-      new GCreateEnterpriseOrganizationInputBuilder()..replace(this);
+      GCreateEnterpriseOrganizationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -20522,7 +20352,7 @@ class GCreateEnterpriseOrganizationInputBuilder
 
   ListBuilder<String>? _adminLogins;
   ListBuilder<String> get adminLogins =>
-      _$this._adminLogins ??= new ListBuilder<String>();
+      _$this._adminLogins ??= ListBuilder<String>();
   set adminLogins(ListBuilder<String>? adminLogins) =>
       _$this._adminLogins = adminLogins;
 
@@ -20565,7 +20395,6 @@ class GCreateEnterpriseOrganizationInputBuilder
 
   @override
   void replace(GCreateEnterpriseOrganizationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateEnterpriseOrganizationInput;
   }
 
@@ -20582,7 +20411,7 @@ class GCreateEnterpriseOrganizationInputBuilder
     _$GCreateEnterpriseOrganizationInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateEnterpriseOrganizationInput._(
+          _$GCreateEnterpriseOrganizationInput._(
             adminLogins: adminLogins.build(),
             billingEmail: BuiltValueNullFieldError.checkNotNull(billingEmail,
                 r'GCreateEnterpriseOrganizationInput', 'billingEmail'),
@@ -20600,7 +20429,7 @@ class GCreateEnterpriseOrganizationInputBuilder
         _$failedField = 'adminLogins';
         adminLogins.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateEnterpriseOrganizationInput', _$failedField, e.toString());
       }
       rethrow;
@@ -20630,7 +20459,7 @@ class _$GCreateIssueInput extends GCreateIssueInput {
 
   factory _$GCreateIssueInput(
           [void Function(GCreateIssueInputBuilder)? updates]) =>
-      (new GCreateIssueInputBuilder()..update(updates))._build();
+      (GCreateIssueInputBuilder()..update(updates))._build();
 
   _$GCreateIssueInput._(
       {this.assigneeIds,
@@ -20641,19 +20470,14 @@ class _$GCreateIssueInput extends GCreateIssueInput {
       this.projectIds,
       required this.repositoryId,
       required this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GCreateIssueInput', 'repositoryId');
-    BuiltValueNullFieldError.checkNotNull(title, r'GCreateIssueInput', 'title');
-  }
-
+      : super._();
   @override
   GCreateIssueInput rebuild(void Function(GCreateIssueInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCreateIssueInputBuilder toBuilder() =>
-      new GCreateIssueInputBuilder()..replace(this);
+      GCreateIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -20705,7 +20529,7 @@ class GCreateIssueInputBuilder
 
   ListBuilder<String>? _assigneeIds;
   ListBuilder<String> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String>();
+      _$this._assigneeIds ??= ListBuilder<String>();
   set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
@@ -20720,7 +20544,7 @@ class GCreateIssueInputBuilder
 
   ListBuilder<String>? _labelIds;
   ListBuilder<String> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String>();
+      _$this._labelIds ??= ListBuilder<String>();
   set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _milestoneId;
@@ -20729,7 +20553,7 @@ class GCreateIssueInputBuilder
 
   ListBuilder<String>? _projectIds;
   ListBuilder<String> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String>();
+      _$this._projectIds ??= ListBuilder<String>();
   set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
@@ -20761,7 +20585,6 @@ class GCreateIssueInputBuilder
 
   @override
   void replace(GCreateIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateIssueInput;
   }
 
@@ -20777,7 +20600,7 @@ class GCreateIssueInputBuilder
     _$GCreateIssueInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateIssueInput._(
+          _$GCreateIssueInput._(
             assigneeIds: _assigneeIds?.build(),
             body: body,
             clientMutationId: clientMutationId,
@@ -20801,7 +20624,7 @@ class GCreateIssueInputBuilder
         _$failedField = 'projectIds';
         _projectIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateIssueInput', _$failedField, e.toString());
       }
       rethrow;
@@ -20827,7 +20650,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
 
   factory _$GCreateProjectInput(
           [void Function(GCreateProjectInputBuilder)? updates]) =>
-      (new GCreateProjectInputBuilder()..update(updates))._build();
+      (GCreateProjectInputBuilder()..update(updates))._build();
 
   _$GCreateProjectInput._(
       {this.body,
@@ -20836,12 +20659,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
       required this.ownerId,
       this.repositoryIds,
       this.template})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'GCreateProjectInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        ownerId, r'GCreateProjectInput', 'ownerId');
-  }
-
+      : super._();
   @override
   GCreateProjectInput rebuild(
           void Function(GCreateProjectInputBuilder) updates) =>
@@ -20849,7 +20667,7 @@ class _$GCreateProjectInput extends GCreateProjectInput {
 
   @override
   GCreateProjectInputBuilder toBuilder() =>
-      new GCreateProjectInputBuilder()..replace(this);
+      GCreateProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -20912,7 +20730,7 @@ class GCreateProjectInputBuilder
 
   ListBuilder<String>? _repositoryIds;
   ListBuilder<String> get repositoryIds =>
-      _$this._repositoryIds ??= new ListBuilder<String>();
+      _$this._repositoryIds ??= ListBuilder<String>();
   set repositoryIds(ListBuilder<String>? repositoryIds) =>
       _$this._repositoryIds = repositoryIds;
 
@@ -20938,7 +20756,6 @@ class GCreateProjectInputBuilder
 
   @override
   void replace(GCreateProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateProjectInput;
   }
 
@@ -20954,7 +20771,7 @@ class GCreateProjectInputBuilder
     _$GCreateProjectInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateProjectInput._(
+          _$GCreateProjectInput._(
             body: body,
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
@@ -20970,7 +20787,7 @@ class GCreateProjectInputBuilder
         _$failedField = 'repositoryIds';
         _repositoryIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateProjectInput', _$failedField, e.toString());
       }
       rethrow;
@@ -20998,7 +20815,7 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
 
   factory _$GCreatePullRequestInput(
           [void Function(GCreatePullRequestInputBuilder)? updates]) =>
-      (new GCreatePullRequestInputBuilder()..update(updates))._build();
+      (GCreatePullRequestInputBuilder()..update(updates))._build();
 
   _$GCreatePullRequestInput._(
       {required this.baseRefName,
@@ -21008,17 +20825,7 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
       this.maintainerCanModify,
       required this.repositoryId,
       required this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        baseRefName, r'GCreatePullRequestInput', 'baseRefName');
-    BuiltValueNullFieldError.checkNotNull(
-        headRefName, r'GCreatePullRequestInput', 'headRefName');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GCreatePullRequestInput', 'repositoryId');
-    BuiltValueNullFieldError.checkNotNull(
-        title, r'GCreatePullRequestInput', 'title');
-  }
-
+      : super._();
   @override
   GCreatePullRequestInput rebuild(
           void Function(GCreatePullRequestInputBuilder) updates) =>
@@ -21026,7 +20833,7 @@ class _$GCreatePullRequestInput extends GCreatePullRequestInput {
 
   @override
   GCreatePullRequestInputBuilder toBuilder() =>
-      new GCreatePullRequestInputBuilder()..replace(this);
+      GCreatePullRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21123,7 +20930,6 @@ class GCreatePullRequestInputBuilder
 
   @override
   void replace(GCreatePullRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreatePullRequestInput;
   }
 
@@ -21137,7 +20943,7 @@ class GCreatePullRequestInputBuilder
 
   _$GCreatePullRequestInput _build() {
     final _$result = _$v ??
-        new _$GCreatePullRequestInput._(
+        _$GCreatePullRequestInput._(
           baseRefName: BuiltValueNullFieldError.checkNotNull(
               baseRefName, r'GCreatePullRequestInput', 'baseRefName'),
           body: body,
@@ -21166,27 +20972,20 @@ class _$GCreateRefInput extends GCreateRefInput {
   final String repositoryId;
 
   factory _$GCreateRefInput([void Function(GCreateRefInputBuilder)? updates]) =>
-      (new GCreateRefInputBuilder()..update(updates))._build();
+      (GCreateRefInputBuilder()..update(updates))._build();
 
   _$GCreateRefInput._(
       {this.clientMutationId,
       required this.name,
       required this.oid,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'GCreateRefInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(oid, r'GCreateRefInput', 'oid');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GCreateRefInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GCreateRefInput rebuild(void Function(GCreateRefInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GCreateRefInputBuilder toBuilder() =>
-      new GCreateRefInputBuilder()..replace(this);
+  GCreateRefInputBuilder toBuilder() => GCreateRefInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21234,7 +21033,7 @@ class GCreateRefInputBuilder
   set name(String? name) => _$this._name = name;
 
   GGitObjectIDBuilder? _oid;
-  GGitObjectIDBuilder get oid => _$this._oid ??= new GGitObjectIDBuilder();
+  GGitObjectIDBuilder get oid => _$this._oid ??= GGitObjectIDBuilder();
   set oid(GGitObjectIDBuilder? oid) => _$this._oid = oid;
 
   String? _repositoryId;
@@ -21257,7 +21056,6 @@ class GCreateRefInputBuilder
 
   @override
   void replace(GCreateRefInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateRefInput;
   }
 
@@ -21273,7 +21071,7 @@ class GCreateRefInputBuilder
     _$GCreateRefInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateRefInput._(
+          _$GCreateRefInput._(
             clientMutationId: clientMutationId,
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GCreateRefInput', 'name'),
@@ -21287,7 +21085,7 @@ class GCreateRefInputBuilder
         _$failedField = 'oid';
         oid.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateRefInput', _$failedField, e.toString());
       }
       rethrow;
@@ -21321,7 +21119,7 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
 
   factory _$GCreateRepositoryInput(
           [void Function(GCreateRepositoryInputBuilder)? updates]) =>
-      (new GCreateRepositoryInputBuilder()..update(updates))._build();
+      (GCreateRepositoryInputBuilder()..update(updates))._build();
 
   _$GCreateRepositoryInput._(
       {this.clientMutationId,
@@ -21334,13 +21132,7 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
       this.teamId,
       this.template,
       required this.visibility})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GCreateRepositoryInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        visibility, r'GCreateRepositoryInput', 'visibility');
-  }
-
+      : super._();
   @override
   GCreateRepositoryInput rebuild(
           void Function(GCreateRepositoryInputBuilder) updates) =>
@@ -21348,7 +21140,7 @@ class _$GCreateRepositoryInput extends GCreateRepositoryInput {
 
   @override
   GCreateRepositoryInputBuilder toBuilder() =>
-      new GCreateRepositoryInputBuilder()..replace(this);
+      GCreateRepositoryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21424,7 +21216,7 @@ class GCreateRepositoryInputBuilder
       _$this._hasWikiEnabled = hasWikiEnabled;
 
   GURIBuilder? _homepageUrl;
-  GURIBuilder get homepageUrl => _$this._homepageUrl ??= new GURIBuilder();
+  GURIBuilder get homepageUrl => _$this._homepageUrl ??= GURIBuilder();
   set homepageUrl(GURIBuilder? homepageUrl) =>
       _$this._homepageUrl = homepageUrl;
 
@@ -21471,7 +21263,6 @@ class GCreateRepositoryInputBuilder
 
   @override
   void replace(GCreateRepositoryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateRepositoryInput;
   }
 
@@ -21487,7 +21278,7 @@ class GCreateRepositoryInputBuilder
     _$GCreateRepositoryInput _$result;
     try {
       _$result = _$v ??
-          new _$GCreateRepositoryInput._(
+          _$GCreateRepositoryInput._(
             clientMutationId: clientMutationId,
             description: description,
             hasIssuesEnabled: hasIssuesEnabled,
@@ -21507,7 +21298,7 @@ class GCreateRepositoryInputBuilder
         _$failedField = 'homepageUrl';
         _homepageUrl?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateRepositoryInput', _$failedField, e.toString());
       }
       rethrow;
@@ -21528,18 +21319,11 @@ class _$GCreateTeamDiscussionCommentInput
 
   factory _$GCreateTeamDiscussionCommentInput(
           [void Function(GCreateTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GCreateTeamDiscussionCommentInputBuilder()..update(updates))
-          ._build();
+      (GCreateTeamDiscussionCommentInputBuilder()..update(updates))._build();
 
   _$GCreateTeamDiscussionCommentInput._(
       {required this.body, this.clientMutationId, required this.discussionId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GCreateTeamDiscussionCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        discussionId, r'GCreateTeamDiscussionCommentInput', 'discussionId');
-  }
-
+      : super._();
   @override
   GCreateTeamDiscussionCommentInput rebuild(
           void Function(GCreateTeamDiscussionCommentInputBuilder) updates) =>
@@ -21547,7 +21331,7 @@ class _$GCreateTeamDiscussionCommentInput
 
   @override
   GCreateTeamDiscussionCommentInputBuilder toBuilder() =>
-      new GCreateTeamDiscussionCommentInputBuilder()..replace(this);
+      GCreateTeamDiscussionCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21612,7 +21396,6 @@ class GCreateTeamDiscussionCommentInputBuilder
 
   @override
   void replace(GCreateTeamDiscussionCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateTeamDiscussionCommentInput;
   }
 
@@ -21627,7 +21410,7 @@ class GCreateTeamDiscussionCommentInputBuilder
 
   _$GCreateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
-        new _$GCreateTeamDiscussionCommentInput._(
+        _$GCreateTeamDiscussionCommentInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GCreateTeamDiscussionCommentInput', 'body'),
           clientMutationId: clientMutationId,
@@ -21653,7 +21436,7 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
 
   factory _$GCreateTeamDiscussionInput(
           [void Function(GCreateTeamDiscussionInputBuilder)? updates]) =>
-      (new GCreateTeamDiscussionInputBuilder()..update(updates))._build();
+      (GCreateTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GCreateTeamDiscussionInput._(
       {required this.body,
@@ -21661,15 +21444,7 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
       this.private,
       required this.teamId,
       required this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GCreateTeamDiscussionInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        teamId, r'GCreateTeamDiscussionInput', 'teamId');
-    BuiltValueNullFieldError.checkNotNull(
-        title, r'GCreateTeamDiscussionInput', 'title');
-  }
-
+      : super._();
   @override
   GCreateTeamDiscussionInput rebuild(
           void Function(GCreateTeamDiscussionInputBuilder) updates) =>
@@ -21677,7 +21452,7 @@ class _$GCreateTeamDiscussionInput extends GCreateTeamDiscussionInput {
 
   @override
   GCreateTeamDiscussionInputBuilder toBuilder() =>
-      new GCreateTeamDiscussionInputBuilder()..replace(this);
+      GCreateTeamDiscussionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21757,7 +21532,6 @@ class GCreateTeamDiscussionInputBuilder
 
   @override
   void replace(GCreateTeamDiscussionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateTeamDiscussionInput;
   }
 
@@ -21771,7 +21545,7 @@ class GCreateTeamDiscussionInputBuilder
 
   _$GCreateTeamDiscussionInput _build() {
     final _$result = _$v ??
-        new _$GCreateTeamDiscussionInput._(
+        _$GCreateTeamDiscussionInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GCreateTeamDiscussionInput', 'body'),
           clientMutationId: clientMutationId,
@@ -21791,18 +21565,15 @@ class _$GDate extends GDate {
   final String value;
 
   factory _$GDate([void Function(GDateBuilder)? updates]) =>
-      (new GDateBuilder()..update(updates))._build();
+      (GDateBuilder()..update(updates))._build();
 
-  _$GDate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GDate', 'value');
-  }
-
+  _$GDate._({required this.value}) : super._();
   @override
   GDate rebuild(void Function(GDateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GDateBuilder toBuilder() => new GDateBuilder()..replace(this);
+  GDateBuilder toBuilder() => GDateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21845,7 +21616,6 @@ class GDateBuilder implements Builder<GDate, GDateBuilder> {
 
   @override
   void replace(GDate other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDate;
   }
 
@@ -21859,7 +21629,7 @@ class GDateBuilder implements Builder<GDate, GDateBuilder> {
 
   _$GDate _build() {
     final _$result = _$v ??
-        new _$GDate._(
+        _$GDate._(
           value:
               BuiltValueNullFieldError.checkNotNull(value, r'GDate', 'value'),
         );
@@ -21873,18 +21643,15 @@ class _$GDateTime extends GDateTime {
   final String value;
 
   factory _$GDateTime([void Function(GDateTimeBuilder)? updates]) =>
-      (new GDateTimeBuilder()..update(updates))._build();
+      (GDateTimeBuilder()..update(updates))._build();
 
-  _$GDateTime._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GDateTime', 'value');
-  }
-
+  _$GDateTime._({required this.value}) : super._();
   @override
   GDateTime rebuild(void Function(GDateTimeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GDateTimeBuilder toBuilder() => new GDateTimeBuilder()..replace(this);
+  GDateTimeBuilder toBuilder() => GDateTimeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -21927,7 +21694,6 @@ class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
 
   @override
   void replace(GDateTime other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDateTime;
   }
 
@@ -21941,7 +21707,7 @@ class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
 
   _$GDateTime _build() {
     final _$result = _$v ??
-        new _$GDateTime._(
+        _$GDateTime._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GDateTime', 'value'),
         );
@@ -21962,22 +21728,14 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
 
   factory _$GDeclineTopicSuggestionInput(
           [void Function(GDeclineTopicSuggestionInputBuilder)? updates]) =>
-      (new GDeclineTopicSuggestionInputBuilder()..update(updates))._build();
+      (GDeclineTopicSuggestionInputBuilder()..update(updates))._build();
 
   _$GDeclineTopicSuggestionInput._(
       {this.clientMutationId,
       required this.name,
       required this.reason,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GDeclineTopicSuggestionInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        reason, r'GDeclineTopicSuggestionInput', 'reason');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GDeclineTopicSuggestionInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GDeclineTopicSuggestionInput rebuild(
           void Function(GDeclineTopicSuggestionInputBuilder) updates) =>
@@ -21985,7 +21743,7 @@ class _$GDeclineTopicSuggestionInput extends GDeclineTopicSuggestionInput {
 
   @override
   GDeclineTopicSuggestionInputBuilder toBuilder() =>
-      new GDeclineTopicSuggestionInputBuilder()..replace(this);
+      GDeclineTopicSuggestionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22058,7 +21816,6 @@ class GDeclineTopicSuggestionInputBuilder
 
   @override
   void replace(GDeclineTopicSuggestionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeclineTopicSuggestionInput;
   }
 
@@ -22072,7 +21829,7 @@ class GDeclineTopicSuggestionInputBuilder
 
   _$GDeclineTopicSuggestionInput _build() {
     final _$result = _$v ??
-        new _$GDeclineTopicSuggestionInput._(
+        _$GDeclineTopicSuggestionInput._(
           clientMutationId: clientMutationId,
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GDeclineTopicSuggestionInput', 'name'),
@@ -22095,15 +21852,11 @@ class _$GDeleteBranchProtectionRuleInput
 
   factory _$GDeleteBranchProtectionRuleInput(
           [void Function(GDeleteBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GDeleteBranchProtectionRuleInputBuilder()..update(updates))._build();
+      (GDeleteBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GDeleteBranchProtectionRuleInput._(
       {required this.branchProtectionRuleId, this.clientMutationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(branchProtectionRuleId,
-        r'GDeleteBranchProtectionRuleInput', 'branchProtectionRuleId');
-  }
-
+      : super._();
   @override
   GDeleteBranchProtectionRuleInput rebuild(
           void Function(GDeleteBranchProtectionRuleInputBuilder) updates) =>
@@ -22111,7 +21864,7 @@ class _$GDeleteBranchProtectionRuleInput
 
   @override
   GDeleteBranchProtectionRuleInputBuilder toBuilder() =>
-      new GDeleteBranchProtectionRuleInputBuilder()..replace(this);
+      GDeleteBranchProtectionRuleInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22169,7 +21922,6 @@ class GDeleteBranchProtectionRuleInputBuilder
 
   @override
   void replace(GDeleteBranchProtectionRuleInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteBranchProtectionRuleInput;
   }
 
@@ -22183,7 +21935,7 @@ class GDeleteBranchProtectionRuleInputBuilder
 
   _$GDeleteBranchProtectionRuleInput _build() {
     final _$result = _$v ??
-        new _$GDeleteBranchProtectionRuleInput._(
+        _$GDeleteBranchProtectionRuleInput._(
           branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
               branchProtectionRuleId,
               r'GDeleteBranchProtectionRuleInput',
@@ -22203,13 +21955,10 @@ class _$GDeleteDeploymentInput extends GDeleteDeploymentInput {
 
   factory _$GDeleteDeploymentInput(
           [void Function(GDeleteDeploymentInputBuilder)? updates]) =>
-      (new GDeleteDeploymentInputBuilder()..update(updates))._build();
+      (GDeleteDeploymentInputBuilder()..update(updates))._build();
 
   _$GDeleteDeploymentInput._({this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GDeleteDeploymentInput', 'id');
-  }
-
+      : super._();
   @override
   GDeleteDeploymentInput rebuild(
           void Function(GDeleteDeploymentInputBuilder) updates) =>
@@ -22217,7 +21966,7 @@ class _$GDeleteDeploymentInput extends GDeleteDeploymentInput {
 
   @override
   GDeleteDeploymentInputBuilder toBuilder() =>
-      new GDeleteDeploymentInputBuilder()..replace(this);
+      GDeleteDeploymentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22272,7 +22021,6 @@ class GDeleteDeploymentInputBuilder
 
   @override
   void replace(GDeleteDeploymentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteDeploymentInput;
   }
 
@@ -22286,7 +22034,7 @@ class GDeleteDeploymentInputBuilder
 
   _$GDeleteDeploymentInput _build() {
     final _$result = _$v ??
-        new _$GDeleteDeploymentInput._(
+        _$GDeleteDeploymentInput._(
           clientMutationId: clientMutationId,
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GDeleteDeploymentInput', 'id'),
@@ -22304,14 +22052,10 @@ class _$GDeleteIssueCommentInput extends GDeleteIssueCommentInput {
 
   factory _$GDeleteIssueCommentInput(
           [void Function(GDeleteIssueCommentInputBuilder)? updates]) =>
-      (new GDeleteIssueCommentInputBuilder()..update(updates))._build();
+      (GDeleteIssueCommentInputBuilder()..update(updates))._build();
 
   _$GDeleteIssueCommentInput._({this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GDeleteIssueCommentInput', 'id');
-  }
-
+      : super._();
   @override
   GDeleteIssueCommentInput rebuild(
           void Function(GDeleteIssueCommentInputBuilder) updates) =>
@@ -22319,7 +22063,7 @@ class _$GDeleteIssueCommentInput extends GDeleteIssueCommentInput {
 
   @override
   GDeleteIssueCommentInputBuilder toBuilder() =>
-      new GDeleteIssueCommentInputBuilder()..replace(this);
+      GDeleteIssueCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22375,7 +22119,6 @@ class GDeleteIssueCommentInputBuilder
 
   @override
   void replace(GDeleteIssueCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteIssueCommentInput;
   }
 
@@ -22389,7 +22132,7 @@ class GDeleteIssueCommentInputBuilder
 
   _$GDeleteIssueCommentInput _build() {
     final _$result = _$v ??
-        new _$GDeleteIssueCommentInput._(
+        _$GDeleteIssueCommentInput._(
           clientMutationId: clientMutationId,
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GDeleteIssueCommentInput', 'id'),
@@ -22407,21 +22150,17 @@ class _$GDeleteIssueInput extends GDeleteIssueInput {
 
   factory _$GDeleteIssueInput(
           [void Function(GDeleteIssueInputBuilder)? updates]) =>
-      (new GDeleteIssueInputBuilder()..update(updates))._build();
+      (GDeleteIssueInputBuilder()..update(updates))._build();
 
   _$GDeleteIssueInput._({this.clientMutationId, required this.issueId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issueId, r'GDeleteIssueInput', 'issueId');
-  }
-
+      : super._();
   @override
   GDeleteIssueInput rebuild(void Function(GDeleteIssueInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GDeleteIssueInputBuilder toBuilder() =>
-      new GDeleteIssueInputBuilder()..replace(this);
+      GDeleteIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22476,7 +22215,6 @@ class GDeleteIssueInputBuilder
 
   @override
   void replace(GDeleteIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteIssueInput;
   }
 
@@ -22490,7 +22228,7 @@ class GDeleteIssueInputBuilder
 
   _$GDeleteIssueInput _build() {
     final _$result = _$v ??
-        new _$GDeleteIssueInput._(
+        _$GDeleteIssueInput._(
           clientMutationId: clientMutationId,
           issueId: BuiltValueNullFieldError.checkNotNull(
               issueId, r'GDeleteIssueInput', 'issueId'),
@@ -22508,14 +22246,10 @@ class _$GDeleteProjectCardInput extends GDeleteProjectCardInput {
 
   factory _$GDeleteProjectCardInput(
           [void Function(GDeleteProjectCardInputBuilder)? updates]) =>
-      (new GDeleteProjectCardInputBuilder()..update(updates))._build();
+      (GDeleteProjectCardInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectCardInput._({required this.cardId, this.clientMutationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        cardId, r'GDeleteProjectCardInput', 'cardId');
-  }
-
+      : super._();
   @override
   GDeleteProjectCardInput rebuild(
           void Function(GDeleteProjectCardInputBuilder) updates) =>
@@ -22523,7 +22257,7 @@ class _$GDeleteProjectCardInput extends GDeleteProjectCardInput {
 
   @override
   GDeleteProjectCardInputBuilder toBuilder() =>
-      new GDeleteProjectCardInputBuilder()..replace(this);
+      GDeleteProjectCardInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22579,7 +22313,6 @@ class GDeleteProjectCardInputBuilder
 
   @override
   void replace(GDeleteProjectCardInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteProjectCardInput;
   }
 
@@ -22593,7 +22326,7 @@ class GDeleteProjectCardInputBuilder
 
   _$GDeleteProjectCardInput _build() {
     final _$result = _$v ??
-        new _$GDeleteProjectCardInput._(
+        _$GDeleteProjectCardInput._(
           cardId: BuiltValueNullFieldError.checkNotNull(
               cardId, r'GDeleteProjectCardInput', 'cardId'),
           clientMutationId: clientMutationId,
@@ -22611,14 +22344,10 @@ class _$GDeleteProjectColumnInput extends GDeleteProjectColumnInput {
 
   factory _$GDeleteProjectColumnInput(
           [void Function(GDeleteProjectColumnInputBuilder)? updates]) =>
-      (new GDeleteProjectColumnInputBuilder()..update(updates))._build();
+      (GDeleteProjectColumnInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectColumnInput._({this.clientMutationId, required this.columnId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        columnId, r'GDeleteProjectColumnInput', 'columnId');
-  }
-
+      : super._();
   @override
   GDeleteProjectColumnInput rebuild(
           void Function(GDeleteProjectColumnInputBuilder) updates) =>
@@ -22626,7 +22355,7 @@ class _$GDeleteProjectColumnInput extends GDeleteProjectColumnInput {
 
   @override
   GDeleteProjectColumnInputBuilder toBuilder() =>
-      new GDeleteProjectColumnInputBuilder()..replace(this);
+      GDeleteProjectColumnInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22682,7 +22411,6 @@ class GDeleteProjectColumnInputBuilder
 
   @override
   void replace(GDeleteProjectColumnInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteProjectColumnInput;
   }
 
@@ -22696,7 +22424,7 @@ class GDeleteProjectColumnInputBuilder
 
   _$GDeleteProjectColumnInput _build() {
     final _$result = _$v ??
-        new _$GDeleteProjectColumnInput._(
+        _$GDeleteProjectColumnInput._(
           clientMutationId: clientMutationId,
           columnId: BuiltValueNullFieldError.checkNotNull(
               columnId, r'GDeleteProjectColumnInput', 'columnId'),
@@ -22714,14 +22442,10 @@ class _$GDeleteProjectInput extends GDeleteProjectInput {
 
   factory _$GDeleteProjectInput(
           [void Function(GDeleteProjectInputBuilder)? updates]) =>
-      (new GDeleteProjectInputBuilder()..update(updates))._build();
+      (GDeleteProjectInputBuilder()..update(updates))._build();
 
   _$GDeleteProjectInput._({this.clientMutationId, required this.projectId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'GDeleteProjectInput', 'projectId');
-  }
-
+      : super._();
   @override
   GDeleteProjectInput rebuild(
           void Function(GDeleteProjectInputBuilder) updates) =>
@@ -22729,7 +22453,7 @@ class _$GDeleteProjectInput extends GDeleteProjectInput {
 
   @override
   GDeleteProjectInputBuilder toBuilder() =>
-      new GDeleteProjectInputBuilder()..replace(this);
+      GDeleteProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22784,7 +22508,6 @@ class GDeleteProjectInputBuilder
 
   @override
   void replace(GDeleteProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteProjectInput;
   }
 
@@ -22798,7 +22521,7 @@ class GDeleteProjectInputBuilder
 
   _$GDeleteProjectInput _build() {
     final _$result = _$v ??
-        new _$GDeleteProjectInput._(
+        _$GDeleteProjectInput._(
           clientMutationId: clientMutationId,
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'GDeleteProjectInput', 'projectId'),
@@ -22818,16 +22541,11 @@ class _$GDeletePullRequestReviewCommentInput
   factory _$GDeletePullRequestReviewCommentInput(
           [void Function(GDeletePullRequestReviewCommentInputBuilder)?
               updates]) =>
-      (new GDeletePullRequestReviewCommentInputBuilder()..update(updates))
-          ._build();
+      (GDeletePullRequestReviewCommentInputBuilder()..update(updates))._build();
 
   _$GDeletePullRequestReviewCommentInput._(
       {this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GDeletePullRequestReviewCommentInput', 'id');
-  }
-
+      : super._();
   @override
   GDeletePullRequestReviewCommentInput rebuild(
           void Function(GDeletePullRequestReviewCommentInputBuilder) updates) =>
@@ -22835,7 +22553,7 @@ class _$GDeletePullRequestReviewCommentInput
 
   @override
   GDeletePullRequestReviewCommentInputBuilder toBuilder() =>
-      new GDeletePullRequestReviewCommentInputBuilder()..replace(this);
+      GDeletePullRequestReviewCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22892,7 +22610,6 @@ class GDeletePullRequestReviewCommentInputBuilder
 
   @override
   void replace(GDeletePullRequestReviewCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeletePullRequestReviewCommentInput;
   }
 
@@ -22907,7 +22624,7 @@ class GDeletePullRequestReviewCommentInputBuilder
 
   _$GDeletePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
-        new _$GDeletePullRequestReviewCommentInput._(
+        _$GDeletePullRequestReviewCommentInput._(
           clientMutationId: clientMutationId,
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GDeletePullRequestReviewCommentInput', 'id'),
@@ -22925,15 +22642,11 @@ class _$GDeletePullRequestReviewInput extends GDeletePullRequestReviewInput {
 
   factory _$GDeletePullRequestReviewInput(
           [void Function(GDeletePullRequestReviewInputBuilder)? updates]) =>
-      (new GDeletePullRequestReviewInputBuilder()..update(updates))._build();
+      (GDeletePullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GDeletePullRequestReviewInput._(
       {this.clientMutationId, required this.pullRequestReviewId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        r'GDeletePullRequestReviewInput', 'pullRequestReviewId');
-  }
-
+      : super._();
   @override
   GDeletePullRequestReviewInput rebuild(
           void Function(GDeletePullRequestReviewInputBuilder) updates) =>
@@ -22941,7 +22654,7 @@ class _$GDeletePullRequestReviewInput extends GDeletePullRequestReviewInput {
 
   @override
   GDeletePullRequestReviewInputBuilder toBuilder() =>
-      new GDeletePullRequestReviewInputBuilder()..replace(this);
+      GDeletePullRequestReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -22999,7 +22712,6 @@ class GDeletePullRequestReviewInputBuilder
 
   @override
   void replace(GDeletePullRequestReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeletePullRequestReviewInput;
   }
 
@@ -23013,7 +22725,7 @@ class GDeletePullRequestReviewInputBuilder
 
   _$GDeletePullRequestReviewInput _build() {
     final _$result = _$v ??
-        new _$GDeletePullRequestReviewInput._(
+        _$GDeletePullRequestReviewInput._(
           clientMutationId: clientMutationId,
           pullRequestReviewId: BuiltValueNullFieldError.checkNotNull(
               pullRequestReviewId,
@@ -23032,20 +22744,15 @@ class _$GDeleteRefInput extends GDeleteRefInput {
   final String refId;
 
   factory _$GDeleteRefInput([void Function(GDeleteRefInputBuilder)? updates]) =>
-      (new GDeleteRefInputBuilder()..update(updates))._build();
+      (GDeleteRefInputBuilder()..update(updates))._build();
 
-  _$GDeleteRefInput._({this.clientMutationId, required this.refId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(refId, r'GDeleteRefInput', 'refId');
-  }
-
+  _$GDeleteRefInput._({this.clientMutationId, required this.refId}) : super._();
   @override
   GDeleteRefInput rebuild(void Function(GDeleteRefInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GDeleteRefInputBuilder toBuilder() =>
-      new GDeleteRefInputBuilder()..replace(this);
+  GDeleteRefInputBuilder toBuilder() => GDeleteRefInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23100,7 +22807,6 @@ class GDeleteRefInputBuilder
 
   @override
   void replace(GDeleteRefInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteRefInput;
   }
 
@@ -23114,7 +22820,7 @@ class GDeleteRefInputBuilder
 
   _$GDeleteRefInput _build() {
     final _$result = _$v ??
-        new _$GDeleteRefInput._(
+        _$GDeleteRefInput._(
           clientMutationId: clientMutationId,
           refId: BuiltValueNullFieldError.checkNotNull(
               refId, r'GDeleteRefInput', 'refId'),
@@ -23133,16 +22839,11 @@ class _$GDeleteTeamDiscussionCommentInput
 
   factory _$GDeleteTeamDiscussionCommentInput(
           [void Function(GDeleteTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GDeleteTeamDiscussionCommentInputBuilder()..update(updates))
-          ._build();
+      (GDeleteTeamDiscussionCommentInputBuilder()..update(updates))._build();
 
   _$GDeleteTeamDiscussionCommentInput._(
       {this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GDeleteTeamDiscussionCommentInput', 'id');
-  }
-
+      : super._();
   @override
   GDeleteTeamDiscussionCommentInput rebuild(
           void Function(GDeleteTeamDiscussionCommentInputBuilder) updates) =>
@@ -23150,7 +22851,7 @@ class _$GDeleteTeamDiscussionCommentInput
 
   @override
   GDeleteTeamDiscussionCommentInputBuilder toBuilder() =>
-      new GDeleteTeamDiscussionCommentInputBuilder()..replace(this);
+      GDeleteTeamDiscussionCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23207,7 +22908,6 @@ class GDeleteTeamDiscussionCommentInputBuilder
 
   @override
   void replace(GDeleteTeamDiscussionCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteTeamDiscussionCommentInput;
   }
 
@@ -23222,7 +22922,7 @@ class GDeleteTeamDiscussionCommentInputBuilder
 
   _$GDeleteTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
-        new _$GDeleteTeamDiscussionCommentInput._(
+        _$GDeleteTeamDiscussionCommentInput._(
           clientMutationId: clientMutationId,
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GDeleteTeamDiscussionCommentInput', 'id'),
@@ -23240,14 +22940,10 @@ class _$GDeleteTeamDiscussionInput extends GDeleteTeamDiscussionInput {
 
   factory _$GDeleteTeamDiscussionInput(
           [void Function(GDeleteTeamDiscussionInputBuilder)? updates]) =>
-      (new GDeleteTeamDiscussionInputBuilder()..update(updates))._build();
+      (GDeleteTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GDeleteTeamDiscussionInput._({this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GDeleteTeamDiscussionInput', 'id');
-  }
-
+      : super._();
   @override
   GDeleteTeamDiscussionInput rebuild(
           void Function(GDeleteTeamDiscussionInputBuilder) updates) =>
@@ -23255,7 +22951,7 @@ class _$GDeleteTeamDiscussionInput extends GDeleteTeamDiscussionInput {
 
   @override
   GDeleteTeamDiscussionInputBuilder toBuilder() =>
-      new GDeleteTeamDiscussionInputBuilder()..replace(this);
+      GDeleteTeamDiscussionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23311,7 +23007,6 @@ class GDeleteTeamDiscussionInputBuilder
 
   @override
   void replace(GDeleteTeamDiscussionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeleteTeamDiscussionInput;
   }
 
@@ -23325,7 +23020,7 @@ class GDeleteTeamDiscussionInputBuilder
 
   _$GDeleteTeamDiscussionInput _build() {
     final _$result = _$v ??
-        new _$GDeleteTeamDiscussionInput._(
+        _$GDeleteTeamDiscussionInput._(
           clientMutationId: clientMutationId,
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GDeleteTeamDiscussionInput', 'id'),
@@ -23343,22 +23038,17 @@ class _$GDeploymentOrder extends GDeploymentOrder {
 
   factory _$GDeploymentOrder(
           [void Function(GDeploymentOrderBuilder)? updates]) =>
-      (new GDeploymentOrderBuilder()..update(updates))._build();
+      (GDeploymentOrderBuilder()..update(updates))._build();
 
   _$GDeploymentOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GDeploymentOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GDeploymentOrder', 'field');
-  }
-
+      : super._();
   @override
   GDeploymentOrder rebuild(void Function(GDeploymentOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GDeploymentOrderBuilder toBuilder() =>
-      new GDeploymentOrderBuilder()..replace(this);
+      GDeploymentOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23412,7 +23102,6 @@ class GDeploymentOrderBuilder
 
   @override
   void replace(GDeploymentOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDeploymentOrder;
   }
 
@@ -23426,7 +23115,7 @@ class GDeploymentOrderBuilder
 
   _$GDeploymentOrder _build() {
     final _$result = _$v ??
-        new _$GDeploymentOrder._(
+        _$GDeploymentOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GDeploymentOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -23447,19 +23136,13 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
 
   factory _$GDismissPullRequestReviewInput(
           [void Function(GDismissPullRequestReviewInputBuilder)? updates]) =>
-      (new GDismissPullRequestReviewInputBuilder()..update(updates))._build();
+      (GDismissPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GDismissPullRequestReviewInput._(
       {this.clientMutationId,
       required this.message,
       required this.pullRequestReviewId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GDismissPullRequestReviewInput', 'message');
-    BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        r'GDismissPullRequestReviewInput', 'pullRequestReviewId');
-  }
-
+      : super._();
   @override
   GDismissPullRequestReviewInput rebuild(
           void Function(GDismissPullRequestReviewInputBuilder) updates) =>
@@ -23467,7 +23150,7 @@ class _$GDismissPullRequestReviewInput extends GDismissPullRequestReviewInput {
 
   @override
   GDismissPullRequestReviewInputBuilder toBuilder() =>
-      new GDismissPullRequestReviewInputBuilder()..replace(this);
+      GDismissPullRequestReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23533,7 +23216,6 @@ class GDismissPullRequestReviewInputBuilder
 
   @override
   void replace(GDismissPullRequestReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDismissPullRequestReviewInput;
   }
 
@@ -23547,7 +23229,7 @@ class GDismissPullRequestReviewInputBuilder
 
   _$GDismissPullRequestReviewInput _build() {
     final _$result = _$v ??
-        new _$GDismissPullRequestReviewInput._(
+        _$GDismissPullRequestReviewInput._(
           clientMutationId: clientMutationId,
           message: BuiltValueNullFieldError.checkNotNull(
               message, r'GDismissPullRequestReviewInput', 'message'),
@@ -23571,19 +23253,11 @@ class _$GDraftPullRequestReviewComment extends GDraftPullRequestReviewComment {
 
   factory _$GDraftPullRequestReviewComment(
           [void Function(GDraftPullRequestReviewCommentBuilder)? updates]) =>
-      (new GDraftPullRequestReviewCommentBuilder()..update(updates))._build();
+      (GDraftPullRequestReviewCommentBuilder()..update(updates))._build();
 
   _$GDraftPullRequestReviewComment._(
       {required this.body, required this.path, required this.position})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GDraftPullRequestReviewComment', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        path, r'GDraftPullRequestReviewComment', 'path');
-    BuiltValueNullFieldError.checkNotNull(
-        position, r'GDraftPullRequestReviewComment', 'position');
-  }
-
+      : super._();
   @override
   GDraftPullRequestReviewComment rebuild(
           void Function(GDraftPullRequestReviewCommentBuilder) updates) =>
@@ -23591,7 +23265,7 @@ class _$GDraftPullRequestReviewComment extends GDraftPullRequestReviewComment {
 
   @override
   GDraftPullRequestReviewCommentBuilder toBuilder() =>
-      new GDraftPullRequestReviewCommentBuilder()..replace(this);
+      GDraftPullRequestReviewCommentBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23655,7 +23329,6 @@ class GDraftPullRequestReviewCommentBuilder
 
   @override
   void replace(GDraftPullRequestReviewComment other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDraftPullRequestReviewComment;
   }
 
@@ -23669,7 +23342,7 @@ class GDraftPullRequestReviewCommentBuilder
 
   _$GDraftPullRequestReviewComment _build() {
     final _$result = _$v ??
-        new _$GDraftPullRequestReviewComment._(
+        _$GDraftPullRequestReviewComment._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GDraftPullRequestReviewComment', 'body'),
           path: BuiltValueNullFieldError.checkNotNull(
@@ -23692,18 +23365,12 @@ class _$GEnterpriseAdministratorInvitationOrder
   factory _$GEnterpriseAdministratorInvitationOrder(
           [void Function(GEnterpriseAdministratorInvitationOrderBuilder)?
               updates]) =>
-      (new GEnterpriseAdministratorInvitationOrderBuilder()..update(updates))
+      (GEnterpriseAdministratorInvitationOrderBuilder()..update(updates))
           ._build();
 
   _$GEnterpriseAdministratorInvitationOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseAdministratorInvitationOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseAdministratorInvitationOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseAdministratorInvitationOrder rebuild(
           void Function(GEnterpriseAdministratorInvitationOrderBuilder)
@@ -23712,7 +23379,7 @@ class _$GEnterpriseAdministratorInvitationOrder
 
   @override
   GEnterpriseAdministratorInvitationOrderBuilder toBuilder() =>
-      new GEnterpriseAdministratorInvitationOrderBuilder()..replace(this);
+      GEnterpriseAdministratorInvitationOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23770,7 +23437,6 @@ class GEnterpriseAdministratorInvitationOrderBuilder
 
   @override
   void replace(GEnterpriseAdministratorInvitationOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseAdministratorInvitationOrder;
   }
 
@@ -23785,7 +23451,7 @@ class GEnterpriseAdministratorInvitationOrderBuilder
 
   _$GEnterpriseAdministratorInvitationOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseAdministratorInvitationOrder._(
+        _$GEnterpriseAdministratorInvitationOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(direction,
               r'GEnterpriseAdministratorInvitationOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -23804,16 +23470,10 @@ class _$GEnterpriseMemberOrder extends GEnterpriseMemberOrder {
 
   factory _$GEnterpriseMemberOrder(
           [void Function(GEnterpriseMemberOrderBuilder)? updates]) =>
-      (new GEnterpriseMemberOrderBuilder()..update(updates))._build();
+      (GEnterpriseMemberOrderBuilder()..update(updates))._build();
 
   _$GEnterpriseMemberOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseMemberOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseMemberOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseMemberOrder rebuild(
           void Function(GEnterpriseMemberOrderBuilder) updates) =>
@@ -23821,7 +23481,7 @@ class _$GEnterpriseMemberOrder extends GEnterpriseMemberOrder {
 
   @override
   GEnterpriseMemberOrderBuilder toBuilder() =>
-      new GEnterpriseMemberOrderBuilder()..replace(this);
+      GEnterpriseMemberOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23875,7 +23535,6 @@ class GEnterpriseMemberOrderBuilder
 
   @override
   void replace(GEnterpriseMemberOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseMemberOrder;
   }
 
@@ -23889,7 +23548,7 @@ class GEnterpriseMemberOrderBuilder
 
   _$GEnterpriseMemberOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseMemberOrder._(
+        _$GEnterpriseMemberOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GEnterpriseMemberOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -23910,18 +23569,11 @@ class _$GEnterpriseServerInstallationOrder
   factory _$GEnterpriseServerInstallationOrder(
           [void Function(GEnterpriseServerInstallationOrderBuilder)?
               updates]) =>
-      (new GEnterpriseServerInstallationOrderBuilder()..update(updates))
-          ._build();
+      (GEnterpriseServerInstallationOrderBuilder()..update(updates))._build();
 
   _$GEnterpriseServerInstallationOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseServerInstallationOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseServerInstallationOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseServerInstallationOrder rebuild(
           void Function(GEnterpriseServerInstallationOrderBuilder) updates) =>
@@ -23929,7 +23581,7 @@ class _$GEnterpriseServerInstallationOrder
 
   @override
   GEnterpriseServerInstallationOrderBuilder toBuilder() =>
-      new GEnterpriseServerInstallationOrderBuilder()..replace(this);
+      GEnterpriseServerInstallationOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -23986,7 +23638,6 @@ class GEnterpriseServerInstallationOrderBuilder
 
   @override
   void replace(GEnterpriseServerInstallationOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseServerInstallationOrder;
   }
 
@@ -24001,7 +23652,7 @@ class GEnterpriseServerInstallationOrderBuilder
 
   _$GEnterpriseServerInstallationOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseServerInstallationOrder._(
+        _$GEnterpriseServerInstallationOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GEnterpriseServerInstallationOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -24022,18 +23673,12 @@ class _$GEnterpriseServerUserAccountEmailOrder
   factory _$GEnterpriseServerUserAccountEmailOrder(
           [void Function(GEnterpriseServerUserAccountEmailOrderBuilder)?
               updates]) =>
-      (new GEnterpriseServerUserAccountEmailOrderBuilder()..update(updates))
+      (GEnterpriseServerUserAccountEmailOrderBuilder()..update(updates))
           ._build();
 
   _$GEnterpriseServerUserAccountEmailOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseServerUserAccountEmailOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseServerUserAccountEmailOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseServerUserAccountEmailOrder rebuild(
           void Function(GEnterpriseServerUserAccountEmailOrderBuilder)
@@ -24042,7 +23687,7 @@ class _$GEnterpriseServerUserAccountEmailOrder
 
   @override
   GEnterpriseServerUserAccountEmailOrderBuilder toBuilder() =>
-      new GEnterpriseServerUserAccountEmailOrderBuilder()..replace(this);
+      GEnterpriseServerUserAccountEmailOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24100,7 +23745,6 @@ class GEnterpriseServerUserAccountEmailOrderBuilder
 
   @override
   void replace(GEnterpriseServerUserAccountEmailOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseServerUserAccountEmailOrder;
   }
 
@@ -24115,7 +23759,7 @@ class GEnterpriseServerUserAccountEmailOrderBuilder
 
   _$GEnterpriseServerUserAccountEmailOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseServerUserAccountEmailOrder._(
+        _$GEnterpriseServerUserAccountEmailOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(direction,
               r'GEnterpriseServerUserAccountEmailOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -24135,18 +23779,11 @@ class _$GEnterpriseServerUserAccountOrder
 
   factory _$GEnterpriseServerUserAccountOrder(
           [void Function(GEnterpriseServerUserAccountOrderBuilder)? updates]) =>
-      (new GEnterpriseServerUserAccountOrderBuilder()..update(updates))
-          ._build();
+      (GEnterpriseServerUserAccountOrderBuilder()..update(updates))._build();
 
   _$GEnterpriseServerUserAccountOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseServerUserAccountOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseServerUserAccountOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseServerUserAccountOrder rebuild(
           void Function(GEnterpriseServerUserAccountOrderBuilder) updates) =>
@@ -24154,7 +23791,7 @@ class _$GEnterpriseServerUserAccountOrder
 
   @override
   GEnterpriseServerUserAccountOrderBuilder toBuilder() =>
-      new GEnterpriseServerUserAccountOrderBuilder()..replace(this);
+      GEnterpriseServerUserAccountOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24211,7 +23848,6 @@ class GEnterpriseServerUserAccountOrderBuilder
 
   @override
   void replace(GEnterpriseServerUserAccountOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseServerUserAccountOrder;
   }
 
@@ -24226,7 +23862,7 @@ class GEnterpriseServerUserAccountOrderBuilder
 
   _$GEnterpriseServerUserAccountOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseServerUserAccountOrder._(
+        _$GEnterpriseServerUserAccountOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GEnterpriseServerUserAccountOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -24247,18 +23883,12 @@ class _$GEnterpriseServerUserAccountsUploadOrder
   factory _$GEnterpriseServerUserAccountsUploadOrder(
           [void Function(GEnterpriseServerUserAccountsUploadOrderBuilder)?
               updates]) =>
-      (new GEnterpriseServerUserAccountsUploadOrderBuilder()..update(updates))
+      (GEnterpriseServerUserAccountsUploadOrderBuilder()..update(updates))
           ._build();
 
   _$GEnterpriseServerUserAccountsUploadOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GEnterpriseServerUserAccountsUploadOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GEnterpriseServerUserAccountsUploadOrder', 'field');
-  }
-
+      : super._();
   @override
   GEnterpriseServerUserAccountsUploadOrder rebuild(
           void Function(GEnterpriseServerUserAccountsUploadOrderBuilder)
@@ -24267,7 +23897,7 @@ class _$GEnterpriseServerUserAccountsUploadOrder
 
   @override
   GEnterpriseServerUserAccountsUploadOrderBuilder toBuilder() =>
-      new GEnterpriseServerUserAccountsUploadOrderBuilder()..replace(this);
+      GEnterpriseServerUserAccountsUploadOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24325,7 +23955,6 @@ class GEnterpriseServerUserAccountsUploadOrderBuilder
 
   @override
   void replace(GEnterpriseServerUserAccountsUploadOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GEnterpriseServerUserAccountsUploadOrder;
   }
 
@@ -24340,7 +23969,7 @@ class GEnterpriseServerUserAccountsUploadOrderBuilder
 
   _$GEnterpriseServerUserAccountsUploadOrder _build() {
     final _$result = _$v ??
-        new _$GEnterpriseServerUserAccountsUploadOrder._(
+        _$GEnterpriseServerUserAccountsUploadOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(direction,
               r'GEnterpriseServerUserAccountsUploadOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -24359,21 +23988,17 @@ class _$GFollowUserInput extends GFollowUserInput {
 
   factory _$GFollowUserInput(
           [void Function(GFollowUserInputBuilder)? updates]) =>
-      (new GFollowUserInputBuilder()..update(updates))._build();
+      (GFollowUserInputBuilder()..update(updates))._build();
 
   _$GFollowUserInput._({this.clientMutationId, required this.userId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'GFollowUserInput', 'userId');
-  }
-
+      : super._();
   @override
   GFollowUserInput rebuild(void Function(GFollowUserInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GFollowUserInputBuilder toBuilder() =>
-      new GFollowUserInputBuilder()..replace(this);
+      GFollowUserInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24428,7 +24053,6 @@ class GFollowUserInputBuilder
 
   @override
   void replace(GFollowUserInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFollowUserInput;
   }
 
@@ -24442,7 +24066,7 @@ class GFollowUserInputBuilder
 
   _$GFollowUserInput _build() {
     final _$result = _$v ??
-        new _$GFollowUserInput._(
+        _$GFollowUserInput._(
           clientMutationId: clientMutationId,
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'GFollowUserInput', 'userId'),
@@ -24459,20 +24083,15 @@ class _$GGistOrder extends GGistOrder {
   final GGistOrderField field;
 
   factory _$GGistOrder([void Function(GGistOrderBuilder)? updates]) =>
-      (new GGistOrderBuilder()..update(updates))._build();
+      (GGistOrderBuilder()..update(updates))._build();
 
-  _$GGistOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GGistOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GGistOrder', 'field');
-  }
-
+  _$GGistOrder._({required this.direction, required this.field}) : super._();
   @override
   GGistOrder rebuild(void Function(GGistOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GGistOrderBuilder toBuilder() => new GGistOrderBuilder()..replace(this);
+  GGistOrderBuilder toBuilder() => GGistOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24525,7 +24144,6 @@ class GGistOrderBuilder implements Builder<GGistOrder, GGistOrderBuilder> {
 
   @override
   void replace(GGistOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GGistOrder;
   }
 
@@ -24539,7 +24157,7 @@ class GGistOrderBuilder implements Builder<GGistOrder, GGistOrderBuilder> {
 
   _$GGistOrder _build() {
     final _$result = _$v ??
-        new _$GGistOrder._(
+        _$GGistOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GGistOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -24555,18 +24173,15 @@ class _$GGitObjectID extends GGitObjectID {
   final String value;
 
   factory _$GGitObjectID([void Function(GGitObjectIDBuilder)? updates]) =>
-      (new GGitObjectIDBuilder()..update(updates))._build();
+      (GGitObjectIDBuilder()..update(updates))._build();
 
-  _$GGitObjectID._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GGitObjectID', 'value');
-  }
-
+  _$GGitObjectID._({required this.value}) : super._();
   @override
   GGitObjectID rebuild(void Function(GGitObjectIDBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GGitObjectIDBuilder toBuilder() => new GGitObjectIDBuilder()..replace(this);
+  GGitObjectIDBuilder toBuilder() => GGitObjectIDBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24610,7 +24225,6 @@ class GGitObjectIDBuilder
 
   @override
   void replace(GGitObjectID other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GGitObjectID;
   }
 
@@ -24624,7 +24238,7 @@ class GGitObjectIDBuilder
 
   _$GGitObjectID _build() {
     final _$result = _$v ??
-        new _$GGitObjectID._(
+        _$GGitObjectID._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GGitObjectID', 'value'),
         );
@@ -24638,18 +24252,15 @@ class _$GGitSSHRemote extends GGitSSHRemote {
   final String value;
 
   factory _$GGitSSHRemote([void Function(GGitSSHRemoteBuilder)? updates]) =>
-      (new GGitSSHRemoteBuilder()..update(updates))._build();
+      (GGitSSHRemoteBuilder()..update(updates))._build();
 
-  _$GGitSSHRemote._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GGitSSHRemote', 'value');
-  }
-
+  _$GGitSSHRemote._({required this.value}) : super._();
   @override
   GGitSSHRemote rebuild(void Function(GGitSSHRemoteBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GGitSSHRemoteBuilder toBuilder() => new GGitSSHRemoteBuilder()..replace(this);
+  GGitSSHRemoteBuilder toBuilder() => GGitSSHRemoteBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24693,7 +24304,6 @@ class GGitSSHRemoteBuilder
 
   @override
   void replace(GGitSSHRemote other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GGitSSHRemote;
   }
 
@@ -24707,7 +24317,7 @@ class GGitSSHRemoteBuilder
 
   _$GGitSSHRemote _build() {
     final _$result = _$v ??
-        new _$GGitSSHRemote._(
+        _$GGitSSHRemote._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GGitSSHRemote', 'value'),
         );
@@ -24721,18 +24331,15 @@ class _$GGitTimestamp extends GGitTimestamp {
   final String value;
 
   factory _$GGitTimestamp([void Function(GGitTimestampBuilder)? updates]) =>
-      (new GGitTimestampBuilder()..update(updates))._build();
+      (GGitTimestampBuilder()..update(updates))._build();
 
-  _$GGitTimestamp._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GGitTimestamp', 'value');
-  }
-
+  _$GGitTimestamp._({required this.value}) : super._();
   @override
   GGitTimestamp rebuild(void Function(GGitTimestampBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GGitTimestampBuilder toBuilder() => new GGitTimestampBuilder()..replace(this);
+  GGitTimestampBuilder toBuilder() => GGitTimestampBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24776,7 +24383,6 @@ class GGitTimestampBuilder
 
   @override
   void replace(GGitTimestamp other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GGitTimestamp;
   }
 
@@ -24790,7 +24396,7 @@ class GGitTimestampBuilder
 
   _$GGitTimestamp _build() {
     final _$result = _$v ??
-        new _$GGitTimestamp._(
+        _$GGitTimestamp._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GGitTimestamp', 'value'),
         );
@@ -24804,18 +24410,15 @@ class _$GHTML extends GHTML {
   final String value;
 
   factory _$GHTML([void Function(GHTMLBuilder)? updates]) =>
-      (new GHTMLBuilder()..update(updates))._build();
+      (GHTMLBuilder()..update(updates))._build();
 
-  _$GHTML._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GHTML', 'value');
-  }
-
+  _$GHTML._({required this.value}) : super._();
   @override
   GHTML rebuild(void Function(GHTMLBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHTMLBuilder toBuilder() => new GHTMLBuilder()..replace(this);
+  GHTMLBuilder toBuilder() => GHTMLBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24858,7 +24461,6 @@ class GHTMLBuilder implements Builder<GHTML, GHTMLBuilder> {
 
   @override
   void replace(GHTML other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHTML;
   }
 
@@ -24872,7 +24474,7 @@ class GHTMLBuilder implements Builder<GHTML, GHTMLBuilder> {
 
   _$GHTML _build() {
     final _$result = _$v ??
-        new _$GHTML._(
+        _$GHTML._(
           value:
               BuiltValueNullFieldError.checkNotNull(value, r'GHTML', 'value'),
         );
@@ -24895,7 +24497,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
 
   factory _$GInviteEnterpriseAdminInput(
           [void Function(GInviteEnterpriseAdminInputBuilder)? updates]) =>
-      (new GInviteEnterpriseAdminInputBuilder()..update(updates))._build();
+      (GInviteEnterpriseAdminInputBuilder()..update(updates))._build();
 
   _$GInviteEnterpriseAdminInput._(
       {this.clientMutationId,
@@ -24903,11 +24505,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
       required this.enterpriseId,
       this.invitee,
       this.role})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, r'GInviteEnterpriseAdminInput', 'enterpriseId');
-  }
-
+      : super._();
   @override
   GInviteEnterpriseAdminInput rebuild(
           void Function(GInviteEnterpriseAdminInputBuilder) updates) =>
@@ -24915,7 +24513,7 @@ class _$GInviteEnterpriseAdminInput extends GInviteEnterpriseAdminInput {
 
   @override
   GInviteEnterpriseAdminInputBuilder toBuilder() =>
-      new GInviteEnterpriseAdminInputBuilder()..replace(this);
+      GInviteEnterpriseAdminInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -24996,7 +24594,6 @@ class GInviteEnterpriseAdminInputBuilder
 
   @override
   void replace(GInviteEnterpriseAdminInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GInviteEnterpriseAdminInput;
   }
 
@@ -25010,7 +24607,7 @@ class GInviteEnterpriseAdminInputBuilder
 
   _$GInviteEnterpriseAdminInput _build() {
     final _$result = _$v ??
-        new _$GInviteEnterpriseAdminInput._(
+        _$GInviteEnterpriseAdminInput._(
           clientMutationId: clientMutationId,
           email: email,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
@@ -25042,7 +24639,7 @@ class _$GIssueFilters extends GIssueFilters {
   final bool? viewerSubscribed;
 
   factory _$GIssueFilters([void Function(GIssueFiltersBuilder)? updates]) =>
-      (new GIssueFiltersBuilder()..update(updates))._build();
+      (GIssueFiltersBuilder()..update(updates))._build();
 
   _$GIssueFilters._(
       {this.assignee,
@@ -25054,13 +24651,12 @@ class _$GIssueFilters extends GIssueFilters {
       this.states,
       this.viewerSubscribed})
       : super._();
-
   @override
   GIssueFilters rebuild(void Function(GIssueFiltersBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GIssueFiltersBuilder toBuilder() => new GIssueFiltersBuilder()..replace(this);
+  GIssueFiltersBuilder toBuilder() => GIssueFiltersBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25119,8 +24715,7 @@ class GIssueFiltersBuilder
   set createdBy(String? createdBy) => _$this._createdBy = createdBy;
 
   ListBuilder<String>? _labels;
-  ListBuilder<String> get labels =>
-      _$this._labels ??= new ListBuilder<String>();
+  ListBuilder<String> get labels => _$this._labels ??= ListBuilder<String>();
   set labels(ListBuilder<String>? labels) => _$this._labels = labels;
 
   String? _mentioned;
@@ -25132,12 +24727,12 @@ class GIssueFiltersBuilder
   set milestone(String? milestone) => _$this._milestone = milestone;
 
   GDateTimeBuilder? _since;
-  GDateTimeBuilder get since => _$this._since ??= new GDateTimeBuilder();
+  GDateTimeBuilder get since => _$this._since ??= GDateTimeBuilder();
   set since(GDateTimeBuilder? since) => _$this._since = since;
 
   ListBuilder<GIssueState>? _states;
   ListBuilder<GIssueState> get states =>
-      _$this._states ??= new ListBuilder<GIssueState>();
+      _$this._states ??= ListBuilder<GIssueState>();
   set states(ListBuilder<GIssueState>? states) => _$this._states = states;
 
   bool? _viewerSubscribed;
@@ -25165,7 +24760,6 @@ class GIssueFiltersBuilder
 
   @override
   void replace(GIssueFilters other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GIssueFilters;
   }
 
@@ -25181,7 +24775,7 @@ class GIssueFiltersBuilder
     _$GIssueFilters _$result;
     try {
       _$result = _$v ??
-          new _$GIssueFilters._(
+          _$GIssueFilters._(
             assignee: assignee,
             createdBy: createdBy,
             labels: _labels?.build(),
@@ -25202,7 +24796,7 @@ class GIssueFiltersBuilder
         _$failedField = 'states';
         _states?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GIssueFilters', _$failedField, e.toString());
       }
       rethrow;
@@ -25219,20 +24813,15 @@ class _$GIssueOrder extends GIssueOrder {
   final GIssueOrderField field;
 
   factory _$GIssueOrder([void Function(GIssueOrderBuilder)? updates]) =>
-      (new GIssueOrderBuilder()..update(updates))._build();
+      (GIssueOrderBuilder()..update(updates))._build();
 
-  _$GIssueOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GIssueOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GIssueOrder', 'field');
-  }
-
+  _$GIssueOrder._({required this.direction, required this.field}) : super._();
   @override
   GIssueOrder rebuild(void Function(GIssueOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GIssueOrderBuilder toBuilder() => new GIssueOrderBuilder()..replace(this);
+  GIssueOrderBuilder toBuilder() => GIssueOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25285,7 +24874,6 @@ class GIssueOrderBuilder implements Builder<GIssueOrder, GIssueOrderBuilder> {
 
   @override
   void replace(GIssueOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GIssueOrder;
   }
 
@@ -25299,7 +24887,7 @@ class GIssueOrderBuilder implements Builder<GIssueOrder, GIssueOrderBuilder> {
 
   _$GIssueOrder _build() {
     final _$result = _$v ??
-        new _$GIssueOrder._(
+        _$GIssueOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GIssueOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -25317,20 +24905,15 @@ class _$GLabelOrder extends GLabelOrder {
   final GLabelOrderField field;
 
   factory _$GLabelOrder([void Function(GLabelOrderBuilder)? updates]) =>
-      (new GLabelOrderBuilder()..update(updates))._build();
+      (GLabelOrderBuilder()..update(updates))._build();
 
-  _$GLabelOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GLabelOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GLabelOrder', 'field');
-  }
-
+  _$GLabelOrder._({required this.direction, required this.field}) : super._();
   @override
   GLabelOrder rebuild(void Function(GLabelOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GLabelOrderBuilder toBuilder() => new GLabelOrderBuilder()..replace(this);
+  GLabelOrderBuilder toBuilder() => GLabelOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25383,7 +24966,6 @@ class GLabelOrderBuilder implements Builder<GLabelOrder, GLabelOrderBuilder> {
 
   @override
   void replace(GLabelOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GLabelOrder;
   }
 
@@ -25397,7 +24979,7 @@ class GLabelOrderBuilder implements Builder<GLabelOrder, GLabelOrderBuilder> {
 
   _$GLabelOrder _build() {
     final _$result = _$v ??
-        new _$GLabelOrder._(
+        _$GLabelOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GLabelOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -25415,22 +24997,16 @@ class _$GLanguageOrder extends GLanguageOrder {
   final GLanguageOrderField field;
 
   factory _$GLanguageOrder([void Function(GLanguageOrderBuilder)? updates]) =>
-      (new GLanguageOrderBuilder()..update(updates))._build();
+      (GLanguageOrderBuilder()..update(updates))._build();
 
   _$GLanguageOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GLanguageOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GLanguageOrder', 'field');
-  }
-
+      : super._();
   @override
   GLanguageOrder rebuild(void Function(GLanguageOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GLanguageOrderBuilder toBuilder() =>
-      new GLanguageOrderBuilder()..replace(this);
+  GLanguageOrderBuilder toBuilder() => GLanguageOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25484,7 +25060,6 @@ class GLanguageOrderBuilder
 
   @override
   void replace(GLanguageOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GLanguageOrder;
   }
 
@@ -25498,7 +25073,7 @@ class GLanguageOrderBuilder
 
   _$GLanguageOrder _build() {
     final _$result = _$v ??
-        new _$GLanguageOrder._(
+        _$GLanguageOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GLanguageOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -25519,19 +25094,13 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
 
   factory _$GLinkRepositoryToProjectInput(
           [void Function(GLinkRepositoryToProjectInputBuilder)? updates]) =>
-      (new GLinkRepositoryToProjectInputBuilder()..update(updates))._build();
+      (GLinkRepositoryToProjectInputBuilder()..update(updates))._build();
 
   _$GLinkRepositoryToProjectInput._(
       {this.clientMutationId,
       required this.projectId,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'GLinkRepositoryToProjectInput', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GLinkRepositoryToProjectInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GLinkRepositoryToProjectInput rebuild(
           void Function(GLinkRepositoryToProjectInputBuilder) updates) =>
@@ -25539,7 +25108,7 @@ class _$GLinkRepositoryToProjectInput extends GLinkRepositoryToProjectInput {
 
   @override
   GLinkRepositoryToProjectInputBuilder toBuilder() =>
-      new GLinkRepositoryToProjectInputBuilder()..replace(this);
+      GLinkRepositoryToProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25604,7 +25173,6 @@ class GLinkRepositoryToProjectInputBuilder
 
   @override
   void replace(GLinkRepositoryToProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GLinkRepositoryToProjectInput;
   }
 
@@ -25618,7 +25186,7 @@ class GLinkRepositoryToProjectInputBuilder
 
   _$GLinkRepositoryToProjectInput _build() {
     final _$result = _$v ??
-        new _$GLinkRepositoryToProjectInput._(
+        _$GLinkRepositoryToProjectInput._(
           clientMutationId: clientMutationId,
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'GLinkRepositoryToProjectInput', 'projectId'),
@@ -25640,15 +25208,11 @@ class _$GLockLockableInput extends GLockLockableInput {
 
   factory _$GLockLockableInput(
           [void Function(GLockLockableInputBuilder)? updates]) =>
-      (new GLockLockableInputBuilder()..update(updates))._build();
+      (GLockLockableInputBuilder()..update(updates))._build();
 
   _$GLockLockableInput._(
       {this.clientMutationId, this.lockReason, required this.lockableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        lockableId, r'GLockLockableInput', 'lockableId');
-  }
-
+      : super._();
   @override
   GLockLockableInput rebuild(
           void Function(GLockLockableInputBuilder) updates) =>
@@ -25656,7 +25220,7 @@ class _$GLockLockableInput extends GLockLockableInput {
 
   @override
   GLockLockableInputBuilder toBuilder() =>
-      new GLockLockableInputBuilder()..replace(this);
+      GLockLockableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25719,7 +25283,6 @@ class GLockLockableInputBuilder
 
   @override
   void replace(GLockLockableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GLockLockableInput;
   }
 
@@ -25733,7 +25296,7 @@ class GLockLockableInputBuilder
 
   _$GLockLockableInput _build() {
     final _$result = _$v ??
-        new _$GLockLockableInput._(
+        _$GLockLockableInput._(
           clientMutationId: clientMutationId,
           lockReason: lockReason,
           lockableId: BuiltValueNullFieldError.checkNotNull(
@@ -25758,7 +25321,7 @@ class _$GMergeBranchInput extends GMergeBranchInput {
 
   factory _$GMergeBranchInput(
           [void Function(GMergeBranchInputBuilder)? updates]) =>
-      (new GMergeBranchInputBuilder()..update(updates))._build();
+      (GMergeBranchInputBuilder()..update(updates))._build();
 
   _$GMergeBranchInput._(
       {required this.base,
@@ -25766,20 +25329,14 @@ class _$GMergeBranchInput extends GMergeBranchInput {
       this.commitMessage,
       required this.head,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(base, r'GMergeBranchInput', 'base');
-    BuiltValueNullFieldError.checkNotNull(head, r'GMergeBranchInput', 'head');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GMergeBranchInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GMergeBranchInput rebuild(void Function(GMergeBranchInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GMergeBranchInputBuilder toBuilder() =>
-      new GMergeBranchInputBuilder()..replace(this);
+      GMergeBranchInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25859,7 +25416,6 @@ class GMergeBranchInputBuilder
 
   @override
   void replace(GMergeBranchInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GMergeBranchInput;
   }
 
@@ -25873,7 +25429,7 @@ class GMergeBranchInputBuilder
 
   _$GMergeBranchInput _build() {
     final _$result = _$v ??
-        new _$GMergeBranchInput._(
+        _$GMergeBranchInput._(
           base: BuiltValueNullFieldError.checkNotNull(
               base, r'GMergeBranchInput', 'base'),
           clientMutationId: clientMutationId,
@@ -25904,7 +25460,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
 
   factory _$GMergePullRequestInput(
           [void Function(GMergePullRequestInputBuilder)? updates]) =>
-      (new GMergePullRequestInputBuilder()..update(updates))._build();
+      (GMergePullRequestInputBuilder()..update(updates))._build();
 
   _$GMergePullRequestInput._(
       {this.clientMutationId,
@@ -25913,11 +25469,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
       this.expectedHeadOid,
       this.mergeMethod,
       required this.pullRequestId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GMergePullRequestInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GMergePullRequestInput rebuild(
           void Function(GMergePullRequestInputBuilder) updates) =>
@@ -25925,7 +25477,7 @@ class _$GMergePullRequestInput extends GMergePullRequestInput {
 
   @override
   GMergePullRequestInputBuilder toBuilder() =>
-      new GMergePullRequestInputBuilder()..replace(this);
+      GMergePullRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -25985,7 +25537,7 @@ class GMergePullRequestInputBuilder
 
   GGitObjectIDBuilder? _expectedHeadOid;
   GGitObjectIDBuilder get expectedHeadOid =>
-      _$this._expectedHeadOid ??= new GGitObjectIDBuilder();
+      _$this._expectedHeadOid ??= GGitObjectIDBuilder();
   set expectedHeadOid(GGitObjectIDBuilder? expectedHeadOid) =>
       _$this._expectedHeadOid = expectedHeadOid;
 
@@ -26017,7 +25569,6 @@ class GMergePullRequestInputBuilder
 
   @override
   void replace(GMergePullRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GMergePullRequestInput;
   }
 
@@ -26033,7 +25584,7 @@ class GMergePullRequestInputBuilder
     _$GMergePullRequestInput _$result;
     try {
       _$result = _$v ??
-          new _$GMergePullRequestInput._(
+          _$GMergePullRequestInput._(
             clientMutationId: clientMutationId,
             commitBody: commitBody,
             commitHeadline: commitHeadline,
@@ -26048,7 +25599,7 @@ class GMergePullRequestInputBuilder
         _$failedField = 'expectedHeadOid';
         _expectedHeadOid?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GMergePullRequestInput', _$failedField, e.toString());
       }
       rethrow;
@@ -26065,22 +25616,16 @@ class _$GMilestoneOrder extends GMilestoneOrder {
   final GMilestoneOrderField field;
 
   factory _$GMilestoneOrder([void Function(GMilestoneOrderBuilder)? updates]) =>
-      (new GMilestoneOrderBuilder()..update(updates))._build();
+      (GMilestoneOrderBuilder()..update(updates))._build();
 
   _$GMilestoneOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GMilestoneOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GMilestoneOrder', 'field');
-  }
-
+      : super._();
   @override
   GMilestoneOrder rebuild(void Function(GMilestoneOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GMilestoneOrderBuilder toBuilder() =>
-      new GMilestoneOrderBuilder()..replace(this);
+  GMilestoneOrderBuilder toBuilder() => GMilestoneOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26134,7 +25679,6 @@ class GMilestoneOrderBuilder
 
   @override
   void replace(GMilestoneOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GMilestoneOrder;
   }
 
@@ -26148,7 +25692,7 @@ class GMilestoneOrderBuilder
 
   _$GMilestoneOrder _build() {
     final _$result = _$v ??
-        new _$GMilestoneOrder._(
+        _$GMilestoneOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GMilestoneOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -26171,20 +25715,14 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
 
   factory _$GMoveProjectCardInput(
           [void Function(GMoveProjectCardInputBuilder)? updates]) =>
-      (new GMoveProjectCardInputBuilder()..update(updates))._build();
+      (GMoveProjectCardInputBuilder()..update(updates))._build();
 
   _$GMoveProjectCardInput._(
       {this.afterCardId,
       required this.cardId,
       this.clientMutationId,
       required this.columnId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        cardId, r'GMoveProjectCardInput', 'cardId');
-    BuiltValueNullFieldError.checkNotNull(
-        columnId, r'GMoveProjectCardInput', 'columnId');
-  }
-
+      : super._();
   @override
   GMoveProjectCardInput rebuild(
           void Function(GMoveProjectCardInputBuilder) updates) =>
@@ -26192,7 +25730,7 @@ class _$GMoveProjectCardInput extends GMoveProjectCardInput {
 
   @override
   GMoveProjectCardInputBuilder toBuilder() =>
-      new GMoveProjectCardInputBuilder()..replace(this);
+      GMoveProjectCardInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26263,7 +25801,6 @@ class GMoveProjectCardInputBuilder
 
   @override
   void replace(GMoveProjectCardInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GMoveProjectCardInput;
   }
 
@@ -26277,7 +25814,7 @@ class GMoveProjectCardInputBuilder
 
   _$GMoveProjectCardInput _build() {
     final _$result = _$v ??
-        new _$GMoveProjectCardInput._(
+        _$GMoveProjectCardInput._(
           afterCardId: afterCardId,
           cardId: BuiltValueNullFieldError.checkNotNull(
               cardId, r'GMoveProjectCardInput', 'cardId'),
@@ -26300,15 +25837,11 @@ class _$GMoveProjectColumnInput extends GMoveProjectColumnInput {
 
   factory _$GMoveProjectColumnInput(
           [void Function(GMoveProjectColumnInputBuilder)? updates]) =>
-      (new GMoveProjectColumnInputBuilder()..update(updates))._build();
+      (GMoveProjectColumnInputBuilder()..update(updates))._build();
 
   _$GMoveProjectColumnInput._(
       {this.afterColumnId, this.clientMutationId, required this.columnId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        columnId, r'GMoveProjectColumnInput', 'columnId');
-  }
-
+      : super._();
   @override
   GMoveProjectColumnInput rebuild(
           void Function(GMoveProjectColumnInputBuilder) updates) =>
@@ -26316,7 +25849,7 @@ class _$GMoveProjectColumnInput extends GMoveProjectColumnInput {
 
   @override
   GMoveProjectColumnInputBuilder toBuilder() =>
-      new GMoveProjectColumnInputBuilder()..replace(this);
+      GMoveProjectColumnInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26381,7 +25914,6 @@ class GMoveProjectColumnInputBuilder
 
   @override
   void replace(GMoveProjectColumnInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GMoveProjectColumnInput;
   }
 
@@ -26395,7 +25927,7 @@ class GMoveProjectColumnInputBuilder
 
   _$GMoveProjectColumnInput _build() {
     final _$result = _$v ??
-        new _$GMoveProjectColumnInput._(
+        _$GMoveProjectColumnInput._(
           afterColumnId: afterColumnId,
           clientMutationId: clientMutationId,
           columnId: BuiltValueNullFieldError.checkNotNull(
@@ -26414,16 +25946,10 @@ class _$GOrganizationOrder extends GOrganizationOrder {
 
   factory _$GOrganizationOrder(
           [void Function(GOrganizationOrderBuilder)? updates]) =>
-      (new GOrganizationOrderBuilder()..update(updates))._build();
+      (GOrganizationOrderBuilder()..update(updates))._build();
 
   _$GOrganizationOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GOrganizationOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GOrganizationOrder', 'field');
-  }
-
+      : super._();
   @override
   GOrganizationOrder rebuild(
           void Function(GOrganizationOrderBuilder) updates) =>
@@ -26431,7 +25957,7 @@ class _$GOrganizationOrder extends GOrganizationOrder {
 
   @override
   GOrganizationOrderBuilder toBuilder() =>
-      new GOrganizationOrderBuilder()..replace(this);
+      GOrganizationOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26485,7 +26011,6 @@ class GOrganizationOrderBuilder
 
   @override
   void replace(GOrganizationOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GOrganizationOrder;
   }
 
@@ -26499,7 +26024,7 @@ class GOrganizationOrderBuilder
 
   _$GOrganizationOrder _build() {
     final _$result = _$v ??
-        new _$GOrganizationOrder._(
+        _$GOrganizationOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GOrganizationOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -26516,19 +26041,16 @@ class _$GPreciseDateTime extends GPreciseDateTime {
 
   factory _$GPreciseDateTime(
           [void Function(GPreciseDateTimeBuilder)? updates]) =>
-      (new GPreciseDateTimeBuilder()..update(updates))._build();
+      (GPreciseDateTimeBuilder()..update(updates))._build();
 
-  _$GPreciseDateTime._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GPreciseDateTime', 'value');
-  }
-
+  _$GPreciseDateTime._({required this.value}) : super._();
   @override
   GPreciseDateTime rebuild(void Function(GPreciseDateTimeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GPreciseDateTimeBuilder toBuilder() =>
-      new GPreciseDateTimeBuilder()..replace(this);
+      GPreciseDateTimeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26573,7 +26095,6 @@ class GPreciseDateTimeBuilder
 
   @override
   void replace(GPreciseDateTime other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPreciseDateTime;
   }
 
@@ -26587,7 +26108,7 @@ class GPreciseDateTimeBuilder
 
   _$GPreciseDateTime _build() {
     final _$result = _$v ??
-        new _$GPreciseDateTime._(
+        _$GPreciseDateTime._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GPreciseDateTime', 'value'),
         );
@@ -26603,21 +26124,15 @@ class _$GProjectOrder extends GProjectOrder {
   final GProjectOrderField field;
 
   factory _$GProjectOrder([void Function(GProjectOrderBuilder)? updates]) =>
-      (new GProjectOrderBuilder()..update(updates))._build();
+      (GProjectOrderBuilder()..update(updates))._build();
 
-  _$GProjectOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GProjectOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GProjectOrder', 'field');
-  }
-
+  _$GProjectOrder._({required this.direction, required this.field}) : super._();
   @override
   GProjectOrder rebuild(void Function(GProjectOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GProjectOrderBuilder toBuilder() => new GProjectOrderBuilder()..replace(this);
+  GProjectOrderBuilder toBuilder() => GProjectOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26671,7 +26186,6 @@ class GProjectOrderBuilder
 
   @override
   void replace(GProjectOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GProjectOrder;
   }
 
@@ -26685,7 +26199,7 @@ class GProjectOrderBuilder
 
   _$GProjectOrder _build() {
     final _$result = _$v ??
-        new _$GProjectOrder._(
+        _$GProjectOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GProjectOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -26704,22 +26218,17 @@ class _$GPullRequestOrder extends GPullRequestOrder {
 
   factory _$GPullRequestOrder(
           [void Function(GPullRequestOrderBuilder)? updates]) =>
-      (new GPullRequestOrderBuilder()..update(updates))._build();
+      (GPullRequestOrderBuilder()..update(updates))._build();
 
   _$GPullRequestOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GPullRequestOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GPullRequestOrder', 'field');
-  }
-
+      : super._();
   @override
   GPullRequestOrder rebuild(void Function(GPullRequestOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GPullRequestOrderBuilder toBuilder() =>
-      new GPullRequestOrderBuilder()..replace(this);
+      GPullRequestOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26773,7 +26282,6 @@ class GPullRequestOrderBuilder
 
   @override
   void replace(GPullRequestOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPullRequestOrder;
   }
 
@@ -26787,7 +26295,7 @@ class GPullRequestOrderBuilder
 
   _$GPullRequestOrder _build() {
     final _$result = _$v ??
-        new _$GPullRequestOrder._(
+        _$GPullRequestOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GPullRequestOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -26805,22 +26313,16 @@ class _$GReactionOrder extends GReactionOrder {
   final GReactionOrderField field;
 
   factory _$GReactionOrder([void Function(GReactionOrderBuilder)? updates]) =>
-      (new GReactionOrderBuilder()..update(updates))._build();
+      (GReactionOrderBuilder()..update(updates))._build();
 
   _$GReactionOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GReactionOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GReactionOrder', 'field');
-  }
-
+      : super._();
   @override
   GReactionOrder rebuild(void Function(GReactionOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GReactionOrderBuilder toBuilder() =>
-      new GReactionOrderBuilder()..replace(this);
+  GReactionOrderBuilder toBuilder() => GReactionOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26874,7 +26376,6 @@ class GReactionOrderBuilder
 
   @override
   void replace(GReactionOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReactionOrder;
   }
 
@@ -26888,7 +26389,7 @@ class GReactionOrderBuilder
 
   _$GReactionOrder _build() {
     final _$result = _$v ??
-        new _$GReactionOrder._(
+        _$GReactionOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GReactionOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -26906,19 +26407,15 @@ class _$GRefOrder extends GRefOrder {
   final GRefOrderField field;
 
   factory _$GRefOrder([void Function(GRefOrderBuilder)? updates]) =>
-      (new GRefOrderBuilder()..update(updates))._build();
+      (GRefOrderBuilder()..update(updates))._build();
 
-  _$GRefOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(direction, r'GRefOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GRefOrder', 'field');
-  }
-
+  _$GRefOrder._({required this.direction, required this.field}) : super._();
   @override
   GRefOrder rebuild(void Function(GRefOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GRefOrderBuilder toBuilder() => new GRefOrderBuilder()..replace(this);
+  GRefOrderBuilder toBuilder() => GRefOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -26971,7 +26468,6 @@ class GRefOrderBuilder implements Builder<GRefOrder, GRefOrderBuilder> {
 
   @override
   void replace(GRefOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRefOrder;
   }
 
@@ -26985,7 +26481,7 @@ class GRefOrderBuilder implements Builder<GRefOrder, GRefOrderBuilder> {
 
   _$GRefOrder _build() {
     final _$result = _$v ??
-        new _$GRefOrder._(
+        _$GRefOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GRefOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -27007,19 +26503,13 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
           [void Function(
                   GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder)?
               updates]) =>
-      (new GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder()
+      (GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder()
             ..update(updates))
           ._build();
 
   _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
       {this.clientMutationId, required this.enterpriseId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GRegenerateEnterpriseIdentityProviderRecoveryCodesInput',
-        'enterpriseId');
-  }
-
+      : super._();
   @override
   GRegenerateEnterpriseIdentityProviderRecoveryCodesInput rebuild(
           void Function(
@@ -27029,7 +26519,7 @@ class _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput
 
   @override
   GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder toBuilder() =>
-      new GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder()
+      GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder()
         ..replace(this);
 
   @override
@@ -27088,7 +26578,6 @@ class GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder
 
   @override
   void replace(GRegenerateEnterpriseIdentityProviderRecoveryCodesInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput;
   }
 
@@ -27105,7 +26594,7 @@ class GRegenerateEnterpriseIdentityProviderRecoveryCodesInputBuilder
 
   _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput _build() {
     final _$result = _$v ??
-        new _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
+        _$GRegenerateEnterpriseIdentityProviderRecoveryCodesInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -27127,17 +26616,11 @@ class _$GRegistryPackageMetadatum extends GRegistryPackageMetadatum {
 
   factory _$GRegistryPackageMetadatum(
           [void Function(GRegistryPackageMetadatumBuilder)? updates]) =>
-      (new GRegistryPackageMetadatumBuilder()..update(updates))._build();
+      (GRegistryPackageMetadatumBuilder()..update(updates))._build();
 
   _$GRegistryPackageMetadatum._(
       {required this.name, this.Gupdate, required this.value})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GRegistryPackageMetadatum', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        value, r'GRegistryPackageMetadatum', 'value');
-  }
-
+      : super._();
   @override
   GRegistryPackageMetadatum rebuild(
           void Function(GRegistryPackageMetadatumBuilder) updates) =>
@@ -27145,7 +26628,7 @@ class _$GRegistryPackageMetadatum extends GRegistryPackageMetadatum {
 
   @override
   GRegistryPackageMetadatumBuilder toBuilder() =>
-      new GRegistryPackageMetadatumBuilder()..replace(this);
+      GRegistryPackageMetadatumBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27208,7 +26691,6 @@ class GRegistryPackageMetadatumBuilder
 
   @override
   void replace(GRegistryPackageMetadatum other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRegistryPackageMetadatum;
   }
 
@@ -27222,7 +26704,7 @@ class GRegistryPackageMetadatumBuilder
 
   _$GRegistryPackageMetadatum _build() {
     final _$result = _$v ??
-        new _$GRegistryPackageMetadatum._(
+        _$GRegistryPackageMetadatum._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GRegistryPackageMetadatum', 'name'),
           Gupdate: Gupdate,
@@ -27241,21 +26723,15 @@ class _$GReleaseOrder extends GReleaseOrder {
   final GReleaseOrderField field;
 
   factory _$GReleaseOrder([void Function(GReleaseOrderBuilder)? updates]) =>
-      (new GReleaseOrderBuilder()..update(updates))._build();
+      (GReleaseOrderBuilder()..update(updates))._build();
 
-  _$GReleaseOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GReleaseOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GReleaseOrder', 'field');
-  }
-
+  _$GReleaseOrder._({required this.direction, required this.field}) : super._();
   @override
   GReleaseOrder rebuild(void Function(GReleaseOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GReleaseOrderBuilder toBuilder() => new GReleaseOrderBuilder()..replace(this);
+  GReleaseOrderBuilder toBuilder() => GReleaseOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27309,7 +26785,6 @@ class GReleaseOrderBuilder
 
   @override
   void replace(GReleaseOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReleaseOrder;
   }
 
@@ -27323,7 +26798,7 @@ class GReleaseOrderBuilder
 
   _$GReleaseOrder _build() {
     final _$result = _$v ??
-        new _$GReleaseOrder._(
+        _$GReleaseOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GReleaseOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -27346,20 +26821,13 @@ class _$GRemoveAssigneesFromAssignableInput
   factory _$GRemoveAssigneesFromAssignableInput(
           [void Function(GRemoveAssigneesFromAssignableInputBuilder)?
               updates]) =>
-      (new GRemoveAssigneesFromAssignableInputBuilder()..update(updates))
-          ._build();
+      (GRemoveAssigneesFromAssignableInputBuilder()..update(updates))._build();
 
   _$GRemoveAssigneesFromAssignableInput._(
       {required this.assignableId,
       required this.assigneeIds,
       this.clientMutationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        assignableId, r'GRemoveAssigneesFromAssignableInput', 'assignableId');
-    BuiltValueNullFieldError.checkNotNull(
-        assigneeIds, r'GRemoveAssigneesFromAssignableInput', 'assigneeIds');
-  }
-
+      : super._();
   @override
   GRemoveAssigneesFromAssignableInput rebuild(
           void Function(GRemoveAssigneesFromAssignableInputBuilder) updates) =>
@@ -27367,7 +26835,7 @@ class _$GRemoveAssigneesFromAssignableInput
 
   @override
   GRemoveAssigneesFromAssignableInputBuilder toBuilder() =>
-      new GRemoveAssigneesFromAssignableInputBuilder()..replace(this);
+      GRemoveAssigneesFromAssignableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27410,7 +26878,7 @@ class GRemoveAssigneesFromAssignableInputBuilder
 
   ListBuilder<String>? _assigneeIds;
   ListBuilder<String> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String>();
+      _$this._assigneeIds ??= ListBuilder<String>();
   set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
@@ -27434,7 +26902,6 @@ class GRemoveAssigneesFromAssignableInputBuilder
 
   @override
   void replace(GRemoveAssigneesFromAssignableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveAssigneesFromAssignableInput;
   }
 
@@ -27451,7 +26918,7 @@ class GRemoveAssigneesFromAssignableInputBuilder
     _$GRemoveAssigneesFromAssignableInput _$result;
     try {
       _$result = _$v ??
-          new _$GRemoveAssigneesFromAssignableInput._(
+          _$GRemoveAssigneesFromAssignableInput._(
             assignableId: BuiltValueNullFieldError.checkNotNull(assignableId,
                 r'GRemoveAssigneesFromAssignableInput', 'assignableId'),
             assigneeIds: assigneeIds.build(),
@@ -27463,10 +26930,8 @@ class GRemoveAssigneesFromAssignableInputBuilder
         _$failedField = 'assigneeIds';
         assigneeIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'GRemoveAssigneesFromAssignableInput',
-            _$failedField,
-            e.toString());
+        throw BuiltValueNestedFieldError(r'GRemoveAssigneesFromAssignableInput',
+            _$failedField, e.toString());
       }
       rethrow;
     }
@@ -27485,17 +26950,11 @@ class _$GRemoveEnterpriseAdminInput extends GRemoveEnterpriseAdminInput {
 
   factory _$GRemoveEnterpriseAdminInput(
           [void Function(GRemoveEnterpriseAdminInputBuilder)? updates]) =>
-      (new GRemoveEnterpriseAdminInputBuilder()..update(updates))._build();
+      (GRemoveEnterpriseAdminInputBuilder()..update(updates))._build();
 
   _$GRemoveEnterpriseAdminInput._(
       {this.clientMutationId, required this.enterpriseId, required this.login})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        login, r'GRemoveEnterpriseAdminInput', 'login');
-  }
-
+      : super._();
   @override
   GRemoveEnterpriseAdminInput rebuild(
           void Function(GRemoveEnterpriseAdminInputBuilder) updates) =>
@@ -27503,7 +26962,7 @@ class _$GRemoveEnterpriseAdminInput extends GRemoveEnterpriseAdminInput {
 
   @override
   GRemoveEnterpriseAdminInputBuilder toBuilder() =>
-      new GRemoveEnterpriseAdminInputBuilder()..replace(this);
+      GRemoveEnterpriseAdminInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27568,7 +27027,6 @@ class GRemoveEnterpriseAdminInputBuilder
 
   @override
   void replace(GRemoveEnterpriseAdminInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveEnterpriseAdminInput;
   }
 
@@ -27582,7 +27040,7 @@ class GRemoveEnterpriseAdminInputBuilder
 
   _$GRemoveEnterpriseAdminInput _build() {
     final _$result = _$v ??
-        new _$GRemoveEnterpriseAdminInput._(
+        _$GRemoveEnterpriseAdminInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId, r'GRemoveEnterpriseAdminInput', 'enterpriseId'),
@@ -27606,20 +27064,13 @@ class _$GRemoveEnterpriseOrganizationInput
   factory _$GRemoveEnterpriseOrganizationInput(
           [void Function(GRemoveEnterpriseOrganizationInputBuilder)?
               updates]) =>
-      (new GRemoveEnterpriseOrganizationInputBuilder()..update(updates))
-          ._build();
+      (GRemoveEnterpriseOrganizationInputBuilder()..update(updates))._build();
 
   _$GRemoveEnterpriseOrganizationInput._(
       {this.clientMutationId,
       required this.enterpriseId,
       required this.organizationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, r'GRemoveEnterpriseOrganizationInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(organizationId,
-        r'GRemoveEnterpriseOrganizationInput', 'organizationId');
-  }
-
+      : super._();
   @override
   GRemoveEnterpriseOrganizationInput rebuild(
           void Function(GRemoveEnterpriseOrganizationInputBuilder) updates) =>
@@ -27627,7 +27078,7 @@ class _$GRemoveEnterpriseOrganizationInput
 
   @override
   GRemoveEnterpriseOrganizationInputBuilder toBuilder() =>
-      new GRemoveEnterpriseOrganizationInputBuilder()..replace(this);
+      GRemoveEnterpriseOrganizationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27693,7 +27144,6 @@ class GRemoveEnterpriseOrganizationInputBuilder
 
   @override
   void replace(GRemoveEnterpriseOrganizationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveEnterpriseOrganizationInput;
   }
 
@@ -27708,7 +27158,7 @@ class GRemoveEnterpriseOrganizationInputBuilder
 
   _$GRemoveEnterpriseOrganizationInput _build() {
     final _$result = _$v ??
-        new _$GRemoveEnterpriseOrganizationInput._(
+        _$GRemoveEnterpriseOrganizationInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
               r'GRemoveEnterpriseOrganizationInput', 'enterpriseId'),
@@ -27731,19 +27181,13 @@ class _$GRemoveLabelsFromLabelableInput
 
   factory _$GRemoveLabelsFromLabelableInput(
           [void Function(GRemoveLabelsFromLabelableInputBuilder)? updates]) =>
-      (new GRemoveLabelsFromLabelableInputBuilder()..update(updates))._build();
+      (GRemoveLabelsFromLabelableInputBuilder()..update(updates))._build();
 
   _$GRemoveLabelsFromLabelableInput._(
       {this.clientMutationId,
       required this.labelIds,
       required this.labelableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        labelIds, r'GRemoveLabelsFromLabelableInput', 'labelIds');
-    BuiltValueNullFieldError.checkNotNull(
-        labelableId, r'GRemoveLabelsFromLabelableInput', 'labelableId');
-  }
-
+      : super._();
   @override
   GRemoveLabelsFromLabelableInput rebuild(
           void Function(GRemoveLabelsFromLabelableInputBuilder) updates) =>
@@ -27751,7 +27195,7 @@ class _$GRemoveLabelsFromLabelableInput
 
   @override
   GRemoveLabelsFromLabelableInputBuilder toBuilder() =>
-      new GRemoveLabelsFromLabelableInputBuilder()..replace(this);
+      GRemoveLabelsFromLabelableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27795,7 +27239,7 @@ class GRemoveLabelsFromLabelableInputBuilder
 
   ListBuilder<String>? _labelIds;
   ListBuilder<String> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String>();
+      _$this._labelIds ??= ListBuilder<String>();
   set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _labelableId;
@@ -27817,7 +27261,6 @@ class GRemoveLabelsFromLabelableInputBuilder
 
   @override
   void replace(GRemoveLabelsFromLabelableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveLabelsFromLabelableInput;
   }
 
@@ -27833,7 +27276,7 @@ class GRemoveLabelsFromLabelableInputBuilder
     _$GRemoveLabelsFromLabelableInput _$result;
     try {
       _$result = _$v ??
-          new _$GRemoveLabelsFromLabelableInput._(
+          _$GRemoveLabelsFromLabelableInput._(
             clientMutationId: clientMutationId,
             labelIds: labelIds.build(),
             labelableId: BuiltValueNullFieldError.checkNotNull(
@@ -27845,7 +27288,7 @@ class GRemoveLabelsFromLabelableInputBuilder
         _$failedField = 'labelIds';
         labelIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GRemoveLabelsFromLabelableInput', _$failedField, e.toString());
       }
       rethrow;
@@ -27866,19 +27309,13 @@ class _$GRemoveOutsideCollaboratorInput
 
   factory _$GRemoveOutsideCollaboratorInput(
           [void Function(GRemoveOutsideCollaboratorInputBuilder)? updates]) =>
-      (new GRemoveOutsideCollaboratorInputBuilder()..update(updates))._build();
+      (GRemoveOutsideCollaboratorInputBuilder()..update(updates))._build();
 
   _$GRemoveOutsideCollaboratorInput._(
       {this.clientMutationId,
       required this.organizationId,
       required this.userId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        organizationId, r'GRemoveOutsideCollaboratorInput', 'organizationId');
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'GRemoveOutsideCollaboratorInput', 'userId');
-  }
-
+      : super._();
   @override
   GRemoveOutsideCollaboratorInput rebuild(
           void Function(GRemoveOutsideCollaboratorInputBuilder) updates) =>
@@ -27886,7 +27323,7 @@ class _$GRemoveOutsideCollaboratorInput
 
   @override
   GRemoveOutsideCollaboratorInputBuilder toBuilder() =>
-      new GRemoveOutsideCollaboratorInputBuilder()..replace(this);
+      GRemoveOutsideCollaboratorInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -27952,7 +27389,6 @@ class GRemoveOutsideCollaboratorInputBuilder
 
   @override
   void replace(GRemoveOutsideCollaboratorInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveOutsideCollaboratorInput;
   }
 
@@ -27966,7 +27402,7 @@ class GRemoveOutsideCollaboratorInputBuilder
 
   _$GRemoveOutsideCollaboratorInput _build() {
     final _$result = _$v ??
-        new _$GRemoveOutsideCollaboratorInput._(
+        _$GRemoveOutsideCollaboratorInput._(
           clientMutationId: clientMutationId,
           organizationId: BuiltValueNullFieldError.checkNotNull(organizationId,
               r'GRemoveOutsideCollaboratorInput', 'organizationId'),
@@ -27988,17 +27424,11 @@ class _$GRemoveReactionInput extends GRemoveReactionInput {
 
   factory _$GRemoveReactionInput(
           [void Function(GRemoveReactionInputBuilder)? updates]) =>
-      (new GRemoveReactionInputBuilder()..update(updates))._build();
+      (GRemoveReactionInputBuilder()..update(updates))._build();
 
   _$GRemoveReactionInput._(
       {this.clientMutationId, required this.content, required this.subjectId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        content, r'GRemoveReactionInput', 'content');
-    BuiltValueNullFieldError.checkNotNull(
-        subjectId, r'GRemoveReactionInput', 'subjectId');
-  }
-
+      : super._();
   @override
   GRemoveReactionInput rebuild(
           void Function(GRemoveReactionInputBuilder) updates) =>
@@ -28006,7 +27436,7 @@ class _$GRemoveReactionInput extends GRemoveReactionInput {
 
   @override
   GRemoveReactionInputBuilder toBuilder() =>
-      new GRemoveReactionInputBuilder()..replace(this);
+      GRemoveReactionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28069,7 +27499,6 @@ class GRemoveReactionInputBuilder
 
   @override
   void replace(GRemoveReactionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveReactionInput;
   }
 
@@ -28083,7 +27512,7 @@ class GRemoveReactionInputBuilder
 
   _$GRemoveReactionInput _build() {
     final _$result = _$v ??
-        new _$GRemoveReactionInput._(
+        _$GRemoveReactionInput._(
           clientMutationId: clientMutationId,
           content: BuiltValueNullFieldError.checkNotNull(
               content, r'GRemoveReactionInput', 'content'),
@@ -28103,21 +27532,17 @@ class _$GRemoveStarInput extends GRemoveStarInput {
 
   factory _$GRemoveStarInput(
           [void Function(GRemoveStarInputBuilder)? updates]) =>
-      (new GRemoveStarInputBuilder()..update(updates))._build();
+      (GRemoveStarInputBuilder()..update(updates))._build();
 
   _$GRemoveStarInput._({this.clientMutationId, required this.starrableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        starrableId, r'GRemoveStarInput', 'starrableId');
-  }
-
+      : super._();
   @override
   GRemoveStarInput rebuild(void Function(GRemoveStarInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GRemoveStarInputBuilder toBuilder() =>
-      new GRemoveStarInputBuilder()..replace(this);
+      GRemoveStarInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28172,7 +27597,6 @@ class GRemoveStarInputBuilder
 
   @override
   void replace(GRemoveStarInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarInput;
   }
 
@@ -28186,7 +27610,7 @@ class GRemoveStarInputBuilder
 
   _$GRemoveStarInput _build() {
     final _$result = _$v ??
-        new _$GRemoveStarInput._(
+        _$GRemoveStarInput._(
           clientMutationId: clientMutationId,
           starrableId: BuiltValueNullFieldError.checkNotNull(
               starrableId, r'GRemoveStarInput', 'starrableId'),
@@ -28204,21 +27628,17 @@ class _$GReopenIssueInput extends GReopenIssueInput {
 
   factory _$GReopenIssueInput(
           [void Function(GReopenIssueInputBuilder)? updates]) =>
-      (new GReopenIssueInputBuilder()..update(updates))._build();
+      (GReopenIssueInputBuilder()..update(updates))._build();
 
   _$GReopenIssueInput._({this.clientMutationId, required this.issueId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issueId, r'GReopenIssueInput', 'issueId');
-  }
-
+      : super._();
   @override
   GReopenIssueInput rebuild(void Function(GReopenIssueInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GReopenIssueInputBuilder toBuilder() =>
-      new GReopenIssueInputBuilder()..replace(this);
+      GReopenIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28273,7 +27693,6 @@ class GReopenIssueInputBuilder
 
   @override
   void replace(GReopenIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReopenIssueInput;
   }
 
@@ -28287,7 +27706,7 @@ class GReopenIssueInputBuilder
 
   _$GReopenIssueInput _build() {
     final _$result = _$v ??
-        new _$GReopenIssueInput._(
+        _$GReopenIssueInput._(
           clientMutationId: clientMutationId,
           issueId: BuiltValueNullFieldError.checkNotNull(
               issueId, r'GReopenIssueInput', 'issueId'),
@@ -28305,15 +27724,11 @@ class _$GReopenPullRequestInput extends GReopenPullRequestInput {
 
   factory _$GReopenPullRequestInput(
           [void Function(GReopenPullRequestInputBuilder)? updates]) =>
-      (new GReopenPullRequestInputBuilder()..update(updates))._build();
+      (GReopenPullRequestInputBuilder()..update(updates))._build();
 
   _$GReopenPullRequestInput._(
       {this.clientMutationId, required this.pullRequestId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GReopenPullRequestInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GReopenPullRequestInput rebuild(
           void Function(GReopenPullRequestInputBuilder) updates) =>
@@ -28321,7 +27736,7 @@ class _$GReopenPullRequestInput extends GReopenPullRequestInput {
 
   @override
   GReopenPullRequestInputBuilder toBuilder() =>
-      new GReopenPullRequestInputBuilder()..replace(this);
+      GReopenPullRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28378,7 +27793,6 @@ class GReopenPullRequestInputBuilder
 
   @override
   void replace(GReopenPullRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReopenPullRequestInput;
   }
 
@@ -28392,7 +27806,7 @@ class GReopenPullRequestInputBuilder
 
   _$GReopenPullRequestInput _build() {
     final _$result = _$v ??
-        new _$GReopenPullRequestInput._(
+        _$GReopenPullRequestInput._(
           clientMutationId: clientMutationId,
           pullRequestId: BuiltValueNullFieldError.checkNotNull(
               pullRequestId, r'GReopenPullRequestInput', 'pullRequestId'),
@@ -28410,16 +27824,10 @@ class _$GRepositoryInvitationOrder extends GRepositoryInvitationOrder {
 
   factory _$GRepositoryInvitationOrder(
           [void Function(GRepositoryInvitationOrderBuilder)? updates]) =>
-      (new GRepositoryInvitationOrderBuilder()..update(updates))._build();
+      (GRepositoryInvitationOrderBuilder()..update(updates))._build();
 
   _$GRepositoryInvitationOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GRepositoryInvitationOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GRepositoryInvitationOrder', 'field');
-  }
-
+      : super._();
   @override
   GRepositoryInvitationOrder rebuild(
           void Function(GRepositoryInvitationOrderBuilder) updates) =>
@@ -28427,7 +27835,7 @@ class _$GRepositoryInvitationOrder extends GRepositoryInvitationOrder {
 
   @override
   GRepositoryInvitationOrderBuilder toBuilder() =>
-      new GRepositoryInvitationOrderBuilder()..replace(this);
+      GRepositoryInvitationOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28482,7 +27890,6 @@ class GRepositoryInvitationOrderBuilder
 
   @override
   void replace(GRepositoryInvitationOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRepositoryInvitationOrder;
   }
 
@@ -28496,7 +27903,7 @@ class GRepositoryInvitationOrderBuilder
 
   _$GRepositoryInvitationOrder _build() {
     final _$result = _$v ??
-        new _$GRepositoryInvitationOrder._(
+        _$GRepositoryInvitationOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GRepositoryInvitationOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -28515,22 +27922,17 @@ class _$GRepositoryOrder extends GRepositoryOrder {
 
   factory _$GRepositoryOrder(
           [void Function(GRepositoryOrderBuilder)? updates]) =>
-      (new GRepositoryOrderBuilder()..update(updates))._build();
+      (GRepositoryOrderBuilder()..update(updates))._build();
 
   _$GRepositoryOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GRepositoryOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GRepositoryOrder', 'field');
-  }
-
+      : super._();
   @override
   GRepositoryOrder rebuild(void Function(GRepositoryOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GRepositoryOrderBuilder toBuilder() =>
-      new GRepositoryOrderBuilder()..replace(this);
+      GRepositoryOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28584,7 +27986,6 @@ class GRepositoryOrderBuilder
 
   @override
   void replace(GRepositoryOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRepositoryOrder;
   }
 
@@ -28598,7 +27999,7 @@ class GRepositoryOrderBuilder
 
   _$GRepositoryOrder _build() {
     final _$result = _$v ??
-        new _$GRepositoryOrder._(
+        _$GRepositoryOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GRepositoryOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -28623,7 +28024,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
 
   factory _$GRequestReviewsInput(
           [void Function(GRequestReviewsInputBuilder)? updates]) =>
-      (new GRequestReviewsInputBuilder()..update(updates))._build();
+      (GRequestReviewsInputBuilder()..update(updates))._build();
 
   _$GRequestReviewsInput._(
       {this.clientMutationId,
@@ -28631,11 +28032,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
       this.teamIds,
       this.union,
       this.userIds})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GRequestReviewsInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GRequestReviewsInput rebuild(
           void Function(GRequestReviewsInputBuilder) updates) =>
@@ -28643,7 +28040,7 @@ class _$GRequestReviewsInput extends GRequestReviewsInput {
 
   @override
   GRequestReviewsInputBuilder toBuilder() =>
-      new GRequestReviewsInputBuilder()..replace(this);
+      GRequestReviewsInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28695,8 +28092,7 @@ class GRequestReviewsInputBuilder
       _$this._pullRequestId = pullRequestId;
 
   ListBuilder<String>? _teamIds;
-  ListBuilder<String> get teamIds =>
-      _$this._teamIds ??= new ListBuilder<String>();
+  ListBuilder<String> get teamIds => _$this._teamIds ??= ListBuilder<String>();
   set teamIds(ListBuilder<String>? teamIds) => _$this._teamIds = teamIds;
 
   bool? _union;
@@ -28704,8 +28100,7 @@ class GRequestReviewsInputBuilder
   set union(bool? union) => _$this._union = union;
 
   ListBuilder<String>? _userIds;
-  ListBuilder<String> get userIds =>
-      _$this._userIds ??= new ListBuilder<String>();
+  ListBuilder<String> get userIds => _$this._userIds ??= ListBuilder<String>();
   set userIds(ListBuilder<String>? userIds) => _$this._userIds = userIds;
 
   GRequestReviewsInputBuilder();
@@ -28725,7 +28120,6 @@ class GRequestReviewsInputBuilder
 
   @override
   void replace(GRequestReviewsInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRequestReviewsInput;
   }
 
@@ -28741,7 +28135,7 @@ class GRequestReviewsInputBuilder
     _$GRequestReviewsInput _$result;
     try {
       _$result = _$v ??
-          new _$GRequestReviewsInput._(
+          _$GRequestReviewsInput._(
             clientMutationId: clientMutationId,
             pullRequestId: BuiltValueNullFieldError.checkNotNull(
                 pullRequestId, r'GRequestReviewsInput', 'pullRequestId'),
@@ -28758,7 +28152,7 @@ class GRequestReviewsInputBuilder
         _$failedField = 'userIds';
         _userIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GRequestReviewsInput', _$failedField, e.toString());
       }
       rethrow;
@@ -28776,14 +28170,10 @@ class _$GResolveReviewThreadInput extends GResolveReviewThreadInput {
 
   factory _$GResolveReviewThreadInput(
           [void Function(GResolveReviewThreadInputBuilder)? updates]) =>
-      (new GResolveReviewThreadInputBuilder()..update(updates))._build();
+      (GResolveReviewThreadInputBuilder()..update(updates))._build();
 
   _$GResolveReviewThreadInput._({this.clientMutationId, required this.threadId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        threadId, r'GResolveReviewThreadInput', 'threadId');
-  }
-
+      : super._();
   @override
   GResolveReviewThreadInput rebuild(
           void Function(GResolveReviewThreadInputBuilder) updates) =>
@@ -28791,7 +28181,7 @@ class _$GResolveReviewThreadInput extends GResolveReviewThreadInput {
 
   @override
   GResolveReviewThreadInputBuilder toBuilder() =>
-      new GResolveReviewThreadInputBuilder()..replace(this);
+      GResolveReviewThreadInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28847,7 +28237,6 @@ class GResolveReviewThreadInputBuilder
 
   @override
   void replace(GResolveReviewThreadInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GResolveReviewThreadInput;
   }
 
@@ -28861,7 +28250,7 @@ class GResolveReviewThreadInputBuilder
 
   _$GResolveReviewThreadInput _build() {
     final _$result = _$v ??
-        new _$GResolveReviewThreadInput._(
+        _$GResolveReviewThreadInput._(
           clientMutationId: clientMutationId,
           threadId: BuiltValueNullFieldError.checkNotNull(
               threadId, r'GResolveReviewThreadInput', 'threadId'),
@@ -28879,22 +28268,17 @@ class _$GSavedReplyOrder extends GSavedReplyOrder {
 
   factory _$GSavedReplyOrder(
           [void Function(GSavedReplyOrderBuilder)? updates]) =>
-      (new GSavedReplyOrderBuilder()..update(updates))._build();
+      (GSavedReplyOrderBuilder()..update(updates))._build();
 
   _$GSavedReplyOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GSavedReplyOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GSavedReplyOrder', 'field');
-  }
-
+      : super._();
   @override
   GSavedReplyOrder rebuild(void Function(GSavedReplyOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GSavedReplyOrderBuilder toBuilder() =>
-      new GSavedReplyOrderBuilder()..replace(this);
+      GSavedReplyOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -28948,7 +28332,6 @@ class GSavedReplyOrderBuilder
 
   @override
   void replace(GSavedReplyOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSavedReplyOrder;
   }
 
@@ -28962,7 +28345,7 @@ class GSavedReplyOrderBuilder
 
   _$GSavedReplyOrder _build() {
     final _$result = _$v ??
-        new _$GSavedReplyOrder._(
+        _$GSavedReplyOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GSavedReplyOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -28982,18 +28365,11 @@ class _$GSecurityAdvisoryIdentifierFilter
 
   factory _$GSecurityAdvisoryIdentifierFilter(
           [void Function(GSecurityAdvisoryIdentifierFilterBuilder)? updates]) =>
-      (new GSecurityAdvisoryIdentifierFilterBuilder()..update(updates))
-          ._build();
+      (GSecurityAdvisoryIdentifierFilterBuilder()..update(updates))._build();
 
   _$GSecurityAdvisoryIdentifierFilter._(
       {required this.type, required this.value})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'GSecurityAdvisoryIdentifierFilter', 'type');
-    BuiltValueNullFieldError.checkNotNull(
-        value, r'GSecurityAdvisoryIdentifierFilter', 'value');
-  }
-
+      : super._();
   @override
   GSecurityAdvisoryIdentifierFilter rebuild(
           void Function(GSecurityAdvisoryIdentifierFilterBuilder) updates) =>
@@ -29001,7 +28377,7 @@ class _$GSecurityAdvisoryIdentifierFilter
 
   @override
   GSecurityAdvisoryIdentifierFilterBuilder toBuilder() =>
-      new GSecurityAdvisoryIdentifierFilterBuilder()..replace(this);
+      GSecurityAdvisoryIdentifierFilterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29057,7 +28433,6 @@ class GSecurityAdvisoryIdentifierFilterBuilder
 
   @override
   void replace(GSecurityAdvisoryIdentifierFilter other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSecurityAdvisoryIdentifierFilter;
   }
 
@@ -29072,7 +28447,7 @@ class GSecurityAdvisoryIdentifierFilterBuilder
 
   _$GSecurityAdvisoryIdentifierFilter _build() {
     final _$result = _$v ??
-        new _$GSecurityAdvisoryIdentifierFilter._(
+        _$GSecurityAdvisoryIdentifierFilter._(
           type: BuiltValueNullFieldError.checkNotNull(
               type, r'GSecurityAdvisoryIdentifierFilter', 'type'),
           value: BuiltValueNullFieldError.checkNotNull(
@@ -29091,16 +28466,10 @@ class _$GSecurityAdvisoryOrder extends GSecurityAdvisoryOrder {
 
   factory _$GSecurityAdvisoryOrder(
           [void Function(GSecurityAdvisoryOrderBuilder)? updates]) =>
-      (new GSecurityAdvisoryOrderBuilder()..update(updates))._build();
+      (GSecurityAdvisoryOrderBuilder()..update(updates))._build();
 
   _$GSecurityAdvisoryOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GSecurityAdvisoryOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GSecurityAdvisoryOrder', 'field');
-  }
-
+      : super._();
   @override
   GSecurityAdvisoryOrder rebuild(
           void Function(GSecurityAdvisoryOrderBuilder) updates) =>
@@ -29108,7 +28477,7 @@ class _$GSecurityAdvisoryOrder extends GSecurityAdvisoryOrder {
 
   @override
   GSecurityAdvisoryOrderBuilder toBuilder() =>
-      new GSecurityAdvisoryOrderBuilder()..replace(this);
+      GSecurityAdvisoryOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29162,7 +28531,6 @@ class GSecurityAdvisoryOrderBuilder
 
   @override
   void replace(GSecurityAdvisoryOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSecurityAdvisoryOrder;
   }
 
@@ -29176,7 +28544,7 @@ class GSecurityAdvisoryOrderBuilder
 
   _$GSecurityAdvisoryOrder _build() {
     final _$result = _$v ??
-        new _$GSecurityAdvisoryOrder._(
+        _$GSecurityAdvisoryOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GSecurityAdvisoryOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29195,17 +28563,11 @@ class _$GSecurityVulnerabilityOrder extends GSecurityVulnerabilityOrder {
 
   factory _$GSecurityVulnerabilityOrder(
           [void Function(GSecurityVulnerabilityOrderBuilder)? updates]) =>
-      (new GSecurityVulnerabilityOrderBuilder()..update(updates))._build();
+      (GSecurityVulnerabilityOrderBuilder()..update(updates))._build();
 
   _$GSecurityVulnerabilityOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GSecurityVulnerabilityOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GSecurityVulnerabilityOrder', 'field');
-  }
-
+      : super._();
   @override
   GSecurityVulnerabilityOrder rebuild(
           void Function(GSecurityVulnerabilityOrderBuilder) updates) =>
@@ -29213,7 +28575,7 @@ class _$GSecurityVulnerabilityOrder extends GSecurityVulnerabilityOrder {
 
   @override
   GSecurityVulnerabilityOrderBuilder toBuilder() =>
-      new GSecurityVulnerabilityOrderBuilder()..replace(this);
+      GSecurityVulnerabilityOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29269,7 +28631,6 @@ class GSecurityVulnerabilityOrderBuilder
 
   @override
   void replace(GSecurityVulnerabilityOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSecurityVulnerabilityOrder;
   }
 
@@ -29283,7 +28644,7 @@ class GSecurityVulnerabilityOrderBuilder
 
   _$GSecurityVulnerabilityOrder _build() {
     final _$result = _$v ??
-        new _$GSecurityVulnerabilityOrder._(
+        _$GSecurityVulnerabilityOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GSecurityVulnerabilityOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29302,16 +28663,10 @@ class _$GSponsorsTierOrder extends GSponsorsTierOrder {
 
   factory _$GSponsorsTierOrder(
           [void Function(GSponsorsTierOrderBuilder)? updates]) =>
-      (new GSponsorsTierOrderBuilder()..update(updates))._build();
+      (GSponsorsTierOrderBuilder()..update(updates))._build();
 
   _$GSponsorsTierOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GSponsorsTierOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GSponsorsTierOrder', 'field');
-  }
-
+      : super._();
   @override
   GSponsorsTierOrder rebuild(
           void Function(GSponsorsTierOrderBuilder) updates) =>
@@ -29319,7 +28674,7 @@ class _$GSponsorsTierOrder extends GSponsorsTierOrder {
 
   @override
   GSponsorsTierOrderBuilder toBuilder() =>
-      new GSponsorsTierOrderBuilder()..replace(this);
+      GSponsorsTierOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29373,7 +28728,6 @@ class GSponsorsTierOrderBuilder
 
   @override
   void replace(GSponsorsTierOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSponsorsTierOrder;
   }
 
@@ -29387,7 +28741,7 @@ class GSponsorsTierOrderBuilder
 
   _$GSponsorsTierOrder _build() {
     final _$result = _$v ??
-        new _$GSponsorsTierOrder._(
+        _$GSponsorsTierOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GSponsorsTierOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29406,22 +28760,17 @@ class _$GSponsorshipOrder extends GSponsorshipOrder {
 
   factory _$GSponsorshipOrder(
           [void Function(GSponsorshipOrderBuilder)? updates]) =>
-      (new GSponsorshipOrderBuilder()..update(updates))._build();
+      (GSponsorshipOrderBuilder()..update(updates))._build();
 
   _$GSponsorshipOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GSponsorshipOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GSponsorshipOrder', 'field');
-  }
-
+      : super._();
   @override
   GSponsorshipOrder rebuild(void Function(GSponsorshipOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GSponsorshipOrderBuilder toBuilder() =>
-      new GSponsorshipOrderBuilder()..replace(this);
+      GSponsorshipOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29475,7 +28824,6 @@ class GSponsorshipOrderBuilder
 
   @override
   void replace(GSponsorshipOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSponsorshipOrder;
   }
 
@@ -29489,7 +28837,7 @@ class GSponsorshipOrderBuilder
 
   _$GSponsorshipOrder _build() {
     final _$result = _$v ??
-        new _$GSponsorshipOrder._(
+        _$GSponsorshipOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GSponsorshipOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29507,20 +28855,15 @@ class _$GStarOrder extends GStarOrder {
   final GStarOrderField field;
 
   factory _$GStarOrder([void Function(GStarOrderBuilder)? updates]) =>
-      (new GStarOrderBuilder()..update(updates))._build();
+      (GStarOrderBuilder()..update(updates))._build();
 
-  _$GStarOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GStarOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GStarOrder', 'field');
-  }
-
+  _$GStarOrder._({required this.direction, required this.field}) : super._();
   @override
   GStarOrder rebuild(void Function(GStarOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GStarOrderBuilder toBuilder() => new GStarOrderBuilder()..replace(this);
+  GStarOrderBuilder toBuilder() => GStarOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29573,7 +28916,6 @@ class GStarOrderBuilder implements Builder<GStarOrder, GStarOrderBuilder> {
 
   @override
   void replace(GStarOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GStarOrder;
   }
 
@@ -29587,7 +28929,7 @@ class GStarOrderBuilder implements Builder<GStarOrder, GStarOrderBuilder> {
 
   _$GStarOrder _build() {
     final _$result = _$v ??
-        new _$GStarOrder._(
+        _$GStarOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GStarOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29612,7 +28954,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
 
   factory _$GSubmitPullRequestReviewInput(
           [void Function(GSubmitPullRequestReviewInputBuilder)? updates]) =>
-      (new GSubmitPullRequestReviewInputBuilder()..update(updates))._build();
+      (GSubmitPullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GSubmitPullRequestReviewInput._(
       {this.body,
@@ -29620,11 +28962,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
       required this.event,
       this.pullRequestId,
       this.pullRequestReviewId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        event, r'GSubmitPullRequestReviewInput', 'event');
-  }
-
+      : super._();
   @override
   GSubmitPullRequestReviewInput rebuild(
           void Function(GSubmitPullRequestReviewInputBuilder) updates) =>
@@ -29632,7 +28970,7 @@ class _$GSubmitPullRequestReviewInput extends GSubmitPullRequestReviewInput {
 
   @override
   GSubmitPullRequestReviewInputBuilder toBuilder() =>
-      new GSubmitPullRequestReviewInputBuilder()..replace(this);
+      GSubmitPullRequestReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29715,7 +29053,6 @@ class GSubmitPullRequestReviewInputBuilder
 
   @override
   void replace(GSubmitPullRequestReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSubmitPullRequestReviewInput;
   }
 
@@ -29729,7 +29066,7 @@ class GSubmitPullRequestReviewInputBuilder
 
   _$GSubmitPullRequestReviewInput _build() {
     final _$result = _$v ??
-        new _$GSubmitPullRequestReviewInput._(
+        _$GSubmitPullRequestReviewInput._(
           body: body,
           clientMutationId: clientMutationId,
           event: BuiltValueNullFieldError.checkNotNull(
@@ -29750,17 +29087,11 @@ class _$GTeamDiscussionCommentOrder extends GTeamDiscussionCommentOrder {
 
   factory _$GTeamDiscussionCommentOrder(
           [void Function(GTeamDiscussionCommentOrderBuilder)? updates]) =>
-      (new GTeamDiscussionCommentOrderBuilder()..update(updates))._build();
+      (GTeamDiscussionCommentOrderBuilder()..update(updates))._build();
 
   _$GTeamDiscussionCommentOrder._(
       {required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GTeamDiscussionCommentOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GTeamDiscussionCommentOrder', 'field');
-  }
-
+      : super._();
   @override
   GTeamDiscussionCommentOrder rebuild(
           void Function(GTeamDiscussionCommentOrderBuilder) updates) =>
@@ -29768,7 +29099,7 @@ class _$GTeamDiscussionCommentOrder extends GTeamDiscussionCommentOrder {
 
   @override
   GTeamDiscussionCommentOrderBuilder toBuilder() =>
-      new GTeamDiscussionCommentOrderBuilder()..replace(this);
+      GTeamDiscussionCommentOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29824,7 +29155,6 @@ class GTeamDiscussionCommentOrderBuilder
 
   @override
   void replace(GTeamDiscussionCommentOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTeamDiscussionCommentOrder;
   }
 
@@ -29838,7 +29168,7 @@ class GTeamDiscussionCommentOrderBuilder
 
   _$GTeamDiscussionCommentOrder _build() {
     final _$result = _$v ??
-        new _$GTeamDiscussionCommentOrder._(
+        _$GTeamDiscussionCommentOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GTeamDiscussionCommentOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29857,16 +29187,10 @@ class _$GTeamDiscussionOrder extends GTeamDiscussionOrder {
 
   factory _$GTeamDiscussionOrder(
           [void Function(GTeamDiscussionOrderBuilder)? updates]) =>
-      (new GTeamDiscussionOrderBuilder()..update(updates))._build();
+      (GTeamDiscussionOrderBuilder()..update(updates))._build();
 
   _$GTeamDiscussionOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GTeamDiscussionOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GTeamDiscussionOrder', 'field');
-  }
-
+      : super._();
   @override
   GTeamDiscussionOrder rebuild(
           void Function(GTeamDiscussionOrderBuilder) updates) =>
@@ -29874,7 +29198,7 @@ class _$GTeamDiscussionOrder extends GTeamDiscussionOrder {
 
   @override
   GTeamDiscussionOrderBuilder toBuilder() =>
-      new GTeamDiscussionOrderBuilder()..replace(this);
+      GTeamDiscussionOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -29928,7 +29252,6 @@ class GTeamDiscussionOrderBuilder
 
   @override
   void replace(GTeamDiscussionOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTeamDiscussionOrder;
   }
 
@@ -29942,7 +29265,7 @@ class GTeamDiscussionOrderBuilder
 
   _$GTeamDiscussionOrder _build() {
     final _$result = _$v ??
-        new _$GTeamDiscussionOrder._(
+        _$GTeamDiscussionOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GTeamDiscussionOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -29961,22 +29284,17 @@ class _$GTeamMemberOrder extends GTeamMemberOrder {
 
   factory _$GTeamMemberOrder(
           [void Function(GTeamMemberOrderBuilder)? updates]) =>
-      (new GTeamMemberOrderBuilder()..update(updates))._build();
+      (GTeamMemberOrderBuilder()..update(updates))._build();
 
   _$GTeamMemberOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GTeamMemberOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GTeamMemberOrder', 'field');
-  }
-
+      : super._();
   @override
   GTeamMemberOrder rebuild(void Function(GTeamMemberOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GTeamMemberOrderBuilder toBuilder() =>
-      new GTeamMemberOrderBuilder()..replace(this);
+      GTeamMemberOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30030,7 +29348,6 @@ class GTeamMemberOrderBuilder
 
   @override
   void replace(GTeamMemberOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTeamMemberOrder;
   }
 
@@ -30044,7 +29361,7 @@ class GTeamMemberOrderBuilder
 
   _$GTeamMemberOrder _build() {
     final _$result = _$v ??
-        new _$GTeamMemberOrder._(
+        _$GTeamMemberOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GTeamMemberOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -30062,20 +29379,15 @@ class _$GTeamOrder extends GTeamOrder {
   final GTeamOrderField field;
 
   factory _$GTeamOrder([void Function(GTeamOrderBuilder)? updates]) =>
-      (new GTeamOrderBuilder()..update(updates))._build();
+      (GTeamOrderBuilder()..update(updates))._build();
 
-  _$GTeamOrder._({required this.direction, required this.field}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GTeamOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GTeamOrder', 'field');
-  }
-
+  _$GTeamOrder._({required this.direction, required this.field}) : super._();
   @override
   GTeamOrder rebuild(void Function(GTeamOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GTeamOrderBuilder toBuilder() => new GTeamOrderBuilder()..replace(this);
+  GTeamOrderBuilder toBuilder() => GTeamOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30128,7 +29440,6 @@ class GTeamOrderBuilder implements Builder<GTeamOrder, GTeamOrderBuilder> {
 
   @override
   void replace(GTeamOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTeamOrder;
   }
 
@@ -30142,7 +29453,7 @@ class GTeamOrderBuilder implements Builder<GTeamOrder, GTeamOrderBuilder> {
 
   _$GTeamOrder _build() {
     final _$result = _$v ??
-        new _$GTeamOrder._(
+        _$GTeamOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GTeamOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -30161,16 +29472,10 @@ class _$GTeamRepositoryOrder extends GTeamRepositoryOrder {
 
   factory _$GTeamRepositoryOrder(
           [void Function(GTeamRepositoryOrderBuilder)? updates]) =>
-      (new GTeamRepositoryOrderBuilder()..update(updates))._build();
+      (GTeamRepositoryOrderBuilder()..update(updates))._build();
 
   _$GTeamRepositoryOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GTeamRepositoryOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(
-        field, r'GTeamRepositoryOrder', 'field');
-  }
-
+      : super._();
   @override
   GTeamRepositoryOrder rebuild(
           void Function(GTeamRepositoryOrderBuilder) updates) =>
@@ -30178,7 +29483,7 @@ class _$GTeamRepositoryOrder extends GTeamRepositoryOrder {
 
   @override
   GTeamRepositoryOrderBuilder toBuilder() =>
-      new GTeamRepositoryOrderBuilder()..replace(this);
+      GTeamRepositoryOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30232,7 +29537,6 @@ class GTeamRepositoryOrderBuilder
 
   @override
   void replace(GTeamRepositoryOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTeamRepositoryOrder;
   }
 
@@ -30246,7 +29550,7 @@ class GTeamRepositoryOrderBuilder
 
   _$GTeamRepositoryOrder _build() {
     final _$result = _$v ??
-        new _$GTeamRepositoryOrder._(
+        _$GTeamRepositoryOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GTeamRepositoryOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -30267,19 +29571,13 @@ class _$GTransferIssueInput extends GTransferIssueInput {
 
   factory _$GTransferIssueInput(
           [void Function(GTransferIssueInputBuilder)? updates]) =>
-      (new GTransferIssueInputBuilder()..update(updates))._build();
+      (GTransferIssueInputBuilder()..update(updates))._build();
 
   _$GTransferIssueInput._(
       {this.clientMutationId,
       required this.issueId,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issueId, r'GTransferIssueInput', 'issueId');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GTransferIssueInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GTransferIssueInput rebuild(
           void Function(GTransferIssueInputBuilder) updates) =>
@@ -30287,7 +29585,7 @@ class _$GTransferIssueInput extends GTransferIssueInput {
 
   @override
   GTransferIssueInputBuilder toBuilder() =>
-      new GTransferIssueInputBuilder()..replace(this);
+      GTransferIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30350,7 +29648,6 @@ class GTransferIssueInputBuilder
 
   @override
   void replace(GTransferIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GTransferIssueInput;
   }
 
@@ -30364,7 +29661,7 @@ class GTransferIssueInputBuilder
 
   _$GTransferIssueInput _build() {
     final _$result = _$v ??
-        new _$GTransferIssueInput._(
+        _$GTransferIssueInput._(
           clientMutationId: clientMutationId,
           issueId: BuiltValueNullFieldError.checkNotNull(
               issueId, r'GTransferIssueInput', 'issueId'),
@@ -30381,18 +29678,15 @@ class _$GURI extends GURI {
   final String value;
 
   factory _$GURI([void Function(GURIBuilder)? updates]) =>
-      (new GURIBuilder()..update(updates))._build();
+      (GURIBuilder()..update(updates))._build();
 
-  _$GURI._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value');
-  }
-
+  _$GURI._({required this.value}) : super._();
   @override
   GURI rebuild(void Function(GURIBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GURIBuilder toBuilder() => new GURIBuilder()..replace(this);
+  GURIBuilder toBuilder() => GURIBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30435,7 +29729,6 @@ class GURIBuilder implements Builder<GURI, GURIBuilder> {
 
   @override
   void replace(GURI other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GURI;
   }
 
@@ -30449,7 +29742,7 @@ class GURIBuilder implements Builder<GURI, GURIBuilder> {
 
   _$GURI _build() {
     final _$result = _$v ??
-        new _$GURI._(
+        _$GURI._(
           value: BuiltValueNullFieldError.checkNotNull(value, r'GURI', 'value'),
         );
     replace(_$result);
@@ -30465,15 +29758,11 @@ class _$GUnarchiveRepositoryInput extends GUnarchiveRepositoryInput {
 
   factory _$GUnarchiveRepositoryInput(
           [void Function(GUnarchiveRepositoryInputBuilder)? updates]) =>
-      (new GUnarchiveRepositoryInputBuilder()..update(updates))._build();
+      (GUnarchiveRepositoryInputBuilder()..update(updates))._build();
 
   _$GUnarchiveRepositoryInput._(
       {this.clientMutationId, required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GUnarchiveRepositoryInput rebuild(
           void Function(GUnarchiveRepositoryInputBuilder) updates) =>
@@ -30481,7 +29770,7 @@ class _$GUnarchiveRepositoryInput extends GUnarchiveRepositoryInput {
 
   @override
   GUnarchiveRepositoryInputBuilder toBuilder() =>
-      new GUnarchiveRepositoryInputBuilder()..replace(this);
+      GUnarchiveRepositoryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30537,7 +29826,6 @@ class GUnarchiveRepositoryInputBuilder
 
   @override
   void replace(GUnarchiveRepositoryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnarchiveRepositoryInput;
   }
 
@@ -30551,7 +29839,7 @@ class GUnarchiveRepositoryInputBuilder
 
   _$GUnarchiveRepositoryInput _build() {
     final _$result = _$v ??
-        new _$GUnarchiveRepositoryInput._(
+        _$GUnarchiveRepositoryInput._(
           clientMutationId: clientMutationId,
           repositoryId: BuiltValueNullFieldError.checkNotNull(
               repositoryId, r'GUnarchiveRepositoryInput', 'repositoryId'),
@@ -30569,14 +29857,10 @@ class _$GUnfollowUserInput extends GUnfollowUserInput {
 
   factory _$GUnfollowUserInput(
           [void Function(GUnfollowUserInputBuilder)? updates]) =>
-      (new GUnfollowUserInputBuilder()..update(updates))._build();
+      (GUnfollowUserInputBuilder()..update(updates))._build();
 
   _$GUnfollowUserInput._({this.clientMutationId, required this.userId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'GUnfollowUserInput', 'userId');
-  }
-
+      : super._();
   @override
   GUnfollowUserInput rebuild(
           void Function(GUnfollowUserInputBuilder) updates) =>
@@ -30584,7 +29868,7 @@ class _$GUnfollowUserInput extends GUnfollowUserInput {
 
   @override
   GUnfollowUserInputBuilder toBuilder() =>
-      new GUnfollowUserInputBuilder()..replace(this);
+      GUnfollowUserInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30639,7 +29923,6 @@ class GUnfollowUserInputBuilder
 
   @override
   void replace(GUnfollowUserInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnfollowUserInput;
   }
 
@@ -30653,7 +29936,7 @@ class GUnfollowUserInputBuilder
 
   _$GUnfollowUserInput _build() {
     final _$result = _$v ??
-        new _$GUnfollowUserInput._(
+        _$GUnfollowUserInput._(
           clientMutationId: clientMutationId,
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'GUnfollowUserInput', 'userId'),
@@ -30674,20 +29957,13 @@ class _$GUnlinkRepositoryFromProjectInput
 
   factory _$GUnlinkRepositoryFromProjectInput(
           [void Function(GUnlinkRepositoryFromProjectInputBuilder)? updates]) =>
-      (new GUnlinkRepositoryFromProjectInputBuilder()..update(updates))
-          ._build();
+      (GUnlinkRepositoryFromProjectInputBuilder()..update(updates))._build();
 
   _$GUnlinkRepositoryFromProjectInput._(
       {this.clientMutationId,
       required this.projectId,
       required this.repositoryId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GUnlinkRepositoryFromProjectInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GUnlinkRepositoryFromProjectInput rebuild(
           void Function(GUnlinkRepositoryFromProjectInputBuilder) updates) =>
@@ -30695,7 +29971,7 @@ class _$GUnlinkRepositoryFromProjectInput
 
   @override
   GUnlinkRepositoryFromProjectInputBuilder toBuilder() =>
-      new GUnlinkRepositoryFromProjectInputBuilder()..replace(this);
+      GUnlinkRepositoryFromProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30760,7 +30036,6 @@ class GUnlinkRepositoryFromProjectInputBuilder
 
   @override
   void replace(GUnlinkRepositoryFromProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnlinkRepositoryFromProjectInput;
   }
 
@@ -30775,7 +30050,7 @@ class GUnlinkRepositoryFromProjectInputBuilder
 
   _$GUnlinkRepositoryFromProjectInput _build() {
     final _$result = _$v ??
-        new _$GUnlinkRepositoryFromProjectInput._(
+        _$GUnlinkRepositoryFromProjectInput._(
           clientMutationId: clientMutationId,
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'GUnlinkRepositoryFromProjectInput', 'projectId'),
@@ -30795,14 +30070,10 @@ class _$GUnlockLockableInput extends GUnlockLockableInput {
 
   factory _$GUnlockLockableInput(
           [void Function(GUnlockLockableInputBuilder)? updates]) =>
-      (new GUnlockLockableInputBuilder()..update(updates))._build();
+      (GUnlockLockableInputBuilder()..update(updates))._build();
 
   _$GUnlockLockableInput._({this.clientMutationId, required this.lockableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        lockableId, r'GUnlockLockableInput', 'lockableId');
-  }
-
+      : super._();
   @override
   GUnlockLockableInput rebuild(
           void Function(GUnlockLockableInputBuilder) updates) =>
@@ -30810,7 +30081,7 @@ class _$GUnlockLockableInput extends GUnlockLockableInput {
 
   @override
   GUnlockLockableInputBuilder toBuilder() =>
-      new GUnlockLockableInputBuilder()..replace(this);
+      GUnlockLockableInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30865,7 +30136,6 @@ class GUnlockLockableInputBuilder
 
   @override
   void replace(GUnlockLockableInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnlockLockableInput;
   }
 
@@ -30879,7 +30149,7 @@ class GUnlockLockableInputBuilder
 
   _$GUnlockLockableInput _build() {
     final _$result = _$v ??
-        new _$GUnlockLockableInput._(
+        _$GUnlockLockableInput._(
           clientMutationId: clientMutationId,
           lockableId: BuiltValueNullFieldError.checkNotNull(
               lockableId, r'GUnlockLockableInput', 'lockableId'),
@@ -30899,19 +30169,13 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
 
   factory _$GUnmarkIssueAsDuplicateInput(
           [void Function(GUnmarkIssueAsDuplicateInputBuilder)? updates]) =>
-      (new GUnmarkIssueAsDuplicateInputBuilder()..update(updates))._build();
+      (GUnmarkIssueAsDuplicateInputBuilder()..update(updates))._build();
 
   _$GUnmarkIssueAsDuplicateInput._(
       {required this.canonicalId,
       this.clientMutationId,
       required this.duplicateId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId');
-    BuiltValueNullFieldError.checkNotNull(
-        duplicateId, r'GUnmarkIssueAsDuplicateInput', 'duplicateId');
-  }
-
+      : super._();
   @override
   GUnmarkIssueAsDuplicateInput rebuild(
           void Function(GUnmarkIssueAsDuplicateInputBuilder) updates) =>
@@ -30919,7 +30183,7 @@ class _$GUnmarkIssueAsDuplicateInput extends GUnmarkIssueAsDuplicateInput {
 
   @override
   GUnmarkIssueAsDuplicateInputBuilder toBuilder() =>
-      new GUnmarkIssueAsDuplicateInputBuilder()..replace(this);
+      GUnmarkIssueAsDuplicateInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -30984,7 +30248,6 @@ class GUnmarkIssueAsDuplicateInputBuilder
 
   @override
   void replace(GUnmarkIssueAsDuplicateInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnmarkIssueAsDuplicateInput;
   }
 
@@ -30998,7 +30261,7 @@ class GUnmarkIssueAsDuplicateInputBuilder
 
   _$GUnmarkIssueAsDuplicateInput _build() {
     final _$result = _$v ??
-        new _$GUnmarkIssueAsDuplicateInput._(
+        _$GUnmarkIssueAsDuplicateInput._(
           canonicalId: BuiltValueNullFieldError.checkNotNull(
               canonicalId, r'GUnmarkIssueAsDuplicateInput', 'canonicalId'),
           clientMutationId: clientMutationId,
@@ -31018,15 +30281,11 @@ class _$GUnresolveReviewThreadInput extends GUnresolveReviewThreadInput {
 
   factory _$GUnresolveReviewThreadInput(
           [void Function(GUnresolveReviewThreadInputBuilder)? updates]) =>
-      (new GUnresolveReviewThreadInputBuilder()..update(updates))._build();
+      (GUnresolveReviewThreadInputBuilder()..update(updates))._build();
 
   _$GUnresolveReviewThreadInput._(
       {this.clientMutationId, required this.threadId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        threadId, r'GUnresolveReviewThreadInput', 'threadId');
-  }
-
+      : super._();
   @override
   GUnresolveReviewThreadInput rebuild(
           void Function(GUnresolveReviewThreadInputBuilder) updates) =>
@@ -31034,7 +30293,7 @@ class _$GUnresolveReviewThreadInput extends GUnresolveReviewThreadInput {
 
   @override
   GUnresolveReviewThreadInputBuilder toBuilder() =>
-      new GUnresolveReviewThreadInputBuilder()..replace(this);
+      GUnresolveReviewThreadInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -31091,7 +30350,6 @@ class GUnresolveReviewThreadInputBuilder
 
   @override
   void replace(GUnresolveReviewThreadInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUnresolveReviewThreadInput;
   }
 
@@ -31105,7 +30363,7 @@ class GUnresolveReviewThreadInputBuilder
 
   _$GUnresolveReviewThreadInput _build() {
     final _$result = _$v ??
-        new _$GUnresolveReviewThreadInput._(
+        _$GUnresolveReviewThreadInput._(
           clientMutationId: clientMutationId,
           threadId: BuiltValueNullFieldError.checkNotNull(
               threadId, r'GUnresolveReviewThreadInput', 'threadId'),
@@ -31152,7 +30410,7 @@ class _$GUpdateBranchProtectionRuleInput
 
   factory _$GUpdateBranchProtectionRuleInput(
           [void Function(GUpdateBranchProtectionRuleInputBuilder)? updates]) =>
-      (new GUpdateBranchProtectionRuleInputBuilder()..update(updates))._build();
+      (GUpdateBranchProtectionRuleInputBuilder()..update(updates))._build();
 
   _$GUpdateBranchProtectionRuleInput._(
       {required this.branchProtectionRuleId,
@@ -31171,11 +30429,7 @@ class _$GUpdateBranchProtectionRuleInput
       this.restrictsPushes,
       this.restrictsReviewDismissals,
       this.reviewDismissalActorIds})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(branchProtectionRuleId,
-        r'GUpdateBranchProtectionRuleInput', 'branchProtectionRuleId');
-  }
-
+      : super._();
   @override
   GUpdateBranchProtectionRuleInput rebuild(
           void Function(GUpdateBranchProtectionRuleInputBuilder) updates) =>
@@ -31183,7 +30437,7 @@ class _$GUpdateBranchProtectionRuleInput
 
   @override
   GUpdateBranchProtectionRuleInputBuilder toBuilder() =>
-      new GUpdateBranchProtectionRuleInputBuilder()..replace(this);
+      GUpdateBranchProtectionRuleInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -31285,7 +30539,7 @@ class GUpdateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _pushActorIds;
   ListBuilder<String> get pushActorIds =>
-      _$this._pushActorIds ??= new ListBuilder<String>();
+      _$this._pushActorIds ??= ListBuilder<String>();
   set pushActorIds(ListBuilder<String>? pushActorIds) =>
       _$this._pushActorIds = pushActorIds;
 
@@ -31296,7 +30550,7 @@ class GUpdateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _requiredStatusCheckContexts;
   ListBuilder<String> get requiredStatusCheckContexts =>
-      _$this._requiredStatusCheckContexts ??= new ListBuilder<String>();
+      _$this._requiredStatusCheckContexts ??= ListBuilder<String>();
   set requiredStatusCheckContexts(
           ListBuilder<String>? requiredStatusCheckContexts) =>
       _$this._requiredStatusCheckContexts = requiredStatusCheckContexts;
@@ -31338,7 +30592,7 @@ class GUpdateBranchProtectionRuleInputBuilder
 
   ListBuilder<String>? _reviewDismissalActorIds;
   ListBuilder<String> get reviewDismissalActorIds =>
-      _$this._reviewDismissalActorIds ??= new ListBuilder<String>();
+      _$this._reviewDismissalActorIds ??= ListBuilder<String>();
   set reviewDismissalActorIds(ListBuilder<String>? reviewDismissalActorIds) =>
       _$this._reviewDismissalActorIds = reviewDismissalActorIds;
 
@@ -31371,7 +30625,6 @@ class GUpdateBranchProtectionRuleInputBuilder
 
   @override
   void replace(GUpdateBranchProtectionRuleInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateBranchProtectionRuleInput;
   }
 
@@ -31387,7 +30640,7 @@ class GUpdateBranchProtectionRuleInputBuilder
     _$GUpdateBranchProtectionRuleInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdateBranchProtectionRuleInput._(
+          _$GUpdateBranchProtectionRuleInput._(
             branchProtectionRuleId: BuiltValueNullFieldError.checkNotNull(
                 branchProtectionRuleId,
                 r'GUpdateBranchProtectionRuleInput',
@@ -31420,7 +30673,7 @@ class GUpdateBranchProtectionRuleInputBuilder
         _$failedField = 'reviewDismissalActorIds';
         _reviewDismissalActorIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdateBranchProtectionRuleInput', _$failedField, e.toString());
       }
       rethrow;
@@ -31443,7 +30696,7 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
           [void Function(
                   GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder()
+      (GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -31451,17 +30704,7 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
       {required this.capability,
       this.clientMutationId,
       required this.enterpriseId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        capability,
-        r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
-        'capability');
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
-        'enterpriseId');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseActionExecutionCapabilitySettingInput rebuild(
           void Function(
@@ -31471,7 +30714,7 @@ class _$GUpdateEnterpriseActionExecutionCapabilitySettingInput
 
   @override
   GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder()
+      GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder()
         ..replace(this);
 
   @override
@@ -31539,7 +30782,6 @@ class GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseActionExecutionCapabilitySettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseActionExecutionCapabilitySettingInput;
   }
 
@@ -31556,7 +30798,7 @@ class GUpdateEnterpriseActionExecutionCapabilitySettingInputBuilder
 
   _$GUpdateEnterpriseActionExecutionCapabilitySettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseActionExecutionCapabilitySettingInput._(
+        _$GUpdateEnterpriseActionExecutionCapabilitySettingInput._(
           capability: BuiltValueNullFieldError.checkNotNull(
               capability,
               r'GUpdateEnterpriseActionExecutionCapabilitySettingInput',
@@ -31586,7 +30828,7 @@ class _$GUpdateEnterpriseAdministratorRoleInput
   factory _$GUpdateEnterpriseAdministratorRoleInput(
           [void Function(GUpdateEnterpriseAdministratorRoleInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseAdministratorRoleInputBuilder()..update(updates))
+      (GUpdateEnterpriseAdministratorRoleInputBuilder()..update(updates))
           ._build();
 
   _$GUpdateEnterpriseAdministratorRoleInput._(
@@ -31594,15 +30836,7 @@ class _$GUpdateEnterpriseAdministratorRoleInput
       required this.enterpriseId,
       required this.login,
       required this.role})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        login, r'GUpdateEnterpriseAdministratorRoleInput', 'login');
-    BuiltValueNullFieldError.checkNotNull(
-        role, r'GUpdateEnterpriseAdministratorRoleInput', 'role');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseAdministratorRoleInput rebuild(
           void Function(GUpdateEnterpriseAdministratorRoleInputBuilder)
@@ -31611,7 +30845,7 @@ class _$GUpdateEnterpriseAdministratorRoleInput
 
   @override
   GUpdateEnterpriseAdministratorRoleInputBuilder toBuilder() =>
-      new GUpdateEnterpriseAdministratorRoleInputBuilder()..replace(this);
+      GUpdateEnterpriseAdministratorRoleInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -31685,7 +30919,6 @@ class GUpdateEnterpriseAdministratorRoleInputBuilder
 
   @override
   void replace(GUpdateEnterpriseAdministratorRoleInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseAdministratorRoleInput;
   }
 
@@ -31700,7 +30933,7 @@ class GUpdateEnterpriseAdministratorRoleInputBuilder
 
   _$GUpdateEnterpriseAdministratorRoleInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseAdministratorRoleInput._(
+        _$GUpdateEnterpriseAdministratorRoleInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
               r'GUpdateEnterpriseAdministratorRoleInput', 'enterpriseId'),
@@ -31727,7 +30960,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
           [void Function(
                   GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder()
+      (GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -31735,17 +30968,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput rebuild(
           void Function(
@@ -31756,7 +30979,7 @@ class _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput
   @override
   GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder()
+          GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -31827,7 +31050,6 @@ class GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput;
   }
 
@@ -31845,7 +31067,7 @@ class GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInputBuilder
 
   _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._(
+        _$GUpdateEnterpriseAllowPrivateRepositoryForkingSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -31874,7 +31096,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
           [void Function(
                   GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder()
+      (GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -31882,17 +31104,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseDefaultRepositoryPermissionSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseDefaultRepositoryPermissionSettingInput rebuild(
           void Function(
@@ -31902,7 +31114,7 @@ class _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput
 
   @override
   GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder()
+      GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder()
         ..replace(this);
 
   @override
@@ -31972,7 +31184,6 @@ class GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseDefaultRepositoryPermissionSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput;
   }
 
@@ -31989,7 +31200,7 @@ class GUpdateEnterpriseDefaultRepositoryPermissionSettingInputBuilder
 
   _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._(
+        _$GUpdateEnterpriseDefaultRepositoryPermissionSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32018,7 +31229,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder()
+      (GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32026,17 +31237,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput rebuild(
           void Function(
@@ -32047,7 +31248,7 @@ class _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
   @override
   GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder()
+          GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder()
             ..replace(this);
 
   @override
@@ -32120,7 +31321,6 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput;
   }
@@ -32139,8 +31339,7 @@ class GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput
-            ._(
+        _$GUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32177,7 +31376,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32189,13 +31388,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
       this.membersCanCreatePublicRepositories,
       this.membersCanCreateRepositoriesPolicyEnabled,
       this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput',
-        'enterpriseId');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput rebuild(
           void Function(
@@ -32206,7 +31399,7 @@ class _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput
   @override
   GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder()
+          GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -32337,7 +31530,6 @@ class GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput;
   }
 
@@ -32354,7 +31546,7 @@ class GUpdateEnterpriseMembersCanCreateRepositoriesSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._(
+        _$GUpdateEnterpriseMembersCanCreateRepositoriesSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32388,7 +31580,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32396,13 +31588,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(settingValue,
-        r'GUpdateEnterpriseMembersCanDeleteIssuesSettingInput', 'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanDeleteIssuesSettingInput rebuild(
           void Function(
@@ -32412,7 +31598,7 @@ class _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput
 
   @override
   GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder()
+      GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder()
         ..replace(this);
 
   @override
@@ -32481,7 +31667,6 @@ class GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseMembersCanDeleteIssuesSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput;
   }
 
@@ -32497,7 +31682,7 @@ class GUpdateEnterpriseMembersCanDeleteIssuesSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._(
+        _$GUpdateEnterpriseMembersCanDeleteIssuesSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32526,7 +31711,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32534,17 +31719,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput rebuild(
           void Function(
@@ -32555,7 +31730,7 @@ class _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput
   @override
   GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder()
+          GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -32625,7 +31800,6 @@ class GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput;
   }
 
@@ -32642,7 +31816,7 @@ class GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._(
+        _$GUpdateEnterpriseMembersCanDeleteRepositoriesSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32671,7 +31845,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32679,17 +31853,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput rebuild(
           void Function(
@@ -32700,7 +31864,7 @@ class _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput
   @override
   GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder()
+          GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -32771,7 +31935,6 @@ class GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput;
   }
 
@@ -32789,7 +31952,7 @@ class GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._(
+        _$GUpdateEnterpriseMembersCanInviteCollaboratorsSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32818,7 +31981,7 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32826,17 +31989,7 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanMakePurchasesSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanMakePurchasesSettingInput rebuild(
           void Function(
@@ -32846,7 +31999,7 @@ class _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput
 
   @override
   GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder()
+      GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder()
         ..replace(this);
 
   @override
@@ -32916,7 +32069,6 @@ class GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseMembersCanMakePurchasesSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput;
   }
 
@@ -32933,7 +32085,7 @@ class GUpdateEnterpriseMembersCanMakePurchasesSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput._(
+        _$GUpdateEnterpriseMembersCanMakePurchasesSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -32962,7 +32114,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -32970,17 +32122,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput rebuild(
           void Function(
@@ -32991,7 +32133,7 @@ class _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
   @override
   GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder()
+          GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -33063,7 +32205,6 @@ class GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput;
   }
@@ -33082,7 +32223,7 @@ class GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._(
+        _$GUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -33111,7 +32252,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
           [void Function(
                   GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder()
+      (GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -33119,17 +32260,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput rebuild(
           void Function(
@@ -33140,7 +32271,7 @@ class _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput
   @override
   GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder()
+          GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -33212,7 +32343,6 @@ class GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput;
   }
@@ -33231,7 +32361,7 @@ class GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInputBuilder
 
   _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._(
+        _$GUpdateEnterpriseMembersCanViewDependencyInsightsSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -33260,7 +32390,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
           [void Function(
                   GUpdateEnterpriseOrganizationProjectsSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseOrganizationProjectsSettingInputBuilder()
+      (GUpdateEnterpriseOrganizationProjectsSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -33268,13 +32398,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        r'GUpdateEnterpriseOrganizationProjectsSettingInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(settingValue,
-        r'GUpdateEnterpriseOrganizationProjectsSettingInput', 'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseOrganizationProjectsSettingInput rebuild(
           void Function(
@@ -33284,8 +32408,7 @@ class _$GUpdateEnterpriseOrganizationProjectsSettingInput
 
   @override
   GUpdateEnterpriseOrganizationProjectsSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseOrganizationProjectsSettingInputBuilder()
-        ..replace(this);
+      GUpdateEnterpriseOrganizationProjectsSettingInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -33353,7 +32476,6 @@ class GUpdateEnterpriseOrganizationProjectsSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseOrganizationProjectsSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseOrganizationProjectsSettingInput;
   }
 
@@ -33369,7 +32491,7 @@ class GUpdateEnterpriseOrganizationProjectsSettingInputBuilder
 
   _$GUpdateEnterpriseOrganizationProjectsSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseOrganizationProjectsSettingInput._(
+        _$GUpdateEnterpriseOrganizationProjectsSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -33401,7 +32523,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
 
   factory _$GUpdateEnterpriseProfileInput(
           [void Function(GUpdateEnterpriseProfileInputBuilder)? updates]) =>
-      (new GUpdateEnterpriseProfileInputBuilder()..update(updates))._build();
+      (GUpdateEnterpriseProfileInputBuilder()..update(updates))._build();
 
   _$GUpdateEnterpriseProfileInput._(
       {this.clientMutationId,
@@ -33410,11 +32532,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
       this.location,
       this.name,
       this.websiteUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId, r'GUpdateEnterpriseProfileInput', 'enterpriseId');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseProfileInput rebuild(
           void Function(GUpdateEnterpriseProfileInputBuilder) updates) =>
@@ -33422,7 +32540,7 @@ class _$GUpdateEnterpriseProfileInput extends GUpdateEnterpriseProfileInput {
 
   @override
   GUpdateEnterpriseProfileInputBuilder toBuilder() =>
-      new GUpdateEnterpriseProfileInputBuilder()..replace(this);
+      GUpdateEnterpriseProfileInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -33511,7 +32629,6 @@ class GUpdateEnterpriseProfileInputBuilder
 
   @override
   void replace(GUpdateEnterpriseProfileInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseProfileInput;
   }
 
@@ -33525,7 +32642,7 @@ class GUpdateEnterpriseProfileInputBuilder
 
   _$GUpdateEnterpriseProfileInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseProfileInput._(
+        _$GUpdateEnterpriseProfileInput._(
           clientMutationId: clientMutationId,
           description: description,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
@@ -33552,7 +32669,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
           [void Function(
                   GUpdateEnterpriseRepositoryProjectsSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseRepositoryProjectsSettingInputBuilder()
+      (GUpdateEnterpriseRepositoryProjectsSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -33560,13 +32677,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        r'GUpdateEnterpriseRepositoryProjectsSettingInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(settingValue,
-        r'GUpdateEnterpriseRepositoryProjectsSettingInput', 'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseRepositoryProjectsSettingInput rebuild(
           void Function(GUpdateEnterpriseRepositoryProjectsSettingInputBuilder)
@@ -33575,8 +32686,7 @@ class _$GUpdateEnterpriseRepositoryProjectsSettingInput
 
   @override
   GUpdateEnterpriseRepositoryProjectsSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseRepositoryProjectsSettingInputBuilder()
-        ..replace(this);
+      GUpdateEnterpriseRepositoryProjectsSettingInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -33644,7 +32754,6 @@ class GUpdateEnterpriseRepositoryProjectsSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseRepositoryProjectsSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseRepositoryProjectsSettingInput;
   }
 
@@ -33660,7 +32769,7 @@ class GUpdateEnterpriseRepositoryProjectsSettingInputBuilder
 
   _$GUpdateEnterpriseRepositoryProjectsSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseRepositoryProjectsSettingInput._(
+        _$GUpdateEnterpriseRepositoryProjectsSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -33688,21 +32797,14 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
   factory _$GUpdateEnterpriseTeamDiscussionsSettingInput(
           [void Function(GUpdateEnterpriseTeamDiscussionsSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseTeamDiscussionsSettingInputBuilder()
-            ..update(updates))
+      (GUpdateEnterpriseTeamDiscussionsSettingInputBuilder()..update(updates))
           ._build();
 
   _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(enterpriseId,
-        r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(settingValue,
-        r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseTeamDiscussionsSettingInput rebuild(
           void Function(GUpdateEnterpriseTeamDiscussionsSettingInputBuilder)
@@ -33711,7 +32813,7 @@ class _$GUpdateEnterpriseTeamDiscussionsSettingInput
 
   @override
   GUpdateEnterpriseTeamDiscussionsSettingInputBuilder toBuilder() =>
-      new GUpdateEnterpriseTeamDiscussionsSettingInputBuilder()..replace(this);
+      GUpdateEnterpriseTeamDiscussionsSettingInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -33779,7 +32881,6 @@ class GUpdateEnterpriseTeamDiscussionsSettingInputBuilder
 
   @override
   void replace(GUpdateEnterpriseTeamDiscussionsSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateEnterpriseTeamDiscussionsSettingInput;
   }
 
@@ -33795,7 +32896,7 @@ class GUpdateEnterpriseTeamDiscussionsSettingInputBuilder
 
   _$GUpdateEnterpriseTeamDiscussionsSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
+        _$GUpdateEnterpriseTeamDiscussionsSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(enterpriseId,
               r'GUpdateEnterpriseTeamDiscussionsSettingInput', 'enterpriseId'),
@@ -33820,7 +32921,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
           [void Function(
                   GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder)?
               updates]) =>
-      (new GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder()
+      (GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder()
             ..update(updates))
           ._build();
 
@@ -33828,17 +32929,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
       {this.clientMutationId,
       required this.enterpriseId,
       required this.settingValue})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enterpriseId,
-        r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
-        'enterpriseId');
-    BuiltValueNullFieldError.checkNotNull(
-        settingValue,
-        r'GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput',
-        'settingValue');
-  }
-
+      : super._();
   @override
   GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput rebuild(
           void Function(
@@ -33849,7 +32940,7 @@ class _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput
   @override
   GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
       toBuilder() =>
-          new GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder()
+          GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder()
             ..replace(this);
 
   @override
@@ -33920,7 +33011,6 @@ class GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
   @override
   void replace(
       GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v =
         other as _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput;
   }
@@ -33939,7 +33029,7 @@ class GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInputBuilder
 
   _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput _build() {
     final _$result = _$v ??
-        new _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._(
+        _$GUpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput._(
           clientMutationId: clientMutationId,
           enterpriseId: BuiltValueNullFieldError.checkNotNull(
               enterpriseId,
@@ -33965,17 +33055,11 @@ class _$GUpdateIssueCommentInput extends GUpdateIssueCommentInput {
 
   factory _$GUpdateIssueCommentInput(
           [void Function(GUpdateIssueCommentInputBuilder)? updates]) =>
-      (new GUpdateIssueCommentInputBuilder()..update(updates))._build();
+      (GUpdateIssueCommentInputBuilder()..update(updates))._build();
 
   _$GUpdateIssueCommentInput._(
       {required this.body, this.clientMutationId, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GUpdateIssueCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GUpdateIssueCommentInput', 'id');
-  }
-
+      : super._();
   @override
   GUpdateIssueCommentInput rebuild(
           void Function(GUpdateIssueCommentInputBuilder) updates) =>
@@ -33983,7 +33067,7 @@ class _$GUpdateIssueCommentInput extends GUpdateIssueCommentInput {
 
   @override
   GUpdateIssueCommentInputBuilder toBuilder() =>
-      new GUpdateIssueCommentInputBuilder()..replace(this);
+      GUpdateIssueCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34047,7 +33131,6 @@ class GUpdateIssueCommentInputBuilder
 
   @override
   void replace(GUpdateIssueCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateIssueCommentInput;
   }
 
@@ -34061,7 +33144,7 @@ class GUpdateIssueCommentInputBuilder
 
   _$GUpdateIssueCommentInput _build() {
     final _$result = _$v ??
-        new _$GUpdateIssueCommentInput._(
+        _$GUpdateIssueCommentInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GUpdateIssueCommentInput', 'body'),
           clientMutationId: clientMutationId,
@@ -34095,7 +33178,7 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
 
   factory _$GUpdateIssueInput(
           [void Function(GUpdateIssueInputBuilder)? updates]) =>
-      (new GUpdateIssueInputBuilder()..update(updates))._build();
+      (GUpdateIssueInputBuilder()..update(updates))._build();
 
   _$GUpdateIssueInput._(
       {this.assigneeIds,
@@ -34107,17 +33190,14 @@ class _$GUpdateIssueInput extends GUpdateIssueInput {
       this.projectIds,
       this.state,
       this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GUpdateIssueInput', 'id');
-  }
-
+      : super._();
   @override
   GUpdateIssueInput rebuild(void Function(GUpdateIssueInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GUpdateIssueInputBuilder toBuilder() =>
-      new GUpdateIssueInputBuilder()..replace(this);
+      GUpdateIssueInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34172,7 +33252,7 @@ class GUpdateIssueInputBuilder
 
   ListBuilder<String>? _assigneeIds;
   ListBuilder<String> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String>();
+      _$this._assigneeIds ??= ListBuilder<String>();
   set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
@@ -34191,7 +33271,7 @@ class GUpdateIssueInputBuilder
 
   ListBuilder<String>? _labelIds;
   ListBuilder<String> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String>();
+      _$this._labelIds ??= ListBuilder<String>();
   set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   String? _milestoneId;
@@ -34200,7 +33280,7 @@ class GUpdateIssueInputBuilder
 
   ListBuilder<String>? _projectIds;
   ListBuilder<String> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String>();
+      _$this._projectIds ??= ListBuilder<String>();
   set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
@@ -34233,7 +33313,6 @@ class GUpdateIssueInputBuilder
 
   @override
   void replace(GUpdateIssueInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateIssueInput;
   }
 
@@ -34249,7 +33328,7 @@ class GUpdateIssueInputBuilder
     _$GUpdateIssueInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdateIssueInput._(
+          _$GUpdateIssueInput._(
             assigneeIds: _assigneeIds?.build(),
             body: body,
             clientMutationId: clientMutationId,
@@ -34273,7 +33352,7 @@ class GUpdateIssueInputBuilder
         _$failedField = 'projectIds';
         _projectIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdateIssueInput', _$failedField, e.toString());
       }
       rethrow;
@@ -34295,18 +33374,14 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
 
   factory _$GUpdateProjectCardInput(
           [void Function(GUpdateProjectCardInputBuilder)? updates]) =>
-      (new GUpdateProjectCardInputBuilder()..update(updates))._build();
+      (GUpdateProjectCardInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectCardInput._(
       {this.clientMutationId,
       this.isArchived,
       this.note,
       required this.projectCardId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectCardId, r'GUpdateProjectCardInput', 'projectCardId');
-  }
-
+      : super._();
   @override
   GUpdateProjectCardInput rebuild(
           void Function(GUpdateProjectCardInputBuilder) updates) =>
@@ -34314,7 +33389,7 @@ class _$GUpdateProjectCardInput extends GUpdateProjectCardInput {
 
   @override
   GUpdateProjectCardInputBuilder toBuilder() =>
-      new GUpdateProjectCardInputBuilder()..replace(this);
+      GUpdateProjectCardInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34387,7 +33462,6 @@ class GUpdateProjectCardInputBuilder
 
   @override
   void replace(GUpdateProjectCardInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateProjectCardInput;
   }
 
@@ -34401,7 +33475,7 @@ class GUpdateProjectCardInputBuilder
 
   _$GUpdateProjectCardInput _build() {
     final _$result = _$v ??
-        new _$GUpdateProjectCardInput._(
+        _$GUpdateProjectCardInput._(
           clientMutationId: clientMutationId,
           isArchived: isArchived,
           note: note,
@@ -34423,19 +33497,13 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
 
   factory _$GUpdateProjectColumnInput(
           [void Function(GUpdateProjectColumnInputBuilder)? updates]) =>
-      (new GUpdateProjectColumnInputBuilder()..update(updates))._build();
+      (GUpdateProjectColumnInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectColumnInput._(
       {this.clientMutationId,
       required this.name,
       required this.projectColumnId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GUpdateProjectColumnInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        projectColumnId, r'GUpdateProjectColumnInput', 'projectColumnId');
-  }
-
+      : super._();
   @override
   GUpdateProjectColumnInput rebuild(
           void Function(GUpdateProjectColumnInputBuilder) updates) =>
@@ -34443,7 +33511,7 @@ class _$GUpdateProjectColumnInput extends GUpdateProjectColumnInput {
 
   @override
   GUpdateProjectColumnInputBuilder toBuilder() =>
-      new GUpdateProjectColumnInputBuilder()..replace(this);
+      GUpdateProjectColumnInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34508,7 +33576,6 @@ class GUpdateProjectColumnInputBuilder
 
   @override
   void replace(GUpdateProjectColumnInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateProjectColumnInput;
   }
 
@@ -34522,7 +33589,7 @@ class GUpdateProjectColumnInputBuilder
 
   _$GUpdateProjectColumnInput _build() {
     final _$result = _$v ??
-        new _$GUpdateProjectColumnInput._(
+        _$GUpdateProjectColumnInput._(
           clientMutationId: clientMutationId,
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GUpdateProjectColumnInput', 'name'),
@@ -34550,7 +33617,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
 
   factory _$GUpdateProjectInput(
           [void Function(GUpdateProjectInputBuilder)? updates]) =>
-      (new GUpdateProjectInputBuilder()..update(updates))._build();
+      (GUpdateProjectInputBuilder()..update(updates))._build();
 
   _$GUpdateProjectInput._(
       {this.body,
@@ -34559,11 +33626,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
       required this.projectId,
       this.public,
       this.state})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'GUpdateProjectInput', 'projectId');
-  }
-
+      : super._();
   @override
   GUpdateProjectInput rebuild(
           void Function(GUpdateProjectInputBuilder) updates) =>
@@ -34571,7 +33634,7 @@ class _$GUpdateProjectInput extends GUpdateProjectInput {
 
   @override
   GUpdateProjectInputBuilder toBuilder() =>
-      new GUpdateProjectInputBuilder()..replace(this);
+      GUpdateProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34658,7 +33721,6 @@ class GUpdateProjectInputBuilder
 
   @override
   void replace(GUpdateProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateProjectInput;
   }
 
@@ -34672,7 +33734,7 @@ class GUpdateProjectInputBuilder
 
   _$GUpdateProjectInput _build() {
     final _$result = _$v ??
-        new _$GUpdateProjectInput._(
+        _$GUpdateProjectInput._(
           body: body,
           clientMutationId: clientMutationId,
           name: name,
@@ -34712,7 +33774,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
 
   factory _$GUpdatePullRequestInput(
           [void Function(GUpdatePullRequestInputBuilder)? updates]) =>
-      (new GUpdatePullRequestInputBuilder()..update(updates))._build();
+      (GUpdatePullRequestInputBuilder()..update(updates))._build();
 
   _$GUpdatePullRequestInput._(
       {this.assigneeIds,
@@ -34726,11 +33788,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
       required this.pullRequestId,
       this.state,
       this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pullRequestId, r'GUpdatePullRequestInput', 'pullRequestId');
-  }
-
+      : super._();
   @override
   GUpdatePullRequestInput rebuild(
           void Function(GUpdatePullRequestInputBuilder) updates) =>
@@ -34738,7 +33796,7 @@ class _$GUpdatePullRequestInput extends GUpdatePullRequestInput {
 
   @override
   GUpdatePullRequestInputBuilder toBuilder() =>
-      new GUpdatePullRequestInputBuilder()..replace(this);
+      GUpdatePullRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -34800,7 +33858,7 @@ class GUpdatePullRequestInputBuilder
 
   ListBuilder<String>? _assigneeIds;
   ListBuilder<String> get assigneeIds =>
-      _$this._assigneeIds ??= new ListBuilder<String>();
+      _$this._assigneeIds ??= ListBuilder<String>();
   set assigneeIds(ListBuilder<String>? assigneeIds) =>
       _$this._assigneeIds = assigneeIds;
 
@@ -34819,7 +33877,7 @@ class GUpdatePullRequestInputBuilder
 
   ListBuilder<String>? _labelIds;
   ListBuilder<String> get labelIds =>
-      _$this._labelIds ??= new ListBuilder<String>();
+      _$this._labelIds ??= ListBuilder<String>();
   set labelIds(ListBuilder<String>? labelIds) => _$this._labelIds = labelIds;
 
   bool? _maintainerCanModify;
@@ -34833,7 +33891,7 @@ class GUpdatePullRequestInputBuilder
 
   ListBuilder<String>? _projectIds;
   ListBuilder<String> get projectIds =>
-      _$this._projectIds ??= new ListBuilder<String>();
+      _$this._projectIds ??= ListBuilder<String>();
   set projectIds(ListBuilder<String>? projectIds) =>
       _$this._projectIds = projectIds;
 
@@ -34873,7 +33931,6 @@ class GUpdatePullRequestInputBuilder
 
   @override
   void replace(GUpdatePullRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdatePullRequestInput;
   }
 
@@ -34889,7 +33946,7 @@ class GUpdatePullRequestInputBuilder
     _$GUpdatePullRequestInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdatePullRequestInput._(
+          _$GUpdatePullRequestInput._(
             assigneeIds: _assigneeIds?.build(),
             baseRefName: baseRefName,
             body: body,
@@ -34915,7 +33972,7 @@ class GUpdatePullRequestInputBuilder
         _$failedField = 'projectIds';
         _projectIds?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdatePullRequestInput', _$failedField, e.toString());
       }
       rethrow;
@@ -34937,20 +33994,13 @@ class _$GUpdatePullRequestReviewCommentInput
   factory _$GUpdatePullRequestReviewCommentInput(
           [void Function(GUpdatePullRequestReviewCommentInputBuilder)?
               updates]) =>
-      (new GUpdatePullRequestReviewCommentInputBuilder()..update(updates))
-          ._build();
+      (GUpdatePullRequestReviewCommentInputBuilder()..update(updates))._build();
 
   _$GUpdatePullRequestReviewCommentInput._(
       {required this.body,
       this.clientMutationId,
       required this.pullRequestReviewCommentId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GUpdatePullRequestReviewCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(pullRequestReviewCommentId,
-        r'GUpdatePullRequestReviewCommentInput', 'pullRequestReviewCommentId');
-  }
-
+      : super._();
   @override
   GUpdatePullRequestReviewCommentInput rebuild(
           void Function(GUpdatePullRequestReviewCommentInputBuilder) updates) =>
@@ -34958,7 +34008,7 @@ class _$GUpdatePullRequestReviewCommentInput
 
   @override
   GUpdatePullRequestReviewCommentInputBuilder toBuilder() =>
-      new GUpdatePullRequestReviewCommentInputBuilder()..replace(this);
+      GUpdatePullRequestReviewCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35024,7 +34074,6 @@ class GUpdatePullRequestReviewCommentInputBuilder
 
   @override
   void replace(GUpdatePullRequestReviewCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdatePullRequestReviewCommentInput;
   }
 
@@ -35039,7 +34088,7 @@ class GUpdatePullRequestReviewCommentInputBuilder
 
   _$GUpdatePullRequestReviewCommentInput _build() {
     final _$result = _$v ??
-        new _$GUpdatePullRequestReviewCommentInput._(
+        _$GUpdatePullRequestReviewCommentInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GUpdatePullRequestReviewCommentInput', 'body'),
           clientMutationId: clientMutationId,
@@ -35063,19 +34112,13 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
 
   factory _$GUpdatePullRequestReviewInput(
           [void Function(GUpdatePullRequestReviewInputBuilder)? updates]) =>
-      (new GUpdatePullRequestReviewInputBuilder()..update(updates))._build();
+      (GUpdatePullRequestReviewInputBuilder()..update(updates))._build();
 
   _$GUpdatePullRequestReviewInput._(
       {required this.body,
       this.clientMutationId,
       required this.pullRequestReviewId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GUpdatePullRequestReviewInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(pullRequestReviewId,
-        r'GUpdatePullRequestReviewInput', 'pullRequestReviewId');
-  }
-
+      : super._();
   @override
   GUpdatePullRequestReviewInput rebuild(
           void Function(GUpdatePullRequestReviewInputBuilder) updates) =>
@@ -35083,7 +34126,7 @@ class _$GUpdatePullRequestReviewInput extends GUpdatePullRequestReviewInput {
 
   @override
   GUpdatePullRequestReviewInputBuilder toBuilder() =>
-      new GUpdatePullRequestReviewInputBuilder()..replace(this);
+      GUpdatePullRequestReviewInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35149,7 +34192,6 @@ class GUpdatePullRequestReviewInputBuilder
 
   @override
   void replace(GUpdatePullRequestReviewInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdatePullRequestReviewInput;
   }
 
@@ -35163,7 +34205,7 @@ class GUpdatePullRequestReviewInputBuilder
 
   _$GUpdatePullRequestReviewInput _build() {
     final _$result = _$v ??
-        new _$GUpdatePullRequestReviewInput._(
+        _$GUpdatePullRequestReviewInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GUpdatePullRequestReviewInput', 'body'),
           clientMutationId: clientMutationId,
@@ -35188,25 +34230,20 @@ class _$GUpdateRefInput extends GUpdateRefInput {
   final String refId;
 
   factory _$GUpdateRefInput([void Function(GUpdateRefInputBuilder)? updates]) =>
-      (new GUpdateRefInputBuilder()..update(updates))._build();
+      (GUpdateRefInputBuilder()..update(updates))._build();
 
   _$GUpdateRefInput._(
       {this.clientMutationId,
       this.force,
       required this.oid,
       required this.refId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(oid, r'GUpdateRefInput', 'oid');
-    BuiltValueNullFieldError.checkNotNull(refId, r'GUpdateRefInput', 'refId');
-  }
-
+      : super._();
   @override
   GUpdateRefInput rebuild(void Function(GUpdateRefInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GUpdateRefInputBuilder toBuilder() =>
-      new GUpdateRefInputBuilder()..replace(this);
+  GUpdateRefInputBuilder toBuilder() => GUpdateRefInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35254,7 +34291,7 @@ class GUpdateRefInputBuilder
   set force(bool? force) => _$this._force = force;
 
   GGitObjectIDBuilder? _oid;
-  GGitObjectIDBuilder get oid => _$this._oid ??= new GGitObjectIDBuilder();
+  GGitObjectIDBuilder get oid => _$this._oid ??= GGitObjectIDBuilder();
   set oid(GGitObjectIDBuilder? oid) => _$this._oid = oid;
 
   String? _refId;
@@ -35277,7 +34314,6 @@ class GUpdateRefInputBuilder
 
   @override
   void replace(GUpdateRefInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateRefInput;
   }
 
@@ -35293,7 +34329,7 @@ class GUpdateRefInputBuilder
     _$GUpdateRefInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdateRefInput._(
+          _$GUpdateRefInput._(
             clientMutationId: clientMutationId,
             force: force,
             oid: oid.build(),
@@ -35306,7 +34342,7 @@ class GUpdateRefInputBuilder
         _$failedField = 'oid';
         oid.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdateRefInput', _$failedField, e.toString());
       }
       rethrow;
@@ -35338,7 +34374,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
 
   factory _$GUpdateRepositoryInput(
           [void Function(GUpdateRepositoryInputBuilder)? updates]) =>
-      (new GUpdateRepositoryInputBuilder()..update(updates))._build();
+      (GUpdateRepositoryInputBuilder()..update(updates))._build();
 
   _$GUpdateRepositoryInput._(
       {this.clientMutationId,
@@ -35350,11 +34386,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
       this.name,
       required this.repositoryId,
       this.template})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GUpdateRepositoryInput', 'repositoryId');
-  }
-
+      : super._();
   @override
   GUpdateRepositoryInput rebuild(
           void Function(GUpdateRepositoryInputBuilder) updates) =>
@@ -35362,7 +34394,7 @@ class _$GUpdateRepositoryInput extends GUpdateRepositoryInput {
 
   @override
   GUpdateRepositoryInputBuilder toBuilder() =>
-      new GUpdateRepositoryInputBuilder()..replace(this);
+      GUpdateRepositoryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35440,7 +34472,7 @@ class GUpdateRepositoryInputBuilder
       _$this._hasWikiEnabled = hasWikiEnabled;
 
   GURIBuilder? _homepageUrl;
-  GURIBuilder get homepageUrl => _$this._homepageUrl ??= new GURIBuilder();
+  GURIBuilder get homepageUrl => _$this._homepageUrl ??= GURIBuilder();
   set homepageUrl(GURIBuilder? homepageUrl) =>
       _$this._homepageUrl = homepageUrl;
 
@@ -35477,7 +34509,6 @@ class GUpdateRepositoryInputBuilder
 
   @override
   void replace(GUpdateRepositoryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateRepositoryInput;
   }
 
@@ -35493,7 +34524,7 @@ class GUpdateRepositoryInputBuilder
     _$GUpdateRepositoryInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdateRepositoryInput._(
+          _$GUpdateRepositoryInput._(
             clientMutationId: clientMutationId,
             description: description,
             hasIssuesEnabled: hasIssuesEnabled,
@@ -35511,7 +34542,7 @@ class GUpdateRepositoryInputBuilder
         _$failedField = 'homepageUrl';
         _homepageUrl?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdateRepositoryInput', _$failedField, e.toString());
       }
       rethrow;
@@ -35531,19 +34562,13 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
 
   factory _$GUpdateSubscriptionInput(
           [void Function(GUpdateSubscriptionInputBuilder)? updates]) =>
-      (new GUpdateSubscriptionInputBuilder()..update(updates))._build();
+      (GUpdateSubscriptionInputBuilder()..update(updates))._build();
 
   _$GUpdateSubscriptionInput._(
       {this.clientMutationId,
       required this.state,
       required this.subscribableId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        state, r'GUpdateSubscriptionInput', 'state');
-    BuiltValueNullFieldError.checkNotNull(
-        subscribableId, r'GUpdateSubscriptionInput', 'subscribableId');
-  }
-
+      : super._();
   @override
   GUpdateSubscriptionInput rebuild(
           void Function(GUpdateSubscriptionInputBuilder) updates) =>
@@ -35551,7 +34576,7 @@ class _$GUpdateSubscriptionInput extends GUpdateSubscriptionInput {
 
   @override
   GUpdateSubscriptionInputBuilder toBuilder() =>
-      new GUpdateSubscriptionInputBuilder()..replace(this);
+      GUpdateSubscriptionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35616,7 +34641,6 @@ class GUpdateSubscriptionInputBuilder
 
   @override
   void replace(GUpdateSubscriptionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateSubscriptionInput;
   }
 
@@ -35630,7 +34654,7 @@ class GUpdateSubscriptionInputBuilder
 
   _$GUpdateSubscriptionInput _build() {
     final _$result = _$v ??
-        new _$GUpdateSubscriptionInput._(
+        _$GUpdateSubscriptionInput._(
           clientMutationId: clientMutationId,
           state: BuiltValueNullFieldError.checkNotNull(
               state, r'GUpdateSubscriptionInput', 'state'),
@@ -35655,21 +34679,14 @@ class _$GUpdateTeamDiscussionCommentInput
 
   factory _$GUpdateTeamDiscussionCommentInput(
           [void Function(GUpdateTeamDiscussionCommentInputBuilder)? updates]) =>
-      (new GUpdateTeamDiscussionCommentInputBuilder()..update(updates))
-          ._build();
+      (GUpdateTeamDiscussionCommentInputBuilder()..update(updates))._build();
 
   _$GUpdateTeamDiscussionCommentInput._(
       {required this.body,
       this.bodyVersion,
       this.clientMutationId,
       required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        body, r'GUpdateTeamDiscussionCommentInput', 'body');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GUpdateTeamDiscussionCommentInput', 'id');
-  }
-
+      : super._();
   @override
   GUpdateTeamDiscussionCommentInput rebuild(
           void Function(GUpdateTeamDiscussionCommentInputBuilder) updates) =>
@@ -35677,7 +34694,7 @@ class _$GUpdateTeamDiscussionCommentInput
 
   @override
   GUpdateTeamDiscussionCommentInputBuilder toBuilder() =>
-      new GUpdateTeamDiscussionCommentInputBuilder()..replace(this);
+      GUpdateTeamDiscussionCommentInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35750,7 +34767,6 @@ class GUpdateTeamDiscussionCommentInputBuilder
 
   @override
   void replace(GUpdateTeamDiscussionCommentInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateTeamDiscussionCommentInput;
   }
 
@@ -35765,7 +34781,7 @@ class GUpdateTeamDiscussionCommentInputBuilder
 
   _$GUpdateTeamDiscussionCommentInput _build() {
     final _$result = _$v ??
-        new _$GUpdateTeamDiscussionCommentInput._(
+        _$GUpdateTeamDiscussionCommentInput._(
           body: BuiltValueNullFieldError.checkNotNull(
               body, r'GUpdateTeamDiscussionCommentInput', 'body'),
           bodyVersion: bodyVersion,
@@ -35794,7 +34810,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
 
   factory _$GUpdateTeamDiscussionInput(
           [void Function(GUpdateTeamDiscussionInputBuilder)? updates]) =>
-      (new GUpdateTeamDiscussionInputBuilder()..update(updates))._build();
+      (GUpdateTeamDiscussionInputBuilder()..update(updates))._build();
 
   _$GUpdateTeamDiscussionInput._(
       {this.body,
@@ -35803,11 +34819,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
       required this.id,
       this.pinned,
       this.title})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GUpdateTeamDiscussionInput', 'id');
-  }
-
+      : super._();
   @override
   GUpdateTeamDiscussionInput rebuild(
           void Function(GUpdateTeamDiscussionInputBuilder) updates) =>
@@ -35815,7 +34827,7 @@ class _$GUpdateTeamDiscussionInput extends GUpdateTeamDiscussionInput {
 
   @override
   GUpdateTeamDiscussionInputBuilder toBuilder() =>
-      new GUpdateTeamDiscussionInputBuilder()..replace(this);
+      GUpdateTeamDiscussionInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -35903,7 +34915,6 @@ class GUpdateTeamDiscussionInputBuilder
 
   @override
   void replace(GUpdateTeamDiscussionInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateTeamDiscussionInput;
   }
 
@@ -35917,7 +34928,7 @@ class GUpdateTeamDiscussionInputBuilder
 
   _$GUpdateTeamDiscussionInput _build() {
     final _$result = _$v ??
-        new _$GUpdateTeamDiscussionInput._(
+        _$GUpdateTeamDiscussionInput._(
           body: body,
           bodyVersion: bodyVersion,
           clientMutationId: clientMutationId,
@@ -35941,19 +34952,13 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
 
   factory _$GUpdateTopicsInput(
           [void Function(GUpdateTopicsInputBuilder)? updates]) =>
-      (new GUpdateTopicsInputBuilder()..update(updates))._build();
+      (GUpdateTopicsInputBuilder()..update(updates))._build();
 
   _$GUpdateTopicsInput._(
       {this.clientMutationId,
       required this.repositoryId,
       required this.topicNames})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        repositoryId, r'GUpdateTopicsInput', 'repositoryId');
-    BuiltValueNullFieldError.checkNotNull(
-        topicNames, r'GUpdateTopicsInput', 'topicNames');
-  }
-
+      : super._();
   @override
   GUpdateTopicsInput rebuild(
           void Function(GUpdateTopicsInputBuilder) updates) =>
@@ -35961,7 +34966,7 @@ class _$GUpdateTopicsInput extends GUpdateTopicsInput {
 
   @override
   GUpdateTopicsInputBuilder toBuilder() =>
-      new GUpdateTopicsInputBuilder()..replace(this);
+      GUpdateTopicsInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -36007,7 +35012,7 @@ class GUpdateTopicsInputBuilder
 
   ListBuilder<String>? _topicNames;
   ListBuilder<String> get topicNames =>
-      _$this._topicNames ??= new ListBuilder<String>();
+      _$this._topicNames ??= ListBuilder<String>();
   set topicNames(ListBuilder<String>? topicNames) =>
       _$this._topicNames = topicNames;
 
@@ -36026,7 +35031,6 @@ class GUpdateTopicsInputBuilder
 
   @override
   void replace(GUpdateTopicsInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUpdateTopicsInput;
   }
 
@@ -36042,7 +35046,7 @@ class GUpdateTopicsInputBuilder
     _$GUpdateTopicsInput _$result;
     try {
       _$result = _$v ??
-          new _$GUpdateTopicsInput._(
+          _$GUpdateTopicsInput._(
             clientMutationId: clientMutationId,
             repositoryId: BuiltValueNullFieldError.checkNotNull(
                 repositoryId, r'GUpdateTopicsInput', 'repositoryId'),
@@ -36054,7 +35058,7 @@ class GUpdateTopicsInputBuilder
         _$failedField = 'topicNames';
         topicNames.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GUpdateTopicsInput', _$failedField, e.toString());
       }
       rethrow;
@@ -36072,22 +35076,17 @@ class _$GUserStatusOrder extends GUserStatusOrder {
 
   factory _$GUserStatusOrder(
           [void Function(GUserStatusOrderBuilder)? updates]) =>
-      (new GUserStatusOrderBuilder()..update(updates))._build();
+      (GUserStatusOrderBuilder()..update(updates))._build();
 
   _$GUserStatusOrder._({required this.direction, required this.field})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        direction, r'GUserStatusOrder', 'direction');
-    BuiltValueNullFieldError.checkNotNull(field, r'GUserStatusOrder', 'field');
-  }
-
+      : super._();
   @override
   GUserStatusOrder rebuild(void Function(GUserStatusOrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GUserStatusOrderBuilder toBuilder() =>
-      new GUserStatusOrderBuilder()..replace(this);
+      GUserStatusOrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -36141,7 +35140,6 @@ class GUserStatusOrderBuilder
 
   @override
   void replace(GUserStatusOrder other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GUserStatusOrder;
   }
 
@@ -36155,7 +35153,7 @@ class GUserStatusOrderBuilder
 
   _$GUserStatusOrder _build() {
     final _$result = _$v ??
-        new _$GUserStatusOrder._(
+        _$GUserStatusOrder._(
           direction: BuiltValueNullFieldError.checkNotNull(
               direction, r'GUserStatusOrder', 'direction'),
           field: BuiltValueNullFieldError.checkNotNull(
@@ -36172,19 +35170,16 @@ class _$GX509Certificate extends GX509Certificate {
 
   factory _$GX509Certificate(
           [void Function(GX509CertificateBuilder)? updates]) =>
-      (new GX509CertificateBuilder()..update(updates))._build();
+      (GX509CertificateBuilder()..update(updates))._build();
 
-  _$GX509Certificate._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GX509Certificate', 'value');
-  }
-
+  _$GX509Certificate._({required this.value}) : super._();
   @override
   GX509Certificate rebuild(void Function(GX509CertificateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GX509CertificateBuilder toBuilder() =>
-      new GX509CertificateBuilder()..replace(this);
+      GX509CertificateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -36229,7 +35224,6 @@ class GX509CertificateBuilder
 
   @override
   void replace(GX509Certificate other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GX509Certificate;
   }
 
@@ -36243,7 +35237,7 @@ class GX509CertificateBuilder
 
   _$GX509Certificate _build() {
     final _$result = _$v ??
-        new _$GX509Certificate._(
+        _$GX509Certificate._(
           value: BuiltValueNullFieldError.checkNotNull(
               value, r'GX509Certificate', 'value'),
         );

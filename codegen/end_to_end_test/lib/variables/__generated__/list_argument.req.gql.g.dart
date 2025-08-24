@@ -7,7 +7,7 @@ part of 'list_argument.req.gql.dart';
 // **************************************************************************
 
 Serializer<GreviewsWithListArgument> _$greviewsWithListArgumentSerializer =
-    new _$GreviewsWithListArgumentSerializer();
+    _$GreviewsWithListArgumentSerializer();
 
 class _$GreviewsWithListArgumentSerializer
     implements StructuredSerializer<GreviewsWithListArgument> {
@@ -39,7 +39,7 @@ class _$GreviewsWithListArgumentSerializer
   GreviewsWithListArgument deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GreviewsWithListArgumentBuilder();
+    final result = GreviewsWithListArgumentBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -72,16 +72,10 @@ class _$GreviewsWithListArgument extends GreviewsWithListArgument {
 
   factory _$GreviewsWithListArgument(
           [void Function(GreviewsWithListArgumentBuilder)? updates]) =>
-      (new GreviewsWithListArgumentBuilder()..update(updates))._build();
+      (GreviewsWithListArgumentBuilder()..update(updates))._build();
 
   _$GreviewsWithListArgument._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        vars, r'GreviewsWithListArgument', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GreviewsWithListArgument', 'operation');
-  }
-
+      : super._();
   @override
   GreviewsWithListArgument rebuild(
           void Function(GreviewsWithListArgumentBuilder) updates) =>
@@ -89,7 +83,7 @@ class _$GreviewsWithListArgument extends GreviewsWithListArgument {
 
   @override
   GreviewsWithListArgumentBuilder toBuilder() =>
-      new GreviewsWithListArgumentBuilder()..replace(this);
+      GreviewsWithListArgumentBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -124,7 +118,7 @@ class GreviewsWithListArgumentBuilder
 
   _i3.GreviewsWithListArgumentVarsBuilder? _vars;
   _i3.GreviewsWithListArgumentVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GreviewsWithListArgumentVarsBuilder();
+      _$this._vars ??= _i3.GreviewsWithListArgumentVarsBuilder();
   set vars(_i3.GreviewsWithListArgumentVarsBuilder? vars) =>
       _$this._vars = vars;
 
@@ -148,7 +142,6 @@ class GreviewsWithListArgumentBuilder
 
   @override
   void replace(GreviewsWithListArgument other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GreviewsWithListArgument;
   }
 
@@ -164,7 +157,7 @@ class GreviewsWithListArgumentBuilder
     _$GreviewsWithListArgument _$result;
     try {
       _$result = _$v ??
-          new _$GreviewsWithListArgument._(
+          _$GreviewsWithListArgument._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GreviewsWithListArgument', 'operation'),
@@ -175,7 +168,7 @@ class GreviewsWithListArgumentBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GreviewsWithListArgument', _$failedField, e.toString());
       }
       rethrow;

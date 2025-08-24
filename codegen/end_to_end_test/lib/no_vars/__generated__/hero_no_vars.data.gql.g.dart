@@ -7,9 +7,9 @@ part of 'hero_no_vars.data.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroNoVarsData> _$gHeroNoVarsDataSerializer =
-    new _$GHeroNoVarsDataSerializer();
+    _$GHeroNoVarsDataSerializer();
 Serializer<GHeroNoVarsData_hero> _$gHeroNoVarsDataHeroSerializer =
-    new _$GHeroNoVarsData_heroSerializer();
+    _$GHeroNoVarsData_heroSerializer();
 
 class _$GHeroNoVarsDataSerializer
     implements StructuredSerializer<GHeroNoVarsData> {
@@ -41,7 +41,7 @@ class _$GHeroNoVarsDataSerializer
   GHeroNoVarsData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroNoVarsDataBuilder();
+    final result = GHeroNoVarsDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -96,7 +96,7 @@ class _$GHeroNoVarsData_heroSerializer
   GHeroNoVarsData_hero deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroNoVarsData_heroBuilder();
+    final result = GHeroNoVarsData_heroBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -130,20 +130,15 @@ class _$GHeroNoVarsData extends GHeroNoVarsData {
   final GHeroNoVarsData_hero? hero;
 
   factory _$GHeroNoVarsData([void Function(GHeroNoVarsDataBuilder)? updates]) =>
-      (new GHeroNoVarsDataBuilder()..update(updates))._build();
+      (GHeroNoVarsDataBuilder()..update(updates))._build();
 
-  _$GHeroNoVarsData._({required this.G__typename, this.hero}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroNoVarsData', 'G__typename');
-  }
-
+  _$GHeroNoVarsData._({required this.G__typename, this.hero}) : super._();
   @override
   GHeroNoVarsData rebuild(void Function(GHeroNoVarsDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GHeroNoVarsDataBuilder toBuilder() =>
-      new GHeroNoVarsDataBuilder()..replace(this);
+  GHeroNoVarsDataBuilder toBuilder() => GHeroNoVarsDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -181,7 +176,7 @@ class GHeroNoVarsDataBuilder
 
   GHeroNoVarsData_heroBuilder? _hero;
   GHeroNoVarsData_heroBuilder get hero =>
-      _$this._hero ??= new GHeroNoVarsData_heroBuilder();
+      _$this._hero ??= GHeroNoVarsData_heroBuilder();
   set hero(GHeroNoVarsData_heroBuilder? hero) => _$this._hero = hero;
 
   GHeroNoVarsDataBuilder() {
@@ -200,7 +195,6 @@ class GHeroNoVarsDataBuilder
 
   @override
   void replace(GHeroNoVarsData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroNoVarsData;
   }
 
@@ -216,7 +210,7 @@ class GHeroNoVarsDataBuilder
     _$GHeroNoVarsData _$result;
     try {
       _$result = _$v ??
-          new _$GHeroNoVarsData._(
+          _$GHeroNoVarsData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename, r'GHeroNoVarsData', 'G__typename'),
             hero: _hero?.build(),
@@ -227,7 +221,7 @@ class GHeroNoVarsDataBuilder
         _$failedField = 'hero';
         _hero?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GHeroNoVarsData', _$failedField, e.toString());
       }
       rethrow;
@@ -247,18 +241,11 @@ class _$GHeroNoVarsData_hero extends GHeroNoVarsData_hero {
 
   factory _$GHeroNoVarsData_hero(
           [void Function(GHeroNoVarsData_heroBuilder)? updates]) =>
-      (new GHeroNoVarsData_heroBuilder()..update(updates))._build();
+      (GHeroNoVarsData_heroBuilder()..update(updates))._build();
 
   _$GHeroNoVarsData_hero._(
       {required this.G__typename, required this.id, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GHeroNoVarsData_hero', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(id, r'GHeroNoVarsData_hero', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GHeroNoVarsData_hero', 'name');
-  }
-
+      : super._();
   @override
   GHeroNoVarsData_hero rebuild(
           void Function(GHeroNoVarsData_heroBuilder) updates) =>
@@ -266,7 +253,7 @@ class _$GHeroNoVarsData_hero extends GHeroNoVarsData_hero {
 
   @override
   GHeroNoVarsData_heroBuilder toBuilder() =>
-      new GHeroNoVarsData_heroBuilder()..replace(this);
+      GHeroNoVarsData_heroBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -330,7 +317,6 @@ class GHeroNoVarsData_heroBuilder
 
   @override
   void replace(GHeroNoVarsData_hero other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroNoVarsData_hero;
   }
 
@@ -344,7 +330,7 @@ class GHeroNoVarsData_heroBuilder
 
   _$GHeroNoVarsData_hero _build() {
     final _$result = _$v ??
-        new _$GHeroNoVarsData_hero._(
+        _$GHeroNoVarsData_hero._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GHeroNoVarsData_hero', 'G__typename'),
           id: BuiltValueNullFieldError.checkNotNull(

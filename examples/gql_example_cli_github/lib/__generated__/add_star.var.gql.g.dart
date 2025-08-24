@@ -6,8 +6,7 @@ part of 'add_star.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAddStarVars> _$gAddStarVarsSerializer =
-    new _$GAddStarVarsSerializer();
+Serializer<GAddStarVars> _$gAddStarVarsSerializer = _$GAddStarVarsSerializer();
 
 class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
   @override
@@ -31,7 +30,7 @@ class _$GAddStarVarsSerializer implements StructuredSerializer<GAddStarVars> {
   GAddStarVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddStarVarsBuilder();
+    final result = GAddStarVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -55,19 +54,15 @@ class _$GAddStarVars extends GAddStarVars {
   final String starrableId;
 
   factory _$GAddStarVars([void Function(GAddStarVarsBuilder)? updates]) =>
-      (new GAddStarVarsBuilder()..update(updates))._build();
+      (GAddStarVarsBuilder()..update(updates))._build();
 
-  _$GAddStarVars._({required this.starrableId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        starrableId, r'GAddStarVars', 'starrableId');
-  }
-
+  _$GAddStarVars._({required this.starrableId}) : super._();
   @override
   GAddStarVars rebuild(void Function(GAddStarVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAddStarVarsBuilder toBuilder() => new GAddStarVarsBuilder()..replace(this);
+  GAddStarVarsBuilder toBuilder() => GAddStarVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +107,6 @@ class GAddStarVarsBuilder
 
   @override
   void replace(GAddStarVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarVars;
   }
 
@@ -126,7 +120,7 @@ class GAddStarVarsBuilder
 
   _$GAddStarVars _build() {
     final _$result = _$v ??
-        new _$GAddStarVars._(
+        _$GAddStarVars._(
           starrableId: BuiltValueNullFieldError.checkNotNull(
               starrableId, r'GAddStarVars', 'starrableId'),
         );

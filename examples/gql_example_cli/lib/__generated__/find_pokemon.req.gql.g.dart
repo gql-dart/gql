@@ -6,8 +6,7 @@ part of 'find_pokemon.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GFindPokemon> _$gFindPokemonSerializer =
-    new _$GFindPokemonSerializer();
+Serializer<GFindPokemon> _$gFindPokemonSerializer = _$GFindPokemonSerializer();
 
 class _$GFindPokemonSerializer implements StructuredSerializer<GFindPokemon> {
   @override
@@ -34,7 +33,7 @@ class _$GFindPokemonSerializer implements StructuredSerializer<GFindPokemon> {
   GFindPokemon deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFindPokemonBuilder();
+    final result = GFindPokemonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -65,20 +64,15 @@ class _$GFindPokemon extends GFindPokemon {
   final _i1.Operation operation;
 
   factory _$GFindPokemon([void Function(GFindPokemonBuilder)? updates]) =>
-      (new GFindPokemonBuilder()..update(updates))._build();
+      (GFindPokemonBuilder()..update(updates))._build();
 
-  _$GFindPokemon._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GFindPokemon', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GFindPokemon', 'operation');
-  }
-
+  _$GFindPokemon._({required this.vars, required this.operation}) : super._();
   @override
   GFindPokemon rebuild(void Function(GFindPokemonBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GFindPokemonBuilder toBuilder() => new GFindPokemonBuilder()..replace(this);
+  GFindPokemonBuilder toBuilder() => GFindPokemonBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +106,7 @@ class GFindPokemonBuilder
 
   _i3.GFindPokemonVarsBuilder? _vars;
   _i3.GFindPokemonVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GFindPokemonVarsBuilder();
+      _$this._vars ??= _i3.GFindPokemonVarsBuilder();
   set vars(_i3.GFindPokemonVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -135,7 +129,6 @@ class GFindPokemonBuilder
 
   @override
   void replace(GFindPokemon other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFindPokemon;
   }
 
@@ -151,7 +144,7 @@ class GFindPokemonBuilder
     _$GFindPokemon _$result;
     try {
       _$result = _$v ??
-          new _$GFindPokemon._(
+          _$GFindPokemon._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GFindPokemon', 'operation'),
@@ -162,7 +155,7 @@ class GFindPokemonBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GFindPokemon', _$failedField, e.toString());
       }
       rethrow;

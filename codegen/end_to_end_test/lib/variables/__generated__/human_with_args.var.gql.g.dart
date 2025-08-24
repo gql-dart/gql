@@ -7,7 +7,7 @@ part of 'human_with_args.var.gql.dart';
 // **************************************************************************
 
 Serializer<GHumanWithArgsVars> _$gHumanWithArgsVarsSerializer =
-    new _$GHumanWithArgsVarsSerializer();
+    _$GHumanWithArgsVarsSerializer();
 
 class _$GHumanWithArgsVarsSerializer
     implements StructuredSerializer<GHumanWithArgsVars> {
@@ -32,7 +32,7 @@ class _$GHumanWithArgsVarsSerializer
   GHumanWithArgsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHumanWithArgsVarsBuilder();
+    final result = GHumanWithArgsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -57,12 +57,9 @@ class _$GHumanWithArgsVars extends GHumanWithArgsVars {
 
   factory _$GHumanWithArgsVars(
           [void Function(GHumanWithArgsVarsBuilder)? updates]) =>
-      (new GHumanWithArgsVarsBuilder()..update(updates))._build();
+      (GHumanWithArgsVarsBuilder()..update(updates))._build();
 
-  _$GHumanWithArgsVars._({required this.id}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'GHumanWithArgsVars', 'id');
-  }
-
+  _$GHumanWithArgsVars._({required this.id}) : super._();
   @override
   GHumanWithArgsVars rebuild(
           void Function(GHumanWithArgsVarsBuilder) updates) =>
@@ -70,7 +67,7 @@ class _$GHumanWithArgsVars extends GHumanWithArgsVars {
 
   @override
   GHumanWithArgsVarsBuilder toBuilder() =>
-      new GHumanWithArgsVarsBuilder()..replace(this);
+      GHumanWithArgsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -114,7 +111,6 @@ class GHumanWithArgsVarsBuilder
 
   @override
   void replace(GHumanWithArgsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHumanWithArgsVars;
   }
 
@@ -128,7 +124,7 @@ class GHumanWithArgsVarsBuilder
 
   _$GHumanWithArgsVars _build() {
     final _$result = _$v ??
-        new _$GHumanWithArgsVars._(
+        _$GHumanWithArgsVars._(
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'GHumanWithArgsVars', 'id'),
         );

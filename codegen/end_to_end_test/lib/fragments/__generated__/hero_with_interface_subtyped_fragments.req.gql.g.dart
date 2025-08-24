@@ -8,7 +8,7 @@ part of 'hero_with_interface_subtyped_fragments.req.gql.dart';
 
 Serializer<GHeroWithInterfaceSubTypedFragments>
     _$gHeroWithInterfaceSubTypedFragmentsSerializer =
-    new _$GHeroWithInterfaceSubTypedFragmentsSerializer();
+    _$GHeroWithInterfaceSubTypedFragmentsSerializer();
 
 class _$GHeroWithInterfaceSubTypedFragmentsSerializer
     implements StructuredSerializer<GHeroWithInterfaceSubTypedFragments> {
@@ -41,7 +41,7 @@ class _$GHeroWithInterfaceSubTypedFragmentsSerializer
   GHeroWithInterfaceSubTypedFragments deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithInterfaceSubTypedFragmentsBuilder();
+    final result = GHeroWithInterfaceSubTypedFragmentsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -76,18 +76,11 @@ class _$GHeroWithInterfaceSubTypedFragments
   factory _$GHeroWithInterfaceSubTypedFragments(
           [void Function(GHeroWithInterfaceSubTypedFragmentsBuilder)?
               updates]) =>
-      (new GHeroWithInterfaceSubTypedFragmentsBuilder()..update(updates))
-          ._build();
+      (GHeroWithInterfaceSubTypedFragmentsBuilder()..update(updates))._build();
 
   _$GHeroWithInterfaceSubTypedFragments._(
       {required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        vars, r'GHeroWithInterfaceSubTypedFragments', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GHeroWithInterfaceSubTypedFragments', 'operation');
-  }
-
+      : super._();
   @override
   GHeroWithInterfaceSubTypedFragments rebuild(
           void Function(GHeroWithInterfaceSubTypedFragmentsBuilder) updates) =>
@@ -95,7 +88,7 @@ class _$GHeroWithInterfaceSubTypedFragments
 
   @override
   GHeroWithInterfaceSubTypedFragmentsBuilder toBuilder() =>
-      new GHeroWithInterfaceSubTypedFragmentsBuilder()..replace(this);
+      GHeroWithInterfaceSubTypedFragmentsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -131,7 +124,7 @@ class GHeroWithInterfaceSubTypedFragmentsBuilder
 
   _i3.GHeroWithInterfaceSubTypedFragmentsVarsBuilder? _vars;
   _i3.GHeroWithInterfaceSubTypedFragmentsVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GHeroWithInterfaceSubTypedFragmentsVarsBuilder();
+      _$this._vars ??= _i3.GHeroWithInterfaceSubTypedFragmentsVarsBuilder();
   set vars(_i3.GHeroWithInterfaceSubTypedFragmentsVarsBuilder? vars) =>
       _$this._vars = vars;
 
@@ -155,7 +148,6 @@ class GHeroWithInterfaceSubTypedFragmentsBuilder
 
   @override
   void replace(GHeroWithInterfaceSubTypedFragments other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithInterfaceSubTypedFragments;
   }
 
@@ -172,7 +164,7 @@ class GHeroWithInterfaceSubTypedFragmentsBuilder
     _$GHeroWithInterfaceSubTypedFragments _$result;
     try {
       _$result = _$v ??
-          new _$GHeroWithInterfaceSubTypedFragments._(
+          _$GHeroWithInterfaceSubTypedFragments._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GHeroWithInterfaceSubTypedFragments', 'operation'),
@@ -183,10 +175,8 @@ class GHeroWithInterfaceSubTypedFragmentsBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'GHeroWithInterfaceSubTypedFragments',
-            _$failedField,
-            e.toString());
+        throw BuiltValueNestedFieldError(r'GHeroWithInterfaceSubTypedFragments',
+            _$failedField, e.toString());
       }
       rethrow;
     }

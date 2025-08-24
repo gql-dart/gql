@@ -6,7 +6,7 @@ part of 'shape.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GShape> _$gShapeSerializer = new _$GShapeSerializer();
+Serializer<GShape> _$gShapeSerializer = _$GShapeSerializer();
 
 class _$GShapeSerializer implements StructuredSerializer<GShape> {
   @override
@@ -32,7 +32,7 @@ class _$GShapeSerializer implements StructuredSerializer<GShape> {
   @override
   GShape deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GShapeBuilder();
+    final result = GShapeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -63,19 +63,15 @@ class _$GShape extends GShape {
   final _i1.Operation operation;
 
   factory _$GShape([void Function(GShapeBuilder)? updates]) =>
-      (new GShapeBuilder()..update(updates))._build();
+      (GShapeBuilder()..update(updates))._build();
 
-  _$GShape._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GShape', 'vars');
-    BuiltValueNullFieldError.checkNotNull(operation, r'GShape', 'operation');
-  }
-
+  _$GShape._({required this.vars, required this.operation}) : super._();
   @override
   GShape rebuild(void Function(GShapeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GShapeBuilder toBuilder() => new GShapeBuilder()..replace(this);
+  GShapeBuilder toBuilder() => GShapeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,8 +103,7 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
   _$GShape? _$v;
 
   _i3.GShapeVarsBuilder? _vars;
-  _i3.GShapeVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GShapeVarsBuilder();
+  _i3.GShapeVarsBuilder get vars => _$this._vars ??= _i3.GShapeVarsBuilder();
   set vars(_i3.GShapeVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -131,7 +126,6 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
 
   @override
   void replace(GShape other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShape;
   }
 
@@ -147,7 +141,7 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
     _$GShape _$result;
     try {
       _$result = _$v ??
-          new _$GShape._(
+          _$GShape._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GShape', 'operation'),
@@ -158,7 +152,7 @@ class GShapeBuilder implements Builder<GShape, GShapeBuilder> {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GShape', _$failedField, e.toString());
       }
       rethrow;

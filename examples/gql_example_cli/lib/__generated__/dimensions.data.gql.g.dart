@@ -7,7 +7,7 @@ part of 'dimensions.data.gql.dart';
 // **************************************************************************
 
 Serializer<GDimensionsData> _$gDimensionsDataSerializer =
-    new _$GDimensionsDataSerializer();
+    _$GDimensionsDataSerializer();
 
 class _$GDimensionsDataSerializer
     implements StructuredSerializer<GDimensionsData> {
@@ -46,7 +46,7 @@ class _$GDimensionsDataSerializer
   GDimensionsData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDimensionsDataBuilder();
+    final result = GDimensionsDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -82,21 +82,16 @@ class _$GDimensionsData extends GDimensionsData {
   final String? maximum;
 
   factory _$GDimensionsData([void Function(GDimensionsDataBuilder)? updates]) =>
-      (new GDimensionsDataBuilder()..update(updates))._build();
+      (GDimensionsDataBuilder()..update(updates))._build();
 
   _$GDimensionsData._({required this.G__typename, this.minimum, this.maximum})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GDimensionsData', 'G__typename');
-  }
-
+      : super._();
   @override
   GDimensionsData rebuild(void Function(GDimensionsDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GDimensionsDataBuilder toBuilder() =>
-      new GDimensionsDataBuilder()..replace(this);
+  GDimensionsDataBuilder toBuilder() => GDimensionsDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -160,7 +155,6 @@ class GDimensionsDataBuilder
 
   @override
   void replace(GDimensionsData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GDimensionsData;
   }
 
@@ -174,7 +168,7 @@ class GDimensionsDataBuilder
 
   _$GDimensionsData _build() {
     final _$result = _$v ??
-        new _$GDimensionsData._(
+        _$GDimensionsData._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
               G__typename, r'GDimensionsData', 'G__typename'),
           minimum: minimum,

@@ -16,19 +16,16 @@ part 'hero_with_interface_subtyped_fragments.req.gql.g.dart';
 
 abstract class GHeroWithInterfaceSubTypedFragments
     implements
-        Built<
-          GHeroWithInterfaceSubTypedFragments,
-          GHeroWithInterfaceSubTypedFragmentsBuilder
-        > {
+        Built<GHeroWithInterfaceSubTypedFragments,
+            GHeroWithInterfaceSubTypedFragmentsBuilder> {
   GHeroWithInterfaceSubTypedFragments._();
 
-  factory GHeroWithInterfaceSubTypedFragments([
-    void Function(GHeroWithInterfaceSubTypedFragmentsBuilder b) updates,
-  ]) = _$GHeroWithInterfaceSubTypedFragments;
+  factory GHeroWithInterfaceSubTypedFragments(
+      [void Function(GHeroWithInterfaceSubTypedFragmentsBuilder b)
+          updates]) = _$GHeroWithInterfaceSubTypedFragments;
 
   static void _initializeBuilder(
-    GHeroWithInterfaceSubTypedFragmentsBuilder b,
-  ) =>
+          GHeroWithInterfaceSubTypedFragmentsBuilder b) =>
       b
         ..operation = _i1.Operation(
           document: _i2.document,
@@ -40,17 +37,15 @@ abstract class GHeroWithInterfaceSubTypedFragments
   static Serializer<GHeroWithInterfaceSubTypedFragments> get serializer =>
       _$gHeroWithInterfaceSubTypedFragmentsSerializer;
 
-  Map<String, dynamic> toJson() =>
-      (_i4.serializers.serializeWith(
-            GHeroWithInterfaceSubTypedFragments.serializer,
-            this,
-          )
-          as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => (_i4.serializers.serializeWith(
+        GHeroWithInterfaceSubTypedFragments.serializer,
+        this,
+      ) as Map<String, dynamic>);
 
   static GHeroWithInterfaceSubTypedFragments? fromJson(
-    Map<String, dynamic> json,
-  ) => _i4.serializers.deserializeWith(
-    GHeroWithInterfaceSubTypedFragments.serializer,
-    json,
-  );
+          Map<String, dynamic> json) =>
+      _i4.serializers.deserializeWith(
+        GHeroWithInterfaceSubTypedFragments.serializer,
+        json,
+      );
 }

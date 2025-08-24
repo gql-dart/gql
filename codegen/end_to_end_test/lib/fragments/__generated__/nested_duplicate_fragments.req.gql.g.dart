@@ -7,7 +7,7 @@ part of 'nested_duplicate_fragments.req.gql.dart';
 // **************************************************************************
 
 Serializer<GSearchResultsQuery> _$gSearchResultsQuerySerializer =
-    new _$GSearchResultsQuerySerializer();
+    _$GSearchResultsQuerySerializer();
 
 class _$GSearchResultsQuerySerializer
     implements StructuredSerializer<GSearchResultsQuery> {
@@ -39,7 +39,7 @@ class _$GSearchResultsQuerySerializer
   GSearchResultsQuery deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GSearchResultsQueryBuilder();
+    final result = GSearchResultsQueryBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -71,15 +71,10 @@ class _$GSearchResultsQuery extends GSearchResultsQuery {
 
   factory _$GSearchResultsQuery(
           [void Function(GSearchResultsQueryBuilder)? updates]) =>
-      (new GSearchResultsQueryBuilder()..update(updates))._build();
+      (GSearchResultsQueryBuilder()..update(updates))._build();
 
   _$GSearchResultsQuery._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GSearchResultsQuery', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GSearchResultsQuery', 'operation');
-  }
-
+      : super._();
   @override
   GSearchResultsQuery rebuild(
           void Function(GSearchResultsQueryBuilder) updates) =>
@@ -87,7 +82,7 @@ class _$GSearchResultsQuery extends GSearchResultsQuery {
 
   @override
   GSearchResultsQueryBuilder toBuilder() =>
-      new GSearchResultsQueryBuilder()..replace(this);
+      GSearchResultsQueryBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -121,7 +116,7 @@ class GSearchResultsQueryBuilder
 
   _i3.GSearchResultsQueryVarsBuilder? _vars;
   _i3.GSearchResultsQueryVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GSearchResultsQueryVarsBuilder();
+      _$this._vars ??= _i3.GSearchResultsQueryVarsBuilder();
   set vars(_i3.GSearchResultsQueryVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -144,7 +139,6 @@ class GSearchResultsQueryBuilder
 
   @override
   void replace(GSearchResultsQuery other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GSearchResultsQuery;
   }
 
@@ -160,7 +154,7 @@ class GSearchResultsQueryBuilder
     _$GSearchResultsQuery _$result;
     try {
       _$result = _$v ??
-          new _$GSearchResultsQuery._(
+          _$GSearchResultsQuery._(
             vars: vars.build(),
             operation: BuiltValueNullFieldError.checkNotNull(
                 operation, r'GSearchResultsQuery', 'operation'),
@@ -171,7 +165,7 @@ class GSearchResultsQueryBuilder
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GSearchResultsQuery', _$failedField, e.toString());
       }
       rethrow;
