@@ -693,6 +693,7 @@ class _ConnectionState {
 
         // subscriptions might complete while waiting for retry
         if (locks == 0) {
+          // print("retry connecting = null");
           connecting = null;
           return denied(
             LikeCloseEvent(code: 1000, reason: "All Subscriptions Gone"),
@@ -736,6 +737,7 @@ class _ConnectionState {
           (Object event) => emitter.emit(TransportWsEvent.closed(event));
       errorOrClosed((errOrEvent) {
         options.log?.call("errorOrClosed $errOrEvent");
+        // print("errorOrClosed $errOrEvent connecting = null");
         connecting = null;
         isOpen = false;
         connectionAckTimeout?.cancel();
@@ -904,7 +906,6 @@ class _ConnectionState {
             ));
           } catch (err) {
             // stop reading messages as soon as reading breaks once
-            print("_messageSubs.cancel()");
             // ignore: unawaited_futures
             _messageSubs.cancel();
             emitter.emit(TransportWsEvent.error(err));
@@ -944,7 +945,6 @@ class _ConnectionState {
   Future<_Connection> connect() async {
     connecting ??= _startConnecting();
     final _connection = await connecting!;
-
     options.log?.call("_connection");
 
     final socket = _connection.socket;
@@ -1017,6 +1017,7 @@ class _Client extends TransportWsClient {
   ) {
     final id = options.generateID();
     options.log?.call("subscribe $id");
+    // print("subscribe step 1 generate id $id ${state.hashCode}");
 
     bool done = false;
     bool errored = false;
@@ -1028,9 +1029,124 @@ class _Client extends TransportWsClient {
 
     (() async {
       state.locks++;
-      for (;;) {
+
+      final serializedRequest = options.serializer.serializeRequest(payload);
+
+      final query = serializedRequest["query"] as String;
+
+      if (query.startsWith("subscription")) {
+        for (;;) {
+          try {
+            final _c = await state.connect();
+            // print("subscribe step 2 connect $id ${state.hashCode} ${_c.socket.hashCode}");
+            final socket = _c.socket;
+            final release = _c.release;
+            final waitForReleaseOrThrowOnClose =
+                _c.waitForReleaseOrThrowOnClose;
+            final waitForLikeCloseEvent = _c.waitForLikeCloseEvent;
+            // print("isolate debug name: ${Isolate.current.debugName}");
+            // print(payload.operation.toString());
+            // print(payload.variables.toString());
+            // print(payload.context.toString());
+            // print("graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
+            // if done while waiting for connect, release the connection lock right away
+            final _subscribeMsg = await options.graphQLSocketMessageEncoder(
+              SubscribeMessage(id, serializedRequest),
+            );
+            // print("subscribe step 3 operation $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+            // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
+            if (done) {
+              if (!release.isCompleted) release.complete();
+            }
+
+            final unlisten = emitter.onMessage(id, (message) {
+              if (message is NextMessage) {
+                sink.add(message.payload);
+                final completer = state.nextOrErrorMsgWaitMap[id];
+                if (completer != null && !completer.isCompleted) {
+                  completer.complete();
+                }
+                state.nextOrErrorMsgWaitMap.remove(id);
+                // print("subscribe step 5 receive NextMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+              } else if (message is ErrorMessage) {
+                errored = true;
+                done = true;
+                sink.addError(message.payload);
+                final completer = state.nextOrErrorMsgWaitMap[id];
+                if (completer != null && !completer.isCompleted) {
+                  completer.complete();
+                }
+                state.nextOrErrorMsgWaitMap.remove(id);
+                releaser();
+                // print("subscribe step 6 receive ErrorMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+              } else if (message is CompleteMessage) {
+                done = true;
+                releaser(); // release completes the sink
+                // print("subscribe step 7 receive CompleteMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+              }
+            });
+
+            socket.sink.add(_subscribeMsg);
+
+            state.nextOrErrorMsgWaitMap[id] = Completer();
+
+            releaser = () async {
+              final _completeMsg = await options
+                  .graphQLSocketMessageEncoder(CompleteMessage(id));
+              if (!done && state.isOpen) {
+                // if not completed already and socket is open, send complete message to server on release
+                socket.sink.add(_completeMsg);
+              }
+              state.locks--;
+              done = true;
+              if (!release.isCompleted) release.complete();
+              // print("subscribe step 8 releaser $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+            };
+
+            // print("subscribe step 4 waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+            // either the releaser will be called, connection completed and
+            // the promise resolved or the socket closed and the promise rejected.
+            // whatever happens though, we want to stop listening for messages
+            final likeCloseEvent = await Future.any<Object?>(
+                    [waitForReleaseOrThrowOnClose, waitForLikeCloseEvent])
+                .whenComplete(() async {
+              unlisten();
+              // print(
+              //     "subscribe step 9 complete waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+            });
+
+            // workground for dart linux bug: complete error not being caught by try..catch block
+            if (likeCloseEvent != null) {
+              // print("subscribe step 10 error likeCloseEvent $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+              throw likeCloseEvent;
+            }
+
+            // print("subscribe step 11 success $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+
+            return; // completed, shouldnt try again
+          } catch (errOrCloseEvent) {
+            if (!state.shouldRetryConnectOrThrow(errOrCloseEvent)) return;
+          }
+          // final finish = await processMessage(
+          //   id: id,
+          //   serializedRequest: serializedRequest,
+          //   done: done,
+          //   errored: errored,
+          //   releaser: releaser,
+          //   setDone: (value) => done = value,
+          //   setErrored: (value) => errored = value,
+          //   isSubscription: true,
+          //   sink: sink,
+          // );
+
+          // if (finish) {
+          //   return;
+          // }
+        }
+      } else {
         try {
           final _c = await state.connect();
+          // print("subscribe step 2 connect $id ${state.hashCode} ${_c.socket.hashCode}");
           final socket = _c.socket;
           final release = _c.release;
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
@@ -1042,8 +1158,9 @@ class _Client extends TransportWsClient {
           // print("graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
           // if done while waiting for connect, release the connection lock right away
           final _subscribeMsg = await options.graphQLSocketMessageEncoder(
-            SubscribeMessage(id, options.serializer.serializeRequest(payload)),
+            SubscribeMessage(id, serializedRequest),
           );
+          // print("subscribe step 3 operation $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
           // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
           if (done) {
             if (!release.isCompleted) release.complete();
@@ -1051,12 +1168,15 @@ class _Client extends TransportWsClient {
 
           final unlisten = emitter.onMessage(id, (message) {
             if (message is NextMessage) {
+              done = true;
               sink.add(message.payload);
               final completer = state.nextOrErrorMsgWaitMap[id];
               if (completer != null && !completer.isCompleted) {
                 completer.complete();
               }
               state.nextOrErrorMsgWaitMap.remove(id);
+              releaser();
+              // print("subscribe step 5 receive NextMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
             } else if (message is ErrorMessage) {
               errored = true;
               done = true;
@@ -1067,9 +1187,7 @@ class _Client extends TransportWsClient {
               }
               state.nextOrErrorMsgWaitMap.remove(id);
               releaser();
-            } else if (message is CompleteMessage) {
-              done = true;
-              releaser(); // release completes the sink
+              // print("subscribe step 6 receive ErrorMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
             }
           });
 
@@ -1087,23 +1205,44 @@ class _Client extends TransportWsClient {
             state.locks--;
             done = true;
             if (!release.isCompleted) release.complete();
+            // print("subscribe step 8 releaser $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
           };
 
+          // print("subscribe step 4 waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
           // either the releaser will be called, connection completed and
           // the promise resolved or the socket closed and the promise rejected.
           // whatever happens though, we want to stop listening for messages
-          await waitForReleaseOrThrowOnClose.whenComplete(unlisten);
+          final likeCloseEvent = await Future.any<Object?>(
+                  [waitForReleaseOrThrowOnClose, waitForLikeCloseEvent])
+              .whenComplete(() async {
+            unlisten();
+            // print(
+            //     "subscribe step 9 complete waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+          });
 
           // workground for dart linux bug: complete error not being caught by try..catch block
-          final likeCloseEvent = await waitForLikeCloseEvent;
           if (likeCloseEvent != null) {
+            // print("subscribe step 10 error likeCloseEvent $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
             throw likeCloseEvent;
           }
+
+          // print("subscribe step 11 success $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
 
           return; // completed, shouldnt try again
         } catch (errOrCloseEvent) {
           if (!state.shouldRetryConnectOrThrow(errOrCloseEvent)) return;
         }
+        // await processMessage(
+        //   id: id,
+        //   serializedRequest: serializedRequest,
+        //   done: done,
+        //   errored: errored,
+        //   releaser: releaser,
+        //   setDone: (value) => done = value,
+        //   setErrored: (value) => errored = value,
+        //   isSubscription: false,
+        //   sink: sink,
+        // );
       }
     })()
         .then((_) {
@@ -1118,6 +1257,129 @@ class _Client extends TransportWsClient {
       // dispose only of active subscriptions
       if (!done) releaser();
     };
+  }
+
+  // TODO: there seems to be a bug either in dart or web_socket_channel that's causing this common function failing test
+  Future<bool> processMessage({
+    required String id,
+    required Map<String, dynamic> serializedRequest,
+    required bool done,
+    required bool errored,
+    required Function() releaser,
+    required Function(bool) setDone,
+    required Function(bool) setErrored,
+    required bool isSubscription,
+    required EventSink<Response> sink,
+  }) async {
+    try {
+      bool localDone = done;
+      final _c = await state.connect();
+      // print("subscribe step 2 connect $id ${state.hashCode} ${_c.socket.hashCode}");
+      final socket = _c.socket;
+      final release = _c.release;
+      final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
+      final waitForLikeCloseEvent = _c.waitForLikeCloseEvent;
+      // print("isolate debug name: ${Isolate.current.debugName}");
+      // print(payload.operation.toString());
+      // print(payload.variables.toString());
+      // print(payload.context.toString());
+      // print("graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
+      // if done while waiting for connect, release the connection lock right away
+      final _subscribeMsg = await options.graphQLSocketMessageEncoder(
+        SubscribeMessage(id, serializedRequest),
+      );
+      // print("subscribe step 3 operation $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+      // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
+      if (localDone) {
+        if (!release.isCompleted) release.complete();
+      }
+
+      final unlisten = emitter.onMessage(id, (message) {
+        if (message is NextMessage) {
+          if (!isSubscription) {
+            setDone(true);
+            localDone = true;
+          }
+          sink.add(message.payload);
+          final completer = state.nextOrErrorMsgWaitMap[id];
+          if (completer != null && !completer.isCompleted) {
+            completer.complete();
+          }
+          state.nextOrErrorMsgWaitMap.remove(id);
+          if (!isSubscription) {
+            releaser(); // release completes the sink
+          }
+          // print("subscribe step 5 receive NextMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+        } else if (message is ErrorMessage) {
+          setErrored(true);
+          setDone(true);
+          localDone = true;
+          sink.addError(message.payload);
+          final completer = state.nextOrErrorMsgWaitMap[id];
+          if (completer != null && !completer.isCompleted) {
+            completer.complete();
+          }
+          state.nextOrErrorMsgWaitMap.remove(id);
+          releaser();
+          // print("subscribe step 6 receive ErrorMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+        } else if (message is CompleteMessage) {
+          if (isSubscription) {
+            setDone(true);
+            localDone = true;
+            releaser(); // release completes the sink
+          }
+          // print(
+          //     "subscribe step 7 receive CompleteMessage $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+        }
+      });
+
+      socket.sink.add(_subscribeMsg);
+
+      state.nextOrErrorMsgWaitMap[id] = Completer();
+
+      releaser = () async {
+        final _completeMsg =
+            await options.graphQLSocketMessageEncoder(CompleteMessage(id));
+        if (!localDone && state.isOpen) {
+          // if not completed already and socket is open, send complete message to server on release
+          socket.sink.add(_completeMsg);
+        }
+        state.locks--;
+        setDone(true);
+        localDone = true;
+        if (!release.isCompleted) release.complete();
+        // print(
+        //     "subscribe step 8 releaser $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+      };
+
+      // print(
+      //     "subscribe step 4 waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+      // either the releaser will be called, connection completed and
+      // the promise resolved or the socket closed and the promise rejected.
+      // whatever happens though, we want to stop listening for messages
+      final likeCloseEvent = await Future.any<Object?>(
+              [waitForReleaseOrThrowOnClose, waitForLikeCloseEvent])
+          .whenComplete(() async {
+        unlisten();
+        // print(
+        //     "subscribe step 9 complete waitForReleaseOrThrowOnClose $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+      });
+
+      // workground for dart linux bug: complete error not being caught by try..catch block
+      if (likeCloseEvent != null) {
+        // print(
+        //     "subscribe step 10 error likeCloseEvent $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+        throw likeCloseEvent;
+      }
+
+      // print(
+      //     "subscribe step 11 success $id ${state.hashCode} ${_c.socket.hashCode} ${serializedRequest["operationName"]}");
+
+      return true; // completed, shouldnt try again
+    } catch (errOrCloseEvent) {
+      if (!state.shouldRetryConnectOrThrow(errOrCloseEvent)) return true;
+      return false;
+    }
   }
 
   @override
@@ -1319,6 +1581,7 @@ class TransportWebSocketLink extends Link {
             // TODO pass more data?
           );
         }
+
         return response;
       },
     );

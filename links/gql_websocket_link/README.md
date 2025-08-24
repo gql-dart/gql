@@ -84,7 +84,9 @@ The `WebSocketLink` class has some known issues, see:
 - https://github.com/gql-dart/gql/issues/430
 
 
+#### TransportWebSocketLink (`graphql-transport-ws`)
 
+- Streaming operations and single result operations are now multiplexed on a single connection.  This means you have to manually resubscribe on subscriptions.  On IOS and Android, when you app is in background (lock screen, etc.), all open sockets will be closed to save battery, and your app is freezed, no code from your app will run.  Thus there is no way to reconnect a websocket connection when it is broken because no code from your app will run, you have to manually resubscribe on app resume (use `WidgetsBindingObserver` or related packages).  You can use old TransportWebSocketLink client to resubscribe, the underlying socket is newly acquired when you resubscribe. 
 
 
 ## Features and bugs
