@@ -78,7 +78,7 @@ class GraphQLSchema extends TypeSystemDefinition {
   ObjectTypeDefinition? get mutation => _getObjectType("mutation");
   ObjectTypeDefinition? get subscription => _getObjectType("subscription");
 
-  List<InterfaceTypeDefinition> get interaces =>
+  List<InterfaceTypeDefinition> get interfaces =>
       _getAll<InterfaceTypeDefinition>();
 
   List<EnumTypeDefinition> get enums => _getAll<EnumTypeDefinition>();
