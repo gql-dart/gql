@@ -1,3 +1,7 @@
+## 2.1.0
+
+- Update dependencies
+
 ## 2.0.1
 
 - support uuid 4.0.0

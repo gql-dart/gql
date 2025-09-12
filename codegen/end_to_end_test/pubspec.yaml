@@ -1,17 +1,19 @@
 name: end_to_end_test
-version: 0.0.1
+version: 0.0.2
 publish_to: none
 description: Tests, not for publishing. Uses the original version of codegen without tristate optionals.
 repository: https://github.com/gql-dart/gql
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
+
 dependencies:
-  built_collection: ^5.0.0
-  built_value: ^8.0.6
-  gql_exec: ^1.0.0
-  gql_code_builder_serializers: ^0.1.0
+  built_collection: ^5.1.1
+  built_value: ^8.12.0
+  gql_exec: ^1.0.0 # UPDATE AFTER PUBLISHING
+  gql_code_builder_serializers: ^0.1.0 # UPDATE AFTER PUBLISHING
 dev_dependencies:
-  build_runner: ^2.0.0
-  test: ^1.16.8
-  gql_code_builder: ^0.7.1
-  gql_build: ^0.8.0
+  build_runner: ^2.8.0
+  test: ^1.26.3
+  gql_code_builder: ^0.15.0 # UPDATE AFTER PUBLISHING
+  gql_build: ^0.11.0+1 # UPDATE AFTER PUBLISHING

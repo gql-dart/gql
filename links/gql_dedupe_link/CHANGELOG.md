@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Update dependencies
+
 ## 3.0.0
 
 - skip deduplication for mutations by default
