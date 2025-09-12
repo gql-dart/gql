@@ -1,3 +1,7 @@
+# 0.14.0
+
+- Update dependencies
+
 # 0.13.0
 
 - Add configurable formatting support with dart_style 3.0.0

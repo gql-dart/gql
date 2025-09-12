@@ -1,3 +1,7 @@
+## 1.2.0
+
+- Update dependencies
+
 ## 1.1.0
 
 - improve JSON decoding performance by taking advantage
