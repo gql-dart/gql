@@ -11,7 +11,7 @@ dependencies:
   gql: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_exec: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_link: ^1.0.0 # UPDATER AFTER PUBLISH
-  meta: ^1.17.0
+  meta: ^1.16.0
 dev_dependencies: 
   build_runner: ^2.8.0
   code_builder: ^4.11.0

@@ -12,7 +12,7 @@ dependencies:
   gql_link: ^1.0.0 # UPDATER AFTER PUBLISH
   http: '>0.13.0 <2.0.0'
   http_parser: ^4.1.2
-  meta: ^1.17.0
+  meta: ^1.16.0
 dev_dependencies: 
   build_runner: ^2.8.0
   code_builder: ^4.11.0

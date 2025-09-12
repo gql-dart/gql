@@ -10,7 +10,7 @@ dependencies:
   gql: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_exec: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_link: ^1.0.0 # UPDATER AFTER PUBLISH
-  meta: ^1.17.0
+  meta: ^1.16.0
   rxdart: '>=0.26.0 <=0.30.0'
   uuid: '>=3.0.0 <5.0.0'
   web_socket_channel: ^3.0.3

@@ -9,7 +9,7 @@ environment:
 dependencies: 
   collection: ^1.19.1
   gql: ^1.0.0 # UPDATER AFTER PUBLISH
-  meta: ^1.17.0
+  meta: ^1.16.0
 dev_dependencies: 
   gql_pedantic: ^1.1.0 # UPDATER AFTER PUBLISH
   test: ^1.26.3

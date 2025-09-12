@@ -10,7 +10,7 @@ dependencies:
   async: ^2.13.0
   gql_exec: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_link: ^1.0.0 # UPDATER AFTER PUBLISH
-  meta: ^1.17.0
+  meta: ^1.16.0
 dev_dependencies: 
   gql: ^1.0.0 # UPDATER AFTER PUBLISH
   gql_pedantic: ^1.1.0 # UPDATER AFTER PUBLISH
