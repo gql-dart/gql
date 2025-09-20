@@ -8,7 +8,7 @@ part of 'list_argument.var.gql.dart';
 
 Serializer<GreviewsWithListArgumentVars>
     _$greviewsWithListArgumentVarsSerializer =
-    new _$GreviewsWithListArgumentVarsSerializer();
+    _$GreviewsWithListArgumentVarsSerializer();
 
 class _$GreviewsWithListArgumentVarsSerializer
     implements StructuredSerializer<GreviewsWithListArgumentVars> {
@@ -45,7 +45,7 @@ class _$GreviewsWithListArgumentVarsSerializer
   GreviewsWithListArgumentVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GreviewsWithListArgumentVarsBuilder();
+    final result = GreviewsWithListArgumentVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -78,14 +78,10 @@ class _$GreviewsWithListArgumentVars extends GreviewsWithListArgumentVars {
 
   factory _$GreviewsWithListArgumentVars(
           [void Function(GreviewsWithListArgumentVarsBuilder)? updates]) =>
-      (new GreviewsWithListArgumentVarsBuilder()..update(updates))._build();
+      (GreviewsWithListArgumentVarsBuilder()..update(updates))._build();
 
   _$GreviewsWithListArgumentVars._({required this.episode, this.stars})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        episode, r'GreviewsWithListArgumentVars', 'episode');
-  }
-
+      : super._();
   @override
   GreviewsWithListArgumentVars rebuild(
           void Function(GreviewsWithListArgumentVarsBuilder) updates) =>
@@ -93,7 +89,7 @@ class _$GreviewsWithListArgumentVars extends GreviewsWithListArgumentVars {
 
   @override
   GreviewsWithListArgumentVarsBuilder toBuilder() =>
-      new GreviewsWithListArgumentVarsBuilder()..replace(this);
+      GreviewsWithListArgumentVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -132,7 +128,7 @@ class GreviewsWithListArgumentVarsBuilder
   set episode(_i1.GEpisode? episode) => _$this._episode = episode;
 
   ListBuilder<int>? _stars;
-  ListBuilder<int> get stars => _$this._stars ??= new ListBuilder<int>();
+  ListBuilder<int> get stars => _$this._stars ??= ListBuilder<int>();
   set stars(ListBuilder<int>? stars) => _$this._stars = stars;
 
   GreviewsWithListArgumentVarsBuilder();
@@ -149,7 +145,6 @@ class GreviewsWithListArgumentVarsBuilder
 
   @override
   void replace(GreviewsWithListArgumentVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GreviewsWithListArgumentVars;
   }
 
@@ -165,17 +160,18 @@ class GreviewsWithListArgumentVarsBuilder
     _$GreviewsWithListArgumentVars _$result;
     try {
       _$result = _$v ??
-          new _$GreviewsWithListArgumentVars._(
-              episode: BuiltValueNullFieldError.checkNotNull(
-                  episode, r'GreviewsWithListArgumentVars', 'episode'),
-              stars: _stars?.build());
+          _$GreviewsWithListArgumentVars._(
+            episode: BuiltValueNullFieldError.checkNotNull(
+                episode, r'GreviewsWithListArgumentVars', 'episode'),
+            stars: _stars?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'stars';
         _stars?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GreviewsWithListArgumentVars', _$failedField, e.toString());
       }
       rethrow;

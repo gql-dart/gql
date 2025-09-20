@@ -26,9 +26,10 @@ import 'package:gql_example_cli/__generated__/list_pokemon.var.gql.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
-  ..add(OperationSerializer())
-  ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder =
+    _$serializers.toBuilder()
+      ..add(OperationSerializer())
+      ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GDimensionsData,
   GDimensionsVars,

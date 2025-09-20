@@ -7,7 +7,7 @@ part of 'create_review.var.gql.dart';
 // **************************************************************************
 
 Serializer<GCreateReviewVars> _$gCreateReviewVarsSerializer =
-    new _$GCreateReviewVarsSerializer();
+    _$GCreateReviewVarsSerializer();
 
 class _$GCreateReviewVarsSerializer
     implements StructuredSerializer<GCreateReviewVars> {
@@ -39,7 +39,7 @@ class _$GCreateReviewVarsSerializer
   GCreateReviewVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateReviewVarsBuilder();
+    final result = GCreateReviewVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -71,20 +71,16 @@ class _$GCreateReviewVars extends GCreateReviewVars {
 
   factory _$GCreateReviewVars(
           [void Function(GCreateReviewVarsBuilder)? updates]) =>
-      (new GCreateReviewVarsBuilder()..update(updates))._build();
+      (GCreateReviewVarsBuilder()..update(updates))._build();
 
-  _$GCreateReviewVars._({this.episode, required this.review}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        review, r'GCreateReviewVars', 'review');
-  }
-
+  _$GCreateReviewVars._({this.episode, required this.review}) : super._();
   @override
   GCreateReviewVars rebuild(void Function(GCreateReviewVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCreateReviewVarsBuilder toBuilder() =>
-      new GCreateReviewVarsBuilder()..replace(this);
+      GCreateReviewVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -122,7 +118,7 @@ class GCreateReviewVarsBuilder
 
   _i1.GReviewInputBuilder? _review;
   _i1.GReviewInputBuilder get review =>
-      _$this._review ??= new _i1.GReviewInputBuilder();
+      _$this._review ??= _i1.GReviewInputBuilder();
   set review(_i1.GReviewInputBuilder? review) => _$this._review = review;
 
   GCreateReviewVarsBuilder();
@@ -139,7 +135,6 @@ class GCreateReviewVarsBuilder
 
   @override
   void replace(GCreateReviewVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateReviewVars;
   }
 
@@ -155,14 +150,17 @@ class GCreateReviewVarsBuilder
     _$GCreateReviewVars _$result;
     try {
       _$result = _$v ??
-          new _$GCreateReviewVars._(episode: episode, review: review.build());
+          _$GCreateReviewVars._(
+            episode: episode,
+            review: review.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'review';
         review.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateReviewVars', _$failedField, e.toString());
       }
       rethrow;

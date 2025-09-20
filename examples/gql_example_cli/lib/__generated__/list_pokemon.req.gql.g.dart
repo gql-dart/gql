@@ -6,8 +6,7 @@ part of 'list_pokemon.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GListPokemon> _$gListPokemonSerializer =
-    new _$GListPokemonSerializer();
+Serializer<GListPokemon> _$gListPokemonSerializer = _$GListPokemonSerializer();
 
 class _$GListPokemonSerializer implements StructuredSerializer<GListPokemon> {
   @override
@@ -34,7 +33,7 @@ class _$GListPokemonSerializer implements StructuredSerializer<GListPokemon> {
   GListPokemon deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GListPokemonBuilder();
+    final result = GListPokemonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -65,20 +64,15 @@ class _$GListPokemon extends GListPokemon {
   final _i1.Operation operation;
 
   factory _$GListPokemon([void Function(GListPokemonBuilder)? updates]) =>
-      (new GListPokemonBuilder()..update(updates))._build();
+      (GListPokemonBuilder()..update(updates))._build();
 
-  _$GListPokemon._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GListPokemon', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GListPokemon', 'operation');
-  }
-
+  _$GListPokemon._({required this.vars, required this.operation}) : super._();
   @override
   GListPokemon rebuild(void Function(GListPokemonBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GListPokemonBuilder toBuilder() => new GListPokemonBuilder()..replace(this);
+  GListPokemonBuilder toBuilder() => GListPokemonBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +106,7 @@ class GListPokemonBuilder
 
   _i3.GListPokemonVarsBuilder? _vars;
   _i3.GListPokemonVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GListPokemonVarsBuilder();
+      _$this._vars ??= _i3.GListPokemonVarsBuilder();
   set vars(_i3.GListPokemonVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -135,7 +129,6 @@ class GListPokemonBuilder
 
   @override
   void replace(GListPokemon other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GListPokemon;
   }
 
@@ -151,17 +144,18 @@ class GListPokemonBuilder
     _$GListPokemon _$result;
     try {
       _$result = _$v ??
-          new _$GListPokemon._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GListPokemon', 'operation'));
+          _$GListPokemon._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GListPokemon', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GListPokemon', _$failedField, e.toString());
       }
       rethrow;

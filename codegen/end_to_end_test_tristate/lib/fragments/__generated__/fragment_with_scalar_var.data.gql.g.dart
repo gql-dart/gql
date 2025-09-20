@@ -8,18 +8,18 @@ part of 'fragment_with_scalar_var.data.gql.dart';
 
 Serializer<GPostsWithFixedVariableData>
     _$gPostsWithFixedVariableDataSerializer =
-    new _$GPostsWithFixedVariableDataSerializer();
+    _$GPostsWithFixedVariableDataSerializer();
 Serializer<GPostsWithFixedVariableData_posts>
     _$gPostsWithFixedVariableDataPostsSerializer =
-    new _$GPostsWithFixedVariableData_postsSerializer();
+    _$GPostsWithFixedVariableData_postsSerializer();
 Serializer<GPostsWithFixedVariableData_posts_favoritedUsers>
     _$gPostsWithFixedVariableDataPostsFavoritedUsersSerializer =
-    new _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer();
+    _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer();
 Serializer<GPostFragmentForUser1Data> _$gPostFragmentForUser1DataSerializer =
-    new _$GPostFragmentForUser1DataSerializer();
+    _$GPostFragmentForUser1DataSerializer();
 Serializer<GPostFragmentForUser1Data_favoritedUsers>
     _$gPostFragmentForUser1DataFavoritedUsersSerializer =
-    new _$GPostFragmentForUser1Data_favoritedUsersSerializer();
+    _$GPostFragmentForUser1Data_favoritedUsersSerializer();
 
 class _$GPostsWithFixedVariableDataSerializer
     implements StructuredSerializer<GPostsWithFixedVariableData> {
@@ -57,7 +57,7 @@ class _$GPostsWithFixedVariableDataSerializer
   GPostsWithFixedVariableData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsWithFixedVariableDataBuilder();
+    final result = GPostsWithFixedVariableDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -119,7 +119,7 @@ class _$GPostsWithFixedVariableData_postsSerializer
   GPostsWithFixedVariableData_posts deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostsWithFixedVariableData_postsBuilder();
+    final result = GPostsWithFixedVariableData_postsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -179,8 +179,7 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsersSerializer
   GPostsWithFixedVariableData_posts_favoritedUsers deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GPostsWithFixedVariableData_posts_favoritedUsersBuilder();
+    final result = GPostsWithFixedVariableData_posts_favoritedUsersBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -240,7 +239,7 @@ class _$GPostFragmentForUser1DataSerializer
   GPostFragmentForUser1Data deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostFragmentForUser1DataBuilder();
+    final result = GPostFragmentForUser1DataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -299,7 +298,7 @@ class _$GPostFragmentForUser1Data_favoritedUsersSerializer
   GPostFragmentForUser1Data_favoritedUsers deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GPostFragmentForUser1Data_favoritedUsersBuilder();
+    final result = GPostFragmentForUser1Data_favoritedUsersBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -330,14 +329,10 @@ class _$GPostsWithFixedVariableData extends GPostsWithFixedVariableData {
 
   factory _$GPostsWithFixedVariableData(
           [void Function(GPostsWithFixedVariableDataBuilder)? updates]) =>
-      (new GPostsWithFixedVariableDataBuilder()..update(updates))._build();
+      (GPostsWithFixedVariableDataBuilder()..update(updates))._build();
 
   _$GPostsWithFixedVariableData._({required this.G__typename, this.posts})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GPostsWithFixedVariableData', 'G__typename');
-  }
-
+      : super._();
   @override
   GPostsWithFixedVariableData rebuild(
           void Function(GPostsWithFixedVariableDataBuilder) updates) =>
@@ -345,7 +340,7 @@ class _$GPostsWithFixedVariableData extends GPostsWithFixedVariableData {
 
   @override
   GPostsWithFixedVariableDataBuilder toBuilder() =>
-      new GPostsWithFixedVariableDataBuilder()..replace(this);
+      GPostsWithFixedVariableDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -385,7 +380,7 @@ class GPostsWithFixedVariableDataBuilder
 
   ListBuilder<GPostsWithFixedVariableData_posts?>? _posts;
   ListBuilder<GPostsWithFixedVariableData_posts?> get posts =>
-      _$this._posts ??= new ListBuilder<GPostsWithFixedVariableData_posts?>();
+      _$this._posts ??= ListBuilder<GPostsWithFixedVariableData_posts?>();
   set posts(ListBuilder<GPostsWithFixedVariableData_posts?>? posts) =>
       _$this._posts = posts;
 
@@ -405,7 +400,6 @@ class GPostsWithFixedVariableDataBuilder
 
   @override
   void replace(GPostsWithFixedVariableData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariableData;
   }
 
@@ -421,17 +415,18 @@ class GPostsWithFixedVariableDataBuilder
     _$GPostsWithFixedVariableData _$result;
     try {
       _$result = _$v ??
-          new _$GPostsWithFixedVariableData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostsWithFixedVariableData', 'G__typename'),
-              posts: _posts?.build());
+          _$GPostsWithFixedVariableData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostsWithFixedVariableData', 'G__typename'),
+            posts: _posts?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'posts';
         _posts?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPostsWithFixedVariableData', _$failedField, e.toString());
       }
       rethrow;
@@ -452,18 +447,11 @@ class _$GPostsWithFixedVariableData_posts
 
   factory _$GPostsWithFixedVariableData_posts(
           [void Function(GPostsWithFixedVariableData_postsBuilder)? updates]) =>
-      (new GPostsWithFixedVariableData_postsBuilder()..update(updates))
-          ._build();
+      (GPostsWithFixedVariableData_postsBuilder()..update(updates))._build();
 
   _$GPostsWithFixedVariableData_posts._(
       {required this.G__typename, required this.id, this.favoritedUsers})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GPostsWithFixedVariableData_posts', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GPostsWithFixedVariableData_posts', 'id');
-  }
-
+      : super._();
   @override
   GPostsWithFixedVariableData_posts rebuild(
           void Function(GPostsWithFixedVariableData_postsBuilder) updates) =>
@@ -471,7 +459,7 @@ class _$GPostsWithFixedVariableData_posts
 
   @override
   GPostsWithFixedVariableData_postsBuilder toBuilder() =>
-      new GPostsWithFixedVariableData_postsBuilder()..replace(this);
+      GPostsWithFixedVariableData_postsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -519,7 +507,7 @@ class GPostsWithFixedVariableData_postsBuilder
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder? _favoritedUsers;
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder get favoritedUsers =>
       _$this._favoritedUsers ??=
-          new GPostsWithFixedVariableData_posts_favoritedUsersBuilder();
+          GPostsWithFixedVariableData_posts_favoritedUsersBuilder();
   set favoritedUsers(
           GPostsWithFixedVariableData_posts_favoritedUsersBuilder?
               favoritedUsers) =>
@@ -542,7 +530,6 @@ class GPostsWithFixedVariableData_postsBuilder
 
   @override
   void replace(GPostsWithFixedVariableData_posts other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariableData_posts;
   }
 
@@ -559,19 +546,20 @@ class GPostsWithFixedVariableData_postsBuilder
     _$GPostsWithFixedVariableData_posts _$result;
     try {
       _$result = _$v ??
-          new _$GPostsWithFixedVariableData_posts._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GPostsWithFixedVariableData_posts', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostsWithFixedVariableData_posts', 'id'),
-              favoritedUsers: _favoritedUsers?.build());
+          _$GPostsWithFixedVariableData_posts._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GPostsWithFixedVariableData_posts', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostsWithFixedVariableData_posts', 'id'),
+            favoritedUsers: _favoritedUsers?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'favoritedUsers';
         _favoritedUsers?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPostsWithFixedVariableData_posts', _$failedField, e.toString());
       }
       rethrow;
@@ -592,19 +580,13 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsers
           [void Function(
                   GPostsWithFixedVariableData_posts_favoritedUsersBuilder)?
               updates]) =>
-      (new GPostsWithFixedVariableData_posts_favoritedUsersBuilder()
+      (GPostsWithFixedVariableData_posts_favoritedUsersBuilder()
             ..update(updates))
           ._build();
 
   _$GPostsWithFixedVariableData_posts_favoritedUsers._(
       {required this.G__typename, required this.totalCount})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GPostsWithFixedVariableData_posts_favoritedUsers', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(totalCount,
-        r'GPostsWithFixedVariableData_posts_favoritedUsers', 'totalCount');
-  }
-
+      : super._();
   @override
   GPostsWithFixedVariableData_posts_favoritedUsers rebuild(
           void Function(GPostsWithFixedVariableData_posts_favoritedUsersBuilder)
@@ -613,8 +595,7 @@ class _$GPostsWithFixedVariableData_posts_favoritedUsers
 
   @override
   GPostsWithFixedVariableData_posts_favoritedUsersBuilder toBuilder() =>
-      new GPostsWithFixedVariableData_posts_favoritedUsersBuilder()
-        ..replace(this);
+      GPostsWithFixedVariableData_posts_favoritedUsersBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -673,7 +654,6 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
 
   @override
   void replace(GPostsWithFixedVariableData_posts_favoritedUsers other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostsWithFixedVariableData_posts_favoritedUsers;
   }
 
@@ -689,15 +669,16 @@ class GPostsWithFixedVariableData_posts_favoritedUsersBuilder
 
   _$GPostsWithFixedVariableData_posts_favoritedUsers _build() {
     final _$result = _$v ??
-        new _$GPostsWithFixedVariableData_posts_favoritedUsers._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename,
-                r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(
-                totalCount,
-                r'GPostsWithFixedVariableData_posts_favoritedUsers',
-                'totalCount'));
+        _$GPostsWithFixedVariableData_posts_favoritedUsers._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GPostsWithFixedVariableData_posts_favoritedUsers',
+              'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount,
+              r'GPostsWithFixedVariableData_posts_favoritedUsers',
+              'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }
@@ -713,17 +694,11 @@ class _$GPostFragmentForUser1Data extends GPostFragmentForUser1Data {
 
   factory _$GPostFragmentForUser1Data(
           [void Function(GPostFragmentForUser1DataBuilder)? updates]) =>
-      (new GPostFragmentForUser1DataBuilder()..update(updates))._build();
+      (GPostFragmentForUser1DataBuilder()..update(updates))._build();
 
   _$GPostFragmentForUser1Data._(
       {required this.G__typename, required this.id, this.favoritedUsers})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GPostFragmentForUser1Data', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GPostFragmentForUser1Data', 'id');
-  }
-
+      : super._();
   @override
   GPostFragmentForUser1Data rebuild(
           void Function(GPostFragmentForUser1DataBuilder) updates) =>
@@ -731,7 +706,7 @@ class _$GPostFragmentForUser1Data extends GPostFragmentForUser1Data {
 
   @override
   GPostFragmentForUser1DataBuilder toBuilder() =>
-      new GPostFragmentForUser1DataBuilder()..replace(this);
+      GPostFragmentForUser1DataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -778,7 +753,7 @@ class GPostFragmentForUser1DataBuilder
   GPostFragmentForUser1Data_favoritedUsersBuilder? _favoritedUsers;
   GPostFragmentForUser1Data_favoritedUsersBuilder get favoritedUsers =>
       _$this._favoritedUsers ??=
-          new GPostFragmentForUser1Data_favoritedUsersBuilder();
+          GPostFragmentForUser1Data_favoritedUsersBuilder();
   set favoritedUsers(
           GPostFragmentForUser1Data_favoritedUsersBuilder? favoritedUsers) =>
       _$this._favoritedUsers = favoritedUsers;
@@ -800,7 +775,6 @@ class GPostFragmentForUser1DataBuilder
 
   @override
   void replace(GPostFragmentForUser1Data other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFragmentForUser1Data;
   }
 
@@ -816,19 +790,20 @@ class GPostFragmentForUser1DataBuilder
     _$GPostFragmentForUser1Data _$result;
     try {
       _$result = _$v ??
-          new _$GPostFragmentForUser1Data._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GPostFragmentForUser1Data', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GPostFragmentForUser1Data', 'id'),
-              favoritedUsers: _favoritedUsers?.build());
+          _$GPostFragmentForUser1Data._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GPostFragmentForUser1Data', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GPostFragmentForUser1Data', 'id'),
+            favoritedUsers: _favoritedUsers?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'favoritedUsers';
         _favoritedUsers?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GPostFragmentForUser1Data', _$failedField, e.toString());
       }
       rethrow;
@@ -848,18 +823,12 @@ class _$GPostFragmentForUser1Data_favoritedUsers
   factory _$GPostFragmentForUser1Data_favoritedUsers(
           [void Function(GPostFragmentForUser1Data_favoritedUsersBuilder)?
               updates]) =>
-      (new GPostFragmentForUser1Data_favoritedUsersBuilder()..update(updates))
+      (GPostFragmentForUser1Data_favoritedUsersBuilder()..update(updates))
           ._build();
 
   _$GPostFragmentForUser1Data_favoritedUsers._(
       {required this.G__typename, required this.totalCount})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        totalCount, r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount');
-  }
-
+      : super._();
   @override
   GPostFragmentForUser1Data_favoritedUsers rebuild(
           void Function(GPostFragmentForUser1Data_favoritedUsersBuilder)
@@ -868,7 +837,7 @@ class _$GPostFragmentForUser1Data_favoritedUsers
 
   @override
   GPostFragmentForUser1Data_favoritedUsersBuilder toBuilder() =>
-      new GPostFragmentForUser1Data_favoritedUsersBuilder()..replace(this);
+      GPostFragmentForUser1Data_favoritedUsersBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -927,7 +896,6 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
 
   @override
   void replace(GPostFragmentForUser1Data_favoritedUsers other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GPostFragmentForUser1Data_favoritedUsers;
   }
 
@@ -942,11 +910,12 @@ class GPostFragmentForUser1Data_favoritedUsersBuilder
 
   _$GPostFragmentForUser1Data_favoritedUsers _build() {
     final _$result = _$v ??
-        new _$GPostFragmentForUser1Data_favoritedUsers._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'),
-            totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
-                r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'));
+        _$GPostFragmentForUser1Data_favoritedUsers._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GPostFragmentForUser1Data_favoritedUsers', 'G__typename'),
+          totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
+              r'GPostFragmentForUser1Data_favoritedUsers', 'totalCount'),
+        );
     replace(_$result);
     return _$result;
   }

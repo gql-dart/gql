@@ -1,3 +1,9 @@
+## 1.1.0
+
+ - **FIX**: use typedefs instead of subclasses for base contexts for http bases links (#369).
+ - **FEAT**: allow distinguishing between null and absent values in gql_code_builder (#381).
+ - **FEAT**(gql_exec): add getOperationType() to Operation via extension method (#389).
+
 ## 1.0.0+1
 
 - add topics

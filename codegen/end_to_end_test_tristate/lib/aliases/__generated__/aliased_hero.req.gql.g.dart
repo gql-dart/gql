@@ -6,8 +6,7 @@ part of 'aliased_hero.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAliasedHero> _$gAliasedHeroSerializer =
-    new _$GAliasedHeroSerializer();
+Serializer<GAliasedHero> _$gAliasedHeroSerializer = _$GAliasedHeroSerializer();
 
 class _$GAliasedHeroSerializer implements StructuredSerializer<GAliasedHero> {
   @override
@@ -34,7 +33,7 @@ class _$GAliasedHeroSerializer implements StructuredSerializer<GAliasedHero> {
   GAliasedHero deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAliasedHeroBuilder();
+    final result = GAliasedHeroBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -65,20 +64,15 @@ class _$GAliasedHero extends GAliasedHero {
   final _i1.Operation operation;
 
   factory _$GAliasedHero([void Function(GAliasedHeroBuilder)? updates]) =>
-      (new GAliasedHeroBuilder()..update(updates))._build();
+      (GAliasedHeroBuilder()..update(updates))._build();
 
-  _$GAliasedHero._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GAliasedHero', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GAliasedHero', 'operation');
-  }
-
+  _$GAliasedHero._({required this.vars, required this.operation}) : super._();
   @override
   GAliasedHero rebuild(void Function(GAliasedHeroBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAliasedHeroBuilder toBuilder() => new GAliasedHeroBuilder()..replace(this);
+  GAliasedHeroBuilder toBuilder() => GAliasedHeroBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +106,7 @@ class GAliasedHeroBuilder
 
   _i3.GAliasedHeroVarsBuilder? _vars;
   _i3.GAliasedHeroVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GAliasedHeroVarsBuilder();
+      _$this._vars ??= _i3.GAliasedHeroVarsBuilder();
   set vars(_i3.GAliasedHeroVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -135,7 +129,6 @@ class GAliasedHeroBuilder
 
   @override
   void replace(GAliasedHero other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAliasedHero;
   }
 
@@ -151,17 +144,18 @@ class GAliasedHeroBuilder
     _$GAliasedHero _$result;
     try {
       _$result = _$v ??
-          new _$GAliasedHero._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAliasedHero', 'operation'));
+          _$GAliasedHero._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GAliasedHero', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAliasedHero', _$failedField, e.toString());
       }
       rethrow;

@@ -2,6 +2,7 @@ import "dart:async";
 
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
+import "package:dart_style/dart_style.dart";
 import "package:gql_build/src/config.dart";
 import "package:gql_build/src/utils/add_introspection.dart" as introspection;
 import "package:gql_build/src/utils/reader.dart";
@@ -15,11 +16,13 @@ class DataBuilder implements Builder {
   final Map<String, Reference> typeOverrides;
   final InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig;
   final DataClassConfig dataClassConfig;
+  final DartFormatter formatter;
 
   DataBuilder(
     this.schemaId,
     this.addTypenames,
-    this.typeOverrides, {
+    this.typeOverrides,
+    this.formatter, {
     this.whenExtensionConfig = const InlineFragmentSpreadWhenExtensionConfig(
       generateWhenExtensionMethod: false,
       generateMaybeWhenExtensionMethod: false,
@@ -57,6 +60,7 @@ class DataBuilder implements Builder {
       library,
       buildStep,
       dataExtension,
+      formatter,
       outputAssetId(schemaId, schemaExtension).uri.toString(),
     );
   }

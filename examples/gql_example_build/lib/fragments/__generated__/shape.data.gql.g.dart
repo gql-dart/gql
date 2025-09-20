@@ -6,14 +6,14 @@ part of 'shape.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GShapeData> _$gShapeDataSerializer = new _$GShapeDataSerializer();
+Serializer<GShapeData> _$gShapeDataSerializer = _$GShapeDataSerializer();
 Serializer<GShapeData_shape__base> _$gShapeDataShapeBaseSerializer =
-    new _$GShapeData_shape__baseSerializer();
+    _$GShapeData_shape__baseSerializer();
 Serializer<GShapeData_shape__asSquare> _$gShapeDataShapeAsSquareSerializer =
-    new _$GShapeData_shape__asSquareSerializer();
+    _$GShapeData_shape__asSquareSerializer();
 Serializer<GShapeData_shape__asRectangle>
     _$gShapeDataShapeAsRectangleSerializer =
-    new _$GShapeData_shape__asRectangleSerializer();
+    _$GShapeData_shape__asRectangleSerializer();
 
 class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
   @override
@@ -43,7 +43,7 @@ class _$GShapeDataSerializer implements StructuredSerializer<GShapeData> {
   @override
   GShapeData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GShapeDataBuilder();
+    final result = GShapeDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -101,7 +101,7 @@ class _$GShapeData_shape__baseSerializer
   GShapeData_shape__base deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GShapeData_shape__baseBuilder();
+    final result = GShapeData_shape__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -165,7 +165,7 @@ class _$GShapeData_shape__asSquareSerializer
   GShapeData_shape__asSquare deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GShapeData_shape__asSquareBuilder();
+    final result = GShapeData_shape__asSquareBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -240,7 +240,7 @@ class _$GShapeData_shape__asRectangleSerializer
   GShapeData_shape__asRectangle deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GShapeData_shape__asRectangleBuilder();
+    final result = GShapeData_shape__asRectangleBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -278,19 +278,15 @@ class _$GShapeData extends GShapeData {
   final GShapeData_shape? shape;
 
   factory _$GShapeData([void Function(GShapeDataBuilder)? updates]) =>
-      (new GShapeDataBuilder()..update(updates))._build();
+      (GShapeDataBuilder()..update(updates))._build();
 
-  _$GShapeData._({required this.G__typename, this.shape}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GShapeData', 'G__typename');
-  }
-
+  _$GShapeData._({required this.G__typename, this.shape}) : super._();
   @override
   GShapeData rebuild(void Function(GShapeDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GShapeDataBuilder toBuilder() => new GShapeDataBuilder()..replace(this);
+  GShapeDataBuilder toBuilder() => GShapeDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -345,7 +341,6 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
 
   @override
   void replace(GShapeData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData;
   }
 
@@ -359,10 +354,11 @@ class GShapeDataBuilder implements Builder<GShapeData, GShapeDataBuilder> {
 
   _$GShapeData _build() {
     final _$result = _$v ??
-        new _$GShapeData._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData', 'G__typename'),
-            shape: shape);
+        _$GShapeData._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData', 'G__typename'),
+          shape: shape,
+        );
     replace(_$result);
     return _$result;
   }
@@ -376,14 +372,10 @@ class _$GShapeData_shape__base extends GShapeData_shape__base {
 
   factory _$GShapeData_shape__base(
           [void Function(GShapeData_shape__baseBuilder)? updates]) =>
-      (new GShapeData_shape__baseBuilder()..update(updates))._build();
+      (GShapeData_shape__baseBuilder()..update(updates))._build();
 
   _$GShapeData_shape__base._({required this.G__typename, this.area})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GShapeData_shape__base', 'G__typename');
-  }
-
+      : super._();
   @override
   GShapeData_shape__base rebuild(
           void Function(GShapeData_shape__baseBuilder) updates) =>
@@ -391,7 +383,7 @@ class _$GShapeData_shape__base extends GShapeData_shape__base {
 
   @override
   GShapeData_shape__baseBuilder toBuilder() =>
-      new GShapeData_shape__baseBuilder()..replace(this);
+      GShapeData_shape__baseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -447,7 +439,6 @@ class GShapeData_shape__baseBuilder
 
   @override
   void replace(GShapeData_shape__base other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__base;
   }
 
@@ -461,10 +452,11 @@ class GShapeData_shape__baseBuilder
 
   _$GShapeData_shape__base _build() {
     final _$result = _$v ??
-        new _$GShapeData_shape__base._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__base', 'G__typename'),
-            area: area);
+        _$GShapeData_shape__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__base', 'G__typename'),
+          area: area,
+        );
     replace(_$result);
     return _$result;
   }
@@ -480,15 +472,11 @@ class _$GShapeData_shape__asSquare extends GShapeData_shape__asSquare {
 
   factory _$GShapeData_shape__asSquare(
           [void Function(GShapeData_shape__asSquareBuilder)? updates]) =>
-      (new GShapeData_shape__asSquareBuilder()..update(updates))._build();
+      (GShapeData_shape__asSquareBuilder()..update(updates))._build();
 
   _$GShapeData_shape__asSquare._(
       {required this.G__typename, this.area, this.sideLength})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GShapeData_shape__asSquare', 'G__typename');
-  }
-
+      : super._();
   @override
   GShapeData_shape__asSquare rebuild(
           void Function(GShapeData_shape__asSquareBuilder) updates) =>
@@ -496,7 +484,7 @@ class _$GShapeData_shape__asSquare extends GShapeData_shape__asSquare {
 
   @override
   GShapeData_shape__asSquareBuilder toBuilder() =>
-      new GShapeData_shape__asSquareBuilder()..replace(this);
+      GShapeData_shape__asSquareBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -561,7 +549,6 @@ class GShapeData_shape__asSquareBuilder
 
   @override
   void replace(GShapeData_shape__asSquare other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__asSquare;
   }
 
@@ -575,11 +562,12 @@ class GShapeData_shape__asSquareBuilder
 
   _$GShapeData_shape__asSquare _build() {
     final _$result = _$v ??
-        new _$GShapeData_shape__asSquare._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__asSquare', 'G__typename'),
-            area: area,
-            sideLength: sideLength);
+        _$GShapeData_shape__asSquare._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__asSquare', 'G__typename'),
+          area: area,
+          sideLength: sideLength,
+        );
     replace(_$result);
     return _$result;
   }
@@ -597,18 +585,14 @@ class _$GShapeData_shape__asRectangle extends GShapeData_shape__asRectangle {
 
   factory _$GShapeData_shape__asRectangle(
           [void Function(GShapeData_shape__asRectangleBuilder)? updates]) =>
-      (new GShapeData_shape__asRectangleBuilder()..update(updates))._build();
+      (GShapeData_shape__asRectangleBuilder()..update(updates))._build();
 
   _$GShapeData_shape__asRectangle._(
       {required this.G__typename,
       this.area,
       this.sideLengthA,
       this.sideLengthB})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GShapeData_shape__asRectangle', 'G__typename');
-  }
-
+      : super._();
   @override
   GShapeData_shape__asRectangle rebuild(
           void Function(GShapeData_shape__asRectangleBuilder) updates) =>
@@ -616,7 +600,7 @@ class _$GShapeData_shape__asRectangle extends GShapeData_shape__asRectangle {
 
   @override
   GShapeData_shape__asRectangleBuilder toBuilder() =>
-      new GShapeData_shape__asRectangleBuilder()..replace(this);
+      GShapeData_shape__asRectangleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -690,7 +674,6 @@ class GShapeData_shape__asRectangleBuilder
 
   @override
   void replace(GShapeData_shape__asRectangle other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GShapeData_shape__asRectangle;
   }
 
@@ -704,12 +687,13 @@ class GShapeData_shape__asRectangleBuilder
 
   _$GShapeData_shape__asRectangle _build() {
     final _$result = _$v ??
-        new _$GShapeData_shape__asRectangle._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GShapeData_shape__asRectangle', 'G__typename'),
-            area: area,
-            sideLengthA: sideLengthA,
-            sideLengthB: sideLengthB);
+        _$GShapeData_shape__asRectangle._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GShapeData_shape__asRectangle', 'G__typename'),
+          area: area,
+          sideLengthA: sideLengthA,
+          sideLengthB: sideLengthB,
+        );
     replace(_$result);
     return _$result;
   }

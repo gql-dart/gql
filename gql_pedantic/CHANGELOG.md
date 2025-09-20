@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(gql_pedantic): migrate to nullsafety (#397).
+
 ## 1.1.0
 
 - null safety

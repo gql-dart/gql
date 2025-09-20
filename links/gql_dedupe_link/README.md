@@ -22,6 +22,8 @@
 
 A GQL Link to deduplicate in-flight requests.
 
+By default only queries and subscriptions are deduplicated. Mutations are always forwarded.
+
 ## Usage
 
 A simple usage example:

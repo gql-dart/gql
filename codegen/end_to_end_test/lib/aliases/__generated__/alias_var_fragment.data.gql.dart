@@ -58,7 +58,6 @@ abstract class GPostsData_posts
   static Serializer<GPostsData_posts> get serializer =>
       _$gPostsDataPostsSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts.serializer,
         this,
@@ -93,7 +92,6 @@ abstract class GPostsData_posts_isFavorited
   static Serializer<GPostsData_posts_isFavorited> get serializer =>
       _$gPostsDataPostsIsFavoritedSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts_isFavorited.serializer,
         this,
@@ -127,7 +125,6 @@ abstract class GPostsData_posts_isLiked
   static Serializer<GPostsData_posts_isLiked> get serializer =>
       _$gPostsDataPostsIsLikedSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostsData_posts_isLiked.serializer,
         this,
@@ -145,19 +142,16 @@ abstract class GPostFragment {
   String get id;
   GPostFragment_isFavorited? get isFavorited;
   GPostFragment_isLiked? get isLiked;
-  Map<String, dynamic> toJson();
 }
 
 abstract class GPostFragment_isFavorited {
   String get G__typename;
   int get totalCount;
-  Map<String, dynamic> toJson();
 }
 
 abstract class GPostFragment_isLiked {
   String get G__typename;
   int get totalCount;
-  Map<String, dynamic> toJson();
 }
 
 abstract class GPostFragmentData
@@ -185,7 +179,6 @@ abstract class GPostFragmentData
   static Serializer<GPostFragmentData> get serializer =>
       _$gPostFragmentDataSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData.serializer,
         this,
@@ -220,7 +213,6 @@ abstract class GPostFragmentData_isFavorited
   static Serializer<GPostFragmentData_isFavorited> get serializer =>
       _$gPostFragmentDataIsFavoritedSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData_isFavorited.serializer,
         this,
@@ -254,7 +246,6 @@ abstract class GPostFragmentData_isLiked
   static Serializer<GPostFragmentData_isLiked> get serializer =>
       _$gPostFragmentDataIsLikedSerializer;
 
-  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GPostFragmentData_isLiked.serializer,
         this,

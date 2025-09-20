@@ -7,7 +7,7 @@ part of 'read_repos.req.gql.dart';
 // **************************************************************************
 
 Serializer<GReadRepositories> _$gReadRepositoriesSerializer =
-    new _$GReadRepositoriesSerializer();
+    _$GReadRepositoriesSerializer();
 
 class _$GReadRepositoriesSerializer
     implements StructuredSerializer<GReadRepositories> {
@@ -35,7 +35,7 @@ class _$GReadRepositoriesSerializer
   GReadRepositories deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReadRepositoriesBuilder();
+    final result = GReadRepositoriesBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -67,22 +67,17 @@ class _$GReadRepositories extends GReadRepositories {
 
   factory _$GReadRepositories(
           [void Function(GReadRepositoriesBuilder)? updates]) =>
-      (new GReadRepositoriesBuilder()..update(updates))._build();
+      (GReadRepositoriesBuilder()..update(updates))._build();
 
   _$GReadRepositories._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GReadRepositories', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GReadRepositories', 'operation');
-  }
-
+      : super._();
   @override
   GReadRepositories rebuild(void Function(GReadRepositoriesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GReadRepositoriesBuilder toBuilder() =>
-      new GReadRepositoriesBuilder()..replace(this);
+      GReadRepositoriesBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -116,7 +111,7 @@ class GReadRepositoriesBuilder
 
   _i3.GReadRepositoriesVarsBuilder? _vars;
   _i3.GReadRepositoriesVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GReadRepositoriesVarsBuilder();
+      _$this._vars ??= _i3.GReadRepositoriesVarsBuilder();
   set vars(_i3.GReadRepositoriesVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -139,7 +134,6 @@ class GReadRepositoriesBuilder
 
   @override
   void replace(GReadRepositories other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositories;
   }
 
@@ -155,17 +149,18 @@ class GReadRepositoriesBuilder
     _$GReadRepositories _$result;
     try {
       _$result = _$v ??
-          new _$GReadRepositories._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GReadRepositories', 'operation'));
+          _$GReadRepositories._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GReadRepositories', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GReadRepositories', _$failedField, e.toString());
       }
       rethrow;

@@ -7,12 +7,12 @@ part of 'remove_star.data.gql.dart';
 // **************************************************************************
 
 Serializer<GRemoveStarData> _$gRemoveStarDataSerializer =
-    new _$GRemoveStarDataSerializer();
+    _$GRemoveStarDataSerializer();
 Serializer<GRemoveStarData_action> _$gRemoveStarDataActionSerializer =
-    new _$GRemoveStarData_actionSerializer();
+    _$GRemoveStarData_actionSerializer();
 Serializer<GRemoveStarData_action_starrable>
     _$gRemoveStarDataActionStarrableSerializer =
-    new _$GRemoveStarData_action_starrableSerializer();
+    _$GRemoveStarData_action_starrableSerializer();
 
 class _$GRemoveStarDataSerializer
     implements StructuredSerializer<GRemoveStarData> {
@@ -44,7 +44,7 @@ class _$GRemoveStarDataSerializer
   GRemoveStarData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarDataBuilder();
+    final result = GRemoveStarDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -102,7 +102,7 @@ class _$GRemoveStarData_actionSerializer
   GRemoveStarData_action deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarData_actionBuilder();
+    final result = GRemoveStarData_actionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -157,7 +157,7 @@ class _$GRemoveStarData_action_starrableSerializer
   GRemoveStarData_action_starrable deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarData_action_starrableBuilder();
+    final result = GRemoveStarData_action_starrableBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -187,20 +187,15 @@ class _$GRemoveStarData extends GRemoveStarData {
   final GRemoveStarData_action? action;
 
   factory _$GRemoveStarData([void Function(GRemoveStarDataBuilder)? updates]) =>
-      (new GRemoveStarDataBuilder()..update(updates))._build();
+      (GRemoveStarDataBuilder()..update(updates))._build();
 
-  _$GRemoveStarData._({required this.G__typename, this.action}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GRemoveStarData', 'G__typename');
-  }
-
+  _$GRemoveStarData._({required this.G__typename, this.action}) : super._();
   @override
   GRemoveStarData rebuild(void Function(GRemoveStarDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GRemoveStarDataBuilder toBuilder() =>
-      new GRemoveStarDataBuilder()..replace(this);
+  GRemoveStarDataBuilder toBuilder() => GRemoveStarDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -238,7 +233,7 @@ class GRemoveStarDataBuilder
 
   GRemoveStarData_actionBuilder? _action;
   GRemoveStarData_actionBuilder get action =>
-      _$this._action ??= new GRemoveStarData_actionBuilder();
+      _$this._action ??= GRemoveStarData_actionBuilder();
   set action(GRemoveStarData_actionBuilder? action) => _$this._action = action;
 
   GRemoveStarDataBuilder() {
@@ -257,7 +252,6 @@ class GRemoveStarDataBuilder
 
   @override
   void replace(GRemoveStarData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarData;
   }
 
@@ -273,17 +267,18 @@ class GRemoveStarDataBuilder
     _$GRemoveStarData _$result;
     try {
       _$result = _$v ??
-          new _$GRemoveStarData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GRemoveStarData', 'G__typename'),
-              action: _action?.build());
+          _$GRemoveStarData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GRemoveStarData', 'G__typename'),
+            action: _action?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'action';
         _action?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GRemoveStarData', _$failedField, e.toString());
       }
       rethrow;
@@ -301,14 +296,10 @@ class _$GRemoveStarData_action extends GRemoveStarData_action {
 
   factory _$GRemoveStarData_action(
           [void Function(GRemoveStarData_actionBuilder)? updates]) =>
-      (new GRemoveStarData_actionBuilder()..update(updates))._build();
+      (GRemoveStarData_actionBuilder()..update(updates))._build();
 
   _$GRemoveStarData_action._({required this.G__typename, this.starrable})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GRemoveStarData_action', 'G__typename');
-  }
-
+      : super._();
   @override
   GRemoveStarData_action rebuild(
           void Function(GRemoveStarData_actionBuilder) updates) =>
@@ -316,7 +307,7 @@ class _$GRemoveStarData_action extends GRemoveStarData_action {
 
   @override
   GRemoveStarData_actionBuilder toBuilder() =>
-      new GRemoveStarData_actionBuilder()..replace(this);
+      GRemoveStarData_actionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -354,7 +345,7 @@ class GRemoveStarData_actionBuilder
 
   GRemoveStarData_action_starrableBuilder? _starrable;
   GRemoveStarData_action_starrableBuilder get starrable =>
-      _$this._starrable ??= new GRemoveStarData_action_starrableBuilder();
+      _$this._starrable ??= GRemoveStarData_action_starrableBuilder();
   set starrable(GRemoveStarData_action_starrableBuilder? starrable) =>
       _$this._starrable = starrable;
 
@@ -374,7 +365,6 @@ class GRemoveStarData_actionBuilder
 
   @override
   void replace(GRemoveStarData_action other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarData_action;
   }
 
@@ -390,17 +380,18 @@ class GRemoveStarData_actionBuilder
     _$GRemoveStarData_action _$result;
     try {
       _$result = _$v ??
-          new _$GRemoveStarData_action._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GRemoveStarData_action', 'G__typename'),
-              starrable: _starrable?.build());
+          _$GRemoveStarData_action._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GRemoveStarData_action', 'G__typename'),
+            starrable: _starrable?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'starrable';
         _starrable?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GRemoveStarData_action', _$failedField, e.toString());
       }
       rethrow;
@@ -419,17 +410,11 @@ class _$GRemoveStarData_action_starrable
 
   factory _$GRemoveStarData_action_starrable(
           [void Function(GRemoveStarData_action_starrableBuilder)? updates]) =>
-      (new GRemoveStarData_action_starrableBuilder()..update(updates))._build();
+      (GRemoveStarData_action_starrableBuilder()..update(updates))._build();
 
   _$GRemoveStarData_action_starrable._(
       {required this.G__typename, required this.viewerHasStarred})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GRemoveStarData_action_starrable', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(viewerHasStarred,
-        r'GRemoveStarData_action_starrable', 'viewerHasStarred');
-  }
-
+      : super._();
   @override
   GRemoveStarData_action_starrable rebuild(
           void Function(GRemoveStarData_action_starrableBuilder) updates) =>
@@ -437,7 +422,7 @@ class _$GRemoveStarData_action_starrable
 
   @override
   GRemoveStarData_action_starrableBuilder toBuilder() =>
-      new GRemoveStarData_action_starrableBuilder()..replace(this);
+      GRemoveStarData_action_starrableBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -496,7 +481,6 @@ class GRemoveStarData_action_starrableBuilder
 
   @override
   void replace(GRemoveStarData_action_starrable other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStarData_action_starrable;
   }
 
@@ -510,13 +494,14 @@ class GRemoveStarData_action_starrableBuilder
 
   _$GRemoveStarData_action_starrable _build() {
     final _$result = _$v ??
-        new _$GRemoveStarData_action_starrable._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GRemoveStarData_action_starrable', 'G__typename'),
-            viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
-                viewerHasStarred,
-                r'GRemoveStarData_action_starrable',
-                'viewerHasStarred'));
+        _$GRemoveStarData_action_starrable._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GRemoveStarData_action_starrable', 'G__typename'),
+          viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+              viewerHasStarred,
+              r'GRemoveStarData_action_starrable',
+              'viewerHasStarred'),
+        );
     replace(_$result);
     return _$result;
   }

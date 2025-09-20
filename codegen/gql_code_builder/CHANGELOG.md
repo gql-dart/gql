@@ -1,3 +1,41 @@
+## 0.15.1
+
+ - **FIX**: vars_create_factories handle BuiltList type (#447).
+ - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).
+ - **FIX**(gql_code_builder): add void return to builder param function type (#431).
+ - **FIX**: value should be non-null (#428).
+ - **FIX**(gql_code_builder): improve variable resolution in fragment types (#382).
+ - **FIX**(gql_codegen): Proper field selector recursion on InlineFragments for Interface-extended Types and Typed FragmentSpreads   (#373).
+ - **FIX**: escape reserved dart names for references (#335).
+ - **FIX**(gql_code_builder): properly generate nullable types for nullable elements in lists (#363).
+ - **FIX**(gql_code_builder): add typename to possibletypesmap to generate t… (#353).
+ - **FIX**(gql_code_builder): add @override annotation.
+ - **FEAT**: deferred allocator pattern and configurable formatting support.
+ - **FEAT**: allow distinguishing between null and absent values in gql_code_builder (#381).
+ - **FEAT**(gql_code_builder): add when() method to fragment spread classes (#377).
+ - **FEAT**: build possible types map.
+ - **DOCS**(gql_code_builder): fix typo in changelog.
+
+## 0.15.0
+
+- **BREAKING**: Remove allocator parameter from public APIs - allocation is now deferred using Code.scope
+- Use Code.scope pattern for deferred type allocation
+- Improves separation of concerns between code generation and import management
+
+## 0.14.0
+
+- Fixes Interface Fragment Inheritance (#484)
+- Major refactor (#485)
+
+## 0.13.1
+
+- support analyzer 7.0.0
+
+## 0.13.0
+
+- allow importing an externally generated schema
+
+
 ## 0.12.0
 
 - Moving built-in Serializers to gql_code_builder_serializers package, so

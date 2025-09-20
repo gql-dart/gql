@@ -7,7 +7,7 @@ part of 'read_repos.var.gql.dart';
 // **************************************************************************
 
 Serializer<GReadRepositoriesVars> _$gReadRepositoriesVarsSerializer =
-    new _$GReadRepositoriesVarsSerializer();
+    _$GReadRepositoriesVarsSerializer();
 
 class _$GReadRepositoriesVarsSerializer
     implements StructuredSerializer<GReadRepositoriesVars> {
@@ -36,7 +36,7 @@ class _$GReadRepositoriesVarsSerializer
   GReadRepositoriesVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReadRepositoriesVarsBuilder();
+    final result = GReadRepositoriesVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -61,13 +61,9 @@ class _$GReadRepositoriesVars extends GReadRepositoriesVars {
 
   factory _$GReadRepositoriesVars(
           [void Function(GReadRepositoriesVarsBuilder)? updates]) =>
-      (new GReadRepositoriesVarsBuilder()..update(updates))._build();
+      (GReadRepositoriesVarsBuilder()..update(updates))._build();
 
-  _$GReadRepositoriesVars._({required this.nRepositories}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        nRepositories, r'GReadRepositoriesVars', 'nRepositories');
-  }
-
+  _$GReadRepositoriesVars._({required this.nRepositories}) : super._();
   @override
   GReadRepositoriesVars rebuild(
           void Function(GReadRepositoriesVarsBuilder) updates) =>
@@ -75,7 +71,7 @@ class _$GReadRepositoriesVars extends GReadRepositoriesVars {
 
   @override
   GReadRepositoriesVarsBuilder toBuilder() =>
-      new GReadRepositoriesVarsBuilder()..replace(this);
+      GReadRepositoriesVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -122,7 +118,6 @@ class GReadRepositoriesVarsBuilder
 
   @override
   void replace(GReadRepositoriesVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReadRepositoriesVars;
   }
 
@@ -136,9 +131,10 @@ class GReadRepositoriesVarsBuilder
 
   _$GReadRepositoriesVars _build() {
     final _$result = _$v ??
-        new _$GReadRepositoriesVars._(
-            nRepositories: BuiltValueNullFieldError.checkNotNull(
-                nRepositories, r'GReadRepositoriesVars', 'nRepositories'));
+        _$GReadRepositoriesVars._(
+          nRepositories: BuiltValueNullFieldError.checkNotNull(
+              nRepositories, r'GReadRepositoriesVars', 'nRepositories'),
+        );
     replace(_$result);
     return _$result;
   }

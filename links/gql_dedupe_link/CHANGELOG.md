@@ -1,3 +1,15 @@
+## 4.0.0
+
+> Note: This release has breaking changes.
+
+ - **FEAT**(dedupe_link): Add shouldDedupe option (#429).
+ - **BREAKING** **FIX**(gql_dedupe_link): do not dedupe mutations by default (#489).
+
+## 3.0.0
+
+- skip deduplication for mutations by default
+- `gql` promoted to runtime dependency
+
 ## 2.0.3+1
 
 - add topics

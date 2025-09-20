@@ -7,7 +7,7 @@ part of 'query.req.gql.dart';
 // **************************************************************************
 
 Serializer<GQueryOperation> _$gQueryOperationSerializer =
-    new _$GQueryOperationSerializer();
+    _$GQueryOperationSerializer();
 
 class _$GQueryOperationSerializer
     implements StructuredSerializer<GQueryOperation> {
@@ -35,7 +35,7 @@ class _$GQueryOperationSerializer
   GQueryOperation deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GQueryOperationBuilder();
+    final result = GQueryOperationBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -66,22 +66,16 @@ class _$GQueryOperation extends GQueryOperation {
   final _i1.Operation operation;
 
   factory _$GQueryOperation([void Function(GQueryOperationBuilder)? updates]) =>
-      (new GQueryOperationBuilder()..update(updates))._build();
+      (GQueryOperationBuilder()..update(updates))._build();
 
   _$GQueryOperation._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GQueryOperation', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GQueryOperation', 'operation');
-  }
-
+      : super._();
   @override
   GQueryOperation rebuild(void Function(GQueryOperationBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GQueryOperationBuilder toBuilder() =>
-      new GQueryOperationBuilder()..replace(this);
+  GQueryOperationBuilder toBuilder() => GQueryOperationBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -115,7 +109,7 @@ class GQueryOperationBuilder
 
   _i3.GQueryOperationVarsBuilder? _vars;
   _i3.GQueryOperationVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GQueryOperationVarsBuilder();
+      _$this._vars ??= _i3.GQueryOperationVarsBuilder();
   set vars(_i3.GQueryOperationVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -138,7 +132,6 @@ class GQueryOperationBuilder
 
   @override
   void replace(GQueryOperation other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GQueryOperation;
   }
 
@@ -154,17 +147,18 @@ class GQueryOperationBuilder
     _$GQueryOperation _$result;
     try {
       _$result = _$v ??
-          new _$GQueryOperation._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GQueryOperation', 'operation'));
+          _$GQueryOperation._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GQueryOperation', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GQueryOperation', _$failedField, e.toString());
       }
       rethrow;

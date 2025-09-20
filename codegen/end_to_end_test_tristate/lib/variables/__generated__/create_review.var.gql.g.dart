@@ -14,23 +14,17 @@ class _$GCreateReviewVars extends GCreateReviewVars {
 
   factory _$GCreateReviewVars(
           [void Function(GCreateReviewVarsBuilder)? updates]) =>
-      (new GCreateReviewVarsBuilder()..update(updates))._build();
+      (GCreateReviewVarsBuilder()..update(updates))._build();
 
   _$GCreateReviewVars._({required this.episode, required this.review})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        episode, r'GCreateReviewVars', 'episode');
-    BuiltValueNullFieldError.checkNotNull(
-        review, r'GCreateReviewVars', 'review');
-  }
-
+      : super._();
   @override
   GCreateReviewVars rebuild(void Function(GCreateReviewVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GCreateReviewVarsBuilder toBuilder() =>
-      new GCreateReviewVarsBuilder()..replace(this);
+      GCreateReviewVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,7 +62,7 @@ class GCreateReviewVarsBuilder
 
   _i2.GReviewInputBuilder? _review;
   _i2.GReviewInputBuilder get review =>
-      _$this._review ??= new _i2.GReviewInputBuilder();
+      _$this._review ??= _i2.GReviewInputBuilder();
   set review(_i2.GReviewInputBuilder? review) => _$this._review = review;
 
   GCreateReviewVarsBuilder() {
@@ -87,7 +81,6 @@ class GCreateReviewVarsBuilder
 
   @override
   void replace(GCreateReviewVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateReviewVars;
   }
 
@@ -103,17 +96,18 @@ class GCreateReviewVarsBuilder
     _$GCreateReviewVars _$result;
     try {
       _$result = _$v ??
-          new _$GCreateReviewVars._(
-              episode: BuiltValueNullFieldError.checkNotNull(
-                  episode, r'GCreateReviewVars', 'episode'),
-              review: review.build());
+          _$GCreateReviewVars._(
+            episode: BuiltValueNullFieldError.checkNotNull(
+                episode, r'GCreateReviewVars', 'episode'),
+            review: review.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'review';
         review.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateReviewVars', _$failedField, e.toString());
       }
       rethrow;

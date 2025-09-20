@@ -1,0 +1,24 @@
+name: gql_debug_tools
+description: Debug tools for GQL code generation
+publish_to: none
+
+environment:
+  sdk: '>=2.17.0 <3.0.0'
+
+dependencies:
+  gql: ^1.0.1
+  gql_build:
+    path: ../gql_build
+  gql_code_builder:
+    path: ../gql_code_builder
+  code_builder: any
+  dart_style: ^3.0.0
+  path: any
+  args: any
+
+dependency_overrides:
+  gql_code_builder:
+    path: ../gql_code_builder
+
+executables:
+  gql_debug: debug_main

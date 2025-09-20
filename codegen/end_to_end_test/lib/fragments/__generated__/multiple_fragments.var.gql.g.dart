@@ -7,10 +7,10 @@ part of 'multiple_fragments.var.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroWith2FragmentsVars> _$gHeroWith2FragmentsVarsSerializer =
-    new _$GHeroWith2FragmentsVarsSerializer();
+    _$GHeroWith2FragmentsVarsSerializer();
 Serializer<GheroNameVars> _$gheroNameVarsSerializer =
-    new _$GheroNameVarsSerializer();
-Serializer<GheroIdVars> _$gheroIdVarsSerializer = new _$GheroIdVarsSerializer();
+    _$GheroNameVarsSerializer();
+Serializer<GheroIdVars> _$gheroIdVarsSerializer = _$GheroIdVarsSerializer();
 
 class _$GHeroWith2FragmentsVarsSerializer
     implements StructuredSerializer<GHeroWith2FragmentsVars> {
@@ -41,7 +41,7 @@ class _$GHeroWith2FragmentsVarsSerializer
   GHeroWith2FragmentsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWith2FragmentsVarsBuilder();
+    final result = GHeroWith2FragmentsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -76,7 +76,7 @@ class _$GheroNameVarsSerializer implements StructuredSerializer<GheroNameVars> {
   GheroNameVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GheroNameVarsBuilder().build();
+    return GheroNameVarsBuilder().build();
   }
 }
 
@@ -95,7 +95,7 @@ class _$GheroIdVarsSerializer implements StructuredSerializer<GheroIdVars> {
   @override
   GheroIdVars deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GheroIdVarsBuilder().build();
+    return GheroIdVarsBuilder().build();
   }
 }
 
@@ -105,10 +105,9 @@ class _$GHeroWith2FragmentsVars extends GHeroWith2FragmentsVars {
 
   factory _$GHeroWith2FragmentsVars(
           [void Function(GHeroWith2FragmentsVarsBuilder)? updates]) =>
-      (new GHeroWith2FragmentsVarsBuilder()..update(updates))._build();
+      (GHeroWith2FragmentsVarsBuilder()..update(updates))._build();
 
   _$GHeroWith2FragmentsVars._({this.first}) : super._();
-
   @override
   GHeroWith2FragmentsVars rebuild(
           void Function(GHeroWith2FragmentsVarsBuilder) updates) =>
@@ -116,7 +115,7 @@ class _$GHeroWith2FragmentsVars extends GHeroWith2FragmentsVars {
 
   @override
   GHeroWith2FragmentsVarsBuilder toBuilder() =>
-      new GHeroWith2FragmentsVarsBuilder()..replace(this);
+      GHeroWith2FragmentsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -162,7 +161,6 @@ class GHeroWith2FragmentsVarsBuilder
 
   @override
   void replace(GHeroWith2FragmentsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWith2FragmentsVars;
   }
 
@@ -175,7 +173,10 @@ class GHeroWith2FragmentsVarsBuilder
   GHeroWith2FragmentsVars build() => _build();
 
   _$GHeroWith2FragmentsVars _build() {
-    final _$result = _$v ?? new _$GHeroWith2FragmentsVars._(first: first);
+    final _$result = _$v ??
+        _$GHeroWith2FragmentsVars._(
+          first: first,
+        );
     replace(_$result);
     return _$result;
   }
@@ -183,16 +184,15 @@ class GHeroWith2FragmentsVarsBuilder
 
 class _$GheroNameVars extends GheroNameVars {
   factory _$GheroNameVars([void Function(GheroNameVarsBuilder)? updates]) =>
-      (new GheroNameVarsBuilder()..update(updates))._build();
+      (GheroNameVarsBuilder()..update(updates))._build();
 
   _$GheroNameVars._() : super._();
-
   @override
   GheroNameVars rebuild(void Function(GheroNameVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GheroNameVarsBuilder toBuilder() => new GheroNameVarsBuilder()..replace(this);
+  GheroNameVarsBuilder toBuilder() => GheroNameVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -219,7 +219,6 @@ class GheroNameVarsBuilder
 
   @override
   void replace(GheroNameVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GheroNameVars;
   }
 
@@ -232,7 +231,7 @@ class GheroNameVarsBuilder
   GheroNameVars build() => _build();
 
   _$GheroNameVars _build() {
-    final _$result = _$v ?? new _$GheroNameVars._();
+    final _$result = _$v ?? _$GheroNameVars._();
     replace(_$result);
     return _$result;
   }
@@ -240,16 +239,15 @@ class GheroNameVarsBuilder
 
 class _$GheroIdVars extends GheroIdVars {
   factory _$GheroIdVars([void Function(GheroIdVarsBuilder)? updates]) =>
-      (new GheroIdVarsBuilder()..update(updates))._build();
+      (GheroIdVarsBuilder()..update(updates))._build();
 
   _$GheroIdVars._() : super._();
-
   @override
   GheroIdVars rebuild(void Function(GheroIdVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GheroIdVarsBuilder toBuilder() => new GheroIdVarsBuilder()..replace(this);
+  GheroIdVarsBuilder toBuilder() => GheroIdVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -275,7 +273,6 @@ class GheroIdVarsBuilder implements Builder<GheroIdVars, GheroIdVarsBuilder> {
 
   @override
   void replace(GheroIdVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GheroIdVars;
   }
 
@@ -288,7 +285,7 @@ class GheroIdVarsBuilder implements Builder<GheroIdVars, GheroIdVarsBuilder> {
   GheroIdVars build() => _build();
 
   _$GheroIdVars _build() {
-    final _$result = _$v ?? new _$GheroIdVars._();
+    final _$result = _$v ?? _$GheroIdVars._();
     replace(_$result);
     return _$result;
   }

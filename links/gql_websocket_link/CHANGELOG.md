@@ -1,3 +1,11 @@
+## 2.1.0
+
+ - **FIX**(graphql-transport-ws): ensure result message is processed before … (#466).
+ - **FIX**: vars_create_factories handle BuiltList type (#447).
+ - **FEAT**: add canonical dispose method on gql_link.
+ - **DOCS**(gql_websocket_link): add more documentation about the websocket subprotocols (#433).
+ - **DOCS**(gql_websocket_link): add docs for WebSocketLink (#400).
+
 ## 2.0.1
 
 - support uuid 4.0.0

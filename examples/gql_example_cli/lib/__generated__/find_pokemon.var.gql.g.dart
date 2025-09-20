@@ -7,7 +7,7 @@ part of 'find_pokemon.var.gql.dart';
 // **************************************************************************
 
 Serializer<GFindPokemonVars> _$gFindPokemonVarsSerializer =
-    new _$GFindPokemonVarsSerializer();
+    _$GFindPokemonVarsSerializer();
 
 class _$GFindPokemonVarsSerializer
     implements StructuredSerializer<GFindPokemonVars> {
@@ -31,7 +31,7 @@ class _$GFindPokemonVarsSerializer
   GFindPokemonVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GFindPokemonVarsBuilder();
+    final result = GFindPokemonVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -56,19 +56,16 @@ class _$GFindPokemonVars extends GFindPokemonVars {
 
   factory _$GFindPokemonVars(
           [void Function(GFindPokemonVarsBuilder)? updates]) =>
-      (new GFindPokemonVarsBuilder()..update(updates))._build();
+      (GFindPokemonVarsBuilder()..update(updates))._build();
 
-  _$GFindPokemonVars._({required this.name}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'GFindPokemonVars', 'name');
-  }
-
+  _$GFindPokemonVars._({required this.name}) : super._();
   @override
   GFindPokemonVars rebuild(void Function(GFindPokemonVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GFindPokemonVarsBuilder toBuilder() =>
-      new GFindPokemonVarsBuilder()..replace(this);
+      GFindPokemonVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +109,6 @@ class GFindPokemonVarsBuilder
 
   @override
   void replace(GFindPokemonVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GFindPokemonVars;
   }
 
@@ -126,9 +122,10 @@ class GFindPokemonVarsBuilder
 
   _$GFindPokemonVars _build() {
     final _$result = _$v ??
-        new _$GFindPokemonVars._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GFindPokemonVars', 'name'));
+        _$GFindPokemonVars._(
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GFindPokemonVars', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

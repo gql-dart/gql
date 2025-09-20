@@ -7,7 +7,7 @@ part of 'review_with_date.req.gql.dart';
 // **************************************************************************
 
 Serializer<GReviewWithDate> _$gReviewWithDateSerializer =
-    new _$GReviewWithDateSerializer();
+    _$GReviewWithDateSerializer();
 
 class _$GReviewWithDateSerializer
     implements StructuredSerializer<GReviewWithDate> {
@@ -35,7 +35,7 @@ class _$GReviewWithDateSerializer
   GReviewWithDate deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GReviewWithDateBuilder();
+    final result = GReviewWithDateBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -66,22 +66,16 @@ class _$GReviewWithDate extends GReviewWithDate {
   final _i1.Operation operation;
 
   factory _$GReviewWithDate([void Function(GReviewWithDateBuilder)? updates]) =>
-      (new GReviewWithDateBuilder()..update(updates))._build();
+      (GReviewWithDateBuilder()..update(updates))._build();
 
   _$GReviewWithDate._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GReviewWithDate', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GReviewWithDate', 'operation');
-  }
-
+      : super._();
   @override
   GReviewWithDate rebuild(void Function(GReviewWithDateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GReviewWithDateBuilder toBuilder() =>
-      new GReviewWithDateBuilder()..replace(this);
+  GReviewWithDateBuilder toBuilder() => GReviewWithDateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -115,7 +109,7 @@ class GReviewWithDateBuilder
 
   _i3.GReviewWithDateVarsBuilder? _vars;
   _i3.GReviewWithDateVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GReviewWithDateVarsBuilder();
+      _$this._vars ??= _i3.GReviewWithDateVarsBuilder();
   set vars(_i3.GReviewWithDateVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -138,7 +132,6 @@ class GReviewWithDateBuilder
 
   @override
   void replace(GReviewWithDate other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GReviewWithDate;
   }
 
@@ -154,17 +147,18 @@ class GReviewWithDateBuilder
     _$GReviewWithDate _$result;
     try {
       _$result = _$v ??
-          new _$GReviewWithDate._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GReviewWithDate', 'operation'));
+          _$GReviewWithDate._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GReviewWithDate', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GReviewWithDate', _$failedField, e.toString());
       }
       rethrow;

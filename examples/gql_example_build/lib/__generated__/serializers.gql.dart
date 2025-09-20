@@ -5,13 +5,7 @@ import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
     show OperationSerializer;
 import 'package:gql_example_build/__generated__/schema.schema.gql.dart'
     show GEnum, GInput, GScalar;
-import 'package:gql_example_build/fragments/__generated__/shape.data.gql.dart'
-    show
-        GShapeData_shape,
-        GShapeData,
-        GShapeData_shape__asRectangle,
-        GShapeData_shape__asSquare,
-        GShapeData_shape__base;
+import 'package:gql_example_build/fragments/__generated__/shape.data.gql.dart';
 import 'package:gql_example_build/fragments/__generated__/shape.req.gql.dart'
     show GShape;
 import 'package:gql_example_build/fragments/__generated__/shape.var.gql.dart'
@@ -29,10 +23,11 @@ import 'package:gql_example_build/kitchen_sink/__generated__/query.var.gql.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
-  ..add(OperationSerializer())
-  ..add(GShapeData_shape.serializer)
-  ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder =
+    _$serializers.toBuilder()
+      ..add(OperationSerializer())
+      ..add(GShapeData_shape.serializer)
+      ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GEnum,
   GInput,

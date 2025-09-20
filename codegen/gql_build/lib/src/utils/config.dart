@@ -1,6 +1,8 @@
 import "package:code_builder/code_builder.dart";
+import "package:dart_style/dart_style.dart";
 import "package:gql_code_builder/data.dart";
 import "package:gql_code_builder/schema.dart";
+import "package:pub_semver/pub_semver.dart";
 import "package:yaml/yaml.dart";
 
 Map<String, Reference> typeOverrideMap(dynamic typeOverrideConfig) {
@@ -87,3 +89,19 @@ TriStateValueConfig triStateOptionalsConfig(Map<String, dynamic> config) {
 
 bool varsCreateFactoriesConfig(Map<String, dynamic> config) =>
     config["vars_create_factories"] as bool? ?? false;
+
+DartFormatter dartFormatter(Map<String, dynamic> config) {
+  final pageWidth =
+      config["format"]?["page_width"] as int? ?? DartFormatter.defaultPageWidth;
+
+  final languageVersion = config["format"]?["language_version"] as String?;
+
+  final Version parsedVersion = languageVersion != null
+      ? Version.parse(languageVersion)
+      : DartFormatter.latestLanguageVersion;
+
+  return DartFormatter(
+    languageVersion: parsedVersion,
+    pageWidth: pageWidth,
+  );
+}

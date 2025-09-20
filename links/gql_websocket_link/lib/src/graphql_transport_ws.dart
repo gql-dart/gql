@@ -551,10 +551,12 @@ class TransportWsClientOptions {
 class _Connected {
   final WebSocketChannel socket;
   final Future<void> throwOnClose;
+  final Future<LikeCloseEvent?> likeCloseEvent;
 
   _Connected(
     this.socket,
     this.throwOnClose,
+    this.likeCloseEvent,
   );
 }
 
@@ -624,6 +626,8 @@ class _ConnectionState {
 
   // TODO: WebSocketChannel should have a `state` getter and `onStateChange` stream
   bool isOpen = false;
+
+  Map<String, Completer<void>> nextOrErrorMsgWaitMap = {};
 
   /// Checks the `connect` problem and evaluates if the client should retry.
   bool shouldRetryConnectOrThrow(Object errOrCloseEvent) {
@@ -813,6 +817,29 @@ class _ConnectionState {
             }
             // parseMessage(msg!, reviver: options.jsonMessageReviver);
             if (!isOpen) return;
+
+            // wait for next or error message (result) to be processed before process complete message
+            if (message is CompleteMessage &&
+                nextOrErrorMsgWaitMap.containsKey(message.id)) {
+              final completer = nextOrErrorMsgWaitMap[message.id];
+
+              if (completer != null) {
+                if (completer.isCompleted) {
+                  nextOrErrorMsgWaitMap.remove(message.id);
+                } else {
+                  final timer = Timer(const Duration(seconds: 60), () {
+                    // Timeout => let's return an error
+                    if (!completer.isCompleted) {
+                      completer.complete();
+                    }
+                  });
+
+                  await completer.future;
+                  timer.cancel();
+                }
+              }
+            }
+
             emitter.emit(TransportWsEvent.message(message));
             if (message is PingMessage || message is PongMessage) {
               final msgPayload = message is PingMessage
@@ -854,9 +881,26 @@ class _ConnectionState {
             retries = 0; // reset the retries on connect
             final _completer = Completer<void>();
             errorOrClosed(_completer.completeError);
+            // workground for dart linux bug: complete error not being caught by try..catch block
+            final _likeCloseEventCompleter = Completer<LikeCloseEvent?>();
             connected(_Connected(
               socket,
-              _completer.future,
+              _completer.future.catchError((err) {
+                // workground for dart linux bug: complete error not being caught by try..catch block
+                // if the connection is closed, the error is not fatal
+                if (err is LikeCloseEvent) {
+                  if (!_likeCloseEventCompleter.isCompleted) {
+                    _likeCloseEventCompleter.complete(err);
+                  }
+                  return;
+                }
+                throw err;
+              }).whenComplete(() {
+                if (!_likeCloseEventCompleter.isCompleted) {
+                  _likeCloseEventCompleter.complete(null);
+                }
+              }),
+              _likeCloseEventCompleter.future,
             ));
           } catch (err) {
             // stop reading messages as soon as reading breaks once
@@ -905,22 +949,23 @@ class _ConnectionState {
 
     final socket = _connection.socket;
     final throwOnClose = _connection.throwOnClose;
+    final likeCloseEvent = _connection.likeCloseEvent;
 
     // if the provided socket is in a closing state, wait for the throw on close
     // TODO: WebSocketChannel should have a `state` getter
     // if (socket.readyState == WebSocketImpl.CLOSING) await throwOnClose;
 
     final _releaseComp = Completer<void>();
-    final void Function() release = _releaseComp.complete;
     final released = _releaseComp.future;
 
     return _Connection(
       socket: socket,
-      release: release,
+      release: _releaseComp,
       waitForReleaseOrThrowOnClose: Future.any([
         // wait for
         released.then((_) {
-          if (locks == 0) {
+          // if released, no other operations, and not keep alive, wait for the socket to close
+          if (locks == 0 && options.keepAlive == Duration.zero) {
             // and if no more locks are present, complete the connection
             final complete = () {
               isOpen = false;
@@ -947,6 +992,7 @@ class _ConnectionState {
         // or
         throwOnClose,
       ]),
+      waitForLikeCloseEvent: likeCloseEvent,
     );
   }
 }
@@ -988,20 +1034,38 @@ class _Client extends TransportWsClient {
           final socket = _c.socket;
           final release = _c.release;
           final waitForReleaseOrThrowOnClose = _c.waitForReleaseOrThrowOnClose;
-
+          final waitForLikeCloseEvent = _c.waitForLikeCloseEvent;
+          // print("isolate debug name: ${Isolate.current.debugName}");
+          // print(payload.operation.toString());
+          // print(payload.variables.toString());
+          // print(payload.context.toString());
+          // print("graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
           // if done while waiting for connect, release the connection lock right away
           final _subscribeMsg = await options.graphQLSocketMessageEncoder(
             SubscribeMessage(id, options.serializer.serializeRequest(payload)),
           );
-          if (done) return release();
+          // print("after graphQLSocketMessageEncoder: ${Isolate.current.debugName}");
+          if (done) {
+            if (!release.isCompleted) release.complete();
+          }
 
           final unlisten = emitter.onMessage(id, (message) {
             if (message is NextMessage) {
               sink.add(message.payload);
+              final completer = state.nextOrErrorMsgWaitMap[id];
+              if (completer != null && !completer.isCompleted) {
+                completer.complete();
+              }
+              state.nextOrErrorMsgWaitMap.remove(id);
             } else if (message is ErrorMessage) {
               errored = true;
               done = true;
               sink.addError(message.payload);
+              final completer = state.nextOrErrorMsgWaitMap[id];
+              if (completer != null && !completer.isCompleted) {
+                completer.complete();
+              }
+              state.nextOrErrorMsgWaitMap.remove(id);
               releaser();
             } else if (message is CompleteMessage) {
               done = true;
@@ -1010,6 +1074,8 @@ class _Client extends TransportWsClient {
           });
 
           socket.sink.add(_subscribeMsg);
+
+          state.nextOrErrorMsgWaitMap[id] = Completer();
 
           releaser = () async {
             final _completeMsg =
@@ -1020,13 +1086,19 @@ class _Client extends TransportWsClient {
             }
             state.locks--;
             done = true;
-            release();
+            if (!release.isCompleted) release.complete();
           };
 
           // either the releaser will be called, connection completed and
           // the promise resolved or the socket closed and the promise rejected.
           // whatever happens though, we want to stop listening for messages
           await waitForReleaseOrThrowOnClose.whenComplete(unlisten);
+
+          // workground for dart linux bug: complete error not being caught by try..catch block
+          final likeCloseEvent = await waitForLikeCloseEvent;
+          if (likeCloseEvent != null) {
+            throw likeCloseEvent;
+          }
 
           return; // completed, shouldnt try again
         } catch (errOrCloseEvent) {
@@ -1077,13 +1149,15 @@ class _Client extends TransportWsClient {
 
 class _Connection {
   final WebSocketChannel socket;
-  final void Function() release;
+  final Completer<void> release;
   final Future<void> waitForReleaseOrThrowOnClose;
+  final Future<LikeCloseEvent?> waitForLikeCloseEvent;
 
   _Connection({
     required this.socket,
     required this.release,
     required this.waitForReleaseOrThrowOnClose,
+    required this.waitForLikeCloseEvent,
   });
 }
 

@@ -6,7 +6,7 @@ part of 'remove_star.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GRemoveStar> _$gRemoveStarSerializer = new _$GRemoveStarSerializer();
+Serializer<GRemoveStar> _$gRemoveStarSerializer = _$GRemoveStarSerializer();
 
 class _$GRemoveStarSerializer implements StructuredSerializer<GRemoveStar> {
   @override
@@ -32,7 +32,7 @@ class _$GRemoveStarSerializer implements StructuredSerializer<GRemoveStar> {
   @override
   GRemoveStar deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GRemoveStarBuilder();
+    final result = GRemoveStarBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -63,20 +63,15 @@ class _$GRemoveStar extends GRemoveStar {
   final _i1.Operation operation;
 
   factory _$GRemoveStar([void Function(GRemoveStarBuilder)? updates]) =>
-      (new GRemoveStarBuilder()..update(updates))._build();
+      (GRemoveStarBuilder()..update(updates))._build();
 
-  _$GRemoveStar._({required this.vars, required this.operation}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GRemoveStar', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GRemoveStar', 'operation');
-  }
-
+  _$GRemoveStar._({required this.vars, required this.operation}) : super._();
   @override
   GRemoveStar rebuild(void Function(GRemoveStarBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GRemoveStarBuilder toBuilder() => new GRemoveStarBuilder()..replace(this);
+  GRemoveStarBuilder toBuilder() => GRemoveStarBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -109,7 +104,7 @@ class GRemoveStarBuilder implements Builder<GRemoveStar, GRemoveStarBuilder> {
 
   _i3.GRemoveStarVarsBuilder? _vars;
   _i3.GRemoveStarVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GRemoveStarVarsBuilder();
+      _$this._vars ??= _i3.GRemoveStarVarsBuilder();
   set vars(_i3.GRemoveStarVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -132,7 +127,6 @@ class GRemoveStarBuilder implements Builder<GRemoveStar, GRemoveStarBuilder> {
 
   @override
   void replace(GRemoveStar other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GRemoveStar;
   }
 
@@ -148,17 +142,18 @@ class GRemoveStarBuilder implements Builder<GRemoveStar, GRemoveStarBuilder> {
     _$GRemoveStar _$result;
     try {
       _$result = _$v ??
-          new _$GRemoveStar._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GRemoveStar', 'operation'));
+          _$GRemoveStar._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GRemoveStar', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GRemoveStar', _$failedField, e.toString());
       }
       rethrow;

@@ -7,7 +7,7 @@ part of 'list_pokemon.var.gql.dart';
 // **************************************************************************
 
 Serializer<GListPokemonVars> _$gListPokemonVarsSerializer =
-    new _$GListPokemonVarsSerializer();
+    _$GListPokemonVarsSerializer();
 
 class _$GListPokemonVarsSerializer
     implements StructuredSerializer<GListPokemonVars> {
@@ -31,7 +31,7 @@ class _$GListPokemonVarsSerializer
   GListPokemonVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GListPokemonVarsBuilder();
+    final result = GListPokemonVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -56,19 +56,16 @@ class _$GListPokemonVars extends GListPokemonVars {
 
   factory _$GListPokemonVars(
           [void Function(GListPokemonVarsBuilder)? updates]) =>
-      (new GListPokemonVarsBuilder()..update(updates))._build();
+      (GListPokemonVarsBuilder()..update(updates))._build();
 
-  _$GListPokemonVars._({required this.count}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(count, r'GListPokemonVars', 'count');
-  }
-
+  _$GListPokemonVars._({required this.count}) : super._();
   @override
   GListPokemonVars rebuild(void Function(GListPokemonVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GListPokemonVarsBuilder toBuilder() =>
-      new GListPokemonVarsBuilder()..replace(this);
+      GListPokemonVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -113,7 +110,6 @@ class GListPokemonVarsBuilder
 
   @override
   void replace(GListPokemonVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GListPokemonVars;
   }
 
@@ -127,9 +123,10 @@ class GListPokemonVarsBuilder
 
   _$GListPokemonVars _build() {
     final _$result = _$v ??
-        new _$GListPokemonVars._(
-            count: BuiltValueNullFieldError.checkNotNull(
-                count, r'GListPokemonVars', 'count'));
+        _$GListPokemonVars._(
+          count: BuiltValueNullFieldError.checkNotNull(
+              count, r'GListPokemonVars', 'count'),
+        );
     replace(_$result);
     return _$result;
   }

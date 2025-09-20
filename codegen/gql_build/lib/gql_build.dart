@@ -12,7 +12,7 @@ import "./src/var_builder.dart";
 Builder astBuilder(
   BuilderOptions options,
 ) =>
-    AstBuilder();
+    AstBuilder(dartFormatter(options.config));
 
 /// Builds type-safe data viewer
 Builder dataBuilder(
@@ -24,6 +24,7 @@ Builder dataBuilder(
       ),
       (options.config["add_typenames"] ?? true) as bool,
       typeOverrideMap(options.config["type_overrides"]),
+      dartFormatter(options.config),
       whenExtensionConfig: whenExtensionConfig(options.config),
       dataClassConfig: dataClassConfig(options.config),
     );
@@ -36,6 +37,7 @@ Builder reqBuilder(
       AssetId.parse(
         options.config["schema"] as String,
       ),
+      dartFormatter(options.config),
     );
 
 /// Builds GraphQL type-safe variables builder
@@ -48,7 +50,8 @@ Builder varBuilder(
         ),
         typeOverrideMap(options.config["type_overrides"]),
         triStateOptionalsConfig(options.config),
-        varsCreateFactoriesConfig(options.config));
+        varsCreateFactoriesConfig(options.config),
+        dartFormatter(options.config));
 
 /// Builds GraphQL schema types
 Builder schemaBuilder(
@@ -59,7 +62,8 @@ Builder schemaBuilder(
         enumFallbackConfig(options.config),
         generatePossibleTypesConfig(options.config),
         triStateOptionalsConfig(options.config),
-        varsCreateFactoriesConfig(options.config));
+        varsCreateFactoriesConfig(options.config),
+        dartFormatter(options.config));
 
 /// Builds an aggregate Serlializers object for [built_value]s
 ///

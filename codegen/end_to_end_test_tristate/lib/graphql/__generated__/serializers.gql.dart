@@ -55,24 +55,7 @@ import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_fragm
     show GHeroWithFragments;
 import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_fragments.var.gql.dart'
     show GHeroWithFragmentsVars, GcomparisonFieldsVars, GheroDataVars;
-import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart'
-    show
-        GheroFieldsFragmentData,
-        GheroFieldsFragmentData__asHuman_friends,
-        GhumanFieldsFragmentData_friends,
-        GHeroWithInterfaceSubTypedFragmentsData,
-        GHeroWithInterfaceSubTypedFragmentsData_hero,
-        GdroidFieldsFragmentData,
-        GheroFieldsFragmentData__asDroid,
-        GheroFieldsFragmentData__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__asDroid,
-        GheroFieldsFragmentData__asHuman_friends__asHuman,
-        GheroFieldsFragmentData__asHuman_friends__base,
-        GheroFieldsFragmentData__base,
-        GhumanFieldsFragmentData,
-        GhumanFieldsFragmentData_friends__asDroid,
-        GhumanFieldsFragmentData_friends__asHuman,
-        GhumanFieldsFragmentData_friends__base;
+import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_interface_subtyped_fragments.data.gql.dart';
 import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_interface_subtyped_fragments.req.gql.dart'
     show GHeroWithInterfaceSubTypedFragments;
 import 'package:end_to_end_test_tristate/fragments/__generated__/hero_with_interface_subtyped_fragments.var.gql.dart'
@@ -102,15 +85,7 @@ import 'package:end_to_end_test_tristate/graphql/__generated__/schema.schema.gql
         GPostFavoritesInput,
         GPostLikesInput,
         GReviewInput;
-import 'package:end_to_end_test_tristate/interfaces/__generated__/hero_for_episode.data.gql.dart'
-    show
-        GHeroForEpisodeData_hero,
-        GDroidFragmentData,
-        GHeroForEpisodeData,
-        GHeroForEpisodeData_hero__asDroid,
-        GHeroForEpisodeData_hero__asDroid_friends,
-        GHeroForEpisodeData_hero__base,
-        GHeroForEpisodeData_hero__base_friends;
+import 'package:end_to_end_test_tristate/interfaces/__generated__/hero_for_episode.data.gql.dart';
 import 'package:end_to_end_test_tristate/interfaces/__generated__/hero_for_episode.req.gql.dart'
     show GHeroForEpisode;
 import 'package:end_to_end_test_tristate/interfaces/__generated__/hero_for_episode.var.gql.dart'
@@ -155,6 +130,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
+  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
+  ..add(
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer,
+  )
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
@@ -201,7 +180,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
-  GHeroWithInterfaceSubTypedFragmentsData_hero,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base,
+  GHeroWithInterfaceSubTypedFragmentsData_hero__base,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,

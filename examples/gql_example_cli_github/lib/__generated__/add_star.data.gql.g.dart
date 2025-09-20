@@ -6,13 +6,12 @@ part of 'add_star.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAddStarData> _$gAddStarDataSerializer =
-    new _$GAddStarDataSerializer();
+Serializer<GAddStarData> _$gAddStarDataSerializer = _$GAddStarDataSerializer();
 Serializer<GAddStarData_action> _$gAddStarDataActionSerializer =
-    new _$GAddStarData_actionSerializer();
+    _$GAddStarData_actionSerializer();
 Serializer<GAddStarData_action_starrable>
     _$gAddStarDataActionStarrableSerializer =
-    new _$GAddStarData_action_starrableSerializer();
+    _$GAddStarData_action_starrableSerializer();
 
 class _$GAddStarDataSerializer implements StructuredSerializer<GAddStarData> {
   @override
@@ -43,7 +42,7 @@ class _$GAddStarDataSerializer implements StructuredSerializer<GAddStarData> {
   GAddStarData deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddStarDataBuilder();
+    final result = GAddStarDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -101,7 +100,7 @@ class _$GAddStarData_actionSerializer
   GAddStarData_action deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddStarData_actionBuilder();
+    final result = GAddStarData_actionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -155,7 +154,7 @@ class _$GAddStarData_action_starrableSerializer
   GAddStarData_action_starrable deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddStarData_action_starrableBuilder();
+    final result = GAddStarData_action_starrableBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -185,19 +184,15 @@ class _$GAddStarData extends GAddStarData {
   final GAddStarData_action? action;
 
   factory _$GAddStarData([void Function(GAddStarDataBuilder)? updates]) =>
-      (new GAddStarDataBuilder()..update(updates))._build();
+      (GAddStarDataBuilder()..update(updates))._build();
 
-  _$GAddStarData._({required this.G__typename, this.action}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GAddStarData', 'G__typename');
-  }
-
+  _$GAddStarData._({required this.G__typename, this.action}) : super._();
   @override
   GAddStarData rebuild(void Function(GAddStarDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAddStarDataBuilder toBuilder() => new GAddStarDataBuilder()..replace(this);
+  GAddStarDataBuilder toBuilder() => GAddStarDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -235,7 +230,7 @@ class GAddStarDataBuilder
 
   GAddStarData_actionBuilder? _action;
   GAddStarData_actionBuilder get action =>
-      _$this._action ??= new GAddStarData_actionBuilder();
+      _$this._action ??= GAddStarData_actionBuilder();
   set action(GAddStarData_actionBuilder? action) => _$this._action = action;
 
   GAddStarDataBuilder() {
@@ -254,7 +249,6 @@ class GAddStarDataBuilder
 
   @override
   void replace(GAddStarData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarData;
   }
 
@@ -270,17 +264,18 @@ class GAddStarDataBuilder
     _$GAddStarData _$result;
     try {
       _$result = _$v ??
-          new _$GAddStarData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GAddStarData', 'G__typename'),
-              action: _action?.build());
+          _$GAddStarData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GAddStarData', 'G__typename'),
+            action: _action?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'action';
         _action?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddStarData', _$failedField, e.toString());
       }
       rethrow;
@@ -298,14 +293,10 @@ class _$GAddStarData_action extends GAddStarData_action {
 
   factory _$GAddStarData_action(
           [void Function(GAddStarData_actionBuilder)? updates]) =>
-      (new GAddStarData_actionBuilder()..update(updates))._build();
+      (GAddStarData_actionBuilder()..update(updates))._build();
 
   _$GAddStarData_action._({required this.G__typename, this.starrable})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GAddStarData_action', 'G__typename');
-  }
-
+      : super._();
   @override
   GAddStarData_action rebuild(
           void Function(GAddStarData_actionBuilder) updates) =>
@@ -313,7 +304,7 @@ class _$GAddStarData_action extends GAddStarData_action {
 
   @override
   GAddStarData_actionBuilder toBuilder() =>
-      new GAddStarData_actionBuilder()..replace(this);
+      GAddStarData_actionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -351,7 +342,7 @@ class GAddStarData_actionBuilder
 
   GAddStarData_action_starrableBuilder? _starrable;
   GAddStarData_action_starrableBuilder get starrable =>
-      _$this._starrable ??= new GAddStarData_action_starrableBuilder();
+      _$this._starrable ??= GAddStarData_action_starrableBuilder();
   set starrable(GAddStarData_action_starrableBuilder? starrable) =>
       _$this._starrable = starrable;
 
@@ -371,7 +362,6 @@ class GAddStarData_actionBuilder
 
   @override
   void replace(GAddStarData_action other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarData_action;
   }
 
@@ -387,17 +377,18 @@ class GAddStarData_actionBuilder
     _$GAddStarData_action _$result;
     try {
       _$result = _$v ??
-          new _$GAddStarData_action._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GAddStarData_action', 'G__typename'),
-              starrable: _starrable?.build());
+          _$GAddStarData_action._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GAddStarData_action', 'G__typename'),
+            starrable: _starrable?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'starrable';
         _starrable?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GAddStarData_action', _$failedField, e.toString());
       }
       rethrow;
@@ -415,17 +406,11 @@ class _$GAddStarData_action_starrable extends GAddStarData_action_starrable {
 
   factory _$GAddStarData_action_starrable(
           [void Function(GAddStarData_action_starrableBuilder)? updates]) =>
-      (new GAddStarData_action_starrableBuilder()..update(updates))._build();
+      (GAddStarData_action_starrableBuilder()..update(updates))._build();
 
   _$GAddStarData_action_starrable._(
       {required this.G__typename, required this.viewerHasStarred})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GAddStarData_action_starrable', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        viewerHasStarred, r'GAddStarData_action_starrable', 'viewerHasStarred');
-  }
-
+      : super._();
   @override
   GAddStarData_action_starrable rebuild(
           void Function(GAddStarData_action_starrableBuilder) updates) =>
@@ -433,7 +418,7 @@ class _$GAddStarData_action_starrable extends GAddStarData_action_starrable {
 
   @override
   GAddStarData_action_starrableBuilder toBuilder() =>
-      new GAddStarData_action_starrableBuilder()..replace(this);
+      GAddStarData_action_starrableBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -492,7 +477,6 @@ class GAddStarData_action_starrableBuilder
 
   @override
   void replace(GAddStarData_action_starrable other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAddStarData_action_starrable;
   }
 
@@ -506,13 +490,14 @@ class GAddStarData_action_starrableBuilder
 
   _$GAddStarData_action_starrable _build() {
     final _$result = _$v ??
-        new _$GAddStarData_action_starrable._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, r'GAddStarData_action_starrable', 'G__typename'),
-            viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
-                viewerHasStarred,
-                r'GAddStarData_action_starrable',
-                'viewerHasStarred'));
+        _$GAddStarData_action_starrable._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAddStarData_action_starrable', 'G__typename'),
+          viewerHasStarred: BuiltValueNullFieldError.checkNotNull(
+              viewerHasStarred,
+              r'GAddStarData_action_starrable',
+              'viewerHasStarred'),
+        );
     replace(_$result);
     return _$result;
   }

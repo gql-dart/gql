@@ -12,19 +12,16 @@ class _$GAliasedHeroVars extends GAliasedHeroVars {
 
   factory _$GAliasedHeroVars(
           [void Function(GAliasedHeroVarsBuilder)? updates]) =>
-      (new GAliasedHeroVarsBuilder()..update(updates))._build();
+      (GAliasedHeroVarsBuilder()..update(updates))._build();
 
-  _$GAliasedHeroVars._({required this.ep}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(ep, r'GAliasedHeroVars', 'ep');
-  }
-
+  _$GAliasedHeroVars._({required this.ep}) : super._();
   @override
   GAliasedHeroVars rebuild(void Function(GAliasedHeroVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GAliasedHeroVarsBuilder toBuilder() =>
-      new GAliasedHeroVarsBuilder()..replace(this);
+      GAliasedHeroVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,7 +65,6 @@ class GAliasedHeroVarsBuilder
 
   @override
   void replace(GAliasedHeroVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GAliasedHeroVars;
   }
 
@@ -82,9 +78,10 @@ class GAliasedHeroVarsBuilder
 
   _$GAliasedHeroVars _build() {
     final _$result = _$v ??
-        new _$GAliasedHeroVars._(
-            ep: BuiltValueNullFieldError.checkNotNull(
-                ep, r'GAliasedHeroVars', 'ep'));
+        _$GAliasedHeroVars._(
+          ep: BuiltValueNullFieldError.checkNotNull(
+              ep, r'GAliasedHeroVars', 'ep'),
+        );
     replace(_$result);
     return _$result;
   }

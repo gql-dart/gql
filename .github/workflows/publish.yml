@@ -1,0 +1,75 @@
+name: Publish Packages
+on:
+  push:
+    branches:
+      - master
+      - release
+    paths:
+      - "**/pubspec.yaml"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container:
+      image: dart:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
+        run: |
+          git config --system --add safe.directory /__w/gql/gql
+
+      - name: Install Melos
+        run: |
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          dart pub global activate melos && dart pub get
+
+      - name: Bootstrap workspace
+        run: melos bootstrap --no-flutter
+
+      - name: Codegen
+        run: melos exec --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
+
+      - name: Validate packages
+        run: melos format && melos analyze && melos test
+
+      - name: Setup Pub credentials
+        env:
+          PUB_CREDENTIALS_JSON: ${{ secrets.PUB_CREDENTIALS_JSON }}
+        run: |
+          mkdir -p $XDG_CONFIG_HOME/dart/
+          echo $PUB_CREDENTIALS_JSON > $XDG_CONFIG_HOME/dart/pub-credentials.json
+          mkdir -p $HOME/.config/dart/
+          echo $PUB_CREDENTIALS_JSON > $HOME/.config/dart/pub-credentials.json
+
+      # Publish in dependency order
+      - name: Publish core packages
+        run: |
+          melos publish --no-dry-run --yes \
+            --scope="gql" \
+            --scope="gql_tristate_value" \
+            --scope="gql_code_builder_serializers" \
+            --scope="gql_code_builder"
+
+      - name: Publish execution packages
+        run: |
+          melos publish --no-dry-run --yes \
+            --scope="gql_exec" \
+            --scope="gql_link"
+
+      - name: Publish link implementation packages
+        run: |
+          melos publish --no-dry-run --yes \
+            --scope="gql_http_link" \
+            --scope="gql_dio_link" \
+            --scope="gql_websocket_link" \
+            --scope="gql_dedupe_link" \
+            --scope="gql_error_link" \
+            --scope="gql_transform_link"
+
+      - name: Publish build packages
+        run: |
+          melos publish --no-dry-run --yes \
+            --scope="gql_build"

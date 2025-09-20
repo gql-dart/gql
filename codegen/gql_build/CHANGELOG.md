@@ -1,17 +1,42 @@
+## 0.13.1
+
+ - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).
+ - **FIX**(gql_code_builder): properly generate nullable types for nullable elements in lists (#363).
+ - **FEAT**: deferred allocator pattern and configurable formatting support (#495).
+ - **FEAT**: deferred allocator pattern and configurable formatting support.
+ - **FEAT**: allow distinguishing between null and absent values in gql_code_builder (#381).
+ - **FEAT**(gql_code_builder): add when() method to fragment spread classes (#377).
+ - **FEAT**: build possible types map.
+
+# 0.13.0
+
+- Add configurable formatting support with dart_style 3.0.0
+- Add `format` configuration option with `page_width` and `language_version` settings  
+- Update to use gql_code_builder 0.15.0 with deferred allocator pattern
+- Pass DartFormatter through all builders for consistent formatting
+- Add compatibility with build 3.0.0
+
+# 0.12.0
+
+- Fixes Interface Fragment Inheritance (#484)
+
 # 0.11.0
 
-- Adding 'vars_create_factories' option to create factory initializers with required parameters (#434)
+- Adding 'vars_create_factories' option to create factory initializers with required parameters (
+  #434)
 
 # 0.10.0
 
-- add `tristate_optionals` option to `schema_builder` and `var_builder` in order to wrap nullable fields in input types in a `Value` class in order distinguish between three cases:
-  - absent
-  - null
-  - non-null value
+- add `tristate_optionals` option to `schema_builder` and `var_builder` in order to wrap nullable
+  fields in input types in a `Value` class in order distinguish between three cases:
+    - absent
+    - null
+    - non-null value
 
 # 0.9.0
 
-- add experimental `reuse_fragments` option to builder in order to reuse data classes of selection sets that only include a single inline fragment spread
+- add experimental `reuse_fragments` option to builder in order to reuse data classes of selection
+  sets that only include a single inline fragment spread
 
 # 0.8.0
 

@@ -7,7 +7,7 @@ part of 'create_custom_field.req.gql.dart';
 // **************************************************************************
 
 Serializer<GCreateCustomField> _$gCreateCustomFieldSerializer =
-    new _$GCreateCustomFieldSerializer();
+    _$GCreateCustomFieldSerializer();
 
 class _$GCreateCustomFieldSerializer
     implements StructuredSerializer<GCreateCustomField> {
@@ -36,7 +36,7 @@ class _$GCreateCustomFieldSerializer
   GCreateCustomField deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GCreateCustomFieldBuilder();
+    final result = GCreateCustomFieldBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -68,15 +68,10 @@ class _$GCreateCustomField extends GCreateCustomField {
 
   factory _$GCreateCustomField(
           [void Function(GCreateCustomFieldBuilder)? updates]) =>
-      (new GCreateCustomFieldBuilder()..update(updates))._build();
+      (GCreateCustomFieldBuilder()..update(updates))._build();
 
   _$GCreateCustomField._({required this.vars, required this.operation})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GCreateCustomField', 'vars');
-    BuiltValueNullFieldError.checkNotNull(
-        operation, r'GCreateCustomField', 'operation');
-  }
-
+      : super._();
   @override
   GCreateCustomField rebuild(
           void Function(GCreateCustomFieldBuilder) updates) =>
@@ -84,7 +79,7 @@ class _$GCreateCustomField extends GCreateCustomField {
 
   @override
   GCreateCustomFieldBuilder toBuilder() =>
-      new GCreateCustomFieldBuilder()..replace(this);
+      GCreateCustomFieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -118,7 +113,7 @@ class GCreateCustomFieldBuilder
 
   _i3.GCreateCustomFieldVarsBuilder? _vars;
   _i3.GCreateCustomFieldVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GCreateCustomFieldVarsBuilder();
+      _$this._vars ??= _i3.GCreateCustomFieldVarsBuilder();
   set vars(_i3.GCreateCustomFieldVarsBuilder? vars) => _$this._vars = vars;
 
   _i1.Operation? _operation;
@@ -141,7 +136,6 @@ class GCreateCustomFieldBuilder
 
   @override
   void replace(GCreateCustomField other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GCreateCustomField;
   }
 
@@ -157,17 +151,18 @@ class GCreateCustomFieldBuilder
     _$GCreateCustomField _$result;
     try {
       _$result = _$v ??
-          new _$GCreateCustomField._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GCreateCustomField', 'operation'));
+          _$GCreateCustomField._(
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+                operation, r'GCreateCustomField', 'operation'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'vars';
         vars.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GCreateCustomField', _$failedField, e.toString());
       }
       rethrow;

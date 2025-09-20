@@ -7,11 +7,11 @@ part of 'hero_with_fragments.var.gql.dart';
 // **************************************************************************
 
 Serializer<GHeroWithFragmentsVars> _$gHeroWithFragmentsVarsSerializer =
-    new _$GHeroWithFragmentsVarsSerializer();
+    _$GHeroWithFragmentsVarsSerializer();
 Serializer<GheroDataVars> _$gheroDataVarsSerializer =
-    new _$GheroDataVarsSerializer();
+    _$GheroDataVarsSerializer();
 Serializer<GcomparisonFieldsVars> _$gcomparisonFieldsVarsSerializer =
-    new _$GcomparisonFieldsVarsSerializer();
+    _$GcomparisonFieldsVarsSerializer();
 
 class _$GHeroWithFragmentsVarsSerializer
     implements StructuredSerializer<GHeroWithFragmentsVars> {
@@ -42,7 +42,7 @@ class _$GHeroWithFragmentsVarsSerializer
   GHeroWithFragmentsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GHeroWithFragmentsVarsBuilder();
+    final result = GHeroWithFragmentsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -77,7 +77,7 @@ class _$GheroDataVarsSerializer implements StructuredSerializer<GheroDataVars> {
   GheroDataVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GheroDataVarsBuilder().build();
+    return GheroDataVarsBuilder().build();
   }
 }
 
@@ -110,7 +110,7 @@ class _$GcomparisonFieldsVarsSerializer
   GcomparisonFieldsVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GcomparisonFieldsVarsBuilder();
+    final result = GcomparisonFieldsVarsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -135,10 +135,9 @@ class _$GHeroWithFragmentsVars extends GHeroWithFragmentsVars {
 
   factory _$GHeroWithFragmentsVars(
           [void Function(GHeroWithFragmentsVarsBuilder)? updates]) =>
-      (new GHeroWithFragmentsVarsBuilder()..update(updates))._build();
+      (GHeroWithFragmentsVarsBuilder()..update(updates))._build();
 
   _$GHeroWithFragmentsVars._({this.first}) : super._();
-
   @override
   GHeroWithFragmentsVars rebuild(
           void Function(GHeroWithFragmentsVarsBuilder) updates) =>
@@ -146,7 +145,7 @@ class _$GHeroWithFragmentsVars extends GHeroWithFragmentsVars {
 
   @override
   GHeroWithFragmentsVarsBuilder toBuilder() =>
-      new GHeroWithFragmentsVarsBuilder()..replace(this);
+      GHeroWithFragmentsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -191,7 +190,6 @@ class GHeroWithFragmentsVarsBuilder
 
   @override
   void replace(GHeroWithFragmentsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GHeroWithFragmentsVars;
   }
 
@@ -204,7 +202,10 @@ class GHeroWithFragmentsVarsBuilder
   GHeroWithFragmentsVars build() => _build();
 
   _$GHeroWithFragmentsVars _build() {
-    final _$result = _$v ?? new _$GHeroWithFragmentsVars._(first: first);
+    final _$result = _$v ??
+        _$GHeroWithFragmentsVars._(
+          first: first,
+        );
     replace(_$result);
     return _$result;
   }
@@ -212,16 +213,15 @@ class GHeroWithFragmentsVarsBuilder
 
 class _$GheroDataVars extends GheroDataVars {
   factory _$GheroDataVars([void Function(GheroDataVarsBuilder)? updates]) =>
-      (new GheroDataVarsBuilder()..update(updates))._build();
+      (GheroDataVarsBuilder()..update(updates))._build();
 
   _$GheroDataVars._() : super._();
-
   @override
   GheroDataVars rebuild(void Function(GheroDataVarsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GheroDataVarsBuilder toBuilder() => new GheroDataVarsBuilder()..replace(this);
+  GheroDataVarsBuilder toBuilder() => GheroDataVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -248,7 +248,6 @@ class GheroDataVarsBuilder
 
   @override
   void replace(GheroDataVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GheroDataVars;
   }
 
@@ -261,7 +260,7 @@ class GheroDataVarsBuilder
   GheroDataVars build() => _build();
 
   _$GheroDataVars _build() {
-    final _$result = _$v ?? new _$GheroDataVars._();
+    final _$result = _$v ?? _$GheroDataVars._();
     replace(_$result);
     return _$result;
   }
@@ -273,10 +272,9 @@ class _$GcomparisonFieldsVars extends GcomparisonFieldsVars {
 
   factory _$GcomparisonFieldsVars(
           [void Function(GcomparisonFieldsVarsBuilder)? updates]) =>
-      (new GcomparisonFieldsVarsBuilder()..update(updates))._build();
+      (GcomparisonFieldsVarsBuilder()..update(updates))._build();
 
   _$GcomparisonFieldsVars._({this.first}) : super._();
-
   @override
   GcomparisonFieldsVars rebuild(
           void Function(GcomparisonFieldsVarsBuilder) updates) =>
@@ -284,7 +282,7 @@ class _$GcomparisonFieldsVars extends GcomparisonFieldsVars {
 
   @override
   GcomparisonFieldsVarsBuilder toBuilder() =>
-      new GcomparisonFieldsVarsBuilder()..replace(this);
+      GcomparisonFieldsVarsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -329,7 +327,6 @@ class GcomparisonFieldsVarsBuilder
 
   @override
   void replace(GcomparisonFieldsVars other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GcomparisonFieldsVars;
   }
 
@@ -342,7 +339,10 @@ class GcomparisonFieldsVarsBuilder
   GcomparisonFieldsVars build() => _build();
 
   _$GcomparisonFieldsVars _build() {
-    final _$result = _$v ?? new _$GcomparisonFieldsVars._(first: first);
+    final _$result = _$v ??
+        _$GcomparisonFieldsVars._(
+          first: first,
+        );
     replace(_$result);
     return _$result;
   }
