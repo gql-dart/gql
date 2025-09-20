@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**: add canonical dispose method on gql_link.
+
 ## 1.0.0+1
 
 - Add topics

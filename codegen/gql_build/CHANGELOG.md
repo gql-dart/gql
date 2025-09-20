@@ -1,3 +1,13 @@
+## 0.13.1
+
+ - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).
+ - **FIX**(gql_code_builder): properly generate nullable types for nullable elements in lists (#363).
+ - **FEAT**: deferred allocator pattern and configurable formatting support (#495).
+ - **FEAT**: deferred allocator pattern and configurable formatting support.
+ - **FEAT**: allow distinguishing between null and absent values in gql_code_builder (#381).
+ - **FEAT**(gql_code_builder): add when() method to fragment spread classes (#377).
+ - **FEAT**: build possible types map.
+
 # 0.13.0
 
 - Add configurable formatting support with dart_style 3.0.0

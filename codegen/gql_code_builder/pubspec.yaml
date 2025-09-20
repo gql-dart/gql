@@ -1,5 +1,5 @@
 name: gql_code_builder
-version: 0.15.0
+version: 0.15.1
 description: Dart code builders taking *.graphql documents and SDL to build useful classes.
 repository: https://github.com/gql-dart/gql
 environment:
@@ -10,13 +10,13 @@ dependencies:
   built_value: ^8.0.6
   code_builder: ^4.7.0
   collection: ^1.15.0
-  gql: ^1.0.0
-  gql_exec: ^1.0.0
+  gql: ^1.0.1
+  gql_exec: ^1.1.0
   path: ^1.8.0
-  gql_tristate_value: ^1.0.0
-  gql_code_builder_serializers: ^0.1.0
+  gql_tristate_value: ^1.1.0
+  gql_code_builder_serializers: ^0.1.0+1
 dev_dependencies:
-  gql_pedantic: ^1.0.2
+  gql_pedantic: ^1.2.0
   test: ^1.16.8
 topics:
   - graphql

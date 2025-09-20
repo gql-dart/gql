@@ -1,3 +1,7 @@
+## 1.0.1
+
+ - **FIX**: move CatsRunner to test directory in order to not depend on package:test in the lib/ folder.
+
 ## 1.0.0+1
 
 - add topics

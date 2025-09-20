@@ -1,5 +1,5 @@
 name: gql_pedantic
-version: 1.1.0
+version: 1.2.0
 description: Even more opinionated lint rules.
 repository: https://github.com/gql-dart/gql
 environment: 

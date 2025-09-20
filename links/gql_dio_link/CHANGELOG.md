@@ -1,3 +1,14 @@
+## 2.0.0
+
+> Note: This release has breaking changes.
+
+ - **FIX**: use typedefs instead of subclasses for base contexts for http bases links (#369).
+ - **FIX**: broken json tests.
+ - **FIX**: remove duplicated content-type headers added by link.
+ - **FEAT**(gql_dio_link): migrate to dio 5.2.0: use DioException instead of deprecated (typedef) DioError, fix serializableDioError using new copyWith methods on RequestOptions (#406).
+ - **FEAT**(gql_dio_link): add option to ensure thrown errors are serializable (#378).
+ - **BREAKING** **FEAT**(gql_dio_link): dio 5.
+
 ## 1.0.1+1
 
 - add topics
