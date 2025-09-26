@@ -67,7 +67,8 @@ class DioLink extends Link {
 
   @override
   Stream<Response> request(Request request, [forward]) async* {
-    final dio.Response<Map<String, dynamic>> dioResponse =
+    try {
+      final dio.Response<Map<String, dynamic>> dioResponse =
         await _executeDioRequest(
       request: request,
       headers: <String, String>{
@@ -96,6 +97,10 @@ class DioLink extends Link {
       response: gqlResponse.response,
       context: _updateResponseContext(gqlResponse, dioResponse),
     );
+    }
+    catch (e) {
+      yield* Stream.error(e);
+    }
   }
 
   dynamic _prepareRequestBody(Request request) {
