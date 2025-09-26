@@ -125,6 +125,12 @@ class WebSocketLink extends Link {
   Stream<ConnectionState> get connectionStateStream =>
       _connectionStateController.stream;
 
+  /// A stream that notifies about connection errors.
+  final StreamController<ConnectionError> _connectionErrorController =
+      StreamController<ConnectionError>.broadcast();
+  Stream<ConnectionError> get connectionErrorStream =>
+      _connectionErrorController.stream;
+
   /// Initialize the [WebSocketLink] with a [uri].
   /// You can customize the headers & protocols by passing [channelGenerator],
   /// if [channelGenerator] is passed, [uri] must be null.
@@ -245,6 +251,8 @@ class WebSocketLink extends Link {
             ).catchError(_messagesController.addError);
           });
           _reConnectRequests.clear();
+        } else if (parsedMessage is ConnectionError) {
+          _connectionErrorController.add(parsedMessage);
         }
       }, onDone: () {
         if (isDisabled) {
@@ -266,6 +274,10 @@ class WebSocketLink extends Link {
           _close();
         }
       }, onError: (Object error) {
+        if (autoReconnect && error is WebSocketChannelException) {
+          _connectionErrorController.add(ConnectionError(error));
+          return;
+        }
         _messagesController.addError(error);
       });
 
@@ -405,6 +417,7 @@ class WebSocketLink extends Link {
     await _channel?.sink.close(websocket_status.normalClosure);
     _connectionStateController.add(ConnectionState.closed);
     await _connectionStateController.close();
+    await _connectionErrorController.close();
     await _messagesController.close();
     _disposedCompleter!.complete();
   }
