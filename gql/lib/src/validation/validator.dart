@@ -2,6 +2,7 @@ import "package:gql/ast.dart" as ast;
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/missing_fragment_definitions.dart";
 import "package:gql/src/validation/rules/possible_type_extensions.dart";
+import "package:gql/src/validation/rules/unique_argument_definition_names.dart";
 import "package:gql/src/validation/rules/unique_argument_names.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
@@ -104,6 +105,7 @@ enum ValidationRule {
   uniqueArgumentNames,
   missingFragmentDefinition,
   possibleTypeExtensions,
+  uniqueArgumentDefinitionNames,
 }
 
 ValidatingVisitor? _mapRule(ValidationRule rule) {
@@ -128,6 +130,8 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
       return const MissingFragmentDefinition();
     case ValidationRule.possibleTypeExtensions:
       return PossibleTypeExtensions();
+    case ValidationRule.uniqueArgumentDefinitionNames:
+      return UniqueArgumentDefinitionNames();
   }
 }
 
