@@ -1,4 +1,5 @@
 import "package:gql/ast.dart" as ast;
+import "package:gql/src/validation/rules/executable_definitions.dart";
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/missing_fragment_definitions.dart";
 import "package:gql/src/validation/rules/possible_type_extensions.dart";
@@ -106,6 +107,7 @@ enum ValidationRule {
   missingFragmentDefinition,
   possibleTypeExtensions,
   uniqueArgumentDefinitionNames,
+  executableDefinitions,
 }
 
 ValidatingVisitor? _mapRule(ValidationRule rule) {
@@ -132,6 +134,8 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
       return PossibleTypeExtensions();
     case ValidationRule.uniqueArgumentDefinitionNames:
       return UniqueArgumentDefinitionNames();
+    case ValidationRule.executableDefinitions:
+      return ExecutableDefinitions();
   }
 }
 
