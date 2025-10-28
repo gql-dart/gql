@@ -12,6 +12,23 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(GAliasedHeroData_empireHero.serializer)
       ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
+      ..add(GAuthorFragmentData__asCompany.serializer)
+      ..add(GAuthorFragmentData__asPerson.serializer)
+      ..add(GAuthorFragmentData__base.serializer)
+      ..add(GAuthorFragmentVars.serializer)
+      ..add(GBookFragmentData__asColoringBook.serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asCompany.serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asPerson.serializer)
+      ..add(GBookFragmentData__asColoringBook_author__base.serializer)
+      ..add(GBookFragmentData__asTextbook.serializer)
+      ..add(GBookFragmentData__asTextbook_author__asCompany.serializer)
+      ..add(GBookFragmentData__asTextbook_author__asPerson.serializer)
+      ..add(GBookFragmentData__asTextbook_author__base.serializer)
+      ..add(GBookFragmentData__base.serializer)
+      ..add(GBookFragmentData__base_author__asCompany.serializer)
+      ..add(GBookFragmentData__base_author__asPerson.serializer)
+      ..add(GBookFragmentData__base_author__base.serializer)
+      ..add(GBookFragmentVars.serializer)
       ..add(GCharacterBasicData.serializer)
       ..add(GCharacterBasicVars.serializer)
       ..add(GCharacterDetailsData.serializer)
@@ -35,6 +52,21 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(GFriendInfoData_friendsConnection.serializer)
       ..add(GFriendInfoData_friendsConnection_friends.serializer)
       ..add(GFriendInfoVars.serializer)
+      ..add(GGetBooks.serializer)
+      ..add(GGetBooksData.serializer)
+      ..add(GGetBooksData_books__asColoringBook.serializer)
+      ..add(GGetBooksData_books__asColoringBook_author__asCompany.serializer)
+      ..add(GGetBooksData_books__asColoringBook_author__asPerson.serializer)
+      ..add(GGetBooksData_books__asColoringBook_author__base.serializer)
+      ..add(GGetBooksData_books__asTextbook.serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asCompany.serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asPerson.serializer)
+      ..add(GGetBooksData_books__asTextbook_author__base.serializer)
+      ..add(GGetBooksData_books__base.serializer)
+      ..add(GGetBooksData_books__base_author__asCompany.serializer)
+      ..add(GGetBooksData_books__base_author__asPerson.serializer)
+      ..add(GGetBooksData_books__base_author__base.serializer)
+      ..add(GGetBooksVars.serializer)
       ..add(GHeroForEpisode.serializer)
       ..add(GHeroForEpisodeData.serializer)
       ..add(GHeroForEpisodeData_hero__asDroid.serializer)
@@ -170,6 +202,22 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => ListBuilder<CustomField>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GGetBooksData_books)]),
+          () => ListBuilder<GGetBooksData_books>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
           () => ListBuilder<int>())

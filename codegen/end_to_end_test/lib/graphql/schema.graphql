@@ -18,6 +18,7 @@ type Query {
   human(id: ID!): Human
   starship(id: ID!): Starship
   posts(userId: ID!, filter: Json): [Post]
+  books: [Book!]!
 }
 
 # The mutation type, represents all updates we can make to our data
@@ -201,6 +202,38 @@ input PostLikesInput {
 
 input PostFavoritesInput {
   id: ID!
+}
+
+interface Author {
+  displayName: String!
+}
+
+type Person implements Author {
+  firstName: String!
+  lastName: String!
+  displayName: String!
+}
+
+type Company implements Author {
+  name: String!
+  displayName: String!
+}
+
+interface Book {
+  title: String!
+  author: Author!
+}
+
+type Textbook implements Book {
+  title: String!
+  author: Author!
+  courses: [String!]!
+}
+
+type ColoringBook implements Book {
+  title: String!
+  author: Author!
+  colors: [String!]!
 }
 
 union SearchResult = Human | Droid | Starship

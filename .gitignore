@@ -18,3 +18,5 @@ doc/api/
 
 **/test/**/*.mocks.dart
 pubspec_overrides.yaml
+
+examples/gql_example_flutter/ios/Flutter/ephemeral/

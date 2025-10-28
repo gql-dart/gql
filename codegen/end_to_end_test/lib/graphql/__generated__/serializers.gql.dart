@@ -87,6 +87,11 @@ import 'package:end_to_end_test/fragments/__generated__/nested_duplicate_fragmen
         GCharacterDetailsVars,
         GFriendInfoVars,
         GSearchResultsQueryVars;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_interface.data.gql.dart';
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_interface.req.gql.dart'
+    show GGetBooks;
+import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_interface.var.gql.dart'
+    show GAuthorFragmentVars, GBookFragmentVars, GGetBooksVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
@@ -144,32 +149,54 @@ import 'package:gql_code_builder_serializers/gql_code_builder_serializers.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder =
-    _$serializers.toBuilder()
-      ..add(OperationSerializer())
-      ..add(DateSerializer())
-      ..add(CustomFieldSerializer())
-      ..add(GHeroForEpisodeData_hero.serializer)
-      ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
-      ..add(
-        GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends
-            .serializer,
-      )
-      ..add(GHeroWithInterfaceUnnamedFragmentsData_hero.serializer)
-      ..add(
-        GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends.serializer,
-      )
-      ..add(GSearchResultsQueryData_search.serializer)
-      ..add(GheroFieldsFragmentData.serializer)
-      ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
-      ..add(GhumanFieldsFragmentData_friends.serializer)
-      ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
+  ..add(OperationSerializer())
+  ..add(DateSerializer())
+  ..add(CustomFieldSerializer())
+  ..add(GAuthorFragmentData.serializer)
+  ..add(GBookFragmentData.serializer)
+  ..add(GBookFragmentData__asColoringBook_author.serializer)
+  ..add(GBookFragmentData__asTextbook_author.serializer)
+  ..add(GBookFragmentData__base_author.serializer)
+  ..add(GGetBooksData_books.serializer)
+  ..add(GGetBooksData_books__asColoringBook_author.serializer)
+  ..add(GGetBooksData_books__asTextbook_author.serializer)
+  ..add(GGetBooksData_books__base_author.serializer)
+  ..add(GHeroForEpisodeData_hero.serializer)
+  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
+  ..add(
+    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer,
+  )
+  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero.serializer)
+  ..add(GHeroWithInterfaceUnnamedFragmentsData_hero__asHuman_friends.serializer)
+  ..add(GSearchResultsQueryData_search.serializer)
+  ..add(GheroFieldsFragmentData.serializer)
+  ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
+  ..add(GhumanFieldsFragmentData_friends.serializer)
+  ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAliasedHero,
   GAliasedHeroData,
   GAliasedHeroData_empireHero,
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
+  GAuthorFragmentData__asCompany,
+  GAuthorFragmentData__asPerson,
+  GAuthorFragmentData__base,
+  GAuthorFragmentVars,
+  GBookFragmentData__asColoringBook,
+  GBookFragmentData__asColoringBook_author__asCompany,
+  GBookFragmentData__asColoringBook_author__asPerson,
+  GBookFragmentData__asColoringBook_author__base,
+  GBookFragmentData__asTextbook,
+  GBookFragmentData__asTextbook_author__asCompany,
+  GBookFragmentData__asTextbook_author__asPerson,
+  GBookFragmentData__asTextbook_author__base,
+  GBookFragmentData__base,
+  GBookFragmentData__base_author__asCompany,
+  GBookFragmentData__base_author__asPerson,
+  GBookFragmentData__base_author__base,
+  GBookFragmentVars,
   GCharacterBasicData,
   GCharacterBasicVars,
   GCharacterDetailsData,
@@ -193,6 +220,21 @@ final SerializersBuilder _serializersBuilder =
   GFriendInfoData_friendsConnection,
   GFriendInfoData_friendsConnection_friends,
   GFriendInfoVars,
+  GGetBooks,
+  GGetBooksData,
+  GGetBooksData_books__asColoringBook,
+  GGetBooksData_books__asColoringBook_author__asCompany,
+  GGetBooksData_books__asColoringBook_author__asPerson,
+  GGetBooksData_books__asColoringBook_author__base,
+  GGetBooksData_books__asTextbook,
+  GGetBooksData_books__asTextbook_author__asCompany,
+  GGetBooksData_books__asTextbook_author__asPerson,
+  GGetBooksData_books__asTextbook_author__base,
+  GGetBooksData_books__base,
+  GGetBooksData_books__base_author__asCompany,
+  GGetBooksData_books__base_author__asPerson,
+  GGetBooksData_books__base_author__base,
+  GGetBooksVars,
   GHeroForEpisode,
   GHeroForEpisodeData,
   GHeroForEpisodeData_hero__asDroid,
