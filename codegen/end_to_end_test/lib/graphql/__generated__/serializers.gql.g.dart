@@ -338,16 +338,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<GheroFieldsFragmentData__asHuman_friends?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
-          ]),
-          () => ListBuilder<GheroFieldsFragment__asHuman_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GheroFieldsFragment__asHuman_friends)
-          ]),
-          () => ListBuilder<GheroFieldsFragment__asHuman_friends?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
             const FullType.nullable(GhumanFieldsFragmentData_friends)
           ]),
           () => ListBuilder<GhumanFieldsFragmentData_friends?>())

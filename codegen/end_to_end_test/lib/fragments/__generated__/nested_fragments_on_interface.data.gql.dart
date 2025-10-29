@@ -500,8 +500,7 @@ abstract class GGetBooksData_books__asTextbook_author__asPerson
         GGetBooksData_books_author,
         GAuthorFragment,
         GBookFragment_author__asPerson,
-        GBookFragment,
-        GBookFragment__asPerson,
+        GBookFragment__asTextbook_author__asPerson,
         GGetBooksData_books_author__asPerson,
         GAuthorFragment__asPerson,
         GGetBooksData_books__asTextbook_author {
@@ -549,8 +548,7 @@ abstract class GGetBooksData_books__asTextbook_author__asCompany
         GGetBooksData_books_author,
         GAuthorFragment,
         GBookFragment_author__asCompany,
-        GBookFragment,
-        GBookFragment__asCompany,
+        GBookFragment__asTextbook_author__asCompany,
         GGetBooksData_books_author__asCompany,
         GAuthorFragment__asCompany,
         GGetBooksData_books__asTextbook_author {
@@ -753,8 +751,7 @@ abstract class GGetBooksData_books__asColoringBook_author__asPerson
         GGetBooksData_books_author,
         GAuthorFragment,
         GBookFragment_author__asPerson,
-        GBookFragment,
-        GBookFragment__asPerson,
+        GBookFragment__asColoringBook_author__asPerson,
         GGetBooksData_books_author__asPerson,
         GAuthorFragment__asPerson,
         GGetBooksData_books__asColoringBook_author {
@@ -804,8 +801,7 @@ abstract class GGetBooksData_books__asColoringBook_author__asCompany
         GGetBooksData_books_author,
         GAuthorFragment,
         GBookFragment_author__asCompany,
-        GBookFragment,
-        GBookFragment__asCompany,
+        GBookFragment__asColoringBook_author__asCompany,
         GGetBooksData_books_author__asCompany,
         GAuthorFragment__asCompany,
         GGetBooksData_books__asColoringBook_author {
@@ -2025,8 +2021,7 @@ abstract class GBookFragmentData__asTextbook_author__asPerson
         GBookFragmentData_author,
         GAuthorFragment,
         GBookFragment_author__asPerson,
-        GBookFragment,
-        GBookFragment__asPerson,
+        GBookFragment__asTextbook_author__asPerson,
         GBookFragmentData_author__asPerson,
         GAuthorFragment__asPerson,
         GBookFragmentData__asTextbook_author {
@@ -2074,8 +2069,7 @@ abstract class GBookFragmentData__asTextbook_author__asCompany
         GBookFragmentData_author,
         GAuthorFragment,
         GBookFragment_author__asCompany,
-        GBookFragment,
-        GBookFragment__asCompany,
+        GBookFragment__asTextbook_author__asCompany,
         GBookFragmentData_author__asCompany,
         GAuthorFragment__asCompany,
         GBookFragmentData__asTextbook_author {
@@ -2276,8 +2270,7 @@ abstract class GBookFragmentData__asColoringBook_author__asPerson
         GBookFragmentData_author,
         GAuthorFragment,
         GBookFragment_author__asPerson,
-        GBookFragment,
-        GBookFragment__asPerson,
+        GBookFragment__asColoringBook_author__asPerson,
         GBookFragmentData_author__asPerson,
         GAuthorFragment__asPerson,
         GBookFragmentData__asColoringBook_author {
@@ -2327,8 +2320,7 @@ abstract class GBookFragmentData__asColoringBook_author__asCompany
         GBookFragmentData_author,
         GAuthorFragment,
         GBookFragment_author__asCompany,
-        GBookFragment,
-        GBookFragment__asCompany,
+        GBookFragment__asColoringBook_author__asCompany,
         GBookFragmentData_author__asCompany,
         GAuthorFragment__asCompany,
         GBookFragmentData__asColoringBook_author {

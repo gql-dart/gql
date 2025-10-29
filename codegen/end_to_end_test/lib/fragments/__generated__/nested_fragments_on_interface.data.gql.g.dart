@@ -536,12 +536,6 @@ class _$GGetBooksData_books__asTextbook_author__asPersonSerializer
       'lastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -573,15 +567,6 @@ class _$GGetBooksData_books__asTextbook_author__asPersonSerializer
           break;
         case 'lastName':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -616,12 +601,6 @@ class _$GGetBooksData_books__asTextbook_author__asCompanySerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -649,15 +628,6 @@ class _$GGetBooksData_books__asTextbook_author__asCompanySerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -824,12 +794,6 @@ class _$GGetBooksData_books__asColoringBook_author__asPersonSerializer
       'lastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -862,15 +826,6 @@ class _$GGetBooksData_books__asColoringBook_author__asPersonSerializer
           break;
         case 'lastName':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -906,12 +861,6 @@ class _$GGetBooksData_books__asColoringBook_author__asCompanySerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -940,15 +889,6 @@ class _$GGetBooksData_books__asColoringBook_author__asCompanySerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1532,12 +1472,6 @@ class _$GBookFragmentData__asTextbook_author__asPersonSerializer
       'lastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -1571,15 +1505,6 @@ class _$GBookFragmentData__asTextbook_author__asPersonSerializer
           result.lastName = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
       }
     }
 
@@ -1611,12 +1536,6 @@ class _$GBookFragmentData__asTextbook_author__asCompanySerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -1644,15 +1563,6 @@ class _$GBookFragmentData__asTextbook_author__asCompanySerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1818,12 +1728,6 @@ class _$GBookFragmentData__asColoringBook_author__asPersonSerializer
       'lastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -1855,15 +1759,6 @@ class _$GBookFragmentData__asColoringBook_author__asPersonSerializer
           break;
         case 'lastName':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1898,12 +1793,6 @@ class _$GBookFragmentData__asColoringBook_author__asCompanySerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(GBookFragment_author)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -1931,15 +1820,6 @@ class _$GBookFragmentData__asColoringBook_author__asCompanySerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'author':
-          result.author = serializers.deserialize(value,
-                  specifiedType: const FullType(GBookFragment_author))!
-              as GBookFragment_author;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -2801,10 +2681,6 @@ class _$GGetBooksData_books__asTextbook_author__asPerson
   final String firstName;
   @override
   final String lastName;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GGetBooksData_books__asTextbook_author__asPerson(
           [void Function(
@@ -2818,9 +2694,7 @@ class _$GGetBooksData_books__asTextbook_author__asPerson
       {required this.G__typename,
       required this.displayName,
       required this.firstName,
-      required this.lastName,
-      required this.author,
-      required this.title})
+      required this.lastName})
       : super._();
   @override
   GGetBooksData_books__asTextbook_author__asPerson rebuild(
@@ -2839,9 +2713,7 @@ class _$GGetBooksData_books__asTextbook_author__asPerson
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         firstName == other.firstName &&
-        lastName == other.lastName &&
-        author == other.author &&
-        title == other.title;
+        lastName == other.lastName;
   }
 
   @override
@@ -2851,8 +2723,6 @@ class _$GGetBooksData_books__asTextbook_author__asPerson
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
     _$hash = $jc(_$hash, lastName.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2864,9 +2734,7 @@ class _$GGetBooksData_books__asTextbook_author__asPerson
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('firstName', firstName)
-          ..add('lastName', lastName)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('lastName', lastName))
         .toString();
   }
 }
@@ -2893,14 +2761,6 @@ class GGetBooksData_books__asTextbook_author__asPersonBuilder
   String? get lastName => _$this._lastName;
   set lastName(String? lastName) => _$this._lastName = lastName;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GGetBooksData_books__asTextbook_author__asPersonBuilder() {
     GGetBooksData_books__asTextbook_author__asPerson._initializeBuilder(this);
   }
@@ -2912,8 +2772,6 @@ class GGetBooksData_books__asTextbook_author__asPersonBuilder
       _displayName = $v.displayName;
       _firstName = $v.firstName;
       _lastName = $v.lastName;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -2949,10 +2807,6 @@ class GGetBooksData_books__asTextbook_author__asPersonBuilder
               r'GGetBooksData_books__asTextbook_author__asPerson', 'firstName'),
           lastName: BuiltValueNullFieldError.checkNotNull(lastName,
               r'GGetBooksData_books__asTextbook_author__asPerson', 'lastName'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GGetBooksData_books__asTextbook_author__asPerson', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GGetBooksData_books__asTextbook_author__asPerson', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -2967,10 +2821,6 @@ class _$GGetBooksData_books__asTextbook_author__asCompany
   final String displayName;
   @override
   final String name;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GGetBooksData_books__asTextbook_author__asCompany(
           [void Function(
@@ -2983,9 +2833,7 @@ class _$GGetBooksData_books__asTextbook_author__asCompany
   _$GGetBooksData_books__asTextbook_author__asCompany._(
       {required this.G__typename,
       required this.displayName,
-      required this.name,
-      required this.author,
-      required this.title})
+      required this.name})
       : super._();
   @override
   GGetBooksData_books__asTextbook_author__asCompany rebuild(
@@ -3004,9 +2852,7 @@ class _$GGetBooksData_books__asTextbook_author__asCompany
     return other is GGetBooksData_books__asTextbook_author__asCompany &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
-        name == other.name &&
-        author == other.author &&
-        title == other.title;
+        name == other.name;
   }
 
   @override
@@ -3015,8 +2861,6 @@ class _$GGetBooksData_books__asTextbook_author__asCompany
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3027,9 +2871,7 @@ class _$GGetBooksData_books__asTextbook_author__asCompany
             r'GGetBooksData_books__asTextbook_author__asCompany')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
-          ..add('name', name)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('name', name))
         .toString();
   }
 }
@@ -3052,14 +2894,6 @@ class GGetBooksData_books__asTextbook_author__asCompanyBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GGetBooksData_books__asTextbook_author__asCompanyBuilder() {
     GGetBooksData_books__asTextbook_author__asCompany._initializeBuilder(this);
   }
@@ -3070,8 +2904,6 @@ class GGetBooksData_books__asTextbook_author__asCompanyBuilder
       _G__typename = $v.G__typename;
       _displayName = $v.displayName;
       _name = $v.name;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -3105,10 +2937,6 @@ class GGetBooksData_books__asTextbook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(name,
               r'GGetBooksData_books__asTextbook_author__asCompany', 'name'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GGetBooksData_books__asTextbook_author__asCompany', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GGetBooksData_books__asTextbook_author__asCompany', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -3385,10 +3213,6 @@ class _$GGetBooksData_books__asColoringBook_author__asPerson
   final String firstName;
   @override
   final String lastName;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GGetBooksData_books__asColoringBook_author__asPerson(
           [void Function(
@@ -3402,9 +3226,7 @@ class _$GGetBooksData_books__asColoringBook_author__asPerson
       {required this.G__typename,
       required this.displayName,
       required this.firstName,
-      required this.lastName,
-      required this.author,
-      required this.title})
+      required this.lastName})
       : super._();
   @override
   GGetBooksData_books__asColoringBook_author__asPerson rebuild(
@@ -3425,9 +3247,7 @@ class _$GGetBooksData_books__asColoringBook_author__asPerson
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         firstName == other.firstName &&
-        lastName == other.lastName &&
-        author == other.author &&
-        title == other.title;
+        lastName == other.lastName;
   }
 
   @override
@@ -3437,8 +3257,6 @@ class _$GGetBooksData_books__asColoringBook_author__asPerson
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
     _$hash = $jc(_$hash, lastName.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3450,9 +3268,7 @@ class _$GGetBooksData_books__asColoringBook_author__asPerson
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('firstName', firstName)
-          ..add('lastName', lastName)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('lastName', lastName))
         .toString();
   }
 }
@@ -3479,14 +3295,6 @@ class GGetBooksData_books__asColoringBook_author__asPersonBuilder
   String? get lastName => _$this._lastName;
   set lastName(String? lastName) => _$this._lastName = lastName;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GGetBooksData_books__asColoringBook_author__asPersonBuilder() {
     GGetBooksData_books__asColoringBook_author__asPerson._initializeBuilder(
         this);
@@ -3499,8 +3307,6 @@ class GGetBooksData_books__asColoringBook_author__asPersonBuilder
       _displayName = $v.displayName;
       _firstName = $v.firstName;
       _lastName = $v.lastName;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -3541,12 +3347,6 @@ class GGetBooksData_books__asColoringBook_author__asPersonBuilder
               lastName,
               r'GGetBooksData_books__asColoringBook_author__asPerson',
               'lastName'),
-          author: BuiltValueNullFieldError.checkNotNull(
-              author,
-              r'GGetBooksData_books__asColoringBook_author__asPerson',
-              'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GGetBooksData_books__asColoringBook_author__asPerson', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -3561,10 +3361,6 @@ class _$GGetBooksData_books__asColoringBook_author__asCompany
   final String displayName;
   @override
   final String name;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GGetBooksData_books__asColoringBook_author__asCompany(
           [void Function(
@@ -3577,9 +3373,7 @@ class _$GGetBooksData_books__asColoringBook_author__asCompany
   _$GGetBooksData_books__asColoringBook_author__asCompany._(
       {required this.G__typename,
       required this.displayName,
-      required this.name,
-      required this.author,
-      required this.title})
+      required this.name})
       : super._();
   @override
   GGetBooksData_books__asColoringBook_author__asCompany rebuild(
@@ -3599,9 +3393,7 @@ class _$GGetBooksData_books__asColoringBook_author__asCompany
     return other is GGetBooksData_books__asColoringBook_author__asCompany &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
-        name == other.name &&
-        author == other.author &&
-        title == other.title;
+        name == other.name;
   }
 
   @override
@@ -3610,8 +3402,6 @@ class _$GGetBooksData_books__asColoringBook_author__asCompany
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3622,9 +3412,7 @@ class _$GGetBooksData_books__asColoringBook_author__asCompany
             r'GGetBooksData_books__asColoringBook_author__asCompany')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
-          ..add('name', name)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('name', name))
         .toString();
   }
 }
@@ -3647,14 +3435,6 @@ class GGetBooksData_books__asColoringBook_author__asCompanyBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GGetBooksData_books__asColoringBook_author__asCompanyBuilder() {
     GGetBooksData_books__asColoringBook_author__asCompany._initializeBuilder(
         this);
@@ -3666,8 +3446,6 @@ class GGetBooksData_books__asColoringBook_author__asCompanyBuilder
       _G__typename = $v.G__typename;
       _displayName = $v.displayName;
       _name = $v.name;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -3702,14 +3480,6 @@ class GGetBooksData_books__asColoringBook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(name,
               r'GGetBooksData_books__asColoringBook_author__asCompany', 'name'),
-          author: BuiltValueNullFieldError.checkNotNull(
-              author,
-              r'GGetBooksData_books__asColoringBook_author__asCompany',
-              'author'),
-          title: BuiltValueNullFieldError.checkNotNull(
-              title,
-              r'GGetBooksData_books__asColoringBook_author__asCompany',
-              'title'),
         );
     replace(_$result);
     return _$result;
@@ -4799,10 +4569,6 @@ class _$GBookFragmentData__asTextbook_author__asPerson
   final String firstName;
   @override
   final String lastName;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GBookFragmentData__asTextbook_author__asPerson(
           [void Function(GBookFragmentData__asTextbook_author__asPersonBuilder)?
@@ -4814,9 +4580,7 @@ class _$GBookFragmentData__asTextbook_author__asPerson
       {required this.G__typename,
       required this.displayName,
       required this.firstName,
-      required this.lastName,
-      required this.author,
-      required this.title})
+      required this.lastName})
       : super._();
   @override
   GBookFragmentData__asTextbook_author__asPerson rebuild(
@@ -4835,9 +4599,7 @@ class _$GBookFragmentData__asTextbook_author__asPerson
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         firstName == other.firstName &&
-        lastName == other.lastName &&
-        author == other.author &&
-        title == other.title;
+        lastName == other.lastName;
   }
 
   @override
@@ -4847,8 +4609,6 @@ class _$GBookFragmentData__asTextbook_author__asPerson
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
     _$hash = $jc(_$hash, lastName.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -4860,9 +4620,7 @@ class _$GBookFragmentData__asTextbook_author__asPerson
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('firstName', firstName)
-          ..add('lastName', lastName)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('lastName', lastName))
         .toString();
   }
 }
@@ -4889,14 +4647,6 @@ class GBookFragmentData__asTextbook_author__asPersonBuilder
   String? get lastName => _$this._lastName;
   set lastName(String? lastName) => _$this._lastName = lastName;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GBookFragmentData__asTextbook_author__asPersonBuilder() {
     GBookFragmentData__asTextbook_author__asPerson._initializeBuilder(this);
   }
@@ -4908,8 +4658,6 @@ class GBookFragmentData__asTextbook_author__asPersonBuilder
       _displayName = $v.displayName;
       _firstName = $v.firstName;
       _lastName = $v.lastName;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -4941,10 +4689,6 @@ class GBookFragmentData__asTextbook_author__asPersonBuilder
               r'GBookFragmentData__asTextbook_author__asPerson', 'firstName'),
           lastName: BuiltValueNullFieldError.checkNotNull(lastName,
               r'GBookFragmentData__asTextbook_author__asPerson', 'lastName'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GBookFragmentData__asTextbook_author__asPerson', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GBookFragmentData__asTextbook_author__asPerson', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -4959,10 +4703,6 @@ class _$GBookFragmentData__asTextbook_author__asCompany
   final String displayName;
   @override
   final String name;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GBookFragmentData__asTextbook_author__asCompany(
           [void Function(
@@ -4975,9 +4715,7 @@ class _$GBookFragmentData__asTextbook_author__asCompany
   _$GBookFragmentData__asTextbook_author__asCompany._(
       {required this.G__typename,
       required this.displayName,
-      required this.name,
-      required this.author,
-      required this.title})
+      required this.name})
       : super._();
   @override
   GBookFragmentData__asTextbook_author__asCompany rebuild(
@@ -4995,9 +4733,7 @@ class _$GBookFragmentData__asTextbook_author__asCompany
     return other is GBookFragmentData__asTextbook_author__asCompany &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
-        name == other.name &&
-        author == other.author &&
-        title == other.title;
+        name == other.name;
   }
 
   @override
@@ -5006,8 +4742,6 @@ class _$GBookFragmentData__asTextbook_author__asCompany
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -5018,9 +4752,7 @@ class _$GBookFragmentData__asTextbook_author__asCompany
             r'GBookFragmentData__asTextbook_author__asCompany')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
-          ..add('name', name)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('name', name))
         .toString();
   }
 }
@@ -5043,14 +4775,6 @@ class GBookFragmentData__asTextbook_author__asCompanyBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GBookFragmentData__asTextbook_author__asCompanyBuilder() {
     GBookFragmentData__asTextbook_author__asCompany._initializeBuilder(this);
   }
@@ -5061,8 +4785,6 @@ class GBookFragmentData__asTextbook_author__asCompanyBuilder
       _G__typename = $v.G__typename;
       _displayName = $v.displayName;
       _name = $v.name;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -5096,10 +4818,6 @@ class GBookFragmentData__asTextbook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GBookFragmentData__asTextbook_author__asCompany', 'name'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GBookFragmentData__asTextbook_author__asCompany', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GBookFragmentData__asTextbook_author__asCompany', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -5369,10 +5087,6 @@ class _$GBookFragmentData__asColoringBook_author__asPerson
   final String firstName;
   @override
   final String lastName;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GBookFragmentData__asColoringBook_author__asPerson(
           [void Function(
@@ -5386,9 +5100,7 @@ class _$GBookFragmentData__asColoringBook_author__asPerson
       {required this.G__typename,
       required this.displayName,
       required this.firstName,
-      required this.lastName,
-      required this.author,
-      required this.title})
+      required this.lastName})
       : super._();
   @override
   GBookFragmentData__asColoringBook_author__asPerson rebuild(
@@ -5409,9 +5121,7 @@ class _$GBookFragmentData__asColoringBook_author__asPerson
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         firstName == other.firstName &&
-        lastName == other.lastName &&
-        author == other.author &&
-        title == other.title;
+        lastName == other.lastName;
   }
 
   @override
@@ -5421,8 +5131,6 @@ class _$GBookFragmentData__asColoringBook_author__asPerson
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
     _$hash = $jc(_$hash, lastName.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -5434,9 +5142,7 @@ class _$GBookFragmentData__asColoringBook_author__asPerson
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('firstName', firstName)
-          ..add('lastName', lastName)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('lastName', lastName))
         .toString();
   }
 }
@@ -5463,14 +5169,6 @@ class GBookFragmentData__asColoringBook_author__asPersonBuilder
   String? get lastName => _$this._lastName;
   set lastName(String? lastName) => _$this._lastName = lastName;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GBookFragmentData__asColoringBook_author__asPersonBuilder() {
     GBookFragmentData__asColoringBook_author__asPerson._initializeBuilder(this);
   }
@@ -5482,8 +5180,6 @@ class GBookFragmentData__asColoringBook_author__asPersonBuilder
       _displayName = $v.displayName;
       _firstName = $v.firstName;
       _lastName = $v.lastName;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -5523,10 +5219,6 @@ class GBookFragmentData__asColoringBook_author__asPersonBuilder
               lastName,
               r'GBookFragmentData__asColoringBook_author__asPerson',
               'lastName'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GBookFragmentData__asColoringBook_author__asPerson', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GBookFragmentData__asColoringBook_author__asPerson', 'title'),
         );
     replace(_$result);
     return _$result;
@@ -5541,10 +5233,6 @@ class _$GBookFragmentData__asColoringBook_author__asCompany
   final String displayName;
   @override
   final String name;
-  @override
-  final GBookFragment_author author;
-  @override
-  final String title;
 
   factory _$GBookFragmentData__asColoringBook_author__asCompany(
           [void Function(
@@ -5557,9 +5245,7 @@ class _$GBookFragmentData__asColoringBook_author__asCompany
   _$GBookFragmentData__asColoringBook_author__asCompany._(
       {required this.G__typename,
       required this.displayName,
-      required this.name,
-      required this.author,
-      required this.title})
+      required this.name})
       : super._();
   @override
   GBookFragmentData__asColoringBook_author__asCompany rebuild(
@@ -5579,9 +5265,7 @@ class _$GBookFragmentData__asColoringBook_author__asCompany
     return other is GBookFragmentData__asColoringBook_author__asCompany &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
-        name == other.name &&
-        author == other.author &&
-        title == other.title;
+        name == other.name;
   }
 
   @override
@@ -5590,8 +5274,6 @@ class _$GBookFragmentData__asColoringBook_author__asCompany
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, author.hashCode);
-    _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -5602,9 +5284,7 @@ class _$GBookFragmentData__asColoringBook_author__asCompany
             r'GBookFragmentData__asColoringBook_author__asCompany')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
-          ..add('name', name)
-          ..add('author', author)
-          ..add('title', title))
+          ..add('name', name))
         .toString();
   }
 }
@@ -5627,14 +5307,6 @@ class GBookFragmentData__asColoringBook_author__asCompanyBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GBookFragment_author? _author;
-  GBookFragment_author? get author => _$this._author;
-  set author(GBookFragment_author? author) => _$this._author = author;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
-
   GBookFragmentData__asColoringBook_author__asCompanyBuilder() {
     GBookFragmentData__asColoringBook_author__asCompany._initializeBuilder(
         this);
@@ -5646,8 +5318,6 @@ class GBookFragmentData__asColoringBook_author__asCompanyBuilder
       _G__typename = $v.G__typename;
       _displayName = $v.displayName;
       _name = $v.name;
-      _author = $v.author;
-      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -5681,10 +5351,6 @@ class GBookFragmentData__asColoringBook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(name,
               r'GBookFragmentData__asColoringBook_author__asCompany', 'name'),
-          author: BuiltValueNullFieldError.checkNotNull(author,
-              r'GBookFragmentData__asColoringBook_author__asCompany', 'author'),
-          title: BuiltValueNullFieldError.checkNotNull(title,
-              r'GBookFragmentData__asColoringBook_author__asCompany', 'title'),
         );
     replace(_$result);
     return _$result;

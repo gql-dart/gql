@@ -343,8 +343,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroidBuilder>,
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends,
-        GheroFieldsFragment,
-        GheroFieldsFragment__asDroid,
+        GheroFieldsFragment__asHuman_friends__asDroid,
         GhumanFieldsFragment_friends__asDroid,
         GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends,
         GdroidFieldsFragment {
@@ -397,8 +396,7 @@ abstract class GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__as
             GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHumanBuilder>,
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends,
-        GheroFieldsFragment,
-        GheroFieldsFragment__asHuman,
+        GheroFieldsFragment__asHuman_friends__asHuman,
         GhumanFieldsFragment_friends__asHuman,
         GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends {
   GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman._();
@@ -902,8 +900,7 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asDroid
             GheroFieldsFragmentData__asHuman_friends__asDroidBuilder>,
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends,
-        GheroFieldsFragment,
-        GheroFieldsFragment__asDroid,
+        GheroFieldsFragment__asHuman_friends__asDroid,
         GhumanFieldsFragment_friends__asDroid,
         GheroFieldsFragmentData__asHuman_friends,
         GdroidFieldsFragment {
@@ -949,8 +946,7 @@ abstract class GheroFieldsFragmentData__asHuman_friends__asHuman
             GheroFieldsFragmentData__asHuman_friends__asHumanBuilder>,
         GheroFieldsFragment__asHuman_friends,
         GhumanFieldsFragment_friends,
-        GheroFieldsFragment,
-        GheroFieldsFragment__asHuman,
+        GheroFieldsFragment__asHuman_friends__asHuman,
         GhumanFieldsFragment_friends__asHuman,
         GheroFieldsFragmentData__asHuman_friends {
   GheroFieldsFragmentData__asHuman_friends__asHuman._();
