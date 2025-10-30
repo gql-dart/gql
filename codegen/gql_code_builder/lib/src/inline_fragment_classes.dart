@@ -347,20 +347,18 @@ List<Spec> _buildTypeSpecificClasses({
           final nestedSpecializedName =
               context.specialize(nestedBaseName, fragmentTypeName);
 
-          if (specializedInterface.startsWith(nestedSpecializedName)) {
-            // Add selections for nested specialized interfaces
-            expandedSuperclassSelections[nestedSpecializedName] =
-                SourceSelections(
-              url: superclassSelections[specializedInterface]?.url,
-              selections: [
-                ...superclassSelections[specializedInterface]?.selections ?? [],
-                ...inlineFragment.selectionSet.selections,
-              ],
-            );
+          // Add selections for nested specialized interfaces
+          expandedSuperclassSelections[nestedSpecializedName] =
+              SourceSelections(
+            url: superclassSelections[specializedInterface]?.url,
+            selections: [
+              ...superclassSelections[specializedInterface]?.selections ?? [],
+              ...inlineFragment.selectionSet.selections,
+            ],
+          );
 
-            // Map nested interfaces
-            nestedInterfaceMap[specializedInterface] = nestedSpecializedName;
-          }
+          // Map nested interfaces
+          nestedInterfaceMap[specializedInterface] = nestedSpecializedName;
         }
       }
     }

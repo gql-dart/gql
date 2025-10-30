@@ -17,13 +17,6 @@ fragment BookFragment on Book {
   }
 }
 
-
-
-
-
-
-
-
 fragment AuthorFragment on Author {
   displayName
   ... on Person {
