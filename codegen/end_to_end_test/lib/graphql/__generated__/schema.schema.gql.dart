@@ -236,6 +236,7 @@ const Map<String, Set<String>> possibleTypesMap = {
   'Author': {
     'Person',
     'Company',
+    'Group',
   },
   'Book': {
     'Textbook',

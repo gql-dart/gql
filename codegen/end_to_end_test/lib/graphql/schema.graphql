@@ -219,6 +219,11 @@ type Company implements Author {
   displayName: String!
 }
 
+type Group implements Author {
+  displayName: String!
+  members: [Author!]!
+}
+
 interface Book {
   title: String!
   author: Author!

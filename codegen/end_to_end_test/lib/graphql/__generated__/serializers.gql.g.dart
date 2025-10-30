@@ -12,20 +12,52 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(GAliasedHeroData_empireHero.serializer)
       ..add(GAliasedHeroData_jediHero.serializer)
       ..add(GAliasedHeroVars.serializer)
+      ..add(GAuthorCompanyFragmentData.serializer)
+      ..add(GAuthorCompanyFragmentVars.serializer)
       ..add(GAuthorFragmentData__asCompany.serializer)
+      ..add(GAuthorFragmentData__asGroup.serializer)
+      ..add(GAuthorFragmentData__asGroup_members__asCompany.serializer)
+      ..add(GAuthorFragmentData__asGroup_members__asPerson.serializer)
+      ..add(GAuthorFragmentData__asGroup_members__base.serializer)
       ..add(GAuthorFragmentData__asPerson.serializer)
       ..add(GAuthorFragmentData__base.serializer)
       ..add(GAuthorFragmentVars.serializer)
+      ..add(GAuthorGroupFragmentData__asCompany.serializer)
+      ..add(GAuthorGroupFragmentData__asPerson.serializer)
+      ..add(GAuthorGroupFragmentData__base.serializer)
+      ..add(GAuthorGroupFragmentVars.serializer)
+      ..add(GAuthorPersonFragmentData.serializer)
+      ..add(GAuthorPersonFragmentVars.serializer)
       ..add(GBookFragmentData__asColoringBook.serializer)
       ..add(GBookFragmentData__asColoringBook_author__asCompany.serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asGroup.serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+          .serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+          .serializer)
+      ..add(GBookFragmentData__asColoringBook_author__asGroup_members__base
+          .serializer)
       ..add(GBookFragmentData__asColoringBook_author__asPerson.serializer)
       ..add(GBookFragmentData__asColoringBook_author__base.serializer)
       ..add(GBookFragmentData__asTextbook.serializer)
       ..add(GBookFragmentData__asTextbook_author__asCompany.serializer)
+      ..add(GBookFragmentData__asTextbook_author__asGroup.serializer)
+      ..add(GBookFragmentData__asTextbook_author__asGroup_members__asCompany
+          .serializer)
+      ..add(GBookFragmentData__asTextbook_author__asGroup_members__asPerson
+          .serializer)
+      ..add(GBookFragmentData__asTextbook_author__asGroup_members__base
+          .serializer)
       ..add(GBookFragmentData__asTextbook_author__asPerson.serializer)
       ..add(GBookFragmentData__asTextbook_author__base.serializer)
       ..add(GBookFragmentData__base.serializer)
       ..add(GBookFragmentData__base_author__asCompany.serializer)
+      ..add(GBookFragmentData__base_author__asGroup.serializer)
+      ..add(
+          GBookFragmentData__base_author__asGroup_members__asCompany.serializer)
+      ..add(
+          GBookFragmentData__base_author__asGroup_members__asPerson.serializer)
+      ..add(GBookFragmentData__base_author__asGroup_members__base.serializer)
       ..add(GBookFragmentData__base_author__asPerson.serializer)
       ..add(GBookFragmentData__base_author__base.serializer)
       ..add(GBookFragmentVars.serializer)
@@ -56,14 +88,36 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(GGetBooksData.serializer)
       ..add(GGetBooksData_books__asColoringBook.serializer)
       ..add(GGetBooksData_books__asColoringBook_author__asCompany.serializer)
+      ..add(GGetBooksData_books__asColoringBook_author__asGroup.serializer)
+      ..add(
+          GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+              .serializer)
+      ..add(
+          GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+              .serializer)
+      ..add(GGetBooksData_books__asColoringBook_author__asGroup_members__base
+          .serializer)
       ..add(GGetBooksData_books__asColoringBook_author__asPerson.serializer)
       ..add(GGetBooksData_books__asColoringBook_author__base.serializer)
       ..add(GGetBooksData_books__asTextbook.serializer)
       ..add(GGetBooksData_books__asTextbook_author__asCompany.serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asGroup.serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+          .serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asGroup_members__asPerson
+          .serializer)
+      ..add(GGetBooksData_books__asTextbook_author__asGroup_members__base
+          .serializer)
       ..add(GGetBooksData_books__asTextbook_author__asPerson.serializer)
       ..add(GGetBooksData_books__asTextbook_author__base.serializer)
       ..add(GGetBooksData_books__base.serializer)
       ..add(GGetBooksData_books__base_author__asCompany.serializer)
+      ..add(GGetBooksData_books__base_author__asGroup.serializer)
+      ..add(GGetBooksData_books__base_author__asGroup_members__asCompany
+          .serializer)
+      ..add(GGetBooksData_books__base_author__asGroup_members__asPerson
+          .serializer)
+      ..add(GGetBooksData_books__base_author__asGroup_members__base.serializer)
       ..add(GGetBooksData_books__base_author__asPerson.serializer)
       ..add(GGetBooksData_books__base_author__base.serializer)
       ..add(GGetBooksVars.serializer)
@@ -203,9 +257,52 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CustomField)]),
           () => ListBuilder<CustomField>())
       ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GAuthorFragmentData__asGroup_members)]),
+          () => ListBuilder<GAuthorFragmentData__asGroup_members>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GBookFragmentData__asColoringBook_author__asGroup_members)
+          ]),
+          () => ListBuilder<
+              GBookFragmentData__asColoringBook_author__asGroup_members>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GBookFragmentData__asTextbook_author__asGroup_members)
+          ]),
+          () => ListBuilder<
+              GBookFragmentData__asTextbook_author__asGroup_members>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GBookFragmentData__base_author__asGroup_members)
+          ]),
+          () => ListBuilder<GBookFragmentData__base_author__asGroup_members>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GGetBooksData_books)]),
           () => ListBuilder<GGetBooksData_books>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GGetBooksData_books__asColoringBook_author__asGroup_members)
+          ]),
+          () => ListBuilder<
+              GGetBooksData_books__asColoringBook_author__asGroup_members>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GGetBooksData_books__asTextbook_author__asGroup_members)
+          ]),
+          () => ListBuilder<
+              GGetBooksData_books__asTextbook_author__asGroup_members>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GGetBooksData_books__base_author__asGroup_members)
+          ]),
+          () =>
+              ListBuilder<GGetBooksData_books__base_author__asGroup_members>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

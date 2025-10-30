@@ -1224,6 +1224,39 @@ const Company = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
+const Group = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Group'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Author'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'displayName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'members'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Author'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const Book = _i1.InterfaceTypeDefinitionNode(
   name: _i1.NameNode(value: 'Book'),
   directives: [],
@@ -1394,6 +1427,7 @@ const document = _i1.DocumentNode(definitions: [
   Author,
   Person,
   Company,
+  Group,
   Book,
   Textbook,
   ColoringBook,

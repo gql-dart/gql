@@ -91,7 +91,13 @@ import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_inte
 import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_interface.req.gql.dart'
     show GGetBooks;
 import 'package:end_to_end_test/fragments/__generated__/nested_fragments_on_interface.var.gql.dart'
-    show GAuthorFragmentVars, GBookFragmentVars, GGetBooksVars;
+    show
+        GAuthorCompanyFragmentVars,
+        GAuthorFragmentVars,
+        GAuthorGroupFragmentVars,
+        GAuthorPersonFragmentVars,
+        GBookFragmentVars,
+        GGetBooksVars;
 import 'package:end_to_end_test/graphql/__generated__/schema.schema.gql.dart'
     show
         GColorInput,
@@ -154,14 +160,22 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GAuthorFragmentData.serializer)
+  ..add(GAuthorFragmentData__asGroup_members.serializer)
+  ..add(GAuthorGroupFragmentData.serializer)
   ..add(GBookFragmentData.serializer)
   ..add(GBookFragmentData__asColoringBook_author.serializer)
+  ..add(GBookFragmentData__asColoringBook_author__asGroup_members.serializer)
   ..add(GBookFragmentData__asTextbook_author.serializer)
+  ..add(GBookFragmentData__asTextbook_author__asGroup_members.serializer)
   ..add(GBookFragmentData__base_author.serializer)
+  ..add(GBookFragmentData__base_author__asGroup_members.serializer)
   ..add(GGetBooksData_books.serializer)
   ..add(GGetBooksData_books__asColoringBook_author.serializer)
+  ..add(GGetBooksData_books__asColoringBook_author__asGroup_members.serializer)
   ..add(GGetBooksData_books__asTextbook_author.serializer)
+  ..add(GGetBooksData_books__asTextbook_author__asGroup_members.serializer)
   ..add(GGetBooksData_books__base_author.serializer)
+  ..add(GGetBooksData_books__base_author__asGroup_members.serializer)
   ..add(GHeroForEpisodeData_hero.serializer)
   ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
   ..add(
@@ -180,20 +194,44 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAliasedHeroData_empireHero,
   GAliasedHeroData_jediHero,
   GAliasedHeroVars,
+  GAuthorCompanyFragmentData,
+  GAuthorCompanyFragmentVars,
   GAuthorFragmentData__asCompany,
+  GAuthorFragmentData__asGroup,
+  GAuthorFragmentData__asGroup_members__asCompany,
+  GAuthorFragmentData__asGroup_members__asPerson,
+  GAuthorFragmentData__asGroup_members__base,
   GAuthorFragmentData__asPerson,
   GAuthorFragmentData__base,
   GAuthorFragmentVars,
+  GAuthorGroupFragmentData__asCompany,
+  GAuthorGroupFragmentData__asPerson,
+  GAuthorGroupFragmentData__base,
+  GAuthorGroupFragmentVars,
+  GAuthorPersonFragmentData,
+  GAuthorPersonFragmentVars,
   GBookFragmentData__asColoringBook,
   GBookFragmentData__asColoringBook_author__asCompany,
+  GBookFragmentData__asColoringBook_author__asGroup,
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompany,
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPerson,
+  GBookFragmentData__asColoringBook_author__asGroup_members__base,
   GBookFragmentData__asColoringBook_author__asPerson,
   GBookFragmentData__asColoringBook_author__base,
   GBookFragmentData__asTextbook,
   GBookFragmentData__asTextbook_author__asCompany,
+  GBookFragmentData__asTextbook_author__asGroup,
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompany,
+  GBookFragmentData__asTextbook_author__asGroup_members__asPerson,
+  GBookFragmentData__asTextbook_author__asGroup_members__base,
   GBookFragmentData__asTextbook_author__asPerson,
   GBookFragmentData__asTextbook_author__base,
   GBookFragmentData__base,
   GBookFragmentData__base_author__asCompany,
+  GBookFragmentData__base_author__asGroup,
+  GBookFragmentData__base_author__asGroup_members__asCompany,
+  GBookFragmentData__base_author__asGroup_members__asPerson,
+  GBookFragmentData__base_author__asGroup_members__base,
   GBookFragmentData__base_author__asPerson,
   GBookFragmentData__base_author__base,
   GBookFragmentVars,
@@ -224,14 +262,26 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GGetBooksData,
   GGetBooksData_books__asColoringBook,
   GGetBooksData_books__asColoringBook_author__asCompany,
+  GGetBooksData_books__asColoringBook_author__asGroup,
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany,
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson,
+  GGetBooksData_books__asColoringBook_author__asGroup_members__base,
   GGetBooksData_books__asColoringBook_author__asPerson,
   GGetBooksData_books__asColoringBook_author__base,
   GGetBooksData_books__asTextbook,
   GGetBooksData_books__asTextbook_author__asCompany,
+  GGetBooksData_books__asTextbook_author__asGroup,
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompany,
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPerson,
+  GGetBooksData_books__asTextbook_author__asGroup_members__base,
   GGetBooksData_books__asTextbook_author__asPerson,
   GGetBooksData_books__asTextbook_author__base,
   GGetBooksData_books__base,
   GGetBooksData_books__base_author__asCompany,
+  GGetBooksData_books__base_author__asGroup,
+  GGetBooksData_books__base_author__asGroup_members__asCompany,
+  GGetBooksData_books__base_author__asGroup_members__asPerson,
+  GGetBooksData_books__base_author__asGroup_members__base,
   GGetBooksData_books__base_author__asPerson,
   GGetBooksData_books__base_author__base,
   GGetBooksVars,

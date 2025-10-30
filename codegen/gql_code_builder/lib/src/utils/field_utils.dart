@@ -229,7 +229,10 @@ Map<String, SourceSelections> fragmentSelectionsForField(
       final potentialNestedName =
           "${baseFragmentName}__as${typeName}_${fieldKey}";
 
-      if (fragmentMap.containsKey(superName)) {
+      // We need to check if the nested interface make sense by verifiying if
+      // its name contains the superName.
+      if (fragmentMap.containsKey(superName) &&
+          potentialNestedName.contains(superName)) {
         result[potentialNestedName] = SourceSelections(
           url: sourceSelections.url,
           selections: [], // Empty since this is just for interface implementation

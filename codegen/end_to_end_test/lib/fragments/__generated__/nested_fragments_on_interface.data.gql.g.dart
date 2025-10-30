@@ -19,6 +19,18 @@ Serializer<GGetBooksData_books__base_author__asPerson>
 Serializer<GGetBooksData_books__base_author__asCompany>
     _$gGetBooksDataBooksBaseAuthorAsCompanySerializer =
     _$GGetBooksData_books__base_author__asCompanySerializer();
+Serializer<GGetBooksData_books__base_author__asGroup>
+    _$gGetBooksDataBooksBaseAuthorAsGroupSerializer =
+    _$GGetBooksData_books__base_author__asGroupSerializer();
+Serializer<GGetBooksData_books__base_author__asGroup_members__base>
+    _$gGetBooksDataBooksBaseAuthorAsGroupMembersBaseSerializer =
+    _$GGetBooksData_books__base_author__asGroup_members__baseSerializer();
+Serializer<GGetBooksData_books__base_author__asGroup_members__asPerson>
+    _$gGetBooksDataBooksBaseAuthorAsGroupMembersAsPersonSerializer =
+    _$GGetBooksData_books__base_author__asGroup_members__asPersonSerializer();
+Serializer<GGetBooksData_books__base_author__asGroup_members__asCompany>
+    _$gGetBooksDataBooksBaseAuthorAsGroupMembersAsCompanySerializer =
+    _$GGetBooksData_books__base_author__asGroup_members__asCompanySerializer();
 Serializer<GGetBooksData_books__asTextbook>
     _$gGetBooksDataBooksAsTextbookSerializer =
     _$GGetBooksData_books__asTextbookSerializer();
@@ -31,6 +43,18 @@ Serializer<GGetBooksData_books__asTextbook_author__asPerson>
 Serializer<GGetBooksData_books__asTextbook_author__asCompany>
     _$gGetBooksDataBooksAsTextbookAuthorAsCompanySerializer =
     _$GGetBooksData_books__asTextbook_author__asCompanySerializer();
+Serializer<GGetBooksData_books__asTextbook_author__asGroup>
+    _$gGetBooksDataBooksAsTextbookAuthorAsGroupSerializer =
+    _$GGetBooksData_books__asTextbook_author__asGroupSerializer();
+Serializer<GGetBooksData_books__asTextbook_author__asGroup_members__base>
+    _$gGetBooksDataBooksAsTextbookAuthorAsGroupMembersBaseSerializer =
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__baseSerializer();
+Serializer<GGetBooksData_books__asTextbook_author__asGroup_members__asPerson>
+    _$gGetBooksDataBooksAsTextbookAuthorAsGroupMembersAsPersonSerializer =
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__asPersonSerializer();
+Serializer<GGetBooksData_books__asTextbook_author__asGroup_members__asCompany>
+    _$gGetBooksDataBooksAsTextbookAuthorAsGroupMembersAsCompanySerializer =
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompanySerializer();
 Serializer<GGetBooksData_books__asColoringBook>
     _$gGetBooksDataBooksAsColoringBookSerializer =
     _$GGetBooksData_books__asColoringBookSerializer();
@@ -43,14 +67,20 @@ Serializer<GGetBooksData_books__asColoringBook_author__asPerson>
 Serializer<GGetBooksData_books__asColoringBook_author__asCompany>
     _$gGetBooksDataBooksAsColoringBookAuthorAsCompanySerializer =
     _$GGetBooksData_books__asColoringBook_author__asCompanySerializer();
-Serializer<GAuthorFragmentData__base> _$gAuthorFragmentDataBaseSerializer =
-    _$GAuthorFragmentData__baseSerializer();
-Serializer<GAuthorFragmentData__asPerson>
-    _$gAuthorFragmentDataAsPersonSerializer =
-    _$GAuthorFragmentData__asPersonSerializer();
-Serializer<GAuthorFragmentData__asCompany>
-    _$gAuthorFragmentDataAsCompanySerializer =
-    _$GAuthorFragmentData__asCompanySerializer();
+Serializer<GGetBooksData_books__asColoringBook_author__asGroup>
+    _$gGetBooksDataBooksAsColoringBookAuthorAsGroupSerializer =
+    _$GGetBooksData_books__asColoringBook_author__asGroupSerializer();
+Serializer<GGetBooksData_books__asColoringBook_author__asGroup_members__base>
+    _$gGetBooksDataBooksAsColoringBookAuthorAsGroupMembersBaseSerializer =
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__baseSerializer();
+Serializer<
+        GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson>
+    _$gGetBooksDataBooksAsColoringBookAuthorAsGroupMembersAsPersonSerializer =
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonSerializer();
+Serializer<
+        GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany>
+    _$gGetBooksDataBooksAsColoringBookAuthorAsGroupMembersAsCompanySerializer =
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanySerializer();
 Serializer<GBookFragmentData__base> _$gBookFragmentDataBaseSerializer =
     _$GBookFragmentData__baseSerializer();
 Serializer<GBookFragmentData__base_author__base>
@@ -62,6 +92,18 @@ Serializer<GBookFragmentData__base_author__asPerson>
 Serializer<GBookFragmentData__base_author__asCompany>
     _$gBookFragmentDataBaseAuthorAsCompanySerializer =
     _$GBookFragmentData__base_author__asCompanySerializer();
+Serializer<GBookFragmentData__base_author__asGroup>
+    _$gBookFragmentDataBaseAuthorAsGroupSerializer =
+    _$GBookFragmentData__base_author__asGroupSerializer();
+Serializer<GBookFragmentData__base_author__asGroup_members__base>
+    _$gBookFragmentDataBaseAuthorAsGroupMembersBaseSerializer =
+    _$GBookFragmentData__base_author__asGroup_members__baseSerializer();
+Serializer<GBookFragmentData__base_author__asGroup_members__asPerson>
+    _$gBookFragmentDataBaseAuthorAsGroupMembersAsPersonSerializer =
+    _$GBookFragmentData__base_author__asGroup_members__asPersonSerializer();
+Serializer<GBookFragmentData__base_author__asGroup_members__asCompany>
+    _$gBookFragmentDataBaseAuthorAsGroupMembersAsCompanySerializer =
+    _$GBookFragmentData__base_author__asGroup_members__asCompanySerializer();
 Serializer<GBookFragmentData__asTextbook>
     _$gBookFragmentDataAsTextbookSerializer =
     _$GBookFragmentData__asTextbookSerializer();
@@ -74,6 +116,18 @@ Serializer<GBookFragmentData__asTextbook_author__asPerson>
 Serializer<GBookFragmentData__asTextbook_author__asCompany>
     _$gBookFragmentDataAsTextbookAuthorAsCompanySerializer =
     _$GBookFragmentData__asTextbook_author__asCompanySerializer();
+Serializer<GBookFragmentData__asTextbook_author__asGroup>
+    _$gBookFragmentDataAsTextbookAuthorAsGroupSerializer =
+    _$GBookFragmentData__asTextbook_author__asGroupSerializer();
+Serializer<GBookFragmentData__asTextbook_author__asGroup_members__base>
+    _$gBookFragmentDataAsTextbookAuthorAsGroupMembersBaseSerializer =
+    _$GBookFragmentData__asTextbook_author__asGroup_members__baseSerializer();
+Serializer<GBookFragmentData__asTextbook_author__asGroup_members__asPerson>
+    _$gBookFragmentDataAsTextbookAuthorAsGroupMembersAsPersonSerializer =
+    _$GBookFragmentData__asTextbook_author__asGroup_members__asPersonSerializer();
+Serializer<GBookFragmentData__asTextbook_author__asGroup_members__asCompany>
+    _$gBookFragmentDataAsTextbookAuthorAsGroupMembersAsCompanySerializer =
+    _$GBookFragmentData__asTextbook_author__asGroup_members__asCompanySerializer();
 Serializer<GBookFragmentData__asColoringBook>
     _$gBookFragmentDataAsColoringBookSerializer =
     _$GBookFragmentData__asColoringBookSerializer();
@@ -86,6 +140,51 @@ Serializer<GBookFragmentData__asColoringBook_author__asPerson>
 Serializer<GBookFragmentData__asColoringBook_author__asCompany>
     _$gBookFragmentDataAsColoringBookAuthorAsCompanySerializer =
     _$GBookFragmentData__asColoringBook_author__asCompanySerializer();
+Serializer<GBookFragmentData__asColoringBook_author__asGroup>
+    _$gBookFragmentDataAsColoringBookAuthorAsGroupSerializer =
+    _$GBookFragmentData__asColoringBook_author__asGroupSerializer();
+Serializer<GBookFragmentData__asColoringBook_author__asGroup_members__base>
+    _$gBookFragmentDataAsColoringBookAuthorAsGroupMembersBaseSerializer =
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__baseSerializer();
+Serializer<GBookFragmentData__asColoringBook_author__asGroup_members__asPerson>
+    _$gBookFragmentDataAsColoringBookAuthorAsGroupMembersAsPersonSerializer =
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__asPersonSerializer();
+Serializer<GBookFragmentData__asColoringBook_author__asGroup_members__asCompany>
+    _$gBookFragmentDataAsColoringBookAuthorAsGroupMembersAsCompanySerializer =
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompanySerializer();
+Serializer<GAuthorFragmentData__base> _$gAuthorFragmentDataBaseSerializer =
+    _$GAuthorFragmentData__baseSerializer();
+Serializer<GAuthorFragmentData__asPerson>
+    _$gAuthorFragmentDataAsPersonSerializer =
+    _$GAuthorFragmentData__asPersonSerializer();
+Serializer<GAuthorFragmentData__asCompany>
+    _$gAuthorFragmentDataAsCompanySerializer =
+    _$GAuthorFragmentData__asCompanySerializer();
+Serializer<GAuthorFragmentData__asGroup>
+    _$gAuthorFragmentDataAsGroupSerializer =
+    _$GAuthorFragmentData__asGroupSerializer();
+Serializer<GAuthorFragmentData__asGroup_members__base>
+    _$gAuthorFragmentDataAsGroupMembersBaseSerializer =
+    _$GAuthorFragmentData__asGroup_members__baseSerializer();
+Serializer<GAuthorFragmentData__asGroup_members__asPerson>
+    _$gAuthorFragmentDataAsGroupMembersAsPersonSerializer =
+    _$GAuthorFragmentData__asGroup_members__asPersonSerializer();
+Serializer<GAuthorFragmentData__asGroup_members__asCompany>
+    _$gAuthorFragmentDataAsGroupMembersAsCompanySerializer =
+    _$GAuthorFragmentData__asGroup_members__asCompanySerializer();
+Serializer<GAuthorPersonFragmentData> _$gAuthorPersonFragmentDataSerializer =
+    _$GAuthorPersonFragmentDataSerializer();
+Serializer<GAuthorCompanyFragmentData> _$gAuthorCompanyFragmentDataSerializer =
+    _$GAuthorCompanyFragmentDataSerializer();
+Serializer<GAuthorGroupFragmentData__base>
+    _$gAuthorGroupFragmentDataBaseSerializer =
+    _$GAuthorGroupFragmentData__baseSerializer();
+Serializer<GAuthorGroupFragmentData__asPerson>
+    _$gAuthorGroupFragmentDataAsPersonSerializer =
+    _$GAuthorGroupFragmentData__asPersonSerializer();
+Serializer<GAuthorGroupFragmentData__asCompany>
+    _$gAuthorGroupFragmentDataAsCompanySerializer =
+    _$GAuthorGroupFragmentData__asCompanySerializer();
 
 class _$GGetBooksDataSerializer implements StructuredSerializer<GGetBooksData> {
   @override
@@ -381,6 +480,262 @@ class _$GGetBooksData_books__base_author__asCompanySerializer
   }
 }
 
+class _$GGetBooksData_books__base_author__asGroupSerializer
+    implements StructuredSerializer<GGetBooksData_books__base_author__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__base_author__asGroup,
+    _$GGetBooksData_books__base_author__asGroup
+  ];
+  @override
+  final String wireName = 'GGetBooksData_books__base_author__asGroup';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GGetBooksData_books__base_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(GGetBooksData_books__base_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GGetBooksData_books__base_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GGetBooksData_books__base_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__base_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__base_author__asGroup_members__base,
+    _$GGetBooksData_books__base_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__base_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__base_author__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__base_author__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__base_author__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__base_author__asGroup_members__asPerson,
+    _$GGetBooksData_books__base_author__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__base_author__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__base_author__asGroup_members__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__base_author__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__base_author__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__base_author__asGroup_members__asCompany,
+    _$GGetBooksData_books__base_author__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__base_author__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__base_author__asGroup_members__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GGetBooksData_books__asTextbookSerializer
     implements StructuredSerializer<GGetBooksData_books__asTextbook> {
   @override
@@ -611,6 +966,264 @@ class _$GGetBooksData_books__asTextbook_author__asCompanySerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = GGetBooksData_books__asTextbook_author__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroupSerializer
+    implements
+        StructuredSerializer<GGetBooksData_books__asTextbook_author__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__asTextbook_author__asGroup,
+    _$GGetBooksData_books__asTextbook_author__asGroup
+  ];
+  @override
+  final String wireName = 'GGetBooksData_books__asTextbook_author__asGroup';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asTextbook_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GGetBooksData_books__asTextbook_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GGetBooksData_books__asTextbook_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GGetBooksData_books__asTextbook_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asTextbook_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__asTextbook_author__asGroup_members__base,
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__asTextbook_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asTextbook_author__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asTextbook_author__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__asTextbook_author__asGroup_members__asPerson,
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asTextbook_author__asGroup_members__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asTextbook_author__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__asTextbook_author__asGroup_members__asCompany,
+    _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__asTextbook_author__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asTextbook_author__asGroup_members__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -898,19 +1511,90 @@ class _$GGetBooksData_books__asColoringBook_author__asCompanySerializer
   }
 }
 
-class _$GAuthorFragmentData__baseSerializer
-    implements StructuredSerializer<GAuthorFragmentData__base> {
+class _$GGetBooksData_books__asColoringBook_author__asGroupSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asColoringBook_author__asGroup> {
   @override
   final Iterable<Type> types = const [
-    GAuthorFragmentData__base,
-    _$GAuthorFragmentData__base
+    GGetBooksData_books__asColoringBook_author__asGroup,
+    _$GGetBooksData_books__asColoringBook_author__asGroup
   ];
   @override
-  final String wireName = 'GAuthorFragmentData__base';
+  final String wireName = 'GGetBooksData_books__asColoringBook_author__asGroup';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers, GAuthorFragmentData__base object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asColoringBook_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GGetBooksData_books__asColoringBook_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GGetBooksData_books__asColoringBook_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GGetBooksData_books__asColoringBook_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GGetBooksData_books__asColoringBook_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GGetBooksData_books__asColoringBook_author__asGroup_members__base,
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GGetBooksData_books__asColoringBook_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GGetBooksData_books__asColoringBook_author__asGroup_members__base object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -925,10 +1609,11 @@ class _$GAuthorFragmentData__baseSerializer
   }
 
   @override
-  GAuthorFragmentData__base deserialize(
+  GGetBooksData_books__asColoringBook_author__asGroup_members__base deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = GAuthorFragmentData__baseBuilder();
+    final result =
+        GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -951,19 +1636,24 @@ class _$GAuthorFragmentData__baseSerializer
   }
 }
 
-class _$GAuthorFragmentData__asPersonSerializer
-    implements StructuredSerializer<GAuthorFragmentData__asPerson> {
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson> {
   @override
   final Iterable<Type> types = const [
-    GAuthorFragmentData__asPerson,
-    _$GAuthorFragmentData__asPerson
+    GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson,
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
   ];
   @override
-  final String wireName = 'GAuthorFragmentData__asPerson';
+  final String wireName =
+      'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GAuthorFragmentData__asPerson object,
+      Serializers serializers,
+      GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+          object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -984,10 +1674,11 @@ class _$GAuthorFragmentData__asPersonSerializer
   }
 
   @override
-  GAuthorFragmentData__asPerson deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = GAuthorFragmentData__asPersonBuilder();
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1018,19 +1709,24 @@ class _$GAuthorFragmentData__asPersonSerializer
   }
 }
 
-class _$GAuthorFragmentData__asCompanySerializer
-    implements StructuredSerializer<GAuthorFragmentData__asCompany> {
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany> {
   @override
   final Iterable<Type> types = const [
-    GAuthorFragmentData__asCompany,
-    _$GAuthorFragmentData__asCompany
+    GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany,
+    _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
   ];
   @override
-  final String wireName = 'GAuthorFragmentData__asCompany';
+  final String wireName =
+      'GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GAuthorFragmentData__asCompany object,
+      Serializers serializers,
+      GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+          object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -1047,10 +1743,11 @@ class _$GAuthorFragmentData__asCompanySerializer
   }
 
   @override
-  GAuthorFragmentData__asCompany deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = GAuthorFragmentData__asCompanyBuilder();
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1292,6 +1989,261 @@ class _$GBookFragmentData__base_author__asCompanySerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = GBookFragmentData__base_author__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroupSerializer
+    implements StructuredSerializer<GBookFragmentData__base_author__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__base_author__asGroup,
+    _$GBookFragmentData__base_author__asGroup
+  ];
+  @override
+  final String wireName = 'GBookFragmentData__base_author__asGroup';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GBookFragmentData__base_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(GBookFragmentData__base_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GBookFragmentData__base_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GBookFragmentData__base_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__base_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__base_author__asGroup_members__base,
+    _$GBookFragmentData__base_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__base_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__base_author__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__base_author__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__base_author__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__base_author__asGroup_members__asPerson,
+    _$GBookFragmentData__base_author__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__base_author__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__base_author__asGroup_members__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__base_author__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__base_author__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__base_author__asGroup_members__asCompany,
+    _$GBookFragmentData__base_author__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__base_author__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__base_author__asGroup_members__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__base_author__asGroup_members__asCompanyBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1572,6 +2524,264 @@ class _$GBookFragmentData__asTextbook_author__asCompanySerializer
   }
 }
 
+class _$GBookFragmentData__asTextbook_author__asGroupSerializer
+    implements
+        StructuredSerializer<GBookFragmentData__asTextbook_author__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asTextbook_author__asGroup,
+    _$GBookFragmentData__asTextbook_author__asGroup
+  ];
+  @override
+  final String wireName = 'GBookFragmentData__asTextbook_author__asGroup';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asTextbook_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GBookFragmentData__asTextbook_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GBookFragmentData__asTextbook_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GBookFragmentData__asTextbook_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asTextbook_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asTextbook_author__asGroup_members__base,
+    _$GBookFragmentData__asTextbook_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asTextbook_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asTextbook_author__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asTextbook_author__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asTextbook_author__asGroup_members__asPerson,
+    _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asTextbook_author__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asTextbook_author__asGroup_members__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asTextbook_author__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asTextbook_author__asGroup_members__asCompany,
+    _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asTextbook_author__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asTextbook_author__asGroup_members__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GBookFragmentData__asColoringBookSerializer
     implements StructuredSerializer<GBookFragmentData__asColoringBook> {
   @override
@@ -1803,6 +3013,984 @@ class _$GBookFragmentData__asColoringBook_author__asCompanySerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = GBookFragmentData__asColoringBook_author__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroupSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asColoringBook_author__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asColoringBook_author__asGroup,
+    _$GBookFragmentData__asColoringBook_author__asGroup
+  ];
+  @override
+  final String wireName = 'GBookFragmentData__asColoringBook_author__asGroup';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asColoringBook_author__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GBookFragmentData__asColoringBook_author__asGroup_members)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GBookFragmentData__asColoringBook_author__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GBookFragmentData__asColoringBook_author__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asColoringBook_author__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asColoringBook_author__asGroup_members__base,
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__base
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asColoringBook_author__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GBookFragmentData__asColoringBook_author__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asColoringBook_author__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asColoringBook_author__asGroup_members__asPerson,
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers,
+      GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+          object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<
+            GBookFragmentData__asColoringBook_author__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GBookFragmentData__asColoringBook_author__asGroup_members__asCompany,
+    _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName =
+      'GBookFragmentData__asColoringBook_author__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers,
+      GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+          object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__baseSerializer
+    implements StructuredSerializer<GAuthorFragmentData__base> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__base,
+    _$GAuthorFragmentData__base
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__base';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorFragmentData__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asPersonSerializer
+    implements StructuredSerializer<GAuthorFragmentData__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asPerson,
+    _$GAuthorFragmentData__asPerson
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asPerson';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorFragmentData__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asCompanySerializer
+    implements StructuredSerializer<GAuthorFragmentData__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asCompany,
+    _$GAuthorFragmentData__asCompany
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asCompany';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorFragmentData__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asGroupSerializer
+    implements StructuredSerializer<GAuthorFragmentData__asGroup> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asGroup,
+    _$GAuthorFragmentData__asGroup
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asGroup';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorFragmentData__asGroup object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'members',
+      serializers.serialize(object.members,
+          specifiedType: const FullType(BuiltList,
+              const [const FullType(GAuthorFragmentData__asGroup_members)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asGroup deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asGroupBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'members':
+          result.members.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GAuthorFragmentData__asGroup_members)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__baseSerializer
+    implements
+        StructuredSerializer<GAuthorFragmentData__asGroup_members__base> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asGroup_members__base,
+    _$GAuthorFragmentData__asGroup_members__base
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asGroup_members__base';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GAuthorFragmentData__asGroup_members__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asGroup_members__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__asPersonSerializer
+    implements
+        StructuredSerializer<GAuthorFragmentData__asGroup_members__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asGroup_members__asPerson,
+    _$GAuthorFragmentData__asGroup_members__asPerson
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asGroup_members__asPerson';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GAuthorFragmentData__asGroup_members__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asGroup_members__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__asCompanySerializer
+    implements
+        StructuredSerializer<GAuthorFragmentData__asGroup_members__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorFragmentData__asGroup_members__asCompany,
+    _$GAuthorFragmentData__asGroup_members__asCompany
+  ];
+  @override
+  final String wireName = 'GAuthorFragmentData__asGroup_members__asCompany';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GAuthorFragmentData__asGroup_members__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorFragmentData__asGroup_members__asCompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorPersonFragmentDataSerializer
+    implements StructuredSerializer<GAuthorPersonFragmentData> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorPersonFragmentData,
+    _$GAuthorPersonFragmentData
+  ];
+  @override
+  final String wireName = 'GAuthorPersonFragmentData';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorPersonFragmentData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorPersonFragmentData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorPersonFragmentDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorCompanyFragmentDataSerializer
+    implements StructuredSerializer<GAuthorCompanyFragmentData> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorCompanyFragmentData,
+    _$GAuthorCompanyFragmentData
+  ];
+  @override
+  final String wireName = 'GAuthorCompanyFragmentData';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorCompanyFragmentData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorCompanyFragmentData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorCompanyFragmentDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorGroupFragmentData__baseSerializer
+    implements StructuredSerializer<GAuthorGroupFragmentData__base> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorGroupFragmentData__base,
+    _$GAuthorGroupFragmentData__base
+  ];
+  @override
+  final String wireName = 'GAuthorGroupFragmentData__base';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorGroupFragmentData__base object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorGroupFragmentData__base deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorGroupFragmentData__baseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorGroupFragmentData__asPersonSerializer
+    implements StructuredSerializer<GAuthorGroupFragmentData__asPerson> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorGroupFragmentData__asPerson,
+    _$GAuthorGroupFragmentData__asPerson
+  ];
+  @override
+  final String wireName = 'GAuthorGroupFragmentData__asPerson';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorGroupFragmentData__asPerson object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'firstName',
+      serializers.serialize(object.firstName,
+          specifiedType: const FullType(String)),
+      'lastName',
+      serializers.serialize(object.lastName,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorGroupFragmentData__asPerson deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorGroupFragmentData__asPersonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'firstName':
+          result.firstName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'lastName':
+          result.lastName = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GAuthorGroupFragmentData__asCompanySerializer
+    implements StructuredSerializer<GAuthorGroupFragmentData__asCompany> {
+  @override
+  final Iterable<Type> types = const [
+    GAuthorGroupFragmentData__asCompany,
+    _$GAuthorGroupFragmentData__asCompany
+  ];
+  @override
+  final String wireName = 'GAuthorGroupFragmentData__asCompany';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAuthorGroupFragmentData__asCompany object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'displayName',
+      serializers.serialize(object.displayName,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAuthorGroupFragmentData__asCompany deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = GAuthorGroupFragmentData__asCompanyBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -2419,6 +4607,564 @@ class GGetBooksData_books__base_author__asCompanyBuilder
   }
 }
 
+class _$GGetBooksData_books__base_author__asGroup
+    extends GGetBooksData_books__base_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GGetBooksData_books__base_author__asGroup_members> members;
+
+  factory _$GGetBooksData_books__base_author__asGroup(
+          [void Function(GGetBooksData_books__base_author__asGroupBuilder)?
+              updates]) =>
+      (GGetBooksData_books__base_author__asGroupBuilder()..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__base_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GGetBooksData_books__base_author__asGroup rebuild(
+          void Function(GGetBooksData_books__base_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__base_author__asGroupBuilder toBuilder() =>
+      GGetBooksData_books__base_author__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetBooksData_books__base_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__base_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__base_author__asGroupBuilder
+    implements
+        Builder<GGetBooksData_books__base_author__asGroup,
+            GGetBooksData_books__base_author__asGroupBuilder> {
+  _$GGetBooksData_books__base_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GGetBooksData_books__base_author__asGroup_members>? _members;
+  ListBuilder<GGetBooksData_books__base_author__asGroup_members> get members =>
+      _$this._members ??=
+          ListBuilder<GGetBooksData_books__base_author__asGroup_members>();
+  set members(
+          ListBuilder<GGetBooksData_books__base_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GGetBooksData_books__base_author__asGroupBuilder() {
+    GGetBooksData_books__base_author__asGroup._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__base_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetBooksData_books__base_author__asGroup other) {
+    _$v = other as _$GGetBooksData_books__base_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GGetBooksData_books__base_author__asGroupBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup build() => _build();
+
+  _$GGetBooksData_books__base_author__asGroup _build() {
+    _$GGetBooksData_books__base_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GGetBooksData_books__base_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GGetBooksData_books__base_author__asGroup', 'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+                r'GGetBooksData_books__base_author__asGroup', 'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GGetBooksData_books__base_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__base
+    extends GGetBooksData_books__base_author__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GGetBooksData_books__base_author__asGroup_members__base(
+          [void Function(
+                  GGetBooksData_books__base_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GGetBooksData_books__base_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GGetBooksData_books__base_author__asGroup_members__base rebuild(
+          void Function(
+                  GGetBooksData_books__base_author__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__baseBuilder toBuilder() =>
+      GGetBooksData_books__base_author__asGroup_members__baseBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetBooksData_books__base_author__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__base_author__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__base_author__asGroup_members__baseBuilder
+    implements
+        Builder<GGetBooksData_books__base_author__asGroup_members__base,
+            GGetBooksData_books__base_author__asGroup_members__baseBuilder> {
+  _$GGetBooksData_books__base_author__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GGetBooksData_books__base_author__asGroup_members__baseBuilder() {
+    GGetBooksData_books__base_author__asGroup_members__base._initializeBuilder(
+        this);
+  }
+
+  GGetBooksData_books__base_author__asGroup_members__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetBooksData_books__base_author__asGroup_members__base other) {
+    _$v = other as _$GGetBooksData_books__base_author__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__base_author__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__base build() => _build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__base_author__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__base_author__asGroup_members__base',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__base_author__asGroup_members__base',
+              'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__asPerson
+    extends GGetBooksData_books__base_author__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GGetBooksData_books__base_author__asGroup_members__asPerson(
+          [void Function(
+                  GGetBooksData_books__base_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GGetBooksData_books__base_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GGetBooksData_books__base_author__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GGetBooksData_books__base_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GGetBooksData_books__base_author__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__base_author__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__base_author__asGroup_members__asPersonBuilder
+    implements
+        Builder<GGetBooksData_books__base_author__asGroup_members__asPerson,
+            GGetBooksData_books__base_author__asGroup_members__asPersonBuilder> {
+  _$GGetBooksData_books__base_author__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GGetBooksData_books__base_author__asGroup_members__asPersonBuilder() {
+    GGetBooksData_books__base_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__base_author__asGroup_members__asPersonBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GGetBooksData_books__base_author__asGroup_members__asPerson other) {
+    _$v =
+        other as _$GGetBooksData_books__base_author__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__base_author__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asPerson build() =>
+      _build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__asPerson _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__base_author__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__base_author__asGroup_members__asPerson',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__base_author__asGroup_members__asPerson',
+              'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName,
+              r'GGetBooksData_books__base_author__asGroup_members__asPerson',
+              'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName,
+              r'GGetBooksData_books__base_author__asGroup_members__asPerson',
+              'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__base_author__asGroup_members__asCompany
+    extends GGetBooksData_books__base_author__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GGetBooksData_books__base_author__asGroup_members__asCompany(
+          [void Function(
+                  GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GGetBooksData_books__base_author__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__base_author__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder
+    implements
+        Builder<GGetBooksData_books__base_author__asGroup_members__asCompany,
+            GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder> {
+  _$GGetBooksData_books__base_author__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder() {
+    GGetBooksData_books__base_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GGetBooksData_books__base_author__asGroup_members__asCompany other) {
+    _$v =
+        other as _$GGetBooksData_books__base_author__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__base_author__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__base_author__asGroup_members__asCompany build() =>
+      _build();
+
+  _$GGetBooksData_books__base_author__asGroup_members__asCompany _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__base_author__asGroup_members__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__base_author__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__base_author__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GGetBooksData_books__base_author__asGroup_members__asCompany',
+              'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GGetBooksData_books__asTextbook
     extends GGetBooksData_books__asTextbook {
   @override
@@ -2937,6 +5683,582 @@ class GGetBooksData_books__asTextbook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(name,
               r'GGetBooksData_books__asTextbook_author__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup
+    extends GGetBooksData_books__asTextbook_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GGetBooksData_books__asTextbook_author__asGroup_members>
+      members;
+
+  factory _$GGetBooksData_books__asTextbook_author__asGroup(
+          [void Function(
+                  GGetBooksData_books__asTextbook_author__asGroupBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asTextbook_author__asGroupBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup rebuild(
+          void Function(GGetBooksData_books__asTextbook_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroupBuilder toBuilder() =>
+      GGetBooksData_books__asTextbook_author__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetBooksData_books__asTextbook_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asTextbook_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__asTextbook_author__asGroupBuilder
+    implements
+        Builder<GGetBooksData_books__asTextbook_author__asGroup,
+            GGetBooksData_books__asTextbook_author__asGroupBuilder> {
+  _$GGetBooksData_books__asTextbook_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GGetBooksData_books__asTextbook_author__asGroup_members>?
+      _members;
+  ListBuilder<GGetBooksData_books__asTextbook_author__asGroup_members>
+      get members => _$this._members ??= ListBuilder<
+          GGetBooksData_books__asTextbook_author__asGroup_members>();
+  set members(
+          ListBuilder<GGetBooksData_books__asTextbook_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GGetBooksData_books__asTextbook_author__asGroupBuilder() {
+    GGetBooksData_books__asTextbook_author__asGroup._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__asTextbook_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetBooksData_books__asTextbook_author__asGroup other) {
+    _$v = other as _$GGetBooksData_books__asTextbook_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GGetBooksData_books__asTextbook_author__asGroupBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup build() => _build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup _build() {
+    _$GGetBooksData_books__asTextbook_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GGetBooksData_books__asTextbook_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GGetBooksData_books__asTextbook_author__asGroup',
+                'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(
+                displayName,
+                r'GGetBooksData_books__asTextbook_author__asGroup',
+                'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GGetBooksData_books__asTextbook_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__base
+    extends GGetBooksData_books__asTextbook_author__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GGetBooksData_books__asTextbook_author__asGroup_members__base(
+          [void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__base rebuild(
+          void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder
+      toBuilder() =>
+          GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GGetBooksData_books__asTextbook_author__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asTextbook_author__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder
+    implements
+        Builder<GGetBooksData_books__asTextbook_author__asGroup_members__base,
+            GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder> {
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder() {
+    GGetBooksData_books__asTextbook_author__asGroup_members__base
+        ._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GGetBooksData_books__asTextbook_author__asGroup_members__base other) {
+    _$v = other
+        as _$GGetBooksData_books__asTextbook_author__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__asTextbook_author__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__base build() =>
+      _build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__asTextbook_author__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__base',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__base',
+              'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson
+    extends GGetBooksData_books__asTextbook_author__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson(
+          [void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GGetBooksData_books__asTextbook_author__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder
+    implements
+        Builder<
+            GGetBooksData_books__asTextbook_author__asGroup_members__asPerson,
+            GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder> {
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder() {
+    GGetBooksData_books__asTextbook_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GGetBooksData_books__asTextbook_author__asGroup_members__asPerson other) {
+    _$v = other
+        as _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__asTextbook_author__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asPerson build() =>
+      _build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__asTextbook_author__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson',
+              'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson',
+              'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asPerson',
+              'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+    extends GGetBooksData_books__asTextbook_author__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany(
+          [void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GGetBooksData_books__asTextbook_author__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asTextbook_author__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder
+    implements
+        Builder<
+            GGetBooksData_books__asTextbook_author__asGroup_members__asCompany,
+            GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder> {
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder() {
+    GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
+  }
+
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+          other) {
+    _$v = other
+        as _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(
+              GGetBooksData_books__asTextbook_author__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__asTextbook_author__asGroup_members__asCompany build() =>
+      _build();
+
+  _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany
+      _build() {
+    final _$result = _$v ??
+        _$GGetBooksData_books__asTextbook_author__asGroup_members__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GGetBooksData_books__asTextbook_author__asGroup_members__asCompany',
+              'name'),
         );
     replace(_$result);
     return _$result;
@@ -3486,32 +6808,196 @@ class GGetBooksData_books__asColoringBook_author__asCompanyBuilder
   }
 }
 
-class _$GAuthorFragmentData__base extends GAuthorFragmentData__base {
+class _$GGetBooksData_books__asColoringBook_author__asGroup
+    extends GGetBooksData_books__asColoringBook_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GGetBooksData_books__asColoringBook_author__asGroup_members>
+      members;
+
+  factory _$GGetBooksData_books__asColoringBook_author__asGroup(
+          [void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroupBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asColoringBook_author__asGroupBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GGetBooksData_books__asColoringBook_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GGetBooksData_books__asColoringBook_author__asGroup rebuild(
+          void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GGetBooksData_books__asColoringBook_author__asGroupBuilder toBuilder() =>
+      GGetBooksData_books__asColoringBook_author__asGroupBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GGetBooksData_books__asColoringBook_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asColoringBook_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GGetBooksData_books__asColoringBook_author__asGroupBuilder
+    implements
+        Builder<GGetBooksData_books__asColoringBook_author__asGroup,
+            GGetBooksData_books__asColoringBook_author__asGroupBuilder> {
+  _$GGetBooksData_books__asColoringBook_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GGetBooksData_books__asColoringBook_author__asGroup_members>?
+      _members;
+  ListBuilder<GGetBooksData_books__asColoringBook_author__asGroup_members>
+      get members => _$this._members ??= ListBuilder<
+          GGetBooksData_books__asColoringBook_author__asGroup_members>();
+  set members(
+          ListBuilder<
+                  GGetBooksData_books__asColoringBook_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GGetBooksData_books__asColoringBook_author__asGroupBuilder() {
+    GGetBooksData_books__asColoringBook_author__asGroup._initializeBuilder(
+        this);
+  }
+
+  GGetBooksData_books__asColoringBook_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GGetBooksData_books__asColoringBook_author__asGroup other) {
+    _$v = other as _$GGetBooksData_books__asColoringBook_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GGetBooksData_books__asColoringBook_author__asGroupBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GGetBooksData_books__asColoringBook_author__asGroup build() => _build();
+
+  _$GGetBooksData_books__asColoringBook_author__asGroup _build() {
+    _$GGetBooksData_books__asColoringBook_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GGetBooksData_books__asColoringBook_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GGetBooksData_books__asColoringBook_author__asGroup',
+                'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(
+                displayName,
+                r'GGetBooksData_books__asColoringBook_author__asGroup',
+                'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GGetBooksData_books__asColoringBook_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__base
+    extends GGetBooksData_books__asColoringBook_author__asGroup_members__base {
   @override
   final String G__typename;
   @override
   final String displayName;
 
-  factory _$GAuthorFragmentData__base(
-          [void Function(GAuthorFragmentData__baseBuilder)? updates]) =>
-      (GAuthorFragmentData__baseBuilder()..update(updates))._build();
+  factory _$GGetBooksData_books__asColoringBook_author__asGroup_members__base(
+          [void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
 
-  _$GAuthorFragmentData__base._(
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__base._(
       {required this.G__typename, required this.displayName})
       : super._();
   @override
-  GAuthorFragmentData__base rebuild(
-          void Function(GAuthorFragmentData__baseBuilder) updates) =>
+  GGetBooksData_books__asColoringBook_author__asGroup_members__base rebuild(
+          void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAuthorFragmentData__baseBuilder toBuilder() =>
-      GAuthorFragmentData__baseBuilder()..replace(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder
+      toBuilder() =>
+          GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAuthorFragmentData__base &&
+    return other
+            is GGetBooksData_books__asColoringBook_author__asGroup_members__base &&
         G__typename == other.G__typename &&
         displayName == other.displayName;
   }
@@ -3527,17 +7013,20 @@ class _$GAuthorFragmentData__base extends GAuthorFragmentData__base {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__base')
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asColoringBook_author__asGroup_members__base')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName))
         .toString();
   }
 }
 
-class GAuthorFragmentData__baseBuilder
+class GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder
     implements
-        Builder<GAuthorFragmentData__base, GAuthorFragmentData__baseBuilder> {
-  _$GAuthorFragmentData__base? _$v;
+        Builder<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__base,
+            GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder> {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__base? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -3547,11 +7036,13 @@ class GAuthorFragmentData__baseBuilder
   String? get displayName => _$this._displayName;
   set displayName(String? displayName) => _$this._displayName = displayName;
 
-  GAuthorFragmentData__baseBuilder() {
-    GAuthorFragmentData__base._initializeBuilder(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder() {
+    GGetBooksData_books__asColoringBook_author__asGroup_members__base
+        ._initializeBuilder(this);
   }
 
-  GAuthorFragmentData__baseBuilder get _$this {
+  GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -3562,32 +7053,43 @@ class GAuthorFragmentData__baseBuilder
   }
 
   @override
-  void replace(GAuthorFragmentData__base other) {
-    _$v = other as _$GAuthorFragmentData__base;
+  void replace(
+      GGetBooksData_books__asColoringBook_author__asGroup_members__base other) {
+    _$v = other
+        as _$GGetBooksData_books__asColoringBook_author__asGroup_members__base;
   }
 
   @override
-  void update(void Function(GAuthorFragmentData__baseBuilder)? updates) {
+  void update(
+      void Function(
+              GGetBooksData_books__asColoringBook_author__asGroup_members__baseBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAuthorFragmentData__base build() => _build();
+  GGetBooksData_books__asColoringBook_author__asGroup_members__base build() =>
+      _build();
 
-  _$GAuthorFragmentData__base _build() {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__base _build() {
     final _$result = _$v ??
-        _$GAuthorFragmentData__base._(
+        _$GGetBooksData_books__asColoringBook_author__asGroup_members__base._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename, r'GAuthorFragmentData__base', 'G__typename'),
+              G__typename,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__base',
+              'G__typename'),
           displayName: BuiltValueNullFieldError.checkNotNull(
-              displayName, r'GAuthorFragmentData__base', 'displayName'),
+              displayName,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__base',
+              'displayName'),
         );
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GAuthorFragmentData__asPerson extends GAuthorFragmentData__asPerson {
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+    extends GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson {
   @override
   final String G__typename;
   @override
@@ -3597,29 +7099,38 @@ class _$GAuthorFragmentData__asPerson extends GAuthorFragmentData__asPerson {
   @override
   final String lastName;
 
-  factory _$GAuthorFragmentData__asPerson(
-          [void Function(GAuthorFragmentData__asPersonBuilder)? updates]) =>
-      (GAuthorFragmentData__asPersonBuilder()..update(updates))._build();
+  factory _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson(
+          [void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
 
-  _$GAuthorFragmentData__asPerson._(
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson._(
       {required this.G__typename,
       required this.displayName,
       required this.firstName,
       required this.lastName})
       : super._();
   @override
-  GAuthorFragmentData__asPerson rebuild(
-          void Function(GAuthorFragmentData__asPersonBuilder) updates) =>
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAuthorFragmentData__asPersonBuilder toBuilder() =>
-      GAuthorFragmentData__asPersonBuilder()..replace(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAuthorFragmentData__asPerson &&
+    return other
+            is GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         firstName == other.firstName &&
@@ -3639,7 +7150,8 @@ class _$GAuthorFragmentData__asPerson extends GAuthorFragmentData__asPerson {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__asPerson')
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('firstName', firstName)
@@ -3648,11 +7160,12 @@ class _$GAuthorFragmentData__asPerson extends GAuthorFragmentData__asPerson {
   }
 }
 
-class GAuthorFragmentData__asPersonBuilder
+class GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder
     implements
-        Builder<GAuthorFragmentData__asPerson,
-            GAuthorFragmentData__asPersonBuilder> {
-  _$GAuthorFragmentData__asPerson? _$v;
+        Builder<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson,
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder> {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -3670,11 +7183,13 @@ class GAuthorFragmentData__asPersonBuilder
   String? get lastName => _$this._lastName;
   set lastName(String? lastName) => _$this._lastName = lastName;
 
-  GAuthorFragmentData__asPersonBuilder() {
-    GAuthorFragmentData__asPerson._initializeBuilder(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder() {
+    GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
   }
 
-  GAuthorFragmentData__asPersonBuilder get _$this {
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -3687,36 +7202,54 @@ class GAuthorFragmentData__asPersonBuilder
   }
 
   @override
-  void replace(GAuthorFragmentData__asPerson other) {
-    _$v = other as _$GAuthorFragmentData__asPerson;
+  void replace(
+      GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+          other) {
+    _$v = other
+        as _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson;
   }
 
   @override
-  void update(void Function(GAuthorFragmentData__asPersonBuilder)? updates) {
+  void update(
+      void Function(
+              GGetBooksData_books__asColoringBook_author__asGroup_members__asPersonBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAuthorFragmentData__asPerson build() => _build();
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+      build() => _build();
 
-  _$GAuthorFragmentData__asPerson _build() {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+      _build() {
     final _$result = _$v ??
-        _$GAuthorFragmentData__asPerson._(
+        _$GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson
+            ._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename, r'GAuthorFragmentData__asPerson', 'G__typename'),
+              G__typename,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson',
+              'G__typename'),
           displayName: BuiltValueNullFieldError.checkNotNull(
-              displayName, r'GAuthorFragmentData__asPerson', 'displayName'),
+              displayName,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson',
+              'displayName'),
           firstName: BuiltValueNullFieldError.checkNotNull(
-              firstName, r'GAuthorFragmentData__asPerson', 'firstName'),
+              firstName,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson',
+              'firstName'),
           lastName: BuiltValueNullFieldError.checkNotNull(
-              lastName, r'GAuthorFragmentData__asPerson', 'lastName'),
+              lastName,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asPerson',
+              'lastName'),
         );
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GAuthorFragmentData__asCompany extends GAuthorFragmentData__asCompany {
+class _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+    extends GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany {
   @override
   final String G__typename;
   @override
@@ -3724,28 +7257,37 @@ class _$GAuthorFragmentData__asCompany extends GAuthorFragmentData__asCompany {
   @override
   final String name;
 
-  factory _$GAuthorFragmentData__asCompany(
-          [void Function(GAuthorFragmentData__asCompanyBuilder)? updates]) =>
-      (GAuthorFragmentData__asCompanyBuilder()..update(updates))._build();
+  factory _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany(
+          [void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
 
-  _$GAuthorFragmentData__asCompany._(
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany._(
       {required this.G__typename,
       required this.displayName,
       required this.name})
       : super._();
   @override
-  GAuthorFragmentData__asCompany rebuild(
-          void Function(GAuthorFragmentData__asCompanyBuilder) updates) =>
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder)
+              updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAuthorFragmentData__asCompanyBuilder toBuilder() =>
-      GAuthorFragmentData__asCompanyBuilder()..replace(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GAuthorFragmentData__asCompany &&
+    return other
+            is GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany &&
         G__typename == other.G__typename &&
         displayName == other.displayName &&
         name == other.name;
@@ -3763,7 +7305,8 @@ class _$GAuthorFragmentData__asCompany extends GAuthorFragmentData__asCompany {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__asCompany')
+    return (newBuiltValueToStringHelper(
+            r'GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany')
           ..add('G__typename', G__typename)
           ..add('displayName', displayName)
           ..add('name', name))
@@ -3771,11 +7314,12 @@ class _$GAuthorFragmentData__asCompany extends GAuthorFragmentData__asCompany {
   }
 }
 
-class GAuthorFragmentData__asCompanyBuilder
+class GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder
     implements
-        Builder<GAuthorFragmentData__asCompany,
-            GAuthorFragmentData__asCompanyBuilder> {
-  _$GAuthorFragmentData__asCompany? _$v;
+        Builder<
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany,
+            GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder> {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -3789,11 +7333,13 @@ class GAuthorFragmentData__asCompanyBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GAuthorFragmentData__asCompanyBuilder() {
-    GAuthorFragmentData__asCompany._initializeBuilder(this);
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder() {
+    GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
   }
 
-  GAuthorFragmentData__asCompanyBuilder get _$this {
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -3805,27 +7351,42 @@ class GAuthorFragmentData__asCompanyBuilder
   }
 
   @override
-  void replace(GAuthorFragmentData__asCompany other) {
-    _$v = other as _$GAuthorFragmentData__asCompany;
+  void replace(
+      GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+          other) {
+    _$v = other
+        as _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany;
   }
 
   @override
-  void update(void Function(GAuthorFragmentData__asCompanyBuilder)? updates) {
+  void update(
+      void Function(
+              GGetBooksData_books__asColoringBook_author__asGroup_members__asCompanyBuilder)?
+          updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAuthorFragmentData__asCompany build() => _build();
+  GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+      build() => _build();
 
-  _$GAuthorFragmentData__asCompany _build() {
+  _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+      _build() {
     final _$result = _$v ??
-        _$GAuthorFragmentData__asCompany._(
+        _$GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany
+            ._(
           G__typename: BuiltValueNullFieldError.checkNotNull(
-              G__typename, r'GAuthorFragmentData__asCompany', 'G__typename'),
+              G__typename,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany',
+              'G__typename'),
           displayName: BuiltValueNullFieldError.checkNotNull(
-              displayName, r'GAuthorFragmentData__asCompany', 'displayName'),
+              displayName,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany',
+              'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(
-              name, r'GAuthorFragmentData__asCompany', 'name'),
+              name,
+              r'GGetBooksData_books__asColoringBook_author__asGroup_members__asCompany',
+              'name'),
         );
     replace(_$result);
     return _$result;
@@ -4302,6 +7863,557 @@ class GBookFragmentData__base_author__asCompanyBuilder
               r'GBookFragmentData__base_author__asCompany', 'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GBookFragmentData__base_author__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup
+    extends GBookFragmentData__base_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GBookFragmentData__base_author__asGroup_members> members;
+
+  factory _$GBookFragmentData__base_author__asGroup(
+          [void Function(GBookFragmentData__base_author__asGroupBuilder)?
+              updates]) =>
+      (GBookFragmentData__base_author__asGroupBuilder()..update(updates))
+          ._build();
+
+  _$GBookFragmentData__base_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GBookFragmentData__base_author__asGroup rebuild(
+          void Function(GBookFragmentData__base_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__base_author__asGroupBuilder toBuilder() =>
+      GBookFragmentData__base_author__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GBookFragmentData__base_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__base_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GBookFragmentData__base_author__asGroupBuilder
+    implements
+        Builder<GBookFragmentData__base_author__asGroup,
+            GBookFragmentData__base_author__asGroupBuilder> {
+  _$GBookFragmentData__base_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GBookFragmentData__base_author__asGroup_members>? _members;
+  ListBuilder<GBookFragmentData__base_author__asGroup_members> get members =>
+      _$this._members ??=
+          ListBuilder<GBookFragmentData__base_author__asGroup_members>();
+  set members(
+          ListBuilder<GBookFragmentData__base_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GBookFragmentData__base_author__asGroupBuilder() {
+    GBookFragmentData__base_author__asGroup._initializeBuilder(this);
+  }
+
+  GBookFragmentData__base_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GBookFragmentData__base_author__asGroup other) {
+    _$v = other as _$GBookFragmentData__base_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GBookFragmentData__base_author__asGroupBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup build() => _build();
+
+  _$GBookFragmentData__base_author__asGroup _build() {
+    _$GBookFragmentData__base_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GBookFragmentData__base_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GBookFragmentData__base_author__asGroup', 'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+                r'GBookFragmentData__base_author__asGroup', 'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GBookFragmentData__base_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__base
+    extends GBookFragmentData__base_author__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GBookFragmentData__base_author__asGroup_members__base(
+          [void Function(
+                  GBookFragmentData__base_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GBookFragmentData__base_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__base_author__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GBookFragmentData__base_author__asGroup_members__base rebuild(
+          void Function(
+                  GBookFragmentData__base_author__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__baseBuilder toBuilder() =>
+      GBookFragmentData__base_author__asGroup_members__baseBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GBookFragmentData__base_author__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__base_author__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__base_author__asGroup_members__baseBuilder
+    implements
+        Builder<GBookFragmentData__base_author__asGroup_members__base,
+            GBookFragmentData__base_author__asGroup_members__baseBuilder> {
+  _$GBookFragmentData__base_author__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GBookFragmentData__base_author__asGroup_members__baseBuilder() {
+    GBookFragmentData__base_author__asGroup_members__base._initializeBuilder(
+        this);
+  }
+
+  GBookFragmentData__base_author__asGroup_members__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GBookFragmentData__base_author__asGroup_members__base other) {
+    _$v = other as _$GBookFragmentData__base_author__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__base_author__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__base build() => _build();
+
+  _$GBookFragmentData__base_author__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__base_author__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__base_author__asGroup_members__base',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__base_author__asGroup_members__base',
+              'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__asPerson
+    extends GBookFragmentData__base_author__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GBookFragmentData__base_author__asGroup_members__asPerson(
+          [void Function(
+                  GBookFragmentData__base_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GBookFragmentData__base_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__base_author__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GBookFragmentData__base_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GBookFragmentData__base_author__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GBookFragmentData__base_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GBookFragmentData__base_author__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__base_author__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__base_author__asGroup_members__asPersonBuilder
+    implements
+        Builder<GBookFragmentData__base_author__asGroup_members__asPerson,
+            GBookFragmentData__base_author__asGroup_members__asPersonBuilder> {
+  _$GBookFragmentData__base_author__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GBookFragmentData__base_author__asGroup_members__asPersonBuilder() {
+    GBookFragmentData__base_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__base_author__asGroup_members__asPersonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__base_author__asGroup_members__asPerson other) {
+    _$v = other as _$GBookFragmentData__base_author__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__base_author__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asPerson build() => _build();
+
+  _$GBookFragmentData__base_author__asGroup_members__asPerson _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__base_author__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__base_author__asGroup_members__asPerson',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__base_author__asGroup_members__asPerson',
+              'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName,
+              r'GBookFragmentData__base_author__asGroup_members__asPerson',
+              'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName,
+              r'GBookFragmentData__base_author__asGroup_members__asPerson',
+              'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__base_author__asGroup_members__asCompany
+    extends GBookFragmentData__base_author__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GBookFragmentData__base_author__asGroup_members__asCompany(
+          [void Function(
+                  GBookFragmentData__base_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GBookFragmentData__base_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__base_author__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GBookFragmentData__base_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GBookFragmentData__base_author__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GBookFragmentData__base_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__base_author__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__base_author__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GBookFragmentData__base_author__asGroup_members__asCompanyBuilder
+    implements
+        Builder<GBookFragmentData__base_author__asGroup_members__asCompany,
+            GBookFragmentData__base_author__asGroup_members__asCompanyBuilder> {
+  _$GBookFragmentData__base_author__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GBookFragmentData__base_author__asGroup_members__asCompanyBuilder() {
+    GBookFragmentData__base_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__base_author__asGroup_members__asCompanyBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__base_author__asGroup_members__asCompany other) {
+    _$v = other as _$GBookFragmentData__base_author__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__base_author__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__base_author__asGroup_members__asCompany build() =>
+      _build();
+
+  _$GBookFragmentData__base_author__asGroup_members__asCompany _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__base_author__asGroup_members__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__base_author__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__base_author__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GBookFragmentData__base_author__asGroup_members__asCompany',
+              'name'),
         );
     replace(_$result);
     return _$result;
@@ -4818,6 +8930,576 @@ class GBookFragmentData__asTextbook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GBookFragmentData__asTextbook_author__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup
+    extends GBookFragmentData__asTextbook_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GBookFragmentData__asTextbook_author__asGroup_members>
+      members;
+
+  factory _$GBookFragmentData__asTextbook_author__asGroup(
+          [void Function(GBookFragmentData__asTextbook_author__asGroupBuilder)?
+              updates]) =>
+      (GBookFragmentData__asTextbook_author__asGroupBuilder()..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GBookFragmentData__asTextbook_author__asGroup rebuild(
+          void Function(GBookFragmentData__asTextbook_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroupBuilder toBuilder() =>
+      GBookFragmentData__asTextbook_author__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GBookFragmentData__asTextbook_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asTextbook_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asTextbook_author__asGroupBuilder
+    implements
+        Builder<GBookFragmentData__asTextbook_author__asGroup,
+            GBookFragmentData__asTextbook_author__asGroupBuilder> {
+  _$GBookFragmentData__asTextbook_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GBookFragmentData__asTextbook_author__asGroup_members>? _members;
+  ListBuilder<GBookFragmentData__asTextbook_author__asGroup_members>
+      get members => _$this._members ??=
+          ListBuilder<GBookFragmentData__asTextbook_author__asGroup_members>();
+  set members(
+          ListBuilder<GBookFragmentData__asTextbook_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GBookFragmentData__asTextbook_author__asGroupBuilder() {
+    GBookFragmentData__asTextbook_author__asGroup._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asTextbook_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GBookFragmentData__asTextbook_author__asGroup other) {
+    _$v = other as _$GBookFragmentData__asTextbook_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GBookFragmentData__asTextbook_author__asGroupBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup build() => _build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup _build() {
+    _$GBookFragmentData__asTextbook_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GBookFragmentData__asTextbook_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GBookFragmentData__asTextbook_author__asGroup',
+                'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(
+                displayName,
+                r'GBookFragmentData__asTextbook_author__asGroup',
+                'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GBookFragmentData__asTextbook_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__base
+    extends GBookFragmentData__asTextbook_author__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GBookFragmentData__asTextbook_author__asGroup_members__base(
+          [void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__base rebuild(
+          void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder
+      toBuilder() =>
+          GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asTextbook_author__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asTextbook_author__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder
+    implements
+        Builder<GBookFragmentData__asTextbook_author__asGroup_members__base,
+            GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder> {
+  _$GBookFragmentData__asTextbook_author__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder() {
+    GBookFragmentData__asTextbook_author__asGroup_members__base
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asTextbook_author__asGroup_members__base other) {
+    _$v =
+        other as _$GBookFragmentData__asTextbook_author__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asTextbook_author__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__base build() =>
+      _build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asTextbook_author__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__base',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__base',
+              'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson
+    extends GBookFragmentData__asTextbook_author__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson(
+          [void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asTextbook_author__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asTextbook_author__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder
+    implements
+        Builder<GBookFragmentData__asTextbook_author__asGroup_members__asPerson,
+            GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder> {
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder() {
+    GBookFragmentData__asTextbook_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asTextbook_author__asGroup_members__asPerson other) {
+    _$v = other
+        as _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asTextbook_author__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asPerson build() =>
+      _build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asTextbook_author__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asPerson',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asPerson',
+              'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asPerson',
+              'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asPerson',
+              'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany
+    extends GBookFragmentData__asTextbook_author__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany(
+          [void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asTextbook_author__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asTextbook_author__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder
+    implements
+        Builder<
+            GBookFragmentData__asTextbook_author__asGroup_members__asCompany,
+            GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder> {
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder() {
+    GBookFragmentData__asTextbook_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asTextbook_author__asGroup_members__asCompany other) {
+    _$v = other
+        as _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asTextbook_author__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asTextbook_author__asGroup_members__asCompany build() =>
+      _build();
+
+  _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asTextbook_author__asGroup_members__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GBookFragmentData__asTextbook_author__asGroup_members__asCompany',
+              'name'),
         );
     replace(_$result);
     return _$result;
@@ -5351,6 +10033,2006 @@ class GBookFragmentData__asColoringBook_author__asCompanyBuilder
               'displayName'),
           name: BuiltValueNullFieldError.checkNotNull(name,
               r'GBookFragmentData__asColoringBook_author__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup
+    extends GBookFragmentData__asColoringBook_author__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GBookFragmentData__asColoringBook_author__asGroup_members>
+      members;
+
+  factory _$GBookFragmentData__asColoringBook_author__asGroup(
+          [void Function(
+                  GBookFragmentData__asColoringBook_author__asGroupBuilder)?
+              updates]) =>
+      (GBookFragmentData__asColoringBook_author__asGroupBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup rebuild(
+          void Function(
+                  GBookFragmentData__asColoringBook_author__asGroupBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroupBuilder toBuilder() =>
+      GBookFragmentData__asColoringBook_author__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GBookFragmentData__asColoringBook_author__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asColoringBook_author__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asColoringBook_author__asGroupBuilder
+    implements
+        Builder<GBookFragmentData__asColoringBook_author__asGroup,
+            GBookFragmentData__asColoringBook_author__asGroupBuilder> {
+  _$GBookFragmentData__asColoringBook_author__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GBookFragmentData__asColoringBook_author__asGroup_members>?
+      _members;
+  ListBuilder<GBookFragmentData__asColoringBook_author__asGroup_members>
+      get members => _$this._members ??= ListBuilder<
+          GBookFragmentData__asColoringBook_author__asGroup_members>();
+  set members(
+          ListBuilder<
+                  GBookFragmentData__asColoringBook_author__asGroup_members>?
+              members) =>
+      _$this._members = members;
+
+  GBookFragmentData__asColoringBook_author__asGroupBuilder() {
+    GBookFragmentData__asColoringBook_author__asGroup._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asColoringBook_author__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GBookFragmentData__asColoringBook_author__asGroup other) {
+    _$v = other as _$GBookFragmentData__asColoringBook_author__asGroup;
+  }
+
+  @override
+  void update(
+      void Function(GBookFragmentData__asColoringBook_author__asGroupBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup build() => _build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup _build() {
+    _$GBookFragmentData__asColoringBook_author__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GBookFragmentData__asColoringBook_author__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GBookFragmentData__asColoringBook_author__asGroup',
+                'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(
+                displayName,
+                r'GBookFragmentData__asColoringBook_author__asGroup',
+                'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GBookFragmentData__asColoringBook_author__asGroup',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__base
+    extends GBookFragmentData__asColoringBook_author__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GBookFragmentData__asColoringBook_author__asGroup_members__base(
+          [void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__base rebuild(
+          void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder
+      toBuilder() =>
+          GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asColoringBook_author__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asColoringBook_author__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder
+    implements
+        Builder<GBookFragmentData__asColoringBook_author__asGroup_members__base,
+            GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder> {
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder() {
+    GBookFragmentData__asColoringBook_author__asGroup_members__base
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asColoringBook_author__asGroup_members__base other) {
+    _$v = other
+        as _$GBookFragmentData__asColoringBook_author__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asColoringBook_author__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__base build() =>
+      _build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asColoringBook_author__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__base',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__base',
+              'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+    extends GBookFragmentData__asColoringBook_author__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson(
+          [void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPerson rebuild(
+          void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder
+      toBuilder() =>
+          GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asColoringBook_author__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder
+    implements
+        Builder<
+            GBookFragmentData__asColoringBook_author__asGroup_members__asPerson,
+            GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder> {
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder() {
+    GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+          other) {
+    _$v = other
+        as _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asColoringBook_author__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asPerson build() =>
+      _build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson
+      _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asColoringBook_author__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson',
+              'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson',
+              'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asPerson',
+              'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+    extends GBookFragmentData__asColoringBook_author__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany(
+          [void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompany rebuild(
+          void Function(
+                  GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder
+      toBuilder() =>
+          GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GBookFragmentData__asColoringBook_author__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GBookFragmentData__asColoringBook_author__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder
+    implements
+        Builder<
+            GBookFragmentData__asColoringBook_author__asGroup_members__asCompany,
+            GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder> {
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder() {
+    GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+        ._initializeBuilder(this);
+  }
+
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+          other) {
+    _$v = other
+        as _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(
+              GBookFragmentData__asColoringBook_author__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+      build() => _build();
+
+  _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+      _build() {
+    final _$result = _$v ??
+        _$GBookFragmentData__asColoringBook_author__asGroup_members__asCompany
+            ._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              r'GBookFragmentData__asColoringBook_author__asGroup_members__asCompany',
+              'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__base extends GAuthorFragmentData__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GAuthorFragmentData__base(
+          [void Function(GAuthorFragmentData__baseBuilder)? updates]) =>
+      (GAuthorFragmentData__baseBuilder()..update(updates))._build();
+
+  _$GAuthorFragmentData__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GAuthorFragmentData__base rebuild(
+          void Function(GAuthorFragmentData__baseBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__baseBuilder toBuilder() =>
+      GAuthorFragmentData__baseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__baseBuilder
+    implements
+        Builder<GAuthorFragmentData__base, GAuthorFragmentData__baseBuilder> {
+  _$GAuthorFragmentData__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GAuthorFragmentData__baseBuilder() {
+    GAuthorFragmentData__base._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__base other) {
+    _$v = other as _$GAuthorFragmentData__base;
+  }
+
+  @override
+  void update(void Function(GAuthorFragmentData__baseBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__base build() => _build();
+
+  _$GAuthorFragmentData__base _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorFragmentData__base', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName, r'GAuthorFragmentData__base', 'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asPerson extends GAuthorFragmentData__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GAuthorFragmentData__asPerson(
+          [void Function(GAuthorFragmentData__asPersonBuilder)? updates]) =>
+      (GAuthorFragmentData__asPersonBuilder()..update(updates))._build();
+
+  _$GAuthorFragmentData__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GAuthorFragmentData__asPerson rebuild(
+          void Function(GAuthorFragmentData__asPersonBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asPersonBuilder toBuilder() =>
+      GAuthorFragmentData__asPersonBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asPersonBuilder
+    implements
+        Builder<GAuthorFragmentData__asPerson,
+            GAuthorFragmentData__asPersonBuilder> {
+  _$GAuthorFragmentData__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GAuthorFragmentData__asPersonBuilder() {
+    GAuthorFragmentData__asPerson._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asPersonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asPerson other) {
+    _$v = other as _$GAuthorFragmentData__asPerson;
+  }
+
+  @override
+  void update(void Function(GAuthorFragmentData__asPersonBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asPerson build() => _build();
+
+  _$GAuthorFragmentData__asPerson _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorFragmentData__asPerson', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName, r'GAuthorFragmentData__asPerson', 'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName, r'GAuthorFragmentData__asPerson', 'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName, r'GAuthorFragmentData__asPerson', 'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asCompany extends GAuthorFragmentData__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GAuthorFragmentData__asCompany(
+          [void Function(GAuthorFragmentData__asCompanyBuilder)? updates]) =>
+      (GAuthorFragmentData__asCompanyBuilder()..update(updates))._build();
+
+  _$GAuthorFragmentData__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GAuthorFragmentData__asCompany rebuild(
+          void Function(GAuthorFragmentData__asCompanyBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asCompanyBuilder toBuilder() =>
+      GAuthorFragmentData__asCompanyBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asCompanyBuilder
+    implements
+        Builder<GAuthorFragmentData__asCompany,
+            GAuthorFragmentData__asCompanyBuilder> {
+  _$GAuthorFragmentData__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GAuthorFragmentData__asCompanyBuilder() {
+    GAuthorFragmentData__asCompany._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asCompanyBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asCompany other) {
+    _$v = other as _$GAuthorFragmentData__asCompany;
+  }
+
+  @override
+  void update(void Function(GAuthorFragmentData__asCompanyBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asCompany build() => _build();
+
+  _$GAuthorFragmentData__asCompany _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorFragmentData__asCompany', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName, r'GAuthorFragmentData__asCompany', 'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAuthorFragmentData__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asGroup extends GAuthorFragmentData__asGroup {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final BuiltList<GAuthorFragmentData__asGroup_members> members;
+
+  factory _$GAuthorFragmentData__asGroup(
+          [void Function(GAuthorFragmentData__asGroupBuilder)? updates]) =>
+      (GAuthorFragmentData__asGroupBuilder()..update(updates))._build();
+
+  _$GAuthorFragmentData__asGroup._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.members})
+      : super._();
+  @override
+  GAuthorFragmentData__asGroup rebuild(
+          void Function(GAuthorFragmentData__asGroupBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asGroupBuilder toBuilder() =>
+      GAuthorFragmentData__asGroupBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asGroup &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        members == other.members;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorFragmentData__asGroup')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('members', members))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asGroupBuilder
+    implements
+        Builder<GAuthorFragmentData__asGroup,
+            GAuthorFragmentData__asGroupBuilder> {
+  _$GAuthorFragmentData__asGroup? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  ListBuilder<GAuthorFragmentData__asGroup_members>? _members;
+  ListBuilder<GAuthorFragmentData__asGroup_members> get members =>
+      _$this._members ??= ListBuilder<GAuthorFragmentData__asGroup_members>();
+  set members(ListBuilder<GAuthorFragmentData__asGroup_members>? members) =>
+      _$this._members = members;
+
+  GAuthorFragmentData__asGroupBuilder() {
+    GAuthorFragmentData__asGroup._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asGroupBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _members = $v.members.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asGroup other) {
+    _$v = other as _$GAuthorFragmentData__asGroup;
+  }
+
+  @override
+  void update(void Function(GAuthorFragmentData__asGroupBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asGroup build() => _build();
+
+  _$GAuthorFragmentData__asGroup _build() {
+    _$GAuthorFragmentData__asGroup _$result;
+    try {
+      _$result = _$v ??
+          _$GAuthorFragmentData__asGroup._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GAuthorFragmentData__asGroup', 'G__typename'),
+            displayName: BuiltValueNullFieldError.checkNotNull(
+                displayName, r'GAuthorFragmentData__asGroup', 'displayName'),
+            members: members.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'members';
+        members.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'GAuthorFragmentData__asGroup', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__base
+    extends GAuthorFragmentData__asGroup_members__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GAuthorFragmentData__asGroup_members__base(
+          [void Function(GAuthorFragmentData__asGroup_members__baseBuilder)?
+              updates]) =>
+      (GAuthorFragmentData__asGroup_members__baseBuilder()..update(updates))
+          ._build();
+
+  _$GAuthorFragmentData__asGroup_members__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GAuthorFragmentData__asGroup_members__base rebuild(
+          void Function(GAuthorFragmentData__asGroup_members__baseBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asGroup_members__baseBuilder toBuilder() =>
+      GAuthorFragmentData__asGroup_members__baseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asGroup_members__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GAuthorFragmentData__asGroup_members__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asGroup_members__baseBuilder
+    implements
+        Builder<GAuthorFragmentData__asGroup_members__base,
+            GAuthorFragmentData__asGroup_members__baseBuilder> {
+  _$GAuthorFragmentData__asGroup_members__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GAuthorFragmentData__asGroup_members__baseBuilder() {
+    GAuthorFragmentData__asGroup_members__base._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asGroup_members__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asGroup_members__base other) {
+    _$v = other as _$GAuthorFragmentData__asGroup_members__base;
+  }
+
+  @override
+  void update(
+      void Function(GAuthorFragmentData__asGroup_members__baseBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__base build() => _build();
+
+  _$GAuthorFragmentData__asGroup_members__base _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__asGroup_members__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GAuthorFragmentData__asGroup_members__base', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+              r'GAuthorFragmentData__asGroup_members__base', 'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__asPerson
+    extends GAuthorFragmentData__asGroup_members__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GAuthorFragmentData__asGroup_members__asPerson(
+          [void Function(GAuthorFragmentData__asGroup_members__asPersonBuilder)?
+              updates]) =>
+      (GAuthorFragmentData__asGroup_members__asPersonBuilder()..update(updates))
+          ._build();
+
+  _$GAuthorFragmentData__asGroup_members__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GAuthorFragmentData__asGroup_members__asPerson rebuild(
+          void Function(GAuthorFragmentData__asGroup_members__asPersonBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asGroup_members__asPersonBuilder toBuilder() =>
+      GAuthorFragmentData__asGroup_members__asPersonBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asGroup_members__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GAuthorFragmentData__asGroup_members__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asGroup_members__asPersonBuilder
+    implements
+        Builder<GAuthorFragmentData__asGroup_members__asPerson,
+            GAuthorFragmentData__asGroup_members__asPersonBuilder> {
+  _$GAuthorFragmentData__asGroup_members__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GAuthorFragmentData__asGroup_members__asPersonBuilder() {
+    GAuthorFragmentData__asGroup_members__asPerson._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asGroup_members__asPersonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asGroup_members__asPerson other) {
+    _$v = other as _$GAuthorFragmentData__asGroup_members__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(GAuthorFragmentData__asGroup_members__asPersonBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__asPerson build() => _build();
+
+  _$GAuthorFragmentData__asGroup_members__asPerson _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__asGroup_members__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GAuthorFragmentData__asGroup_members__asPerson', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+              r'GAuthorFragmentData__asGroup_members__asPerson', 'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(firstName,
+              r'GAuthorFragmentData__asGroup_members__asPerson', 'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(lastName,
+              r'GAuthorFragmentData__asGroup_members__asPerson', 'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorFragmentData__asGroup_members__asCompany
+    extends GAuthorFragmentData__asGroup_members__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GAuthorFragmentData__asGroup_members__asCompany(
+          [void Function(
+                  GAuthorFragmentData__asGroup_members__asCompanyBuilder)?
+              updates]) =>
+      (GAuthorFragmentData__asGroup_members__asCompanyBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GAuthorFragmentData__asGroup_members__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GAuthorFragmentData__asGroup_members__asCompany rebuild(
+          void Function(GAuthorFragmentData__asGroup_members__asCompanyBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorFragmentData__asGroup_members__asCompanyBuilder toBuilder() =>
+      GAuthorFragmentData__asGroup_members__asCompanyBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorFragmentData__asGroup_members__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GAuthorFragmentData__asGroup_members__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GAuthorFragmentData__asGroup_members__asCompanyBuilder
+    implements
+        Builder<GAuthorFragmentData__asGroup_members__asCompany,
+            GAuthorFragmentData__asGroup_members__asCompanyBuilder> {
+  _$GAuthorFragmentData__asGroup_members__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GAuthorFragmentData__asGroup_members__asCompanyBuilder() {
+    GAuthorFragmentData__asGroup_members__asCompany._initializeBuilder(this);
+  }
+
+  GAuthorFragmentData__asGroup_members__asCompanyBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorFragmentData__asGroup_members__asCompany other) {
+    _$v = other as _$GAuthorFragmentData__asGroup_members__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(GAuthorFragmentData__asGroup_members__asCompanyBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorFragmentData__asGroup_members__asCompany build() => _build();
+
+  _$GAuthorFragmentData__asGroup_members__asCompany _build() {
+    final _$result = _$v ??
+        _$GAuthorFragmentData__asGroup_members__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename,
+              r'GAuthorFragmentData__asGroup_members__asCompany',
+              'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName,
+              r'GAuthorFragmentData__asGroup_members__asCompany',
+              'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAuthorFragmentData__asGroup_members__asCompany', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorPersonFragmentData extends GAuthorPersonFragmentData {
+  @override
+  final String G__typename;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GAuthorPersonFragmentData(
+          [void Function(GAuthorPersonFragmentDataBuilder)? updates]) =>
+      (GAuthorPersonFragmentDataBuilder()..update(updates))._build();
+
+  _$GAuthorPersonFragmentData._(
+      {required this.G__typename,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GAuthorPersonFragmentData rebuild(
+          void Function(GAuthorPersonFragmentDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorPersonFragmentDataBuilder toBuilder() =>
+      GAuthorPersonFragmentDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorPersonFragmentData &&
+        G__typename == other.G__typename &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorPersonFragmentData')
+          ..add('G__typename', G__typename)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GAuthorPersonFragmentDataBuilder
+    implements
+        Builder<GAuthorPersonFragmentData, GAuthorPersonFragmentDataBuilder> {
+  _$GAuthorPersonFragmentData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GAuthorPersonFragmentDataBuilder() {
+    GAuthorPersonFragmentData._initializeBuilder(this);
+  }
+
+  GAuthorPersonFragmentDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorPersonFragmentData other) {
+    _$v = other as _$GAuthorPersonFragmentData;
+  }
+
+  @override
+  void update(void Function(GAuthorPersonFragmentDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorPersonFragmentData build() => _build();
+
+  _$GAuthorPersonFragmentData _build() {
+    final _$result = _$v ??
+        _$GAuthorPersonFragmentData._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorPersonFragmentData', 'G__typename'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName, r'GAuthorPersonFragmentData', 'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName, r'GAuthorPersonFragmentData', 'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorCompanyFragmentData extends GAuthorCompanyFragmentData {
+  @override
+  final String G__typename;
+  @override
+  final String name;
+
+  factory _$GAuthorCompanyFragmentData(
+          [void Function(GAuthorCompanyFragmentDataBuilder)? updates]) =>
+      (GAuthorCompanyFragmentDataBuilder()..update(updates))._build();
+
+  _$GAuthorCompanyFragmentData._(
+      {required this.G__typename, required this.name})
+      : super._();
+  @override
+  GAuthorCompanyFragmentData rebuild(
+          void Function(GAuthorCompanyFragmentDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorCompanyFragmentDataBuilder toBuilder() =>
+      GAuthorCompanyFragmentDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorCompanyFragmentData &&
+        G__typename == other.G__typename &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorCompanyFragmentData')
+          ..add('G__typename', G__typename)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GAuthorCompanyFragmentDataBuilder
+    implements
+        Builder<GAuthorCompanyFragmentData, GAuthorCompanyFragmentDataBuilder> {
+  _$GAuthorCompanyFragmentData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GAuthorCompanyFragmentDataBuilder() {
+    GAuthorCompanyFragmentData._initializeBuilder(this);
+  }
+
+  GAuthorCompanyFragmentDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorCompanyFragmentData other) {
+    _$v = other as _$GAuthorCompanyFragmentData;
+  }
+
+  @override
+  void update(void Function(GAuthorCompanyFragmentDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorCompanyFragmentData build() => _build();
+
+  _$GAuthorCompanyFragmentData _build() {
+    final _$result = _$v ??
+        _$GAuthorCompanyFragmentData._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorCompanyFragmentData', 'G__typename'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAuthorCompanyFragmentData', 'name'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorGroupFragmentData__base extends GAuthorGroupFragmentData__base {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+
+  factory _$GAuthorGroupFragmentData__base(
+          [void Function(GAuthorGroupFragmentData__baseBuilder)? updates]) =>
+      (GAuthorGroupFragmentData__baseBuilder()..update(updates))._build();
+
+  _$GAuthorGroupFragmentData__base._(
+      {required this.G__typename, required this.displayName})
+      : super._();
+  @override
+  GAuthorGroupFragmentData__base rebuild(
+          void Function(GAuthorGroupFragmentData__baseBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorGroupFragmentData__baseBuilder toBuilder() =>
+      GAuthorGroupFragmentData__baseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorGroupFragmentData__base &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorGroupFragmentData__base')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName))
+        .toString();
+  }
+}
+
+class GAuthorGroupFragmentData__baseBuilder
+    implements
+        Builder<GAuthorGroupFragmentData__base,
+            GAuthorGroupFragmentData__baseBuilder> {
+  _$GAuthorGroupFragmentData__base? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  GAuthorGroupFragmentData__baseBuilder() {
+    GAuthorGroupFragmentData__base._initializeBuilder(this);
+  }
+
+  GAuthorGroupFragmentData__baseBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorGroupFragmentData__base other) {
+    _$v = other as _$GAuthorGroupFragmentData__base;
+  }
+
+  @override
+  void update(void Function(GAuthorGroupFragmentData__baseBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorGroupFragmentData__base build() => _build();
+
+  _$GAuthorGroupFragmentData__base _build() {
+    final _$result = _$v ??
+        _$GAuthorGroupFragmentData__base._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(
+              G__typename, r'GAuthorGroupFragmentData__base', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(
+              displayName, r'GAuthorGroupFragmentData__base', 'displayName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorGroupFragmentData__asPerson
+    extends GAuthorGroupFragmentData__asPerson {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String firstName;
+  @override
+  final String lastName;
+
+  factory _$GAuthorGroupFragmentData__asPerson(
+          [void Function(GAuthorGroupFragmentData__asPersonBuilder)?
+              updates]) =>
+      (GAuthorGroupFragmentData__asPersonBuilder()..update(updates))._build();
+
+  _$GAuthorGroupFragmentData__asPerson._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.firstName,
+      required this.lastName})
+      : super._();
+  @override
+  GAuthorGroupFragmentData__asPerson rebuild(
+          void Function(GAuthorGroupFragmentData__asPersonBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorGroupFragmentData__asPersonBuilder toBuilder() =>
+      GAuthorGroupFragmentData__asPersonBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorGroupFragmentData__asPerson &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        firstName == other.firstName &&
+        lastName == other.lastName;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorGroupFragmentData__asPerson')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('firstName', firstName)
+          ..add('lastName', lastName))
+        .toString();
+  }
+}
+
+class GAuthorGroupFragmentData__asPersonBuilder
+    implements
+        Builder<GAuthorGroupFragmentData__asPerson,
+            GAuthorGroupFragmentData__asPersonBuilder> {
+  _$GAuthorGroupFragmentData__asPerson? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
+
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
+
+  GAuthorGroupFragmentData__asPersonBuilder() {
+    GAuthorGroupFragmentData__asPerson._initializeBuilder(this);
+  }
+
+  GAuthorGroupFragmentData__asPersonBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorGroupFragmentData__asPerson other) {
+    _$v = other as _$GAuthorGroupFragmentData__asPerson;
+  }
+
+  @override
+  void update(
+      void Function(GAuthorGroupFragmentData__asPersonBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorGroupFragmentData__asPerson build() => _build();
+
+  _$GAuthorGroupFragmentData__asPerson _build() {
+    final _$result = _$v ??
+        _$GAuthorGroupFragmentData__asPerson._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GAuthorGroupFragmentData__asPerson', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+              r'GAuthorGroupFragmentData__asPerson', 'displayName'),
+          firstName: BuiltValueNullFieldError.checkNotNull(
+              firstName, r'GAuthorGroupFragmentData__asPerson', 'firstName'),
+          lastName: BuiltValueNullFieldError.checkNotNull(
+              lastName, r'GAuthorGroupFragmentData__asPerson', 'lastName'),
+        );
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAuthorGroupFragmentData__asCompany
+    extends GAuthorGroupFragmentData__asCompany {
+  @override
+  final String G__typename;
+  @override
+  final String displayName;
+  @override
+  final String name;
+
+  factory _$GAuthorGroupFragmentData__asCompany(
+          [void Function(GAuthorGroupFragmentData__asCompanyBuilder)?
+              updates]) =>
+      (GAuthorGroupFragmentData__asCompanyBuilder()..update(updates))._build();
+
+  _$GAuthorGroupFragmentData__asCompany._(
+      {required this.G__typename,
+      required this.displayName,
+      required this.name})
+      : super._();
+  @override
+  GAuthorGroupFragmentData__asCompany rebuild(
+          void Function(GAuthorGroupFragmentData__asCompanyBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAuthorGroupFragmentData__asCompanyBuilder toBuilder() =>
+      GAuthorGroupFragmentData__asCompanyBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAuthorGroupFragmentData__asCompany &&
+        G__typename == other.G__typename &&
+        displayName == other.displayName &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAuthorGroupFragmentData__asCompany')
+          ..add('G__typename', G__typename)
+          ..add('displayName', displayName)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GAuthorGroupFragmentData__asCompanyBuilder
+    implements
+        Builder<GAuthorGroupFragmentData__asCompany,
+            GAuthorGroupFragmentData__asCompanyBuilder> {
+  _$GAuthorGroupFragmentData__asCompany? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GAuthorGroupFragmentData__asCompanyBuilder() {
+    GAuthorGroupFragmentData__asCompany._initializeBuilder(this);
+  }
+
+  GAuthorGroupFragmentData__asCompanyBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _displayName = $v.displayName;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAuthorGroupFragmentData__asCompany other) {
+    _$v = other as _$GAuthorGroupFragmentData__asCompany;
+  }
+
+  @override
+  void update(
+      void Function(GAuthorGroupFragmentData__asCompanyBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAuthorGroupFragmentData__asCompany build() => _build();
+
+  _$GAuthorGroupFragmentData__asCompany _build() {
+    final _$result = _$v ??
+        _$GAuthorGroupFragmentData__asCompany._(
+          G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+              r'GAuthorGroupFragmentData__asCompany', 'G__typename'),
+          displayName: BuiltValueNullFieldError.checkNotNull(displayName,
+              r'GAuthorGroupFragmentData__asCompany', 'displayName'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'GAuthorGroupFragmentData__asCompany', 'name'),
         );
     replace(_$result);
     return _$result;

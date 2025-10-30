@@ -310,8 +310,7 @@ List<Spec> _buildTypeSpecificClasses({
     final expandedSuperclassSelections = {...superclassSelections};
     final nestedInterfaceMap = <String, String>{};
 
-    // Process each base interface from the superclass selections
-    // These represent the actual GraphQL fragment hierarchy, not just name-based relationships
+    // Process each base interface from the superclass selections.
     for (final baseInterfaceName in superclassSelections.keys) {
       final specializedName =
           context.specialize(baseInterfaceName, fragmentTypeName);
@@ -348,18 +347,20 @@ List<Spec> _buildTypeSpecificClasses({
           final nestedSpecializedName =
               context.specialize(nestedBaseName, fragmentTypeName);
 
-          // Add selections for nested specialized interfaces
-          expandedSuperclassSelections[nestedSpecializedName] =
-              SourceSelections(
-            url: superclassSelections[specializedInterface]?.url,
-            selections: [
-              ...superclassSelections[specializedInterface]?.selections ?? [],
-              ...inlineFragment.selectionSet.selections,
-            ],
-          );
+          if (specializedInterface.startsWith(nestedSpecializedName)) {
+            // Add selections for nested specialized interfaces
+            expandedSuperclassSelections[nestedSpecializedName] =
+                SourceSelections(
+              url: superclassSelections[specializedInterface]?.url,
+              selections: [
+                ...superclassSelections[specializedInterface]?.selections ?? [],
+                ...inlineFragment.selectionSet.selections,
+              ],
+            );
 
-          // Map nested interfaces
-          nestedInterfaceMap[specializedInterface] = nestedSpecializedName;
+            // Map nested interfaces
+            nestedInterfaceMap[specializedInterface] = nestedSpecializedName;
+          }
         }
       }
     }

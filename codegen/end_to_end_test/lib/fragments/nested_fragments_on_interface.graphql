@@ -4,17 +4,6 @@ query GetBooks {
   }
 } 
 
-fragment AuthorFragment on Author {
-  displayName
-  ... on Person {
-      firstName
-      lastName
-  }
-  ... on Company {
-      name
-  }
-}
-
 fragment BookFragment on Book {
   author {
     ...AuthorFragment
@@ -25,6 +14,47 @@ fragment BookFragment on Book {
   }
   ... on ColoringBook {
       colors
+  }
+}
+
+
+
+
+
+
+
+
+fragment AuthorFragment on Author {
+  displayName
+  ... on Person {
+    ...AuthorPersonFragment
+  }
+  ... on Company {
+    ...AuthorCompanyFragment
+  }
+  ... on Group {
+    members {
+      ...AuthorGroupFragment
+    }
+  }
+}
+
+fragment AuthorPersonFragment on Person {
+  firstName
+  lastName
+}
+
+fragment AuthorCompanyFragment on Company {
+  name
+}
+
+fragment AuthorGroupFragment on Author {
+  displayName
+  ... on Person {
+    ...AuthorPersonFragment
+  }
+  ... on Company {
+    ...AuthorCompanyFragment
   }
 }
 

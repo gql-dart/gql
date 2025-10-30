@@ -32,6 +32,31 @@ abstract class GGetBooksVars
       );
 }
 
+abstract class GBookFragmentVars
+    implements Built<GBookFragmentVars, GBookFragmentVarsBuilder> {
+  GBookFragmentVars._();
+
+  factory GBookFragmentVars(
+          [void Function(GBookFragmentVarsBuilder b) updates]) =
+      _$GBookFragmentVars;
+
+  factory GBookFragmentVars.create() => GBookFragmentVars();
+
+  static Serializer<GBookFragmentVars> get serializer =>
+      _$gBookFragmentVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GBookFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GBookFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GBookFragmentVars.serializer,
+        json,
+      );
+}
+
 abstract class GAuthorFragmentVars
     implements Built<GAuthorFragmentVars, GAuthorFragmentVarsBuilder> {
   GAuthorFragmentVars._();
@@ -57,27 +82,80 @@ abstract class GAuthorFragmentVars
       );
 }
 
-abstract class GBookFragmentVars
-    implements Built<GBookFragmentVars, GBookFragmentVarsBuilder> {
-  GBookFragmentVars._();
+abstract class GAuthorPersonFragmentVars
+    implements
+        Built<GAuthorPersonFragmentVars, GAuthorPersonFragmentVarsBuilder> {
+  GAuthorPersonFragmentVars._();
 
-  factory GBookFragmentVars(
-          [void Function(GBookFragmentVarsBuilder b) updates]) =
-      _$GBookFragmentVars;
+  factory GAuthorPersonFragmentVars(
+          [void Function(GAuthorPersonFragmentVarsBuilder b) updates]) =
+      _$GAuthorPersonFragmentVars;
 
-  factory GBookFragmentVars.create() => GBookFragmentVars();
+  factory GAuthorPersonFragmentVars.create() => GAuthorPersonFragmentVars();
 
-  static Serializer<GBookFragmentVars> get serializer =>
-      _$gBookFragmentVarsSerializer;
+  static Serializer<GAuthorPersonFragmentVars> get serializer =>
+      _$gAuthorPersonFragmentVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GBookFragmentVars.serializer,
+        GAuthorPersonFragmentVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GBookFragmentVars? fromJson(Map<String, dynamic> json) =>
+  static GAuthorPersonFragmentVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GBookFragmentVars.serializer,
+        GAuthorPersonFragmentVars.serializer,
+        json,
+      );
+}
+
+abstract class GAuthorCompanyFragmentVars
+    implements
+        Built<GAuthorCompanyFragmentVars, GAuthorCompanyFragmentVarsBuilder> {
+  GAuthorCompanyFragmentVars._();
+
+  factory GAuthorCompanyFragmentVars(
+          [void Function(GAuthorCompanyFragmentVarsBuilder b) updates]) =
+      _$GAuthorCompanyFragmentVars;
+
+  factory GAuthorCompanyFragmentVars.create() => GAuthorCompanyFragmentVars();
+
+  static Serializer<GAuthorCompanyFragmentVars> get serializer =>
+      _$gAuthorCompanyFragmentVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAuthorCompanyFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GAuthorCompanyFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GAuthorCompanyFragmentVars.serializer,
+        json,
+      );
+}
+
+abstract class GAuthorGroupFragmentVars
+    implements
+        Built<GAuthorGroupFragmentVars, GAuthorGroupFragmentVarsBuilder> {
+  GAuthorGroupFragmentVars._();
+
+  factory GAuthorGroupFragmentVars(
+          [void Function(GAuthorGroupFragmentVarsBuilder b) updates]) =
+      _$GAuthorGroupFragmentVars;
+
+  factory GAuthorGroupFragmentVars.create() => GAuthorGroupFragmentVars();
+
+  static Serializer<GAuthorGroupFragmentVars> get serializer =>
+      _$gAuthorGroupFragmentVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAuthorGroupFragmentVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GAuthorGroupFragmentVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GAuthorGroupFragmentVars.serializer,
         json,
       );
 }
