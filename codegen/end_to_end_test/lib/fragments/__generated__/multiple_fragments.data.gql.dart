@@ -63,6 +63,7 @@ abstract class GHeroWith2FragmentsData_hero
   static Serializer<GHeroWith2FragmentsData_hero> get serializer =>
       _$gHeroWith2FragmentsDataHeroSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWith2FragmentsData_hero.serializer,
         this,
@@ -78,6 +79,7 @@ abstract class GHeroWith2FragmentsData_hero
 abstract class GheroName {
   String get G__typename;
   String get name;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GheroNameData
@@ -97,6 +99,7 @@ abstract class GheroNameData
   String get name;
   static Serializer<GheroNameData> get serializer => _$gheroNameDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroNameData.serializer,
         this,
@@ -112,6 +115,7 @@ abstract class GheroNameData
 abstract class GheroId {
   String get G__typename;
   String get id;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GheroIdData
@@ -131,6 +135,7 @@ abstract class GheroIdData
   String get id;
   static Serializer<GheroIdData> get serializer => _$gheroIdDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroIdData.serializer,
         this,

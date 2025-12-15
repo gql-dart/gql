@@ -54,6 +54,7 @@ class VarBuilder implements Builder {
       addTypenames(schema),
       basename(generatedPartUrl),
       typeOverrides,
+      allocator,
       triStateValueConfig,
       varsCreateFactoriesConfig,
     );

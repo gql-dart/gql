@@ -126,6 +126,7 @@ abstract class GSearchResultsQueryData_search__base
   static Serializer<GSearchResultsQueryData_search__base> get serializer =>
       _$gSearchResultsQueryDataSearchBaseSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__base.serializer,
         this,
@@ -169,6 +170,7 @@ abstract class GSearchResultsQueryData_search__asHuman
   static Serializer<GSearchResultsQueryData_search__asHuman> get serializer =>
       _$gSearchResultsQueryDataSearchAsHumanSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asHuman.serializer,
         this,
@@ -211,6 +213,7 @@ abstract class GSearchResultsQueryData_search__asHuman_friends
   static Serializer<GSearchResultsQueryData_search__asHuman_friends>
       get serializer => _$gSearchResultsQueryDataSearchAsHumanFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asHuman_friends.serializer,
         this,
@@ -256,6 +259,7 @@ abstract class GSearchResultsQueryData_search__asHuman_friends_friendsConnection
       get serializer =>
           _$gSearchResultsQueryDataSearchAsHumanFriendsFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asHuman_friends_friendsConnection
             .serializer,
@@ -304,6 +308,7 @@ abstract class GSearchResultsQueryData_search__asHuman_friends_friendsConnection
       get serializer =>
           _$gSearchResultsQueryDataSearchAsHumanFriendsFriendsConnectionFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asHuman_friends_friendsConnection_friends
             .serializer,
@@ -348,6 +353,7 @@ abstract class GSearchResultsQueryData_search__asDroid
   static Serializer<GSearchResultsQueryData_search__asDroid> get serializer =>
       _$gSearchResultsQueryDataSearchAsDroidSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asDroid.serializer,
         this,
@@ -390,6 +396,7 @@ abstract class GSearchResultsQueryData_search__asDroid_friends
   static Serializer<GSearchResultsQueryData_search__asDroid_friends>
       get serializer => _$gSearchResultsQueryDataSearchAsDroidFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asDroid_friends.serializer,
         this,
@@ -435,6 +442,7 @@ abstract class GSearchResultsQueryData_search__asDroid_friends_friendsConnection
       get serializer =>
           _$gSearchResultsQueryDataSearchAsDroidFriendsFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asDroid_friends_friendsConnection
             .serializer,
@@ -483,6 +491,7 @@ abstract class GSearchResultsQueryData_search__asDroid_friends_friendsConnection
       get serializer =>
           _$gSearchResultsQueryDataSearchAsDroidFriendsFriendsConnectionFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GSearchResultsQueryData_search__asDroid_friends_friendsConnection_friends
             .serializer,
@@ -503,6 +512,7 @@ abstract class GCharacterDetails {
   String get name;
   BuiltList<GCharacterDetails_friends?>? get friends;
   BuiltList<_i3.GEpisode?> get appearsIn;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GCharacterDetails_friends implements GFriendInfo {
@@ -514,6 +524,8 @@ abstract class GCharacterDetails_friends implements GFriendInfo {
   String get name;
   @override
   GCharacterDetails_friends_friendsConnection get friendsConnection;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GCharacterDetails_friends_friendsConnection
@@ -522,6 +534,8 @@ abstract class GCharacterDetails_friends_friendsConnection
   String get G__typename;
   @override
   BuiltList<GCharacterDetails_friends_friendsConnection_friends?>? get friends;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GCharacterDetails_friends_friendsConnection_friends
@@ -532,6 +546,8 @@ abstract class GCharacterDetails_friends_friendsConnection_friends
   String get id;
   @override
   String get name;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GCharacterDetailsData
@@ -561,6 +577,7 @@ abstract class GCharacterDetailsData
   static Serializer<GCharacterDetailsData> get serializer =>
       _$gCharacterDetailsDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GCharacterDetailsData.serializer,
         this,
@@ -600,6 +617,7 @@ abstract class GCharacterDetailsData_friends
   static Serializer<GCharacterDetailsData_friends> get serializer =>
       _$gCharacterDetailsDataFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GCharacterDetailsData_friends.serializer,
         this,
@@ -638,6 +656,7 @@ abstract class GCharacterDetailsData_friends_friendsConnection
       get serializer =>
           _$gCharacterDetailsDataFriendsFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GCharacterDetailsData_friends_friendsConnection.serializer,
         this,
@@ -680,6 +699,7 @@ abstract class GCharacterDetailsData_friends_friendsConnection_friends
       get serializer =>
           _$gCharacterDetailsDataFriendsFriendsConnectionFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GCharacterDetailsData_friends_friendsConnection_friends.serializer,
         this,
@@ -698,11 +718,13 @@ abstract class GFriendInfo {
   String get id;
   String get name;
   GFriendInfo_friendsConnection get friendsConnection;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GFriendInfo_friendsConnection {
   String get G__typename;
   BuiltList<GFriendInfo_friendsConnection_friends?>? get friends;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GFriendInfo_friendsConnection_friends
@@ -713,6 +735,8 @@ abstract class GFriendInfo_friendsConnection_friends
   String get id;
   @override
   String get name;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GFriendInfoData
@@ -737,6 +761,7 @@ abstract class GFriendInfoData
   static Serializer<GFriendInfoData> get serializer =>
       _$gFriendInfoDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GFriendInfoData.serializer,
         this,
@@ -771,6 +796,7 @@ abstract class GFriendInfoData_friendsConnection
   static Serializer<GFriendInfoData_friendsConnection> get serializer =>
       _$gFriendInfoDataFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GFriendInfoData_friendsConnection.serializer,
         this,
@@ -810,6 +836,7 @@ abstract class GFriendInfoData_friendsConnection_friends
   static Serializer<GFriendInfoData_friendsConnection_friends> get serializer =>
       _$gFriendInfoDataFriendsConnectionFriendsSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GFriendInfoData_friendsConnection_friends.serializer,
         this,
@@ -827,6 +854,7 @@ abstract class GCharacterBasic {
   String get G__typename;
   String get id;
   String get name;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GCharacterBasicData
@@ -852,6 +880,7 @@ abstract class GCharacterBasicData
   static Serializer<GCharacterBasicData> get serializer =>
       _$gCharacterBasicDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GCharacterBasicData.serializer,
         this,
