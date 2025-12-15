@@ -93,8 +93,7 @@ Class builtClass({
           ),
         buildToJsonGetter(
           className,
-          isOverride:
-              false, // toJson in built_value classes never overrides a superclass/interface method here
+          isOverride: superclassSelections.isNotEmpty,
         ),
         buildFromJsonGetter(className),
         ...methods

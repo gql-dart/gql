@@ -16,6 +16,7 @@ Library buildVarLibrary(
     SourceNode schemaSource,
     String partUrl,
     Map<String, Reference> typeOverrides,
+    Allocator allocator,
     TriStateValueConfig useTriStateValueForNullableTypes,
     bool generateVarsCreateFactories) {
   final hasCustomSerializer = useTriStateValueForNullableTypes ==
@@ -124,12 +125,14 @@ Library buildVarLibrary(
           for (final op in operationVarClasses)
             nullAwareJsonSerializerClass(
               op,
+              allocator,
               schemaSource,
               typeOverrides,
             ),
           for (final frag in fragmentVarClasses)
             nullAwareJsonSerializerClass(
               frag,
+              allocator,
               schemaSource,
               typeOverrides,
             ),
