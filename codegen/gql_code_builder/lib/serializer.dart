@@ -1,8 +1,8 @@
-import "package:analyzer/dart/element/element2.dart";
+import "package:analyzer/dart/element/element.dart";
 import "package:code_builder/code_builder.dart";
 
 Library buildSerializerLibrary(
-  Set<ClassElement2> builtClasses,
+  Set<ClassElement> builtClasses,
   String partDirectiveUrl,
   Set<Expression> additionalSerializers, {
   Expression? externalSerializers,
@@ -38,7 +38,7 @@ Library buildSerializerLibrary(
             literalList(
               builtClasses
                   .map<Reference>(
-                    (c) => refer(c.name3!, c.library2.uri.toString()),
+                    (c) => refer(c.name!, c.library.uri.toString()),
                   )
                   .toList()
                 ..sort((a, b) => a.symbol!.compareTo(b.symbol!)),
