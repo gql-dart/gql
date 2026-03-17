@@ -1,7 +1,7 @@
 import "dart:async";
 import "dart:collection";
 
-import "package:analyzer/dart/element/element2.dart";
+import "package:analyzer/dart/element/element.dart";
 import "package:build/build.dart";
 import "package:code_builder/code_builder.dart";
 import "package:dart_style/dart_style.dart";
@@ -46,25 +46,25 @@ class SerializerBuilder implements Builder {
     /// BuiltValue classes with serializers. These will be added automatically
     /// using `@SerializersFor`.
     final builtClasses =
-        SplayTreeSet<ClassElement2>((a, b) => a.name3!.compareTo(b.name3!));
+        SplayTreeSet<ClassElement>((a, b) => a.name!.compareTo(b.name!));
 
     /// Non BuiltValue classes with serializers (i.e. inline fragment classes).
     /// These need to be added manually since `@SerializersFor` only recognizes
     /// BuiltValue classes.
     final nonBuiltClasses =
-        SplayTreeSet<ClassElement2>((a, b) => a.name3!.compareTo(b.name3!));
+        SplayTreeSet<ClassElement>((a, b) => a.name!.compareTo(b.name!));
 
-    final hasSerializer = (ClassElement2 c) => c.fields2.any((field) =>
+    final hasSerializer = (ClassElement c) => c.fields.any((field) =>
         field.isStatic &&
-        field.name3 == "serializer" &&
-        field.type.element3?.name3 == "Serializer" &&
-        field.type.element3?.library2?.uri.toString() ==
+        field.name == "serializer" &&
+        field.type.element?.name == "Serializer" &&
+        field.type.element?.library?.uri.toString() ==
             "package:built_value/serializer.dart");
 
-    final isBuiltValue = (ClassElement2 c) => c.allSupertypes.any((interface) =>
-        (interface.element3.name3 == "Built" ||
-            interface.element3.name3 == "EnumClass") &&
-        interface.element3.library2.uri.toString() ==
+    final isBuiltValue = (ClassElement c) => c.allSupertypes.any((interface) =>
+        (interface.element.name == "Built" ||
+            interface.element.name == "EnumClass") &&
+        interface.element.library.uri.toString() ==
             "package:built_value/built_value.dart");
 
     await for (final input in buildStep.findAssets(_generatedFiles)) {
@@ -82,7 +82,7 @@ class SerializerBuilder implements Builder {
 
     // Collect URIs for non-built classes to ensure they can be imported if needed
     final nonBuiltClassUris = nonBuiltClasses
-        .map((c) => c.library2.uri.toString())
+        .map((c) => c.library.uri.toString())
         .whereType<String>()
         .toSet();
 
@@ -110,8 +110,7 @@ class SerializerBuilder implements Builder {
       ...customSerializers.map((ref) => ref.call([])),
       // Serializers from data classes that aren't caught by `@SerializersFor`
       ...nonBuiltClasses.map<Expression>(
-        (c) =>
-            refer(c.name3!, c.library2.uri.toString()).property("serializer"),
+        (c) => refer(c.name!, c.library.uri.toString()).property("serializer"),
       ),
     };
 
