@@ -1,3 +1,8 @@
+## 0.13.3
+
+ - Support analyzer 12.x.
+ - Require Dart 3.10+ for dart_style 3.1.8 compatibility.
+
 ## 0.13.2
 
  - Support analyzer 9.x and 10.x.
