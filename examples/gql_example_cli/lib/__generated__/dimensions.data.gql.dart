@@ -12,6 +12,7 @@ abstract class GDimensions {
   String get G__typename;
   String? get minimum;
   String? get maximum;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GDimensionsData
@@ -34,6 +35,7 @@ abstract class GDimensionsData
   static Serializer<GDimensionsData> get serializer =>
       _$gDimensionsDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GDimensionsData.serializer,
         this,

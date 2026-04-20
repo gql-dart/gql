@@ -17,25 +17,18 @@ class SourceNode {
   /// Returns flattened Document as a temporary solution before existing
   /// builders have adopted [SourceNode]
   DocumentNode get flatDocument => DocumentNode(
-        definitions: <DefinitionNode>[
-          ...document.definitions,
-          ...imports.expand(
-            (import) => import.flatDocument.definitions,
-          ),
-        ],
-      );
+    definitions: <DefinitionNode>[
+      ...document.definitions,
+      ...imports.expand((import) => import.flatDocument.definitions),
+    ],
+  );
 
   Set<Reference> getRefs() => {
-        ...document.definitions.map(
-          (definition) => Reference(
-            identifier(_getName(definition)),
-            url,
-          ),
-        ),
-        ...imports.expand(
-          (import) => import.getRefs(),
-        ),
-      };
+    ...document.definitions.map(
+      (definition) => Reference(identifier(_getName(definition)), url),
+    ),
+    ...imports.expand((import) => import.getRefs()),
+  };
 }
 
 String _getName(DefinitionNode def) {

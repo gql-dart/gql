@@ -1,3 +1,7 @@
+## 0.13.2
+
+ - Support analyzer 9.x and 10.x.
+
 ## 0.13.1
 
  - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).

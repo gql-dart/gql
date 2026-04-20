@@ -6,41 +6,27 @@ import "package:gql_code_builder/src/common.dart";
 import "./source.dart";
 import "./src/ast.dart";
 
-Library buildAstLibrary(
-  SourceNode source,
-) {
+Library buildAstLibrary(SourceNode source) {
   final definitions = source.document.definitions.map(
     (def) =>
         declareConst(identifier(_getName(def))).assign(fromNode(def)).statement,
   );
 
-  final document = declareConst("document")
-      .assign(refer(
-        "DocumentNode",
-        "package:gql/ast.dart",
-      ).call(
-        [],
-        {
-          "definitions": literalList(
-            source.getRefs().map(
-                  (ref) => Reference(
-                    ref.symbol,
-                    ref.url! + "#ast",
-                  ),
+  final document =
+      declareConst("document")
+          .assign(
+            refer("DocumentNode", "package:gql/ast.dart").call([], {
+              "definitions": literalList(
+                source.getRefs().map(
+                  (ref) => Reference(ref.symbol, ref.url! + "#ast"),
                 ),
-          ),
-        },
-      ))
-      .statement;
+              ),
+            }),
+          )
+          .statement;
 
   return Library(
-    (b) => b
-      ..body = ListBuilder<Spec>(
-        <Spec>[
-          ...definitions,
-          document,
-        ],
-      ),
+    (b) => b..body = ListBuilder<Spec>(<Spec>[...definitions, document]),
   );
 }
 

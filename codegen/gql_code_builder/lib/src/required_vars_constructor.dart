@@ -26,17 +26,20 @@ Constructor builtCreateConstructor({
     final isNullable = (g.returns! as TypeReference).isNullable ?? false;
 
     return Parameter(
-      (b) => b
-        ..name = g.name!
-        ..named = true
-        ..required = !isNullable
-        ..type = g.returns,
+      (b) =>
+          b
+            ..name = g.name!
+            ..named = true
+            ..required = !isNullable
+            ..type = g.returns,
     );
   });
 
   final assignments = filteredGetters.map((g) {
     final typeDefinitionNode = getTypeDefinitionNode(
-        schemaSource.document, g.returns!.symbol!.replaceFirst("G", ""));
+      schemaSource.document,
+      g.returns!.symbol!.replaceFirst("G", ""),
+    );
 
     final bool isFromBuiltCollectionPackage =
         g.returns?.url?.contains("built_collection") ?? false;
@@ -44,34 +47,39 @@ Constructor builtCreateConstructor({
     /// "$BuiltList" is a String "BuiltList<dynamic>" and
     /// [g.returns!.symbol!] returns "BuiltList"
     ///  so we cannot use equality operator here.
-    final isBuiltList = (g.returns?.symbol != null
+    final isBuiltList =
+        (g.returns?.symbol != null
             ? "$BuiltList".contains(g.returns!.symbol!)
             : false) &&
         isFromBuiltCollectionPackage;
 
-    final isBuiltType = typeDefinitionNode is InputObjectTypeDefinitionNode ||
+    final isBuiltType =
+        typeDefinitionNode is InputObjectTypeDefinitionNode ||
         typeDefinitionNode is ScalarTypeDefinitionNode ||
         isBuiltList;
     final isTypeOverride = typeOverrides.values.contains(g.returns!);
     final isNullable = (g.returns! as TypeReference).isNullable ?? false;
 
     // If the type is a built type and not a TypeOverride, we need to call toBuilder() on it.
-    final assignment = isBuiltType && !isTypeOverride
-        ? "${g.name} = ${g.name}${isNullable ? '?' : ''}.toBuilder()"
-        : "${g.name} = ${g.name}";
+    final assignment =
+        isBuiltType && !isTypeOverride
+            ? "${g.name} = ${g.name}${isNullable ? '?' : ''}.toBuilder()"
+            : "${g.name} = ${g.name}";
 
     return assignment;
   });
 
   // Construct the factory method
   return Constructor(
-    (b) => b
-      ..factory = true
-      ..name = "create"
-      ..lambda = true
-      ..optionalParameters = ListBuilder(factoryParameters)
-      ..body = assignments.isEmpty
-          ? refer(className).call([]).code
-          : Code("${className}((b) => b..${assignments.join('..')})"),
+    (b) =>
+        b
+          ..factory = true
+          ..name = "create"
+          ..lambda = true
+          ..optionalParameters = ListBuilder(factoryParameters)
+          ..body =
+              assignments.isEmpty
+                  ? refer(className).call([]).code
+                  : Code("${className}((b) => b..${assignments.join('..')})"),
   );
 }

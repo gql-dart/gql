@@ -7,71 +7,70 @@ Map<NameNode, TypeNode> fragmentVarTypes({
   required FragmentDefinitionNode fragment,
   required Map<String, FragmentDefinitionNode> fragmentMap,
   required DocumentNode schema,
-}) =>
-    _varTypesForSelections(
-      fragmentMap: fragmentMap,
-      selections: fragment.selectionSet.selections,
-      parentType: fragment.typeCondition.on,
-      schema: schema,
-    );
+}) => _varTypesForSelections(
+  fragmentMap: fragmentMap,
+  selections: fragment.selectionSet.selections,
+  parentType: fragment.typeCondition.on,
+  schema: schema,
+);
 
 Map<NameNode, TypeNode> _varTypesForSelections({
   required List<SelectionNode> selections,
   required Map<String, FragmentDefinitionNode> fragmentMap,
   required NamedTypeNode parentType,
   required DocumentNode schema,
-}) =>
-    selections.fold({}, (argMap, selection) {
-      if (selection is FieldNode) {
-        return {
-          ...argMap,
-          ..._varTypesForField(
-            field: selection,
-            parentType: parentType,
-            schema: schema,
-          ),
-          if (selection.selectionSet != null)
-            ..._varTypesForSelections(
-              selections: selection.selectionSet!.selections,
-              fragmentMap: fragmentMap,
-              parentType: unwrapTypeNode(
-                _fieldDefinition(
-                  field: selection,
-                  parentType: parentType,
-                  schema: schema,
-                ).type,
-              ),
+}) => selections.fold({}, (argMap, selection) {
+  if (selection is FieldNode) {
+    return {
+      ...argMap,
+      ..._varTypesForField(
+        field: selection,
+        parentType: parentType,
+        schema: schema,
+      ),
+      if (selection.selectionSet != null)
+        ..._varTypesForSelections(
+          selections: selection.selectionSet!.selections,
+          fragmentMap: fragmentMap,
+          parentType: unwrapTypeNode(
+            _fieldDefinition(
+              field: selection,
+              parentType: parentType,
               schema: schema,
-            )
-        };
-      } else if (selection is InlineFragmentNode) {
-        return {
-          ...argMap,
-          ..._varTypesForSelections(
-            selections: selection.selectionSet.selections,
-            fragmentMap: fragmentMap,
-            parentType: selection.typeCondition?.on ?? parentType,
-            schema: schema,
+            ).type,
           ),
-        };
-      } else if (selection is FragmentSpreadNode) {
-        final fragment = fragmentMap[selection.name.value];
-        if (fragment == null) {
-          throw Exception(
-              "Missing fragment definition for ${selection.name.value}");
-        }
-        return {
-          ...argMap,
-          ..._varTypesForSelections(
-            fragmentMap: fragmentMap,
-            selections: fragment.selectionSet.selections,
-            parentType: fragment.typeCondition.on,
-            schema: schema,
-          ),
-        };
-      }
-      throw Exception("Unrecognized SelectionNode Type");
-    });
+          schema: schema,
+        ),
+    };
+  } else if (selection is InlineFragmentNode) {
+    return {
+      ...argMap,
+      ..._varTypesForSelections(
+        selections: selection.selectionSet.selections,
+        fragmentMap: fragmentMap,
+        parentType: selection.typeCondition?.on ?? parentType,
+        schema: schema,
+      ),
+    };
+  } else if (selection is FragmentSpreadNode) {
+    final fragment = fragmentMap[selection.name.value];
+    if (fragment == null) {
+      throw Exception(
+        "Missing fragment definition for ${selection.name.value}",
+      );
+    }
+    return {
+      ...argMap,
+      ..._varTypesForSelections(
+        fragmentMap: fragmentMap,
+        selections: fragment.selectionSet.selections,
+        parentType: fragment.typeCondition.on,
+        schema: schema,
+      ),
+    };
+  }
+  throw Exception("Unrecognized SelectionNode Type");
+});
 
 /// Returns a map of a field's argument variables to their respective types from the schema
 Map<NameNode, TypeNode> _varTypesForField({
@@ -90,18 +89,21 @@ Map<NameNode, TypeNode> _varTypesForField({
   return {
     for (final arg in field.arguments)
       if (arg.value is VariableNode)
-        arg.name: fieldDef.args
-            .firstWhere((inputVal) => inputVal.name == arg.name)
-            .type
+        arg.name:
+            fieldDef.args
+                .firstWhere((inputVal) => inputVal.name == arg.name)
+                .type
       else if (arg.value is ObjectValueNode)
         ..._varTypesForObjectValue(
           argName: arg.name,
           objectValue: arg.value as ObjectValueNode,
           schema: schema,
-          parentType: unwrapTypeNode(fieldDef.args
-              .firstWhere((inputVal) => inputVal.name == arg.name)
-              .type),
-        )
+          parentType: unwrapTypeNode(
+            fieldDef.args
+                .firstWhere((inputVal) => inputVal.name == arg.name)
+                .type,
+          ),
+        ),
   };
 }
 
@@ -120,18 +122,21 @@ Map<NameNode, TypeNode> _varTypesForObjectValue({
     return {
       for (final field in objectValue.fields)
         if (field.value is VariableNode)
-          (field.value as VariableNode).name: parentTypeDef.fields
-              .firstWhere((inputVal) => inputVal.name == field.name)
-              .type
+          (field.value as VariableNode).name:
+              parentTypeDef.fields
+                  .firstWhere((inputVal) => inputVal.name == field.name)
+                  .type
         else if (field.value is ObjectValueNode)
           ..._varTypesForObjectValue(
             argName: field.name,
             objectValue: field.value as ObjectValueNode,
             schema: schema,
-            parentType: unwrapTypeNode(parentTypeDef.fields
-                .firstWhere((inputVal) => inputVal.name == field.name)
-                .type),
-          )
+            parentType: unwrapTypeNode(
+              parentTypeDef.fields
+                  .firstWhere((inputVal) => inputVal.name == field.name)
+                  .type,
+            ),
+          ),
     };
   } else {
     return {};
@@ -152,5 +157,6 @@ FieldDefinitionNode _fieldDefinition({
     return parentTypeDef.fields.firstWhere((node) => node.name == field.name);
   }
   throw Exception(
-      "Parent type definition '${parentTypeDef.runtimeType}' is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
+    "Parent type definition '${parentTypeDef.runtimeType}' is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode",
+  );
 }

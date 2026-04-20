@@ -6,19 +6,19 @@ Library buildSerializerLibrary(
   String partDirectiveUrl,
   Set<Expression> additionalSerializers, {
   Expression? externalSerializers,
-}) =>
-    Library(
-      (b) => b
+}) => Library(
+  (b) =>
+      b
         ..directives.add(Directive.part(partDirectiveUrl))
         ..body.addAll([
           declareFinal(
-            "_serializersBuilder",
-            type: refer(
-                "SerializersBuilder", "package:built_value/serializer.dart"),
-          )
-              .assign(
-                refer(r"_$serializers"),
+                "_serializersBuilder",
+                type: refer(
+                  "SerializersBuilder",
+                  "package:built_value/serializer.dart",
+                ),
               )
+              .assign(refer(r"_$serializers"))
               .property("toBuilder")
               .call([])
               .withCustomSerializers(additionalSerializers)
@@ -31,7 +31,7 @@ Library buildSerializerLibrary(
                 refer(
                   "StandardJsonPlugin",
                   "package:built_value/standard_json_plugin.dart",
-                ).call([])
+                ).call([]),
               ])
               .statement,
           refer("@SerializersFor", "package:built_value/serializer.dart").call([
@@ -42,27 +42,27 @@ Library buildSerializerLibrary(
                   )
                   .toList()
                 ..sort((a, b) => a.symbol!.compareTo(b.symbol!)),
-            )
+            ),
           ]),
-          declareFinal("serializers",
-                  type: refer(
-                      "Serializers", "package:built_value/serializer.dart"))
+          declareFinal(
+                "serializers",
+                type: refer(
+                  "Serializers",
+                  "package:built_value/serializer.dart",
+                ),
+              )
               .assign(refer("_serializersBuilder"))
               .property("build")
-              .call([]).statement,
+              .call([])
+              .statement,
         ]),
-    );
+);
 
 extension on Expression {
-  Expression applyIf(
-    bool condition,
-    Expression Function(Expression) wrap,
-  ) =>
+  Expression applyIf(bool condition, Expression Function(Expression) wrap) =>
       condition ? wrap(this) : this;
 
-  Expression withCustomSerializers(
-    Set<Expression> customSerializers,
-  ) =>
+  Expression withCustomSerializers(Set<Expression> customSerializers) =>
       customSerializers.fold(
         this,
         (exp, serializer) => exp.cascade("add").call([serializer]),

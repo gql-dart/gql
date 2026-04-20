@@ -6,9 +6,10 @@ String toCamelCase(String name) {
     if (char == "_") {
       upperCase = true;
     } else {
-      result += firstCharacter
-          ? char.toLowerCase()
-          : (upperCase ? char.toUpperCase() : char);
+      result +=
+          firstCharacter
+              ? char.toLowerCase()
+              : (upperCase ? char.toUpperCase() : char);
       upperCase = false;
       firstCharacter = false;
     }

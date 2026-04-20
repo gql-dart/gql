@@ -8,5 +8,6 @@ class EnumFallbackConfig {
     this.globalEnumFallbackName,
     required this.fallbackValueMap,
   }) : assert(
-            !generateFallbackValuesGlobally || globalEnumFallbackName != null);
+         !generateFallbackValuesGlobally || globalEnumFallbackName != null,
+       );
 }

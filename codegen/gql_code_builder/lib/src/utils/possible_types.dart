@@ -23,12 +23,15 @@ extension PossibleTypes on DocumentNode {
         }
       }
     }
-    return possibleTypes.map((key, value) => MapEntry<String, Set<String>>(
+    return possibleTypes.map(
+      (key, value) => MapEntry<String, Set<String>>(
         key,
         value
             .expand<ObjectTypeDefinitionNode>(_lookupConcreteTypes)
             .map((e) => e.name.value)
-            .toSet()));
+            .toSet(),
+      ),
+    );
   }
 
   Iterable<ObjectTypeDefinitionNode> _lookupConcreteTypes(String name) {
@@ -37,16 +40,18 @@ extension PossibleTypes on DocumentNode {
       return [typeDefinition];
     }
     if (typeDefinition is UnionTypeDefinitionNode) {
-      return typeDefinition.types
-          .expand((e) => _lookupConcreteTypes(e.name.value));
+      return typeDefinition.types.expand(
+        (e) => _lookupConcreteTypes(e.name.value),
+      );
     }
 
     if (typeDefinition is InterfaceTypeDefinitionNode) {
       return definitions.whereType<ObjectTypeDefinitionNode>().where(
-            (element) => element.interfaces
+        (element) =>
+            element.interfaces
                 .where((element) => element.name.value == name)
                 .isNotEmpty,
-          );
+      );
     }
 
     return [];
@@ -70,9 +75,9 @@ final _memoizedTypeDefinitionsOf = _memo1(_typeDefinitionsOf);
 
 Map<String, TypeDefinitionNode> _typeDefinitionsOf(DocumentNode schema) =>
     Map.fromEntries(
-      schema.definitions
-          .whereType<TypeDefinitionNode>()
-          .map((e) => MapEntry(e.name.value, e)),
+      schema.definitions.whereType<TypeDefinitionNode>().map(
+        (e) => MapEntry(e.name.value, e),
+      ),
     );
 
 /// Checks 1 argument for equality with [==] operator and returns the cached

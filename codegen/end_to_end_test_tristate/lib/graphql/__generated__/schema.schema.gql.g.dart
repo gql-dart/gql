@@ -225,7 +225,7 @@ class _$GCustomFieldInput extends GCustomFieldInput {
   @override
   final String id;
   @override
-  final _i1.Value<_i3.CustomField> customField;
+  final _i1.Value<_i2.CustomField> customField;
 
   factory _$GCustomFieldInput(
           [void Function(GCustomFieldInputBuilder)? updates]) =>
@@ -275,9 +275,9 @@ class GCustomFieldInputBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  _i1.Value<_i3.CustomField>? _customField;
-  _i1.Value<_i3.CustomField>? get customField => _$this._customField;
-  set customField(_i1.Value<_i3.CustomField>? customField) =>
+  _i1.Value<_i2.CustomField>? _customField;
+  _i1.Value<_i2.CustomField>? get customField => _$this._customField;
+  set customField(_i1.Value<_i2.CustomField>? customField) =>
       _$this._customField = customField;
 
   GCustomFieldInputBuilder() {
