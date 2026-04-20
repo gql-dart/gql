@@ -29,6 +29,11 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Configure Git for safe directory
+        run: |
+          git config --global --add safe.directory /__w/gql/gql
+          git config --global --add safe.directory /__w/gql
+
       - name: Checkout repository
         uses: actions/checkout@v4
         
@@ -79,6 +84,11 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Configure Git for safe directory
+        run: |
+          git config --global --add safe.directory /__w/gql/gql
+          git config --global --add safe.directory /__w/gql
+
       - name: Checkout repository
         uses: actions/checkout@v4
         
@@ -121,6 +131,11 @@ jobs:
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
+      - name: Configure Git for safe directory
+        run: |
+          git config --global --add safe.directory /__w/gql/gql
+          git config --global --add safe.directory /__w/gql
+
       - name: Checkout repository
         uses: actions/checkout@v4
         
