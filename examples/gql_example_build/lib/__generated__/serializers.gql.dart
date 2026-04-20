@@ -23,11 +23,10 @@ import 'package:gql_example_build/kitchen_sink/__generated__/query.var.gql.dart'
 
 part 'serializers.gql.g.dart';
 
-final SerializersBuilder _serializersBuilder =
-    _$serializers.toBuilder()
-      ..add(OperationSerializer())
-      ..add(GShapeData_shape.serializer)
-      ..addPlugin(StandardJsonPlugin());
+final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
+  ..add(OperationSerializer())
+  ..add(GShapeData_shape.serializer)
+  ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GEnum,
   GInput,

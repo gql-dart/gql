@@ -2,609 +2,330 @@ import "package:code_builder/code_builder.dart";
 import "package:gql/ast.dart";
 
 /// Generates Dart [Expression] from any AST [node].
-Expression fromNode(
-  Node node,
-) =>
-    node.accept(
-      const _PrintVisitor(),
-    );
+Expression fromNode(Node node) => node.accept(const _PrintVisitor());
 
-Reference _ref(
-  String node,
-) =>
-    refer(
-      node,
-      "package:gql/ast.dart",
-    );
+Reference _ref(String node) => refer(node, "package:gql/ast.dart");
 
 Expression _node(
   String node, [
   Map<String, Expression> namedArguments = const {},
-]) =>
-    _ref(
-      node,
-    ).call(
-      [],
-      namedArguments,
-    );
+]) => _ref(node).call([], namedArguments);
 
 class _PrintVisitor extends Visitor<Expression> {
   const _PrintVisitor();
-  Expression _acceptOne(
-    Node? node,
-  ) =>
+  Expression _acceptOne(Node? node) =>
       node != null ? node.accept(this) : literalNull;
 
-  List<Expression> _acceptMany(
-    List<Node> nodes,
-  ) =>
-      nodes.map(_acceptOne).toList(
-            growable: false,
-          );
+  List<Expression> _acceptMany(List<Node> nodes) =>
+      nodes.map(_acceptOne).toList(growable: false);
 
-  Expression _list(
-    List<Node>? nodes,
-  ) =>
-      nodes != null
-          ? literalList(
-              _acceptMany(nodes),
-            )
-          : literalNull;
+  Expression _list(List<Node>? nodes) =>
+      nodes != null ? literalList(_acceptMany(nodes)) : literalNull;
 
   @override
-  Expression visitArgumentNode(
-    ArgumentNode node,
-  ) =>
-      _node(
-        "ArgumentNode",
-        {
-          "name": _acceptOne(node.name),
-          "value": _acceptOne(node.value),
-        },
-      );
+  Expression visitArgumentNode(ArgumentNode node) => _node("ArgumentNode", {
+    "name": _acceptOne(node.name),
+    "value": _acceptOne(node.value),
+  });
 
   @override
-  Expression visitBooleanValueNode(
-    BooleanValueNode node,
-  ) =>
-      _node(
-        "BooleanValueNode",
-        {
-          "value": literalBool(node.value),
-        },
-      );
+  Expression visitBooleanValueNode(BooleanValueNode node) =>
+      _node("BooleanValueNode", {"value": literalBool(node.value)});
 
   @override
-  Expression visitDefaultValueNode(
-    DefaultValueNode node,
-  ) =>
-      _node(
-        "DefaultValueNode",
-        {
-          "value": _acceptOne(node.value),
-        },
-      );
+  Expression visitDefaultValueNode(DefaultValueNode node) =>
+      _node("DefaultValueNode", {"value": _acceptOne(node.value)});
 
   @override
-  Expression visitDirectiveDefinitionNode(
-    DirectiveDefinitionNode node,
-  ) =>
-      _node(
-        "DirectiveDefinitionNode",
-        {
-//          "description": _acceptOne(node.description),
-          "name": _acceptOne(node.name),
-          "args": _list(node.args),
-          "locations": literalList(
-            node.locations.map(_directiveLocation),
-          ),
-          "repeatable": literalBool(node.repeatable),
-        },
-      );
+  Expression visitDirectiveDefinitionNode(DirectiveDefinitionNode node) =>
+      _node("DirectiveDefinitionNode", {
+        //          "description": _acceptOne(node.description),
+        "name": _acceptOne(node.name),
+        "args": _list(node.args),
+        "locations": literalList(node.locations.map(_directiveLocation)),
+        "repeatable": literalBool(node.repeatable),
+      });
 
   @override
-  Expression visitDirectiveNode(
-    DirectiveNode node,
-  ) =>
-      _node(
-        "DirectiveNode",
-        {
-          "name": _acceptOne(node.name),
-          "arguments": _list(node.arguments),
-        },
-      );
+  Expression visitDirectiveNode(DirectiveNode node) => _node("DirectiveNode", {
+    "name": _acceptOne(node.name),
+    "arguments": _list(node.arguments),
+  });
 
   @override
-  Expression visitDocumentNode(
-    DocumentNode node,
-  ) =>
-      _node(
-        "DocumentNode",
-        {
-          "definitions": _list(node.definitions),
-        },
-      );
+  Expression visitDocumentNode(DocumentNode node) =>
+      _node("DocumentNode", {"definitions": _list(node.definitions)});
 
   @override
-  Expression visitEnumTypeDefinitionNode(
-    EnumTypeDefinitionNode node,
-  ) =>
-      _node(
-        "EnumTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "values": _list(node.values),
-        },
-      );
+  Expression visitEnumTypeDefinitionNode(EnumTypeDefinitionNode node) =>
+      _node("EnumTypeDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+        "values": _list(node.values),
+      });
 
   @override
-  Expression visitEnumTypeExtensionNode(
-    EnumTypeExtensionNode node,
-  ) =>
-      _node(
-        "EnumTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-          "values": _list(node.values),
-        },
-      );
+  Expression visitEnumTypeExtensionNode(EnumTypeExtensionNode node) =>
+      _node("EnumTypeExtensionNode", {
+        "name": _acceptOne(node.name),
+        "directives": _list(node.directives),
+        "values": _list(node.values),
+      });
 
   @override
-  Expression visitEnumValueDefinitionNode(
-    EnumValueDefinitionNode node,
-  ) =>
-      _node(
-        "EnumValueDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-        },
-      );
+  Expression visitEnumValueDefinitionNode(EnumValueDefinitionNode node) =>
+      _node("EnumValueDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+      });
 
   @override
-  Expression visitEnumValueNode(
-    EnumValueNode node,
-  ) =>
-      _node(
-        "EnumValueNode",
-        {
-          "name": _acceptOne(node.name),
-        },
-      );
+  Expression visitEnumValueNode(EnumValueNode node) =>
+      _node("EnumValueNode", {"name": _acceptOne(node.name)});
 
   @override
-  Expression visitFieldDefinitionNode(
-    FieldDefinitionNode node,
-  ) =>
-      _node(
-        "FieldDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "args": _list(node.args),
-          "type": _acceptOne(node.type),
-        },
-      );
+  Expression visitFieldDefinitionNode(FieldDefinitionNode node) =>
+      _node("FieldDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+        "args": _list(node.args),
+        "type": _acceptOne(node.type),
+      });
 
   @override
-  Expression visitFieldNode(
-    FieldNode node,
-  ) =>
-      _node(
-        "FieldNode",
-        {
-          "name": _acceptOne(node.name),
-          "alias": _acceptOne(node.alias),
-          "arguments": _list(node.arguments),
-          "directives": _list(node.directives),
-          "selectionSet": _acceptOne(node.selectionSet),
-        },
-      );
+  Expression visitFieldNode(FieldNode node) => _node("FieldNode", {
+    "name": _acceptOne(node.name),
+    "alias": _acceptOne(node.alias),
+    "arguments": _list(node.arguments),
+    "directives": _list(node.directives),
+    "selectionSet": _acceptOne(node.selectionSet),
+  });
 
   @override
-  Expression visitFloatValueNode(
-    FloatValueNode node,
-  ) =>
-      _node(
-        "FloatValueNode",
-        {
-          "value": literalString(node.value),
-        },
-      );
+  Expression visitFloatValueNode(FloatValueNode node) =>
+      _node("FloatValueNode", {"value": literalString(node.value)});
 
   @override
-  Expression visitFragmentDefinitionNode(
-    FragmentDefinitionNode node,
-  ) =>
-      _node(
-        "FragmentDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-          "typeCondition": _acceptOne(node.typeCondition),
-          "directives": _list(node.directives),
-          "selectionSet": _acceptOne(node.selectionSet),
-        },
-      );
+  Expression visitFragmentDefinitionNode(FragmentDefinitionNode node) =>
+      _node("FragmentDefinitionNode", {
+        "name": _acceptOne(node.name),
+        "typeCondition": _acceptOne(node.typeCondition),
+        "directives": _list(node.directives),
+        "selectionSet": _acceptOne(node.selectionSet),
+      });
 
   @override
-  Expression visitFragmentSpreadNode(
-    FragmentSpreadNode node,
-  ) =>
-      _node(
-        "FragmentSpreadNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-        },
-      );
+  Expression visitFragmentSpreadNode(FragmentSpreadNode node) => _node(
+    "FragmentSpreadNode",
+    {"name": _acceptOne(node.name), "directives": _list(node.directives)},
+  );
 
   @override
-  Expression visitInlineFragmentNode(
-    InlineFragmentNode node,
-  ) =>
-      _node(
-        "InlineFragmentNode",
-        {
-          "typeCondition": _acceptOne(node.typeCondition),
-          "directives": _list(node.directives),
-          "selectionSet": _acceptOne(node.selectionSet),
-        },
-      );
+  Expression visitInlineFragmentNode(InlineFragmentNode node) =>
+      _node("InlineFragmentNode", {
+        "typeCondition": _acceptOne(node.typeCondition),
+        "directives": _list(node.directives),
+        "selectionSet": _acceptOne(node.selectionSet),
+      });
 
   @override
   Expression visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
-  ) =>
-      _node(
-        "InputObjectTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "fields": _list(node.fields),
-        },
-      );
+  ) => _node("InputObjectTypeDefinitionNode", {
+    "name": _acceptOne(node.name),
+    //          "description": _acceptOne(node.description),
+    "directives": _list(node.directives),
+    "fields": _list(node.fields),
+  });
 
   @override
   Expression visitInputObjectTypeExtensionNode(
     InputObjectTypeExtensionNode node,
-  ) =>
-      _node(
-        "InputObjectTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-          "fields": _list(node.fields),
-        },
-      );
+  ) => _node("InputObjectTypeExtensionNode", {
+    "name": _acceptOne(node.name),
+    "directives": _list(node.directives),
+    "fields": _list(node.fields),
+  });
 
   @override
-  Expression visitInputValueDefinitionNode(
-    InputValueDefinitionNode node,
-  ) =>
-      _node(
-        "InputValueDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "type": _acceptOne(node.type),
-          "defaultValue": _acceptOne(node.defaultValue),
-        },
-      );
+  Expression visitInputValueDefinitionNode(InputValueDefinitionNode node) =>
+      _node("InputValueDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+        "type": _acceptOne(node.type),
+        "defaultValue": _acceptOne(node.defaultValue),
+      });
 
   @override
-  Expression visitIntValueNode(
-    IntValueNode node,
-  ) =>
-      _node(
-        "IntValueNode",
-        {
-          "value": literalString(node.value),
-        },
-      );
+  Expression visitIntValueNode(IntValueNode node) =>
+      _node("IntValueNode", {"value": literalString(node.value)});
 
   @override
   Expression visitInterfaceTypeDefinitionNode(
     InterfaceTypeDefinitionNode node,
-  ) =>
-      _node(
-        "InterfaceTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "interfaces": _list(node.interfaces),
-          "fields": _list(node.fields),
-        },
-      );
+  ) => _node("InterfaceTypeDefinitionNode", {
+    "name": _acceptOne(node.name),
+    //          "description": _acceptOne(node.description),
+    "directives": _list(node.directives),
+    "interfaces": _list(node.interfaces),
+    "fields": _list(node.fields),
+  });
 
   @override
-  Expression visitInterfaceTypeExtensionNode(
-    InterfaceTypeExtensionNode node,
-  ) =>
-      _node(
-        "InterfaceTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-          "interfaces": _list(node.interfaces),
-          "fields": _list(node.fields),
-        },
-      );
+  Expression visitInterfaceTypeExtensionNode(InterfaceTypeExtensionNode node) =>
+      _node("InterfaceTypeExtensionNode", {
+        "name": _acceptOne(node.name),
+        "directives": _list(node.directives),
+        "interfaces": _list(node.interfaces),
+        "fields": _list(node.fields),
+      });
 
   @override
-  Expression visitListTypeNode(
-    ListTypeNode node,
-  ) =>
-      _node(
-        "ListTypeNode",
-        {
-          "type": _acceptOne(node.type),
-          "isNonNull": literalBool(node.isNonNull),
-        },
-      );
+  Expression visitListTypeNode(ListTypeNode node) => _node("ListTypeNode", {
+    "type": _acceptOne(node.type),
+    "isNonNull": literalBool(node.isNonNull),
+  });
 
   @override
-  Expression visitListValueNode(
-    ListValueNode node,
-  ) =>
-      _node(
-        "ListValueNode",
-        {
-          "values": _list(node.values),
-        },
-      );
+  Expression visitListValueNode(ListValueNode node) =>
+      _node("ListValueNode", {"values": _list(node.values)});
 
   @override
-  Expression visitNameNode(
-    NameNode node,
-  ) =>
-      _node(
-        "NameNode",
-        {
-          "value": literalString(node.value),
-        },
-      );
+  Expression visitNameNode(NameNode node) =>
+      _node("NameNode", {"value": literalString(node.value)});
 
   @override
-  Expression visitNamedTypeNode(
-    NamedTypeNode node,
-  ) =>
-      _node(
-        "NamedTypeNode",
-        {
-          "name": _acceptOne(node.name),
-          "isNonNull": literalBool(node.isNonNull),
-        },
-      );
+  Expression visitNamedTypeNode(NamedTypeNode node) => _node("NamedTypeNode", {
+    "name": _acceptOne(node.name),
+    "isNonNull": literalBool(node.isNonNull),
+  });
 
   @override
-  Expression visitNullValueNode(
-    NullValueNode node,
-  ) =>
-      _node(
-        "NullValueNode",
-      );
+  Expression visitNullValueNode(NullValueNode node) => _node("NullValueNode");
 
   @override
-  Expression visitObjectFieldNode(
-    ObjectFieldNode node,
-  ) =>
-      _node(
-        "ObjectFieldNode",
-        {
-          "name": _acceptOne(node.name),
-          "value": _acceptOne(node.value),
-        },
-      );
+  Expression visitObjectFieldNode(ObjectFieldNode node) => _node(
+    "ObjectFieldNode",
+    {"name": _acceptOne(node.name), "value": _acceptOne(node.value)},
+  );
 
   @override
-  Expression visitObjectTypeDefinitionNode(
-    ObjectTypeDefinitionNode node,
-  ) =>
-      _node(
-        "ObjectTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "interfaces": _list(node.interfaces),
-          "fields": _list(node.fields),
-        },
-      );
+  Expression visitObjectTypeDefinitionNode(ObjectTypeDefinitionNode node) =>
+      _node("ObjectTypeDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+        "interfaces": _list(node.interfaces),
+        "fields": _list(node.fields),
+      });
 
   @override
-  Expression visitObjectTypeExtensionNode(
-    ObjectTypeExtensionNode node,
-  ) =>
-      _node(
-        "ObjectTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-          "interfaces": _list(node.interfaces),
-          "fields": _list(node.fields),
-        },
-      );
+  Expression visitObjectTypeExtensionNode(ObjectTypeExtensionNode node) =>
+      _node("ObjectTypeExtensionNode", {
+        "name": _acceptOne(node.name),
+        "directives": _list(node.directives),
+        "interfaces": _list(node.interfaces),
+        "fields": _list(node.fields),
+      });
 
   @override
-  Expression visitObjectValueNode(
-    ObjectValueNode node,
-  ) =>
-      _node(
-        "ObjectValueNode",
-        {
-          "fields": _list(node.fields),
-        },
-      );
+  Expression visitObjectValueNode(ObjectValueNode node) =>
+      _node("ObjectValueNode", {"fields": _list(node.fields)});
 
   @override
-  Expression visitOperationDefinitionNode(
-    OperationDefinitionNode node,
-  ) =>
-      _node(
-        "OperationDefinitionNode",
-        {
-          "type": _opType(node.type),
-          "name": _acceptOne(node.name),
-          "variableDefinitions": _list(node.variableDefinitions),
-          "directives": _list(node.directives),
-          "selectionSet": _acceptOne(node.selectionSet),
-        },
-      );
+  Expression visitOperationDefinitionNode(OperationDefinitionNode node) =>
+      _node("OperationDefinitionNode", {
+        "type": _opType(node.type),
+        "name": _acceptOne(node.name),
+        "variableDefinitions": _list(node.variableDefinitions),
+        "directives": _list(node.directives),
+        "selectionSet": _acceptOne(node.selectionSet),
+      });
 
   @override
   Expression visitOperationTypeDefinitionNode(
     OperationTypeDefinitionNode node,
-  ) =>
-      _node(
-        "OperationTypeDefinitionNode",
-        {
-          "operation": _opType(node.operation),
-          "type": _acceptOne(node.type),
-        },
-      );
+  ) => _node("OperationTypeDefinitionNode", {
+    "operation": _opType(node.operation),
+    "type": _acceptOne(node.type),
+  });
 
   @override
-  Expression visitScalarTypeDefinitionNode(
-    ScalarTypeDefinitionNode node,
-  ) =>
-      _node(
-        "ScalarTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-        },
-      );
+  Expression visitScalarTypeDefinitionNode(ScalarTypeDefinitionNode node) =>
+      _node("ScalarTypeDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+      });
 
   @override
-  Expression visitScalarTypeExtensionNode(
-    ScalarTypeExtensionNode node,
-  ) =>
-      _node(
-        "ScalarTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-        },
-      );
+  Expression visitScalarTypeExtensionNode(ScalarTypeExtensionNode node) =>
+      _node("ScalarTypeExtensionNode", {
+        "name": _acceptOne(node.name),
+        "directives": _list(node.directives),
+      });
 
   @override
-  Expression visitSchemaDefinitionNode(
-    SchemaDefinitionNode node,
-  ) =>
-      _node(
-        "SchemaDefinitionNode",
-        {
-          "directives": _list(node.directives),
-          "operationTypes": _list(node.operationTypes),
-        },
-      );
+  Expression visitSchemaDefinitionNode(SchemaDefinitionNode node) =>
+      _node("SchemaDefinitionNode", {
+        "directives": _list(node.directives),
+        "operationTypes": _list(node.operationTypes),
+      });
 
   @override
-  Expression visitSchemaExtensionNode(
-    SchemaExtensionNode node,
-  ) =>
-      _node(
-        "SchemaExtensionNode",
-        {
-          "directives": _list(node.directives),
-          "operationTypes": _list(node.operationTypes),
-        },
-      );
+  Expression visitSchemaExtensionNode(SchemaExtensionNode node) =>
+      _node("SchemaExtensionNode", {
+        "directives": _list(node.directives),
+        "operationTypes": _list(node.operationTypes),
+      });
 
   @override
-  Expression visitSelectionSetNode(
-    SelectionSetNode node,
-  ) =>
-      _node(
-        "SelectionSetNode",
-        {
-          "selections": _list(node.selections),
-        },
-      );
+  Expression visitSelectionSetNode(SelectionSetNode node) =>
+      _node("SelectionSetNode", {"selections": _list(node.selections)});
 
   @override
-  Expression visitStringValueNode(
-    StringValueNode node,
-  ) =>
-      _node(
-        "StringValueNode",
-        {
-          "value": literalString(node.value),
-          "isBlock": literalBool(node.isBlock),
-        },
-      );
+  Expression visitStringValueNode(StringValueNode node) => _node(
+    "StringValueNode",
+    {"value": literalString(node.value), "isBlock": literalBool(node.isBlock)},
+  );
 
   @override
-  Expression visitTypeConditionNode(
-    TypeConditionNode node,
-  ) =>
-      _node(
-        "TypeConditionNode",
-        {
-          "on": _acceptOne(node.on),
-        },
-      );
+  Expression visitTypeConditionNode(TypeConditionNode node) =>
+      _node("TypeConditionNode", {"on": _acceptOne(node.on)});
 
   @override
-  Expression visitUnionTypeDefinitionNode(
-    UnionTypeDefinitionNode node,
-  ) =>
-      _node(
-        "UnionTypeDefinitionNode",
-        {
-          "name": _acceptOne(node.name),
-//          "description": _acceptOne(node.description),
-          "directives": _list(node.directives),
-          "types": _list(node.types),
-        },
-      );
+  Expression visitUnionTypeDefinitionNode(UnionTypeDefinitionNode node) =>
+      _node("UnionTypeDefinitionNode", {
+        "name": _acceptOne(node.name),
+        //          "description": _acceptOne(node.description),
+        "directives": _list(node.directives),
+        "types": _list(node.types),
+      });
 
   @override
-  Expression visitUnionTypeExtensionNode(
-    UnionTypeExtensionNode node,
-  ) =>
-      _node(
-        "UnionTypeExtensionNode",
-        {
-          "name": _acceptOne(node.name),
-          "directives": _list(node.directives),
-          "types": _list(node.types),
-        },
-      );
+  Expression visitUnionTypeExtensionNode(UnionTypeExtensionNode node) =>
+      _node("UnionTypeExtensionNode", {
+        "name": _acceptOne(node.name),
+        "directives": _list(node.directives),
+        "types": _list(node.types),
+      });
 
   @override
-  Expression visitVariableDefinitionNode(
-    VariableDefinitionNode node,
-  ) =>
-      _node(
-        "VariableDefinitionNode",
-        {
-          "variable": _acceptOne(node.variable),
-          "type": _acceptOne(node.type),
-          "defaultValue": _acceptOne(node.defaultValue),
-          "directives": _list(node.directives),
-        },
-      );
+  Expression visitVariableDefinitionNode(VariableDefinitionNode node) =>
+      _node("VariableDefinitionNode", {
+        "variable": _acceptOne(node.variable),
+        "type": _acceptOne(node.type),
+        "defaultValue": _acceptOne(node.defaultValue),
+        "directives": _list(node.directives),
+      });
 
   @override
-  Expression visitVariableNode(
-    VariableNode node,
-  ) =>
-      _node(
-        "VariableNode",
-        {
-          "name": _acceptOne(node.name),
-        },
-      );
+  Expression visitVariableNode(VariableNode node) =>
+      _node("VariableNode", {"name": _acceptOne(node.name)});
 }
 
 Expression _opType(OperationType t) {

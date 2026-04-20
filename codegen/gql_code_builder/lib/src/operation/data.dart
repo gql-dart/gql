@@ -23,15 +23,9 @@ List<Spec> buildOperationDataClasses(
 
   return buildSelectionSetDataClasses(
     name: "${op.name!.value}Data",
-    selections: mergeSelections(
-      op.selectionSet.selections,
-      fragmentMap,
-    ),
+    selections: mergeSelections(op.selectionSet.selections, fragmentMap),
     schemaSource: schemaSource,
-    type: _operationType(
-      schemaSource.document,
-      op,
-    ),
+    type: _operationType(schemaSource.document, op),
     typeOverrides: typeOverrides,
     fragmentMap: fragmentMap,
     dataClassAliasMap: dataClassAliasMap,
@@ -49,10 +43,7 @@ List<Spec> buildFragmentDataClasses(
   Map<String, SourceSelections> fragmentMap,
   Map<String, Reference> dataClassAliasMap,
 ) {
-  final selections = mergeSelections(
-    frag.selectionSet.selections,
-    fragmentMap,
-  );
+  final selections = mergeSelections(frag.selectionSet.selections, fragmentMap);
   return [
     // abstract class that will implemented by any class that uses the fragment
     ...buildSelectionSetDataClasses(
@@ -80,25 +71,20 @@ List<Spec> buildFragmentDataClasses(
         frag.name.value: SourceSelections(
           url: docSource.url,
           selections: selections,
-        )
+        ),
       },
       whenExtensionConfig: whenExtensionConfig,
     ),
   ];
 }
 
-String _operationType(
-  DocumentNode schema,
-  OperationDefinitionNode op,
-) {
+String _operationType(DocumentNode schema, OperationDefinitionNode op) {
   final schemaDefs = schema.definitions.whereType<SchemaDefinitionNode>();
 
   if (schemaDefs.isEmpty) return defaultRootTypes[op.type]!;
 
   return schemaDefs.first.operationTypes
-      .firstWhere(
-        (opType) => opType.operation == op.type,
-      )
+      .firstWhere((opType) => opType.operation == op.type)
       .type
       .name
       .value;
@@ -128,45 +114,42 @@ List<Spec> buildSelectionSetDataClasses({
   for (final selection in selections.whereType<FragmentSpreadNode>()) {
     if (!fragmentMap.containsKey(selection.name.value)) {
       throw Exception(
-          "Couldn't find fragment definition for fragment spread '${selection.name.value}'");
+        "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
+      );
     }
     superclassSelections["${selection.name.value}"] = SourceSelections(
       url: fragmentMap[selection.name.value]!.url,
-      selections: mergeSelections(
-        fragmentMap[selection.name.value]!.selections,
-        fragmentMap,
-      ).whereType<FieldNode>().toList(),
+      selections:
+          mergeSelections(
+            fragmentMap[selection.name.value]!.selections,
+            fragmentMap,
+          ).whereType<FieldNode>().toList(),
     );
   }
 
-  final superclassSelectionNodes = superclassSelections.values
-      .expand((selections) => selections.selections)
-      .toSet();
+  final superclassSelectionNodes =
+      superclassSelections.values
+          .expand((selections) => selections.selections)
+          .toSet();
 
-  final fieldGetters = selections.whereType<FieldNode>().map<Method>(
-    (node) {
-      final nameNode = node.alias ?? node.name;
-      final typeDef = getTypeDefinitionNode(
-        schemaSource.document,
-        type,
-      )!;
-      final typeNode = _getFieldTypeNode(
-        typeDef,
-        node.name.value,
-      );
-      return buildGetter(
-        nameNode: nameNode,
-        typeNode: typeNode,
-        schemaSource: schemaSource,
-        typeOverrides: typeOverrides,
-        typeRefAlias:
-            dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
-        typeRefPrefix: node.selectionSet != null ? builtClassName(name) : null,
-        built: built,
-        isOverride: superclassSelectionNodes.contains(node),
-      );
-    },
-  ).toList();
+  final fieldGetters =
+      selections.whereType<FieldNode>().map<Method>((node) {
+        final nameNode = node.alias ?? node.name;
+        final typeDef = getTypeDefinitionNode(schemaSource.document, type)!;
+        final typeNode = _getFieldTypeNode(typeDef, node.name.value);
+        return buildGetter(
+          nameNode: nameNode,
+          typeNode: typeNode,
+          schemaSource: schemaSource,
+          typeOverrides: typeOverrides,
+          typeRefAlias:
+              dataClassAliasMap[builtClassName("${name}_${nameNode.value}")],
+          typeRefPrefix:
+              node.selectionSet != null ? builtClassName(name) : null,
+          built: built,
+          isOverride: superclassSelectionNodes.contains(node),
+        );
+      }).toList();
 
   final inlineFragments = selections.whereType<InlineFragmentNode>().toList();
 
@@ -188,28 +171,33 @@ List<Spec> buildSelectionSetDataClasses({
       )
     else if (!built && dataClassAliasMap[name] == null)
       Class(
-        (b) => b
-          ..abstract = true
-          ..name = builtClassName(name)
-          ..implements.addAll(
-            superclassSelections.keys
-                .where((superName) =>
-                    !dataClassAliasMap.containsKey(builtClassName(superName)))
-                .map<Reference>(
-                  (superName) => refer(
-                    builtClassName(superName),
-                    (superclassSelections[superName]?.url ?? "") + "#data",
-                  ),
+        (b) =>
+            b
+              ..abstract = true
+              ..name = builtClassName(name)
+              ..implements.addAll(
+                superclassSelections.keys
+                    .where(
+                      (superName) =>
+                          !dataClassAliasMap.containsKey(
+                            builtClassName(superName),
+                          ),
+                    )
+                    .map<Reference>(
+                      (superName) => refer(
+                        builtClassName(superName),
+                        (superclassSelections[superName]?.url ?? "") + "#data",
+                      ),
+                    ),
+              )
+              ..methods.addAll([
+                ...fieldGetters,
+                buildToJsonGetter(
+                  builtClassName(name),
+                  implemented: false,
+                  isOverride: superclassSelections.isNotEmpty,
                 ),
-          )
-          ..methods.addAll([
-            ...fieldGetters,
-            buildToJsonGetter(
-              builtClassName(name),
-              implemented: false,
-              isOverride: superclassSelections.isNotEmpty,
-            ),
-          ]),
+              ]),
       )
     else
       builtClass(
@@ -228,8 +216,11 @@ List<Spec> buildSelectionSetDataClasses({
         .where(
           (field) =>
               field.selectionSet != null &&
-              !dataClassAliasMap.containsKey(builtClassName(
-                  "${name}_${field.alias?.value ?? field.name.value}")),
+              !dataClassAliasMap.containsKey(
+                builtClassName(
+                  "${name}_${field.alias?.value ?? field.name.value}",
+                ),
+              ),
         )
         .expand(
           (field) => buildSelectionSetDataClasses(
@@ -238,15 +229,13 @@ List<Spec> buildSelectionSetDataClasses({
             fragmentMap: fragmentMap,
             dataClassAliasMap: dataClassAliasMap,
             schemaSource: schemaSource,
-            type: unwrapTypeNode(
-              _getFieldTypeNode(
-                getTypeDefinitionNode(
-                  schemaSource.document,
-                  type,
-                )!,
-                field.name.value,
-              ),
-            ).name.value,
+            type:
+                unwrapTypeNode(
+                  _getFieldTypeNode(
+                    getTypeDefinitionNode(schemaSource.document, type)!,
+                    field.name.value,
+                  ),
+                ).name.value,
             typeOverrides: typeOverrides,
             superclassSelections: _fragmentSelectionsForField(
               superclassSelections,
@@ -273,8 +262,10 @@ List<SelectionNode> shrinkSelections(
         name: selection.name,
         alias: selection.alias,
         selectionSet: SelectionSetNode(
-          selections:
-              shrinkSelections(selection.selectionSet!.selections, fragmentMap),
+          selections: shrinkSelections(
+            selection.selectionSet!.selections,
+            fragmentMap,
+          ),
         ),
       );
     } else if (selection is InlineFragmentNode &&
@@ -285,8 +276,10 @@ List<SelectionNode> shrinkSelections(
         typeCondition: selection.typeCondition,
         directives: selection.directives,
         selectionSet: SelectionSetNode(
-          selections:
-              shrinkSelections(selection.selectionSet.selections, fragmentMap),
+          selections: shrinkSelections(
+            selection.selectionSet.selections,
+            fragmentMap,
+          ),
         ),
       );
     }
@@ -314,60 +307,53 @@ List<SelectionNode> mergeSelections(
   Map<String, SourceSelections> fragmentMap,
 ) =>
     _expandFragmentSpreads(selections, fragmentMap)
-        .fold<Map<String, SelectionNode>>(
-          {},
-          (selectionMap, selection) {
-            if (selection is FieldNode) {
-              final key = selection.alias?.value ?? selection.name.value;
-              if (selection.selectionSet == null) {
-                selectionMap[key] = selection;
-              } else {
-                final existingNode = selectionMap[key];
-                final existingSelections = existingNode is FieldNode &&
-                        existingNode.selectionSet != null
-                    ? existingNode.selectionSet!.selections
-                    : <SelectionNode>[];
-                selectionMap[key] = FieldNode(
-                    name: selection.name,
-                    alias: selection.alias,
-                    selectionSet: SelectionSetNode(
-                        selections: mergeSelections(
-                      [
-                        ...existingSelections,
-                        ...selection.selectionSet!.selections
-                      ],
-                      fragmentMap,
-                    )));
-              }
-            } else if (selection is InlineFragmentNode &&
-                selection.typeCondition != null) {
-              /// TODO: Handle inline fragments without a type condition
-              final key = selection.typeCondition!.on.name.value;
-              if (selectionMap.containsKey(key)) {
-                selectionMap[key] = InlineFragmentNode(
-                  typeCondition: selection.typeCondition,
-                  directives: selection.directives,
-                  selectionSet: SelectionSetNode(
-                    selections: mergeSelections(
-                      [
-                        ...(selectionMap[key] as InlineFragmentNode)
-                            .selectionSet
-                            .selections,
-                        ...selection.selectionSet.selections,
-                      ],
-                      fragmentMap,
-                    ),
-                  ),
-                );
-              } else {
-                selectionMap[key] = selection;
-              }
+        .fold<Map<String, SelectionNode>>({}, (selectionMap, selection) {
+          if (selection is FieldNode) {
+            final key = selection.alias?.value ?? selection.name.value;
+            if (selection.selectionSet == null) {
+              selectionMap[key] = selection;
             } else {
-              selectionMap[selection.hashCode.toString()] = selection;
+              final existingNode = selectionMap[key];
+              final existingSelections =
+                  existingNode is FieldNode && existingNode.selectionSet != null
+                      ? existingNode.selectionSet!.selections
+                      : <SelectionNode>[];
+              selectionMap[key] = FieldNode(
+                name: selection.name,
+                alias: selection.alias,
+                selectionSet: SelectionSetNode(
+                  selections: mergeSelections([
+                    ...existingSelections,
+                    ...selection.selectionSet!.selections,
+                  ], fragmentMap),
+                ),
+              );
             }
-            return selectionMap;
-          },
-        )
+          } else if (selection is InlineFragmentNode &&
+              selection.typeCondition != null) {
+            /// TODO: Handle inline fragments without a type condition
+            final key = selection.typeCondition!.on.name.value;
+            if (selectionMap.containsKey(key)) {
+              selectionMap[key] = InlineFragmentNode(
+                typeCondition: selection.typeCondition,
+                directives: selection.directives,
+                selectionSet: SelectionSetNode(
+                  selections: mergeSelections([
+                    ...(selectionMap[key] as InlineFragmentNode)
+                        .selectionSet
+                        .selections,
+                    ...selection.selectionSet.selections,
+                  ], fragmentMap),
+                ),
+              );
+            } else {
+              selectionMap[key] = selection;
+            }
+          } else {
+            selectionMap[selection.hashCode.toString()] = selection;
+          }
+          return selectionMap;
+        })
         .values
         .toList();
 
@@ -376,72 +362,65 @@ List<SelectionNode> _expandFragmentSpreads(
   Map<String, SourceSelections> fragmentMap, [
   bool retainFragmentSpreads = true,
 ]) =>
-    selections.expand(
-      (selection) {
-        if (selection is FragmentSpreadNode) {
-          if (!fragmentMap.containsKey(selection.name.value)) {
-            throw Exception(
-              "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
-            );
-          }
-
-          final fragmentSelections =
-              fragmentMap[selection.name.value]!.selections;
-
-          return [
-            if (retainFragmentSpreads) selection,
-            ..._expandFragmentSpreads(
-              [
-                ...fragmentSelections.whereType<FieldNode>(),
-                ...fragmentSelections.whereType<FragmentSpreadNode>(),
-              ],
-              fragmentMap,
-              false,
-            )
-          ];
+    selections.expand((selection) {
+      if (selection is FragmentSpreadNode) {
+        if (!fragmentMap.containsKey(selection.name.value)) {
+          throw Exception(
+            "Couldn't find fragment definition for fragment spread '${selection.name.value}'",
+          );
         }
-        return [selection];
-      },
-    ).toList();
+
+        final fragmentSelections =
+            fragmentMap[selection.name.value]!.selections;
+
+        return [
+          if (retainFragmentSpreads) selection,
+          ..._expandFragmentSpreads(
+            [
+              ...fragmentSelections.whereType<FieldNode>(),
+              ...fragmentSelections.whereType<FragmentSpreadNode>(),
+            ],
+            fragmentMap,
+            false,
+          ),
+        ];
+      }
+      return [selection];
+    }).toList();
 
 Map<String, SourceSelections> _fragmentSelectionsForField(
   Map<String, SourceSelections> fragmentMap,
   FieldNode field,
-) =>
-    Map.fromEntries(
-      fragmentMap.entries.expand(
-        (entry) => entry.value.selections.whereType<FieldNode>().where(
-          (selection) {
-            if (selection.selectionSet == null) return false;
+) => Map.fromEntries(
+  fragmentMap.entries.expand(
+    (entry) => entry.value.selections
+        .whereType<FieldNode>()
+        .where((selection) {
+          if (selection.selectionSet == null) return false;
 
-            final selectionKey = selection.alias?.value ?? selection.name.value;
-            final fieldKey = field.alias?.value ?? field.name.value;
+          final selectionKey = selection.alias?.value ?? selection.name.value;
+          final fieldKey = field.alias?.value ?? field.name.value;
 
-            return selectionKey == fieldKey;
-          },
-        ).map(
+          return selectionKey == fieldKey;
+        })
+        .map(
           (selection) => MapEntry(
             "${entry.key}_${field.alias?.value ?? field.name.value}",
             SourceSelections(
               url: entry.value.url,
-              selections: selection.selectionSet!.selections
-                  .whereType<FieldNode>()
-                  .toList(),
+              selections:
+                  selection.selectionSet!.selections
+                      .whereType<FieldNode>()
+                      .toList(),
             ),
           ),
         ),
-      ),
-    );
+  ),
+);
 
-TypeNode _getFieldTypeNode(
-  TypeDefinitionNode node,
-  String field,
-) {
+TypeNode _getFieldTypeNode(TypeDefinitionNode node, String field) {
   if (node is UnionTypeDefinitionNode && field == "__typename") {
-    return NamedTypeNode(
-      isNonNull: true,
-      name: NameNode(value: "String"),
-    );
+    return NamedTypeNode(isNonNull: true, name: NameNode(value: "String"));
   }
 
   List<FieldDefinitionNode> fields;
@@ -451,11 +430,8 @@ TypeNode _getFieldTypeNode(
     fields = node.fields;
   } else {
     throw Exception(
-        "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode");
+      "${node.name.value} is not an ObjectTypeDefinitionNode or InterfaceTypeDefinitionNode",
+    );
   }
-  return fields
-      .firstWhere(
-        (fieldNode) => fieldNode.name.value == field,
-      )
-      .type;
+  return fields.firstWhere((fieldNode) => fieldNode.name.value == field).type;
 }

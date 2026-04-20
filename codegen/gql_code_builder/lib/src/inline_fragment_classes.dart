@@ -36,47 +36,49 @@ List<Spec> buildInlineFragmentClasses({
   );
   return [
     Class(
-      (b) => b
-        ..abstract = true
-        ..name = builtClassName(name)
-        ..implements.addAll(
-          superclassSelections.keys
-              .where((superName) =>
-                  !dataClassAliasMap.containsKey(builtClassName(superName)))
-              .map<Reference>(
-                (superName) => refer(
-                  builtClassName(superName),
-                  (superclassSelections[superName]?.url ?? "") + "#data",
+      (b) =>
+          b
+            ..abstract = true
+            ..name = builtClassName(name)
+            ..implements.addAll(
+              superclassSelections.keys
+                  .where(
+                    (superName) =>
+                        !dataClassAliasMap.containsKey(
+                          builtClassName(superName),
+                        ),
+                  )
+                  .map<Reference>(
+                    (superName) => refer(
+                      builtClassName(superName),
+                      (superclassSelections[superName]?.url ?? "") + "#data",
+                    ),
+                  ),
+            )
+            ..methods.addAll([
+              ...fieldGetters,
+              if (built)
+                ..._inlineFragmentRootSerializationMethods(
+                  name: builtClassName(name),
+                  inlineFragments: inlineFragments,
+                  dataClassAliasMap: dataClassAliasMap,
                 ),
-              ),
-        )
-        ..methods.addAll([
-          ...fieldGetters,
-          if (built)
-            ..._inlineFragmentRootSerializationMethods(
-              name: builtClassName(name),
-              inlineFragments: inlineFragments,
-              dataClassAliasMap: dataClassAliasMap,
-            ),
-        ]),
+            ]),
     ),
     if (whenExtension != null) whenExtension,
     ...buildSelectionSetDataClasses(
       name: "${name}__base",
-      selections: mergeSelections(
-        [
-          ...selections.whereType<FieldNode>(),
-          ...selections.whereType<FragmentSpreadNode>(),
-        ],
-        fragmentMap,
-      ),
+      selections: mergeSelections([
+        ...selections.whereType<FieldNode>(),
+        ...selections.whereType<FragmentSpreadNode>(),
+      ], fragmentMap),
       fragmentMap: fragmentMap,
       dataClassAliasMap: dataClassAliasMap,
       schemaSource: schemaSource,
       type: type,
       typeOverrides: typeOverrides,
       superclassSelections: {
-        name: SourceSelections(url: null, selections: selections)
+        name: SourceSelections(url: null, selections: selections),
       },
       built: built,
       whenExtensionConfig: whenExtensionConfig,
@@ -84,39 +86,40 @@ List<Spec> buildInlineFragmentClasses({
 
     /// TODO: Handle inline fragments without a type condition
     /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
-    ...inlineFragments.where((frag) {
-      if (frag.typeCondition == null) {
-        return false;
-      }
-      final typeName =
-          builtClassName("${name}__as${frag.typeCondition!.on.name.value}");
-      if (dataClassAliasMap.containsKey(typeName)) {
-        // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
-        return false;
-      }
-      return true;
-    }).expand(
-      (inlineFragment) => buildSelectionSetDataClasses(
-          name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
-          selections: mergeSelections(
-            [
+    ...inlineFragments
+        .where((frag) {
+          if (frag.typeCondition == null) {
+            return false;
+          }
+          final typeName = builtClassName(
+            "${name}__as${frag.typeCondition!.on.name.value}",
+          );
+          if (dataClassAliasMap.containsKey(typeName)) {
+            // print("alias $typeName => ${dataClassAliasMap[typeName]!.symbol}");
+            return false;
+          }
+          return true;
+        })
+        .expand(
+          (inlineFragment) => buildSelectionSetDataClasses(
+            name: "${name}__as${inlineFragment.typeCondition!.on.name.value}",
+            selections: mergeSelections([
               ...selections.whereType<FieldNode>(),
               ...selections.whereType<FragmentSpreadNode>(),
               ...inlineFragment.selectionSet.selections,
-            ],
-            fragmentMap,
+            ], fragmentMap),
+            fragmentMap: fragmentMap,
+            dataClassAliasMap: dataClassAliasMap,
+            schemaSource: schemaSource,
+            type: inlineFragment.typeCondition!.on.name.value,
+            typeOverrides: typeOverrides,
+            superclassSelections: {
+              name: SourceSelections(url: null, selections: selections),
+            },
+            built: built,
+            whenExtensionConfig: whenExtensionConfig,
           ),
-          fragmentMap: fragmentMap,
-          dataClassAliasMap: dataClassAliasMap,
-          schemaSource: schemaSource,
-          type: inlineFragment.typeCondition!.on.name.value,
-          typeOverrides: typeOverrides,
-          superclassSelections: {
-            name: SourceSelections(url: null, selections: selections)
-          },
-          built: built,
-          whenExtensionConfig: whenExtensionConfig),
-    ),
+        ),
   ];
 }
 
@@ -124,32 +127,35 @@ List<Method> _inlineFragmentRootSerializationMethods({
   required String name,
   required List<InlineFragmentNode> inlineFragments,
   required Map<String, Reference> dataClassAliasMap,
-}) =>
-    [
-      buildSerializerGetter(name).rebuild(
-        (b) => b
-          ..body = TypeReference((b) => b
-            ..symbol = "InlineFragmentSerializer"
-            ..url =
-                "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
-            ..types.add(refer(name))).call([
-            literalString(name),
-            refer("${name}__base"),
-            literalMap(
-              /// TODO: Handle inline fragments without a type condition
-              /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
-              {
-                for (final v in inlineFragments
-                    .where((frag) => frag.typeCondition != null))
-                  "${v.typeCondition!.on.name.value}": dataClassAliasMap[
-                          "${name}__as${v.typeCondition!.on.name.value}"] ??
-                      refer(
-                        "${name}__as${v.typeCondition!.on.name.value}",
-                      )
-              },
-            ),
-          ]).code,
-      ),
-      buildToJsonGetter(name),
-      buildFromJsonGetter(name),
-    ];
+}) => [
+  buildSerializerGetter(name).rebuild(
+    (b) =>
+        b
+          ..body =
+              TypeReference(
+                (b) =>
+                    b
+                      ..symbol = "InlineFragmentSerializer"
+                      ..url =
+                          "package:gql_code_builder_serializers/gql_code_builder_serializers.dart"
+                      ..types.add(refer(name)),
+              ).call([
+                literalString(name),
+                refer("${name}__base"),
+                literalMap(
+                  /// TODO: Handle inline fragments without a type condition
+                  /// https://spec.graphql.org/June2018/#sec-Inline-Fragments
+                  {
+                    for (final v in inlineFragments.where(
+                      (frag) => frag.typeCondition != null,
+                    ))
+                      "${v.typeCondition!.on.name.value}":
+                          dataClassAliasMap["${name}__as${v.typeCondition!.on.name.value}"] ??
+                          refer("${name}__as${v.typeCondition!.on.name.value}"),
+                  },
+                ),
+              ]).code,
+  ),
+  buildToJsonGetter(name),
+  buildFromJsonGetter(name),
+];

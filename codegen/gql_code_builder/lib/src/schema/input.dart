@@ -18,17 +18,22 @@ List<Class> buildInputClasses(
     schemaSource.document.definitions
         .whereType<InputObjectTypeDefinitionNode>()
         .expand((InputObjectTypeDefinitionNode node) {
-      final inputClass = buildInputClass(
-        node,
-        schemaSource,
-        typeOverrides,
-        triStateValueConfig,
-        generateVarsCreateFactories,
-      );
-      final serializer = nullAwareJsonSerializerClass(
-          inputClass, allocator, schemaSource, typeOverrides);
-      return [inputClass, serializer];
-    }).toList();
+          final inputClass = buildInputClass(
+            node,
+            schemaSource,
+            typeOverrides,
+            triStateValueConfig,
+            generateVarsCreateFactories,
+          );
+          final serializer = nullAwareJsonSerializerClass(
+            inputClass,
+            allocator,
+            schemaSource,
+            typeOverrides,
+          );
+          return [inputClass, serializer];
+        })
+        .toList();
 
 Class buildInputClass(
   InputObjectTypeDefinitionNode node,
@@ -36,50 +41,49 @@ Class buildInputClass(
   Map<String, Reference> typeOverrides,
   TriStateValueConfig triStateValueConfig,
   bool generateVarsCreateFactories,
-) =>
-    builtClass(
-      name: node.name.value,
-      getters: node.fields.map<Method>(
-        (node) => buildOptionalGetter(
-          nameNode: node.name,
-          typeNode: node.type,
-          schemaSource: schemaSource,
-          typeOverrides: typeOverrides,
-          useTriStateValueForNullableTypes: triStateValueConfig,
-        ),
-      ),
-      hasCustomSerializer:
-          triStateValueConfig == TriStateValueConfig.onAllNullableFields,
-      constructors: [
-        if (generateVarsCreateFactories)
-          builtCreateConstructor(
-            name: node.name.value,
-            getters: node.fields.map<Method>(
-              (node) => buildOptionalGetter(
-                nameNode: node.name,
-                typeNode: node.type,
-                schemaSource: schemaSource,
-                typeOverrides: typeOverrides,
-                useTriStateValueForNullableTypes: triStateValueConfig,
-              ),
-            ),
+) => builtClass(
+  name: node.name.value,
+  getters: node.fields.map<Method>(
+    (node) => buildOptionalGetter(
+      nameNode: node.name,
+      typeNode: node.type,
+      schemaSource: schemaSource,
+      typeOverrides: typeOverrides,
+      useTriStateValueForNullableTypes: triStateValueConfig,
+    ),
+  ),
+  hasCustomSerializer:
+      triStateValueConfig == TriStateValueConfig.onAllNullableFields,
+  constructors: [
+    if (generateVarsCreateFactories)
+      builtCreateConstructor(
+        name: node.name.value,
+        getters: node.fields.map<Method>(
+          (node) => buildOptionalGetter(
+            nameNode: node.name,
+            typeNode: node.type,
             schemaSource: schemaSource,
             typeOverrides: typeOverrides,
+            useTriStateValueForNullableTypes: triStateValueConfig,
           ),
-      ],
-      initializers: {
-        if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
-          ..._inputClassValueInitializers(node)
-      },
-      methods: [
-        if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
-          nullAwareJsonSerializerField(node, "G${node.name.value}"),
-      ],
-    );
+        ),
+        schemaSource: schemaSource,
+        typeOverrides: typeOverrides,
+      ),
+  ],
+  initializers: {
+    if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
+      ..._inputClassValueInitializers(node),
+  },
+  methods: [
+    if (triStateValueConfig == TriStateValueConfig.onAllNullableFields)
+      nullAwareJsonSerializerField(node, "G${node.name.value}"),
+  ],
+);
 
 Map<String, Expression> _inputClassValueInitializers(
-        InputObjectTypeDefinitionNode op) =>
-    {
-      for (final node in op.fields.where((element) => !element.type.isNonNull))
-        identifier(node.name.value): absentValueConstructorInvocation()
-    };
+  InputObjectTypeDefinitionNode op,
+) => {
+  for (final node in op.fields.where((element) => !element.type.isNonNull))
+    identifier(node.name.value): absentValueConstructorInvocation(),
+};

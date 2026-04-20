@@ -130,10 +130,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(DateSerializer())
   ..add(CustomFieldSerializer())
   ..add(GHeroForEpisodeData_hero.serializer)
-  ..add(GHeroWithInterfaceSubTypedFragmentsData_hero.serializer)
-  ..add(
-    GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends.serializer,
-  )
   ..add(GheroFieldsFragmentData.serializer)
   ..add(GheroFieldsFragmentData__asHuman_friends.serializer)
   ..add(GhumanFieldsFragmentData_friends.serializer)
@@ -180,12 +176,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GHeroWithFragmentsVars,
   GHeroWithInterfaceSubTypedFragments,
   GHeroWithInterfaceSubTypedFragmentsData,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asDroid,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asDroid,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__asHuman,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__asHuman_friends__base,
-  GHeroWithInterfaceSubTypedFragmentsData_hero__base,
+  GHeroWithInterfaceSubTypedFragmentsData_hero,
   GHeroWithInterfaceSubTypedFragmentsVars,
   GHumanWithArgs,
   GHumanWithArgsData,

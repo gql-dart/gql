@@ -8,9 +8,7 @@ void main() {
       url: "package:gql/test.dart",
       document: DocumentNode(
         definitions: const [
-          DirectiveDefinitionNode(
-            name: NameNode(value: "extends"),
-          ),
+          DirectiveDefinitionNode(name: NameNode(value: "extends")),
         ],
       ),
     );
@@ -23,9 +21,7 @@ void main() {
       url: "package:gql/test.dart",
       document: DocumentNode(
         definitions: const [
-          DirectiveDefinitionNode(
-            name: NameNode(value: "info"),
-          ),
+          DirectiveDefinitionNode(name: NameNode(value: "info")),
         ],
       ),
     );

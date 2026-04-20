@@ -2,7 +2,5 @@
 class DataClassConfig {
   final bool reuseFragments;
 
-  const DataClassConfig({
-    required this.reuseFragments,
-  });
+  const DataClassConfig({required this.reuseFragments});
 }

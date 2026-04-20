@@ -7,8 +7,9 @@ import "package:gql_code_builder/src/utils/uncapitalize.dart";
 // static building blocks for the generated code
 final _genericTypeParam = TypeReference((b) => b..symbol = "_T");
 
-final _orElseFunctionType =
-    FunctionType((b) => b..returnType = _genericTypeParam);
+final _orElseFunctionType = FunctionType(
+  (b) => b..returnType = _genericTypeParam,
+);
 
 String _getSchemaTypeName(InlineFragmentNode node) =>
     node.typeCondition!.on.name.value;
@@ -36,16 +37,19 @@ Code _caseStatement(InlineFragmentNode inlineFragment) =>
 /// casting.
 /// returns null if there are not inlineFragments with a typeCondition
 /// or if both the `when` and `maybeWhen` methods are disabled in the config
-Extension? inlineFragmentWhenExtension(
-    {required String baseTypeName,
-    required List<InlineFragmentNode> inlineFragments,
-    required InlineFragmentSpreadWhenExtensionConfig config,
-    required Map<String, Reference> dataClassAliasMap}) {
-  final inlineFragmentsWithTypConditions = inlineFragments
-      .where((inlineFragment) => inlineFragment.typeCondition != null)
-      .toList();
+Extension? inlineFragmentWhenExtension({
+  required String baseTypeName,
+  required List<InlineFragmentNode> inlineFragments,
+  required InlineFragmentSpreadWhenExtensionConfig config,
+  required Map<String, Reference> dataClassAliasMap,
+}) {
+  final inlineFragmentsWithTypConditions =
+      inlineFragments
+          .where((inlineFragment) => inlineFragment.typeCondition != null)
+          .toList();
 
-  final nothingToDo = inlineFragmentsWithTypConditions.isEmpty ||
+  final nothingToDo =
+      inlineFragmentsWithTypConditions.isEmpty ||
       (!config.generateWhenExtensionMethod &&
           !config.generateMaybeWhenExtensionMethod);
 
@@ -57,7 +61,8 @@ Extension? inlineFragmentWhenExtension(
   /// so we can refer to it in the generated code
   String getGeneratedTypeName(InlineFragmentNode node) {
     final typeName = builtClassName(
-        "${baseTypeName}__as${node.typeCondition!.on.name.value}");
+      "${baseTypeName}__as${node.typeCondition!.on.name.value}",
+    );
     return dataClassAliasMap[typeName]?.symbol ?? typeName;
   }
 
@@ -65,7 +70,7 @@ Extension? inlineFragmentWhenExtension(
   /// so we can avoid name clashes
   final Set<String> usedParameterNames = {
     _orElseFunctionRef.symbol!,
-    _genericTypeParam.symbol
+    _genericTypeParam.symbol,
   };
 
   final Map<InlineFragmentNode, String> parameterNamesPerInlineNode = {};
@@ -117,86 +122,114 @@ Extension? inlineFragmentWhenExtension(
 
     if (config.generateWhenExtensionMethod) {
       e.methods.add(
-        Method((m) => m
-          ..name = "when"
-          ..returns = _genericTypeParam
-          ..types.add(_genericTypeParam)
-          ..optionalParameters.addAll(
-            inlineFragmentsWithTypConditions.map(
-              (inlineFragment) => Parameter((p) => p
-                ..name = getParameterName(inlineFragment)
-                ..type = FunctionType((b) => b
-                  ..returnType = _genericTypeParam
-                  ..requiredParameters
-                      .add(Reference(getGeneratedTypeName(inlineFragment))))
-                ..named = true
-                ..required = true),
-            ),
-          )
-          // todo: calculate if all possible types are covered by the when statement
-          // if true, the orElse method can be removed
-          ..optionalParameters.add(
-            Parameter((p) => p
-              ..name = _orElseFunctionRef.symbol!
-              ..type = _orElseFunctionType
-              ..named = true
-              ..required = true),
-          )
-          ..body = Block.of([
-            _switchTypeName,
-            _curlyBracketOpen,
-            ...inlineFragmentsWithTypConditions
-                .map((inlineFragment) => Block.of([
+        Method(
+          (m) =>
+              m
+                ..name = "when"
+                ..returns = _genericTypeParam
+                ..types.add(_genericTypeParam)
+                ..optionalParameters.addAll(
+                  inlineFragmentsWithTypConditions.map(
+                    (inlineFragment) => Parameter(
+                      (p) =>
+                          p
+                            ..name = getParameterName(inlineFragment)
+                            ..type = FunctionType(
+                              (b) =>
+                                  b
+                                    ..returnType = _genericTypeParam
+                                    ..requiredParameters.add(
+                                      Reference(
+                                        getGeneratedTypeName(inlineFragment),
+                                      ),
+                                    ),
+                            )
+                            ..named = true
+                            ..required = true,
+                    ),
+                  ),
+                )
+                // todo: calculate if all possible types are covered by the when statement
+                // if true, the orElse method can be removed
+                ..optionalParameters.add(
+                  Parameter(
+                    (p) =>
+                        p
+                          ..name = _orElseFunctionRef.symbol!
+                          ..type = _orElseFunctionType
+                          ..named = true
+                          ..required = true,
+                  ),
+                )
+                ..body = Block.of([
+                  _switchTypeName,
+                  _curlyBracketOpen,
+                  ...inlineFragmentsWithTypConditions.map(
+                    (inlineFragment) => Block.of([
                       _caseStatement(inlineFragment),
                       whenCaseBody(inlineFragment),
-                    ])),
-            _defaultCallOrElse,
-            _curlyBracketClose,
-          ])),
+                    ]),
+                  ),
+                  _defaultCallOrElse,
+                  _curlyBracketClose,
+                ]),
+        ),
       );
     }
     if (config.generateMaybeWhenExtensionMethod) {
       e.methods.add(
         Method(
-          (m) => m
-            ..name = "maybeWhen"
-            ..returns = _genericTypeParam
-            ..types.add(_genericTypeParam)
-            ..optionalParameters.addAll(
-              inlineFragmentsWithTypConditions.map(
-                (inlineFragment) => Parameter((p) => p
-                  ..name = getParameterName(inlineFragment)
-                  ..type = FunctionType((b) => b
-                    ..returnType = _genericTypeParam
-                    ..isNullable = true
-                    ..requiredParameters.add(Reference(
-                      getGeneratedTypeName(inlineFragment),
-                    )))
-                  ..named = true
-                  ..required = false),
-              ),
-            )
-            ..optionalParameters.add(
-              Parameter((p) => p
-                ..name = _orElseFunctionRef.symbol!
-                ..type = _orElseFunctionType
-                ..named = true
-                ..required = true),
-            )
-            ..body = Block.of(
-              [
-                _switchTypeName,
-                _curlyBracketOpen,
-                ...inlineFragments
-                    .where((element) => element.typeCondition != null)
-                    .map((inlineFragment) => Block.of([
+          (m) =>
+              m
+                ..name = "maybeWhen"
+                ..returns = _genericTypeParam
+                ..types.add(_genericTypeParam)
+                ..optionalParameters.addAll(
+                  inlineFragmentsWithTypConditions.map(
+                    (inlineFragment) => Parameter(
+                      (p) =>
+                          p
+                            ..name = getParameterName(inlineFragment)
+                            ..type = FunctionType(
+                              (b) =>
+                                  b
+                                    ..returnType = _genericTypeParam
+                                    ..isNullable = true
+                                    ..requiredParameters.add(
+                                      Reference(
+                                        getGeneratedTypeName(inlineFragment),
+                                      ),
+                                    ),
+                            )
+                            ..named = true
+                            ..required = false,
+                    ),
+                  ),
+                )
+                ..optionalParameters.add(
+                  Parameter(
+                    (p) =>
+                        p
+                          ..name = _orElseFunctionRef.symbol!
+                          ..type = _orElseFunctionType
+                          ..named = true
+                          ..required = true,
+                  ),
+                )
+                ..body = Block.of([
+                  _switchTypeName,
+                  _curlyBracketOpen,
+                  ...inlineFragments
+                      .where((element) => element.typeCondition != null)
+                      .map(
+                        (inlineFragment) => Block.of([
                           _caseStatement(inlineFragment),
                           maybeWhenCaseBody(inlineFragment),
-                        ])),
-                _defaultCallOrElse,
-                _curlyBracketClose,
-              ],
-            ),
+                        ]),
+                      ),
+                  _defaultCallOrElse,
+                  _curlyBracketClose,
+                ]),
         ),
       );
     }

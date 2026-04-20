@@ -62,10 +62,7 @@ class SourceSelections {
   final String? url;
   final List<SelectionNode> selections;
 
-  const SourceSelections({
-    this.url,
-    required this.selections,
-  });
+  const SourceSelections({this.url, required this.selections});
 }
 
 /// Prefixes a string with "G"
@@ -93,18 +90,20 @@ Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
     final ref = typeMap[type.name.value] ?? Reference(type.name.value);
     assert(ref.symbol != null, "Symbol for ${ref} must not be null");
     return TypeReference(
-      (b) => b
-        ..url = ref.url
-        ..symbol = ref.symbol
-        ..isNullable = !type.isNonNull,
+      (b) =>
+          b
+            ..url = ref.url
+            ..symbol = ref.symbol
+            ..isNullable = !type.isNonNull,
     );
   } else if (type is ListTypeNode) {
     return TypeReference(
-      (b) => b
-        ..url = "package:built_collection/built_collection.dart"
-        ..symbol = "BuiltList"
-        ..isNullable = !type.isNonNull
-        ..types.add(_typeRef(type.type, typeMap)),
+      (b) =>
+          b
+            ..url = "package:built_collection/built_collection.dart"
+            ..symbol = "BuiltList"
+            ..isNullable = !type.isNonNull
+            ..types.add(_typeRef(type.type, typeMap)),
     );
   }
   throw Exception("Unrecognized TypeNode type");
@@ -113,25 +112,20 @@ Reference _typeRef(TypeNode type, Map<String, Reference> typeMap) {
 const defaultRootTypes = {
   OperationType.query: "Query",
   OperationType.mutation: "Mutation",
-  OperationType.subscription: "Subscription"
+  OperationType.subscription: "Subscription",
 };
 
-NamedTypeNode unwrapTypeNode(
-  TypeNode node,
-) {
+NamedTypeNode unwrapTypeNode(TypeNode node) {
   if (node is ListTypeNode) {
     return unwrapTypeNode(node.type);
   }
   return node as NamedTypeNode;
 }
 
-TypeDefinitionNode? getTypeDefinitionNode(
-  DocumentNode schema,
-  String name,
-) =>
-    schema.definitions
-        .whereType<TypeDefinitionNode>()
-        .firstWhereOrNull((node) => node.name.value == name);
+TypeDefinitionNode? getTypeDefinitionNode(DocumentNode schema, String name) =>
+    schema.definitions.whereType<TypeDefinitionNode>().firstWhereOrNull(
+      (node) => node.name.value == name,
+    );
 
 Method buildGetter({
   required NameNode nameNode,
@@ -145,10 +139,7 @@ Method buildGetter({
 }) {
   final unwrappedTypeNode = unwrapTypeNode(typeNode);
   final typeName = unwrappedTypeNode.name.value;
-  final typeDef = getTypeDefinitionNode(
-    schemaSource.document,
-    typeName,
-  );
+  final typeDef = getTypeDefinitionNode(schemaSource.document, typeName);
 
   final typeMap = {
     ...defaultTypeMap,
@@ -157,29 +148,26 @@ Method buildGetter({
     else if (typeRefPrefix != null)
       typeName: refer("${typeRefPrefix}_${nameNode.value}")
     else if (typeDef != null)
-      typeName: refer(
-        builtClassName(typeName),
-        "${schemaSource.url}#schema",
-      ),
+      typeName: refer(builtClassName(typeName), "${schemaSource.url}#schema"),
     ...typeOverrides,
   };
 
-  final returnType = _typeRef(
-    typeNode,
-    typeMap,
-  );
+  final returnType = _typeRef(typeNode, typeMap);
 
   return Method(
-    (b) => b
-      ..annotations = ListBuilder(<Expression>[
-        if (isOverride) refer("override"),
-        if (built && identifier(nameNode.value) != nameNode.value)
-          refer("BuiltValueField", "package:built_value/built_value.dart")
-              .call([], {"wireName": literalString(nameNode.value)}),
-      ])
-      ..returns = returnType
-      ..type = MethodType.getter
-      ..name = identifier(nameNode.value),
+    (b) =>
+        b
+          ..annotations = ListBuilder(<Expression>[
+            if (isOverride) refer("override"),
+            if (built && identifier(nameNode.value) != nameNode.value)
+              refer(
+                "BuiltValueField",
+                "package:built_value/built_value.dart",
+              ).call([], {"wireName": literalString(nameNode.value)}),
+          ])
+          ..returns = returnType
+          ..type = MethodType.getter
+          ..name = identifier(nameNode.value),
   );
 }
 
@@ -212,72 +200,88 @@ Method buildOptionalGetter({
     return baseGetter;
   }
 
-  final optionalGetter = baseGetter.rebuild((b) => b
-    ..returns = TypeReference((b2) => b2
-      ..isNullable = false
-      ..url = valueTypeUrl
-      ..symbol = valueTypeSymbol
-      ..types.add((baseGetter.returns as TypeReference)
-          .rebuild((b3) => b3..isNullable = false))));
+  final optionalGetter = baseGetter.rebuild(
+    (b) =>
+        b
+          ..returns = TypeReference(
+            (b2) =>
+                b2
+                  ..isNullable = false
+                  ..url = valueTypeUrl
+                  ..symbol = valueTypeSymbol
+                  ..types.add(
+                    (baseGetter.returns as TypeReference).rebuild(
+                      (b3) => b3..isNullable = false,
+                    ),
+                  ),
+          ),
+  );
   return optionalGetter;
 }
 
 Method buildSerializerGetter(String className) => Method(
-      (b) => b
+  (b) =>
+      b
         ..static = true
         ..returns = TypeReference(
-          (b) => b
-            ..url = "package:built_value/serializer.dart"
-            ..symbol = "Serializer"
-            ..types.add(
-              refer(className),
-            ),
+          (b) =>
+              b
+                ..url = "package:built_value/serializer.dart"
+                ..symbol = "Serializer"
+                ..types.add(refer(className)),
         )
         ..type = MethodType.getter
         ..name = "serializer"
         ..lambda = true,
-    );
+);
 
 Method buildToJsonGetter(
   String className, {
   bool implemented = true,
   bool isOverride = false,
-}) =>
-    Method(
-      (b) => b
-        ..annotations.addAll([
-          if (isOverride) refer("override"),
-        ])
+}) => Method(
+  (b) =>
+      b
+        ..annotations.addAll([if (isOverride) refer("override")])
         ..returns = refer("Map<String, dynamic>")
         ..name = "toJson"
         ..lambda = implemented
-        ..body = implemented
-            ? refer("serializers", "#serializer")
-                .property("serializeWith")
-                .call([
-                  refer(className).property("serializer"),
-                  refer("this"),
-                ])
-                .asA(refer("Map<String, dynamic>"))
-                .code
-            : null,
-    );
+        ..body =
+            implemented
+                ? refer("serializers", "#serializer")
+                    .property("serializeWith")
+                    .call([
+                      refer(className).property("serializer"),
+                      refer("this"),
+                    ])
+                    .asA(refer("Map<String, dynamic>"))
+                    .code
+                : null,
+);
 
 Method buildFromJsonGetter(String className) => Method(
-      (b) => b
+  (b) =>
+      b
         ..static = true
         ..returns = TypeReference(
-          (b) => b
-            ..symbol = className
-            ..isNullable = true,
+          (b) =>
+              b
+                ..symbol = className
+                ..isNullable = true,
         )
         ..name = "fromJson"
-        ..requiredParameters.add(Parameter((b) => b
-          ..type = refer("Map<String, dynamic>")
-          ..name = "json"))
+        ..requiredParameters.add(
+          Parameter(
+            (b) =>
+                b
+                  ..type = refer("Map<String, dynamic>")
+                  ..name = "json",
+          ),
+        )
         ..lambda = true
-        ..body = refer("serializers", "#serializer")
-            .property("deserializeWith")
-            .call(
-                [refer(className).property("serializer"), refer("json")]).code,
-    );
+        ..body =
+            refer("serializers", "#serializer")
+                .property("deserializeWith")
+                .call([refer(className).property("serializer"), refer("json")])
+                .code,
+);

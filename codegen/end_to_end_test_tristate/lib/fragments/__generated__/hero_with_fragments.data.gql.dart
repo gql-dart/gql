@@ -58,12 +58,13 @@ abstract class GHeroWithFragmentsData_hero
   @override
   String get id;
   @override
-  String get name;
-  @override
   GHeroWithFragmentsData_hero_friendsConnection get friendsConnection;
+  @override
+  String get name;
   static Serializer<GHeroWithFragmentsData_hero> get serializer =>
       _$gHeroWithFragmentsDataHeroSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithFragmentsData_hero.serializer,
         this,
@@ -101,6 +102,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection
   static Serializer<GHeroWithFragmentsData_hero_friendsConnection>
       get serializer => _$gHeroWithFragmentsDataHeroFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithFragmentsData_hero_friendsConnection.serializer,
         this,
@@ -139,6 +141,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithFragmentsData_hero_friendsConnection_edges.serializer,
         this,
@@ -178,6 +181,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
       get serializer =>
           _$gHeroWithFragmentsDataHeroFriendsConnectionEdgesNodeSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GHeroWithFragmentsData_hero_friendsConnection_edges_node.serializer,
         this,
@@ -194,6 +198,7 @@ abstract class GHeroWithFragmentsData_hero_friendsConnection_edges_node
 abstract class GheroData {
   String get G__typename;
   String get name;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GheroDataData
@@ -213,6 +218,7 @@ abstract class GheroDataData
   String get name;
   static Serializer<GheroDataData> get serializer => _$gheroDataDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GheroDataData.serializer,
         this,
@@ -232,17 +238,21 @@ abstract class GcomparisonFields implements GheroData {
   @override
   String get name;
   GcomparisonFields_friendsConnection get friendsConnection;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection {
   String get G__typename;
   int? get totalCount;
   BuiltList<GcomparisonFields_friendsConnection_edges?>? get edges;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges {
   String get G__typename;
   GcomparisonFields_friendsConnection_edges_node? get node;
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFields_friendsConnection_edges_node
@@ -251,6 +261,8 @@ abstract class GcomparisonFields_friendsConnection_edges_node
   String get G__typename;
   @override
   String get name;
+  @override
+  Map<String, dynamic> toJson();
 }
 
 abstract class GcomparisonFieldsData
@@ -279,6 +291,7 @@ abstract class GcomparisonFieldsData
   static Serializer<GcomparisonFieldsData> get serializer =>
       _$gcomparisonFieldsDataSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GcomparisonFieldsData.serializer,
         this,
@@ -316,6 +329,7 @@ abstract class GcomparisonFieldsData_friendsConnection
   static Serializer<GcomparisonFieldsData_friendsConnection> get serializer =>
       _$gcomparisonFieldsDataFriendsConnectionSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GcomparisonFieldsData_friendsConnection.serializer,
         this,
@@ -352,6 +366,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges
   static Serializer<GcomparisonFieldsData_friendsConnection_edges>
       get serializer => _$gcomparisonFieldsDataFriendsConnectionEdgesSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GcomparisonFieldsData_friendsConnection_edges.serializer,
         this,
@@ -391,6 +406,7 @@ abstract class GcomparisonFieldsData_friendsConnection_edges_node
       get serializer =>
           _$gcomparisonFieldsDataFriendsConnectionEdgesNodeSerializer;
 
+  @override
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GcomparisonFieldsData_friendsConnection_edges_node.serializer,
         this,

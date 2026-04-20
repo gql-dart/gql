@@ -111,12 +111,12 @@ class _$GHeroWithFragmentsData_heroSerializer
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'friendsConnection',
       serializers.serialize(object.friendsConnection,
           specifiedType:
               const FullType(GHeroWithFragmentsData_hero_friendsConnection)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -142,15 +142,15 @@ class _$GHeroWithFragmentsData_heroSerializer
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'friendsConnection':
           result.friendsConnection.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       GHeroWithFragmentsData_hero_friendsConnection))!
               as GHeroWithFragmentsData_hero_friendsConnection);
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -772,9 +772,9 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   @override
   final String id;
   @override
-  final String name;
-  @override
   final GHeroWithFragmentsData_hero_friendsConnection friendsConnection;
+  @override
+  final String name;
 
   factory _$GHeroWithFragmentsData_hero(
           [void Function(GHeroWithFragmentsData_heroBuilder)? updates]) =>
@@ -783,8 +783,8 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
   _$GHeroWithFragmentsData_hero._(
       {required this.G__typename,
       required this.id,
-      required this.name,
-      required this.friendsConnection})
+      required this.friendsConnection,
+      required this.name})
       : super._();
   @override
   GHeroWithFragmentsData_hero rebuild(
@@ -801,8 +801,8 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
     return other is GHeroWithFragmentsData_hero &&
         G__typename == other.G__typename &&
         id == other.id &&
-        name == other.name &&
-        friendsConnection == other.friendsConnection;
+        friendsConnection == other.friendsConnection &&
+        name == other.name;
   }
 
   @override
@@ -810,8 +810,8 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, friendsConnection.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -821,8 +821,8 @@ class _$GHeroWithFragmentsData_hero extends GHeroWithFragmentsData_hero {
     return (newBuiltValueToStringHelper(r'GHeroWithFragmentsData_hero')
           ..add('G__typename', G__typename)
           ..add('id', id)
-          ..add('name', name)
-          ..add('friendsConnection', friendsConnection))
+          ..add('friendsConnection', friendsConnection)
+          ..add('name', name))
         .toString();
   }
 }
@@ -841,10 +841,6 @@ class GHeroWithFragmentsData_heroBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   GHeroWithFragmentsData_hero_friendsConnectionBuilder? _friendsConnection;
   GHeroWithFragmentsData_hero_friendsConnectionBuilder get friendsConnection =>
       _$this._friendsConnection ??=
@@ -853,6 +849,10 @@ class GHeroWithFragmentsData_heroBuilder
           GHeroWithFragmentsData_hero_friendsConnectionBuilder?
               friendsConnection) =>
       _$this._friendsConnection = friendsConnection;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GHeroWithFragmentsData_heroBuilder() {
     GHeroWithFragmentsData_hero._initializeBuilder(this);
@@ -863,8 +863,8 @@ class GHeroWithFragmentsData_heroBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _id = $v.id;
-      _name = $v.name;
       _friendsConnection = $v.friendsConnection.toBuilder();
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -892,9 +892,9 @@ class GHeroWithFragmentsData_heroBuilder
                 G__typename, r'GHeroWithFragmentsData_hero', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GHeroWithFragmentsData_hero', 'id'),
+            friendsConnection: friendsConnection.build(),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GHeroWithFragmentsData_hero', 'name'),
-            friendsConnection: friendsConnection.build(),
           );
     } catch (_) {
       late String _$failedField;

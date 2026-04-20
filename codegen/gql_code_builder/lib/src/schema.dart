@@ -41,55 +41,57 @@ class _SchemaBuilderVisitor extends SimpleVisitor<List<Spec>?> {
   final bool generateVarsCreateFactories;
 
   const _SchemaBuilderVisitor(
-      this.schemaSource,
-      this.typeOverrides,
-      this.enumFallbackConfig,
-      this.allocator,
-      this.triStateValueConfig,
-      this.generateVarsCreateFactories);
+    this.schemaSource,
+    this.typeOverrides,
+    this.enumFallbackConfig,
+    this.allocator,
+    this.triStateValueConfig,
+    this.generateVarsCreateFactories,
+  );
 
   @override
-  List<Spec> visitDocumentNode(
-    DocumentNode node,
-  ) =>
-      [
-        Library(
-          (b) => b.body.addAll(
-            node.definitions.expand(
-              (node) => node.accept(this) ?? [],
-            ),
-          ),
-        )
-      ];
+  List<Spec> visitDocumentNode(DocumentNode node) => [
+    Library(
+      (b) => b.body.addAll(
+        node.definitions.expand((node) => node.accept(this) ?? []),
+      ),
+    ),
+  ];
 
   @override
   List<Spec> visitInputObjectTypeDefinitionNode(
     InputObjectTypeDefinitionNode node,
   ) {
-    final inputClass = buildInputClass(node, schemaSource, typeOverrides,
-        triStateValueConfig, generateVarsCreateFactories);
+    final inputClass = buildInputClass(
+      node,
+      schemaSource,
+      typeOverrides,
+      triStateValueConfig,
+      generateVarsCreateFactories,
+    );
 
     return switch (triStateValueConfig) {
       TriStateValueConfig.never => [inputClass],
       TriStateValueConfig.onAllNullableFields => [
+        inputClass,
+        nullAwareJsonSerializerClass(
           inputClass,
-          nullAwareJsonSerializerClass(
-              inputClass, allocator, schemaSource, typeOverrides)
-        ],
+          allocator,
+          schemaSource,
+          typeOverrides,
+        ),
+      ],
     };
   }
 
   @override
-  List<Spec> visitScalarTypeDefinitionNode(
-    ScalarTypeDefinitionNode node,
-  ) =>
+  List<Spec> visitScalarTypeDefinitionNode(ScalarTypeDefinitionNode node) =>
       typeOverrides.containsKey(node.name.value)
           ? []
           : [buildScalarClass(node)];
 
   @override
-  List<Spec> visitEnumTypeDefinitionNode(
-    EnumTypeDefinitionNode node,
-  ) =>
-      [buildEnumClass(node, enumFallbackConfig)];
+  List<Spec> visitEnumTypeDefinitionNode(EnumTypeDefinitionNode node) => [
+    buildEnumClass(node, enumFallbackConfig),
+  ];
 }
