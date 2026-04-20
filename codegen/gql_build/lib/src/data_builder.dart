@@ -27,15 +27,13 @@ class DataBuilder implements Builder {
       generateWhenExtensionMethod: false,
       generateMaybeWhenExtensionMethod: false,
     ),
-    this.dataClassConfig = const DataClassConfig(
-      reuseFragments: false,
-    ),
+    this.dataClassConfig = const DataClassConfig(reuseFragments: false),
   });
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        inputPattern: [outputPattern(dataExtension)],
-      };
+    inputPattern: [outputPattern(dataExtension)],
+  };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {

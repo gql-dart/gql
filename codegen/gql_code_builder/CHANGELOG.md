@@ -1,3 +1,7 @@
+## 0.13.4
+
+- support analyzer 12.x
+
 ## 0.13.3
 
 - support analyzer 9.x and 10.x

@@ -20,17 +20,18 @@ class SchemaBuilder implements Builder {
   final DartFormatter formatter;
 
   SchemaBuilder(
-      this.typeOverrides,
-      this.enumFallbackConfig,
-      this.generatePossibleTypesMap,
-      this.triStateValueConfig,
-      this.generateVarsCreateFactories,
-      this.formatter);
+    this.typeOverrides,
+    this.enumFallbackConfig,
+    this.generatePossibleTypesMap,
+    this.triStateValueConfig,
+    this.generateVarsCreateFactories,
+    this.formatter,
+  );
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        inputPattern: [outputPattern(schemaExtension)],
-      };
+    inputPattern: [outputPattern(schemaExtension)],
+  };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
@@ -41,8 +42,10 @@ class SchemaBuilder implements Builder {
         .uri
         .path;
 
-    final schemaUrl =
-        outputAssetId(buildStep.inputId, schemaExtension).uri.toString();
+    final schemaUrl = outputAssetId(
+      buildStep.inputId,
+      schemaExtension,
+    ).uri.toString();
     final allocator = GqlAllocator(
       buildStep.inputId.uri.toString(),
       outputAssetId(buildStep.inputId, schemaExtension).uri.toString(),
@@ -61,6 +64,12 @@ class SchemaBuilder implements Builder {
     );
 
     return writeDocument(
-        library, buildStep, schemaExtension, formatter, schemaUrl, allocator);
+      library,
+      buildStep,
+      schemaExtension,
+      formatter,
+      schemaUrl,
+      allocator,
+    );
   }
 }

@@ -15,16 +15,14 @@ class AstBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        inputPattern: [outputPattern(astExtension)],
-      };
+    inputPattern: [outputPattern(astExtension)],
+  };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final doc = await readDocument(buildStep);
 
-    final library = buildAstLibrary(
-      doc,
-    );
+    final library = buildAstLibrary(doc);
 
     return writeDocument(library, buildStep, astExtension, formatter);
   }

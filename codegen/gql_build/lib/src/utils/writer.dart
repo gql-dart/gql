@@ -25,13 +25,9 @@ Future<void> writeDocument(
 
   final generatedAsset = outputAssetId(buildStep.inputId, extension);
 
-  final genSrc = dartfmt.format("${library.accept(
-    DartEmitter(
-      allocator: allocator,
-      orderDirectives: true,
-      useNullSafetySyntax: true,
-    ),
-  )}");
+  final genSrc = dartfmt.format(
+    "${library.accept(DartEmitter(allocator: allocator, orderDirectives: true, useNullSafetySyntax: true))}",
+  );
 
   return buildStep.writeAsString(
     generatedAsset,

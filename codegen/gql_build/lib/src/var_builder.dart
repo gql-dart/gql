@@ -29,8 +29,8 @@ class VarBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        inputPattern: [outputPattern(varExtension)],
-      };
+    inputPattern: [outputPattern(varExtension)],
+  };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {

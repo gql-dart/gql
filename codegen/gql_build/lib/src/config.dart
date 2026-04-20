@@ -26,9 +26,9 @@ String outputPath(String inputPath) {
 }
 
 AssetId outputAssetId(AssetId inputAssetId, String extension) => AssetId(
-      inputAssetId.package,
-      outputPath(inputAssetId.path),
-    ).changeExtension(extension);
+  inputAssetId.package,
+  outputPath(inputAssetId.path),
+).changeExtension(extension);
 
 String generatedFileExtension(String sourceExtension) {
   final parts = sourceExtension.split(".");

@@ -38,18 +38,19 @@ Set<Reference> customSerializers(dynamic customSerializersConfig) {
 
 EnumFallbackConfig enumFallbackConfig(Map<String, dynamic> config) =>
     EnumFallbackConfig(
-      globalEnumFallbackName: (config["global_enum_fallback_name"] ??
-          "gUnknownEnumValue") as String,
+      globalEnumFallbackName:
+          (config["global_enum_fallback_name"] ?? "gUnknownEnumValue")
+              as String,
       generateFallbackValuesGlobally: config["global_enum_fallbacks"] == true,
       fallbackValueMap: enumFallbackMap(config["enum_fallbacks"]),
     );
 
-DataClassConfig dataClassConfig(Map<String, dynamic> config) => DataClassConfig(
-      reuseFragments: config["reuse_fragments"] == true,
-    );
+DataClassConfig dataClassConfig(Map<String, dynamic> config) =>
+    DataClassConfig(reuseFragments: config["reuse_fragments"] == true);
 
 InlineFragmentSpreadWhenExtensionConfig whenExtensionConfig(
-    Map<String, dynamic> config) {
+  Map<String, dynamic> config,
+) {
   final whenYamlConfig = config["when_extensions"] as YamlMap?;
 
   return InlineFragmentSpreadWhenExtensionConfig(
@@ -65,10 +66,7 @@ Map<String, String> enumFallbackMap(final dynamic enumFallbacks) {
   if (enumFallbacks is YamlMap) {
     return Map.fromEntries(
       enumFallbacks.entries.map(
-        (entry) => MapEntry(
-          entry.key as String,
-          entry.value as String,
-        ),
+        (entry) => MapEntry(entry.key as String, entry.value as String),
       ),
     );
   }
@@ -100,8 +98,5 @@ DartFormatter dartFormatter(Map<String, dynamic> config) {
       ? Version.parse(languageVersion)
       : DartFormatter.latestLanguageVersion;
 
-  return DartFormatter(
-    languageVersion: parsedVersion,
-    pageWidth: pageWidth,
-  );
+  return DartFormatter(languageVersion: parsedVersion, pageWidth: pageWidth);
 }
