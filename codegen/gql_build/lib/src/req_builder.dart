@@ -13,15 +13,12 @@ class ReqBuilder implements Builder {
   final AssetId schemaId;
   final DartFormatter formatter;
 
-  ReqBuilder(
-    this.schemaId,
-    this.formatter,
-  );
+  ReqBuilder(this.schemaId, this.formatter);
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        inputPattern: [outputPattern(reqExtension)],
-      };
+    inputPattern: [outputPattern(reqExtension)],
+  };
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
@@ -32,10 +29,7 @@ class ReqBuilder implements Builder {
         .uri
         .path;
 
-    final library = buildReqLibrary(
-      doc,
-      basename(generatedPartUrl),
-    );
+    final library = buildReqLibrary(doc, basename(generatedPartUrl));
 
     return writeDocument(
       library,

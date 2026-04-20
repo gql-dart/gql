@@ -7,18 +7,13 @@ class PickAllocator implements Allocator {
 
   final Map<String, List<String>?> _imports = {};
 
-  PickAllocator({
-    this.doNotPick = const [],
-    this.include = const [],
-  }) {
+  PickAllocator({this.doNotPick = const [], this.include = const []}) {
     for (final url in include) {
       _imports[url] = null;
     }
   }
 
-  static const _doNotImport = [
-    "dart:core",
-  ];
+  static const _doNotImport = ["dart:core"];
 
   @override
   String allocate(Reference reference) {
@@ -32,16 +27,19 @@ class PickAllocator implements Allocator {
       return symbol;
     }
 
-    _imports.update(url, (symbols) => symbols?..add(symbol),
-        ifAbsent: () => [symbol]);
+    _imports.update(
+      url,
+      (symbols) => symbols?..add(symbol),
+      ifAbsent: () => [symbol],
+    );
 
     return symbol;
   }
 
   @override
   Iterable<Directive> get imports => _imports.entries.map(
-        (u) => u.value == null
-            ? Directive.import(u.key)
-            : Directive.import(u.key, show: u.value!),
-      );
+    (u) => u.value == null
+        ? Directive.import(u.key)
+        : Directive.import(u.key, show: u.value!),
+  );
 }

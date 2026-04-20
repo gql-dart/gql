@@ -6,10 +6,7 @@ import "package:gql_code_builder/source.dart";
 
 import "../config.dart";
 
-Set<AssetId> _getImports(
-  String source, {
-  AssetId? from,
-}) {
+Set<AssetId> _getImports(String source, {AssetId? from}) {
   final imports = <Uri>{};
 
   final patterns = [
@@ -18,28 +15,19 @@ Set<AssetId> _getImports(
   ];
 
   for (final pattern in patterns) {
-    pattern.allMatches(source).forEach(
-      (match) {
-        final path = match.group(1);
-        if (path != null) {
-          imports.add(
-            Uri.parse(
-              path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
-            ),
-          );
-        }
-      },
-    );
+    pattern.allMatches(source).forEach((match) {
+      final path = match.group(1);
+      if (path != null) {
+        imports.add(
+          Uri.parse(
+            path.endsWith(sourceExtension) ? path : "$path$sourceExtension",
+          ),
+        );
+      }
+    });
   }
 
-  return imports
-      .map(
-        (import) => AssetId.resolve(
-          import,
-          from: from,
-        ),
-      )
-      .toSet();
+  return imports.map((import) => AssetId.resolve(import, from: from)).toSet();
 }
 
 Future<SourceNode> _assetToSourceNode(
@@ -48,35 +36,20 @@ Future<SourceNode> _assetToSourceNode(
 ) async {
   final sourceString = await buildStep.readAsString(assetId);
 
-  final imports = _getImports(
-    sourceString,
-    from: assetId,
-  );
+  final imports = _getImports(sourceString, from: assetId);
 
   final url = assetId.uri.toString();
 
   return SourceNode(
     url: url,
-    document: parseString(
-      sourceString,
-      url: url,
-    ),
+    document: parseString(sourceString, url: url),
     imports: await Stream.fromIterable(imports)
         .asyncMap(
-          (importedAssetId) => _assetToSourceNode(
-            buildStep,
-            importedAssetId,
-          ),
+          (importedAssetId) => _assetToSourceNode(buildStep, importedAssetId),
         )
         .toSet(),
   );
 }
 
-Future<SourceNode> readDocument(
-  BuildStep buildStep, [
-  AssetId? rootId,
-]) =>
-    _assetToSourceNode(
-      buildStep,
-      rootId ?? buildStep.inputId,
-    );
+Future<SourceNode> readDocument(BuildStep buildStep, [AssetId? rootId]) =>
+    _assetToSourceNode(buildStep, rootId ?? buildStep.inputId);
