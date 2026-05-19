@@ -231,7 +231,7 @@ String _getWireName(Method m) {
         }
         return null;
       })
-      .whereNotNull()
+      .nonNulls
       .firstOrNull;
 
   if (wireNameExpr is! LiteralExpression) {

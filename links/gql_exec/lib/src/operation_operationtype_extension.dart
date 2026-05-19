@@ -7,10 +7,8 @@ extension OperationTypeExtension on Operation {
   OperationType? getOperationType() {
     final visitor = _OperationTypeVisitor(operationName);
 
-    final type = document.definitions
-        .map((d) => d.accept(visitor))
-        .whereNotNull()
-        .firstOrNull;
+    final type =
+        document.definitions.map((d) => d.accept(visitor)).nonNulls.firstOrNull;
 
     return type;
   }
