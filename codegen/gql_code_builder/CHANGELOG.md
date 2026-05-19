@@ -1,3 +1,7 @@
+## 0.15.2
+
+ - **FEAT**: support analyzer 12.x and 13.x.
+
 ## 0.15.1
 
  - **FIX**: vars_create_factories handle BuiltList type (#447).

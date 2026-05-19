@@ -1,3 +1,7 @@
+## 0.13.2
+
+ - **FEAT**: support analyzer 12.x and 13.x.
+
 ## 0.13.1
 
  - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).
@@ -11,7 +15,7 @@
 # 0.13.0
 
 - Add configurable formatting support with dart_style 3.0.0
-- Add `format` configuration option with `page_width` and `language_version` settings  
+- Add `format` configuration option with `page_width` and `language_version` settings
 - Update to use gql_code_builder 0.15.0 with deferred allocator pattern
 - Pass DartFormatter through all builders for consistent formatting
 - Add compatibility with build 3.0.0
