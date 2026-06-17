@@ -1,3 +1,9 @@
+## 0.15.2
+
+ - Support analyzer 13 while keeping analyzer 9 as the minimum supported version.
+
+ - **FEAT**: support analyzer 9.x and 10.x (#505).
+
 ## 0.15.1
 
  - **FIX**: vars_create_factories handle BuiltList type (#447).
