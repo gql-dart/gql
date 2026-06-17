@@ -152,3 +152,25 @@ jobs:
         
       - name: Run tests
         run: melos exec --scope $PACKAGE --dir-exists=test -- dart test
+
+  min_dependencies:
+    runs-on: ubuntu-latest
+    container:
+      image: dart:latest
+    name: Verify minimum dependencies
+    steps:
+      - name: Configure Git for safe directory
+        run: |
+          git config --global --add safe.directory /__w/gql/gql
+          git config --global --add safe.directory /__w/gql
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Melos
+        run: |
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          dart pub global activate melos && dart pub get
+
+      - name: Verify minimum dependencies
+        run: melos run verify-min-dependencies

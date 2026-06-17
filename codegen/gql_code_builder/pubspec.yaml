@@ -5,7 +5,7 @@ repository: https://github.com/gql-dart/gql
 environment:
   sdk: '>=3.0.0 <4.0.0'
 dependencies:
-  analyzer: '>=9.0.0 <11.0.0'
+  analyzer: '>=9.0.0 <14.0.0'
   built_collection: ^5.0.0
   built_value: ^8.0.6
   code_builder: ^4.7.0
@@ -16,6 +16,7 @@ dependencies:
   gql_tristate_value: ^1.1.0
   gql_code_builder_serializers: ^0.1.0+1
 dev_dependencies:
+  frontend_server_client: ^4.0.0
   gql_pedantic: ^1.2.0
   test: ^1.16.8
 topics:

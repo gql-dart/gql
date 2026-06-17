@@ -64,6 +64,10 @@ scripts:
     packageFilters:
       dependsOn: build_runner
 
+  verify-min-dependencies:
+    run: ./tool/verify_min_dependencies.sh
+    description: Verify gql codegen packages against minimum supported dependency versions
+
   bump-alpha:
     description: Bump all packages to next alpha version
     run: |
