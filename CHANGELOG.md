@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-06-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`gql_code_builder` - `v0.15.2`](#gql_code_builder---v0152)
+
+---
+
+#### `gql_code_builder` - `v0.15.2`
+
+ - Support analyzer 13 while keeping analyzer 9 as the minimum supported version.
+
+ - **FEAT**: support analyzer 9.x and 10.x (#505).
+
+
 ## 2025-09-20
 
 ### Changes
