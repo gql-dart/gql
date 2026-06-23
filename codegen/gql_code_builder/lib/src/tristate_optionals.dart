@@ -187,8 +187,14 @@ String _generateFieldDeserializers(
           getTypeDefinitionNode(schemaSource.document, originalSymbolName);
 
       //TODO this feels flaky, find a better way
+      // Check if type is a built collection (has replace method)
+      // JsonObject from built_value doesn't have replace method
+      final isJsonObject = type.symbol == "JsonObject" && 
+          type.url == "package:built_value/json_object.dart";
+      
       final isBuilder = type.url != null &&
           !isWrappedValue &&
+          !isJsonObject &&
           (typeDefNode is! ScalarTypeDefinitionNode &&
               typeDefNode is! EnumTypeDefinitionNode);
 
