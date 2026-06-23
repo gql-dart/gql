@@ -233,6 +233,15 @@ const Map<String, Set<String>> possibleTypesMap = {
     'Human',
     'Droid',
   },
+  'Author': {
+    'Person',
+    'Company',
+    'Group',
+  },
+  'Book': {
+    'Textbook',
+    'ColoringBook',
+  },
   'SearchResult': {
     'Human',
     'Droid',

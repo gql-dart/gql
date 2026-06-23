@@ -310,8 +310,8 @@ List<Spec> _buildTypeSpecificClasses({
     final expandedSuperclassSelections = {...superclassSelections};
     final nestedInterfaceMap = <String, String>{};
 
-    // Process each base interface found in the hierarchy
-    for (final baseInterfaceName in context.hierarchy.keys) {
+    // Process each base interface from the superclass selections.
+    for (final baseInterfaceName in superclassSelections.keys) {
       final specializedName =
           context.specialize(baseInterfaceName, fragmentTypeName);
 

@@ -226,6 +226,18 @@ const Query = _i1.ObjectTypeDefinitionNode(
         isNonNull: false,
       ),
     ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'books'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Book'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
   ],
 );
 const Mutation = _i1.ObjectTypeDefinitionNode(
@@ -1127,6 +1139,233 @@ const PostFavoritesInput = _i1.InputObjectTypeDefinitionNode(
     )
   ],
 );
+const Author = _i1.InterfaceTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Author'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'displayName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    )
+  ],
+);
+const Person = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Person'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Author'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'firstName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'lastName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'displayName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Company = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Company'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Author'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'name'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'displayName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Group = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Group'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Author'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'displayName'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'members'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Author'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Book = _i1.InterfaceTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Book'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'title'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'author'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Author'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const Textbook = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Textbook'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Book'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'title'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'author'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Author'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'courses'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'String'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
+const ColoringBook = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'ColoringBook'),
+  directives: [],
+  interfaces: [
+    _i1.NamedTypeNode(
+      name: _i1.NameNode(value: 'Book'),
+      isNonNull: false,
+    )
+  ],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'title'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'author'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Author'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'colors'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'String'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const SearchResult = _i1.UnionTypeDefinitionNode(
   name: _i1.NameNode(value: 'SearchResult'),
   directives: [],
@@ -1185,6 +1424,13 @@ const document = _i1.DocumentNode(definitions: [
   PostFavorites,
   PostLikesInput,
   PostFavoritesInput,
+  Author,
+  Person,
+  Company,
+  Group,
+  Book,
+  Textbook,
+  ColoringBook,
   SearchResult,
   Date,
   ISODate,
