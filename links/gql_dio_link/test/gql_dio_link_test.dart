@@ -187,6 +187,70 @@ void main() {
       ).called(1);
     });
 
+    test("applies timeouts from context", () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (invocation) {
+          final options = invocation.namedArguments.entries
+              .firstWhere((element) => element.key == Symbol("options"))
+              .value as dio.Options;
+          return Future.value(
+            dio.Response<Map<String, dynamic>>(
+              data: <String, dynamic>{
+                "data": <String, dynamic>{},
+              },
+              statusCode: 200,
+              requestOptions: dio.RequestOptions(
+                path: path,
+                headers: options.headers,
+              ),
+            ),
+          );
+        },
+      );
+
+      await execute(
+        Request(
+          operation: Operation(
+            document: parseString("query MyQuery {}"),
+          ),
+          variables: const <String, dynamic>{"i": 12},
+          context: Context.fromList(
+            const [
+              DioLinkTimeoutContextEntry(
+                sendTimeout: Duration(seconds: 20),
+                receiveTimeout: Duration(seconds: 20),
+              ),
+            ],
+          ),
+        ),
+      ).first;
+
+      verify(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+                  sendTimeout: const Duration(seconds: 20),
+                  receiveTimeout: const Duration(seconds: 20),
+                  responseType: dio.ResponseType.json,
+                  headers: <String, dynamic>{
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
+                  },
+                ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+
     test("adds headers from context", () async {
       when(
         client.post<dynamic>(

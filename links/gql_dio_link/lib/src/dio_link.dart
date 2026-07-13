@@ -6,6 +6,7 @@ import "package:gql_link/gql_link.dart";
 
 import "_utils.dart";
 import "dio_cancel_token_context_entry.dart";
+import "dio_timeout_context_entry.dart";
 import "exceptions.dart";
 
 @Deprecated("Use HttpLinkResponseContext instead")
@@ -177,6 +178,14 @@ class DioLink extends Link {
       dio.Response<dynamic> res;
       final dio.CancelToken? cancelToken =
           request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
+      final DioLinkTimeoutContextEntry? timeout =
+          request.context.entry<DioLinkTimeoutContextEntry>();
+      final dio.Options requestOptions = dio.Options(
+        responseType: dio.ResponseType.json,
+        headers: headers,
+        sendTimeout: timeout?.sendTimeout,
+        receiveTimeout: timeout?.receiveTimeout,
+      );
 
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
@@ -189,20 +198,14 @@ class DioLink extends Link {
             )(body as Map<String, dynamic>),
           ),
           cancelToken: cancelToken,
-          options: dio.Options(
-            responseType: dio.ResponseType.json,
-            headers: headers,
-          ),
+          options: requestOptions,
         );
       } else {
         res = await client.post<dynamic>(
           endpoint,
           cancelToken: cancelToken,
           data: body,
-          options: dio.Options(
-            responseType: dio.ResponseType.json,
-            headers: headers,
-          ),
+          options: requestOptions,
         );
       }
       if (res.data is Map<String, dynamic> == false) {
