@@ -139,7 +139,7 @@ class HttpLink extends Link {
     final httpRequest = _prepareRequest(request);
     try {
       final response = await _httpClient!.send(httpRequest);
-      return http.Response.fromStream(response);
+      return await http.Response.fromStream(response);
     } catch (e, stackTrace) {
       throw ServerException(
         originalException: e,
