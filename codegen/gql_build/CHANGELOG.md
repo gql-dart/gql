@@ -1,3 +1,8 @@
+## 0.13.4
+
+ - Support analyzer 14.x.
+ - Allow `build` 5.
+
 ## 0.13.3
 
  - Support analyzer 12.x.
