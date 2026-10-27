@@ -203,27 +203,15 @@ To get started with local development:
 
 ## Release Process
 
-### Automated Publishing
+### Publishing
 
-The publish workflow is automated via GitHub Actions and triggers when:
-- Changes are pushed to the `master` or `release` branches AND include changes to any `pubspec.yaml` file
-- Manually triggered through GitHub Actions UI
+`.github/workflows/publish.yml` publishes a package when its release tag, `<package>-v<version>` (for example `gql_code_builder-v0.15.3`), is pushed. pub.dev authenticates the run with GitHub's OIDC token ([automated publishing](https://dart.dev/tools/pub/automated-publishing)), so the repository stores no pub.dev credentials. The run checks the tag against the package's `pubspec.yaml`, waits until the package's dependencies resolve on pub.dev, and publishes from the `pub.dev` environment.
 
-The automated process:
-1. Validates all packages (formatting, analysis, and tests)
-2. Publishes packages in dependency order:
-   - Core packages first
-   - Execution packages second
-   - Link implementation packages third
-   - Build packages last
+Each package's admin page on pub.dev enables publishing from GitHub Actions for `gql-dart/gql` with the tag pattern `<package>-v{{version}}` and requires the `pub.dev` environment. A new package's first version has to be published with `dart pub publish`.
 
-### Manual Release Steps
+### Release Steps
 
-To create a new release manually:
-
-1. Ensure you're on the branch you want to release from (`master` or `release`)
-
-2. Version the packages using one of the following commands:
+1. Bump the versions and changelogs in a pull request, by hand or with one of these commands, and merge it:
    ```bash
    # For a patch release
    melos run bump-patch
@@ -241,12 +229,14 @@ To create a new release manually:
    melos run graduate
    ```
 
-3. Push the changes and tags:
+2. Check out the merged commit and tag every package whose version isn't on pub.dev yet. With `--push` the script also pushes the tags, which starts publishing:
    ```bash
-   git push && git push --tags
+   tool/tag_releases.sh --push
    ```
 
-4. The GitHub Action will automatically handle publishing to pub.dev if changes include pubspec.yaml files
+3. Follow the "Publish to pub.dev" runs in GitHub Actions.
+
+The same steps release from the stable `gql_backport_*` branches.
 
 ### Versioning Rules
 

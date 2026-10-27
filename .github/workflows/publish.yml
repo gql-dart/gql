@@ -1,75 +1,73 @@
-name: Publish Packages
+name: Publish to pub.dev
+
+# Publishes one package per pushed release tag, `<package>-v<version>` (the
+# format `melos version` uses). pub.dev authenticates the run with GitHub's
+# OIDC token, so the repository stores no pub credentials. Each package's
+# automated publishing settings on pub.dev must use the tag pattern
+# `<package>-v{{version}}` and require the `pub.dev` environment.
 on:
   push:
-    branches:
-      - master
-      - release
-    paths:
-      - "**/pubspec.yaml"
-  workflow_dispatch:
+    tags:
+      - "*-v[0-9]+.[0-9]+.[0-9]+*"
+
+permissions: {}
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  publish:
+  resolve:
+    name: Resolve package
     runs-on: ubuntu-latest
-    container:
-      image: dart:latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    outputs:
+      working-directory: ${{ steps.package.outputs.working-directory }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - name: Workaround for "detected dubious ownership in repository at", see https://github.com/actions/checkout/issues/1169
-        run: |
-          git config --system --add safe.directory /__w/gql/gql
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1
 
-      - name: Install Melos
-        run: |
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          dart pub global activate melos && dart pub get
-
-      - name: Bootstrap workspace
-        run: melos bootstrap --no-flutter
-
-      - name: Codegen
-        run: melos exec --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
-
-      - name: Validate packages
-        run: melos format && melos analyze && melos test
-
-      - name: Setup Pub credentials
+      - name: Find the package for the tag
+        id: package
         env:
-          PUB_CREDENTIALS_JSON: ${{ secrets.PUB_CREDENTIALS_JSON }}
-        run: |
-          mkdir -p $XDG_CONFIG_HOME/dart/
-          echo $PUB_CREDENTIALS_JSON > $XDG_CONFIG_HOME/dart/pub-credentials.json
-          mkdir -p $HOME/.config/dart/
-          echo $PUB_CREDENTIALS_JSON > $HOME/.config/dart/pub-credentials.json
+          TAG: ${{ github.ref_name }}
+        run: ./tool/package_for_tag.sh "$TAG" >> "$GITHUB_OUTPUT"
 
-      # Publish in dependency order
-      - name: Publish core packages
+      # Packages released together are tagged together, and pub.dev can take a
+      # few minutes to serve a new version, so wait until this package's
+      # dependencies resolve.
+      - name: Wait for dependencies on pub.dev
+        working-directory: ${{ steps.package.outputs.working-directory }}
         run: |
-          melos publish --no-dry-run --yes \
-            --scope="gql" \
-            --scope="gql_tristate_value" \
-            --scope="gql_code_builder_serializers" \
-            --scope="gql_code_builder"
+          for attempt in $(seq 1 30); do
+            if dart pub get; then
+              exit 0
+            fi
+            echo "Attempt $attempt failed, retrying in 30 seconds."
+            sleep 30
+          done
+          exit 1
 
-      - name: Publish execution packages
-        run: |
-          melos publish --no-dry-run --yes \
-            --scope="gql_exec" \
-            --scope="gql_link"
-
-      - name: Publish link implementation packages
-        run: |
-          melos publish --no-dry-run --yes \
-            --scope="gql_http_link" \
-            --scope="gql_dio_link" \
-            --scope="gql_websocket_link" \
-            --scope="gql_dedupe_link" \
-            --scope="gql_error_link" \
-            --scope="gql_transform_link"
-
-      - name: Publish build packages
-        run: |
-          melos publish --no-dry-run --yes \
-            --scope="gql_build"
+  publish:
+    name: Publish
+    needs: resolve
+    permissions:
+      id-token: write # Required for authentication using OIDC
+    # 953e9604 splits validation, offline packaging and publishing into
+    # separate jobs, so only the upload holds the OIDC token. It isn't in a
+    # setup-dart release yet (v1 is the older single job); move to the first
+    # release tag that contains it.
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@953e9604f31f14b7fb8d90dd913e6205a6c8eeeb
+    with:
+      working-directory: ${{ needs.resolve.outputs.working-directory }}
+      use-flutter: false
+      environment: pub.dev
+      # Forks check the archive but never upload.
+      test-run: ${{ github.repository != 'gql-dart/gql' }}
