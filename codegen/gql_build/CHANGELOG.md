@@ -1,3 +1,9 @@
+## 0.14.0
+
+ - Support analyzer 9 through 14. Analyzer 9 is now the minimum supported version.
+ - Allow `build` 5.
+ - Versions 0.13.2 and 0.13.3 were published from the stable line that uses `gql_code_builder` 0.13.x. This release continues the `gql_code_builder` 0.15.x line of 0.13.1, so it moves to 0.14.0.
+
 ## 0.13.1
 
  - **FIX**(gql_code_builder): Fixing nullables and type overrides for vars create factories (#444).
