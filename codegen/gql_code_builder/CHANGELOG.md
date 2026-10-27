@@ -1,3 +1,8 @@
+## 0.15.3
+
+ - Support analyzer 14. Analyzer 9 stays the minimum supported version.
+ - Replace the deprecated `whereNotNull()` with `nonNulls`.
+
 ## 0.15.2
 
  - Support analyzer 13 while keeping analyzer 9 as the minimum supported version.

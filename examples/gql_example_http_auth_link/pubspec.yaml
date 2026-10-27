@@ -10,5 +10,5 @@ dependencies:
   gql_transform_link: ^1.0.1
   http: ^0.13.1
 dev_dependencies: 
-  gql_build: ^0.13.1
+  gql_build: ^0.14.0
   gql_pedantic: ^1.2.0

@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-10-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`gql_code_builder` - `v0.15.3`](#gql_code_builder---v0153)
+ - [`gql_build` - `v0.14.0`](#gql_build---v0140)
+
+---
+
+#### `gql_code_builder` - `v0.15.3`
+
+ - Support analyzer 14. Analyzer 9 stays the minimum supported version.
+ - Replace the deprecated `whereNotNull()` with `nonNulls`.
+
+#### `gql_build` - `v0.14.0`
+
+ - Support analyzer 9 through 14. Analyzer 9 is now the minimum supported version.
+ - Allow `build` 5.
+ - Versions 0.13.2 and 0.13.3 were published from the stable line that uses `gql_code_builder` 0.13.x. This release continues the `gql_code_builder` 0.15.x line of 0.13.1, so it moves to 0.14.0.
+
+
 ## 2026-06-17
 
 ### Changes
