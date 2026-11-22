@@ -1,6 +1,9 @@
 import "package:gql/ast.dart" as ast;
+import "package:gql/src/validation/rules/executable_definitions.dart";
 import "package:gql/src/validation/rules/lone_schema_definition.dart";
 import "package:gql/src/validation/rules/missing_fragment_definitions.dart";
+import "package:gql/src/validation/rules/possible_type_extensions.dart";
+import "package:gql/src/validation/rules/unique_argument_definition_names.dart";
 import "package:gql/src/validation/rules/unique_argument_names.dart";
 import "package:gql/src/validation/rules/unique_directive_names.dart";
 import "package:gql/src/validation/rules/unique_enum_value_names.dart";
@@ -86,6 +89,9 @@ abstract class ValidationError {
     this.message,
     this.node,
   });
+
+  @override
+  String toString() => message ?? super.toString();
 }
 
 /// Available validation rules
@@ -98,7 +104,10 @@ enum ValidationRule {
   uniqueTypeNames,
   uniqueInputFieldNames,
   uniqueArgumentNames,
-  missingFragmentDefinition
+  missingFragmentDefinition,
+  possibleTypeExtensions,
+  uniqueArgumentDefinitionNames,
+  executableDefinitions,
 }
 
 ValidatingVisitor? _mapRule(ValidationRule rule) {
@@ -121,8 +130,12 @@ ValidatingVisitor? _mapRule(ValidationRule rule) {
       return UniqueArgumentNames();
     case ValidationRule.missingFragmentDefinition:
       return const MissingFragmentDefinition();
-    default:
-      return null;
+    case ValidationRule.possibleTypeExtensions:
+      return PossibleTypeExtensions();
+    case ValidationRule.uniqueArgumentDefinitionNames:
+      return UniqueArgumentDefinitionNames();
+    case ValidationRule.executableDefinitions:
+      return ExecutableDefinitions();
   }
 }
 
