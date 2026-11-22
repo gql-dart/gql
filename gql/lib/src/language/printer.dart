@@ -172,10 +172,20 @@ class _PrintVisitor extends Visitor<String> {
 
   @override
   String visitStringValueNode(StringValueNode stringValueNode) {
+    final formattedString = stringValueNode.value
+        .replaceAll('"""', '\\"""')
+        .replaceAll('\"', '\\"')
+        .replaceAll('\/', '\\/')
+        .replaceAll('\\', '\\\\')
+        .replaceAll('\b', '\\b')
+        .replaceAll('\f', '\\f')
+        .replaceAll('\n', '\\n')
+        .replaceAll('\r', '\\r')
+        .replaceAll('\t', '\\t');
     if (!stringValueNode.isBlock) {
       return [
         '"',
-        stringValueNode.value,
+        formattedString,
         '"',
       ].join();
     }
@@ -184,7 +194,7 @@ class _PrintVisitor extends Visitor<String> {
       '"""',
       "\n",
       _indent(_tabs),
-      stringValueNode.value.replaceAll('"""', '\\"""'),
+      formattedString,
       "\n",
       _indent(_tabs),
       '"""',
