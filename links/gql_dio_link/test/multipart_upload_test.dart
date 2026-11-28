@@ -213,6 +213,39 @@ void main() {
         },
       ]);
     });
+
+    test("adds extra from context", () async {
+      when(mockClient.post<dynamic>(
+        any,
+        data: anyNamed("data"),
+        options: anyNamed("options"),
+      )).thenAnswer((i) async => dio.Response<Map<String, dynamic>>(
+            data: expectedResponse,
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: ""),
+          ));
+
+      await link
+          .request(Request(
+            operation: gqlRequest.operation,
+            variables: gqlRequest.variables,
+            context: Context.fromList(const [
+              DioLinkExtraContextEntry({"foo": "bar"}),
+            ]),
+          ))
+          .first;
+
+      final captured = verify(
+        mockClient.post<dynamic>(
+          any,
+          data: captureAnyNamed("data"),
+          options: captureAnyNamed("options"),
+        ),
+      ).captured;
+
+      expect(captured[0], isA<dio.FormData>());
+      expect((captured[1] as dio.Options).extra, {"foo": "bar"});
+    });
   });
 
   group("serializable multipart upload errors", () {
@@ -288,6 +321,42 @@ void main() {
                       .data,
                   "with removed FormData",
                   isA<dio.FormData>())));
+    });
+
+    test("serializable errors keep extra from context", () async {
+      link = DioLink(
+        "http://localhost:3001/graphql",
+        client: mockClient,
+        serializableErrors: true,
+      );
+      when(mockClient.post<dynamic>(
+        any,
+        data: anyNamed("data"),
+        options: anyNamed("options"),
+      )).thenAnswer((i) async => Future.error(dio.DioException(
+            type: dio.DioExceptionType.receiveTimeout,
+            requestOptions: dio.RequestOptions(
+              path: i.positionalArguments[0] as String,
+              data: i.namedArguments[Symbol("data")] as dio.FormData,
+              extra: (i.namedArguments[Symbol("options")] as dio.Options).extra,
+            ),
+          )));
+      expect(
+          () => link
+              .request(Request(
+                operation: gqlRequest.operation,
+                variables: gqlRequest.variables,
+                context: Context.fromList(const [
+                  DioLinkExtraContextEntry({"foo": "bar"}),
+                ]),
+              ))
+              .first,
+          throwsA(isA<DioLinkTimeoutException>().having(
+              (e) => (e.originalException as dio.DioException)
+                  .requestOptions
+                  .extra,
+              "with extra from context",
+              {"foo": "bar"})));
     });
   });
 }

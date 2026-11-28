@@ -6,6 +6,7 @@ import "package:gql_link/gql_link.dart";
 
 import "_utils.dart";
 import "dio_cancel_token_context_entry.dart";
+import "dio_extra_context_entry.dart";
 import "exceptions.dart";
 
 @Deprecated("Use HttpLinkResponseContext instead")
@@ -177,6 +178,8 @@ class DioLink extends Link {
       dio.Response<dynamic> res;
       final dio.CancelToken? cancelToken =
           request.context.entry<DioLinkCancelTokenContextEntry>()?.token;
+      final Map<String, dynamic>? extra =
+          request.context.entry<DioLinkExtraContextEntry>()?.extra;
 
       final useGet =
           useGETForQueries && body is Map<String, dynamic> && isQuery;
@@ -192,6 +195,7 @@ class DioLink extends Link {
           options: dio.Options(
             responseType: dio.ResponseType.json,
             headers: headers,
+            extra: extra,
           ),
         );
       } else {
@@ -202,6 +206,7 @@ class DioLink extends Link {
           options: dio.Options(
             responseType: dio.ResponseType.json,
             headers: headers,
+            extra: extra,
           ),
         );
       }

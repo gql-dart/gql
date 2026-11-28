@@ -363,6 +363,91 @@ void main() {
       ).called(1);
     });
 
+    test("adds extra from context", () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
+          ),
+        ),
+      );
+
+      await execute(
+        Request(
+          operation: Operation(
+            document: parseString("query MyQuery {}"),
+          ),
+          variables: const <String, dynamic>{"i": 12},
+          context: Context.fromList(
+            const [
+              DioLinkExtraContextEntry({"foo": "bar"}),
+            ],
+          ),
+        ),
+      ).first;
+
+      verify(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+                  responseType: dio.ResponseType.json,
+                  headers: <String, dynamic>{
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
+                  },
+                  extra: <String, dynamic>{"foo": "bar"},
+                ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+
+    test("does not set extra without DioLinkExtraContextEntry", () async {
+      when(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
+          ),
+        ),
+      );
+
+      await execute().first;
+
+      verify(
+        client.post<dynamic>(
+          any,
+          data: anyNamed("data"),
+          options: argThat(
+            predicate((dio.Options o) => o.extra == null),
+            named: "options",
+          ),
+        ),
+      ).called(1);
+    });
+
     test("serializes the request", () async {
       when(
         client.post<dynamic>(
@@ -879,6 +964,56 @@ void main() {
           emitsDone,
         ]),
       );
+    });
+
+    test("adds extra from context to GET requests", () async {
+      when(
+        client.getUri<dynamic>(
+          any,
+          options: anyNamed("options"),
+        ),
+      ).thenAnswer(
+        (_) => Future.value(
+          dio.Response<Map<String, dynamic>>(
+            data: <String, dynamic>{
+              "data": <String, dynamic>{},
+            },
+            statusCode: 200,
+            requestOptions: dio.RequestOptions(path: path),
+          ),
+        ),
+      );
+
+      await execute(
+        Request(
+          operation: Operation(
+            document: parseString("query MyQuery {}"),
+          ),
+          variables: const <String, dynamic>{"i": 12},
+          context: Context.fromList(
+            const [
+              DioLinkExtraContextEntry({"foo": "bar"}),
+            ],
+          ),
+        ),
+      ).first;
+
+      verify(
+        client.getUri<dynamic>(
+          any,
+          options: argThat(
+            predicate((dio.Options o) => o.extEqual(dio.Options(
+                  responseType: dio.ResponseType.json,
+                  headers: <String, dynamic>{
+                    dio.Headers.contentTypeHeader: dio.Headers.jsonContentType,
+                    dio.Headers.acceptHeader: "*/*",
+                  },
+                  extra: <String, dynamic>{"foo": "bar"},
+                ))),
+            named: "options",
+          ),
+        ),
+      ).called(1);
     });
   });
 }
